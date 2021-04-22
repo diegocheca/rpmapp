@@ -1,0 +1,1395 @@
+
+Cuit
+text
+
+
+
+
+
+{
+    "description": "En este campo se debe escribir el número de CUIT del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 12
+    },
+    "placeholder": "Ingrese el número de CUIT",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "cuit"
+    }
+}
+
+
+
+
+Razon social
+text
+
+{
+    "description": "En este campo se debe escribir la razon social del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese la Razón Social",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "razonsocial"
+    }
+}
+
+
+
+
+
+
+
+Numero de Productor
+number
+
+{
+    "description": "En este campo se debe escribir el número de productor.",
+    "validation": {
+        "rule": "required",
+        "max": 10
+    },
+    "placeholder": "Ingrese el número de Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "numprod"
+    }
+}
+
+
+
+
+Tipo de Sociedad
+text
+
+{
+    "description": "En este campo se debe ingresar el tipo de sociedad.",
+    "validation": {
+        "rule": "required",
+        "max": 50
+    },
+    "placeholder": "Ingrese el tipo de sociedad Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "6",
+        "id": "tiposociedad"
+    }
+}
+
+
+
+
+
+
+Email
+text
+
+{
+    "description": "En este campo se debe ingresar el email del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese el email del Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "6",
+        "id": "email"
+    }
+}
+
+
+
+Inscripción ante DGR
+file
+
+
+{
+    "description": "En este campo se debe cargar la incripción ante la DGR.",
+    "validation": {
+        "rule": "required",
+        "max": 10
+    },
+    "placeholder": "Cargar la incripción ante la DGR.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "6",
+        "id": "inscripciondgr"
+    }
+}
+
+
+
+Constancia Sociedad
+file
+{
+    "description": "En este campo se debe cargar la constancia de sociedad.",
+    "validation": {
+        "rule": "required",
+        "max": 10
+    },
+    "placeholder": "Cargar la constancia de sociedad.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "6",
+        "id": "constanciasociedad"
+    }
+}
+
+
+
+Domicilio del Productor
+text
+
+
+{
+    "description": "En este campo se debe ingresar el domicilio del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese el email del Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "12",
+        "id": "domicilioprod"
+    }
+}
+
+
+
+
+
+
+
+
+Legal Calle
+text
+
+
+
+{
+    "description": "En este campo se debe ingresar la calle del domicilio legal del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese la calle del domicilio legal Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legalcalle"
+    }
+}
+
+
+
+Legal Numero de Calle
+text
+
+{
+    "description": "En este campo se debe ingresar el numero de la calle del domicilio legal del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese el numero de la calle del domicilio legal Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legalnum"
+    }
+}
+
+
+
+
+Telefono de Dom Legal
+text
+
+{
+    "description": "En este campo se debe ingresar la calle del domicilio legal del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese la calle del domicilio legal Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legaltelefono"
+    }
+}
+
+
+
+Dom Legal Pais
+select
+
+{
+    "description": "En este campo debe seleccionar el País del domicilio legal del productor.",
+    "default": "Argentina",
+    "options": {
+        "Argentina": "Argentina",
+        "Bolivia": "Bolivia",
+        "Brasil": "Brasil",
+        "Chile": "Chile",
+        "Paraguay": "Paraguay",
+        "Peru": "Peru",
+        "Uruguay": "Uruguay",
+        "Venezuela": "Venezuela",
+        "EEUU": "EEUU",
+        "Canada": "Canada",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione el país del domicilio legal Productor.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legalpais"
+    }
+}
+
+
+
+Dom Legal Provincia
+select
+
+
+{
+    "description": "En este campo debe seleccionar el provincia del domicilio legal del productor.",
+    "default": "San Juan",
+    "options": {
+        "San Juan": "San Juan",
+        "Mendoza": "Mendoza",
+        "San Luis": "San Luis",
+        "Salta": "Salta",
+        "Buenos Aires": "Buenos Aires",
+        "Jujuy": "Jujuy",
+        "Catamarca": "Catamarca",
+        "La Rioja": "La Rioja",
+        "Chubut": "Chubut",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione el provincia del domicilio legal Productor.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legalprovincia"
+    }
+}
+
+
+
+
+Dom Legal Departamento
+select
+
+{
+    "description": "En este campo debe seleccionar el departamento del domicilio legal del productor.",
+    "default": "Capital",
+    "options": {
+        "Capital": "Capital",
+        "9 de Julio": "9 de Julio",
+        "25 de mayo": "25 de mayo",
+        "Chimbas": "Chimbas",
+        "Rivadavia": "Rivadavia",
+        "Rawson": "Rawson",
+        "Santa Lucia": "Santa Lucia",
+        "Jachal": "Jachal",
+        "Valle Fertil": "Valle Fertil",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione el departamento del domicilio legal Productor.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legaldepartamento"
+    }
+}
+
+
+
+
+Localidad del Dom Legal
+text
+
+
+{
+    "description": "En este campo se debe ingresar la localidad del domicilio legal del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese la localidad del domicilio legal Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legallocalidad"
+    }
+}
+
+
+
+Codigo Postal del Dom Legal
+text
+
+{
+    "description": "En este campo se debe ingresar el número del codigo postal del domicilio legal del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 6
+    },
+    "placeholder": "Ingrese el número del codigo postal del domicilio legal Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legallcp"
+    }
+}
+
+
+Calle Dom Administración
+
+text
+
+
+{
+    "description": "En este campo se debe ingresar algún dato no contemplado en el domicilio de legal del productor.",
+    "validation": {
+        "max": 30
+    },
+    "placeholder": "Ingreseel algún dato no contemplado en el domicilio de legal del productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "legalotro"
+    }
+}
+
+
+
+
+
+
+Número Dom Administración
+number
+
+
+
+{
+    "description": "En este campo se debe ingresar el número de la calle del domicilio de administración del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 8
+    },
+    "placeholder": "Ingreseel número de la calle del domicilio de administración del productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "admincallenum"
+    }
+}
+
+
+
+
+
+
+
+Teléfono de Dom Administración
+text
+
+
+
+
+{
+    "description": "En este campo se debe ingresar el número de teléfono del domicilio de administración del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 25
+    },
+    "placeholder": "Ingreseel número de teléfono del domicilio de administración del productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "admintel"
+    }
+}
+
+
+
+
+
+
+
+País de Dom Administración
+
+select
+
+{
+    "description": "En este campo debe seleccionar el País del domicilio administración del productor.",
+    "default": "Argentina",
+    "options": {
+        "Argentina": "Argentina",
+        "Bolivia": "Bolivia",
+        "Brasil": "Brasil",
+        "Chile": "Chile",
+        "Paraguay": "Paraguay",
+        "Peru": "Peru",
+        "Uruguay": "Uruguay",
+        "Venezuela": "Venezuela",
+        "EEUU": "EEUU",
+        "Canada": "Canada",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione el país del domicilio administración Productor.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "adminpais"
+    }
+}
+
+
+
+
+Provincia de Dom Administración
+select
+
+
+
+
+{
+    "description": "En este campo debe seleccionar el provincia del domicilio administración del productor.",
+    "default": "San Juan",
+    "options": {
+        "San Juan": "San Juan",
+        "Mendoza": "Mendoza",
+        "San Luis": "San Luis",
+        "Salta": "Salta",
+        "Buenos Aires": "Buenos Aires",
+        "Jujuy": "Jujuy",
+        "Catamarca": "Catamarca",
+        "La Rioja": "La Rioja",
+        "Chubut": "Chubut",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione el provincia del domicilio administración Productor.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "adminprovincia"
+    }
+}
+
+
+
+
+Departamento de Dom Administración
+select
+
+
+{
+    "description": "En este campo debe seleccionar el departamento del domicilio administración del productor.",
+    "default": "Capital",
+    "options": {
+        "Capital": "Capital",
+        "9 de Julio": "9 de Julio",
+        "25 de mayo": "25 de mayo",
+        "Chimbas": "Chimbas",
+        "Rivadavia": "Rivadavia",
+        "Rawson": "Rawson",
+        "Santa Lucia": "Santa Lucia",
+        "Jachal": "Jachal",
+        "Valle Fertil": "Valle Fertil",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione el departamento del domicilio administración Productor.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "admindepartamento"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+Localidad de Dom Administración
+text
+
+{
+    "description": "En este campo se debe ingresar la localidad del domicilio administración del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 50
+    },
+    "placeholder": "Ingrese  la localidad del domicilio administración Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "adminlocalidad"
+    }
+}
+
+
+
+
+
+Cod Pos de Dom Administración
+number
+
+{
+    "description": "En este campo se debe ingresar el número del codigo postal del domicilio administración del productor.",
+    "validation": {
+        "rule": "required",
+        "max": 6
+    },
+    "placeholder": "Ingrese el número del codigo postal del domicilio administración Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "admincp"
+    }
+}
+
+
+
+
+
+
+Otro dato de dom Administración
+text
+
+
+{
+    "description": "En este campo se debe ingresar algún dato no contemplado en el domicilio de adminstración del productor.",
+    "validation": {
+        "max": 30
+    },
+    "placeholder": "Ingreseel algún dato no contemplado en el domicilio de adminstración del productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "adminotro"
+    }
+}
+
+
+
+
+Número Expediente
+
+Number
+
+{
+    "description": "En este campo se debe ingresar el número de expediente con el que se inscribió el productor.",
+    "validation": {
+        "rule": "required",
+        "max": 15
+    },
+    "placeholder": "Ingrese el número número de expediente con el que se inscribió el Productor.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "numexp"
+    }
+}
+
+
+
+Descripción de la Mina
+
+text 
+
+{
+    "description": "En este campo se debe ingresar la descripción de la mina.",
+    "validation": {
+        "rule": "required",
+        "max": 50
+    },
+    "placeholder": "Ingrese la descripción de la mina.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "descmina"
+    }
+}
+
+
+Nombre Mina
+
+text
+
+{
+    "description": "En este campo se debe ingresar el nombre de la mina.",
+    "validation": {
+        "rule": "required",
+        "max": 35
+    },
+    "placeholder": "Ingrese el nombre de la mina.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "nom_mina"
+    }
+}
+
+
+
+
+
+Categoria
+
+select
+
+
+{
+    "description": "En este campo debe seleccionar la categoria de la mina.",
+    "default": "primera",
+    "options": {
+        "primera": "1° Categoría",
+        "segunda": "2° Categoría",
+        "tercera": "3° Categoría"
+    },
+    "placeholder": "Seleccione la categoría de la mina.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "categoria_mina"
+    }
+}
+
+
+
+Distrito Minero
+
+text
+
+{
+    "description": "En este campo se debe ingresar el distrito minero de la mina.",
+    "validation": {
+        "rule": "required",
+        "max": 40
+    },
+    "placeholder": "Ingrese el distrito minero de la mina.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "distrito"
+    }
+}
+
+
+Mina Cantera
+select
+{
+    "description": "En este campo debe seleccionar el tipo de yacimiento.",
+    "default": "primera",
+    "options": {
+        "mina": "Mina",
+        "cantera": "Cantera"
+    },
+    "placeholder": "Seleccione el tipo de yacimiento.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "mina_cantera"
+    }
+}
+
+
+Plano Inmueble
+file
+
+{
+    "description": "En este campo se debe cargar el plano del Inmueble.",
+    "validation": {
+        "rule": "required"
+    },
+    "placeholder": "Cargar el plano del Inmueble.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "planoinmueble"
+    }
+}
+
+
+
+Título Contrato Poseción
+file
+
+
+{
+    "description": "En este campo se debe cargar el titulo de poseción.",
+    "validation": {
+        "rule": "required"
+    },
+    "placeholder": "Cargar el titulo de poseción.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "titulo_posecion"
+    }
+}
+
+
+
+
+
+Resolución Concesion Minera
+file
+
+{
+    "description": "En este campo se debe cargar la resolución de conseción minera.",
+    "validation": {
+        "rule": "required"
+    },
+    "placeholder": "Cargar la resolución de conseción minera",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "consecion_minera"
+    }
+}
+
+
+
+
+
+
+
+
+
+Constancia Pago Canon
+file
+
+
+
+{
+    "description": "En este campo se debe cargar la constancia de pago del canon.",
+    "validation": {
+        "rule": "required"
+    },
+    "placeholder": "Cargar la constancia de pago del canon.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "canon_div"
+    }
+}
+
+
+
+
+
+
+
+IIA
+
+file
+
+
+
+
+
+
+{
+    "description": "En este campo se debe cargar la constancia del IIA.",
+    "validation": {
+        "rule": "required"
+    },
+    "placeholder": "Cargar la constancia del IIA.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "iia_div"
+    }
+}
+
+
+
+DIA
+file
+{
+    "description": "En este campo se debe cargar la constancia del DIA.",
+    "validation": {
+        "rule": "required"
+    },
+    "placeholder": "Cargar la constancia del DIA.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "dia_div"
+    }
+}
+
+
+Minerales Variedad
+text area
+
+{}
+
+
+
+Owner
+checkbox
+{
+    "display": {
+        "width": "3",
+        "id": "owner"
+    }
+}
+
+
+
+Concesionario
+checkbox
+{
+    "display": {
+        "width": "3",
+        "id": "concesionario"
+    }
+}
+
+
+
+
+
+
+Arrendatario
+
+checkbox
+
+{
+    "display": {
+        "width": "3",
+        "id": "arrendatario"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+Otros
+
+checkbox
+
+
+{
+    "display": {
+        "width": "3",
+        "id": "otros"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+Actividad
+text
+
+
+
+
+{
+    "description": "En este campo se debe escribir la actividad a desarrollar en la mina.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese la actividad a desarrollar en la mina",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "6",
+        "id": "actividad_div"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+Acciones A Desarrollar
+
+
+text
+
+
+{
+    "description": "En este campo se debe escribir las acciones a desarrollar en la mina.",
+    "validation": {
+        "rule": "required",
+        "max": 80
+    },
+    "placeholder": "Ingrese las acciones a desarrollar en la mina",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "6",
+        "id": "acciones_div"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fecha Alta Dia
+
+timestamp
+
+{
+    "description": "Debe seleccionar la fecha exacta en la cual comienza la vigencia del DIA",
+    "display": {
+        "width": "6",
+        "id": "fecha_alta"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+Fecha Vencimiento Dia
+timestamp
+
+{
+    "description": "Debe seleccionar la fecha exacta en la cual vence el DIA",
+    "display": {
+        "width": "6",
+        "id": "fecha_vto"
+    }
+}
+
+
+
+
+
+
+País de la Ubicación  Mina
+select
+
+
+
+{
+    "description": "En este campo debe seleccionar el País de la ubicación de la mina.",
+    "default": "Argentina",
+    "options": {
+        "Argentina": "Argentina",
+        "Bolivia": "Bolivia",
+        "Brasil": "Brasil",
+        "Chile": "Chile",
+        "Paraguay": "Paraguay",
+        "Peru": "Peru",
+        "Uruguay": "Uruguay",
+        "Venezuela": "Venezuela",
+        "EEUU": "EEUU",
+        "Canada": "Canada",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione el País de la ubicación de la mina.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "3",
+        "id": "mina_pais"
+    }
+}
+
+
+
+
+
+
+
+Provincia de la Ubicación Mina
+select
+
+
+
+{
+    "description": "En este campo debe seleccionar  la provincia de la ubicación de la mina.",
+    "default": "San Juan",
+    "options": {
+        "San Juan": "San Juan",
+        "Mendoza": "Mendoza",
+        "San Luis": "San Luis",
+        "Salta": "Salta",
+        "Buenos Aires": "Buenos Aires",
+        "Jujuy": "Jujuy",
+        "Catamarca": "Catamarca",
+        "La Rioja": "La Rioja",
+        "Chubut": "Chubut",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione la provincia de la ubicación de la mina.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "3",
+        "id": "mina_prov"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+Departamento de la Ubicación  Mina
+select
+
+
+{
+    "description": "En este campo debe seleccionar el departamento de la ubicación de la mina.",
+    "default": "Capital",
+    "options": {
+        "Capital": "Capital",
+        "9 de Julio": "9 de Julio",
+        "25 de mayo": "25 de mayo",
+        "Chimbas": "Chimbas",
+        "Rivadavia": "Rivadavia",
+        "Rawson": "Rawson",
+        "Santa Lucia": "Santa Lucia",
+        "Jachal": "Jachal",
+        "Valle Fertil": "Valle Fertil",
+        "otro": "otro"
+    },
+    "placeholder": "Seleccione el departamento de la ubicación de la mina.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "3",
+        "id": "mina_dpto"
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+Localidad de la Ubicación  Mina
+text
+
+
+{
+    "description": "En este campo se debe ingresar la localidad de la ubicación de la mina.",
+    "validation": {
+        "rule": "required",
+        "max": 6
+    },
+    "placeholder": "Ingrese la localidad de la ubicación de la mina.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "3",
+        "id": "mina_localidad"
+    }
+}
+
+
+
+
+
+
+
+Tipo Sistema
+select
+
+{
+    "description": "En este campo debe seleccionar el tipo de sistema de coordenadas.",
+    "default": "Gauss Kruger Posgar 07",
+    "options": {
+        "Gauss Kruger Posgar 94": "Gauss Kruger Posgar 94",
+        "Gauss Kruger Posgar 07": "Gauss Kruger Posgar 07",
+        "Geográficas": "Geográficas"
+    },
+    "placeholder": "Seleccione el tipo de sistema de coordenadas.",
+    "validation": {
+        "rule": "required"
+    },
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "tipo_sis_coor"
+    }
+}
+
+
+
+
+
+
+
+
+
+Longitud
+text
+
+
+
+
+{
+    "description": "En este campo se debe ingresar la longitud de la ubicación de la mina.",
+    "validation": {
+        "rule": "required",
+        "max": 6
+    },
+    "placeholder": "Ingrese la longitud de la ubicación de la mina.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "mina_longitud"
+    }
+}
+
+
+
+
+
+
+
+Latitud
+text
+
+
+{
+    "description": "En este campo se debe ingresar la latitud de la ubicación de la mina.",
+    "validation": {
+        "rule": "required",
+        "max": 6
+    },
+    "placeholder": "Ingrese la latitud de la ubicación de la mina.",
+    "messages": {
+        "required": "Este :attribute campo es necesario."
+    },
+    "display": {
+        "width": "4",
+        "id": "mina_latitud"
+    }
+}
+
+
+
+
+
+
+Created By
+text
+
+{}
+
+
+
+
+
+Estado
+
+select
+
+{
+    "description": "El agente del Ministerio de Minería de San Juan, debe seleccionar una opci+on en base a su criterio.",
+    "default": "en proceo",
+    "options": {
+        "en proceo": "En Proceso de Evaluacion",
+        "reprobado": "Reprobado",
+        "condicional": "Condicional",
+        "aprobado": "Aprobado"
+    }
+}
+
+
+
+Created At
+Deleted At
+Updated At
+
+Tipo Tramite
+select {
+	
+}

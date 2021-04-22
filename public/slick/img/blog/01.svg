@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg id="master-artboard" viewBox="0 0 240.44493103027344 360.5116271972656" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" style="enable-background:new 0 0 1400 980;" width="240.44493103027344px" height="360.5116271972656px" xmlns:xlink="http://www.w3.org/1999/xlink"><rect id="ee-background" x="0" y="0" width="240.44493103027344" height="360.5116271972656" style="fill: white; fill-opacity: 0; pointer-events: none;"/>
+
+
+
+
+
+
+
+
+
+<g transform="matrix(1.1509132385253906, 0, 0, 1.1509132385253906, -685.8778421839058, -121.1285506235304)">
+	<g>
+		<path class="st0" d="M801.5,126H616.1c0,0-18.3,5.2-18.3,22.5s0,209.9,0,209.9s2.7,15.7,29.5,15.7c26.8,0,174.2,0,174.2,0V126z" style="fill: rgb(95, 49, 15);"/>
+		<path class="st10" d="M627,330c-17,0-16,39,0,39c39,0,170,0,170,0v-39C797,330,647,330,627,330z" style="fill: rgb(255, 255, 255);"/>
+		<path class="st20" d="M623.9,312.1V126h-7.8c0,0-18.3,5.2-18.3,22.5v209.9C597.8,358.4,600.5,314.2,623.9,312.1z" style="fill: rgb(68, 34, 10);"/>
+		<path d="M 676.2000122070312 137 L 635 137 L 635 170.39999389648438 Z" class="st20" style="fill: rgb(68, 34, 10);"/>
+		<path d="M 754.5 137 L 797 137 L 797 170.39999389648438 Z" class="st20" style="fill: rgb(68, 34, 10);"/>
+		<path d="M 754.5 312 L 797 312 L 797 277.5 Z" class="st20" style="fill: rgb(68, 34, 10);"/>
+		<path d="M 676.2000122070312 312 L 635 312 L 635 277.5 Z" class="st20" style="fill: rgb(68, 34, 10);"/>
+		<g>
+			<path class="st20" d="M684.6,235.1v7.2h-23.1v-34h8.7v26.8H684.6z" style="fill: rgb(68, 34, 10);"/>
+			<path class="st20" d="M696.6,236.1l-2.5,6.3h-8.9l14.7-34h8.9l14.3,34h-9.2l-2.4-6.3H696.6z M704.1,216.9l-5,12.6h9.8&#10;&#9;&#9;&#9;&#9;L704.1,216.9z" style="fill: rgb(68, 34, 10);"/>
+			<path class="st20" d="M753.1,242.3l-6.3-23.5l-6.4,23.5h-8.9l-11.1-34h9.2l6.7,25l6.5-25h8.5l6.7,25l6.6-25h8.8l-11.2,34H753.1z" style="fill: rgb(68, 34, 10);"/>
+		</g>
+	</g>
+	<g class="st13" style="opacity: 0.1;">
+		<defs>
+			<path id="SVGID_7_" class="st13" d="M623.9,126h-7.8c0,0-18.1,5.2-18.1,22.5s0,209.9,0,209.9s2.5,15.6,29.3,15.6&#10;&#9;&#9;&#9;&#9;c26.8,0,174.7,0,174.7,0V126H623.9z" style="opacity: 0.1;"/>
+		</defs>
+		<clipPath id="SVGID_8_">
+			<use style="overflow:visible;" xlink:href="#SVGID_7_"/>
+		</clipPath>
+		<path d="M 705 126 H 802 V 374 H 705 V 126 Z" class="st21" style="clip-path: url('#SVGID_8_');"/>
+	</g>
+</g>
+
+
+
+</svg>
