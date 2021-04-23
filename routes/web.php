@@ -45,6 +45,7 @@ use App\Models\User;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 
 
 
@@ -86,6 +87,9 @@ Route::resource('formulario-alta', FormAltaProductorController::class)
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Route::resource('products', ProductController::class)
+    ->middleware(['auth:sanctum', 'verified']);
 
 
 

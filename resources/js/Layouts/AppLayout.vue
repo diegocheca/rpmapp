@@ -20,6 +20,18 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
+                                <jet-nav-link
+                                    :href="route('products.index')"
+                                    :active="route().current('products.index')"
+                                >
+                                    Productos
+                                </jet-nav-link>
+                                <jet-nav-link
+                                    :href="route('products.create')"
+                                    :active="route().current('products.create')"
+                                >
+                                    Añadir
+                                </jet-nav-link>
                             </div>
                         </div>
 
@@ -143,6 +155,18 @@
                         <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
+                            :href="route('products.index')"
+                            :active="route().current('products.index')"
+                          >
+                            Productos
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('products.create')"
+                            :active="route().current('products.create')"
+                          >
+                            añadir
+                          </jet-responsive-nav-link>
                     </div>
 
                     <!-- Responsive Settings Options -->
