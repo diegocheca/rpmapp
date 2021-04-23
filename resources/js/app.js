@@ -5,6 +5,13 @@ import { createApp, h } from 'vue';
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 
+import Saludo from "./Pages/MisComponentes/saludo";
+
+//import  Vue from  'vue'  ;
+
+
+//Vue.component('saludo', require('./Pages/MisComponentes/saludo').default);
+
 const el = document.getElementById('app');
 
 createApp({

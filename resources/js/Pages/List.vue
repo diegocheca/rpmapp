@@ -1,34 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@diegocheca 
-gutifer666
-/
-Inertia-Dickinson
-1
-0
-1
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Inertia-Dickinson/resources/js/Pages/List.vue
-@gutifer666
-gutifer666 Post Commit
-Latest commit 9a249b5 on 21 Dec 2020
- History
- 1 contributor
-92 lines (86 sloc)  3.08 KB
-  
 <template>
   <app-layout>
     <h2
@@ -104,6 +73,7 @@ Latest commit 9a249b5 on 21 Dec 2020
             </table>
           </div>
         </div>
+        <saludo></saludo>
       </div>
     </body>
   </app-layout>
@@ -111,12 +81,14 @@ Latest commit 9a249b5 on 21 Dec 2020
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
+import Saludo from "@/Pages/MisComponentes/saludo";
 export default {
   props: {
     products: Array,
   },
   components: {
     AppLayout,
+    Saludo
   },
 };
 </script>
