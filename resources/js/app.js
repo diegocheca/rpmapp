@@ -5,10 +5,10 @@ import { createApp, h } from 'vue';
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 
+
+import  Vue from  'vue'  ;
+
 import Saludo from "./Pages/MisComponentes/saludo";
-
-//import  Vue from  'vue'  ;
-
 
 //Vue.component('saludo', require('./Pages/MisComponentes/saludo').default);
 

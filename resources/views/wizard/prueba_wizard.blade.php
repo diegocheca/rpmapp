@@ -273,6 +273,160 @@
 								</transition>
 							</div>
 						</transition>
+						<transition
+							name="custom-classes-transition"
+							enter-active-class="animated fadeInDownBig"
+							leave-active-class="animated bounceOut"
+						>
+							<div v-show="formulario_seleccionado=='reinscripcion'">
+								<h4>Identificación:</h4> <i class="ti-info-alt" id="element1" ></i>
+								<div class="col-sm"><label>Por favor ingrese su CUIL o CUIT (solo números): </label> </div>
+									<div class="col-sm">
+										<input type="text" class="form-control" name="cuit_reinscripcion" id="cuit_reinscripcion" v-model="reinscripcion_data.cuit_para_validar" maxlength="14" /> 
+									</div>
+									<div class="col-sm">
+										<button type="button" class="btn btn-outline-primary btn-lg" id="validar_cuit" name="validar_cuit" @click="validar_cuit_productor"><i class="ti-check"></i>&nbsp; Validar</button>
+									</div>
+
+								<br>
+								<br>
+								<transition
+									name="custom-classes-transition"
+									enter-active-class="animated fadeInDownBig"
+									leave-active-class="animated bounceOut"
+								>
+									<div class="row" v-show="model.primera_vez=='si'">
+										<div class="col-sm"><label>Por favor ingrese dos veces su email: </label> </div>
+										<div class="col-sm">
+											<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="45" /> 
+											<br>
+											<br>
+										</div>
+										<div class="col-sm">
+											<input type="text" class="form-control" name="email_primer_paso_conf" id="email_primer_paso_conf"  v-model="model.email_confirmacion" maxlength="45" /> 
+										</div>
+										<div class="col-sm">
+											<button type="button" class="btn btn-outline-primary btn-lg" id="validar_emails" @click="validar_email_datos"><i class="ti-check"></i>&nbsp; Validar</button>
+										</div>
+									</div>
+								</transition>
+								<br>
+								<br>
+								<transition
+									name="custom-classes-transition"
+									enter-active-class="animated fadeInDownBig"
+									leave-active-class="animated bounceOut"
+								>
+									<div class="row" v-show="model.correo_enviado_si && model.primera_vez=='si'">
+										<div class="row"></div>
+										<br>
+										<br>
+										<hr>
+										<div class="col-sm"></div>
+										<div class="col-sm">
+											<div class="alert alert-info" role="alert">
+												<span>Información: Le hemos enviado un email a su casilla de correo. Por favor, haga clic en el interior del mismo para poder confirmar su email para así poder continuar. Gracias</span>
+											</div>
+											<div class="alert alert-secondary" role="alert">
+												<span>Consejo: Le recomendamos abrir su correo electronico desde su celular. Luego, busque el email que le hemos mandado, posteriormente haga click en el boton, y finalmente haga click en el boton "Ya confirme" que esta a la derecha de este renglón.</span>
+											</div>
+										</div>
+										<div class="col-sm">
+											<img src="{{url('formulario_alta/imagenes/nuevo-email-rpm.svg')}}" width="200px ">
+										</div>
+										
+										<div class="col-sm">
+											<button type="button" class="btn btn-outline-info btn-lg" id="revisar_email_confirmacion" @click="preguntar_email_confirmacion"><i class="ti-check"></i>&nbsp; Ya confirme</button>
+										</div>
+										
+									</div>
+								</transition>
+								<transition
+									name="custom-classes-transition"
+									enter-active-class="animated fadeInDownBig"
+									leave-active-class="animated bounceOut"
+								>
+									<div class="row" v-show="model.correo_enviado_si && model.primera_vez=='si' && email_confirmado">
+										<br>
+										<br>
+										<hr>
+										<div class="col-sm">
+											<div class="alert alert-success" role="alert">
+												<span>Muy bien. Hemos confirmado su email. Gracias, ahora continuemos con la inscripción, favor de hacer click en el boton "Siguiente".</span>
+											</div>
+										</div>
+										<div class="col-sm">
+											<div style="display: flex; justify-content: right; align-items: right; height: 10vh;">
+												<div style="height:900px;margin:0 auto;position:absolute;  left: 74%; top: 235%;width:176px">
+													<div style="animation:a-s .5s .5s 1 linear forwards,a-e 1.75s .5s 1 cubic-bezier(0,0,.67,1) forwards;opacity:0;transform:scale(.68)">
+														<div style="background:#ddd;border-radius:12px;box-shadow:0 15px 15px -15px rgba(0,0,0,.3);height:128px;left:0;overflow:hidden;position:absolute;top:0;transform:scale(1);width:176px">
+															<div style="animation:a-nt .667s 1.5s 1 cubic-bezier(.4,0,.2,1) forwards;background:#d23f31;border-radius:50%;height:270px;left:88px;margin:-135px;position:absolute;top:25px;transform:scale(.5);width:270px"></div>
+															<div style="height:128px;left:20px;overflow:hidden;position:absolute;top:0;transform:scale(1);width:136px">
+																<div style="background:#e1e1e1;height:128px;left:0;position:absolute;top:0;width:68px">
+																	<div style="animation:a-h .25s 1.25s 1 forwards;background:#eee;height:128px;left:0;opacity:1;position:absolute;top:0;width:68px"></div>
+																</div>
+																<div style="background:#eee;height:100px;left:1px;position:absolute;top:56px;transform:scaleY(.73)rotate(135deg);width:200px"></div>
+															</div>
+															<div style="background:#bbb;height:176px;left:0;position:absolute;top:-100px;transform:scaleY(.73)rotate(135deg);width:176px">
+																<div style="background:#eee;border-radius:12px 12px 0 0;bottom:117px;height:12px;left:55px;position:absolute;transform:rotate(-135deg)scaleY(1.37);width:136px"></div>
+																<div style="background:#eee;height:96px;position:absolute;right:0;top:0;width:96px"></div>
+																<div style="box-shadow:inset 0 0 10px #888;height:155px;position:absolute;right:0;top:0;width:155px"></div>
+															</div>
+															<div style="animation:a-s .167s 1.283s 1 linear forwards,a-es 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;background:linear-gradient(0,rgba(38,38,38,0),rgba(38,38,38,.2));height:225px;left:0;opacity:0;position:absolute;top:0;transform:rotate(-43deg);transform-origin:0 13px;width:176px"></div>
+														</div>
+														<div style="animation:a-ef 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;border-radius:12px;height:100px;left:0;overflow:hidden;position:absolute;top:0;transform:scaleY(1);transform-origin:top;width:176px">
+															<div style="height:176px;left:0;position:absolute;top:-100px;transform:scaleY(.73)rotate(135deg);width:176px">
+																<div style="animation:a-s .167s 1.283s 1 linear forwards;box-shadow:-5px 0 12px rgba(0,0,0,.5);height:176px;left:0;opacity:0;position:absolute;top:0;width:176px"></div>
+																<div style="background:#ddd;height:176px;left:0;overflow:hidden;position:absolute;top:0;width:176px">
+																	<div style="animation:a-nt .667s 1.25s 1 cubic-bezier(.4,0,.2,1) forwards;background:#db4437;border-radius:50%;bottom:41px;height:225px;left:41px;position:absolute;transform:scale(0);width:225px"></div>
+																	<div style="background:#f1f1f1;height:128px;left:24px;position:absolute;top:24px;transform:rotate(90deg);width:128px"></div>
+																	<div style="animation:a-efs 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;background:#fff;height:176px;opacity:0;transform:rotate(90deg);width:176px"></div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</transition>
+								<transition
+									name="custom-classes-transition"
+									enter-active-class="animated fadeInDownBig"
+									leave-active-class="animated bounceOut"
+								>
+									<div class="row" v-show="model.primera_vez=='no'">
+										<div class="col-sm"><label>Por favor ingrese su email para buscar sus datos: </label> </div>
+										<div class="col-sm">
+											<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="25" /> 
+										</div>
+										<div class="col-sm">
+											<button type="button" class="btn btn-outline-primary btn-lg" id="recuperar_datos" @click="recuperar_datos"><i class="ti-loop"></i>&nbsp; Recuperar</button>
+										</div>
+									</div>
+									<br>
+									<br>
+								</transition>
+								<transition
+									name="custom-classes-transition"
+									enter-active-class="animated fadeInDownBig"
+									leave-active-class="animated bounceOut"
+								>
+									<div class="row" v-show="model.recuperacion_exitosa">
+										<br>
+										<br>
+										<div class="col">
+											<div class="alert alert-success" role="alert">
+												<span>Muy bien. Hemos recuperados los datos guardados para su email. Continuemos con la inscripción, favor de hacer click en el botón "Siguiente".</span>
+											</div>
+										</div>
+										<div class="col">
+											<img src="{{url('formulario_alta/imagenes/datos_recuperados.svg')}}" width="80%">
+										</div>
+									</div>
+								</transition>
+							</div>
+						</transition>
 						<div class="row"><br></div>
 						<div class="row"><br></div>
 						<div class="row"><br></div>
@@ -1428,15 +1582,7 @@
 						}
 					},
 					opcionespaises_legal: [
-						'Argentina',
-						'Bolivia',
-						'Brazil',
-						'Chile',
-						'Paraguay',
-						'Peru',
-						'Uruguay',
-						'Venezuela',
-						'Otro',
+						'Argentina'
 					],
 					opcionesprovincias_legal: [
 						'San Juan',
@@ -1449,15 +1595,7 @@
 						'Chimbas'
 					],
 					opcionespaises_administrativo: [
-						'Argentina',
-						'Bolivia',
-						'Brazil',
-						'Chile',
-						'Paraguay',
-						'Peru',
-						'Uruguay',
-						'Venezuela',
-						'Otro',
+						'Argentina'
 					],
 					opcionesprovincias_administrativo: [
 						'San Juan',
@@ -1470,15 +1608,7 @@
 						'Chimbas'
 					],
 					opcionespaises_mina: [
-						'Argentina',
-						'Bolivia',
-						'Brazil',
-						'Chile',
-						'Paraguay',
-						'Peru',
-						'Uruguay',
-						'Venezuela',
-						'Otro',
+						'Argentina'
 					],
 					opcionesprovincias_mina: [
 						'San Juan',
@@ -1686,6 +1816,9 @@
 						domicilio_mina_cor_lat:'La Prov Administrativo',
 						tipo_coordenada: "Geográficas",
 
+					},
+					reinscripcion_data:{
+						cuit_para_validar :  false,
 					},
 					formOptions: {
 						validationErrorClass: "has-error",
@@ -3608,6 +3741,58 @@
 							axios.post('{{url("formularios/validar_email_formulario")}}', {
 								//comun
 								email: this.model.email,
+								})
+								.then(function (response) {
+									console.log(response.data);
+									if(response.data == 'todo bien')
+									{
+										Swal.fire({
+											title: 'Email Enviado!',
+											text: 'Hemos enviado un email a la casilla declarada, por favor revise su casilla, también en la carpeta de emails no deseados. Una vez que encuentre email por favor hacer clic en su enlace para confirmar la cuenta.',
+											icon: 'warning',
+											confirmButtonText: 'Voy a revisar el email'
+										});
+									}
+									/*setInterval(() => {
+										this.preguntar_email_confirmacion();
+									}, (2000 * 60));*/
+										
+
+									//nueva pestaña de descarga
+									/*var a = document.createElement("a");
+									a.target = "_blank";
+									a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
+									a.click();*/
+								})
+								.catch(function (error) {
+									// handle error
+									console.log(error);
+								})
+							self.model.correo_enviado_si = true;
+						}
+					},
+					validar_cuit_productor: function(){
+						let self = this
+						if(
+							(this.reinscripcion_data.cuit_para_validar != '')
+							&&
+							(this.reinscripcion_data.cuit_para_validar.length == 11)
+							)
+						{
+							//alert("Los emails no coinciden, por favor, revise.");
+							Swal.fire({
+								title: 'Error!',
+								text: 'El CUIT / CUIL es incorrecto, por favor reviselo.',
+								icon: 'error',
+								confirmButtonText: 'Ok, voy revisar'
+							});
+							self.model.correo_enviado_si = false;
+						}
+						else
+						{//emails iguales
+							axios.post('{{url("formularios/validar_cuit_reinscripcion")}}', {
+								//comun
+								cuit: this.reinscripcion_data.cuit_para_validar,
 								})
 								.then(function (response) {
 									console.log(response.data);

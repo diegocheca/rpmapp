@@ -112,6 +112,8 @@ Route::post('/formularios/buscar_datos_formulario', [FormAltaProductorController
 
 
 Route::post('/formularios/validar_email_formulario', [FormAltaProductorController::class, "validar_email_productor"])->name('validar-email-formulario');
+Route::post('/formularios/validar_cuit_reinscripcion', [FormAltaProductorController::class, "validar_cuit_prod_reinscripcion"])->name('validar-cuit-prod-reinscripcion');
+
 
 Route::get('/gracias_confirmacion/{codigo}', [FormAltaProductorController::class, "validar_email_desde_email"])->name('validar-email-desde-email');
 

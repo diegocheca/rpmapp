@@ -25040,8 +25040,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import
 
 
 
- //import  Vue from  'vue'  ;
-//Vue.component('saludo', require('./Pages/MisComponentes/saludo').default);
+
+ //Vue.component('saludo', require('./Pages/MisComponentes/saludo').default);
 
 var el = document.getElementById('app');
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
