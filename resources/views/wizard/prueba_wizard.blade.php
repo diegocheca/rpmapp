@@ -41,7 +41,7 @@
 							 color="green"
 							 error-color="#a94442"
 							 >
-					<!-- Tab N° 1 Bienvenido -->
+					<!-- Tab Inscrip N° 1 Bienvenido -->
 					<tab-content title="Tipo Trámite" icon="ti-layout-list-thumb-alt" :before-change="validatezeroTab">
 						<br>
 						<div class="row">
@@ -279,140 +279,46 @@
 							leave-active-class="animated bounceOut"
 						>
 							<div v-show="formulario_seleccionado=='reinscripcion'">
+
 								<h4>Identificación:</h4> <i class="ti-info-alt" id="element1" ></i>
-								<div class="col-sm"><label>Por favor ingrese su CUIL o CUIT (solo números): </label> </div>
+								<div class="row">
+									<div class="col-sm"><label>Por favor ingrese su CUIL o CUIT (solo números): </label> </div>
 									<div class="col-sm">
 										<input type="text" class="form-control" name="cuit_reinscripcion" id="cuit_reinscripcion" v-model="reinscripcion_data.cuit_para_validar" maxlength="14" /> 
 									</div>
 									<div class="col-sm">
 										<button type="button" class="btn btn-outline-primary btn-lg" id="validar_cuit" name="validar_cuit" @click="validar_cuit_productor"><i class="ti-check"></i>&nbsp; Validar</button>
 									</div>
+									
+								</div>
 
 								<br>
 								<br>
+
 								<transition
 									name="custom-classes-transition"
 									enter-active-class="animated fadeInDownBig"
 									leave-active-class="animated bounceOut"
 								>
-									<div class="row" v-show="model.primera_vez=='si'">
-										<div class="col-sm"><label>Por favor ingrese dos veces su email: </label> </div>
+									<div class="row" v-show="reinscripcion_data.resultado_de_validacion_cuit">
+										<div class="col-sm"><label>Por favor, ingrese la mina, con su numero de expediente: </label> </div>
 										<div class="col-sm">
-											<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="45" /> 
-											<br>
-											<br>
+											<input type="text" class="form-control" name="numero_expediente_reinscripcion" id="numero_expediente_reinscripcion"  v-model="reinscripcion_data.numero_expediente_reinscripcion" maxlength="20" /> 
 										</div>
 										<div class="col-sm">
-											<input type="text" class="form-control" name="email_primer_paso_conf" id="email_primer_paso_conf"  v-model="model.email_confirmacion" maxlength="45" /> 
-										</div>
-										<div class="col-sm">
-											<button type="button" class="btn btn-outline-primary btn-lg" id="validar_emails" @click="validar_email_datos"><i class="ti-check"></i>&nbsp; Validar</button>
+											<button type="button" class="btn btn-outline-primary btn-lg" id="validar_num_exp_mina" @click="validar_datos_num_exp_mina"><i class="ti-check"></i>&nbsp; Validar</button>
 										</div>
 									</div>
 								</transition>
 								<br>
 								<br>
+
 								<transition
 									name="custom-classes-transition"
 									enter-active-class="animated fadeInDownBig"
 									leave-active-class="animated bounceOut"
 								>
-									<div class="row" v-show="model.correo_enviado_si && model.primera_vez=='si'">
-										<div class="row"></div>
-										<br>
-										<br>
-										<hr>
-										<div class="col-sm"></div>
-										<div class="col-sm">
-											<div class="alert alert-info" role="alert">
-												<span>Información: Le hemos enviado un email a su casilla de correo. Por favor, haga clic en el interior del mismo para poder confirmar su email para así poder continuar. Gracias</span>
-											</div>
-											<div class="alert alert-secondary" role="alert">
-												<span>Consejo: Le recomendamos abrir su correo electronico desde su celular. Luego, busque el email que le hemos mandado, posteriormente haga click en el boton, y finalmente haga click en el boton "Ya confirme" que esta a la derecha de este renglón.</span>
-											</div>
-										</div>
-										<div class="col-sm">
-											<img src="{{url('formulario_alta/imagenes/nuevo-email-rpm.svg')}}" width="200px ">
-										</div>
-										
-										<div class="col-sm">
-											<button type="button" class="btn btn-outline-info btn-lg" id="revisar_email_confirmacion" @click="preguntar_email_confirmacion"><i class="ti-check"></i>&nbsp; Ya confirme</button>
-										</div>
-										
-									</div>
-								</transition>
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div class="row" v-show="model.correo_enviado_si && model.primera_vez=='si' && email_confirmado">
-										<br>
-										<br>
-										<hr>
-										<div class="col-sm">
-											<div class="alert alert-success" role="alert">
-												<span>Muy bien. Hemos confirmado su email. Gracias, ahora continuemos con la inscripción, favor de hacer click en el boton "Siguiente".</span>
-											</div>
-										</div>
-										<div class="col-sm">
-											<div style="display: flex; justify-content: right; align-items: right; height: 10vh;">
-												<div style="height:900px;margin:0 auto;position:absolute;  left: 74%; top: 235%;width:176px">
-													<div style="animation:a-s .5s .5s 1 linear forwards,a-e 1.75s .5s 1 cubic-bezier(0,0,.67,1) forwards;opacity:0;transform:scale(.68)">
-														<div style="background:#ddd;border-radius:12px;box-shadow:0 15px 15px -15px rgba(0,0,0,.3);height:128px;left:0;overflow:hidden;position:absolute;top:0;transform:scale(1);width:176px">
-															<div style="animation:a-nt .667s 1.5s 1 cubic-bezier(.4,0,.2,1) forwards;background:#d23f31;border-radius:50%;height:270px;left:88px;margin:-135px;position:absolute;top:25px;transform:scale(.5);width:270px"></div>
-															<div style="height:128px;left:20px;overflow:hidden;position:absolute;top:0;transform:scale(1);width:136px">
-																<div style="background:#e1e1e1;height:128px;left:0;position:absolute;top:0;width:68px">
-																	<div style="animation:a-h .25s 1.25s 1 forwards;background:#eee;height:128px;left:0;opacity:1;position:absolute;top:0;width:68px"></div>
-																</div>
-																<div style="background:#eee;height:100px;left:1px;position:absolute;top:56px;transform:scaleY(.73)rotate(135deg);width:200px"></div>
-															</div>
-															<div style="background:#bbb;height:176px;left:0;position:absolute;top:-100px;transform:scaleY(.73)rotate(135deg);width:176px">
-																<div style="background:#eee;border-radius:12px 12px 0 0;bottom:117px;height:12px;left:55px;position:absolute;transform:rotate(-135deg)scaleY(1.37);width:136px"></div>
-																<div style="background:#eee;height:96px;position:absolute;right:0;top:0;width:96px"></div>
-																<div style="box-shadow:inset 0 0 10px #888;height:155px;position:absolute;right:0;top:0;width:155px"></div>
-															</div>
-															<div style="animation:a-s .167s 1.283s 1 linear forwards,a-es 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;background:linear-gradient(0,rgba(38,38,38,0),rgba(38,38,38,.2));height:225px;left:0;opacity:0;position:absolute;top:0;transform:rotate(-43deg);transform-origin:0 13px;width:176px"></div>
-														</div>
-														<div style="animation:a-ef 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;border-radius:12px;height:100px;left:0;overflow:hidden;position:absolute;top:0;transform:scaleY(1);transform-origin:top;width:176px">
-															<div style="height:176px;left:0;position:absolute;top:-100px;transform:scaleY(.73)rotate(135deg);width:176px">
-																<div style="animation:a-s .167s 1.283s 1 linear forwards;box-shadow:-5px 0 12px rgba(0,0,0,.5);height:176px;left:0;opacity:0;position:absolute;top:0;width:176px"></div>
-																<div style="background:#ddd;height:176px;left:0;overflow:hidden;position:absolute;top:0;width:176px">
-																	<div style="animation:a-nt .667s 1.25s 1 cubic-bezier(.4,0,.2,1) forwards;background:#db4437;border-radius:50%;bottom:41px;height:225px;left:41px;position:absolute;transform:scale(0);width:225px"></div>
-																	<div style="background:#f1f1f1;height:128px;left:24px;position:absolute;top:24px;transform:rotate(90deg);width:128px"></div>
-																	<div style="animation:a-efs 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;background:#fff;height:176px;opacity:0;transform:rotate(90deg);width:176px"></div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</transition>
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div class="row" v-show="model.primera_vez=='no'">
-										<div class="col-sm"><label>Por favor ingrese su email para buscar sus datos: </label> </div>
-										<div class="col-sm">
-											<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="25" /> 
-										</div>
-										<div class="col-sm">
-											<button type="button" class="btn btn-outline-primary btn-lg" id="recuperar_datos" @click="recuperar_datos"><i class="ti-loop"></i>&nbsp; Recuperar</button>
-										</div>
-									</div>
-									<br>
-									<br>
-								</transition>
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div class="row" v-show="model.recuperacion_exitosa">
+									<div class="row" v-show="reinscripcion_data.resultado_de_validacion_num_exp_mina">
 										<br>
 										<br>
 										<div class="col">
@@ -425,7 +331,9 @@
 										</div>
 									</div>
 								</transition>
-							</div>
+
+								
+							</div> <!-- fin del div de reinscripcion -->
 						</transition>
 						<div class="row"><br></div>
 						<div class="row"><br></div>
@@ -436,11 +344,9 @@
 											:options="formOptions"
 											ref="zeroTabForm">
 						</vue-form-generator>
-						<div>
-						</div>
 					</tab-content>
-					<!-- Tab N° 2 Datos del Productor -->
-					<tab-content title="Datos del Productor" icon="ti-user" :before-change="validateFirstTab">
+					<!-- Tab Inscrip N° 2 Datos del Productor -->
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Datos del Productor" icon="ti-user" :before-change="validateFirstTab">
 						<br>
 						<div class="row">
 						    <div class="d-grid gap-2 col-4 mx-auto">
@@ -555,8 +461,8 @@
 						<br>
 						<br>
 					</tab-content>
-					<!-- Tab N° 3 Domicilio Legal -->
-					<tab-content title="Domicilio Legal"  icon="ti-settings" :before-change="validateSecondTab">
+					<!-- Tab Inscrip N° 3 Domicilio Legal -->
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Domicilio Legal"  icon="ti-settings" :before-change="validateSecondTab">
 						<br>
 						<div class="row">
 						    <div class="d-grid gap-2 col-4 mx-auto">
@@ -697,8 +603,8 @@
 						<br>
 						<br>
 					</tab-content>
-					<!-- Tab N° 4 Domicilio Administrativo -->
-					<tab-content title="Domicilio Administrativo"  icon="ti-settings" :before-change="validateAdministrativoTab">
+					<!-- Tab Inscrip N° 4 Domicilio Administrativo -->
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Domicilio Administrativo"  icon="ti-settings" :before-change="validateAdministrativoTab">
 						<br>
 						<div class="row">
 						    <div class="d-grid gap-2 col-4 mx-auto">
@@ -839,8 +745,8 @@
 						<br>
 						<br>
 					</tab-content>
-					<!-- Tab N° 5 Datos Mina 1 -->
-					<tab-content title="Datos Mina 1" icon="ti-pencil-alt"  :before-change="validateDatosMinaUno">
+					<!-- Tab Inscrip N° 5 Datos Mina 1 -->
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Datos Mina 1" icon="ti-pencil-alt"  :before-change="validateDatosMinaUno">
 						<br>
 						<div class="row">
 						    <div class="d-grid gap-2 col-4 mx-auto">
@@ -1023,8 +929,8 @@
 								<!-- <pre class="language-json"><code>@{{variedad_material }}  ------ @{{mineral_uno }}</code></pre> -->
 						</div>
 					</tab-content>
-					<!-- Tab N° 6 Datos Minas 2 -->
-					<tab-content title="Datos Mina 2" icon="ti-location-pin">
+					<!-- Tab Inscrip N° 6 Datos Minas 2 -->
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Datos Mina 2" icon="ti-location-pin">
 						<div class="panel-body">
 							<br>
 							<div class="row">
@@ -1260,8 +1166,8 @@
 							</div>
 						</div>
 					</tab-content>
-					<!-- Tab N° 7 Localidad Mina -->
-					<tab-content title="Ubicación Mina" icon="ti-location-pin">
+					<!-- Tab Inscrip N° 7 Localidad Mina -->
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Ubicación Mina" icon="ti-location-pin">
 						<div class="panel-body">
 							<br>
 							<div class="row">
@@ -1425,8 +1331,8 @@
 							<br>
 						</div>
 					</tab-content>
-					<!-- Tab N° 8 Donde Presentar -->
-					<tab-content title="Donde Presentar" icon="ti-location-pin">
+					<!-- Tab Inscrip N° 8 Donde Presentar -->
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Donde Presentar" icon="ti-location-pin">
 						<div class="panel-body">
 							<div class="row">
 								<div class="col-md-12">
@@ -1507,6 +1413,353 @@
 								</p>
 								<hr>
 						</div>
+					</tab-content>
+					<!-- Tab ReInscrip N° 2 Datos del Productor -->
+					<tab-content v-if="formulario_seleccionado=='reinscripcion'" title="Fecha de Renovación" icon="ti-calendar" :before-change="validateFechaReinscp">
+						<br>
+						<div class="row">
+						    <div class="d-grid gap-2 col-4 mx-auto">
+								<button type="button" class="btn btn-outline-info" @click="reinscripcion_data.mostrar_info_paso_uno = ! reinscripcion_data.mostrar_info_paso_uno">
+									<span v-show="reinscripcion_data.mostrar_info_paso_uno">Ocultar Info</span>
+									<span v-show="!reinscripcion_data.mostrar_info_paso_uno">Mostrar  Info</span>
+								</button>
+						    </div>
+						    <div class="d-grid gap-2 col-4 mx-auto">
+								<button class="btn btn-outline-primary" @click="guardar_avances_uno" id="guardar_paso1">Guardar Avances</button>
+						    </div>
+						</div>
+						<br>
+						<transition
+									name="custom-classes-transition"
+									enter-active-class="animated fadeInDownBig"
+									leave-active-class="animated bounceOut"
+								>
+							<div class="row" v-show="reinscripcion_data.mostrar_info_paso_uno">
+								<div class="col-12 col-md-6">
+									<img src="{{url('formulario_alta/imagenes/calendario.png')}}" width="50%">
+								</div>
+								<div class="col-6 col-md-6">
+									<h4> Paso 2: Fecha de Renovación</h4>
+									<p class="lead">En esta página, usted deberá seleccionar la fecha de renovacion de la mina que usted desea.</p>
+									<p class="lead"><strong>Importante:</strong>
+										<ul>
+											<li> * Fecha de renovacion</li>
+										</ul>
+									</p>
+									<br>
+									<p class="lead"> Ante cualquier duda, te podes ayudar, no dudes en comunicarte.</p>
+								</div>
+							</div>
+							<br>
+							<hr style="border-top: 1px dashed green;">
+							<br>
+						</transition>
+						<div class="row">
+							<div class="col-md-6">
+								<label>Fecha Alta de Reinscripción</label>
+								<div class="input-group date" data-provide="datepicker">
+									<input type="date" class="form-control" placeholder="Select Date"  v-model="reinscripcion_data.fecha_reinscripcion"/>
+								</div>
+								<p v-show="reinscripcion_data.mostrar_info_paso_uno"><small class="text-muted">Es la fecha en la mina estará disponible.</small></p>
+							</div>
+								
+						</div>
+						<hr>
+						<br>
+						<br>
+					</tab-content>
+					<!-- Tab ReInscrip N° 3 Domicilio Legal -->
+					<tab-content v-if="formulario_seleccionado=='reinscripcion'" title="Produccion Anual"  icon="ti-settings" :before-change="validateProdReinscp">
+						<br>
+						<div class="row">
+						    <div class="d-grid gap-2 col-4 mx-auto">
+								<button type="button" class="btn btn-outline-info" @click="reinscripcion_data.mostrar_info_paso_dos = ! reinscripcion_data.mostrar_info_paso_dos">
+									<span v-show="reinscripcion_data.mostrar_info_paso_dos">Ocultar Info</span>
+									<span v-show="!reinscripcion_data.mostrar_info_paso_dos">Mostrar  Info</span>
+								</button>
+						    </div>
+						    <div class="d-grid gap-2 col-4 mx-auto">
+								<button class="btn btn-outline-primary" @click="guardar_avances_dos" id="guardar_paso3">Guardar Avances</button>
+						    </div>
+						</div>
+						<transition name="custom-classes-transition" enter-active-class="animated fadeInDownBig" leave-active-class="animated bounceOut" >
+							<div class="row" v-show="reinscripcion_data.mostrar_info_paso_dos" style="margin-top: 25px;">
+								<div class="col-12 col-md-6">
+									<img src="{{url('formulario_alta/imagenes/produccion.svg')}}" width="90%">
+								</div>
+								<div class="col-6 col-md-6">
+									<h2> Paso 2: Producción Anual</h2>
+									<p>En esta página, usted debrá ingresar los datos referidos a su domicilio legal, para así poder darse de alta como productor minero. Este formulario es simple y requiere mayores detalles de explicación.</p>
+									<p><strong>Datos requeridos:</strong>
+										<ul>
+											<li> * Calle</li>
+											<li> * Número de calle</li>
+											<li> * Teléfono</li>
+											<li> * Páis</li>
+											<li> * Provincia</li>
+											<li> * Departamento</li>
+											<li> * Localidad</li>
+											<li> * Código Postal</li>
+											<li> * Otro</li>
+										</ul>
+									</p>
+									<br>
+									<p> Ante cualquier duda, te podes ayudar, no dudes en comunicarte.</p>
+								</div>
+							</div>
+						</transition>
+						<br>
+						<br>
+						<div class="row">
+							<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).</small></p>
+							<h4>Labores desarrolladas:</h4>
+							<div class="row">
+									<div class="col-2">
+										<h4>Usted desarrolla prospección?</h4>
+									</div>
+									<div class="col-4">
+										<div class="row">
+											<div class="col-4">
+												<span> <font color="red">  No  </font></span>
+											</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_prospeccion">
+													<span class="slider round"></span>
+												</label>
+											</div>
+											<div class="col-4">
+												<span ><font color="green"> Si   </font></span>
+											</div>
+										</div>
+									</div>
+							</div>
+							<br>
+							<br>
+							<div class="row">
+									<div class="col-2">
+										<h4>Usted desarrolla?</h4>
+									</div>
+									<div class="col-4">
+										<div class="row">
+											<div class="col-4">
+												<span> <font color="red">  No desarrollo</font></span>
+											</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_desarrollo">
+													<span class="slider round"></span>
+												</label>
+											</div>
+											<div class="col-4">
+												<span ><font color="green"> Si desarrollo </font></span>
+											</div>
+										</div>
+									</div>
+							</div>
+							<br>
+							<br>
+							<div class="row">
+									<div class="col-2">
+										<h4>Usted hace explotación?</h4>
+									</div>
+									<div class="col-4">
+										<div class="row">
+											<div class="col-4">
+												<span> <font color="red"> No  </font></span>
+											</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_explotacion">
+													<span class="slider round"></span>
+												</label>
+											</div>
+											<div class="col-4">
+												<span ><font color="green">Si </font></span>
+											</div>
+										</div>
+									</div>
+							</div>
+							<br>
+							<br>
+							
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-12 col-md-8"><h3>Datos de Producción</h3></div>
+							<div class="col-6 col-md-4"><button class="btn btn-outline-success" @click="agregar_producto()"><i class="ti-plus"></i> Agregar Producto</button></div>
+						</div>
+						<div class="row">
+							<ul class="list" style="list-style: none;">
+								<li v-for="(producto, index) in productos">
+									<br>
+									<div class="row">
+										<div class="col-1">@{{index+1}}</div>
+										<div class="col-2">
+											<label class="typo__label">Mineral Explotado</label>
+											<multiselect 
+												v-model="producto.id_mineral" 
+												:options="opcionesmineraluno" 
+												:multiple="false" 
+												:close-on-select="true" 
+												:clear-on-select="false" 
+												:hide-selected="false" 
+												:preserve-search="true" 
+												placeholder="Seleccion Mineral" 
+												:preselect-first="false"
+												id="prod_minerales_id"
+												@select="onSelectnuevo(index)"
+											>
+											</multiselect>
+										</div>
+										<div class="col-2">
+											<span>Variedad: </span>
+												<multiselect 
+												v-model="producto.id_varieadad" 
+												:options="opcionesdevariedad" 
+												:multiple="false" 
+												:close-on-select="true" 
+												:clear-on-select="false" 
+												:hide-selected="false" 
+												:preserve-search="true" 
+												placeholder="Seleccion de material Variedad" 
+												:preselect-first="false"
+												id="prod_id_varieadad"
+												@select="onSelect"
+											>
+											</multiselect>
+										</div>
+										<div class="col-2">
+											<span>Unidades Producidas:</span> 
+											<input type="text" class="form-control" name="unidades_producidas" id="unidades_producidas"  v-model="producto.unidades" maxlength="20">
+											<!-- reinscripcion_data
+											mostrar_info_paso_dos -->
+										</div>
+										<div class="col-2">
+											<span>Precio de Venta:</span> 
+											<input type="text" class="form-control" name="precio_vta" id="precio_vta"  v-model="producto.precio" maxlength="20">
+											<!-- reinscripcion_data
+											mostrar_info_paso_dos -->
+										</div>
+										<div class="col-3">
+											<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_producto(index)"><i class="ti-trash"></i> Eliminar</button>
+										</div>
+										<br>
+									</div>
+									<hr><br>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="row">
+							<div class="col-12 col-md-8"><h3>Destino de la Producción</h3></div>
+							<div class="col-6 col-md-4"><button class="btn btn-outline-success" @click="agregar_destino()"><i class="ti-plus"></i> Agregar Destino</button></div>
+						</div>
+						<div class="row">
+							<ul class="list" style="list-style: none;">
+								<li v-for="(destino, index) in destinos">
+									<br>
+									<div class="row">
+										<div class="col-1">@{{index+1}}</div>
+										<div class="col-2">
+											<span>Nom Empresa:</span> 
+											<input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa"  v-model="destino.nombre_emp" maxlength="50">
+											<!-- reinscripcion_data
+											mostrar_info_paso_dos -->
+										</div>
+										<div class="col-2">
+											<span>Dir empresa:</span> 
+											<input type="text" class="form-control" name="direccion_empresa" id="direccion_empresa"  v-model="destino.direccion" maxlength="100">
+											<!-- reinscripcion_data
+											mostrar_info_paso_dos -->
+										</div>
+										<div class="col-2">
+											<span>Actividad que des:</span> 
+											<input type="text" class="form-control" name="actividad_que_desarrolla" id="actividad_que_desarrolla"  v-model="destino.actividad" maxlength="80">
+											<!-- reinscripcion_data
+											mostrar_info_paso_dos -->
+										</div>
+										<div class="col-3">
+											<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_destino(index)"><i class="ti-trash"></i> Eliminar</button>
+										</div>
+										<br>
+									</div>
+									<hr><br>
+								</li>
+							</ul>
+						</div>
+						<br>
+						<br>
+						<div class="row">
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov">
+							  <label for="porcentaje_prov">Porcentaje vendido a Provincia (*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio en  la provincia.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" max="100" class="form-control" id="porcentaje_prov_otra" placeholder="Porcentaje a otras Provincias" v-model="reinscripcion_data.porcentaje_otras_prov">
+							  <label for="porcentaje_prov_otra">Porcentaje vendido a otras Provincias (*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a otras provincias.</small></p>
+							</div>	
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" max="100" class="form-control" id="porcentaje_exportado" placeholder="Porcentaje Exportado" v-model="reinscripcion_data.porcentaje_exportado">
+							  <label for="porcentaje_exportado">Porcentaje Exportado (*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a hacia otro país.</small></p>
+							</div>	
+						</div>
+						<hr>
+						<br>
+						<br>
+						<div class="row">
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_profesionales" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_prof_y_tec">
+							  <label for="personal_ocupado_permanentemente_profesionales">Personal Ocupado Permanentemente Profesional  Tecnicos(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal profesional o técnico que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_o_y_o" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_oper_y_obreros">
+							  <label for="personal_ocupado_permanentemente_o_y_o">Personal Ocupado Permanentemente Operarios y Obreros (*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal  Operarios y Obreros que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_administrativos" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_administrativos">
+							  <label for="personal_ocupado_permanentemente_administrativos">Personal Ocupado Permanentemente Administrativos(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal Administrativos que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_otros" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_otros">
+							  <label for="personal_ocupado_permanentemente_otros">Personal Ocupado Permanentemente Otros(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
+							</div>
+						</div>
+						<hr>
+						<br>
+						<br>
+						<div class="row">
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_transitorio_profesionales" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_prof_y_tec">
+							  <label for="personal_ocupado_transitorio_profesionales">Personal Ocupado Transitorio Profesional  Tecnicos(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal profesional o técnico que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_transitorio_o_y_o" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_oper_y_obreros">
+							  <label for="personal_ocupado_transitorio_o_y_o">Personal Ocupado Transitorio Operarios y Obreros (*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal  Operarios y Obreros que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_transitorio_administrativos" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_administrativos">
+							  <label for="personal_ocupado_transitorio_administrativos">Personal Ocupado Transitorio Administrativos(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal Administrativos que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_transitorio_otros" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_otros">
+							  <label for="personal_ocupado_transitorio_otros">Personal Ocupado Transitorio Otros(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
+							</div>
+						</div>
+						<hr>
+						<br>
+						<br>
 					</tab-content>
 				</form-wizard>
 			</div>
@@ -1684,6 +1937,12 @@
 								{id_mineral: '1', id_varieadad: '1' , observacion:'esta es la obs 1'},
 								{id_mineral: '2', id_varieadad: '2' , observacion:'esta es la obs 2'}
 							],
+					productos: [
+								{id_producto: '1', id_varieadad: '1', unidades:'', precio:''},
+							],
+					destinos: [
+						{nombre_emp: '1', direccion: '1', actividad:''},
+					],
 					servidor_temporal: false,
 					servidor_temporal_fecha_fin: '',
 
@@ -1818,7 +2077,26 @@
 
 					},
 					reinscripcion_data:{
-						cuit_para_validar :  false,
+						cuit_para_validar :  '',
+						resultado_de_validacion_cuit: false,
+						numero_expediente_reinscripcion: '',
+						resultado_de_validacion_num_exp_mina: false,
+						mostrar_info_paso_uno: false,
+						fecha_reinscripcion: '',
+						mostrar_info_paso_dos: false,
+						labor_prospeccion: false,
+						labor_desarrollo: false,
+						labor_explotacion:false,
+						porcentaje_prov: 0,
+						porcentaje_otras_prov: 0,
+						porcentaje_exportado: 0,
+						personal_perm_prof_y_tec: 0,
+						personal_perm_oper_y_obreros: 0,
+						personal_perm_administrativos: 0,
+						personal_tran_prof_y_tec: 0,
+						personal_tran_oper_y_obreros: 0,
+						personal_tran_administrativos: 0,
+						personal_tran_otros: 0
 					},
 					formOptions: {
 						validationErrorClass: "has-error",
@@ -2757,10 +3035,7 @@
 					},
 
 					
-					agregar_puerto: function(){
-						var puertos_aux = {puerto: '', servicio: "" , observacion:''};
-						this.puertos.push( puertos_aux);
-					},
+					
 					agregar_mineral: function(){
 						var mineral_aux = {puerto: '', servicio: "" , observacion:''};
 						this.minerales.push( mineral_aux);
@@ -2770,6 +3045,23 @@
 					},
 					eliminar_mineral: function(indice){
 						this.minerales.splice(indice, 1);
+					},
+					agregar_producto: function(){
+						var prod_aux = {producto: '', variedad: "" , unidades:'', precio:''};
+						this.productos.push( prod_aux);
+					},
+					
+					eliminar_producto: function(indice){
+						this.productos.splice(indice, 1);
+					},
+					
+					agregar_destino: function(){
+						var destino_aux = {nombre_emp: '', direccion: "" , actividad:''};
+						this.destinos.push( destino_aux);
+					},
+					
+					eliminar_destino: function(indice){
+						this.destinos.splice(indice, 1);
 					},
 					clicked:function(){
 						//alert("hola desde el click");
@@ -2899,6 +3191,18 @@
 						else return true;
 					},
 					validateDatosMinaUno: function(){
+						return true;
+					},
+					validateFechaReinscp: function(){
+						//alert("estoy por validar");
+						let errores = '';
+						//requierd
+						return true;
+					},
+					validateProdReinscp: function(){
+						//alert("estoy por validar");
+						let errores = '';
+						//requierd
 						return true;
 					},
 					
@@ -3786,7 +4090,6 @@
 								icon: 'error',
 								confirmButtonText: 'Ok, voy revisar'
 							});
-							self.model.correo_enviado_si = false;
 						}
 						else
 						{//emails iguales
@@ -3796,33 +4099,352 @@
 								})
 								.then(function (response) {
 									console.log(response.data);
-									if(response.data == 'todo bien')
+									if(response.data == 'mal')
 									{
 										Swal.fire({
-											title: 'Email Enviado!',
-											text: 'Hemos enviado un email a la casilla declarada, por favor revise su casilla, también en la carpeta de emails no deseados. Una vez que encuentre email por favor hacer clic en su enlace para confirmar la cuenta.',
-											icon: 'warning',
-											confirmButtonText: 'Voy a revisar el email'
+											title: 'CUIT incorrecto!',
+											text: 'Hemos revisado nuestra información y no hemos encontrado ningún productor con el CUIT que usted a ingresado.',
+											icon: 'error',
+											confirmButtonText: 'Ok, lo escribo nuevamente'
 										});
 									}
-									/*setInterval(() => {
-										this.preguntar_email_confirmacion();
-									}, (2000 * 60));*/
-										
+									else
+									{
+										if(response.data != null)
+										{
+											//pongo los datos que traje del server en las variables que tengo definidas aca en el formulario
+											//TAB 1 - Datos de Productor
+											if(response.data.razonsocial !== null)
+											{
+												self.model.lastName = response.data.razonsocial;
+											}
+											if(response.data.cuit !== null)
+											{
+												self.model.cuit = response.data.cuit;
+											}
+											if(response.data.numeroproductor !== null)
+											{
+												self.model.num_productor = response.data.numeroproductor;
+											}
+											if(response.data.tiposociedad !== null)
+											{
+												self.model.tipo_sociedad = response.data.tiposociedad;
+											}
+											if(response.data.email != null)
+											{
+												self.model.email = response.data.email;
+											}
+											if(response.data.domicilio_prod !== null)
+											{
+												self.model.streetName = response.data.domicilio_prod;
+											}
+											if(response.data.inscripciondgr !== null)
+											{
+												self.model.tiene_inscricion_dgr = 'http://localhost:8000/'+ response.data.inscripciondgr;
+											}
+											if(response.data.constaciasociedad !== null)
+											{
+												self.model.tiene_constancia_sociedad = 'http://localhost:8000/'+response.data.constaciasociedad;
+											}
+											
 
-									//nueva pestaña de descarga
-									/*var a = document.createElement("a");
-									a.target = "_blank";
-									a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
-									a.click();*/
+											//TAB 2 - Domicilio Legal
+											if(response.data.leal_calle !== null)
+											{
+												self.model.domicilio_legal_calle = response.data.leal_calle;
+											}
+											if(response.data.leal_numero !== null)
+											{
+												self.model.domicilio_legal_calle_numero = response.data.leal_numero;
+											}
+											if(response.data.leal_telefono !== null)
+											{
+												self.model.domicilio_legal_telefono = response.data.leal_telefono;
+											}
+											if(response.data.leal_pais !== null)
+											{
+												self.model.domicilio_legal_pais = response.data.leal_pais;
+											}
+											if(response.data.leal_provincia !== null)
+											{
+												self.model.domicilio_legal_provincia = response.data.leal_provincia;
+											}
+											if(response.data.leal_departamento !== null)
+											{
+												self.model.domicilio_legal_departamento = response.data.leal_departamento;
+											}
+											if(response.data.leal_localidad !== null)
+											{
+												self.model.domicilio_legal_localidad = response.data.leal_localidad;
+											}
+											if(response.data.leal_cp !== null)
+											{
+												self.model.domicilio_legal_cp = response.data.leal_cp;
+											}
+											if(response.data.leal_otro !== null)
+											{
+												self.model.domicilio_legal_otro = response.data.leal_otro;
+											}
+											//Fin tab 2
+
+
+											//TAB 3 - Domicilio Administrativo
+											if(response.data.administracion_calle !== null)
+											{
+												self.model.domicilio_administrativo_calle = response.data.administracion_calle;
+											}
+											if(response.data.administracion_numero !== null)
+											{
+												self.model.domicilio_administrativo_calle_numero = response.data.administracion_numero;
+											}
+											if(response.data.administracion_telefono !== null)
+											{
+												self.model.domicilio_administrativo_telefono = response.data.administracion_telefono;
+											}
+											if(response.data.administracion_pais !== null)
+											{
+												self.model.domicilio_administrativo_pais = response.data.administracion_pais;
+											}
+											if(response.data.administracion_provincia !== null)
+											{
+												self.model.domicilio_administrativo_provincia = response.data.administracion_provincia;
+											}
+											if(response.data.administracion_departamento !== null)
+											{
+												self.model.domicilio_administrativo_departamento = response.data.administracion_departamento;
+											}
+											if(response.data.administracion_localidad !== null)
+											{
+												self.model.domicilio_administrativo_localidad = response.data.administracion_localidad;
+											}
+											if(response.data.administracion_cp !== null)
+											{
+												self.model.domicilio_administrativo_cp = response.data.administracion_cp;
+											}
+											if(response.data.administracion_otro !== null)
+											{
+												self.model.domicilio_administrativo_otro = response.data.administracion_otro;
+											}
+											//Fin tab 3
+
+
+											//TAB 4 - Datos Mina 1
+											if(response.data.mina_cantera !== null)
+											{
+												self.model.mina_cantera = response.data.mina_cantera;
+											}
+											if(response.data.numero_expdiente !== null)
+											{
+												self.model.numero_expediente = response.data.numero_expdiente;
+											}
+											if(response.data.distrito_minero !== null)
+											{
+												self.model.distrito_minero = response.data.distrito_minero;
+											}
+											if(response.data.nombre_mina !== null)
+											{
+												self.model.nombre_mina = response.data.nombre_mina;
+											}
+											if(response.data.descripcion_mina !== null)
+											{
+												self.model.descripcion_mina = response.data.descripcion_mina;
+											}
+											if(response.data.plano_inmueble !== null)
+											{
+												self.model.tiene_plano_inmueble =  'http://localhost:8000/'+response.data.plano_inmueble;
+											}
+											if(response.data.minerales_variedad !== null)
+											{
+												self.minerales = '';
+												var minerales_json = JSON.parse(response.data.minerales_variedad);
+												console.log(minerales_json);
+												for (x in minerales_json) {
+													if(self.minerales === '')
+														self.minerales = [{
+														"id_mineral" : minerales_json[x].id_mineral,
+														"id_varieadad" : minerales_json[x].id_varieadad,
+														"observacion" : minerales_json[x].observacion,
+													}];
+													else
+													self.minerales.push({
+														"id_mineral" : minerales_json[x].id_mineral,
+														"id_varieadad" : minerales_json[x].id_varieadad,
+														"observacion" : minerales_json[x].observacion,
+													});
+													console.log("esta es la vuelta"+x);
+												}
+											// 	self.model.tiene_plano_inmueble =  response.data.minerales;
+
+											// mineral.id_mineral
+											// mineral.observacion
+											console.log(self.minerales);
+
+											}
+											if(response.data.categoria !== null)
+											{
+												self.model.categoria_m_c = response.data.categoria;
+											}
+											self.cambio_categoria();
+
+
+											//Fin tab 4
+
+											//TAB 5 - Datos Mina 2
+											// if(response.data.relacion_mina !== null)
+											// {
+											// 	self.model.mina_cantera = response.data.relacion_mina;
+											// }
+											if(response.data.owner !== null)
+											{
+												self.model.owner = response.data.owner;
+											}
+											if(response.data.arrendatario !== null)
+											{
+												self.model.arrendatario = response.data.arrendatario;
+											}
+											if(response.data.concesionario !== null)
+											{
+												self.model.concesionario = response.data.concesionario;
+											}
+											if(response.data.otros !== null)
+											{
+												self.model.otros = response.data.otros;
+											}
+											if(response.data.titulo_contrato_posecion !== null)
+											{
+												self.model.tiene_contrato =  'http://localhost:8000/'+response.data.titulo_contrato_posecion;
+											}
+
+											if(response.data.resolucion_concesion_minera !== null)
+											{
+												self.model.tiene_concesion =  'http://localhost:8000/'+response.data.resolucion_concesion_minera;
+											}
+											
+											if(response.data.constancia_pago_canon !== null)
+											{
+												self.model.tiene_canon =  'http://localhost:8000/'+response.data.constancia_pago_canon;
+											}
+
+											
+											if(response.data.iia !== null)
+											{
+												self.model.tiene_iia =  'http://localhost:8000/'+response.data.iia;
+											}
+											if(response.data.dia !== null)
+											{
+												self.model.tiene_dia =  'http://localhost:8000/'+response.data.dia;
+											}
+											
+
+											if(response.data.actividad !== null)
+											{
+												self.model.actividades = response.data.actividad;
+											}
+											if(response.data.acciones_a_desarrollar !== null)
+											{
+												self.model.acciones = response.data.acciones_a_desarrollar;
+											}
+											
+
+											if(response.data.fecha_alta_dia !== null)
+											{
+												self.model.fecha_incio = response.data.fecha_alta_dia;
+											}
+											if(response.data.fecha_vencimiento_dia !== null)
+											{
+												self.model.fecha_fin = response.data.fecha_vencimiento_dia;
+											}
+
+											//Fin tab 5
+
+											Swal.fire({
+												title: 'CUIT correcto!',
+												text: 'Hemos encontrados los datos para su CUIT, gracias.',
+												icon: 'success',
+												confirmButtonText: 'Ok, continuo.'
+											});
+
+											console.log('los datos que traje son:');
+											console.log(self.model);
+
+
+											self.reinscripcion_data.resultado_de_validacion_cuit = true;
+										}
+										else
+										{
+											console.log("traje cualquier verdura");
+										}
+									}
+									
 								})
 								.catch(function (error) {
 									// handle error
 									console.log(error);
 								})
-							self.model.correo_enviado_si = true;
 						}
 					},
+					validar_datos_num_exp_mina: function(){
+						let self = this
+						if(
+							(this.reinscripcion_data.numero_expediente_reinscripcion == '')
+							||
+							(this.reinscripcion_data.numero_expediente_reinscripcion.length > 10)
+							)
+						{
+							//alert("Los emails no coinciden, por favor, revise.");
+							Swal.fire({
+								title: 'Error!',
+								text: 'El numero de expediente no respeta las normas, por favor, revise si es el correcto.',
+								icon: 'error',
+								confirmButtonText: 'Ok, voy revisar'
+							});
+						}
+						else
+						{//emails iguales
+							axios.post('{{url("formularios/validar_mina_para_prod")}}', {
+								//comun
+								num_exp: this.reinscripcion_data.numero_expediente_reinscripcion,
+								})
+								.then(function (response) {
+									console.log(response.data);
+									if(response.data == 'mal')
+									{
+										Swal.fire({
+											title: 'No se encontraron datos!',
+											text: 'No hemos podido encontrar datos relacionados a esa mina en nuestra información.',
+											icon: 'error',
+											confirmButtonText: 'Ok, lo escribo nuevamente'
+										});
+									}
+									else
+									{
+										if(response.data != null)
+										{
+											Swal.fire({
+												title: 'Numero de Expediente correcto!',
+												text: 'Hemos encontrados los datos para su numero de expdiente, gracias.',
+												icon: 'success',
+												confirmButtonText: 'Ok, continuo.'
+											});
+
+											console.log('los datos que traje son:');
+											self.reinscripcion_data.resultado_de_validacion_num_exp_mina = true;
+										}
+										else
+										{
+											console.log("traje cualquier verdura");
+										}
+									}
+									
+								})
+								.catch(function (error) {
+									// handle error
+									console.log(error);
+								})
+						}
+					},
+					
+
 					comprobar_validación_de_email: function(){
 						// Make a request for a user with a given ID
 

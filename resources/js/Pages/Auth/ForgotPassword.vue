@@ -1,8 +1,7 @@
 <template>
     <jet-authentication-card>
         <template #logo>
-            <!-- <jet-authentication-card-logo /> -->
-            <img src="http://localhost:8000/logo_v2.png">
+            <jet-authentication-card-logo />
         </template>
 
         <div class="mb-4 text-sm text-gray-600">

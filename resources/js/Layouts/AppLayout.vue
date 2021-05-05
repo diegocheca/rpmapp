@@ -1,7 +1,6 @@
 <template>
     <div>
         <jet-banner />
-
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
@@ -31,6 +30,18 @@
                                     :active="route().current('products.create')"
                                 >
                                     Añadir
+                                </jet-nav-link>
+                                <jet-nav-link
+                                    :href="route('productors.index')"
+                                    :active="route().current('productors.index')"
+                                >
+                                    Productores
+                                </jet-nav-link>
+                                 <jet-nav-link
+                                    :href="route('productors.create')"
+                                    :active="route().current('productors.create')"
+                                >
+                                    AñadirPro
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -166,6 +177,18 @@
                             :active="route().current('products.create')"
                           >
                             añadir
+                          </jet-responsive-nav-link>
+                           <jet-responsive-nav-link
+                            :href="route('productors.index')"
+                            :active="route().current('productors.index')"
+                          >
+                            Productores
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('productors.create')"
+                            :active="route().current('productors.create')"
+                          >
+                            AñadirProd
                           </jet-responsive-nav-link>
                     </div>
 

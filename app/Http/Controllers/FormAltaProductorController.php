@@ -19,6 +19,8 @@ use Illuminate\Database\Seeder;
 use Faker\Factory  as Faker;
 
 use App\Models\EmailsAConfirmar;
+use App\Models\Productors;
+
 use \PDF;
 
 use Illuminate\Support\Facades\Storage;
@@ -175,6 +177,43 @@ class FormAltaProductorController extends Controller
 			$codigo
 		));
 		return response()->json("todo bien");
+
+
+	}
+
+	
+	public function validar_cuit_prod_reinscripcion(Request $request)
+	{
+		//var_dump($request->cuit);die();
+		$email = Productors::select('*')->where('cuit', '=', $request->cuit)->first();
+		//var_dump($email->razonsocial);
+		//die();
+		if($email != null)
+		{
+			return response()->json($email);
+		}
+		else
+		{
+			return response()->json("mal");
+		}
+
+
+	}
+	
+	public function validar_mina_prod_reinscripcion(Request $request)
+	{
+		//var_dump("expression");die();
+		$email = Productors::select('*')->where('numero_expdiente', '=', $request->num_exp)->first();
+		//var_dump($email->razonsocial);
+		//die();
+		if($email != null)
+		{
+			return response()->json($email);
+		}
+		else
+		{
+			return response()->json("mal");
+		}
 
 
 	}
