@@ -287,7 +287,12 @@
 										<input type="text" class="form-control" name="cuit_reinscripcion" id="cuit_reinscripcion" v-model="reinscripcion_data.cuit_para_validar" maxlength="14" /> 
 									</div>
 									<div class="col-sm">
-										<button type="button" class="btn btn-outline-primary btn-lg" id="validar_cuit" name="validar_cuit" @click="validar_cuit_productor"><i class="ti-check"></i>&nbsp; Validar</button>
+										<button type="button" class="btn btn-outline-primary btn-lg" id="validar_cuit" name="validar_cuit" @click="validar_cuit_productor" :disabled="reinscripcion_data.resultado_de_validacion_cuit"><i class="ti-check"></i>&nbsp; Validar</button>
+									</div>
+									<div class="col-sm" v-show="reinscripcion_data.resultado_de_validacion_cuit">
+										<div class="alert alert-success" role="alert">
+											<span>Se recuperaron los datos correctamente para usted: @{{model.lastName}}".</span>
+										</div>
 									</div>
 									
 								</div>
@@ -301,12 +306,13 @@
 									leave-active-class="animated bounceOut"
 								>
 									<div class="row" v-show="reinscripcion_data.resultado_de_validacion_cuit">
-										<div class="col-sm"><label>Por favor, ingrese la mina, con su numero de expediente: </label> </div>
+										
+										<div class="col-sm"><label>Por favor, ingrese la mina, con su numero de expediente <br>o distrito minero: </label> </div>
 										<div class="col-sm">
 											<input type="text" class="form-control" name="numero_expediente_reinscripcion" id="numero_expediente_reinscripcion"  v-model="reinscripcion_data.numero_expediente_reinscripcion" maxlength="20" /> 
 										</div>
 										<div class="col-sm">
-											<button type="button" class="btn btn-outline-primary btn-lg" id="validar_num_exp_mina" @click="validar_datos_num_exp_mina"><i class="ti-check"></i>&nbsp; Validar</button>
+											<button type="button" class="btn btn-outline-primary btn-lg" id="validar_num_exp_mina" @click="validar_datos_num_exp_mina" :disabled="reinscripcion_data.resultado_de_validacion_num_exp_mina"><i class="ti-check"></i>&nbsp; Validar</button>
 										</div>
 									</div>
 								</transition>
@@ -1980,7 +1986,8 @@
 						sistema :  '',
 						primera_vez: 'si',
 						//Datos personales
-						firstName:'{{$nombre}}',
+						//firstName:'{{$nombre}}',
+						firstName:'',
 						lastName:'{{$apellido}}',
 						email:'{{$email}}',
 						cuit:'{{$cuit}}',
@@ -4114,8 +4121,12 @@
 										{
 											//pongo los datos que traje del server en las variables que tengo definidas aca en el formulario
 											//TAB 1 - Datos de Productor
+											//console.log("lo traido");
+											//console.log(response.data.razonsocial);
 											if(response.data.razonsocial !== null)
 											{
+												console.log("el valor de la razon social es:");
+												console.log(response.data.razonsocial);
 												self.model.lastName = response.data.razonsocial;
 											}
 											if(response.data.cuit !== null)
@@ -4227,136 +4238,6 @@
 											}
 											//Fin tab 3
 
-
-											//TAB 4 - Datos Mina 1
-											if(response.data.mina_cantera !== null)
-											{
-												self.model.mina_cantera = response.data.mina_cantera;
-											}
-											if(response.data.numero_expdiente !== null)
-											{
-												self.model.numero_expediente = response.data.numero_expdiente;
-											}
-											if(response.data.distrito_minero !== null)
-											{
-												self.model.distrito_minero = response.data.distrito_minero;
-											}
-											if(response.data.nombre_mina !== null)
-											{
-												self.model.nombre_mina = response.data.nombre_mina;
-											}
-											if(response.data.descripcion_mina !== null)
-											{
-												self.model.descripcion_mina = response.data.descripcion_mina;
-											}
-											if(response.data.plano_inmueble !== null)
-											{
-												self.model.tiene_plano_inmueble =  'http://localhost:8000/'+response.data.plano_inmueble;
-											}
-											if(response.data.minerales_variedad !== null)
-											{
-												self.minerales = '';
-												var minerales_json = JSON.parse(response.data.minerales_variedad);
-												console.log(minerales_json);
-												for (x in minerales_json) {
-													if(self.minerales === '')
-														self.minerales = [{
-														"id_mineral" : minerales_json[x].id_mineral,
-														"id_varieadad" : minerales_json[x].id_varieadad,
-														"observacion" : minerales_json[x].observacion,
-													}];
-													else
-													self.minerales.push({
-														"id_mineral" : minerales_json[x].id_mineral,
-														"id_varieadad" : minerales_json[x].id_varieadad,
-														"observacion" : minerales_json[x].observacion,
-													});
-													console.log("esta es la vuelta"+x);
-												}
-											// 	self.model.tiene_plano_inmueble =  response.data.minerales;
-
-											// mineral.id_mineral
-											// mineral.observacion
-											console.log(self.minerales);
-
-											}
-											if(response.data.categoria !== null)
-											{
-												self.model.categoria_m_c = response.data.categoria;
-											}
-											self.cambio_categoria();
-
-
-											//Fin tab 4
-
-											//TAB 5 - Datos Mina 2
-											// if(response.data.relacion_mina !== null)
-											// {
-											// 	self.model.mina_cantera = response.data.relacion_mina;
-											// }
-											if(response.data.owner !== null)
-											{
-												self.model.owner = response.data.owner;
-											}
-											if(response.data.arrendatario !== null)
-											{
-												self.model.arrendatario = response.data.arrendatario;
-											}
-											if(response.data.concesionario !== null)
-											{
-												self.model.concesionario = response.data.concesionario;
-											}
-											if(response.data.otros !== null)
-											{
-												self.model.otros = response.data.otros;
-											}
-											if(response.data.titulo_contrato_posecion !== null)
-											{
-												self.model.tiene_contrato =  'http://localhost:8000/'+response.data.titulo_contrato_posecion;
-											}
-
-											if(response.data.resolucion_concesion_minera !== null)
-											{
-												self.model.tiene_concesion =  'http://localhost:8000/'+response.data.resolucion_concesion_minera;
-											}
-											
-											if(response.data.constancia_pago_canon !== null)
-											{
-												self.model.tiene_canon =  'http://localhost:8000/'+response.data.constancia_pago_canon;
-											}
-
-											
-											if(response.data.iia !== null)
-											{
-												self.model.tiene_iia =  'http://localhost:8000/'+response.data.iia;
-											}
-											if(response.data.dia !== null)
-											{
-												self.model.tiene_dia =  'http://localhost:8000/'+response.data.dia;
-											}
-											
-
-											if(response.data.actividad !== null)
-											{
-												self.model.actividades = response.data.actividad;
-											}
-											if(response.data.acciones_a_desarrollar !== null)
-											{
-												self.model.acciones = response.data.acciones_a_desarrollar;
-											}
-											
-
-											if(response.data.fecha_alta_dia !== null)
-											{
-												self.model.fecha_incio = response.data.fecha_alta_dia;
-											}
-											if(response.data.fecha_vencimiento_dia !== null)
-											{
-												self.model.fecha_fin = response.data.fecha_vencimiento_dia;
-											}
-
-											//Fin tab 5
-
 											Swal.fire({
 												title: 'CUIT correcto!',
 												text: 'Hemos encontrados los datos para su CUIT, gracias.',
@@ -4406,6 +4287,7 @@
 								num_exp: this.reinscripcion_data.numero_expediente_reinscripcion,
 								})
 								.then(function (response) {
+									console.log("los datos de la mina son:");
 									console.log(response.data);
 									if(response.data == 'mal')
 									{
@@ -4420,6 +4302,199 @@
 									{
 										if(response.data != null)
 										{
+											//pongo los datos que traje del server en las variables que tengo definidas aca en el formulario
+
+											/*
+											nombre_mina: '',
+											descripcion_mina: '',
+											distrito_minero: '',
+											mina_cantera: '',
+											categoria_m_c: '',
+											numero_expediente: '',
+											plano_inmueble: '',
+											tiene_plano_inmueble: '',
+											//Datos Mina 2
+											relacion_mina: [],
+											contrato: '',
+											owner: false,
+											arrendatario: false,
+											concesionario: false,
+											otros: false,
+											tiene_contrato: '',
+											concesion: '',
+											tiene_concesion: '',
+											tiene_canon: '',
+											tiene_iia: '',
+											tiene_dia: '',
+											canon: '',
+											iia: '',
+											dia: '',
+											acciones: '',
+											actividades: '',
+											fecha_incio: '',
+											fecha_fin: '',
+
+											*/
+
+
+											if(response.data.nombre !== null)
+											{
+												self.model.nombre_mina = response.data.nombre;
+											}
+											if(response.data.descripcion !== null)
+											{
+												self.model.descripcion_mina = response.data.descripcion;
+											}
+											if(response.data.distrito_minero !== null)
+											{
+												self.model.distrito_minero = response.data.distrito_minero;
+											}
+											if(response.data.tipo !== null)
+											{
+												self.model.mina_cantera = response.data.tipo;
+											}
+											if(response.data.categoria !== null)
+											{
+												self.model.categoria_m_c = response.data.categoria;
+											}
+											if(response.data.plano_inmueble !== null)
+											{
+												self.model.plano_inmueble =  'http://localhost:8000/'+response.data.plano_inmueble;
+												tiene_plano_inmueble = true;
+											}
+
+											if(response.data.longitud !== null)
+											{
+												self.model.domicilio_mina_cor_long = response.data.longitud;
+											}
+											if(response.data.latitud !== null)
+											{
+												self.model.domicilio_mina_cor_lat = response.data.latitud;
+											}
+											if(response.data.tipo_sistema !== null)
+											{
+												self.model.tipo_coordenada = response.data.tipo_sistema;
+											}
+
+
+											if(response.data.localidad_mina_departamento !== null)
+											{
+												self.model.domicilio_mina_departamento = response.data.localidad_mina_departamento;
+											}
+											if(response.data.localidad_mina_localidad !== null)
+											{
+												self.model.domicilio_mina_localidad = response.data.localidad_mina_localidad;
+											}
+											if(response.data.localidad_mina_pais !== null)
+											{
+												self.model.domicilio_mina_pais = response.data.localidad_mina_pais;
+											}
+											if(response.data.localidad_mina_provincia !== null)
+											{
+												self.model.domicilio_mina_provincia = response.data.localidad_mina_provincia;
+											}
+
+
+											
+											// if(response.data.numero_expdiente !== null)
+											// {
+											// 	self.model.numero_expediente = response.data.numero_expdiente;
+											// }
+											
+											
+											// if(response.data.minerales_variedad !== null)
+											// {
+											// 	self.minerales = '';
+											// 	var minerales_json = JSON.parse(response.data.minerales_variedad);
+											// 	console.log(minerales_json);
+											// 	for (x in minerales_json) {
+											// 		if(self.minerales === '')
+											// 			self.minerales = [{
+											// 			"id_mineral" : minerales_json[x].id_mineral,
+											// 			"id_varieadad" : minerales_json[x].id_varieadad,
+											// 			"observacion" : minerales_json[x].observacion,
+											// 		}];
+											// 		else
+											// 		self.minerales.push({
+											// 			"id_mineral" : minerales_json[x].id_mineral,
+											// 			"id_varieadad" : minerales_json[x].id_varieadad,
+											// 			"observacion" : minerales_json[x].observacion,
+											// 		});
+											// 		console.log("esta es la vuelta"+x);
+											// 	}
+											// // 	self.model.tiene_plano_inmueble =  response.data.minerales;
+
+											// // mineral.id_mineral
+											// // mineral.observacion
+											// console.log(self.minerales);
+
+											// }
+											
+											self.cambio_categoria();
+
+
+											//Fin tab 4
+
+											//TAB 5 - Datos Mina 2
+											// if(response.data.relacion_mina !== null)
+											// {
+											// 	self.model.mina_cantera = response.data.relacion_mina;
+											// }
+											
+											// if(response.data.distrito_minero !== null)
+											// {
+											// 	self.model.distrito_minero = response.data.distrito_minero;
+											// }
+											
+											
+
+											// if(response.data.titulo_contrato_posecion !== null)
+											// {
+											// 	self.model.tiene_contrato =  'http://localhost:8000/'+response.data.titulo_contrato_posecion;
+											// }
+
+											// if(response.data.resolucion_concesion_minera !== null)
+											// {
+											// 	self.model.tiene_concesion =  'http://localhost:8000/'+response.data.resolucion_concesion_minera;
+											// }
+											
+											// if(response.data.constancia_pago_canon !== null)
+											// {
+											// 	self.model.tiene_canon =  'http://localhost:8000/'+response.data.constancia_pago_canon;
+											// }
+
+											
+											// if(response.data.iia !== null)
+											// {
+											// 	self.model.tiene_iia =  'http://localhost:8000/'+response.data.iia;
+											// }
+											// if(response.data.dia !== null)
+											// {
+											// 	self.model.tiene_dia =  'http://localhost:8000/'+response.data.dia;
+											// }
+											
+
+											// if(response.data.actividad !== null)
+											// {
+											// 	self.model.actividades = response.data.actividad;
+											// }
+											// if(response.data.acciones_a_desarrollar !== null)
+											// {
+											// 	self.model.acciones = response.data.acciones_a_desarrollar;
+											// }
+											
+
+											// if(response.data.fecha_alta_dia !== null)
+											// {
+											// 	self.model.fecha_incio = response.data.fecha_alta_dia;
+											// }
+											// if(response.data.fecha_vencimiento_dia !== null)
+											// {
+											// 	self.model.fecha_fin = response.data.fecha_vencimiento_dia;
+											// }
+
+											//Fin tab 5
+
 											Swal.fire({
 												title: 'Numero de Expediente correcto!',
 												text: 'Hemos encontrados los datos para su numero de expdiente, gracias.',
@@ -4428,6 +4503,9 @@
 											});
 
 											console.log('los datos que traje son:');
+											console.log(self.model);
+
+
 											self.reinscripcion_data.resultado_de_validacion_num_exp_mina = true;
 										}
 										else

@@ -20,6 +20,7 @@ use Faker\Factory  as Faker;
 
 use App\Models\EmailsAConfirmar;
 use App\Models\Productors;
+use App\Models\MinaCantera;
 
 use \PDF;
 
@@ -186,7 +187,7 @@ class FormAltaProductorController extends Controller
 	{
 		//var_dump($request->cuit);die();
 		$email = Productors::select('*')->where('cuit', '=', $request->cuit)->first();
-		//var_dump($email->razonsocial);
+		//var_dump($email);
 		//die();
 		if($email != null)
 		{
@@ -203,7 +204,8 @@ class FormAltaProductorController extends Controller
 	public function validar_mina_prod_reinscripcion(Request $request)
 	{
 		//var_dump("expression");die();
-		$email = Productors::select('*')->where('numero_expdiente', '=', $request->num_exp)->first();
+		//$email = Productors::select('*')->where('numero_expdiente', '=', $request->num_exp)->first();
+		$email = MinaCantera::select('*')->where('distrito_minero', '=', $request->num_exp)->first();
 		//var_dump($email->razonsocial);
 		//die();
 		if($email != null)
