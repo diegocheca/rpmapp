@@ -298,12 +298,13 @@ class FormAltaProductorController extends Controller
 		if($formulario_provisorio != null)
 		{
 			//lo encontre y actualizo
+			$formulario_provisorio->tipo_productor = $request->tipo_productor;
 			$formulario_provisorio->razonsocial = $request->razon_social;
 			$formulario_provisorio->cuit = $request->cuit;
 			$formulario_provisorio->numeroproductor = $request->num_productor;
 			$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
 			$formulario_provisorio->email = $request->email;
-			$formulario_provisorio->domicilio_prod = $request->streetName;
+			// $formulario_provisorio->domicilio_prod = $request->streetName;
 			$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
 			$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
 			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
@@ -329,7 +330,7 @@ class FormAltaProductorController extends Controller
 					$formulario_nuevo->numeroproductor = $request->num_productor;
 					$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
 					$formulario_nuevo->email = $request->email;
-					$formulario_nuevo->domicilio_prod = $request->streetName;
+					// $formulario_nuevo->domicilio_prod = $request->streetName;
 					//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
 					//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
 					$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
@@ -401,7 +402,7 @@ class FormAltaProductorController extends Controller
 					$formulario_nuevo->numeroproductor = $request->num_productor;
 					$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
 					$formulario_nuevo->email = $request->email;
-					$formulario_nuevo->domicilio_prod = $request->streetName;
+					// $formulario_nuevo->domicilio_prod = $request->streetName;
 					$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
 					$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
 					$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
@@ -473,7 +474,7 @@ class FormAltaProductorController extends Controller
 					$formulario_nuevo->numeroproductor = $request->num_productor;
 					$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
 					$formulario_nuevo->email = $request->email;
-					$formulario_nuevo->domicilio_prod = $request->streetName;
+					// $formulario_nuevo->domicilio_prod = $request->streetName;
 					$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
 					$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
 					$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
@@ -545,7 +546,7 @@ class FormAltaProductorController extends Controller
 					$formulario_nuevo->numeroproductor = $request->num_productor;
 					$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
 					$formulario_nuevo->email = $request->email;
-					$formulario_nuevo->domicilio_prod = $request->streetName;
+					// $formulario_nuevo->domicilio_prod = $request->streetName;
 					$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
 					$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
 					$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
@@ -618,7 +619,7 @@ class FormAltaProductorController extends Controller
 					$formulario_nuevo->numeroproductor = $request->num_productor;
 					$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
 					$formulario_nuevo->email = $request->email;
-					$formulario_nuevo->domicilio_prod = $request->streetName;
+					// $formulario_nuevo->domicilio_prod = $request->streetName;
 					$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
 					$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
 					$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
@@ -688,7 +689,7 @@ class FormAltaProductorController extends Controller
 					$formulario_nuevo->numeroproductor = $request->num_productor;
 					$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
 					$formulario_nuevo->email = $request->email;
-					$formulario_nuevo->domicilio_prod = $request->streetName;
+					// $formulario_nuevo->domicilio_prod = $request->streetName;
 					$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
 					$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
 					$formulario_nuevo->updated_at = date("Y-m-d H:i:s");

@@ -12,11 +12,11 @@ class FormAltaProductor extends Model
     protected $table = 'form_alta_productors';
     protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
+        'tipo_productor',
         'cuit',
         'razonsocial',
         'numeroproductor',
         'email',
-        'domicilio_prod',
         'tiposociedad',
         'inscripciondgr',
         'constaciasociedad',

@@ -63,7 +63,7 @@
 									<p><strong>Consideraciones:</strong>
 										<ul>
 											<li> * Es impresindible disponer de un email válido. Allí se enviarán importantes notificaciones y avisos.</li>
-											<li> * Puede utilizar cualquier dispositivo para completar este formulario</li>
+											<li> * Usted contituye con este email, su domicilio electrónico de notificación.</li>
 											<!-- <svg version="1.1" id="web-skill" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="160px" height="108px" viewBox="0 0 160 108" enable-background="new 0 0 160 108" xml:space="preserve"><g id="mobile" style="transform: matrix(1, 0, 0, 1, 0, 0);"><path fill="#FFFFFF" d="M49.1,102.4c0,1.2-1,2.1-2.1,2.1H20.6c-1.2,0-2.1-1-2.1-2.1v-56c0-1.2,1-2.1,2.1-2.1h26.3
 												c1.2,0,2.1,1,2.1,2.1v56H49.1z"></path><path fill="#00D9B3" d="M46.9,106H20.6c-2,0-3.6-1.6-3.6-3.6v-56c0-2,1.6-3.6,3.6-3.6h26.3c2,0,3.6,1.6,3.6,3.6v56
 												C50.6,104.4,48.9,106,46.9,106z M20.6,45.7c-0.3,0-0.6,0.3-0.6,0.6v56c0,0.4,0.3,0.6,0.6,0.6h26.3c0.4,0,0.6-0.3,0.6-0.6v-56
@@ -91,6 +91,7 @@
 						<br>
 						<hr style="border-top: 1px dashed green;">
 						<br>
+						<br>
 						<div class="row"></div>
 						<h4>Seleccione Tipo de Tramite que desea realizar:</h4> <i class="ti-info-alt" id="element" ></i>
 						<div class="middle">
@@ -112,30 +113,78 @@
 									<span>Reincripcion</span>
 								</div>
 							</label>
+							<label>
+								<input type="radio" name="radio" v-model="formulario_seleccionado" value="impresiones"/>
+								<div class="resins box">
+									<span>Impresión Constancias</span>
+								</div>
+							</label>
+							<label>
+								<input type="radio" name="radio" v-model="formulario_seleccionado" value="transito"/>
+								<div class="resins box">
+									<span>Guia de Tránsito</span>
+								</div>
+							</label>
 						</div>
+						<br>
+
 						<transition
 							name="custom-classes-transition"
 							enter-active-class="animated fadeInDownBig"
 							leave-active-class="animated bounceOut"
 						>
 							<div v-show="formulario_seleccionado=='inscripcion'">
-								<h4>Primera vez que utiliza este formulario?</h4> <i class="ti-info-alt" id="element1" ></i>
-								<div class="middle_sis" >
+								<h4>Que tipo de productor es usted?</h4>
+								<div class="middle_so" >
 									<label>
-										<input type="radio" name="radio_sys" v-model="model.primera_vez"  value="si" checked/>
+										<input type="radio" name="radio_tipo" v-model="model.tipo_productor"  value="productor" checked/>
 										<div class="back-end box">
-											<span>Si</span>
+											<span>Productor</span>
 										</div>
 									</label>
 									<label>
-										<input type="radio" name="radio_sys" v-model="model.primera_vez" value="no" />
-										<div class="home box">
-											<span>No</span>
+										<input type="radio" name="radio_tipo" v-model="model.tipo_productor" value="industrial" />
+										<div class="back-end box">
+											<span>Industrial</span>
+										</div>
+									</label>
+									<label>
+										<input type="radio" name="radio_tipo" v-model="model.tipo_productor" value="comerciante" />
+										<div class="back-end box">
+											<span>Comerciante</span>
 										</div>
 									</label>
 								</div>
 								<br>
 								<br>
+								<br>
+
+
+								<transition
+									name="custom-classes-transition"
+									enter-active-class="animated fadeInDownBig"
+									leave-active-class="animated bounceOut"
+								>
+									<div v-show="model.tipo_productor=='productor'">
+										<h4>Primera vez que utiliza este formulario?</h4> <i class="ti-info-alt" id="element1" ></i>
+										<div class="middle_sis" >
+
+											<label>
+												<input type="radio" name="radio_sys" v-model="model.primera_vez"  value="si" checked/>
+												<div class="back-end box">
+													<span>Si</span>
+												</div>
+											</label>
+											<label>
+												<input type="radio" name="radio_sys" v-model="model.primera_vez" value="no" />
+												<div class="home box">
+													<span>No</span>
+												</div>
+											</label>
+										</div>
+										<br>
+										<br>
+
 								<transition
 									name="custom-classes-transition"
 									enter-active-class="animated fadeInDownBig"
@@ -272,6 +321,7 @@
 									</div>
 								</transition>
 							</div>
+						</div>
 						</transition>
 						<transition
 							name="custom-classes-transition"
@@ -428,11 +478,11 @@
 							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el email donde recibirá notificaciones</small></p>
 
 							</div>
-							<div class="form-floating col-sm">
+							<!-- <div class="form-floating col-sm">
 							  <input type="text" class="form-control" id="domicilio_prod" placeholder="Domicilio" v-model="model.streetName">
 							  <label for="domicilio_prod">Domicilio</label>
 							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el domicilio actual de la persona, identificada como productor.</small></p>
-							</div>	
+							</div>	 -->
 						</div>
 						<hr>
 						<div class="row">
@@ -468,7 +518,7 @@
 						<br>
 					</tab-content>
 					<!-- Tab Inscrip N° 3 Domicilio Legal -->
-					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Domicilio Legal"  icon="ti-settings" :before-change="validateSecondTab">
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Domicilio Legal en la Provincia"  icon="ti-settings" :before-change="validateSecondTab">
 						<br>
 						<div class="row">
 						    <div class="d-grid gap-2 col-4 mx-auto">
@@ -610,7 +660,7 @@
 						<br>
 					</tab-content>
 					<!-- Tab Inscrip N° 4 Domicilio Administrativo -->
-					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Domicilio Administrativo"  icon="ti-settings" :before-change="validateAdministrativoTab">
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Domicilio de Administración Central"  icon="ti-settings" :before-change="validateAdministrativoTab">
 						<br>
 						<div class="row">
 						    <div class="d-grid gap-2 col-4 mx-auto">
@@ -752,7 +802,7 @@
 						<br>
 					</tab-content>
 					<!-- Tab Inscrip N° 5 Datos Mina 1 -->
-					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Datos Mina 1" icon="ti-pencil-alt"  :before-change="validateDatosMinaUno">
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" v-bind:title="'Datos de '+ model.mina_cantera +' Parte 1' " icon="ti-pencil-alt"  :before-change="validateDatosMinaUno">
 						<br>
 						<div class="row">
 						    <div class="d-grid gap-2 col-4 mx-auto">
@@ -862,7 +912,7 @@
 									</div>
 								</label>
 								<label>
-									<input type="radio" name="radio_categoria"  v-model="model.categoria_m_c" value="segunda"  v-on:change="cambio_categoria"/>
+									<input type="radio" name="radio_categoria"  v-model="model.categoria_m_c"  value="segunda"  v-on:change="cambio_categoria"/>
 									<div class="personal box">
 										<span>2°</span>
 									</div>
@@ -936,7 +986,7 @@
 						</div>
 					</tab-content>
 					<!-- Tab Inscrip N° 6 Datos Minas 2 -->
-					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Datos Mina 2" icon="ti-location-pin">
+					<tab-content v-if="formulario_seleccionado=='inscripcion'"  v-bind:title="'Datos de '+ model.mina_cantera +' Parte 2' " icon="ti-location-pin">
 						<div class="panel-body">
 							<br>
 							<div class="row">
@@ -1018,12 +1068,12 @@
 							<br>
 							<div class="row">
 									<div class="col-2">
-										<h4>Posee Arrendatario?</h4>
+										<h4>Usted es Arrendatario?</h4>
 									</div>
 									<div class="col-4">
 										<div class="row">
 											<div class="col-4">
-												<span> <font color="red">  No posee Arrendatario</font></span>
+												<span> <font color="red">  No soy arrendatario</font></span>
 											</div>
 											<div class="col-2">
 												<label class="switch">
@@ -1032,7 +1082,7 @@
 												</label>
 											</div>
 											<div class="col-4">
-												<span ><font color="green"> Si posee Arrendatario </font></span>
+												<span ><font color="green"> Si, soy Arrendatario </font></span>
 											</div>
 										</div>
 									</div>
@@ -1041,12 +1091,12 @@
 							<br>
 							<div class="row">
 									<div class="col-2">
-										<h4>Posee Concesionario?</h4>
+										<h4>Usted es Concesionario?</h4>
 									</div>
 									<div class="col-4">
 										<div class="row">
 											<div class="col-4">
-												<span> <font color="red"> No posee Concecionario </font></span>
+												<span> <font color="red"> No soy concecionario </font></span>
 											</div>
 											<div class="col-2">
 												<label class="switch">
@@ -1055,7 +1105,7 @@
 												</label>
 											</div>
 											<div class="col-4">
-												<span ><font color="green">Si posee Concecionario </font></span>
+												<span ><font color="green">Si, soy concecionario </font></span>
 											</div>
 										</div>
 									</div>
@@ -1069,7 +1119,7 @@
 									<div class="col-4">
 										<div class="row">
 											<div class="col-4">
-												<span> <font color="red">  No posee Otros </font></span>
+												<span> <font color="red">  No Otros </font></span>
 											</div>
 											<div class="col-2">
 												<label class="switch">
@@ -1156,14 +1206,14 @@
 							<hr>
 							<div class="row">
 								<div class="col-md-6">
-									<label>Fecha Alta DIA</label>
+									<label>Fecha de notificación de DIA</label>
 									<div class="input-group date" data-provide="datepicker">
 										<input type="date" class="form-control" placeholder="Select Date"  v-model="model.fecha_incio"/>
 									</div>
 									<p v-show="model.mostrar_info_seis"><small class="text-muted">Es la fecha en la cual el DIA comienza o comenzó a tener de ser válido.</small></p>
 								</div>
 								<div class="col-md-6">
-									<label>Fecha Vebcimiento DIA</label>
+									<label>Fecha Vencimiento DIA</label>
 									<div class="input-group date" data-provide="datepicker">
 										<input type="date" class="form-control" placeholder="Select Date" v-model="model.fecha_fin" />
 									</div>
@@ -1173,7 +1223,7 @@
 						</div>
 					</tab-content>
 					<!-- Tab Inscrip N° 7 Localidad Mina -->
-					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Ubicación Mina" icon="ti-location-pin">
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" v-bind:title="'Ubicación de '+ model.mina_cantera" icon="ti-location-pin">
 						<div class="panel-body">
 							<br>
 							<div class="row">
@@ -1365,7 +1415,7 @@
 											<span><font color="orange">Email verficado:</font> @{{email_confirmado}}</span>
 											<p>Datos personales</p>
 											<span> <font color="green">Razon Social:</font>  @{{model.lastName}}  <font color="green">Email:</font> @{{model.email}}</span>
-											<span><font color="green">Cuit:</font> @{{model.cuit}}  <font color="green">tipo_sociedad:</font> @{{model.tipo_sociedad}} <font color="green">Direccion:</font> @{{model.streetName}}</span>
+											<span><font color="green">Cuit:</font> @{{model.cuit}}  <font color="green">tipo_sociedad:</font> @{{model.tipo_sociedad}} </span>
 											<hr>
 											<p>Datos Domicilio Legal</p>
 											<span> <font color="green">Calle:</font>  @{{model.domicilio_legal_calle}}  <font color="green">Número:</font> @{{model.domicilio_legal_calle_numero}}</span>
@@ -1993,7 +2043,7 @@
 						cuit:'{{$cuit}}',
 						phone:'',
 						tipo_sociedad:'Sociedad Secreta',
-						streetName:'{{$domicilio}}',
+						//streetName:'{{$domicilio}}',
 						inscricion_dgr: '',
 						tiene_inscricion_dgr: '',
 						constancia_sociedad: '',
@@ -2001,6 +2051,8 @@
 						departamento: '',
 						correo_enviado_si: false,
 						email_confirmacion: '{{$email}}',
+						tipo_productor: '',
+						//titulo_wizard_mina_cant: '',
 						
 						
 
@@ -2043,7 +2095,7 @@
 						nombre_mina: '',
 						descripcion_mina: '',
 						distrito_minero: '',
-						mina_cantera: '',
+						mina_cantera: 'mina',
 						categoria_m_c: '',
 						numero_expediente: '',
 						plano_inmueble: '',
@@ -3138,8 +3190,8 @@
 							errores += "El tipo de Sociedad no puede estar vacia.\n";
 						if(this.model.email === null)
 							errores += "El email no puede estar vacia.\n";
-						if(this.model.streetName === null)
-							errores += "El domicilio no puede estar vacia.\n";
+						// if(this.model.streetName === null)
+						// 	errores += "El domicilio no puede estar vacia.\n";
 						if(this.model.inscricion_dgr === null)
 							errores += "La Inscripcion a la dgr no puede estar vacia.\n";
 						if(this.model.constancia_sociedad === null)
@@ -3155,8 +3207,8 @@
 							errores += "El tipo de Sociedad no puede estar vacia.\n";
 						if(this.model.email.length < 4  ||  this.model.email.length > 50)
 							errores += "La Email debe tener como mínimo 5 y máximo 50.\n";
-						if(this.model.streetName.length < 4  ||  this.model.streetName.length > 50)
-							errores += "El domicilio debe tener como mínimo 5 y máximo 50.\n";
+						// if(this.model.streetName.length < 4  ||  this.model.streetName.length > 50)
+						// 	errores += "El domicilio debe tener como mínimo 5 y máximo 50.\n";
 						if(errores == '')
 							return true;
 						else
@@ -3217,6 +3269,7 @@
 						//alert("hola. cambio la categoria:" + this.model.categoria_m_c );
 						if(this.model.categoria_m_c === 'primera')
 						{
+							this.model.mina_cantera = 'mina';
 							this.opcionesmineraluno = [
 									'Oro',
 									'Plata',
@@ -3261,6 +3314,7 @@
 						}
 						if(this.model.categoria_m_c === 'segunda')
 						{
+							this.model.mina_cantera = 'mina';
 							this.opcionesmineraluno = [
 								'Arenas Metalíferas',
 								'Piedras Preciosas (en lechos de ríos)',
@@ -3288,6 +3342,7 @@
 						}
 						if(this.model.categoria_m_c === 'tercera')
 						{
+							this.model.mina_cantera = 'cantera';
 							this.opcionesmineraluno = [
 							'Piedras Calizas',
 							'Calcáreas',
@@ -3319,7 +3374,8 @@
 							'Serpentina',
 							'Piedra Sapo',
 							'Loes',
-							'Arcillas Comunes'
+							'Arcillas Comunes',
+							'Otro'
 								];
 						}
 					},
@@ -3353,9 +3409,10 @@
 								num_productor: this.model.num_productor,
 								tipo_sociedad: this.model.tipo_sociedad,
 								email: this.model.email,
-								streetName: this.model.streetName,
+								//streetName: this.model.streetName,
 								inscricion_dgr: this.model.inscricion_dgr,
-								constancia_sociedad: this.model.constancia_sociedad
+								constancia_sociedad: this.model.constancia_sociedad,
+								tipo_productor: this.model.tipo_productor,
 							})
 							.then(function (response) {
 								console.log(response.data);
@@ -3696,10 +3753,10 @@
 									{
 										self.model.email = response.data.email;
 									}
-									if(response.data.domicilio_prod !== null)
-									{
-										self.model.streetName = response.data.domicilio_prod;
-									}
+									// if(response.data.domicilio_prod !== null)
+									// {
+									// 	self.model.streetName = response.data.domicilio_prod;
+									// }
 									if(response.data.inscripciondgr !== null)
 									{
 										self.model.tiene_inscricion_dgr = 'http://localhost:8000/'+ response.data.inscripciondgr;
@@ -4145,10 +4202,10 @@
 											{
 												self.model.email = response.data.email;
 											}
-											if(response.data.domicilio_prod !== null)
-											{
-												self.model.streetName = response.data.domicilio_prod;
-											}
+											// if(response.data.domicilio_prod !== null)
+											// {
+											// 	self.model.streetName = response.data.domicilio_prod;
+											// }
 											if(response.data.inscripciondgr !== null)
 											{
 												self.model.tiene_inscricion_dgr = 'http://localhost:8000/'+ response.data.inscripciondgr;
