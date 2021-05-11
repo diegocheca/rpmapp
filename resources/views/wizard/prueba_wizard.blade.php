@@ -852,13 +852,13 @@
 							<p v-show="model.mostrar_info_cinco"><small class="text-muted">Debe seleccionar la opcion que usted esta registrando, ya sea mina o cantera.</small></p>
 							<div class="middle_m_c">
 								<label>
-									<input type="radio" name="radio_m_c" v-model="model.mina_cantera" value="mina" checked/>
+									<input type="radio" name="radio_m_c" v-model="model.mina_cantera" value="mina" v-on:change="cambio_mina_cantera_select"  checked/>
 									<div class="mas box">
 										<span>Mina</span>
 									</div>
 								</label>
 								<label>
-									<input type="radio" name="radio_m_c" v-model="model.mina_cantera" value="cantera"/>
+									<input type="radio" name="radio_m_c" v-model="model.mina_cantera" value="cantera" v-on:change="cambio_mina_cantera_select" />
 									<div class="modficacion box">
 										<span>Cantera</span>
 									</div>
@@ -1113,25 +1113,58 @@
 							<br>
 							<br>
 							<div class="row">
-									<div class="col-2">
-										<h4>Otros?</h4>
-									</div>
-									<div class="col-4">
-										<div class="row">
-											<div class="col-4">
-												<span> <font color="red">  No Otros </font></span>
-											</div>
-											<div class="col-2">
-												<label class="switch">
-													<input type="checkbox" v-model="model.otros">
-													<span class="slider round"></span>
-												</label>
-											</div>
-											<div class="col-4">
-												<span><font color="green">Si posee Otros </font></span>
-											</div>
+								<div class="col-2">
+									<h4>El terreno es propiedad del estado?</h4>
+								</div>
+								<div class="col-4">
+									<div class="row">
+										<div class="col-4">
+											<span> <font color="red">  No  </font></span>
+										</div>
+										<div class="col-2">
+											<label class="switch">
+												<input type="checkbox" v-model="model.propiedad_del_estado">
+												<span class="slider round"></span>
+											</label>
+										</div>
+										<div class="col-4">
+											<span><font color="green">Si </font></span>
 										</div>
 									</div>
+								</div>
+								<div class="col-4 col-md-6" v-show="model.propiedad_del_estado">
+									<label>Consesion minera:</label>
+									<input type="text" class="form-control" name="concesion_minera" id="concesion_minera" v-model="model.caracter_otros"/>
+									<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben aclara cual es el caracter que invoca y usted denomina como otro.</small></p>
+								</div>
+							</div>
+							<br>
+							<br>
+							<div class="row">
+								<div class="col-2">
+									<h4>Otros?</h4>
+								</div>
+								<div class="col-4">
+									<div class="row">
+										<div class="col-4">
+											<span> <font color="red">  No Otros </font></span>
+										</div>
+										<div class="col-2">
+											<label class="switch">
+												<input type="checkbox" v-model="model.otros">
+												<span class="slider round"></span>
+											</label>
+										</div>
+										<div class="col-4">
+											<span><font color="green">Si posee Otros </font></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-4 col-md-6" v-show="model.otros">
+									<label>Aclare otro:</label>
+									<input type="text" class="form-control" name="otros_caracter_que_invoca" id="otros_caracter_que_invoca" v-model="model.caracter_otros"/>
+									<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben aclara cual es el caracter que invoca y usted denomina como otro.</small></p>
+								</div>
 							</div>
 							<br>
 							<div class="row" v-if="model.categoria_m_c == 'tercera'">
@@ -2106,7 +2139,9 @@
 						owner: false,
 						arrendatario: false,
 						concesionario: false,
+						propiedad_del_estado: false,
 						otros: false,
+						caracter_otros: '',
 						tiene_contrato: '',
 						concesion: '',
 						tiene_concesion: '',
@@ -3263,6 +3298,18 @@
 						let errores = '';
 						//requierd
 						return true;
+					},
+					
+					cambio_mina_cantera_select: function(){
+						if(this.model.mina_cantera === 'mina')
+						{
+							if(this.model.categoria_m_c === 'tercera')
+								this.model.categoria_m_c = 'segunda'; // no puede haber una mina con 3° categoria
+						}
+						else{ // es cantera
+							if(this.model.categoria_m_c === 'primera' || this.model.categoria_m_c === 'segunda')
+								this.model.categoria_m_c = 'tercera'; // no puede haber una mina con 3° categoria
+						}
 					},
 					
 					cambio_categoria: function(){
