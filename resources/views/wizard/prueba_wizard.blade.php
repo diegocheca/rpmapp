@@ -50,7 +50,7 @@
 								</div>
 								<div class="col-6 col-md-6">
 									<h2> Bienvenido al Formulario de Alta de Productores Mineros de San Juan</h2>
-									<p>En esta página, usted podrá inscribirse como productor minero. No es un proceso dificil, te ayudaremos en cada paso para poder completar el formulario lo antes posible.</p>
+									<p>En esta página, usted podrá inscribirse como productor minero (Ley N° 494-M). No es un proceso dificil, te ayudaremos en cada paso para poder completar el formulario lo antes posible.</p>
 									<p><strong>Importante:</strong>
 										<ul>
 											<li> * Tener documentación en formato digital</li>
@@ -85,7 +85,7 @@
 										</ul>
 									</p>
 									<br>
-									<p> Ante cualquier duda, te podes ayudar, no dudes en comunicarte.</p>
+									<p> Ante cualquier duda, te podemos ayudar, no dudes en comunicarte. Mediante la <a href="#">pagina web</a>  o llamando </p>
 								</div>
 						</div>
 						<br>
@@ -103,25 +103,25 @@
 							</label>
 							<label>
 								<input type="radio" name="radio" v-model="formulario_seleccionado" value="editar_inscripcion"/>
-								<div class="editarins box">
+								<div class="editar box">
 									<span>Editar Inscripción</span>
 								</div>
 							</label>
 							<label>
 								<input type="radio" name="radio" v-model="formulario_seleccionado" value="reinscripcion"/>
-								<div class="resins box">
+								<div class="reinsc box">
 									<span>Reincripcion</span>
 								</div>
 							</label>
 							<label>
 								<input type="radio" name="radio" v-model="formulario_seleccionado" value="impresiones"/>
-								<div class="resins box">
+								<div class="impre box">
 									<span>Impresión Constancias</span>
 								</div>
 							</label>
 							<label>
 								<input type="radio" name="radio" v-model="formulario_seleccionado" value="transito"/>
-								<div class="resins box">
+								<div class="trans box">
 									<span>Guia de Tránsito</span>
 								</div>
 							</label>
@@ -134,17 +134,17 @@
 							leave-active-class="animated bounceOut"
 						>
 							<div v-show="formulario_seleccionado=='inscripcion'">
-								<h4>Que tipo de productor es usted?</h4>
+								<h4>En que registro solicita su inscripción?</h4>
 								<div class="middle_so" >
 									<label>
 										<input type="radio" name="radio_tipo" v-model="model.tipo_productor"  value="productor" checked/>
-										<div class="back-end box">
+										<div class="product box">
 											<span>Productor</span>
 										</div>
 									</label>
 									<label>
 										<input type="radio" name="radio_tipo" v-model="model.tipo_productor" value="industrial" />
-										<div class="back-end box">
+										<div class="build box">
 											<span>Industrial</span>
 										</div>
 									</label>
@@ -171,7 +171,7 @@
 
 											<label>
 												<input type="radio" name="radio_sys" v-model="model.primera_vez"  value="si" checked/>
-												<div class="back-end box">
+												<div class=" box">
 													<span>Si</span>
 												</div>
 											</label>
@@ -427,12 +427,12 @@
 								</div>
 								<div class="col-6 col-md-6">
 									<h4> Paso 2: Datos del Productor</h4>
-									<p class="lead">En esta página, usted deberá completar información referiada al productor minero. Esta infomación es necesaria por: .</p>
+									<p class="lead">En esta página, usted deberá completar información referiada al productor minero (Ley N° 494-M). Esta infomación es necesaria por: .</p>
 									<p class="lead"><strong>Importante:</strong>
 										<ul>
 											<li> * Razon Social</li>
 											<li> * Cuit</li>
-											<li> * Numero de Productor</li>
+											<!-- <li> * Numero de Productor</li> -->
 											<li> * Tipo de Sociedad</li>
 											<li> * Email</li>
 											<li> * Domicilio</li>
@@ -441,7 +441,7 @@
 										</ul>
 									</p>
 									<br>
-									<p class="lead"> Ante cualquier duda, te podes ayudar, no dudes en comunicarte.</p>
+									<p class="lead"> Ante cualquier duda, te podemos ayudar, no dudes en comunicarte.</p>
 								</div>
 							</div>
 							<br>
@@ -457,13 +457,13 @@
 							<div class="form-floating col-sm">
 							  <input type="text" class="form-control" id="cuit" placeholder="CUIT" v-model="model.cuit">
 							  <label for="cuit">CUIT</label>
-							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el numero de CUIT asignado por la AFIP.</small></p>
+							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el número de CUIT asignado por la AFIP.</small></p>
 							</div>	
-							<div class="form-floating col-sm">
+							<!-- <div class="form-floating col-sm">
 							  <input type="text" class="form-control" id="num_prod" placeholder="Numero Productor" v-model="model.num_productor">
 							  <label for="num_prod">Numero Productor</label>
 							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el numero de productor otorgado por el ministerio de mineria.</small></p>
-							</div>	
+							</div>	 -->
 						</div>
 						<hr>
 						<div class="row">
@@ -653,14 +653,14 @@
 							<div class="form-floating col-sm">
 							  <input type="text" class="form-control" id="otro_legal" placeholder="Otra Locación" v-model="model.domicilio_legal_otro">
 							  <label for="otro_legal">Otro</label>
-							  <p v-show="model.mostrar_info_tres"><small class="text-muted">Este campos es para el caso de que considere necesario brindar algún dato extra aporte más precisión de la ubicación del domicilio legal.</small></p>
+							  <p v-show="model.mostrar_info_tres"><small class="text-muted">Este campo es para el caso de que considere necesario brindar algún dato adicional que aporte más precisión en la ubicación del domicilio de la Administración principal.</small></p>
 							</div>	
 						</div>
 						<br>
 						<br>
 					</tab-content>
 					<!-- Tab Inscrip N° 4 Domicilio Administrativo -->
-					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Domicilio de Administración Central"  icon="ti-settings" :before-change="validateAdministrativoTab">
+					<tab-content v-if="formulario_seleccionado=='inscripcion'" title="Domicilio de la Administración Principal"  icon="ti-settings" :before-change="validateAdministrativoTab">
 						<br>
 						<div class="row">
 						    <div class="d-grid gap-2 col-4 mx-auto">
@@ -1114,7 +1114,7 @@
 							<br>
 							<div class="row">
 								<div class="col-2">
-									<h4>El terreno es propiedad del estado?</h4>
+									<h4>Las sustancias son de aprovechamiento común?</h4>
 								</div>
 								<div class="col-4">
 									<div class="row">
@@ -1133,7 +1133,7 @@
 									</div>
 								</div>
 								<div class="col-4 col-md-6" v-show="model.propiedad_del_estado">
-									<label>Consesion minera:</label>
+									<label>Concesión minera:</label>
 									<input type="text" class="form-control" name="concesion_minera" id="concesion_minera" v-model="model.caracter_otros"/>
 									<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben aclara cual es el caracter que invoca y usted denomina como otro.</small></p>
 								</div>
@@ -1204,7 +1204,7 @@
 							<hr>
 							<div class="row">
 								<div class="col">
-									<label>IIA</label>
+									<label>Constancia de Presentación IIA</label>
 									<input type="file" class="form-control" multiple="multiple" name="iia" id="iia"  v-model="model.iia" v-on:change="enviar_iia" />
 									<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la IIA. Para todas la categorias. El archivo debe estar en formato PDF.</small></p>
 								</div>
@@ -1215,7 +1215,7 @@
 							<hr>
 							<div class="row">
 								<div class="col-12 col-md-6">
-									<label>DIA</label>
+									<label>Resolución DIA</label>
 									<input type="file" class="form-control" multiple="multiple" name="dia" id="dia"  v-model="model.dia" v-on:change="enviar_dia" />
 									<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la DIA. Para todas la categorias. El archivo debe estar en formato PDF.</small></p>
 								</div>
@@ -1604,7 +1604,7 @@
 							<h4>Labores desarrolladas:</h4>
 							<div class="row">
 									<div class="col-2">
-										<h4>Usted desarrolla prospección?</h4>
+										<h4>prospección?</h4>
 									</div>
 									<div class="col-4">
 										<div class="row">
@@ -1627,7 +1627,7 @@
 							<br>
 							<div class="row">
 									<div class="col-2">
-										<h4>Usted desarrolla?</h4>
+										<h4>desarrollo?</h4>
 									</div>
 									<div class="col-4">
 										<div class="row">
@@ -1650,7 +1650,7 @@
 							<br>
 							<div class="row">
 									<div class="col-2">
-										<h4>Usted hace explotación?</h4>
+										<h4>explotación?</h4>
 									</div>
 									<div class="col-4">
 										<div class="row">
@@ -1685,7 +1685,7 @@
 									<div class="row">
 										<div class="col-1">@{{index+1}}</div>
 										<div class="col-2">
-											<label class="typo__label">Mineral Explotado</label>
+											<label class="typo__label">Producto Extraído</label>
 											<multiselect 
 												v-model="producto.id_mineral" 
 												:options="opcionesmineraluno" 
@@ -1719,18 +1719,25 @@
 											</multiselect>
 										</div>
 										<div class="col-2">
-											<span>Unidades Producidas:</span> 
+											<span>Producción (indicar unidades)*:</span> 
 											<input type="text" class="form-control" name="unidades_producidas" id="unidades_producidas"  v-model="producto.unidades" maxlength="20">
-											<!-- reinscripcion_data
-											mostrar_info_paso_dos -->
+										</div>
+										<div class="col-1">
+											<span>Unidades:</span> 
+											<select id="select_unidades" class="form-control" name="select_unidades">
+												<option value="tn" selected>Toneladas</option>
+												<option value="m3">Mts 3</option>
+												<option value="etc">etc</option>
+											</select>
+											
 										</div>
 										<div class="col-2">
-											<span>Precio de Venta:</span> 
+											<span>Precio de Venta (en $):</span> 
 											<input type="text" class="form-control" name="precio_vta" id="precio_vta"  v-model="producto.precio" maxlength="20">
 											<!-- reinscripcion_data
 											mostrar_info_paso_dos -->
 										</div>
-										<div class="col-3">
+										<div class="col-2">
 											<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_producto(index)"><i class="ti-trash"></i> Eliminar</button>
 										</div>
 										<br>
@@ -1739,31 +1746,86 @@
 								</li>
 							</ul>
 						</div>
+						<div class="alert alert-warning col-8" role="alert">
+							<span>Atención: si la producción extraída o parte de esta se destina a plantas de tratamiento de la misma empresa, deberá llenar plantilla de Industrial Minero (formulario 06).</span>
+						</div>
 						
 						<div class="row">
 							<div class="col-12 col-md-8"><h3>Destino de la Producción</h3></div>
 							<div class="col-6 col-md-4"><button class="btn btn-outline-success" @click="agregar_destino()"><i class="ti-plus"></i> Agregar Destino</button></div>
 						</div>
-						<div class="row">
+						
+						
+						<!-- <div class="row">
 							<ul class="list" style="list-style: none;">
 								<li v-for="(destino, index) in destinos">
 									<br>
 									<div class="row">
 										<div class="col-1">@{{index+1}}</div>
 										<div class="col-2">
-											<span>Nom Empresa:</span> 
+											<span>Producto Vendido:</span> 
+											<input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa"  v-model="destino.nombre_emp" maxlength="50">
+										</div>
+										<div class="col-2">
+											<span>Nombre Empresa Compradora:</span> 
+											<input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa"  v-model="destino.nombre_emp" maxlength="50">
+										</div>
+										<div class="col-2">
+											<span>Dirrección empresa:</span> 
+											<input type="text" class="form-control" name="direccion_empresa" id="direccion_empresa"  v-model="destino.direccion" maxlength="100">
+											
+										</div>
+										<div class="col-2">
+											<span>Actividad:</span> 
+											<input type="text" class="form-control" name="actividad_que_desarrolla" id="actividad_que_desarrolla"  v-model="destino.actividad" maxlength="80">
+										</div>
+										<div class="col-3">
+											<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_destino(index)"><i class="ti-trash"></i> Eliminar</button>
+										</div>
+										<br>
+									</div>
+									<hr><br>
+								</li>
+							</ul>
+						</div> -->
+						<div class="row">
+							<ul class="list" style="list-style: none;">
+								<li v-for="(destino, index) in productos">
+									<br>
+									<div class="row">
+										<div class="col-1">@{{index+1}}</div>
+										<div class="col-2">
+											<label class="typo__label">Producto Extraído</label>
+											<multiselect 
+												v-model="destino.id_mineral" 
+												:options="opcionesmineraluno" 
+												:multiple="false" 
+												:close-on-select="true" 
+												:clear-on-select="false" 
+												:hide-selected="false" 
+												:preserve-search="true" 
+												placeholder="Seleccion Mineral" 
+												:preselect-first="false"
+												id="prod_minerales_id"
+												disabled
+												@select="onSelectnuevo(index)"
+											>
+											</multiselect>
+										</div>
+										<div class="col-2">
+											<span>Nombre Empresa Compradora:</span> 
 											<input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa"  v-model="destino.nombre_emp" maxlength="50">
 											<!-- reinscripcion_data
 											mostrar_info_paso_dos -->
 										</div>
 										<div class="col-2">
-											<span>Dir empresa:</span> 
+											<span>Dirrección empresa Compradora:</span> 
 											<input type="text" class="form-control" name="direccion_empresa" id="direccion_empresa"  v-model="destino.direccion" maxlength="100">
 											<!-- reinscripcion_data
 											mostrar_info_paso_dos -->
 										</div>
 										<div class="col-2">
-											<span>Actividad que des:</span> 
+											<span>Actividad:</span> 
 											<input type="text" class="form-control" name="actividad_que_desarrolla" id="actividad_que_desarrolla"  v-model="destino.actividad" maxlength="80">
 											<!-- reinscripcion_data
 											mostrar_info_paso_dos -->
@@ -1779,6 +1841,9 @@
 						</div>
 						<br>
 						<br>
+						<div class="row">
+							<div class="col-12 col-md-8"><h3>Mercado (indicar en que mercados vende su producción)</h3></div>
+						</div>
 						<div class="row">
 							<div class="form-floating col-sm">
 							  <input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov">
@@ -1799,6 +1864,9 @@
 						<hr>
 						<br>
 						<br>
+						<div class="row">
+							<div class="col-12 col-md-8"><h3>Personal Ocupado</h3></div>
+						</div>
 						<div class="row">
 							<div class="form-floating col-sm">
 							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_profesionales" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_prof_y_tec">
@@ -1821,7 +1889,6 @@
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
 							</div>
 						</div>
-						<hr>
 						<br>
 						<br>
 						<div class="row">
@@ -1849,6 +1916,32 @@
 						<hr>
 						<br>
 						<br>
+						<div class="row">
+							<div class="col-12 col-md-8"><h3>Datos de quien completa este formulario</h3></div>
+						</div>
+						<div class="row">
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="nombre_apellido_reinscripcion" name="nombre_apellido_reinscripcion" placeholder="Nombre y Apellido" v-model="reinscripcion_data.nombre_apellido_reinscripcion">
+							  <label for="nombre_apellido_reinscripcion">Nombre y Apellido(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el nombre de quien esta llenando este formulario y quien se entiende, es responsable de los datos cargados.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="number" maxlength="8" class="form-control" id="dni_reinscripcion" name="dni_reinscripcion" placeholder="DNI" v-model="reinscripcion_data.dni_reinscripcion">
+							  <label for="dni_reinscripcion">Dni(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el dni de quien esta llenando este formulario y quien se entiende, es responsable de los datos cargados.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="cargo_empresa_reinscripcion" name="cargo_empresa_reinscripcion" placeholder="Cargo que ocupa dentro de la empresa" v-model="reinscripcion_data.cargo_reinscripcion">
+							  <label for="cargo_empresa_reinscripcion">Cargo en la empresa(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el cargo que ocupa dentro de la empresa a la cual le esta completando este formulario.</small></p>
+							</div>
+						</div>
+						<hr>
+						<br>
+						<br>
+						<div class="alert alert-warning col-6" role="alert">
+							<span>De acuerdo a la legislación vigente toda la información suministrada está amaparada por el SECRETO ESTADÍSTICO .</span>
+						</div>
 					</tab-content>
 				</form-wizard>
 			</div>
@@ -2187,10 +2280,14 @@
 						personal_perm_prof_y_tec: 0,
 						personal_perm_oper_y_obreros: 0,
 						personal_perm_administrativos: 0,
+						personal_perm_otros: 0,
 						personal_tran_prof_y_tec: 0,
 						personal_tran_oper_y_obreros: 0,
 						personal_tran_administrativos: 0,
-						personal_tran_otros: 0
+						personal_tran_otros: 0,
+						nombre_apellido_reinscripcion: '',
+						dni_reinscripcion: '',
+						cargo_reinscripcion: ''
 					},
 					formOptions: {
 						validationErrorClass: "has-error",
@@ -3364,10 +3461,13 @@
 							this.model.mina_cantera = 'mina';
 							this.opcionesmineraluno = [
 								'Arenas Metalíferas',
-								'Piedras Preciosas (en lechos de ríos)',
-								'Aguas Corrientes',
-								'Placeres',
-								'"Desmontes, relevantes y escoriales"',
+								'Piedras Preciosas',
+								// 'en lechos de ríos'
+								// 'Aguas Corrientes',
+								// 'Placeres',
+								'Desmontes',
+								'Relaves',
+								'Escoriales',
 								'Salitres',
 								'Salinas',
 								'Turberas',
@@ -3380,11 +3480,11 @@
 								'Baritina',
 								'Caparrosas',
 								'Grafito',
-								'CaolÃ­n',
+								'Caolí­n',
 								'Sales Alcalinas o Alcalino Terrosas',
 								'Amianto',
 								'Bentonita',
-								'Zeolitas o Minerales Permutantes'
+								'Zeolitas o Minerales Permutantes o Permutíticos'
 								];
 						}
 						if(this.model.categoria_m_c === 'tercera')
