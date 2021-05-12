@@ -168,11 +168,11 @@ class FormAltaProductorController extends Controller
 		$resultado_uno = $email_nuevo->save();
 
 
-		$to_email = "diegochecarelli@gmail.com"; // esto en desarrollo
+		//$to_email = "diegochecarelli@gmail.com"; // esto en desarrollo
 
 		
 		//en produccion, descomentar
-		Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+		Mail::to($request->email)->send(new ValidarEmailProductorPrimeraVez(
 			$request->email,
 			date("Y-m-d H:i:s"),
 			$codigo
