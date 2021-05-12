@@ -1671,6 +1671,29 @@
 							</div>
 							<br>
 							<br>
+							<div class="row">
+									<div class="col-2">
+										<h4>exploración?</h4>
+									</div>
+									<div class="col-4">
+										<div class="row">
+											<div class="col-4">
+												<span> <font color="red"> No  </font></span>
+											</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_exploracion">
+													<span class="slider round"></span>
+												</label>
+											</div>
+											<div class="col-4">
+												<span ><font color="green">Si </font></span>
+											</div>
+										</div>
+									</div>
+							</div>
+							<br>
+							<br>
 							
 						</div>
 						<hr>
@@ -1702,8 +1725,7 @@
 											</multiselect>
 										</div>
 										<div class="col-2">
-											<span>Variedad: </span>
-												<multiselect 
+												<!-- <multiselect 
 												v-model="producto.id_varieadad" 
 												:options="opcionesdevariedad" 
 												:multiple="false" 
@@ -1715,25 +1737,49 @@
 												:preselect-first="false"
 												id="prod_id_varieadad"
 												@select="onSelect"
-											>
-											</multiselect>
+												>
+												</multiselect> -->
+												<label for="variedad_de_mineral_reinscripcion">Variedad de @{{opcionesmineraluno[producto.id_mineral]}} </label>
+												<input type="text" maxlength="50" class="form-control" id="variedad_de_mineral_reinscripcion" placeholder="Variedad" v-model="producto.id_varieadad">
+												<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Debe especificar cual es la variedad del mineral que usted esta extrayendo.</small></p>
 										</div>
 										<div class="col-2">
 											<span>Producción (indicar unidades)*:</span> 
-											<input type="text" class="form-control" name="unidades_producidas" id="unidades_producidas"  v-model="producto.unidades" maxlength="20">
+											<input type="text" class="form-control" name="unidades_producidas" id="unidades_producidas"  v-model="producto.unidades" maxlength="20"> 
 										</div>
+
+										
+
 										<div class="col-1">
-											<span>Unidades:</span> 
-											<select id="select_unidades" class="form-control" name="select_unidades">
-												<option value="tn" selected>Toneladas</option>
-												<option value="m3">Mts 3</option>
-												<option value="etc">etc</option>
-											</select>
+											<div class="row">
+												<span>Unidades:</span> 
+												<select id="select_unidades" class="form-control" name="select_unidades" v-model="producto.unidad_medida">
+													<option value="tn" selected>Toneladas</option>
+													<option value="m3">Mts 3</option>
+													<option value="etc">otros</option>
+												</select>
+											</div>
+											<div class="row" v-show="producto.unidad_medida == 'etc'">
+												<label for="otra_unidad_de_medida">Otro</label>
+												<input type="text" maxlength="50" class="form-control" id="otra_unidad_de_medida" placeholder="Variedad" v-model="producto.otra_unidad_medida">
+												<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Debe especificar la otra unidad de medida que usted esta utilizando.</small></p>
+											</div>
+
 											
 										</div>
 										<div class="col-2">
 											<span>Precio de Venta (en $):</span> 
-											<input type="text" class="form-control" name="precio_vta" id="precio_vta"  v-model="producto.precio" maxlength="20">
+											<!-- <input type="text" class="form-control" name="precio_vta" id="precio_vta"  v-model="producto.precio" maxlength="20"> -->
+											<div class="input-group mb-3">
+											  <div class="input-group-prepend">
+											    <span class="input-group-text">$</span>
+											  </div>
+											  <input type="number" class="form-control" name="precio_vta" id="precio_vta"  v-model="producto.precio"  aria-label="Amount (to the nearest dollar)">
+											  <div class="input-group-append">
+											    <span class="input-group-text">.00</span>
+											  </div>
+											</div>
+
 											<!-- reinscripcion_data
 											mostrar_info_paso_dos -->
 										</div>
@@ -1825,7 +1871,7 @@
 											mostrar_info_paso_dos -->
 										</div>
 										<div class="col-2">
-											<span>Actividad:</span> 
+											<span>Actividad de la empresa Compradora:</span> 
 											<input type="text" class="form-control" name="actividad_que_desarrolla" id="actividad_que_desarrolla"  v-model="destino.actividad" maxlength="80">
 											<!-- reinscripcion_data
 											mostrar_info_paso_dos -->
@@ -1846,20 +1892,58 @@
 						</div>
 						<div class="row">
 							<div class="form-floating col-sm">
-							  <input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov">
-							  <label for="porcentaje_prov">Porcentaje vendido a Provincia (*)</label>
-							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio en  la provincia.</small></p>
+								<div class="row">
+									<div class="col-6">
+										<label for="porcentaje_prov">Porcentaje vendido a Provincia (*)</label>
+									</div>
+									<div class="col-3">
+										<div class="input-group mb-3">
+											<input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov"  v-change="sumar_porcentajes()">
+											<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">%</span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio en  la provincia.</small></p>
+							  	<!-- <input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov"> -->
 							</div>
 							<div class="form-floating col-sm">
-							  <input type="number" min="0" max="100" class="form-control" id="porcentaje_prov_otra" placeholder="Porcentaje a otras Provincias" v-model="reinscripcion_data.porcentaje_otras_prov">
-							  <label for="porcentaje_prov_otra">Porcentaje vendido a otras Provincias (*)</label>
-							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a otras provincias.</small></p>
-							</div>	
+								<div class="row">
+									<div class="col-6">
+							  			<label for="porcentaje_prov_otra">Porcentaje vendido a otras Provincias (*)</label>
+									</div>
+									<div class="col-3">
+										<div class="input-group mb-3">
+											<input type="number" min="0" max="100" class="form-control" id="porcentaje_prov_otra" placeholder="Porcentaje a otras Provincias" v-model="reinscripcion_data.porcentaje_otras_prov"  v-change="sumar_porcentajes()">
+											<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">%</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							  	<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a otras provincias.</small></p>
+							</div>
 							<div class="form-floating col-sm">
-							  <input type="number" min="0" max="100" class="form-control" id="porcentaje_exportado" placeholder="Porcentaje Exportado" v-model="reinscripcion_data.porcentaje_exportado">
-							  <label for="porcentaje_exportado">Porcentaje Exportado (*)</label>
-							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a hacia otro país.</small></p>
-							</div>	
+								<div class="row">
+									<div class="col-6">
+							  			<label for="porcentaje_exportado">Porcentaje Exportado (*)</label>
+									</div>
+									<div class="col-3">
+										<div class="input-group mb-3">
+											<input type="number" min="0" max="100" class="form-control"  id="porcentaje_exportado" placeholder="Porcentaje Exportado" v-model="reinscripcion_data.porcentaje_exportado" v-change="sumar_porcentajes()">
+											<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">%</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							  	<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a hacia otro país.</small></p>
+							</div>
+						</div>
+						<div v-show="reinscripcion_data.validacion_de_suma_porcentajes" class="alert alert-warning col-10" role="alert">
+							<span>Cuidado, los valores de los porcentajes superan la cifra de 100 en base a 100, posiblemente haya cometido un error .</span>
 						</div>
 						<hr>
 						<br>
@@ -1869,22 +1953,22 @@
 						</div>
 						<div class="row">
 							<div class="form-floating col-sm">
-							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_profesionales" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_prof_y_tec">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_profesionales" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_prof_y_tec">
 							  <label for="personal_ocupado_permanentemente_profesionales">Personal Ocupado Permanentemente Profesional  Tecnicos(*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal profesional o técnico que esta siendo contratado.</small></p>
 							</div>
 							<div class="form-floating col-sm">
-							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_o_y_o" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_oper_y_obreros">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_o_y_o" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_oper_y_obreros">
 							  <label for="personal_ocupado_permanentemente_o_y_o">Personal Ocupado Permanentemente Operarios y Obreros (*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal  Operarios y Obreros que esta siendo contratado.</small></p>
 							</div>
 							<div class="form-floating col-sm">
-							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_administrativos" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_administrativos">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_administrativos" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_administrativos">
 							  <label for="personal_ocupado_permanentemente_administrativos">Personal Ocupado Permanentemente Administrativos(*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal Administrativos que esta siendo contratado.</small></p>
 							</div>
 							<div class="form-floating col-sm">
-							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_permanentemente_otros" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_otros">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_otros" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_otros">
 							  <label for="personal_ocupado_permanentemente_otros">Personal Ocupado Permanentemente Otros(*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
 							</div>
@@ -1893,22 +1977,22 @@
 						<br>
 						<div class="row">
 							<div class="form-floating col-sm">
-							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_transitorio_profesionales" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_prof_y_tec">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_profesionales" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_prof_y_tec">
 							  <label for="personal_ocupado_transitorio_profesionales">Personal Ocupado Transitorio Profesional  Tecnicos(*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal profesional o técnico que esta siendo contratado.</small></p>
 							</div>
 							<div class="form-floating col-sm">
-							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_transitorio_o_y_o" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_oper_y_obreros">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_o_y_o" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_oper_y_obreros">
 							  <label for="personal_ocupado_transitorio_o_y_o">Personal Ocupado Transitorio Operarios y Obreros (*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal  Operarios y Obreros que esta siendo contratado.</small></p>
 							</div>
 							<div class="form-floating col-sm">
-							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_transitorio_administrativos" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_administrativos">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_administrativos" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_administrativos">
 							  <label for="personal_ocupado_transitorio_administrativos">Personal Ocupado Transitorio Administrativos(*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal Administrativos que esta siendo contratado.</small></p>
 							</div>
 							<div class="form-floating col-sm">
-							  <input type="text" maxlength="50" class="form-control" id="personal_ocupado_transitorio_otros" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_otros">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_otros" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_otros">
 							  <label for="personal_ocupado_transitorio_otros">Personal Ocupado Transitorio Otros(*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
 							</div>
@@ -1927,7 +2011,7 @@
 							</div>
 							<div class="form-floating col-sm">
 							  <input type="number" maxlength="8" class="form-control" id="dni_reinscripcion" name="dni_reinscripcion" placeholder="DNI" v-model="reinscripcion_data.dni_reinscripcion">
-							  <label for="dni_reinscripcion">Dni(*)</label>
+							  <label for="dni_reinscripcion">Dni (sin puntos)(*)</label>
 							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el dni de quien esta llenando este formulario y quien se entiende, es responsable de los datos cargados.</small></p>
 							</div>
 							<div class="form-floating col-sm">
@@ -2274,9 +2358,11 @@
 						labor_prospeccion: false,
 						labor_desarrollo: false,
 						labor_explotacion:false,
+						labor_exploracion: false,
 						porcentaje_prov: 0,
 						porcentaje_otras_prov: 0,
 						porcentaje_exportado: 0,
+						validacion_de_suma_porcentajes: false,
 						personal_perm_prof_y_tec: 0,
 						personal_perm_oper_y_obreros: 0,
 						personal_perm_administrativos: 0,
@@ -4724,6 +4810,13 @@
 									console.log(error);
 								})
 						}
+					},
+					 sumar_porcentajes: function(){
+						var suma = parseInt(this.reinscripcion_data.porcentaje_prov)  + parseInt(this.reinscripcion_data.porcentaje_otras_prov)  + parseInt(this.reinscripcion_data.porcentaje_exportado) ;
+						if(parseInt(suma) > 100)
+							this.reinscripcion_data.validacion_de_suma_porcentajes = true;
+						else this.reinscripcion_data.validacion_de_suma_porcentajes = false;
+
 					},
 					
 
