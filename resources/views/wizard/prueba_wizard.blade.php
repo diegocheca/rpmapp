@@ -33,6 +33,60 @@
 		<link rel="stylesheet" href="formulario_alta/vue-multiselect.min.css">
 		<link rel="stylesheet" href="formulario_alta/cosas_wizar_uno.css">
 		<link rel="stylesheet" href="formulario_alta/cosas_wizar.css">
+
+
+		<style type="text/css">
+			.card-custom {
+			  overflow: hidden;
+			  min-height: 450px;
+			  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+			}
+
+			.card-custom-img {
+			  height: 200px;
+			  min-height: 200px;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+			  background-position: center;
+			  border-color: inherit;
+			}
+
+			/* First border-left-width setting is a fallback */
+			.card-custom-img::after {
+			  position: absolute;
+			  content: '';
+			  top: 161px;
+			  left: 0;
+			  width: 0;
+			  height: 0;
+			  border-style: solid;
+			  border-top-width: 40px;
+			  border-right-width: 0;
+			  border-bottom-width: 0;
+			  border-left-width: 545px;
+			  border-left-width: calc(575px - 5vw);
+			  border-top-color: transparent;
+			  border-right-color: transparent;
+			  border-bottom-color: transparent;
+			  border-left-color: inherit;
+			}
+
+			.card-custom-avatar img {
+			  border-radius: 50%;
+			  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+			  position: absolute;
+			  top: 100px;
+			  left: 1.25rem;
+			  width: 100px;
+			  height: 100px;
+			}
+			.container {
+			    font-size: 14px;
+			    color: #666666;
+			    font-family: "Open Sans";
+			  }
+
+		</style>
 	</head>
 	<body>
 		<div id="app" style="background-color: white">
@@ -92,6 +146,51 @@
 						<hr style="border-top: 1px dashed green;">
 						<br>
 						<br>
+
+
+
+
+
+
+
+
+
+
+
+						<!-- Copy the content below until next comment >
+				        <div class="card card-custom bg-white border-white border-0">
+				          <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div>
+				          <div class="card-custom-avatar">
+				            <img class="img-fluid" src="http://res.cloudinary.com/d3/image/upload/c_pad,g_center,h_200,q_auto:eco,w_200/bootstrap-logo_u3c8dx.jpg" alt="Avatar" />
+				          </div>
+				          <div class="card-body" style="overflow-y: auto">
+				            <h4 class="card-title">Card title</h4>
+				            <p class="card-text">Card has minimum height set but will expand if more space is needed for card body content. You can use Bootstrap <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">card-decks</a> to align multiple cards nicely in a row.</p>
+				          </div>
+				          <div class="card-footer" style="background: inherit; border-color: inherit;">
+				            <a href="#" class="btn btn-primary">Option</a>
+				            <a href="#" class="btn btn-outline-primary">Other option</a>
+				          </div>
+				        </div>
+				        <!- Copy until here -->
+
+
+				        
+
+							
+
+
+
+
+
+
+
+
+        <br>
+        <br>
+
+
+
 						<div class="row"></div>
 						<h4>Seleccione Tipo de Tramite que desea realizar:</h4> <i class="ti-info-alt" id="element" ></i>
 						<div class="middle">
@@ -926,7 +1025,7 @@
 							</div>
 							<hr>
 							<br>
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-12 col-md-8"><h3>Minerales</h3></div>
 								<div class="col-6 col-md-4"><button class="btn btn-outline-success" @click="agregar_mineral()"><i class="ti-plus"></i> Agregar Mineral</button></div>
 							</div>
@@ -952,6 +1051,18 @@
 													@select="onSelectnuevo(index)"
 												>
 												</multiselect>
+												<br>
+												<br>
+												<div class="row" v-show="mineral.id_mineral == 'Otro'">
+													<div class="col-5">
+		  												<label>Nombre del mineral:</label>
+		  											</div>
+		  											<div class="col-7">
+														<input type="text" maxlength="25" class="form-control" name="otro_nombre_mineral" id="otro_nombre_mineral" v-model="mineral.otro_nombre" />
+														<p v-show="model.mostrar_info_seis"><small class="text-muted">Por favor ingrese el nombre del mineral que no se encuentra en la lista.</small></p>
+													</div>
+												</div>
+
 											</div>
 											<!-- <div class="col-3">
 												<span>Variedad: </span>
@@ -969,9 +1080,9 @@
 													@select="onSelect"
 												>
 												</multiselect>
-											</div> -->
+											</div> ->
 											<div class="col-3">
-												<span>Forma de presentación natural del mineral (no usar abreviaturas):</span> <textarea class="form-control" name="observacion_miniral" v-model="mineral.observacion"></textarea>
+												<span v-show="model.categoria_m_c != 'tercera'">Forma de presentación natural del mineral (no usar abreviaturas):</span> <span  v-show="model.categoria_m_c == 'tercera'">Forma de presentación natural del mineral <strong> (no es obligatorio para canteras)</strong>:</span> <textarea class="form-control" name="observacion_miniral" v-model="mineral.observacion"></textarea>
 											</div>
 											<div class="col">
 												<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_mineral(index)"><i class="ti-trash"></i> Eliminar</button>
@@ -981,8 +1092,114 @@
 										<hr><br>
 									</li>
 								</ul>
-							</div>
+							</div> -->
 								<!-- <pre class="language-json"><code>@{{variedad_material }}  ------ @{{mineral_uno }}</code></pre> -->
+
+								<div class="row">
+							<div class="col-12">
+								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+									<div class="card-custom-avatar" >
+										<img src="{{url('formulario_alta/imagenes/minerals_card.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+									</div>
+									<div class="card-body" >
+										<h4 class="card-title" style="margin-left: 5%">Minerales </h4>
+										<p class="card-text" style="margin-left: 5%">En esta sección usted deberá agregar todos los minerales que tiene pensado explotar en su actividad. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+										<div class="row">
+												<div class="col-6 col-md-10"></div>
+												<div class="col-6 col-md-2"><button class="btn btn-outline-success" @click="agregar_mineral()"><i class="ti-plus"></i> Agregar Mineral</button></div>
+											</div>
+										<br>
+										<br>
+										<div class="row">
+											
+											<div class="row">
+												<ul class="list" style="list-style: none;">
+													<li v-for="(mineral, index) in minerales">
+														<div class="row">
+															<div class="col-12">
+																<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+																	<div class="card-body" style="height: 400px" >
+																		<div class="row">
+																			<div class="col-1">@{{index+1}}°</div>
+																			<div class="col-3">
+																				<label class="typo__label">Mineral Explotado</label>
+																				<multiselect v-if="model.categoria_m_c != 'segunda'" 
+																					v-model="mineral.id_mineral" 
+																					:options="opcionesmineraluno" 
+																					:multiple="false" 
+																					:close-on-select="true" 
+																					:clear-on-select="false" 
+																					:hide-selected="false" 
+																					:preserve-search="true" 
+																					placeholder="Seleccion Mineral" 
+																					:preselect-first="false"
+																					id="minerales_id"
+																					size="4"
+																					@select="onSelectnuevo(index)"
+																				>
+																				</multiselect>
+																				<multiselect v-else
+																					v-model="mineral.id_mineral" 
+																					:options="opcionessegunda_cat" 
+																					:multiple="false" 
+																					:close-on-select="true" 
+																					:clear-on-select="false" 
+																					:hide-selected="false" 
+																					:preserve-search="true" 
+																					placeholder="Seleccion Mineral" 
+																					:preselect-first="false"
+																					id="minerales_id"
+																					size="4"
+																					@select="onSelectnuevo(index)"
+																				>
+																				</multiselect>
+																				<br>
+																				<br>
+																				<div class="row" v-show="mineral.id_mineral == 'Otro'">
+																					<div class="col-5">
+										  												<label>Nombre del mineral:</label>
+										  											</div>
+										  											<div class="col-7">
+																						<input type="text" maxlength="25" class="form-control" name="otro_nombre_mineral" id="otro_nombre_mineral" v-model="mineral.otro_nombre" />
+																						<p v-show="model.mostrar_info_seis"><small class="text-muted">Por favor ingrese el nombre del mineral que no se encuentra en la lista.</small></p>
+																					</div>
+																				</div>
+
+																			</div>
+																			<div class="col-3">
+																				<span v-show="model.categoria_m_c != 'tercera'">Forma de presentación natural del mineral (no usar abreviaturas):</span> <span  v-show="model.categoria_m_c == 'tercera'">Forma de presentación natural del mineral <strong> (no es obligatorio para canteras)</strong>:</span> <textarea class="form-control" name="observacion_miniral" v-model="mineral.observacion"></textarea>
+																			</div>
+																			<div class="col">
+																				<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_mineral(index)"><i class="ti-trash"></i> Eliminar</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<br>
+													</li>
+												</ul>
+											</div>
+											<br>
+											<div class="row"></div>
+											<br>
+											
+
+
+										
+										</div>
+									</div>
+								</div>
+								<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+									<a href="#" class="btn btn-primary">Option</a>
+									<a href="#" class="btn btn-outline-primary">Other option</a>
+								</div> -->
+							</div>
+						</div>
+
+						
+					        
 						</div>
 					</tab-content>
 					<!-- Tab Inscrip N° 6 Datos Minas 2 -->
@@ -1042,134 +1259,162 @@
 								</div>
 							</div> -->
 							<br>
-							<h4>Caracter que invoca:</h4>
 							<div class="row">
-									<div class="col-2">
-										<h4>Usted es el dueño?</h4>
-									</div>
-									<div class="col-4">
-										<div class="row">
-											<div class="col-4">
-												<span> <font color="red">  No soy Dueño </font></span>
-											</div>
-											<div class="col-2">
-												<label class="switch">
-													<input type="checkbox" v-model="model.owner">
-													<span class="slider round"></span>
-												</label>
-											</div>
-											<div class="col-4">
-												<span ><font color="green"> Si, soy dueño   </font></span>
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/caracter_que_invoca_card.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										</div>
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">Caracter que invoca:</h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al caracter que invoca sobre la propiedad. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+											<br>
+											<br>
+											<div class="row">
+												<div class="row" >
+													<div class="col-2">
+														<h4>Usted es el dueño?</h4>
+														</div>
+														<div class="col-4">
+															<div class="row">
+																<div class="col-4">
+																	<span> <font color="red">  No soy Dueño </font></span>
+																</div>
+																<div class="col-2">
+																	<label class="switch">
+																		<input type="checkbox" v-model="model.owner">
+																		<span class="slider round"></span>
+																	</label>
+																</div>
+																<div class="col-4">
+																	<span ><font color="green"> Si, soy dueño   </font></span>
+																</div>
+															</div>
+														</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row" >
+													<div class="col-2">
+														<h4>Usted es Arrendatario?</h4>
+														</div>
+														<div class="col-4">
+															<div class="row">
+																<div class="col-4">
+																	<span> <font color="red">  No soy arrendatario</font></span>
+																</div>
+																<div class="col-2">
+																	<label class="switch">
+																		<input type="checkbox" v-model="model.arrendatario">
+																		<span class="slider round"></span>
+																	</label>
+																</div>
+																<div class="col-4">
+																	<span ><font color="green"> Si, soy Arrendatario </font></span>
+																</div>
+															</div>
+														</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													<div class="col-2">
+														<h4>Usted es Concesionario?</h4>
+													</div>
+													<div class="col-4">
+														<div class="row">
+															<div class="col-4">
+																<span> <font color="red"> No soy Concesionario </font></span>
+															</div>
+															<div class="col-2">
+																<label class="switch">
+																	<input type="checkbox" v-model="model.concesionario">
+																	<span class="slider round"></span>
+																</label>
+															</div>
+															<div class="col-4">
+																<span ><font color="green">Si, soy Concesionario </font></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row" v-if="model.categoria_m_c != 'segunda'">
+													<div class="col-2">
+														<h4>Las sustancias son de aprovechamiento común?</h4>
+													</div>
+													<div class="col-4">
+														<div class="row">
+															<div class="col-4">
+																<span> <font color="red">  No  </font></span>
+															</div>
+															<div class="col-2">
+																<label class="switch">
+																	<input type="checkbox" v-model="model.propiedad_del_estado">
+																	<span class="slider round"></span>
+																</label>
+															</div>
+															<div class="col-4">
+																<span><font color="green">Si </font></span>
+															</div>
+														</div>
+													</div>
+													<div class="col-4 col-md-6" v-show="model.propiedad_del_estado">
+														<label>Concesión minera:</label>
+														<input type="text" class="form-control" name="concesion_minera" id="concesion_minera" v-model="model.caracter_otros"/>
+														<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben aclara cual es el caracter que invoca y usted denomina como otro.</small></p>
+													</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													<div class="col-2">
+														<h4>Otros?</h4>
+													</div>
+													<div class="col-4">
+														<div class="row">
+															<div class="col-4">
+																<span> <font color="red">  No Otros </font></span>
+															</div>
+															<div class="col-2">
+																<label class="switch">
+																	<input type="checkbox" v-model="model.otros">
+																	<span class="slider round"></span>
+																</label>
+															</div>
+															<div class="col-4">
+																<span><font color="green">Si posee Otros </font></span>
+															</div>
+														</div>
+													</div>
+													<div class="col-4 col-md-6" v-show="model.otros">
+														<label>Aclare otro:</label>
+														<input type="text" class="form-control" name="otros_caracter_que_invoca" id="otros_caracter_que_invoca" v-model="model.caracter_otros"/>
+														<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben aclara cual es el caracter que invoca y usted denomina como otro.</small></p>
+													</div>
+												</div>
+												<br>
 											</div>
 										</div>
 									</div>
+									<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+										<a href="#" class="btn btn-primary">Option</a>
+										<a href="#" class="btn btn-outline-primary">Other option</a>
+									</div> -->
+								</div>
 							</div>
+
 							<br>
 							<br>
-							<div class="row">
-									<div class="col-2">
-										<h4>Usted es Arrendatario?</h4>
-									</div>
-									<div class="col-4">
-										<div class="row">
-											<div class="col-4">
-												<span> <font color="red">  No soy arrendatario</font></span>
-											</div>
-											<div class="col-2">
-												<label class="switch">
-													<input type="checkbox" v-model="model.arrendatario">
-													<span class="slider round"></span>
-												</label>
-											</div>
-											<div class="col-4">
-												<span ><font color="green"> Si, soy Arrendatario </font></span>
-											</div>
-										</div>
-									</div>
-							</div>
-							<br>
-							<br>
-							<div class="row">
-									<div class="col-2">
-										<h4>Usted es Concesionario?</h4>
-									</div>
-									<div class="col-4">
-										<div class="row">
-											<div class="col-4">
-												<span> <font color="red"> No soy concecionario </font></span>
-											</div>
-											<div class="col-2">
-												<label class="switch">
-													<input type="checkbox" v-model="model.concesionario">
-													<span class="slider round"></span>
-												</label>
-											</div>
-											<div class="col-4">
-												<span ><font color="green">Si, soy concecionario </font></span>
-											</div>
-										</div>
-									</div>
-							</div>
-							<br>
-							<br>
-							<div class="row">
-								<div class="col-2">
-									<h4>Las sustancias son de aprovechamiento común?</h4>
-								</div>
-								<div class="col-4">
-									<div class="row">
-										<div class="col-4">
-											<span> <font color="red">  No  </font></span>
-										</div>
-										<div class="col-2">
-											<label class="switch">
-												<input type="checkbox" v-model="model.propiedad_del_estado">
-												<span class="slider round"></span>
-											</label>
-										</div>
-										<div class="col-4">
-											<span><font color="green">Si </font></span>
-										</div>
-									</div>
-								</div>
-								<div class="col-4 col-md-6" v-show="model.propiedad_del_estado">
-									<label>Concesión minera:</label>
-									<input type="text" class="form-control" name="concesion_minera" id="concesion_minera" v-model="model.caracter_otros"/>
-									<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben aclara cual es el caracter que invoca y usted denomina como otro.</small></p>
-								</div>
-							</div>
-							<br>
-							<br>
-							<div class="row">
-								<div class="col-2">
-									<h4>Otros?</h4>
-								</div>
-								<div class="col-4">
-									<div class="row">
-										<div class="col-4">
-											<span> <font color="red">  No Otros </font></span>
-										</div>
-										<div class="col-2">
-											<label class="switch">
-												<input type="checkbox" v-model="model.otros">
-												<span class="slider round"></span>
-											</label>
-										</div>
-										<div class="col-4">
-											<span><font color="green">Si posee Otros </font></span>
-										</div>
-									</div>
-								</div>
-								<div class="col-4 col-md-6" v-show="model.otros">
-									<label>Aclare otro:</label>
-									<input type="text" class="form-control" name="otros_caracter_que_invoca" id="otros_caracter_que_invoca" v-model="model.caracter_otros"/>
-									<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben aclara cual es el caracter que invoca y usted denomina como otro.</small></p>
-								</div>
-							</div>
-							<br>
+
 							<div class="row" v-if="model.categoria_m_c == 'tercera'">
 								<div class="col" >
-									<label>Titulo - Contrato - Poseción Veinteañal (Todo en un solo archivo para 3° Categoría)</label>
+									<label>Titulo - Contrato - Pocesión Veinteañal (Todo en un solo archivo para 3° Categoría)</label>
 									<input type="file" class="form-control" multiple="multiple" name="contrato" id="contrato" v-model="model.contrato" v-on:change="enviar_contrato"/>
 									<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe el título de la . El archivo debe estar en formato PDF</small></p>
 								</div>
@@ -1177,8 +1422,11 @@
 									<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_contrato>
 								</div>
 
-							<hr>
+
 							</div>
+							<br>
+							<br>
+
 							<div class="row" v-if="model.categoria_m_c != 'tercera'">
 								<div class="col">
 									<label>Resolución Concesión Minera (Para 1° y 2° Categoría)</label>
@@ -1188,21 +1436,180 @@
 								<div v-show="model.tiene_concesion != ''" class="form-floating col-sm" >
 									<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_concesion>
 								</div>
+							<br>
 
 							<hr>
 							</div>
+							<div class="row" v-show="model.categoria_m_c != 'tercera'">
+								<div class="col-12">
+									<!-- <div class="col">
+										<label>Constancia de Pago de Canon</label>
+										<input type="file" class="form-control" multiple="multiple" name="canon" id="canon" v-model="model.canon" v-on:change="enviar_canon" />
+										<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la Constancia de Pago de Canon. Para todas la categorias. El archivo debe estar en formato PDF.</small></p>
+									</div>
+									<div v-show="model.tiene_canon != ''" class="form-floating col-sm" >
+										<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_canon>
+									</div> -->
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+							          <div class="card-custom-avatar" >
+							            <img src="{{url('formulario_alta/imagenes/canon_minero.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+							          </div>
+							          <div class="card-body" >
+							            <h4 class="card-title" style="margin-left: 5%">Pago de Canon Minero</h4>
+							            <p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos de su boleta de Canon Minero ya pagado. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+							            <br>
+							            <br>
+							            <div class="row">
+							            	<div class="row">
+												<div class="col">
+													<label>Constancia de Pago de Canon</label>
+													<input type="file" class="form-control" multiple="multiple" name="canon" id="canon" v-model="model.canon" v-on:change="enviar_canon" />
+													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la Constancia de Pago de Canon. Para todas la categorias. El archivo debe estar en formato PDF.</small></p>
+												</div>
+												<div v-show="model.tiene_canon != ''" class="form-floating col-sm" >
+													<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_canon>
+												</div>
+											</div>
+											<br>
+											<div class="row"></div>
+											<br>
+											<div class="row">
+												<div class="col-md-6">
+													<label>Fecha de habilitación:</label>
+													<div class="input-group date" data-provide="datepicker">
+														<input type="date" class="form-control" placeholder="Select Date"  v-model="model.canon_fecha_incio"/>
+													</div>
+													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es la fecha en la cual el canon comienza a ser válido.</small></p>
+												</div>
+												<div class="col-md-6">
+													<label>Fecha Fin</label>
+													<div class="input-group date" data-provide="datepicker">
+														<input type="date" class="form-control" placeholder="Select Date" v-model="model.canon_fecha_fin" />
+													</div>
+													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es la fecha en la cual el canon pagado dejará de ser válido.</small></p>
+												</div>
+											</div>
+											<br>
+											<div class="row"></div>
+											<br>
+											<div class="row">
+												<div class="col-md-6">
+													<label>Fecha de pago de Canon</label>
+													<div class="input-group date" data-provide="datepicker">
+														<input type="date" class="form-control" placeholder="Select Date"  v-model="model.canon_fecha_de_pago"/>
+													</div>
+													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es la fecha en la cual el DIA comienza o comenzó a tener de ser válido.</small></p>
+												</div>
+												<div class="col-md-6">
+													<span>Monto pagado(en $):</span> 
+													<!-- <input type="text" class="form-control" name="precio_vta" id="precio_vta"  v-model="producto.precio" maxlength="20"> -->
+													<div class="input-group mb-3">
+													  <div class="input-group-prepend">
+													    <span class="input-group-text">$</span>
+													  </div>
+													  <input type="number" class="form-control" name="canon_monto" id="canon_monto"  v-model="model.canon_monto" >
+													  <div class="input-group-append">
+													    <span class="input-group-text">.00</span>
+													  </div>
+													</div>
+													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el monto total que figura en la boleta pagada.</small></p>
+												</div>
+											</div>
+											<br>
+										</div>
+							        	</div>
+							    	</div>
+						          <!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+						            <a href="#" class="btn btn-primary">Option</a>
+						            <a href="#" class="btn btn-outline-primary">Other option</a>
+						          </div> -->
+				        		</div>
+							</div>
+							<br>
+							<br>
 							<div class="row">
-								<div class="col">
-									<label>Constancia de Pago de Canon</label>
-									<input type="file" class="form-control" multiple="multiple" name="canon" id="canon" v-model="model.canon" v-on:change="enviar_canon" />
-									<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la Constancia de Pago de Canon. Para todas la categorias. El archivo debe estar en formato PDF.</small></p>
-								</div>
-								<div v-show="model.tiene_canon != ''" class="form-floating col-sm" >
-									<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_canon>
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/environment_dia.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										</div>
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">DIA - IIA</h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al impacto ambiental de su actividad minera. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+											<br>
+											<br>
+											<div class="row">
+												<div class="col-12 col-md-6">
+													<label>Constancia de Presentación IIA</label>
+													<input type="file" class="form-control" multiple="multiple" name="iia" id="iia"  v-model="model.iia" v-on:change="enviar_iia" />
+													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la IIA. Para todas la categorias. El archivo debe estar en formato PDF.</small></p>
+												</div>
+												<div v-show="model.tiene_iia != ''" class="form-floating col-sm" >
+													<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_iia>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													<div class="col-12 col-md-6">
+														<label>Resolución DIA</label>
+														<input type="file" class="form-control" multiple="multiple" name="dia" id="dia"  v-model="model.dia" v-on:change="enviar_dia" />
+														<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la DIA. Para todas la categorias. El archivo debe estar en formato PDF.</small></p>
+													</div>
+													<div v-show="model.tiene_dia != ''" class="form-floating col-sm" >
+														<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_dia>
+													</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+
+												<div class="row">
+													<div class="col-12 col-md-6">
+														<label>Acciones a Desarrollar</label>
+														<input type="text" class="form-control" name="acciones_a_desarrollar" id="acciones_a_desarrollar" v-model="model.acciones" />
+														<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben declarar todas las acciones que se llevarán a cabo en el yacimiento.</small></p>
+													</div>
+													<div class="col-12 col-md-6">
+														<label>Actividad</label>
+														<input type="text" class="form-control" name="actividad_a_desarrollar" id="actividad_a_desarrollar" v-model="model.actividades" />
+														<p v-show="model.mostrar_info_seis"><small class="text-muted">Se deben declarar todas las actividades que se llevarán a cabo en el yacimiento.</small></p>
+													</div>
+												</div>
+
+												<br>
+												<div class="row"></div>
+												<br>
+												
+
+												<div class="row">
+													<div class="col-md-6">
+														<label>Fecha de notificación de DIA</label>
+														<div class="input-group date" data-provide="datepicker">
+															<input type="date" class="form-control" placeholder="Select Date"  v-model="model.fecha_incio"/>
+														</div>
+														<p v-show="model.mostrar_info_seis"><small class="text-muted">Es la fecha en la cual el DIA comienza o comenzó a tener de ser válido.</small></p>
+													</div>
+													<div class="col-md-6">
+														<label>Fecha Vencimiento DIA</label>
+														<div class="input-group date" data-provide="datepicker">
+															<input type="date" class="form-control" placeholder="Select Date" v-model="model.fecha_fin" />
+														</div>
+														<p v-show="model.mostrar_info_seis"><small class="text-muted">Es la fecha en la cual el DIA dejará de ser válido.</small></p>
+													</div>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+										<a href="#" class="btn btn-primary">Option</a>
+										<a href="#" class="btn btn-outline-primary">Other option</a>
+									</div> -->
 								</div>
 							</div>
-							<hr>
-							<div class="row">
+
+							<!-- <div class="row">
 								<div class="col">
 									<label>Constancia de Presentación IIA</label>
 									<input type="file" class="form-control" multiple="multiple" name="iia" id="iia"  v-model="model.iia" v-on:change="enviar_iia" />
@@ -1252,7 +1659,9 @@
 									</div>
 									<p v-show="model.mostrar_info_seis"><small class="text-muted">Es la fecha en la cual el DIA dejará de ser válido.</small></p>
 								</div>
-							</div>
+							</div> -->
+							<br>
+							<br>
 						</div>
 					</tab-content>
 					<!-- Tab Inscrip N° 7 Localidad Mina -->
@@ -1627,29 +2036,6 @@
 							<br>
 							<div class="row">
 									<div class="col-2">
-										<h4>desarrollo?</h4>
-									</div>
-									<div class="col-4">
-										<div class="row">
-											<div class="col-4">
-												<span> <font color="red">  No desarrollo</font></span>
-											</div>
-											<div class="col-2">
-												<label class="switch">
-													<input type="checkbox" v-model="reinscripcion_data.labor_desarrollo">
-													<span class="slider round"></span>
-												</label>
-											</div>
-											<div class="col-4">
-												<span ><font color="green"> Si desarrollo </font></span>
-											</div>
-										</div>
-									</div>
-							</div>
-							<br>
-							<br>
-							<div class="row">
-									<div class="col-2">
 										<h4>explotación?</h4>
 									</div>
 									<div class="col-4">
@@ -1665,6 +2051,31 @@
 											</div>
 											<div class="col-4">
 												<span ><font color="green">Si </font></span>
+											</div>
+										</div>
+									</div>
+							</div>
+
+							
+							<br>
+							<br>
+							<div class="row">
+									<div class="col-2">
+										<h4>desarrollo?</h4>
+									</div>
+									<div class="col-4">
+										<div class="row">
+											<div class="col-4">
+												<span> <font color="red">  No desarrollo</font></span>
+											</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_desarrollo">
+													<span class="slider round"></span>
+												</label>
+											</div>
+											<div class="col-4">
+												<span ><font color="green"> Si desarrollo </font></span>
 											</div>
 										</div>
 									</div>
@@ -2156,6 +2567,10 @@
 						'Platino',
 						'Diamante'
 					],
+					opcionessegunda_cat: [
+						'Sustancias de aprovechamiento común' ,
+						'Sustancias que se conceden preferentemente al dueño del suelo',
+					],
 					multiple: true,
 					show: false,
 					variedad_material: '',
@@ -2323,6 +2738,10 @@
 						concesion: '',
 						tiene_concesion: '',
 						tiene_canon: '',
+						canon_fecha_incio: '',
+						canon_fecha_fin: '',
+						canon_fecha_de_pago: '',
+						canon_monto: '',
 						tiene_iia: '',
 						tiene_dia: '',
 						canon: '',
