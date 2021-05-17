@@ -1138,21 +1138,48 @@
 																					@select="onSelectnuevo(index)"
 																				>
 																				</multiselect>
-																				<multiselect v-else
-																					v-model="mineral.id_mineral" 
-																					:options="opcionessegunda_cat" 
-																					:multiple="false" 
-																					:close-on-select="true" 
-																					:clear-on-select="false" 
-																					:hide-selected="false" 
-																					:preserve-search="true" 
-																					placeholder="Seleccion Mineral" 
-																					:preselect-first="false"
-																					id="minerales_id"
-																					size="4"
-																					@select="onSelectnuevo(index)"
-																				>
-																				</multiselect>
+																				<div v-else>
+																					<multiselect 
+																						v-model="mineral.id_mineral" 
+																						:options="opcionessegunda_cat" 
+																						:multiple="false" 
+																						:close-on-select="true" 
+																						:clear-on-select="false" 
+																						:hide-selected="false" 
+																						:preserve-search="true" 
+																						placeholder="Seleccion Mineral" 
+																						:preselect-first="false"
+																						id="minerales_id"
+																						size="4"
+																						@select="onSelectnuevo(index)"
+																					>
+																					</multiselect>
+																					<br>
+																					<label for="select_lugar_mineral">Lugar donde se encuentra:</label>
+																					<select  class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra">
+																						<option value="lecho_de_los_rios">Lechos de los ríos</option>
+																						<option value="aguas_corrientes">Aguas Corrientes</option>
+																						<option value="placeres">Placeres</option>
+																					</select>
+																					<br>
+																					<multiselect 
+																						v-model="mineral.id_mineral" 
+																						:options="opcionessegunda_cat" 
+																						:multiple="false" 
+																						:close-on-select="true" 
+																						:clear-on-select="false" 
+																						:hide-selected="false" 
+																						:preserve-search="true" 
+																						placeholder="Seleccion Mineral" 
+																						:preselect-first="false"
+																						id="minerales_id"
+																						size="4"
+																						@select="onSelectnuevo(index)"
+																					>
+																					</multiselect>
+
+
+																				</div>
 																				<br>
 																				<br>
 																				<div class="row" v-show="mineral.id_mineral == 'Otro'">
@@ -2571,6 +2598,7 @@
 						'Sustancias de aprovechamiento común' ,
 						'Sustancias que se conceden preferentemente al dueño del suelo',
 					],
+
 					multiple: true,
 					show: false,
 					variedad_material: '',
@@ -3967,12 +3995,12 @@
 							this.opcionesmineraluno = [
 								'Arenas Metalíferas',
 								'Piedras Preciosas',
-								// 'en lechos de ríos'
-								// 'Aguas Corrientes',
-								// 'Placeres',
 								'Desmontes',
 								'Relaves',
 								'Escoriales',
+								// 'en lechos de ríos'
+								// 'Aguas Corrientes',
+								// 'Placeres',
 								'Salitres',
 								'Salinas',
 								'Turberas',
