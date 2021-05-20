@@ -178,21 +178,20 @@
 
 
 
-							
 
+
+
+
+
+
+
+						
 
 
 
 
 							
 							<br>
-							
-							
-
-
-
-
-
 
 
 
@@ -558,71 +557,112 @@
 							<br>
 						</transition>
 						<div class="row">
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="razon_social" placeholder="Razon Social" v-model="model.lastName">
-							  <label for="floatingPassword">Razon Social</label>
-							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el nombre con el que identifica ante la AFIP.</small></p>
-							</div>
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="cuit" placeholder="CUIT" v-model="model.cuit">
-							  <label for="cuit">CUIT</label>
-							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el número de CUIT asignado por la AFIP.</small></p>
-							</div>	
-							<!-- <div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="num_prod" placeholder="Numero Productor" v-model="model.num_productor">
-							  <label for="num_prod">Numero Productor</label>
-							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el numero de productor otorgado por el ministerio de mineria.</small></p>
-							</div>	 -->
-						</div>
-						<hr>
-						<div class="row">
-							<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="tipo_sociedad" placeholder="Tipo de Sociedad" v-model="model.tipo_sociedad">
-								  <label for="tipo_sociedad">Tipo de Sociedad</label>
-								  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el tipo de sociedad conformada.</small></p>
-							</div>
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="email" placeholder="Email" v-model="model.email">
-							  <label for="email">Email</label>
-							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el email donde recibirá notificaciones</small></p>
-
-							</div>
-							<!-- <div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="domicilio_prod" placeholder="Domicilio" v-model="model.streetName">
-							  <label for="domicilio_prod">Domicilio</label>
-							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el domicilio actual de la persona, identificada como productor.</small></p>
-							</div>	 -->
-						</div>
-						<hr>
-						<div class="row">
-							<div class="form-floating col-sm">
-								<div class="input-group mb-3">
-									<label class="input-group-text" for="inscripcion_dgr">Inscripcion DGR (*) (*.pdf)</label>
-	  								<input type="file" class="form-control" id="inscripcion_dgr" v-model="model.inscricion_dgr" v-on:change="enviar_inscripcion">
-	  							</div>
-	  							<p v-show="model.tiene_inscricion_dgr != ''"><small class="text-muted">Usted ya cargó un archivo para este campo. En caso de querer reemplazarlo, utilice este campo.</small></p>
-							  <p v-show="model.mostrar_info_dos"><small class="text-muted">Esta constancia puede ser descargada desde la página de la AFIP. Debe ser un archivo PDF</small></p>
-							</div>
-							<div v-show="model.tiene_inscricion_dgr != ''" class="form-floating col-sm" >
-								<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_inscricion_dgr>
-							</div>
 							
 						</div>
 						<br>
-						<hr>
 						<br>
-						<div class="row">
-							<div class="form-floating col-sm">
-								<div class="input-group mb-3">
-									<label class="input-group-text" for="constancia_sociedad">Constancia de socidad (*) (*.pdf)</label>
-	  								<input type="file" class="form-control" id="constancia_sociedad" v-model="model.constancia_sociedad"  v-on:change="enviar_constancia">
-	  							</div>
-	  							<p v-show="model.mostrar_info_dos"><small class="text-muted">Esta constancia puede ser descargada desde la página de la AFIP. Debe ser un archivo PDF</small></p>
-							</div>	
-							<div v-show="model.tiene_constancia_sociedad != ''" class="form-floating col-sm" >
-								<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_constancia_sociedad>
+							
+							<div class="row">
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/datos_personales_card.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										</div>
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">Datos del productor:</h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al productor. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+											<br>
+											<br>
+											<div class="row">
+												<div class="row" >
+													<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="razon_social" placeholder="Razon Social" v-model="model.lastName">
+													  <label for="floatingPassword">Razon Social</label>
+													  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el nombre con el que identifica ante la AFIP.</small></p>
+													</div>
+													<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="cuit" placeholder="CUIT" v-model="model.cuit">
+													  <label for="cuit">CUIT</label>
+													  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el número de CUIT asignado por la AFIP.</small></p>
+													</div>	
+													<!-- <div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="num_prod" placeholder="Numero Productor" v-model="model.num_productor">
+													  <label for="num_prod">Numero Productor</label>
+													  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el numero de productor otorgado por el ministerio de mineria.</small></p>
+													</div>	 -->
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row" >
+													<div class="row">
+														<div class="form-floating col-sm">
+															  <input type="text" class="form-control" id="tipo_sociedad" placeholder="Tipo de Sociedad" v-model="model.tipo_sociedad">
+															  <label for="tipo_sociedad">Tipo de Sociedad</label>
+															  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el tipo de sociedad conformada.</small></p>
+														</div>
+														<div class="form-floating col-sm">
+														  <input type="text" class="form-control" id="email" placeholder="Email" v-model="model.email">
+														  <label for="email">Email</label>
+														  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el email donde recibirá notificaciones</small></p>
+
+														</div>
+														<!-- <div class="form-floating col-sm">
+														  <input type="text" class="form-control" id="domicilio_prod" placeholder="Domicilio" v-model="model.streetName">
+														  <label for="domicilio_prod">Domicilio</label>
+														  <p v-show="model.mostrar_info_dos"><small class="text-muted">Es el domicilio actual de la persona, identificada como productor.</small></p>
+														</div>	 -->
+													</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													<div class="form-floating col-sm">
+														<div class="input-group mb-3">
+															<label class="input-group-text" for="inscripcion_dgr">Inscripcion DGR (*) (*.pdf)</label>
+							  								<input type="file" class="form-control" id="inscripcion_dgr" v-model="model.inscricion_dgr" v-on:change="enviar_inscripcion">
+							  							</div>
+							  							<p v-show="model.tiene_inscricion_dgr != ''"><small class="text-muted">Usted ya cargó un archivo para este campo. En caso de querer reemplazarlo, utilice este campo.</small></p>
+													  <p v-show="model.mostrar_info_dos"><small class="text-muted">Esta constancia puede ser descargada desde la página de la AFIP. Debe ser un archivo PDF</small></p>
+													</div>
+													<div v-show="model.tiene_inscricion_dgr != ''" class="form-floating col-sm" >
+														<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_inscricion_dgr>
+													</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													<div class="form-floating col-sm">
+														<div class="input-group mb-3">
+															<label class="input-group-text" for="constancia_sociedad">Constancia de socidad (*) (*.pdf)</label>
+							  								<input type="file" class="form-control" id="constancia_sociedad" v-model="model.constancia_sociedad"  v-on:change="enviar_constancia">
+							  							</div>
+							  							<p v-show="model.mostrar_info_dos"><small class="text-muted">Esta constancia puede ser descargada desde la página de la AFIP. Debe ser un archivo PDF</small></p>
+													</div>	
+													<div v-show="model.tiene_constancia_sociedad != ''" class="form-floating col-sm" >
+														<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_constancia_sociedad>
+													</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+										<a href="#" class="btn btn-primary">Option</a>
+										<a href="#" class="btn btn-outline-primary">Other option</a>
+									</div> -->
+								</div>
 							</div>
-						</div>
+
+						
 						<br>
 						<br>
 					</tab-content>
@@ -668,103 +708,137 @@
 						</transition>
 						<br>
 						<br>
+						
 						<div class="row">
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="calle_legal" placeholder="Calle Legal" v-model="model.domicilio_legal_calle">
-							  <label for="calle_legal">Calle (*)</label>
-							  <p v-show="model.mostrar_info_tres"><small class="text-muted">Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).</small></p>
-							</div>
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="numero_calle" placeholder="Número calle" v-model="model.domicilio_legal_calle_numero">
-							  <label for="numero_calle">Número de Calle</label>
-							  <p v-show="model.mostrar_info_tres"><small class="text-muted">Es la numeración del domicilio que se esta declarando. Este es un valor númerico.</small></p>
-							</div>	
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="telefono_legal" placeholder="Teléfono" v-model="model.domicilio_legal_telefono">
-							  <label for="domicilio_legal_telefono">Teléfono</label>
-							  <p v-show="model.mostrar_info_tres"><small class="text-muted">Es el numero de productor otorgado por el ministerio de mineria.</small></p>
-							</div>	
-						</div>
-						<hr>
-						<div class="row">
-							<div>
-								<label for="pais_legal">País:</label>
-								<multiselect 
-									v-model="model.domicilio_legal_pais" 
-									:options="opcionespaises_legal" 
-									:multiple="false" 
-									:close-on-select="true" 
-									:clear-on-select="false" 
-									:hide-selected="false" 
-									:preserve-search="true" 
-									placeholder="Seleccione el Pais" 
-									:preselect-first="false"
-									id="pais_legal"
-									@input="cambio_pais_legal"
-									
-								>
-								</multiselect>
-							</div>
-						</div>							
-						<br>
-						<div class="row">
-							<div>
-								<label for="provincia_legal">Provincia:</label>
-								<multiselect 
-									v-model="model.domicilio_legal_provincia" 
-									:options="opcionesprovincias_legal" 
-									:multiple="false" 
-									:close-on-select="true" 
-									:clear-on-select="false" 
-									:hide-selected="false" 
-									:preserve-search="true" 
-									placeholder="Seleccione la Provincia" 
-									:preselect-first="false"
-									id="provincia_legal"
-									@input="cambio_provincia_legal"
-								>
-								</multiselect>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div>
-								<label for="departamento_legal">Departamento:</label>
-								<multiselect 
-									v-model="model.domicilio_legal_departamento" 
-									:options="opcionesdepartamento_legal" 
-									:multiple="false" 
-									:close-on-select="true" 
-									:clear-on-select="false" 
-									:hide-selected="false" 
-									:preserve-search="true" 
-									placeholder="Seleccione el Departamento" 
-									:preselect-first="false"
-									id="departamento_legal"
-									@input="cambio_departamento_legal"
-								>
-								</multiselect>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="localidad_legal" placeholder="Localidad" v-model="model.domicilio_legal_localidad">
-								  <label for="localidad_legal">Localidad</label>
-								  <p v-show="model.mostrar_info_tres"><small class="text-muted">Es la localidad donde se encuentra el domicilio.</small></p>
-							</div>
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="cp_legal" placeholder="Código Postal" v-model="model.domicilio_legal_cp">
-							  <label for="cp_legal">Código Postal</label>
-							  <p v-show="model.mostrar_info_tres"><small class="text-muted">Codigo postal correspondiente al domicilio.</small></p>
+							<div class="col-12">
+								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+									<div class="card-custom-avatar" >
+										<img src="{{url('formulario_alta/imagenes/domicilio-cards.png')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+									</div>
+									<div class="card-body" >
+										<h4 class="card-title" style="margin-left: 5%">Domicilio Legal en la Provincia:</h4>
+										<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al domicilio legal en la provincia de San Juan. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+										<br>
+										<br>
+										<div class="row">
+											<div class="row" >
+												<div class="form-floating col-sm">
+												  <input type="text" class="form-control" id="calle_legal" placeholder="Calle Legal" v-model="model.domicilio_legal_calle">
+												  <label for="calle_legal">Calle (*)</label>
+												  <p v-show="model.mostrar_info_tres"><small class="text-muted">Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).</small></p>
+												</div>
+												<div class="form-floating col-sm">
+												  <input type="text" class="form-control" id="numero_calle" placeholder="Número calle" v-model="model.domicilio_legal_calle_numero">
+												  <label for="numero_calle">Número de Calle</label>
+												  <p v-show="model.mostrar_info_tres"><small class="text-muted">Es la numeración del domicilio que se esta declarando. Este es un valor númerico.</small></p>
+												</div>	
+												<div class="form-floating col-sm">
+												  <input type="text" class="form-control" id="telefono_legal" placeholder="Teléfono" v-model="model.domicilio_legal_telefono">
+												  <label for="domicilio_legal_telefono">Teléfono</label>
+												  <p v-show="model.mostrar_info_tres"><small class="text-muted">Es el numero de productor otorgado por el ministerio de mineria.</small></p>
+												</div>	
+											</div>
+											<br>
+											<div class="row"></div>
+											<br>
+											<div class="row" >
+												<div class="form-floating col-sm">
+													<label for="pais_legal">País:</label>
+													<br>
+													<br>
+													<multiselect 
+														v-model="model.domicilio_legal_pais" 
+														:options="opcionespaises_legal" 
+														:multiple="false" 
+														:close-on-select="true" 
+														:clear-on-select="false" 
+														:hide-selected="false" 
+														:preserve-search="true" 
+														placeholder="Seleccione el Pais" 
+														:preselect-first="false"
+														id="pais_legal"
+														disabled
+														@input="cambio_pais_legal"
+														
+													>
+													</multiselect>
+												</div>
+												<div class="form-floating col-sm">
+													<label for="provincia_legal">Provincia:</label>
+													<br>
+													<br>
+													<multiselect 
+														v-model="model.domicilio_legal_provincia" 
+														:options="opcionesprovincias_legal" 
+														:multiple="false" 
+														:close-on-select="true" 
+														:clear-on-select="false" 
+														:hide-selected="false" 
+														:preserve-search="true" 
+														placeholder="Seleccione la Provincia" 
+														:preselect-first="false"
+														id="provincia_legal"
+														@input="cambio_provincia_legal"
+													>
+													</multiselect>
+												</div>
+												<div class="form-floating col-sm">
+													<label for="departamento_legal">Departamento:</label>
+													<br>
+													<br>
+													<multiselect 
+														v-model="model.domicilio_legal_departamento" 
+														:options="opcionesdepartamento_legal" 
+														:multiple="false" 
+														:close-on-select="true" 
+														:clear-on-select="false" 
+														:hide-selected="false" 
+														:preserve-search="true" 
+														placeholder="Seleccione el Departamento" 
+														:preselect-first="false"
+														id="departamento_legal"
+														@input="cambio_departamento_legal"
+													>
+													</multiselect>
+												</div>
+											</div>
+											
+											
+											<br>
+											<div class="row"></div>
+											<br>
+											
+											
+											<div class="row">
+												<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="localidad_legal" placeholder="Localidad" v-model="model.domicilio_legal_localidad">
+													  <label for="localidad_legal">Localidad</label>
+													  <p v-show="model.mostrar_info_tres"><small class="text-muted">Es la localidad donde se encuentra el domicilio.</small></p>
+												</div>
+												<div class="form-floating col-sm">
+												  <input type="text" class="form-control" id="cp_legal" placeholder="Código Postal" v-model="model.domicilio_legal_cp">
+												  <label for="cp_legal">Código Postal</label>
+												  <p v-show="model.mostrar_info_tres"><small class="text-muted">Codigo postal correspondiente al domicilio.</small></p>
 
+												</div>
+												<div class="form-floating col-sm">
+												  <input type="text" class="form-control" id="otro_legal" placeholder="Otra Locación" v-model="model.domicilio_legal_otro">
+												  <label for="otro_legal">Otro</label>
+												  <p v-show="model.mostrar_info_tres"><small class="text-muted">Este campo es para el caso de que considere necesario brindar algún dato adicional que aporte más precisión en la ubicación del domicilio de la Administración principal.</small></p>
+												</div>	
+											</div>
+											<br>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+									<a href="#" class="btn btn-primary">Option</a>
+									<a href="#" class="btn btn-outline-primary">Other option</a>
+								</div> -->
 							</div>
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="otro_legal" placeholder="Otra Locación" v-model="model.domicilio_legal_otro">
-							  <label for="otro_legal">Otro</label>
-							  <p v-show="model.mostrar_info_tres"><small class="text-muted">Este campo es para el caso de que considere necesario brindar algún dato adicional que aporte más precisión en la ubicación del domicilio de la Administración principal.</small></p>
-							</div>	
 						</div>
+
+						
 						<br>
 						<br>
 					</tab-content>
@@ -811,101 +885,127 @@
 						<br>
 						<br>
 						<div class="row">
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="calle_administrativo" placeholder="Calle Legal" v-model="model.domicilio_administrativo_calle">
-							  <label for="calle_administrativo">Calle (*)</label>
-							  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).</small></p>
+							<div class="col-12">
+								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+									<div class="card-custom-avatar" >
+										<img src="{{url('formulario_alta/imagenes/domicilio-cards.png')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+									</div>
+									<div class="card-body" >
+										<h4 class="card-title" style="margin-left: 5%">Domicilio de la Adminictración Principal:</h4>
+										<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al domicilio de la Adminictración Principal. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+										<br>
+										<br>
+										<div class="row">
+											<div class="row" >
+												<div class="form-floating col-sm">
+												  <input type="text" class="form-control" id="calle_administrativo" placeholder="Calle Legal" v-model="model.domicilio_administrativo_calle">
+												  <label for="calle_administrativo">Calle (*)</label>
+												  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).</small></p>
+												</div>
+												<div class="form-floating col-sm">
+												  <input type="text" class="form-control" id="numero_calle_administrativo" placeholder="Número calle" v-model="model.domicilio_administrativo_calle_numero">
+												  <label for="numero_calle_administrativo">Número de Calle</label>
+												  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Es la numeración del domicilio que se esta declarando. Este es un valor númerico.</small></p>
+												</div>	
+												<div class="form-floating col-sm">
+												  <input type="text" class="form-control" id="telefono_administrativo" placeholder="Teléfono" v-model="model.domicilio_administrativo_telefono">
+												  <label for="telefono_administrativo">Teléfono</label>
+												  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Es el numero de productor otorgado por el ministerio de mineria.</small></p>
+												</div>	
+											</div>
+											<br>
+											<div class="row"></div>
+											<br>
+											<div class="row" >
+												<div class="form-floating col-sm">
+													<label for="pais_legal">País:</label>
+													<br>
+													<br>
+													<multiselect 
+														v-model="model.domicilio_administrativo_pais" 
+														:options="opcionespaises_administrativo" 
+														:multiple="false" 
+														:close-on-select="true" 
+														:clear-on-select="false" 
+														:hide-selected="false" 
+														:preserve-search="true" 
+														placeholder="Seleccione el Pais" 
+														:preselect-first="false"
+														disabled
+														id="pais_administrativo"
+														@input="cambio_pais_administrativo"
+														
+													>
+													</multiselect>
+												</div>
+												<div class="form-floating col-sm">
+													<label for="provincia_legal">Provincia:</label>
+													<br>
+													<br>
+													<multiselect 
+														v-model="model.domicilio_administrativo_provincia" 
+														:options="opcionesprovincias_administrativo" 
+														:multiple="false" 
+														:close-on-select="true" 
+														:clear-on-select="false" 
+														:hide-selected="false" 
+														:preserve-search="true" 
+														placeholder="Seleccione la Provincia" 
+														:preselect-first="false"
+														id="provincia_administrativo"
+														@input="cambio_provincia_administrativo"
+													>
+													</multiselect>
+												</div>
+												<div class="form-floating col-sm">
+													<label for="departamento_legal">Departamento:</label>
+													<br>
+													<br>
+													<multiselect 
+														v-model="model.domicilio_administrativo_departamento" 
+														:options="opcionesdepartamento_administrativo" 
+														:multiple="false" 
+														:close-on-select="true" 
+														:clear-on-select="false" 
+														:hide-selected="false" 
+														:preserve-search="true" 
+														placeholder="Seleccione el Departamento" 
+														:preselect-first="false"
+														id="departamento_administrativo"
+														@input="cambio_departamento_administrativo"
+													>
+													</multiselect>
+												</div>
+											</div>
+											<br>
+											<div class="row"></div>
+											<br>
+											<div class="row">
+												<div class="form-floating col-sm">
+													<input type="text" class="form-control" id="localidad_administrativo" placeholder="Localidad" v-model="model.domicilio_administrativo_localidad">
+													<label for="localidad_administrativo">Localidad</label>
+													<p v-show="model.mostrar_info_cuatro"><small class="text-muted">Es la localidad donde se encuentra el domicilio.</small></p>
+												</div>
+												<div class="form-floating col-sm">
+													<input type="text" class="form-control" id="cp_administrativo" placeholder="Código Postal" v-model="model.domicilio_administrativo_cp">
+													<label for="cp_administrativo">Código Postal</label>
+													<p v-show="model.mostrar_info_cuatro"><small class="text-muted">Codigo postal correspondiente al domicilio.</small></p>
+												</div>
+												<div class="form-floating col-sm">
+													<input type="text" class="form-control" id="otro_administrativo" placeholder="Otra Locación" v-model="model.domicilio_administrativo_otro">
+													<label for="otro_administrativo">Otro</label>
+													<p v-show="model.mostrar_info_cuatro"><small class="text-muted">Este campos es para el caso de que considere necesario brindar algún dato extra aporte más precisión de la ubicación del domicilio legal.</small></p>
+												</div>	
+											</div>
+											<br>
+										</div>
+									</div>
+								</div>
+								<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+									<a href="#" class="btn btn-primary">Option</a>
+									<a href="#" class="btn btn-outline-primary">Other option</a>
+								</div> -->
 							</div>
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="numero_calle_administrativo" placeholder="Número calle" v-model="model.domicilio_administrativo_calle_numero">
-							  <label for="numero_calle_administrativo">Número de Calle</label>
-							  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Es la numeración del domicilio que se esta declarando. Este es un valor númerico.</small></p>
-							</div>	
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="telefono_administrativo" placeholder="Teléfono" v-model="model.domicilio_administrativo_telefono">
-							  <label for="telefono_administrativo">Teléfono</label>
-							  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Es el numero de productor otorgado por el ministerio de mineria.</small></p>
-							</div>	
-						</div>
-						<hr>
-						<div class="row">
-							<div>
-								<label for="pais_legal">País:</label>
-								<multiselect 
-									v-model="model.domicilio_administrativo_pais" 
-									:options="opcionespaises_administrativo" 
-									:multiple="false" 
-									:close-on-select="true" 
-									:clear-on-select="false" 
-									:hide-selected="false" 
-									:preserve-search="true" 
-									placeholder="Seleccione el Pais" 
-									:preselect-first="false"
-									id="pais_administrativo"
-									@input="cambio_pais_administrativo"
-									
-								>
-								</multiselect>
-							</div>
-						</div>							
-						<br>
-						<div class="row">
-							<div>
-								<label for="provincia_legal">Provincia:</label>
-								<multiselect 
-									v-model="model.domicilio_administrativo_provincia" 
-									:options="opcionesprovincias_administrativo" 
-									:multiple="false" 
-									:close-on-select="true" 
-									:clear-on-select="false" 
-									:hide-selected="false" 
-									:preserve-search="true" 
-									placeholder="Seleccione la Provincia" 
-									:preselect-first="false"
-									id="provincia_administrativo"
-									@input="cambio_provincia_administrativo"
-								>
-								</multiselect>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div>
-								<label for="departamento_legal">Departamento:</label>
-								<multiselect 
-									v-model="model.domicilio_administrativo_departamento" 
-									:options="opcionesdepartamento_administrativo" 
-									:multiple="false" 
-									:close-on-select="true" 
-									:clear-on-select="false" 
-									:hide-selected="false" 
-									:preserve-search="true" 
-									placeholder="Seleccione el Departamento" 
-									:preselect-first="false"
-									id="departamento_administrativo"
-									@input="cambio_departamento_administrativo"
-								>
-								</multiselect>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="localidad_administrativo" placeholder="Localidad" v-model="model.domicilio_administrativo_localidad">
-								  <label for="localidad_administrativo">Localidad</label>
-								  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Es la localidad donde se encuentra el domicilio.</small></p>
-							</div>
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="cp_administrativo" placeholder="Código Postal" v-model="model.domicilio_administrativo_cp">
-							  <label for="cp_administrativo">Código Postal</label>
-							  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Codigo postal correspondiente al domicilio.</small></p>
-
-							</div>
-							<div class="form-floating col-sm">
-							  <input type="text" class="form-control" id="otro_administrativo" placeholder="Otra Locación" v-model="model.domicilio_administrativo_otro">
-							  <label for="otro_administrativo">Otro</label>
-							  <p v-show="model.mostrar_info_cuatro"><small class="text-muted">Este campos es para el caso de que considere necesario brindar algún dato extra aporte más precisión de la ubicación del domicilio legal.</small></p>
-							</div>	
 						</div>
 						<br>
 						<br>
@@ -978,8 +1078,8 @@
 							<div class="row">
 								<div class="col-12">
 									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-										<div class="card-custom-avatar" >
-											<img src="{{url('formulario_alta/imagenes/tipo_caracter_card.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										<div class="card-custom-avatar" > 
+											<img src="{{url('formulario_alta/imagenes/tipo_caracter_card.svg')}}" alt="Avatar"  style="position: relative; top: 10px;left: 0.25rem;" />
 										</div>
 										<div class="card-body" >
 											<h4 class="card-title" style="margin-left: 5%">Tipo de derecho</h4>
@@ -1062,23 +1162,23 @@
 											<br>
 											<div class="row">
 												<div class="row">
-													<div class="col">
+													<div class="form-floating col-sm">
 													  	<label>Número de Expediente (DATO ÚNICO)</label>
 														<input type="text" class="form-control" name="usuario_sistema" id="usuario_sistema"  v-model="model.numero_expediente" maxlength="20">
 														<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es el número de expediente con el cual se ha tramitado el expediente.</small></p>
 													</div>
-													<div class="col">
+													<div class="form-floating col-sm">
 													  	<label>Distrito Minero</label>
 														<input type="text" class="form-control" name="distrito_minero" id="distrito_minero"  v-model="model.distrito_minero" maxlength="20">
 														<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es el distrito minero asignado en el expediente con el cual se ha tramitado el expediente.</small></p>
 													</div>
-													<div class="col" v-if="model.categoria_m_c == 'tercera'">
+													<div class="form-floating col-sm" v-if="model.categoria_m_c == 'tercera'">
 														<label>Descripción (3° categoria)</label>
 														<textarea class="form-control" name="descripcion_mina" id="descripcion_mina"  v-model="model.descripcion_mina"></textarea>
 														<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es la descripción de la mina que se la ha asignado en el expediente con el cual se ha tramitado el expediente.</small></p>
 
 													</div>
-													<div class="col" v-else>
+													<div class="form-floating col-sm" v-else>
 													  	<label>Nombre de mina (1° y 2°)</label>
 														<input type="text" class="form-control" name="nombre_mina" id="nombre_mina"  v-model="model.nombre_mina" maxlength="20">
 														<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es el nombre que se la ha sido asignado a la mina.</small></p>
@@ -1108,7 +1208,7 @@
 												
 
 											<div class="row" v-if="model.categoria_m_c == 'tercera'">
-												<div class="col" >
+												<div class="form-floating col-sm" >
 													<label>Titulo - Contrato - Pocesión Veinteañal (Todo en un solo archivo para 3° Categoría)</label>
 													<input type="file" class="form-control" multiple="multiple" name="contrato" id="contrato" v-model="model.contrato" v-on:change="enviar_contrato"/>
 													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe el título de la . El archivo debe estar en formato PDF</small></p>
@@ -1117,16 +1217,22 @@
 													<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_contrato>
 												</div>
 
+												
+												<br>
+												<div class="row"></div>
+												<br>
+
 
 											</div>
-											<br>
-											<div class="row"></div>
-											<br>
+											
 												
 
 											<div class="row" v-if="model.categoria_m_c != 'tercera'">
-												<div class="col">
+												<div class="form-floating col-sm">
 													<label>Resolución Concesión Minera (Para 1° y 2° Categoría)</label>
+													<br>
+													<br>
+
 													<input type="file" class="form-control" multiple="multiple" name="concesion" id="concesion"  v-model="model.concesion" v-on:change="enviar_concesion" />
 													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la Resolución de concesión Minera. Solo para categoria 1° y 2°. El archivo debe estar en formato PDF.</small></p>
 												</div>
@@ -1276,57 +1382,34 @@
 								<!-- <pre class="language-json"><code>@{{variedad_material }}  ------ @{{mineral_uno }}</code></pre> -->
 
 							<div class="row">
-							<div class="col-12">
-								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-									<div class="card-custom-avatar" >
-										<img src="{{url('formulario_alta/imagenes/minerals_card.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
-									</div>
-									<div class="card-body" >
-										<h4 class="card-title" style="margin-left: 5%">Minerales </h4>
-										<p class="card-text" style="margin-left: 5%">En esta sección usted deberá agregar todos los minerales que tiene pensado explotar en su actividad. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
-										<div class="row">
-												<div class="col-6 col-md-10"></div>
-												<div class="col-6 col-md-2"><button class="btn btn-outline-success" @click="agregar_mineral()"><i class="ti-plus"></i> Agregar Mineral</button></div>
-											</div>
-										<br>
-										<br>
-										<div class="row">
-											
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/minerals_card.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										</div>
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">Minerales </h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá agregar todos los minerales que tiene pensado explotar en su actividad. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
 											<div class="row">
-												<ul class="list" style="list-style: none;">
-													<li v-for="(mineral, index) in minerales">
-														<div class="row">
-															<div class="col-12">
-																<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-																	<div class="card-body" style="height: 400px" >
-																		<div class="row">
-																			<div class="col-1">@{{index+1}}°</div>
-																			<div class="col-3">
-																				<label class="typo__label">Mineral Explotado</label>
-																				<multiselect v-if="model.categoria_m_c != 'segunda'" 
-																					v-model="mineral.id_mineral" 
-																					:options="opcionesmineraluno" 
-																					:multiple="false" 
-																					:close-on-select="true" 
-																					:clear-on-select="false" 
-																					:hide-selected="false" 
-																					:preserve-search="true" 
-																					placeholder="Seleccion Mineral" 
-																					:preselect-first="false"
-																					id="minerales_id"
-																					size="4"
-																					@select="onSelectnuevo(index)"
-																				>
-																				</multiselect>
-																				<div v-else>
-																					<br>
-																					<label for="select_mineral_explotado">Mineral Explotado:</label>
-																					<select  class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
-																						<option value="aprovechamiento_comun">Sustancias de aprovechamiento común</option>
-																						<option value="conceden_prefeerentemente">Sustancias que se conceden preferentemente al dueño del suelo</option>
-																					</select>
-																					<br>
-																					<multiselect 
+													<div class="col-6 col-md-10"></div>
+													<div class="col-6 col-md-2"><button class="btn btn-outline-success" @click="agregar_mineral()"><i class="ti-plus"></i> Agregar Mineral</button></div>
+												</div>
+											<br>
+											<br>
+											<div class="row">
+												
+												<div class="row">
+													<ul class="list" style="list-style: none;">
+														<li v-for="(mineral, index) in minerales">
+															<div class="row">
+																<div class="col-12">
+																	<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+																		<div class="card-body" style="height: 400px" >
+																			<div class="row">
+																				<div class="col-1">@{{index+1}}°</div>
+																				<div class="col-3">
+																					<label class="typo__label">Mineral Explotado</label>
+																					<multiselect v-if="model.categoria_m_c != 'segunda'" 
 																						v-model="mineral.id_mineral" 
 																						:options="opcionesmineraluno" 
 																						:multiple="false" 
@@ -1338,82 +1421,94 @@
 																						:preselect-first="false"
 																						id="minerales_id"
 																						size="4"
-																						@select="onSelect(index)"
-																						@input="cambio_mineral_segunda_categoria"
+																						@select="onSelectnuevo(index)"
 																					>
 																					</multiselect>
-																					<br>
-																					<div v-show="mineral.mostrar_lugar_segunda_cat">
-																						<label for="select_lugar_mineral">Lugar donde se encuentra:</label>
-																						<select  class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra">
-																							<option value="lecho_de_los_rios">Lechos de los ríos</option>
-																							<option value="aguas_corrientes">Aguas Corrientes</option>
-																							<option value="placeres">Placeres</option>
+																					<div v-else>
+																						<br>
+																						<label for="select_mineral_explotado">Mineral Explotado:</label>
+																						<select  class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
+																							<option value="aprovechamiento_comun">Sustancias de aprovechamiento común</option>
+																							<option value="conceden_prefeerentemente">Sustancias que se conceden preferentemente al dueño del suelo</option>
 																						</select>
 																						<br>
-																						
-																					</div>
-																					<div v-show="mineral.mostrar_otro_mineral_segunda_cat">
-																						<label for="otro_mineral_segunda_categoria">Nombre del mineral no comprendido en 1° categoría:</label>
-																						<input type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
+																						<multiselect 
+																							v-model="mineral.id_mineral" 
+																							:options="opcionesmineraluno" 
+																							:multiple="false" 
+																							:close-on-select="true" 
+																							:clear-on-select="false" 
+																							:hide-selected="false" 
+																							:preserve-search="true" 
+																							placeholder="Seleccion Mineral" 
+																							:preselect-first="false"
+																							id="minerales_id"
+																							size="4"
+																							@select="onSelect(index)"
+																							@input="cambio_mineral_segunda_categoria"
+																						>
+																						</multiselect>
 																						<br>
+																						<div v-show="mineral.mostrar_lugar_segunda_cat">
+																							<label for="select_lugar_mineral">Lugar donde se encuentra:</label>
+																							<select  class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra">
+																								<option value="lecho_de_los_rios">Lechos de los ríos</option>
+																								<option value="aguas_corrientes">Aguas Corrientes</option>
+																								<option value="placeres">Placeres</option>
+																							</select>
+																							<br>
+																							
+																						</div>
+																						<div v-show="mineral.mostrar_otro_mineral_segunda_cat">
+																							<label for="otro_mineral_segunda_categoria">Nombre del mineral no comprendido en 1° categoría:</label>
+																							<input type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
+																							<br>
+																							
+																						</div>
+
+
 																						
+
+																						
+
+
+																					</div>
+																					<br>
+																					<br>
+																					<div class="row" v-show="mineral.id_mineral == 'Otro'">
+																						<div class="col-5">
+											  												<label>Nombre del mineral:</label>
+											  											</div>
+											  											<div class="col-7">
+																							<input type="text" maxlength="25" class="form-control" name="otro_nombre_mineral" id="otro_nombre_mineral" v-model="mineral.otro_nombre" />
+																							<p v-show="model.mostrar_info_seis"><small class="text-muted">Por favor ingrese el nombre del mineral que no se encuentra en la lista.</small></p>
+																						</div>
 																					</div>
 
-
-																					
-
-																					
-
-
 																				</div>
-																				<br>
-																				<br>
-																				<div class="row" v-show="mineral.id_mineral == 'Otro'">
-																					<div class="col-5">
-										  												<label>Nombre del mineral:</label>
-										  											</div>
-										  											<div class="col-7">
-																						<input type="text" maxlength="25" class="form-control" name="otro_nombre_mineral" id="otro_nombre_mineral" v-model="mineral.otro_nombre" />
-																						<p v-show="model.mostrar_info_seis"><small class="text-muted">Por favor ingrese el nombre del mineral que no se encuentra en la lista.</small></p>
-																					</div>
+																				<div class="col-3">
+																					<span v-show="model.categoria_m_c != 'tercera'">Forma de presentación natural del mineral (no usar abreviaturas):</span> <span  v-show="model.categoria_m_c == 'tercera'">Forma de presentación natural del mineral <strong> (no es obligatorio para canteras)</strong>:</span> <textarea class="form-control" name="observacion_miniral" v-model="mineral.observacion"></textarea>
 																				</div>
-
-																			</div>
-																			<div class="col-3">
-																				<span v-show="model.categoria_m_c != 'tercera'">Forma de presentación natural del mineral (no usar abreviaturas):</span> <span  v-show="model.categoria_m_c == 'tercera'">Forma de presentación natural del mineral <strong> (no es obligatorio para canteras)</strong>:</span> <textarea class="form-control" name="observacion_miniral" v-model="mineral.observacion"></textarea>
-																			</div>
-																			<div class="col">
-																				<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_mineral(index)"><i class="ti-trash"></i> Eliminar</button>
+																				<div class="col">
+																					<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_mineral(index)"><i class="ti-trash"></i> Eliminar</button>
+																				</div>
 																			</div>
 																		</div>
 																	</div>
 																</div>
 															</div>
-														</div>
-														<br>
-													</li>
-												</ul>
+															<br>
+														</li>
+													</ul>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
 											</div>
-											<br>
-											<div class="row"></div>
-											<br>
-											
-
-
-										
 										</div>
 									</div>
 								</div>
-								<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
-									<a href="#" class="btn btn-primary">Option</a>
-									<a href="#" class="btn btn-outline-primary">Other option</a>
-								</div> -->
 							</div>
-						</div>
-
-						
-					        
 						</div>
 					</tab-content>
 					<!-- Tab Inscrip N° 6 Datos Minas 2 -->
