@@ -155,8 +155,6 @@
 
 
 
-
-
 						<!-- Copy the content below until next comment >
 				        <div class="card card-custom bg-white border-white border-0">
 				          <div class="card-custom-img" style="background-image: url(http://res.cloudinary.com/d3/image/upload/c_scale,q_auto:good,w_1110/trianglify-v1-cs85g_cc5d2i.jpg);"></div>
@@ -177,6 +175,18 @@
 
 				        
 
+
+
+
+							
+
+
+
+
+
+							
+							<br>
+							
 							
 
 
@@ -946,7 +956,7 @@
 							</div>
 						</transition>
 						<div>
-							<br>
+							<!-- <br>
 							<h4>Selección tipo de derecho:</h4>
 							<p v-show="model.mostrar_info_cinco"><small class="text-muted">Debe seleccionar la opcion que usted esta registrando, ya sea mina o cantera.</small></p>
 							<div class="middle_m_c">
@@ -963,7 +973,179 @@
 									</div>
 								</label>
 							</div>
-							<hr>
+							<hr> -->
+							<br><br><br>
+							<div class="row">
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/tipo_caracter_card.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										</div>
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">Tipo de derecho</h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al tipo de derecho de la propiedad minera. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+											<br>
+											<br>
+											<div class="row">
+												
+
+												<div class="row">
+													<h4>Selección tipo de derecho:</h4>
+													<p v-show="model.mostrar_info_cinco"><small class="text-muted">Debe seleccionar la opcion que usted esta registrando, ya sea mina o cantera.</small></p>
+													<div class="middle_m_c">
+														<label>
+															<input type="radio" name="radio_m_c" v-model="model.mina_cantera" value="mina" v-on:change="cambio_mina_cantera_select"  checked/>
+															<div class="mas box">
+																<span>Mina</span>
+															</div>
+														</label>
+														<label>
+															<input type="radio" name="radio_m_c" v-model="model.mina_cantera" value="cantera" v-on:change="cambio_mina_cantera_select" />
+															<div class="modficacion box">
+																<span>Cantera</span>
+															</div>
+														</label>
+													</div>
+												</div>
+
+												<br>
+												<div class="row"></div>
+												<br>
+												
+
+												<div class="row">
+													<h4>Selección la categoria:</h4>
+													<div class="middle_mina_cat">
+														<label>
+															<input type="radio" name="radio_categoria" v-model="model.categoria_m_c" value="primera" checked  v-on:change="cambio_categoria"/>
+															<div class="laboral box">
+																<span>1°</span>
+															</div>
+														</label>
+														<label>
+															<input type="radio" name="radio_categoria"  v-model="model.categoria_m_c"  value="segunda"  v-on:change="cambio_categoria"/>
+															<div class="personal box">
+																<span>2°</span>
+															</div>
+														</label>
+														<label>
+															<input type="radio" name="radio_categoria" v-model="model.categoria_m_c" value="tercera" v-on:change="cambio_categoria"/>
+															<div class="floppy box">
+																<span>3°</span>
+															</div>
+														</label>
+													</div>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+										<a href="#" class="btn btn-primary">Option</a>
+										<a href="#" class="btn btn-outline-primary">Other option</a>
+									</div> -->
+								</div>
+							</div>
+							<br><br><br>
+
+
+							<div class="row">
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/mina_numero_expediente.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										</div>
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">Datos de Mina O cantera</h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al mina o cantera. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+											<br>
+											<br>
+											<div class="row">
+												<div class="row">
+													<div class="col">
+													  	<label>Número de Expediente (DATO ÚNICO)</label>
+														<input type="text" class="form-control" name="usuario_sistema" id="usuario_sistema"  v-model="model.numero_expediente" maxlength="20">
+														<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es el número de expediente con el cual se ha tramitado el expediente.</small></p>
+													</div>
+													<div class="col">
+													  	<label>Distrito Minero</label>
+														<input type="text" class="form-control" name="distrito_minero" id="distrito_minero"  v-model="model.distrito_minero" maxlength="20">
+														<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es el distrito minero asignado en el expediente con el cual se ha tramitado el expediente.</small></p>
+													</div>
+													<div class="col" v-if="model.categoria_m_c == 'tercera'">
+														<label>Descripción (3° categoria)</label>
+														<textarea class="form-control" name="descripcion_mina" id="descripcion_mina"  v-model="model.descripcion_mina"></textarea>
+														<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es la descripción de la mina que se la ha asignado en el expediente con el cual se ha tramitado el expediente.</small></p>
+
+													</div>
+													<div class="col" v-else>
+													  	<label>Nombre de mina (1° y 2°)</label>
+														<input type="text" class="form-control" name="nombre_mina" id="nombre_mina"  v-model="model.nombre_mina" maxlength="20">
+														<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es el nombre que se la ha sido asignado a la mina.</small></p>
+													</div>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													<div class="row" v-if="model.categoria_m_c == 'tercera'">
+														<div class="col">
+															<label class="input-group-text" for="inscripcion_dgr">Plano Inmueble (3° categoria) (*) (*.pdf)</label>
+							  								<input type="file" multiple="multiple" class="form-control" id="plano_inmueble" name="plano_inmueble" v-model="model.plano_inmueble" v-on:change="enviar_plano">
+							  								<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es el plano del inmuebleque actualmente se está registrando.</small></p>
+							  							</div>
+															<!-- <input type="file" multiple="multiple" name="File1" id="File1" accept="image/*" v-model="model.plano_inmueble" v-on:change="enviar_inscripcion"/> -->
+														<div v-show="model.tiene_plano_inmueble != ''" class="form-floating col-sm" >
+															<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_plano_inmueble>
+														</div>
+													</div>
+												</div>
+												<br>
+											</div>
+											<br>
+											<div class="row"></div>
+											<br>
+												
+
+											<div class="row" v-if="model.categoria_m_c == 'tercera'">
+												<div class="col" >
+													<label>Titulo - Contrato - Pocesión Veinteañal (Todo en un solo archivo para 3° Categoría)</label>
+													<input type="file" class="form-control" multiple="multiple" name="contrato" id="contrato" v-model="model.contrato" v-on:change="enviar_contrato"/>
+													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe el título de la . El archivo debe estar en formato PDF</small></p>
+												</div>
+												<div v-show="model.tiene_contrato != ''" class="form-floating col-sm" >
+													<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_contrato>
+												</div>
+
+
+											</div>
+											<br>
+											<div class="row"></div>
+											<br>
+												
+
+											<div class="row" v-if="model.categoria_m_c != 'tercera'">
+												<div class="col">
+													<label>Resolución Concesión Minera (Para 1° y 2° Categoría)</label>
+													<input type="file" class="form-control" multiple="multiple" name="concesion" id="concesion"  v-model="model.concesion" v-on:change="enviar_concesion" />
+													<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la Resolución de concesión Minera. Solo para categoria 1° y 2°. El archivo debe estar en formato PDF.</small></p>
+												</div>
+												<div v-show="model.tiene_concesion != ''" class="form-floating col-sm" >
+													<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_concesion>
+												</div>
+												<br>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+										<a href="#" class="btn btn-primary">Option</a>
+										<a href="#" class="btn btn-outline-primary">Other option</a>
+									</div> -->
+								</div>
+							</div>
+
+
+<!-- 
 							<div class="row">
 								<div class="col">
 								  	<label>Número de Expediente (DATO ÚNICO)</label>
@@ -994,15 +1176,14 @@
 	  								<input type="file" multiple="multiple" class="form-control" id="plano_inmueble" name="plano_inmueble" v-model="model.plano_inmueble" v-on:change="enviar_plano">
 	  								<p v-show="model.mostrar_info_cinco"><small class="text-muted">Es el plano del inmuebleque actualmente se está registrando.</small></p>
 	  							</div>
-									<!-- <input type="file" multiple="multiple" name="File1" id="File1" accept="image/*" v-model="model.plano_inmueble" v-on:change="enviar_inscripcion"/> -->
+									<!-- <input type="file" multiple="multiple" name="File1" id="File1" accept="image/*" v-model="model.plano_inmueble" v-on:change="enviar_inscripcion"/> ->
 								<div v-show="model.tiene_plano_inmueble != ''" class="form-floating col-sm" >
 									<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_plano_inmueble>
 								</div>
 							</div>
 							<br>
-							<hr>
-							<br>
-							<h4>Selección la categoria</h4>
+							<br> -->
+							<!-- <h4>Selección la categoria</h4>
 							<div class="middle_mina_cat">
 								<label>
 									<input type="radio" name="radio_categoria" v-model="model.categoria_m_c" value="primera" checked  v-on:change="cambio_categoria"/>
@@ -1022,8 +1203,7 @@
 										<span>3°</span>
 									</div>
 								</label>
-							</div>
-							<hr>
+							</div> -->
 							<br>
 							<!-- <div class="row">
 								<div class="col-12 col-md-8"><h3>Minerales</h3></div>
@@ -1095,7 +1275,7 @@
 							</div> -->
 								<!-- <pre class="language-json"><code>@{{variedad_material }}  ------ @{{mineral_uno }}</code></pre> -->
 
-								<div class="row">
+							<div class="row">
 							<div class="col-12">
 								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
 									<div class="card-custom-avatar" >
@@ -1139,32 +1319,16 @@
 																				>
 																				</multiselect>
 																				<div v-else>
-																					<multiselect 
-																						v-model="mineral.id_mineral" 
-																						:options="opcionessegunda_cat" 
-																						:multiple="false" 
-																						:close-on-select="true" 
-																						:clear-on-select="false" 
-																						:hide-selected="false" 
-																						:preserve-search="true" 
-																						placeholder="Seleccion Mineral" 
-																						:preselect-first="false"
-																						id="minerales_id"
-																						size="4"
-																						@select="onSelectnuevo(index)"
-																					>
-																					</multiselect>
 																					<br>
-																					<label for="select_lugar_mineral">Lugar donde se encuentra:</label>
-																					<select  class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra">
-																						<option value="lecho_de_los_rios">Lechos de los ríos</option>
-																						<option value="aguas_corrientes">Aguas Corrientes</option>
-																						<option value="placeres">Placeres</option>
+																					<label for="select_mineral_explotado">Mineral Explotado:</label>
+																					<select  class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
+																						<option value="aprovechamiento_comun">Sustancias de aprovechamiento común</option>
+																						<option value="conceden_prefeerentemente">Sustancias que se conceden preferentemente al dueño del suelo</option>
 																					</select>
 																					<br>
 																					<multiselect 
 																						v-model="mineral.id_mineral" 
-																						:options="opcionessegunda_cat" 
+																						:options="opcionesmineraluno" 
 																						:multiple="false" 
 																						:close-on-select="true" 
 																						:clear-on-select="false" 
@@ -1174,9 +1338,32 @@
 																						:preselect-first="false"
 																						id="minerales_id"
 																						size="4"
-																						@select="onSelectnuevo(index)"
+																						@select="onSelect(index)"
+																						@input="cambio_mineral_segunda_categoria"
 																					>
 																					</multiselect>
+																					<br>
+																					<div v-show="mineral.mostrar_lugar_segunda_cat">
+																						<label for="select_lugar_mineral">Lugar donde se encuentra:</label>
+																						<select  class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra">
+																							<option value="lecho_de_los_rios">Lechos de los ríos</option>
+																							<option value="aguas_corrientes">Aguas Corrientes</option>
+																							<option value="placeres">Placeres</option>
+																						</select>
+																						<br>
+																						
+																					</div>
+																					<div v-show="mineral.mostrar_otro_mineral_segunda_cat">
+																						<label for="otro_mineral_segunda_categoria">Nombre del mineral no comprendido en 1° categoría:</label>
+																						<input type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
+																						<br>
+																						
+																					</div>
+
+
+																					
+
+																					
 
 
 																				</div>
@@ -1270,21 +1457,6 @@
 									</div>
 								</div>
 							</transition>
-							<br>
-							<!-- <div class="row">
-								<div class="col-md-12">
-									<div class="col-md-6">
-										
-										<div class="form-group form-check" v-for="item in Items" v-bind:key="item.id">
-								            <label class="form-check-label" :for="item.id">@{{item.name}}</label>
-								            <input type="checkbox"  v-model="model.relacion_mina" :id="item.name" :value="item.name">
-								        </div>
-								        <div class="form-group">
-								                @{{model.relacion_mina}}
-								        </div>
-								    </div>
-								</div>
-							</div> -->
 							<br>
 							<div class="row">
 								<div class="col-12">
@@ -1439,34 +1611,9 @@
 							<br>
 							<br>
 
-							<div class="row" v-if="model.categoria_m_c == 'tercera'">
-								<div class="col" >
-									<label>Titulo - Contrato - Pocesión Veinteañal (Todo en un solo archivo para 3° Categoría)</label>
-									<input type="file" class="form-control" multiple="multiple" name="contrato" id="contrato" v-model="model.contrato" v-on:change="enviar_contrato"/>
-									<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe el título de la . El archivo debe estar en formato PDF</small></p>
-								</div>
-								<div v-show="model.tiene_contrato != ''" class="form-floating col-sm" >
-									<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_contrato>
-								</div>
-
-
-							</div>
-							<br>
-							<br>
-
-							<div class="row" v-if="model.categoria_m_c != 'tercera'">
-								<div class="col">
-									<label>Resolución Concesión Minera (Para 1° y 2° Categoría)</label>
-									<input type="file" class="form-control" multiple="multiple" name="concesion" id="concesion"  v-model="model.concesion" v-on:change="enviar_concesion" />
-									<p v-show="model.mostrar_info_seis"><small class="text-muted">Es el documento donde se exhibe la Resolución de concesión Minera. Solo para categoria 1° y 2°. El archivo debe estar en formato PDF.</small></p>
-								</div>
-								<div v-show="model.tiene_concesion != ''" class="form-floating col-sm" >
-									<embed style="width: 100%; height:100%; display: block; padding-right: 15px;" v-bind:src=model.tiene_concesion>
-								</div>
-							<br>
+							
 
 							<hr>
-							</div>
 							<div class="row" v-show="model.categoria_m_c != 'tercera'">
 								<div class="col-12">
 									<!-- <div class="col">
@@ -1798,60 +1945,93 @@
 								</div>
 							</div>
 							<br>
+
+
+
 							<div class="row">
-								<label for="departamento_mina">Tipo de Sistema de Coordenadas:</label>
-								<multiselect 
-									v-model="model.tipo_coordenada"
-									:options="opcionescoordenadas"
-									:multiple="false" 
-									:close-on-select="true" 
-									:clear-on-select="false" 
-									:hide-selected="false" 
-									:preserve-search="true" 
-									placeholder="Seleccione el Departamento" 
-									:preselect-first="false"
-									id="tipo_coordenada"
-									@input="cambio_tipo_coordenadas"
-								>
-								</multiselect>
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/gps_coordenadas.svg')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										</div>
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">Ubicación de la Mina O cantera</h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al mina o cantera. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+											<br>
+											<br>
+											<div class="row">
+												<div class="row">
+													<label for="departamento_mina">Tipo de Sistema de Coordenadas:</label>
+													<multiselect 
+														v-model="model.tipo_coordenada"
+														:options="opcionescoordenadas"
+														:multiple="false" 
+														:close-on-select="true" 
+														:clear-on-select="false" 
+														:hide-selected="false" 
+														:preserve-search="true" 
+														placeholder="Seleccione el Departamento" 
+														:preselect-first="false"
+														id="tipo_coordenada"
+														@input="cambio_tipo_coordenadas"
+													>
+													</multiselect>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row" v-show="model.tipo_coordenada == 'Gauss Kruger Posgar 94' ">
+													<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="mina_cor_long" placeholder="Coordenada Longitud" v-model="model.domicilio_mina_cor_long">
+													  <label for="mina_cor_long">Coordenada Longitud (Gauss Kruger Posgar 94)</label>
+													  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la longitud expesada en las unidades Gauss Kruger Posgar 94.</small></p>
+													</div>
+													<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="mina_cor_lat" placeholder="Otra Locación" v-model="model.domicilio_mina_cor_lat">
+													  <label for="mina_cor_lat">Coordenada Latitud (Gauss Kruger Posgar 94)</label>
+													  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la latitud expesada en las unidades Gauss Kruger Posgar 94.</small></p>
+													</div>
+												</div>
+												<div class="row"  v-show="model.tipo_coordenada == 'Gauss Kruger Posgar 07' ">
+													<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="mina_cor_long" placeholder="Coordenada Longitud" v-model="model.domicilio_mina_cor_long">
+													  <label for="mina_cor_long">Coordenada Longitud (Gauss Kruger Posgar 07 - Oficial)</label>
+													  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la longitud expesada en las unidades Gauss Kruger Posgar 07.</small></p>
+													</div>
+													<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="mina_cor_lat" placeholder="Otra Locación" v-model="model.domicilio_mina_cor_lat">
+													  <label for="mina_cor_lat">Coordenada Latitud (Gauss Kruger Posgar 07 - Oficial)</label>
+													  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la latitud expesada en las unidades Gauss Kruger Posgar 07.</small></p>
+													</div>
+												</div>
+												<div class="row"  v-show="model.tipo_coordenada == 'Geográficas' ">
+													<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="mina_cor_long" placeholder="Coordenada Longitud" v-model="model.domicilio_mina_cor_long">
+													  <label for="mina_cor_long">Coordenada Longitud (Coordenadas Geográficas)</label>
+													  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la longitud expesada en las unidades Geográficas.</small></p>
+													</div>
+													<div class="form-floating col-sm">
+													  <input type="text" class="form-control" id="mina_cor_lat" placeholder="Otra Locación" v-model="model.domicilio_mina_cor_lat">
+													  <label for="mina_cor_lat">Coordenada Latitud (Coordenadas Geográficas)</label>
+													  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la latitud expesada en las unidades Geográficas.</small></p>
+													</div>
+												</div>
+
+												<br>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+										<a href="#" class="btn btn-primary">Option</a>
+										<a href="#" class="btn btn-outline-primary">Other option</a>
+									</div> -->
+								</div>
 							</div>
-							<br>
-							<div class="row" v-show="model.tipo_coordenada == 'Gauss Kruger Posgar 94' ">
-								<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="mina_cor_long" placeholder="Coordenada Longitud" v-model="model.domicilio_mina_cor_long">
-								  <label for="mina_cor_long">Coordenada Longitud (Gauss Kruger Posgar 94)</label>
-								  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la longitud expesada en las unidades Gauss Kruger Posgar 94.</small></p>
-								</div>
-								<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="mina_cor_lat" placeholder="Otra Locación" v-model="model.domicilio_mina_cor_lat">
-								  <label for="mina_cor_lat">Coordenada Latitud (Gauss Kruger Posgar 94)</label>
-								  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la latitud expesada en las unidades Gauss Kruger Posgar 94.</small></p>
-								</div>
-							</div>
-							<div class="row"  v-show="model.tipo_coordenada == 'Gauss Kruger Posgar 07' ">
-								<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="mina_cor_long" placeholder="Coordenada Longitud" v-model="model.domicilio_mina_cor_long">
-								  <label for="mina_cor_long">Coordenada Longitud (Gauss Kruger Posgar 07 - Oficial)</label>
-								  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la longitud expesada en las unidades Gauss Kruger Posgar 07.</small></p>
-								</div>
-								<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="mina_cor_lat" placeholder="Otra Locación" v-model="model.domicilio_mina_cor_lat">
-								  <label for="mina_cor_lat">Coordenada Latitud (Gauss Kruger Posgar 07 - Oficial)</label>
-								  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la latitud expesada en las unidades Gauss Kruger Posgar 07.</small></p>
-								</div>
-							</div>
-							<div class="row"  v-show="model.tipo_coordenada == 'Geográficas' ">
-								<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="mina_cor_long" placeholder="Coordenada Longitud" v-model="model.domicilio_mina_cor_long">
-								  <label for="mina_cor_long">Coordenada Longitud (Coordenadas Geográficas)</label>
-								  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la longitud expesada en las unidades Geográficas.</small></p>
-								</div>
-								<div class="form-floating col-sm">
-								  <input type="text" class="form-control" id="mina_cor_lat" placeholder="Otra Locación" v-model="model.domicilio_mina_cor_lat">
-								  <label for="mina_cor_lat">Coordenada Latitud (Coordenadas Geográficas)</label>
-								  <p v-show="model.mostrar_info_siete"><small class="text-muted">Es el valor correspondiente a la latitud expesada en las unidades Geográficas.</small></p>
-								</div>
-							</div>
+							
+
+
+
+							
 							<br>
 							<br>
 						</div>
@@ -2503,10 +2683,6 @@
 			var app = new Vue({
 			 el: '#app',
 				data:{
-					seleccion_so_130_validacion: '',
-					error_seleccion_so_130_validacion:'',
-					hardware_mostrar_alerta_130_validacion: false,
-					error_hardware_130_validacion:'',
 					caracteres_restantes_aclaracion_finalidad:150,
 
 					myOptions: {
@@ -2594,14 +2770,8 @@
 						'Platino',
 						'Diamante'
 					],
-					opcionessegunda_cat: [
-						'Sustancias de aprovechamiento común' ,
-						'Sustancias que se conceden preferentemente al dueño del suelo',
-					],
+					
 
-					multiple: true,
-					show: false,
-					variedad_material: '',
 					opcionesdevariedad: [
 						'variedad 1',
 						'variedad 2',
@@ -2613,38 +2783,31 @@
 					formulario_seleccionado: '',
 
 					//FORMULARIO 130
-					so_seleccionado: '',
-					otro_sistema_operativo_aclaracion:'',
-					ram_solicitada : '2',
-					aclaracion_ram: '',
-					disco_solicitada : '15',
-					aclaracion_disco: '',
-					licencia_solicitada : '',
-					nombre_servidor_solicitada : '',
 					observaciones_solicitada : '',
-					tiene_aplicaciones: false,
-					nombre_aplicaciones: '',
-					descripcion_aplicaciones: '',
-					tiene_server_web: false,
-					nombre_server_web: '',
-					descripcion_server_web: '',
-					tiene_base_de_datos: false,
-					nombre_base_de_datos: '',
-					descripcion_base_de_datos: '',
-					tiene_servidor_archivos: false,
-					nombre_servidor_archivos: '',
-					descripcion_servidor_archivos: '',
-					tiene_aplicaciones_otro: false,
-					nombre_aplicaciones_otro: '',
-					descripcion_aplicaciones_otro: '',
-					puertos:  [
-								{puerto: '80', servicio: "http" , observacion:''},
-								{puerto: '443', servicio: "https" , observacion:''}
-							],
 					
 					minerales: [
-								{id_mineral: '1', id_varieadad: '1' , observacion:'esta es la obs 1'},
-								{id_mineral: '2', id_varieadad: '2' , observacion:'esta es la obs 2'}
+								{
+									id_mineral: '1',
+									id_varieadad: '1',
+									segunda_cat_mineral_explotado: '',
+									lugar_donde_se_enccuentra: '',
+									mostrar_lugar_segunda_cat: false,
+									mostrar_otro_mineral_segunda_cat: false,
+									otro_mineral_segunda_cat: '',
+									lugar_donde_se_enccuentra:'',
+									observacion:'esta es la obs 1'
+								},
+								{
+									id_mineral: '2',
+									id_varieadad: '2',
+									segunda_cat_mineral_explotado: '',
+									lugar_donde_se_enccuentra: '',
+									mostrar_lugar_segunda_cat: false,
+									mostrar_otro_mineral_segunda_cat: false,
+									otro_mineral_segunda_cat: '',
+									lugar_donde_se_enccuentra:'',
+									observacion:'esta es la obs 2'
+								}
 							],
 					productos: [
 								{id_producto: '1', id_varieadad: '1', unidades:'', precio:''},
@@ -2652,36 +2815,8 @@
 					destinos: [
 						{nombre_emp: '1', direccion: '1', actividad:''},
 					],
-					servidor_temporal: false,
-					servidor_temporal_fecha_fin: '',
-
-					Items: [
-		                {
-		                    name: 'Dueño'
-		                }, 
-		                {
-		                    name: 'Arrendatario'
-		                }, 
-		                {
-		                    name: 'Concecionario'
-		                }, 
-		                {
-		                    name: 'Otros'
-		                }
-		            ],            
-		            user: {
-		                fruitCollection: []
-		            },
-
-					paso_130_4: false,
-					paso_130_5: false,
-					mostrar_licencia_so: false,
-					//FIN FORMULARIO 130
 					show: true,
-					interval:false,
-					displayNumber: 2,
 					id_recien_creado: 0,
-					
 					email_confirmado: false,
 					model:{
 						//tipo de formulario
@@ -2753,6 +2888,7 @@
 						numero_expediente: '',
 						plano_inmueble: '',
 						tiene_plano_inmueble: '',
+						
 						//Datos Mina 2
 						relacion_mina: [],
 						contrato: '',
@@ -2822,6 +2958,7 @@
 						dni_reinscripcion: '',
 						cargo_reinscripcion: ''
 					},
+					index_de_mineral_segunda_cat: '',
 					formOptions: {
 						validationErrorClass: "has-error",
 						validationSuccessClass: "has-success",
@@ -2844,16 +2981,8 @@
 				        confirmButtonText: 'Cool'
 				      });
 				    },
-					mostrar_aclaracion_ram: function(){
-						if(parseInt(this.ram_solicitada)  > 4)
-							return true;
-						else return false;
-					},
-					mostrar_aclaracion_disco: function(){
-						if(parseInt(this.disco_solicitada)  > 50)
-							return true;
-						else return false;
-					},
+					
+					
 					restar_caracteres: function(caso){
 						if(caso == 3)
 						{
@@ -2870,6 +2999,7 @@
 						i
 					},
 					onSelect (option, id, index) {
+						this.index_de_mineral_segunda_cat = option;
 						console.log(option, id, index)
 					},
 					onSelectnuevo (option, id, index) {
@@ -3764,9 +3894,7 @@
 						var mineral_aux = {puerto: '', servicio: "" , observacion:''};
 						this.minerales.push( mineral_aux);
 					},
-					eliminar_puerta: function(indice){
-						this.puertos.splice(indice, 1);
-					},
+					
 					eliminar_mineral: function(indice){
 						this.minerales.splice(indice, 1);
 					},
@@ -4059,6 +4187,118 @@
 								];
 						}
 					},
+					cambio_select_tipo_mineral_explotado_segunda_cat: function(event, index){
+						//limpio los pasos siguientes
+						this.minerales[index].lugar_donde_se_enccuentra='';
+						this.model.mina_cantera = 'mina';
+						this.minerales[index].mostrar_lugar_segunda_cat = false;
+						this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
+						this.minerales[index].otro_mineral_segunda_cat= '';
+						this.minerales[index].lugar_donde_se_enccuentra= '';
+						//fin de liempza
+						if(this.minerales[index].segunda_cat_mineral_explotado === 'aprovechamiento_comun')
+						{
+							this.model.mina_cantera = 'mina';
+							this.opcionesmineraluno = [
+								'Arenas Metalíferas',
+								'Piedras Preciosas',
+								'Desmontes',
+								'Relaves',
+								'Escoriales',
+								];
+						}
+						else{
+							if(this.minerales[index].segunda_cat_mineral_explotado === 'conceden_prefeerentemente')
+							{
+								this.model.mina_cantera = 'mina';
+								this.opcionesmineraluno = [
+									'Salitres',
+									'Salinas',
+									'Turberas',
+									'Metales no comprendidos en 1° Categ.',
+									'Tierras Piritosas y Aluminosas',
+									'Abrasivos',
+									'Ocres',
+									'Resinas',
+									'Esteatitas',
+									'Baritina',
+									'Caparrosas',
+									'Grafito',
+									'Caolí­n',
+									'Sales Alcalinas o Alcalino Terrosas',
+									'Amianto',
+									'Bentonita',
+									'Zeolitas o Minerales Permutantes o Permutíticos'
+								];
+							}
+							else {
+								this.opcionesmineraluno = [
+								];
+							}
+						}
+					},
+					cambio_mineral_segunda_categoria: function(selectedItems){
+						console.log("mis datos \n");
+						console.log(this.index_de_mineral_segunda_cat);
+						console.log(selectedItems);
+						if(
+							(selectedItems === 'Piedras Preciosas')
+							|| 
+							(selectedItems === 'Arenas Metalíferas')
+							)
+						{
+							//en estos casos debo mostrar la seleccion de lugares
+							this.minerales[this.index_de_mineral_segunda_cat].lugar_donde_se_enccuentra='';
+							this.model.mina_cantera = 'mina';
+							this.minerales[this.index_de_mineral_segunda_cat].mostrar_lugar_segunda_cat = true;
+							this.minerales[this.index_de_mineral_segunda_cat].mostrar_otro_mineral_segunda_cat = false;
+							this.minerales[this.index_de_mineral_segunda_cat].otro_mineral_segunda_cat= '';
+						}
+						else{
+
+							if(
+							(selectedItems === 'Desmontes')
+							|| 
+							(selectedItems === 'Relaves')
+							|| 
+							(selectedItems === 'Escoriales')
+							)
+							{
+								//en estos casos de elegir alguna sustancias de aprovechamiento comun pero no se necesita el lugar
+								this.minerales[this.index_de_mineral_segunda_cat].lugar_donde_se_enccuentra='';
+								this.model.mina_cantera = 'mina';
+								this.minerales[this.index_de_mineral_segunda_cat].mostrar_lugar_segunda_cat = false;
+								this.minerales[this.index_de_mineral_segunda_cat].mostrar_otro_mineral_segunda_cat = false;
+								this.minerales[this.index_de_mineral_segunda_cat].otro_mineral_segunda_cat= '';
+							}
+							else {
+								if( selectedItems === 'Metales no comprendidos en 1° Categ.')
+								{
+									//en caso de ser sustenacias concedidas al dueño
+									this.minerales[this.index_de_mineral_segunda_cat].mostrar_otro_mineral_segunda_cat = true;
+									this.minerales[this.index_de_mineral_segunda_cat].otro_mineral_segunda_cat= '';
+
+								}
+								else
+								{
+									//este es cualqueir otro caso
+									this.minerales[this.index_de_mineral_segunda_cat].lugar_donde_se_enccuentra='';
+									this.model.mina_cantera = 'mina';
+									this.minerales[this.index_de_mineral_segunda_cat].mostrar_lugar_segunda_cat = false;
+									this.minerales[this.index_de_mineral_segunda_cat].mostrar_otro_mineral_segunda_cat = false;
+									this.minerales[this.index_de_mineral_segunda_cat].otro_mineral_segunda_cat= '';
+
+								}
+								//en estos casos debo mostrar la seleccion de lugares
+								
+							}
+						}
+
+						console.log(selectedItems);
+
+						//alert("el index es:"+index + "y el id es:"+id + ", al ultimo es option es:"+option);
+					},
+
 					prettyJSON: function(json) {
 							if (json) {
 								json = JSON.stringify(json, undefined, 4);
@@ -5311,25 +5551,7 @@
 							});
 					}
 				},
-				// watch: {
-					
-				// 	ram_solicitada: function(){
-				// 		clearInterval(this.interval);
-				// 			if(this.ram_solicitada == this.displayNumber){
-				// 			return;
-				// 		}
-				// 		this.interval = window.setInterval(function(){
-				// 			if(this.displayNumber != this.ram_solicitada){
-				// 			var change = (this.ram_solicitada - this.displayNumber) / 10;
-				// 				change = change >= 0 ? Math.ceil(change) : Math.floor(change);
-				// 				this.displayNumber = this.displayNumber + change;
-				// 			}
-				// 		}.bind(this), 20);
-				// 	}
-				// },
-				// ready:function(){
-				// 	this.displayNumber = this.ram_solicitada ? this.ram_solicitada : 0;
-				// }
+				
 			})
 		</script>
 	</body>
