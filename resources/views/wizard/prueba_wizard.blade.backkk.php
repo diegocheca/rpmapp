@@ -100,7 +100,7 @@
 						<br>
 						<div class="row">
 								<div class="col-12 col-md-6">
-									<img src="{{url('formulario_alta/imagenes/welcome.png')}}"  >
+									<img src="{{url('formulario_alta/imagenes/wlecome-formulario-rpm.svg')}}">
 								</div>
 								<div class="col-6 col-md-6">
 									<h2> Bienvenido al Formulario de Alta de Productores Mineros de San Juan</h2>
@@ -173,6 +173,7 @@
 				        <!- Copy until here -->
 
 
+				        
 
 
 
@@ -184,14 +185,18 @@
 
 
 
+						
 
 
 
 
+							
+							<br>
 
 
 
-
+        <br>
+        <br>
 
 
 
@@ -396,7 +401,7 @@
 									<div class="row" v-show="model.primera_vez=='no'">
 										<div class="col-sm"><label>Por favor ingrese su email para buscar sus datos: </label> </div>
 										<div class="col-sm">
-											<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="50" /> 
+											<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="25" /> 
 										</div>
 										<div class="col-sm">
 											<button type="button" class="btn btn-outline-primary btn-lg" id="recuperar_datos" @click="recuperar_datos"><i class="ti-loop"></i>&nbsp; Recuperar</button>
@@ -411,36 +416,15 @@
 									leave-active-class="animated bounceOut"
 								>
 									<div class="row" v-show="model.recuperacion_exitosa">
-										<div class="col-12">
-											<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-												<div class="card-custom-avatar" >
-													<img src="{{url('formulario_alta/imagenes/datos-recuperados-card.svg')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
-												</div>
-												<div class="card-body" >
-													<h4 class="card-title" style="margin-left: 5%">Datos recuperados exitosamente</h4>
-													<p class="card-text" style="margin-left: 5%">.</p>
-													<br>
-													<br>
-													<div class="row">
-														<div class="row" >
-															<br>
-															<br>
-															<div class="col-6">
-																<div class="alert alert-success" role="alert">
-																	<span>Muy bien. Hemos recuperados los datos guardados para su email. Continuemos con la inscripción, favor de hacer click en el botón "Siguiente".</span>
-																</div>
-															</div>
-															<div class="col-6">
-																	<img src="{{url('formulario_alta/imagenes/datos_recuperados.svg')}}" width="55%">
-																</div>
-
-														</div>
-														<br>
-														<div class="row"></div>
-														<br>
-													</div>
-												</div>
+										<br>
+										<br>
+										<div class="col">
+											<div class="alert alert-success" role="alert">
+												<span>Muy bien. Hemos recuperados los datos guardados para su email. Continuemos con la inscripción, favor de hacer click en el botón "Siguiente".</span>
 											</div>
+										</div>
+										<div class="col">
+											<img src="{{url('formulario_alta/imagenes/datos_recuperados.svg')}}" width="80%">
 										</div>
 									</div>
 								</transition>
@@ -508,42 +492,6 @@
 										</div>
 										<div class="col">
 											<img src="{{url('formulario_alta/imagenes/datos_recuperados.svg')}}" width="80%">
-										</div>
-									</div>
-
-
-
- 
-									<br>
-									<br>
-									<div class="row" v-show="reinscripcion_data.resultado_de_validacion_num_exp_mina">
-										<div class="col-12">
-											<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-												<div class="card-custom-avatar" >
-													<img src="{{url('formulario_alta/imagenes/datos-recuperados-card.svg')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
-												</div>
-												<div class="card-body" >
-													<h4 class="card-title" style="margin-left: 5%">Datos recuperados exitosamente</h4>
-													<p class="card-text" style="margin-left: 5%">.</p>
-													<br>
-													<br>
-													<div class="row">
-														<br>
-														<br>
-														<div class="col-6">
-															<div class="alert alert-success" role="alert">
-																<span>Muy bien. Hemos recuperados los datos guardados para su email. Continuemos con la inscripción, favor de hacer click en el botón "Siguiente".</span>
-															</div>
-														</div>
-														<div class="col-6">
-															<img src="{{url('formulario_alta/imagenes/datos_recuperados.svg')}}" width="55%">
-														</div>
-														<br>
-														<div class="row"></div>
-														<br>
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
 								</transition>
@@ -2363,122 +2311,103 @@
 						<br>
 						<br>
 						<div class="row">
-							<div class="col-12">
-								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-									<div class="card-custom-avatar" >
-										<img src="{{url('formulario_alta/imagenes/labores.png')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+							<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).</small></p>
+							<h4>Labores desarrolladas:</h4>
+							<div class="row">
+									<div class="col-2">
+										<h4>prospección?</h4>
 									</div>
-									<div class="card-body" >
-										<h4 class="card-title" style="margin-left: 5%">Labores desarrolladas:</h4>
-										<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos a la actividades que desarrollo. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
-										<br>
-										<br>
+									<div class="col-4">
 										<div class="row">
-											<div class="row" >
-												<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).</small></p>
-												<div class="row">
-														<div class="col-2">
-															<h4>prospección?</h4>
-														</div>
-														<div class="col-4">
-															<div class="row">
-																<div class="col-4">
-																	<span> <font color="red">  No  </font></span>
-																</div>
-																<div class="col-2">
-																	<label class="switch">
-																		<input type="checkbox" v-model="reinscripcion_data.labor_prospeccion">
-																		<span class="slider round"></span>
-																	</label>
-																</div>
-																<div class="col-4">
-																	<span ><font color="green"> Si   </font></span>
-																</div>
-															</div>
-														</div>
-												</div>
+											<div class="col-4">
+												<span> <font color="red">  No  </font></span>
 											</div>
-											<br>
-											<div class="row"></div>
-											<br>
-											<div class="row" >
-												<div class="col-2">
-													<h4>explotación?</h4>
-												</div>
-												<div class="col-4">
-													<div class="row">
-														<div class="col-4">
-															<span> <font color="red"> No  </font></span>
-														</div>
-														<div class="col-2">
-															<label class="switch">
-																<input type="checkbox" v-model="reinscripcion_data.labor_explotacion">
-																<span class="slider round"></span>
-															</label>
-														</div>
-														<div class="col-4">
-															<span ><font color="green">Si </font></span>
-														</div>
-													</div>
-												</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_prospeccion">
+													<span class="slider round"></span>
+												</label>
 											</div>
-											<br>
-											<div class="row"></div>
-											<br>
-											<div class="row">
-												<div class="col-2">
-													<h4>desarrollo?</h4>
-												</div>
-												<div class="col-4">
-													<div class="row">
-														<div class="col-4">
-															<span> <font color="red">  No desarrollo</font></span>
-														</div>
-														<div class="col-2">
-															<label class="switch">
-																<input type="checkbox" v-model="reinscripcion_data.labor_desarrollo">
-																<span class="slider round"></span>
-															</label>
-														</div>
-														<div class="col-4">
-															<span ><font color="green"> Si desarrollo </font></span>
-														</div>
-													</div>
-												</div>
+											<div class="col-4">
+												<span ><font color="green"> Si   </font></span>
 											</div>
-											<br>
-											<div class="row"></div>
-											<br>
-											<div class="row">
-												<div class="col-2">
-													<h4>exploración?</h4>
-												</div>
-												<div class="col-4">
-													<div class="row">
-														<div class="col-4">
-															<span> <font color="red"> No  </font></span>
-														</div>
-														<div class="col-2">
-															<label class="switch">
-																<input type="checkbox" v-model="reinscripcion_data.labor_exploracion">
-																<span class="slider round"></span>
-															</label>
-														</div>
-														<div class="col-4">
-															<span ><font color="green">Si </font></span>
-														</div>
-													</div>
-												</div>
-											</div>
-											<br>
 										</div>
 									</div>
-								</div>
-								<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
-									<a href="#" class="btn btn-primary">Option</a>
-									<a href="#" class="btn btn-outline-primary">Other option</a>
-								</div> -->
 							</div>
+							<br>
+							<br>
+							<div class="row">
+									<div class="col-2">
+										<h4>explotación?</h4>
+									</div>
+									<div class="col-4">
+										<div class="row">
+											<div class="col-4">
+												<span> <font color="red"> No  </font></span>
+											</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_explotacion">
+													<span class="slider round"></span>
+												</label>
+											</div>
+											<div class="col-4">
+												<span ><font color="green">Si </font></span>
+											</div>
+										</div>
+									</div>
+							</div>
+
+							
+							<br>
+							<br>
+							<div class="row">
+									<div class="col-2">
+										<h4>desarrollo?</h4>
+									</div>
+									<div class="col-4">
+										<div class="row">
+											<div class="col-4">
+												<span> <font color="red">  No desarrollo</font></span>
+											</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_desarrollo">
+													<span class="slider round"></span>
+												</label>
+											</div>
+											<div class="col-4">
+												<span ><font color="green"> Si desarrollo </font></span>
+											</div>
+										</div>
+									</div>
+							</div>
+							<br>
+							<br>
+							<div class="row">
+									<div class="col-2">
+										<h4>exploración?</h4>
+									</div>
+									<div class="col-4">
+										<div class="row">
+											<div class="col-4">
+												<span> <font color="red"> No  </font></span>
+											</div>
+											<div class="col-2">
+												<label class="switch">
+													<input type="checkbox" v-model="reinscripcion_data.labor_exploracion">
+													<span class="slider round"></span>
+												</label>
+											</div>
+											<div class="col-4">
+												<span ><font color="green">Si </font></span>
+											</div>
+										</div>
+									</div>
+							</div>
+							<br>
+							<br>
+							
 						</div>
 						<hr>
 						<div class="row">
@@ -2671,216 +2600,140 @@
 						</div>
 						<br>
 						<br>
-						
-
-
-
-
 						<div class="row">
-							<div class="col-12">
-								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-									<div class="card-custom-avatar" >
-										<img src="{{url('formulario_alta/imagenes/market-card.svg')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+							<div class="col-12 col-md-8"><h3>Mercado (indicar en que mercados vende su producción)</h3></div>
+						</div>
+						<div class="row">
+							<div class="form-floating col-sm">
+								<div class="row">
+									<div class="col-6">
+										<label for="porcentaje_prov">Porcentaje vendido a Provincia (*)</label>
 									</div>
-									<div class="card-body" >
-										<h4 class="card-title" style="margin-left: 5%">Mercado (indicar en que mercados vende su producción):</h4>
-										<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos a la actividades que desarrollo. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
-										<br>
-										<br>
-										<div class="row">
-											<div class="row" >
-												<div class="form-floating col-sm">
-													<div class="row">
-														<div class="col-6">
-															<label for="porcentaje_prov">Porcentaje vendido a Provincia (*)</label>
-														</div>
-														<div class="col-3">
-															<div class="input-group mb-3">
-																<input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov"  v-change="sumar_porcentajes()">
-																<div class="input-group-append">
-																	<span class="input-group-text" id="basic-addon2">%</span>
-																</div>
-															</div>
-														</div>
-													</div>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio en  la provincia.</small></p>
-													<!-- <input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov"> -->
-												</div>
-												<div class="form-floating col-sm">
-													<div class="row">
-														<div class="col-6">
-															<label for="porcentaje_prov_otra">Porcentaje vendido a otras Provincias (*)</label>
-														</div>
-														<div class="col-3">
-															<div class="input-group mb-3">
-																<input type="number" min="0" max="100" class="form-control" id="porcentaje_prov_otra" placeholder="Porcentaje a otras Provincias" v-model="reinscripcion_data.porcentaje_otras_prov"  v-change="sumar_porcentajes()">
-																<div class="input-group-append">
-																	<span class="input-group-text" id="basic-addon2">%</span>
-																</div>
-															</div>
-														</div>
-													</div>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a otras provincias.</small></p>
-												</div>
-												<div class="form-floating col-sm">
-													<div class="row">
-														<div class="col-6">
-															<label for="porcentaje_exportado">Porcentaje Exportado (*)</label>
-														</div>
-														<div class="col-3">
-															<div class="input-group mb-3">
-																<input type="number" min="0" max="100" class="form-control"  id="porcentaje_exportado" placeholder="Porcentaje Exportado" v-model="reinscripcion_data.porcentaje_exportado" v-change="sumar_porcentajes()">
-																<div class="input-group-append">
-																	<span class="input-group-text" id="basic-addon2">%</span>
-																</div>
-															</div>
-														</div>
-													</div>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a hacia otro país.</small></p>
-												</div>
+									<div class="col-3">
+										<div class="input-group mb-3">
+											<input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov"  v-change="sumar_porcentajes()">
+											<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">%</span>
 											</div>
-											<br>
-											<div class="row"></div>
-											<br>
-											<div class="row">
-												<div v-show="reinscripcion_data.validacion_de_suma_porcentajes" class="alert alert-warning col-10" role="alert">
-													<span>Cuidado, los valores de los porcentajes superan la cifra de 100 en base a 100, posiblemente haya cometido un error .</span>
-												</div>
-											</div>
-											<br>
 										</div>
 									</div>
 								</div>
+
+								<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio en  la provincia.</small></p>
+							  	<!-- <input type="number" min="0" max="100" class="form-control" id="porcentaje_prov" placeholder="Porcentaje a Provincia" v-model="reinscripcion_data.porcentaje_prov"> -->
+							</div>
+							<div class="form-floating col-sm">
+								<div class="row">
+									<div class="col-6">
+							  			<label for="porcentaje_prov_otra">Porcentaje vendido a otras Provincias (*)</label>
+									</div>
+									<div class="col-3">
+										<div class="input-group mb-3">
+											<input type="number" min="0" max="100" class="form-control" id="porcentaje_prov_otra" placeholder="Porcentaje a otras Provincias" v-model="reinscripcion_data.porcentaje_otras_prov"  v-change="sumar_porcentajes()">
+											<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">%</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							  	<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a otras provincias.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+								<div class="row">
+									<div class="col-6">
+							  			<label for="porcentaje_exportado">Porcentaje Exportado (*)</label>
+									</div>
+									<div class="col-3">
+										<div class="input-group mb-3">
+											<input type="number" min="0" max="100" class="form-control"  id="porcentaje_exportado" placeholder="Porcentaje Exportado" v-model="reinscripcion_data.porcentaje_exportado" v-change="sumar_porcentajes()">
+											<div class="input-group-append">
+												<span class="input-group-text" id="basic-addon2">%</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							  	<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el porcentaje que se vendio a hacia otro país.</small></p>
 							</div>
 						</div>
-
-
-
-
+						<div v-show="reinscripcion_data.validacion_de_suma_porcentajes" class="alert alert-warning col-10" role="alert">
+							<span>Cuidado, los valores de los porcentajes superan la cifra de 100 en base a 100, posiblemente haya cometido un error .</span>
+						</div>
+						<hr>
 						<br>
 						<br>
-						 
-
-
-
-
-
 						<div class="row">
-							<div class="col-12">
-								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-									<div class="card-custom-avatar" >
-										<img src="{{url('formulario_alta/imagenes/personas-card.png')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
-									</div>
-									<div class="card-body" >
-										<h4 class="card-title" style="margin-left: 5%">Personal Ocupado:</h4>
-										<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos a la actividades que desarrollo. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
-										<br>
-										<br>
-										<div class="row">
-											<div class="form-floating col-sm">
-												<input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_profesionales" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_prof_y_tec">
-												<label for="personal_ocupado_permanentemente_profesionales">Personal Ocupado Permanentemente Profesional  Tecnicos(*)</label>
-												<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal profesional o técnico que esta siendo contratado.</small></p>
-											</div>
-											<div class="form-floating col-sm">
-												<input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_o_y_o" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_oper_y_obreros">
-												<label for="personal_ocupado_permanentemente_o_y_o">Personal Ocupado Permanentemente Operarios y Obreros (*)</label>
-												<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal  Operarios y Obreros que esta siendo contratado.</small></p>
-											</div>
-											<div class="form-floating col-sm">
-												<input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_administrativos" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_administrativos">
-												<label for="personal_ocupado_permanentemente_administrativos">Personal Ocupado Permanentemente Administrativos(*)</label>
-												<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal Administrativos que esta siendo contratado.</small></p>
-											</div>
-											<div class="form-floating col-sm">
-												<input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_otros" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_otros">
-												<label for="personal_ocupado_permanentemente_otros">Personal Ocupado Permanentemente Otros(*)</label>
-												<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
-											</div>
-										</div>
-											<br>
-											<div class="row"></div>
-											<br>
-											<div class="row">
-												<div class="form-floating col-sm">
-													<input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_profesionales" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_prof_y_tec">
-													<label for="personal_ocupado_transitorio_profesionales">Personal Ocupado Transitorio Profesional  Tecnicos(*)</label>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal profesional o técnico que esta siendo contratado.</small></p>
-												</div>
-												<div class="form-floating col-sm">
-													<input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_o_y_o" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_oper_y_obreros">
-													<label for="personal_ocupado_transitorio_o_y_o">Personal Ocupado Transitorio Operarios y Obreros (*)</label>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal  Operarios y Obreros que esta siendo contratado.</small></p>
-												</div>
-												<div class="form-floating col-sm">
-													<input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_administrativos" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_administrativos">
-													<label for="personal_ocupado_transitorio_administrativos">Personal Ocupado Transitorio Administrativos(*)</label>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal Administrativos que esta siendo contratado.</small></p>
-												</div>
-												<div class="form-floating col-sm">
-													<input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_otros" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_otros">
-													<label for="personal_ocupado_transitorio_otros">Personal Ocupado Transitorio Otros(*)</label>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
-												</div>
-											</div>
-											<br>
-										</div>
-									</div>
-								</div>
+							<div class="col-12 col-md-8"><h3>Personal Ocupado</h3></div>
+						</div>
+						<div class="row">
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_profesionales" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_prof_y_tec">
+							  <label for="personal_ocupado_permanentemente_profesionales">Personal Ocupado Permanentemente Profesional  Tecnicos(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal profesional o técnico que esta siendo contratado.</small></p>
 							</div>
-
-
-
-
-
-						<br>
-						<br>
-
-
-
-
-
-
-
-						<div class="row">
-							<div class="col-12">
-								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-									<div class="card-custom-avatar" >
-										<img src="{{url('formulario_alta/imagenes/persona-card.png')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
-									</div>
-									<div class="card-body" >
-										<h4 class="card-title" style="margin-left: 5%">Datos de quien completa este formulario:</h4>
-										<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos a la actividades que desarrollo. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
-										<br>
-										<br>
-										<div class="row">
-											<div class="row" >
-												<div class="form-floating col-sm">
-													<input type="text" maxlength="50" class="form-control" id="nombre_apellido_reinscripcion" name="nombre_apellido_reinscripcion" placeholder="Nombre y Apellido" v-model="reinscripcion_data.nombre_apellido_reinscripcion">
-													<label for="nombre_apellido_reinscripcion">Nombre y Apellido(*)</label>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el nombre de quien esta llenando este formulario y quien se entiende, es responsable de los datos cargados.</small></p>
-												</div>
-												<div class="form-floating col-sm">
-													<input type="number" maxlength="8" class="form-control" id="dni_reinscripcion" name="dni_reinscripcion" placeholder="DNI" v-model="reinscripcion_data.dni_reinscripcion">
-													<label for="dni_reinscripcion">Dni (sin puntos)(*)</label>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el dni de quien esta llenando este formulario y quien se entiende, es responsable de los datos cargados.</small></p>
-												</div>
-												<div class="form-floating col-sm">
-													<input type="text" maxlength="50" class="form-control" id="cargo_empresa_reinscripcion" name="cargo_empresa_reinscripcion" placeholder="Cargo que ocupa dentro de la empresa" v-model="reinscripcion_data.cargo_reinscripcion">
-													<label for="cargo_empresa_reinscripcion">Cargo en la empresa(*)</label>
-													<p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el cargo que ocupa dentro de la empresa a la cual le esta completando este formulario.</small></p>
-												</div>
-											</div>
-											<br>
-											<div class="row"></div>
-											<br>
-										</div>
-									</div>
-								</div>
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_o_y_o" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_oper_y_obreros">
+							  <label for="personal_ocupado_permanentemente_o_y_o">Personal Ocupado Permanentemente Operarios y Obreros (*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal  Operarios y Obreros que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_administrativos" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_administrativos">
+							  <label for="personal_ocupado_permanentemente_administrativos">Personal Ocupado Permanentemente Administrativos(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal Administrativos que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_permanentemente_otros" placeholder="Personal Ocupado Permanentemente" v-model="reinscripcion_data.personal_perm_otros">
+							  <label for="personal_ocupado_permanentemente_otros">Personal Ocupado Permanentemente Otros(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
 							</div>
 						</div>
-
-						
+						<br>
+						<br>
+						<div class="row">
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_profesionales" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_prof_y_tec">
+							  <label for="personal_ocupado_transitorio_profesionales">Personal Ocupado Transitorio Profesional  Tecnicos(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal profesional o técnico que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_o_y_o" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_oper_y_obreros">
+							  <label for="personal_ocupado_transitorio_o_y_o">Personal Ocupado Transitorio Operarios y Obreros (*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal  Operarios y Obreros que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_administrativos" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_administrativos">
+							  <label for="personal_ocupado_transitorio_administrativos">Personal Ocupado Transitorio Administrativos(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal Administrativos que esta siendo contratado.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="number" min="0" maxlength="6" class="form-control" id="personal_ocupado_transitorio_otros" placeholder="Personal Ocupado transitorio" v-model="reinscripcion_data.personal_tran_otros">
+							  <label for="personal_ocupado_transitorio_otros">Personal Ocupado Transitorio Otros(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es la cantidad de personal de otras caracteristicas disntintas a las anteriores que esta siendo contratado.</small></p>
+							</div>
+						</div>
+						<hr>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col-12 col-md-8"><h3>Datos de quien completa este formulario</h3></div>
+						</div>
+						<div class="row">
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="nombre_apellido_reinscripcion" name="nombre_apellido_reinscripcion" placeholder="Nombre y Apellido" v-model="reinscripcion_data.nombre_apellido_reinscripcion">
+							  <label for="nombre_apellido_reinscripcion">Nombre y Apellido(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el nombre de quien esta llenando este formulario y quien se entiende, es responsable de los datos cargados.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="number" maxlength="8" class="form-control" id="dni_reinscripcion" name="dni_reinscripcion" placeholder="DNI" v-model="reinscripcion_data.dni_reinscripcion">
+							  <label for="dni_reinscripcion">Dni (sin puntos)(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el dni de quien esta llenando este formulario y quien se entiende, es responsable de los datos cargados.</small></p>
+							</div>
+							<div class="form-floating col-sm">
+							  <input type="text" maxlength="50" class="form-control" id="cargo_empresa_reinscripcion" name="cargo_empresa_reinscripcion" placeholder="Cargo que ocupa dentro de la empresa" v-model="reinscripcion_data.cargo_reinscripcion">
+							  <label for="cargo_empresa_reinscripcion">Cargo en la empresa(*)</label>
+							  <p v-show="reinscripcion_data.mostrar_info_paso_dos"><small class="text-muted">Es el cargo que ocupa dentro de la empresa a la cual le esta completando este formulario.</small></p>
+							</div>
+						</div>
+						<hr>
 						<br>
 						<br>
 						<div class="alert alert-warning col-6" role="alert">
@@ -2941,7 +2794,7 @@
 							noBorder: false
 						},
 						size: {
-							fontSize: 24,
+							fontSize: 14,
 							height: 34,
 							padding: 7,
 							width: 100
@@ -4371,22 +4224,22 @@
 								// 'en lechos de ríos'
 								// 'Aguas Corrientes',
 								// 'Placeres',
-								'Abrasivos',
-								'Amianto',
-								'Baritina',
-								'Bentonita',
-								'Caolí­n',
-								'Caparrosas',
-								'Esteatitas',
-								'Grafito',
+								'Salitres',
+								'Salinas',
+								'Turberas',
 								'Metales no comprendidos en 1° Categ.',
+								'Tierras Piritosas y Aluminosas',
+								'Abrasivos',
 								'Ocres',
 								'Resinas',
+								'Esteatitas',
+								'Baritina',
+								'Caparrosas',
+								'Grafito',
+								'Caolí­n',
 								'Sales Alcalinas o Alcalino Terrosas',
-								'Salinas',
-								'Salitres',
-								'Tierras Piritosas y Aluminosas',
-								'Turberas',
+								'Amianto',
+								'Bentonita',
 								'Zeolitas o Minerales Permutantes o Permutíticos'
 								];
 						}
