@@ -18072,48 +18072,191 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
 /* harmony import */ var _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/Banner */ "./resources/js/Jetstream/Banner.vue");
+/* harmony import */ var _Jetstream_Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Jetstream/Modal */ "./resources/js/Jetstream/Modal.vue");
+/* harmony import */ var _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Jetstream/DialogModal */ "./resources/js/Jetstream/DialogModal.vue");
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default,
-    Banner: _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_1__.default
+    Banner: _Jetstream_Banner__WEBPACK_IMPORTED_MODULE_1__.default,
+    Modal: _Jetstream_Modal__WEBPACK_IMPORTED_MODULE_2__.default,
+    JetDialogModal: _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_3__.default
   },
   props: ["productor"],
   data: function data() {
     return {
+      confirmingUserDeletion: false,
       form: {
         razon_social: this.$props.productor.razonsocial,
+        razon_social_valido: true,
+        razon_social_correcto: 'nada',
+        obs_razon_social: '',
+        obs_razon_social_valido: false,
         email: this.$props.productor.email,
+        email_valido: true,
+        email_correcto: 'nada',
+        obs_email: '',
+        obs_email_valido: false,
         cuit: this.$props.productor.cuit,
+        cuit_valido: true,
+        cuit_correcto: 'nada',
+        obs_cuit: '',
+        obs_cuit_valido: false,
         numeroproductor: this.$props.productor.numeroproductor,
-        domicilio_prod: this.$props.productor.domicilio_prod,
+        numeroproductor_valido: true,
+        numeroproductor_correcto: 'nada',
+        obs_numeroproductor: '',
+        obs_numeroproductor_valido: false,
+        //domicilio_prod: this.$props.productor.domicilio_prod,
         tiposociedad: this.$props.productor.tiposociedad,
+        tiposociedad_valido: true,
+        tiposociedad_correcto: 'nada',
+        obs_tiposociedad: '',
+        obs_tiposociedad_valido: false,
         inscripciondgr: this.$props.productor.inscripciondgr,
+        inscripciondgr_valido: true,
+        inscripciondgr_correcto: 'nada',
+        obs_inscripciondgr: '',
+        obs_inscripciondgr_valido: false,
         constaciasociedad: this.$props.productor.constaciasociedad,
+        constaciasociedad_valido: true,
+        constaciasociedad_correcto: 'nada',
+        obs_constaciasociedad: '',
+        obs_constaciasociedad_valido: false,
+        valor_de_progreso: 100,
+        valor_de_aprobado: 100,
+        valor_de_reprobado: 100,
+        //---------------Segundo paso
+        valor_de_progreso_dos: 100,
+        valor_de_aprobado_dos: 100,
+        valor_de_reprobado_dos: 100,
         leal_calle: this.$props.productor.leal_calle,
+        nombre_calle_legal_valido: true,
+        nombre_calle_legal_correcto: 'nada',
+        obs_nombre_calle_legal: '',
+        obs_nombre_calle_legal_valido: false,
         leal_numero: this.$props.productor.leal_numero,
+        leal_numero_valido: true,
+        leal_numero_correcto: 'nada',
+        obs_leal_numero: '',
+        obs_leal_numero_valido: false,
         leal_telefono: this.$props.productor.leal_telefono,
+        leal_telefono_valido: true,
+        leal_telefono_correcto: 'nada',
+        obs_leal_telefono: '',
+        obs_leal_telefono_valido: false,
         leal_pais: this.$props.productor.leal_pais,
+        leal_pais_valido: true,
+        leal_pais_correcto: 'nada',
+        obs_leal_pais: '',
+        obs_leal_pais_valido: false,
         leal_provincia: this.$props.productor.leal_provincia,
+        leal_provincia_valido: true,
+        leal_provincia_correcto: 'nada',
+        obs_leal_provincia: '',
+        obs_leal_provincia_valido: false,
         leal_departamento: this.$props.productor.leal_departamento,
+        leal_departamento_valido: true,
+        leal_departamento_correcto: 'nada',
+        obs_leal_departamento: '',
+        obs_leal_departamento_valido: false,
         leal_localidad: this.$props.productor.leal_localidad,
+        leal_localidad_valido: true,
+        leal_localidad_correcto: 'nada',
+        obs_leal_localidad: '',
+        obs_leal_localidad_valido: false,
         leal_cp: this.$props.productor.leal_cp,
+        leal_cp_valido: true,
+        leal_cp_correcto: 'nada',
+        obs_leal_cp: '',
+        obs_leal_cp_valido: false,
         leal_otro: this.$props.productor.leal_otro,
+        leal_otro_valido: true,
+        leal_otro_correcto: 'nada',
+        obs_leal_otro: '',
+        obs_leal_otro_valido: false,
+        // PASO 3
+        valor_de_progreso_tres: 100,
+        valor_de_aprobado_tres: 100,
+        valor_de_reprobado_tres: 100,
         administracion_calle: this.$props.productor.administracion_calle,
+        administracion_calle_valido: true,
+        administracion_calle_correcto: 'nada',
+        obs_administracion_calle_nombre: '',
+        obs_administracion_calle_nombre_valido: false,
         administracion_numero: this.$props.productor.administracion_numero,
+        administracion_numero_valido: true,
+        administracion_numero_correcto: 'nada',
+        obs_administracion_numero_nombre: '',
+        obs_administracion_numero_nombre_valido: false,
         administracion_telefono: this.$props.productor.administracion_telefono,
+        administracion_telefono_valido: true,
+        administracion_telefono_correcto: 'nada',
+        obs_administracion_telefono_nombre: '',
+        obs_administracion_telefono_nombre_valido: false,
         administracion_pais: this.$props.productor.administracion_pais,
+        administracion_pais_valido: true,
+        administracion_pais_correcto: 'nada',
+        obs_administracion_pais: '',
+        obs_administracion_pais_valido: false,
         administracion_provincia: this.$props.productor.administracion_provincia,
+        administracion_provincia_valido: true,
+        administracion_provincia_correcto: 'nada',
+        obs_administracion_provincia: '',
+        obs_administracion_provincia_valido: false,
         administracion_departamento: this.$props.productor.administracion_departamento,
+        administracion_departamento_valido: true,
+        administracion_departamento_correcto: 'nada',
+        obs_administracion_departamento: '',
+        obs_administracion_departamento_valido: false,
         administracion_localidad: this.$props.productor.administracion_localidad,
+        administracion_localidad_valido: true,
+        administracion_localidad_correcto: 'nada',
+        obs_administracion_localidad: '',
+        obs_administracion_localidad_valido: false,
         administracion_cp: this.$props.productor.administracion_cp,
+        administracion_cp_valido: true,
+        administracion_cp_correcto: 'nada',
+        obs_administracion_cp: '',
+        obs_administracion_cp_valido: false,
         administracion_otro: this.$props.productor.administracion_otro,
+        administracion_otro_valido: true,
+        administracion_otro_correcto: 'nada',
+        obs_administracion_otro: '',
+        obs_administracion_otro_valido: false,
+        // PASO 4
+        valor_de_progreso_cuatro: 100,
+        valor_de_aprobado_cuatro: 100,
+        valor_de_reprobado_cuatro: 100,
         numero_expdiente: this.$props.productor.numero_expdiente,
+        numero_expdiente_valido: true,
+        numero_expdiente_correcto: 'nada',
+        obs_numero_expdiente: '',
+        obs_numero_expdiente_valido: false,
         categoria: this.$props.productor.categoria,
+        categoria_validacion: true,
+        categoria_correcto: 'nada',
+        obs_categoria: '',
+        obs_categoria_valido: false,
         nombre_mina: this.$props.productor.nombre_mina,
+        nombre_mina_validacion: true,
+        nombre_mina_correcto: 'nada',
+        obs_nombre_mina: '',
+        obs_nombre_mina_valido: false,
         descripcion_mina: this.$props.productor.descripcion_mina,
+        descripcion_mina_validacion: true,
+        descripcion_mina_correcto: 'nada',
+        obs_descripcion_mina: '',
+        obs_descripcion_mina_valido: false,
         distrito_minero: this.$props.productor.distrito_minero,
+        distrito_minero_validacion: true,
+        distrito_minero_correcto: 'nada',
+        obs_distrito_minero: '',
+        obs_distrito_minero_valido: false,
+        // hasta aca llegue el dia miercoles 26-5-21
         mina_cantera: this.$props.productor.mina_cantera,
         plano_inmueble: this.$props.productor.plano_inmueble,
         minerales_variedad: this.$props.productor.minerales_variedad,
@@ -18146,6 +18289,740 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submit: function submit() {
       this.$inertia.put(route("productors.update", this.$props.productors.id), this.form);
+    },
+    closeModal: function closeModal() {
+      this.confirmingUserDeletion = false;
+      this.form.reset();
+    },
+    actaulizar_variables_correctas: function actaulizar_variables_correctas(que_cambio, valor) {
+      if (que_cambio == 1) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.razon_social_correcto = true;
+        if (valor == false) this.form.razon_social_correcto = false;
+        if (valor == 'nada') this.form.razon_social_correcto = 'nada';
+      }
+
+      if (que_cambio == 2) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.email_correcto = true;
+        if (valor == false) this.form.email_correcto = false;
+        if (valor == 'nada') this.form.email_correcto = 'nada';
+      }
+
+      if (que_cambio == 3) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.cuit_correcto = true;
+        if (valor == false) this.form.cuit_correcto = false;
+        if (valor == 'nada') this.form.cuit_correcto = 'nada';
+      }
+
+      if (que_cambio == 4) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.numeroproductor_correcto = true;
+        if (valor == false) this.form.numeroproductor_correcto = false;
+        if (valor == 'nada') this.form.numeroproductor_correcto = 'nada';
+      }
+
+      if (que_cambio == 5) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.tiposociedad_correcto = true;
+        if (valor == false) this.form.tiposociedad_correcto = false;
+        if (valor == 'nada') this.form.tiposociedad_correcto = 'nada';
+      }
+
+      if (que_cambio == 6) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.inscripciondgr_correcto = true;
+        if (valor == false) this.form.inscripciondgr_correcto = false;
+        if (valor == 'nada') this.form.inscripciondgr_correcto = 'nada';
+      }
+
+      if (que_cambio == 7) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.constaciasociedad_correcto = true;
+        if (valor == false) this.form.constaciasociedad_correcto = false;
+        if (valor == 'nada') this.form.constaciasociedad_correcto = 'nada';
+      }
+    },
+    actaulizar_variables_correctas_dos: function actaulizar_variables_correctas_dos(que_cambio, valor) {
+      if (que_cambio == 1) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.nombre_calle_legal_correcto = true;
+        if (valor == false) this.form.nombre_calle_legal_correcto = false;
+        if (valor == 'nada') this.form.nombre_calle_legal_correcto = 'nada';
+      }
+
+      if (que_cambio == 2) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.leal_numero_correcto = true;
+        if (valor == false) this.form.leal_numero_correcto = false;
+        if (valor == 'nada') this.form.leal_numero_correcto = 'nada';
+      }
+
+      if (que_cambio == 3) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.leal_telefono_correcto = true;
+        if (valor == false) this.form.leal_telefono_correcto = false;
+        if (valor == 'nada') this.form.leal_telefono_correcto = 'nada';
+      }
+
+      if (que_cambio == 4) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.leal_pais_correcto = true;
+        if (valor == false) this.form.leal_pais_correcto = false;
+        if (valor == 'nada') this.form.leal_pais_correcto = 'nada';
+      }
+
+      if (que_cambio == 5) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.leal_provincia_correcto = true;
+        if (valor == false) this.form.leal_provincia_correcto = false;
+        if (valor == 'nada') this.form.leal_provincia_correcto = 'nada';
+      }
+
+      if (que_cambio == 6) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.leal_departamento_correcto = true;
+        if (valor == false) this.form.leal_departamento_correcto = false;
+        if (valor == 'nada') this.form.leal_departamento_correcto = 'nada';
+      }
+
+      if (que_cambio == 7) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.leal_localidad_correcto = true;
+        if (valor == false) this.form.leal_localidad_correcto = false;
+        if (valor == 'nada') this.form.leal_localidad_correcto = 'nada';
+      }
+
+      if (que_cambio == 8) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.leal_cp_correcto = true;
+        if (valor == false) this.form.leal_cp_correcto = false;
+        if (valor == 'nada') this.form.leal_cp_correcto = 'nada';
+      }
+
+      if (que_cambio == 9) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.leal_otro_correcto = true;
+        if (valor == false) this.form.leal_otro_correcto = false;
+        if (valor == 'nada') this.form.leal_otro_correcto = 'nada';
+      }
+    },
+    actaulizar_variables_correctas_tres: function actaulizar_variables_correctas_tres(que_cambio, valor) {
+      if (que_cambio == 1) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_calle_correcto = true;
+        if (valor == false) this.form.administracion_calle_correcto = false;
+        if (valor == 'nada') this.form.administracion_calle_correcto = 'nada';
+      }
+
+      if (que_cambio == 2) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_numero_correcto = true;
+        if (valor == false) this.form.administracion_numero_correcto = false;
+        if (valor == 'nada') this.form.administracion_numero_correcto = 'nada';
+      }
+
+      if (que_cambio == 3) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_telefono_correcto = true;
+        if (valor == false) this.form.administracion_telefono_correcto = false;
+        if (valor == 'nada') this.form.administracion_telefono_correcto = 'nada';
+      }
+
+      if (que_cambio == 4) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_pais_correcto = true;
+        if (valor == false) this.form.administracion_pais_correcto = false;
+        if (valor == 'nada') this.form.administracion_pais_correcto = 'nada';
+      }
+
+      if (que_cambio == 5) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_provincia_correcto = true;
+        if (valor == false) this.form.administracion_provincia_correcto = false;
+        if (valor == 'nada') this.form.administracion_provincia_correcto = 'nada';
+      }
+
+      if (que_cambio == 6) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_departamento_correcto = true;
+        if (valor == false) this.form.administracion_departamento_correcto = false;
+        if (valor == 'nada') this.form.administracion_departamento_correcto = 'nada';
+      }
+
+      if (que_cambio == 7) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_localidad_correcto = true;
+        if (valor == false) this.form.administracion_localidad_correcto = false;
+        if (valor == 'nada') this.form.administracion_localidad_correcto = 'nada';
+      }
+
+      if (que_cambio == 8) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_cp_correcto = true;
+        if (valor == false) this.form.administracion_cp_correcto = false;
+        if (valor == 'nada') this.form.administracion_cp_correcto = 'nada';
+      }
+
+      if (que_cambio == 9) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_otro_correcto = true;
+        if (valor == false) this.form.administracion_otro_correcto = false;
+        if (valor == 'nada') this.form.administracion_otro_correcto = 'nada';
+      }
+    },
+    actaulizar_variables_correctas_cuatro: function actaulizar_variables_correctas_cuatro(que_cambio, valor) {
+      if (que_cambio == 1) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.numero_expdiente_correcto = true;
+        if (valor == false) this.form.numero_expdiente_correcto = false;
+        if (valor == 'nada') this.form.numero_expdiente_correcto = 'nada';
+      }
+
+      if (que_cambio == 2) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.categoria_correcto = true;
+        if (valor == false) this.form.categoria_correcto = false;
+        if (valor == 'nada') this.form.categoria_correcto = 'nada';
+      }
+
+      if (que_cambio == 3) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.nombre_mina_correcto = true;
+        if (valor == false) this.form.nombre_mina_correcto = false;
+        if (valor == 'nada') this.form.nombre_mina_correcto = 'nada';
+      }
+
+      if (que_cambio == 4) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.descripcion_mina_correcto = true;
+        if (valor == false) this.form.descripcion_mina_correcto = false;
+        if (valor == 'nada') this.form.descripcion_mina_correcto = 'nada';
+      }
+
+      if (que_cambio == 5) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.distrito_minero_correcto = true;
+        if (valor == false) this.form.distrito_minero_correcto = false;
+        if (valor == 'nada') this.form.distrito_minero_correcto = 'nada';
+      }
+
+      if (que_cambio == 6) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_departamento_correcto = true;
+        if (valor == false) this.form.administracion_departamento_correcto = false;
+        if (valor == 'nada') this.form.administracion_departamento_correcto = 'nada';
+      }
+
+      if (que_cambio == 7) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_localidad_correcto = true;
+        if (valor == false) this.form.administracion_localidad_correcto = false;
+        if (valor == 'nada') this.form.administracion_localidad_correcto = 'nada';
+      }
+
+      if (que_cambio == 8) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_cp_correcto = true;
+        if (valor == false) this.form.administracion_cp_correcto = false;
+        if (valor == 'nada') this.form.administracion_cp_correcto = 'nada';
+      }
+
+      if (que_cambio == 9) {
+        // significa que camvio la razon_social
+        if (valor == true) this.form.administracion_otro_correcto = true;
+        if (valor == false) this.form.administracion_otro_correcto = false;
+        if (valor == 'nada') this.form.administracion_otro_correcto = 'nada';
+      }
+    },
+    calculo_de_porcentajes: function calculo_de_porcentajes(que_cambio, valor) {
+      var aprobados = 0;
+      var progreso = 0;
+      var reprobado = 0;
+      this.actaulizar_variables_correctas(que_cambio, valor);
+
+      if (this.form.razon_social_correcto == true) {
+        aprobados++;
+      }
+
+      if (this.form.razon_social_correcto == false) {
+        reprobado++;
+      }
+
+      if (this.form.razon_social_correcto == 'nada') {
+        progreso++;
+      }
+
+      if (this.form.email_correcto == true) {
+        aprobados++;
+      }
+
+      if (this.form.email_correcto == false) {
+        reprobado++;
+      }
+
+      if (this.form.email_correcto == 'nada') {
+        progreso++;
+      }
+
+      if (this.form.cuit_correcto == true) {
+        aprobados++;
+      }
+
+      if (this.form.cuit_correcto == false) {
+        reprobado++;
+      }
+
+      if (this.form.cuit_correcto == 'nada') {
+        progreso++;
+      }
+
+      if (this.form.numeroproductor_correcto == true) {
+        aprobados++;
+      }
+
+      if (this.form.numeroproductor_correcto == false) {
+        reprobado++;
+      }
+
+      if (this.form.numeroproductor_correcto == 'nada') {
+        progreso++;
+      }
+
+      if (this.form.tiposociedad_correcto == true) {
+        aprobados++;
+      }
+
+      if (this.form.tiposociedad_correcto == false) {
+        reprobado++;
+      }
+
+      if (this.form.tiposociedad_correcto == 'nada') {
+        progreso++;
+      }
+
+      if (this.form.inscripciondgr_correcto == true) {
+        aprobados++;
+      }
+
+      if (this.form.inscripciondgr_correcto == false) {
+        reprobado++;
+      }
+
+      if (this.form.inscripciondgr_correcto == 'nada') {
+        progreso++;
+      }
+
+      if (this.form.constaciasociedad_correcto == true) {
+        aprobados++;
+      }
+
+      if (this.form.constaciasociedad_correcto == false) {
+        reprobado++;
+      }
+
+      if (this.form.constaciasociedad_correcto == 'nada') {
+        progreso++;
+      } //calcular porcentajes
+
+
+      this.form.valor_de_progreso = progreso * 100 / 7;
+      this.form.valor_de_aprobado = aprobados * 100 / 7;
+      this.form.valor_de_reprobado = reprobado * 100 / 7;
+      if (progreso == 7) this.form.valor_de_progreso = 100;
+      if (aprobados == 7) this.form.valor_de_aprobado = 100;
+      if (reprobado == 7) this.form.valor_de_reprobado = 100;
+      this.form.valor_de_progreso = this.form.valor_de_progreso.toFixed(2);
+      this.form.valor_de_aprobado = this.form.valor_de_aprobado.toFixed(2);
+      this.form.valor_de_reprobado = this.form.valor_de_reprobado.toFixed(2);
+    },
+    calculo_de_porcentajes_dos: function calculo_de_porcentajes_dos(que_cambio, valor) {
+      var aprobados_dos = 0;
+      var progreso_dos = 0;
+      var reprobado_dos = 0;
+      this.actaulizar_variables_correctas_dos(que_cambio, valor);
+
+      if (this.form.nombre_calle_legal_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.nombre_calle_legal_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.nombre_calle_legal_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_numero_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_numero_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_numero_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_telefono_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_telefono_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_telefono_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_pais_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_pais_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_pais_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_provincia_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_provincia_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_provincia_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_departamento_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_departamento_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_departamento_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_localidad_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_localidad_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_localidad_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_cp_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_cp_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_cp_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_localidad_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_localidad_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_localidad_correcto == 'nada') {
+        progreso_dos++;
+      }
+
+      if (this.form.leal_otro_correcto == true) {
+        aprobados_dos++;
+      }
+
+      if (this.form.leal_otro_correcto == false) {
+        reprobado_dos++;
+      }
+
+      if (this.form.leal_otro_correcto == 'nada') {
+        progreso_dos++;
+      } //calcular porcentajes
+
+
+      this.form.valor_de_progreso_dos = progreso_dos * 100 / 9;
+      this.form.valor_de_aprobado_dos = aprobados_dos * 100 / 9;
+      this.form.valor_de_reprobado_dos = reprobado_dos * 100 / 9;
+      if (progreso_dos == 9) this.form.valor_de_progreso_dos = 100;
+      if (aprobados_dos == 9) this.form.valor_de_aprobado_dos = 100;
+      if (reprobado_dos == 9) this.form.valor_de_reprobado_dos = 100;
+      this.form.valor_de_progreso_dos = this.form.valor_de_progreso_dos.toFixed(2);
+      this.form.valor_de_aprobado_dos = this.form.valor_de_aprobado_dos.toFixed(2);
+      this.form.valor_de_reprobado_dos = this.form.valor_de_reprobado_dos.toFixed(2);
+    },
+    calculo_de_porcentajes_tres: function calculo_de_porcentajes_tres(que_cambio, valor) {
+      var aprobados_tres = 0;
+      var progreso_tres = 0;
+      var reprobado_tres = 0;
+      this.actaulizar_variables_correctas_tres(que_cambio, valor);
+
+      if (this.form.administracion_calle_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_calle_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_calle_correcto == 'nada') {
+        progreso_tres++;
+      }
+
+      if (this.form.administracion_numero_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_numero_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_numero_correcto == 'nada') {
+        progreso_tres++;
+      }
+
+      if (this.form.administracion_telefono_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_telefono_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_telefono_correcto == 'nada') {
+        progreso_tres++;
+      }
+
+      if (this.form.administracion_pais_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_pais_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_pais_correcto == 'nada') {
+        progreso_tres++;
+      }
+
+      if (this.form.administracion_departamento_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_departamento_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_departamento_correcto == 'nada') {
+        progreso_tres++;
+      }
+
+      if (this.form.administracion_provincia_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_provincia_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_provincia_correcto == 'nada') {
+        progreso_tres++;
+      }
+
+      if (this.form.administracion_localidad_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_localidad_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_localidad_correcto == 'nada') {
+        progreso_tres++;
+      }
+
+      if (this.form.administracion_cp_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_cp_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_cp_correcto == 'nada') {
+        progreso_tres++;
+      }
+
+      if (this.form.administracion_otro_correcto == true) {
+        aprobados_tres++;
+      }
+
+      if (this.form.administracion_otro_correcto == false) {
+        reprobado_tres++;
+      }
+
+      if (this.form.administracion_otro_correcto == 'nada') {
+        progreso_tres++;
+      } //calcular porcentajes
+
+
+      this.form.valor_de_progreso_tres = progreso_tres * 100 / 9;
+      this.form.valor_de_aprobado_tres = aprobados_tres * 100 / 9;
+      this.form.valor_de_reprobado_tres = reprobado_tres * 100 / 9;
+      if (progreso_tres == 9) this.form.valor_de_progreso_tres = 100;
+      if (aprobados_tres == 9) this.form.valor_de_aprobado_tres = 100;
+      if (reprobado_tres == 9) this.form.valor_de_reprobado_tres = 100;
+      this.form.valor_de_progreso_tres = this.form.valor_de_progreso_tres.toFixed(2);
+      this.form.valor_de_aprobado_tres = this.form.valor_de_aprobado_tres.toFixed(2);
+      this.form.valor_de_reprobado_tres = this.form.valor_de_reprobado_tres.toFixed(2);
+    },
+    calculo_de_porcentajes_cuatro: function calculo_de_porcentajes_cuatro(que_cambio, valor) {
+      var aprobados_cuatro = 0;
+      var progreso_cuatro = 0;
+      var reprobado_cuatro = 0;
+      this.actaulizar_variables_correctas_cuatro(que_cambio, valor);
+
+      if (this.form.numero_expdiente_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.numero_expdiente_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.numero_expdiente_correcto == 'nada') {
+        progreso_cuatro++;
+      }
+
+      if (this.form.categoria_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.categoria_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.categoria_correcto == 'nada') {
+        progreso_cuatro++;
+      }
+
+      if (this.form.nombre_mina_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.nombre_mina_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.nombre_mina_correcto == 'nada') {
+        progreso_cuatro++;
+      }
+
+      if (this.form.descripcion_mina_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.descripcion_mina_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.descripcion_mina_correcto == 'nada') {
+        progreso_cuatro++;
+      }
+
+      if (this.form.distrito_minero_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.distrito_minero_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.distrito_minero_correcto == 'nada') {
+        progreso_cuatro++;
+      }
+
+      if (this.form.administracion_provincia_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.administracion_provincia_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.administracion_provincia_correcto == 'nada') {
+        progreso_cuatro++;
+      }
+
+      if (this.form.administracion_localidad_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.administracion_localidad_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.administracion_localidad_correcto == 'nada') {
+        progreso_cuatro++;
+      }
+
+      if (this.form.administracion_cp_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.administracion_cp_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.administracion_cp_correcto == 'nada') {
+        progreso_cuatro++;
+      }
+
+      if (this.form.administracion_otro_correcto == true) {
+        aprobados_cuatro++;
+      }
+
+      if (this.form.administracion_otro_correcto == false) {
+        reprobado_cuatro++;
+      }
+
+      if (this.form.administracion_otro_correcto == 'nada') {
+        progreso_cuatro++;
+      } //calcular porcentajes
+
+
+      this.form.valor_de_progreso_cuatro = progreso_cuatro * 100 / 9;
+      this.form.valor_de_aprobado_cuatro = aprobados_cuatro * 100 / 9;
+      this.form.valor_de_reprobado_cuatro = reprobado_cuatro * 100 / 9;
+      if (progreso_cuatro == 9) this.form.valor_de_progreso_cuatro = 100;
+      if (aprobados_cuatro == 9) this.form.valor_de_aprobado_cuatro = 100;
+      if (reprobado_cuatro == 9) this.form.valor_de_reprobado_cuatro = 100;
+      this.form.valor_de_progreso_cuatro = this.form.valor_de_progreso_cuatro.toFixed(2);
+      this.form.valor_de_aprobado_cuatro = this.form.valor_de_aprobado_cuatro.toFixed(2);
+      this.form.valor_de_reprobado_cuatro = this.form.valor_de_reprobado_cuatro.toFixed(2);
     }
   }
 });
@@ -22850,1123 +23727,4050 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 var _hoisted_4 = {
   "class": "row"
 };
-var _hoisted_5 = {
-  "class": "flex flex-col mb-4"
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Delete Account ");
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account. ");
+
+var _hoisted_10 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_11 = {
+  "class": "grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1"
+};
+var _hoisted_12 = {
+  "class": "relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": " text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-pink-500 left-4 -top-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" svg  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-8 w-8",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_14 = {
+  "class": "mt-8 px-10"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "text-xl font-semibold mx-10"
+}, "Datos del Producto", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "flex space-x-2 text-gray-400 text-sm"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" svg  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-5 w-5",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "Argetina, San Juan")], -1
+/* HOISTED */
+);
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "border-t-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_18 = {
+  "class": "flex justify-between"
+};
+var _hoisted_19 = {
+  "class": "my-4"
+};
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base mb-2"
+}, "Progreso", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = {
+  "class": "text-base text-gray-400 font-semibold"
+};
+var _hoisted_22 = {
+  "class": "my-4"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base text-green-500 mb-2"
+}, "Aprobado", -1
+/* HOISTED */
+);
+
+var _hoisted_24 = {
+  "class": "text-base text-green-500 font-semibold"
+};
+var _hoisted_25 = {
+  "class": "my-4"
+};
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base text-red-400 mb-2"
+}, "Reprobado", -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  "class": "text-base text-red-400 font-semibold"
+};
+var _hoisted_28 = {
+  "class": "flex"
+};
+var _hoisted_29 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "razon_social"
 }, "Razon Social:", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_31 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_32 = {
+  "class": "flex"
+};
+var _hoisted_33 = {
+  "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "price"
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Es correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_35 = {
+  "class": "mt-2"
+};
+var _hoisted_36 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_38 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_40 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_42 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_razon_social"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_44 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_45 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "email"
 }, "Email:", -1
 /* HOISTED */
 );
 
-var _hoisted_9 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_47 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_48 = {
+  "class": "flex"
+};
+var _hoisted_49 = {
+  "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_51 = {
+  "class": "mt-2"
+};
+var _hoisted_52 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_54 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_56 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_58 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_email"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_60 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_63 = {
+  "class": "flex"
+};
+var _hoisted_64 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+
+var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "name"
 }, "CUIT:", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_66 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_67 = {
+  "class": "flex"
+};
+var _hoisted_68 = {
+  "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
+var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_70 = {
+  "class": "mt-2"
+};
+var _hoisted_71 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_73 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_75 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_77 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_cuit"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_79 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_80 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+
+var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "name"
 }, "Numero de Productor:", -1
 /* HOISTED */
 );
 
-var _hoisted_13 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_82 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_83 = {
+  "class": "flex"
+};
+var _hoisted_84 = {
+  "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Domicilio del Productor:", -1
+var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
 /* HOISTED */
 );
 
-var _hoisted_15 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_86 = {
+  "class": "mt-2"
+};
+var _hoisted_87 = {
+  "class": "inline-flex items-center"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
+var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_89 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_91 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_93 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_numeroproductor"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_95 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_96 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_98 = {
+  "class": "flex"
+};
+var _hoisted_99 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+
+var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "tipo_sociedad"
 }, "Tipo de Sociedad:", -1
 /* HOISTED */
 );
 
-var _hoisted_17 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_101 = {
+  "class": "text-red-500 text-xs italic"
 };
-
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Inscripcion DGR:", -1
-/* HOISTED */
-);
-
-var _hoisted_19 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_102 = {
+  "class": "flex"
 };
-
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Constancia de Sociedad:", -1
-/* HOISTED */
-);
-
-var _hoisted_21 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Nombre Calle Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_23 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Número de Calle Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_25 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Telefóno de Domicilio Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_27 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "País de Domicilio Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_29 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Provincia de Domicilio Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: null
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Buenos Aires"
-}, "Buenos Aires", -1
-/* HOISTED */
-);
-
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Buenos Aires-GBA"
-}, "Buenos Aires-GBA", -1
-/* HOISTED */
-);
-
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Capital Federal"
-}, "Capital Federal", -1
-/* HOISTED */
-);
-
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Catamarca"
-}, "Catamarca", -1
-/* HOISTED */
-);
-
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Chaco"
-}, "Chaco", -1
-/* HOISTED */
-);
-
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Chubut"
-}, "Chubut", -1
-/* HOISTED */
-);
-
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Cordoba"
-}, "Cordoba", -1
-/* HOISTED */
-);
-
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Corrientes"
-}, "Corrientes", -1
-/* HOISTED */
-);
-
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Entre Rios"
-}, "Entre Rios", -1
-/* HOISTED */
-);
-
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Formosa"
-}, "Formosa", -1
-/* HOISTED */
-);
-
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Jujuy"
-}, "Jujuy", -1
-/* HOISTED */
-);
-
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "La Pampa"
-}, "La Pampa", -1
-/* HOISTED */
-);
-
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "La Rioja"
-}, "La Rioja", -1
-/* HOISTED */
-);
-
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Mendoza"
-}, "Mendoza", -1
-/* HOISTED */
-);
-
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Misiones"
-}, "Misiones", -1
-/* HOISTED */
-);
-
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Neuquen"
-}, "Neuquen", -1
-/* HOISTED */
-);
-
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Rio Negro"
-}, "Rio Negro", -1
-/* HOISTED */
-);
-
-var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Salta"
-}, "Salta", -1
-/* HOISTED */
-);
-
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "San Juan"
-}, "San Juan", -1
-/* HOISTED */
-);
-
-var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "San Luis"
-}, "San Luis", -1
-/* HOISTED */
-);
-
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Santa Cruz"
-}, "Santa Cruz", -1
-/* HOISTED */
-);
-
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Santa Fe"
-}, "Santa Fe", -1
-/* HOISTED */
-);
-
-var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Santiago del Estero"
-}, "Santiago del Estero", -1
-/* HOISTED */
-);
-
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Tierra del Fuego"
-}, "Tierra del Fuego", -1
-/* HOISTED */
-);
-
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Tucuman"
-}, "Tucuman", -1
-/* HOISTED */
-);
-
-var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Provincia 2 de brazil"
-}, "Provincia 2 de brazil", -1
-/* HOISTED */
-);
-
-var _hoisted_58 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Departamento de Domicilio Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_60 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Localidad de Domicilio Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_62 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Códido Postal de Domicilio Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_64 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Otro dato de Domicilio Legal:", -1
-/* HOISTED */
-);
-
-var _hoisted_66 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Nombre de Calle de Domicilio Administrativo:", -1
-/* HOISTED */
-);
-
-var _hoisted_68 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Número de Domicilio Administrativo:", -1
-/* HOISTED */
-);
-
-var _hoisted_70 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Teléfono de Domicilio Administrativo:", -1
-/* HOISTED */
-);
-
-var _hoisted_72 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "País de Domicilio Administrativo:", -1
-/* HOISTED */
-);
-
-var _hoisted_74 = {
-  "class": "flex flex-col mb-4"
-};
-
-var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Provincia de Domicilio Administración:", -1
-/* HOISTED */
-);
-
-var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: null
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Buenos Aires"
-}, "Buenos Aires", -1
-/* HOISTED */
-);
-
-var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Buenos Aires-GBA"
-}, "Buenos Aires-GBA", -1
-/* HOISTED */
-);
-
-var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Capital Federal"
-}, "Capital Federal", -1
-/* HOISTED */
-);
-
-var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Catamarca"
-}, "Catamarca", -1
-/* HOISTED */
-);
-
-var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Chaco"
-}, "Chaco", -1
-/* HOISTED */
-);
-
-var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Chubut"
-}, "Chubut", -1
-/* HOISTED */
-);
-
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Cordoba"
-}, "Cordoba", -1
-/* HOISTED */
-);
-
-var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Corrientes"
-}, "Corrientes", -1
-/* HOISTED */
-);
-
-var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Entre Rios"
-}, "Entre Rios", -1
-/* HOISTED */
-);
-
-var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Formosa"
-}, "Formosa", -1
-/* HOISTED */
-);
-
-var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Jujuy"
-}, "Jujuy", -1
-/* HOISTED */
-);
-
-var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "La Pampa"
-}, "La Pampa", -1
-/* HOISTED */
-);
-
-var _hoisted_89 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "La Rioja"
-}, "La Rioja", -1
-/* HOISTED */
-);
-
-var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Mendoza"
-}, "Mendoza", -1
-/* HOISTED */
-);
-
-var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Misiones"
-}, "Misiones", -1
-/* HOISTED */
-);
-
-var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Neuquen"
-}, "Neuquen", -1
-/* HOISTED */
-);
-
-var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Rio Negro"
-}, "Rio Negro", -1
-/* HOISTED */
-);
-
-var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Salta"
-}, "Salta", -1
-/* HOISTED */
-);
-
-var _hoisted_95 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "San Juan"
-}, "San Juan", -1
-/* HOISTED */
-);
-
-var _hoisted_96 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "San Luis"
-}, "San Luis", -1
-/* HOISTED */
-);
-
-var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Santa Cruz"
-}, "Santa Cruz", -1
-/* HOISTED */
-);
-
-var _hoisted_98 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Santa Fe"
-}, "Santa Fe", -1
-/* HOISTED */
-);
-
-var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Santiago del Estero"
-}, "Santiago del Estero", -1
-/* HOISTED */
-);
-
-var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Tierra del Fuego"
-}, "Tierra del Fuego", -1
-/* HOISTED */
-);
-
-var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Tucuman"
-}, "Tucuman", -1
-/* HOISTED */
-);
-
-var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
-  value: "Provincia 2 de brazil"
-}, "Provincia 2 de brazil", -1
-/* HOISTED */
-);
-
 var _hoisted_103 = {
-  "class": "flex flex-col mb-4"
+  "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_104 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Departamento de Domicilio Administración:", -1
+var _hoisted_104 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
 /* HOISTED */
 );
 
 var _hoisted_105 = {
-  "class": "flex flex-col mb-4"
+  "class": "mt-2"
+};
+var _hoisted_106 = {
+  "class": "inline-flex items-center"
 };
 
-var _hoisted_106 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Localidad de Domicilio Administración:", -1
+var _hoisted_107 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
 /* HOISTED */
 );
 
-var _hoisted_107 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_108 = {
+  "class": "inline-flex items-center ml-6"
 };
 
-var _hoisted_108 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Codigo Postal de Domicilio Administración:", -1
+var _hoisted_109 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
 /* HOISTED */
 );
 
-var _hoisted_109 = {
-  "class": "flex flex-col mb-4"
+var _hoisted_110 = {
+  "class": "inline-flex items-center ml-6"
 };
 
-var _hoisted_110 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
-  "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
-  "for": "name"
-}, "Otro dato de Domicilio Administración:", -1
+var _hoisted_111 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
 /* HOISTED */
 );
 
-var _hoisted_111 = {
+var _hoisted_112 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_113 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_tiposociedad"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_114 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_115 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_116 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_117 = {
+  "class": "flex"
+};
+var _hoisted_118 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_119 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "inscripciondgr"
+}, "Inscripcion DGR:", -1
+/* HOISTED */
+);
+
+var _hoisted_120 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_121 = {
+  "class": "flex"
+};
+var _hoisted_122 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_123 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_124 = {
+  "class": "mt-2"
+};
+var _hoisted_125 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_126 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_127 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_128 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_129 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_130 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_131 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_132 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_inscripciondgr"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_133 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_134 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "w-full md:w-1/2 px-3"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("object", {
+  data: "http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf",
+  type: "application/pdf",
+  width: "100%",
+  height: "500px"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("It appears you don't have a PDF plugin for this browser. No biggie... you can "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf"
+}, "click here to download the PDF file.")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_135 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_136 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_137 = {
+  "class": "flex"
+};
+var _hoisted_138 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_139 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "constancia_sociedad"
+}, "Constancia de Sociedad:", -1
+/* HOISTED */
+);
+
+var _hoisted_140 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_141 = {
+  "class": "flex"
+};
+var _hoisted_142 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_143 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_144 = {
+  "class": "mt-2"
+};
+var _hoisted_145 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_146 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_147 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_148 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_149 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_150 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_151 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_152 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_constaciasociedad"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_153 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_154 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "w-full md:w-1/2 px-3"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("object", {
+  data: "http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf",
+  type: "application/pdf",
+  width: "100%",
+  height: "500px"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("It appears you don't have a PDF plugin for this browser. No biggie... you can "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf"
+}, "click here to download the PDF file.")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_155 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_156 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_157 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_158 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_159 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_160 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_161 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_162 = {
+  "class": "grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1"
+};
+var _hoisted_163 = {
+  "class": "relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl"
+};
+
+var _hoisted_164 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": " text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-blue-500 left-4 -top-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" svg  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-8 w-8",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_165 = {
+  "class": "mt-8 px-10"
+};
+
+var _hoisted_166 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "text-xl font-semibold mx-10"
+}, "Datos del Domicilio Legal en la Provincia", -1
+/* HOISTED */
+);
+
+var _hoisted_167 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "flex space-x-2 text-gray-400 text-sm"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" svg  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-5 w-5",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "Argetina, San Juan")], -1
+/* HOISTED */
+);
+
+var _hoisted_168 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "border-t-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_169 = {
+  "class": "flex justify-between"
+};
+var _hoisted_170 = {
+  "class": "my-4"
+};
+
+var _hoisted_171 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base mb-2"
+}, "Progreso", -1
+/* HOISTED */
+);
+
+var _hoisted_172 = {
+  "class": "text-base text-gray-400 font-semibold"
+};
+var _hoisted_173 = {
+  "class": "my-4"
+};
+
+var _hoisted_174 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base text-green-500 mb-2"
+}, "Aprobado", -1
+/* HOISTED */
+);
+
+var _hoisted_175 = {
+  "class": "text-base text-green-500 font-semibold"
+};
+var _hoisted_176 = {
+  "class": "my-4"
+};
+
+var _hoisted_177 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base text-red-400 mb-2"
+}, "Reprobado", -1
+/* HOISTED */
+);
+
+var _hoisted_178 = {
+  "class": "text-base text-red-400 font-semibold"
+};
+
+var _hoisted_179 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_180 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_181 = {
+  "class": "flex"
+};
+var _hoisted_182 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_183 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "leal_calle"
+}, "Nombre Calle Legal:", -1
+/* HOISTED */
+);
+
+var _hoisted_184 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_185 = {
+  "class": "flex"
+};
+var _hoisted_186 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_187 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_188 = {
+  "class": "mt-2"
+};
+var _hoisted_189 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_190 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_191 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_192 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_193 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_194 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_195 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_196 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_nombre_calle_legal"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_197 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_198 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_199 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "leal_numero"
+}, "Número de Calle Legal:", -1
+/* HOISTED */
+);
+
+var _hoisted_200 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_201 = {
+  "class": "flex"
+};
+var _hoisted_202 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_203 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_204 = {
+  "class": "mt-2"
+};
+var _hoisted_205 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_206 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_207 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_208 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_209 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_210 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_211 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_212 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_numero"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_213 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_214 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_215 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_216 = {
+  "class": "flex"
+};
+var _hoisted_217 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_218 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "leal_telefono"
+}, "Telefóno de Domicilio Legal:", -1
+/* HOISTED */
+);
+
+var _hoisted_219 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_220 = {
+  "class": "flex"
+};
+var _hoisted_221 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_222 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_223 = {
+  "class": "mt-2"
+};
+var _hoisted_224 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_225 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_226 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_227 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_228 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_229 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_230 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_231 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_telefono"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_232 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_233 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_234 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_235 = {
+  "class": "flex"
+};
+var _hoisted_236 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_237 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "pais_dom_legal"
+}, "País de Domicilio Legal:", -1
+/* HOISTED */
+);
+
+var _hoisted_238 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "-1"
+}, "Really long option that will likely overlap the chevron", -1
+/* HOISTED */
+);
+
+var _hoisted_239 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Argentina"
+}, "Argentina", -1
+/* HOISTED */
+);
+
+var _hoisted_240 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "-3"
+}, "Option 3", -1
+/* HOISTED */
+);
+
+var _hoisted_241 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_242 = {
+  "class": "flex"
+};
+var _hoisted_243 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_244 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_245 = {
+  "class": "mt-2"
+};
+var _hoisted_246 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_247 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_248 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_249 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_250 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_251 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_252 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_253 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_pais_dom_legal"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_254 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_255 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_256 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "provincia_dom_legal"
+}, "Provincia de Domicilio Legal", -1
+/* HOISTED */
+);
+
+var _hoisted_257 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: null
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_258 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Buenos Aires"
+}, "Buenos Aires", -1
+/* HOISTED */
+);
+
+var _hoisted_259 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Buenos Aires-GBA"
+}, "Buenos Aires-GBA", -1
+/* HOISTED */
+);
+
+var _hoisted_260 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Capital Federal"
+}, "Capital Federal", -1
+/* HOISTED */
+);
+
+var _hoisted_261 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Catamarca"
+}, "Catamarca", -1
+/* HOISTED */
+);
+
+var _hoisted_262 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Chaco"
+}, "Chaco", -1
+/* HOISTED */
+);
+
+var _hoisted_263 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Chubut"
+}, "Chubut", -1
+/* HOISTED */
+);
+
+var _hoisted_264 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Cordoba"
+}, "Cordoba", -1
+/* HOISTED */
+);
+
+var _hoisted_265 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Corrientes"
+}, "Corrientes", -1
+/* HOISTED */
+);
+
+var _hoisted_266 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Entre Rios"
+}, "Entre Rios", -1
+/* HOISTED */
+);
+
+var _hoisted_267 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Formosa"
+}, "Formosa", -1
+/* HOISTED */
+);
+
+var _hoisted_268 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Jujuy"
+}, "Jujuy", -1
+/* HOISTED */
+);
+
+var _hoisted_269 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "La Pampa"
+}, "La Pampa", -1
+/* HOISTED */
+);
+
+var _hoisted_270 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "La Rioja"
+}, "La Rioja", -1
+/* HOISTED */
+);
+
+var _hoisted_271 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Mendoza"
+}, "Mendoza", -1
+/* HOISTED */
+);
+
+var _hoisted_272 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Misiones"
+}, "Misiones", -1
+/* HOISTED */
+);
+
+var _hoisted_273 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Neuquen"
+}, "Neuquen", -1
+/* HOISTED */
+);
+
+var _hoisted_274 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Rio Negro"
+}, "Rio Negro", -1
+/* HOISTED */
+);
+
+var _hoisted_275 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Salta"
+}, "Salta", -1
+/* HOISTED */
+);
+
+var _hoisted_276 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "San Juan"
+}, "San Juan", -1
+/* HOISTED */
+);
+
+var _hoisted_277 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "San Luis"
+}, "San Luis", -1
+/* HOISTED */
+);
+
+var _hoisted_278 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Santa Cruz"
+}, "Santa Cruz", -1
+/* HOISTED */
+);
+
+var _hoisted_279 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Santa Fe"
+}, "Santa Fe", -1
+/* HOISTED */
+);
+
+var _hoisted_280 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Santiago del Estero"
+}, "Santiago del Estero", -1
+/* HOISTED */
+);
+
+var _hoisted_281 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Tierra del Fuego"
+}, "Tierra del Fuego", -1
+/* HOISTED */
+);
+
+var _hoisted_282 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Tucuman"
+}, "Tucuman", -1
+/* HOISTED */
+);
+
+var _hoisted_283 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Provincia 2 de brazil"
+}, "Provincia 2 de brazil", -1
+/* HOISTED */
+);
+
+var _hoisted_284 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_285 = {
+  "class": "flex"
+};
+var _hoisted_286 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_287 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_288 = {
+  "class": "mt-2"
+};
+var _hoisted_289 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_290 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_291 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_292 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_293 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_294 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_295 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_296 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_provincia"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_297 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_298 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_299 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "departamento_dom_legal"
+}, "Departamento de Domicilio Legal", -1
+/* HOISTED */
+);
+
+var _hoisted_300 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: null
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_301 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Buenos Aires"
+}, "Buenos Aires", -1
+/* HOISTED */
+);
+
+var _hoisted_302 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Jachal"
+}, "Jachal", -1
+/* HOISTED */
+);
+
+var _hoisted_303 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Capital"
+}, "Capital", -1
+/* HOISTED */
+);
+
+var _hoisted_304 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Chimbas"
+}, "Chimbas", -1
+/* HOISTED */
+);
+
+var _hoisted_305 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Corrientes"
+}, "Corrientes", -1
+/* HOISTED */
+);
+
+var _hoisted_306 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Formosa"
+}, "Formosa", -1
+/* HOISTED */
+);
+
+var _hoisted_307 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Jujuy"
+}, "Jujuy", -1
+/* HOISTED */
+);
+
+var _hoisted_308 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Mendoza"
+}, "Mendoza", -1
+/* HOISTED */
+);
+
+var _hoisted_309 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Neuquen"
+}, "Neuquen", -1
+/* HOISTED */
+);
+
+var _hoisted_310 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Salta"
+}, "Salta", -1
+/* HOISTED */
+);
+
+var _hoisted_311 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Tucuman"
+}, "Tucuman", -1
+/* HOISTED */
+);
+
+var _hoisted_312 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_313 = {
+  "class": "flex"
+};
+var _hoisted_314 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_315 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_316 = {
+  "class": "mt-2"
+};
+var _hoisted_317 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_318 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_319 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_320 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_321 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_322 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_323 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_324 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_departamento"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_325 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_326 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_327 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_328 = {
+  "class": "flex"
+};
+var _hoisted_329 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_330 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "dom_legal_localidad"
+}, "Localidad de Domicilio Legal:", -1
+/* HOISTED */
+);
+
+var _hoisted_331 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_332 = {
+  "class": "flex"
+};
+var _hoisted_333 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_334 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_335 = {
+  "class": "mt-2"
+};
+var _hoisted_336 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_337 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_338 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_339 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_340 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_341 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_342 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_343 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_localidad"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_344 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_345 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_346 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "dom_legal_cp"
+}, "Códido Postal de Domicilio Legal", -1
+/* HOISTED */
+);
+
+var _hoisted_347 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_348 = {
+  "class": "flex"
+};
+var _hoisted_349 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_350 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_351 = {
+  "class": "mt-2"
+};
+var _hoisted_352 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_353 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_354 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_355 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_356 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_357 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_358 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_359 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_cp"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_360 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_361 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_362 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "leal_otro"
+}, "Otro dato de Domicilio Legal", -1
+/* HOISTED */
+);
+
+var _hoisted_363 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_364 = {
+  "class": "flex"
+};
+var _hoisted_365 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_366 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_367 = {
+  "class": "mt-2"
+};
+var _hoisted_368 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_369 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_370 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_371 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_372 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_373 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_374 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_375 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_otro"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_376 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_377 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_378 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_379 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_380 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_381 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_382 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_383 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_384 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_385 = {
+  "class": "grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1"
+};
+var _hoisted_386 = {
+  "class": "relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl"
+};
+
+var _hoisted_387 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": " text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-red-500 left-4 -top-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" svg  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-8 w-8",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_388 = {
+  "class": "mt-8 px-10"
+};
+
+var _hoisted_389 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "text-xl font-semibold mx-10"
+}, "Datos del Domicilio de Administración Central", -1
+/* HOISTED */
+);
+
+var _hoisted_390 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "flex space-x-2 text-gray-400 text-sm"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" svg  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-5 w-5",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "Argetina, San Juan")], -1
+/* HOISTED */
+);
+
+var _hoisted_391 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "border-t-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_392 = {
+  "class": "flex justify-between"
+};
+var _hoisted_393 = {
+  "class": "my-4"
+};
+
+var _hoisted_394 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base mb-2"
+}, "Progreso", -1
+/* HOISTED */
+);
+
+var _hoisted_395 = {
+  "class": "text-base text-gray-400 font-semibold"
+};
+var _hoisted_396 = {
+  "class": "my-4"
+};
+
+var _hoisted_397 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base text-green-500 mb-2"
+}, "Aprobado", -1
+/* HOISTED */
+);
+
+var _hoisted_398 = {
+  "class": "text-base text-green-500 font-semibold"
+};
+var _hoisted_399 = {
+  "class": "my-4"
+};
+
+var _hoisted_400 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base text-red-400 mb-2"
+}, "Reprobado", -1
+/* HOISTED */
+);
+
+var _hoisted_401 = {
+  "class": "text-base text-red-400 font-semibold"
+};
+
+var _hoisted_402 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_403 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_404 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_405 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_406 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_407 = {
+  "class": "flex"
+};
+var _hoisted_408 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_409 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_calle"
+}, "Nombre de Calle de Domicilio Administrativo:", -1
+/* HOISTED */
+);
+
+var _hoisted_410 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_411 = {
+  "class": "flex"
+};
+var _hoisted_412 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_413 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_414 = {
+  "class": "mt-2"
+};
+var _hoisted_415 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_416 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_417 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_418 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_419 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_420 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_421 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_422 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_calle_nombre"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_423 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_424 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_425 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_numero"
+}, "Número de Calle ADministración:", -1
+/* HOISTED */
+);
+
+var _hoisted_426 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_427 = {
+  "class": "flex"
+};
+var _hoisted_428 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_429 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_430 = {
+  "class": "mt-2"
+};
+var _hoisted_431 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_432 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_433 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_434 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_435 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_436 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_437 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_438 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_numero_nombre"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_439 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_440 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_441 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_442 = {
+  "class": "flex"
+};
+var _hoisted_443 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_444 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_telefono"
+}, "Telefóno de Domicilio Administracion:", -1
+/* HOISTED */
+);
+
+var _hoisted_445 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_446 = {
+  "class": "flex"
+};
+var _hoisted_447 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_448 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_449 = {
+  "class": "mt-2"
+};
+var _hoisted_450 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_451 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_452 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_453 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_454 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_455 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_456 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_457 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_telefono_nombre"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_458 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_459 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_460 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_461 = {
+  "class": "flex"
+};
+var _hoisted_462 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_463 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_pais"
+}, "País de Domicilio Administracion:", -1
+/* HOISTED */
+);
+
+var _hoisted_464 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "-1"
+}, "Really long option that will likely overlap the chevron", -1
+/* HOISTED */
+);
+
+var _hoisted_465 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Argentina"
+}, "Argentina", -1
+/* HOISTED */
+);
+
+var _hoisted_466 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "-3"
+}, "Option 3", -1
+/* HOISTED */
+);
+
+var _hoisted_467 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_468 = {
+  "class": "flex"
+};
+var _hoisted_469 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_470 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_471 = {
+  "class": "mt-2"
+};
+var _hoisted_472 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_473 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_474 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_475 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_476 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_477 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_478 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_479 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_pais"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_480 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_481 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_482 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_provincia"
+}, "Provincia de Domicilio Administracion", -1
+/* HOISTED */
+);
+
+var _hoisted_483 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: null
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_484 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Buenos Aires"
+}, "Buenos Aires", -1
+/* HOISTED */
+);
+
+var _hoisted_485 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Buenos Aires-GBA"
+}, "Buenos Aires-GBA", -1
+/* HOISTED */
+);
+
+var _hoisted_486 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Capital Federal"
+}, "Capital Federal", -1
+/* HOISTED */
+);
+
+var _hoisted_487 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Catamarca"
+}, "Catamarca", -1
+/* HOISTED */
+);
+
+var _hoisted_488 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Chaco"
+}, "Chaco", -1
+/* HOISTED */
+);
+
+var _hoisted_489 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Chubut"
+}, "Chubut", -1
+/* HOISTED */
+);
+
+var _hoisted_490 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Cordoba"
+}, "Cordoba", -1
+/* HOISTED */
+);
+
+var _hoisted_491 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Corrientes"
+}, "Corrientes", -1
+/* HOISTED */
+);
+
+var _hoisted_492 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Entre Rios"
+}, "Entre Rios", -1
+/* HOISTED */
+);
+
+var _hoisted_493 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Formosa"
+}, "Formosa", -1
+/* HOISTED */
+);
+
+var _hoisted_494 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Jujuy"
+}, "Jujuy", -1
+/* HOISTED */
+);
+
+var _hoisted_495 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "La Pampa"
+}, "La Pampa", -1
+/* HOISTED */
+);
+
+var _hoisted_496 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "La Rioja"
+}, "La Rioja", -1
+/* HOISTED */
+);
+
+var _hoisted_497 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Mendoza"
+}, "Mendoza", -1
+/* HOISTED */
+);
+
+var _hoisted_498 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Misiones"
+}, "Misiones", -1
+/* HOISTED */
+);
+
+var _hoisted_499 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Neuquen"
+}, "Neuquen", -1
+/* HOISTED */
+);
+
+var _hoisted_500 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Rio Negro"
+}, "Rio Negro", -1
+/* HOISTED */
+);
+
+var _hoisted_501 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Salta"
+}, "Salta", -1
+/* HOISTED */
+);
+
+var _hoisted_502 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "San Juan"
+}, "San Juan", -1
+/* HOISTED */
+);
+
+var _hoisted_503 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "San Luis"
+}, "San Luis", -1
+/* HOISTED */
+);
+
+var _hoisted_504 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Santa Cruz"
+}, "Santa Cruz", -1
+/* HOISTED */
+);
+
+var _hoisted_505 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Santa Fe"
+}, "Santa Fe", -1
+/* HOISTED */
+);
+
+var _hoisted_506 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Santiago del Estero"
+}, "Santiago del Estero", -1
+/* HOISTED */
+);
+
+var _hoisted_507 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Tierra del Fuego"
+}, "Tierra del Fuego", -1
+/* HOISTED */
+);
+
+var _hoisted_508 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Tucuman"
+}, "Tucuman", -1
+/* HOISTED */
+);
+
+var _hoisted_509 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Provincia 2 de brazil"
+}, "Provincia 2 de brazil", -1
+/* HOISTED */
+);
+
+var _hoisted_510 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_511 = {
+  "class": "flex"
+};
+var _hoisted_512 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_513 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_514 = {
+  "class": "mt-2"
+};
+var _hoisted_515 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_516 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_517 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_518 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_519 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_520 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_521 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_522 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_provincia"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_523 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_524 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_525 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_departamento"
+}, "Departamento de Domicilio Administracion", -1
+/* HOISTED */
+);
+
+var _hoisted_526 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: null
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_527 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Buenos Aires"
+}, "Buenos Aires", -1
+/* HOISTED */
+);
+
+var _hoisted_528 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Jachal"
+}, "Jachal", -1
+/* HOISTED */
+);
+
+var _hoisted_529 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Capital"
+}, "Capital", -1
+/* HOISTED */
+);
+
+var _hoisted_530 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Chimbas"
+}, "Chimbas", -1
+/* HOISTED */
+);
+
+var _hoisted_531 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Corrientes"
+}, "Corrientes", -1
+/* HOISTED */
+);
+
+var _hoisted_532 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Formosa"
+}, "Formosa", -1
+/* HOISTED */
+);
+
+var _hoisted_533 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Jujuy"
+}, "Jujuy", -1
+/* HOISTED */
+);
+
+var _hoisted_534 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Mendoza"
+}, "Mendoza", -1
+/* HOISTED */
+);
+
+var _hoisted_535 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Neuquen"
+}, "Neuquen", -1
+/* HOISTED */
+);
+
+var _hoisted_536 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Salta"
+}, "Salta", -1
+/* HOISTED */
+);
+
+var _hoisted_537 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "Tucuman"
+}, "Tucuman", -1
+/* HOISTED */
+);
+
+var _hoisted_538 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_539 = {
+  "class": "flex"
+};
+var _hoisted_540 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_541 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_542 = {
+  "class": "mt-2"
+};
+var _hoisted_543 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_544 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_545 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_546 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_547 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_548 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_549 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_550 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_departamento"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_551 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_552 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_553 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_554 = {
+  "class": "flex"
+};
+var _hoisted_555 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_556 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_localidad"
+}, "Localidad de Domicilio Administracion:", -1
+/* HOISTED */
+);
+
+var _hoisted_557 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_558 = {
+  "class": "flex"
+};
+var _hoisted_559 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_560 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_561 = {
+  "class": "mt-2"
+};
+var _hoisted_562 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_563 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_564 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_565 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_566 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_567 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_568 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_569 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_localidad"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_570 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_571 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_572 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_cp"
+}, "Códido Postal de Domicilio Administracion", -1
+/* HOISTED */
+);
+
+var _hoisted_573 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_574 = {
+  "class": "flex"
+};
+var _hoisted_575 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_576 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_577 = {
+  "class": "mt-2"
+};
+var _hoisted_578 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_579 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_580 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_581 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_582 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_583 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_584 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_585 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_cp"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_586 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_587 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_588 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "administracion_otro"
+}, "Otro dato de Domicilio Administracion", -1
+/* HOISTED */
+);
+
+var _hoisted_589 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_590 = {
+  "class": "flex"
+};
+var _hoisted_591 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_592 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_593 = {
+  "class": "mt-2"
+};
+var _hoisted_594 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_595 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_596 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_597 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_598 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_599 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_600 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_601 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_administracion_otro"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_602 = {
+  "class": "text-green-500 text-xs italic"
+};
+
+var _hoisted_603 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_604 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_605 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_606 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_607 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_608 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_609 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_610 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_611 = {
+  "class": "grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1"
+};
+var _hoisted_612 = {
+  "class": "relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl"
+};
+
+var _hoisted_613 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": " text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" svg  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-8 w-8",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_614 = {
+  "class": "mt-8 px-10"
+};
+
+var _hoisted_615 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "text-xl font-semibold mx-10"
+}, "Datos de la Mina", -1
+/* HOISTED */
+);
+
+var _hoisted_616 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "flex space-x-2 text-gray-400 text-sm"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" svg  "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  "class": "h-5 w-5",
+  fill: "none",
+  viewBox: "0 0 24 24",
+  stroke: "currentColor"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "Argetina, San Juan")], -1
+/* HOISTED */
+);
+
+var _hoisted_617 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "border-t-2"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_618 = {
+  "class": "flex justify-between"
+};
+var _hoisted_619 = {
+  "class": "my-4"
+};
+
+var _hoisted_620 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base mb-2"
+}, "Progreso", -1
+/* HOISTED */
+);
+
+var _hoisted_621 = {
+  "class": "text-base text-gray-400 font-semibold"
+};
+var _hoisted_622 = {
+  "class": "my-4"
+};
+
+var _hoisted_623 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base text-green-500 mb-2"
+}, "Aprobado", -1
+/* HOISTED */
+);
+
+var _hoisted_624 = {
+  "class": "text-base text-green-500 font-semibold"
+};
+var _hoisted_625 = {
+  "class": "my-4"
+};
+
+var _hoisted_626 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+  "class": "font-semibold text-base text-red-400 mb-2"
+}, "Reprobado", -1
+/* HOISTED */
+);
+
+var _hoisted_627 = {
+  "class": "text-base text-red-400 font-semibold"
+};
+var _hoisted_628 = {
+  "class": "flex"
+};
+var _hoisted_629 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_630 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "numero_expdiente"
+}, "Localidad de Domicilio Administracion:", -1
+/* HOISTED */
+);
+
+var _hoisted_631 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_632 = {
+  "class": "flex"
+};
+var _hoisted_633 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_634 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_635 = {
+  "class": "mt-2"
+};
+var _hoisted_636 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_637 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_638 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_639 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_640 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_641 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_642 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_643 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_numero_expdiente"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_644 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_645 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_646 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "categoria"
+}, "Categoria del Productor", -1
+/* HOISTED */
+);
+
+var _hoisted_647 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "primera"
+}, "Primer Categoria", -1
+/* HOISTED */
+);
+
+var _hoisted_648 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "segunda"
+}, "Segunda Categoria", -1
+/* HOISTED */
+);
+
+var _hoisted_649 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+  value: "tercera"
+}, "Tercer Categoria", -1
+/* HOISTED */
+);
+
+var _hoisted_650 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_651 = {
+  "class": "flex"
+};
+var _hoisted_652 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_653 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_654 = {
+  "class": "mt-2"
+};
+var _hoisted_655 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_656 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_657 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_658 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_659 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_660 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_661 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_662 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_categoria"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_663 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_664 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_665 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "nombre_mina"
+}, "Nombre de la Mina", -1
+/* HOISTED */
+);
+
+var _hoisted_666 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_667 = {
+  "class": "flex"
+};
+var _hoisted_668 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_669 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_670 = {
+  "class": "mt-2"
+};
+var _hoisted_671 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_672 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_673 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_674 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_675 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_676 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_677 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_678 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_nombre_mina"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_679 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_680 = {
+  "class": "flex"
+};
+var _hoisted_681 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_682 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "descripcion_mina"
+}, "Descripción de la mina:", -1
+/* HOISTED */
+);
+
+var _hoisted_683 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_684 = {
+  "class": "flex"
+};
+var _hoisted_685 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_686 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_687 = {
+  "class": "mt-2"
+};
+var _hoisted_688 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_689 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_690 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_691 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_692 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_693 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_694 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_695 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_descripcion_mina"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_696 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_697 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_698 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "distrito_minero"
+}, "Distrito Minero", -1
+/* HOISTED */
+);
+
+var _hoisted_699 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_700 = {
+  "class": "flex"
+};
+var _hoisted_701 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_702 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_703 = {
+  "class": "mt-2"
+};
+var _hoisted_704 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_705 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_706 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_707 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_708 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_709 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_710 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_711 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_distrito_minero"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_712 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_713 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_714 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "nombre_mina"
+}, "Nombre de la Mina", -1
+/* HOISTED */
+);
+
+var _hoisted_715 = {
+  "class": "text-red-500 text-xs italic"
+};
+var _hoisted_716 = {
+  "class": "flex"
+};
+var _hoisted_717 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_718 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_719 = {
+  "class": "mt-2"
+};
+var _hoisted_720 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_721 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_722 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_723 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_724 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_725 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_726 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+
+var _hoisted_727 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_nombre_mina"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+var _hoisted_728 = {
+  "class": "text-green-500 text-xs italic"
+};
+var _hoisted_729 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_112 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_730 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Numero de Expediente:", -1
 /* HOISTED */
 );
 
-var _hoisted_113 = {
+var _hoisted_731 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_114 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_732 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Categoría:", -1
 /* HOISTED */
 );
 
-var _hoisted_115 = {
+var _hoisted_733 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_116 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_734 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Nombre de Mina:", -1
 /* HOISTED */
 );
 
-var _hoisted_117 = {
+var _hoisted_735 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_118 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_736 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Descripción de Mina:", -1
 /* HOISTED */
 );
 
-var _hoisted_119 = {
+var _hoisted_737 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_120 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_738 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Distrito Minero:", -1
 /* HOISTED */
 );
 
-var _hoisted_121 = {
+var _hoisted_739 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_122 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_740 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Mina o Cantera:", -1
 /* HOISTED */
 );
 
-var _hoisted_123 = {
+var _hoisted_741 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_124 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_742 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Plano Inmueble:", -1
 /* HOISTED */
 );
 
-var _hoisted_125 = {
+var _hoisted_743 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_126 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_744 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Minerales:", -1
 /* HOISTED */
 );
 
-var _hoisted_127 = {
+var _hoisted_745 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_128 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_746 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Owner:", -1
 /* HOISTED */
 );
 
-var _hoisted_129 = {
+var _hoisted_747 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_130 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_748 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "arrendatario:", -1
 /* HOISTED */
 );
 
-var _hoisted_131 = {
+var _hoisted_749 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_132 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_750 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "concesionario:", -1
 /* HOISTED */
 );
 
-var _hoisted_133 = {
+var _hoisted_751 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_134 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_752 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "otros:", -1
 /* HOISTED */
 );
 
-var _hoisted_135 = {
+var _hoisted_753 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_136 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_754 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "titulo_contrato_posecion:", -1
 /* HOISTED */
 );
 
-var _hoisted_137 = {
+var _hoisted_755 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_138 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_756 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "resolucion_concesion_minera:", -1
 /* HOISTED */
 );
 
-var _hoisted_139 = {
+var _hoisted_757 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_140 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_758 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "constancia_pago_canon:", -1
 /* HOISTED */
 );
 
-var _hoisted_141 = {
+var _hoisted_759 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_142 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_760 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "iia:", -1
 /* HOISTED */
 );
 
-var _hoisted_143 = {
+var _hoisted_761 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_144 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_762 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "dia:", -1
 /* HOISTED */
 );
 
-var _hoisted_145 = {
+var _hoisted_763 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_146 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_764 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "acciones_a_desarrollar:", -1
 /* HOISTED */
 );
 
-var _hoisted_147 = {
+var _hoisted_765 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_148 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_766 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "actividad:", -1
 /* HOISTED */
 );
 
-var _hoisted_149 = {
+var _hoisted_767 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_150 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_768 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "fecha_alta_dia:", -1
 /* HOISTED */
 );
 
-var _hoisted_151 = {
+var _hoisted_769 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_152 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_770 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "fecha_vencimiento_dia:", -1
 /* HOISTED */
 );
 
-var _hoisted_153 = {
+var _hoisted_771 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_154 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_772 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "localidad_mina_pais:", -1
 /* HOISTED */
 );
 
-var _hoisted_155 = {
+var _hoisted_773 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_156 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_774 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "localidad_mina_provincia:", -1
 /* HOISTED */
 );
 
-var _hoisted_157 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_775 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: null
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_158 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_776 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Buenos Aires"
 }, "Buenos Aires", -1
 /* HOISTED */
 );
 
-var _hoisted_159 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_777 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Buenos Aires-GBA"
 }, "Buenos Aires-GBA", -1
 /* HOISTED */
 );
 
-var _hoisted_160 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_778 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Capital Federal"
 }, "Capital Federal", -1
 /* HOISTED */
 );
 
-var _hoisted_161 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_779 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Catamarca"
 }, "Catamarca", -1
 /* HOISTED */
 );
 
-var _hoisted_162 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_780 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Chaco"
 }, "Chaco", -1
 /* HOISTED */
 );
 
-var _hoisted_163 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_781 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Chubut"
 }, "Chubut", -1
 /* HOISTED */
 );
 
-var _hoisted_164 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_782 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Cordoba"
 }, "Cordoba", -1
 /* HOISTED */
 );
 
-var _hoisted_165 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_783 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Corrientes"
 }, "Corrientes", -1
 /* HOISTED */
 );
 
-var _hoisted_166 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_784 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Entre Rios"
 }, "Entre Rios", -1
 /* HOISTED */
 );
 
-var _hoisted_167 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_785 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Formosa"
 }, "Formosa", -1
 /* HOISTED */
 );
 
-var _hoisted_168 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_786 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Jujuy"
 }, "Jujuy", -1
 /* HOISTED */
 );
 
-var _hoisted_169 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_787 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "La Pampa"
 }, "La Pampa", -1
 /* HOISTED */
 );
 
-var _hoisted_170 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_788 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "La Rioja"
 }, "La Rioja", -1
 /* HOISTED */
 );
 
-var _hoisted_171 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_789 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Mendoza"
 }, "Mendoza", -1
 /* HOISTED */
 );
 
-var _hoisted_172 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_790 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Misiones"
 }, "Misiones", -1
 /* HOISTED */
 );
 
-var _hoisted_173 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_791 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Neuquen"
 }, "Neuquen", -1
 /* HOISTED */
 );
 
-var _hoisted_174 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_792 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Rio Negro"
 }, "Rio Negro", -1
 /* HOISTED */
 );
 
-var _hoisted_175 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_793 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Salta"
 }, "Salta", -1
 /* HOISTED */
 );
 
-var _hoisted_176 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_794 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "San Juan"
 }, "San Juan", -1
 /* HOISTED */
 );
 
-var _hoisted_177 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_795 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "San Luis"
 }, "San Luis", -1
 /* HOISTED */
 );
 
-var _hoisted_178 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_796 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Santa Cruz"
 }, "Santa Cruz", -1
 /* HOISTED */
 );
 
-var _hoisted_179 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_797 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Santa Fe"
 }, "Santa Fe", -1
 /* HOISTED */
 );
 
-var _hoisted_180 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_798 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Santiago del Estero"
 }, "Santiago del Estero", -1
 /* HOISTED */
 );
 
-var _hoisted_181 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_799 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Tierra del Fuego"
 }, "Tierra del Fuego", -1
 /* HOISTED */
 );
 
-var _hoisted_182 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_800 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Tucuman"
 }, "Tucuman", -1
 /* HOISTED */
 );
 
-var _hoisted_183 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
+var _hoisted_801 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("option", {
   value: "Provincia 2 de brazil"
 }, "Provincia 2 de brazil", -1
 /* HOISTED */
 );
 
-var _hoisted_184 = {
+var _hoisted_802 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_185 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_803 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "localidad_mina_departamento:", -1
 /* HOISTED */
 );
 
-var _hoisted_186 = {
+var _hoisted_804 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_187 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_805 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "localidad_mina_localidad:", -1
 /* HOISTED */
 );
 
-var _hoisted_188 = {
+var _hoisted_806 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_189 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_807 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "tipo_sistema:", -1
 /* HOISTED */
 );
 
-var _hoisted_190 = {
+var _hoisted_808 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_191 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_809 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "longitud:", -1
 /* HOISTED */
 );
 
-var _hoisted_192 = {
+var _hoisted_810 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_193 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_811 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "latitud:", -1
 /* HOISTED */
 );
 
-var _hoisted_194 = {
+var _hoisted_812 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_195 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_813 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "created_by:", -1
 /* HOISTED */
 );
 
-var _hoisted_196 = {
+var _hoisted_814 = {
   "class": "flex flex-col mb-4"
 };
 
-var _hoisted_197 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_815 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "mb-2 uppercase font-bold text-lg text-grey-darkest",
   "for": "name"
 }, "Estado:", -1
 /* HOISTED */
 );
 
-var _hoisted_198 = {
+var _hoisted_816 = {
   "class": "flex flex-col mb-8"
 };
 
-var _hoisted_199 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+var _hoisted_817 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   type: "submit",
   "class": "block bg-blue-500 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
 }, " Editar ", -1
 /* HOISTED */
 );
 
-var _hoisted_200 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Volver ");
+var _hoisted_818 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Volver ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_banner = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("banner");
+
+  var _component_jet_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dialog-modal");
 
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
@@ -23975,461 +27779,2257 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("form", {
-        onSubmit: _cache[57] || (_cache[57] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+        onSubmit: _cache[281] || (_cache[281] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
           return $options.submit && $options.submit.apply($options, arguments);
         }, ["prevent"])),
         "class": "mb-8"
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_banner)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_banner)]), _hoisted_5, _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Delete Account Confirmation Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dialog_modal, {
+        show: $data.confirmingUserDeletion,
+        onClose: $options.closeModal
+      }, {
+        title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_8];
+        }),
+        content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [_hoisted_9];
+        }),
+        footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+            onClick: _cache[1] || (_cache[1] = function () {
+              return $options.closeModal && $options.closeModal.apply($options, arguments);
+            })
+          }, " Cancel ")];
+        }),
+        _: 1
+        /* STABLE */
+
+      }, 8
+      /* PROPS */
+      , ["show", "onClose"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        onClick: _cache[2] || (_cache[2] = function ($event) {
+          return $data.confirmingUserDeletion = !$data.confirmingUserDeletion;
+        })
+      }, "modal"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, _hoisted_16, _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_progreso) + " %", 1
+      /* TEXT */
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_aprobado) + " %", 1
+      /* TEXT */
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_reprobado) + " %", 1
+      /* TEXT */
+      )])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "razon_social",
-        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+        name: "razon_social",
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
           return $data.form.razon_social = $event;
         }),
-        "class": "border py-2 px-3 text-grey-darkest"
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.razon_social]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.razon_social]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_31, "Por Favor, complete este campo.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.razon_social_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "accountType",
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+          return $data.form.razon_social_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[5] || (_cache[5] = function ($event) {
+          return $options.calculo_de_porcentajes(1, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.razon_social_correcto]]), _hoisted_37]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "accountType",
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+          return $data.form.razon_social_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[7] || (_cache[7] = function ($event) {
+          return $options.calculo_de_porcentajes(1, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.razon_social_correcto]]), _hoisted_39]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "accountType",
+        "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+          return $data.form.razon_social_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[9] || (_cache[9] = function ($event) {
+          return $options.calculo_de_porcentajes(1, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.razon_social_correcto]]), _hoisted_41])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_42, [_hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_razon_social",
+        name: "obs_razon_social",
+        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+          return $data.form.obs_razon_social = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_razon_social]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_44, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_razon_social_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.razon_social_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_45, [_hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "email",
-        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+        name: "email",
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
           return $data.form.email = $event;
         }),
-        "class": "border py-2 px-3 text-grey-darkest"
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.email]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_47, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.email_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_49, [_hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_email_correcto",
+        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+          return $data.form.email_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[13] || (_cache[13] = function ($event) {
+          return $options.calculo_de_porcentajes(2, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.email_correcto]]), _hoisted_53]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_email_correcto",
+        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
+          return $data.form.email_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[15] || (_cache[15] = function ($event) {
+          return $options.calculo_de_porcentajes(2, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.email_correcto]]), _hoisted_55]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_email_correcto",
+        "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
+          return $data.form.email_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[17] || (_cache[17] = function ($event) {
+          return $options.calculo_de_porcentajes(2, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.email_correcto]]), _hoisted_57])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_58, [_hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_email",
+        name: "obs_email",
+        "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
+          return $data.form.obs_email = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_60, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.obs_email_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.email_correcto]])])])]), _hoisted_61, _hoisted_62, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_64, [_hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+        name: "cuit",
+        "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
           return $data.form.cuit = $event;
         }),
-        "class": "border py-2 px-3 text-grey-darkest"
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.cuit]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-          return $data.form.numeroproductor = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.cuit]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_66, "Please fill out this field.", 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.numeroproductor]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-          return $data.form.domicilio_prod = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.domicilio_prod]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-          return $data.form.tiposociedad = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.tiposociedad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-          return $data.form.inscripciondgr = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.inscripciondgr]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-          return $data.form.constaciasociedad = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.constaciasociedad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-          return $data.form.leal_calle = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_calle]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-          return $data.form.leal_numero = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_numero]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_25, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-          return $data.form.leal_telefono = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_telefono]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-          return $data.form.leal_pais = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_pais]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_29, [_hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input\r\n              id=\"cuit\"\r\n              v-model=\"form.leal_provincia\"\r\n              class=\"border py-2 px-3 text-grey-darkest\"\r\n            /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
-        "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
-          return $data.form.leal_provincia = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, [_hoisted_31, _hoisted_32, _hoisted_33, _hoisted_34, _hoisted_35, _hoisted_36, _hoisted_37, _hoisted_38, _hoisted_39, _hoisted_40, _hoisted_41, _hoisted_42, _hoisted_43, _hoisted_44, _hoisted_45, _hoisted_46, _hoisted_47, _hoisted_48, _hoisted_49, _hoisted_50, _hoisted_51, _hoisted_52, _hoisted_53, _hoisted_54, _hoisted_55, _hoisted_56, _hoisted_57], 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.leal_provincia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_58, [_hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-          return $data.form.leal_departamento = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_departamento]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_60, [_hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
-          return $data.form.leal_localidad = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_localidad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_62, [_hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
-          return $data.form.leal_cp = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_cp]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_64, [_hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
-          return $data.form.leal_otro = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_otro]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_66, [_hoisted_67, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
-          return $data.form.administracion_calle = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_calle]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_68, [_hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
-          return $data.form.administracion_numero = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_numero]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_70, [_hoisted_71, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.cuit_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_68, [_hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_cuit_correcto",
         "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
-          return $data.form.administracion_telefono = $event;
+          return $data.form.cuit_correcto = $event;
         }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_telefono]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_72, [_hoisted_73, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
-          return $data.form.administracion_pais = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_pais]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_74, [_hoisted_75, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        value: "true",
+        onChange: _cache[21] || (_cache[21] = function ($event) {
+          return $options.calculo_de_porcentajes(3, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.cuit_correcto]]), _hoisted_72]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_cuit_correcto",
         "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
-          return $data.form.administracion_provincia = $event;
+          return $data.form.cuit_correcto = $event;
         }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, [_hoisted_76, _hoisted_77, _hoisted_78, _hoisted_79, _hoisted_80, _hoisted_81, _hoisted_82, _hoisted_83, _hoisted_84, _hoisted_85, _hoisted_86, _hoisted_87, _hoisted_88, _hoisted_89, _hoisted_90, _hoisted_91, _hoisted_92, _hoisted_93, _hoisted_94, _hoisted_95, _hoisted_96, _hoisted_97, _hoisted_98, _hoisted_99, _hoisted_100, _hoisted_101, _hoisted_102], 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.administracion_provincia]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <input\r\n              id=\"cuit\"\r\n              v-model=\"form.administracion_provincia\"\r\n              class=\"border py-2 px-3 text-grey-darkest\"\r\n            /> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_103, [_hoisted_104, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[23] || (_cache[23] = function ($event) {
-          return $data.form.administracion_departamento = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_departamento]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_105, [_hoisted_106, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
+        value: "false",
+        onChange: _cache[23] || (_cache[23] = function ($event) {
+          return $options.calculo_de_porcentajes(3, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.cuit_correcto]]), _hoisted_74]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_cuit_correcto",
         "onUpdate:modelValue": _cache[24] || (_cache[24] = function ($event) {
-          return $data.form.administracion_localidad = $event;
+          return $data.form.cuit_correcto = $event;
         }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_localidad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_107, [_hoisted_108, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
-        "onUpdate:modelValue": _cache[25] || (_cache[25] = function ($event) {
-          return $data.form.administracion_cp = $event;
-        }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
-      /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_cp]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_109, [_hoisted_110, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-        id: "cuit",
+        value: "nada",
+        onChange: _cache[25] || (_cache[25] = function ($event) {
+          return $options.calculo_de_porcentajes(3, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.cuit_correcto]]), _hoisted_76])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_77, [_hoisted_78, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_cuit",
+        name: "obs_cuit",
         "onUpdate:modelValue": _cache[26] || (_cache[26] = function ($event) {
-          return $data.form.administracion_otro = $event;
+          return $data.form.obs_cuit = $event;
         }),
-        "class": "border py-2 px-3 text-grey-darkest"
-      }, null, 512
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_otro]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_111, [_hoisted_112, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_cuit]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_79, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.obs_cuit_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.cuit_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_80, [_hoisted_81, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
         "onUpdate:modelValue": _cache[27] || (_cache[27] = function ($event) {
+          return $data.form.numeroproductor = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.numeroproductor]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_82, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.numeroproductor_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_83, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_84, [_hoisted_85, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_86, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_87, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_numeroproductor_correcto",
+        "onUpdate:modelValue": _cache[28] || (_cache[28] = function ($event) {
+          return $data.form.numeroproductor_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[29] || (_cache[29] = function ($event) {
+          return $options.calculo_de_porcentajes(4, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.numeroproductor_correcto]]), _hoisted_88]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_89, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_numeroproductor_correcto",
+        "onUpdate:modelValue": _cache[30] || (_cache[30] = function ($event) {
+          return $data.form.numeroproductor_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[31] || (_cache[31] = function ($event) {
+          return $options.calculo_de_porcentajes(4, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.numeroproductor_correcto]]), _hoisted_90]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_91, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_numeroproductor_correcto",
+        "onUpdate:modelValue": _cache[32] || (_cache[32] = function ($event) {
+          return $data.form.numeroproductor_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[33] || (_cache[33] = function ($event) {
+          return $options.calculo_de_porcentajes(4, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.numeroproductor_correcto]]), _hoisted_92])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_93, [_hoisted_94, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_numeroproductor",
+        name: "obs_numeroproductor",
+        "onUpdate:modelValue": _cache[34] || (_cache[34] = function ($event) {
+          return $data.form.obs_numeroproductor = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_numeroproductor]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_95, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_numeroproductor_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.numeroproductor_correcto]])])])]), _hoisted_96, _hoisted_97, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_98, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"w-full md:w-1/2 px-3 mb-6 md:mb-0\">\r\n\t\t\t\t\t\t<label\r\n\t\t\t\t\t\t\tclass=\"block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2\"\r\n\t\t\t\t\t\t\tfor=\"domicilio_prod\"\r\n\t\t\t\t\t\t\t>Domicilio del Productor:</label\r\n\t\t\t\t\t\t>\r\n\t\t\t\t\t\t<input\r\n\t\t\t\t\t\t\tid=\"domicilio_prod\"\r\n\t\t\t\t\t\t\tname=\"domicilio_prod\"\r\n\t\t\t\t\t\t\tv-model=\"form.domicilio_prod\"\r\n\t\t\t\t\t\t\tclass=\"appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white\"\r\n\t\t\t\t\t\t/>\r\n\t\t\t\t\t\t<p class=\"text-red-500 text-xs italic\">Please fill out this field.</p>\r\n\t\t\t\t\t\t<div class=\"flex\">\r\n\t\t\t\t\t\t\t<div class=\"w-full md:w-1/2 px-3\">\r\n\t\t\t\t\t\t\t\t<span class=\"text-gray-700\">Correcto?</span>\r\n\t\t\t\t\t\t\t\t<div class=\"mt-2\">\r\n\t\t\t\t\t\t\t\t\t<label class=\"inline-flex items-center\">\r\n\t\t\t\t\t\t\t\t\t\t<input type=\"radio\" class=\"form-radio\" name=\"accountType\" value=\"personal\">\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"ml-2\">Si</span>\r\n\t\t\t\t\t\t\t\t\t</label>\r\n\t\t\t\t\t\t\t\t\t<label class=\"inline-flex items-center ml-6\">\r\n\t\t\t\t\t\t\t\t\t\t<input type=\"radio\" class=\"form-radio\" name=\"accountType\" value=\"busines\">\r\n\t\t\t\t\t\t\t\t\t\t<span class=\"ml-2\">No</span>\r\n\t\t\t\t\t\t\t\t\t</label>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t<div class=\"w-full md:w-1/2 px-3\">\r\n\t\t\t\t\t\t\t\t<label\r\n\t\t\t\t\t\t\t\t\tclass=\"block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2\"\r\n\t\t\t\t\t\t\t\t\tfor=\"obs_domicilio_prod\"\r\n\t\t\t\t\t\t\t\t\t>Observación:</label\r\n\t\t\t\t\t\t\t\t>\r\n\t\t\t\t\t\t\t\t<input\r\n\t\t\t\t\t\t\t\t\tid=\"obs_domicilio_prod\"\r\n\t\t\t\t\t\t\t\t\tname=\"obs_domicilio_prod\"\r\n\t\t\t\t\t\t\t\t\tv-model=\"form.obs_cuit\"\r\n\t\t\t\t\t\t\t\t\tclass=\"appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white\"\r\n\t\t\t\t\t\t\t\t/>\r\n\t\t\t\t\t\t\t\t<p class=\"text-green-500 text-xs italic\">Please fill out this field.</p>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_99, [_hoisted_100, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "tipo_sociedad",
+        name: "tipo_sociedad",
+        "onUpdate:modelValue": _cache[35] || (_cache[35] = function ($event) {
+          return $data.form.tiposociedad = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.tiposociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_101, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.tiposociedad_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_102, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_103, [_hoisted_104, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_105, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_tiposociedad_correcto",
+        "onUpdate:modelValue": _cache[36] || (_cache[36] = function ($event) {
+          return $data.form.tiposociedad_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[37] || (_cache[37] = function ($event) {
+          return $options.calculo_de_porcentajes(5, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.tiposociedad_correcto]]), _hoisted_107]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_108, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_tiposociedad_correcto",
+        "onUpdate:modelValue": _cache[38] || (_cache[38] = function ($event) {
+          return $data.form.tiposociedad_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[39] || (_cache[39] = function ($event) {
+          return $options.calculo_de_porcentajes(5, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.tiposociedad_correcto]]), _hoisted_109])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_110, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_tiposociedad_correcto",
+        "onUpdate:modelValue": _cache[40] || (_cache[40] = function ($event) {
+          return $data.form.tiposociedad_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[41] || (_cache[41] = function ($event) {
+          return $options.calculo_de_porcentajes(5, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.tiposociedad_correcto]]), _hoisted_111])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_112, [_hoisted_113, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_tiposociedad",
+        name: "obs_tiposociedad",
+        "onUpdate:modelValue": _cache[42] || (_cache[42] = function ($event) {
+          return $data.form.obs_tiposociedad = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_tiposociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_114, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_tiposociedad_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.tiposociedad_correcto]])])])]), _hoisted_115, _hoisted_116, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_117, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_118, [_hoisted_119, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "inscripciondgr",
+        name: "inscripciondgr",
+        "onUpdate:modelValue": _cache[43] || (_cache[43] = function ($event) {
+          return $data.form.inscripciondgr = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.inscripciondgr]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_120, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.inscripciondgr_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_121, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_122, [_hoisted_123, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_124, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_125, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_inscripciondgr_correcto",
+        "onUpdate:modelValue": _cache[44] || (_cache[44] = function ($event) {
+          return $data.form.inscripciondgr_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[45] || (_cache[45] = function ($event) {
+          return $options.calculo_de_porcentajes(6, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.inscripciondgr_correcto]]), _hoisted_126]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_127, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_inscripciondgr_correcto",
+        "onUpdate:modelValue": _cache[46] || (_cache[46] = function ($event) {
+          return $data.form.inscripciondgr_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[47] || (_cache[47] = function ($event) {
+          return $options.calculo_de_porcentajes(6, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.inscripciondgr_correcto]]), _hoisted_128]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_129, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_inscripciondgr_correcto",
+        "onUpdate:modelValue": _cache[48] || (_cache[48] = function ($event) {
+          return $data.form.inscripciondgr_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[49] || (_cache[49] = function ($event) {
+          return $options.calculo_de_porcentajes(6, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.inscripciondgr_correcto]]), _hoisted_130])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_131, [_hoisted_132, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_inscripciondgr",
+        name: "obs_inscripciondgr",
+        "onUpdate:modelValue": _cache[50] || (_cache[50] = function ($event) {
+          return $data.form.obs_inscripciondgr = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_inscripciondgr]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_133, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_inscripciondgr_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.inscripciondgr_correcto]])])]), _hoisted_134]), _hoisted_135, _hoisted_136, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_137, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_138, [_hoisted_139, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "constancia_sociedad",
+        name: "constancia_sociedad",
+        "onUpdate:modelValue": _cache[51] || (_cache[51] = function ($event) {
+          return $data.form.constaciasociedad = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.constaciasociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_140, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.constaciasociedad_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_141, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_142, [_hoisted_143, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_144, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_145, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_constaciasociedad_correcto",
+        "onUpdate:modelValue": _cache[52] || (_cache[52] = function ($event) {
+          return $data.form.constaciasociedad_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[53] || (_cache[53] = function ($event) {
+          return $options.calculo_de_porcentajes(7, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.constaciasociedad_correcto]]), _hoisted_146]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_147, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_constaciasociedad_correcto",
+        "onUpdate:modelValue": _cache[54] || (_cache[54] = function ($event) {
+          return $data.form.constaciasociedad_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[55] || (_cache[55] = function ($event) {
+          return $options.calculo_de_porcentajes(7, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.constaciasociedad_correcto]]), _hoisted_148]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_149, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_constaciasociedad_correcto",
+        "onUpdate:modelValue": _cache[56] || (_cache[56] = function ($event) {
+          return $data.form.constaciasociedad_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[57] || (_cache[57] = function ($event) {
+          return $options.calculo_de_porcentajes(7, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.constaciasociedad_correcto]]), _hoisted_150])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_151, [_hoisted_152, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_constaciasociedad",
+        name: "obs_constaciasociedad",
+        "onUpdate:modelValue": _cache[58] || (_cache[58] = function ($event) {
+          return $data.form.obs_constaciasociedad = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_constaciasociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_153, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.obs_constaciasociedad_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.constaciasociedad_correcto]])])]), _hoisted_154]), _hoisted_155, _hoisted_156, _hoisted_157, _hoisted_158, _hoisted_159, _hoisted_160, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_161, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_162, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_163, [_hoisted_164, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_165, [_hoisted_166, _hoisted_167, _hoisted_168, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_169, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_170, [_hoisted_171, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_172, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_progreso_dos) + " %", 1
+      /* TEXT */
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_173, [_hoisted_174, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_175, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_aprobado_dos) + " %", 1
+      /* TEXT */
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_176, [_hoisted_177, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_178, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_reprobado_dos) + " %", 1
+      /* TEXT */
+      )])])])])])])]), _hoisted_179, _hoisted_180, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_181, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_182, [_hoisted_183, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "leal_calle",
+        name: "leal_calle",
+        "onUpdate:modelValue": _cache[59] || (_cache[59] = function ($event) {
+          return $data.form.leal_calle = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_calle]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_184, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.nombre_calle_legal_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_185, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_186, [_hoisted_187, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_188, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_189, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_calle_legal_correcto",
+        "onUpdate:modelValue": _cache[60] || (_cache[60] = function ($event) {
+          return $data.form.nombre_calle_legal_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[61] || (_cache[61] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(1, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_calle_legal_correcto]]), _hoisted_190]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_191, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_calle_legal_correcto",
+        "onUpdate:modelValue": _cache[62] || (_cache[62] = function ($event) {
+          return $data.form.nombre_calle_legal_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[63] || (_cache[63] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(1, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_calle_legal_correcto]]), _hoisted_192])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_193, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_calle_legal_correcto",
+        "onUpdate:modelValue": _cache[64] || (_cache[64] = function ($event) {
+          return $data.form.nombre_calle_legal_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[65] || (_cache[65] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(1, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_calle_legal_correcto]]), _hoisted_194])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_195, [_hoisted_196, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_nombre_calle_legal",
+        name: "obs_nombre_calle_legal",
+        "onUpdate:modelValue": _cache[66] || (_cache[66] = function ($event) {
+          return $data.form.obs_nombre_calle_legal = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_nombre_calle_legal]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_197, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_nombre_calle_legal_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.nombre_calle_legal_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_198, [_hoisted_199, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "leal_numero",
+        name: "leal_numero",
+        "onUpdate:modelValue": _cache[67] || (_cache[67] = function ($event) {
+          return $data.form.leal_numero = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_numero]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_200, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.leal_numero_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_201, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_202, [_hoisted_203, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_204, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_205, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_leal_numero_correcto",
+        "onUpdate:modelValue": _cache[68] || (_cache[68] = function ($event) {
+          return $data.form.leal_numero_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[69] || (_cache[69] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(2, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_numero_correcto]]), _hoisted_206]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_207, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_leal_numero_correcto",
+        "onUpdate:modelValue": _cache[70] || (_cache[70] = function ($event) {
+          return $data.form.leal_numero_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[71] || (_cache[71] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(2, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_numero_correcto]]), _hoisted_208]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_209, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_leal_numero_correcto",
+        "onUpdate:modelValue": _cache[72] || (_cache[72] = function ($event) {
+          return $data.form.leal_numero_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[73] || (_cache[73] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(2, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_numero_correcto]]), _hoisted_210])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_211, [_hoisted_212, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_leal_numero",
+        name: "obs_leal_numero",
+        "onUpdate:modelValue": _cache[74] || (_cache[74] = function ($event) {
+          return $data.form.obs_leal_numero = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_leal_numero]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_213, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_leal_numero_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.leal_numero_correcto]])])])]), _hoisted_214, _hoisted_215, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_216, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_217, [_hoisted_218, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "leal_telefono",
+        name: "leal_telefono",
+        "onUpdate:modelValue": _cache[75] || (_cache[75] = function ($event) {
+          return $data.form.leal_telefono = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_telefono]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_219, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.leal_telefono_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_220, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_221, [_hoisted_222, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_223, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_224, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_telefono_correcto",
+        "onUpdate:modelValue": _cache[76] || (_cache[76] = function ($event) {
+          return $data.form.leal_telefono_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[77] || (_cache[77] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(3, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_telefono_correcto]]), _hoisted_225]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_226, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_telefono_correcto",
+        "onUpdate:modelValue": _cache[78] || (_cache[78] = function ($event) {
+          return $data.form.leal_telefono_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[79] || (_cache[79] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(3, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_telefono_correcto]]), _hoisted_227]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_228, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_telefono_correcto",
+        "onUpdate:modelValue": _cache[80] || (_cache[80] = function ($event) {
+          return $data.form.leal_telefono_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[81] || (_cache[81] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(3, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_telefono_correcto]]), _hoisted_229])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_230, [_hoisted_231, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_leal_telefono",
+        name: "obs_leal_telefono",
+        "onUpdate:modelValue": _cache[82] || (_cache[82] = function ($event) {
+          return $data.form.obs_leal_telefono = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_leal_telefono]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_232, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_leal_telefono_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.leal_telefono_correcto]])])])]), _hoisted_233, _hoisted_234, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_235, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_236, [_hoisted_237, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        id: "pais_dom_legal",
+        name: "pais_dom_legal",
+        "onUpdate:modelValue": _cache[83] || (_cache[83] = function ($event) {
+          return $data.form.leal_pais = $event;
+        }),
+        "class": "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+      }, [_hoisted_238, _hoisted_239, _hoisted_240], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.leal_pais]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_241, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.leal_pais_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_242, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_243, [_hoisted_244, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_245, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_246, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_pais_correcto",
+        "onUpdate:modelValue": _cache[84] || (_cache[84] = function ($event) {
+          return $data.form.leal_pais_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[85] || (_cache[85] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(4, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_pais_correcto]]), _hoisted_247]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_248, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_pais_correcto",
+        "onUpdate:modelValue": _cache[86] || (_cache[86] = function ($event) {
+          return $data.form.leal_pais_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[87] || (_cache[87] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(4, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_pais_correcto]]), _hoisted_249]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_250, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_pais_correcto",
+        "onUpdate:modelValue": _cache[88] || (_cache[88] = function ($event) {
+          return $data.form.leal_pais_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[89] || (_cache[89] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(4, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_pais_correcto]]), _hoisted_251])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_252, [_hoisted_253, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_pais_dom_legal",
+        name: "obs_pais_dom_legal",
+        "onUpdate:modelValue": _cache[90] || (_cache[90] = function ($event) {
+          return $data.form.obs_pais_dom_legal = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_pais_dom_legal]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_254, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_leal_pais_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.leal_pais_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_255, [_hoisted_256, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        id: "provincia_dom_legal",
+        name: "provincia_dom_legal",
+        "onUpdate:modelValue": _cache[91] || (_cache[91] = function ($event) {
+          return $data.form.leal_provincia = $event;
+        }),
+        "class": "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+      }, [_hoisted_257, _hoisted_258, _hoisted_259, _hoisted_260, _hoisted_261, _hoisted_262, _hoisted_263, _hoisted_264, _hoisted_265, _hoisted_266, _hoisted_267, _hoisted_268, _hoisted_269, _hoisted_270, _hoisted_271, _hoisted_272, _hoisted_273, _hoisted_274, _hoisted_275, _hoisted_276, _hoisted_277, _hoisted_278, _hoisted_279, _hoisted_280, _hoisted_281, _hoisted_282, _hoisted_283], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.leal_provincia]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_284, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.leal_provincia_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_285, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_286, [_hoisted_287, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_288, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_289, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_provincia_correcto",
+        "onUpdate:modelValue": _cache[92] || (_cache[92] = function ($event) {
+          return $data.form.leal_provincia_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[93] || (_cache[93] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(5, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_provincia_correcto]]), _hoisted_290]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_291, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_provincia_correcto",
+        "onUpdate:modelValue": _cache[94] || (_cache[94] = function ($event) {
+          return $data.form.leal_provincia_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[95] || (_cache[95] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(5, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_provincia_correcto]]), _hoisted_292]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_293, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_provincia_correcto",
+        "onUpdate:modelValue": _cache[96] || (_cache[96] = function ($event) {
+          return $data.form.leal_provincia_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[97] || (_cache[97] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(5, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_provincia_correcto]]), _hoisted_294])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_295, [_hoisted_296, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_leal_provincia",
+        name: "obs_leal_provincia",
+        "onUpdate:modelValue": _cache[98] || (_cache[98] = function ($event) {
+          return $data.form.obs_leal_provincia = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_leal_provincia]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_297, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_leal_provincia_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.leal_provincia_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_298, [_hoisted_299, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        id: "departamento_dom_legal",
+        name: "departamento_dom_legal",
+        "onUpdate:modelValue": _cache[99] || (_cache[99] = function ($event) {
+          return $data.form.leal_departamento = $event;
+        }),
+        "class": "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+      }, [_hoisted_300, _hoisted_301, _hoisted_302, _hoisted_303, _hoisted_304, _hoisted_305, _hoisted_306, _hoisted_307, _hoisted_308, _hoisted_309, _hoisted_310, _hoisted_311], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.leal_departamento]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_312, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.leal_departamento_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_313, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_314, [_hoisted_315, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_316, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_317, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_departamento_correcto",
+        "onUpdate:modelValue": _cache[100] || (_cache[100] = function ($event) {
+          return $data.form.leal_departamento_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[101] || (_cache[101] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(6, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_departamento_correcto]]), _hoisted_318]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_319, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_departamento_correcto",
+        "onUpdate:modelValue": _cache[102] || (_cache[102] = function ($event) {
+          return $data.form.leal_departamento_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[103] || (_cache[103] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(6, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_departamento_correcto]]), _hoisted_320]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_321, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_departamento_correcto",
+        "onUpdate:modelValue": _cache[104] || (_cache[104] = function ($event) {
+          return $data.form.leal_departamento_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[105] || (_cache[105] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(6, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_departamento_correcto]]), _hoisted_322])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_323, [_hoisted_324, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_leal_departamento",
+        name: "obs_leal_departamento",
+        "onUpdate:modelValue": _cache[106] || (_cache[106] = function ($event) {
+          return $data.form.obs_leal_departamento = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_leal_departamento]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_325, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_leal_departamento_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.leal_departamento_correcto]])])])]), _hoisted_326, _hoisted_327, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_328, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_329, [_hoisted_330, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "dom_legal_localidad",
+        name: "dom_legal_localidad",
+        "onUpdate:modelValue": _cache[107] || (_cache[107] = function ($event) {
+          return $data.form.leal_localidad = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_localidad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_331, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.leal_localidad_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_332, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_333, [_hoisted_334, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_335, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_336, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_localidad_correcto",
+        "onUpdate:modelValue": _cache[108] || (_cache[108] = function ($event) {
+          return $data.form.leal_localidad_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[109] || (_cache[109] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(7, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_localidad_correcto]]), _hoisted_337]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_338, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_localidad_correcto",
+        "onUpdate:modelValue": _cache[110] || (_cache[110] = function ($event) {
+          return $data.form.leal_localidad_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[111] || (_cache[111] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(7, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_localidad_correcto]]), _hoisted_339]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_340, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_localidad_correcto",
+        "onUpdate:modelValue": _cache[112] || (_cache[112] = function ($event) {
+          return $data.form.leal_localidad_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[113] || (_cache[113] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(7, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_localidad_correcto]]), _hoisted_341])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_342, [_hoisted_343, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_leal_localidad",
+        name: "obs_leal_localidad",
+        "onUpdate:modelValue": _cache[114] || (_cache[114] = function ($event) {
+          return $data.form.obs_leal_localidad = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_leal_localidad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_344, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_leal_localidad_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.leal_localidad_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_345, [_hoisted_346, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "dom_legal_cp",
+        name: "dom_legal_cp",
+        "onUpdate:modelValue": _cache[115] || (_cache[115] = function ($event) {
+          return $data.form.leal_cp = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_cp]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_347, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.leal_cp_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_348, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_349, [_hoisted_350, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_351, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_352, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_cp_correcto",
+        "onUpdate:modelValue": _cache[116] || (_cache[116] = function ($event) {
+          return $data.form.leal_cp_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[117] || (_cache[117] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(8, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_cp_correcto]]), _hoisted_353]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_354, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_cp_correcto",
+        "onUpdate:modelValue": _cache[118] || (_cache[118] = function ($event) {
+          return $data.form.leal_cp_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[119] || (_cache[119] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(8, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_cp_correcto]]), _hoisted_355]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_356, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_cp_correcto",
+        "onUpdate:modelValue": _cache[120] || (_cache[120] = function ($event) {
+          return $data.form.leal_cp_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[121] || (_cache[121] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(8, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_cp_correcto]]), _hoisted_357])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_358, [_hoisted_359, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_leal_cp",
+        name: "obs_leal_cp",
+        "onUpdate:modelValue": _cache[122] || (_cache[122] = function ($event) {
+          return $data.form.obs_leal_cp = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_leal_cp]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_360, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_leal_cp_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.leal_cp_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_361, [_hoisted_362, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "leal_otro",
+        name: "leal_otro",
+        "onUpdate:modelValue": _cache[123] || (_cache[123] = function ($event) {
+          return $data.form.leal_otro = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.leal_otro]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_363, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.leal_otro_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_364, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_365, [_hoisted_366, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_367, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_368, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_otro_correcto",
+        "onUpdate:modelValue": _cache[124] || (_cache[124] = function ($event) {
+          return $data.form.leal_otro_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[125] || (_cache[125] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(9, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_otro_correcto]]), _hoisted_369]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_370, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_otro_correcto",
+        "onUpdate:modelValue": _cache[126] || (_cache[126] = function ($event) {
+          return $data.form.leal_otro_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[127] || (_cache[127] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(9, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_otro_correcto]]), _hoisted_371]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_372, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_leal_otro_correcto",
+        "onUpdate:modelValue": _cache[128] || (_cache[128] = function ($event) {
+          return $data.form.leal_otro_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[129] || (_cache[129] = function ($event) {
+          return $options.calculo_de_porcentajes_dos(9, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.leal_otro_correcto]]), _hoisted_373])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_374, [_hoisted_375, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_leal_otro",
+        name: "obs_leal_otro",
+        "onUpdate:modelValue": _cache[130] || (_cache[130] = function ($event) {
+          return $data.form.obs_leal_otro = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_leal_otro]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_376, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_leal_otro_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.leal_otro_correcto]])])])]), _hoisted_377, _hoisted_378, _hoisted_379, _hoisted_380, _hoisted_381, _hoisted_382, _hoisted_383, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_384, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_385, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_386, [_hoisted_387, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_388, [_hoisted_389, _hoisted_390, _hoisted_391, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_392, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_393, [_hoisted_394, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_395, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_progreso_tres) + "%", 1
+      /* TEXT */
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_396, [_hoisted_397, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_398, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_aprobado_tres) + "%", 1
+      /* TEXT */
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_399, [_hoisted_400, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_401, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_reprobado_tres) + "%", 1
+      /* TEXT */
+      )])])])])])])]), _hoisted_402, _hoisted_403, _hoisted_404, _hoisted_405, _hoisted_406, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_407, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_408, [_hoisted_409, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "administracion_calle",
+        name: "administracion_calle",
+        "onUpdate:modelValue": _cache[131] || (_cache[131] = function ($event) {
+          return $data.form.administracion_calle = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_calle]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_410, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_calle_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_411, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_412, [_hoisted_413, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_414, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_415, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_administracion_calle_correcto",
+        "onUpdate:modelValue": _cache[132] || (_cache[132] = function ($event) {
+          return $data.form.administracion_calle_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[133] || (_cache[133] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(1, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_calle_correcto]]), _hoisted_416]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_417, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_administracion_calle_correcto",
+        "onUpdate:modelValue": _cache[134] || (_cache[134] = function ($event) {
+          return $data.form.administracion_calle_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[135] || (_cache[135] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(1, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_calle_correcto]]), _hoisted_418])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_419, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "nombre_administracion_calle_correcto",
+        "onUpdate:modelValue": _cache[136] || (_cache[136] = function ($event) {
+          return $data.form.administracion_calle_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[137] || (_cache[137] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(1, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_calle_correcto]]), _hoisted_420])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_421, [_hoisted_422, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_calle_nombre",
+        name: "obs_administracion_calle_nombre",
+        "onUpdate:modelValue": _cache[138] || (_cache[138] = function ($event) {
+          return $data.form.obs_administracion_calle_nombre = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_calle_nombre]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_423, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_calle_nombre_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_calle_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_424, [_hoisted_425, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "administracion_numero",
+        name: "administracion_numero",
+        "onUpdate:modelValue": _cache[139] || (_cache[139] = function ($event) {
+          return $data.form.administracion_numero = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_numero]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_426, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_numero_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_427, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_428, [_hoisted_429, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_430, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_431, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_numero_correcto",
+        "onUpdate:modelValue": _cache[140] || (_cache[140] = function ($event) {
+          return $data.form.administracion_numero_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[141] || (_cache[141] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(2, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_numero_correcto]]), _hoisted_432]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_433, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_numero_correcto",
+        "onUpdate:modelValue": _cache[142] || (_cache[142] = function ($event) {
+          return $data.form.administracion_numero_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[143] || (_cache[143] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(2, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_numero_correcto]]), _hoisted_434]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_435, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_numero_correcto",
+        "onUpdate:modelValue": _cache[144] || (_cache[144] = function ($event) {
+          return $data.form.administracion_numero_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[145] || (_cache[145] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(2, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_numero_correcto]]), _hoisted_436])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_437, [_hoisted_438, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_numero_nombre",
+        name: "obs_administracion_numero_nombre",
+        "onUpdate:modelValue": _cache[146] || (_cache[146] = function ($event) {
+          return $data.form.obs_administracion_numero_nombre = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_numero_nombre]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_439, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_numero_nombre_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_numero_correcto]])])])]), _hoisted_440, _hoisted_441, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_442, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_443, [_hoisted_444, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "administracion_telefono",
+        name: "administracion_telefono",
+        "onUpdate:modelValue": _cache[147] || (_cache[147] = function ($event) {
+          return $data.form.administracion_telefono = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_telefono]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_445, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_telefono_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_446, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_447, [_hoisted_448, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_449, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_450, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_telefono_correcto",
+        "onUpdate:modelValue": _cache[148] || (_cache[148] = function ($event) {
+          return $data.form.administracion_telefono_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[149] || (_cache[149] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(3, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_telefono_correcto]]), _hoisted_451]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_452, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_telefono_correcto",
+        "onUpdate:modelValue": _cache[150] || (_cache[150] = function ($event) {
+          return $data.form.administracion_telefono_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[151] || (_cache[151] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(3, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_telefono_correcto]]), _hoisted_453]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_454, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_telefono_correcto",
+        "onUpdate:modelValue": _cache[152] || (_cache[152] = function ($event) {
+          return $data.form.administracion_telefono_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[153] || (_cache[153] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(3, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_telefono_correcto]]), _hoisted_455])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_456, [_hoisted_457, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_telefono_nombre",
+        name: "obs_administracion_telefono_nombre",
+        "onUpdate:modelValue": _cache[154] || (_cache[154] = function ($event) {
+          return $data.form.obs_administracion_telefono_nombre = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_telefono_nombre]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_458, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_telefono_nombre_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_telefono_correcto]])])])]), _hoisted_459, _hoisted_460, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_461, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_462, [_hoisted_463, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        id: "administracion_pais",
+        name: "administracion_pais",
+        "onUpdate:modelValue": _cache[155] || (_cache[155] = function ($event) {
+          return $data.form.administracion_pais = $event;
+        }),
+        "class": "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+      }, [_hoisted_464, _hoisted_465, _hoisted_466], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.administracion_pais]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_467, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_pais_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_468, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_469, [_hoisted_470, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_471, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_472, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_pais_correcto",
+        "onUpdate:modelValue": _cache[156] || (_cache[156] = function ($event) {
+          return $data.form.administracion_pais_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[157] || (_cache[157] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(4, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_pais_correcto]]), _hoisted_473]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_474, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_pais_correcto",
+        "onUpdate:modelValue": _cache[158] || (_cache[158] = function ($event) {
+          return $data.form.administracion_pais_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[159] || (_cache[159] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(4, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_pais_correcto]]), _hoisted_475]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_476, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_pais_correcto",
+        "onUpdate:modelValue": _cache[160] || (_cache[160] = function ($event) {
+          return $data.form.administracion_pais_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[161] || (_cache[161] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(4, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_pais_correcto]]), _hoisted_477])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_478, [_hoisted_479, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_pais",
+        name: "obs_administracion_pais",
+        "onUpdate:modelValue": _cache[162] || (_cache[162] = function ($event) {
+          return $data.form.obs_administracion_pais = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_pais]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_480, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_pais_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_pais_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_481, [_hoisted_482, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        id: "administracion_provincia",
+        name: "administracion_provincia",
+        "onUpdate:modelValue": _cache[163] || (_cache[163] = function ($event) {
+          return $data.form.administracion_provincia = $event;
+        }),
+        "class": "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+      }, [_hoisted_483, _hoisted_484, _hoisted_485, _hoisted_486, _hoisted_487, _hoisted_488, _hoisted_489, _hoisted_490, _hoisted_491, _hoisted_492, _hoisted_493, _hoisted_494, _hoisted_495, _hoisted_496, _hoisted_497, _hoisted_498, _hoisted_499, _hoisted_500, _hoisted_501, _hoisted_502, _hoisted_503, _hoisted_504, _hoisted_505, _hoisted_506, _hoisted_507, _hoisted_508, _hoisted_509], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.administracion_provincia]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_510, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_provincia_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_511, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_512, [_hoisted_513, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_514, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_515, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_provincia_correcto",
+        "onUpdate:modelValue": _cache[164] || (_cache[164] = function ($event) {
+          return $data.form.administracion_provincia_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[165] || (_cache[165] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(5, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_provincia_correcto]]), _hoisted_516]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_517, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_provincia_correcto",
+        "onUpdate:modelValue": _cache[166] || (_cache[166] = function ($event) {
+          return $data.form.administracion_provincia_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[167] || (_cache[167] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(5, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_provincia_correcto]]), _hoisted_518]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_519, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_provincia_correcto",
+        "onUpdate:modelValue": _cache[168] || (_cache[168] = function ($event) {
+          return $data.form.administracion_provincia_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[169] || (_cache[169] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(5, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_provincia_correcto]]), _hoisted_520])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_521, [_hoisted_522, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_provincia",
+        name: "obs_administracion_provincia",
+        "onUpdate:modelValue": _cache[170] || (_cache[170] = function ($event) {
+          return $data.form.obs_administracion_provincia = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_provincia]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_523, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_provincia_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_provincia_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_524, [_hoisted_525, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        id: "administracion_departamento",
+        name: "administracion_departamento",
+        "onUpdate:modelValue": _cache[171] || (_cache[171] = function ($event) {
+          return $data.form.administracion_departamento = $event;
+        }),
+        "class": "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+      }, [_hoisted_526, _hoisted_527, _hoisted_528, _hoisted_529, _hoisted_530, _hoisted_531, _hoisted_532, _hoisted_533, _hoisted_534, _hoisted_535, _hoisted_536, _hoisted_537], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.administracion_departamento]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_538, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_departamento_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_539, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_540, [_hoisted_541, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_542, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_543, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_departamento_correcto",
+        "onUpdate:modelValue": _cache[172] || (_cache[172] = function ($event) {
+          return $data.form.administracion_departamento_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[173] || (_cache[173] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(6, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_departamento_correcto]]), _hoisted_544]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_545, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_departamento_correcto",
+        "onUpdate:modelValue": _cache[174] || (_cache[174] = function ($event) {
+          return $data.form.administracion_departamento_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[175] || (_cache[175] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(6, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_departamento_correcto]]), _hoisted_546]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_547, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_departamento_correcto",
+        "onUpdate:modelValue": _cache[176] || (_cache[176] = function ($event) {
+          return $data.form.administracion_departamento_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[177] || (_cache[177] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(6, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_departamento_correcto]]), _hoisted_548])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_549, [_hoisted_550, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_departamento",
+        name: "obs_administracion_departamento",
+        "onUpdate:modelValue": _cache[178] || (_cache[178] = function ($event) {
+          return $data.form.obs_administracion_departamento = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_departamento]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_551, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_departamento_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_departamento_correcto]])])])]), _hoisted_552, _hoisted_553, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_554, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_555, [_hoisted_556, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "administracion_localidad",
+        name: "administracion_localidad",
+        "onUpdate:modelValue": _cache[179] || (_cache[179] = function ($event) {
+          return $data.form.administracion_localidad = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_localidad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_557, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_localidad_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_558, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_559, [_hoisted_560, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_561, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_562, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_localidad_correcto",
+        "onUpdate:modelValue": _cache[180] || (_cache[180] = function ($event) {
+          return $data.form.administracion_localidad_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[181] || (_cache[181] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(7, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_localidad_correcto]]), _hoisted_563]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_564, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_localidad_correcto",
+        "onUpdate:modelValue": _cache[182] || (_cache[182] = function ($event) {
+          return $data.form.administracion_localidad_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[183] || (_cache[183] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(7, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_localidad_correcto]]), _hoisted_565]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_566, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_localidad_correcto",
+        "onUpdate:modelValue": _cache[184] || (_cache[184] = function ($event) {
+          return $data.form.administracion_localidad_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[185] || (_cache[185] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(7, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_localidad_correcto]]), _hoisted_567])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_568, [_hoisted_569, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_localidad",
+        name: "obs_administracion_localidad",
+        "onUpdate:modelValue": _cache[186] || (_cache[186] = function ($event) {
+          return $data.form.obs_administracion_localidad = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_localidad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_570, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_localidad_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_localidad_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_571, [_hoisted_572, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "administracion_cp",
+        name: "administracion_cp",
+        "onUpdate:modelValue": _cache[187] || (_cache[187] = function ($event) {
+          return $data.form.administracion_cp = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_cp]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_573, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_cp_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_574, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_575, [_hoisted_576, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_577, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_578, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_cp_correcto",
+        "onUpdate:modelValue": _cache[188] || (_cache[188] = function ($event) {
+          return $data.form.administracion_cp_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[189] || (_cache[189] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(8, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_cp_correcto]]), _hoisted_579]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_580, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_cp_correcto",
+        "onUpdate:modelValue": _cache[190] || (_cache[190] = function ($event) {
+          return $data.form.administracion_cp_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[191] || (_cache[191] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(8, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_cp_correcto]]), _hoisted_581]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_582, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_cp_correcto",
+        "onUpdate:modelValue": _cache[192] || (_cache[192] = function ($event) {
+          return $data.form.administracion_cp_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[193] || (_cache[193] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(8, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_cp_correcto]]), _hoisted_583])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_584, [_hoisted_585, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_cp",
+        name: "obs_administracion_cp",
+        "onUpdate:modelValue": _cache[194] || (_cache[194] = function ($event) {
+          return $data.form.obs_administracion_cp = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_cp]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_586, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_cp_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_cp_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_587, [_hoisted_588, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "administracion_otro",
+        name: "administracion_otro",
+        "onUpdate:modelValue": _cache[195] || (_cache[195] = function ($event) {
+          return $data.form.administracion_otro = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.administracion_otro]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_589, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.administracion_otro_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_590, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_591, [_hoisted_592, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_593, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_594, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_otro_correcto",
+        "onUpdate:modelValue": _cache[196] || (_cache[196] = function ($event) {
+          return $data.form.administracion_otro_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[197] || (_cache[197] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(9, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_otro_correcto]]), _hoisted_595]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_596, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_otro_correcto",
+        "onUpdate:modelValue": _cache[198] || (_cache[198] = function ($event) {
+          return $data.form.administracion_otro_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[199] || (_cache[199] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(9, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_otro_correcto]]), _hoisted_597]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_598, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_administracion_otro_correcto",
+        "onUpdate:modelValue": _cache[200] || (_cache[200] = function ($event) {
+          return $data.form.administracion_otro_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[201] || (_cache[201] = function ($event) {
+          return $options.calculo_de_porcentajes_tres(9, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.administracion_otro_correcto]]), _hoisted_599])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_600, [_hoisted_601, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_administracion_otro",
+        name: "obs_administracion_otro",
+        "onUpdate:modelValue": _cache[202] || (_cache[202] = function ($event) {
+          return $data.form.obs_administracion_otro = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_administracion_otro]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_602, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_administracion_otro_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.administracion_otro_correcto]])])])]), _hoisted_603, _hoisted_604, _hoisted_605, _hoisted_606, _hoisted_607, _hoisted_608, _hoisted_609, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_610, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_611, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_612, [_hoisted_613, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_614, [_hoisted_615, _hoisted_616, _hoisted_617, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_618, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_619, [_hoisted_620, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_621, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_progreso_cuatro) + "%", 1
+      /* TEXT */
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_622, [_hoisted_623, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_624, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_aprobado_cuatro) + "%", 1
+      /* TEXT */
+      )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_625, [_hoisted_626, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_627, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.valor_de_reprobado_cuatro) + "%", 1
+      /* TEXT */
+      )])])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_628, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_629, [_hoisted_630, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "numero_expdiente",
+        name: "numero_expdiente",
+        "onUpdate:modelValue": _cache[203] || (_cache[203] = function ($event) {
+          return $data.form.numero_expdiente = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.numero_expdiente]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_631, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.numero_expdiente_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_632, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_633, [_hoisted_634, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_635, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_636, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_numero_expdiente_correcto",
+        "onUpdate:modelValue": _cache[204] || (_cache[204] = function ($event) {
+          return $data.form.numero_expdiente_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[205] || (_cache[205] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(1, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.numero_expdiente_correcto]]), _hoisted_637]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_638, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_numero_expdiente_correcto",
+        "onUpdate:modelValue": _cache[206] || (_cache[206] = function ($event) {
+          return $data.form.numero_expdiente_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[207] || (_cache[207] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(1, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.numero_expdiente_correcto]]), _hoisted_639]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_640, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_numero_expdiente_correcto",
+        "onUpdate:modelValue": _cache[208] || (_cache[208] = function ($event) {
+          return $data.form.numero_expdiente_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[209] || (_cache[209] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(1, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.numero_expdiente_correcto]]), _hoisted_641])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_642, [_hoisted_643, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_numero_expdiente",
+        name: "obs_numero_expdiente",
+        "onUpdate:modelValue": _cache[210] || (_cache[210] = function ($event) {
+          return $data.form.obs_numero_expdiente = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_numero_expdiente]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_644, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_numero_expdiente_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.numero_expdiente_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_645, [_hoisted_646, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        id: "categoria",
+        name: "categoria",
+        "onUpdate:modelValue": _cache[211] || (_cache[211] = function ($event) {
+          return $data.form.categoria = $event;
+        }),
+        "class": "block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+      }, [_hoisted_647, _hoisted_648, _hoisted_649], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.categoria]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_650, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.categoria_validacion]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_651, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_652, [_hoisted_653, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_654, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_655, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_categoria_correcto",
+        "onUpdate:modelValue": _cache[212] || (_cache[212] = function ($event) {
+          return $data.form.categoria_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[213] || (_cache[213] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(2, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.categoria_correcto]]), _hoisted_656]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_657, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_categoria_correcto",
+        "onUpdate:modelValue": _cache[214] || (_cache[214] = function ($event) {
+          return $data.form.categoria_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[215] || (_cache[215] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(2, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.categoria_correcto]]), _hoisted_658]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_659, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_categoria_correcto",
+        "onUpdate:modelValue": _cache[216] || (_cache[216] = function ($event) {
+          return $data.form.categoria_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[217] || (_cache[217] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(2, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.categoria_correcto]]), _hoisted_660])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_661, [_hoisted_662, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_categoria",
+        name: "obs_categoria",
+        "onUpdate:modelValue": _cache[218] || (_cache[218] = function ($event) {
+          return $data.form.obs_categoria = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_categoria]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_663, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_categoria_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.categoria_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_664, [_hoisted_665, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "nombre_mina",
+        name: "nombre_mina",
+        "onUpdate:modelValue": _cache[219] || (_cache[219] = function ($event) {
+          return $data.form.nombre_mina = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.nombre_mina]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_666, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.nombre_mina_validacion]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_667, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_668, [_hoisted_669, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_670, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_671, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_nombre_mina_correcto",
+        "onUpdate:modelValue": _cache[220] || (_cache[220] = function ($event) {
+          return $data.form.nombre_mina_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[221] || (_cache[221] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(3, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_mina_correcto]]), _hoisted_672]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_673, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_nombre_mina_correcto",
+        "onUpdate:modelValue": _cache[222] || (_cache[222] = function ($event) {
+          return $data.form.nombre_mina_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[223] || (_cache[223] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(3, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_mina_correcto]]), _hoisted_674]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_675, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_nombre_mina_correcto",
+        "onUpdate:modelValue": _cache[224] || (_cache[224] = function ($event) {
+          return $data.form.nombre_mina_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[225] || (_cache[225] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(3, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_mina_correcto]]), _hoisted_676])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_677, [_hoisted_678, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_nombre_mina",
+        name: "obs_nombre_mina",
+        "onUpdate:modelValue": _cache[226] || (_cache[226] = function ($event) {
+          return $data.form.obs_nombre_mina = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_nombre_mina]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_679, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_nombre_mina_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.nombre_mina_correcto]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_680, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_681, [_hoisted_682, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "descripcion_mina",
+        name: "descripcion_mina",
+        "onUpdate:modelValue": _cache[227] || (_cache[227] = function ($event) {
+          return $data.form.descripcion_mina = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.descripcion_mina]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_683, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.descripcion_mina_validacion]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_684, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_685, [_hoisted_686, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_687, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_688, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_descripcion_mina_correcto",
+        "onUpdate:modelValue": _cache[228] || (_cache[228] = function ($event) {
+          return $data.form.descripcion_mina_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[229] || (_cache[229] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(4, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.descripcion_mina_correcto]]), _hoisted_689]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_690, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_descripcion_mina_correcto",
+        "onUpdate:modelValue": _cache[230] || (_cache[230] = function ($event) {
+          return $data.form.descripcion_mina_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[231] || (_cache[231] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(4, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.descripcion_mina_correcto]]), _hoisted_691]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_692, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_descripcion_mina_correcto",
+        "onUpdate:modelValue": _cache[232] || (_cache[232] = function ($event) {
+          return $data.form.descripcion_mina_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[233] || (_cache[233] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(4, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.descripcion_mina_correcto]]), _hoisted_693])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_694, [_hoisted_695, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_descripcion_mina",
+        name: "obs_descripcion_mina",
+        "onUpdate:modelValue": _cache[234] || (_cache[234] = function ($event) {
+          return $data.form.obs_descripcion_mina = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_descripcion_mina]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_696, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_descripcion_mina_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.descripcion_mina_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_697, [_hoisted_698, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "distrito_minero",
+        name: "distrito_minero",
+        "onUpdate:modelValue": _cache[235] || (_cache[235] = function ($event) {
+          return $data.form.distrito_minero = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.distrito_minero]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_699, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.distrito_minero_validacion]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_700, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_701, [_hoisted_702, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_703, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_704, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_distrito_minero_correcto",
+        "onUpdate:modelValue": _cache[236] || (_cache[236] = function ($event) {
+          return $data.form.distrito_minero_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[237] || (_cache[237] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(5, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.distrito_minero_correcto]]), _hoisted_705]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_706, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_distrito_minero_correcto",
+        "onUpdate:modelValue": _cache[238] || (_cache[238] = function ($event) {
+          return $data.form.distrito_minero_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[239] || (_cache[239] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(5, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.distrito_minero_correcto]]), _hoisted_707]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_708, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_distrito_minero_correcto",
+        "onUpdate:modelValue": _cache[240] || (_cache[240] = function ($event) {
+          return $data.form.distrito_minero_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[241] || (_cache[241] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(5, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.distrito_minero_correcto]]), _hoisted_709])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_710, [_hoisted_711, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_distrito_minero",
+        name: "obs_distrito_minero",
+        "onUpdate:modelValue": _cache[242] || (_cache[242] = function ($event) {
+          return $data.form.obs_distrito_minero = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_distrito_minero]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_712, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_distrito_minero_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.distrito_minero_correcto]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_713, [_hoisted_714, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "nombre_mina",
+        name: "nombre_mina",
+        "onUpdate:modelValue": _cache[243] || (_cache[243] = function ($event) {
+          return $data.form.nombre_mina = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.nombre_mina]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_715, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.nombre_mina_validacion]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_716, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_717, [_hoisted_718, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_719, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_720, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_nombre_mina_correcto",
+        "onUpdate:modelValue": _cache[244] || (_cache[244] = function ($event) {
+          return $data.form.nombre_mina_correcto = $event;
+        }),
+        value: "true",
+        onChange: _cache[245] || (_cache[245] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(3, true);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_mina_correcto]]), _hoisted_721]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_722, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_nombre_mina_correcto",
+        "onUpdate:modelValue": _cache[246] || (_cache[246] = function ($event) {
+          return $data.form.nombre_mina_correcto = $event;
+        }),
+        value: "false",
+        onChange: _cache[247] || (_cache[247] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(3, false);
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_mina_correcto]]), _hoisted_723]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_724, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        type: "radio",
+        "class": "form-radio",
+        name: "name_nombre_mina_correcto",
+        "onUpdate:modelValue": _cache[248] || (_cache[248] = function ($event) {
+          return $data.form.nombre_mina_correcto = $event;
+        }),
+        value: "nada",
+        onChange: _cache[249] || (_cache[249] = function ($event) {
+          return $options.calculo_de_porcentajes_cuatro(3, 'nada');
+        })
+      }, null, 544
+      /* HYDRATE_EVENTS, NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.form.nombre_mina_correcto]]), _hoisted_725])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_726, [_hoisted_727, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+        id: "obs_nombre_mina",
+        name: "obs_nombre_mina",
+        "onUpdate:modelValue": _cache[250] || (_cache[250] = function ($event) {
+          return $data.form.obs_nombre_mina = $event;
+        }),
+        "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+      }, "\r\n\t\t\t\t\t\t\t\t\t", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.obs_nombre_mina]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_728, "Please fill out this field.", 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.form.obs_nombre_mina_valido]])], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.form.nombre_mina_correcto]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_729, [_hoisted_730, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+        id: "cuit",
+        "onUpdate:modelValue": _cache[251] || (_cache[251] = function ($event) {
           return $data.form.numero_expdiente = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.numero_expdiente]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_113, [_hoisted_114, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.numero_expdiente]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_731, [_hoisted_732, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[28] || (_cache[28] = function ($event) {
+        "onUpdate:modelValue": _cache[252] || (_cache[252] = function ($event) {
           return $data.form.categoria = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.categoria]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_115, [_hoisted_116, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.categoria]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_733, [_hoisted_734, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[29] || (_cache[29] = function ($event) {
+        "onUpdate:modelValue": _cache[253] || (_cache[253] = function ($event) {
           return $data.form.nombre_mina = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.nombre_mina]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_117, [_hoisted_118, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.nombre_mina]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_735, [_hoisted_736, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[30] || (_cache[30] = function ($event) {
+        "onUpdate:modelValue": _cache[254] || (_cache[254] = function ($event) {
           return $data.form.descripcion_mina = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.descripcion_mina]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_119, [_hoisted_120, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.descripcion_mina]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_737, [_hoisted_738, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[31] || (_cache[31] = function ($event) {
+        "onUpdate:modelValue": _cache[255] || (_cache[255] = function ($event) {
           return $data.form.distrito_minero = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.distrito_minero]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_121, [_hoisted_122, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.distrito_minero]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_739, [_hoisted_740, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[32] || (_cache[32] = function ($event) {
+        "onUpdate:modelValue": _cache[256] || (_cache[256] = function ($event) {
           return $data.form.mina_cantera = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.mina_cantera]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_123, [_hoisted_124, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.mina_cantera]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_741, [_hoisted_742, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[33] || (_cache[33] = function ($event) {
+        "onUpdate:modelValue": _cache[257] || (_cache[257] = function ($event) {
           return $data.form.plano_inmueble = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.plano_inmueble]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_125, [_hoisted_126, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.plano_inmueble]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_743, [_hoisted_744, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[34] || (_cache[34] = function ($event) {
+        "onUpdate:modelValue": _cache[258] || (_cache[258] = function ($event) {
           return $data.form.minerales_variedad = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.minerales_variedad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_127, [_hoisted_128, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.minerales_variedad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_745, [_hoisted_746, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[35] || (_cache[35] = function ($event) {
+        "onUpdate:modelValue": _cache[259] || (_cache[259] = function ($event) {
           return $data.form.owner = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.owner]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_129, [_hoisted_130, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.owner]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_747, [_hoisted_748, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[36] || (_cache[36] = function ($event) {
+        "onUpdate:modelValue": _cache[260] || (_cache[260] = function ($event) {
           return $data.form.arrendatario = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.arrendatario]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_131, [_hoisted_132, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.arrendatario]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_749, [_hoisted_750, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[37] || (_cache[37] = function ($event) {
+        "onUpdate:modelValue": _cache[261] || (_cache[261] = function ($event) {
           return $data.form.concesionario = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.concesionario]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_133, [_hoisted_134, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.concesionario]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_751, [_hoisted_752, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[38] || (_cache[38] = function ($event) {
+        "onUpdate:modelValue": _cache[262] || (_cache[262] = function ($event) {
           return $data.form.otros = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.otros]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_135, [_hoisted_136, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.otros]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_753, [_hoisted_754, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[39] || (_cache[39] = function ($event) {
+        "onUpdate:modelValue": _cache[263] || (_cache[263] = function ($event) {
           return $data.form.titulo_contrato_posecion = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.titulo_contrato_posecion]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_137, [_hoisted_138, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.titulo_contrato_posecion]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_755, [_hoisted_756, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[40] || (_cache[40] = function ($event) {
+        "onUpdate:modelValue": _cache[264] || (_cache[264] = function ($event) {
           return $data.form.resolucion_concesion_minera = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.resolucion_concesion_minera]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_139, [_hoisted_140, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.resolucion_concesion_minera]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_757, [_hoisted_758, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[41] || (_cache[41] = function ($event) {
+        "onUpdate:modelValue": _cache[265] || (_cache[265] = function ($event) {
           return $data.form.constancia_pago_canon = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.constancia_pago_canon]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_141, [_hoisted_142, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.constancia_pago_canon]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_759, [_hoisted_760, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[42] || (_cache[42] = function ($event) {
+        "onUpdate:modelValue": _cache[266] || (_cache[266] = function ($event) {
           return $data.form.iia = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.iia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_143, [_hoisted_144, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.iia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_761, [_hoisted_762, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[43] || (_cache[43] = function ($event) {
+        "onUpdate:modelValue": _cache[267] || (_cache[267] = function ($event) {
           return $data.form.dia = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.dia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_145, [_hoisted_146, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.dia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_763, [_hoisted_764, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[44] || (_cache[44] = function ($event) {
+        "onUpdate:modelValue": _cache[268] || (_cache[268] = function ($event) {
           return $data.form.acciones_a_desarrollar = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.acciones_a_desarrollar]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_147, [_hoisted_148, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.acciones_a_desarrollar]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_765, [_hoisted_766, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[45] || (_cache[45] = function ($event) {
+        "onUpdate:modelValue": _cache[269] || (_cache[269] = function ($event) {
           return $data.form.actividad = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.actividad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_149, [_hoisted_150, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.actividad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_767, [_hoisted_768, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[46] || (_cache[46] = function ($event) {
+        "onUpdate:modelValue": _cache[270] || (_cache[270] = function ($event) {
           return $data.form.fecha_alta_dia = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.fecha_alta_dia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_151, [_hoisted_152, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.fecha_alta_dia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_769, [_hoisted_770, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[47] || (_cache[47] = function ($event) {
+        "onUpdate:modelValue": _cache[271] || (_cache[271] = function ($event) {
           return $data.form.fecha_vencimiento_dia = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.fecha_vencimiento_dia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_153, [_hoisted_154, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.fecha_vencimiento_dia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_771, [_hoisted_772, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[48] || (_cache[48] = function ($event) {
+        "onUpdate:modelValue": _cache[272] || (_cache[272] = function ($event) {
           return $data.form.localidad_mina_pais = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.localidad_mina_pais]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_155, [_hoisted_156, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
-        "onUpdate:modelValue": _cache[49] || (_cache[49] = function ($event) {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.localidad_mina_pais]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_773, [_hoisted_774, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+        "onUpdate:modelValue": _cache[273] || (_cache[273] = function ($event) {
           return $data.form.localidad_mina_provincia = $event;
         }),
         "class": "pr-6 pb-8 w-full lg:w-1/2"
-      }, [_hoisted_157, _hoisted_158, _hoisted_159, _hoisted_160, _hoisted_161, _hoisted_162, _hoisted_163, _hoisted_164, _hoisted_165, _hoisted_166, _hoisted_167, _hoisted_168, _hoisted_169, _hoisted_170, _hoisted_171, _hoisted_172, _hoisted_173, _hoisted_174, _hoisted_175, _hoisted_176, _hoisted_177, _hoisted_178, _hoisted_179, _hoisted_180, _hoisted_181, _hoisted_182, _hoisted_183], 512
+      }, [_hoisted_775, _hoisted_776, _hoisted_777, _hoisted_778, _hoisted_779, _hoisted_780, _hoisted_781, _hoisted_782, _hoisted_783, _hoisted_784, _hoisted_785, _hoisted_786, _hoisted_787, _hoisted_788, _hoisted_789, _hoisted_790, _hoisted_791, _hoisted_792, _hoisted_793, _hoisted_794, _hoisted_795, _hoisted_796, _hoisted_797, _hoisted_798, _hoisted_799, _hoisted_800, _hoisted_801], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.localidad_mina_provincia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_184, [_hoisted_185, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.localidad_mina_provincia]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_802, [_hoisted_803, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[50] || (_cache[50] = function ($event) {
+        "onUpdate:modelValue": _cache[274] || (_cache[274] = function ($event) {
           return $data.form.localidad_mina_departamento = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.localidad_mina_departamento]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_186, [_hoisted_187, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.localidad_mina_departamento]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_804, [_hoisted_805, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[51] || (_cache[51] = function ($event) {
+        "onUpdate:modelValue": _cache[275] || (_cache[275] = function ($event) {
           return $data.form.localidad_mina_localidad = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.localidad_mina_localidad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_188, [_hoisted_189, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.localidad_mina_localidad]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_806, [_hoisted_807, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[52] || (_cache[52] = function ($event) {
+        "onUpdate:modelValue": _cache[276] || (_cache[276] = function ($event) {
           return $data.form.tipo_sistema = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.tipo_sistema]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_190, [_hoisted_191, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.tipo_sistema]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_808, [_hoisted_809, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[53] || (_cache[53] = function ($event) {
+        "onUpdate:modelValue": _cache[277] || (_cache[277] = function ($event) {
           return $data.form.longitud = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.longitud]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_192, [_hoisted_193, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.longitud]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_810, [_hoisted_811, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[54] || (_cache[54] = function ($event) {
+        "onUpdate:modelValue": _cache[278] || (_cache[278] = function ($event) {
           return $data.form.latitud = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.latitud]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_194, [_hoisted_195, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.latitud]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_812, [_hoisted_813, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[55] || (_cache[55] = function ($event) {
+        "onUpdate:modelValue": _cache[279] || (_cache[279] = function ($event) {
           return $data.form.created_by = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.created_by]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_196, [_hoisted_197, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.created_by]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_814, [_hoisted_815, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "cuit",
-        "onUpdate:modelValue": _cache[56] || (_cache[56] = function ($event) {
+        "onUpdate:modelValue": _cache[280] || (_cache[280] = function ($event) {
           return $data.form.estado = $event;
         }),
         "class": "border py-2 px-3 text-grey-darkest"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.estado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_198, [_hoisted_199, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.estado]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_816, [_hoisted_817, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_inertia_link, {
         href: _ctx.route('productors.index'),
         "class": "text-red-600 hover:underline"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_200];
+          return [_hoisted_818];
         }),
         _: 1
         /* STABLE */

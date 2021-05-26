@@ -767,6 +767,11 @@ class FormAltaProductorController extends Controller
 		}
 	}
 
+	public function lista_productores_api(){
+
+		return FormAltaProductor::all();
+	}
+
 
 	public function recibo(Request $request)
     {
@@ -1053,6 +1058,8 @@ class FormAltaProductorController extends Controller
     public function ejemplo_pdf_prueba_reinscripcion(){
     	$email  = "ochamplin@gmail.com";
 
+
+    	//sin hacer
     	date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select('*')
 		->where('email', '=',$email)->first();

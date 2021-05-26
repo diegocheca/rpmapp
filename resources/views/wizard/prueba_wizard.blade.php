@@ -92,7 +92,7 @@
 		<div id="app" style="background-color: white">
 			<div>
 				<form-wizard @on-complete="onComplete"
-							 color="green"
+							 color="DeepSkyBlue"
 							 error-color="#a94442"
 							 >
 					<!-- Tab Inscrip N° 1 Bienvenido -->
@@ -103,7 +103,7 @@
 									<img src="{{url('formulario_alta/imagenes/welcome.png')}}"  >
 								</div>
 								<div class="col-6 col-md-6">
-									<h2> Bienvenido al Formulario de Alta de Productores Mineros de San Juan</h2>
+									<h2> Bienvenido al Formulario de Alta de Productores Mineros de la Secretaría de Minería de la Nación Argentina</h2>
 									<p>En esta página, usted podrá inscribirse como productor minero (Ley N° 494-M). No es un proceso dificil, te ayudaremos en cada paso para poder completar el formulario lo antes posible.</p>
 									<p><strong>Importante:</strong>
 										<ul>
@@ -144,8 +144,19 @@
 						</div>
 						<br>
 						<hr style="border-top: 1px dashed green;">
-						<br>
-						<br>
+
+						<div class="row" style="height:550px">
+							<div class="col-2 col-md-2">
+							</div>
+							<div class="col-8 col-md-8">
+								<img src="{{url('formulario_alta/imagenes/argentina_unida.png')}}" width="100%" height="70%"  >
+							</div>
+							<div class="col-2 col-md-2">
+							</div>
+						</div>
+
+
+
 
 
 
@@ -192,261 +203,347 @@
 
 
 
-
-
-
-						<div class="row"></div>
-						<h4>Seleccione Tipo de Tramite que desea realizar:</h4> <i class="ti-info-alt" id="element" ></i>
-						<div class="middle">
-							<label>
-								<input type="radio" name="radio"  v-model="formulario_seleccionado" value="inscripcion" checked/>
-								<div class="inscripcion box">
-									<span>Inscribirse</span>
-								</div>
-							</label>
-							<label>
-								<input type="radio" name="radio" v-model="formulario_seleccionado" value="editar_inscripcion"/>
-								<div class="editar box">
-									<span>Editar Inscripción</span>
-								</div>
-							</label>
-							<label>
-								<input type="radio" name="radio" v-model="formulario_seleccionado" value="reinscripcion"/>
-								<div class="reinsc box">
-									<span>Reincripcion</span>
-								</div>
-							</label>
-							<label>
-								<input type="radio" name="radio" v-model="formulario_seleccionado" value="impresiones"/>
-								<div class="impre box">
-									<span>Impresión Constancias</span>
-								</div>
-							</label>
-							<label>
-								<input type="radio" name="radio" v-model="formulario_seleccionado" value="transito"/>
-								<div class="trans box">
-									<span>Guia de Tránsito</span>
-								</div>
-							</label>
-						</div>
-						<br>
-
-						<transition
-							name="custom-classes-transition"
-							enter-active-class="animated fadeInDownBig"
-							leave-active-class="animated bounceOut"
-						>
-							<div v-show="formulario_seleccionado=='inscripcion'">
-								<h4>En que registro solicita su inscripción?</h4>
-								<div class="middle_so" >
-									<label>
-										<input type="radio" name="radio_tipo" v-model="model.tipo_productor"  value="productor" checked/>
-										<div class="product box">
-											<span>Productor</span>
+							<div class="row">
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/tramite.png')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
 										</div>
-									</label>
-									<label>
-										<input type="radio" name="radio_tipo" v-model="model.tipo_productor" value="industrial" />
-										<div class="build box">
-											<span>Industrial</span>
-										</div>
-									</label>
-									<label>
-										<input type="radio" name="radio_tipo" v-model="model.tipo_productor" value="comerciante" />
-										<div class="back-end box">
-											<span>Comerciante</span>
-										</div>
-									</label>
-								</div>
-								<br>
-								<br>
-								<br>
-
-
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div v-show="model.tipo_productor=='productor'">
-										<h4>Primera vez que utiliza este formulario?</h4> <i class="ti-info-alt" id="element1" ></i>
-										<div class="middle_sis" >
-
-											<label>
-												<input type="radio" name="radio_sys" v-model="model.primera_vez"  value="si" checked/>
-												<div class=" box">
-													<span>Si</span>
-												</div>
-											</label>
-											<label>
-												<input type="radio" name="radio_sys" v-model="model.primera_vez" value="no" />
-												<div class="home box">
-													<span>No</span>
-												</div>
-											</label>
-										</div>
-										<br>
-										<br>
-
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div class="row" v-show="model.primera_vez=='si'">
-										<div class="col-sm"><label>Por favor ingrese dos veces su email: </label> </div>
-										<div class="col-sm">
-											<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="45" /> 
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">Tipo de Trámite</h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al tipo de trámite que se esta realizando. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
 											<br>
 											<br>
-										</div>
-										<div class="col-sm">
-											<input type="text" class="form-control" name="email_primer_paso_conf" id="email_primer_paso_conf"  v-model="model.email_confirmacion" maxlength="45" /> 
-										</div>
-										<div class="col-sm">
-											<button type="button" class="btn btn-outline-primary btn-lg" id="validar_emails" @click="validar_email_datos"><i class="ti-check"></i>&nbsp; Validar</button>
-										</div>
-									</div>
-								</transition>
-								<br>
-								<br>
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div class="row" v-show="model.correo_enviado_si && model.primera_vez=='si'">
-										<div class="row"></div>
-										<br>
-										<br>
-										<hr>
-										<div class="col-sm"></div>
-										<div class="col-sm">
-											<div class="alert alert-info" role="alert">
-												<span>Información: Le hemos enviado un email a su casilla de correo. Por favor, haga clic en el interior del mismo para poder confirmar su email para así poder continuar. Gracias</span>
-											</div>
-											<div class="alert alert-secondary" role="alert">
-												<span>Consejo: Le recomendamos abrir su correo electronico desde su celular. Luego, busque el email que le hemos mandado, posteriormente haga click en el boton, y finalmente haga click en el boton "Ya confirme" que esta a la derecha de este renglón.</span>
-											</div>
-										</div>
-										<div class="col-sm">
-											<img src="{{url('formulario_alta/imagenes/nuevo-email-rpm.svg')}}" width="200px ">
-										</div>
-										
-										<div class="col-sm">
-											<button type="button" class="btn btn-outline-info btn-lg" id="revisar_email_confirmacion" @click="preguntar_email_confirmacion"><i class="ti-check"></i>&nbsp; Ya confirme</button>
-										</div>
-										
-									</div>
-								</transition>
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div class="row" v-show="model.correo_enviado_si && model.primera_vez=='si' && email_confirmado">
-										<br>
-										<br>
-										<hr>
-										<div class="col-sm">
-											<div class="alert alert-success" role="alert">
-												<span>Muy bien. Hemos confirmado su email. Gracias, ahora continuemos con la inscripción, favor de hacer click en el boton "Siguiente".</span>
-											</div>
-										</div>
-										<div class="col-sm">
-											<div style="display: flex; justify-content: right; align-items: right; height: 10vh;">
-												<div style="height:900px;margin:0 auto;position:absolute;  left: 74%; top: 235%;width:176px">
-													<div style="animation:a-s .5s .5s 1 linear forwards,a-e 1.75s .5s 1 cubic-bezier(0,0,.67,1) forwards;opacity:0;transform:scale(.68)">
-														<div style="background:#ddd;border-radius:12px;box-shadow:0 15px 15px -15px rgba(0,0,0,.3);height:128px;left:0;overflow:hidden;position:absolute;top:0;transform:scale(1);width:176px">
-															<div style="animation:a-nt .667s 1.5s 1 cubic-bezier(.4,0,.2,1) forwards;background:#d23f31;border-radius:50%;height:270px;left:88px;margin:-135px;position:absolute;top:25px;transform:scale(.5);width:270px"></div>
-															<div style="height:128px;left:20px;overflow:hidden;position:absolute;top:0;transform:scale(1);width:136px">
-																<div style="background:#e1e1e1;height:128px;left:0;position:absolute;top:0;width:68px">
-																	<div style="animation:a-h .25s 1.25s 1 forwards;background:#eee;height:128px;left:0;opacity:1;position:absolute;top:0;width:68px"></div>
-																</div>
-																<div style="background:#eee;height:100px;left:1px;position:absolute;top:56px;transform:scaleY(.73)rotate(135deg);width:200px"></div>
+											<div class="row">
+												<div class="row">
+													<h4>Seleccione Tipo de Tramite que desea realizar:</h4> <i class="ti-info-alt" id="element" ></i>
+													<div class="middle">
+														<label>
+															<input type="radio" name="radio"  v-model="formulario_seleccionado" value="inscripcion" checked/>
+															<div class="inscripcion box">
+																<span>Inscribirse</span>
 															</div>
-															<div style="background:#bbb;height:176px;left:0;position:absolute;top:-100px;transform:scaleY(.73)rotate(135deg);width:176px">
-																<div style="background:#eee;border-radius:12px 12px 0 0;bottom:117px;height:12px;left:55px;position:absolute;transform:rotate(-135deg)scaleY(1.37);width:136px"></div>
-																<div style="background:#eee;height:96px;position:absolute;right:0;top:0;width:96px"></div>
-																<div style="box-shadow:inset 0 0 10px #888;height:155px;position:absolute;right:0;top:0;width:155px"></div>
+														</label>
+														<label>
+															<input type="radio" name="radio" v-model="formulario_seleccionado" value="editar_inscripcion"/>
+															<div class="editar box">
+																<span>Editar Inscripción</span>
 															</div>
-															<div style="animation:a-s .167s 1.283s 1 linear forwards,a-es 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;background:linear-gradient(0,rgba(38,38,38,0),rgba(38,38,38,.2));height:225px;left:0;opacity:0;position:absolute;top:0;transform:rotate(-43deg);transform-origin:0 13px;width:176px"></div>
-														</div>
-														<div style="animation:a-ef 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;border-radius:12px;height:100px;left:0;overflow:hidden;position:absolute;top:0;transform:scaleY(1);transform-origin:top;width:176px">
-															<div style="height:176px;left:0;position:absolute;top:-100px;transform:scaleY(.73)rotate(135deg);width:176px">
-																<div style="animation:a-s .167s 1.283s 1 linear forwards;box-shadow:-5px 0 12px rgba(0,0,0,.5);height:176px;left:0;opacity:0;position:absolute;top:0;width:176px"></div>
-																<div style="background:#ddd;height:176px;left:0;overflow:hidden;position:absolute;top:0;width:176px">
-																	<div style="animation:a-nt .667s 1.25s 1 cubic-bezier(.4,0,.2,1) forwards;background:#db4437;border-radius:50%;bottom:41px;height:225px;left:41px;position:absolute;transform:scale(0);width:225px"></div>
-																	<div style="background:#f1f1f1;height:128px;left:24px;position:absolute;top:24px;transform:rotate(90deg);width:128px"></div>
-																	<div style="animation:a-efs 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;background:#fff;height:176px;opacity:0;transform:rotate(90deg);width:176px"></div>
-																</div>
+														</label>
+														<label>
+															<input type="radio" name="radio" v-model="formulario_seleccionado" value="reinscripcion"/>
+															<div class="reinsc box">
+																<span>Reincripcion</span>
 															</div>
-														</div>
+														</label>
+														<label>
+															<input type="radio" name="radio" v-model="formulario_seleccionado" value="impresiones"/>
+															<div class="impre box">
+																<span>Impresión Constancias</span>
+															</div>
+														</label>
+														<label>
+															<input type="radio" name="radio" v-model="formulario_seleccionado" value="transito"/>
+															<div class="trans box">
+																<span>Guia de Tránsito</span>
+															</div>
+														</label>
 													</div>
 												</div>
-											</div>
-										</div>
-									</div>
-								</transition>
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div class="row" v-show="model.primera_vez=='no'">
-										<div class="col-sm"><label>Por favor ingrese su email para buscar sus datos: </label> </div>
-										<div class="col-sm">
-											<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="50" /> 
-										</div>
-										<div class="col-sm">
-											<button type="button" class="btn btn-outline-primary btn-lg" id="recuperar_datos" @click="recuperar_datos"><i class="ti-loop"></i>&nbsp; Recuperar</button>
-										</div>
-									</div>
-									<br>
-									<br>
-								</transition>
-								<transition
-									name="custom-classes-transition"
-									enter-active-class="animated fadeInDownBig"
-									leave-active-class="animated bounceOut"
-								>
-									<div class="row" v-show="model.recuperacion_exitosa">
-										<div class="col-12">
-											<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
-												<div class="card-custom-avatar" >
-													<img src="{{url('formulario_alta/imagenes/datos-recuperados-card.svg')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
-												</div>
-												<div class="card-body" >
-													<h4 class="card-title" style="margin-left: 5%">Datos recuperados exitosamente</h4>
-													<p class="card-text" style="margin-left: 5%">.</p>
-													<br>
-													<br>
-													<div class="row">
-														<div class="row" >
-															<br>
-															<br>
-															<div class="col-6">
-																<div class="alert alert-success" role="alert">
-																	<span>Muy bien. Hemos recuperados los datos guardados para su email. Continuemos con la inscripción, favor de hacer click en el botón "Siguiente".</span>
-																</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													<transition
+														name="custom-classes-transition"
+														enter-active-class="animated fadeInDownBig"
+														leave-active-class="animated bounceOut"
+													>
+														<div v-show="formulario_seleccionado=='inscripcion'">
+															<h4>En que registro solicita su inscripción?</h4>
+															<div class="middle_so" >
+																<label>
+																	<input type="radio" name="radio_tipo" v-model="model.tipo_productor"  value="productor" checked/>
+																	<div class="manzanita box">
+																		<span>Productor</span>
+																	</div>
+																</label>
+																<label>
+																	<input type="radio" name="radio_tipo" v-model="model.tipo_productor" value="industrial" />
+																	<div class="linux box">
+																		<span>Industrial</span>
+																	</div>
+																</label>
+																<label>
+																	<input type="radio" name="radio_tipo" v-model="model.tipo_productor" value="comerciante" />
+																	<div class="back-end box">
+																		<span>Comerciante</span>
+																	</div>
+																</label>
 															</div>
-															<div class="col-6">
-																	<img src="{{url('formulario_alta/imagenes/datos_recuperados.svg')}}" width="55%">
-																</div>
+															<br>
+															<br>
+															<br>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
 
-														</div>
-														<br>
-														<div class="row"></div>
-														<br>
-													</div>
-												</div>
+												<br>
 											</div>
 										</div>
 									</div>
-								</transition>
+									<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+										<a href="#" class="btn btn-primary">Option</a>
+										<a href="#" class="btn btn-outline-primary">Other option</a>
+									</div> -->
+								</div>
 							</div>
-						</div>
-						</transition>
+							
+
+
+							<div class="row"><br></div>	<div class="row"><br></div>
+
+							<div class="row" v-show="model.tipo_productor=='productor'">
+								<div class="col-12">
+									<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+										<div class="card-custom-avatar" >
+											<img src="{{url('formulario_alta/imagenes/buscando_datos.png')}}" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+										</div>
+										<div class="card-body" >
+											<h4 class="card-title" style="margin-left: 5%">Buscando los datos</h4>
+											<p class="card-text" style="margin-left: 5%">En esta sección usted deberá completar la información con los datos referidos al tipo de trámite que se esta realizando. Ante cualquier duda acceda <a href="https://getbootstrap.com/docs/4.0/components/card/#card-decks" target="_blank">aquí</a>.</p>
+											<br>
+											<br>
+											<div class="row">
+												<div class="row">
+													<transition
+														name="custom-classes-transition"
+														enter-active-class="animated fadeInDownBig"
+														leave-active-class="animated bounceOut"
+													>
+														<div v-show="model.tipo_productor=='productor'">
+															<h4>Primera vez que utiliza este formulario?</h4> <i class="ti-info-alt" id="element1" ></i>
+															<div class="middle_sis" >
+
+																<label>
+																	<input type="radio" name="radio_sys" v-model="model.primera_vez"  value="si" checked/>
+																	<div class=" box">
+																		<span>Si</span>
+																	</div>
+																</label>
+																<label>
+																	<input type="radio" name="radio_sys" v-model="model.primera_vez" value="no" />
+																	<div class="home box">
+																		<span>No</span>
+																	</div>
+																</label>
+															</div>
+															<br>
+															<br>
+															<transition
+																name="custom-classes-transition"
+																enter-active-class="animated fadeInDownBig"
+																leave-active-class="animated bounceOut"
+															>
+																<div class="row" v-show="model.primera_vez=='si'">
+																	<div class="col-sm"><label>Por favor ingrese dos veces su email: </label> </div>
+																	<div class="col-sm">
+																		<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="45" /> 
+																		<br>
+																		<br>
+																	</div>
+																	<div class="col-sm">
+																		<input type="text" class="form-control" name="email_primer_paso_conf" id="email_primer_paso_conf"  v-model="model.email_confirmacion" maxlength="45" /> 
+																	</div>
+																	<div class="col-sm">
+																		<button type="button" class="btn btn-outline-primary btn-lg" id="validar_emails" @click="validar_email_datos"><i class="ti-check"></i>&nbsp; Validar</button>
+																	</div>
+																</div>
+															</transition>
+															<br>
+															<br>
+															<transition
+																name="custom-classes-transition"
+																enter-active-class="animated fadeInDownBig"
+																leave-active-class="animated bounceOut"
+															>
+																<div class="row" v-show="model.correo_enviado_si && model.primera_vez=='si'">
+																	<div class="row"></div>
+																	<br>
+																	<br>
+																	<hr>
+																	<div class="col-sm"></div>
+																	<div class="col-sm">
+																		<div class="alert alert-info" role="alert">
+																			<span>Información: Le hemos enviado un email a su casilla de correo. Por favor, haga clic en el interior del mismo para poder confirmar su email para así poder continuar. Gracias</span>
+																		</div>
+																		<div class="alert alert-secondary" role="alert">
+																			<span>Consejo: Le recomendamos abrir su correo electronico desde su celular. Luego, busque el email que le hemos mandado, posteriormente haga click en el boton, y finalmente haga click en el boton "Ya confirme" que esta a la derecha de este renglón.</span>
+																		</div>
+																	</div>
+																	<div class="col-sm">
+																		<img src="{{url('formulario_alta/imagenes/nuevo-email-rpm.svg')}}" width="200px ">
+																	</div>
+																	
+																	<div class="col-sm">
+																		<button type="button" class="btn btn-outline-info btn-lg" id="revisar_email_confirmacion" @click="preguntar_email_confirmacion"><i class="ti-check"></i>&nbsp; Ya confirme</button>
+																	</div>
+																	
+																</div>
+															</transition>
+															<transition
+																name="custom-classes-transition"
+																enter-active-class="animated fadeInDownBig"
+																leave-active-class="animated bounceOut"
+															>
+																<div class="row" v-show="model.correo_enviado_si && model.primera_vez=='si' && email_confirmado">
+																	<br>
+																	<br>
+																	<hr>
+																	<div class="col-sm">
+																		<div class="alert alert-success" role="alert">
+																			<span>Muy bien. Hemos confirmado su email. Gracias, ahora continuemos con la inscripción, favor de hacer click en el boton "Siguiente".</span>
+																		</div>
+																	</div>
+																	<div class="col-sm">
+																		<div style="display: flex; justify-content: right; align-items: right; height: 10vh;">
+																			<div style="height:900px;margin:0 auto;position:absolute;  left: 74%; top: 235%;width:176px">
+																				<div style="animation:a-s .5s .5s 1 linear forwards,a-e 1.75s .5s 1 cubic-bezier(0,0,.67,1) forwards;opacity:0;transform:scale(.68)">
+																					<div style="background:#ddd;border-radius:12px;box-shadow:0 15px 15px -15px rgba(0,0,0,.3);height:128px;left:0;overflow:hidden;position:absolute;top:0;transform:scale(1);width:176px">
+																						<div style="animation:a-nt .667s 1.5s 1 cubic-bezier(.4,0,.2,1) forwards;background:#d23f31;border-radius:50%;height:270px;left:88px;margin:-135px;position:absolute;top:25px;transform:scale(.5);width:270px"></div>
+																						<div style="height:128px;left:20px;overflow:hidden;position:absolute;top:0;transform:scale(1);width:136px">
+																							<div style="background:#e1e1e1;height:128px;left:0;position:absolute;top:0;width:68px">
+																								<div style="animation:a-h .25s 1.25s 1 forwards;background:#eee;height:128px;left:0;opacity:1;position:absolute;top:0;width:68px"></div>
+																							</div>
+																							<div style="background:#eee;height:100px;left:1px;position:absolute;top:56px;transform:scaleY(.73)rotate(135deg);width:200px"></div>
+																						</div>
+																						<div style="background:#bbb;height:176px;left:0;position:absolute;top:-100px;transform:scaleY(.73)rotate(135deg);width:176px">
+																							<div style="background:#eee;border-radius:12px 12px 0 0;bottom:117px;height:12px;left:55px;position:absolute;transform:rotate(-135deg)scaleY(1.37);width:136px"></div>
+																							<div style="background:#eee;height:96px;position:absolute;right:0;top:0;width:96px"></div>
+																							<div style="box-shadow:inset 0 0 10px #888;height:155px;position:absolute;right:0;top:0;width:155px"></div>
+																						</div>
+																						<div style="animation:a-s .167s 1.283s 1 linear forwards,a-es 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;background:linear-gradient(0,rgba(38,38,38,0),rgba(38,38,38,.2));height:225px;left:0;opacity:0;position:absolute;top:0;transform:rotate(-43deg);transform-origin:0 13px;width:176px"></div>
+																					</div>
+																					<div style="animation:a-ef 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;border-radius:12px;height:100px;left:0;overflow:hidden;position:absolute;top:0;transform:scaleY(1);transform-origin:top;width:176px">
+																						<div style="height:176px;left:0;position:absolute;top:-100px;transform:scaleY(.73)rotate(135deg);width:176px">
+																							<div style="animation:a-s .167s 1.283s 1 linear forwards;box-shadow:-5px 0 12px rgba(0,0,0,.5);height:176px;left:0;opacity:0;position:absolute;top:0;width:176px"></div>
+																							<div style="background:#ddd;height:176px;left:0;overflow:hidden;position:absolute;top:0;width:176px">
+																								<div style="animation:a-nt .667s 1.25s 1 cubic-bezier(.4,0,.2,1) forwards;background:#db4437;border-radius:50%;bottom:41px;height:225px;left:41px;position:absolute;transform:scale(0);width:225px"></div>
+																								<div style="background:#f1f1f1;height:128px;left:24px;position:absolute;top:24px;transform:rotate(90deg);width:128px"></div>
+																								<div style="animation:a-efs 1.184s 1.283s 1 cubic-bezier(.4,0,.2,1) forwards;background:#fff;height:176px;opacity:0;transform:rotate(90deg);width:176px"></div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</transition>
+															<transition
+																name="custom-classes-transition"
+																enter-active-class="animated fadeInDownBig"
+																leave-active-class="animated bounceOut"
+															>
+																<div class="row" v-show="model.primera_vez=='no'">
+																	<div class="col-sm"><label>Por favor ingrese su email para buscar sus datos: </label> </div>
+																	<div class="col-sm">
+																		<input type="text" class="form-control" name="email_primer_paso" id="email_primer_paso"  v-model="model.email" maxlength="50" /> 
+																	</div>
+																	<div class="col-sm">
+																		<button type="button" class="btn btn-outline-primary btn-lg" id="recuperar_datos" @click="recuperar_datos"><i class="ti-loop"></i>&nbsp; Recuperar</button>
+																	</div>
+																</div>
+																<br>
+																<br>
+															</transition>
+
+															
+															
+														</div>
+													</div>
+													</transition>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row"></div>
+												<br>
+												<div class="row">
+													<transition
+																name="custom-classes-transition"
+																enter-active-class="animated fadeInDownBig"
+																leave-active-class="animated bounceOut"
+															>
+																<div class="row" v-show="model.recuperacion_exitosa">
+																	<div class="col-12">
+																		<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
+																			<div class="card-custom-avatar" >
+																				<img src="{{url('formulario_alta/imagenes/datos-recuperados-card.svg')}}" width="10%" alt="Avatar" style="position: absolute; top: 10px;left: 0.25rem;"/>
+																			</div>
+																			<div class="card-body" >
+																				<h4 class="card-title" style="margin-left: 5%">Datos recuperados exitosamente</h4>
+																				<p class="card-text" style="margin-left: 5%">.</p>
+																				<br>
+																				<br>
+																				<div class="row">
+																					<div class="row" >
+																						<br>
+																						<br>
+																						<div class="col-6">
+																							<div class="alert alert-success" role="alert">
+																								<span>Muy bien. Hemos recuperados los datos guardados para su email. Continuemos con la inscripción, favor de hacer click en el botón "Siguiente".</span>
+																							</div>
+																						</div>
+																						<div class="col-6">
+																								<img src="{{url('formulario_alta/imagenes/datos_recuperados.svg')}}" width="55%">
+																							</div>
+
+																					</div>
+																					<br>
+																					<div class="row"></div>
+																					<br>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</transition>
+												</div>
+												<br>
+												<div class="row"></div>
+												<br>
+
+												<br>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="card-footer" style="background: inherit; border-color: inherit;">
+										<a href="#" class="btn btn-primary">Option</a>
+										<a href="#" class="btn btn-outline-primary">Other option</a>
+									</div> -->
+								</div>
+							</div>
+							
+
+
+
+
+
+						<div class="row"><br></div>
+						
+						
+
+						
+
+
+								
+
+								
+						
 						<transition
 							name="custom-classes-transition"
 							enter-active-class="animated fadeInDownBig"
@@ -611,7 +708,6 @@
 						<div class="row">
 							
 						</div>
-						<br>
 						<br>
 							
 							<div class="row">
@@ -2932,7 +3028,7 @@
 							color: 'white',
 							backgroundColor: 'lightgray',
 							selectedColor: 'white',
-							selectedBackgroundColor: 'green',
+							selectedBackgroundColor: 'red',
 							borderColor: 'black',
 							fontFamily: 'Arial',
 							fontWeight: 'normal',
