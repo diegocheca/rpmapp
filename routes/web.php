@@ -121,8 +121,18 @@ Route::post('/formularios/validar_cuit_reinscripcion', [FormAltaProductorControl
 Route::post('/formularios/validar_mina_para_prod', [FormAltaProductorController::class, "validar_mina_prod_reinscripcion"])->name('validar-mina-prod-reinscripcion');
 
 
+
 Route::get('/gracias_confirmacion/{codigo}', [FormAltaProductorController::class, "validar_email_desde_email"])->name('validar-email-desde-email');
 
+//evaluacion de formularios presentados
+
+Route::post('/formularios/evaluacion_auto_guardado_uno', [FormAltaProductorController::class, "correccion_guardar_paso_uno"])->name('correccion_guardar-paso-uno');
+Route::post('/formularios/evaluacion_auto_guardado_dos', [FormAltaProductorController::class, "correccion_guardar_paso_dos"])->name('correccion_guardar-paso-dos');
+Route::post('/formularios/evaluacion_auto_guardado_tres', [FormAltaProductorController::class, "correccion_guardar_paso_tres"])->name('correccion_guardar-paso-tres');
+Route::post('/formularios/evaluacion_auto_guardado_cuatro', [FormAltaProductorController::class, "correccion_guardar_paso_cuatro"])->name('correccion_guardar-paso-cuatro');
+Route::post('/formularios/evaluacion_auto_guardado_cinco', [FormAltaProductorController::class, "correccion_guardar_paso_cinco"])->name('correccion_guardar-paso-cinco');
+Route::post('/formularios/evaluacion_auto_guardado_seis', [FormAltaProductorController::class, "correccion_guardar_paso_seis"])->name('correccion_guardar-paso-seis');
+Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
 
 //Route::get('/formularios/preg_email_validado/{email}', [FormAltaProductorController::class, "preguntar_email_confirmado"])->name('preguntar-email-confirmado');
 Route::post('/formularios/preg_email_validado/', [FormAltaProductorController::class, "preguntar_email_confirmado"])->name('preguntar-email-confirmado');

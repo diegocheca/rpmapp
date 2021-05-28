@@ -1269,6 +1269,890 @@ class FormAltaProductorController extends Controller
         else response()->json("error en el email");
     }
 
+
+
+
+    //evaluacion de formularios
+    public function correccion_guardar_paso_uno(Request $request)
+	{
+		/*var_dump(
+			$request->razon_social, 
+			$request->razon_social_valido, 
+			$request->razon_social_correcto, 
+			$request->obs_razon_social, 
+			$request->obs_razon_social_valido, 
+
+			$request->email, 
+			$request->email_valido, 
+			$request->email_correcto, 
+			$request->obs_email, 
+			$request->obs_email_valido, 
+
+			$request->cuit, 
+			$request->cuit_valido, 
+			$request->cuit_correcto, 
+			$request->obs_cuit, 
+			$request->obs_cuit_valido, 
+
+			$request->numeroproductor, 
+			$request->numeroproductor_valido, 
+			$request->numeroproductor_correcto, 
+			$request->obs_numeroproductor, 
+			$request->obs_numeroproductor_valido, 
+
+			$request->tiposociedad, 
+			$request->tiposociedad_valido, 
+			$request->tiposociedad_correcto, 
+			$request->obs_tiposociedad, 
+			$request->obs_tiposociedad_valido,
+
+
+			$request->inscripciondgr, 
+			$request->inscripciondgr_valido, 
+			$request->inscripciondgr_correcto, 
+			$request->obs_inscripciondgr, 
+			$request->obs_inscripciondgr_valido,
+
+
+			$request->constaciasociedad, 
+			$request->constaciasociedad_valido, 
+			$request->constaciasociedad_correcto, 
+			$request->obs_constaciasociedad, 
+			$request->obs_constaciasociedad_valido,
+
+
+			$request->valor_de_progreso, 
+			$request->valor_de_aprobado, 
+			$request->valor_de_reprobado, 
+
+		);*/
+		return response()->json("todo bien");
+		//die();
+
+		// date_default_timezone_set('America/Argentina/Buenos_Aires');
+		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
+		// ->where('email', '=',$request->email)->first();
+		// //var_dump($formulario_provisorio->id);
+		// if($formulario_provisorio != null)
+		// {
+		// 	//lo encontre y actualizo
+		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
+		// 	$formulario_provisorio->razonsocial = $request->razon_social;
+		// 	$formulario_provisorio->cuit = $request->cuit;
+		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
+		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
+		// 	$formulario_provisorio->email = $request->email;
+		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
+		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
+		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
+		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+		// 	$formulario_provisorio->save();
+		// 	return response()->json("se actualizaron los datos correctamente");
+
+		// }
+		// else
+		// {
+		// 	// no encontre el formulario
+		// 	// voy a buscar si el email esta para ser confirmado
+		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
+		// 	//var_dump($email);
+		// 	if($email != null)
+		// 	{
+		// 		//tengo email , reviso si no esta cofnirmado o si
+		// 		if($email->confirmed_at	!= null)
+		// 		{
+		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
+		// 			$formulario_nuevo  = new FormAltaProductor();
+		// 			$formulario_nuevo->razonsocial = $request->razon_social;
+		// 			$formulario_nuevo->cuit = $request->cuit;
+		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
+		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
+		// 			$formulario_nuevo->email = $request->email;
+		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
+		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
+		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
+		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
+		// 			$formulario_nuevo->save();
+		// 			return response()->json("se creo el formulario y se guardo correctamente");
+		// 		}
+		// 		else
+		// 		{
+		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
+		// 			//mando email
+
+		// 			/*
+		// 			en produccion, descomentar
+		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+		// 				$request->email,
+		// 				date("Y-m-d H:i:s"),
+		// 				$email->codigo
+		// 			));*/
+		// 			return response()->json("mande un email de mentira");
+		// 		}
+
+		// 	}
+		// 	else
+		// 	{
+		// 		return response()->json("formulario no encontrado ni tampoco email");
+		// 	}
+		//}
+	}
+
+	public function correccion_guardar_paso_dos(Request $request)
+	{
+		/*var_dump(
+			$request->razon_social, 
+			$request->razon_social_valido, 
+			$request->razon_social_correcto, 
+			$request->obs_razon_social, 
+			$request->obs_razon_social_valido, 
+
+			$request->email, 
+			$request->email_valido, 
+			$request->email_correcto, 
+			$request->obs_email, 
+			$request->obs_email_valido, 
+
+			$request->cuit, 
+			$request->cuit_valido, 
+			$request->cuit_correcto, 
+			$request->obs_cuit, 
+			$request->obs_cuit_valido, 
+
+			$request->numeroproductor, 
+			$request->numeroproductor_valido, 
+			$request->numeroproductor_correcto, 
+			$request->obs_numeroproductor, 
+			$request->obs_numeroproductor_valido, 
+
+			$request->tiposociedad, 
+			$request->tiposociedad_valido, 
+			$request->tiposociedad_correcto, 
+			$request->obs_tiposociedad, 
+			$request->obs_tiposociedad_valido,
+
+
+			$request->inscripciondgr, 
+			$request->inscripciondgr_valido, 
+			$request->inscripciondgr_correcto, 
+			$request->obs_inscripciondgr, 
+			$request->obs_inscripciondgr_valido,
+
+
+			$request->constaciasociedad, 
+			$request->constaciasociedad_valido, 
+			$request->constaciasociedad_correcto, 
+			$request->obs_constaciasociedad, 
+			$request->obs_constaciasociedad_valido,
+
+
+			$request->valor_de_progreso, 
+			$request->valor_de_aprobado, 
+			$request->valor_de_reprobado, 
+
+		);*/
+		return response()->json("todo bien");
+		//die();
+
+		// date_default_timezone_set('America/Argentina/Buenos_Aires');
+		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
+		// ->where('email', '=',$request->email)->first();
+		// //var_dump($formulario_provisorio->id);
+		// if($formulario_provisorio != null)
+		// {
+		// 	//lo encontre y actualizo
+		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
+		// 	$formulario_provisorio->razonsocial = $request->razon_social;
+		// 	$formulario_provisorio->cuit = $request->cuit;
+		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
+		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
+		// 	$formulario_provisorio->email = $request->email;
+		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
+		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
+		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
+		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+		// 	$formulario_provisorio->save();
+		// 	return response()->json("se actualizaron los datos correctamente");
+
+		// }
+		// else
+		// {
+		// 	// no encontre el formulario
+		// 	// voy a buscar si el email esta para ser confirmado
+		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
+		// 	//var_dump($email);
+		// 	if($email != null)
+		// 	{
+		// 		//tengo email , reviso si no esta cofnirmado o si
+		// 		if($email->confirmed_at	!= null)
+		// 		{
+		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
+		// 			$formulario_nuevo  = new FormAltaProductor();
+		// 			$formulario_nuevo->razonsocial = $request->razon_social;
+		// 			$formulario_nuevo->cuit = $request->cuit;
+		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
+		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
+		// 			$formulario_nuevo->email = $request->email;
+		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
+		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
+		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
+		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
+		// 			$formulario_nuevo->save();
+		// 			return response()->json("se creo el formulario y se guardo correctamente");
+		// 		}
+		// 		else
+		// 		{
+		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
+		// 			//mando email
+
+		// 			/*
+		// 			en produccion, descomentar
+		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+		// 				$request->email,
+		// 				date("Y-m-d H:i:s"),
+		// 				$email->codigo
+		// 			));*/
+		// 			return response()->json("mande un email de mentira");
+		// 		}
+
+		// 	}
+		// 	else
+		// 	{
+		// 		return response()->json("formulario no encontrado ni tampoco email");
+		// 	}
+		//}
+	}
+
+
+	public function correccion_guardar_paso_tres(Request $request)
+	{
+		/*var_dump(
+			$request->razon_social, 
+			$request->razon_social_valido, 
+			$request->razon_social_correcto, 
+			$request->obs_razon_social, 
+			$request->obs_razon_social_valido, 
+
+			$request->email, 
+			$request->email_valido, 
+			$request->email_correcto, 
+			$request->obs_email, 
+			$request->obs_email_valido, 
+
+			$request->cuit, 
+			$request->cuit_valido, 
+			$request->cuit_correcto, 
+			$request->obs_cuit, 
+			$request->obs_cuit_valido, 
+
+			$request->numeroproductor, 
+			$request->numeroproductor_valido, 
+			$request->numeroproductor_correcto, 
+			$request->obs_numeroproductor, 
+			$request->obs_numeroproductor_valido, 
+
+			$request->tiposociedad, 
+			$request->tiposociedad_valido, 
+			$request->tiposociedad_correcto, 
+			$request->obs_tiposociedad, 
+			$request->obs_tiposociedad_valido,
+
+
+			$request->inscripciondgr, 
+			$request->inscripciondgr_valido, 
+			$request->inscripciondgr_correcto, 
+			$request->obs_inscripciondgr, 
+			$request->obs_inscripciondgr_valido,
+
+
+			$request->constaciasociedad, 
+			$request->constaciasociedad_valido, 
+			$request->constaciasociedad_correcto, 
+			$request->obs_constaciasociedad, 
+			$request->obs_constaciasociedad_valido,
+
+
+			$request->valor_de_progreso, 
+			$request->valor_de_aprobado, 
+			$request->valor_de_reprobado, 
+
+		);*/
+		return response()->json("todo bien");
+		//die();
+
+		// date_default_timezone_set('America/Argentina/Buenos_Aires');
+		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
+		// ->where('email', '=',$request->email)->first();
+		// //var_dump($formulario_provisorio->id);
+		// if($formulario_provisorio != null)
+		// {
+		// 	//lo encontre y actualizo
+		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
+		// 	$formulario_provisorio->razonsocial = $request->razon_social;
+		// 	$formulario_provisorio->cuit = $request->cuit;
+		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
+		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
+		// 	$formulario_provisorio->email = $request->email;
+		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
+		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
+		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
+		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+		// 	$formulario_provisorio->save();
+		// 	return response()->json("se actualizaron los datos correctamente");
+
+		// }
+		// else
+		// {
+		// 	// no encontre el formulario
+		// 	// voy a buscar si el email esta para ser confirmado
+		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
+		// 	//var_dump($email);
+		// 	if($email != null)
+		// 	{
+		// 		//tengo email , reviso si no esta cofnirmado o si
+		// 		if($email->confirmed_at	!= null)
+		// 		{
+		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
+		// 			$formulario_nuevo  = new FormAltaProductor();
+		// 			$formulario_nuevo->razonsocial = $request->razon_social;
+		// 			$formulario_nuevo->cuit = $request->cuit;
+		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
+		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
+		// 			$formulario_nuevo->email = $request->email;
+		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
+		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
+		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
+		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
+		// 			$formulario_nuevo->save();
+		// 			return response()->json("se creo el formulario y se guardo correctamente");
+		// 		}
+		// 		else
+		// 		{
+		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
+		// 			//mando email
+
+		// 			/*
+		// 			en produccion, descomentar
+		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+		// 				$request->email,
+		// 				date("Y-m-d H:i:s"),
+		// 				$email->codigo
+		// 			));*/
+		// 			return response()->json("mande un email de mentira");
+		// 		}
+
+		// 	}
+		// 	else
+		// 	{
+		// 		return response()->json("formulario no encontrado ni tampoco email");
+		// 	}
+		//}
+	}
+
+
+	public function correccion_guardar_paso_cuatro(Request $request)
+	{
+		/*var_dump(
+			$request->razon_social, 
+			$request->razon_social_valido, 
+			$request->razon_social_correcto, 
+			$request->obs_razon_social, 
+			$request->obs_razon_social_valido, 
+
+			$request->email, 
+			$request->email_valido, 
+			$request->email_correcto, 
+			$request->obs_email, 
+			$request->obs_email_valido, 
+
+			$request->cuit, 
+			$request->cuit_valido, 
+			$request->cuit_correcto, 
+			$request->obs_cuit, 
+			$request->obs_cuit_valido, 
+
+			$request->numeroproductor, 
+			$request->numeroproductor_valido, 
+			$request->numeroproductor_correcto, 
+			$request->obs_numeroproductor, 
+			$request->obs_numeroproductor_valido, 
+
+			$request->tiposociedad, 
+			$request->tiposociedad_valido, 
+			$request->tiposociedad_correcto, 
+			$request->obs_tiposociedad, 
+			$request->obs_tiposociedad_valido,
+
+
+			$request->inscripciondgr, 
+			$request->inscripciondgr_valido, 
+			$request->inscripciondgr_correcto, 
+			$request->obs_inscripciondgr, 
+			$request->obs_inscripciondgr_valido,
+
+
+			$request->constaciasociedad, 
+			$request->constaciasociedad_valido, 
+			$request->constaciasociedad_correcto, 
+			$request->obs_constaciasociedad, 
+			$request->obs_constaciasociedad_valido,
+
+
+			$request->valor_de_progreso, 
+			$request->valor_de_aprobado, 
+			$request->valor_de_reprobado, 
+
+		);*/
+		return response()->json("todo bien");
+		//die();
+
+		// date_default_timezone_set('America/Argentina/Buenos_Aires');
+		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
+		// ->where('email', '=',$request->email)->first();
+		// //var_dump($formulario_provisorio->id);
+		// if($formulario_provisorio != null)
+		// {
+		// 	//lo encontre y actualizo
+		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
+		// 	$formulario_provisorio->razonsocial = $request->razon_social;
+		// 	$formulario_provisorio->cuit = $request->cuit;
+		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
+		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
+		// 	$formulario_provisorio->email = $request->email;
+		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
+		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
+		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
+		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+		// 	$formulario_provisorio->save();
+		// 	return response()->json("se actualizaron los datos correctamente");
+
+		// }
+		// else
+		// {
+		// 	// no encontre el formulario
+		// 	// voy a buscar si el email esta para ser confirmado
+		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
+		// 	//var_dump($email);
+		// 	if($email != null)
+		// 	{
+		// 		//tengo email , reviso si no esta cofnirmado o si
+		// 		if($email->confirmed_at	!= null)
+		// 		{
+		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
+		// 			$formulario_nuevo  = new FormAltaProductor();
+		// 			$formulario_nuevo->razonsocial = $request->razon_social;
+		// 			$formulario_nuevo->cuit = $request->cuit;
+		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
+		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
+		// 			$formulario_nuevo->email = $request->email;
+		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
+		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
+		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
+		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
+		// 			$formulario_nuevo->save();
+		// 			return response()->json("se creo el formulario y se guardo correctamente");
+		// 		}
+		// 		else
+		// 		{
+		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
+		// 			//mando email
+
+		// 			/*
+		// 			en produccion, descomentar
+		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+		// 				$request->email,
+		// 				date("Y-m-d H:i:s"),
+		// 				$email->codigo
+		// 			));*/
+		// 			return response()->json("mande un email de mentira");
+		// 		}
+
+		// 	}
+		// 	else
+		// 	{
+		// 		return response()->json("formulario no encontrado ni tampoco email");
+		// 	}
+		//}
+	}
+
+	public function correccion_guardar_paso_cinco(Request $request)
+	{
+		/*var_dump(
+			$request->razon_social, 
+			$request->razon_social_valido, 
+			$request->razon_social_correcto, 
+			$request->obs_razon_social, 
+			$request->obs_razon_social_valido, 
+
+			$request->email, 
+			$request->email_valido, 
+			$request->email_correcto, 
+			$request->obs_email, 
+			$request->obs_email_valido, 
+
+			$request->cuit, 
+			$request->cuit_valido, 
+			$request->cuit_correcto, 
+			$request->obs_cuit, 
+			$request->obs_cuit_valido, 
+
+			$request->numeroproductor, 
+			$request->numeroproductor_valido, 
+			$request->numeroproductor_correcto, 
+			$request->obs_numeroproductor, 
+			$request->obs_numeroproductor_valido, 
+
+			$request->tiposociedad, 
+			$request->tiposociedad_valido, 
+			$request->tiposociedad_correcto, 
+			$request->obs_tiposociedad, 
+			$request->obs_tiposociedad_valido,
+
+
+			$request->inscripciondgr, 
+			$request->inscripciondgr_valido, 
+			$request->inscripciondgr_correcto, 
+			$request->obs_inscripciondgr, 
+			$request->obs_inscripciondgr_valido,
+
+
+			$request->constaciasociedad, 
+			$request->constaciasociedad_valido, 
+			$request->constaciasociedad_correcto, 
+			$request->obs_constaciasociedad, 
+			$request->obs_constaciasociedad_valido,
+
+
+			$request->valor_de_progreso, 
+			$request->valor_de_aprobado, 
+			$request->valor_de_reprobado, 
+
+		);*/
+		return response()->json("todo bien");
+		//die();
+
+		// date_default_timezone_set('America/Argentina/Buenos_Aires');
+		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
+		// ->where('email', '=',$request->email)->first();
+		// //var_dump($formulario_provisorio->id);
+		// if($formulario_provisorio != null)
+		// {
+		// 	//lo encontre y actualizo
+		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
+		// 	$formulario_provisorio->razonsocial = $request->razon_social;
+		// 	$formulario_provisorio->cuit = $request->cuit;
+		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
+		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
+		// 	$formulario_provisorio->email = $request->email;
+		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
+		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
+		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
+		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+		// 	$formulario_provisorio->save();
+		// 	return response()->json("se actualizaron los datos correctamente");
+
+		// }
+		// else
+		// {
+		// 	// no encontre el formulario
+		// 	// voy a buscar si el email esta para ser confirmado
+		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
+		// 	//var_dump($email);
+		// 	if($email != null)
+		// 	{
+		// 		//tengo email , reviso si no esta cofnirmado o si
+		// 		if($email->confirmed_at	!= null)
+		// 		{
+		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
+		// 			$formulario_nuevo  = new FormAltaProductor();
+		// 			$formulario_nuevo->razonsocial = $request->razon_social;
+		// 			$formulario_nuevo->cuit = $request->cuit;
+		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
+		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
+		// 			$formulario_nuevo->email = $request->email;
+		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
+		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
+		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
+		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
+		// 			$formulario_nuevo->save();
+		// 			return response()->json("se creo el formulario y se guardo correctamente");
+		// 		}
+		// 		else
+		// 		{
+		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
+		// 			//mando email
+
+		// 			/*
+		// 			en produccion, descomentar
+		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+		// 				$request->email,
+		// 				date("Y-m-d H:i:s"),
+		// 				$email->codigo
+		// 			));*/
+		// 			return response()->json("mande un email de mentira");
+		// 		}
+
+		// 	}
+		// 	else
+		// 	{
+		// 		return response()->json("formulario no encontrado ni tampoco email");
+		// 	}
+		//}
+	}
+
+
+	public function correccion_guardar_paso_seis(Request $request)
+	{
+		/*var_dump(
+			$request->razon_social, 
+			$request->razon_social_valido, 
+			$request->razon_social_correcto, 
+			$request->obs_razon_social, 
+			$request->obs_razon_social_valido, 
+
+			$request->email, 
+			$request->email_valido, 
+			$request->email_correcto, 
+			$request->obs_email, 
+			$request->obs_email_valido, 
+
+			$request->cuit, 
+			$request->cuit_valido, 
+			$request->cuit_correcto, 
+			$request->obs_cuit, 
+			$request->obs_cuit_valido, 
+
+			$request->numeroproductor, 
+			$request->numeroproductor_valido, 
+			$request->numeroproductor_correcto, 
+			$request->obs_numeroproductor, 
+			$request->obs_numeroproductor_valido, 
+
+			$request->tiposociedad, 
+			$request->tiposociedad_valido, 
+			$request->tiposociedad_correcto, 
+			$request->obs_tiposociedad, 
+			$request->obs_tiposociedad_valido,
+
+
+			$request->inscripciondgr, 
+			$request->inscripciondgr_valido, 
+			$request->inscripciondgr_correcto, 
+			$request->obs_inscripciondgr, 
+			$request->obs_inscripciondgr_valido,
+
+
+			$request->constaciasociedad, 
+			$request->constaciasociedad_valido, 
+			$request->constaciasociedad_correcto, 
+			$request->obs_constaciasociedad, 
+			$request->obs_constaciasociedad_valido,
+
+
+			$request->valor_de_progreso, 
+			$request->valor_de_aprobado, 
+			$request->valor_de_reprobado, 
+
+		);*/
+		return response()->json("todo bien");
+		//die();
+
+		// date_default_timezone_set('America/Argentina/Buenos_Aires');
+		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
+		// ->where('email', '=',$request->email)->first();
+		// //var_dump($formulario_provisorio->id);
+		// if($formulario_provisorio != null)
+		// {
+		// 	//lo encontre y actualizo
+		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
+		// 	$formulario_provisorio->razonsocial = $request->razon_social;
+		// 	$formulario_provisorio->cuit = $request->cuit;
+		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
+		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
+		// 	$formulario_provisorio->email = $request->email;
+		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
+		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
+		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
+		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+		// 	$formulario_provisorio->save();
+		// 	return response()->json("se actualizaron los datos correctamente");
+
+		// }
+		// else
+		// {
+		// 	// no encontre el formulario
+		// 	// voy a buscar si el email esta para ser confirmado
+		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
+		// 	//var_dump($email);
+		// 	if($email != null)
+		// 	{
+		// 		//tengo email , reviso si no esta cofnirmado o si
+		// 		if($email->confirmed_at	!= null)
+		// 		{
+		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
+		// 			$formulario_nuevo  = new FormAltaProductor();
+		// 			$formulario_nuevo->razonsocial = $request->razon_social;
+		// 			$formulario_nuevo->cuit = $request->cuit;
+		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
+		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
+		// 			$formulario_nuevo->email = $request->email;
+		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
+		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
+		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
+		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
+		// 			$formulario_nuevo->save();
+		// 			return response()->json("se creo el formulario y se guardo correctamente");
+		// 		}
+		// 		else
+		// 		{
+		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
+		// 			//mando email
+
+		// 			/*
+		// 			en produccion, descomentar
+		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+		// 				$request->email,
+		// 				date("Y-m-d H:i:s"),
+		// 				$email->codigo
+		// 			));*/
+		// 			return response()->json("mande un email de mentira");
+		// 		}
+
+		// 	}
+		// 	else
+		// 	{
+		// 		return response()->json("formulario no encontrado ni tampoco email");
+		// 	}
+		//}
+	}
+
+	public function correccion_guardar_paso_todo(Request $request)
+	{
+		/*var_dump(
+			$request->razon_social, 
+			$request->razon_social_valido, 
+			$request->razon_social_correcto, 
+			$request->obs_razon_social, 
+			$request->obs_razon_social_valido, 
+
+			$request->email, 
+			$request->email_valido, 
+			$request->email_correcto, 
+			$request->obs_email, 
+			$request->obs_email_valido, 
+
+			$request->cuit, 
+			$request->cuit_valido, 
+			$request->cuit_correcto, 
+			$request->obs_cuit, 
+			$request->obs_cuit_valido, 
+
+			$request->numeroproductor, 
+			$request->numeroproductor_valido, 
+			$request->numeroproductor_correcto, 
+			$request->obs_numeroproductor, 
+			$request->obs_numeroproductor_valido, 
+
+			$request->tiposociedad, 
+			$request->tiposociedad_valido, 
+			$request->tiposociedad_correcto, 
+			$request->obs_tiposociedad, 
+			$request->obs_tiposociedad_valido,
+
+
+			$request->inscripciondgr, 
+			$request->inscripciondgr_valido, 
+			$request->inscripciondgr_correcto, 
+			$request->obs_inscripciondgr, 
+			$request->obs_inscripciondgr_valido,
+
+
+			$request->constaciasociedad, 
+			$request->constaciasociedad_valido, 
+			$request->constaciasociedad_correcto, 
+			$request->obs_constaciasociedad, 
+			$request->obs_constaciasociedad_valido,
+
+
+			$request->valor_de_progreso, 
+			$request->valor_de_aprobado, 
+			$request->valor_de_reprobado, 
+
+		);*/
+		return response()->json("todo bien");
+		//die();
+
+		// date_default_timezone_set('America/Argentina/Buenos_Aires');
+		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
+		// ->where('email', '=',$request->email)->first();
+		// //var_dump($formulario_provisorio->id);
+		// if($formulario_provisorio != null)
+		// {
+		// 	//lo encontre y actualizo
+		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
+		// 	$formulario_provisorio->razonsocial = $request->razon_social;
+		// 	$formulario_provisorio->cuit = $request->cuit;
+		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
+		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
+		// 	$formulario_provisorio->email = $request->email;
+		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
+		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
+		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
+		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+		// 	$formulario_provisorio->save();
+		// 	return response()->json("se actualizaron los datos correctamente");
+
+		// }
+		// else
+		// {
+		// 	// no encontre el formulario
+		// 	// voy a buscar si el email esta para ser confirmado
+		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
+		// 	//var_dump($email);
+		// 	if($email != null)
+		// 	{
+		// 		//tengo email , reviso si no esta cofnirmado o si
+		// 		if($email->confirmed_at	!= null)
+		// 		{
+		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
+		// 			$formulario_nuevo  = new FormAltaProductor();
+		// 			$formulario_nuevo->razonsocial = $request->razon_social;
+		// 			$formulario_nuevo->cuit = $request->cuit;
+		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
+		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
+		// 			$formulario_nuevo->email = $request->email;
+		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
+		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
+		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
+		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
+		// 			$formulario_nuevo->save();
+		// 			return response()->json("se creo el formulario y se guardo correctamente");
+		// 		}
+		// 		else
+		// 		{
+		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
+		// 			//mando email
+
+		// 			/*
+		// 			en produccion, descomentar
+		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+		// 				$request->email,
+		// 				date("Y-m-d H:i:s"),
+		// 				$email->codigo
+		// 			));*/
+		// 			return response()->json("mande un email de mentira");
+		// 		}
+
+		// 	}
+		// 	else
+		// 	{
+		// 		return response()->json("formulario no encontrado ni tampoco email");
+		// 	}
+		//}
+	}
+
+
+
 	
 	
 }
