@@ -43,6 +43,18 @@
                                 >
                                     AñadirPro
                                 </jet-nav-link>
+                                <jet-nav-link
+                                    :href="route('pagos.index')"
+                                    :active="route().current('pagos.index')"
+                                >
+                                    Pagos
+                                </jet-nav-link>
+                                 <jet-nav-link
+                                    :href="route('pagos.create')"
+                                    :active="route().current('pagos.create')"
+                                >
+                                    AñadirPago
+                                </jet-nav-link>
                             </div>
                         </div>
 
@@ -189,6 +201,18 @@
                             :active="route().current('productors.create')"
                           >
                             AñadirProd
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('pagos.index')"
+                            :active="route().current('pagos.index')"
+                          >
+                            Pagos
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('pagos.create')"
+                            :active="route().current('pagos.create')"
+                          >
+                            MasPagos
                           </jet-responsive-nav-link>
                     </div>
 

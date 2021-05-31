@@ -47,6 +47,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductorsController;
+use App\Http\Controllers\PagocanonminaController;
 
 
 
@@ -73,6 +74,11 @@ Route::get('/', function () {
 
 Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);
+
+
+Route::resource('pagos', PagocanonminaController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

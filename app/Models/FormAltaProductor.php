@@ -14,12 +14,29 @@ class FormAltaProductor extends Model
     protected $fillable = [
         'tipo_productor',
         'cuit',
+        'cuit_correcto',
+        'obs_cuit',
         'razonsocial',
+        'razon_social_correcto',
+        'obs_razon_social',
         'numeroproductor',
+        'numeroproductor_correcto',
+        'obs_numeroproductor',
         'email',
+        'email_correcto',
+        'obs_email',
         'tiposociedad',
+        'tiposociedad_correcto',
+        'obs_tiposociedad',
         'inscripciondgr',
+        'inscripciondgr_correcto',
+        'obs_inscripciondgr',
         'constaciasociedad',
+        'constaciasociedad_correcto',
+        'obs_constaciasociedad',
+        'paso_1_progreso',
+        'paso_1_aprobado',
+        'paso_1_reprobado',
         'leal_calle',
         'leal_numero',
         'leal_telefono',
@@ -68,7 +85,8 @@ class FormAltaProductor extends Model
         'latitud',
         'created_by',
         'estado',
-        'tipo_tramite'
+        'tipo_tramite',
+        'updated_by'
     ];
     
     

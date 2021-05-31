@@ -125,8 +125,8 @@ class ProductorsController extends Controller
      */
     public function edit(Productors $productor)
     {
-       /* var_dump($productors);
-        die();*/
+        // var_dump($productor);
+        // die();
         //$pro
         return Inertia::render('Productors/EditForm', ['productor' => $productor]);
     }
