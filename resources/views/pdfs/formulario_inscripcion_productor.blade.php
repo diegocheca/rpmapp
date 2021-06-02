@@ -85,7 +85,7 @@
     </main> -->
 <!-- 
     <span>Ministerio de Mineria de San Juan</span>
-    <p>{{ $date_generado }}</p> -->
+    <p></p> -->
     <p style="font-size:12px;">Sr. Director de Registro <br>
     Minero y Catastral <br>
     S__________/__________D</p>
@@ -109,7 +109,6 @@
 
     <!-- <p>Email: {{$email}}</p>
     <p>Número de Productor: {{$numeroproductor}}</p>
-    <p>Domicilio: {{$domicilio_prod}}</p>
     <p>Tipo de Sociedad: {{$tiposociedad}}</p>
     <p>Inscripcion DGR: {{$inscripciondgr}}</p>
     <p>Constacia de Sociedad: {{$constaciasociedad}}</p>
