@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\EmailsAConfirmar;
 
 class HomeController extends Controller
 {
@@ -23,6 +23,24 @@ class HomeController extends Controller
         //
         return view("confirmation.index");
     }
+
+
+    public function valdiar_email_de_productor($codigo)
+    {
+        //
+        //dd($codigo);
+        $email_a_validar = EmailsAConfirmar::select('*')->where('codigo', '=',$codigo )->first();
+        //dd($email_a_validar);
+        $email_a_validar->codigo = null;
+        $email_a_validar->confirmed_at = date("Y-m-d H:i:s");
+        $email_a_validar->save();
+        
+        return view("confirmation.index");
+    }
+
+
+    
+
 
     /**
      * Show the form for creating a new resource.

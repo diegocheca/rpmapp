@@ -108,7 +108,7 @@ class PagocanonminaController extends Controller
 
         Pagocanonmina::create($request->all());
 
-        return Redirect::route('Pagos.index');
+        return Redirect::route('pagos.index');
     }
 
     /**

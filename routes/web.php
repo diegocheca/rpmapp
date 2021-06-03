@@ -48,7 +48,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductorsController;
 use App\Http\Controllers\PagocanonminaController;
-
+use App\Http\Controllers\ReinscripcionController;
 
 
 
@@ -74,6 +74,12 @@ Route::get('/', function () {
 
 Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);
+
+    
+Route::resource('reinscripciones', ReinscripcionController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
+
 
 
 Route::resource('pagos', PagocanonminaController::class)
@@ -103,13 +109,14 @@ Route::resource('products', ProductController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
-
-
 Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formulario"])->name('abrir-formulario');
 
 
 //direcciones de formularios 
-//Route::get('/formularios', 'Calendario@formularios');
+
+
+
+Route::get('/validar_email_productor/{codigo}', [HomeController::class, "valdiar_email_de_productor"])->name('valdiar-email-de-productor');
 
 
 Route::post('/formularios/auto_guardado_uno', [FormAltaProductorController::class, "guardar_paso_uno"])->name('guardar-paso-uno');
@@ -154,29 +161,6 @@ Route::get('/thank_you', [HomeController::class, "thanks"])->name('thanks');
 
 Route::post('/recibiendo_pdf', [FormAltaProductorController::class, "recibo"])->name('recibo-pdf');
 
-//Route::get('/formularios', 'Calendario@formularios');
-Route::get('/formularios/datos', 'Calendario@datos');
-
-Route::get('/formularios/prueba', 'Calendario@prueba');
-Route::get('/formularios/pdf/{id_for}', 'Calendario@descargar_formulario');
-
-Route::get('/formularios/imprimir_ejemplo', 'Calendario@ejemplo_imprimir_formulario');
-Route::get('/formularios/ver_formulario_a_imprimir', 'Calendario@ver_ejemplo_imprimir_formulario');
-Route::get('/formularios/ver_formulario_a_imprimir_id/{id_for}', 'Calendario@ver_ejemplo_imprimir_formulario_id');
-
-Route::get('/formularios/descargar_pdf_id/{id_for}', 'Calendario@descarga_automatica_pdf');
-
-
-
-Route::get('/formularios/guardar_puerto', 'Calendario@prueba_puertos');
-
-
-Route::post('/formularios/guardar_persona', 'Calendario@guardar_persona');
-
-
-
-//Route::get('generate-pdf', 'Calendario@pdfview')->name('generate-pdf');
-
 
 Route::get('/formularios/descargar_formulario/{id}', [FormAltaProductorController::class, "descargar_formulario"])->name('descargar-formulario');
 Route::post('/formularios/buscar_id_form/', [FormAltaProductorController::class, "buscador_de_id"])->name('buscador-de-id');
@@ -185,5 +169,3 @@ Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pd
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
 
 Route::post('/formularios/avisar_formulario_completo/', [FormAltaProductorController::class, "formulario_listo"])->name('formulario-listo');
-
-Route::get('nwizard', 'Calendario@nwizard');

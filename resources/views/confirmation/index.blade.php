@@ -101,6 +101,7 @@ svg.highlight {
 
   </div>
   <h2>Registro de Productores Mineros - San Juan.</h2>
+  <a href="{{url('formularios')}}"> Ir a formularios</a>
 </div>
 
 

@@ -55,6 +55,19 @@
                                 >
                                     AñadirPago
                                 </jet-nav-link>
+                                <jet-nav-link
+                                    :href="route('reinscripciones.index')"
+                                    :active="route().current('reinscripciones.index')"
+                                >
+                                    Reinscripciones
+                                </jet-nav-link>
+                                 <jet-nav-link
+                                    :href="route('reinscripciones.create')"
+                                    :active="route().current('reinscripciones.create')"
+                                >
+                                    Añadir Reins
+                                </jet-nav-link>
+
                             </div>
                         </div>
 
@@ -213,6 +226,18 @@
                             :active="route().current('pagos.create')"
                           >
                             MasPagos
+                          </jet-responsive-nav-link>
+                         <jet-responsive-nav-link
+                            :href="route('reinscripciones.create')"
+                            :active="route().current('reinscripciones.create')"
+                          >
+                            Reinscripciones
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('reinscripciones.create')"
+                            :active="route().current('reinscripciones.create')"
+                          >
+                            Reins nuevo
                           </jet-responsive-nav-link>
                     </div>
 

@@ -136,8 +136,8 @@
     </table>
      <table class="table ">
       <tbody>
-        <tr>
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;">Labores desarrolladas: Prospeccion [ x ]   Exploracion [  ]    Desarrollo [  ]   Explotacion [ x ]</p></td>
+ 
+        peccion [ x ]   Exploracion [  ]    Desarrollo [  ]   Explotacion [ x ]</p></td>
         </tr>
       </tbody>
     </table>

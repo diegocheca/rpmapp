@@ -154,8 +154,8 @@ class ProductorsController extends Controller
     public function destroy(Productors $productor)
     {
         //
-        //var_dump($productors->delete());die();
-        $productor->delete();
+        var_dump($productor);die();
+        //$productor->delete();
         return Redirect::route('productors.index');
     }
 }
