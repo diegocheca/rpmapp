@@ -129,6 +129,11 @@ Route::post('/formularios/auto_guardado_seis', [FormAltaProductorController::cla
 Route::post('/formularios/buscar_datos_formulario', [FormAltaProductorController::class, "buscar_datos_formulario_por_email"])->name('guardar-paso-dossss');
 
 
+
+
+Route::post('/formularios/auto_guardado_reinscripcion', [ReinscripcionController::class, "guardar_reinscripcion"])->name('auto-guardado-reinscripcion');
+
+
 Route::post('/formularios/validar_email_formulario', [FormAltaProductorController::class, "validar_email_productor"])->name('validar-email-formulario');
 Route::post('/formularios/validar_cuit_reinscripcion', [FormAltaProductorController::class, "validar_cuit_prod_reinscripcion"])->name('validar-cuit-prod-reinscripcion');
 Route::post('/formularios/validar_mina_para_prod', [FormAltaProductorController::class, "validar_mina_prod_reinscripcion"])->name('validar-mina-prod-reinscripcion');

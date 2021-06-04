@@ -1348,7 +1348,7 @@
 							</div>
 
 
-<!-- 
+							<!-- 
 							<div class="row">
 								<div class="col">
 								  	<label>Número de Expediente (DATO ÚNICO)</label>
@@ -2376,7 +2376,7 @@
 								</button>
 						    </div>
 						    <div class="d-grid gap-2 col-4 mx-auto">
-								<button class="btn btn-outline-primary" @click="guardar_avances_dos" id="guardar_paso3">Guardar Avances</button>
+								<button class="btn btn-outline-primary" @click="guardar_avances_reinscripcion" id="guardar_avances_reinscripcion">Guardar Avances</button>
 						    </div>
 						</div>
 						<transition name="custom-classes-transition" enter-active-class="animated fadeInDownBig" leave-active-class="animated bounceOut" >
@@ -2629,40 +2629,6 @@
 							<div class="col-12 col-md-8"><h3>Destino de la Producción</h3></div>
 							<div class="col-6 col-md-4"><button class="btn btn-outline-success" @click="agregar_destino()"><i class="ti-plus"></i> Agregar Destino</button></div>
 						</div>
-						
-						
-						<!-- <div class="row">
-							<ul class="list" style="list-style: none;">
-								<li v-for="(destino, index) in destinos">
-									<br>
-									<div class="row">
-										<div class="col-1">@{{index+1}}</div>
-										<div class="col-2">
-											<span>Producto Vendido:</span> 
-											<input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa"  v-model="destino.nombre_emp" maxlength="50">
-										</div>
-										<div class="col-2">
-											<span>Nombre Empresa Compradora:</span> 
-											<input type="text" class="form-control" name="nombre_empresa" id="nombre_empresa"  v-model="destino.nombre_emp" maxlength="50">
-										</div>
-										<div class="col-2">
-											<span>Dirrección empresa:</span> 
-											<input type="text" class="form-control" name="direccion_empresa" id="direccion_empresa"  v-model="destino.direccion" maxlength="100">
-											
-										</div>
-										<div class="col-2">
-											<span>Actividad:</span> 
-											<input type="text" class="form-control" name="actividad_que_desarrolla" id="actividad_que_desarrolla"  v-model="destino.actividad" maxlength="80">
-										</div>
-										<div class="col-3">
-											<span></span> <button type="button" class="btn btn-outline-danger" @click="eliminar_destino(index)"><i class="ti-trash"></i> Eliminar</button>
-										</div>
-										<br>
-									</div>
-									<hr><br>
-								</li>
-							</ul>
-						</div> -->
 						<div class="row">
 							<ul class="list" style="list-style: none;">
 								<li v-for="(destino, index) in productos">
@@ -2716,11 +2682,6 @@
 						</div>
 						<br>
 						<br>
-						
-
-
-
-
 						<div class="row">
 							<div class="col-12">
 								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
@@ -2798,18 +2759,8 @@
 								</div>
 							</div>
 						</div>
-
-
-
-
 						<br>
 						<br>
-						 
-
-
-
-
-
 						<div class="row">
 							<div class="col-12">
 								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
@@ -2880,13 +2831,6 @@
 
 						<br>
 						<br>
-
-
-
-
-
-
-
 						<div class="row">
 							<div class="col-12">
 								<div class="card card-custom bg-white border-white border-0" style="min-height: 90%">
@@ -2931,6 +2875,10 @@
 						<div class="alert alert-warning col-6" role="alert">
 							<span>De acuerdo a la legislación vigente toda la información suministrada está amaparada por el SECRETO ESTADÍSTICO .</span>
 						</div>
+
+						<br>
+						<br>
+						<button>Subir los cambios</button>
 					</tab-content>
 				</form-wizard>
 			</div>
@@ -4651,6 +4599,8 @@
 								console.log(error);
 							})
 					},
+					
+					
 					guardar_avances_dos: function(){
 						// Make a request for a user with a given ID
 						axios.post('{{url("formularios/auto_guardado_dos")}}', {
@@ -4900,6 +4850,62 @@
 										});
 									}
 								}
+							})
+							.catch(function (error) {
+								// handle error
+								console.log(error);
+							})
+					},
+					guardar_avances_reinscripcion: function(){
+						axios.post('{{url("formularios/auto_guardado_reinscripcion")}}', {
+								cuit: this.reinscripcion_data.cuit_para_validar,
+								mina: this.reinscripcion_data.numero_expediente_reinscripcion,
+
+								prospeccion: this.reinscripcion_data.labor_prospeccion,
+								explotacion: this.reinscripcion_data.labor_explotacion,
+								desarrollo: this.reinscripcion_data.labor_desarrollo,
+								exploracion: this.reinscripcion_data.labor_exploracion,
+
+								porcentaje_prov: this.reinscripcion_data.porcentaje_prov,
+								porcentaje_otras_prov: this.reinscripcion_data.porcentaje_otras_prov,
+								porcentaje_exportado: this.reinscripcion_data.porcentaje_exportado,
+
+								personal_perm_prof_y_tec: this.reinscripcion_data.personal_perm_prof_y_tec,
+								personal_perm_oper_y_obreros: this.reinscripcion_data.personal_perm_oper_y_obreros,
+								personal_perm_administrativos: this.reinscripcion_data.personal_perm_administrativos,
+								personal_perm_otros: this.reinscripcion_data.personal_perm_otros,
+								personal_tran_prof_y_tec: this.reinscripcion_data.personal_tran_prof_y_tec,
+								personal_tran_oper_y_obreros: this.reinscripcion_data.personal_tran_oper_y_obreros,
+								personal_tran_administrativos: this.reinscripcion_data.personal_tran_administrativos,
+								personal_tran_otros: this.reinscripcion_data.personal_tran_otros,
+								nombre_apellido_reinscripcion: this.reinscripcion_data.nombre_apellido_reinscripcion,
+								dni_reinscripcion:this.reinscripcion_data.dni_reinscripcion,
+								cargo_reinscripcion:this.reinscripcion_data.cargo_reinscripcion,
+							})
+							.then(function (response) {
+								console.log(response.data);
+								if(response.data === 'mande un email de mentira')
+								{
+									Swal.fire({
+										title: 'Cuidado!',
+										text: 'El email con el que esta trabajando no ha sido validado. Por favor, hagalo. Hemos enviado un nuevo email a su casilla.',
+										icon: 'warning',
+										confirmButtonText: 'Entendido'
+									});
+								}
+								else{
+									Swal.fire({
+										title: 'Datos Guardados!',
+										text: 'Los datos ingresados en el formulario han sido guardados correctamente.',
+										icon: 'success',
+										confirmButtonText: 'Continuar'
+									});
+								}
+								//nueva pestaña de descarga
+								/*var a = document.createElement("a");
+								a.target = "_blank";
+								a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
+								a.click();*/
 							})
 							.catch(function (error) {
 								// handle error

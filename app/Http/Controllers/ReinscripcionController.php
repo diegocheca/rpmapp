@@ -126,4 +126,14 @@ class ReinscripcionController extends Controller
         //$resultado = $reinscripcion->delete();
         return Redirect::route('reinscripciones.index');
     }
+    
+    public function guardar_reinscripcion(Request $request)
+    {
+        //
+        var_dump($request->all());die();
+        
+        //$resultado = $reinscripcion->delete();
+       // return Redirect::route('reinscripciones.index');
+    }
+
 }
