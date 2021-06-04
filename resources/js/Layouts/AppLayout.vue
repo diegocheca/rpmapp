@@ -67,6 +67,18 @@
                                 >
                                     Añadir Reins
                                 </jet-nav-link>
+                                <jet-nav-link
+                                    :href="route('productos.index')"
+                                    :active="route().current('productos.index')"
+                                >
+                                    Producto
+                                </jet-nav-link>
+                                 <jet-nav-link
+                                    :href="route('productos.create')"
+                                    :active="route().current('productos.create')"
+                                >
+                                    Añadir Producto
+                                </jet-nav-link>
 
                             </div>
                         </div>
@@ -228,8 +240,8 @@
                             MasPagos
                           </jet-responsive-nav-link>
                          <jet-responsive-nav-link
-                            :href="route('reinscripciones.create')"
-                            :active="route().current('reinscripciones.create')"
+                            :href="route('reinscripciones.index')"
+                            :active="route().current('reinscripciones.index')"
                           >
                             Reinscripciones
                           </jet-responsive-nav-link>
@@ -238,6 +250,18 @@
                             :active="route().current('reinscripciones.create')"
                           >
                             Reins nuevo
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('productos.index')"
+                            :active="route().current('productos.index')"
+                          >
+                            Productos
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('productos.create')"
+                            :active="route().current('productos.create')"
+                          >
+                            Prod nuevo
                           </jet-responsive-nav-link>
                     </div>
 

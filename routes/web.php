@@ -49,6 +49,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductorsController;
 use App\Http\Controllers\PagocanonminaController;
 use App\Http\Controllers\ReinscripcionController;
+use App\Http\Controllers\ProductosController;
 
 
 
@@ -77,6 +78,10 @@ Route::resource('productors', ProductorsController::class)
 
     
 Route::resource('reinscripciones', ReinscripcionController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
+
+Route::resource('productos', ProductosController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
@@ -172,5 +177,9 @@ Route::post('/formularios/buscar_id_form/', [FormAltaProductorController::class,
 Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_prueba"])->name('probando-pdf');
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
+
+
+
+Route::get('/impresiones/reinscripcion/{id}', [ReinscripcionController::class, "generar_pdf_reinscripcion"])->name('generar-pdf-reinscripcion');
 
 Route::post('/formularios/avisar_formulario_completo/', [FormAltaProductorController::class, "formulario_listo"])->name('formulario-listo');
