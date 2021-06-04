@@ -99,7 +99,7 @@ class ProductosController extends Controller
     public function update(Request $request, Productos $producto)
     {
         //
-        Validator::make($request->all(), [
+       /* Validator::make($request->all(), [
             'id_reinscripcion' => ['required'],
             'nombre_mineral' => ['required'],
             'variedad' => ['required'],
@@ -113,9 +113,10 @@ class ProductosController extends Controller
   
         if ($request->has('id')) {
             Productos::find($request->input('id'))->update($request->all());
-            return redirect()->back()
-                    ->with('message', 'Post Updated Successfully.');
-        }
+           // return Redirect::route('reinscripciones.index');
+        }*/
+        $producto->update($request->all());
+        return Redirect::route('productos.index');
 
     }
 
@@ -128,9 +129,7 @@ class ProductosController extends Controller
     public function destroy(Productos $producto)
     {
         //
-        if ($request->has('id')) {
-            Productos::find($request->input('id'))->delete();
-            return redirect()->back();
-        }
+        $producto->delete();
+        return Redirect::route('productos.index');
     }
 }
