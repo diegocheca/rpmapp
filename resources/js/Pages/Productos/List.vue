@@ -12,6 +12,7 @@
           <div
             class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
           >
+           <a :href="route('productos.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Producto</button></a>
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
                 <tr>
@@ -105,7 +106,7 @@
         <saludo></saludo>
       </div>
     </body>
-    <jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
+            <jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
 								<template #title>
 										{{modal_tittle}}
 								</template>
@@ -125,7 +126,9 @@
 								</template>
 						</jet-dialog-modal>
 						<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
-						
+
+            <!-- <pagination class="mt-6" :links="data.links"></pagination>
+ -->
   </app-layout>
 </template>
 
@@ -133,11 +136,12 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import JetDialogModal from '@/Jetstream/DialogModal';
+import Pagination from '@/Components/Pagination'
 //import Button from '../../Jetstream/Button.vue';
 
 export default {
   props: {
-    data: Array,
+    data: Object,
   },
   
   data() {
@@ -150,6 +154,7 @@ export default {
   components: {
     AppLayout,
     JetDialogModal,
+    Pagination
     //Button,
   },
   methods: {

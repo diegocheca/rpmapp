@@ -84,7 +84,7 @@ Route::resource('reinscripciones', ReinscripcionController::class)
 Route::resource('productos', ProductosController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-
+// Route::get('list-productos', [ProductosController::class, 'index']);
 
 
 Route::resource('pagos', PagocanonminaController::class)

@@ -25,7 +25,14 @@ class ProductosController extends Controller
     {
         //
         $data = Productos::all();
+        //$data = Productos::orderBy('id', 'desc')->paginate(2);
+        //var_dump($data);die();
         return Inertia::render('Productos/List', ['data' => $data]);
+
+
+  
+
+
     }
 
     /**

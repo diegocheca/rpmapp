@@ -37,48 +37,28 @@
                                 >
                                     Productores
                                 </jet-nav-link>
-                                 <jet-nav-link
-                                    :href="route('productors.create')"
-                                    :active="route().current('productors.create')"
-                                >
-                                    AñadirPro
-                                </jet-nav-link>
+                                
                                 <jet-nav-link
                                     :href="route('pagos.index')"
                                     :active="route().current('pagos.index')"
                                 >
                                     Pagos
                                 </jet-nav-link>
-                                 <jet-nav-link
-                                    :href="route('pagos.create')"
-                                    :active="route().current('pagos.create')"
-                                >
-                                    AñadirPago
-                                </jet-nav-link>
+                                 
                                 <jet-nav-link
                                     :href="route('reinscripciones.index')"
                                     :active="route().current('reinscripciones.index')"
                                 >
                                     Reinscripciones
                                 </jet-nav-link>
-                                 <jet-nav-link
-                                    :href="route('reinscripciones.create')"
-                                    :active="route().current('reinscripciones.create')"
-                                >
-                                    Añadir Reins
-                                </jet-nav-link>
+                                 
                                 <jet-nav-link
                                     :href="route('productos.index')"
                                     :active="route().current('productos.index')"
                                 >
                                     Producto
                                 </jet-nav-link>
-                                 <jet-nav-link
-                                    :href="route('productos.create')"
-                                    :active="route().current('productos.create')"
-                                >
-                                    Añadir Producto
-                                </jet-nav-link>
+                                
 
                             </div>
                         </div>
@@ -257,12 +237,7 @@
                           >
                             Productos
                           </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
-                            :href="route('productos.create')"
-                            :active="route().current('productos.create')"
-                          >
-                            Prod nuevo
-                          </jet-responsive-nav-link>
+                          
                     </div>
 
                     <!-- Responsive Settings Options -->

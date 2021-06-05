@@ -94,9 +94,13 @@ class ReinscripcionController extends Controller
      * @param  \App\Models\Reinscripciones  $reinscripcion
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reinscripciones $reinscripcion)
+    public function edit($id)
     {
         //
+        $reinscripcion = Reinscripciones::find($id);
+        //var_dump($reinscripcion);die();
+
+
         return Inertia::render('Reinscripciones/EditForm', ['reinscripcion' => $reinscripcion]);
     
     }
