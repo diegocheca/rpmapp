@@ -204,26 +204,41 @@ class IiadiaController extends Controller
             $photo->storePublicly();
          }*/
 
+        $iia_dia = iia_dia::find($request->id);
+        $iia_dia->fecha_notificacion_dia = $request->fecha_notificacion_dia;
+        $iia_dia->fecha_vencimiento = $request->fecha_vencimiento;
+        $iia_dia->actividades = $request->actividades;
+        $iia_dia->acciones_a_desarrollar = $request->acciones_a_desarrollar;
+        $iia_dia->estado = $request->estado;
+        $iia_dia->save();
 
-        var_dump($request->archivo_dia , $iia_dia->archivo_dia);die();
 
 
-         $request->validate([
-            'archivo_dia' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
-         ]);
+
+        // $formAltaProductor->update($request->all());
+		// return FormAltaProductor::route('formulario-alta.index');
+
+
+
+       // var_dump($request->archivo_dia , $iia_dia->archivo_dia);die();
+
+
+        //  $request->validate([
+        //     'archivo_dia' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
+        //  ]);
  
-         $fileUpload = new FileUpload;
+        //  $fileUpload = new FileUpload;
  
-         if($request->file()) {
-             $file_name = time().'_'.$request->file->getClientOriginalName();
-             $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
+        //  if($request->file()) {
+        //      $file_name = time().'_'.$request->file->getClientOriginalName();
+        //      $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
  
-             $fileUpload->name = time().'_'.$request->file->getClientOriginalName();
-             $fileUpload->path = '/storage/' . $file_path;
-             $fileUpload->save();
+        //      $fileUpload->name = time().'_'.$request->file->getClientOriginalName();
+        //      $fileUpload->path = '/storage/' . $file_path;
+        //      $fileUpload->save();
  
-             return response()->json(['success'=>'File uploaded successfully.']);
-         }
+        //      return response()->json(['success'=>'File uploaded successfully.']);
+        //  }
 
         return Redirect::route('iiadias.index');
     }
