@@ -19,18 +19,18 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <jet-nav-link
+                                <!-- <jet-nav-link
                                     :href="route('products.index')"
                                     :active="route().current('products.index')"
                                 >
                                     Productos
-                                </jet-nav-link>
-                                <jet-nav-link
+                                </jet-nav-link> -->
+                                <!-- <jet-nav-link
                                     :href="route('products.create')"
                                     :active="route().current('products.create')"
                                 >
                                     Añadir
-                                </jet-nav-link>
+                                </jet-nav-link> -->
                                 <jet-nav-link
                                     :href="route('productors.index')"
                                     :active="route().current('productors.index')"
@@ -57,6 +57,12 @@
                                     :active="route().current('productos.index')"
                                 >
                                     Producto
+                                </jet-nav-link>
+                                 <jet-nav-link
+                                    :href="route('iiadias.index')"
+                                    :active="route().current('iiadias.index')"
+                                >
+                                    IIASyDIAS
                                 </jet-nav-link>
                                 
 
@@ -183,18 +189,18 @@
                         <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </jet-responsive-nav-link>
-                        <jet-responsive-nav-link
+                        <!-- <jet-responsive-nav-link
                             :href="route('products.index')"
                             :active="route().current('products.index')"
                           >
                             Productos
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                          </jet-responsive-nav-link> -->
+                          <!-- <jet-responsive-nav-link
                             :href="route('products.create')"
                             :active="route().current('products.create')"
                           >
                             añadir
-                          </jet-responsive-nav-link>
+                          </jet-responsive-nav-link> -->
                            <jet-responsive-nav-link
                             :href="route('productors.index')"
                             :active="route().current('productors.index')"
@@ -236,6 +242,12 @@
                             :active="route().current('productos.index')"
                           >
                             Productos
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('iiadias.index')"
+                            :active="route().current('iiadias.index')"
+                          >
+                            IIAs y Dias
                           </jet-responsive-nav-link>
                           
                     </div>

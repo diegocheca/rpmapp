@@ -50,6 +50,7 @@ use App\Http\Controllers\ProductorsController;
 use App\Http\Controllers\PagocanonminaController;
 use App\Http\Controllers\ReinscripcionController;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\IiadiaController;
 
 
 
@@ -83,6 +84,12 @@ Route::resource('reinscripciones', ReinscripcionController::class)
 
 Route::resource('productos', ProductosController::class)
     ->middleware(['auth:sanctum', 'verified']);
+
+    
+
+Route::resource('iiadias', IiadiaController::class)
+->middleware(['auth:sanctum', 'verified']);
+Route::post('/guardando_dia_iia', [IiadiaController::class, "recibo"])->name('recibo-dia-iia');
 
 // Route::get('list-productos', [ProductosController::class, 'index']);
 
@@ -170,6 +177,8 @@ Route::post('contact', [ContactController::class, "contactPost"])->name('contact
 Route::get('/thank_you', [HomeController::class, "thanks"])->name('thanks');
 
 Route::post('/recibiendo_pdf', [FormAltaProductorController::class, "recibo"])->name('recibo-pdf');
+
+
 
 
 Route::get('/formularios/descargar_formulario/{id}', [FormAltaProductorController::class, "descargar_formulario"])->name('descargar-formulario');
