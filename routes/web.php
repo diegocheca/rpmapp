@@ -51,6 +51,7 @@ use App\Http\Controllers\PagocanonminaController;
 use App\Http\Controllers\ReinscripcionController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\IiadiaController;
+use App\Http\Controllers\ProductorMinaController;
 
 
 
@@ -98,6 +99,8 @@ Route::resource('pagos', PagocanonminaController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
+Route::resource('productores_minas', ProductorMinaController::class)
+    ->middleware(['auth:sanctum', 'verified']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

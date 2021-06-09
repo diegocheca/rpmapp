@@ -3320,6 +3320,10 @@ import CardMinaUbicacion from '@/Jetstream/altas/CardMinaUbicacion';
 import CardTotal from '@/Jetstream/altas/CardTotal';
 import PasoUnoEdit from '@/Pages/Productors/PasoUnoEdit';
 
+
+
+
+
 export default {
 	components: {
 		AppLayout,

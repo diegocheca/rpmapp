@@ -64,6 +64,12 @@
                                 >
                                     IIASyDIAS
                                 </jet-nav-link>
+                                 <jet-nav-link
+                                    :href="route('productores_minas.index')"
+                                    :active="route().current('productores_minas.index')"
+                                >
+                                    ProdMina
+                                </jet-nav-link>
                                 
 
                             </div>
@@ -248,6 +254,12 @@
                             :active="route().current('iiadias.index')"
                           >
                             IIAs y Dias
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('productores_minas.index')"
+                            :active="route().current('productores_minas.index')"
+                          >
+                            ProdMina
                           </jet-responsive-nav-link>
                           
                     </div>

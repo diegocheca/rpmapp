@@ -128,9 +128,9 @@ class ReinscripcionController extends Controller
     public function destroy(Reinscripciones $reinscripcion)
     {
         //
-        var_dump($reinscripcion);die();
+        // var_dump($reinscripcion);die();
         
-        //$resultado = $reinscripcion->delete();
+        $resultado = $reinscripcion->delete();
         return Redirect::route('reinscripciones.index');
     }
     
