@@ -19,54 +19,58 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
-                                <jet-nav-link
+                                <!-- <jet-nav-link
                                     :href="route('products.index')"
                                     :active="route().current('products.index')"
                                 >
                                     Productos
-                                </jet-nav-link>
-                                <jet-nav-link
+                                </jet-nav-link> -->
+                                <!-- <jet-nav-link
                                     :href="route('products.create')"
                                     :active="route().current('products.create')"
                                 >
                                     Añadir
-                                </jet-nav-link>
+                                </jet-nav-link> -->
                                 <jet-nav-link
                                     :href="route('productors.index')"
                                     :active="route().current('productors.index')"
                                 >
                                     Productores
                                 </jet-nav-link>
-                                 <jet-nav-link
-                                    :href="route('productors.create')"
-                                    :active="route().current('productors.create')"
-                                >
-                                    AñadirPro
-                                </jet-nav-link>
+                                
                                 <jet-nav-link
                                     :href="route('pagos.index')"
                                     :active="route().current('pagos.index')"
                                 >
                                     Pagos
                                 </jet-nav-link>
-                                 <jet-nav-link
-                                    :href="route('pagos.create')"
-                                    :active="route().current('pagos.create')"
-                                >
-                                    AñadirPago
-                                </jet-nav-link>
+                                 
                                 <jet-nav-link
                                     :href="route('reinscripciones.index')"
                                     :active="route().current('reinscripciones.index')"
                                 >
                                     Reinscripciones
                                 </jet-nav-link>
-                                 <jet-nav-link
-                                    :href="route('reinscripciones.create')"
-                                    :active="route().current('reinscripciones.create')"
+                                 
+                                <jet-nav-link
+                                    :href="route('productos.index')"
+                                    :active="route().current('productos.index')"
                                 >
-                                    Añadir Reins
+                                    Producto
                                 </jet-nav-link>
+                                 <jet-nav-link
+                                    :href="route('iiadias.index')"
+                                    :active="route().current('iiadias.index')"
+                                >
+                                    IIASyDIAS
+                                </jet-nav-link>
+                                 <jet-nav-link
+                                    :href="route('productores_minas.index')"
+                                    :active="route().current('productores_minas.index')"
+                                >
+                                    ProdMina
+                                </jet-nav-link>
+                                
 
                             </div>
                         </div>
@@ -191,18 +195,18 @@
                         <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </jet-responsive-nav-link>
-                        <jet-responsive-nav-link
+                        <!-- <jet-responsive-nav-link
                             :href="route('products.index')"
                             :active="route().current('products.index')"
                           >
                             Productos
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                          </jet-responsive-nav-link> -->
+                          <!-- <jet-responsive-nav-link
                             :href="route('products.create')"
                             :active="route().current('products.create')"
                           >
                             añadir
-                          </jet-responsive-nav-link>
+                          </jet-responsive-nav-link> -->
                            <jet-responsive-nav-link
                             :href="route('productors.index')"
                             :active="route().current('productors.index')"
@@ -228,8 +232,8 @@
                             MasPagos
                           </jet-responsive-nav-link>
                          <jet-responsive-nav-link
-                            :href="route('reinscripciones.create')"
-                            :active="route().current('reinscripciones.create')"
+                            :href="route('reinscripciones.index')"
+                            :active="route().current('reinscripciones.index')"
                           >
                             Reinscripciones
                           </jet-responsive-nav-link>
@@ -239,6 +243,25 @@
                           >
                             Reins nuevo
                           </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('productos.index')"
+                            :active="route().current('productos.index')"
+                          >
+                            Productos
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('iiadias.index')"
+                            :active="route().current('iiadias.index')"
+                          >
+                            IIAs y Dias
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('productores_minas.index')"
+                            :active="route().current('productores_minas.index')"
+                          >
+                            ProdMina
+                          </jet-responsive-nav-link>
+                          
                     </div>
 
                     <!-- Responsive Settings Options -->

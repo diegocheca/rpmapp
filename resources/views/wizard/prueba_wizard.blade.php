@@ -3045,7 +3045,17 @@
 								}
 							],
 					productos: [
-								{id_producto: '1', id_varieadad: '1', unidades:'', precio:''},
+								{
+									id_producto: '1', 
+									id_varieadad: '1', 
+									unidades:'', 
+									precio:'', 
+									unidad_medida:'',
+									otra_unidad_medida: '',
+									nombre_emp: '',
+									direccion: '',
+									actividad: '',
+								},
 							],
 					destinos: [
 						{nombre_emp: '1', direccion: '1', actividad:''},
@@ -4599,8 +4609,6 @@
 								console.log(error);
 							})
 					},
-					
-					
 					guardar_avances_dos: function(){
 						// Make a request for a user with a given ID
 						axios.post('{{url("formularios/auto_guardado_dos")}}', {
@@ -4866,6 +4874,11 @@
 								desarrollo: this.reinscripcion_data.labor_desarrollo,
 								exploracion: this.reinscripcion_data.labor_exploracion,
 
+
+								productos: this.productos,
+
+								cantidad_productos: this.productos.length,
+
 								porcentaje_prov: this.reinscripcion_data.porcentaje_prov,
 								porcentaje_otras_prov: this.reinscripcion_data.porcentaje_otras_prov,
 								porcentaje_exportado: this.reinscripcion_data.porcentaje_exportado,
@@ -4884,28 +4897,29 @@
 							})
 							.then(function (response) {
 								console.log(response.data);
-								if(response.data === 'mande un email de mentira')
+								if(response.data.res === true)
 								{
 									Swal.fire({
-										title: 'Cuidado!',
-										text: 'El email con el que esta trabajando no ha sido validado. Por favor, hagalo. Hemos enviado un nuevo email a su casilla.',
-										icon: 'warning',
+										title: 'Reinscripcion Presentada!',
+										text: 'La reinscripcion ha sido guardada correctamente, ahora debe esperar que las autoridades mineras lo evaluen para obtener una respuesta.',
+										icon: 'success',
 										confirmButtonText: 'Entendido'
 									});
+									var a = document.createElement("a");
+									a.target = "_blank";
+									a.href = "{{url('impresiones/reinscripcion')}}"+"/"+response.data.id;
+									a.click();
 								}
 								else{
 									Swal.fire({
-										title: 'Datos Guardados!',
-										text: 'Los datos ingresados en el formulario han sido guardados correctamente.',
-										icon: 'success',
+										title: 'Error!',
+										text: 'La presentación de la reinscripción posee errores, por favor revise estos errores.',
+										icon: 'warning',
 										confirmButtonText: 'Continuar'
 									});
 								}
 								//nueva pestaña de descarga
-								/*var a = document.createElement("a");
-								a.target = "_blank";
-								a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
-								a.click();*/
+								
 							})
 							.catch(function (error) {
 								// handle error

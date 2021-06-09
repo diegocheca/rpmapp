@@ -49,6 +49,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductorsController;
 use App\Http\Controllers\PagocanonminaController;
 use App\Http\Controllers\ReinscripcionController;
+use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\IiadiaController;
+use App\Http\Controllers\ProductorMinaController;
 
 
 
@@ -80,12 +83,24 @@ Route::resource('reinscripciones', ReinscripcionController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
+Route::resource('productos', ProductosController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
+    
+
+Route::resource('iiadias', IiadiaController::class)
+->middleware(['auth:sanctum', 'verified']);
+Route::post('/guardando_dia_iia', [IiadiaController::class, "recibo"])->name('recibo-dia-iia');
+
+// Route::get('list-productos', [ProductosController::class, 'index']);
 
 
 Route::resource('pagos', PagocanonminaController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
+Route::resource('productores_minas', ProductorMinaController::class)
+    ->middleware(['auth:sanctum', 'verified']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -167,10 +182,16 @@ Route::get('/thank_you', [HomeController::class, "thanks"])->name('thanks');
 Route::post('/recibiendo_pdf', [FormAltaProductorController::class, "recibo"])->name('recibo-pdf');
 
 
+
+
 Route::get('/formularios/descargar_formulario/{id}', [FormAltaProductorController::class, "descargar_formulario"])->name('descargar-formulario');
 Route::post('/formularios/buscar_id_form/', [FormAltaProductorController::class, "buscador_de_id"])->name('buscador-de-id');
 Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_prueba"])->name('probando-pdf');
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
+
+
+
+Route::get('/impresiones/reinscripcion/{id}', [ReinscripcionController::class, "generar_pdf_reinscripcion"])->name('generar-pdf-reinscripcion');
 
 Route::post('/formularios/avisar_formulario_completo/', [FormAltaProductorController::class, "formulario_listo"])->name('formulario-listo');
