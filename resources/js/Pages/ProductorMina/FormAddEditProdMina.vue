@@ -232,7 +232,6 @@
 
         </div>
         </div>
-    
     </form>
 </template>
 
@@ -247,30 +246,40 @@
     },
     data() {
         return {
-        form: {
-            id_mina: null,
-            id_productor: null,
-            id_destino: null,
-            id_dia: null,
-            id_personal: null,
-            mercado_provincia: null,
-            mercado_provincias: null,
-            mercado_exportacion: null,
-            num_expediente_SIGETRAMI: null,
-            constancia_otros: null,
-            resol_concecion_minera: null,
-            fecha_preinscripcion: null,
-            fecha_renovacion: null,
-            primera_inscripcion: null,
-            caracter: null,
-            constancia_posecion: null,
-            id_producido: null,
-        },
+            form: {
+                id: this.$props.productor_mina.id,
+                id_mina: this.$props.productor_mina.id_mina,
+                id_productor: this.$props.productor_mina.id_productor,
+                id_destino: this.$props.productor_mina.id_destino,
+                id_dia: this.$props.productor_mina.id_dia,
+                id_personal: this.$props.productor_mina.id_personal,
+                mercado_provincia: this.$props.productor_mina.mercado_provincia,
+                mercado_provincias: this.$props.productor_mina.mercado_provincias,
+                mercado_exportacion: this.$props.productor_mina.mercado_exportacion,
+                num_expediente_SIGETRAMI: this.$props.productor_mina.num_expediente_SIGETRAMI,
+                constancia_otros: this.$props.productor_mina.constancia_otros,
+                resol_concecion_minera: this.$props.productor_mina.resol_concecion_minera,
+                fecha_preinscripcion: this.$props.productor_mina.fecha_preinscripcion,
+                fecha_renovacion: this.$props.productor_mina.fecha_renovacion,
+                primera_inscripcion: this.$props.productor_mina.primera_inscripcion,
+                caracter: this.$props.productor_mina.caracter,
+                constancia_posecion: this.$props.productor_mina.constancia_posecion,
+                id_producido: this.$props.productor_mina.id_producido,
+            },
         };
     },
     methods: {
         submit() {
-        this.$inertia.post(route('productores_minas.store'), this.form);
+            if(this.$props.title == 'Agregando Nueva relacion entre productor y minas')
+                this.$inertia.post(route('productores_minas.store'), this.form);
+            if(this.$props.title == 'Editando una relacion entre productor y minas')
+            {
+                this.$inertia.put(
+                    route("productores_minas.update", this.form.id),
+                    this.form
+                );
+            }
+                
         },
     },
     };
