@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION_RMP', 'rpm'),
 
     /*
     |--------------------------------------------------------------------------
@@ -89,6 +89,21 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
+        ],
+
+        'rpm' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL_RMP'),
+            'host' => env('DB_HOST_RMP', '127.0.0.1'),
+            'port' => env('DB_PORT_RMP', '5432'),
+            'database' => env('DB_DATABASE_RMP', 'forge'),
+            'username' => env('DB_USERNAME_RMP', 'forge'),
+            'password' => env('DB_PASSWORD_RMP', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
         ],
 
     ],

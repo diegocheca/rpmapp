@@ -10,7 +10,7 @@
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:wqwf1/3zRlZEqVvslyGaOXUsYanPrxZh7L3EzZ5LKiU=',
+    'key' => 'base64:KZ47WFHerxB+7eAaUVPPQku6+CA4zvS6aEySwnOxu8c=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -192,7 +192,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\framework/cache/data',
+        'path' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -264,7 +264,7 @@
   ),
   'database' => 
   array (
-    'default' => 'mysql',
+    'default' => 'rpm',
     'connections' => 
     array (
       'sqlite' => 
@@ -323,6 +323,21 @@
         'prefix' => '',
         'prefix_indexes' => true,
       ),
+      'rpm' => 
+      array (
+        'driver' => 'pgsql',
+        'url' => NULL,
+        'host' => '127.0.0.1',
+        'port' => '5432',
+        'database' => 'rpmappdb',
+        'username' => 'postgres',
+        'password' => 'root',
+        'charset' => 'utf8',
+        'prefix' => '',
+        'prefix_indexes' => true,
+        'schema' => 'public',
+        'sslmode' => 'prefer',
+      ),
     ),
     'migrations' => 'migrations',
     'redis' => 
@@ -359,12 +374,12 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\app',
+        'root' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\app/public',
+        'root' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\app/public',
         'url' => 'http://localhost:8000/storage',
         'visibility' => 'public',
       ),
@@ -381,7 +396,7 @@
     ),
     'links' => 
     array (
-      'C:\\xampp\\htdocs\\rpmapp\\public\\storage' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\app/public',
+      'C:\\xampp64\\htdocs\\rpmapp\\public\\storage' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\app/public',
     ),
   ),
   'fortify-options' => 
@@ -511,13 +526,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -568,7 +583,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\logs/laravel.log',
+        'path' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -625,7 +640,7 @@
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\rpmapp\\resources\\views/vendor/mail',
+        0 => 'C:\\xampp64\\htdocs\\rpmapp\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -726,7 +741,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\framework/sessions',
+    'files' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -746,9 +761,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\rpmapp\\resources\\views',
+      0 => 'C:\\xampp64\\htdocs\\rpmapp\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\framework\\views',
+    'compiled' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\framework\\views',
   ),
   'voyager' => 
   array (
@@ -892,10 +907,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\fonts/',
-      'font_cache' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\gelu\\AppData\\Local\\Temp',
-      'chroot' => 'C:\\xampp\\htdocs\\rpmapp',
+      'font_dir' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\fonts/',
+      'font_cache' => 'C:\\xampp64\\htdocs\\rpmapp\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\Rodrigo\\AppData\\Local\\Temp',
+      'chroot' => 'C:\\xampp64\\htdocs\\rpmapp',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',
