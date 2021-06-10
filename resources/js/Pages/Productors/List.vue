@@ -3,7 +3,7 @@
     <h2
       class="text-center text-2xl font-bold leading-7 text-gray-300 sm:text-3xl sm:truncate py-4 bg-gray-800"
     >
-      Productores Ya cargados
+      Borradores Ya cargados
     </h2>
 
     <body class="flex flex-col">
@@ -12,7 +12,7 @@
           <div
             class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
           >
-          <a :href="route('productors.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Productor</button></a>
+          <a :href="route('formulario-alta.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Borrador</button></a>
 
             <table class="min-w-full divide-y divide-gray-200">
               <thead class="bg-gray-50">
@@ -53,7 +53,7 @@
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                <tr v-for="productor in productors" :key="productor.id">
+                <tr v-for="productor in borradores" :key="productor.id">
                   <td class="px-6 py-4 whitespace-nowrap">
                     <div class="text-sm text-gray-900">{{ productor.id }}</div>
                   </td>
@@ -116,7 +116,7 @@ import AppLayout from "@/Layouts/AppLayout";
 
 export default {
   props: {
-    productors: Array,
+    borradores: Array,
   },
   components: {
     AppLayout,

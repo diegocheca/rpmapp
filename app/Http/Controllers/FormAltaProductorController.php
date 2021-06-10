@@ -38,7 +38,7 @@ class FormAltaProductorController extends Controller
 		//
 		$formularios = FormAltaProductor::all();
 		//var_dump($formularios);die();
-		return Inertia::render('forms', ['formularios' => $formularios]);
+		return Inertia::render('Productors/List', ['productors' => $formularios]);
 	}
 
 	/**
@@ -49,7 +49,7 @@ class FormAltaProductorController extends Controller
 	public function create()
 	{
 		//
-		return Inertia::render('Form');
+		return Inertia::render('Productors/Form');
 	}
 
 	/**

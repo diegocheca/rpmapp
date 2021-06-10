@@ -22792,7 +22792,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    productors: Array
+    borradores: Array
   },
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__.default
@@ -26719,8 +26719,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <jet-nav-link\r\n                                    :href=\"route('products.index')\"\r\n                                    :active=\"route().current('products.index')\"\r\n                                >\r\n                                    Productos\r\n                                </jet-nav-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <jet-nav-link\r\n                                    :href=\"route('products.create')\"\r\n                                    :active=\"route().current('products.create')\"\r\n                                >\r\n                                    Añadir\r\n                                </jet-nav-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_nav_link, {
-    href: _ctx.route('productors.index'),
-    active: _ctx.route().current('productors.index')
+    href: _ctx.route('formulario-alta.index'),
+    active: _ctx.route().current('formulario-alta.index')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_9];
@@ -26973,8 +26973,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, 8
   /* PROPS */
   , ["href", "active"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <jet-responsive-nav-link\r\n                            :href=\"route('products.index')\"\r\n                            :active=\"route().current('products.index')\"\r\n                          >\r\n                            Productos\r\n                          </jet-responsive-nav-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <jet-responsive-nav-link\r\n                            :href=\"route('products.create')\"\r\n                            :active=\"route().current('products.create')\"\r\n                          >\r\n                            añadir\r\n                          </jet-responsive-nav-link> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_responsive_nav_link, {
-    href: _ctx.route('productors.index'),
-    active: _ctx.route().current('productors.index')
+    href: _ctx.route('formulario-alta.index'),
+    active: _ctx.route().current('formulario-alta.index')
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_44];
@@ -50888,7 +50888,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
   "class": "text-center text-2xl font-bold leading-7 text-gray-300 sm:text-3xl sm:truncate py-4 bg-gray-800"
-}, " Productores Ya cargados ", -1
+}, " Borradores Ya cargados ", -1
 /* HOISTED */
 );
 
@@ -50907,7 +50907,7 @@ var _hoisted_5 = {
 
 var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
   "class": "px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-}, "Nuevo Productor", -1
+}, "Nuevo Borrador", -1
 /* HOISTED */
 );
 
@@ -50997,10 +50997,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_app_layout, null, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("body", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-        href: _ctx.route('productors.create')
+        href: _ctx.route('formulario-alta.create')
       }, [_hoisted_6], 8
       /* PROPS */
-      , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tbody", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.productors, function (productor) {
+      , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("table", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("tbody", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.borradores, function (productor) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("tr", {
           key: productor.id
         }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("td", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(productor.id), 1

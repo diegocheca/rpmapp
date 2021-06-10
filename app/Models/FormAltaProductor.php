@@ -9,7 +9,7 @@ class FormAltaProductor extends Model
 {
     use HasFactory;
 
-    protected $table = 'form_alta_productors';
+    protected $table = 'form_alta_productores';
     protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
         'tipo_productor',

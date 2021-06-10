@@ -32,8 +32,8 @@
                                     Añadir
                                 </jet-nav-link> -->
                                 <jet-nav-link
-                                    :href="route('productors.index')"
-                                    :active="route().current('productors.index')"
+                                    :href="route('formulario-alta.index')"
+                                    :active="route().current('formulario-alta.index')"
                                 >
                                     Borradores
                                 </jet-nav-link>
@@ -214,8 +214,8 @@
                             añadir
                           </jet-responsive-nav-link> -->
                            <jet-responsive-nav-link
-                            :href="route('productors.index')"
-                            :active="route().current('productors.index')"
+                            :href="route('formulario-alta.index')"
+                            :active="route().current('formulario-alta.index')"
                           >
                             Borradores
                           </jet-responsive-nav-link>
