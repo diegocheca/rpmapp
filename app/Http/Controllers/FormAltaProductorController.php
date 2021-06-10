@@ -36,9 +36,9 @@ class FormAltaProductorController extends Controller
 	public function index()
 	{
 		//
-		$formularios = FormAltaProductor::all();
+		$borradores = FormAltaProductor::all();
 		//var_dump($formularios);die();
-		return Inertia::render('Productors/List', ['productors' => $formularios]);
+		return Inertia::render('Productors/List', ['borradores' => $borradores]);
 	}
 
 	/**
@@ -89,9 +89,11 @@ class FormAltaProductorController extends Controller
 	 * @param  \App\Models\FormAltaProductor  $formAltaProductor
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit(FormAltaProductor $formAltaProductor)
+	public function edit($id)
 	{
-		return Inertia::render('EditForm', ['formulario' => $formAltaProductor]);
+		//dd($id);
+		$borradores = FormAltaProductor::find($id);
+		return Inertia::render('Productors/EditForm', ['productor' => $borradores]);
 	}
 
 	/**

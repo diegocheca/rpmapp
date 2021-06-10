@@ -81,7 +81,7 @@
                   >
                     <inertia-link
                     
-                      :href="route('productors.edit', productor.id)"
+                      :href="route('formulario-alta.edit', productor.id)"
                       class="px-2 font-semibold leading-5 text-xs rounded-full bg-yellow-100 text-yellow-500 hover:text-yellow-800"
                     >
                       Editar
@@ -93,7 +93,7 @@
                   >
                     <inertia-link
                       method="delete"
-                      :href="route('productors.destroy', productor.id)"
+                      :href="route('formulario-alta.destroy', productor.id)"
                       class="px-2 font-semibold leading-5 text-xs rounded-full bg-red-100 text-red-500 hover:text-red-800"
                     >
                       Borrar
