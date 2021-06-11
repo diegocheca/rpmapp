@@ -169,6 +169,7 @@
 					:evaluacion="true"
 				></PaginaUnoDatosProductorRazonSocial>
 
+				
 				<PaginaUnoDatosProductorEmail
 					:email="form.email"
 					:email_valido="form.email_valido"
@@ -179,8 +180,70 @@
 
 					:evaluacion="true"
 				>
-
 				</PaginaUnoDatosProductorEmail>
+
+				<PaginaUnoDatosProductorCuit
+					:cuit="form.cuit"
+					:cuit_valido="form.cuit_valido"
+					:cuit_correcto="form.cuit_correcto"
+
+					:obs_cuit="form.obs_cuit"
+					:obs_cuit_valido="form.obs_cuit_valido"
+
+					:evaluacion="true"
+				>
+
+				</PaginaUnoDatosProductorCuit>
+				<PaginaUnoDatosProductorNumProd
+					:numeroproductor="form.numeroproductor"
+					:numeroproductor_valido="form.numeroproductor_valido"
+					:numeroproductor_correcto="form.numeroproductor_correcto"
+
+					:obs_numeroproductor="form.obs_numeroproductor"
+					:obs_numeroproductor_valido="form.obs_numeroproductor_valido"
+
+					:evaluacion="true"
+				>
+
+				</PaginaUnoDatosProductorNumProd>
+
+				<PaginaUnoDatosProductorTipoSociedad
+					:tiposociedad="form.tiposociedad"
+					:tiposociedad_valido="form.tiposociedad_valido"
+					:tiposociedad_correcto="form.tiposociedad_correcto"
+
+					:obs_tiposociedad="form.obs_tiposociedad"
+					:obs_tiposociedad_valido="form.obs_tiposociedad_valido"
+
+					:evaluacion="true"
+				>
+
+				</PaginaUnoDatosProductorTipoSociedad>
+
+
+				<PaginaUnoDatosProductorInscripcionDGR
+					:inscripciondgr="form.inscripciondgr"
+					:inscripciondgr_valido="form.inscripciondgr_valido"
+					:inscripciondgr_correcto="form.inscripciondgr_correcto"
+					:obs_inscripciondgr="form.obs_inscripciondgr"
+					:obs_inscripciondgr_valido="form.obs_inscripciondgr_valido"
+					:evaluacion="true"
+				>
+
+				</PaginaUnoDatosProductorInscripcionDGR>
+
+				<PaginaUnoDatosProductorConstanciaSociedad
+					:constaciasociedad="form.constaciasociedad"
+					:constaciasociedad_valido="form.constaciasociedad_valido"
+					:constaciasociedad_correcto="form.constaciasociedad_correcto"
+					:obs_constaciasociedad="form.obs_constaciasociedad"
+					:obs_constaciasociedad_valido="form.obs_constaciasociedad_valido"
+					:evaluacion="true"
+				>
+
+				</PaginaUnoDatosProductorConstanciaSociedad>
+
+
 
 				 <div>
         <div class="flex">
@@ -3350,9 +3413,15 @@ import PasoUnoEdit from '@/Pages/Productors/PasoUnoEdit';
 import PaginaUnoDatosProductorRazonSocial from "@/Pages/Productors/PaginaUnoDatosProductorRazonSocial";
 import PaginaUnoDatosProductorEmail from "@/Pages/Productors/PaginaUnoDatosProductorEmail";
 
+import PaginaUnoDatosProductorCuit from "@/Pages/Productors/PaginaUnoDatosProductorCuit";
 
+import PaginaUnoDatosProductorNumProd from "@/Pages/Productors/PaginaUnoDatosProductorNumProd";
 
+import PaginaUnoDatosProductorTipoSociedad from "@/Pages/Productors/PaginaUnoDatosProductorTipoSociedad";
 
+import PaginaUnoDatosProductorInscripcionDGR from "@/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR";
+
+import PaginaUnoDatosProductorConstanciaSociedad from "@/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad";
 
 export default {
 	components: {
@@ -3370,6 +3439,11 @@ export default {
 		PasoUnoEdit,
 		PaginaUnoDatosProductorRazonSocial,
 		PaginaUnoDatosProductorEmail,
+		PaginaUnoDatosProductorCuit,
+		PaginaUnoDatosProductorNumProd,
+		PaginaUnoDatosProductorTipoSociedad,
+		PaginaUnoDatosProductorInscripcionDGR,
+		PaginaUnoDatosProductorConstanciaSociedad,
 	},
 	props: ["productor"],
 	data() {

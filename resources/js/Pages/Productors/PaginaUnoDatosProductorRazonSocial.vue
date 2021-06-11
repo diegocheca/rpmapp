@@ -17,20 +17,20 @@
               <span class="text-gray-700">Es correcto?</span>
               <div class="mt-2">
                   <label class="inline-flex items-center">
-                      <input type="radio" class="form-radio" name="accountType" v-model="razon_social_correcto" value="true" v-on:change="calculo_de_porcentajes(1, true)">
+                      <input type="radio" class="form-radio" name="accountType" v-model="razon_social_correcto" value="true" v-on:change="razon_social_correcto = true">
                       <span class="ml-2">Si</span>
                   </label>
                   <label class="inline-flex items-center ml-6">
-                      <input type="radio" class="form-radio" name="accountType" v-model="razon_social_correcto" value="false" v-on:change="calculo_de_porcentajes(1, false)">
+                      <input type="radio" class="form-radio" name="accountType" v-model="razon_social_correcto" value="false" v-on:change="razon_social_correcto = false ">
                       <span class="ml-2">No</span>
                   </label>
                   <label class="inline-flex items-center ml-6">
-                      <input type="radio" class="form-radio" name="accountType" v-model="razon_social_correcto" value="nada" v-on:change="calculo_de_porcentajes(1, 'nada')">
+                      <input type="radio" class="form-radio" name="accountType" v-model="razon_social_correcto" value="nada" v-on:change="razon_social_correcto = 'nada'">
                       <span class="ml-2">Sin evaluar</span>
                   </label>
               </div>
           </div>
-          <div v-show="razon_social_correcto" class="w-full md:w-2/3 px-3">
+          <div v-show="!razon_social_correcto" class="w-full md:w-2/3 px-3">
               <label
                   class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                   for="obs_razon_social"
@@ -63,6 +63,20 @@ export default {
       saludos: 'Saludame qweqweqwe'
     };
   },
+  methods:{
+      actaulizar_variables_correctas(que_cambio, valor) {
+			if(que_cambio == 1)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.razon_social_correcto= true;
+				if(valor == false)
+					this.form.razon_social_correcto= false;
+				if(valor == 'nada')
+					this.form.razon_social_correcto= 'nada';
+			}
+      }
+  }
   
 };
 </script>
