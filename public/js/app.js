@@ -17743,7 +17743,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Checkbox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Checkbox */ "./resources/js/Jetstream/Checkbox.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
 /* harmony import */ var _Jetstream_ValidationErrors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/ValidationErrors */ "./resources/js/Jetstream/ValidationErrors.vue");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
@@ -20824,19 +20824,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_altas_CardMinaUbicacion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Jetstream/altas/CardMinaUbicacion */ "./resources/js/Jetstream/altas/CardMinaUbicacion.vue");
 /* harmony import */ var _Jetstream_altas_CardTotal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Jetstream/altas/CardTotal */ "./resources/js/Jetstream/altas/CardTotal.vue");
 /* harmony import */ var _Pages_Productors_PasoUnoEdit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/Pages/Productors/PasoUnoEdit */ "./resources/js/Pages/Productors/PasoUnoEdit.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorRazonSocial__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorRazonSocial */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorRazonSocial.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorEmail__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorEmail */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorEmail.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorCuit__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorCuit */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorCuit.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorNumProd__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorNumProd */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorNumProd.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorTipoSociedad__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorTipoSociedad */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorTipoSociedad.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorInscripcionDGR__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorConstanciaSociedad__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue");
-
-
-
-
-
-
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductores__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductores */ "./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue");
 
 
 
@@ -20864,13 +20852,7 @@ __webpack_require__.r(__webpack_exports__);
     CardMinaUbicacion: _Jetstream_altas_CardMinaUbicacion__WEBPACK_IMPORTED_MODULE_9__.default,
     CardTotal: _Jetstream_altas_CardTotal__WEBPACK_IMPORTED_MODULE_10__.default,
     PasoUnoEdit: _Pages_Productors_PasoUnoEdit__WEBPACK_IMPORTED_MODULE_11__.default,
-    PaginaUnoDatosProductorRazonSocial: _Pages_Productors_PaginaUnoDatosProductorRazonSocial__WEBPACK_IMPORTED_MODULE_12__.default,
-    PaginaUnoDatosProductorEmail: _Pages_Productors_PaginaUnoDatosProductorEmail__WEBPACK_IMPORTED_MODULE_13__.default,
-    PaginaUnoDatosProductorCuit: _Pages_Productors_PaginaUnoDatosProductorCuit__WEBPACK_IMPORTED_MODULE_14__.default,
-    PaginaUnoDatosProductorNumProd: _Pages_Productors_PaginaUnoDatosProductorNumProd__WEBPACK_IMPORTED_MODULE_15__.default,
-    PaginaUnoDatosProductorTipoSociedad: _Pages_Productors_PaginaUnoDatosProductorTipoSociedad__WEBPACK_IMPORTED_MODULE_16__.default,
-    PaginaUnoDatosProductorInscripcionDGR: _Pages_Productors_PaginaUnoDatosProductorInscripcionDGR__WEBPACK_IMPORTED_MODULE_17__.default,
-    PaginaUnoDatosProductorConstanciaSociedad: _Pages_Productors_PaginaUnoDatosProductorConstanciaSociedad__WEBPACK_IMPORTED_MODULE_18__.default
+    PaginaUnoDatosProductores: _Pages_Productors_PaginaUnoDatosProductores__WEBPACK_IMPORTED_MODULE_12__.default
   },
   props: ["productor"],
   data: function data() {
@@ -22822,6 +22804,112 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/DialogModal */ "./resources/js/Jetstream/DialogModal.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['link_volver', 'titulo_boton_volver', 'titulo_boton_guardar', 'razon_social', 'razon_social_valido', 'razon_social_correcto', 'obs_razon_social', 'obs_razon_social_valido', 'email', 'email_valido', 'email_correcto', 'obs_email', 'obs_email_valido', 'cuit', 'cuit_valido', 'cuit_correcto', 'obs_cuit', 'obs_cuit_valido', 'numeroproductor', 'numeroproductor_valido', 'numeroproductor_correcto', 'obs_numeroproductor', 'obs_numeroproductor_valido', 'tiposociedad', 'tiposociedad_valido', 'tiposociedad_correcto', 'obs_tiposociedad', 'obs_tiposociedad_valido', 'inscripciondgr', 'inscripciondgr_valido', 'inscripciondgr_correcto', 'obs_inscripciondgr', 'obs_inscripciondgr_valido', 'constaciasociedad', 'constaciasociedad_valido', 'constaciasociedad_correcto', 'obs_constaciasociedad', 'obs_constaciasociedad_valido', 'evaluacion', 'id'],
+  components: {
+    JetDialogModal: _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_0__.default
+  },
+  data: function data() {
+    return {
+      saludos: 'Saludame qweqweqwe',
+      mostrar_modal_datos_ya_guardados: false,
+      modal_tittle: '',
+      modal_body: ''
+    };
+  },
+  methods: {
+    guardar_avnces_uno: function guardar_avnces_uno() {
+      if (this.$props.evaluacion) {
+        //Soy autoridad minera
+        var self = this;
+        axios.post('/formularios/evaluacion_auto_guardado_uno', {
+          id: this.$props.id,
+          razon_social: this.$props.razonsocial,
+          razon_social_valido: this.$props.razon_social_valido,
+          razon_social_correcto: this.$props.razon_social_correcto,
+          obs_razon_social: this.$props.obs_razon_social,
+          obs_razon_social_valido: this.$props.obs_razon_social_valido,
+          email: this.$props.email,
+          email_valido: this.$props.email_valido,
+          email_correcto: this.$props.email_correcto,
+          obs_email: this.$props.obs_email,
+          obs_email_valido: this.$props.obs_email_valido,
+          cuit: this.$props.cuit,
+          cuit_valido: this.$props.cuit_valido,
+          cuit_correcto: this.$props.cuit_correcto,
+          obs_cuit: this.$props.obs_cuit,
+          obs_cuit_valido: this.$props.obs_cuit_valido,
+          numeroproductor: this.$props.numeroproductor,
+          numeroproductor_valido: this.$props.numeroproductor_valido,
+          numeroproductor_correcto: this.$props.numeroproductor_correcto,
+          obs_numeroproductor: this.$props.obs_numeroproductor,
+          obs_numeroproductor_valido: this.$props.obs_numeroproductor_valido,
+          tiposociedad: this.$props.tiposociedad,
+          tiposociedad_valido: this.$props.tiposociedad_valido,
+          tiposociedad_correcto: this.$props.tiposociedad_correcto,
+          obs_tiposociedad: this.$props.obs_tiposociedad,
+          obs_tiposociedad_valido: this.$props.obs_tiposociedad_valido,
+          inscripciondgr: this.$props.inscripciondgr,
+          inscripciondgr_valido: this.$props.inscripciondgr_valido,
+          inscripciondgr_correcto: this.$props.inscripciondgr_correcto,
+          obs_inscripciondgr: this.$props.obs_inscripciondgr,
+          obs_inscripciondgr_valido: this.$props.obs_inscripciondgr_valido,
+          constaciasociedad: this.$props.constaciasociedad,
+          constaciasociedad_valido: this.$props.constaciasociedad_valido,
+          constaciasociedad_correcto: this.$props.constaciasociedad_correcto,
+          obs_constaciasociedad: this.$props.obs_constaciasociedad,
+          obs_constaciasociedad_valido: this.$props.obs_constaciasociedad_valido,
+          valor_de_progreso: 20,
+          valor_de_aprobado: 20,
+          valor_de_reprobado: 20
+        }).then(function (response) {
+          console.log(response.data);
+
+          if (response.data === "se actualizaron los datos correctamente") {
+            console.log('todo bien');
+            self.modal_tittle = 'Datos guardados correctamente';
+            self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
+            self.mostrar_modal_datos_ya_guardados = true;
+          }
+
+          if (response.data === "formulario no encontrado") {
+            console.log('todo mal, no se encontro');
+            self.modal_tittle = 'Paso 1 Guardado Fallido';
+            self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+            self.mostrar_modal_datos_ya_guardados = true;
+          } else {
+            console.log('NO todo bien');
+          }
+        })["catch"](function (error) {
+          // handle error
+          console.log(error);
+        }); //soy una autoridad minera
+      }
+
+      if (!this.$props.evaluacion) {//soy un productor
+      }
+    },
+    cerrar_modal_datos_uno: function cerrar_modal_datos_uno() {
+      this.mostrar_modal_datos_ya_guardados = false;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue?vue&type=script&lang=js":
 /*!*****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue?vue&type=script&lang=js ***!
@@ -22837,8 +22925,40 @@ __webpack_require__.r(__webpack_exports__);
   props: ['constaciasociedad', 'constaciasociedad_valido', 'constaciasociedad_correcto', 'obs_constaciasociedad', 'obs_constaciasociedad_valido', 'evaluacion'],
   data: function data() {
     return {
-      saludos: 'Saludame qweqweqwe'
+      constaciasociedad_correcto_local: this.$props.constaciasociedad_correcto,
+      tiposociedad_valido_local: this.$props.constaciasociedad_valido,
+      clase_text_area_constaciasociedad: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_evaluacion_constaciasociedad_text_area: 'text-green-500 text-xs italic',
+      cartel_nota_evaluacion_constaciasociedad_text_area: 'Observacion Correcta'
     };
+  },
+  methods: {
+    actaulizar_variable_constanciasociedad: function actaulizar_variable_constanciasociedad(valor) {
+      this.constaciasociedad_correcto_local = valor;
+      console.log(this.constaciasociedad_correcto_local);
+      this.$emit('changeconstanciasociedadcorrecto', this.constaciasociedad_correcto_local);
+    },
+    actaulizar_contenido_text_area_constaciasociedad: function actaulizar_contenido_text_area_constaciasociedad(value) {
+      if (this.$props.obs_constaciasociedad.length <= 2) {
+        this.clase_text_area_constaciasociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_constaciasociedad_text_area = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_constaciasociedad_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_constaciasociedad.length >= 50) {
+        this.clase_text_area_constaciasociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_constaciasociedad_text_area = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_constaciasociedad_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_constaciasociedad !== '' && this.$props.obs_constaciasociedad.length <= 30 && this.$props.obs_constaciasociedad.length >= 3) {
+        this.clase_text_area_constaciasociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_constaciasociedad_text_area = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_constaciasociedad_text_area = 'text-green-500 text-xs italic';
+      }
+
+      this.$emit('changeobsconstanciasociedad', this.$props.obs_constaciasociedad);
+    }
   }
 });
 
@@ -22859,8 +22979,67 @@ __webpack_require__.r(__webpack_exports__);
   props: ['cuit', 'cuit_valido', 'cuit_correcto', 'obs_cuit', 'obs_cuit_valido', 'evaluacion'],
   data: function data() {
     return {
-      saludos: 'Saludame qweqweqwe'
+      clase_de_input_cuit: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_cuit: 'text-green-500 text-xs italic',
+      cartel_nota_campo_cuit: 'Campo Correcto',
+      cuit_correcto_local: this.$props.cuit_correcto,
+      cuit_valido_local: this.$props.email_valido,
+      clase_text_area_cuit: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_evaluacion_cuit_text_area: 'text-green-500 text-xs italic',
+      cartel_nota_evaluacion_cuit_text_area: 'Observacion Correcta'
     };
+  },
+  methods: {
+    actaulizar_variable_cuit: function actaulizar_variable_cuit(valor) {
+      this.cuit_correcto_local = valor;
+      console.log(this.cuit_correcto_local);
+      this.$emit('changecuitcorrecto', this.cuit_correcto_local);
+    },
+    actaulizar_contenido_text_area_cuit: function actaulizar_contenido_text_area_cuit(value) {
+      if (this.$props.obs_cuit.length <= 2) {
+        this.clase_text_area_cuit = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_cuit_text_area = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_cuit_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_cuit.length >= 50) {
+        this.clase_text_area_cuit = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_cuit_text_area = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_cuit_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_cuit !== '' && this.$props.obs_cuit.length <= 30 && this.$props.obs_cuit.length >= 3) {
+        this.clase_text_area_cuit = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_cuit_text_area = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_cuit_text_area = 'text-green-500 text-xs italic';
+      }
+
+      this.$emit('changeobscuit', this.$props.obs_cuit);
+    },
+    cambio_input_cuit: function cambio_input_cuit() {
+      if (this.cuit.length <= 4) {
+        this.clase_de_input_cuit = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_cuit = 'Campo Incorrecta - debe ser mayor a 3 carcteres';
+        this.clase_cartel_nota_cuit = 'text-red-500 text-xs italic';
+        this.cuit_valido_local = false;
+      }
+
+      if (this.cuit.length >= 40) {
+        this.clase_de_input_cuit = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_cuit = 'Campo Incorrecta - debe tener menos de 30 caracteres';
+        this.clase_cartel_nota_cuit = 'text-red-500 text-xs italic';
+        this.cuit_valido_local = false;
+      }
+
+      if (this.cuit !== '' && this.cuit.length <= 30 && this.cuit.length >= 3) {
+        this.clase_de_input_cuit = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_cuit = 'Campo Correcto';
+        this.clase_cartel_nota_cuit = 'text-green-500 text-xs italic';
+        this.cuit_valido_local = true;
+      }
+
+      this.$emit('changecuitvalido', this.cuit_valido_local);
+    }
   }
 });
 
@@ -22881,8 +23060,74 @@ __webpack_require__.r(__webpack_exports__);
   props: ['email', 'email_valido', 'email_correcto', 'obs_email', 'obs_email_valido', 'evaluacion'],
   data: function data() {
     return {
-      saludos: 'Saludame qweqweqwe'
+      clase_de_input_email: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_email: 'text-green-500 text-xs italic',
+      cartel_nota_campo: 'Campo Correcto',
+      email_correcto_local: this.$props.email_correcto,
+      email_valido_local: this.$props.email_valido,
+      obs_email_valido_local: this.$props.obs_email_valido,
+      clase_text_area_email: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_evaluacion_email_text_area: 'text-green-500 text-xs italic',
+      cartel_nota_evaluacion_email_text_area: 'Observacion Correcta'
     };
+  },
+  methods: {
+    actaulizar_variable_email: function actaulizar_variable_email(valor) {
+      this.email_correcto_local = valor;
+      console.log(this.email_correcto_local);
+      this.$emit('changeemailcorrecto', this.email_correcto_local);
+    },
+    actaulizar_contenido_text_area: function actaulizar_contenido_text_area(value) {
+      if (this.$props.obs_email.length <= 2) {
+        this.clase_text_area_email = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_email_text_area = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_email_text_area = 'text-red-500 text-xs italic';
+        this.obs_email_valido_local = false;
+        this.$emit('changeobsemailvalido', this.obs_email_valido_local);
+      }
+
+      if (this.$props.obs_email.length >= 50) {
+        this.clase_text_area_email = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_email_text_area = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_email_text_area = 'text-red-500 text-xs italic';
+        this.obs_email_valido_local = false;
+        this.$emit('changeobsemailvalido', this.obs_email_valido_local);
+      }
+
+      if (this.$props.obs_email !== '' && this.$props.obs_email.length <= 30 && this.$props.obs_email.length >= 3) {
+        this.clase_text_area_email = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_email_text_area = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_email_text_area = 'text-green-500 text-xs italic';
+        this.obs_email_valido_local = true;
+        this.$emit('changeobsemailvalido', this.obs_email_valido_local);
+      }
+
+      this.$emit('changeobsemail', this.$props.obs_email);
+    },
+    cambio_input_email: function cambio_input_email() {
+      if (this.email.length <= 4) {
+        this.clase_de_input_email = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo = 'Campo Incorrecta - debe ser mayor a 3 carcteres';
+        this.clase_cartel_nota_email = 'text-red-500 text-xs italic';
+        this.email_valido_local = false;
+      }
+
+      if (this.email.length >= 40) {
+        this.clase_de_input_email = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo = 'Campo Incorrecta - debe tener menos de 30 caracteres';
+        this.clase_cartel_nota_email = 'text-red-500 text-xs italic';
+        this.email_valido_local = false;
+      }
+
+      if (this.email !== '' && this.email.length <= 30 && this.email.length >= 3) {
+        this.clase_de_input_email = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo = 'Campo Correcto';
+        this.clase_cartel_nota_email = 'text-green-500 text-xs italic';
+        this.email_valido_local = true;
+      }
+
+      this.$emit('changeemailvalido', this.email_valido_local);
+    }
   }
 });
 
@@ -22903,8 +23148,40 @@ __webpack_require__.r(__webpack_exports__);
   props: ['inscripciondgr', 'inscripciondgr_valido', 'inscripciondgr_correcto', 'obs_inscripciondgr', 'obs_inscripciondgr_valido', 'evaluacion'],
   data: function data() {
     return {
-      saludos: 'Saludame qweqweqwe'
+      inscripciondgr_correcto_local: this.$props.tiposociedad_correcto,
+      tiposociedad_valido_local: this.$props.tiposociedad_valido,
+      clase_text_area_inscripciondgr: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_evaluacion_inscripciondgr_text_area: 'text-green-500 text-xs italic',
+      cartel_nota_evaluacion_inscripciondgr_text_area: 'Observacion Correcta'
     };
+  },
+  methods: {
+    actaulizar_variable_inscripciondgr: function actaulizar_variable_inscripciondgr(valor) {
+      this.inscripciondgr_correcto_local = valor;
+      console.log(this.inscripciondgr_correcto_local);
+      this.$emit('changeinscripciondgrcorrecto', this.inscripciondgr_correcto_local);
+    },
+    actaulizar_contenido_text_area_inscripciondgr: function actaulizar_contenido_text_area_inscripciondgr(value) {
+      if (this.$props.obs_inscripciondgr.length <= 2) {
+        this.clase_text_area_inscripciondgr = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_inscripciondgr_text_area = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_inscripciondgr_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_inscripciondgr.length >= 50) {
+        this.clase_text_area_inscripciondgr = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_inscripciondgr_text_area = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_inscripciondgr_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_inscripciondgr !== '' && this.$props.obs_inscripciondgr.length <= 30 && this.$props.obs_inscripciondgr.length >= 3) {
+        this.clase_text_area_inscripciondgr = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_inscripciondgr_text_area = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_inscripciondgr_text_area = 'text-green-500 text-xs italic';
+      }
+
+      this.$emit('changeobsinscripciondgr', this.$props.obs_inscripciondgr);
+    }
   }
 });
 
@@ -22925,8 +23202,67 @@ __webpack_require__.r(__webpack_exports__);
   props: ['numeroproductor', 'numeroproductor_valido', 'numeroproductor_correcto', 'obs_numeroproductor', 'obs_numeroproductor_valido', 'evaluacion'],
   data: function data() {
     return {
-      saludos: 'Saludame qweqweqwe'
+      clase_de_input_numprod: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_numprod: 'text-green-500 text-xs italic',
+      cartel_nota_campo_numprod: 'Campo Correcto',
+      numeroproductor_correcto_local: this.$props.numeroproductor_correcto,
+      numeroproductor_valido_local: this.$props.numeroproductor_valido,
+      clase_text_area_numprod: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_evaluacion_numprod_text_area: 'text-green-500 text-xs italic',
+      cartel_nota_evaluacion_numprod_text_area: 'Observacion Correcta'
     };
+  },
+  methods: {
+    actaulizar_variable_numprod: function actaulizar_variable_numprod(valor) {
+      this.numeroproductor_correcto_local = valor;
+      console.log(this.numeroproductor_correcto_local);
+      this.$emit('changenumprodcorrecto', this.numeroproductor_correcto_local);
+    },
+    actaulizar_contenido_text_area_numprod: function actaulizar_contenido_text_area_numprod(value) {
+      if (this.$props.obs_numeroproductor.length <= 2) {
+        this.clase_text_area_numprod = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_numprod_text_area = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_numprod_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_numeroproductor.length >= 50) {
+        this.clase_text_area_numprod = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_numprod_text_area = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_numprod_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_numeroproductor !== '' && this.$props.obs_numeroproductor.length <= 30 && this.$props.obs_numeroproductor.length >= 3) {
+        this.clase_text_area_numprod = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_numprod_text_area = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_numprod_text_area = 'text-green-500 text-xs italic';
+      }
+
+      this.$emit('changeobsnumprod', this.$props.obs_numeroproductor);
+    },
+    cambio_input_numprod: function cambio_input_numprod() {
+      if (this.numeroproductor.length <= 4) {
+        this.clase_de_input_numprod = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_numprod = 'Campo Incorrecta - debe ser mayor a 3 carcteres';
+        this.clase_cartel_nota_numprod = 'text-red-500 text-xs italic';
+        this.numeroproductor_valido_local = false;
+      }
+
+      if (this.numeroproductor.length >= 40) {
+        this.clase_de_input_numprod = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_numprod = 'Campo Incorrecta - debe tener menos de 30 caracteres';
+        this.clase_cartel_nota_numprod = 'text-red-500 text-xs italic';
+        this.numeroproductor_valido_local = false;
+      }
+
+      if (this.numeroproductor !== '' && this.numeroproductor.length <= 30 && this.numeroproductor.length >= 3) {
+        this.clase_de_input_numprod = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_numprod = 'Campo Correcto';
+        this.clase_cartel_nota_numprod = 'text-green-500 text-xs italic';
+        this.numeroproductor_valido_local = true;
+      }
+
+      this.$emit('changenumprodvalido', this.numeroproductor_valido_local);
+    }
   }
 });
 
@@ -22947,17 +23283,90 @@ __webpack_require__.r(__webpack_exports__);
   props: ['razon_social', 'razon_social_valido', 'razon_social_correcto', 'obs_razon_social', 'obs_razon_social_valido', 'evaluacion'],
   data: function data() {
     return {
-      saludos: 'Saludame qweqweqwe'
+      clase_de_input_razon_social: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_campo: 'Campo Correcto',
+      clase_cartel_nota_campo: 'text-green-500 text-xs italic',
+      clase_text_area: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_evaluacion: 'Observacion Correcta',
+      clase_cartel_nota_evaluacion: 'text-green-500 text-xs italic',
+      razon_social_valido_local: this.$props.razon_social_valido,
+      razon_social_correcto_local: this.$props.razon_social_correcto,
+      obs_razon_social_valido_local: this.$props.obs_razon_social_valido //border-green-500
+
     };
   },
   methods: {
-    actaulizar_variables_correctas: function actaulizar_variables_correctas(que_cambio, valor) {
-      if (que_cambio == 1) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.razon_social_correcto = true;
-        if (valor == false) this.form.razon_social_correcto = false;
-        if (valor == 'nada') this.form.razon_social_correcto = 'nada';
+    actaulizar_variable_razonsocial: function actaulizar_variable_razonsocial(valor) {
+      this.razon_social_correcto_local = valor;
+      this.$emit('changerazonsocialcorrecto', this.razon_social_correcto_local); // if(valor == true)
+      // {
+      //     this.clase_de_input_razon_social = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+      //     this.cartel_nota_campo = 'Campo Correcto';
+      //     this.clase_cartel_nota_campo = 'text-green-500 text-xs italic';
+      // }
+      // if(!valor)
+      // {
+      //     this.clase_de_input_razon_social = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+      //     this.cartel_nota_campo = 'Campo Incorrecto';
+      //     this.clase_cartel_nota_campo = 'text-red-500 text-xs italic';
+      // }
+      // if(valor === 'nada')
+      // {
+      //     this.cartel_nota_campo = 'Campo Sin evaluar';
+      //     this.clase_cartel_nota_campo = 'text-gray-500 text-xs italic';
+      //     this.clase_de_input_razon_social =  'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+      // }
+    },
+    updateValue: function updateValue(value) {
+      if (this.$props.obs_razon_social.length <= 2) {
+        this.clase_text_area = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion = 'text-red-500 text-xs italic';
+        this.obs_razon_social_valido_local = false;
+        this.$emit('changeobsrazonsocialvalido', false);
       }
+
+      if (this.$props.obs_razon_social.length >= 50) {
+        this.clase_text_area = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion = 'text-red-500 text-xs italic';
+        this.obs_razon_social_valido_local = false;
+        this.$emit('changeobsrazonsocialvalido', false);
+      }
+
+      if (this.$props.obs_razon_social !== '' && this.$props.obs_razon_social.length <= 30 && this.$props.obs_razon_social.length >= 3) {
+        this.clase_text_area = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion = 'text-green-500 text-xs italic';
+        this.obs_razon_social_valido_local = false;
+        this.$emit('changeobsrazonsocialvalido', true);
+      }
+
+      this.$emit('changeobsrazonsocial', this.$props.obs_razon_social);
+    },
+    cambio_input_razonsocial: function cambio_input_razonsocial() {
+      if (this.razon_social.length <= 4) {
+        this.clase_de_input_razon_social = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo = 'Valor Incorrecta - debe ser mayor a 3 carcteres';
+        this.clase_cartel_nota_campo = 'text-red-500 text-xs italic';
+        this.razon_social_valido_local = false;
+      }
+
+      if (this.razon_social.length >= 40) {
+        this.clase_de_input_razon_social = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo = 'Valor Incorrecta - debe tener menos de 30 caracteres';
+        this.clase_cartel_nota_campo = 'text-red-500 text-xs italic';
+        this.razon_social_valido_local = false;
+      }
+
+      if (this.razon_social !== '' && this.razon_social.length <= 30 && this.razon_social.length >= 3) {
+        this.clase_de_input_razon_social = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo = 'Valor Correcto';
+        this.clase_cartel_nota_campo = 'text-green-500 text-xs italic';
+        this.razon_social_valido_local = true;
+      }
+
+      this.$emit('changerazonsocialvalido', this.razon_social_valido_local);
     }
   }
 });
@@ -22979,8 +23388,214 @@ __webpack_require__.r(__webpack_exports__);
   props: ['tiposociedad', 'tiposociedad_valido', 'tiposociedad_correcto', 'obs_tiposociedad', 'obs_tiposociedad_valido', 'evaluacion'],
   data: function data() {
     return {
-      saludos: 'Saludame qweqweqwe'
+      clase_de_input_tiposociedad: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_tiposociedad: 'text-green-500 text-xs italic',
+      cartel_nota_campo_tiposociedad: 'Campo Correcto',
+      tiposociedad_correcto_local: this.$props.tiposociedad_correcto,
+      tiposociedad_valido_local: this.$props.tiposociedad_valido,
+      clase_text_area_tiposociedad: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      clase_cartel_nota_evaluacion_tiposociedad_text_area: 'text-green-500 text-xs italic',
+      cartel_nota_evaluacion_tiposociedad_text_area: 'Observacion Correcta'
     };
+  },
+  methods: {
+    actaulizar_variable_tiposociedad: function actaulizar_variable_tiposociedad(valor) {
+      this.tiposociedad_correcto_local = valor;
+      console.log(this.tiposociedad_correcto_local);
+      this.$emit('changetiposociedadcorrecto', this.tiposociedad_correcto_local);
+    },
+    actaulizar_contenido_text_area_tiposociedad: function actaulizar_contenido_text_area_tiposociedad(value) {
+      if (this.$props.obs_tiposociedad.length <= 2) {
+        this.clase_text_area_tiposociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_tiposociedad_text_area = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_tiposociedad_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_tiposociedad.length >= 50) {
+        this.clase_text_area_tiposociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_tiposociedad_text_area = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_tiposociedad_text_area = 'text-red-500 text-xs italic';
+      }
+
+      if (this.$props.obs_tiposociedad !== '' && this.$props.obs_tiposociedad.length <= 30 && this.$props.obs_tiposociedad.length >= 3) {
+        this.clase_text_area_tiposociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_tiposociedad_text_area = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_tiposociedad_text_area = 'text-green-500 text-xs italic';
+      }
+
+      this.$emit('changeobstiposociedad', this.$props.obs_tiposociedad);
+    },
+    cambio_input_tiposociedad: function cambio_input_tiposociedad() {
+      if (this.tiposociedad.length <= 4) {
+        this.clase_de_input_tiposociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_tiposociedad = 'Campo Incorrecta - debe ser mayor a 3 carcteres';
+        this.clase_cartel_nota_tiposociedad = 'text-red-500 text-xs italic';
+        this.tiposociedad_valido_local = false;
+      }
+
+      if (this.tiposociedad.length >= 40) {
+        this.clase_de_input_tiposociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_tiposociedad = 'Campo Incorrecta - debe tener menos de 30 caracteres';
+        this.clase_cartel_nota_tiposociedad = 'text-red-500 text-xs italic';
+        this.tiposociedad_valido_local = false;
+      }
+
+      if (this.tiposociedad !== '' && this.tiposociedad.length <= 30 && this.tiposociedad.length >= 3) {
+        this.clase_de_input_tiposociedad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_campo_tiposociedad = 'Campo Correcto';
+        this.clase_cartel_nota_tiposociedad = 'text-green-500 text-xs italic';
+        this.tiposociedad_valido_local = true;
+      }
+
+      this.$emit('changetiposociedadvalido', this.tiposociedad_valido_local);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=script&lang=js":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=script&lang=js ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Jetstream/DialogModal */ "./resources/js/Jetstream/DialogModal.vue");
+/* harmony import */ var _Jetstream_altas_CardProductor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Jetstream/altas/CardProductor */ "./resources/js/Jetstream/altas/CardProductor.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorRazonSocial__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorRazonSocial */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorRazonSocial.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorEmail__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorEmail */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorEmail.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorCuit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorCuit */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorCuit.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorNumProd__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorNumProd */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorNumProd.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorTipoSociedad__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorTipoSociedad */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorTipoSociedad.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorInscripcionDGR__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorConstanciaSociedad__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorBotones__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorBotones */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue");
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['link_volver', 'titulo_boton_volver', 'titulo_boton_guardar', 'titulo_pagina', 'razon_social', 'razon_social_valido', 'razon_social_correcto', 'obs_razon_social', 'obs_razon_social_valido', 'email', 'email_valido', 'email_correcto', 'obs_email', 'obs_email_valido', 'cuit', 'cuit_valido', 'cuit_correcto', 'obs_cuit', 'obs_cuit_valido', 'numeroproductor', 'numeroproductor_valido', 'numeroproductor_correcto', 'obs_numeroproductor', 'obs_numeroproductor_valido', 'tiposociedad', 'tiposociedad_valido', 'tiposociedad_correcto', 'obs_tiposociedad', 'obs_tiposociedad_valido', 'inscripciondgr', 'inscripciondgr_valido', 'inscripciondgr_correcto', 'obs_inscripciondgr', 'obs_inscripciondgr_valido', 'constaciasociedad', 'constaciasociedad_valido', 'constaciasociedad_correcto', 'obs_constaciasociedad', 'obs_constaciasociedad_valido', 'evaluacion', 'id'],
+  components: {
+    JetDialogModal: _Jetstream_DialogModal__WEBPACK_IMPORTED_MODULE_0__.default,
+    CardProductor: _Jetstream_altas_CardProductor__WEBPACK_IMPORTED_MODULE_1__.default,
+    PaginaUnoDatosProductorRazonSocial: _Pages_Productors_PaginaUnoDatosProductorRazonSocial__WEBPACK_IMPORTED_MODULE_2__.default,
+    PaginaUnoDatosProductorEmail: _Pages_Productors_PaginaUnoDatosProductorEmail__WEBPACK_IMPORTED_MODULE_3__.default,
+    PaginaUnoDatosProductorCuit: _Pages_Productors_PaginaUnoDatosProductorCuit__WEBPACK_IMPORTED_MODULE_4__.default,
+    PaginaUnoDatosProductorNumProd: _Pages_Productors_PaginaUnoDatosProductorNumProd__WEBPACK_IMPORTED_MODULE_5__.default,
+    PaginaUnoDatosProductorTipoSociedad: _Pages_Productors_PaginaUnoDatosProductorTipoSociedad__WEBPACK_IMPORTED_MODULE_6__.default,
+    PaginaUnoDatosProductorInscripcionDGR: _Pages_Productors_PaginaUnoDatosProductorInscripcionDGR__WEBPACK_IMPORTED_MODULE_7__.default,
+    PaginaUnoDatosProductorConstanciaSociedad: _Pages_Productors_PaginaUnoDatosProductorConstanciaSociedad__WEBPACK_IMPORTED_MODULE_8__.default,
+    PaginaUnoDatosProductorBotones: _Pages_Productors_PaginaUnoDatosProductorBotones__WEBPACK_IMPORTED_MODULE_9__.default
+  },
+  data: function data() {
+    return {
+      saludos: 'Saludame qweqweqwe',
+      mostrar_modal_datos_ya_guardados: false,
+      modal_tittle: '',
+      modal_body: '',
+      form_pagina: {
+        razon_social: this.$props.razon_social,
+        razon_social_valido: this.$props.razon_social_valido,
+        razon_social_correcto: this.$props.razon_social_correcto,
+        obs_razon_social: this.$props.obs_razon_social,
+        obs_razon_social_valido: this.$props.obs_razon_social_valido,
+        email: this.$props.email,
+        email_correcto: this.$props.email_correcto,
+        email_valido: this.$props.email_valido,
+        obs_email: this.$props.obs_email,
+        obs_email_valido: this.$props.obs_email_valido,
+        cuit_valido: this.$props.cuit_valido,
+        cuit_correcto: this.$props.cuit_correcto,
+        obs_cuit: this.$props.obs_cuit,
+        numeroproductor_valido: this.$props.numeroproductor_valido,
+        numeroproductor_correcto: this.$props.numeroproductor_correcto,
+        obs_numeroproductor: this.$props.obs_numeroproductor,
+        tiposociedad_valido: this.$props.tiposociedad_valido,
+        tiposociedad_correcto: this.$props.tiposociedad_correcto,
+        obs_tiposociedad: this.$props.obs_tiposociedad,
+        inscripciondgr_valido: this.$props.inscripciondgr_valido,
+        inscripciondgr_correcto: this.$props.inscripciondgr_correcto,
+        obs_inscripciondgr: this.$props.obs_inscripciondgr,
+        constanciasociedad_valido: this.$props.constanciasociedad_valido,
+        constanciasociedad_correcto: this.$props.constanciasociedad_correcto,
+        obs_constanciasociedad: this.$props.obs_constanciasociedad
+      }
+    };
+  },
+  methods: {
+    cerrar_modal_datos_uno: function cerrar_modal_datos_uno() {
+      this.mostrar_modal_datos_ya_guardados = false;
+    },
+    updaterazonsocialvalido: function updaterazonsocialvalido(newValue) {
+      this.form_pagina.razon_social_valido = newValue; //tengo que enviarsela al padre
+    },
+    updaterazonsocialcorrecto: function updaterazonsocialcorrecto(newValue) {
+      this.form_pagina.razon_social_correcto = newValue; //tengo que enviarsela al padre
+    },
+    updateobsrazonsocial: function updateobsrazonsocial(newValue) {
+      this.form_pagina.obs_razon_social = newValue; //tengo que enviarsela al padre
+    },
+    updateobs_razon_social_valido: function updateobs_razon_social_valido(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.obs_razon_social_valido = newValue; //tengo que enviarsela al padre
+    },
+    updateemailvalido: function updateemailvalido(newValue) {
+      this.form_pagina.email_valido = newValue; //tengo que enviarsela al padre
+    },
+    updateemailcorrecto: function updateemailcorrecto(newValue) {
+      this.form_pagina.email_correcto = newValue; //tengo que enviarsela al padre
+    },
+    updateobs_email: function updateobs_email(newValue) {
+      this.form_pagina.obs_email = newValue; //tengo que enviarsela al padre
+    },
+    updateobs_email_valido: function updateobs_email_valido(newValue) {
+      this.form_pagina.obs_email_valido = newValue; //tengo que enviarsela al padre
+    },
+    updatecuitvalido: function updatecuitvalido(newValue) {
+      this.form_pagina.cuit_valido = newValue; //tengo que enviarsela al padre
+    },
+    updatecuitcorrecto: function updatecuitcorrecto(newValue) {
+      this.form_pagina.cuit_correcto = newValue; //tengo que enviarsela al padre
+    },
+    updateobscuit: function updateobscuit(newValue) {
+      this.form_pagina.obs_cuit = newValue; //tengo que enviarsela al padre
+    },
+    updatenumprodvalido: function updatenumprodvalido(newValue) {
+      this.form_pagina.numeroproductor_valido = newValue; //tengo que enviarsela al padre
+    },
+    updatenumprodcorrecto: function updatenumprodcorrecto(newValue) {
+      this.form_pagina.numeroproductor_correcto = newValue; //tengo que enviarsela al padre
+    },
+    updateobsnumprod: function updateobsnumprod(newValue) {
+      this.form_pagina.obs_numeroproductor = newValue; //tengo que enviarsela al padre
+    },
+    updatetiposociedadvalido: function updatetiposociedadvalido(newValue) {
+      this.form_pagina.tiposociedad_valido = newValue; //tengo que enviarsela al padre
+    },
+    updatetiposociedadcorrecto: function updatetiposociedadcorrecto(newValue) {
+      this.form_pagina.tiposociedad_correcto = newValue; //tengo que enviarsela al padre
+    },
+    updateobstiposociedad: function updateobstiposociedad(newValue) {
+      this.form_pagina.obs_tiposociedad = newValue; //tengo que enviarsela al padre
+    },
+    updateconstanciasociedadcorrecto: function updateconstanciasociedadcorrecto(newValue) {
+      this.form_pagina.constanciasociedad_correcto = newValue; //tengo que enviarsela al padre
+    },
+    updateobsconstanciasociedad: function updateobsconstanciasociedad(newValue) {
+      this.form_pagina.obs_constanciasociedad = newValue; //tengo que enviarsela al padre
+    }
   }
 });
 
@@ -47295,19 +47910,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_CardTotal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CardTotal");
 
-  var _component_PaginaUnoDatosProductorRazonSocial = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorRazonSocial");
-
-  var _component_PaginaUnoDatosProductorEmail = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorEmail");
-
-  var _component_PaginaUnoDatosProductorCuit = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorCuit");
-
-  var _component_PaginaUnoDatosProductorNumProd = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorNumProd");
-
-  var _component_PaginaUnoDatosProductorTipoSociedad = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorTipoSociedad");
-
-  var _component_PaginaUnoDatosProductorInscripcionDGR = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorInscripcionDGR");
-
-  var _component_PaginaUnoDatosProductorConstanciaSociedad = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorConstanciaSociedad");
+  var _component_PaginaUnoDatosProductores = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductores");
 
   var _component_inertia_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("inertia-link");
 
@@ -47430,70 +48033,51 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         clase_inf: 'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'
       }, null, 8
       /* PROPS */
-      , ["progreso", "aprobado", "reprobado"])]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <PasoUnoEdit\r\n\t\t\t\t:razon_social=\"form.razon_social\"\r\n\t\t\t\t:razon_social_valido=\"form.razon_social_valido\"\r\n\t\t\t\t:razon_social_correcto=\"form.razon_social_correcto\"\r\n\t\t\t\t:obs_razon_social=\"form.obs_razon_social\"\r\n\t\t\t\t:obs_razon_social_valido=\"form.obs_razon_social_valido\"\r\n\r\n\t\t\t\t:email=\"form.email\"\r\n\t\t\t\t:email_valido=\"form.email_valido\"\r\n\t\t\t\t:email_correcto=\"form.email_correcto\"\r\n\t\t\t\t:obs_email=\"form.obs_email\"\r\n\t\t\t\t:obs_email_valido=\"form.obs_email_valido\"\r\n\t\t\t\t></PasoUnoEdit> "), _hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorRazonSocial, {
+      , ["progreso", "aprobado", "reprobado"])]), _hoisted_18, _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <PasoUnoEdit\r\n\t\t\t\t:razon_social=\"form.razon_social\"\r\n\t\t\t\t:razon_social_valido=\"form.razon_social_valido\"\r\n\t\t\t\t:razon_social_correcto=\"form.razon_social_correcto\"\r\n\t\t\t\t:obs_razon_social=\"form.obs_razon_social\"\r\n\t\t\t\t:obs_razon_social_valido=\"form.obs_razon_social_valido\"\r\n\r\n\t\t\t\t:email=\"form.email\"\r\n\t\t\t\t:email_valido=\"form.email_valido\"\r\n\t\t\t\t:email_correcto=\"form.email_correcto\"\r\n\t\t\t\t:obs_email=\"form.obs_email\"\r\n\t\t\t\t:obs_email_valido=\"form.obs_email_valido\"\r\n\t\t\t\t></PasoUnoEdit> "), _hoisted_20, _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductores, {
+        link_volver: _ctx.route('formulario-alta.index'),
+        titulo_boton_volver: 'volver',
+        titulo_boton_guardar: 'Guardar Datos del Productor',
+        titulo_pagina: 'Pagina datos de Productor',
         razon_social: $data.form.razon_social,
         razon_social_valido: $data.form.razon_social_valido,
         razon_social_correcto: $data.form.razon_social_correcto,
         obs_razon_social: $data.form.obs_razon_social,
         obs_razon_social_valido: $data.form.obs_razon_social_valido,
-        evaluacion: true
-      }, null, 8
-      /* PROPS */
-      , ["razon_social", "razon_social_valido", "razon_social_correcto", "obs_razon_social", "obs_razon_social_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorEmail, {
         email: $data.form.email,
         email_valido: $data.form.email_valido,
         email_correcto: $data.form.email_correcto,
         obs_email: $data.form.obs_email,
         obs_email_valido: $data.form.obs_email_valido,
-        evaluacion: true
-      }, null, 8
-      /* PROPS */
-      , ["email", "email_valido", "email_correcto", "obs_email", "obs_email_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorCuit, {
         cuit: $data.form.cuit,
         cuit_valido: $data.form.cuit_valido,
         cuit_correcto: $data.form.cuit_correcto,
         obs_cuit: $data.form.obs_cuit,
         obs_cuit_valido: $data.form.obs_cuit_valido,
-        evaluacion: true
-      }, null, 8
-      /* PROPS */
-      , ["cuit", "cuit_valido", "cuit_correcto", "obs_cuit", "obs_cuit_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorNumProd, {
         numeroproductor: $data.form.numeroproductor,
         numeroproductor_valido: $data.form.numeroproductor_valido,
         numeroproductor_correcto: $data.form.numeroproductor_correcto,
         obs_numeroproductor: $data.form.obs_numeroproductor,
         obs_numeroproductor_valido: $data.form.obs_numeroproductor_valido,
-        evaluacion: true
-      }, null, 8
-      /* PROPS */
-      , ["numeroproductor", "numeroproductor_valido", "numeroproductor_correcto", "obs_numeroproductor", "obs_numeroproductor_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorTipoSociedad, {
         tiposociedad: $data.form.tiposociedad,
         tiposociedad_valido: $data.form.tiposociedad_valido,
         tiposociedad_correcto: $data.form.tiposociedad_correcto,
         obs_tiposociedad: $data.form.obs_tiposociedad,
         obs_tiposociedad_valido: $data.form.obs_tiposociedad_valido,
-        evaluacion: true
-      }, null, 8
-      /* PROPS */
-      , ["tiposociedad", "tiposociedad_valido", "tiposociedad_correcto", "obs_tiposociedad", "obs_tiposociedad_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorInscripcionDGR, {
         inscripciondgr: $data.form.inscripciondgr,
         inscripciondgr_valido: $data.form.inscripciondgr_valido,
         inscripciondgr_correcto: $data.form.inscripciondgr_correcto,
         obs_inscripciondgr: $data.form.obs_inscripciondgr,
         obs_inscripciondgr_valido: $data.form.obs_inscripciondgr_valido,
-        evaluacion: true
-      }, null, 8
-      /* PROPS */
-      , ["inscripciondgr", "inscripciondgr_valido", "inscripciondgr_correcto", "obs_inscripciondgr", "obs_inscripciondgr_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorConstanciaSociedad, {
         constaciasociedad: $data.form.constaciasociedad,
         constaciasociedad_valido: $data.form.constaciasociedad_valido,
         constaciasociedad_correcto: $data.form.constaciasociedad_correcto,
         obs_constaciasociedad: $data.form.obs_constaciasociedad,
         obs_constaciasociedad_valido: $data.form.obs_constaciasociedad_valido,
-        evaluacion: true
+        evaluacion: true,
+        id: _ctx.$props.productor.id
       }, null, 8
       /* PROPS */
-      , ["constaciasociedad", "constaciasociedad_valido", "constaciasociedad_correcto", "obs_constaciasociedad", "obs_constaciasociedad_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+      , ["link_volver", "razon_social", "razon_social_valido", "razon_social_correcto", "obs_razon_social", "obs_razon_social_valido", "email", "email_valido", "email_correcto", "obs_email", "obs_email_valido", "cuit", "cuit_valido", "cuit_correcto", "obs_cuit", "obs_cuit_valido", "numeroproductor", "numeroproductor_valido", "numeroproductor_correcto", "obs_numeroproductor", "obs_numeroproductor_valido", "tiposociedad", "tiposociedad_valido", "tiposociedad_correcto", "obs_tiposociedad", "obs_tiposociedad_valido", "inscripciondgr", "inscripciondgr_valido", "inscripciondgr_correcto", "obs_inscripciondgr", "obs_inscripciondgr_valido", "constaciasociedad", "constaciasociedad_valido", "constaciasociedad_correcto", "obs_constaciasociedad", "obs_constaciasociedad_valido", "id"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
         id: "razon_social",
         name: "razon_social",
         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
@@ -52025,6 +52609,75 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=template&id=5d58f942":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=template&id=5d58f942 ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+var _hoisted_2 = {
+  "class": "px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_jet_dialog_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-dialog-modal");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_dialog_modal, {
+    show: $data.mostrar_modal_datos_ya_guardados,
+    onClose: $options.cerrar_modal_datos_uno
+  }, {
+    title: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.modal_tittle), 1
+      /* TEXT */
+      )];
+    }),
+    content: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.modal_body), 1
+      /* TEXT */
+      )];
+    }),
+    footer: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+        onClick: _cache[1] || (_cache[1] = function () {
+          return $options.cerrar_modal_datos_uno && $options.cerrar_modal_datos_uno.apply($options, arguments);
+        })
+      }, " Ok ")];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["show", "onClose"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    type: "button",
+    "class": " text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700",
+    onClick: _cache[2] || (_cache[2] = function () {
+      return $options.guardar_avnces_uno && $options.guardar_avnces_uno.apply($options, arguments);
+    })
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.titulo_boton_guardar), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    href: $props.link_volver
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.titulo_boton_volver), 1
+  /* TEXT */
+  )], 8
+  /* PROPS */
+  , ["href"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.razon_social) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.razon_social_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.razon_social_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.obs_razon_social) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.obs_razon_social_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.email) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.email_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.email_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.obs_email) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.obs_email_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.cuit) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.cuit_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.cuit_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.obs_cuit) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.obs_cuit_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.numeroproductor) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.numeroproductor_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.numeroproductor_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.obs_numeroproductor) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$props.obs_numeroproductor_valido), 1
+  /* TEXT */
+  )]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue?vue&type=template&id=7f91fa91":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue?vue&type=template&id=7f91fa91 ***!
@@ -52053,70 +52706,64 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_4 = {
-  "class": "text-red-500 text-xs italic"
-};
-var _hoisted_5 = {
+  key: 0,
   "class": "flex"
 };
-var _hoisted_6 = {
+var _hoisted_5 = {
   "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-700"
 }, "Correcto?", -1
 /* HOISTED */
 );
 
-var _hoisted_8 = {
+var _hoisted_7 = {
   "class": "mt-2"
 };
-var _hoisted_9 = {
+var _hoisted_8 = {
   "class": "inline-flex items-center"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
 }, "Si", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "inline-flex items-center ml-6"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
 }, "No", -1
 /* HOISTED */
 );
 
-var _hoisted_13 = {
+var _hoisted_12 = {
   "class": "inline-flex items-center ml-6"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
 }, "Sin evaluar", -1
 /* HOISTED */
 );
 
-var _hoisted_15 = {
+var _hoisted_14 = {
   "class": "w-full md:w-2/3 px-3"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "obs_constaciasociedad"
 }, "Observación:", -1
 /* HOISTED */
 );
 
-var _hoisted_17 = {
-  "class": "text-green-500 text-xs italic"
-};
-
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "w-full md:w-1/2 px-3"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("object", {
   data: "http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf",
@@ -52130,70 +52777,66 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-    id: "constaciasociedad",
-    name: "constaciasociedad",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $props.constaciasociedad = $event;
-    }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.constaciasociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_4, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.constaciasociedad_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_constaciasociedad_correcto",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $props.constaciasociedad_correcto = $event;
     }),
     value: "true",
-    onChange: _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.calculo_de_porcentajes(6, true);
+    onChange: _cache[2] || (_cache[2] = function ($event) {
+      return $options.actaulizar_variable_constanciasociedad(true);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.constaciasociedad_correcto]]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.constaciasociedad_correcto]]), _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_constaciasociedad_correcto",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $props.constaciasociedad_correcto = $event;
     }),
     value: "false",
-    onChange: _cache[5] || (_cache[5] = function ($event) {
-      return _ctx.calculo_de_porcentajes(6, false);
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_constanciasociedad(false);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.constaciasociedad_correcto]]), _hoisted_12]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.constaciasociedad_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_constaciasociedad_correcto",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $props.constaciasociedad_correcto = $event;
     }),
     value: "nada",
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return _ctx.calculo_de_porcentajes(6, 'nada');
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_constanciasociedad('nada');
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.constaciasociedad_correcto]]), _hoisted_14])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.constaciasociedad_correcto]]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
     id: "obs_constaciasociedad",
     name: "obs_constaciasociedad",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $props.obs_constaciasociedad = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, "\r\n                    ", 512
+    "class": $data.clase_text_area_constaciasociedad,
+    onInput: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_contenido_text_area_constaciasociedad($event.target.value);
+    })
+  }, "\r\n                    ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_constaciasociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_constaciasociedad_text_area
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_constaciasociedad_text_area), 3
+  /* TEXT, CLASS */
+  )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_constaciasociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_17, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.obs_constaciasociedad_valido]])], 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.constaciasociedad_correcto]])])]), _hoisted_18]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.constaciasociedad_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.constaciasociedad) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.constaciasociedad_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.constaciasociedad_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_constaciasociedad) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_constaciasociedad_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
@@ -52211,44 +52854,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "w-full md:w-1/2 px-3"
-};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
-  "for": "email"
-}, "Cuit:", -1
+  "for": "cuit"
+}, "Cuit c:", -1
 /* HOISTED */
 );
 
-var _hoisted_3 = {
-  "class": "text-green-500 text-xs italic"
-};
-var _hoisted_4 = {
+var _hoisted_2 = {
   key: 0,
   "class": "flex"
 };
-var _hoisted_5 = {
+var _hoisted_3 = {
   "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-700"
 }, "Correcto?", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_5 = {
   "class": "mt-2"
 };
-var _hoisted_8 = {
+var _hoisted_6 = {
   "class": "inline-flex items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "inline-flex items-center ml-6"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "Si", -1
+}, "No", -1
 /* HOISTED */
 );
 
@@ -52258,56 +52905,62 @@ var _hoisted_10 = {
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "No", -1
-/* HOISTED */
-);
-
-var _hoisted_12 = {
-  "class": "inline-flex items-center ml-6"
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "ml-2"
 }, "Sin evaluar", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_12 = {
   "class": "w-full md:w-2/3 px-3"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
-  "for": "obs_email"
+  "for": "obs_cuit"
 }, "Observación:", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = {
-  "class": "text-green-500 text-xs italic"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     id: "cuit",
     name: "cuit",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $props.cuit = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.cuit]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_3, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.cuit_valido]]), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "class": $data.clase_de_input_cuit,
+    disabled: $props.evaluacion,
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $options.cambio_input_cuit($event.target.value);
+    })
+  }, null, 42
+  /* CLASS, PROPS, HYDRATE_EVENTS */
+  , ["disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.cuit]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_cuit
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_campo_cuit) + ".", 3
+  /* TEXT, CLASS */
+  ), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_cuit_correcto",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $props.cuit_correcto = $event;
     }),
     value: "true",
-    onChange: _cache[3] || (_cache[3] = function ($event) {
-      return $props.cuit_correcto = true;
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_cuit(true);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.cuit_correcto]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "name_cuit_correcto",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.cuit_correcto = $event;
+    }),
+    value: "false",
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_cuit(false);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
@@ -52315,42 +52968,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "radio",
     "class": "form-radio",
     name: "name_cuit_correcto",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $props.cuit_correcto = $event;
-    }),
-    value: "false",
-    onChange: _cache[5] || (_cache[5] = function ($event) {
-      return $props.cuit_correcto = false;
-    })
-  }, null, 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.cuit_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-    type: "radio",
-    "class": "form-radio",
-    name: "name_cuit_correcto",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $props.cuit_correcto = $event;
     }),
     value: "nada",
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return $props.cuit_correcto = 'nada';
+    onChange: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_variable_cuit('nada');
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.cuit_correcto]]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.cuit_correcto]]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
     id: "obs_cuit",
     name: "obs_cuit",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $props.obs_cuit = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, "\r\n                ", 512
+    "class": $data.clase_text_area_cuit,
+    onInput: _cache[10] || (_cache[10] = function ($event) {
+      return $options.actaulizar_contenido_text_area_cuit($event.target.value);
+    })
+  }, "\r\n                ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_cuit]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_cuit_text_area
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_cuit_text_area), 3
+  /* TEXT, CLASS */
+  )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_cuit]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_16, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.obs_cuit_valido]])], 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.cuit_correcto]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.cuit_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.cuit) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.cuit_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.cuit_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_cuit) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_cuit_valido), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
@@ -52368,44 +53015,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "w-full md:w-1/2 px-3"
-};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "email"
-}, "Email:", -1
+}, "Email c:", -1
 /* HOISTED */
 );
 
-var _hoisted_3 = {
-  "class": "text-green-500 text-xs italic"
-};
-var _hoisted_4 = {
+var _hoisted_2 = {
   key: 0,
   "class": "flex"
 };
-var _hoisted_5 = {
+var _hoisted_3 = {
   "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-700"
 }, "Correcto?", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_5 = {
   "class": "mt-2"
 };
-var _hoisted_8 = {
+var _hoisted_6 = {
   "class": "inline-flex items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "inline-flex items-center ml-6"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "Si", -1
+}, "No", -1
 /* HOISTED */
 );
 
@@ -52415,56 +53066,62 @@ var _hoisted_10 = {
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "No", -1
-/* HOISTED */
-);
-
-var _hoisted_12 = {
-  "class": "inline-flex items-center ml-6"
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "ml-2"
 }, "Sin evaluar", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_12 = {
   "class": "w-full md:w-2/3 px-3"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "obs_email"
 }, "Observación:", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = {
-  "class": "text-green-500 text-xs italic"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     id: "email",
     name: "email",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $props.email = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_3, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.email_valido]]), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "class": $data.clase_de_input_email,
+    disabled: $props.evaluacion,
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $options.cambio_input_email($event.target.value);
+    })
+  }, null, 42
+  /* CLASS, PROPS, HYDRATE_EVENTS */
+  , ["disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_email
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_campo) + ".", 3
+  /* TEXT, CLASS */
+  ), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_email_correcto",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $props.email_correcto = $event;
     }),
     value: "true",
-    onChange: _cache[3] || (_cache[3] = function ($event) {
-      return $props.email_correcto = true;
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_email(true);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.email_correcto]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "name_email_correcto",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.email_correcto = $event;
+    }),
+    value: "false",
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_email(false);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
@@ -52472,42 +53129,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "radio",
     "class": "form-radio",
     name: "name_email_correcto",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $props.email_correcto = $event;
-    }),
-    value: "false",
-    onChange: _cache[5] || (_cache[5] = function ($event) {
-      return $props.email_correcto = false;
-    })
-  }, null, 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.email_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-    type: "radio",
-    "class": "form-radio",
-    name: "name_email_correcto",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $props.email_correcto = $event;
     }),
     value: "nada",
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return $props.email_correcto = 'nada';
+    onChange: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_variable_email('nada');
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.email_correcto]]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.email_correcto]]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
     id: "obs_email",
     name: "obs_email",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $props.obs_email = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, "\r\n                ", 512
+    "class": $data.clase_text_area_email,
+    onInput: _cache[10] || (_cache[10] = function ($event) {
+      return $options.actaulizar_contenido_text_area($event.target.value);
+    })
+  }, "\r\n                ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_email_text_area
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_email_text_area), 3
+  /* TEXT, CLASS */
+  )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_email]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_16, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.obs_email_valido]])], 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.email_correcto]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.email_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.email) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.email_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.email_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_email) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.obs_email_valido_local), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
@@ -52540,70 +53191,64 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 );
 
 var _hoisted_4 = {
-  "class": "text-red-500 text-xs italic"
-};
-var _hoisted_5 = {
+  key: 0,
   "class": "flex"
 };
-var _hoisted_6 = {
+var _hoisted_5 = {
   "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-700"
 }, "Correcto?", -1
 /* HOISTED */
 );
 
-var _hoisted_8 = {
+var _hoisted_7 = {
   "class": "mt-2"
 };
-var _hoisted_9 = {
+var _hoisted_8 = {
   "class": "inline-flex items-center"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
 }, "Si", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = {
+var _hoisted_10 = {
   "class": "inline-flex items-center ml-6"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
 }, "No", -1
 /* HOISTED */
 );
 
-var _hoisted_13 = {
+var _hoisted_12 = {
   "class": "inline-flex items-center ml-6"
 };
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
 }, "Sin evaluar", -1
 /* HOISTED */
 );
 
-var _hoisted_15 = {
+var _hoisted_14 = {
   "class": "w-full md:w-2/3 px-3"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "obs_inscripciondgr"
 }, "Observación:", -1
 /* HOISTED */
 );
 
-var _hoisted_17 = {
-  "class": "text-green-500 text-xs italic"
-};
-
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "w-full md:w-1/2 px-3"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("object", {
   data: "http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf",
@@ -52617,70 +53262,64 @@ var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-    id: "inscripciondgr",
-    name: "inscripciondgr",
-    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $props.inscripciondgr = $event;
-    }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.inscripciondgr]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_4, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.inscripciondgr_valido]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [_hoisted_3, $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_inscripciondgr_correcto",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $props.inscripciondgr_correcto = $event;
     }),
     value: "true",
-    onChange: _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.calculo_de_porcentajes(6, true);
+    onChange: _cache[2] || (_cache[2] = function ($event) {
+      return $options.actaulizar_variable_inscripciondgr(true);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.inscripciondgr_correcto]]), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.inscripciondgr_correcto]]), _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_inscripciondgr_correcto",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $props.inscripciondgr_correcto = $event;
     }),
     value: "false",
-    onChange: _cache[5] || (_cache[5] = function ($event) {
-      return _ctx.calculo_de_porcentajes(6, false);
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_inscripciondgr(false);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.inscripciondgr_correcto]]), _hoisted_12]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.inscripciondgr_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_inscripciondgr_correcto",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $props.inscripciondgr_correcto = $event;
     }),
     value: "nada",
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return _ctx.calculo_de_porcentajes(6, 'nada');
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_inscripciondgr('nada');
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.inscripciondgr_correcto]]), _hoisted_14])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.inscripciondgr_correcto]]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
     id: "obs_inscripciondgr",
     name: "obs_inscripciondgr",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $props.obs_inscripciondgr = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, "\r\n                    ", 512
+    "class": $data.clase_text_area_inscripciondgr,
+    onInput: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_contenido_text_area_inscripciondgr($event.target.value);
+    })
+  }, "\r\n                    ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_inscripciondgr]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_inscripciondgr_text_area
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_inscripciondgr_text_area), 3
+  /* TEXT, CLASS */
+  )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_inscripciondgr]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_17, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.obs_inscripciondgr_valido]])], 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.inscripciondgr_correcto]])])]), _hoisted_18]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.inscripciondgr_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_16]);
 }
 
 /***/ }),
@@ -52698,44 +53337,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "w-full md:w-1/2 px-3"
-};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "numeroproductor"
 }, "Numero de Productor:", -1
 /* HOISTED */
 );
 
-var _hoisted_3 = {
-  "class": "text-green-500 text-xs italic"
-};
-var _hoisted_4 = {
+var _hoisted_2 = {
   key: 0,
   "class": "flex"
 };
-var _hoisted_5 = {
+var _hoisted_3 = {
   "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-700"
 }, "Correcto?", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_5 = {
   "class": "mt-2"
 };
-var _hoisted_8 = {
+var _hoisted_6 = {
   "class": "inline-flex items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "inline-flex items-center ml-6"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "Si", -1
+}, "No", -1
 /* HOISTED */
 );
 
@@ -52745,56 +53388,62 @@ var _hoisted_10 = {
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "No", -1
-/* HOISTED */
-);
-
-var _hoisted_12 = {
-  "class": "inline-flex items-center ml-6"
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "ml-2"
 }, "Sin evaluar", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_12 = {
   "class": "w-full md:w-2/3 px-3"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "obs_numeroproductor"
 }, "Observación:", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = {
-  "class": "text-green-500 text-xs italic"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     id: "numeroproductor",
     name: "numeroproductor",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $props.numeroproductor = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.numeroproductor]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_3, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.numeroproductor_valido]]), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "class": $data.clase_de_input_numprod,
+    disabled: $props.evaluacion,
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $options.cambio_input_numprod($event.target.value);
+    })
+  }, null, 42
+  /* CLASS, PROPS, HYDRATE_EVENTS */
+  , ["disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.numeroproductor]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_numprod
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_campo_numprod) + ".", 3
+  /* TEXT, CLASS */
+  ), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_numeroproductor_correcto",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $props.numeroproductor_correcto = $event;
     }),
     value: "true",
-    onChange: _cache[3] || (_cache[3] = function ($event) {
-      return $props.numeroproductor_correcto = true;
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_numprod(true);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.numeroproductor_correcto]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "name_numeroproductor_correcto",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.numeroproductor_correcto = $event;
+    }),
+    value: "false",
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_numprod(false);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
@@ -52802,42 +53451,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "radio",
     "class": "form-radio",
     name: "name_numeroproductor_correcto",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $props.numeroproductor_correcto = $event;
-    }),
-    value: "false",
-    onChange: _cache[5] || (_cache[5] = function ($event) {
-      return $props.numeroproductor_correcto = false;
-    })
-  }, null, 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.numeroproductor_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-    type: "radio",
-    "class": "form-radio",
-    name: "name_numeroproductor_correcto",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $props.numeroproductor_correcto = $event;
     }),
     value: "nada",
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return $props.numeroproductor_correcto = 'nada';
+    onChange: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_variable_numprod('nada');
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.numeroproductor_correcto]]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.numeroproductor_correcto]]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
     id: "obs_numeroproductor",
     name: "obs_numeroproductor",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $props.obs_numeroproductor = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, "\r\n                ", 512
+    "class": $data.clase_text_area_numprod,
+    onInput: _cache[10] || (_cache[10] = function ($event) {
+      return $options.actaulizar_contenido_text_area_numprod($event.target.value);
+    })
+  }, "\r\n                ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_numeroproductor]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_numprod_text_area
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_numprod_text_area), 3
+  /* TEXT, CLASS */
+  )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_numeroproductor]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_16, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.obs_numeroproductor_valido]])], 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.numeroproductor_correcto]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.numeroproductor_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.numeroproductor) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.numeroproductor_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.numeroproductor_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_numeroproductor) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_numeroproductor_valido), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
@@ -52855,44 +53498,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
-};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "razon_social"
-}, "Razon Social:", -1
+}, "Razon Social comp: ", -1
 /* HOISTED */
 );
 
-var _hoisted_3 = {
-  "class": "text-green-500 text-xs italic"
-};
-var _hoisted_4 = {
+var _hoisted_2 = {
   key: 0,
   "class": "flex"
 };
-var _hoisted_5 = {
+var _hoisted_3 = {
   "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-700"
 }, "Es correcto?", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_5 = {
   "class": "mt-2"
 };
-var _hoisted_8 = {
+var _hoisted_6 = {
   "class": "inline-flex items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "inline-flex items-center ml-6"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "Si", -1
+}, "No", -1
 /* HOISTED */
 );
 
@@ -52902,56 +53549,62 @@ var _hoisted_10 = {
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "No", -1
-/* HOISTED */
-);
-
-var _hoisted_12 = {
-  "class": "inline-flex items-center ml-6"
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "ml-2"
 }, "Sin evaluar", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_12 = {
   "class": "w-full md:w-2/3 px-3"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "obs_razon_social"
 }, "Observación:", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = {
-  "class": "text-green-500 text-xs italic"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     id: "razon_social",
     name: "razon_social",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $props.razon_social = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.razon_social]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_3, "Por Favor, complete este campo.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.razon_social_valido]]), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "class": $data.clase_de_input_razon_social,
+    disabled: $props.evaluacion,
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $options.cambio_input_razonsocial($event.target.value);
+    })
+  }, null, 42
+  /* CLASS, PROPS, HYDRATE_EVENTS */
+  , ["disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.razon_social]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_campo
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_campo) + ".", 3
+  /* TEXT, CLASS */
+  ), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "accountType",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $props.razon_social_correcto = $event;
     }),
     value: "true",
-    onChange: _cache[3] || (_cache[3] = function ($event) {
-      return $props.razon_social_correcto = true;
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_razonsocial(true);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.razon_social_correcto]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.razon_social_correcto = $event;
+    }),
+    value: "false",
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_razonsocial(false);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
@@ -52959,42 +53612,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "radio",
     "class": "form-radio",
     name: "accountType",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $props.razon_social_correcto = $event;
-    }),
-    value: "false",
-    onChange: _cache[5] || (_cache[5] = function ($event) {
-      return $props.razon_social_correcto = false;
-    })
-  }, null, 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.razon_social_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-    type: "radio",
-    "class": "form-radio",
-    name: "accountType",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $props.razon_social_correcto = $event;
     }),
     value: "nada",
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return $props.razon_social_correcto = 'nada';
+    onChange: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_variable_razonsocial('nada');
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.razon_social_correcto]]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.razon_social_correcto]]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
     id: "obs_razon_social",
     name: "obs_razon_social",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $props.obs_razon_social = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, "\r\n              ", 512
+    "class": $data.clase_text_area,
+    onInput: _cache[10] || (_cache[10] = function ($event) {
+      return $options.updateValue($event.target.value);
+    })
+  }, "\r\n                ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_razon_social]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion), 3
+  /* TEXT, CLASS */
+  )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_razon_social]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_16, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.obs_razon_social_valido]])], 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.razon_social_correcto]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.razon_social_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- Razon:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.razon_social) + "-- --Razon Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.razon_social_valido) + "-- --Razon Valido local:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.razon_social_valido_local) + "-- --Razon Evalaucion:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.razon_social_correcto) + "-- --Razon Obser:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_razon_social) + "-- --Razon obsr Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.obs_razon_social_valido_local) + "-- --Evaluacion " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion) + "-- --" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion) + "-- ", 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
@@ -53012,44 +53659,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "w-full md:w-1/2 px-3"
-};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "tiposociedad"
 }, "Tipo de Sociedad:", -1
 /* HOISTED */
 );
 
-var _hoisted_3 = {
-  "class": "text-green-500 text-xs italic"
-};
-var _hoisted_4 = {
+var _hoisted_2 = {
   key: 0,
   "class": "flex"
 };
-var _hoisted_5 = {
+var _hoisted_3 = {
   "class": "w-full md:w-1/3 px-3"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "text-gray-700"
 }, "Correcto?", -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_5 = {
   "class": "mt-2"
 };
-var _hoisted_8 = {
+var _hoisted_6 = {
   "class": "inline-flex items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "inline-flex items-center ml-6"
 };
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "Si", -1
+}, "No", -1
 /* HOISTED */
 );
 
@@ -53059,56 +53710,62 @@ var _hoisted_10 = {
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
   "class": "ml-2"
-}, "No", -1
-/* HOISTED */
-);
-
-var _hoisted_12 = {
-  "class": "inline-flex items-center ml-6"
-};
-
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
-  "class": "ml-2"
 }, "Sin evaluar", -1
 /* HOISTED */
 );
 
-var _hoisted_14 = {
+var _hoisted_12 = {
   "class": "w-full md:w-2/3 px-3"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
   "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
   "for": "obs_tiposociedad"
 }, "Observación:", -1
 /* HOISTED */
 );
 
-var _hoisted_16 = {
-  "class": "text-green-500 text-xs italic"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     id: "tiposociedad",
     name: "tiposociedad",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $props.tiposociedad = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.tiposociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_3, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $props.tiposociedad_valido]]), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    "class": $data.clase_de_input_tiposociedad,
+    disabled: $props.evaluacion,
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $options.cambio_input_tiposociedad($event.target.value);
+    })
+  }, null, 42
+  /* CLASS, PROPS, HYDRATE_EVENTS */
+  , ["disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.tiposociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_tiposociedad
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_campo_tiposociedad) + ".", 3
+  /* TEXT, CLASS */
+  ), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "name_tiposociedad_correcto",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $props.tiposociedad_correcto = $event;
     }),
     value: "true",
-    onChange: _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.calculo_de_porcentajes(2, true);
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_tiposociedad(true);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.tiposociedad_correcto]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "name_tiposociedad_correcto",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.tiposociedad_correcto = $event;
+    }),
+    value: "false",
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_tiposociedad(false);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
@@ -53116,42 +53773,308 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "radio",
     "class": "form-radio",
     name: "name_tiposociedad_correcto",
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $props.tiposociedad_correcto = $event;
-    }),
-    value: "false",
-    onChange: _cache[5] || (_cache[5] = function ($event) {
-      return _ctx.calculo_de_porcentajes(2, false);
-    })
-  }, null, 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.tiposociedad_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
-    type: "radio",
-    "class": "form-radio",
-    name: "name_tiposociedad_correcto",
-    "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
       return $props.tiposociedad_correcto = $event;
     }),
     value: "nada",
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return _ctx.calculo_de_porcentajes(2, 'nada');
+    onChange: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_variable_tiposociedad('nada');
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.tiposociedad_correcto]]), _hoisted_13])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.tiposociedad_correcto]]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
     id: "obs_tiposociedad",
     name: "obs_tiposociedad",
-    "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $props.obs_tiposociedad = $event;
     }),
-    "class": "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-  }, "\r\n                ", 512
+    "class": $data.clase_text_area_tiposociedad,
+    onInput: _cache[10] || (_cache[10] = function ($event) {
+      return $options.actaulizar_contenido_text_area_tiposociedad($event.target.value);
+    })
+  }, "\r\n                ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_tiposociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_tiposociedad_text_area
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_tiposociedad_text_area), 3
+  /* TEXT, CLASS */
+  )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_tiposociedad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_16, "Please fill out this field.", 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.obs_tiposociedad_valido]])], 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$props.tiposociedad_correcto]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.tiposociedad_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.tiposociedad) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.tiposociedad_valido) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.tiposociedad_correcto) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_tiposociedad) + " " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_tiposociedad_valido), 1
+  /* TEXT */
+  )]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=template&id=65a056d0":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=template&id=65a056d0 ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "flex items-center justify-center"
+};
+var _hoisted_2 = {
+  "class": "flex"
+};
+var _hoisted_3 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+var _hoisted_4 = {
+  "class": "w-full md:w-1/2 px-3"
+};
+var _hoisted_5 = {
+  "class": "flex"
+};
+var _hoisted_6 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+var _hoisted_7 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+var _hoisted_8 = {
+  "class": "flex"
+};
+var _hoisted_9 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+var _hoisted_10 = {
+  "class": "flex"
+};
+var _hoisted_11 = {
+  "class": "w-full md:w-2/2 px-3 mb-6 md:mb-0"
+};
+var _hoisted_12 = {
+  "class": "flex"
+};
+var _hoisted_13 = {
+  "class": "w-full md:w-2/2 px-3 mb-6 md:mb-0"
+};
+var _hoisted_14 = {
+  "class": "flex items-center justify-center"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_CardProductor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CardProductor");
+
+  var _component_PaginaUnoDatosProductorRazonSocial = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorRazonSocial");
+
+  var _component_PaginaUnoDatosProductorEmail = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorEmail");
+
+  var _component_PaginaUnoDatosProductorCuit = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorCuit");
+
+  var _component_PaginaUnoDatosProductorNumProd = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorNumProd");
+
+  var _component_PaginaUnoDatosProductorTipoSociedad = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorTipoSociedad");
+
+  var _component_PaginaUnoDatosProductorInscripcionDGR = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorInscripcionDGR");
+
+  var _component_PaginaUnoDatosProductorConstanciaSociedad = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorConstanciaSociedad");
+
+  var _component_PaginaUnoDatosProductorBotones = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaUnoDatosProductorBotones");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.titulo_pagina), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CardProductor, {
+    progreso: 50,
+    aprobado: 25,
+    reprobado: 25,
+    lugar: 'Argentina, San Juan',
+    updated_at: 'hace 10 minutos',
+    clase_sup: 'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1',
+    clase_inf: 'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorRazonSocial, {
+    razon_social: _ctx.$props.razon_social,
+    razon_social_valido: _ctx.$props.razon_social_valido,
+    razon_social_correcto: _ctx.$props.razon_social_correcto,
+    obs_razon_social: _ctx.$props.obs_razon_social,
+    obs_razon_social_valido: _ctx.$props.obs_razon_social_valido,
+    evaluacion: true,
+    onChangerazonsocialvalido: _cache[1] || (_cache[1] = function ($event) {
+      return $options.updaterazonsocialvalido($event);
+    }),
+    onChangerazonsocialcorrecto: _cache[2] || (_cache[2] = function ($event) {
+      return $options.updaterazonsocialcorrecto($event);
+    }),
+    onChangeobsrazonsocial: _cache[3] || (_cache[3] = function ($event) {
+      return $options.updateobsrazonsocial($event);
+    }),
+    onChangeobsrazonsocialvalido: _cache[4] || (_cache[4] = function ($event) {
+      return $options.updateobs_razon_social_valido($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["razon_social", "razon_social_valido", "razon_social_correcto", "obs_razon_social", "obs_razon_social_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- Razon Social valor input deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.razon_social) + " -- Razon Social input valido deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.razon_social_valido) + " -- Razon Social rta prod correcta deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.razon_social_correcto) + " -- Razon Social observacion autoridad deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_razon_social) + " -- Razon Social observacion autoridad valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_razon_social_valido), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorEmail, {
+    email: _ctx.$props.email,
+    email_valido: _ctx.$props.email_valido,
+    email_correcto: _ctx.$props.email_correcto,
+    obs_email: _ctx.$props.obs_email,
+    obs_email_valido: _ctx.$props.obs_email_valido,
+    evaluacion: true,
+    onChangeemailvalido: _cache[5] || (_cache[5] = function ($event) {
+      return $options.updateemailvalido($event);
+    }),
+    onChangeemailcorrecto: _cache[6] || (_cache[6] = function ($event) {
+      return $options.updateemailcorrecto($event);
+    }),
+    onChangeobsemail: _cache[7] || (_cache[7] = function ($event) {
+      return $options.updateobs_email($event);
+    }),
+    onChangeobsemailvalido: _cache[8] || (_cache[8] = function ($event) {
+      return $options.updateobs_email_valido($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["email", "email_valido", "email_correcto", "obs_email", "obs_email_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- Emai deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.email) + " -- Emai valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.email_valido) + " -- Emai correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.email_correcto) + " -- Emai observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_email) + " -- Emai observacion valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_email_valido), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorCuit, {
+    cuit: _ctx.$props.cuit,
+    cuit_valido: _ctx.$props.cuit_valido,
+    cuit_correcto: _ctx.$props.cuit_correcto,
+    obs_cuit: _ctx.$props.obs_cuit,
+    obs_cuit_valido: _ctx.$props.obs_cuit_valido,
+    evaluacion: true,
+    onChangecuitvalido: _cache[9] || (_cache[9] = function ($event) {
+      return $options.updatecuitvalido($event);
+    }),
+    onChangecuitcorrecto: _cache[10] || (_cache[10] = function ($event) {
+      return $options.updatecuitcorrecto($event);
+    }),
+    onChangeobscuit: _cache[11] || (_cache[11] = function ($event) {
+      return $options.updateobscuit($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["cuit", "cuit_valido", "cuit_correcto", "obs_cuit", "obs_cuit_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- cuit valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.cuit_valido) + " -- cuit correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.cuit_correcto) + " -- cuit observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_cuit), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorNumProd, {
+    numeroproductor: _ctx.$props.numeroproductor,
+    numeroproductor_valido: _ctx.$props.numeroproductor_valido,
+    numeroproductor_correcto: _ctx.$props.numeroproductor_correcto,
+    obs_numeroproductor: _ctx.$props.obs_numeroproductor,
+    obs_numeroproductor_valido: _ctx.$props.obs_numeroproductor_valido,
+    evaluacion: true,
+    onChangenumprodvalido: _cache[12] || (_cache[12] = function ($event) {
+      return $options.updatenumprodvalido($event);
+    }),
+    onChangenumprodcorrecto: _cache[13] || (_cache[13] = function ($event) {
+      return $options.updatenumprodcorrecto($event);
+    }),
+    onChangeobsnumprod: _cache[14] || (_cache[14] = function ($event) {
+      return $options.updateobsnumprod($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["numeroproductor", "numeroproductor_valido", "numeroproductor_correcto", "obs_numeroproductor", "obs_numeroproductor_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- numero productor valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.numeroproductor_valido) + " -- numero productor correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.numeroproductor_correcto) + " -- numero productor observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_numeroproductor), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorTipoSociedad, {
+    tiposociedad: _ctx.$props.tiposociedad,
+    tiposociedad_valido: _ctx.$props.tiposociedad_valido,
+    tiposociedad_correcto: _ctx.$props.tiposociedad_correcto,
+    obs_tiposociedad: _ctx.$props.obs_tiposociedad,
+    obs_tiposociedad_valido: _ctx.$props.obs_tiposociedad_valido,
+    evaluacion: false,
+    onChangetiposociedadvalido: _cache[15] || (_cache[15] = function ($event) {
+      return $options.updatetiposociedadvalido($event);
+    }),
+    onChangetiposociedadcorrecto: _cache[16] || (_cache[16] = function ($event) {
+      return $options.updatetiposociedadcorrecto($event);
+    }),
+    onChangeobstiposociedad: _cache[17] || (_cache[17] = function ($event) {
+      return $options.updateobstiposociedad($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["tiposociedad", "tiposociedad_valido", "tiposociedad_correcto", "obs_tiposociedad", "obs_tiposociedad_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- tipo de sociedad valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.tiposociedad_valido) + " -- tipo de sociedad correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.tiposociedad_correcto) + " -- tipo de sociedad observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_tiposociedad), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorInscripcionDGR, {
+    inscripciondgr: _ctx.$props.inscripciondgr,
+    inscripciondgr_valido: _ctx.$props.inscripciondgr_valido,
+    inscripciondgr_correcto: _ctx.$props.inscripciondgr_correcto,
+    obs_inscripciondgr: _ctx.$props.obs_inscripciondgr,
+    obs_inscripciondgr_valido: _ctx.$props.obs_inscripciondgr_valido,
+    evaluacion: true,
+    onChangeinscripciondgrcorrecto: _cache[18] || (_cache[18] = function ($event) {
+      return _ctx.updateinscripciondgrcorrecto($event);
+    }),
+    onChangeobsinscripciondgr: _cache[19] || (_cache[19] = function ($event) {
+      return _ctx.updateobsinscripciondgr($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["inscripciondgr", "inscripciondgr_valido", "inscripciondgr_correcto", "obs_inscripciondgr", "obs_inscripciondgr_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- inscripcion dgr valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.inscripciondgr_valido) + " -- inscripcion dgr correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.inscripciondgr_correcto) + " -- inscripcion dgr observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_inscripciondgr), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorConstanciaSociedad, {
+    constaciasociedad: _ctx.$props.constaciasociedad,
+    constaciasociedad_valido: _ctx.$props.constaciasociedad_valido,
+    constaciasociedad_correcto: _ctx.$props.constaciasociedad_correcto,
+    obs_constaciasociedad: _ctx.$props.obs_constaciasociedad,
+    obs_constaciasociedad_valido: _ctx.$props.obs_constaciasociedad_valido,
+    evaluacion: true,
+    onChangeconstanciasociedadcorrecto: _cache[20] || (_cache[20] = function ($event) {
+      return $options.updateconstanciasociedadcorrecto($event);
+    }),
+    onChangeobsconstanciasociedad: _cache[21] || (_cache[21] = function ($event) {
+      return $options.updateobsconstanciasociedad($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["constaciasociedad", "constaciasociedad_valido", "constaciasociedad_correcto", "obs_constaciasociedad", "obs_constaciasociedad_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- constancia de sociedad valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.constanciasociedad_valido) + " -- constancia de sociedad correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.constanciasociedad_correcto) + " -- constancia de sociedad observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_constanciasociedad), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaUnoDatosProductorBotones, {
+    link_volver: _ctx.route('formulario-alta.index'),
+    titulo_boton_volver: 'volver',
+    titulo_boton_guardar: 'Guardar Datos del Productor',
+    razon_social: _ctx.$props.razon_social,
+    razon_social_valido: _ctx.$props.razon_social_valido,
+    razon_social_correcto: _ctx.$props.razon_social_correcto,
+    obs_razon_social: _ctx.$props.obs_razon_social,
+    obs_razon_social_valido: _ctx.$props.obs_razon_social_valido,
+    email: _ctx.$props.email,
+    email_valido: _ctx.$props.email_valido,
+    email_correcto: _ctx.$props.email_correcto,
+    obs_email: _ctx.$props.obs_email,
+    obs_email_valido: _ctx.$props.obs_email_valido,
+    cuit: _ctx.$props.cuit,
+    cuit_valido: _ctx.$props.cuit_valido,
+    cuit_correcto: _ctx.$props.cuit_correcto,
+    obs_cuit: _ctx.$props.obs_cuit,
+    obs_cuit_valido: _ctx.$props.obs_cuit_valido,
+    numeroproductor: _ctx.$props.numeroproductor,
+    numeroproductor_valido: _ctx.$props.numeroproductor_valido,
+    numeroproductor_correcto: _ctx.$props.numeroproductor_correcto,
+    obs_numeroproductor: _ctx.$props.obs_numeroproductor,
+    obs_numeroproductor_valido: _ctx.$props.obs_numeroproductor_valido,
+    tiposociedad: _ctx.$props.tiposociedad,
+    tiposociedad_valido: _ctx.$props.tiposociedad_valido,
+    tiposociedad_correcto: _ctx.$props.tiposociedad_correcto,
+    obs_tiposociedad: _ctx.$props.obs_tiposociedad,
+    obs_tiposociedad_valido: _ctx.$props.obs_tiposociedad_valido,
+    inscripciondgr: _ctx.$props.inscripciondgr,
+    inscripciondgr_valido: _ctx.$props.inscripciondgr_valido,
+    inscripciondgr_correcto: _ctx.$props.inscripciondgr_correcto,
+    obs_inscripciondgr: _ctx.$props.obs_inscripciondgr,
+    obs_inscripciondgr_valido: _ctx.$props.obs_inscripciondgr_valido,
+    constaciasociedad: _ctx.$props.constaciasociedad,
+    constaciasociedad_valido: _ctx.$props.constaciasociedad_valido,
+    constaciasociedad_correcto: _ctx.$props.constaciasociedad_correcto,
+    obs_constaciasociedad: _ctx.$props.obs_constaciasociedad,
+    obs_constaciasociedad_valido: _ctx.$props.obs_constaciasociedad_valido,
+    evaluacion: true,
+    id: _ctx.$props.id
+  }, null, 8
+  /* PROPS */
+  , ["link_volver", "razon_social", "razon_social_valido", "razon_social_correcto", "obs_razon_social", "obs_razon_social_valido", "email", "email_valido", "email_correcto", "obs_email", "obs_email_valido", "cuit", "cuit_valido", "cuit_correcto", "obs_cuit", "obs_cuit_valido", "numeroproductor", "numeroproductor_valido", "numeroproductor_correcto", "obs_numeroproductor", "obs_numeroproductor_valido", "tiposociedad", "tiposociedad_valido", "tiposociedad_correcto", "obs_tiposociedad", "obs_tiposociedad_valido", "inscripciondgr", "inscripciondgr_valido", "inscripciondgr_correcto", "obs_inscripciondgr", "obs_inscripciondgr_valido", "constaciasociedad", "constaciasociedad_valido", "constaciasociedad_correcto", "obs_constaciasociedad", "obs_constaciasociedad_valido", "id"])])]);
 }
 
 /***/ }),
@@ -57810,7 +58733,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.bg-gray-100[data-v-317d1a6e] {\r\n        background-color: #f7fafc;\r\n        background-color: rgba(247, 250, 252, var(--tw-bg-opacity));\n}\n.border-gray-200[data-v-317d1a6e] {\r\n        border-color: #edf2f7;\r\n        border-color: rgba(237, 242, 247, var(--tw-border-opacity));\n}\n.text-gray-400[data-v-317d1a6e] {\r\n        color: #cbd5e0;\r\n        color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n.text-gray-500[data-v-317d1a6e] {\r\n        color: #a0aec0;\r\n        color: rgba(160, 174, 192, var(--tw-text-opacity));\n}\n.text-gray-600[data-v-317d1a6e] {\r\n        color: #718096;\r\n        color: rgba(113, 128, 150, var(--tw-text-opacity));\n}\n.text-gray-700[data-v-317d1a6e] {\r\n        color: #4a5568;\r\n        color: rgba(74, 85, 104, var(--tw-text-opacity));\n}\n.text-gray-900[data-v-317d1a6e] {\r\n        color: #1a202c;\r\n        color: rgba(26, 32, 44, var(--tw-text-opacity));\n}\n@media (prefers-color-scheme: dark) {\n.dark\\:bg-gray-800[data-v-317d1a6e] {\r\n            background-color: #2d3748;\r\n            background-color: rgba(45, 55, 72, var(--tw-bg-opacity));\n}\n.dark\\:bg-gray-900[data-v-317d1a6e] {\r\n            background-color: #1a202c;\r\n            background-color: rgba(26, 32, 44, var(--tw-bg-opacity));\n}\n.dark\\:border-gray-700[data-v-317d1a6e] {\r\n            border-color: #4a5568;\r\n            border-color: rgba(74, 85, 104, var(--tw-border-opacity));\n}\n.dark\\:text-white[data-v-317d1a6e] {\r\n            color: #fff;\r\n            color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.dark\\:text-gray-400[data-v-317d1a6e] {\r\n            color: #cbd5e0;\r\n            color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.bg-gray-100[data-v-317d1a6e] {\n        background-color: #f7fafc;\n        background-color: rgba(247, 250, 252, var(--tw-bg-opacity));\n}\n.border-gray-200[data-v-317d1a6e] {\n        border-color: #edf2f7;\n        border-color: rgba(237, 242, 247, var(--tw-border-opacity));\n}\n.text-gray-400[data-v-317d1a6e] {\n        color: #cbd5e0;\n        color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n.text-gray-500[data-v-317d1a6e] {\n        color: #a0aec0;\n        color: rgba(160, 174, 192, var(--tw-text-opacity));\n}\n.text-gray-600[data-v-317d1a6e] {\n        color: #718096;\n        color: rgba(113, 128, 150, var(--tw-text-opacity));\n}\n.text-gray-700[data-v-317d1a6e] {\n        color: #4a5568;\n        color: rgba(74, 85, 104, var(--tw-text-opacity));\n}\n.text-gray-900[data-v-317d1a6e] {\n        color: #1a202c;\n        color: rgba(26, 32, 44, var(--tw-text-opacity));\n}\n@media (prefers-color-scheme: dark) {\n.dark\\:bg-gray-800[data-v-317d1a6e] {\n            background-color: #2d3748;\n            background-color: rgba(45, 55, 72, var(--tw-bg-opacity));\n}\n.dark\\:bg-gray-900[data-v-317d1a6e] {\n            background-color: #1a202c;\n            background-color: rgba(26, 32, 44, var(--tw-bg-opacity));\n}\n.dark\\:border-gray-700[data-v-317d1a6e] {\n            border-color: #4a5568;\n            border-color: rgba(74, 85, 104, var(--tw-border-opacity));\n}\n.dark\\:text-white[data-v-317d1a6e] {\n            color: #fff;\n            color: rgba(255, 255, 255, var(--tw-text-opacity));\n}\n.dark\\:text-gray-400[data-v-317d1a6e] {\n            color: #cbd5e0;\n            color: rgba(203, 213, 224, var(--tw-text-opacity));\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -81461,6 +82384,32 @@ _List_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = 
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PaginaUnoDatosProductorBotones_vue_vue_type_template_id_5d58f942__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginaUnoDatosProductorBotones.vue?vue&type=template&id=5d58f942 */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=template&id=5d58f942");
+/* harmony import */ var _PaginaUnoDatosProductorBotones_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginaUnoDatosProductorBotones.vue?vue&type=script&lang=js */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=script&lang=js");
+
+
+
+_PaginaUnoDatosProductorBotones_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _PaginaUnoDatosProductorBotones_vue_vue_type_template_id_5d58f942__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_PaginaUnoDatosProductorBotones_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_PaginaUnoDatosProductorBotones_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue":
 /*!*************************************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue ***!
@@ -81640,6 +82589,32 @@ if (false) {}
 _PaginaUnoDatosProductorTipoSociedad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Productors/PaginaUnoDatosProductorTipoSociedad.vue"
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_PaginaUnoDatosProductorTipoSociedad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PaginaUnoDatosProductores_vue_vue_type_template_id_65a056d0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginaUnoDatosProductores.vue?vue&type=template&id=65a056d0 */ "./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=template&id=65a056d0");
+/* harmony import */ var _PaginaUnoDatosProductores_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginaUnoDatosProductores.vue?vue&type=script&lang=js */ "./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=script&lang=js");
+
+
+
+_PaginaUnoDatosProductores_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _PaginaUnoDatosProductores_vue_vue_type_template_id_65a056d0__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_PaginaUnoDatosProductores_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Productors/PaginaUnoDatosProductores.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_PaginaUnoDatosProductores_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -83211,6 +84186,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductorBotones_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductorBotones_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaUnoDatosProductorBotones.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue?vue&type=script&lang=js":
 /*!*************************************************************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue?vue&type=script&lang=js ***!
@@ -83319,6 +84310,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductorTipoSociedad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductorTipoSociedad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaUnoDatosProductorTipoSociedad.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorTipoSociedad.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductores_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductores_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaUnoDatosProductores.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -84763,6 +85770,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=template&id=5d58f942":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=template&id=5d58f942 ***!
+  \********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductorBotones_vue_vue_type_template_id_5d58f942__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductorBotones_vue_vue_type_template_id_5d58f942__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaUnoDatosProductorBotones.vue?vue&type=template&id=5d58f942 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue?vue&type=template&id=5d58f942");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue?vue&type=template&id=7f91fa91":
 /*!*******************************************************************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue?vue&type=template&id=7f91fa91 ***!
@@ -84871,6 +85894,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductorTipoSociedad_vue_vue_type_template_id_488817da__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductorTipoSociedad_vue_vue_type_template_id_488817da__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaUnoDatosProductorTipoSociedad.vue?vue&type=template&id=488817da */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductorTipoSociedad.vue?vue&type=template&id=488817da");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=template&id=65a056d0":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=template&id=65a056d0 ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductores_vue_vue_type_template_id_65a056d0__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaUnoDatosProductores_vue_vue_type_template_id_65a056d0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaUnoDatosProductores.vue?vue&type=template&id=65a056d0 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue?vue&type=template&id=65a056d0");
 
 
 /***/ }),
@@ -85814,6 +86853,8 @@ var map = {
 	"./Productors/Form.vue": "./resources/js/Pages/Productors/Form.vue",
 	"./Productors/List": "./resources/js/Pages/Productors/List.vue",
 	"./Productors/List.vue": "./resources/js/Pages/Productors/List.vue",
+	"./Productors/PaginaUnoDatosProductorBotones": "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue",
+	"./Productors/PaginaUnoDatosProductorBotones.vue": "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue",
 	"./Productors/PaginaUnoDatosProductorConstanciaSociedad": "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue",
 	"./Productors/PaginaUnoDatosProductorConstanciaSociedad.vue": "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue",
 	"./Productors/PaginaUnoDatosProductorCuit": "./resources/js/Pages/Productors/PaginaUnoDatosProductorCuit.vue",
@@ -85828,6 +86869,8 @@ var map = {
 	"./Productors/PaginaUnoDatosProductorRazonSocial.vue": "./resources/js/Pages/Productors/PaginaUnoDatosProductorRazonSocial.vue",
 	"./Productors/PaginaUnoDatosProductorTipoSociedad": "./resources/js/Pages/Productors/PaginaUnoDatosProductorTipoSociedad.vue",
 	"./Productors/PaginaUnoDatosProductorTipoSociedad.vue": "./resources/js/Pages/Productors/PaginaUnoDatosProductorTipoSociedad.vue",
+	"./Productors/PaginaUnoDatosProductores": "./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue",
+	"./Productors/PaginaUnoDatosProductores.vue": "./resources/js/Pages/Productors/PaginaUnoDatosProductores.vue",
 	"./Productors/PasoUnoEdit": "./resources/js/Pages/Productors/PasoUnoEdit.vue",
 	"./Productors/PasoUnoEdit.vue": "./resources/js/Pages/Productors/PasoUnoEdit.vue",
 	"./Productos/EditForm": "./resources/js/Pages/Productos/EditForm.vue",
@@ -86066,7 +87109,7 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*$";
 /******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
 /******/ 				}
 /******/ 			}
-/******/ 			if(runtime) var result = runtime(__webpack_require__);
+/******/ 			if(runtime) runtime(__webpack_require__);
 /******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
 /******/ 			for(;i < chunkIds.length; i++) {
 /******/ 				chunkId = chunkIds[i];
@@ -86075,7 +87118,7 @@ webpackContext.id = "./resources/js/Pages sync recursive ^\\.\\/.*$";
 /******/ 				}
 /******/ 				installedChunks[chunkIds[i]] = 0;
 /******/ 			}
-/******/ 			return __webpack_require__.O(result);
+/******/ 			__webpack_require__.O();
 /******/ 		}
 /******/ 		
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];

@@ -158,94 +158,68 @@
 				></PasoUnoEdit> -->
 				<br>
 				<br>
-				<PaginaUnoDatosProductorRazonSocial 
+
+				<PaginaUnoDatosProductores
+					:link_volver="route('formulario-alta.index')"
+					:titulo_boton_volver="'volver'"
+					:titulo_boton_guardar="'Guardar Datos del Productor'"
+					:titulo_pagina="'Pagina datos de Productor'"
+
+
 					:razon_social="form.razon_social" 
 					:razon_social_valido="form.razon_social_valido"
 					:razon_social_correcto="form.razon_social_correcto"
-
 					:obs_razon_social="form.obs_razon_social"
 					:obs_razon_social_valido="form.obs_razon_social_valido"
-
-					:evaluacion="true"
-				></PaginaUnoDatosProductorRazonSocial>
-
-				
-				<PaginaUnoDatosProductorEmail
 					:email="form.email"
 					:email_valido="form.email_valido"
 					:email_correcto="form.email_correcto"
-
 					:obs_email="form.obs_email"
 					:obs_email_valido="form.obs_email_valido"
-
-					:evaluacion="true"
-				>
-				</PaginaUnoDatosProductorEmail>
-
-				<PaginaUnoDatosProductorCuit
 					:cuit="form.cuit"
 					:cuit_valido="form.cuit_valido"
 					:cuit_correcto="form.cuit_correcto"
-
 					:obs_cuit="form.obs_cuit"
 					:obs_cuit_valido="form.obs_cuit_valido"
-
-					:evaluacion="true"
-				>
-
-				</PaginaUnoDatosProductorCuit>
-				<PaginaUnoDatosProductorNumProd
 					:numeroproductor="form.numeroproductor"
 					:numeroproductor_valido="form.numeroproductor_valido"
 					:numeroproductor_correcto="form.numeroproductor_correcto"
-
 					:obs_numeroproductor="form.obs_numeroproductor"
 					:obs_numeroproductor_valido="form.obs_numeroproductor_valido"
-
-					:evaluacion="true"
-				>
-
-				</PaginaUnoDatosProductorNumProd>
-
-				<PaginaUnoDatosProductorTipoSociedad
 					:tiposociedad="form.tiposociedad"
 					:tiposociedad_valido="form.tiposociedad_valido"
 					:tiposociedad_correcto="form.tiposociedad_correcto"
-
 					:obs_tiposociedad="form.obs_tiposociedad"
 					:obs_tiposociedad_valido="form.obs_tiposociedad_valido"
-
-					:evaluacion="true"
-				>
-
-				</PaginaUnoDatosProductorTipoSociedad>
-
-
-				<PaginaUnoDatosProductorInscripcionDGR
 					:inscripciondgr="form.inscripciondgr"
 					:inscripciondgr_valido="form.inscripciondgr_valido"
 					:inscripciondgr_correcto="form.inscripciondgr_correcto"
 					:obs_inscripciondgr="form.obs_inscripciondgr"
 					:obs_inscripciondgr_valido="form.obs_inscripciondgr_valido"
-					:evaluacion="true"
-				>
-
-				</PaginaUnoDatosProductorInscripcionDGR>
-
-				<PaginaUnoDatosProductorConstanciaSociedad
 					:constaciasociedad="form.constaciasociedad"
 					:constaciasociedad_valido="form.constaciasociedad_valido"
 					:constaciasociedad_correcto="form.constaciasociedad_correcto"
 					:obs_constaciasociedad="form.obs_constaciasociedad"
 					:obs_constaciasociedad_valido="form.obs_constaciasociedad_valido"
+
 					:evaluacion="true"
+					:id="$props.productor.id"
 				>
 
-				</PaginaUnoDatosProductorConstanciaSociedad>
+				</PaginaUnoDatosProductores>
+				
+			<div>
 
 
 
-				 <div>
+					
+
+
+
+
+					
+					
+
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
@@ -3410,19 +3384,11 @@ import CardMinaUbicacion from '@/Jetstream/altas/CardMinaUbicacion';
 import CardTotal from '@/Jetstream/altas/CardTotal';
 import PasoUnoEdit from '@/Pages/Productors/PasoUnoEdit';
 
-import PaginaUnoDatosProductorRazonSocial from "@/Pages/Productors/PaginaUnoDatosProductorRazonSocial";
-import PaginaUnoDatosProductorEmail from "@/Pages/Productors/PaginaUnoDatosProductorEmail";
 
-import PaginaUnoDatosProductorCuit from "@/Pages/Productors/PaginaUnoDatosProductorCuit";
 
-import PaginaUnoDatosProductorNumProd from "@/Pages/Productors/PaginaUnoDatosProductorNumProd";
 
-import PaginaUnoDatosProductorTipoSociedad from "@/Pages/Productors/PaginaUnoDatosProductorTipoSociedad";
-
-import PaginaUnoDatosProductorInscripcionDGR from "@/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR";
-
-import PaginaUnoDatosProductorConstanciaSociedad from "@/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad";
-
+import PaginaUnoDatosProductores from "@/Pages/Productors/PaginaUnoDatosProductores";
+ 
 export default {
 	components: {
 		AppLayout,
@@ -3437,13 +3403,8 @@ export default {
 		CardMinaUbicacion,
 		CardTotal,
 		PasoUnoEdit,
-		PaginaUnoDatosProductorRazonSocial,
-		PaginaUnoDatosProductorEmail,
-		PaginaUnoDatosProductorCuit,
-		PaginaUnoDatosProductorNumProd,
-		PaginaUnoDatosProductorTipoSociedad,
-		PaginaUnoDatosProductorInscripcionDGR,
-		PaginaUnoDatosProductorConstanciaSociedad,
+		
+		PaginaUnoDatosProductores,
 	},
 	props: ["productor"],
 	data() {
