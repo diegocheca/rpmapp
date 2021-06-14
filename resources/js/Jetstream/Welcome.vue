@@ -17,11 +17,13 @@
                 ecosystem to be a breath of fresh air. We hope you love it.
             </div>
         </div>
+        <div class="g-white border-b border-gray-200">
+            <ChartBar class="" />
+            <div class="grid grid-cols-1 lg:grid-cols-2">
+                <div><ChartPie /></div>
+                <div><ChartPie /></div>
+            </div>
 
-        <ChartBar />
-        <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 lg:grid-cols-2">
-            <div><ChartPie /></div>
-            <div><ChartPie /></div>
         </div>
         <!-- <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
             <div class="p-6">
