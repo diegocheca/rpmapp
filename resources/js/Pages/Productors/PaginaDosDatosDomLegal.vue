@@ -120,12 +120,12 @@
                     v-bind:leal_departamento_correcto="$props.leal_departamento_correcto"
                     v-bind:obs_leal_departamento="$props.obs_leal_departamento"
                     v-bind:obs_leal_departamento_valido="$props.obs_leal_departamento_valido"
-                    v-bind:evaluacion="false"
-                    v-on:changeprovlegalvalido="updatetedptovalido($event)"
-                    v-on:changeprovlegalcorrecto="updatetedptocorrecto($event)"
-                    v-on:changeobsrpovlegal="updateobs_dptolegal($event)"
-                    v-on:changeobsprovlegalvalido="updateobs_dptolegal_valido($event)"
-                    v-on:changevalorprovlegal="updatevalordptolegalnumlegal($event)"
+                    v-bind:evaluacion="true"
+                    v-on:changedptolegalvalido="updatetedptovalido($event)"
+                    v-on:changedptolegalcorrecto="updatetedptocorrecto($event)"
+                    v-on:changeobsrdptolegal="updateobs_dptolegal($event)"
+                    v-on:changeobsdptolegalvalido="updateobs_dptolegal_valido($event)"
+                    v-on:changevalordptolegal="updatevalordptolegalnumlegal($event)"
 
                 >
                 </PaginaDosDatosDLDepartamento>
@@ -136,7 +136,88 @@
                -- dpto de calle observacion deel padre{{form_pagina.obs_leal_departamento}}
                 -- dpto de calle observacion valida deel padre{{form_pagina.obs_leal_departamento_valido}}
             </div>
+
+
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <PaginaDosDatosDLocalidad
+                    v-bind:leal_localidad="$props.leal_localidad"
+                    v-bind:leal_localidad_valido="$props.leal_localidad_valido"
+                    v-bind:leal_localidad_correcto="$props.leal_localidad_correcto"
+                    v-bind:obs_leal_localidad="$props.obs_leal_localidad"
+                    v-bind:obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
+                    v-bind:evaluacion="true"
+                    v-on:changelocalidadlegalvalido="updatelocalidadvalido($event)"
+                    v-on:changelocalidadlegalcorrecto="updatetelocalidadcorrecto($event)"
+                    v-on:changeobsrlocalidadlegal="updateobs_localidadlegal($event)"
+                    v-on:changeobslocalidadlegalvalido="updateobs_localidadlegal_valido($event)"
+                    v-on:changevalorlocalidadlegal="updatevalorlocalidadlegalnumlegal($event)"
+
+                >
+                </PaginaDosDatosDLocalidad>
+
+                 -- localidad de calle  deel padre{{form_pagina.leal_localidad}}
+                  -- localidad de calle valida deel padre{{form_pagina.leal_localidad_valido}}
+                -- localidad de calle correcto deel padre{{form_pagina.leal_localidad_correcto}}
+               -- localidad de calle observacion deel padre{{form_pagina.obs_leal_localidad}}
+                -- localidad de calle observacion valida deel padre{{form_pagina.obs_leal_localidad_valido}}
+            </div>
+
          </div>
+
+         <div class="flex">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <PaginaDosDatosDLCP
+                    v-bind:leal_cp="$props.leal_cp"
+                    v-bind:leal_cp_valido="$props.leal_cp_valido"
+                    v-bind:leal_cp_correcto="$props.leal_cp_correcto"
+                    v-bind:obs_leal_cp="$props.obs_leal_cp"
+                    v-bind:obs_leal_cp_valido="$props.obs_leal_cp_valido"
+                    v-bind:evaluacion="true"
+                    v-on:changecplegalvalido="update_cp_valido($event)"
+                    v-on:changecplegalcorrecto="update_cp_correcto($event)"
+                    v-on:changeobsrcplegal="update_obs_cp_legal($event)"
+                    v-on:changeobscplegalvalido="update_obs_cp_legal_valido($event)"
+                    v-on:changevalorcplegal="update_valor_cp($event)"
+
+                >
+                </PaginaDosDatosDLCP>
+
+                 -- cod postal de calle  deel padre{{form_pagina.leal_cp}}
+                  -- cod postal de calle valida deel padre{{form_pagina.leal_cp_valido}}
+                -- cod postal de calle correcto deel padre{{form_pagina.leal_cp_correcto}}
+               -- cod postal de calle observacion deel padre{{form_pagina.obs_leal_cp}}
+                -- cod postal de calle observacion valida deel padre{{form_pagina.obs_leal_cp_valido}}
+            </div>
+
+
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <PaginaDosDatosDLOtro
+                    v-bind:leal_otro="$props.leal_otro"
+                    v-bind:leal_otro_valido="$props.leal_otro_valido"
+                    v-bind:leal_otro_correcto="$props.leal_otro_correcto"
+                    v-bind:obs_leal_otro="$props.obs_leal_otro"
+                    v-bind:obs_leal_otro_valido="$props.obs_leal_otro_valido"
+                    v-bind:evaluacion="true"
+                    v-on:changeotrolegalvalido="update_otro_valido($event)"
+                    v-on:changeotrolegalcorrecto="update_otro_correcto($event)"
+                    v-on:changeobsotrolegal="update_obs_otro_legal($event)"
+                    v-on:changeobsotrolegalvalido="update_obs_otro_legal_valido($event)"
+                    v-on:changevalorotrolegal="update_valor_otro($event)"
+
+                >
+                </PaginaDosDatosDLOtro>
+
+                 -- otro de calle  deel padre{{form_pagina.leal_otro}}
+                  -- otro de calle valida deel padre{{form_pagina.leal_otro_valido}}
+                -- otro de calle correcto deel padre{{form_pagina.leal_otro_correcto}}
+               -- otro de calle observacion deel padre{{form_pagina.obs_leal_otro}}
+                -- otro de calle observacion valida deel padre{{form_pagina.obs_leal_otro_valido}}
+            </div>
+
+         </div>
+
+
+         
          
          
          <!-- <div class="flex items-center justify-center">
@@ -210,8 +291,10 @@ import PaginaDosDatosDLNumeroCalle from "@/Pages/Productors/PaginaDosDatosDLNume
 import PaginaDosDatosDLTelefono from "@/Pages/Productors/PaginaDosDatosDLTelefono";
 import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvincia";
 import PaginaDosDatosDLDepartamento from "@/Pages/Productors/PaginaDosDatosDLDepartamento";
-import PaginaUnoDatosProductorTipoSociedad from "@/Pages/Productors/PaginaUnoDatosProductorTipoSociedad";
-import PaginaUnoDatosProductorInscripcionDGR from "@/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR";
+
+import PaginaDosDatosDLocalidad from "@/Pages/Productors/PaginaDosDatosDLocalidad";
+import PaginaDosDatosDLCP from "@/Pages/Productors/PaginaDosDatosDLCP";
+import PaginaDosDatosDLOtro from "@/Pages/Productors/PaginaDosDatosDLOtro";
 import PaginaUnoDatosProductorConstanciaSociedad from "@/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad";
 import PaginaUnoDatosProductorBotones from "@/Pages/Productors/PaginaUnoDatosProductorBotones";
 export default {
@@ -281,8 +364,9 @@ export default {
 		PaginaDosDatosDLTelefono,
 		PaginaDosDatosDLProvincia,
         PaginaDosDatosDLDepartamento,
-		PaginaUnoDatosProductorTipoSociedad,
-		PaginaUnoDatosProductorInscripcionDGR,
+        PaginaDosDatosDLCP,
+		PaginaDosDatosDLocalidad,
+		PaginaDosDatosDLOtro,
 		PaginaUnoDatosProductorConstanciaSociedad,
 		PaginaUnoDatosProductorBotones,
 	},
@@ -328,25 +412,28 @@ export default {
 
 
 
+            leal_localidad: this.$props.leal_localidad,
+            leal_localidad_valido: this.$props.leal_localidad_valido,
+            leal_localidad_correcto: this.$props.leal_localidad_correcto,
+            obs_leal_localidad: this.$props.obs_leal_localidad,
+            obs_leal_localidad_valido: this.$props.obs_leal_localidad_valido,
 
 
 
+            leal_cp: this.$props.leal_cp,
+            leal_cp_valido: this.$props.leal_cp_valido,
+            leal_cp_correcto: this.$props.leal_cp_correcto,
+            obs_leal_cp: this.$props.obs_leal_cp,
+            obs_leal_cp_valido: this.$props.obs_leal_cp_valido,
 
 
 
+            leal_otro: this.$props.leal_otro,
+            leal_otro_valido: this.$props.leal_otro_valido,
+            leal_otro_correcto: this.$props.leal_otro_correcto,
+            obs_leal_otro: this.$props.obs_leal_otro,
+            obs_leal_otro_valido: this.$props.obs_leal_otro_valido,
 
-
-
-
-            constanciasociedad_valido: this.$props.constanciasociedad_valido,
-            constanciasociedad_correcto: this.$props.constanciasociedad_correcto,
-            obs_constanciasociedad: this.$props.obs_constanciasociedad,
-
-
-
-
-
-            
 
         },
     };
@@ -491,6 +578,107 @@ export default {
             this.form_pagina.leal_departamento = newValue;
             //tengo que enviarsela al padre
         },
+
+
+
+
+
+
+
+        updatelocalidadvalido(newValue){
+            this.form_pagina.leal_localidad_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        updatetelocalidadcorrecto(newValue){
+            this.form_pagina.leal_localidad_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        updateobs_localidadlegal(newValue){
+            this.form_pagina.obs_leal_localidad = newValue;
+            //tengo que enviarsela al padre
+        },
+        updateobs_localidadlegal_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_leal_localidad_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        updatevalorlocalidadlegalnumlegal(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.leal_localidad = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+        update_cp_valido(newValue){
+            this.form_pagina.leal_cp_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_cp_correcto(newValue){
+            this.form_pagina.leal_cp_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_cp_legal(newValue){
+            this.form_pagina.obs_leal_cp = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_cp_legal_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_leal_cp_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_cp(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.leal_cp = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        update_otro_valido(newValue){
+            this.form_pagina.leal_otro_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_otro_correcto(newValue){
+            this.form_pagina.leal_otro_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_otro_legal(newValue){
+            this.form_pagina.obs_leal_otro = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_otro_legal_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_leal_otro_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_otro(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.leal_otro = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
 
 
 

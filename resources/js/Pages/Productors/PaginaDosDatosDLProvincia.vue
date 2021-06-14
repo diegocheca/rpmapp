@@ -25,15 +25,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="accountType" v-model="leal_prov_correcto" value="true" v-on:change="cactaulizar_variable_legalcalleprov(true)">
+                        <input type="radio" class="form-radio" name="accountType" v-model="leal_provincia_correcto" value="true" v-on:change="cactaulizar_variable_legalcalleprov(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="leal_prov_correcto" value="false" v-on:change="cactaulizar_variable_legalcalleprov(false)">
+                        <input type="radio" class="form-radio" name="accountType" v-model="leal_provincia_correcto" value="false" v-on:change="cactaulizar_variable_legalcalleprov(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="leal_prov_correcto" value="nada" v-on:change="cactaulizar_variable_legalcalleprov('nada')">
+                        <input type="radio" class="form-radio" name="accountType" v-model="leal_provincia_correcto" value="nada" v-on:change="cactaulizar_variable_legalcalleprov('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -49,17 +49,17 @@
                     name="obs_leal_provincia"
                     v-model="obs_leal_provincia"
                     v-bind:class=clase_text_area_calle_legal_prov
-                    @input="actaulizar_contenido_text_area_calle_legal_tel($event.target.value)" 
+                    @input="actaulizar_contenido_text_area_calle_legal_prov($event.target.value)" 
                     >
                 </textarea>
                 <p  v-bind:class=clase_cartel_nota_evaluacion_prov_calle>{{cartel_nota_evaluacion_prov_calle}}</p>
             </div>
         </div>
         -- prov calle:{{leal_provincia}}--
-        --prov calle Valido:{{leal_telefono_valido}}--
+        --prov calle Valido:{{leal_provincia_valido}}--
         --prov calle Valido local:{{calle_prov_legal_valido_local}}--
         
-        --prov calle Evalaucion:{{leal_prov_correcto}}--
+        --prov calle Evalaucion:{{leal_provincia_correcto}}--
         --prov calle Obser:{{obs_leal_provincia}}--
         --prov calle obsr Valido:{{obs_leal_provincia_valido}}--
         --Evaluacion {{evaluacion}}--
@@ -97,7 +97,7 @@ export default {
         this.$emit('changeprovlegalcorrecto',this.legal_calle_prov_correcto_local);
     },
      
-      actaulizar_contenido_text_area_calle_legal_tel(value) {
+      actaulizar_contenido_text_area_calle_legal_prov(value) {
         if(this.$props.obs_leal_provincia.length <= 2)
         {
             this.clase_text_area_calle_legal_prov=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';

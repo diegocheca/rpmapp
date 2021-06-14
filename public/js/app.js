@@ -22807,6 +22807,95 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=script&lang=js":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=script&lang=js ***!
+  \******************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['leal_cp', 'leal_cp_valido', 'leal_cp_correcto', 'obs_leal_cp', 'obs_leal_cp_valido', 'evaluacion'],
+  data: function data() {
+    return {
+      clase_de_input_calle_cp_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_legal_cp: 'Campo Correcto',
+      clase_cartel_nota_legal_cp: 'text-green-500 text-xs italic',
+      clase_text_area_calle_legal_cp: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_evaluacion_cp_calle: 'Observacion Correcta',
+      clase_cartel_nota_evaluacion_cp_calle: 'text-green-500 text-xs italic',
+      calle_localidad_legal_valido_cp: this.$props.leal_cp_valido,
+      legal_calle_cp_correcto_local: this.$props.leal_cp_correcto,
+      obs_calle_cp_legal_valido_local: this.$props.obs_leal_cp_valido //border-green-500
+
+    };
+  },
+  methods: {
+    actaulizar_variable_legal_cp: function actaulizar_variable_legal_cp(valor) {
+      this.legal_calle_cp_correcto_local = valor;
+      this.$emit('changecplegalcorrecto', this.legal_calle_cp_correcto_local);
+    },
+    actaulizar_contenido_text_area_calle_legal_cp: function actaulizar_contenido_text_area_calle_legal_cp(value) {
+      if (this.$props.obs_leal_cp.length <= 2) {
+        this.clase_text_area_calle_legal_cp = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_cp_calle = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_cp_calle = 'text-red-500 text-xs italic';
+        this.obs_calle_cp_legal_valido_local = false;
+        this.$emit('changeobscplegalvalido', false);
+      }
+
+      if (this.$props.obs_leal_cp.length >= 50) {
+        this.clase_text_area_calle_legal_cp = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_cp_calle = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_cp_calle = 'text-red-500 text-xs italic';
+        this.obs_calle_cp_legal_valido_local = false;
+        this.$emit('changeobscplegalvalido', false);
+      }
+
+      if (this.$props.obs_leal_cp !== '' && this.$props.obs_leal_cp.length <= 30 && this.$props.obs_leal_cp.length >= 3) {
+        this.clase_text_area_calle_legal_cp = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_cp_calle = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_cp_calle = 'text-green-500 text-xs italic';
+        this.obs_calle_cp_legal_valido_local = false;
+        this.$emit('changeobscplegalvalido', true);
+      }
+
+      this.$emit('changeobsrcplegal', this.$props.obs_leal_cp);
+    },
+    cambio_input_calle_cp_legal: function cambio_input_calle_cp_legal() {
+      if (this.leal_cp.length <= 4) {
+        this.clase_de_input_calle_cp_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legal_cp = 'Valor Incorrecta - debe ser mayor a 3 carcteres';
+        this.clase_cartel_nota_legal_cp = 'text-red-500 text-xs italic';
+        this.calle_localidad_legal_valido_cp = false;
+      }
+
+      if (this.leal_cp.length >= 40) {
+        this.clase_de_input_calle_cp_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legal_cp = 'Valor Incorrecta - debe tener menos de 30 caracteres';
+        this.clase_cartel_nota_legal_cp = 'text-red-500 text-xs italic';
+        this.calle_localidad_legal_valido_cp = false;
+      }
+
+      if (this.leal_cp !== '' && this.leal_cp.length <= 30 && this.leal_cp.length >= 3) {
+        this.clase_de_input_calle_cp_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legal_cp = 'Valor Correcto';
+        this.clase_cartel_nota_legal_cp = 'text-green-500 text-xs italic';
+        this.calle_localidad_legal_valido_cp = true;
+      }
+
+      this.$emit('changecplegalvalido', this.calle_localidad_legal_valido_cp);
+      this.$emit('changevalorcplegal', this.leal_cp);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue?vue&type=script&lang=js":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue?vue&type=script&lang=js ***!
@@ -22825,71 +22914,71 @@ __webpack_require__.r(__webpack_exports__);
       clase_de_input_calle_dpto_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
       clacartel_nota_legalcalledpto: 'Campo Correcto',
       clase_cartel_nota_legalcalledpto: 'text-green-500 text-xs italic',
-      clase_text_area_calle_legal_prov: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-      cartel_nota_evaluacion_prov_calle: 'Observacion Correcta',
-      clase_cartel_nota_evaluacion_prov_calle: 'text-green-500 text-xs italic',
-      calle_prov_legal_valido_local: this.$props.leal_departamento_valido,
-      legal_calle_prov_correcto_local: this.$props.leal_departamento_correcto,
-      obs_calle_prov_legal_valido_local: this.$props.obs_leal_departamento_valido //border-green-500
+      clase_text_area_calle_legal_dpto: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_evaluacion_dpto_calle: 'Observacion Correcta',
+      clase_cartel_nota_evaluacion_dpto_calle: 'text-green-500 text-xs italic',
+      calle_dpto_legal_valido_local: this.$props.leal_departamento_valido,
+      legal_calle_dpto_correcto_local: this.$props.leal_departamento_correcto,
+      obs_calle_dpto_legal_valido_local: this.$props.obs_leal_departamento_valido //border-green-500
 
     };
   },
   methods: {
-    cactaulizar_variable_legalcalleprov: function cactaulizar_variable_legalcalleprov(valor) {
-      this.legal_calle_prov_correcto_local = valor;
-      this.$emit('changeprovlegalcorrecto', this.legal_calle_prov_correcto_local);
+    cactaulizar_variable_legalcalledpto: function cactaulizar_variable_legalcalledpto(valor) {
+      this.legal_calle_dpto_correcto_local = valor;
+      this.$emit('changedptolegalcorrecto', this.legal_calle_dpto_correcto_local);
     },
-    actaulizar_contenido_text_area_calle_legal_tel: function actaulizar_contenido_text_area_calle_legal_tel(value) {
+    actaulizar_contenido_text_area_calle_legal_dpto: function actaulizar_contenido_text_area_calle_legal_dpto(value) {
       if (this.$props.obs_leal_departamento.length <= 2) {
-        this.clase_text_area_calle_legal_prov = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-        this.cartel_nota_evaluacion_prov_calle = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
-        this.clase_cartel_nota_evaluacion_prov_calle = 'text-red-500 text-xs italic';
-        this.obs_calle_prov_legal_valido_local = false;
-        this.$emit('changeobsprovlegalvalido', false);
+        this.clase_text_area_calle_legal_dpto = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_dpto_calle = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_dpto_calle = 'text-red-500 text-xs italic';
+        this.obs_calle_dpto_legal_valido_local = false;
+        this.$emit('changeobsdptolegalvalido', false);
       }
 
       if (this.$props.obs_leal_departamento.length >= 50) {
-        this.clase_text_area_calle_legal_prov = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-        this.cartel_nota_evaluacion_prov_calle = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
-        this.clase_cartel_nota_evaluacion_prov_calle = 'text-red-500 text-xs italic';
-        this.obs_calle_prov_legal_valido_local = false;
-        this.$emit('changeobsprovlegalvalido', false);
+        this.clase_text_area_calle_legal_dpto = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_dpto_calle = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_dpto_calle = 'text-red-500 text-xs italic';
+        this.obs_calle_dpto_legal_valido_local = false;
+        this.$emit('changeobsdptolegalvalido', false);
       }
 
       if (this.$props.obs_leal_departamento !== '' && this.$props.obs_leal_departamento.length <= 30 && this.$props.obs_leal_departamento.length >= 3) {
-        this.clase_text_area_calle_legal_prov = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-        this.cartel_nota_evaluacion_prov_calle = 'Observacion Correcta';
-        this.clase_cartel_nota_evaluacion_prov_calle = 'text-green-500 text-xs italic';
-        this.obs_calle_prov_legal_valido_local = false;
-        this.$emit('changeobsprovlegalvalido', true);
+        this.clase_text_area_calle_legal_dpto = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_dpto_calle = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_dpto_calle = 'text-green-500 text-xs italic';
+        this.obs_calle_dpto_legal_valido_local = false;
+        this.$emit('changeobsdptolegalvalido', true);
       }
 
-      this.$emit('changeobsrpovlegal', this.$props.obs_leal_departamento);
+      this.$emit('changeobsrdptolegal', this.$props.obs_leal_departamento);
     },
     cambio_input_calle_dpto_legal: function cambio_input_calle_dpto_legal() {
       if (this.leal_departamento.length <= 4) {
         this.clase_de_input_calle_dpto_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
         this.clacartel_nota_legalcalledpto = 'Valor Incorrecta - debe ser mayor a 3 carcteres';
         this.clase_cartel_nota_legalcalledpto = 'text-red-500 text-xs italic';
-        this.calle_prov_legal_valido_local = false;
+        this.calle_dpto_legal_valido_local = false;
       }
 
       if (this.leal_departamento.length >= 40) {
         this.clase_de_input_calle_dpto_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
         this.clacartel_nota_legalcalledpto = 'Valor Incorrecta - debe tener menos de 30 caracteres';
         this.clase_cartel_nota_legalcalledpto = 'text-red-500 text-xs italic';
-        this.calle_prov_legal_valido_local = false;
+        this.calle_dpto_legal_valido_local = false;
       }
 
       if (this.leal_departamento !== '' && this.leal_departamento.length <= 30 && this.leal_departamento.length >= 3) {
         this.clase_de_input_calle_dpto_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
         this.clacartel_nota_legalcalledpto = 'Valor Correcto';
         this.clase_cartel_nota_legalcalledpto = 'text-green-500 text-xs italic';
-        this.calle_prov_legal_valido_local = true;
+        this.calle_dpto_legal_valido_local = true;
       }
 
-      this.$emit('changeprovlegalvalido', this.calle_prov_legal_valido_local);
-      this.$emit('changevalorprovlegal', this.leal_departamento);
+      this.$emit('changedptolegalvalido', this.calle_dpto_legal_valido_local);
+      this.$emit('changevalordptolegal', this.leal_departamento);
     }
   }
 });
@@ -23074,6 +23163,95 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['leal_otro', 'leal_otro_valido', 'leal_otro_correcto', 'obs_leal_otro', 'obs_leal_otro_valido', 'evaluacion'],
+  data: function data() {
+    return {
+      clase_de_input_calle_otro_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_legalcalle_otro: 'Campo Correcto',
+      clase_cartel_nota_legalcalleotro: 'text-green-500 text-xs italic',
+      clase_text_area_calle_legal_otro: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_evaluacion_otro_calle: 'Observacion Correcta',
+      clase_cartel_nota_evaluacion_otro_calle: 'text-green-500 text-xs italic',
+      calle_localidad_legal_valido_otro: this.$props.leal_otro_valido,
+      legal_calle_otro_correcto_local: this.$props.leal_otro_correcto,
+      obs_calle_localidad_legal_valido_otro: this.$props.obs_leal_otro_valido //border-green-500
+
+    };
+  },
+  methods: {
+    actaulizar_variable_legalcalle_otro: function actaulizar_variable_legalcalle_otro(valor) {
+      this.legal_calle_otro_correcto_local = valor;
+      this.$emit('changeotrolegalcorrecto', this.legal_calle_otro_correcto_local);
+    },
+    actaulizar_contenido_text_area_calle_legal_otro: function actaulizar_contenido_text_area_calle_legal_otro(value) {
+      if (this.$props.obs_leal_otro.length <= 2) {
+        this.clase_text_area_calle_legal_otro = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_otro_calle = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_otro_calle = 'text-red-500 text-xs italic';
+        this.obs_calle_localidad_legal_valido_otro = false;
+        this.$emit('changeobsotrolegalvalido', false);
+      }
+
+      if (this.$props.obs_leal_otro.length >= 50) {
+        this.clase_text_area_calle_legal_otro = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_otro_calle = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_otro_calle = 'text-red-500 text-xs italic';
+        this.obs_calle_localidad_legal_valido_otro = false;
+        this.$emit('changeobsotrolegalvalido', false);
+      }
+
+      if (this.$props.obs_leal_otro !== '' && this.$props.obs_leal_otro.length <= 30 && this.$props.obs_leal_otro.length >= 3) {
+        this.clase_text_area_calle_legal_otro = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_otro_calle = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_otro_calle = 'text-green-500 text-xs italic';
+        this.obs_calle_localidad_legal_valido_otro = false;
+        this.$emit('changeobsotrolegalvalido', true);
+      }
+
+      this.$emit('changeobsotrolegal', this.$props.obs_leal_otro);
+    },
+    cambio_input_calle_otro_legal: function cambio_input_calle_otro_legal() {
+      if (this.leal_otro.length <= 4) {
+        this.clase_de_input_calle_otro_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legalcalle_otro = 'Valor Incorrecta - debe ser mayor a 3 carcteres';
+        this.clase_cartel_nota_legalcalleotro = 'text-red-500 text-xs italic';
+        this.calle_localidad_legal_valido_otro = false;
+      }
+
+      if (this.leal_otro.length >= 40) {
+        this.clase_de_input_calle_otro_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legalcalle_otro = 'Valor Incorrecta - debe tener menos de 30 caracteres';
+        this.clase_cartel_nota_legalcalleotro = 'text-red-500 text-xs italic';
+        this.calle_localidad_legal_valido_otro = false;
+      }
+
+      if (this.leal_otro !== '' && this.leal_otro.length <= 30 && this.leal_otro.length >= 3) {
+        this.clase_de_input_calle_otro_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legalcalle_otro = 'Valor Correcto';
+        this.clase_cartel_nota_legalcalleotro = 'text-green-500 text-xs italic';
+        this.calle_localidad_legal_valido_otro = true;
+      }
+
+      this.$emit('changeotrolegalvalido', this.calle_localidad_legal_valido_otro);
+      this.$emit('changevalorotrolegal', this.leal_otro);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue?vue&type=script&lang=js":
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue?vue&type=script&lang=js ***!
@@ -23106,7 +23284,7 @@ __webpack_require__.r(__webpack_exports__);
       this.legal_calle_prov_correcto_local = valor;
       this.$emit('changeprovlegalcorrecto', this.legal_calle_prov_correcto_local);
     },
-    actaulizar_contenido_text_area_calle_legal_tel: function actaulizar_contenido_text_area_calle_legal_tel(value) {
+    actaulizar_contenido_text_area_calle_legal_prov: function actaulizar_contenido_text_area_calle_legal_prov(value) {
       if (this.$props.obs_leal_provincia.length <= 2) {
         this.clase_text_area_calle_legal_prov = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
         this.cartel_nota_evaluacion_prov_calle = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
@@ -23252,6 +23430,95 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=script&lang=js":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['leal_localidad', 'leal_localidad_valido', 'leal_localidad_correcto', 'obs_leal_localidad', 'obs_leal_localidad_valido', 'evaluacion'],
+  data: function data() {
+    return {
+      clase_de_input_calle_localidad_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_legalcallelocal: 'Campo Correcto',
+      clase_cartel_nota_legalcallelocalidad: 'text-green-500 text-xs italic',
+      clase_text_area_calle_legal_localidad: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+      cartel_nota_evaluacion_localidad_calle: 'Observacion Correcta',
+      clase_cartel_nota_evaluacion_localidad_calle: 'text-green-500 text-xs italic',
+      calle_localidad_legal_valido_local: this.$props.leal_localidad_valido,
+      legal_calle_localidad_correcto_local: this.$props.leal_localidad_correcto,
+      obs_calle_localidad_legal_valido_local: this.$props.obs_leal_localidad_valido //border-green-500
+
+    };
+  },
+  methods: {
+    actaulizar_variable_legalcallelocalidad: function actaulizar_variable_legalcallelocalidad(valor) {
+      this.legal_calle_localidad_correcto_local = valor;
+      this.$emit('changetellegalcorrecto', this.legal_calle_localidad_correcto_local);
+    },
+    actaulizar_contenido_text_area_calle_legal_localidad: function actaulizar_contenido_text_area_calle_legal_localidad(value) {
+      if (this.$props.obs_leal_localidad.length <= 2) {
+        this.clase_text_area_calle_legal_localidad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_localidad_calle = 'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+        this.clase_cartel_nota_evaluacion_localidad_calle = 'text-red-500 text-xs italic';
+        this.obs_calle_localidad_legal_valido_local = false;
+        this.$emit('changelocalidadlegalvalido', false);
+      }
+
+      if (this.$props.obs_leal_localidad.length >= 50) {
+        this.clase_text_area_calle_legal_localidad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_localidad_calle = 'Observacion Incorrecta - debe tener menos de 50 caracteres';
+        this.clase_cartel_nota_evaluacion_localidad_calle = 'text-red-500 text-xs italic';
+        this.obs_calle_localidad_legal_valido_local = false;
+        this.$emit('changelocalidadlegalvalido', false);
+      }
+
+      if (this.$props.obs_leal_localidad !== '' && this.$props.obs_leal_localidad.length <= 30 && this.$props.obs_leal_localidad.length >= 3) {
+        this.clase_text_area_calle_legal_localidad = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_evaluacion_localidad_calle = 'Observacion Correcta';
+        this.clase_cartel_nota_evaluacion_localidad_calle = 'text-green-500 text-xs italic';
+        this.obs_calle_localidad_legal_valido_local = false;
+        this.$emit('changelocalidadlegalvalido', true);
+      }
+
+      this.$emit('changeobstellegal', this.$props.obs_leal_localidad);
+    },
+    cambio_input_calle_localidad_legal: function cambio_input_calle_localidad_legal() {
+      if (this.leal_localidad.length <= 4) {
+        this.clase_de_input_calle_localidad_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legalcallelocal = 'Valor Incorrecta - debe ser mayor a 3 carcteres';
+        this.clase_cartel_nota_legalcallelocalidad = 'text-red-500 text-xs italic';
+        this.calle_localidad_legal_valido_local = false;
+      }
+
+      if (this.leal_localidad.length >= 40) {
+        this.clase_de_input_calle_localidad_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legalcallelocal = 'Valor Incorrecta - debe tener menos de 30 caracteres';
+        this.clase_cartel_nota_legalcallelocalidad = 'text-red-500 text-xs italic';
+        this.calle_localidad_legal_valido_local = false;
+      }
+
+      if (this.leal_localidad !== '' && this.leal_localidad.length <= 30 && this.leal_localidad.length >= 3) {
+        this.clase_de_input_calle_localidad_legal = 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        this.cartel_nota_legalcallelocal = 'Valor Correcto';
+        this.clase_cartel_nota_legalcallelocalidad = 'text-green-500 text-xs italic';
+        this.calle_localidad_legal_valido_local = true;
+      }
+
+      this.$emit('changetellegalvalido', this.calle_localidad_legal_valido_local);
+      this.$emit('changevalortellegal', this.leal_localidad);
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDomLegal.vue?vue&type=script&lang=js":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDomLegal.vue?vue&type=script&lang=js ***!
@@ -23270,10 +23537,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_Productors_PaginaDosDatosDLTelefono__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Pages/Productors/PaginaDosDatosDLTelefono */ "./resources/js/Pages/Productors/PaginaDosDatosDLTelefono.vue");
 /* harmony import */ var _Pages_Productors_PaginaDosDatosDLProvincia__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Pages/Productors/PaginaDosDatosDLProvincia */ "./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue");
 /* harmony import */ var _Pages_Productors_PaginaDosDatosDLDepartamento__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Pages/Productors/PaginaDosDatosDLDepartamento */ "./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorTipoSociedad__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorTipoSociedad */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorTipoSociedad.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorInscripcionDGR__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorConstanciaSociedad__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue");
-/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorBotones__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorBotones */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue");
+/* harmony import */ var _Pages_Productors_PaginaDosDatosDLocalidad__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/Pages/Productors/PaginaDosDatosDLocalidad */ "./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue");
+/* harmony import */ var _Pages_Productors_PaginaDosDatosDLCP__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/Pages/Productors/PaginaDosDatosDLCP */ "./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue");
+/* harmony import */ var _Pages_Productors_PaginaDosDatosDLOtro__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/Pages/Productors/PaginaDosDatosDLOtro */ "./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorConstanciaSociedad__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad.vue");
+/* harmony import */ var _Pages_Productors_PaginaUnoDatosProductorBotones__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/Pages/Productors/PaginaUnoDatosProductorBotones */ "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue");
+
 
 
 
@@ -23295,10 +23564,11 @@ __webpack_require__.r(__webpack_exports__);
     PaginaDosDatosDLTelefono: _Pages_Productors_PaginaDosDatosDLTelefono__WEBPACK_IMPORTED_MODULE_4__.default,
     PaginaDosDatosDLProvincia: _Pages_Productors_PaginaDosDatosDLProvincia__WEBPACK_IMPORTED_MODULE_5__.default,
     PaginaDosDatosDLDepartamento: _Pages_Productors_PaginaDosDatosDLDepartamento__WEBPACK_IMPORTED_MODULE_6__.default,
-    PaginaUnoDatosProductorTipoSociedad: _Pages_Productors_PaginaUnoDatosProductorTipoSociedad__WEBPACK_IMPORTED_MODULE_7__.default,
-    PaginaUnoDatosProductorInscripcionDGR: _Pages_Productors_PaginaUnoDatosProductorInscripcionDGR__WEBPACK_IMPORTED_MODULE_8__.default,
-    PaginaUnoDatosProductorConstanciaSociedad: _Pages_Productors_PaginaUnoDatosProductorConstanciaSociedad__WEBPACK_IMPORTED_MODULE_9__.default,
-    PaginaUnoDatosProductorBotones: _Pages_Productors_PaginaUnoDatosProductorBotones__WEBPACK_IMPORTED_MODULE_10__.default
+    PaginaDosDatosDLCP: _Pages_Productors_PaginaDosDatosDLCP__WEBPACK_IMPORTED_MODULE_8__.default,
+    PaginaDosDatosDLocalidad: _Pages_Productors_PaginaDosDatosDLocalidad__WEBPACK_IMPORTED_MODULE_7__.default,
+    PaginaDosDatosDLOtro: _Pages_Productors_PaginaDosDatosDLOtro__WEBPACK_IMPORTED_MODULE_9__.default,
+    PaginaUnoDatosProductorConstanciaSociedad: _Pages_Productors_PaginaUnoDatosProductorConstanciaSociedad__WEBPACK_IMPORTED_MODULE_10__.default,
+    PaginaUnoDatosProductorBotones: _Pages_Productors_PaginaUnoDatosProductorBotones__WEBPACK_IMPORTED_MODULE_11__.default
   },
   data: function data() {
     return {
@@ -23332,9 +23602,21 @@ __webpack_require__.r(__webpack_exports__);
         leal_departamento_correcto: this.$props.leal_departamento_correcto,
         obs_leal_departamento: this.$props.obs_leal_departamento,
         obs_leal_departamento_valido: this.$props.obs_leal_departamento_valido,
-        constanciasociedad_valido: this.$props.constanciasociedad_valido,
-        constanciasociedad_correcto: this.$props.constanciasociedad_correcto,
-        obs_constanciasociedad: this.$props.obs_constanciasociedad
+        leal_localidad: this.$props.leal_localidad,
+        leal_localidad_valido: this.$props.leal_localidad_valido,
+        leal_localidad_correcto: this.$props.leal_localidad_correcto,
+        obs_leal_localidad: this.$props.obs_leal_localidad,
+        obs_leal_localidad_valido: this.$props.obs_leal_localidad_valido,
+        leal_cp: this.$props.leal_cp,
+        leal_cp_valido: this.$props.leal_cp_valido,
+        leal_cp_correcto: this.$props.leal_cp_correcto,
+        obs_leal_cp: this.$props.obs_leal_cp,
+        obs_leal_cp_valido: this.$props.obs_leal_cp_valido,
+        leal_otro: this.$props.leal_otro,
+        leal_otro_valido: this.$props.leal_otro_valido,
+        leal_otro_correcto: this.$props.leal_otro_correcto,
+        obs_leal_otro: this.$props.obs_leal_otro,
+        obs_leal_otro_valido: this.$props.obs_leal_otro_valido
       }
     };
   },
@@ -23426,6 +23708,57 @@ __webpack_require__.r(__webpack_exports__);
     updatevalordptolegalnumlegal: function updatevalordptolegalnumlegal(newValue) {
       console.log("traje un" + newValue);
       this.form_pagina.leal_departamento = newValue; //tengo que enviarsela al padre
+    },
+    updatelocalidadvalido: function updatelocalidadvalido(newValue) {
+      this.form_pagina.leal_localidad_valido = newValue; //tengo que enviarsela al padre
+    },
+    updatetelocalidadcorrecto: function updatetelocalidadcorrecto(newValue) {
+      this.form_pagina.leal_localidad_correcto = newValue; //tengo que enviarsela al padre
+    },
+    updateobs_localidadlegal: function updateobs_localidadlegal(newValue) {
+      this.form_pagina.obs_leal_localidad = newValue; //tengo que enviarsela al padre
+    },
+    updateobs_localidadlegal_valido: function updateobs_localidadlegal_valido(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.obs_leal_localidad_valido = newValue; //tengo que enviarsela al padre
+    },
+    updatevalorlocalidadlegalnumlegal: function updatevalorlocalidadlegalnumlegal(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.leal_localidad = newValue; //tengo que enviarsela al padre
+    },
+    update_cp_valido: function update_cp_valido(newValue) {
+      this.form_pagina.leal_cp_valido = newValue; //tengo que enviarsela al padre
+    },
+    update_cp_correcto: function update_cp_correcto(newValue) {
+      this.form_pagina.leal_cp_correcto = newValue; //tengo que enviarsela al padre
+    },
+    update_obs_cp_legal: function update_obs_cp_legal(newValue) {
+      this.form_pagina.obs_leal_cp = newValue; //tengo que enviarsela al padre
+    },
+    update_obs_cp_legal_valido: function update_obs_cp_legal_valido(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.obs_leal_cp_valido = newValue; //tengo que enviarsela al padre
+    },
+    update_valor_cp: function update_valor_cp(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.leal_cp = newValue; //tengo que enviarsela al padre
+    },
+    update_otro_valido: function update_otro_valido(newValue) {
+      this.form_pagina.leal_otro_valido = newValue; //tengo que enviarsela al padre
+    },
+    update_otro_correcto: function update_otro_correcto(newValue) {
+      this.form_pagina.leal_otro_correcto = newValue; //tengo que enviarsela al padre
+    },
+    update_obs_otro_legal: function update_obs_otro_legal(newValue) {
+      this.form_pagina.obs_leal_otro = newValue; //tengo que enviarsela al padre
+    },
+    update_obs_otro_legal_valido: function update_obs_otro_legal_valido(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.obs_leal_otro_valido = newValue; //tengo que enviarsela al padre
+    },
+    update_valor_otro: function update_valor_otro(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.leal_otro = newValue; //tengo que enviarsela al padre
     }
   }
 });
@@ -52261,6 +52594,167 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=template&id=16acfde3":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=template&id=16acfde3 ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "leal_cp"
+}, "Codigo postal comp:", -1
+/* HOISTED */
+);
+
+var _hoisted_2 = {
+  key: 0,
+  "class": "flex"
+};
+var _hoisted_3 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Es correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  "class": "mt-2"
+};
+var _hoisted_6 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_cp"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    id: "leal_cp",
+    name: "leal_cp",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $props.leal_cp = $event;
+    }),
+    "class": $data.clase_de_input_calle_cp_legal,
+    disabled: $props.evaluacion,
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $options.cambio_input_calle_cp_legal($event.target.value);
+    })
+  }, null, 42
+  /* CLASS, PROPS, HYDRATE_EVENTS */
+  , ["disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.leal_cp]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_legal_cp
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_legal_cp) + ".", 3
+  /* TEXT, CLASS */
+  ), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $props.leal_cp_correcto = $event;
+    }),
+    value: "true",
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_legal_cp(true);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_cp_correcto]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.leal_cp_correcto = $event;
+    }),
+    value: "false",
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_legal_cp(false);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_cp_correcto]]), _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return $props.leal_cp_correcto = $event;
+    }),
+    value: "nada",
+    onChange: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_variable_legal_cp('nada');
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_cp_correcto]]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+    id: "obs_leal_cp",
+    name: "obs_leal_cp",
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return $props.obs_leal_cp = $event;
+    }),
+    "class": $data.clase_text_area_calle_legal_cp,
+    onInput: _cache[10] || (_cache[10] = function ($event) {
+      return $options.actaulizar_contenido_text_area_calle_legal_cp($event.target.value);
+    })
+  }, "\r\n                ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_leal_cp]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_cp_calle
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_cp_calle), 3
+  /* TEXT, CLASS */
+  )], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.legal_calle_cp_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- co calle:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_cp) + "-- --co calle Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_cp_valido) + "-- --co calle Valido local:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.calle_localidad_legal_valido_cp) + "-- --co calle Evalaucion:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_cp_correcto) + "-- --co calle Obser:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_cp) + "-- --co calle obsr Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_cp_valido) + "-- --Evaluacion " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion) + "-- --" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_cp_calle) + "-- ", 1
+  /* TEXT */
+  )]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue?vue&type=template&id=7c51249a":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue?vue&type=template&id=7c51249a ***!
@@ -52391,7 +52885,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     value: "true",
     onChange: _cache[4] || (_cache[4] = function ($event) {
-      return $options.cactaulizar_variable_legalcalleprov(true);
+      return $options.cactaulizar_variable_legalcalledpto(true);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
@@ -52404,7 +52898,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     value: "false",
     onChange: _cache[6] || (_cache[6] = function ($event) {
-      return $options.cactaulizar_variable_legalcalleprov(false);
+      return $options.cactaulizar_variable_legalcalledpto(false);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
@@ -52417,7 +52911,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     value: "nada",
     onChange: _cache[8] || (_cache[8] = function ($event) {
-      return $options.cactaulizar_variable_legalcalleprov('nada');
+      return $options.cactaulizar_variable_legalcalledpto('nada');
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
@@ -52427,19 +52921,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $props.obs_leal_departamento = $event;
     }),
-    "class": $data.clase_text_area_calle_legal_prov,
+    "class": $data.clase_text_area_calle_legal_dpto,
     onInput: _cache[10] || (_cache[10] = function ($event) {
-      return $options.actaulizar_contenido_text_area_calle_legal_tel($event.target.value);
+      return $options.actaulizar_contenido_text_area_calle_legal_dpto($event.target.value);
     })
   }, "\r\n                ", 34
   /* CLASS, HYDRATE_EVENTS */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_leal_departamento]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
-    "class": $data.clase_cartel_nota_evaluacion_prov_calle
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_prov_calle), 3
+    "class": $data.clase_cartel_nota_evaluacion_dpto_calle
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_dpto_calle), 3
   /* TEXT, CLASS */
   )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.legal_calle_prov_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- prov calle:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.leal_provincia) + "-- --prov calle Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.leal_telefono_valido) + "-- --prov calle Valido local:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.calle_prov_legal_valido_local) + "-- --prov calle Evalaucion:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_departamento_correcto) + "-- --prov calle Obser:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_departamento) + "-- --prov calle obsr Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_departamento_valido) + "-- --Evaluacion " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion) + "-- --" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_prov_calle) + "-- ", 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.legal_calle_dpto_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- depto calle:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_departamento) + "-- --depto calle Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_departamento_valido) + "-- --depto calle Valido local:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.calle_dpto_legal_valido_local) + "-- --depto calle Evalaucion:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_departamento_correcto) + "-- --depto calle Obser:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_departamento) + "-- --depto calle obsr Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_departamento_valido) + "-- --Evaluacion " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion) + "-- --" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_dpto_calle) + "-- ", 1
   /* TEXT */
   )]);
 }
@@ -52768,6 +53262,167 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=template&id=3c4b2310":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=template&id=3c4b2310 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "leal_otro"
+}, "Otro comp:", -1
+/* HOISTED */
+);
+
+var _hoisted_2 = {
+  key: 0,
+  "class": "flex"
+};
+var _hoisted_3 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Es correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  "class": "mt-2"
+};
+var _hoisted_6 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_otro"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    id: "leal_otro",
+    name: "leal_otro",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $props.leal_otro = $event;
+    }),
+    "class": $data.clase_de_input_calle_otro_legal,
+    disabled: $props.evaluacion,
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $options.cambio_input_calle_otro_legal($event.target.value);
+    })
+  }, null, 42
+  /* CLASS, PROPS, HYDRATE_EVENTS */
+  , ["disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.leal_otro]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_legalcalleotro
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_legalcalle_otro) + ".", 3
+  /* TEXT, CLASS */
+  ), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $props.leal_otro_correcto = $event;
+    }),
+    value: "true",
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_legalcalle_otro(true);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_otro_correcto]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.leal_otro_correcto = $event;
+    }),
+    value: "false",
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_legalcalle_otro(false);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_otro_correcto]]), _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return $props.leal_otro_correcto = $event;
+    }),
+    value: "nada",
+    onChange: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_variable_legalcalle_otro('nada');
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_otro_correcto]]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+    id: "obs_leal_otro",
+    name: "obs_leal_otro",
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return $props.obs_leal_otro = $event;
+    }),
+    "class": $data.clase_text_area_calle_legal_otro,
+    onInput: _cache[10] || (_cache[10] = function ($event) {
+      return $options.actaulizar_contenido_text_area_calle_legal_otro($event.target.value);
+    })
+  }, "\r\n                ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_leal_otro]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_otro_calle
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_otro_calle), 3
+  /* TEXT, CLASS */
+  )], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.legal_calle_otro_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- otro calle:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_otro) + "-- --otro calle Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_otro_valido) + "-- --otro calle Valido local:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.calle_localidad_legal_valido_otro) + "-- --otro calle Evalaucion:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_otro_correcto) + "-- --otro calle Obser:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_otro) + "-- --otro calle obsr Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_otro_valido) + "-- --Evaluacion " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion) + "-- --" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_otro_calle) + "-- ", 1
+  /* TEXT */
+  )]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue?vue&type=template&id=70fecef2":
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue?vue&type=template&id=70fecef2 ***!
@@ -52894,7 +53549,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "form-radio",
     name: "accountType",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return _ctx.leal_prov_correcto = $event;
+      return $props.leal_provincia_correcto = $event;
     }),
     value: "true",
     onChange: _cache[4] || (_cache[4] = function ($event) {
@@ -52902,12 +53557,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.leal_prov_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_provincia_correcto]]), _hoisted_11]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "accountType",
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-      return _ctx.leal_prov_correcto = $event;
+      return $props.leal_provincia_correcto = $event;
     }),
     value: "false",
     onChange: _cache[6] || (_cache[6] = function ($event) {
@@ -52915,12 +53570,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.leal_prov_correcto]]), _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_provincia_correcto]]), _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     type: "radio",
     "class": "form-radio",
     name: "accountType",
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-      return _ctx.leal_prov_correcto = $event;
+      return $props.leal_provincia_correcto = $event;
     }),
     value: "nada",
     onChange: _cache[8] || (_cache[8] = function ($event) {
@@ -52928,7 +53583,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, _ctx.leal_prov_correcto]]), _hoisted_15])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_provincia_correcto]]), _hoisted_15])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
     id: "obs_leal_provincia",
     name: "obs_leal_provincia",
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
@@ -52936,7 +53591,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     "class": $data.clase_text_area_calle_legal_prov,
     onInput: _cache[10] || (_cache[10] = function ($event) {
-      return $options.actaulizar_contenido_text_area_calle_legal_tel($event.target.value);
+      return $options.actaulizar_contenido_text_area_calle_legal_prov($event.target.value);
     })
   }, "\r\n                ", 34
   /* CLASS, HYDRATE_EVENTS */
@@ -52946,7 +53601,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT, CLASS */
   )], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.legal_calle_prov_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- prov calle:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_provincia) + "-- --prov calle Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.leal_telefono_valido) + "-- --prov calle Valido local:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.calle_prov_legal_valido_local) + "-- --prov calle Evalaucion:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.leal_prov_correcto) + "-- --prov calle Obser:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_provincia) + "-- --prov calle obsr Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_provincia_valido) + "-- --Evaluacion " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion) + "-- --" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_prov_calle) + "-- ", 1
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.legal_calle_prov_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- prov calle:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_provincia) + "-- --prov calle Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_provincia_valido) + "-- --prov calle Valido local:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.calle_prov_legal_valido_local) + "-- --prov calle Evalaucion:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_provincia_correcto) + "-- --prov calle Obser:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_provincia) + "-- --prov calle obsr Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_provincia_valido) + "-- --Evaluacion " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion) + "-- --" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_prov_calle) + "-- ", 1
   /* TEXT */
   )]);
 }
@@ -53114,6 +53769,167 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=template&id=a4fb6a1a":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=template&id=a4fb6a1a ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "leal_localidad"
+}, "Localidad comp:", -1
+/* HOISTED */
+);
+
+var _hoisted_2 = {
+  key: 0,
+  "class": "flex"
+};
+var _hoisted_3 = {
+  "class": "w-full md:w-1/3 px-3"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "text-gray-700"
+}, "Es correcto?", -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  "class": "mt-2"
+};
+var _hoisted_6 = {
+  "class": "inline-flex items-center"
+};
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Si", -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "No", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "inline-flex items-center ml-6"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ml-2"
+}, "Sin evaluar", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "w-full md:w-2/3 px-3"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "class": "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2",
+  "for": "obs_leal_localidad"
+}, "Observación:", -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    id: "leal_localidad",
+    name: "leal_localidad",
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $props.leal_localidad = $event;
+    }),
+    "class": $data.clase_de_input_calle_localidad_legal,
+    disabled: $props.evaluacion,
+    onInput: _cache[2] || (_cache[2] = function ($event) {
+      return $options.cambio_input_calle_localidad_legal($event.target.value);
+    })
+  }, null, 42
+  /* CLASS, PROPS, HYDRATE_EVENTS */
+  , ["disabled"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.leal_localidad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_legalcallelocalidad
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_legalcallelocal) + ".", 3
+  /* TEXT, CLASS */
+  ), $props.evaluacion ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $props.leal_localidad_correcto = $event;
+    }),
+    value: "true",
+    onChange: _cache[4] || (_cache[4] = function ($event) {
+      return $options.actaulizar_variable_legalcallelocalidad(true);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_localidad_correcto]]), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $props.leal_localidad_correcto = $event;
+    }),
+    value: "false",
+    onChange: _cache[6] || (_cache[6] = function ($event) {
+      return $options.actaulizar_variable_legalcallelocalidad(false);
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_localidad_correcto]]), _hoisted_9]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    type: "radio",
+    "class": "form-radio",
+    name: "accountType",
+    "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+      return $props.leal_localidad_correcto = $event;
+    }),
+    value: "nada",
+    onChange: _cache[8] || (_cache[8] = function ($event) {
+      return $options.actaulizar_variable_legalcallelocalidad('nada');
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $props.leal_localidad_correcto]]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("textarea", {
+    id: "obs_leal_localidad",
+    name: "obs_leal_localidad",
+    "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+      return $props.obs_leal_localidad = $event;
+    }),
+    "class": $data.clase_text_area_calle_legal_localidad,
+    onInput: _cache[10] || (_cache[10] = function ($event) {
+      return $options.actaulizar_contenido_text_area_calle_legal_localidad($event.target.value);
+    })
+  }, "\r\n                ", 34
+  /* CLASS, HYDRATE_EVENTS */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.obs_leal_localidad]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", {
+    "class": $data.clase_cartel_nota_evaluacion_localidad_calle
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_localidad_calle), 3
+  /* TEXT, CLASS */
+  )], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.legal_calle_localidad_correcto_local]])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- localidad calle:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_localidad) + "-- --localidad calle Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_localidad_valido) + "-- --localidad calle Valido local:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.calle_localidad_legal_valido_local) + "-- --localidad calle Evalaucion:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.leal_localidad_correcto) + "-- --localidad calle Obser:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_localidad) + "-- --localidad calle obsr Valido:" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.obs_leal_localidad_valido) + "-- --Evaluacion " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.evaluacion) + "-- --" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cartel_nota_evaluacion_localidad_calle) + "-- ", 1
+  /* TEXT */
+  )]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDomLegal.vue?vue&type=template&id=0ee02da5":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDomLegal.vue?vue&type=template&id=0ee02da5 ***!
@@ -53154,6 +53970,18 @@ var _hoisted_8 = {
 var _hoisted_9 = {
   "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
 };
+var _hoisted_10 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+var _hoisted_11 = {
+  "class": "flex"
+};
+var _hoisted_12 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
+var _hoisted_13 = {
+  "class": "w-full md:w-1/2 px-3 mb-6 md:mb-0"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_CardDomLegal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("CardDomLegal");
 
@@ -53166,6 +53994,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_PaginaDosDatosDLProvincia = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaDosDatosDLProvincia");
 
   var _component_PaginaDosDatosDLDepartamento = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaDosDatosDLDepartamento");
+
+  var _component_PaginaDosDatosDLocalidad = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaDosDatosDLocalidad");
+
+  var _component_PaginaDosDatosDLCP = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaDosDatosDLCP");
+
+  var _component_PaginaDosDatosDLOtro = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PaginaDosDatosDLOtro");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.titulo_pagina), 1
   /* TEXT */
@@ -53287,25 +54121,103 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     leal_departamento_correcto: _ctx.$props.leal_departamento_correcto,
     obs_leal_departamento: _ctx.$props.obs_leal_departamento,
     obs_leal_departamento_valido: _ctx.$props.obs_leal_departamento_valido,
-    evaluacion: false,
-    onChangeprovlegalvalido: _cache[21] || (_cache[21] = function ($event) {
+    evaluacion: true,
+    onChangedptolegalvalido: _cache[21] || (_cache[21] = function ($event) {
       return $options.updatetedptovalido($event);
     }),
-    onChangeprovlegalcorrecto: _cache[22] || (_cache[22] = function ($event) {
+    onChangedptolegalcorrecto: _cache[22] || (_cache[22] = function ($event) {
       return $options.updatetedptocorrecto($event);
     }),
-    onChangeobsrpovlegal: _cache[23] || (_cache[23] = function ($event) {
+    onChangeobsrdptolegal: _cache[23] || (_cache[23] = function ($event) {
       return $options.updateobs_dptolegal($event);
     }),
-    onChangeobsprovlegalvalido: _cache[24] || (_cache[24] = function ($event) {
+    onChangeobsdptolegalvalido: _cache[24] || (_cache[24] = function ($event) {
       return $options.updateobs_dptolegal_valido($event);
     }),
-    onChangevalorprovlegal: _cache[25] || (_cache[25] = function ($event) {
+    onChangevalordptolegal: _cache[25] || (_cache[25] = function ($event) {
       return $options.updatevalordptolegalnumlegal($event);
     })
   }, null, 8
   /* PROPS */
   , ["leal_departamento", "leal_departamento_valido", "leal_departamento_correcto", "obs_leal_departamento", "obs_leal_departamento_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- dpto de calle deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_departamento) + " -- dpto de calle valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_departamento_valido) + " -- dpto de calle correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_departamento_correcto) + " -- dpto de calle observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_leal_departamento) + " -- dpto de calle observacion valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_leal_departamento_valido), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaDosDatosDLocalidad, {
+    leal_localidad: _ctx.$props.leal_localidad,
+    leal_localidad_valido: _ctx.$props.leal_localidad_valido,
+    leal_localidad_correcto: _ctx.$props.leal_localidad_correcto,
+    obs_leal_localidad: _ctx.$props.obs_leal_localidad,
+    obs_leal_localidad_valido: _ctx.$props.obs_leal_localidad_valido,
+    evaluacion: true,
+    onChangelocalidadlegalvalido: _cache[26] || (_cache[26] = function ($event) {
+      return $options.updatelocalidadvalido($event);
+    }),
+    onChangelocalidadlegalcorrecto: _cache[27] || (_cache[27] = function ($event) {
+      return $options.updatetelocalidadcorrecto($event);
+    }),
+    onChangeobsrlocalidadlegal: _cache[28] || (_cache[28] = function ($event) {
+      return $options.updateobs_localidadlegal($event);
+    }),
+    onChangeobslocalidadlegalvalido: _cache[29] || (_cache[29] = function ($event) {
+      return $options.updateobs_localidadlegal_valido($event);
+    }),
+    onChangevalorlocalidadlegal: _cache[30] || (_cache[30] = function ($event) {
+      return $options.updatevalorlocalidadlegalnumlegal($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["leal_localidad", "leal_localidad_valido", "leal_localidad_correcto", "obs_leal_localidad", "obs_leal_localidad_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- localidad de calle deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_localidad) + " -- localidad de calle valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_localidad_valido) + " -- localidad de calle correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_localidad_correcto) + " -- localidad de calle observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_leal_localidad) + " -- localidad de calle observacion valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_leal_localidad_valido), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaDosDatosDLCP, {
+    leal_cp: _ctx.$props.leal_cp,
+    leal_cp_valido: _ctx.$props.leal_cp_valido,
+    leal_cp_correcto: _ctx.$props.leal_cp_correcto,
+    obs_leal_cp: _ctx.$props.obs_leal_cp,
+    obs_leal_cp_valido: _ctx.$props.obs_leal_cp_valido,
+    evaluacion: true,
+    onChangecplegalvalido: _cache[31] || (_cache[31] = function ($event) {
+      return $options.update_cp_valido($event);
+    }),
+    onChangecplegalcorrecto: _cache[32] || (_cache[32] = function ($event) {
+      return $options.update_cp_correcto($event);
+    }),
+    onChangeobsrcplegal: _cache[33] || (_cache[33] = function ($event) {
+      return $options.update_obs_cp_legal($event);
+    }),
+    onChangeobscplegalvalido: _cache[34] || (_cache[34] = function ($event) {
+      return $options.update_obs_cp_legal_valido($event);
+    }),
+    onChangevalorcplegal: _cache[35] || (_cache[35] = function ($event) {
+      return $options.update_valor_cp($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["leal_cp", "leal_cp_valido", "leal_cp_correcto", "obs_leal_cp", "obs_leal_cp_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- cod postal de calle deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_cp) + " -- cod postal de calle valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_cp_valido) + " -- cod postal de calle correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_cp_correcto) + " -- cod postal de calle observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_leal_cp) + " -- cod postal de calle observacion valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_leal_cp_valido), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PaginaDosDatosDLOtro, {
+    leal_otro: _ctx.$props.leal_otro,
+    leal_otro_valido: _ctx.$props.leal_otro_valido,
+    leal_otro_correcto: _ctx.$props.leal_otro_correcto,
+    obs_leal_otro: _ctx.$props.obs_leal_otro,
+    obs_leal_otro_valido: _ctx.$props.obs_leal_otro_valido,
+    evaluacion: true,
+    onChangeotrolegalvalido: _cache[36] || (_cache[36] = function ($event) {
+      return $options.update_otro_valido($event);
+    }),
+    onChangeotrolegalcorrecto: _cache[37] || (_cache[37] = function ($event) {
+      return $options.update_otro_correcto($event);
+    }),
+    onChangeobsotrolegal: _cache[38] || (_cache[38] = function ($event) {
+      return $options.update_obs_otro_legal($event);
+    }),
+    onChangeobsotrolegalvalido: _cache[39] || (_cache[39] = function ($event) {
+      return $options.update_obs_otro_legal_valido($event);
+    }),
+    onChangevalorotrolegal: _cache[40] || (_cache[40] = function ($event) {
+      return $options.update_valor_otro($event);
+    })
+  }, null, 8
+  /* PROPS */
+  , ["leal_otro", "leal_otro_valido", "leal_otro_correcto", "obs_leal_otro", "obs_leal_otro_valido"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" -- otro de calle deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_otro) + " -- otro de calle valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_otro_valido) + " -- otro de calle correcto deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.leal_otro_correcto) + " -- otro de calle observacion deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_leal_otro) + " -- otro de calle observacion valida deel padre" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form_pagina.obs_leal_otro_valido), 1
   /* TEXT */
   )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"flex items-center justify-center\">\r\n            <PaginaUnoDatosProductorBotones \r\n                :link_volver=\"route('formulario-alta.index')\"\r\n                :titulo_boton_volver=\"'volver'\"\r\n                :titulo_boton_guardar=\"'Guardar Datos del Productor'\"\r\n\r\n                :leal_calle=\"$props.leal_calle\" \r\n                :nombre_calle_legal_valido=\"$props.nombre_calle_legal_valido\"\r\n                :nombre_calle_legal_correcto=\"$props.nombre_calle_legal_correcto\"\r\n                :obs_nombre_calle_legal=\"$props.obs_nombre_calle_legal\"\r\n                :obs_nombre_calle_legal_valido=\"$props.obs_nombre_calle_legal_valido\"\r\n\r\n\r\n                :leal_numero=\"form.leal_numero\"\r\n                :leal_numero_valido=\"form.leal_numero_valido\"\r\n                :leal_numero_correcto=\"form.leal_numero_correcto\"\r\n                :obs_leal_numero=\"form.obs_leal_numero\"\r\n                :obs_leal_numero_valido=\"form.obs_leal_numero_valido\"\r\n                :leal_telefono=\"form.leal_telefono\"\r\n                :leal_telefono_valido=\"form.leal_telefono_valido\"\r\n                :leal_telefono_correcto=\"form.leal_telefono_correcto\"\r\n                :obs_leal_telefono=\"form.obs_leal_telefono\"\r\n                :obs_leal_telefono_valido=\"form.obs_leal_telefono_valido\"\r\n                :leal_pais=\"form.leal_pais\"\r\n                :leal_pais_valido=\"form.leal_pais_valido\"\r\n                :leal_pais_correcto=\"form.leal_pais_correcto\"\r\n                :obs_leal_pais=\"form.obs_leal_pais\"\r\n                :obs_leal_pais_valido=\"form.obs_leal_pais_valido\"\r\n                :leal_provincia=\"form.leal_provincia\"\r\n                :leal_provincia_valido=\"form.leal_provincia_valido\"\r\n                :leal_provincia_correcto=\"form.leal_provincia_correcto\"\r\n                :obs_leal_provincia=\"form.obs_leal_provincia\"\r\n                :obs_leal_provincia_valido=\"form.obs_leal_provincia_valido\"\r\n                :leal_departamento=\"form.leal_departamento\"\r\n                :leal_departamento_valido=\"form.leal_departamento_valido\"\r\n                :leal_departamento_correcto=\"form.leal_departamento_correcto\"\r\n                :obs_leal_departamento=\"form.obs_leal_departamento\"\r\n                :obs_leal_departamento_valido=\"form.obs_leal_departamento_valido\"\r\n                :leal_localidad=\"form.leal_localidad\"\r\n                :leal_localidad_valido=\"form.leal_localidad_valido\"\r\n                :leal_localidad_correcto=\"form.leal_localidad_correcto\"\r\n                :obs_leal_localidad=\"form.obs_leal_localidad\"\r\n                :obs_leal_localidad_valido=\"form.obs_leal_localidad_valido\"\r\n                :leal_cp=\"form.leal_cp\"\r\n                :leal_cp_valido=\"form.leal_cp_valido\"\r\n                :leal_cp_correcto=\"form.leal_cp_correcto\"\r\n                :obs_leal_cp=\"form.obs_leal_cp\"\r\n                :obs_leal_cp_valido=\"form.obs_leal_cp_valido\"\r\n                :leal_otro=\"form.leal_otro\"\r\n                :leal_otro_valido=\"form.leal_otro_valido\"\r\n                :leal_otro_correcto=\"form.leal_otro_correcto\"\r\n                :obs_leal_otro=\"form.obs_leal_otro\"\r\n                :obs_leal_otro_valido=\"form.obs_leal_otro_valido\"\r\n\r\n\r\n                :evaluacion=\"true\"\r\n                :id=\"$props.id\"\r\n            ></PaginaUnoDatosProductorBotones>\r\n         </div> ")]);
 }
@@ -83087,6 +83999,32 @@ _List_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = 
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PaginaDosDatosDLCP_vue_vue_type_template_id_16acfde3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginaDosDatosDLCP.vue?vue&type=template&id=16acfde3 */ "./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=template&id=16acfde3");
+/* harmony import */ var _PaginaDosDatosDLCP_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginaDosDatosDLCP.vue?vue&type=script&lang=js */ "./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=script&lang=js");
+
+
+
+_PaginaDosDatosDLCP_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _PaginaDosDatosDLCP_vue_vue_type_template_id_16acfde3__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_PaginaDosDatosDLCP_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Productors/PaginaDosDatosDLCP.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_PaginaDosDatosDLCP_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue":
 /*!************************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue ***!
@@ -83165,6 +84103,32 @@ _PaginaDosDatosDLNumeroCalle_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODUL
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PaginaDosDatosDLOtro_vue_vue_type_template_id_3c4b2310__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginaDosDatosDLOtro.vue?vue&type=template&id=3c4b2310 */ "./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=template&id=3c4b2310");
+/* harmony import */ var _PaginaDosDatosDLOtro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginaDosDatosDLOtro.vue?vue&type=script&lang=js */ "./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=script&lang=js");
+
+
+
+_PaginaDosDatosDLOtro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _PaginaDosDatosDLOtro_vue_vue_type_template_id_3c4b2310__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_PaginaDosDatosDLOtro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_PaginaDosDatosDLOtro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue":
 /*!*********************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue ***!
@@ -83214,6 +84178,32 @@ if (false) {}
 _PaginaDosDatosDLTelefono_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Productors/PaginaDosDatosDLTelefono.vue"
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_PaginaDosDatosDLTelefono_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PaginaDosDatosDLocalidad_vue_vue_type_template_id_a4fb6a1a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaginaDosDatosDLocalidad.vue?vue&type=template&id=a4fb6a1a */ "./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=template&id=a4fb6a1a");
+/* harmony import */ var _PaginaDosDatosDLocalidad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaginaDosDatosDLocalidad.vue?vue&type=script&lang=js */ "./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=script&lang=js");
+
+
+
+_PaginaDosDatosDLocalidad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _PaginaDosDatosDLocalidad_vue_vue_type_template_id_a4fb6a1a__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_PaginaDosDatosDLocalidad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_PaginaDosDatosDLocalidad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
 
 /***/ }),
 
@@ -85045,6 +86035,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=script&lang=js":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLCP_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLCP_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaDosDatosDLCP.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue?vue&type=script&lang=js":
 /*!************************************************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue?vue&type=script&lang=js ***!
@@ -85093,6 +86099,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=script&lang=js":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLOtro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLOtro_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaDosDatosDLOtro.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue?vue&type=script&lang=js":
 /*!*********************************************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue?vue&type=script&lang=js ***!
@@ -85121,6 +86143,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLTelefono_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLTelefono_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaDosDatosDLTelefono.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLTelefono.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=script&lang=js":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLocalidad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLocalidad_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaDosDatosDLocalidad.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -86725,6 +87763,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=template&id=16acfde3":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=template&id=16acfde3 ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLCP_vue_vue_type_template_id_16acfde3__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLCP_vue_vue_type_template_id_16acfde3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaDosDatosDLCP.vue?vue&type=template&id=16acfde3 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue?vue&type=template&id=16acfde3");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue?vue&type=template&id=7c51249a":
 /*!******************************************************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue?vue&type=template&id=7c51249a ***!
@@ -86773,6 +87827,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=template&id=3c4b2310":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=template&id=3c4b2310 ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLOtro_vue_vue_type_template_id_3c4b2310__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLOtro_vue_vue_type_template_id_3c4b2310__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaDosDatosDLOtro.vue?vue&type=template&id=3c4b2310 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue?vue&type=template&id=3c4b2310");
+
+
+/***/ }),
+
 /***/ "./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue?vue&type=template&id=70fecef2":
 /*!***************************************************************************************************!*\
   !*** ./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue?vue&type=template&id=70fecef2 ***!
@@ -86801,6 +87871,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLTelefono_vue_vue_type_template_id_c439caec__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLTelefono_vue_vue_type_template_id_c439caec__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaDosDatosDLTelefono.vue?vue&type=template&id=c439caec */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLTelefono.vue?vue&type=template&id=c439caec");
+
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=template&id=a4fb6a1a":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=template&id=a4fb6a1a ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLocalidad_vue_vue_type_template_id_a4fb6a1a__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PaginaDosDatosDLocalidad_vue_vue_type_template_id_a4fb6a1a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PaginaDosDatosDLocalidad.vue?vue&type=template&id=a4fb6a1a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue?vue&type=template&id=a4fb6a1a");
 
 
 /***/ }),
@@ -87904,16 +88990,22 @@ var map = {
 	"./Productors/Form.vue": "./resources/js/Pages/Productors/Form.vue",
 	"./Productors/List": "./resources/js/Pages/Productors/List.vue",
 	"./Productors/List.vue": "./resources/js/Pages/Productors/List.vue",
+	"./Productors/PaginaDosDatosDLCP": "./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue",
+	"./Productors/PaginaDosDatosDLCP.vue": "./resources/js/Pages/Productors/PaginaDosDatosDLCP.vue",
 	"./Productors/PaginaDosDatosDLDepartamento": "./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue",
 	"./Productors/PaginaDosDatosDLDepartamento.vue": "./resources/js/Pages/Productors/PaginaDosDatosDLDepartamento.vue",
 	"./Productors/PaginaDosDatosDLNombreCalle": "./resources/js/Pages/Productors/PaginaDosDatosDLNombreCalle.vue",
 	"./Productors/PaginaDosDatosDLNombreCalle.vue": "./resources/js/Pages/Productors/PaginaDosDatosDLNombreCalle.vue",
 	"./Productors/PaginaDosDatosDLNumeroCalle": "./resources/js/Pages/Productors/PaginaDosDatosDLNumeroCalle.vue",
 	"./Productors/PaginaDosDatosDLNumeroCalle.vue": "./resources/js/Pages/Productors/PaginaDosDatosDLNumeroCalle.vue",
+	"./Productors/PaginaDosDatosDLOtro": "./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue",
+	"./Productors/PaginaDosDatosDLOtro.vue": "./resources/js/Pages/Productors/PaginaDosDatosDLOtro.vue",
 	"./Productors/PaginaDosDatosDLProvincia": "./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue",
 	"./Productors/PaginaDosDatosDLProvincia.vue": "./resources/js/Pages/Productors/PaginaDosDatosDLProvincia.vue",
 	"./Productors/PaginaDosDatosDLTelefono": "./resources/js/Pages/Productors/PaginaDosDatosDLTelefono.vue",
 	"./Productors/PaginaDosDatosDLTelefono.vue": "./resources/js/Pages/Productors/PaginaDosDatosDLTelefono.vue",
+	"./Productors/PaginaDosDatosDLocalidad": "./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue",
+	"./Productors/PaginaDosDatosDLocalidad.vue": "./resources/js/Pages/Productors/PaginaDosDatosDLocalidad.vue",
 	"./Productors/PaginaDosDatosDomLegal": "./resources/js/Pages/Productors/PaginaDosDatosDomLegal.vue",
 	"./Productors/PaginaDosDatosDomLegal.vue": "./resources/js/Pages/Productors/PaginaDosDatosDomLegal.vue",
 	"./Productors/PaginaUnoDatosProductorBotones": "./resources/js/Pages/Productors/PaginaUnoDatosProductorBotones.vue",
