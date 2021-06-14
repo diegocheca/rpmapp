@@ -91,7 +91,8 @@ class ProductorMinaController extends Controller
     {
         //
         $productorMina = ProductorMina::find($id);
-        return Inertia::render('ProductorMina/EditForm', ['productorMina' => $productorMina]);
+        //dd($productorMina);
+        return Inertia::render('ProductorMina/EditForm', ['productor_mina' => $productorMina]);
     
     }
 

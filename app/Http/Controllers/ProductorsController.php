@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Productors;
+use App\Models\FormAltaProductor;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+
 class ProductorsController extends Controller
 {
     /**
@@ -16,7 +19,7 @@ class ProductorsController extends Controller
     public function index()
     {
         //
-        $productors = Productors::all();
+        $productors = FormAltaProductor::all();
         return Inertia::render('Productors/List', ['productors' => $productors]);
     }
 

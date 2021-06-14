@@ -158,380 +158,444 @@
 				></PasoUnoEdit> -->
 				<br>
 				<br>
-				<div class="flex">
-					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="razon_social"
-							>Razon Social:</label
-						>
-						<input
-							id="razon_social"
-							name="razon_social"
-							v-model="form.razon_social"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.razon_social_valido" class="text-green-500 text-xs italic">Por Favor, complete este campo.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Es correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="accountType" v-model="form.razon_social_correcto" value="true" v-on:change="calculo_de_porcentajes(1, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="accountType" v-model="form.razon_social_correcto" value="false" v-on:change="calculo_de_porcentajes(1, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="accountType" v-model="form.razon_social_correcto" value="nada" v-on:change="calculo_de_porcentajes(1, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.razon_social_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_razon_social"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_razon_social"
-									name="obs_razon_social"
-									v-model="form.obs_razon_social"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p class="text-green-500 text-xs italic" v-show="form.obs_razon_social_valido">Please fill out this field.</p>
-							</div>
-						</div>
-					</div>
-					<div class="w-full md:w-1/2 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="email"
-							>Email:</label
-						>
-						<input
-							id="email"
-							name="email"
-							v-model="form.email"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.email_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_email_correcto"  v-model="form.email_correcto" value="true" v-on:change="calculo_de_porcentajes(2, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_email_correcto"  v-model="form.email_correcto" value="false" v-on:change="calculo_de_porcentajes(2, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_email_correcto" v-model="form.email_correcto" value="nada" v-on:change="calculo_de_porcentajes(2, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.email_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_email"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_email"
-									name="obs_email"
-									v-model="form.obs_email"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="!form.obs_email_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="flex">
-					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="name"
-							>CUIT:</label
-						>
-						<input
-							id="cuit"
-							name="cuit"
-							v-model="form.cuit"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.cuit_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_cuit_correcto"  v-model="form.cuit_correcto" value="true" v-on:change="calculo_de_porcentajes(3, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_cuit_correcto"  v-model="form.cuit_correcto" value="false" v-on:change="calculo_de_porcentajes(3, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_cuit_correcto" v-model="form.cuit_correcto" value="nada" v-on:change="calculo_de_porcentajes(3, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.cuit_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_cuit"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_cuit"
-									name="obs_cuit"
-									v-model="form.obs_cuit"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="!form.obs_cuit_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-					</div>
-					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="name"
-							>Numero de Productor:</label
-						>
-						<input
-							id="cuit"
-							v-model="form.numeroproductor"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.numeroproductor_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_numeroproductor_correcto"  v-model="form.numeroproductor_correcto" value="true" v-on:change="calculo_de_porcentajes(4, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_numeroproductor_correcto"  v-model="form.numeroproductor_correcto" value="false" v-on:change="calculo_de_porcentajes(4, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_numeroproductor_correcto" v-model="form.numeroproductor_correcto" value="nada" v-on:change="calculo_de_porcentajes(4, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
 
-								</div>
-							</div>
-							<div v-show="!form.numeroproductor_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_numeroproductor"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_numeroproductor"
-									name="obs_numeroproductor"
-									v-model="form.obs_numeroproductor"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_numeroproductor_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="flex">
-					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="tipo_sociedad"
-							>Tipo de Sociedad:</label
-						>
-						<input
-							id="tipo_sociedad"
-							name="tipo_sociedad"
-							v-model="form.tiposociedad"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.tiposociedad_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_tiposociedad_correcto"  v-model="form.tiposociedad_correcto" value="true" v-on:change="calculo_de_porcentajes(5, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_tiposociedad_correcto"  v-model="form.tiposociedad_correcto" value="false" v-on:change="calculo_de_porcentajes(5, false)">
-										<span class="ml-2">No</span>
-									</label>
-								</div>
-								<label class="inline-flex items-center ml-6">
-									<input type="radio" class="form-radio" name="name_tiposociedad_correcto" v-model="form.tiposociedad_correcto" value="nada" v-on:change="calculo_de_porcentajes(5, 'nada')">
-									<span class="ml-2">Sin evaluar</span>
-								</label>
-							</div>
-							<div v-show="!form.tiposociedad_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_tiposociedad"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_tiposociedad"
-									name="obs_tiposociedad"
-									v-model="form.obs_tiposociedad"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_tiposociedad_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="flex">
-					<div class="w-full md:w-1/2 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="inscripciondgr"
-							>Inscripcion DGR:</label
-						>
-						<input
-							id="inscripciondgr"
-							name="inscripciondgr"
-							v-model="form.inscripciondgr"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p  v-show="form.inscripciondgr_valido"  class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="form.inscripciondgr_correcto" value="true" v-on:change="calculo_de_porcentajes(6, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="form.inscripciondgr_correcto" value="false" v-on:change="calculo_de_porcentajes(6, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="form.inscripciondgr_correcto" value="nada" v-on:change="calculo_de_porcentajes(6, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.inscripciondgr_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_inscripciondgr"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_inscripciondgr"
-									name="obs_inscripciondgr"
-									v-model="form.obs_inscripciondgr"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_inscripciondgr_valido"  class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-					</div>
-						<div class="w-full md:w-1/2 px-3">
-							<object data="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf" type="application/pdf" width="100%" height="500px"> 
-							<p>It appears you don't have a PDF plugin for this browser.
-							 No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
-							download the PDF file.</a></p>  
-						</object>
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="flex">
-					<div class="w-full md:w-1/2 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="constancia_sociedad"
-							>Constancia de Sociedad:</label
-						>
-						<input
-							id="constancia_sociedad"
-							name="constancia_sociedad"
-							v-model="form.constaciasociedad"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.constaciasociedad_valido"  class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_constaciasociedad_correcto" v-model="form.constaciasociedad_correcto" value="true" v-on:change="calculo_de_porcentajes(7, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_constaciasociedad_correcto" v-model="form.constaciasociedad_correcto" value="false" v-on:change="calculo_de_porcentajes(7, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_constaciasociedad_correcto" v-model="form.constaciasociedad_correcto" value="nada" v-on:change="calculo_de_porcentajes(7, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-								</div>
-							</div>
-							<div v-show="!form.constaciasociedad_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_constaciasociedad"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_constaciasociedad"
-										name="obs_constaciasociedad"
-										v-model="form.obs_constaciasociedad"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p v-show="!form.obs_constaciasociedad_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-					</div>
-					<div class="w-full md:w-1/2 px-3">
-						<object data="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf" type="application/pdf" width="100%" height="500px"> 
-						<p>It appears you don't have a PDF plugin for this browser.
-							 No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
-							download the PDF file.</a></p>  
-						</object>
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="flex flex-col mb-8">
-					<button
-						type="button"
-						class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-						@click="guardar_avances_uno"
-					>
-						Guardar Datos del Producto
-					</button>
+				<PaginaUnoDatosProductores
+					:link_volver="route('formulario-alta.index')"
+					:titulo_boton_volver="'volver'"
+					:titulo_boton_guardar="'Guardar Datos del Productor'"
+					:titulo_pagina="'Pagina datos de Productor'"
+
+
+					:razon_social="form.razon_social" 
+					:razon_social_valido="form.razon_social_valido"
+					:razon_social_correcto="form.razon_social_correcto"
+					:obs_razon_social="form.obs_razon_social"
+					:obs_razon_social_valido="form.obs_razon_social_valido"
+					:email="form.email"
+					:email_valido="form.email_valido"
+					:email_correcto="form.email_correcto"
+					:obs_email="form.obs_email"
+					:obs_email_valido="form.obs_email_valido"
+					:cuit="form.cuit"
+					:cuit_valido="form.cuit_valido"
+					:cuit_correcto="form.cuit_correcto"
+					:obs_cuit="form.obs_cuit"
+					:obs_cuit_valido="form.obs_cuit_valido"
+					:numeroproductor="form.numeroproductor"
+					:numeroproductor_valido="form.numeroproductor_valido"
+					:numeroproductor_correcto="form.numeroproductor_correcto"
+					:obs_numeroproductor="form.obs_numeroproductor"
+					:obs_numeroproductor_valido="form.obs_numeroproductor_valido"
+					:tiposociedad="form.tiposociedad"
+					:tiposociedad_valido="form.tiposociedad_valido"
+					:tiposociedad_correcto="form.tiposociedad_correcto"
+					:obs_tiposociedad="form.obs_tiposociedad"
+					:obs_tiposociedad_valido="form.obs_tiposociedad_valido"
+					:inscripciondgr="form.inscripciondgr"
+					:inscripciondgr_valido="form.inscripciondgr_valido"
+					:inscripciondgr_correcto="form.inscripciondgr_correcto"
+					:obs_inscripciondgr="form.obs_inscripciondgr"
+					:obs_inscripciondgr_valido="form.obs_inscripciondgr_valido"
+					:constaciasociedad="form.constaciasociedad"
+					:constaciasociedad_valido="form.constaciasociedad_valido"
+					:constaciasociedad_correcto="form.constaciasociedad_correcto"
+					:obs_constaciasociedad="form.obs_constaciasociedad"
+					:obs_constaciasociedad_valido="form.obs_constaciasociedad_valido"
+
+					:evaluacion="true"
+					:id="$props.productor.id"
+				>
+
+				</PaginaUnoDatosProductores>
+				
+			<div>
+
+
+
 					
-					<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-				</div>
+
+
+
+
+					
+					
+
+        <div class="flex">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="razon_social"
+                    >Razon Social:</label
+                >
+                <input
+                    id="razon_social"
+                    name="razon_social"
+                    v-model="form.razon_social"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <p v-show="form.razon_social_valido" class="text-green-500 text-xs italic">Por Favor, complete este campo.</p>
+                <div class="flex">
+                    <div class="w-full md:w-1/3 px-3">
+                        <span class="text-gray-700">Es correcto?</span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="accountType" v-model="form.razon_social_correcto" value="true" v-on:change="calculo_de_porcentajes(1, true)">
+                                <span class="ml-2">Si</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="accountType" v-model="form.razon_social_correcto" value="false" v-on:change="calculo_de_porcentajes(1, false)">
+                                <span class="ml-2">No</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="accountType" v-model="form.razon_social_correcto" value="nada" v-on:change="calculo_de_porcentajes(1, 'nada')">
+                                <span class="ml-2">Sin evaluar</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div v-show="!form.razon_social_correcto" class="w-full md:w-2/3 px-3">
+                        <label
+                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="obs_razon_social"
+                            >Observación:</label
+                        >
+                        <textarea
+                            id="obs_razon_social"
+                            name="obs_razon_social"
+                            v-model="form.obs_razon_social"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        </textarea>
+                        <p class="text-green-500 text-xs italic" v-show="form.obs_razon_social_valido">Please fill out this field.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <label
+                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="email"
+                    >Email:</label
+                >
+                <input
+                    id="email"
+                    name="email"
+                    v-model="form.email"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <p v-show="form.email_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
+                <div class="flex">
+                    <div class="w-full md:w-1/3 px-3">
+                        <span class="text-gray-700">Correcto?</span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="name_email_correcto"  v-model="form.email_correcto" value="true" v-on:change="calculo_de_porcentajes(2, true)">
+                                <span class="ml-2">Si</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_email_correcto"  v-model="form.email_correcto" value="false" v-on:change="calculo_de_porcentajes(2, false)">
+                                <span class="ml-2">No</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_email_correcto" v-model="form.email_correcto" value="nada" v-on:change="calculo_de_porcentajes(2, 'nada')">
+                                <span class="ml-2">Sin evaluar</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div v-show="!form.email_correcto" class="w-full md:w-2/3 px-3">
+                        <label
+                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="obs_email"
+                            >Observación:</label
+                        >
+                        <textarea
+                            id="obs_email"
+                            name="obs_email"
+                            v-model="form.obs_email"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        </textarea>
+                        <p v-show="!form.obs_email_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+			<br>
+        <br>
+        <div class="flex">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="name"
+                    >CUIT:</label
+                >
+                <input
+                    id="cuit"
+                    name="cuit"
+                    v-model="form.cuit"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <p v-show="form.cuit_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
+                <div class="flex">
+                    <div class="w-full md:w-1/3 px-3">
+                        <span class="text-gray-700">Correcto?</span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="name_cuit_correcto"  v-model="form.cuit_correcto" value="true" v-on:change="calculo_de_porcentajes(3, true)">
+                                <span class="ml-2">Si</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_cuit_correcto"  v-model="form.cuit_correcto" value="false" v-on:change="calculo_de_porcentajes(3, false)">
+                                <span class="ml-2">No</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_cuit_correcto" v-model="form.cuit_correcto" value="nada" v-on:change="calculo_de_porcentajes(3, 'nada')">
+                                <span class="ml-2">Sin evaluar</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div v-show="!form.cuit_correcto" class="w-full md:w-2/3 px-3">
+                        <label
+                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="obs_cuit"
+                            >Observación:</label
+                        >
+                        <textarea
+                            id="obs_cuit"
+                            name="obs_cuit"
+                            v-model="form.obs_cuit"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        </textarea>
+                        <p v-show="!form.obs_cuit_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="name"
+                    >Numero de Productor:</label
+                >
+                <input
+                    id="cuit"
+                    v-model="form.numeroproductor"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <p v-show="form.numeroproductor_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
+                <div class="flex">
+                    <div class="w-full md:w-1/3 px-3">
+                        <span class="text-gray-700">Correcto?</span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="name_numeroproductor_correcto"  v-model="form.numeroproductor_correcto" value="true" v-on:change="calculo_de_porcentajes(4, true)">
+                                <span class="ml-2">Si</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_numeroproductor_correcto"  v-model="form.numeroproductor_correcto" value="false" v-on:change="calculo_de_porcentajes(4, false)">
+                                <span class="ml-2">No</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_numeroproductor_correcto" v-model="form.numeroproductor_correcto" value="nada" v-on:change="calculo_de_porcentajes(4, 'nada')">
+                                <span class="ml-2">Sin evaluar</span>
+                            </label>
+
+                        </div>
+                    </div>
+                    <div v-show="!form.numeroproductor_correcto" class="w-full md:w-2/3 px-3">
+                        <label
+                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="obs_numeroproductor"
+                            >Observación:</label
+                        >
+                        <textarea
+                            id="obs_numeroproductor"
+                            name="obs_numeroproductor"
+                            v-model="form.obs_numeroproductor"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        </textarea>
+                        <p v-show="form.obs_numeroproductor_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="flex">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="tipo_sociedad"
+                    >Tipo de Sociedad:</label
+                >
+                <input
+                    id="tipo_sociedad"
+                    name="tipo_sociedad"
+                    v-model="form.tiposociedad"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <p v-show="form.tiposociedad_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
+                <div class="flex">
+                    <div class="w-full md:w-1/3 px-3">
+                        <span class="text-gray-700">Correcto?</span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="name_tiposociedad_correcto"  v-model="form.tiposociedad_correcto" value="true" v-on:change="calculo_de_porcentajes(5, true)">
+                                <span class="ml-2">Si</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_tiposociedad_correcto"  v-model="form.tiposociedad_correcto" value="false" v-on:change="calculo_de_porcentajes(5, false)">
+                                <span class="ml-2">No</span>
+                            </label>
+                        </div>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" class="form-radio" name="name_tiposociedad_correcto" v-model="form.tiposociedad_correcto" value="nada" v-on:change="calculo_de_porcentajes(5, 'nada')">
+                            <span class="ml-2">Sin evaluar</span>
+                        </label>
+                    </div>
+                    <div v-show="!form.tiposociedad_correcto" class="w-full md:w-2/3 px-3">
+                        <label
+                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="obs_tiposociedad"
+                            >Observación:</label
+                        >
+                        <textarea
+                            id="obs_tiposociedad"
+                            name="obs_tiposociedad"
+                            v-model="form.obs_tiposociedad"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        </textarea>
+                        <p v-show="form.obs_tiposociedad_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="flex">
+            <div class="w-full md:w-1/2 px-3">
+                <label
+                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="inscripciondgr"
+                    >Inscripcion DGR:</label
+                >
+                <input
+                    id="inscripciondgr"
+                    name="inscripciondgr"
+                    v-model="form.inscripciondgr"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <p  v-show="form.inscripciondgr_valido"  class="text-red-500 text-xs italic">Please fill out this field.</p>
+                <div class="flex">
+                    <div class="w-full md:w-1/3 px-3">
+                        <span class="text-gray-700">Correcto?</span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="form.inscripciondgr_correcto" value="true" v-on:change="calculo_de_porcentajes(6, true)">
+                                <span class="ml-2">Si</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="form.inscripciondgr_correcto" value="false" v-on:change="calculo_de_porcentajes(6, false)">
+                                <span class="ml-2">No</span>
+                            </label>
+                            <label class="inline-flex items-center ml-6">
+                                <input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="form.inscripciondgr_correcto" value="nada" v-on:change="calculo_de_porcentajes(6, 'nada')">
+                                <span class="ml-2">Sin evaluar</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div v-show="!form.inscripciondgr_correcto" class="w-full md:w-2/3 px-3">
+                        <label
+                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="obs_inscripciondgr"
+                            >Observación:</label
+                        >
+                        <textarea
+                            id="obs_inscripciondgr"
+                            name="obs_inscripciondgr"
+                            v-model="form.obs_inscripciondgr"
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                        </textarea>
+                        <p v-show="form.obs_inscripciondgr_valido"  class="text-green-500 text-xs italic">Please fill out this field.</p>
+                    </div>
+                </div>
+            </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <object data="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf" type="application/pdf" width="100%" height="500px"> 
+                    <p>It appears you don't have a PDF plugin for this browser.
+                        No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
+                    download the PDF file.</a></p>  
+                </object>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="flex">
+            <div class="w-full md:w-1/2 px-3">
+                <label
+                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="constancia_sociedad"
+                    >Constancia de Sociedad:</label
+                >
+                <input
+                    id="constancia_sociedad"
+                    name="constancia_sociedad"
+                    v-model="form.constaciasociedad"
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                />
+                <p v-show="form.constaciasociedad_valido"  class="text-red-500 text-xs italic">Please fill out this field.</p>
+                <div class="flex">
+                    <div class="w-full md:w-1/3 px-3">
+                        <span class="text-gray-700">Correcto?</span>
+                        <div class="mt-2">
+                            <label class="inline-flex items-center">
+                                    <input type="radio" class="form-radio" name="name_constaciasociedad_correcto" v-model="form.constaciasociedad_correcto" value="true" v-on:change="calculo_de_porcentajes(7, true)">
+                                    <span class="ml-2">Si</span>
+                                </label>
+                                <label class="inline-flex items-center ml-6">
+                                    <input type="radio" class="form-radio" name="name_constaciasociedad_correcto" v-model="form.constaciasociedad_correcto" value="false" v-on:change="calculo_de_porcentajes(7, false)">
+                                    <span class="ml-2">No</span>
+                                </label>
+                                <label class="inline-flex items-center ml-6">
+                                    <input type="radio" class="form-radio" name="name_constaciasociedad_correcto" v-model="form.constaciasociedad_correcto" value="nada" v-on:change="calculo_de_porcentajes(7, 'nada')">
+                                    <span class="ml-2">Sin evaluar</span>
+                                </label>
+                        </div>
+                    </div>
+                    <div v-show="!form.constaciasociedad_correcto" class="w-full md:w-2/3 px-3">
+                        <label
+                            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                            for="obs_constaciasociedad"
+                            >Observación:</label
+                        >
+                        <textarea
+                                id="obs_constaciasociedad"
+                                name="obs_constaciasociedad"
+                                v-model="form.obs_constaciasociedad"
+                                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                            </textarea>
+                        <p v-show="!form.obs_constaciasociedad_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 px-3">
+                <object data="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf" type="application/pdf" width="100%" height="500px"> 
+                <p>It appears you don't have a PDF plugin for this browser.
+                        No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
+                    download the PDF file.</a></p>  
+                </object>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="flex flex-col mb-8">
+            <button
+                type="button"
+                class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
+                @click="guardar_avances_uno"
+            >
+                Guardar Datos del Producto
+            </button>
+            
+            <a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
+        </div>
 				<br>
 				<br>
 				<br>
@@ -3323,7 +3387,8 @@ import PasoUnoEdit from '@/Pages/Productors/PasoUnoEdit';
 
 
 
-
+import PaginaUnoDatosProductores from "@/Pages/Productors/PaginaUnoDatosProductores";
+ 
 export default {
 	components: {
 		AppLayout,
@@ -3338,6 +3403,8 @@ export default {
 		CardMinaUbicacion,
 		CardTotal,
 		PasoUnoEdit,
+		
+		PaginaUnoDatosProductores,
 	},
 	props: ["productor"],
 	data() {

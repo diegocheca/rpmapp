@@ -314,11 +314,26 @@ class InitialMigration extends Migration
             ->onDelete('cascade');
 
             $table->timestamps();
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
+            
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish2_ci';
             $table->index(['id']);
         });
+
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     /**

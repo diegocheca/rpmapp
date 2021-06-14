@@ -32,10 +32,10 @@
                                     Añadir
                                 </jet-nav-link> -->
                                 <jet-nav-link
-                                    :href="route('productors.index')"
-                                    :active="route().current('productors.index')"
+                                    :href="route('formulario-alta.index')"
+                                    :active="route().current('formulario-alta.index')"
                                 >
-                                    Productores
+                                    Borradores
                                 </jet-nav-link>
                                 
                                 <jet-nav-link
@@ -69,6 +69,12 @@
                                     :active="route().current('productores_minas.index')"
                                 >
                                     ProdMina
+                                </jet-nav-link>
+                                <jet-nav-link
+                                    :href="route('productores.index')"
+                                    :active="route().current('productores.index')"
+                                >
+                                    Productores
                                 </jet-nav-link>
                                 
 
@@ -208,10 +214,10 @@
                             añadir
                           </jet-responsive-nav-link> -->
                            <jet-responsive-nav-link
-                            :href="route('productors.index')"
-                            :active="route().current('productors.index')"
+                            :href="route('formulario-alta.index')"
+                            :active="route().current('formulario-alta.index')"
                           >
-                            Productores
+                            Borradores
                           </jet-responsive-nav-link>
                           <jet-responsive-nav-link
                             :href="route('productors.create')"
@@ -260,6 +266,12 @@
                             :active="route().current('productores_minas.index')"
                           >
                             ProdMina
+                          </jet-responsive-nav-link>
+                          <jet-responsive-nav-link
+                            :href="route('productores.index')"
+                            :active="route().current('productores.index')"
+                          >
+                            Productores
                           </jet-responsive-nav-link>
                           
                     </div>
