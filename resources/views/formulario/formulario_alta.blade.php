@@ -342,7 +342,7 @@ svg:hover #centerCircle, svg:hover #leftCircle, svg:hover #rightCircle, svg:hove
 
 					<tab-content title="Tipo Formulario" icon="ti-layout-list-thumb-alt" :before-change="validatezeroTab">
 						<button type="button" class="btn btn-warning" id="startTour">Tutorial</button>
-						<h4>Seleccione Tipo de Tramite</h4> <i class="ti-info-alt" id="element" ></i>
+						<h4>Seleccione Tipo de Trámite</h4> <i class="ti-info-alt" id="element" ></i>
 
 
 
