@@ -2,7 +2,7 @@
     <div>
         <h1>{{titulo_pagina}}</h1>
         <div class="flex items-center justify-center">
-            <CardDomLegal v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"
+            <CardDomLegal  
                 :progreso="50"
                 :aprobado="50"
                 :reprobado="50" 
@@ -11,21 +11,10 @@
                 :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
             ></CardDomLegal>
-
-            <CardDomAdmin v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Administrativo'"
-                :progreso="50"
-                :aprobado="50"
-                :reprobado="50" 
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-            ></CardDomAdmin>
-
         </div>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLNombreCalle 
+                <PaginaDosDatosDLNombreCalle
                     v-bind:leal_calle="$props.leal_calle"
                     v-bind:nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
                     v-bind:nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
@@ -37,6 +26,9 @@
                     v-on:changeobsnombrecalle="updateobsnombrecalle($event)"
                     v-on:changeobsnombrecallevalido="updateobsnombrecallevalido($event)"
                     v-on:changevalornombrecalle="updatevalornombrecalle($event)"
+                    
+                    
+                    
                 ></PaginaDosDatosDLNombreCalle>
                 -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
                 -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
@@ -293,7 +285,6 @@
 <script>
 import JetDialogModal from '@/Jetstream/DialogModal';
 import CardDomLegal from '@/Jetstream/altas/CardDomLegal';
-import CardDomAdmin from '@/Jetstream/altas/CardDomAdmin';
 import PaginaDosDatosDLNombreCalle from "@/Pages/Productors/PaginaDosDatosDLNombreCalle";
 
 import PaginaDosDatosDLNumeroCalle from "@/Pages/Productors/PaginaDosDatosDLNumeroCalle";
@@ -368,7 +359,6 @@ export default {
     components: {
 		JetDialogModal,
 		CardDomLegal,
-        CardDomAdmin,
 		PaginaDosDatosDLNombreCalle,
 		PaginaDosDatosDLNumeroCalle,
 		PaginaDosDatosDLTelefono,
@@ -388,7 +378,6 @@ export default {
         modal_tittle:'',
         modal_body:'',
         form_pagina: {
-
             leal_calle : this.$props.leal_calle,
             nombre_calle_legal_valido: this.$props.nombre_calle_legal_valido,
             nombre_calle_legal_correcto: this.$props.nombre_calle_legal_correcto,
@@ -454,7 +443,7 @@ export default {
             this.mostrar_modal_datos_ya_guardados = false
 		},
         updatenombrecallevalido(newValue){
-                this.form_pagina.nombre_calle_legal_valido = newValue;
+            this.form_pagina.nombre_calle_legal_valido = newValue;
             //tengo que enviarsela al padre
         },
         updatenombrecallecorrecto(newValue){

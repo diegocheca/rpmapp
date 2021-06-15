@@ -219,7 +219,7 @@
 					:link_volver="route('formulario-alta.index')"
 					:titulo_boton_volver="'volver'"
 					:titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
-					:titulo_pagina="'Pagina datos deDomicilio Legal'"
+					:titulo_pagina="'Pagina datos de Domicilio Legal'"
 
 
 					:leal_calle="form.leal_calle" 
@@ -295,512 +295,7 @@
 			</div>
 			<br>
 			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/2 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="leal_calle"
-							>Nombre Calle Legal:</label
-						>
-						<input
-							id="leal_calle"
-							name="leal_calle"
-							v-model="form.leal_calle"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.nombre_calle_legal_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="nombre_calle_legal_correcto"  v-model="form.nombre_calle_legal_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(1, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="nombre_calle_legal_correcto"  v-model="form.nombre_calle_legal_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(1, false)">
-										<span class="ml-2">No</span>
-									</label>
-								</div>
-								<label class="inline-flex items-center ml-6">
-									<input type="radio" class="form-radio" name="nombre_calle_legal_correcto" v-model="form.nombre_calle_legal_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(1, 'nada')">
-									<span class="ml-2">Sin evaluar</span>
-								</label>
-							</div>
-							<div v-show="!form.nombre_calle_legal_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_nombre_calle_legal"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_nombre_calle_legal"
-									name="obs_nombre_calle_legal"
-									v-model="form.obs_nombre_calle_legal"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								
-								<p v-show="form.obs_nombre_calle_legal_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-
-				</div>
-				<div class="w-full md:w-1/2 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="leal_numero"
-							>Número de Calle Legal:</label
-						>
-						<input
-							id="leal_numero"
-							name="leal_numero"
-							v-model="form.leal_numero"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.leal_numero_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/2 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="nombre_leal_numero_correcto"  v-model="form.leal_numero_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(2, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="nombre_leal_numero_correcto"  v-model="form.leal_numero_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(2, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="nombre_leal_numero_correcto" v-model="form.leal_numero_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(2, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div  v-show="!form.leal_numero_correcto" class="w-full md:w-1/2 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_leal_numero"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_leal_numero"
-									name="obs_leal_numero"
-									v-model="form.obs_leal_numero"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_leal_numero_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/2 px-3">
-					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="leal_telefono"
-						>Telefóno de Domicilio Legal:</label
-					>
-					<input
-						id="leal_telefono"
-						name="leal_telefono"
-						v-model="form.leal_telefono"
-						class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-					/>
-					<p v-show="form.leal_telefono_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-					<div class="flex">
-							<div class="w-full md:w-1/2 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_leal_telefono_correcto" v-model="form.leal_telefono_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(3, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_leal_telefono_correcto" v-model="form.leal_telefono_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(3, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_leal_telefono_correcto" v-model="form.leal_telefono_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(3, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div  v-show="!form.leal_telefono_correcto" class="w-full md:w-1/2 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_leal_telefono"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_leal_telefono"
-									name="obs_leal_telefono"
-									v-model="form.obs_leal_telefono"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_leal_telefono_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="pais_dom_legal"
-							>País de Domicilio Legal:</label
-						>
-						<select
-							id="pais_dom_legal"
-							name="pais_dom_legal"
-							v-model="form.leal_pais"
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="-1">Really long option that will likely overlap the chevron</option>
-							<option value="Argentina">Argentina</option>
-							<option value="-3">Option 3</option>
-						</select>
-						<p v-show="form.leal_pais_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_leal_pais_correcto" v-model="form.leal_pais_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(4, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_leal_pais_correcto" v-model="form.leal_pais_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(4, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_leal_pais_correcto" v-model="form.leal_pais_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(4, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								
-								<div v-show="!form.leal_pais_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_pais_dom_legal"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_pais_dom_legal"
-										name="obs_pais_dom_legal"
-										v-model="form.obs_pais_dom_legal"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									<p v-show="form.obs_leal_pais_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="provincia_dom_legal"
-							>Provincia de Domicilio Legal</label>
-
-							
-
-
-
-
-						<select
-							id="provincia_dom_legal"
-							name="provincia_dom_legal"
-							v-model="form.leal_provincia" 
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option :value="null" />
-								<option value="Buenos Aires">Buenos Aires</option>
-								<option value="Buenos Aires-GBA">Buenos Aires-GBA</option>
-								<option value="Capital Federal">Capital Federal</option>
-								<option value="Catamarca">Catamarca</option>
-								<option value="Chaco">Chaco</option>
-								<option value="Chubut">Chubut</option>
-								<option value="Cordoba">Cordoba</option>
-								<option value="Corrientes">Corrientes</option>
-								<option value="Entre Rios">Entre Rios</option>
-								<option value="Formosa">Formosa</option>
-								<option value="Jujuy">Jujuy</option>
-								<option value="La Pampa">La Pampa</option>
-								<option value="La Rioja">La Rioja</option>
-								<option value="Mendoza">Mendoza</option>
-								<option value="Misiones">Misiones</option>
-								<option value="Neuquen">Neuquen</option>
-								<option value="Rio Negro">Rio Negro</option>
-								<option value="Salta">Salta</option>
-								<option value="San Juan">San Juan</option>
-								<option value="San Luis">San Luis</option>
-								<option value="Santa Cruz">Santa Cruz</option>
-								<option value="Santa Fe">Santa Fe</option>
-								<option value="Santiago del Estero">Santiago del Estero</option>
-								<option value="Tierra del Fuego">Tierra del Fuego</option>
-								<option value="Tucuman">Tucuman</option>
-								<option value="Provincia 2 de brazil">Provincia 2 de brazil</option>
-						</select>
-						<p v-show="form.leal_provincia_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_leal_provincia_correcto" v-model="form.leal_provincia_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(5, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_leal_provincia_correcto" v-model="form.leal_provincia_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(5, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_leal_provincia_correcto" v-model="form.leal_provincia_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(5, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								<div v-show="!form.leal_provincia_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_leal_provincia"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_leal_provincia"
-										name="obs_leal_provincia"
-										v-model="form.obs_leal_provincia"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-
-									
-									<p v-show="form.obs_leal_provincia_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="departamento_dom_legal"
-							>Departamento de Domicilio Legal</label>
-						<select
-							id="departamento_dom_legal"
-							name="departamento_dom_legal"
-							v-model="form.leal_departamento" 
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option :value="null" />
-								<option value="Buenos Aires">Buenos Aires</option>
-								<option value="Jachal">Jachal</option>
-								<option value="Capital">Capital</option>
-								<option value="Chimbas">Chimbas</option>
-								<option value="Corrientes">Corrientes</option>
-								<option value="Formosa">Formosa</option>
-								<option value="Jujuy">Jujuy</option>
-								<option value="Mendoza">Mendoza</option>
-								<option value="Neuquen">Neuquen</option>
-								<option value="Salta">Salta</option>
-								<option value="Tucuman">Tucuman</option>
-						</select>
-						<p v-show="form.leal_departamento_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_leal_departamento_correcto" v-model="form.leal_departamento_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(6, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_leal_departamento_correcto" v-model="form.leal_departamento_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(6, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_leal_departamento_correcto" v-model="form.leal_departamento_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(6, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								<div  v-show="!form.leal_departamento_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_leal_departamento"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_leal_departamento"
-										name="obs_leal_departamento"
-										v-model="form.obs_leal_departamento"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									<p v-show="form.obs_leal_departamento_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="dom_legal_localidad"
-							>Localidad de Domicilio Legal:</label
-						>
-						<input
-							id="dom_legal_localidad"
-							name="dom_legal_localidad"
-							v-model="form.leal_localidad"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.leal_localidad_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/2 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_leal_localidad_correcto" v-model="form.leal_localidad_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(7, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_leal_localidad_correcto" v-model="form.leal_localidad_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(7, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_leal_localidad_correcto" v-model="form.leal_localidad_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(7, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-								</div>
-							</div>
-							<div v-show="!form.leal_localidad_correcto"  class="w-full md:w-1/2 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_leal_localidad"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_leal_localidad"
-										name="obs_leal_localidad"
-										v-model="form.obs_leal_localidad"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p  v-show="form.obs_leal_localidad_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="dom_legal_cp"
-							>Códido Postal de Domicilio Legal</label
-						>
-						<input
-							id="dom_legal_cp"
-							name="dom_legal_cp"
-							v-model="form.leal_cp"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.leal_cp_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/2 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_leal_cp_correcto" v-model="form.leal_cp_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(8, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_leal_cp_correcto" v-model="form.leal_cp_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(8, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_leal_cp_correcto" v-model="form.leal_cp_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(8, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.leal_cp_correcto" class="w-full md:w-1/2 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_leal_cp"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_leal_cp"
-										name="obs_leal_cp"
-										v-model="form.obs_leal_cp"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									
-								<p  v-show="form.obs_leal_cp_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="leal_otro"
-							>Otro dato de Domicilio Legal</label
-						>
-						<input
-							id="leal_otro"
-							name="leal_otro"
-							v-model="form.leal_otro"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.leal_otro_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/2 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_leal_otro_correcto" v-model="form.leal_otro_correcto" value="true" v-on:change="calculo_de_porcentajes_dos(9, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_leal_otro_correcto" v-model="form.leal_otro_correcto" value="false" v-on:change="calculo_de_porcentajes_dos(9, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_leal_otro_correcto" v-model="form.leal_otro_correcto" value="nada" v-on:change="calculo_de_porcentajes_dos(9, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.leal_otro_correcto"  class="w-full md:w-1/2 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_leal_otro"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_leal_otro"
-										name="obs_leal_otro"
-										v-model="form.obs_leal_otro"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p v-show="form.obs_leal_otro_valido"  class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_dos"
-				>
-					Guardar Datos del Domicilio Legal en la Provincia
-				</button>
-				
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
-			<br>
+			
 			<br>
 			<br>
 			<hr>
@@ -827,509 +322,69 @@
 			<br>
 			<br>
 			<br>
+			<br>
+			<br>
+			<br>
+			{{	form.administracion_calle }}
+			<PaginaDosDatosDomLegal
+				:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos del Domicilio Administrativo'"
+				:titulo_pagina="'Pagina datos de Domicilio Administrativo'"
 
-			<br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/2 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="administracion_calle"
-							>Nombre de Calle de Domicilio Administrativo:</label
-						>
-						<input
-							id="administracion_calle"
-							name="administracion_calle"
-							v-model="form.administracion_calle"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.administracion_calle_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="nombre_administracion_calle_correcto"  v-model="form.administracion_calle_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(1, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="nombre_administracion_calle_correcto"  v-model="form.administracion_calle_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(1, false)">
-										<span class="ml-2">No</span>
-									</label>
-								</div>
-								<label class="inline-flex items-center ml-6">
-									<input type="radio" class="form-radio" name="nombre_administracion_calle_correcto" v-model="form.administracion_calle_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(1, 'nada')">
-									<span class="ml-2">Sin evaluar</span>
-								</label>
-							</div>
-							<div v-show="!form.administracion_calle_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_administracion_calle_nombre"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_administracion_calle_nombre"
-									name="obs_administracion_calle_nombre"
-									v-model="form.obs_administracion_calle_nombre"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								
-								<p v-show="form.obs_administracion_calle_nombre_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
+				:leal_calle="form.administracion_calle"
+				:nombre_calle_legal_valido="form.administracion_calle_valido"
+				:nombre_calle_legal_correcto="form.administracion_calle_correcto"
+				:obs_nombre_calle_legal="form.obs_administracion_calle_nombre"
+				:obs_nombre_calle_legal_valido="form.obs_administracion_calle_nombre_valido"
+				:leal_numero="form.administracion_numero"
+				:leal_numero_valido="form.administracion_numero_valido"
+				:leal_numero_correcto="form.administracion_numero_correcto"
+				:obs_leal_numero="form.obs_administracion_numero_nombre"
+				:obs_leal_numero_valido="form.obs_administracion_numero_nombre_valido"
+				:leal_telefono="form.administracion_telefono"
+				:leal_telefono_valido="form.administracion_telefono_valido"
+				:leal_telefono_correcto="form.administracion_telefono_correcto"
+				:obs_leal_telefono="form.obs_administracion_telefono_nombre"
+				:obs_leal_telefono_valido="form.obs_administracion_telefono_nombre_valido"
+				:leal_pais="form.administracion_pais"
+				:leal_pais_valido="form.administracion_pais_valido"
+				:leal_pais_correcto="form.administracion_pais_correcto"
+				:obs_leal_pais="form.obs_administracion_pais"
+				:obs_leal_pais_valido="form.obs_administracion_pais_valido"
+				:leal_provincia="form.administracion_provincia"
+				:leal_provincia_valido="form.administracion_provincia_valido"
+				:leal_provincia_correcto="form.administracion_provincia_correcto"
+				:obs_leal_provincia="form.obs_administracion_provincia"
+				:obs_leal_provincia_valido="form.obs_administracion_provincia_valido"
+				:leal_departamento="form.administracion_departamento"
+				:leal_departamento_valido="form.administracion_departamento_valido"
+				:leal_departamento_correcto="form.administracion_departamento_correcto"
+				:obs_leal_departamento="form.obs_administracion_departamento"
+				:obs_leal_departamento_valido="form.obs_administracion_departamento_valido"
+				:leal_localidad="form.administracion_localidad"
+				:leal_localidad_valido="form.administracion_localidad_valido"
+				:leal_localidad_correcto="form.administracion_localidad_correcto"
+				:obs_leal_localidad="form.obs_administracion_localidad"
+				:obs_leal_localidad_valido="form.obs_administracion_localidad_valido"
+				:leal_cp="form.administracion_cp"
+				:leal_cp_valido="form.administracion_cp_valido"
+				:leal_cp_correcto="form.administracion_cp_correcto"
+				:obs_leal_cp="form.obs_administracion_cp"
+				:obs_leal_cp_valido="form.obs_administracion_cp_valido"
+				:leal_otro="form.administracion_otro"
+				:leal_otro_valido="form.administracion_otro_valido"
+				:leal_otro_correcto="form.administracion_otro_correcto"
+				:obs_leal_otro="form.obs_administracion_otro"
+				:obs_leal_otro_valido="form.obs_administracion_otro_valido"
 
-				</div>
-				<div class="w-full md:w-1/2 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="administracion_numero"
-							>Número de Calle ADministración:</label
-						>
-						<input
-							id="administracion_numero"
-							name="administracion_numero"
-							v-model="form.administracion_numero"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.administracion_numero_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_administracion_numero_correcto"  v-model="form.administracion_numero_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(2, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_administracion_numero_correcto"  v-model="form.administracion_numero_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(2, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_administracion_numero_correcto" v-model="form.administracion_numero_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(2, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div  v-show="!form.administracion_numero_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_administracion_numero_nombre"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_administracion_numero_nombre"
-									name="obs_administracion_numero_nombre"
-									v-model="form.obs_administracion_numero_nombre"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_administracion_numero_nombre_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/2 px-3">
-					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="administracion_telefono"
-						>Telefóno de Domicilio Administracion:</label
-					>
-					<input
-						id="administracion_telefono"
-						name="administracion_telefono"
-						v-model="form.administracion_telefono"
-						class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-					/>
-					<p v-show="form.administracion_telefono_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-					<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_administracion_telefono_correcto" v-model="form.administracion_telefono_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(3, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_administracion_telefono_correcto" v-model="form.administracion_telefono_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(3, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_administracion_telefono_correcto" v-model="form.administracion_telefono_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(3, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div  v-show="!form.administracion_telefono_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_administracion_telefono_nombre"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_administracion_telefono_nombre"
-									name="obs_administracion_telefono_nombre"
-									v-model="form.obs_administracion_telefono_nombre"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_administracion_telefono_nombre_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-					</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="administracion_pais"
-							>País de Domicilio Administracion:</label
-						>
-						<select
-							id="administracion_pais"
-							name="administracion_pais"
-							v-model="form.administracion_pais"
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="-1">Really long option that will likely overlap the chevron</option>
-							<option value="Argentina">Argentina</option>
-							<option value="-3">Option 3</option>
-						</select>
-						<p v-show="form.administracion_pais_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_administracion_pais_correcto" v-model="form.administracion_pais_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(4, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_administracion_pais_correcto" v-model="form.administracion_pais_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(4, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_administracion_pais_correcto" v-model="form.administracion_pais_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(4, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								
-								<div v-show="!form.administracion_pais_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_administracion_pais"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_administracion_pais"
-										name="obs_administracion_pais"
-										v-model="form.obs_administracion_pais"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									<p v-show="form.obs_administracion_pais_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="administracion_provincia"
-							>Provincia de Domicilio Administracion</label>
-						<select
-							id="administracion_provincia"
-							name="administracion_provincia"
-							v-model="form.administracion_provincia" 
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option :value="null" />
-								<option value="Buenos Aires">Buenos Aires</option>
-								<option value="Buenos Aires-GBA">Buenos Aires-GBA</option>
-								<option value="Capital Federal">Capital Federal</option>
-								<option value="Catamarca">Catamarca</option>
-								<option value="Chaco">Chaco</option>
-								<option value="Chubut">Chubut</option>
-								<option value="Cordoba">Cordoba</option>
-								<option value="Corrientes">Corrientes</option>
-								<option value="Entre Rios">Entre Rios</option>
-								<option value="Formosa">Formosa</option>
-								<option value="Jujuy">Jujuy</option>
-								<option value="La Pampa">La Pampa</option>
-								<option value="La Rioja">La Rioja</option>
-								<option value="Mendoza">Mendoza</option>
-								<option value="Misiones">Misiones</option>
-								<option value="Neuquen">Neuquen</option>
-								<option value="Rio Negro">Rio Negro</option>
-								<option value="Salta">Salta</option>
-								<option value="San Juan">San Juan</option>
-								<option value="San Luis">San Luis</option>
-								<option value="Santa Cruz">Santa Cruz</option>
-								<option value="Santa Fe">Santa Fe</option>
-								<option value="Santiago del Estero">Santiago del Estero</option>
-								<option value="Tierra del Fuego">Tierra del Fuego</option>
-								<option value="Tucuman">Tucuman</option>
-								<option value="Provincia 2 de brazil">Provincia 2 de brazil</option>
-						</select>
-						<p v-show="form.administracion_provincia_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_administracion_provincia_correcto" v-model="form.administracion_provincia_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(5, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_administracion_provincia_correcto" v-model="form.administracion_provincia_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(5, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_administracion_provincia_correcto" v-model="form.administracion_provincia_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(5, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								<div v-show="!form.administracion_provincia_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_administracion_provincia"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_administracion_provincia"
-										name="obs_administracion_provincia"
-										v-model="form.obs_administracion_provincia"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-
-									
-									<p v-show="form.obs_administracion_provincia_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="administracion_departamento"
-							>Departamento de Domicilio Administracion</label>
-						<select
-							id="administracion_departamento"
-							name="administracion_departamento"
-							v-model="form.administracion_departamento" 
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option :value="null" />
-								<option value="Buenos Aires">Buenos Aires</option>
-								<option value="Jachal">Jachal</option>
-								<option value="Capital">Capital</option>
-								<option value="Chimbas">Chimbas</option>
-								<option value="Corrientes">Corrientes</option>
-								<option value="Formosa">Formosa</option>
-								<option value="Jujuy">Jujuy</option>
-								<option value="Mendoza">Mendoza</option>
-								<option value="Neuquen">Neuquen</option>
-								<option value="Salta">Salta</option>
-								<option value="Tucuman">Tucuman</option>
-						</select>
-						<p v-show="form.administracion_departamento_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_administracion_departamento_correcto" v-model="form.administracion_departamento_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(6, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_administracion_departamento_correcto" v-model="form.administracion_departamento_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(6, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_administracion_departamento_correcto" v-model="form.administracion_departamento_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(6, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								<div  v-show="!form.administracion_departamento_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_administracion_departamento"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_administracion_departamento"
-										name="obs_administracion_departamento"
-										v-model="form.obs_administracion_departamento"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									<p v-show="form.obs_administracion_departamento_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="administracion_localidad"
-							>Localidad de Domicilio Administracion:</label
-						>
-						<input
-							id="administracion_localidad"
-							name="administracion_localidad"
-							v-model="form.administracion_localidad"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.administracion_localidad_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_administracion_localidad_correcto" v-model="form.administracion_localidad_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(7, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_administracion_localidad_correcto" v-model="form.administracion_localidad_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(7, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_administracion_localidad_correcto" v-model="form.administracion_localidad_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(7, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-								</div>
-							</div>
-							<div v-show="!form.administracion_localidad_correcto"  class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_administracion_localidad"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_administracion_localidad"
-										name="obs_administracion_localidad"
-										v-model="form.obs_administracion_localidad"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p  v-show="form.obs_administracion_localidad_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="administracion_cp"
-							>Códido Postal de Domicilio Administracion</label
-						>
-						<input
-							id="administracion_cp"
-							name="administracion_cp"
-							v-model="form.administracion_cp"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.administracion_cp_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_administracion_cp_correcto" v-model="form.administracion_cp_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(8, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_administracion_cp_correcto" v-model="form.administracion_cp_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(8, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_administracion_cp_correcto" v-model="form.administracion_cp_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(8, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.administracion_cp_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_administracion_cp"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_administracion_cp"
-										name="obs_administracion_cp"
-										v-model="form.obs_administracion_cp"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									
-								<p  v-show="form.obs_administracion_cp_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="administracion_otro"
-							>Otro dato de Domicilio Administracion</label
-						>
-						<input
-							id="administracion_otro"
-							name="administracion_otro"
-							v-model="form.administracion_otro"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.administracion_otro_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/2 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_administracion_otro_correcto" v-model="form.administracion_otro_correcto" value="true" v-on:change="calculo_de_porcentajes_tres(9, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_administracion_otro_correcto" v-model="form.administracion_otro_correcto" value="false" v-on:change="calculo_de_porcentajes_tres(9, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_administracion_otro_correcto" v-model="form.administracion_otro_correcto" value="nada" v-on:change="calculo_de_porcentajes_tres(9, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.administracion_otro_correcto"  class="w-full md:w-1/2 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_administracion_otro"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_administracion_otro"
-										name="obs_administracion_otro"
-										v-model="form.obs_administracion_otro"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p v-show="form.obs_administracion_otro_valido"  class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_tres"
+				:evaluacion="true"
+				:id="$props.productor.id"
 				>
-					Guardar Datos del Domicilio de Administración Central
-				</button>
-				
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
-			<br>
+
+			</PaginaDosDatosDomLegal>
+
+			
 			<br>
 			<br>
 			<hr>
@@ -1347,6 +402,67 @@
 							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 						></CardMinaUno>
 			</div>
+
+
+			<br>
+			<br>
+			<br>
+			<hr>
+			<br>
+			<br>
+			<br>
+			<PaginaCuatroDatosMinaUno
+			:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos de Mina Primer Parte'"
+				:titulo_pagina="'Pagina datos de Mina Primera Parte'"
+
+				:numero_expdiente="form.numero_expdiente"
+				:numero_expdiente_valido="form.numero_expdiente_valido"
+				:numero_expdiente_correcto="form.numero_expdiente_correcto"
+				:obs_numero_expdiente="form.obs_numero_expdiente"
+				:obs_numero_expdiente_valido="form.obs_numero_expdiente_valido"
+				:categoria="form.categoria"
+				:categoria_validacion="form.categoria_validacion"
+				:categoria_correcto="form.categoria_correcto"
+				:obs_categoria="form.obs_categoria"
+				:obs_categoria_valido="form.obs_categoria_valido"
+				:nombre_mina="form.nombre_mina"
+				:nombre_mina_validacion="form.nombre_mina_validacion"
+				:nombre_mina_correcto="form.nombre_mina_correcto"
+				:obs_nombre_mina="form.obs_nombre_mina"
+				:obs_nombre_mina_valido="form.obs_nombre_mina_valido"
+				:descripcion_mina="form.descripcion_mina"
+				:descripcion_mina_validacion="form.descripcion_mina_validacion"
+				:descripcion_mina_correcto="form.descripcion_mina_correcto"
+				:obs_descripcion_mina="form.obs_descripcion_mina"
+				:obs_descripcion_mina_valido="form.obs_descripcion_mina_valido"
+				:distrito_minero="form.distrito_minero"
+				:distrito_minero_validacion="form.distrito_minero_validacion"
+				:distrito_minero_correcto="form.distrito_minero_correcto"
+				:obs_distrito_minero="form.obs_distrito_minero"
+				:obs_distrito_minero_valido="form.obs_distrito_minero_valido"
+				:mina_cantera="form.mina_cantera"
+				:mina_cantera_validacion="form.mina_cantera_validacion"
+				:mina_cantera_correcto="form.mina_cantera_correcto"
+				:obs_mina_cantera="form.obs_mina_cantera"
+				:obs_mina_cantera_valido="form.obs_mina_cantera_valido"
+				:plano_inmueble="form.plano_inmueble"
+				:plano_inmueble_validacion="form.plano_inmueble_validacion"
+				:plano_inmueble_correcto="form.plano_inmueble_correcto"
+				:obs_plano_inmueble="form.obs_plano_inmueble"
+				:obs_plano_inmueble_valido="form.obs_plano_inmueble_valido"
+				:minerales_variedad="form.minerales_variedad"
+				:minerales_variedad_validacion="form.minerales_variedad_validacion"
+				:minerales_variedad_correcto="form.minerales_variedad_correcto"
+				:obs_minerales_variedad="form.obs_minerales_variedad"
+				:obs_minerales_variedad_valido="form.obs_minerales_variedad_valido"
+
+				:evaluacion="true"
+				:id="$props.productor.id"
+			>
+
+			</PaginaCuatroDatosMinaUno>
 			<div class="flex">
 				<div class="w-full md:w-1/3 px-3">
 					<label
@@ -3068,6 +2184,8 @@ import PasoUnoEdit from '@/Pages/Productors/PasoUnoEdit';
 import PaginaUnoDatosProductores from "@/Pages/Productors/PaginaUnoDatosProductores";
 
 import PaginaDosDatosDomLegal from "@/Pages/Productors/PaginaDosDatosDomLegal";
+
+import PaginaCuatroDatosMinaUno from "@/Pages/Productors/PaginaCuatroDatosMinaUno";
  
 export default {
 	components: {
@@ -3086,6 +2204,7 @@ export default {
 		
 		PaginaUnoDatosProductores,
 		PaginaDosDatosDomLegal,
+		PaginaCuatroDatosMinaUno,
 	},
 	props: ["productor"],
 	data() {

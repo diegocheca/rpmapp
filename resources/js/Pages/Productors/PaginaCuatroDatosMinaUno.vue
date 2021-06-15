@@ -2,7 +2,7 @@
     <div>
         <h1>{{titulo_pagina}}</h1>
         <div class="flex items-center justify-center">
-            <CardDomLegal v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"
+            <CardMinaUno 
                 :progreso="50"
                 :aprobado="50"
                 :reprobado="50" 
@@ -10,113 +10,95 @@
                 :updated_at="'hace 10 minutos'"
                 :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-            ></CardDomLegal>
-
-            <CardDomAdmin v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Administrativo'"
-                :progreso="50"
-                :aprobado="50"
-                :reprobado="50" 
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-            ></CardDomAdmin>
-
+            ></CardMinaUno>
         </div>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLNombreCalle 
-                    v-bind:leal_calle="$props.leal_calle"
-                    v-bind:nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
-                    v-bind:nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
-                    v-bind:obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
-                    v-bind:obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
+                <NumeroExpedienteMina 
+                    v-bind:numero_expdiente="$props.numero_expdiente"
+                    v-bind:numero_expdiente_valido="$props.numero_expdiente_valido"
+                    v-bind:numero_expdiente_correcto="$props.numero_expdiente_correcto"
+                    v-bind:obs_numero_expdiente="$props.obs_numero_expdiente"
+                    v-bind:obs_numero_expdiente_valido="$props.obs_numero_expdiente_valido"
                     v-bind:evaluacion="true"
-                    v-on:changenombrecallevalido="updatenombrecallevalido($event)"
-                    v-on:changenombrecallecorrecto="updatenombrecallecorrecto($event)"
-                    v-on:changeobsnombrecalle="updateobsnombrecalle($event)"
-                    v-on:changeobsnombrecallevalido="updateobsnombrecallevalido($event)"
-                    v-on:changevalornombrecalle="updatevalornombrecalle($event)"
-                ></PaginaDosDatosDLNombreCalle>
-                -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
-                -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
-                -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
-                -- Nombre de calle observacion autoridad deel padre{{form_pagina.obs_nombre_calle_legal}}
-                -- Nombre de calle observacion autoridad valida deel padre{{form_pagina.obs_nombre_calle_legal_valido}}
+                    v-on:changenumexpvalido="update_num_exp_valido($event)"
+                    v-on:changenumexpcorrecto="update_num_exp_correcto($event)"
+                    v-on:changeobsnumexp="updateobs_num_exp($event)"
+                    v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
+                    v-on:changevalornumexp="updatevalor_num_exp($event)"
+                ></NumeroExpedienteMina>
+                -- num exp valor input deel padre{{form_pagina.numero_expdiente}}
+                -- num exp input valido deel padre{{form_pagina.numero_expdiente_valido}}
+                -- num exp rta prod correcta deel padre{{form_pagina.numero_expdiente_correcto}}
+                -- num exp observacion autoridad deel padre{{form_pagina.obs_numero_expdiente}}
+                -- num exp observacion autoridad valida deel padre{{form_pagina.obs_numero_expdiente_valido}}
                 
             </div>
             <div class="w-full md:w-1/2 px-3">
-                <PaginaDosDatosDLNumeroCalle
-                    v-bind:leal_numero="$props.leal_numero"
-                    v-bind:leal_numero_valido="$props.leal_numero_valido"
-                    v-bind:leal_numero_correcto="$props.leal_numero_correcto"
-                    v-bind:obs_leal_numero="$props.obs_leal_numero"
-                    v-bind:obs_leal_numero_valido="$props.obs_leal_numero_valido"
+                <DistritoMinero
+                    v-bind:distrito_minero="$props.distrito_minero"
+                    v-bind:distrito_minero_validacion="$props.distrito_minero_validacion"
+                    v-bind:distrito_minero_correcto="$props.distrito_minero_correcto"
+                    v-bind:obs_distrito_minero="$props.obs_distrito_minero"
+                    v-bind:obs_distrito_minero_valido="$props.obs_distrito_minero_valido"
                     v-bind:evaluacion="true"
-                    v-on:changetelnumlegalvalido="updatenumlegalvalido($event)"
-                    v-on:changetelnumlegalcorrecto="updatenumlegalcorrecto($event)"
-                    v-on:changeobstelnumlegal="updateobs_numlegal($event)"
-                     v-on:changeobstelnumlegalvalido="updateobs_numlegal_valido($event)"
-                     v-on:changevalornumlegal="updatevalornumlegal($event)"
-                    
-
-                    
+                    v-on:changevalido="update_distrito_minero_valido($event)"
+                    v-on:changecorrecto="update_distrito_minero_correcto($event)"
+                    v-on:changeobs="update_distrito_minero_obs($event)"
+                    v-on:changeobsvalido="update_distrito_minero_valido_obs($event)"
+                    v-on:changevalor="update_distrito_minero($event)"
                 >
-                </PaginaDosDatosDLNumeroCalle>
-                 -- numero de calle  deel padre{{form_pagina.leal_numero}}
-                  -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
-                -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
-               -- numero de calle observacion deel padre{{form_pagina.obs_leal_numero}}
-                -- numero de calle observacion valida deel padre{{form_pagina.obs_leal_numero_valido}}
+                </DistritoMinero>
+                -- distrito_minero   deel padre{{form_pagina.distrito_minero}}
+                -- distrito_minero_validacion  valida deel padre{{form_pagina.distrito_minero_validacion}}
+                -- distrito_minero_correcto  correcto deel padre{{form_pagina.distrito_minero_correcto}}
+                -- obs_distrito_minero  observacion deel padre{{form_pagina.obs_distrito_minero}}
+                -- obs_distrito_minero_valido  observacion valida deel padre{{form_pagina.obs_distrito_minero_valido}}
                 
                 
             </div>
         </div>
+        Nombre de mina:{{$props.nombre_mina}}
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLTelefono
-                    v-bind:leal_telefono="$props.leal_telefono"
-                    v-bind:leal_telefono_valido="$props.leal_telefono_valido"
-                    v-bind:leal_telefono_correcto="$props.leal_telefono_correcto"
-                    v-bind:obs_leal_telefono="$props.obs_leal_telefono"
-                    v-bind:obs_leal_telefono_valido="$props.obs_leal_telefono_valido"
+                <NombreMina
+                    v-bind:valor_input_props="$props.nombre_mina"
+                    v-bind:valor_input_validacion="$props.nombre_mina_validacion"
+                    v-bind:evualacion_correcto="$props.nombre_mina_correcto"
+                    v-bind:valor_obs="$props.obs_nombre_mina"
+                    v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
                     v-bind:evaluacion="true"
-                    v-on:changetellegalvalido="updatetelegalvalido($event)"
-                    v-on:changetellegalcorrecto="updatetellegalcorrecto($event)"
-                    v-on:changeobstellegal="updateobs_tellegal($event)"
-                     v-on:changeobstellegalvalido="updateobs_tellegal_valido($event)"
-                     v-on:changevalortellegal="updatevalortellegal($event)"
+                    v-bind:label="'Nombre de Mina'"
+                    v-on:changevalido="update_nom_mina_valido($event)"
+                    v-on:changecorrecto="update_nom_mina_correcto($event)"
+                    v-on:changeobs="update_obs_nom_mina($event)"
+                    v-on:changeobsvalido="update_obs_nom_mina_valida($event)"
+                    v-on:changevalor="update_valor_nom_mina_($event)"
                 >
-                </PaginaDosDatosDLTelefono>
-                 -- telefono de calle  deel padre{{form_pagina.leal_telefono}}
-                  -- telefono de calle valida deel padre{{form_pagina.leal_telefono_valido}}
-                -- telefono de calle correcto deel padre{{form_pagina.leal_telefono_correcto}}
-               -- telefono de calle observacion deel padre{{form_pagina.obs_leal_telefono}}
-                -- telefono de calle observacion valida deel padre{{form_pagina.obs_leal_telefono_valido}}
+                </NombreMina>
+                -- nom mina de calle  deel padre{{form_pagina.nombre_mina}}
+                -- nom mina de calle valida deel padre{{form_pagina.nombre_mina_validacion}}
+                -- nom mina de calle correcto deel padre{{form_pagina.nombre_mina_correcto}}
+                -- nom mina de calle observacion deel padre{{form_pagina.obs_nombre_mina}}
+                -- nom mina de calle observacion valida deel padre{{form_pagina.obs_nombre_mina_valido}}
                 
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLProvincia
-                    v-bind:leal_provincia="$props.leal_provincia"
-                    v-bind:leal_provincia_valido="$props.leal_provincia_valido"
-                    v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
-                    v-bind:obs_leal_provincia="$props.obs_leal_provincia"
-                    v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
-                    v-bind:evaluacion="false"
-                    v-on:changeprovlegalvalido="updateteprovinciavalido($event)"
-                    v-on:changeprovlegalcorrecto="updateteprovinciacorrecto($event)"
-                    v-on:changeobsrpovlegal="updateobs_provincialegal($event)"
-                    v-on:changeobsprovlegalvalido="updateobs_provincialegal_valido($event)"
-                    v-on:changevalorprovlegal="updatevalorprovincialegalnumlegal($event)"
-
+                <NombreMina
+                    v-bind:valor_input_props="$props.nombre_mina"
+                    v-bind:valor_input_validacion="$props.nombre_mina_validacion"
+                    v-bind:evualacion_correcto="$props.nombre_mina_correcto"
+                    v-bind:valor_obs="$props.obs_nombre_mina"
+                    v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
+                    v-bind:evaluacion="true"
+                    v-bind:label="'Nombre de Mina'"
+                    v-on:changevalido="update_nom_mina_valido($event)"
+                    v-on:changecorrecto="update_nom_mina_correcto($event)"
+                    v-on:changeobs="update_obs_nom_mina($event)"
+                    v-on:changeobsvalido="update_obs_nom_mina_valida($event)"
+                    v-on:changevalor="update_valor_nom_mina_($event)"
                 >
-                </PaginaDosDatosDLProvincia>
-
-                 -- provincia de calle  deel padre{{form_pagina.leal_provincia}}
-                  -- provincia de calle valida deel padre{{form_pagina.leal_provincia_valido}}
-                -- provincia de calle correcto deel padre{{form_pagina.leal_provincia_correcto}}
-               -- provincia de calle observacion deel padre{{form_pagina.obs_leal_provincia}}
-                -- provincia de calle observacion valida deel padre{{form_pagina.obs_leal_provincia_valido}}
+                </NombreMina>
 
             </div>
          </div>
@@ -292,12 +274,11 @@
 
 <script>
 import JetDialogModal from '@/Jetstream/DialogModal';
-import CardDomLegal from '@/Jetstream/altas/CardDomLegal';
-import CardDomAdmin from '@/Jetstream/altas/CardDomAdmin';
-import PaginaDosDatosDLNombreCalle from "@/Pages/Productors/PaginaDosDatosDLNombreCalle";
+import CardMinaUno from '@/Jetstream/altas/CardMinaUno';
+import NumeroExpedienteMina from "@/Pages/Productors/NumeroExpedienteMina";
 
-import PaginaDosDatosDLNumeroCalle from "@/Pages/Productors/PaginaDosDatosDLNumeroCalle";
-import PaginaDosDatosDLTelefono from "@/Pages/Productors/PaginaDosDatosDLTelefono";
+import DistritoMinero from "@/Pages/Productors/DistritoMinero";
+import NombreMina from "@/Pages/Productors/NombreMina";
 import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvincia";
 import PaginaDosDatosDLDepartamento from "@/Pages/Productors/PaginaDosDatosDLDepartamento";
 
@@ -313,53 +294,46 @@ export default {
         'titulo_boton_guardar',
         'titulo_pagina',
 
-        'leal_calle',
-        'nombre_calle_legal_valido',
-        'nombre_calle_legal_correcto',
-        'obs_nombre_calle_legal',
-        'obs_nombre_calle_legal_valido',
-
-        'leal_numero',
-        'leal_numero_valido',
-        'leal_numero_correcto',
-        'obs_leal_numero',
-        'obs_leal_numero_valido',
-
-        'leal_telefono',
-        'leal_telefono_valido',
-        'leal_telefono_correcto',
-        'obs_leal_telefono',
-        'obs_leal_telefono_valido',
-        'leal_pais',
-        'leal_pais_valido',
-        'leal_pais_correcto',
-        'obs_leal_pais',
-        'obs_leal_pais_valido',
-        'leal_provincia',
-        'leal_provincia_valido',
-        'leal_provincia_correcto',
-        'obs_leal_provincia',
-        'obs_leal_provincia_valido',
-        'leal_departamento',
-        'leal_departamento_valido',
-        'leal_departamento_correcto',
-        'obs_leal_departamento',
-        'obs_leal_departamento_valido',
-        'leal_localidad',
-        'leal_localidad_valido',
-        'leal_localidad_correcto',
-        'obs_leal_localidad',
-        'obs_leal_localidad_valido',
-        'leal_cp',
-        'leal_cp_valido',
-        'leal_cp_correcto',
-        'obs_leal_cp',
-        'obs_leal_cp_valido',
-        'leal_otro',
-        'leal_otro_valido',
-        'leal_otro_correcto',
-        'obs_leal_otro',
-        'obs_leal_otro_valido',
+        'numero_expdiente',
+        'numero_expdiente_valido',
+        'numero_expdiente_correcto',
+        'obs_numero_expdiente',
+        'obs_numero_expdiente_valido',
+        'categoria',
+        'categoria_validacion',
+        'categoria_correcto',
+        'obs_categoria',
+        'obs_categoria_valido',
+        'nombre_mina',
+        'nombre_mina_validacion',
+        'nombre_mina_correcto',
+        'obs_nombre_mina',
+        'obs_nombre_mina_valido',
+        'descripcion_mina',
+        'descripcion_mina_validacion',
+        'descripcion_mina_correcto',
+        'obs_descripcion_mina',
+        'obs_descripcion_mina_valido',
+        'distrito_minero',
+        'distrito_minero_validacion',
+        'distrito_minero_correcto',
+        'obs_distrito_minero',
+        'obs_distrito_minero_valido',
+        'mina_cantera',
+        'mina_cantera_validacion',
+        'mina_cantera_correcto',
+        'obs_mina_cantera',
+        'obs_mina_cantera_valido',
+        'plano_inmueble',
+        'plano_inmueble_validacion',
+        'plano_inmueble_correcto',
+        'obs_plano_inmueble',
+        'obs_plano_inmueble_valido',
+        'minerales_variedad',
+        'minerales_variedad_validacion',
+        'minerales_variedad_correcto',
+        'obs_minerales_variedad',
+        'obs_minerales_variedad_valido',
 
         'evaluacion',
         'id'
@@ -367,11 +341,10 @@ export default {
  
     components: {
 		JetDialogModal,
-		CardDomLegal,
-        CardDomAdmin,
-		PaginaDosDatosDLNombreCalle,
-		PaginaDosDatosDLNumeroCalle,
-		PaginaDosDatosDLTelefono,
+        CardMinaUno,
+		NumeroExpedienteMina,
+		DistritoMinero,
+		NombreMina,
 		PaginaDosDatosDLProvincia,
         PaginaDosDatosDLDepartamento,
         PaginaDosDatosDLCP,
@@ -389,63 +362,36 @@ export default {
         modal_body:'',
         form_pagina: {
 
-            leal_calle : this.$props.leal_calle,
-            nombre_calle_legal_valido: this.$props.nombre_calle_legal_valido,
-            nombre_calle_legal_correcto: this.$props.nombre_calle_legal_correcto,
-            obs_nombre_calle_legal:  this.$props.obs_nombre_calle_legal,
-            obs_nombre_calle_legal_valido : this.$props.obs_nombre_calle_legal_valido,
+            numero_expdiente : this.$props.numero_expdiente,
+            numero_expdiente_valido: this.$props.numero_expdiente_valido,
+            numero_expdiente_correcto: this.$props.numero_expdiente_correcto,
+            obs_numero_expdiente:  this.$props.obs_numero_expdiente,
+            obs_numero_expdiente_valido : this.$props.obs_numero_expdiente_valido,
 
-            leal_numero: this.$props.leal_numero,
-            leal_numero_valido:  this.$props.leal_numero_valido,
-            leal_numero_correcto:  this.$props.leal_numero_correcto,
-            obs_leal_numero:  this.$props.obs_leal_numero,
-            obs_leal_numero_valido: this.$props.obs_leal_numero_valido,
+
+            distrito_minero : this.$props.distrito_minero,
+            distrito_minero_validacion: this.$props.distrito_minero_validacion,
+            distrito_minero_correcto: this.$props.distrito_minero_correcto,
+            obs_distrito_minero:  this.$props.obs_distrito_minero,
+            obs_distrito_minero_valido : this.$props.obs_distrito_minero_valido,
+
+
+            nombre_mina : this.$props.nombre_mina,
+            nombre_mina_validacion: this.$props.nombre_mina_validacion,
+            nombre_mina_correcto: this.$props.nombre_mina_correcto,
+            obs_nombre_mina:  this.$props.obs_nombre_mina,
+            obs_nombre_mina_valido : this.$props.obs_nombre_mina_valido,
+
+
             
-            leal_telefono : this.$props.leal_telefono,
-            leal_telefono_valido : this.$props.leal_telefono_valido,
-            leal_telefono_correcto : this.$props.leal_telefono_correcto,
-            obs_leal_telefono: this.$props.obs_leal_telefono,
-            obs_leal_telefono_valido: this.$props.obs_leal_telefono_valido,
-
-
-            leal_provincia: this.$props.leal_provincia,
-            leal_provincia_valido: this.$props.leal_provincia_valido,
-            leal_provincia_correcto: this.$props.leal_provincia_correcto,
-            obs_leal_provincia: this.$props.obs_leal_provincia,
-            obs_leal_provincia_valido: this.$props.obs_leal_provincia_valido,
-
-
-            leal_departamento: this.$props.leal_departamento,
-            leal_departamento_valido: this.$props.leal_departamento_valido,
-            leal_departamento_correcto: this.$props.leal_departamento_correcto,
-            obs_leal_departamento: this.$props.obs_leal_departamento,
-            obs_leal_departamento_valido: this.$props.obs_leal_departamento_valido,
-
-
-
-            leal_localidad: this.$props.leal_localidad,
-            leal_localidad_valido: this.$props.leal_localidad_valido,
-            leal_localidad_correcto: this.$props.leal_localidad_correcto,
-            obs_leal_localidad: this.$props.obs_leal_localidad,
-            obs_leal_localidad_valido: this.$props.obs_leal_localidad_valido,
-
-
-
-            leal_cp: this.$props.leal_cp,
-            leal_cp_valido: this.$props.leal_cp_valido,
-            leal_cp_correcto: this.$props.leal_cp_correcto,
-            obs_leal_cp: this.$props.obs_leal_cp,
-            obs_leal_cp_valido: this.$props.obs_leal_cp_valido,
-
-
-
-            leal_otro: this.$props.leal_otro,
-            leal_otro_valido: this.$props.leal_otro_valido,
-            leal_otro_correcto: this.$props.leal_otro_correcto,
-            obs_leal_otro: this.$props.obs_leal_otro,
-            obs_leal_otro_valido: this.$props.obs_leal_otro_valido,
-
-
+            
+            
+            
+            
+            
+            
+            
+            
         },
     };
   },
@@ -453,24 +399,24 @@ export default {
       cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
-        updatenombrecallevalido(newValue){
+        update_num_exp_valido(newValue){
                 this.form_pagina.nombre_calle_legal_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatenombrecallecorrecto(newValue){
+        update_num_exp_correcto(newValue){
             this.form_pagina.nombre_calle_legal_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobsnombrecalle(newValue){
+        updateobs_num_exp(newValue){
             this.form_pagina.obs_nombre_calle_legal = newValue;
             //tengo que enviarsela al padre
         },
-        updateobsnombrecallevalido(newValue){
+        updateobs_num_exp_valido(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.obs_nombre_calle_legal_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalornombrecalle(newValue){
+        updatevalor_num_exp(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.leal_calle = newValue;
             //tengo que enviarsela al padre
@@ -484,83 +430,67 @@ export default {
 
 
 
-        updatenumlegalvalido(newValue){
-            this.form_pagina.leal_numero_valido = newValue;
+        update_distrito_minero_valido(newValue){
+            this.form_pagina.distrito_minero_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        updatenumlegalcorrecto(newValue){
-            this.form_pagina.leal_numero_correcto = newValue;
+        update_distrito_minero_correcto(newValue){
+            this.form_pagina.distrito_minero_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_numlegal(newValue){
-            this.form_pagina.obs_leal_numero = newValue;
+        update_distrito_minero_obs(newValue){
+            this.form_pagina.obs_distrito_minero = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_numlegal_valido(newValue){
+        update_distrito_minero_valido_obs(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_leal_numero_valido = newValue;
+            this.form_pagina.obs_distrito_minero_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalornumlegal(newValue){
+        update_distrito_minero(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.leal_numero = newValue;
+            this.form_pagina.distrito_minero = newValue;
             //tengo que enviarsela al padre
         },
 
 
 
         
-        updatetelegalvalido(newValue){
-            this.form_pagina.leal_numero_valido = newValue;
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        update_nom_mina_valido(newValue){
+            this.form_pagina.nombre_mina_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        updatetellegalcorrecto(newValue){
-            this.form_pagina.leal_numero_correcto = newValue;
+        update_nom_mina_correcto(newValue){
+            this.form_pagina.nombre_mina_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_tellegal(newValue){
-            this.form_pagina.obs_leal_numero = newValue;
+        update_obs_nom_mina(newValue){
+            this.form_pagina.obs_nombre_mina = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_tellegal_valido(newValue){
+        update_obs_nom_mina_valida(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_leal_numero_valido = newValue;
+            this.form_pagina.obs_nombre_mina_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalortellegal(newValue){
+        update_valor_nom_mina_(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.leal_numero = newValue;
-            //tengo que enviarsela al padre
-        },
-        
-        
-
-
-
-
-
-
-
-        updateteprovinciavalido(newValue){
-            this.form_pagina.leal_provincia_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        updateteprovinciacorrecto(newValue){
-            this.form_pagina.leal_provincia_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        updateobs_provincialegal(newValue){
-            this.form_pagina.obs_leal_provincia = newValue;
-            //tengo que enviarsela al padre
-        },
-        updateobs_provincialegal_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_leal_provincia_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        updatevalorprovincialegalnumlegal(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.leal_provincia = newValue;
+            this.form_pagina.nombre_mina = newValue;
             //tengo que enviarsela al padre
         },
 
