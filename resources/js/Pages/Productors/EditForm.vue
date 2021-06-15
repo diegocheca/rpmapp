@@ -458,8 +458,22 @@
 				:obs_minerales_variedad="form.obs_minerales_variedad"
 				:obs_minerales_variedad_valido="form.obs_minerales_variedad_valido"
 
+
+				:resolucion_concesion_minera="form.resolucion_concesion_minera"
+				:resolucion_concesion_minera_validacion="form.resolucion_concesion_minera_validacion"
+				:resolucion_concesion_minera_correcto="form.resolucion_concesion_minera_correcto"
+				:obs_resolucion_concesion_minera="form.obs_resolucion_concesion_minera"
+				:obs_resolucion_concesion_minera_valido="form.obs_resolucion_concesion_minera_valido"
+
+				:titulo_contrato_posecion="form.titulo_contrato_posecion"
+				:titulo_contrato_posecion_validacion="form.titulo_contrato_posecion_validacion"
+				:titulo_contrato_posecion_correcto="form.titulo_contrato_posecion_correcto"
+				:obs_titulo_contrato_posecion="form.obs_titulo_contrato_posecion"
+				:obs_titulo_contrato_posecion_valido="form.obs_titulo_contrato_posecion_valido"
+
 				:evaluacion="true"
 				:id="$props.productor.id"
+				:testing="true"
 			>
 
 			</PaginaCuatroDatosMinaUno>

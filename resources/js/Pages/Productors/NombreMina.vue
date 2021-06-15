@@ -5,6 +5,7 @@
             for="input_componente"
             >{{label}}:</label
         >
+        
         <input
             id="input_componente"
             name="input_componente"
@@ -49,14 +50,16 @@
                 <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
             </div>
         </div>
-        --Valor input:{{valor_variable_local}}--
-        --Validacion Input:{{validacion_input_local}}--
-        --distrtito minero calle Valido local:{{validacion_input_local}}--
-        --distrtito minero calle Evalaucion:{{evualacion_correcto}}--
-        --distrtito minero calle Obser:{{valor_obs}}--
-        --distrtito minero calle obsr Valido:{{valor_valido_obs}}--
-        --Evaluacion {{evaluacion}}--
-        --{{texto_validacion_text_area}}--
+        <div v-show="testing">
+            <br>Valor input:{{valor_input}}<br>
+            <br>Validacion Input:{{validacion_input_local}}<br>
+            <br>distrtito minero calle Valido local:{{validacion_input_local}}<br>
+            <br>distrtito minero calle Evalaucion:{{evualacion_correcto}}<br>
+            <br>distrtito minero calle Obser:{{valor_obs}}<br>
+            <br>distrtito minero calle obsr Valido:{{valor_valido_obs}}<br>
+            <br>Evaluacion {{evaluacion}}<br>
+            <br>{{texto_validacion_text_area}}<br>
+        </div>
     </div>
 </template>
 
@@ -69,6 +72,7 @@ export default {
         'valor_obs', 
         'valor_valido_obs',
         'evaluacion',
+        'testing',
         'label'
     ],
   data() {

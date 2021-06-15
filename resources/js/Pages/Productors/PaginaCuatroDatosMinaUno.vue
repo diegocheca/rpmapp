@@ -27,12 +27,14 @@
                     v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
                     v-on:changevalornumexp="updatevalor_num_exp($event)"
                 ></NumeroExpedienteMina>
-                -- num exp valor input deel padre{{form_pagina.numero_expdiente}}
-                -- num exp input valido deel padre{{form_pagina.numero_expdiente_valido}}
-                -- num exp rta prod correcta deel padre{{form_pagina.numero_expdiente_correcto}}
-                -- num exp observacion autoridad deel padre{{form_pagina.obs_numero_expdiente}}
-                -- num exp observacion autoridad valida deel padre{{form_pagina.obs_numero_expdiente_valido}}
-                
+                <div v-show="testing">
+                     <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
+                     <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
+                     <br> num exp de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
+                     <br> num exp de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
+                     <br> num exp de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
+                </div>
+
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <DistritoMinero
@@ -49,12 +51,13 @@
                     v-on:changevalor="update_distrito_minero($event)"
                 >
                 </DistritoMinero>
-                -- distrito_minero   deel padre{{form_pagina.distrito_minero}}
-                -- distrito_minero_validacion  valida deel padre{{form_pagina.distrito_minero_validacion}}
-                -- distrito_minero_correcto  correcto deel padre{{form_pagina.distrito_minero_correcto}}
-                -- obs_distrito_minero  observacion deel padre{{form_pagina.obs_distrito_minero}}
-                -- obs_distrito_minero_valido  observacion valida deel padre{{form_pagina.obs_distrito_minero_valido}}
-                
+                <div v-show="testing">
+                     <br> distrito minero de Mina valor padre: {{form_pagina.distrito_minero}}
+                     <br> distrito minero de Mina  valido del padre: {{form_pagina.distrito_minero_validacion}}
+                     <br> distrito minero de Mina  correcto deel padre: {{form_pagina.distrito_minero_correcto}}
+                     <br> distrito minero de Mina  observacion deel padre: {{form_pagina.obs_distrito_minero}}
+                     <br> distrito minero de Mina  observacion valida deel padre: {{form_pagina.obs_distrito_minero_valido}}
+                </div>
                 
             </div>
         </div>
@@ -67,7 +70,8 @@
                     v-bind:evualacion_correcto="$props.nombre_mina_correcto"
                     v-bind:valor_obs="$props.obs_nombre_mina"
                     v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
-                    v-bind:evaluacion="true"
+                    v-bind:evaluacion="false"
+                    v-bind:testing = "true"
                     v-bind:label="'Nombre de Mina'"
                     v-on:changevalido="update_nom_mina_valido($event)"
                     v-on:changecorrecto="update_nom_mina_correcto($event)"
@@ -76,134 +80,153 @@
                     v-on:changevalor="update_valor_nom_mina_($event)"
                 >
                 </NombreMina>
-                -- nom mina de calle  deel padre{{form_pagina.nombre_mina}}
-                -- nom mina de calle valida deel padre{{form_pagina.nombre_mina_validacion}}
-                -- nom mina de calle correcto deel padre{{form_pagina.nombre_mina_correcto}}
-                -- nom mina de calle observacion deel padre{{form_pagina.obs_nombre_mina}}
-                -- nom mina de calle observacion valida deel padre{{form_pagina.obs_nombre_mina_valido}}
+                <div v-show="testing">
+                     <br> Nombre de Mina valor padre: {{form_pagina.nombre_mina}}
+                     <br> Nombre de Mina  valido del padre: {{form_pagina.nombre_mina_validacion}}
+                     <br> Nombre de Mina  correcto deel padre: {{form_pagina.nombre_mina_correcto}}
+                     <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_nombre_mina}}
+                     <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_nombre_mina_valido}}
+
+                </div>
+                
                 
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <NombreMina
-                    v-bind:valor_input_props="$props.nombre_mina"
-                    v-bind:valor_input_validacion="$props.nombre_mina_validacion"
-                    v-bind:evualacion_correcto="$props.nombre_mina_correcto"
-                    v-bind:valor_obs="$props.obs_nombre_mina"
-                    v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:label="'Nombre de Mina'"
-                    v-on:changevalido="update_nom_mina_valido($event)"
-                    v-on:changecorrecto="update_nom_mina_correcto($event)"
-                    v-on:changeobs="update_obs_nom_mina($event)"
-                    v-on:changeobsvalido="update_obs_nom_mina_valida($event)"
-                    v-on:changevalor="update_valor_nom_mina_($event)"
+                <SelectGenerico
+                    v-bind:valor_input_props="$props.categoria"
+                    v-bind:valor_input_validacion="$props.categoria_validacion"
+                    v-bind:evualacion_correcto="$props.categoria_correcto"
+                    v-bind:valor_obs="$props.obs_categoria"
+                    v-bind:valor_valido_obs="$props.obs_categoria_valido"
+                    v-bind:evaluacion="false"
+                    v-bind:testing = "true"
+                    v-bind:label="'Categoria de Manifestacion'"
+                    v-on:changevalido="update_cat_valido($event)"
+                    v-on:changecorrecto="update_cat_correcto($event)"
+                    v-on:changeobs="update_obs_cat($event)"
+                    v-on:changeobsvalido="update_obs_cat_valida($event)"
+                    v-on:changevalor="update_valor_cat($event)"
                 >
-                </NombreMina>
+                </SelectGenerico>
+                <div v-show="testing">
+                     <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
+                     <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
+                     <br> Categoria de Mina  correcto deel padre: {{form_pagina.categoria_correcto}}
+                     <br> Categoria de Mina  observacion deel padre: {{form_pagina.obs_categoria}}
+                     <br> Categoria de Mina  observacion valida deel padre: {{form_pagina.obs_categoria_valido}}
 
+                </div>
             </div>
          </div>
          <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLDepartamento
-                    v-bind:leal_departamento="$props.leal_departamento"
-                    v-bind:leal_departamento_valido="$props.leal_departamento_valido"
-                    v-bind:leal_departamento_correcto="$props.leal_departamento_correcto"
-                    v-bind:obs_leal_departamento="$props.obs_leal_departamento"
-                    v-bind:obs_leal_departamento_valido="$props.obs_leal_departamento_valido"
+                <InputFileGenerico
+                    v-bind:valor_input_props="$props.resolucion_concesion_minera"
+                    v-bind:valor_input_validacion="$props.resolucion_concesion_minera_validacion"
+                    v-bind:evualacion_correcto="$props.resolucion_concesion_minera_correcto"
+                    v-bind:valor_obs="$props.obs_resolucion_concesion_minera"
+                    v-bind:valor_valido_obs="$props.obs_resolucion_concesion_minera_valido"
                     v-bind:evaluacion="true"
-                    v-on:changedptolegalvalido="updatetedptovalido($event)"
-                    v-on:changedptolegalcorrecto="updatetedptocorrecto($event)"
-                    v-on:changeobsrdptolegal="updateobs_dptolegal($event)"
-                    v-on:changeobsdptolegalvalido="updateobs_dptolegal_valido($event)"
-                    v-on:changevalordptolegal="updatevalordptolegalnumlegal($event)"
+                    v-bind:testing = "false"
+                    v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
+                    v-on:changevalido="update_resol_conce_valido($event)"
+                    v-on:changecorrecto="update_resol_conce_correcto($event)"
+                    v-on:changeobs="update_obs_resol_conce($event)"
+                    v-on:changeobsvalido="update_obs_resol_conce_valido($event)"
+                    v-on:changevalor="update_valor_resol_conce($event)"
 
                 >
-                </PaginaDosDatosDLDepartamento>
-
-                 -- dpto de calle  deel padre{{form_pagina.leal_departamento}}
-                  -- dpto de calle valida deel padre{{form_pagina.leal_departamento_valido}}
-                -- dpto de calle correcto deel padre{{form_pagina.leal_departamento_correcto}}
-               -- dpto de calle observacion deel padre{{form_pagina.obs_leal_departamento}}
-                -- dpto de calle observacion valida deel padre{{form_pagina.obs_leal_departamento_valido}}
+                </InputFileGenerico>
+                <div v-show="testing">
+                     <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
+                     <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
+                     <br> concesion resolucion minera de Mina  correcto deel padre: {{form_pagina.resolucion_concesion_minera_correcto}}
+                     <br> concesion resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_resolucion_concesion_minera}}
+                     <br> concesion resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_resolucion_concesion_minera_valido}}
+                </div>
             </div>
 
-
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLocalidad
-                    v-bind:leal_localidad="$props.leal_localidad"
-                    v-bind:leal_localidad_valido="$props.leal_localidad_valido"
-                    v-bind:leal_localidad_correcto="$props.leal_localidad_correcto"
-                    v-bind:obs_leal_localidad="$props.obs_leal_localidad"
-                    v-bind:obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
+                <InputFileGenerico
+                    v-bind:valor_input_props="$props.plano_inmueble"
+                    v-bind:valor_input_validacion="$props.plano_inmueble_validacion"
+                    v-bind:evualacion_correcto="$props.plano_inmueble_correcto"
+                    v-bind:valor_obs="$props.obs_plano_inmueble"
+                    v-bind:valor_valido_obs="$props.obs_plano_inmueble_valido"
                     v-bind:evaluacion="true"
-                    v-on:changelocalidadlegalvalido="updatelocalidadvalido($event)"
-                    v-on:changelocalidadlegalcorrecto="updatetelocalidadcorrecto($event)"
-                    v-on:changeobsrlocalidadlegal="updateobs_localidadlegal($event)"
-                    v-on:changeobslocalidadlegalvalido="updateobs_localidadlegal_valido($event)"
-                    v-on:changevalorlocalidadlegal="updatevalorlocalidadlegalnumlegal($event)"
+                    v-bind:testing = "false"
+                    v-bind:label="'Plano Inmueble (3° categoria) (*)'"
+                    v-on:changevalido="update_plano_inmueble_valido($event)"
+                    v-on:changecorrecto="update_plano_inmueble_correcto($event)"
+                    v-on:changeobs="update_obs_plano_inmueble($event)"
+                    v-on:changeobsvalido="update_obs_plano_inmueble_valido($event)"
+                    v-on:changevalor="update_valor_plano_inmueble($event)"
 
                 >
-                </PaginaDosDatosDLocalidad>
+                </InputFileGenerico>
 
-                 -- localidad de calle  deel padre{{form_pagina.leal_localidad}}
-                  -- localidad de calle valida deel padre{{form_pagina.leal_localidad_valido}}
-                -- localidad de calle correcto deel padre{{form_pagina.leal_localidad_correcto}}
-               -- localidad de calle observacion deel padre{{form_pagina.obs_leal_localidad}}
-                -- localidad de calle observacion valida deel padre{{form_pagina.obs_leal_localidad_valido}}
+                -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
+                -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
+                -- plano_inmueble_correcto minera correcto deel padre{{form_pagina.plano_inmueble_correcto}}
+                -- obs_plano_inmueble minera observacion deel padre{{form_pagina.obs_plano_inmueble}}
+                -- obs_plano_inmueble_valido minera observacion valida deel padre{{form_pagina.obs_plano_inmueble_valido}}
             </div>
 
          </div>
 
          <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLCP
-                    v-bind:leal_cp="$props.leal_cp"
-                    v-bind:leal_cp_valido="$props.leal_cp_valido"
-                    v-bind:leal_cp_correcto="$props.leal_cp_correcto"
-                    v-bind:obs_leal_cp="$props.obs_leal_cp"
-                    v-bind:obs_leal_cp_valido="$props.obs_leal_cp_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changecplegalvalido="update_cp_valido($event)"
-                    v-on:changecplegalcorrecto="update_cp_correcto($event)"
-                    v-on:changeobsrcplegal="update_obs_cp_legal($event)"
-                    v-on:changeobscplegalvalido="update_obs_cp_legal_valido($event)"
-                    v-on:changevalorcplegal="update_valor_cp($event)"
-
+                <InputFileGenerico
+                    v-bind:valor_input_props="$props.titulo_contrato_posecion"
+                    v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
+                    v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
+                    v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
+                    v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
+                     v-bind:evaluacion="true"
+                    v-bind:testing = "false"
+                    v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
+                    v-on:changevalido="update_titulo_contrato_valido($event)"
+                    v-on:changecorrecto="update_titulo_contrato_correcto($event)"
+                    v-on:changeobs="update_obs_titulo_contrato($event)"
+                    v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
+                    v-on:changevalor="update_valor_titulo_contrato($event)"
                 >
-                </PaginaDosDatosDLCP>
+                </InputFileGenerico>
 
-                 -- cod postal de calle  deel padre{{form_pagina.leal_cp}}
-                  -- cod postal de calle valida deel padre{{form_pagina.leal_cp_valido}}
-                -- cod postal de calle correcto deel padre{{form_pagina.leal_cp_correcto}}
-               -- cod postal de calle observacion deel padre{{form_pagina.obs_leal_cp}}
-                -- cod postal de calle observacion valida deel padre{{form_pagina.obs_leal_cp_valido}}
+                -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
+                -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
+                -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
+                -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
+                -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
             </div>
+         </div>
 
-
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLOtro
-                    v-bind:leal_otro="$props.leal_otro"
-                    v-bind:leal_otro_valido="$props.leal_otro_valido"
-                    v-bind:leal_otro_correcto="$props.leal_otro_correcto"
-                    v-bind:obs_leal_otro="$props.obs_leal_otro"
-                    v-bind:obs_leal_otro_valido="$props.obs_leal_otro_valido"
+         <div class="flex">
+            <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+                <ListadeMinerales
+                    v-bind:valor_input_props="$props.titulo_contrato_posecion"
+                    v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
+                    v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
+                    v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
+                    v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
                     v-bind:evaluacion="true"
-                    v-on:changeotrolegalvalido="update_otro_valido($event)"
-                    v-on:changeotrolegalcorrecto="update_otro_correcto($event)"
-                    v-on:changeobsotrolegal="update_obs_otro_legal($event)"
-                    v-on:changeobsotrolegalvalido="update_obs_otro_legal_valido($event)"
-                    v-on:changevalorotrolegal="update_valor_otro($event)"
-
+                    v-bind:testing = "false"
+                    v-bind:label="'Lista de minerales'"
+                    v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
+                    v-on:changevalido="update_titulo_contrato_valido($event)"
+                    v-on:changecorrecto="update_titulo_contrato_correcto($event)"
+                    v-on:changeobs="update_obs_titulo_contrato($event)"
+                    v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
+                    v-on:changevalor="update_valor_titulo_contrato($event)"
                 >
-                </PaginaDosDatosDLOtro>
+                </ListadeMinerales>
 
-                 -- otro de calle  deel padre{{form_pagina.leal_otro}}
-                  -- otro de calle valida deel padre{{form_pagina.leal_otro_valido}}
-                -- otro de calle correcto deel padre{{form_pagina.leal_otro_correcto}}
-               -- otro de calle observacion deel padre{{form_pagina.obs_leal_otro}}
-                -- otro de calle observacion valida deel padre{{form_pagina.obs_leal_otro_valido}}
+                -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
+                -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
+                -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
+                -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
+                -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
             </div>
-
          </div>
 
 
@@ -279,8 +302,10 @@ import NumeroExpedienteMina from "@/Pages/Productors/NumeroExpedienteMina";
 
 import DistritoMinero from "@/Pages/Productors/DistritoMinero";
 import NombreMina from "@/Pages/Productors/NombreMina";
+import SelectGenerico from "@/Pages/Productors/SelectGenerico";
 import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvincia";
-import PaginaDosDatosDLDepartamento from "@/Pages/Productors/PaginaDosDatosDLDepartamento";
+import InputFileGenerico from "@/Pages/Productors/InputFileGenerico";
+import ListadeMinerales from "@/Pages/Productors/ListadeMinerales";
 
 import PaginaDosDatosDLocalidad from "@/Pages/Productors/PaginaDosDatosDLocalidad";
 import PaginaDosDatosDLCP from "@/Pages/Productors/PaginaDosDatosDLCP";
@@ -334,9 +359,20 @@ export default {
         'minerales_variedad_correcto',
         'obs_minerales_variedad',
         'obs_minerales_variedad_valido',
+        'resolucion_concesion_minera',
+        'resolucion_concesion_minera_validacion',
+        'resolucion_concesion_minera_correcto',
+        'obs_resolucion_concesion_minera',
+        'obs_resolucion_concesion_minera_valido',
+        'titulo_contrato_posecion',
+        'titulo_contrato_posecion_validacion',
+        'titulo_contrato_posecion_correcto',
+        'obs_titulo_contrato_posecion',
+        'obs_titulo_contrato_posecion_valido',
 
         'evaluacion',
-        'id'
+        'id',
+        'testing'
     ],
  
     components: {
@@ -345,9 +381,10 @@ export default {
 		NumeroExpedienteMina,
 		DistritoMinero,
 		NombreMina,
+        SelectGenerico,
 		PaginaDosDatosDLProvincia,
-        PaginaDosDatosDLDepartamento,
-        PaginaDosDatosDLCP,
+        InputFileGenerico,
+        ListadeMinerales,
 		PaginaDosDatosDLocalidad,
 		PaginaDosDatosDLOtro,
 		PaginaUnoDatosProductorConstanciaSociedad,
@@ -383,6 +420,32 @@ export default {
             obs_nombre_mina_valido : this.$props.obs_nombre_mina_valido,
 
 
+
+            resolucion_concesion_minera : this.$props.resolucion_concesion_minera,
+            resolucion_concesion_minera_validacion: this.$props.resolucion_concesion_minera_validacion,
+            resolucion_concesion_minera_correcto: this.$props.resolucion_concesion_minera_correcto,
+            obs_resolucion_concesion_minera:  this.$props.obs_resolucion_concesion_minera,
+            obs_resolucion_concesion_minera_valido : this.$props.obs_resolucion_concesion_minera_valido,
+
+
+            plano_inmueble : this.$props.plano_inmueble,
+            plano_inmueble_validacion: this.$props.plano_inmueble_validacion,
+            plano_inmueble_correcto: this.$props.plano_inmueble_correcto,
+            obs_plano_inmueble:  this.$props.obs_plano_inmueble,
+            obs_plano_inmueble_valido : this.$props.obs_plano_inmueble_valido,
+
+
+            
+            titulo_contrato_posecion: this.$props.titulo_contrato_posecion,
+            titulo_contrato_posecion_validacion: this.$props.titulo_contrato_posecion_validacion,
+            titulo_contrato_posecion_correcto: this.$props.titulo_contrato_posecion_correcto,
+            obs_titulo_contrato_posecion: this.$props.obs_titulo_contrato_posecion,
+            obs_titulo_contrato_posecion_valido: this.$props.obs_titulo_contrato_posecion_valido,
+            
+            
+            
+            
+            
             
             
             
@@ -497,26 +560,30 @@ export default {
 
 
 
-        updatetedptovalido(newValue){
-            this.form_pagina.leal_departamento_valido = newValue;
+
+
+
+
+        update_cat_valido(newValue){
+            this.form_pagina.categoria_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        updatetedptocorrecto(newValue){
-            this.form_pagina.leal_departamento_correcto = newValue;
+        update_cat_correcto(newValue){
+            this.form_pagina.categoria_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_dptolegal(newValue){
-            this.form_pagina.obs_leal_departamento = newValue;
+        update_obs_cat(newValue){
+            this.form_pagina.obs_categoria = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_dptolegal_valido(newValue){
+        update_obs_cat_valida(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_leal_departamento_valido = newValue;
+            this.form_pagina.obs_categoria_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalordptolegalnumlegal(newValue){
+        update_valor_cat(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.leal_departamento = newValue;
+            this.form_pagina.categoria = newValue;
             //tengo que enviarsela al padre
         },
 
@@ -526,28 +593,88 @@ export default {
 
 
 
-        updatelocalidadvalido(newValue){
-            this.form_pagina.leal_localidad_valido = newValue;
+
+
+
+
+
+        update_resol_conce_valido(newValue){
+            this.form_pagina.resolucion_concesion_minera_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        updatetelocalidadcorrecto(newValue){
-            this.form_pagina.leal_localidad_correcto = newValue;
+        update_resol_conce_correcto(newValue){
+            this.form_pagina.resolucion_concesion_minera_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_localidadlegal(newValue){
-            this.form_pagina.obs_leal_localidad = newValue;
+        update_obs_resol_conce(newValue){
+            this.form_pagina.obs_resolucion_concesion_minera = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_localidadlegal_valido(newValue){
+        update_obs_resol_conce_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_leal_localidad_valido = newValue;
+            this.form_pagina.obs_resolucion_concesion_minera_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalorlocalidadlegalnumlegal(newValue){
+        update_valor_resol_conce(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.leal_localidad = newValue;
+            this.form_pagina.resolucion_concesion_minera = newValue;
             //tengo que enviarsela al padre
         },
+
+        
+
+
+        update_plano_inmueble_valido(newValue){
+            this.form_pagina.plano_inmueble_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_plano_inmueble_correcto(newValue){
+            this.form_pagina.plano_inmueble_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_plano_inmueble(newValue){
+            this.form_pagina.obs_plano_inmueble = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_plano_inmueble_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_plano_inmueble_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_plano_inmueble(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.plano_inmueble = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
+        update_titulo_contrato_valido(newValue){
+            this.form_pagina.titulo_contrato_posecion_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_titulo_contrato_correcto(newValue){
+            this.form_pagina.titulo_contrato_posecion_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_titulo_contrato(newValue){
+            this.form_pagina.obs_titulo_contrato_posecion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_titulo_contrato_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_titulo_contrato_posecion_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_titulo_contrato(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.titulo_contrato_posecion = newValue;
+            //tengo que enviarsela al padre
+        },
+
 
 
 
