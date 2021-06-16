@@ -15,24 +15,24 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <CaracterQueInvoca 
-                    v-bind:numero_expdiente="$props.numero_expdiente"
-                    v-bind:numero_expdiente_valido="$props.numero_expdiente_valido"
-                    v-bind:numero_expdiente_correcto="$props.numero_expdiente_correcto"
-                    v-bind:obs_numero_expdiente="$props.obs_numero_expdiente"
-                    v-bind:obs_numero_expdiente_valido="$props.obs_numero_expdiente_valido"
+                    v-bind:valor_input_props="$props.owner"
+                    v-bind:evualacion_correcto="$props.owner_correcto"
+                    v-bind:valor_obs="$props.obs_owner"
+                    v-bind:valor_valido_obs="$props.obs_owner_valido"
                     v-bind:evaluacion="true"
-                    v-on:changenumexpvalido="update_num_exp_valido($event)"
-                    v-on:changenumexpcorrecto="update_num_exp_correcto($event)"
-                    v-on:changeobsnumexp="updateobs_num_exp($event)"
-                    v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
-                    v-on:changevalornumexp="updatevalor_num_exp($event)"
+                    v-bind:testing = "true"
+                    v-bind:label="'Propietario'"
+                    v-on:changecorrecto="update_owner_correcto($event)"
+                    v-on:changeobs="updateobs_owner($event)"
+                    v-on:changeobsvalido="updateobs_owner_valido($event)"
+                    v-on:changevalor="updatevalor_owner($event)"
                 ></CaracterQueInvoca>
                 <div v-show="testing">
-                     <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
-                     <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
-                     <br> num exp de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
-                     <br> num exp de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
-                     <br> num exp de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
+                     <br> owner de Mina valor padre: {{form_pagina.numero_expdiente}}
+                     <br> owner de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
+                     <br> owner de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
+                     <br> owner de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
+                     <br> owner de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
                 </div>
 
             </div>
@@ -360,56 +360,68 @@ export default {
         'titulo_boton_guardar',
         'titulo_pagina',
 
-        'numero_expdiente',
-        'numero_expdiente_valido',
-        'numero_expdiente_correcto',
-        'obs_numero_expdiente',
-        'obs_numero_expdiente_valido',
-        'categoria',
-        'categoria_validacion',
-        'categoria_correcto',
-        'obs_categoria',
-        'obs_categoria_valido',
-        'nombre_mina',
-        'nombre_mina_validacion',
-        'nombre_mina_correcto',
-        'obs_nombre_mina',
-        'obs_nombre_mina_valido',
-        'descripcion_mina',
-        'descripcion_mina_validacion',
-        'descripcion_mina_correcto',
-        'obs_descripcion_mina',
-        'obs_descripcion_mina_valido',
-        'distrito_minero',
-        'distrito_minero_validacion',
-        'distrito_minero_correcto',
-        'obs_distrito_minero',
-        'obs_distrito_minero_valido',
-        'mina_cantera',
-        'mina_cantera_validacion',
-        'mina_cantera_correcto',
-        'obs_mina_cantera',
-        'obs_mina_cantera_valido',
-        'plano_inmueble',
-        'plano_inmueble_validacion',
-        'plano_inmueble_correcto',
-        'obs_plano_inmueble',
-        'obs_plano_inmueble_valido',
-        'minerales_variedad',
-        'minerales_variedad_validacion',
-        'minerales_variedad_correcto',
-        'obs_minerales_variedad',
-        'obs_minerales_variedad_valido',
-        'resolucion_concesion_minera',
-        'resolucion_concesion_minera_validacion',
-        'resolucion_concesion_minera_correcto',
-        'obs_resolucion_concesion_minera',
-        'obs_resolucion_concesion_minera_valido',
+        'owner',
+        'owner_correcto',
+        'obs_owner',
+        'obs_owner_valido',
+        'arrendatario',
+        'arrendatario_correcto',
+        'obs_arrendatario',
+        'obs_arrendatario_valido',
+        'concesionario',
+        'concesionario_correcto',
+        'obs_concesionario',
+        'obs_concesionario_valido',
+        'otros',
+        'otros_correcto',
+        'obs_otros',
+        'obs_otros_valido',
         'titulo_contrato_posecion',
         'titulo_contrato_posecion_validacion',
         'titulo_contrato_posecion_correcto',
         'obs_titulo_contrato_posecion',
         'obs_titulo_contrato_posecion_valido',
+        'resolucion_concesion_minera',
+        'resolucion_concesion_minera_validacion',
+        'resolucion_concesion_minera_correcto',
+        'obs_resolucion_concesion_minera',
+        'obs_resolucion_concesion_minera_valido',
+        'constancia_pago_canon',
+        'constancia_pago_canon_validacion',
+        'constancia_pago_canon_correcto',
+        'obs_constancia_pago_canon',
+        'obs_constancia_pago_canon_valido',
+        'iia',
+        'iia_canon_validacion',
+        'iia_correcto',
+        'obs_iia_canon',
+        'obs_iia_canon_valido',
+        'dia',
+        'dia_canon_validacion',
+        'dia_correcto',
+        'obs_dia_canon',
+        'obs_dia_canon_valido',
+        'acciones_a_desarrollar',
+        'acciones_a_desarrollar_validacion',
+        'acciones_a_desarrollar_correcto',
+        'obs_acciones_a_desarrollar',
+        'obs_acciones_a_desarrollar_valido',
+        'actividad',
+        'actividad_a_desarrollar_validacion',
+        'actividad_a_desarrollar_correcto',
+        'obs_actividad_a_desarrollar',
+        'obs_actividad_a_desarrollar_valido',
+        'fecha_alta_dia',
+        'fecha_alta_dia_validacion',
+        'fecha_alta_dia_correcto',
+        'obs_fecha_alta_dia',
+        'obs_fecha_alta_dia_valido',
+        'fecha_vencimiento_dia',
+        'fecha_vencimiento_dia_validacion',
+        'fecha_vencimiento_dia_correcto',
+        'obs_fecha_vencimiento_dia',
+        'obs_fecha_vencimiento_dia_valido',
+
 
         'evaluacion',
         'id',
@@ -440,11 +452,10 @@ export default {
         modal_body:'',
         form_pagina: {
 
-            numero_expdiente : this.$props.numero_expdiente,
-            numero_expdiente_valido: this.$props.numero_expdiente_valido,
-            numero_expdiente_correcto: this.$props.numero_expdiente_correcto,
-            obs_numero_expdiente:  this.$props.obs_numero_expdiente,
-            obs_numero_expdiente_valido : this.$props.obs_numero_expdiente_valido,
+            owner : this.$props.owner,
+            owner_correcto: this.$props.owner_correcto,
+            obs_owner: this.$props.obs_owner,
+            obs_owner_valido:  this.$props.obs_owner_valido,
 
 
             distrito_minero : this.$props.distrito_minero,
@@ -517,24 +528,30 @@ export default {
       cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
+
+
+        
+
+
+
         update_num_exp_valido(newValue){
                 this.form_pagina.nombre_calle_legal_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_num_exp_correcto(newValue){
+        update_owner_correcto(newValue){
             this.form_pagina.nombre_calle_legal_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_num_exp(newValue){
+        updateobs_owner(newValue){
             this.form_pagina.obs_nombre_calle_legal = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_num_exp_valido(newValue){
+        updateobs_owner_valido(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.obs_nombre_calle_legal_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalor_num_exp(newValue){
+        updatevalor_owner(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.leal_calle = newValue;
             //tengo que enviarsela al padre
