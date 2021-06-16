@@ -56,7 +56,7 @@ class ProductoresSeeder extends Seeder
             $nuevo_productor->cuit = strval($faker->numberBetween($min = 20, $max = 35))."-".strval(($faker->numberBetween($min = 15000000, $max = 40000000)))."-".strval(($faker->numberBetween($min = 0, $max = 9)));
             $nuevo_productor->razonsocial = $faker->name() ;
             $nuevo_productor->numeroproductor = $faker->numberBetween($min = 150000000, $max = 159999999);
-            $nuevo_productor->email = $nuevo_productor->razonsocial."@gmail.com";
+            $nuevo_productor->email = str_replace(' ','', $nuevo_productor->razonsocial)."@gmail.com";
             $nuevo_productor->domicilio_prod = $faker->name." ".strval($faker->numberBetween($min = 1, $max = 2000));
             $nuevo_productor->tiposociedad = $sociedades[$faker->numberBetween($min=0, $max=6)];
             $nuevo_productor->inscripciondgr = null;
