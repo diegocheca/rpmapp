@@ -14,7 +14,7 @@
         </div>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <NumeroExpedienteMina 
+                <CaracterQueInvoca 
                     v-bind:numero_expdiente="$props.numero_expdiente"
                     v-bind:numero_expdiente_valido="$props.numero_expdiente_valido"
                     v-bind:numero_expdiente_correcto="$props.numero_expdiente_correcto"
@@ -26,7 +26,7 @@
                     v-on:changeobsnumexp="updateobs_num_exp($event)"
                     v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
                     v-on:changevalornumexp="updatevalor_num_exp($event)"
-                ></NumeroExpedienteMina>
+                ></CaracterQueInvoca>
                 <div v-show="testing">
                      <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
                      <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
@@ -339,7 +339,7 @@
 <script>
 import JetDialogModal from '@/Jetstream/DialogModal';
 import CardMinaDos from '@/Jetstream/altas/CardMinaDos';
-import NumeroExpedienteMina from "@/Pages/Productors/NumeroExpedienteMina";
+import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
 
 import DistritoMinero from "@/Pages/Productors/DistritoMinero";
 import NombreMina from "@/Pages/Productors/NombreMina";
@@ -419,7 +419,7 @@ export default {
     components: {
 		JetDialogModal,
         CardMinaDos,
-		NumeroExpedienteMina,
+		CaracterQueInvoca,
 		DistritoMinero,
 		NombreMina,
         SelectGenerico,

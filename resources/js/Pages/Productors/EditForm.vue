@@ -517,7 +517,7 @@
 			<br>
 			<div id="section_datos_mina_dos"></div>
 			<PaginaCincoDatosMinaDos
-			:link_volver="route('formulario-alta.index')"
+				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
 				:titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
 				:titulo_pagina="'Pagina datos de Mina Segunda Parte'"
