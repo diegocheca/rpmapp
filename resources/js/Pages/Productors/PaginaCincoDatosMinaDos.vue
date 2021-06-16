@@ -2,7 +2,7 @@
     <div>
         <h1>{{titulo_pagina}}</h1>
         <div class="flex items-center justify-center">
-            <CardMinaUno 
+            <CardMinaDos 
                 :progreso="50"
                 :aprobado="50"
                 :reprobado="50" 
@@ -10,7 +10,7 @@
                 :updated_at="'hace 10 minutos'"
                 :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-            ></CardMinaUno>
+            ></CardMinaDos>
         </div>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -338,7 +338,7 @@
 
 <script>
 import JetDialogModal from '@/Jetstream/DialogModal';
-import CardMinaUno from '@/Jetstream/altas/CardMinaUno';
+import CardMinaDos from '@/Jetstream/altas/CardMinaDos';
 import NumeroExpedienteMina from "@/Pages/Productors/NumeroExpedienteMina";
 
 import DistritoMinero from "@/Pages/Productors/DistritoMinero";
@@ -418,7 +418,7 @@ export default {
  
     components: {
 		JetDialogModal,
-        CardMinaUno,
+        CardMinaDos,
 		NumeroExpedienteMina,
 		DistritoMinero,
 		NombreMina,

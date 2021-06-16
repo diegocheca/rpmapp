@@ -31,43 +31,48 @@
                                     <h2 class="flex-auto text-lg font-medium">{{mineral.id_mineral}}</h2>
                                 </div>
                                 <p class="mt-3"></p>
+                                tipo de yacimiento es:{{$props.tipo_yacimiento}}
                                 <div class="flex py-4  text-sm text-gray-600">
                                     <div class="flex-1 inline-flex items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none"
+                                        <div class="grid grid-cols-1 space-y-2"  v-if="$props.tipo_yacimiento === 'segunda'">
+                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
-                                            </path>
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        </svg>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                                </path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                            <label for="select_mineral_explotado">Mineral Explotado:</label>
+                                            <select  class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
+                                                <option value="aprovechamiento_comun">Sustancias de aprovechamiento común</option>
+                                                <option value="conceden_preferentemente">Sustancias que se conceden preferentemente al dueño del suelo</option>
+                                            </select>
+                                        </div>
+                                        <div class="grid grid-cols-1 space-y-2"  v-if="$props.tipo_yacimiento === 'segunda'">
+                                            <div v-show="mineral.mostrar_otro_mineral_segunda_cat">
+                                                <label for="otro_mineral_segunda_categoria">Nombre del mineral no comprendido en 1° categoría:</label>
+                                                <input type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-1 space-y-2"  v-if="$props.tipo_yacimiento === 'segunda'">
+                                            <div v-show="mineral.mostrar_lugar_segunda_cat">
+                                                <label for="select_lugar_mineral">Lugar donde se encuentra:</label>
+                                                <select  class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra" @change="cambio_mineral_explotado($event, index)" >
+                                                    <option value="lecho_de_los_rios">Lechos de los ríos</option>
+                                                    <option value="aguas_corrientes">Aguas Corrientes</option>
+                                                    <option value="placeres">Placeres</option>
+                                                </select>
+                                                <br>
+                                            </div>
+                                        </div>
                                         <select
                                         v-model="mineral.id_mineral"
+                                        @change="cambio_select_mineral_segunda_cat($event, index)"
                                         >
-                                            <option value="option 1">Opcion 1</option>
-                                            <option value="option 2">Opcion 2</option>
-                                            <option value="option 3">Opcion 3</option>
-                                            <option value="option 4">Opcion 4</option>
-                                            <option value="option 5">Opcion 5</option>
+                                            <option v-for="(opcion, index) in opcionesmineral" v-bind:key="index" :value="opcion">{{opcion}}</option>
                                         </select>
-                                        <label for="select_lugar_mineral">Lugar donde se encuentra:</label>
-                                        <select  class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra">
-                                            <option value="lecho_de_los_rios">Lechos de los ríos</option>
-                                            <option value="aguas_corrientes">Aguas Corrientes</option>
-                                            <option value="placeres">Placeres</option>
-                                        </select>
-                                        <br>
-                                        <div v-show="mineral.mostrar_otro_mineral_segunda_cat">
-                                            <label for="otro_mineral_segunda_categoria">Nombre del mineral no comprendido en 1° categoría:</label>
-                                            <input type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
-                                            <br>
-                                        </div>
-                                        <label for="select_mineral_explotado">Mineral Explotado:</label>
-																						<select  class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
-																							<option value="aprovechamiento_comun">Sustancias de aprovechamiento común</option>
-																							<option value="conceden_prefeerentemente">Sustancias que se conceden preferentemente al dueño del suelo</option>
-																						</select>
-																						<br>
                                     </div>
                                     <div class="flex-1 inline-flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
@@ -78,23 +83,31 @@
                                         <label
                                             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                                             for="observaciones"
-                                            >{{label_text_area}}:</label
+                                            >
+                                            <span v-show="$props.tipo_yacimiento != 'tercera'">
+                                            {{label_text_area}}
+                                        </span> 
+                                        <span  v-show="$props.tipo_yacimiento == 'tercera'">
+                                            Forma de presentación natural del mineral <strong> (no es obligatorio para canteras)</strong>
+                                        </span> 
+                                        :</label
                                         >
                                         <textarea
-                                            id="observaciones"
-                                            name="observaciones"
-                                            v-model="valor_obs"
-                                            v-bind:class=clase_text_area
-                                            @input="actaulizar_contenido_text_area($event.target.value)" 
+                                            id="presentacion_natural"
+                                            name="presentacion_natural"
+                                            v-model="mineral.observacion"
+                                            v-bind:class=mineral.clase_text_area_presentacion
+                                            @input="actaulizar_contenido_forma_presentacion($event.target.value, index)" 
                                             >
                                         </textarea>
-                                        <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
+                                        <p v-bind:class=mineral.clase_text_evaluacion_de_text_area_presentacion>{{mineral.texto_validacion_text_area_presentacion}}</p>
+                                        
                                     </div>
                                 </div>
                                 <div class="flex p-4 pb-2 border-t border-gray-200 "></div>
                                 <div class="flex space-x-3 text-sm font-medium">
-                                    <div class="flex-auto flex space-x-3">
-                                        <button
+                                    <div class="w-full md:w-2/3 px-3">
+                                        <!-- <button
                                             class="mb-2 md:mb-0 bg-white px-5 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2 ">
                                             <span class="text-green-400 hover:text-green-500 rounded-lg">
                                                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="shopify"
@@ -106,74 +119,60 @@
                                                 </svg>
                                             </span>
                                             <span>62 Products</span>
+                                        </button> -->
+                                        <div  v-if="evaluacion" >
+                                            <h3>Seccion de evaluacion</h3>
+                                            <div class="flex">
+                                                <div class="w-full md:w-1/3 px-3">
+                                                    <span class="text-gray-700">Es correcto?</span>
+                                                    <div class="mt-2">
+                                                        <label class="inline-flex items-center">
+                                                            <input type="radio" class="form-radio" name="mineral_correccion" v-model="mineral.evaluacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true, index)">
+                                                            <span class="ml-2">Si</span>
+                                                        </label>
+                                                        <label class="inline-flex items-center ml-6">
+                                                            <input type="radio" class="form-radio" name="mineral_correccion" v-model="mineral.evaluacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false, index)">
+                                                            <span class="ml-2">No</span>
+                                                        </label>
+                                                        <label class="inline-flex items-center ml-6">
+                                                            <input type="radio" class="form-radio" name="mineral_correccion" v-model="mineral.evaluacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada', index)">
+                                                            <span class="ml-2">Sin evaluar</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div v-show="!mineral.evaluacion_correcto" class="w-full md:w-2/3 px-3">
+                                                    <label
+                                                        class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                                                        for="observaciones"
+                                                        >Observación:</label
+                                                    >
+                                                    <textarea
+                                                        id="observaciones"
+                                                        name="observaciones"
+                                                        v-model="mineral.observacion_autoridad"
+                                                        v-bind:class=mineral.clase_text_area
+                                                        @input="actaulizar_contenido_text_area($event.target.value, index)" 
+                                                        >
+                                                    </textarea>
+                                                    <p  v-bind:class=mineral.clase_text_evaluacion_de_text_area>{{mineral.texto_validacion_text_area}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-full md:w-1/3 px-3">
+                                        <button
+                                            class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900"
+                                            type="button" aria-label="like"
+                                            @click="eliminar_mineral(index)"
+                                            >Eliminar Mineral
                                         </button>
                                     </div>
-                                    <button
-                                        class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900"
-                                        type="button" aria-label="like"
-                                        @click="eliminar_mineral(index)"
-                                        >Eliminar Mineral</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <input
-            id="input_componente"
-            name="input_componente"
-            v-model="valor_input"
-            v-bind:class=clase_border_de_input
-            :disabled="evaluacion"
-            @input="cambio_input($event.target.value)" 
-        />
-        <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}.</p>
-        <div class="flex" v-if="evaluacion">
-            <div class="w-full md:w-1/3 px-3">
-                <span class="text-gray-700">Es correcto?</span>
-                <div class="mt-2">
-                    <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
-                        <span class="ml-2">Si</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
-                        <span class="ml-2">No</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
-                        <span class="ml-2">Sin evaluar</span>
-                    </label>
-                </div>
-            </div>
-            <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-2/3 px-3">
-                <label
-                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    for="observaciones"
-                    >Observación:</label
-                >
-                <textarea
-                    id="observaciones"
-                    name="observaciones"
-                    v-model="valor_obs"
-                    v-bind:class=clase_text_area
-                    @input="actaulizar_contenido_text_area($event.target.value)" 
-                    >
-                </textarea>
-                <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
-            </div>
-        </div>
-        <div v-show="testing">
-            <br>Valor input:{{valor_input}}<br>
-            <br>Validacion Input:{{validacion_input_local}}<br>
-            <br>distrtito minero calle Valido local:{{validacion_input_local}}<br>
-            <br>distrtito minero calle Evalaucion:{{evualacion_correcto}}<br>
-            <br>distrtito minero calle Obser:{{valor_obs}}<br>
-            <br>distrtito minero calle obsr Valido:{{valor_valido_obs}}<br>
-            <br>Evaluacion {{evaluacion}}<br>
-            <br>{{texto_validacion_text_area}}<br>
         </div>
     </div>
 </template>
@@ -189,7 +188,8 @@ export default {
         'evaluacion',
         'testing',
         'label',
-        'label_text_area'
+        'label_text_area',
+        'tipo_yacimiento',
     ],
   data() {
     return {
@@ -197,6 +197,7 @@ export default {
         texto_validacion_input: 'Campo Correcto',
         clase_cartel_validacion_input: 'text-green-500 text-xs italic',
         clase_text_area: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+        clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
         texto_validacion_text_area: 'Observacion Correcta',
         clase_text_evaluacion_de_text_area: 'text-green-500 text-xs italic',
         valor_input: this.$props.valor_input_props,
@@ -215,8 +216,18 @@ export default {
                 mostrar_lugar_segunda_cat: false,
                 mostrar_otro_mineral_segunda_cat: false,
                 otro_mineral_segunda_cat: '',
-                lugar_donde_se_enccuentra:'',
-                observacion:'esta es la obs 1'
+                observacion:'esta es la obs 1',
+                clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
+                texto_validacion_text_area_presentacion: 'Forma de Presentacion Ccorrecta',
+                presentacion_valida:true,
+                evaluacion_correcto: true,
+                observacion_autoridad: '',
+                clase_text_area: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                clase_text_evaluacion_de_text_area: 'text-red-500 text-xs italic',
+                texto_validacion_text_area : 'Observacion Correcta',
+                obs_valida: true,
+
             },
             {
                 id_mineral: '2',
@@ -226,48 +237,134 @@ export default {
                 mostrar_lugar_segunda_cat: false,
                 mostrar_otro_mineral_segunda_cat: false,
                 otro_mineral_segunda_cat: '',
-                lugar_donde_se_enccuentra:'',
-                observacion:'esta es la obs 2'
+                observacion:'esta es la obs 2',
+                clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
+                texto_validacion_text_area_presentacion: 'Forma de Presentacion Ccorrecta',
+                presentacion_valida:true,
+                evaluacion_correcto: true,
+                observacion_autoridad: '',
+                clase_text_area:'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                clase_text_evaluacion_de_text_area: 'text-red-500 text-xs italic',
+                texto_validacion_text_area : 'Observacion Correcta',
+                obs_valida: true,
             }
         ],
+        opcionesmineral : [
+            'Oro',
+            'Plata',
+            'Platino',
+            'Mercurio',
+            'Cobre',
+            'Hierro',
+            'Plomo',
+            'Estaño',
+            'Zinc',
+            'Níquel',
+            'Cobalto',
+            'Bismuto',
+            'Manganeso',
+            'Antimonio',
+            'Wolfram',
+            'Aluminio',
+            'Berilio',
+            'Vanadio',
+            'Cadmio',
+            'Tantalio',
+            'Molibdeno',
+            'Litio',
+            'Potasio',
+            'Hulla',
+            'Lignito',
+            'Antracita',
+            'Uranio',
+            'Torio',
+            'Hidrocarburos Sólidos',
+            'Arsénico',
+            'Cuarzo',
+            'Feldespato',
+            'Mica',
+            'Fluorita',
+            'Fosfatos Calizos',
+            'Azufre',
+            'Boratos',
+            'Piedras Preciosas',
+            'Vapores Endagenos'
+        ],
+        opcionesmineraluno : [],
+        index_de_mineral_segunda_cat: '',
         
         //border-green-500
     }; 
   },
   methods:{
-    actaulizar_variable_correccion(valor) {
-        this.valor_evaluacion_correcto_local = valor;
-        this.$emit('changecorrecto',this.valor_evaluacion_correcto_local);
+    actaulizar_variable_correccion(valor, index) {
+        //this.valor_evaluacion_correcto_local = valor;
+        this.minerales[index].evaluacion_correcto = valor;
+        //this.$emit('changecorrecto',this.minerales[index].evaluacion_correcto);
     },
      
-      actaulizar_contenido_text_area(value) {
-        if(this.$props.valor_obs.length <= 2)
+      actaulizar_contenido_text_area(value, index) {
+        if(this.minerales[index].observacion_autoridad.length <= 2)
         {
-            this.clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_text_area=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
-            this.clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
-            this.obs_valida = false;
-            this.$emit('changeobsvalido',false);
+            this.minerales[index].clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.minerales[index].texto_validacion_text_area=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+            this.minerales[index].clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
+            this.minerales[index].obs_valida = false;
+            //this.$emit('changeobsvalido',false);
             
         }
-        if(this.$props.valor_obs.length >= 50)
+        if(this.minerales[index].observacion_autoridad.length >= 50)
         {
-            this.clase_text_area =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
-            this.clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
-            this.obs_valida = false;
-            this.$emit('changeobsvalido',false);
+            this.minerales[index].clase_text_area =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.minerales[index].texto_validacion_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
+            this.minerales[index].clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
+            this.minerales[index].obs_valida = false;
+            //this.$emit('changeobsvalido',false);
         }
-        if( this.$props.valor_obs !== '' && this.$props.valor_obs.length <= 30 && this.$props.valor_obs.length >= 3)
+        if( this.minerales[index].observacion_autoridad !== '' && this.minerales[index].observacion_autoridad.length <= 30 && this.minerales[index].observacion_autoridad.length >= 3)
         {
-            this.clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_text_area=  'Observacion Correcta';
-            this.clase_text_evaluacion_de_text_area=  'text-green-500 text-xs italic';
-            this.obs_valida = false;
-            this.$emit('changeobsvalido',true);
+            this.minerales[index].clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.minerales[index].texto_validacion_text_area=  'Observacion Correcta';
+            this.minerales[index].clase_text_evaluacion_de_text_area=  'text-green-500 text-xs italic';
+            this.minerales[index].obs_valida = false;
+            //this.$emit('changeobsvalido',true);
             
         }
-        this.$emit('changeobs',this.$props.valor_obs)
+   // this.$emit('changeobs',this.$props.valor_obs)
+    },
+    actaulizar_contenido_forma_presentacion(value, index){
+        console.log("el value es:"+value.length);
+        console.log("el index es:"+index);
+        
+        if(value.length <= 2)
+        {
+            this.minerales[index].clase_text_area_presentacion=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Incorrecta - debe ser mayor a 2 carcteres';
+            this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-red-500 text-xs italic';
+            this.minerales[index].presentacion_valida = false;
+            //this.$emit('changeobsvalido',false);
+            
+        }
+        if(value.length >= 50)
+        {
+            this.minerales[index].clase_text_area_presentacion =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Incorrecta - debe tener menos de 50 caracteres';
+            this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-red-500 text-xs italic';
+            this.minerales[index].presentacion_valida = false;
+            //this.$emit('changeobsvalido',false);
+        }
+        if( value !== '' && value.length <= 30 && value.length >= 3)
+        {
+            this.minerales[index].clase_text_area_presentacion=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Correcta';
+            this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-green-500 text-xs italic';
+            this.minerales[index].presentacion_valida = false;
+            //this.$emit('changeobsvalido',true);
+            
+        }
+        //this.$emit('changeobs',this.$props.valor_obs)
+        
     },
     cambio_input(){
         if(this.valor_input.length <= 4)
@@ -307,10 +404,130 @@ export default {
                 mostrar_otro_mineral_segunda_cat: false,
                 otro_mineral_segunda_cat: '',
                 lugar_donde_se_enccuentra:'',
-                observacion:'esta es la obs 44'
+                observacion:'esta es la obs 44',
+                clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
+                texto_validacion_text_area_presentacion: 'Forma de Presentacion Ccorrecta',
+                presentacion_valida:true,
+                evaluacion_correcto: true,
+                observacion_autoridad: '',
+                clase_text_area:'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                clase_text_evaluacion_de_text_area: 'text-red-500 text-xs italic',
+                texto_validacion_text_area : 'Observacion Correcta',
+                obs_valida: true,
             };
         this.minerales.push( mineral_aux);
     },
+    cambio_mineral_explotado(index){
+        alert("cambio el select");
+        
+    },
+    cambio_select_mineral_segunda_cat(event, index){
+        console.log("el index es: "+index);
+        console.log("acabo de elegir: "+ this.minerales[index].id_mineral);
+        console.log(this.minerales[0].lugar_donde_se_enccuentra);
+        console.log("lugar donde se encuentra: "+ this.minerales[index].lugar_donde_se_enccuentra);
+        if(
+            (this.minerales[index].id_mineral === 'Piedras Preciosas')
+            || 
+            (this.minerales[index].id_mineral === 'Arenas Metalíferas')
+            )
+        {
+            //en estos casos debo mostrar la seleccion de lugares
+            this.minerales[index].lugar_donde_se_enccuentra='';
+            //this.model.mina_cantera = 'mina';
+            this.minerales[index].mostrar_lugar_segunda_cat = true;
+            this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
+            this.minerales[index].otro_mineral_segunda_cat= '';
+        }
+        else{
+
+            if(
+            (this.minerales[index].id_mineral === 'Desmontes')
+            || 
+            (this.minerales[index].id_mineral === 'Relaves')
+            || 
+            (this.minerales[index].id_mineral === 'Escoriales')
+            )
+            {
+                //en estos casos de elegir alguna sustancias de aprovechamiento comun pero no se necesita el lugar
+                this.minerales[index].lugar_donde_se_enccuentra='';
+                //this.model.mina_cantera = 'mina';
+                this.minerales[index].mostrar_lugar_segunda_cat = false;
+                this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
+                this.minerales[index].otro_mineral_segunda_cat= '';
+            }
+            else {
+                if( this.minerales[index].id_mineral === 'Metales no comprendidos en 1° Categ.')
+                {
+                    //en caso de ser sustenacias concedidas al dueño
+                    this.minerales[index].mostrar_otro_mineral_segunda_cat = true;
+                    this.minerales[index].otro_mineral_segunda_cat= '';
+
+                }
+                else
+                {
+                    //este es cualqueir otro caso
+                    this.minerales[index].lugar_donde_se_enccuentra='';
+                    //this.model.mina_cantera = 'mina';
+                    this.minerales[index].mostrar_lugar_segunda_cat = false;
+                    this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
+                    this.minerales[index].otro_mineral_segunda_cat= '';
+
+                }
+                //en estos casos debo mostrar la seleccion de lugares
+                
+            }
+        }
+
+        //console.log(selectedItems);
+        
+    },
+    cambio_select_tipo_mineral_explotado_segunda_cat: function(event, index){
+        console.log("el index es: "+index);
+        console.log("acabo de elegir: "+ this.minerales[index].segunda_cat_mineral_explotado);
+        if(this.minerales[index].segunda_cat_mineral_explotado === 'aprovechamiento_comun')
+        {
+            this.opcionesmineral = [
+            'Arenas Metalíferas',
+            'Piedras Preciosas',
+            'Desmontes',
+            'Relaves',
+            'Escoriales',
+            ];
+        }
+       else{
+            if(this.minerales[index].segunda_cat_mineral_explotado === 'conceden_preferentemente')
+            {
+                this.opcionesmineral = [
+                    'Salitres',
+                    'Salinas',
+                    'Turberas',
+                    'Metales no comprendidos en 1° Categ.',
+                    'Tierras Piritosas y Aluminosas',
+                    'Abrasivos',
+                    'Ocres',
+                    'Resinas',
+                    'Esteatitas',
+                    'Baritina',
+                    'Caparrosas',
+                    'Grafito',
+                    'Caolí­n',
+                    'Sales Alcalinas o Alcalino Terrosas',
+                    'Amianto',
+                    'Bentonita',
+                    'Zeolitas o Minerales Permutantes o Permutíticos'
+                ];
+            }
+            else {
+                this.opcionesmineraluno = [
+                ];
+            }
+        }
+        
+        
+    },
+    
   },
 };
 </script>

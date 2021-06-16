@@ -62,6 +62,7 @@
 
 					
 						<!-- 3 card -->
+						
 						<CardDomAdmin  
 							:progreso="form.valor_de_progreso_tres"
 							:aprobado="form.valor_de_aprobado_tres"
@@ -157,6 +158,7 @@
 				></PasoUnoEdit> -->
 				<br>
 				<br>
+				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
 					:titulo_boton_volver="'volver'"
@@ -215,6 +217,7 @@
 				<br>
 				<br>
 				<br>
+				<div id="section_domicilio_legal"></div>
 				<PaginaDosDatosDomLegal
 					:link_volver="route('formulario-alta.index')"
 					:titulo_boton_volver="'volver'"
@@ -325,6 +328,7 @@
 			<br>
 			<br>
 			<br>
+			<div id="section_domicilio_administrativo"></div>
 			{{	form.administracion_calle }}
 			<PaginaDosDatosDomLegal
 				:link_volver="route('formulario-alta.index')"
@@ -411,8 +415,9 @@
 			<br>
 			<br>
 			<br>
+			<div id="section_mina_uno"></div>
 			<PaginaCuatroDatosMinaUno
-			:link_volver="route('formulario-alta.index')"
+				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
 				:titulo_boton_guardar="'Guardar Datos de Mina Primer Parte'"
 				:titulo_pagina="'Pagina datos de Mina Primera Parte'"
@@ -477,454 +482,7 @@
 			>
 
 			</PaginaCuatroDatosMinaUno>
-			<div class="flex">
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="numero_expdiente"
-							>Localidad de Domicilio Administracion:</label
-						>
-						<input
-							id="numero_expdiente"
-							name="numero_expdiente"
-							v-model="form.numero_expdiente"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.numero_expdiente_valido" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_numero_expdiente_correcto" v-model="form.numero_expdiente_correcto" value="true" v-on:change="calculo_de_porcentajes_cuatro(1, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_numero_expdiente_correcto" v-model="form.numero_expdiente_correcto" value="false" v-on:change="calculo_de_porcentajes_cuatro(1, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_numero_expdiente_correcto" v-model="form.numero_expdiente_correcto" value="nada" v-on:change="calculo_de_porcentajes_cuatro(1, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-								</div>
-							</div>
-							<div v-show="!form.numero_expdiente_correcto"  class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_numero_expdiente"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_numero_expdiente"
-										name="obs_numero_expdiente"
-										v-model="form.obs_numero_expdiente"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p  v-show="form.obs_numero_expdiente_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="categoria"
-							>Categoria del Productor</label
-						>
-						<select
-							id="categoria"
-							name="categoria"
-							v-model="form.categoria"
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="primera">Primer Categoria</option>
-							<option value="segunda">Segunda Categoria</option>
-							<option value="tercera">Tercer Categoria</option>
-						</select>
-						<p v-show="form.categoria_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_categoria_correcto" v-model="form.categoria_correcto" value="true" v-on:change="calculo_de_porcentajes_cuatro(2, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_categoria_correcto" v-model="form.categoria_correcto" value="false" v-on:change="calculo_de_porcentajes_cuatro(2, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_categoria_correcto" v-model="form.categoria_correcto" value="nada" v-on:change="calculo_de_porcentajes_cuatro(2, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.categoria_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_categoria"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_categoria"
-										name="obs_categoria"
-										v-model="form.obs_categoria"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									
-								<p  v-show="form.obs_categoria_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="nombre_mina"
-							>Nombre de la Mina</label
-						>
-						<input
-							id="nombre_mina"
-							name="nombre_mina"
-							v-model="form.nombre_mina"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.nombre_mina_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/2 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_nombre_mina_correcto" v-model="form.nombre_mina_correcto" value="true" v-on:change="calculo_de_porcentajes_cuatro(3, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_nombre_mina_correcto" v-model="form.nombre_mina_correcto" value="false" v-on:change="calculo_de_porcentajes_cuatro(3, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_nombre_mina_correcto" v-model="form.nombre_mina_correcto" value="nada" v-on:change="calculo_de_porcentajes_cuatro(3, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.nombre_mina_correcto"  class="w-full md:w-1/2 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_nombre_mina"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_nombre_mina"
-										name="obs_nombre_mina"
-										v-model="form.obs_nombre_mina"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p v-show="form.obs_nombre_mina_valido"  class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-			<div class="flex">
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="descripcion_mina"
-							>Descripción de la mina:</label
-						>
-						<input
-							id="descripcion_mina"
-							name="descripcion_mina"
-							v-model="form.descripcion_mina"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.descripcion_mina_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_descripcion_mina_correcto" v-model="form.descripcion_mina_correcto" value="true" v-on:change="calculo_de_porcentajes_cuatro(4, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_descripcion_mina_correcto" v-model="form.descripcion_mina_correcto" value="false" v-on:change="calculo_de_porcentajes_cuatro(4, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_descripcion_mina_correcto" v-model="form.descripcion_mina_correcto" value="nada" v-on:change="calculo_de_porcentajes_cuatro(4, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-								</div>
-							</div>
-							<div v-show="!form.descripcion_mina_correcto"  class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_descripcion_mina"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_descripcion_mina"
-										name="obs_descripcion_mina"
-										v-model="form.obs_descripcion_mina"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p  v-show="form.obs_descripcion_mina_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="distrito_minero"
-							>Distrito Minero</label
-						>
-						<input
-							id="distrito_minero"
-							name="distrito_minero"
-							v-model="form.distrito_minero"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.distrito_minero_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_distrito_minero_correcto" v-model="form.distrito_minero_correcto" value="true" v-on:change="calculo_de_porcentajes_cuatro(5, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_distrito_minero_correcto" v-model="form.distrito_minero_correcto" value="false" v-on:change="calculo_de_porcentajes_cuatro(5, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_distrito_minero_correcto" v-model="form.distrito_minero_correcto" value="nada" v-on:change="calculo_de_porcentajes_cuatro(5, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.distrito_minero_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_distrito_minero"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_distrito_minero"
-										name="obs_distrito_minero"
-										v-model="form.obs_distrito_minero"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									
-								<p  v-show="form.obs_distrito_minero_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="mina_cantera"
-							>Mina o Cantera</label
-						>
-						<input
-							id="mina_cantera"
-							name="mina_cantera"
-							v-model="form.mina_cantera"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.mina_cantera_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/2 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_mina_cantera_correcto" v-model="form.mina_cantera_correcto" value="true" v-on:change="calculo_de_porcentajes_cuatro(6, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_mina_cantera_correcto" v-model="form.mina_cantera_correcto" value="false" v-on:change="calculo_de_porcentajes_cuatro(6, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_mina_cantera_correcto" v-model="form.mina_cantera_correcto" value="nada" v-on:change="calculo_de_porcentajes_cuatro(6, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div v-show="!form.mina_cantera_correcto"  class="w-full md:w-1/2 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_mina_cantera"
-									>Observación:</label
-								>
-								<textarea
-										id="obs_mina_cantera"
-										name="obs_mina_cantera"
-										v-model="form.obs_mina_cantera"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-								<p v-show="form.obs_mina_cantera_valido"  class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-			<div class="flex">
-				<div class="w-full md:w-1/2 px-3">
-					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="plano_inmueble"
-						>Plano del Inmueble de Sociedad:</label
-					>
-					<input
-						id="plano_inmueble"
-						name="plano_inmueble"
-						v-model="form.plano_inmueble"
-						class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-					/>
-					<p v-show="form.plano_inmueble_validacion"  class="text-red-500 text-xs italic">Please fill out this field.</p>
-					<div class="flex">
-						<div class="w-full md:w-1/3 px-3">
-							<span class="text-gray-700">Correcto?</span>
-							<div class="mt-2">
-								<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_plano_inmueble_correcto" v-model="form.plano_inmueble_correcto" value="true" v-on:change="calculo_de_porcentajes_cuatro(7, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_plano_inmueble_correcto" v-model="form.plano_inmueble_correcto" value="false" v-on:change="calculo_de_porcentajes_cuatro(7, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_plano_inmueble_correcto" v-model="form.plano_inmueble_correcto" value="nada" v-on:change="calculo_de_porcentajes_cuatro(7, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-							</div>
-						</div>
-						<div v-show="!form.plano_inmueble_correcto" class="w-full md:w-2/3 px-3">
-							<label
-								class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-								for="obs_plano_inmueble"
-								>Observación:</label
-							>
-							<textarea
-									id="obs_plano_inmueble"
-									name="obs_plano_inmueble"
-									v-model="form.obs_plano_inmueble"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-							<p v-show="!form.obs_plano_inmueble_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-						</div>
-					</div>
-				</div>
-				<div class="w-full md:w-1/2 px-3">
-					<object data="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf" type="application/pdf" width="100%" height="500px"> 
-					<p>It appears you don't have a PDF plugin for this browser.
-						 No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
-						download the PDF file.</a></p>  
-					</object>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-
-			<div class="flex">
-				<div class="w-full md:w-2/2 px-3">
-					<label
-						class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-						for="minerales_variedad"
-						>Lista de Minerales:</label
-					>
-						<div class="flex items-center justify-center bg-teal-lightest font-sans">
-							<div class="bg-white rounded shadow p-6 m-8">
-								<div class="flex mb-4 items-center">
-									<!-- <p class="w-full line-through text-green">Submit Todo App Component to Tailwind Components</p> -->
-									<p class="w-full text-grey-darkest">Mineral: <strong>algun mineral</strong>  |  Variedad: <strong>algun mineral</strong> |  Forma de presentación: <strong>algun mineral</strong></p>
-									<button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900">Observar</button>
-									<button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900">Eliminar</button>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div class="flex items-center justify-center bg-teal-lightest font-sans">
-							<div class="bg-white rounded shadow p-6 m-8">
-								<div class="flex mb-4 items-center">
-									<!-- <p class="w-full line-through text-green">Submit Todo App Component to Tailwind Components</p> -->
-									<p class="w-full text-grey-darkest">Mineral: <strong>algun mineral</strong>  |  Variedad: <strong>algun mineral</strong> |  Forma de presentación: <strong>algun mineral</strong></p>
-									<button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900">Observar</button>
-									<button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900">Eliminar</button>
-								</div>
-							</div>
-						</div>
-						<br>
-					<!-- <input
-						id="minerales_variedad"
-						name="minerales_variedad"
-						v-model="form.minerales_variedad"
-						class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-					/>
-					<p v-show="form.minerales_variedad_validacion"  class="text-red-500 text-xs italic">Please fill out this field.</p> -->
-					<div class="flex">
-						<div class="w-full md:w-1/3 px-3">
-							<span class="text-gray-700">Correcto?</span>
-							<div class="mt-2">
-								<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_minerales_variedad_correcto" v-model="form.minerales_variedad_correcto" value="true" v-on:change="calculo_de_porcentajes_cuatro(8, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_minerales_variedad_correcto" v-model="form.minerales_variedad_correcto" value="false" v-on:change="calculo_de_porcentajes_cuatro(8, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_minerales_variedad_correcto" v-model="form.minerales_variedad_correcto" value="nada" v-on:change="calculo_de_porcentajes_cuatro(8, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-							</div>
-						</div>
-						<div v-show="!form.minerales_variedad_correcto" class="w-full md:w-2/3 px-3">
-							<label
-								class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-								for="obs_minerales_variedad"
-								>Observación:</label
-							>
-							<textarea
-									id="obs_minerales_variedad"
-									name="obs_minerales_variedad"
-									v-model="form.obs_minerales_variedad"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-							<p v-show="!form.obs_minerales_variedad_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-						</div>
-					</div>
-				</div>
-				<!-- <div class="w-full md:w-1/2 px-3">
-					<div class="h-200 w-full flex items-center justify-center bg-teal-lightest font-sans">
-							<div class="bg-white rounded shadow p-6 m-8 w-full lg:w-4/4 lg:max-w-lg">
-										<div class="mb-4">
-												<h1 class="text-grey-darkest">Todo List</h1>
-												<div class="flex mt-4">
-														<input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Add Todo">
-														<button class="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal">Add</button>
-												</div>
-										</div>
-										<div>
-												<div class="flex mb-4 items-center">
-														<p class="w-full text-grey-darkest">Add another component to Tailwind Components</p>
-														<button class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green">Done</button>
-														<button class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red">Remove</button>
-												</div>
-
-										</div>
-								</div>
-						</div>
-				</div> -->
-			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+			
 			<div class="flex flex-col mb-8">
 				<button
 					type="button"
@@ -957,6 +515,84 @@
 			<br>
 			<br>
 			<br>
+			<div id="section_datos_mina_dos"></div>
+			<PaginaCincoDatosMinaDos
+			:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
+				:titulo_pagina="'Pagina datos de Mina Segunda Parte'"
+
+				:owner="form.owner"
+				:owner_correcto="form.owner_correcto"
+				:obs_owner="form.obs_owner"
+				:obs_owner_valido="form.obs_owner_valido"
+				:arrendatario="form.arrendatario"
+				:arrendatario_correcto="form.arrendatario_correcto"
+				:obs_arrendatario="form.obs_arrendatario"
+				:obs_arrendatario_valido="form.obs_arrendatario_valido"
+				:concesionario="form.concesionario"
+				:concesionario_correcto="form.concesionario_correcto"
+				:obs_concesionario="form.obs_concesionario"
+				:obs_concesionario_valido="form.obs_concesionario_valido"
+				:otros="form.otros"
+				:otros_correcto="form.otros_correcto"
+				:obs_otros="form.obs_otros"
+				:obs_otros_valido="form.obs_otros_valido"
+				:titulo_contrato_posecion="form.titulo_contrato_posecion"
+				:titulo_contrato_posecion_validacion="form.titulo_contrato_posecion_validacion"
+				:titulo_contrato_posecion_correcto="form.titulo_contrato_posecion_correcto"
+				:obs_titulo_contrato_posecion="form.obs_titulo_contrato_posecion"
+				:obs_titulo_contrato_posecion_valido="form.obs_titulo_contrato_posecion_valido"
+				:resolucion_concesion_minera="form.resolucion_concesion_minera"
+				:resolucion_concesion_minera_validacion="form.resolucion_concesion_minera_validacion"
+				:resolucion_concesion_minera_correcto="form.resolucion_concesion_minera_correcto"
+				:obs_resolucion_concesion_minera="form.obs_resolucion_concesion_minera"
+				:obs_resolucion_concesion_minera_valido="form.obs_resolucion_concesion_minera_valido"
+				:constancia_pago_canon="form.constancia_pago_canon"
+				:constancia_pago_canon_validacion="form.constancia_pago_canon_validacion"
+				:constancia_pago_canon_correcto="form.constancia_pago_canon_correcto"
+				:obs_constancia_pago_canon="form.obs_constancia_pago_canon"
+				:obs_constancia_pago_canon_valido="form.obs_constancia_pago_canon_valido"
+				:iia="form.iia"
+				:iia_canon_validacion="form.iia_canon_validacion"
+				:iia_correcto="form.iia_correcto"
+				:obs_iia_canon="form.obs_iia_canon"
+				:obs_iia_canon_valido="form.obs_iia_canon_valido"
+				:dia="form.dia"
+				:dia_canon_validacion="form.dia_canon_validacion"
+				:dia_correcto="form.dia_correcto"
+				:obs_dia_canon="form.obs_dia_canon"
+				:obs_dia_canon_valido="form.obs_dia_canon_valido"
+				:acciones_a_desarrollar="form.acciones_a_desarrollar"
+				:acciones_a_desarrollar_validacion="form.acciones_a_desarrollar_validacion"
+				:acciones_a_desarrollar_correcto="form.acciones_a_desarrollar_correcto"
+				:obs_acciones_a_desarrollar="form.obs_acciones_a_desarrollar"
+				:obs_acciones_a_desarrollar_valido="form.obs_acciones_a_desarrollar_valido"
+				:actividad="form.actividad"
+				:actividad_a_desarrollar_validacion="form.actividad_a_desarrollar_validacion"
+				:actividad_a_desarrollar_correcto="form.actividad_a_desarrollar_correcto"
+				:obs_actividad_a_desarrollar="form.obs_actividad_a_desarrollar"
+				:obs_actividad_a_desarrollar_valido="form.obs_actividad_a_desarrollar_valido"
+				:fecha_alta_dia="form.fecha_alta_dia"
+				:fecha_alta_dia_validacion="form.fecha_alta_dia_validacion"
+				:fecha_alta_dia_correcto="form.fecha_alta_dia_correcto"
+				:obs_fecha_alta_dia="form.obs_fecha_alta_dia"
+				:obs_fecha_alta_dia_valido="form.obs_fecha_alta_dia_valido"
+				:fecha_vencimiento_dia="form.fecha_vencimiento_dia"
+				:fecha_vencimiento_dia_validacion="form.fecha_vencimiento_dia_validacion"
+				:fecha_vencimiento_dia_correcto="form.fecha_vencimiento_dia_correcto"
+				:obs_fecha_vencimiento_dia="form.obs_fecha_vencimiento_dia"
+				:obs_fecha_vencimiento_dia_valido="form.obs_fecha_vencimiento_dia_valido"
+
+
+				
+				:evaluacion="true"
+				:id="$props.productor.id"
+				:testing="true"
+
+			>
+
+			</PaginaCincoDatosMinaDos>
 
 			<div class="flex">
 				<div class="w-full md:w-2/2 px-3">
@@ -2200,6 +1836,8 @@ import PaginaUnoDatosProductores from "@/Pages/Productors/PaginaUnoDatosProducto
 import PaginaDosDatosDomLegal from "@/Pages/Productors/PaginaDosDatosDomLegal";
 
 import PaginaCuatroDatosMinaUno from "@/Pages/Productors/PaginaCuatroDatosMinaUno";
+import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos";
+import ValidationErrors from '../../Jetstream/ValidationErrors.vue';
  
 export default {
 	components: {
@@ -2219,6 +1857,8 @@ export default {
 		PaginaUnoDatosProductores,
 		PaginaDosDatosDomLegal,
 		PaginaCuatroDatosMinaUno,
+		PaginaCincoDatosMinaDos,
+		ValidationErrors,
 	},
 	props: ["productor"],
 	data() {
