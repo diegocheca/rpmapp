@@ -20,7 +20,7 @@
                     v-bind:razon_social_correcto="$props.razon_social_correcto"
                     v-bind:obs_razon_social="$props.obs_razon_social"
                     v-bind:obs_razon_social_valido="$props.obs_razon_social_valido"
-                    v-bind:evaluacion="true"
+                    v-bind:evaluacion="false"
                     v-on:changerazonsocialvalido="updaterazonsocialvalido($event)"
                     v-on:changerazonsocialcorrecto="updaterazonsocialcorrecto($event)"
                     v-on:changeobsrazonsocial="updateobsrazonsocial($event)"
