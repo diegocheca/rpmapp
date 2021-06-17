@@ -1,6 +1,6 @@
 <template>
-    <div class="flex">
-        <div class="w-full md:w-1/3 px-3">
+    <div class="flex w-full" >
+        <div class="w-full md:w-1/4 px-3">
             <label
                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 for="input_componente"
@@ -17,7 +17,7 @@
                 </label>
             </div>
         </div>
-        <div class="w-full md:w-1/3 px-3" v-if="evaluacion">
+        <div class="w-full md:w-1/4 px-3" v-if="evaluacion">
             <span class="text-gray-700">Es correcto?</span>
             <div class="mt-2">
                 <label class="inline-flex items-center">
@@ -34,7 +34,7 @@
                 </label>
             </div>
         </div>
-        <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-1/3 px-3">
+        <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-1/4 px-3">
             <label
                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 for="observaciones"
@@ -50,13 +50,33 @@
             </textarea>
             <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
         </div>
-        <div v-show="testing">
-            <br>Valor input:{{valor_input}}<br>
-            <br>distrtito minero calle Evalaucion:{{evualacion_correcto}}<br>
-            <br>distrtito minero calle Obser:{{valor_obs}}<br>
-            <br>distrtito minero calle obsr Valido:{{valor_valido_obs}}<br>
-            <br>Evaluacion {{evaluacion}}<br>
-            <br>{{texto_validacion_text_area}}<br>
+        <div class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing hijo</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="testing_hijo"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
+            <div class="flex">
+                <div v-show="testing_hijo">
+                    <br>Valor input:{{valor_input}}<br>
+                    <br>distrtito minero calle Evalaucion:{{evualacion_correcto}}<br>
+                    <br>distrtito minero calle Obser:{{valor_obs}}<br>
+                    <br>distrtito minero calle obsr Valido:{{valor_valido_obs}}<br>
+                    <br>Evaluacion {{evaluacion}}<br>
+                    <br>{{texto_validacion_text_area}}<br>
+                </div>
+
+            </div>
         </div>
     </div>
 </template>
@@ -85,6 +105,7 @@ export default {
         valor_evaluacion_correcto_local: this.$props.evualacion_correcto,
 
         obs_valida: this.$props.obs_valido_props,
+        testing_hijo: 'false',
         
         //border-green-500
     }; 

@@ -40,21 +40,19 @@
                 </label>
             </div>
         </div>
-        <h3>{{mostrar_testing}}</h3>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             
 
 
 
             <div class="w-full  bg-white rounded shadow p-6 m-8">
-                <div class="flex w-full" >
                     <CaracterQueInvoca 
                         v-bind:valor_input_props="$props.owner"
                         v-bind:evualacion_correcto="$props.owner_correcto"
                         v-bind:valor_obs="$props.obs_owner"
                         v-bind:valor_valido_obs="$props.obs_owner_valido"
                         v-bind:evaluacion="true"
-                        v-bind:testing = "true"
+                        v-bind:testing = "mostrar_testing"
                         v-bind:label="'Propietario'"
                         v-bind:label_true="'Soy Propietario'"
                         v-bind:label_false="'No soy propietario'"
@@ -63,8 +61,6 @@
                         v-on:changeobsvalido="updateobs_owner_valido($event)"
                         v-on:changevalor="updatevalor_owner($event)"
                     ></CaracterQueInvoca>
-                    
-                </div>
                 <div class="flex" v-if="mostrar_testing">
                             <br> owner de Mina valor padre: {{form_pagina.numero_expdiente}}
                             <br> owner de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
@@ -82,7 +78,7 @@
                     v-bind:valor_obs="$props.obs_arrendatario"
                     v-bind:valor_valido_obs="$props.obs_arrendatario_valido"
                     v-bind:evaluacion="true"
-                    v-bind:testing = "false"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Arrendatario'"
                      v-bind:label_true="'Soy Arrendatario'"
                     v-bind:label_false="'No soy arrendatario'"
@@ -91,7 +87,7 @@
                     v-on:changeobsvalido="update_obs_arrendatario_valido($event)"
                     v-on:changevalor="update_valor_arrendatario($event)"
                 ></CaracterQueInvoca>
-                <div v-show="testing">
+                <div class="flex" v-if="mostrar_testing">
                         <br> arrendatario de Mina valor padre: {{form_pagina.arrendatario}}
                         <br> arrendatario de Mina  correcto deel padre: {{form_pagina.arrendatario_correcto}}
                         <br> arrendatario de Mina  observacion deel padre: {{form_pagina.obs_arrendatario}}
@@ -108,16 +104,16 @@
                         v-bind:valor_obs="$props.obs_concesionario"
                         v-bind:valor_valido_obs="$props.obs_concesionario_valido"
                         v-bind:evaluacion="true"
-                        v-bind:testing = "true"
+                        v-bind:testing = "mostrar_testing"
                         v-bind:label="'Concesionario'"
-                            v-bind:label_true="'Soy Concesionario'"
+                        v-bind:label_true="'Soy Concesionario'"
                         v-bind:label_false="'No soy concesionario'"
                         v-on:changecorrecto="update_concesionario_correcto($event)"
                         v-on:changeobs="update_obs_concesionario($event)"
                         v-on:changeobsvalido="update_obs_concesionario_valido($event)"
                         v-on:changevalor="update_valor_concesionario($event)"
                     ></CaracterQueInvoca>
-                    <div v-show="testing">
+                    <div class="flex" v-if="mostrar_testing">
                             <br> concesionario de Mina valor padre: {{form_pagina.concesionario}}
                             <br> concesionario de Mina  correcto deel padre: {{form_pagina.concesionario_correcto}}
                             <br> concesionario de Mina  observacion deel padre: {{form_pagina.obs_concesionario}}
@@ -135,7 +131,7 @@
                         v-bind:valor_obs="$props.obs_otros"
                         v-bind:valor_valido_obs="$props.obs_otros_valido"
                         v-bind:evaluacion="true"
-                        v-bind:testing = "true"
+                        v-bind:testing = "mostrar_testing"
                         v-bind:label="'Otros'"
                         v-bind:label_true="'Tengo un dato que declarar'"
                         v-bind:label_false="'No tengo maás datos a declarar'"
@@ -144,7 +140,7 @@
                         v-on:changeobsvalido="update_obs_otro_valido($event)"
                         v-on:changevalor="update_valor_otro($event)"
                     ></CaracterQueInvoca>
-                    <div v-show="testing">
+                    <div class="flex" v-if="mostrar_testing">
                             <br> otro de Mina valor padre: {{form_pagina.otros}}
                             <br> otro de Mina  correcto deel padre: {{form_pagina.otros_correcto}}
                             <br> otro de Mina  observacion deel padre: {{form_pagina.obs_otros}}
@@ -161,7 +157,7 @@
                 v-bind:valor_obs="$props.obs_constancia_pago_canon"
                 v-bind:valor_valido_obs="$props.obs_constancia_pago_canon_valido"
                 v-bind:evaluacion="true"
-                v-bind:testing = "true"
+                v-bind:testing = "mostrar_testing"
                 v-bind:label="'Constancia de Pago de Canon'"
                 v-on:changevalido="update_canon_valido($event)"
                 v-on:changecorrecto="update_canon_correcto($event)"
@@ -171,7 +167,7 @@
             >
             </SubirArchivo>
         </div>
-        <div v-show="testing">
+        <div class="flex" v-if="mostrar_testing">
             <br> canon resolucion minera de Mina valor padre: {{form_pagina.constancia_pago_canon}}
             <br> canon resolucion minera de Mina  valido del padre: {{form_pagina.constancia_pago_canon_validacion}}
             <br> canon resolucion minera de Mina  correcto deel padre: {{form_pagina.constancia_pago_canon_correcto}}
@@ -188,7 +184,7 @@
                 v-bind:valor_obs="$props.obs_iia_canon"
                 v-bind:valor_valido_obs="$props.obs_iia_canon_valido"
                 v-bind:evaluacion="true"
-                v-bind:testing = "true"
+                v-bind:testing = "mostrar_testing"
                 v-bind:label="'IIA de Actividad Minera'"
                 v-on:changevalido="update_iia_valido($event)"
                 v-on:changecorrecto="update_iia_correcto($event)"
@@ -198,7 +194,7 @@
             >
             </SubirArchivo>
         </div>
-        <div v-show="testing">
+        <div class="flex" v-if="mostrar_testing">
             <br> iia minera de Mina valor padre: {{form_pagina.iia}}
             <br> iia minera de Mina  valido del padre: {{form_pagina.iia_canon_validacion}}
             <br> iia minera de Mina  correcto deel padre: {{form_pagina.iia_correcto}}
@@ -214,7 +210,7 @@
                 v-bind:valor_obs="$props.obs_dia_canon"
                 v-bind:valor_valido_obs="$props.obs_dia_canon_valido"
                 v-bind:evaluacion="true"
-                v-bind:testing = "true"
+                v-bind:testing = "mostrar_testing"
                 v-bind:label="'DIA de Actividad Minera'"
                 v-on:changevalido="update_dia_valido($event)"
                 v-on:changecorrecto="update_dia_correcto($event)"
@@ -224,15 +220,13 @@
             >
             </SubirArchivo>
         </div>
-        <div v-show="testing">
+        <div class="flex" v-if="mostrar_testing">
             <br> dia minera de Mina valor padre: {{form_pagina.dia}}
             <br> dia minera de Mina  valido del padre: {{form_pagina.dia_canon_validacion}}
             <br> dia minera de Mina  correcto deel padre: {{form_pagina.dia_correcto}}
             <br> dia minera de Mina  observacion deel padre: {{form_pagina.obs_dia_canon}}
             <br> dia minera de Mina  observacion valida deel padre: {{form_pagina.obs_dia_canon_valido}}
         </div>
-
-        
          <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
@@ -242,7 +236,7 @@
                     v-bind:valor_obs="$props.obs_actividad_a_desarrollar"
                     v-bind:valor_valido_obs="$props.obs_actividad_a_desarrollar_valido"
                     v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Actividades a Desarrollar la Mina'"
                     v-on:changevalido="update_actividades_valido($event)"
                     v-on:changecorrecto="update_actividades_correcto($event)"
@@ -250,13 +244,8 @@
                     v-on:changeobsvalido="update_obs_actividades_valida($event)"
                     v-on:changevalor="update_valor_actividades($event)"
                 >
-                
-                
-                
-                
-                
                 </NombreMina>
-                <div v-show="testing">
+                <div class="flex" v-if="mostrar_testing">
                      <br> Actvidades de Mina valor padre: {{form_pagina.actividad}}
                      <br> Actvidades de Mina  valido del padre: {{form_pagina.actividad_a_desarrollar_validacion}}
                      <br> Actvidades de Mina  correcto deel padre: {{form_pagina.actividad_a_desarrollar_correcto}}
@@ -273,7 +262,7 @@
                     v-bind:valor_obs="$props.obs_acciones_a_desarrollar"
                     v-bind:valor_valido_obs="$props.obs_acciones_a_desarrollar_valido"
                     v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Acciones a Desarrollar la Mina'"
                     v-on:changevalido="update_accionesvalido($event)"
                     v-on:changecorrecto="update_acciones_correcto($event)"
@@ -282,7 +271,7 @@
                     v-on:changevalor="update_valor_acciones($event)"
                 >
                 </NombreMina>
-                <div v-show="testing">
+                <div class="flex" v-if="mostrar_testing">
                      <br> Acciones de Mina valor padre: {{form_pagina.acciones_a_desarrollar}}
                      <br> Acciones de Mina  valido del padre: {{form_pagina.acciones_a_desarrollar_validacion}}
                      <br> Acciones de Mina  correcto deel padre: {{form_pagina.acciones_a_desarrollar_correcto}}
@@ -310,7 +299,7 @@
                     v-on:changevalor="update_valor_fecha_inicio($event)"
                 >
                 </FechaGenerica>
-                <div v-show="testing">
+                <div class="flex" v-if="mostrar_testing">
                      <br> Fecha inicio de Mina valor padre: {{form_pagina.fecha_alta_dia}}
                      <br> Fecha inicio de Mina  valido del padre: {{form_pagina.fecha_alta_dia_validacion}}
                      <br> Fecha inicio de Mina  correcto deel padre: {{form_pagina.fecha_alta_dia_correcto}}
@@ -336,7 +325,7 @@
                     v-on:changevalor="update_valor_fecha_fin($event)"
                 >
                 </FechaGenerica>
-                <div v-show="testing">
+                <div class="flex" v-if="mostrar_testing">
                      <br> Fecha fin de Mina valor padre: {{form_pagina.fecha_vencimiento_dia}}
                      <br> Fecha fin de Mina  valido del padre: {{form_pagina.fecha_vencimiento_dia_validacion}}
                      <br> Fecha fin de Mina  correcto deel padre: {{form_pagina.fecha_vencimiento_dia_correcto}}

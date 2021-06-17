@@ -638,6 +638,85 @@
 					<br>
 			<br><br>
 			<br>
+
+
+			<PaginaSeisDatosUbicacionMina
+				:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
+				:titulo_pagina="'Pagina datos de Mina Segunda Parte'"
+
+				:owner="form.owner"
+				:owner_correcto="form.owner_correcto"
+				:obs_owner="form.obs_owner"
+				:obs_owner_valido="form.obs_owner_valido"
+				:arrendatario="form.arrendatario"
+				:arrendatario_correcto="form.arrendatario_correcto"
+				:obs_arrendatario="form.obs_arrendatario"
+				:obs_arrendatario_valido="form.obs_arrendatario_valido"
+				:concesionario="form.concesionario"
+				:concesionario_correcto="form.concesionario_correcto"
+				:obs_concesionario="form.obs_concesionario"
+				:obs_concesionario_valido="form.obs_concesionario_valido"
+				:otros="form.otros"
+				:otros_correcto="form.otros_correcto"
+				:obs_otros="form.obs_otros"
+				:obs_otros_valido="form.obs_otros_valido"
+				:titulo_contrato_posecion="form.titulo_contrato_posecion"
+				:titulo_contrato_posecion_validacion="form.titulo_contrato_posecion_validacion"
+				:titulo_contrato_posecion_correcto="form.titulo_contrato_posecion_correcto"
+				:obs_titulo_contrato_posecion="form.obs_titulo_contrato_posecion"
+				:obs_titulo_contrato_posecion_valido="form.obs_titulo_contrato_posecion_valido"
+				:resolucion_concesion_minera="form.resolucion_concesion_minera"
+				:resolucion_concesion_minera_validacion="form.resolucion_concesion_minera_validacion"
+				:resolucion_concesion_minera_correcto="form.resolucion_concesion_minera_correcto"
+				:obs_resolucion_concesion_minera="form.obs_resolucion_concesion_minera"
+				:obs_resolucion_concesion_minera_valido="form.obs_resolucion_concesion_minera_valido"
+				:constancia_pago_canon="form.constancia_pago_canon"
+				:constancia_pago_canon_validacion="form.constancia_pago_canon_validacion"
+				:constancia_pago_canon_correcto="form.constancia_pago_canon_correcto"
+				:obs_constancia_pago_canon="form.obs_constancia_pago_canon"
+				:obs_constancia_pago_canon_valido="form.obs_constancia_pago_canon_valido"
+				:iia="form.iia"
+				:iia_canon_validacion="form.iia_canon_validacion"
+				:iia_correcto="form.iia_correcto"
+				:obs_iia_canon="form.obs_iia_canon"
+				:obs_iia_canon_valido="form.obs_iia_canon_valido"
+				:dia="form.dia"
+				:dia_canon_validacion="form.dia_canon_validacion"
+				:dia_correcto="form.dia_correcto"
+				:obs_dia_canon="form.obs_dia_canon"
+				:obs_dia_canon_valido="form.obs_dia_canon_valido"
+				:acciones_a_desarrollar="form.acciones_a_desarrollar"
+				:acciones_a_desarrollar_validacion="form.acciones_a_desarrollar_validacion"
+				:acciones_a_desarrollar_correcto="form.acciones_a_desarrollar_correcto"
+				:obs_acciones_a_desarrollar="form.obs_acciones_a_desarrollar"
+				:obs_acciones_a_desarrollar_valido="form.obs_acciones_a_desarrollar_valido"
+				:actividad="form.actividad"
+				:actividad_a_desarrollar_validacion="form.actividad_a_desarrollar_validacion"
+				:actividad_a_desarrollar_correcto="form.actividad_a_desarrollar_correcto"
+				:obs_actividad_a_desarrollar="form.obs_actividad_a_desarrollar"
+				:obs_actividad_a_desarrollar_valido="form.obs_actividad_a_desarrollar_valido"
+				:fecha_alta_dia="form.fecha_alta_dia"
+				:fecha_alta_dia_validacion="form.fecha_alta_dia_validacion"
+				:fecha_alta_dia_correcto="form.fecha_alta_dia_correcto"
+				:obs_fecha_alta_dia="form.obs_fecha_alta_dia"
+				:obs_fecha_alta_dia_valido="form.obs_fecha_alta_dia_valido"
+				:fecha_vencimiento_dia="form.fecha_vencimiento_dia"
+				:fecha_vencimiento_dia_validacion="form.fecha_vencimiento_dia_validacion"
+				:fecha_vencimiento_dia_correcto="form.fecha_vencimiento_dia_correcto"
+				:obs_fecha_vencimiento_dia="form.obs_fecha_vencimiento_dia"
+				:obs_fecha_vencimiento_dia_valido="form.obs_fecha_vencimiento_dia_valido"
+
+
+				
+				:evaluacion="true"
+				:id="$props.productor.id"
+				:testing="true"
+
+			>
+
+			</PaginaSeisDatosUbicacionMina>
 			<div class="flex">
 				<div class="w-full md:w-1/3 px-3">
 					<label
@@ -1134,6 +1213,10 @@ import PaginaDosDatosDomLegal from "@/Pages/Productors/PaginaDosDatosDomLegal";
 
 import PaginaCuatroDatosMinaUno from "@/Pages/Productors/PaginaCuatroDatosMinaUno";
 import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos";
+
+import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
+
+
 import ValidationErrors from '../../Jetstream/ValidationErrors.vue';
  
 export default {
@@ -1155,6 +1238,7 @@ export default {
 		PaginaDosDatosDomLegal,
 		PaginaCuatroDatosMinaUno,
 		PaginaCincoDatosMinaDos,
+		PaginaSeisDatosUbicacionMina,
 		ValidationErrors,
 	},
 	props: ["productor"],
