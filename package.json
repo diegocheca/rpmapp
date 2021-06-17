@@ -26,6 +26,8 @@
         "vue-loader": "^16.1.2"
     },
     "dependencies": {
-        "@amcharts/amcharts4": "^4.10.19"
+        "@amcharts/amcharts4": "^4.10.19",
+        "vee-validate": "^4.4.5",
+        "yup": "^0.32.9"
     }
 }

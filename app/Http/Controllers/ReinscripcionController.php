@@ -21,7 +21,7 @@ class ReinscripcionController extends Controller
     {
         $reinscripciones = Reinscripciones::all();
         return Inertia::render('Reinscripciones/List', ['reinscripciones' => $reinscripciones]);
-   
+
     }
 
     /**
@@ -32,7 +32,13 @@ class ReinscripcionController extends Controller
     public function create()
     {
         //
-        return Inertia::render('Reinscripciones/Form');
+        // return Inertia::render('Reinscripciones/Form');
+        return Inertia::render('Reinscripciones/EditForm', [
+            'reinscripcion' => [],
+            'titleForm' => 'Editar reinscripciones'
+        ]);
+
+
     }
 
     /**
@@ -98,11 +104,13 @@ class ReinscripcionController extends Controller
     {
         //
         $reinscripcion = Reinscripciones::find($id);
-        //var_dump($reinscripcion);die();
 
+        return Inertia::render('Reinscripciones/EditForm', [
+            'reinscripcion' => $reinscripcion,
+            'titleForm' => 'Editar reinscripciones',
+            'evaluate' => true
+        ]);
 
-        return Inertia::render('Reinscripciones/EditForm', ['reinscripcion' => $reinscripcion]);
-    
     }
 
     /**
@@ -129,11 +137,11 @@ class ReinscripcionController extends Controller
     {
         //
         // var_dump($reinscripcion);die();
-        
+
         $resultado = $reinscripcion->delete();
         return Redirect::route('reinscripciones.index');
     }
-    
+
     public function guardar_reinscripcion(Request $request)
     {
         //
@@ -200,7 +208,7 @@ class ReinscripcionController extends Controller
         {
             // ya guarde correctamente la reinscripcion
             //ahora voy a guardar las productos en su tabala por separado
-            // for ($i=0; $i < count($request["productos"]); $i++) { 
+            // for ($i=0; $i < count($request["productos"]); $i++) {
             //     # code...
 
             // }
@@ -211,7 +219,7 @@ class ReinscripcionController extends Controller
             ], 200);
 
         }
-            
+
         else
             return response()->json([
                 'res'=>false,
@@ -220,7 +228,7 @@ class ReinscripcionController extends Controller
 
 
 
-        
+
         //$resultado = $reinscripcion->delete();
        // return Redirect::route('reinscripciones.index');
     }

@@ -26,3 +26,4 @@ createApp({
     .mount(el);
 
 InertiaProgress.init({ color: '#4B5563' });
+

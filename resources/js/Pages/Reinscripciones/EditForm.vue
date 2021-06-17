@@ -1,308 +1,86 @@
 <template>
   <app-layout>
-    <div class="flex items-center h-full w-full bg-teal-lighter">
+        <div class="block w-full text-center text-grey-darkest text-2xl p-10">
+          {{ title }}
+        </div>
+        <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ values }">
+            <div class="items-center bg-teal-lighter">
+                <div v-for="(row, indexRow) in formSchemaReinscription.form" :key="indexRow" class="flex flex-col" :class="row.widthResponsive">
+                    <div v-for="(col, indexCol) in row.body" :key="indexCol" class="bg-white rounded shadow-lg p-8 m-4"
+                    :class="col.width">
+                        <div class="font-bold text-lg">{{col.title}}</div>
+                        <hr class="my-5">
+                        <div class="grid gap-4 " :class="[col.columns, col.columnsResponsive]">
+                            <div v-for="(item, indexItem) in col.inputs" :key="indexItem" class="mb-4" >
+                                <div class="flex flex-col">
+                                    <label for="item.name" class="mb-2 uppercase text-md text-grey-darkest">{{item.label}} :</label>
+                                    <!-- checkbox -->
+                                    <div v-if="item.type == 'checkbox'">
+
+
+
+                                            <Field v-slot="{ field }" :type="item.type" :name="item.name" >
+                                        <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                                                <input :type="item.type" :name="item.name" :id="item.name" v-bind="field" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" :v-model="item.value" :value="item.value"  />
+                                                <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                                        </div>
+                                            </Field>
+
+
+
+
+
+
+                                            <!-- <input :type="item.type" :name="item.name" :id="item.name" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" :value="item.value" v-model="item.value"/>
+                                            <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label> -->
+                                        <label for="toggle" class="text-xs text-gray-700">{{item.value? 'SI' : 'NO'}}</label>
+                                    </div>
+
+                                    <!-- not checkbox -->
+                                    <Field v-if="item.type != 'checkbox'" :value="item.value" :name="item.name" :type="item.type" class="rounded-md py-2 px-3 text-grey-darkest" />
+                                    <ErrorMessage class="text-red-500" :name="item.name" />
+
+
+                                    <!-- review -->
+                                    <div class="grid grid-rows-2 grid-flow-col p-4 mt-5 bg-blue-100 rounded-lg"  v-if="evaluate &&  item.observation">
+                                        <div class="w-full flex flex-wrap">
+                                            <span class="w-full text-gray-700">
+                                                Correcto?
+                                            </span>
+                                            <!-- inputs radio -->
+                                            <div v-for="(obs, index) in item.observation.options" :key="index" >
+                                                <label>
+                                                    <Field :name="obs.name" :type="obs.type" class="mx-2 text-grey-darkest" :value="obs.value" />
+                                                    <span>{{obs.label}}</span>
+                                                </label>
+                                            </div>
+                                            <ErrorMessage class="w-full text-red-500" :name="item.observation.options[0].name" />
+                                        </div>
+                                        <!-- textarea -->
+                                        <div v-show="values[item.observation.options[0].name] == 'rechazado'" class="w-full flex flex-col transition duration-500 ease-in">
+                                            <label for="item.name" class="mb-2 uppercase text-md text-grey-darkest">{{item.observation.comment.label}} :</label>
+                                            <Field :name="item.observation.comment.name" :as="item.observation.comment.type" class="rounded-md py-2 px-3 text-grey-darkest" :value="item.observation.comment.value" />
+                                            <ErrorMessage class="text-red-500" :name="item.observation.comment.name" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{ values }}
+            <button type="submit">Submit</button>
+        </Form>
+    <!-- <div class="flex items-center h-full w-full bg-teal-lighter">
       <div class="w-full bg-white rounded shadow-lg p-8 m-4">
         <h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
           Editar reinscripciones
         </h1>
         <form @submit.prevent="submit" class="mb-6">
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="id_mina"
-              >Razid_minaon :</label
-            >
-            <input
-              id="id_mina"
-              v-model="form.id_mina"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="id_productor"
-              >id_productor :</label
-            >
-            <input
-              id="id_productor"
-              v-model="form.id_productor"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="fecha_vto"
-              >fecha_vto:</label
-            >
-            <input
-              id="fecha_vto"
-              v-model="form.fecha_vto"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="prospeccion"
-              > prospeccion:</label
-            >
-            <input
-              id="prospeccion"
-              v-model="form.prospeccion"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="explotacion"
-              > explotacion:</label
-            >
-            <input
-              id="explotacion"
-              v-model="form.explotacion"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="desarrollo"
-              > desarrollo:</label
-            >
-            <input
-              id="desarrollo"
-              v-model="form.desarrollo"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="cantidad_productos"
-              > cantidad_productos:</label
-            >
-            <input
-              id="cantidad_productos"
-              v-model="form.cantidad_productos"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="porcentaje_venta_provincia"
-              > porcentaje_venta_provincia:</label
-            >
-            <input
-              id="porcentaje_venta_provincia"
-              v-model="form.porcentaje_venta_provincia"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="porcentaje_venta_otras_provincias"
-              > porcentaje_venta_otras_provincias:</label
-            >
-            <input
-              id="porcentaje_venta_otras_provincias"
-              v-model="form.porcentaje_venta_otras_provincias"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="porcentaje_exportado"
-              >porcentaje_exportado:</label
-            >
-            <input
-              id="porcentaje_exportado"
-              v-model="form.porcentaje_exportado"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="personal_perm_profesional"
-              >personal_perm_profesional:</label
-            >
-            <input
-              id="personal_perm_profesional"
-              v-model="form.personal_perm_profesional"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="personal_perm_operarios"
-              >personal_perm_operarios:</label
-            >
-            <input
-              id="personal_perm_operarios"
-              v-model="form.personal_perm_operarios"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="personal_perm_administrativos"
-              >personal_perm_administrativos:</label
-            >
-            <input
-              id="personal_perm_administrativos"
-              v-model="form.personal_perm_administrativos"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="personal_perm_otros"
-              >personal_perm_otros:</label
-            >
-            <input
-              id="personal_perm_otros"
-              v-model="form.personal_perm_otros"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="personal_trans_profesional"
-              >personal_trans_profesional:</label
-            >
-            <input
-              id="personal_trans_profesional"
-              v-model="form.personal_trans_profesional"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="personal_trans_operarios"
-              >personal_trans_operarios:</label
-            >
-            <input
-              id="personal_trans_operarios"
-              v-model="form.personal_trans_operarios"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="personal_trans_administrativos"
-              >personal_trans_administrativos:</label
-            >
-            <input
-              id="personal_trans_administrativos"
-              v-model="form.personal_trans_administrativos"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="personal_trans_otros"
-              >personal_trans_otros:</label
-            >
-            <input
-              id="personal_trans_otros"
-              v-model="form.personal_trans_otros"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="nombre"
-              >nombre:</label
-            >
-            <input
-              id="nombre"
-              v-model="form.nombre"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="dni"
-              >dni:</label
-            >
-            <input
-              id="dni"
-              v-model="form.dni"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="cargo"
-              >cargo:</label
-            >
-            <input
-              id="cargo"
-              v-model="form.cargo"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="estado"
-              >estado:</label
-            >
-            <input
-              id="estado"
-              v-model="form.estado"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-          </div>
-
 
           <button
             type="submit"
@@ -318,60 +96,65 @@
               Volver
             </inertia-link>
 
-          {{nuevo}}
         </form>
       </div>
-    </div>
+    </div> -->
   </app-layout>
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout";
+import { Reinscripciones, yupSquema } from '../../../../helpers/formularios/sanjuan/reinscripciones';
+import { Form, Field, ErrorMessage } from 'vee-validate';
+import * as yup from 'yup';
+
 export default {
-  components: {
-    AppLayout,
-  },
-  props: ["reinscripcion"],
-  data() {
-    return {
-      form: {
-        id_mina: this.$props.reinscripcion.id_mina,
-        id_productor: this.$props.reinscripcion.id_productor,
-
-        fecha_vto: this.$props.reinscripcion.fecha_vto,
-        prospeccion: this.$props.reinscripcion.prospeccion,
-        explotacion: this.$props.reinscripcion.explotacion,
-        desarrollo: this.$props.reinscripcion.desarrollo,
-        cantidad_productos: this.$props.reinscripcion.cantidad_productos,
-        porcentaje_venta_provincia: this.$props.reinscripcion.porcentaje_venta_provincia,
-        porcentaje_venta_otras_provincias: this.$props.reinscripcion.porcentaje_venta_otras_provincias,
-        porcentaje_exportado: this.$props.reinscripcion.porcentaje_exportado,
-
-
-        personal_perm_profesional: this.$props.reinscripcion.personal_perm_profesional,
-        personal_perm_operarios: this.$props.reinscripcion.personal_perm_operarios,
-        personal_perm_administrativos: this.$props.reinscripcion.personal_perm_administrativos,
-        personal_perm_otros: this.$props.reinscripcion.personal_perm_otros,
-        personal_trans_profesional: this.$props.reinscripcion.personal_trans_profesional,
-        personal_trans_operarios: this.$props.reinscripcion.personal_trans_operarios,
-
-        personal_trans_administrativos: this.$props.reinscripcion.personal_trans_administrativos,
-        personal_trans_otros: this.$props.reinscripcion.personal_trans_otros,
-        nombre: this.$props.reinscripcion.nombre,
-        dni: this.$props.reinscripcion.dni,
-        cargo: this.$props.reinscripcion.cargo,
-        estado: this.$props.reinscripcion.estado,
-
-      },
-      nuevo: this.$props.reinscripcion,
-    };
-  },
-  methods: {
-    submit() {
-      this.$inertia.put(
-        route("reinscripciones.update", this.$props.reinscripciones.id),
-        this.form
-      );
+    components: {
+        AppLayout,
+        Form,
+        Field,
+        ErrorMessage
     },
-  },
+
+    props: [
+      "reinscripcion",
+      "titleForm",
+      "evaluate"
+    ],
+    data() {
+        const schema = yupSquema;
+        return {
+            title: this.$props.titleForm,
+            schema,
+            formSchemaReinscription: new Reinscripciones(this.$props.reinscripcion),
+            initialValues: {...this.$props.reinscripcion}
+        };
+    },
+    methods: {
+        onSubmit(values) {
+        // Submit values to API...
+        alert(JSON.stringify(values, null, 2));
+        console.log(values);
+        },
+        submit() {
+        this.$inertia.put(
+            route("reinscripciones.update", this.$props.reinscripciones.id),
+            this.form
+        );
+        },
+    },
+    mounted() {
+
+    },
 };
 </script>
+
+<style scoped>
+/* CHECKBOX TOGGLE SWITCH */
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #68D391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #68D391;
+}
+</style>

@@ -11,7 +11,7 @@
             v-model="razon_social"
             v-bind:class=clase_de_input_razon_social
             :disabled="evaluacion"
-            @input="cambio_input_razonsocial($event.target.value)" 
+            @input="cambio_input_razonsocial($event.target.value)"
         />
         <p v-bind:class=clase_cartel_nota_campo>{{cartel_nota_campo}}.</p>
         <div class="flex" v-if="evaluacion">
@@ -43,7 +43,7 @@
                     name="obs_razon_social"
                     v-model="obs_razon_social"
                     v-bind:class=clase_text_area
-                    @input="updateValue($event.target.value)" 
+                    @input="updateValue($event.target.value)"
                     >
                 </textarea>
                 <p  v-bind:class=clase_cartel_nota_evaluacion>{{cartel_nota_evaluacion}}</p>
@@ -52,7 +52,7 @@
         -- Razon:{{razon_social}}--
         --Razon Valido:{{razon_social_valido}}--
         --Razon Valido local:{{razon_social_valido_local}}--
-        
+
         --Razon Evalaucion:{{razon_social_correcto}}--
         --Razon Obser:{{obs_razon_social}}--
         --Razon obsr Valido:{{obs_razon_social_valido_local}}--
@@ -64,10 +64,10 @@
 <script>
 export default {
     props: [
-        'razon_social', 
-        'razon_social_valido', 
-        'razon_social_correcto', 
-        'obs_razon_social', 
+        'razon_social',
+        'razon_social_valido',
+        'razon_social_correcto',
+        'obs_razon_social',
         'obs_razon_social_valido',
         'evaluacion',
     ],
@@ -83,7 +83,7 @@ export default {
         razon_social_correcto_local: this.$props.razon_social_correcto,
         obs_razon_social_valido_local: this.$props.obs_razon_social_valido,
         //border-green-500
-    }; 
+    };
   },
   methods:{
     actaulizar_variable_razonsocial(valor) {
@@ -108,7 +108,7 @@ export default {
         //     this.clase_de_input_razon_social =  'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
         // }
     },
-     
+
       updateValue(value) {
         if(this.$props.obs_razon_social.length <= 2)
         {
@@ -117,7 +117,7 @@ export default {
             this.clase_cartel_nota_evaluacion=  'text-red-500 text-xs italic';
             this.obs_razon_social_valido_local = false;
             this.$emit('changeobsrazonsocialvalido',false);
-            
+
         }
         if(this.$props.obs_razon_social.length >= 50)
         {
@@ -134,7 +134,7 @@ export default {
             this.clase_cartel_nota_evaluacion=  'text-green-500 text-xs italic';
             this.obs_razon_social_valido_local = false;
             this.$emit('changeobsrazonsocialvalido',true);
-            
+
         }
         this.$emit('changeobsrazonsocial',this.$props.obs_razon_social)
     },
