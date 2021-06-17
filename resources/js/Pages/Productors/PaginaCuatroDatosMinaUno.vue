@@ -348,9 +348,6 @@ import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvin
 import InputFileGenerico from "@/Pages/Productors/InputFileGenerico";
 import ListadeMinerales from "@/Pages/Productors/ListadeMinerales";
 
-import PaginaDosDatosDLocalidad from "@/Pages/Productors/PaginaDosDatosDLocalidad";
-import PaginaDosDatosDLCP from "@/Pages/Productors/PaginaDosDatosDLCP";
-import PaginaDosDatosDLOtro from "@/Pages/Productors/PaginaDosDatosDLOtro";
 import PaginaUnoDatosProductorConstanciaSociedad from "@/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad";
 import PaginaUnoDatosProductorBotones from "@/Pages/Productors/PaginaUnoDatosProductorBotones";
 export default {
@@ -426,9 +423,6 @@ export default {
 		PaginaDosDatosDLProvincia,
         InputFileGenerico,
         ListadeMinerales,
-		PaginaDosDatosDLocalidad,
-		PaginaDosDatosDLOtro,
-		PaginaUnoDatosProductorConstanciaSociedad,
 		PaginaUnoDatosProductorBotones,
 	},
    

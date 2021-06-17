@@ -1,3 +1,14 @@
+<style>
+  
+
+  input:checked {
+    background-color: #22c55e; /* bg-green-500 */
+  }
+
+  input:checked ~ span:last-child {
+    --tw-translate-x: 1.75rem; /* translate-x-7 */
+  }
+</style>
 <template>
     <div>
         <h1>{{titulo_pagina}}</h1>
@@ -12,268 +23,337 @@
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
             ></CardMinaDos>
         </div>
-        <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <CaracterQueInvoca 
-                    v-bind:valor_input_props="$props.owner"
-                    v-bind:evualacion_correcto="$props.owner_correcto"
-                    v-bind:valor_obs="$props.obs_owner"
-                    v-bind:valor_valido_obs="$props.obs_owner_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "true"
-                    v-bind:label="'Propietario'"
-                    v-on:changecorrecto="update_owner_correcto($event)"
-                    v-on:changeobs="updateobs_owner($event)"
-                    v-on:changeobsvalido="updateobs_owner_valido($event)"
-                    v-on:changevalor="updatevalor_owner($event)"
-                ></CaracterQueInvoca>
-                <div v-show="testing">
-                     <br> owner de Mina valor padre: {{form_pagina.numero_expdiente}}
-                     <br> owner de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
-                     <br> owner de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
-                     <br> owner de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
-                     <br> owner de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
-                </div>
-
-            </div>
-            <div class="w-full md:w-1/2 px-3">
-                <DistritoMinero
-                    v-bind:distrito_minero="$props.distrito_minero"
-                    v-bind:distrito_minero_validacion="$props.distrito_minero_validacion"
-                    v-bind:distrito_minero_correcto="$props.distrito_minero_correcto"
-                    v-bind:obs_distrito_minero="$props.obs_distrito_minero"
-                    v-bind:obs_distrito_minero_valido="$props.obs_distrito_minero_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changevalido="update_distrito_minero_valido($event)"
-                    v-on:changecorrecto="update_distrito_minero_correcto($event)"
-                    v-on:changeobs="update_distrito_minero_obs($event)"
-                    v-on:changeobsvalido="update_distrito_minero_valido_obs($event)"
-                    v-on:changevalor="update_distrito_minero($event)"
-                >
-                </DistritoMinero>
-                <div v-show="testing">
-                     <br> distrito minero de Mina valor padre: {{form_pagina.distrito_minero}}
-                     <br> distrito minero de Mina  valido del padre: {{form_pagina.distrito_minero_validacion}}
-                     <br> distrito minero de Mina  correcto deel padre: {{form_pagina.distrito_minero_correcto}}
-                     <br> distrito minero de Mina  observacion deel padre: {{form_pagina.obs_distrito_minero}}
-                     <br> distrito minero de Mina  observacion valida deel padre: {{form_pagina.obs_distrito_minero_valido}}
-                </div>
-                
+        <div class="w-full  bg-white rounded shadow p-6 m-8">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="mostrar_testing"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
             </div>
         </div>
-        Nombre de mina:{{$props.nombre_mina}}
-        <div class="flex">
+        <h3>{{mostrar_testing}}</h3>
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            
+
+
+
+            <div class="w-full  bg-white rounded shadow p-6 m-8">
+                <div class="flex w-full" >
+                    <CaracterQueInvoca 
+                        v-bind:valor_input_props="$props.owner"
+                        v-bind:evualacion_correcto="$props.owner_correcto"
+                        v-bind:valor_obs="$props.obs_owner"
+                        v-bind:valor_valido_obs="$props.obs_owner_valido"
+                        v-bind:evaluacion="true"
+                        v-bind:testing = "true"
+                        v-bind:label="'Propietario'"
+                        v-bind:label_true="'Soy Propietario'"
+                        v-bind:label_false="'No soy propietario'"
+                        v-on:changecorrecto="update_owner_correcto($event)"
+                        v-on:changeobs="updateobs_owner($event)"
+                        v-on:changeobsvalido="updateobs_owner_valido($event)"
+                        v-on:changevalor="updatevalor_owner($event)"
+                    ></CaracterQueInvoca>
+                    
+                </div>
+                <div class="flex" v-if="mostrar_testing">
+                            <br> owner de Mina valor padre: {{form_pagina.numero_expdiente}}
+                            <br> owner de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
+                            <br> owner de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
+                            <br> owner de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
+                            <br> owner de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
+                    </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            <div class="w-full  bg-white rounded shadow p-6 m-8">
+                <CaracterQueInvoca 
+                    v-bind:valor_input_props="$props.arrendatario"
+                    v-bind:evualacion_correcto="$props.arrendatario_correcto"
+                    v-bind:valor_obs="$props.obs_arrendatario"
+                    v-bind:valor_valido_obs="$props.obs_arrendatario_valido"
+                    v-bind:evaluacion="true"
+                    v-bind:testing = "false"
+                    v-bind:label="'Arrendatario'"
+                     v-bind:label_true="'Soy Arrendatario'"
+                    v-bind:label_false="'No soy arrendatario'"
+                    v-on:changecorrecto="update_arrendatario_correcto($event)"
+                    v-on:changeobs="update_obs_arrendatario($event)"
+                    v-on:changeobsvalido="update_obs_arrendatario_valido($event)"
+                    v-on:changevalor="update_valor_arrendatario($event)"
+                ></CaracterQueInvoca>
+                <div v-show="testing">
+                        <br> arrendatario de Mina valor padre: {{form_pagina.arrendatario}}
+                        <br> arrendatario de Mina  correcto deel padre: {{form_pagina.arrendatario_correcto}}
+                        <br> arrendatario de Mina  observacion deel padre: {{form_pagina.obs_arrendatario}}
+                        <br> arrendatario de Mina  observacion valida deel padre: {{form_pagina.obs_arrendatario_valido}}
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            <div class="w-full  bg-white rounded shadow p-6 m-8">
+                <div class="flex">
+                    <CaracterQueInvoca 
+                        v-bind:valor_input_props="$props.concesionario"
+                        v-bind:evualacion_correcto="$props.concesionario_correcto"
+                        v-bind:valor_obs="$props.obs_concesionario"
+                        v-bind:valor_valido_obs="$props.obs_concesionario_valido"
+                        v-bind:evaluacion="true"
+                        v-bind:testing = "true"
+                        v-bind:label="'Concesionario'"
+                            v-bind:label_true="'Soy Concesionario'"
+                        v-bind:label_false="'No soy concesionario'"
+                        v-on:changecorrecto="update_concesionario_correcto($event)"
+                        v-on:changeobs="update_obs_concesionario($event)"
+                        v-on:changeobsvalido="update_obs_concesionario_valido($event)"
+                        v-on:changevalor="update_valor_concesionario($event)"
+                    ></CaracterQueInvoca>
+                    <div v-show="testing">
+                            <br> concesionario de Mina valor padre: {{form_pagina.concesionario}}
+                            <br> concesionario de Mina  correcto deel padre: {{form_pagina.concesionario_correcto}}
+                            <br> concesionario de Mina  observacion deel padre: {{form_pagina.obs_concesionario}}
+                            <br> concesionario de Mina  observacion valida deel padre: {{form_pagina.obs_concesionario_valido}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            <div class="w-full  bg-white rounded shadow p-6 m-8">
+                <div class="flex">
+                    <CaracterQueInvoca 
+                        v-bind:valor_input_props="$props.otros"
+                        v-bind:evualacion_correcto="$props.otros_correcto"
+                        v-bind:valor_obs="$props.obs_otros"
+                        v-bind:valor_valido_obs="$props.obs_otros_valido"
+                        v-bind:evaluacion="true"
+                        v-bind:testing = "true"
+                        v-bind:label="'Otros'"
+                        v-bind:label_true="'Tengo un dato que declarar'"
+                        v-bind:label_false="'No tengo maás datos a declarar'"
+                        v-on:changecorrecto="update_otro_correcto($event)"
+                        v-on:changeobs="update_obs_otro($event)"
+                        v-on:changeobsvalido="update_obs_otro_valido($event)"
+                        v-on:changevalor="update_valor_otro($event)"
+                    ></CaracterQueInvoca>
+                    <div v-show="testing">
+                            <br> otro de Mina valor padre: {{form_pagina.otros}}
+                            <br> otro de Mina  correcto deel padre: {{form_pagina.otros_correcto}}
+                            <br> otro de Mina  observacion deel padre: {{form_pagina.obs_otros}}
+                            <br> otro de Mina  observacion valida deel padre: {{form_pagina.obs_otros_valido}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            <SubirArchivo
+                v-bind:valor_input_props="$props.constancia_pago_canon"
+                v-bind:valor_input_validacion="$props.constancia_pago_canon_validacion"
+                v-bind:evualacion_correcto="$props.constancia_pago_canon_correcto"
+                v-bind:valor_obs="$props.obs_constancia_pago_canon"
+                v-bind:valor_valido_obs="$props.obs_constancia_pago_canon_valido"
+                v-bind:evaluacion="true"
+                v-bind:testing = "true"
+                v-bind:label="'Constancia de Pago de Canon'"
+                v-on:changevalido="update_canon_valido($event)"
+                v-on:changecorrecto="update_canon_correcto($event)"
+                v-on:changeobs="update_obs_canon($event)"
+                v-on:changeobsvalido="update_obs_canon_valido($event)"
+                v-on:changevalor="update_valor_canon($event)"
+            >
+            </SubirArchivo>
+        </div>
+        <div v-show="testing">
+            <br> canon resolucion minera de Mina valor padre: {{form_pagina.constancia_pago_canon}}
+            <br> canon resolucion minera de Mina  valido del padre: {{form_pagina.constancia_pago_canon_validacion}}
+            <br> canon resolucion minera de Mina  correcto deel padre: {{form_pagina.constancia_pago_canon_correcto}}
+            <br> canon resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_constancia_pago_canon}}
+            <br> canon resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_constancia_pago_canon_valido}}
+        </div>
+
+
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            <SubirArchivo
+                v-bind:valor_input_props="$props.iia"
+                v-bind:valor_input_validacion="$props.iia_canon_validacion"
+                v-bind:evualacion_correcto="$props.iia_correcto"
+                v-bind:valor_obs="$props.obs_iia_canon"
+                v-bind:valor_valido_obs="$props.obs_iia_canon_valido"
+                v-bind:evaluacion="true"
+                v-bind:testing = "true"
+                v-bind:label="'IIA de Actividad Minera'"
+                v-on:changevalido="update_iia_valido($event)"
+                v-on:changecorrecto="update_iia_correcto($event)"
+                v-on:changeobs="update_obs_iia($event)"
+                v-on:changeobsvalido="update_obs_iia_valido($event)"
+                v-on:changevalor="update_valor_iia($event)"
+            >
+            </SubirArchivo>
+        </div>
+        <div v-show="testing">
+            <br> iia minera de Mina valor padre: {{form_pagina.iia}}
+            <br> iia minera de Mina  valido del padre: {{form_pagina.iia_canon_validacion}}
+            <br> iia minera de Mina  correcto deel padre: {{form_pagina.iia_correcto}}
+            <br> iia minera de Mina  observacion deel padre: {{form_pagina.obs_iia_canon}}
+            <br> iia minera de Mina  observacion valida deel padre: {{form_pagina.obs_iia_canon_valido}}
+        </div>
+
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            <SubirArchivo
+                v-bind:valor_input_props="$props.dia"
+                v-bind:valor_input_validacion="$props.dia_canon_validacion"
+                v-bind:evualacion_correcto="$props.dia_correcto"
+                v-bind:valor_obs="$props.obs_dia_canon"
+                v-bind:valor_valido_obs="$props.obs_dia_canon_valido"
+                v-bind:evaluacion="true"
+                v-bind:testing = "true"
+                v-bind:label="'DIA de Actividad Minera'"
+                v-on:changevalido="update_dia_valido($event)"
+                v-on:changecorrecto="update_dia_correcto($event)"
+                v-on:changeobs="update_obs_dia($event)"
+                v-on:changeobsvalido="update_obs_dia_valido($event)"
+                v-on:changevalor="update_valor_dia($event)"
+            >
+            </SubirArchivo>
+        </div>
+        <div v-show="testing">
+            <br> dia minera de Mina valor padre: {{form_pagina.dia}}
+            <br> dia minera de Mina  valido del padre: {{form_pagina.dia_canon_validacion}}
+            <br> dia minera de Mina  correcto deel padre: {{form_pagina.dia_correcto}}
+            <br> dia minera de Mina  observacion deel padre: {{form_pagina.obs_dia_canon}}
+            <br> dia minera de Mina  observacion valida deel padre: {{form_pagina.obs_dia_canon_valido}}
+        </div>
+
+        
+         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
-                    v-bind:valor_input_props="$props.nombre_mina"
-                    v-bind:valor_input_validacion="$props.nombre_mina_validacion"
-                    v-bind:evualacion_correcto="$props.nombre_mina_correcto"
-                    v-bind:valor_obs="$props.obs_nombre_mina"
-                    v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
+                    v-bind:valor_input_props="$props.actividad"
+                    v-bind:valor_input_validacion="$props.actividad_a_desarrollar_validacion"
+                    v-bind:evualacion_correcto="$props.actividad_a_desarrollar_correcto"
+                    v-bind:valor_obs="$props.obs_actividad_a_desarrollar"
+                    v-bind:valor_valido_obs="$props.obs_actividad_a_desarrollar_valido"
                     v-bind:evaluacion="false"
                     v-bind:testing = "true"
-                    v-bind:label="'Nombre de Mina'"
-                    v-on:changevalido="update_nom_mina_valido($event)"
-                    v-on:changecorrecto="update_nom_mina_correcto($event)"
-                    v-on:changeobs="update_obs_nom_mina($event)"
-                    v-on:changeobsvalido="update_obs_nom_mina_valida($event)"
-                    v-on:changevalor="update_valor_nom_mina_($event)"
+                    v-bind:label="'Actividades a Desarrollar la Mina'"
+                    v-on:changevalido="update_actividades_valido($event)"
+                    v-on:changecorrecto="update_actividades_correcto($event)"
+                    v-on:changeobs="update_obs_actividades($event)"
+                    v-on:changeobsvalido="update_obs_actividades_valida($event)"
+                    v-on:changevalor="update_valor_actividades($event)"
+                >
+                
+                
+                
+                
+                
+                </NombreMina>
+                <div v-show="testing">
+                     <br> Actvidades de Mina valor padre: {{form_pagina.actividad}}
+                     <br> Actvidades de Mina  valido del padre: {{form_pagina.actividad_a_desarrollar_validacion}}
+                     <br> Actvidades de Mina  correcto deel padre: {{form_pagina.actividad_a_desarrollar_correcto}}
+                     <br> Actvidades de Mina  observacion deel padre: {{form_pagina.obs_actividad_a_desarrollar}}
+                     <br> Actvidades de Mina  observacion valida deel padre: {{form_pagina.obs_actividad_a_desarrollar_valido}}
+
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <NombreMina
+                    v-bind:valor_input_props="$props.acciones_a_desarrollar"
+                    v-bind:valor_input_validacion="$props.acciones_a_desarrollar_validacion"
+                    v-bind:evualacion_correcto="$props.acciones_a_desarrollar_correcto"
+                    v-bind:valor_obs="$props.obs_acciones_a_desarrollar"
+                    v-bind:valor_valido_obs="$props.obs_acciones_a_desarrollar_valido"
+                    v-bind:evaluacion="false"
+                    v-bind:testing = "true"
+                    v-bind:label="'Acciones a Desarrollar la Mina'"
+                    v-on:changevalido="update_accionesvalido($event)"
+                    v-on:changecorrecto="update_acciones_correcto($event)"
+                    v-on:changeobs="update_obs_acciones($event)"
+                    v-on:changeobsvalido="update_obs_acciones_valida($event)"
+                    v-on:changevalor="update_valor_acciones($event)"
                 >
                 </NombreMina>
                 <div v-show="testing">
-                     <br> Nombre de Mina valor padre: {{form_pagina.nombre_mina}}
-                     <br> Nombre de Mina  valido del padre: {{form_pagina.nombre_mina_validacion}}
-                     <br> Nombre de Mina  correcto deel padre: {{form_pagina.nombre_mina_correcto}}
-                     <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_nombre_mina}}
-                     <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_nombre_mina_valido}}
+                     <br> Acciones de Mina valor padre: {{form_pagina.acciones_a_desarrollar}}
+                     <br> Acciones de Mina  valido del padre: {{form_pagina.acciones_a_desarrollar_validacion}}
+                     <br> Acciones de Mina  correcto deel padre: {{form_pagina.acciones_a_desarrollar_correcto}}
+                     <br> Acciones de Mina  observacion deel padre: {{form_pagina.obs_acciones_a_desarrollar}}
+                     <br> Acciones de Mina  observacion valida deel padre: {{form_pagina.obs_acciones_a_desarrollar_valido}}
 
                 </div>
-                
-                
             </div>
+         </div>
+         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <SelectGenerico
-                    v-bind:valor_input_props="$props.categoria"
-                    v-bind:valor_input_validacion="$props.categoria_validacion"
-                    v-bind:evualacion_correcto="$props.categoria_correcto"
-                    v-bind:valor_obs="$props.obs_categoria"
-                    v-bind:valor_valido_obs="$props.obs_categoria_valido"
+                <FechaGenerica
+                    v-bind:valor_input_props="$props.fecha_alta_dia"
+                    v-bind:valor_input_validacion="$props.fecha_alta_dia_validacion"
+                    v-bind:evualacion_correcto="$props.fecha_alta_dia_correcto"
+                    v-bind:valor_obs="$props.obs_fecha_alta_dia"
+                    v-bind:valor_valido_obs="$props.obs_fecha_alta_dia_valido"
                     v-bind:evaluacion="false"
                     v-bind:testing = "true"
-                    v-bind:label="'Categoria de Manifestacion'"
-                    v-on:changevalido="update_cat_valido($event)"
-                    v-on:changecorrecto="update_cat_correcto($event)"
-                    v-on:changeobs="update_obs_cat($event)"
-                    v-on:changeobsvalido="update_obs_cat_valida($event)"
-                    v-on:changevalor="update_valor_cat($event)"
+                    v-bind:label="'Fecha de Notificacion de DIA'"
+                    v-on:changevalido="update_fecha_iniciovalido($event)"
+                    v-on:changecorrecto="update_fecha_inicio_correcto($event)"
+                    v-on:changeobs="update_obs_fecha_inicio($event)"
+                    v-on:changeobsvalido="update_obs_fecha_inicio_valida($event)"
+                    v-on:changevalor="update_valor_fecha_inicio($event)"
                 >
-                </SelectGenerico>
+                </FechaGenerica>
                 <div v-show="testing">
-                     <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
-                     <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
-                     <br> Categoria de Mina  correcto deel padre: {{form_pagina.categoria_correcto}}
-                     <br> Categoria de Mina  observacion deel padre: {{form_pagina.obs_categoria}}
-                     <br> Categoria de Mina  observacion valida deel padre: {{form_pagina.obs_categoria_valido}}
+                     <br> Fecha inicio de Mina valor padre: {{form_pagina.fecha_alta_dia}}
+                     <br> Fecha inicio de Mina  valido del padre: {{form_pagina.fecha_alta_dia_validacion}}
+                     <br> Fecha inicio de Mina  correcto deel padre: {{form_pagina.fecha_alta_dia_correcto}}
+                     <br> Fecha inicio de Mina  observacion deel padre: {{form_pagina.obs_fecha_alta_dia}}
+                     <br> Fecha inicio de Mina  observacion valida deel padre: {{form_pagina.obs_fecha_alta_dia_valido}}
 
                 </div>
             </div>
-         </div>
-         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <NombreMina
-                    v-bind:valor_input_props="$props.descripcion_mina"
-                    v-bind:valor_input_validacion="$props.descripcion_mina_validacion"
-                    v-bind:evualacion_correcto="$props.descripcion_mina_correcto"
-                    v-bind:valor_obs="$props.obs_descripcion_mina"
-                    v-bind:valor_valido_obs="$props.obs_descripcion_mina_valido"
+                <FechaGenerica
+                    v-bind:valor_input_props="$props.fecha_vencimiento_dia"
+                    v-bind:valor_input_validacion="$props.fecha_vencimiento_dia_validacion"
+                    v-bind:evualacion_correcto="$props.fecha_vencimiento_dia_correcto"
+                    v-bind:valor_obs="$props.obs_fecha_vencimiento_dia"
+                    v-bind:valor_valido_obs="$props.obs_fecha_vencimiento_dia_valido"
                     v-bind:evaluacion="false"
                     v-bind:testing = "true"
-                    v-bind:label="'Descripcion de la Mina'"
-                    v-on:changevalido="update_descripcion_valido($event)"
-                    v-on:changecorrecto="update_descripcion_correcto($event)"
-                    v-on:changeobs="update_obs_descripcion($event)"
-                    v-on:changeobsvalido="update_obs_descripcion_valida($event)"
-                    v-on:changevalor="update_valor_descripcion($event)"
+                    v-bind:label="'Fecha de Vencimiento de DIA'"
+                    v-on:changevalido="update_fecha_fin_valido($event)"
+                    v-on:changecorrecto="update_fecha_fin_correcto($event)"
+                    v-on:changeobs="update_obs_fecha_fin($event)"
+                    v-on:changeobsvalido="update_obs_fecha_fin_valida($event)"
+                    v-on:changevalor="update_valor_fecha_fin($event)"
                 >
-                </NombreMina>
+                </FechaGenerica>
                 <div v-show="testing">
-                     <br> Nombre de Mina valor padre: {{form_pagina.descripcion_mina}}
-                     <br> Nombre de Mina  valido del padre: {{form_pagina.descripcion_mina_validacion}}
-                     <br> Nombre de Mina  correcto deel padre: {{form_pagina.descripcion_mina_correcto}}
-                     <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_descripcion_mina}}
-                     <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_descripcion_mina_valido}}
+                     <br> Fecha fin de Mina valor padre: {{form_pagina.fecha_vencimiento_dia}}
+                     <br> Fecha fin de Mina  valido del padre: {{form_pagina.fecha_vencimiento_dia_validacion}}
+                     <br> Fecha fin de Mina  correcto deel padre: {{form_pagina.fecha_vencimiento_dia_correcto}}
+                     <br> Fecha fin de Mina  observacion deel padre: {{form_pagina.obs_fecha_vencimiento_dia}}
+                     <br> Fecha fin de Mina  observacion valida deel padre: {{form_pagina.obs_fecha_vencimiento_dia_valido}}
 
                 </div>
-                
-                
-            </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                
             </div>
          </div>
-
-        
-        
-        
-        
-        
-
          <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputFileGenerico
-                    v-bind:valor_input_props="$props.resolucion_concesion_minera"
-                    v-bind:valor_input_validacion="$props.resolucion_concesion_minera_validacion"
-                    v-bind:evualacion_correcto="$props.resolucion_concesion_minera_correcto"
-                    v-bind:valor_obs="$props.obs_resolucion_concesion_minera"
-                    v-bind:valor_valido_obs="$props.obs_resolucion_concesion_minera_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "false"
-                    v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
-                    v-on:changevalido="update_resol_conce_valido($event)"
-                    v-on:changecorrecto="update_resol_conce_correcto($event)"
-                    v-on:changeobs="update_obs_resol_conce($event)"
-                    v-on:changeobsvalido="update_obs_resol_conce_valido($event)"
-                    v-on:changevalor="update_valor_resol_conce($event)"
-
-                >
-                </InputFileGenerico>
-                <div v-show="testing">
-                     <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
-                     <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
-                     <br> concesion resolucion minera de Mina  correcto deel padre: {{form_pagina.resolucion_concesion_minera_correcto}}
-                     <br> concesion resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_resolucion_concesion_minera}}
-                     <br> concesion resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_resolucion_concesion_minera_valido}}
-                </div>
-            </div>
-
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputFileGenerico
-                    v-bind:valor_input_props="$props.plano_inmueble"
-                    v-bind:valor_input_validacion="$props.plano_inmueble_validacion"
-                    v-bind:evualacion_correcto="$props.plano_inmueble_correcto"
-                    v-bind:valor_obs="$props.obs_plano_inmueble"
-                    v-bind:valor_valido_obs="$props.obs_plano_inmueble_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "false"
-                    v-bind:label="'Plano Inmueble (3° categoria) (*)'"
-                    v-on:changevalido="update_plano_inmueble_valido($event)"
-                    v-on:changecorrecto="update_plano_inmueble_correcto($event)"
-                    v-on:changeobs="update_obs_plano_inmueble($event)"
-                    v-on:changeobsvalido="update_obs_plano_inmueble_valido($event)"
-                    v-on:changevalor="update_valor_plano_inmueble($event)"
-
-                >
-                </InputFileGenerico>
-
-                -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
-                -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
-                -- plano_inmueble_correcto minera correcto deel padre{{form_pagina.plano_inmueble_correcto}}
-                -- obs_plano_inmueble minera observacion deel padre{{form_pagina.obs_plano_inmueble}}
-                -- obs_plano_inmueble_valido minera observacion valida deel padre{{form_pagina.obs_plano_inmueble_valido}}
-            </div>
-
-         </div>
-
-         <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputFileGenerico
-                    v-bind:valor_input_props="$props.titulo_contrato_posecion"
-                    v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
-                    v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
-                    v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
-                    v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
-                     v-bind:evaluacion="true"
-                    v-bind:testing = "false"
-                    v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
-                    v-on:changevalido="update_titulo_contrato_valido($event)"
-                    v-on:changecorrecto="update_titulo_contrato_correcto($event)"
-                    v-on:changeobs="update_obs_titulo_contrato($event)"
-                    v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
-                    v-on:changevalor="update_valor_titulo_contrato($event)"
-                >
-                </InputFileGenerico>
-
-                -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
-                -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
-                -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
-                -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
-                -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
             </div>
          </div>
-
          <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
-                <ListadeMinerales
-                    v-bind:valor_input_props="$props.titulo_contrato_posecion"
-                    v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
-                    v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
-                    v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
-                    v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "false"
-                    v-bind:label="'Lista de minerales'"
-                    v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
-                    v-bind:tipo_yacimiento="'segunda'"
-                    v-on:changevalido="update_titulo_contrato_valido($event)"
-                    v-on:changecorrecto="update_titulo_contrato_correcto($event)"
-                    v-on:changeobs="update_obs_titulo_contrato($event)"
-                    v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
-                    v-on:changevalor="update_valor_titulo_contrato($event)"
-                >
-                </ListadeMinerales>
-
-                -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
-                -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
-                -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
-                -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
-                -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
             </div>
          </div>
-
-
-         
-         
-         
          <!-- <div class="flex items-center justify-center">
             <PaginaUnoDatosProductorBotones 
                 :link_volver="route('formulario-alta.index')"
@@ -340,19 +420,11 @@
 import JetDialogModal from '@/Jetstream/DialogModal';
 import CardMinaDos from '@/Jetstream/altas/CardMinaDos';
 import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
-
-import DistritoMinero from "@/Pages/Productors/DistritoMinero";
+import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import NombreMina from "@/Pages/Productors/NombreMina";
-import SelectGenerico from "@/Pages/Productors/SelectGenerico";
-import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvincia";
-import InputFileGenerico from "@/Pages/Productors/InputFileGenerico";
-import ListadeMinerales from "@/Pages/Productors/ListadeMinerales";
+import FechaGenerica from "@/Pages/Productors/FechaGenerica";
 
-import PaginaDosDatosDLocalidad from "@/Pages/Productors/PaginaDosDatosDLocalidad";
-import PaginaDosDatosDLCP from "@/Pages/Productors/PaginaDosDatosDLCP";
-import PaginaDosDatosDLOtro from "@/Pages/Productors/PaginaDosDatosDLOtro";
-import PaginaUnoDatosProductorConstanciaSociedad from "@/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad";
-import PaginaUnoDatosProductorBotones from "@/Pages/Productors/PaginaUnoDatosProductorBotones";
+
 export default {
      props: [
         'link_volver', 
@@ -432,16 +504,9 @@ export default {
 		JetDialogModal,
         CardMinaDos,
 		CaracterQueInvoca,
-		DistritoMinero,
-		NombreMina,
-        SelectGenerico,
-		PaginaDosDatosDLProvincia,
-        InputFileGenerico,
-        ListadeMinerales,
-		PaginaDosDatosDLocalidad,
-		PaginaDosDatosDLOtro,
-		PaginaUnoDatosProductorConstanciaSociedad,
-		PaginaUnoDatosProductorBotones,
+        SubirArchivo,
+        NombreMina,
+        FechaGenerica,
 	},
    
   data() {
@@ -450,6 +515,7 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
+        mostrar_testing:'',
         form_pagina: {
 
             owner : this.$props.owner,
@@ -457,67 +523,73 @@ export default {
             obs_owner: this.$props.obs_owner,
             obs_owner_valido:  this.$props.obs_owner_valido,
 
-
-            distrito_minero : this.$props.distrito_minero,
-            distrito_minero_validacion: this.$props.distrito_minero_validacion,
-            distrito_minero_correcto: this.$props.distrito_minero_correcto,
-            obs_distrito_minero:  this.$props.obs_distrito_minero,
-            obs_distrito_minero_valido : this.$props.obs_distrito_minero_valido,
-
-
-            nombre_mina : this.$props.nombre_mina,
-            nombre_mina_validacion: this.$props.nombre_mina_validacion,
-            nombre_mina_correcto: this.$props.nombre_mina_correcto,
-            obs_nombre_mina:  this.$props.obs_nombre_mina,
-            obs_nombre_mina_valido : this.$props.obs_nombre_mina_valido,
-
-            descripcion_mina: this.$props.descripcion_mina,
-            descripcion_mina_validacion: this.$props.descripcion_mina_validacion,
-            descripcion_mina_correcto: this.$props.descripcion_mina_correcto,
-            obs_descripcion_mina: this.$props.obs_descripcion_mina,
-            obs_descripcion_mina_valido: this.$props.obs_descripcion_mina_valido,
+            arrendatario: this.$props.arrendatario,
+            arrendatario_correcto: this.$props.arrendatario_correcto,
+            obs_arrendatario: this.$props.obs_arrendatario,
+            obs_arrendatario_valido: this.$props.obs_arrendatario_valido,
 
 
 
-            resolucion_concesion_minera : this.$props.resolucion_concesion_minera,
-            resolucion_concesion_minera_validacion: this.$props.resolucion_concesion_minera_validacion,
-            resolucion_concesion_minera_correcto: this.$props.resolucion_concesion_minera_correcto,
-            obs_resolucion_concesion_minera:  this.$props.obs_resolucion_concesion_minera,
-            obs_resolucion_concesion_minera_valido : this.$props.obs_resolucion_concesion_minera_valido,
+            concesionario: this.$props.concesionario,
+            concesionario_correcto: this.$props.concesionario_correcto,
+            obs_concesionario: this.$props.obs_concesionario,
+            obs_concesionario_valido: this.$props.obs_concesionario_valido,
 
 
-            plano_inmueble : this.$props.plano_inmueble,
-            plano_inmueble_validacion: this.$props.plano_inmueble_validacion,
-            plano_inmueble_correcto: this.$props.plano_inmueble_correcto,
-            obs_plano_inmueble:  this.$props.obs_plano_inmueble,
-            obs_plano_inmueble_valido : this.$props.obs_plano_inmueble_valido,
 
-
-            
-            titulo_contrato_posecion: this.$props.titulo_contrato_posecion,
-            titulo_contrato_posecion_validacion: this.$props.titulo_contrato_posecion_validacion,
-            titulo_contrato_posecion_correcto: this.$props.titulo_contrato_posecion_correcto,
-            obs_titulo_contrato_posecion: this.$props.obs_titulo_contrato_posecion,
-            obs_titulo_contrato_posecion_valido: this.$props.obs_titulo_contrato_posecion_valido,
-            
-         
-            
-            
-            
+            otros: this.$props.otros,
+            otros_correcto: this.$props.otros_correcto,
+            obs_otros: this.$props.obs_otros,
+            obs_otros_valido: this.$props.obs_otros_valido,
 
 
 
 
+            constancia_pago_canon: this.$props.constancia_pago_canon,
+            constancia_pago_canon_validacion: this.$props.constancia_pago_canon_validacion,
+            constancia_pago_canon_correcto: this.$props.constancia_pago_canon_correcto,
+            obs_constancia_pago_canon: this.$props.obs_constancia_pago_canon,
+            obs_constancia_pago_canon_valido: this.$props.obs_constancia_pago_canon_valido,
 
-            
-            
-            
-            
-            
-            
-            
-            
-            
+
+            iia: this.$props.iia,
+            iia_canon_validacion: this.$props.iia_canon_validacion,
+            iia_correcto: this.$props.iia_correcto,
+            obs_iia_canon: this.$props.obs_iia_canon,
+            obs_iia_canon_valido: this.$props.obs_iia_canon_valido,
+
+            dia: this.$props.dia,
+            dia_canon_validacion: this.$props.dia_canon_validacion,
+            dia_correcto: this.$props.dia_correcto,
+            obs_dia_canon: this.$props.obs_dia_canon,
+            obs_dia_canon_valido: this.$props.obs_dia_canon_valido,
+
+
+            actividad: this.$props.actividad,
+            actividad_a_desarrollar_validacion: this.$props.actividad_a_desarrollar_validacion,
+            actividad_a_desarrollar_correcto: this.$props.actividad_a_desarrollar_correcto,
+            obs_actividad_a_desarrollar: this.$props.obs_actividad_a_desarrollar,
+            obs_actividad_a_desarrollar_valido: this.$props.obs_actividad_a_desarrollar_valido,
+            acciones_a_desarrollar : this.$props.acciones_a_desarrollar,
+            acciones_a_desarrollar_validacion : this.$props.acciones_a_desarrollar_validacion,
+            acciones_a_desarrollar_correcto : this.$props.acciones_a_desarrollar_correcto,
+            obs_acciones_a_desarrollar : this.$props.obs_acciones_a_desarrollar,
+            obs_acciones_a_desarrollar_valido : this.$props.obs_acciones_a_desarrollar_valido,
+
+
+            fecha_alta_dia : this.$props.fecha_alta_dia,
+            fecha_alta_dia_validacion : this.$props.fecha_alta_dia_validacion,
+            fecha_alta_dia_correcto : this.$props.fecha_alta_dia_correcto,
+            obs_fecha_alta_dia : this.$props.obs_fecha_alta_dia,
+            obs_fecha_alta_dia_valido : this.$props.obs_fecha_alta_dia_valido,
+
+
+            fecha_vencimiento_dia: this.$props.fecha_vencimiento_dia,
+            fecha_vencimiento_dia_validacion: this.$props.fecha_vencimiento_dia_validacion,
+            fecha_vencimiento_dia_correcto: this.$props.fecha_vencimiento_dia_correcto,
+            obs_fecha_vencimiento_dia: this.$props.obs_fecha_vencimiento_dia,
+            obs_fecha_vencimiento_dia_valido: this.$props.obs_fecha_vencimiento_dia_valido,
+
         },
         
             
@@ -530,14 +602,6 @@ export default {
 		},
 
 
-        
-
-
-
-        update_num_exp_valido(newValue){
-                this.form_pagina.nombre_calle_legal_valido = newValue;
-            //tengo que enviarsela al padre
-        },
         update_owner_correcto(newValue){
             this.form_pagina.nombre_calle_legal_correcto = newValue;
             //tengo que enviarsela al padre
@@ -558,191 +622,52 @@ export default {
         },
 
 
-        update_distrito_minero_valido(newValue){
-            this.form_pagina.distrito_minero_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_distrito_minero_correcto(newValue){
-            this.form_pagina.distrito_minero_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_distrito_minero_obs(newValue){
-            this.form_pagina.obs_distrito_minero = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_distrito_minero_valido_obs(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_distrito_minero_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_distrito_minero(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.distrito_minero = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-
         
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        update_nom_mina_valido(newValue){
-            this.form_pagina.nombre_mina_validacion = newValue;
+        
+        
+        
+        update_arrendatario_correcto(newValue){
+            this.form_pagina.arrendatario_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_nom_mina_correcto(newValue){
-            this.form_pagina.nombre_mina_correcto = newValue;
+        update_obs_arrendatario(newValue){
+            this.form_pagina.obs_arrendatario = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_nom_mina(newValue){
-            this.form_pagina.obs_nombre_mina = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_nom_mina_valida(newValue){
+        update_obs_arrendatario_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_nombre_mina_valido = newValue;
+            this.form_pagina.obs_arrendatario_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_nom_mina_(newValue){
+        update_valor_arrendatario(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.nombre_mina = newValue;
+            this.form_pagina.arrendatario = newValue;
             //tengo que enviarsela al padre
         },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        update_descripcion_valido(newValue){
-            this.form_pagina.descripcion_mina_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_descripcion_correcto(newValue){
-            this.form_pagina.descripcion_mina_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_descripcion(newValue){
-            this.form_pagina.obs_descripcion_mina = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_descripcion_valida(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_descripcion_mina_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_descripcion(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.descripcion_mina = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-
-
-
-        update_cat_valido(newValue){
-            this.form_pagina.categoria_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_cat_correcto(newValue){
-            this.form_pagina.categoria_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_cat(newValue){
-            this.form_pagina.obs_categoria = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_cat_valida(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_categoria_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_cat(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.categoria = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-
-
-
-
-
-
-
-
-
-
-        update_resol_conce_valido(newValue){
-            this.form_pagina.resolucion_concesion_minera_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_resol_conce_correcto(newValue){
-            this.form_pagina.resolucion_concesion_minera_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_resol_conce(newValue){
-            this.form_pagina.obs_resolucion_concesion_minera = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_resol_conce_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_resolucion_concesion_minera_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_resol_conce(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.resolucion_concesion_minera = newValue;
-            //tengo que enviarsela al padre
-        },
 
         
 
 
-        update_plano_inmueble_valido(newValue){
-            this.form_pagina.plano_inmueble_validacion = newValue;
+
+
+
+        update_concesionario_correcto(newValue){
+            this.form_pagina.arrendatario_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_plano_inmueble_correcto(newValue){
-            this.form_pagina.plano_inmueble_correcto = newValue;
+        update_obs_concesionario(newValue){
+            this.form_pagina.obs_arrendatario = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_plano_inmueble(newValue){
-            this.form_pagina.obs_plano_inmueble = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_plano_inmueble_valido(newValue){
+        update_obs_concesionario_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_plano_inmueble_valido = newValue;
+            this.form_pagina.obs_arrendatario_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_plano_inmueble(newValue){
+        update_valor_concesionario(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.plano_inmueble = newValue;
+            this.form_pagina.arrendatario = newValue;
             //tengo que enviarsela al padre
         },
 
@@ -751,26 +676,275 @@ export default {
 
 
 
-        update_titulo_contrato_valido(newValue){
-            this.form_pagina.titulo_contrato_posecion_validacion = newValue;
+
+
+
+
+        update_otro_correcto(newValue){
+            this.form_pagina.otros_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_titulo_contrato_correcto(newValue){
-            this.form_pagina.titulo_contrato_posecion_correcto = newValue;
+        update_obs_otro(newValue){
+            this.form_pagina.obs_otros = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_titulo_contrato(newValue){
-            this.form_pagina.obs_titulo_contrato_posecion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_titulo_contrato_valido(newValue){
+        update_obs_otro_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_titulo_contrato_posecion_valido = newValue;
+            this.form_pagina.obs_otros_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_titulo_contrato(newValue){
+        update_valor_otro(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.titulo_contrato_posecion = newValue;
+            this.form_pagina.otros = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        update_canon_valido(newValue){
+            this.form_pagina.constancia_pago_canon_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_canon_correcto(newValue){
+            this.form_pagina.constancia_pago_canon_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_canon(newValue){
+            this.form_pagina.obs_constancia_pago_canon = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_canon_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_constancia_pago_canon_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_canon(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.constancia_pago_canon = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+        update_iia_valido(newValue){
+            this.form_pagina.iia_canon_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_iia_correcto(newValue){
+            this.form_pagina.iia_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_iia(newValue){
+            this.form_pagina.obs_iia_canon = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_iia_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_iia_canon_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_iia(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.iia = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+        update_dia_valido(newValue){
+            this.form_pagina.dia_canon_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_dia_correcto(newValue){
+            this.form_pagina.dia_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_dia(newValue){
+            this.form_pagina.obs_dia_canon = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_dia_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_dia_canon_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_dia(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.dia = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        update_actividades_valido(newValue){
+            this.form_pagina.actividad_a_desarrollar_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_actividades_correcto(newValue){
+            this.form_pagina.actividad_a_desarrollar_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_actividades(newValue){
+            this.form_pagina.obs_actividad_a_desarrollar = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_actividades_valida(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_actividad_a_desarrollar_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_actividades(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.actividad = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
+
+
+    update_accionesvalido(newValue){
+            this.form_pagina.acciones_a_desarrollar_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_acciones_correcto(newValue){
+            this.form_pagina.acciones_a_desarrollar_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_acciones(newValue){
+            this.form_pagina.obs_acciones_a_desarrollar = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_acciones_valida(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_acciones_a_desarrollar_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_acciones(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.acciones_a_desarrollar = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+        update_fecha_iniciovalido(newValue){
+            this.form_pagina.fecha_alta_dia_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_fecha_inicio_correcto(newValue){
+            this.form_pagina.fecha_alta_dia_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_fecha_inicio(newValue){
+            this.form_pagina.obs_fecha_alta_dia = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_fecha_inicio_valida(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_fecha_alta_dia_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_fecha_inicio(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.fecha_alta_dia = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+        update_fecha_fin_valido(newValue){
+            this.form_pagina.fecha_vencimiento_dia_validacion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_fecha_fin_correcto(newValue){
+            this.form_pagina.fecha_vencimiento_dia_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_fecha_fin(newValue){
+            this.form_pagina.obs_fecha_vencimiento_dia = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_fecha_fin_valida(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_fecha_vencimiento_dia_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_fecha_fin(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.fecha_vencimiento_dia = newValue;
             //tengo que enviarsela al padre
         },
   }

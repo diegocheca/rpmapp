@@ -1,56 +1,54 @@
 <template>
-    <div>
-        <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="input_componente"
-            >{{label}}:</label
-        >
-
-        <span class="text-gray-700">Propietario</span>
-        <div class="mt-2">
-            <label class="inline-flex items-center">
-                <input type="radio" class="form-radio" name="input_caracter" v-model="valor_input" value="true" v-on:change="actaulizar_valor_input(true)">
-                <span class="ml-2">Si soy propietario</span>
-            </label>
-            <label class="inline-flex items-center ml-6">
-                <input type="radio" class="form-radio" name="input_caracter" v-model="valor_input" value="false" v-on:change="actaulizar_valor_input(false)">
-                <span class="ml-2">No soy propietario</span>
-            </label>
+    <div class="flex">
+        <div class="w-full md:w-1/3 px-3">
+            <label
+                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="input_componente"
+                >{{label}}:</label
+            >
+            <div class="mt-2">
+                <label class="inline-flex items-center">
+                    <input type="radio" class="form-radio" name="input_caracter" v-model="valor_input" value="true" v-on:change="actaulizar_valor_input(true)">
+                    <span class="ml-2">{{label_true}}</span>
+                </label>
+                <label class="inline-flex items-center ml-6">
+                    <input type="radio" class="form-radio" name="input_caracter" v-model="valor_input" value="false" v-on:change="actaulizar_valor_input(false)">
+                    <span class="ml-2">{{label_false}}</span>
+                </label>
+            </div>
         </div>
-        <div class="flex" v-if="evaluacion">
-            <div class="w-full md:w-1/3 px-3">
-                <span class="text-gray-700">Es correcto?</span>
-                <div class="mt-2">
-                    <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
-                        <span class="ml-2">Si</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
-                        <span class="ml-2">No</span>
-                    </label>
-                    <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
-                        <span class="ml-2">Sin evaluar</span>
-                    </label>
-                </div>
+        <div class="w-full md:w-1/3 px-3" v-if="evaluacion">
+            <span class="text-gray-700">Es correcto?</span>
+            <div class="mt-2">
+                <label class="inline-flex items-center">
+                    <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
+                    <span class="ml-2">Si</span>
+                </label>
+                <label class="inline-flex items-center ml-6">
+                    <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
+                    <span class="ml-2">No</span>
+                </label>
+                <label class="inline-flex items-center ml-6">
+                    <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
+                    <span class="ml-2">Sin evaluar</span>
+                </label>
             </div>
-            <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-2/3 px-3">
-                <label
-                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    for="observaciones"
-                    >Observación:</label
+        </div>
+        <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-1/3 px-3">
+            <label
+                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="observaciones"
+                >Observación:</label
+            >
+            <textarea
+                id="observaciones"
+                name="observaciones"
+                v-model="valor_obs"
+                v-bind:class=clase_text_area
+                @input="actaulizar_contenido_text_area($event.target.value)" 
                 >
-                <textarea
-                    id="observaciones"
-                    name="observaciones"
-                    v-model="valor_obs"
-                    v-bind:class=clase_text_area
-                    @input="actaulizar_contenido_text_area($event.target.value)" 
-                    >
-                </textarea>
-                <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
-            </div>
+            </textarea>
+            <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
         </div>
         <div v-show="testing">
             <br>Valor input:{{valor_input}}<br>
@@ -72,7 +70,9 @@ export default {
         'valor_valido_obs',
         'evaluacion',
         'testing',
-        'label'
+        'label',
+        'label_true',
+        'label_false'
     ],
   data() {
     return {
