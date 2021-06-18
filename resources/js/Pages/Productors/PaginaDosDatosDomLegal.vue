@@ -103,6 +103,7 @@
                     v-bind:obs_leal_provincia="$props.obs_leal_provincia"
                     v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
                     v-bind:evaluacion="false"
+                    v-bind:label="'Provincia de Domicilio Legal'"
                     v-on:changeprovlegalvalido="updateteprovinciavalido($event)"
                     v-on:changeprovlegalcorrecto="updateteprovinciacorrecto($event)"
                     v-on:changeobsrpovlegal="updateobs_provincialegal($event)"

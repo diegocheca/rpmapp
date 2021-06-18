@@ -110,7 +110,7 @@ export default {
         valor_evaluacion_correcto_local: this.$props.evualacion_correcto,
 
         obs_valida: this.$props.obs_valido_props,
-        testing_hijo: 'false',
+        testing_hijo: true,
         
         //border-green-500
     }; 

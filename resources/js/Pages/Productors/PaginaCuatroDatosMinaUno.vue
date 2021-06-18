@@ -12,9 +12,28 @@
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
             ></CardMinaUno>
         </div>
+        <div class="w-full  bg-white rounded shadow p-6 m-8">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="mostrar_testing"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
+        </div>
+        {{mostrar_testing}}
+
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <NumeroExpedienteMina 
+                <!-- <NumeroExpedienteMina 
                     v-bind:numero_expdiente="$props.numero_expdiente"
                     v-bind:numero_expdiente_valido="$props.numero_expdiente_valido"
                     v-bind:numero_expdiente_correcto="$props.numero_expdiente_correcto"
@@ -26,8 +45,24 @@
                     v-on:changeobsnumexp="updateobs_num_exp($event)"
                     v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
                     v-on:changevalornumexp="updatevalor_num_exp($event)"
-                ></NumeroExpedienteMina>
-                <div v-show="testing">
+                ></NumeroExpedienteMina> -->
+                <NombreMina
+                    v-bind:valor_input_props="$props.numero_expdiente"
+                    v-bind:valor_input_validacion="$props.numero_expdiente_valido"
+                    v-bind:evualacion_correcto="$props.numero_expdiente_correcto"
+                    v-bind:valor_obs="$props.obs_numero_expdiente"
+                    v-bind:valor_valido_obs="$props.obs_numero_expdiente_valido"
+                    v-bind:evaluacion="true"
+                    v-bind:testing = "mostrar_testing"
+                    v-bind:label="'Numero de Expediente'"
+                    v-on:changevalido="update_num_exp_valido($event)"
+                    v-on:changecorrecto="update_num_exp_correcto($event)"
+                    v-on:changeobs="updateobs_num_exp($event)"
+                    v-on:changeobsvalido="updateobs_num_exp_valido($event)"
+                    v-on:changevalor="updatevalor_num_exp($event)"
+                >
+                </NombreMina>
+                 <div class="flex" v-if="mostrar_testing">
                      <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
                      <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
                      <br> num exp de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
@@ -37,7 +72,7 @@
 
             </div>
             <div class="w-full md:w-1/2 px-3">
-                <DistritoMinero
+                <!-- <DistritoMinero
                     v-bind:distrito_minero="$props.distrito_minero"
                     v-bind:distrito_minero_validacion="$props.distrito_minero_validacion"
                     v-bind:distrito_minero_correcto="$props.distrito_minero_correcto"
@@ -50,8 +85,24 @@
                     v-on:changeobsvalido="update_distrito_minero_valido_obs($event)"
                     v-on:changevalor="update_distrito_minero($event)"
                 >
-                </DistritoMinero>
-                <div v-show="testing">
+                </DistritoMinero> -->
+                <NombreMina
+                    v-bind:valor_input_props="$props.distrito_minero"
+                    v-bind:valor_input_validacion="$props.distrito_minero_validacion"
+                    v-bind:evualacion_correcto="$props.distrito_minero_correcto"
+                    v-bind:valor_obs="$props.obs_distrito_minero"
+                    v-bind:valor_valido_obs="$props.obs_distrito_minero_valido"
+                    v-bind:evaluacion="true"
+                    v-bind:testing = "mostrar_testing"
+                    v-bind:label="'Distrito Minero'"
+                    v-on:changevalido="update_distrito_minero_valido($event)"
+                    v-on:changecorrecto="update_distrito_minero_correcto($event)"
+                    v-on:changeobs="update_distrito_minero_obs($event)"
+                    v-on:changeobsvalido="update_distrito_minero_valido_obs($event)"
+                    v-on:changevalor="update_distrito_minero($event)"
+                >
+                </NombreMina>
+                 <div class="flex" v-if="mostrar_testing">
                      <br> distrito minero de Mina valor padre: {{form_pagina.distrito_minero}}
                      <br> distrito minero de Mina  valido del padre: {{form_pagina.distrito_minero_validacion}}
                      <br> distrito minero de Mina  correcto deel padre: {{form_pagina.distrito_minero_correcto}}
@@ -71,7 +122,7 @@
                     v-bind:valor_obs="$props.obs_nombre_mina"
                     v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
                     v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Nombre de Mina'"
                     v-on:changevalido="update_nom_mina_valido($event)"
                     v-on:changecorrecto="update_nom_mina_correcto($event)"
@@ -80,16 +131,13 @@
                     v-on:changevalor="update_valor_nom_mina_($event)"
                 >
                 </NombreMina>
-                <div v-show="testing">
+                 <div class="flex" v-if="mostrar_testing">
                      <br> Nombre de Mina valor padre: {{form_pagina.nombre_mina}}
                      <br> Nombre de Mina  valido del padre: {{form_pagina.nombre_mina_validacion}}
                      <br> Nombre de Mina  correcto deel padre: {{form_pagina.nombre_mina_correcto}}
                      <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_nombre_mina}}
                      <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_nombre_mina_valido}}
-
                 </div>
-                
-                
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <SelectGenerico
@@ -99,7 +147,7 @@
                     v-bind:valor_obs="$props.obs_categoria"
                     v-bind:valor_valido_obs="$props.obs_categoria_valido"
                     v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Categoria de Manifestacion'"
                     v-on:changevalido="update_cat_valido($event)"
                     v-on:changecorrecto="update_cat_correcto($event)"
@@ -108,7 +156,7 @@
                     v-on:changevalor="update_valor_cat($event)"
                 >
                 </SelectGenerico>
-                <div v-show="testing">
+                 <div class="flex" v-if="mostrar_testing">
                      <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
                      <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
                      <br> Categoria de Mina  correcto deel padre: {{form_pagina.categoria_correcto}}
@@ -127,7 +175,7 @@
                     v-bind:valor_obs="$props.obs_descripcion_mina"
                     v-bind:valor_valido_obs="$props.obs_descripcion_mina_valido"
                     v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Descripcion de la Mina'"
                     v-on:changevalido="update_descripcion_valido($event)"
                     v-on:changecorrecto="update_descripcion_correcto($event)"
@@ -136,7 +184,7 @@
                     v-on:changevalor="update_valor_descripcion($event)"
                 >
                 </NombreMina>
-                <div v-show="testing">
+                 <div class="flex" v-if="mostrar_testing">
                      <br> Nombre de Mina valor padre: {{form_pagina.descripcion_mina}}
                      <br> Nombre de Mina  valido del padre: {{form_pagina.descripcion_mina_validacion}}
                      <br> Nombre de Mina  correcto deel padre: {{form_pagina.descripcion_mina_correcto}}
@@ -167,7 +215,7 @@
                     v-bind:valor_obs="$props.obs_resolucion_concesion_minera"
                     v-bind:valor_valido_obs="$props.obs_resolucion_concesion_minera_valido"
                     v-bind:evaluacion="true"
-                    v-bind:testing = "false"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
                     v-on:changevalido="update_resol_conce_valido($event)"
                     v-on:changecorrecto="update_resol_conce_correcto($event)"
@@ -177,7 +225,7 @@
 
                 >
                 </InputFileGenerico>
-                <div v-show="testing">
+                 <div class="flex" v-if="mostrar_testing">
                      <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
                      <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
                      <br> concesion resolucion minera de Mina  correcto deel padre: {{form_pagina.resolucion_concesion_minera_correcto}}
@@ -194,7 +242,7 @@
                     v-bind:valor_obs="$props.obs_plano_inmueble"
                     v-bind:valor_valido_obs="$props.obs_plano_inmueble_valido"
                     v-bind:evaluacion="true"
-                    v-bind:testing = "false"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Plano Inmueble (3° categoria) (*)'"
                     v-on:changevalido="update_plano_inmueble_valido($event)"
                     v-on:changecorrecto="update_plano_inmueble_correcto($event)"
@@ -204,12 +252,13 @@
 
                 >
                 </InputFileGenerico>
-
-                -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
-                -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
-                -- plano_inmueble_correcto minera correcto deel padre{{form_pagina.plano_inmueble_correcto}}
-                -- obs_plano_inmueble minera observacion deel padre{{form_pagina.obs_plano_inmueble}}
-                -- obs_plano_inmueble_valido minera observacion valida deel padre{{form_pagina.obs_plano_inmueble_valido}}
+                <div class="flex" v-if="mostrar_testing">
+                    -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
+                    -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
+                    -- plano_inmueble_correcto minera correcto deel padre{{form_pagina.plano_inmueble_correcto}}
+                    -- obs_plano_inmueble minera observacion deel padre{{form_pagina.obs_plano_inmueble}}
+                    -- obs_plano_inmueble_valido minera observacion valida deel padre{{form_pagina.obs_plano_inmueble_valido}}
+                </div>
             </div>
 
          </div>
@@ -223,7 +272,7 @@
                     v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
                     v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
                      v-bind:evaluacion="true"
-                    v-bind:testing = "false"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
                     v-on:changevalido="update_titulo_contrato_valido($event)"
                     v-on:changecorrecto="update_titulo_contrato_correcto($event)"
@@ -232,12 +281,13 @@
                     v-on:changevalor="update_valor_titulo_contrato($event)"
                 >
                 </InputFileGenerico>
-
-                -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
-                -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
-                -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
-                -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
-                -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
+                 <div class="flex" v-if="mostrar_testing">
+                    -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
+                    -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
+                    -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
+                    -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
+                    -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
+                 </div>
             </div>
          </div>
 
@@ -250,7 +300,7 @@
                     v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
                     v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
                     v-bind:evaluacion="true"
-                    v-bind:testing = "false"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Lista de minerales'"
                     v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
                     v-bind:tipo_yacimiento="'segunda'"
@@ -261,12 +311,14 @@
                     v-on:changevalor="update_valor_titulo_contrato($event)"
                 >
                 </ListadeMinerales>
-
-                -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
-                -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
-                -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
-                -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
-                -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
+                 <div class="flex" v-if="mostrar_testing">
+                    <h3>Testing de lista de minerales</h3>
+                    -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
+                    -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
+                    -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
+                    -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
+                    -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
+                 </div>
             </div>
          </div>
 
@@ -432,6 +484,7 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
+         mostrar_testing: '',
         form_pagina: {
 
             numero_expdiente : this.$props.numero_expdiente,
@@ -484,7 +537,7 @@ export default {
             obs_titulo_contrato_posecion_valido: this.$props.obs_titulo_contrato_posecion_valido,
             
          
-            
+           
             
             
 

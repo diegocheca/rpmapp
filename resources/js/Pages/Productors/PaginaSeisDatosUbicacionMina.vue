@@ -53,10 +53,33 @@
         </div>
          <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            País: <span>Argentina</span>
             </div>
          </div>
          <div class="flex">
-            <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <PaginaDosDatosDLProvincia
+                    v-bind:leal_provincia="$props.localidad_mina_provincia"
+                    v-bind:leal_provincia_valido="$props.localidad_mina_provincia_validacion"
+                    v-bind:leal_provincia_correcto="$props.localidad_mina_provincia_correcto"
+                    v-bind:obs_leal_provincia="$props.obs_localidad_mina_provincia"
+                    v-bind:obs_leal_provincia_valido="$props.obs_localidad_mina_provincia_valido"
+                    v-bind:evaluacion="false"
+                    v-bind:label="'Provincia de Ubicación de Mina'"
+                    v-on:changeprovlegalvalido="update_provincia_valido($event)"
+                    v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
+                    v-on:changeobsrpovlegal="update_obs_provincia($event)"
+                    v-on:changeobsprovlegalvalido="update_obs_provincia_valido($event)"
+                    v-on:changevalorprovlegal="update_valor_provincia($event)"
+                >
+                </PaginaDosDatosDLProvincia>
+                <div class="flex" v-if="mostrar_testing">
+                    -- localidad_mina_provincia  deel padre{{form_pagina.localidad_mina_provincia}}
+                    -- localidad_mina_provincia_validacion valida deel padre{{form_pagina.localidad_mina_provincia_validacion}}
+                    -- localidad_mina_provincia_correcto correcto deel padre{{form_pagina.localidad_mina_provincia_correcto}}
+                    -- obs_localidad_mina_provincia observacion deel padre{{form_pagina.obs_localidad_mina_provincia}}
+                    -- obs_localidad_mina_provincia_valido observacion valida deel padre{{form_pagina.obs_localidad_mina_provincia_valido}}
+                 </div>
             </div>
          </div>
          <!-- <div class="flex items-center justify-center">
@@ -124,10 +147,8 @@
 <script>
 import JetDialogModal from '@/Jetstream/DialogModal';
 import CardMinaUbicacion from '@/Jetstream/altas/CardMinaUbicacion';
-import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
-import SubirArchivo from "@/Pages/Productors/SubirArchivo";
-import NombreMina from "@/Pages/Productors/NombreMina";
-import FechaGenerica from "@/Pages/Productors/FechaGenerica";
+import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvincia";
+
 
 
 export default {
@@ -137,67 +158,41 @@ export default {
         'titulo_boton_guardar',
         'titulo_pagina',
 
-        'owner',
-        'owner_correcto',
-        'obs_owner',
-        'obs_owner_valido',
-        'arrendatario',
-        'arrendatario_correcto',
-        'obs_arrendatario',
-        'obs_arrendatario_valido',
-        'concesionario',
-        'concesionario_correcto',
-        'obs_concesionario',
-        'obs_concesionario_valido',
-        'otros',
-        'otros_correcto',
-        'obs_otros',
-        'obs_otros_valido',
-        'titulo_contrato_posecion',
-        'titulo_contrato_posecion_validacion',
-        'titulo_contrato_posecion_correcto',
-        'obs_titulo_contrato_posecion',
-        'obs_titulo_contrato_posecion_valido',
-        'resolucion_concesion_minera',
-        'resolucion_concesion_minera_validacion',
-        'resolucion_concesion_minera_correcto',
-        'obs_resolucion_concesion_minera',
-        'obs_resolucion_concesion_minera_valido',
-        'constancia_pago_canon',
-        'constancia_pago_canon_validacion',
-        'constancia_pago_canon_correcto',
-        'obs_constancia_pago_canon',
-        'obs_constancia_pago_canon_valido',
-        'iia',
-        'iia_canon_validacion',
-        'iia_correcto',
-        'obs_iia_canon',
-        'obs_iia_canon_valido',
-        'dia',
-        'dia_canon_validacion',
-        'dia_correcto',
-        'obs_dia_canon',
-        'obs_dia_canon_valido',
-        'acciones_a_desarrollar',
-        'acciones_a_desarrollar_validacion',
-        'acciones_a_desarrollar_correcto',
-        'obs_acciones_a_desarrollar',
-        'obs_acciones_a_desarrollar_valido',
-        'actividad',
-        'actividad_a_desarrollar_validacion',
-        'actividad_a_desarrollar_correcto',
-        'obs_actividad_a_desarrollar',
-        'obs_actividad_a_desarrollar_valido',
-        'fecha_alta_dia',
-        'fecha_alta_dia_validacion',
-        'fecha_alta_dia_correcto',
-        'obs_fecha_alta_dia',
-        'obs_fecha_alta_dia_valido',
-        'fecha_vencimiento_dia',
-        'fecha_vencimiento_dia_validacion',
-        'fecha_vencimiento_dia_correcto',
-        'obs_fecha_vencimiento_dia',
-        'obs_fecha_vencimiento_dia_valido',
+        'localidad_mina_pais',
+        'localidad_mina_pais_validacion',
+        'localidad_mina_pais_correcto',
+        'obs_localidad_mina_pais',
+        'obs_localidad_mina_pais_valido',
+        'localidad_mina_provincia',
+        'localidad_mina_provincia_validacion',
+        'localidad_mina_provincia_correcto',
+        'obs_localidad_mina_provincia',
+        'obs_localidad_mina_provincia_valido',
+        'localidad_mina_departamento',
+        'localidad_mina_departamento_validacion',
+        'localidad_mina_departamento_correcto',
+        'obs_localidad_mina_departamento',
+        'obs_localidad_mina_departamento_valido',
+        'localidad_mina_localidad',
+        'localidad_mina_localidad_validacion',
+        'localidad_mina_localidad_correcto',
+        'obs_localidad_mina_localidad',
+        'obs_localidad_mina_localidad_valido',
+        'tipo_sistema',
+        'tipo_sistema_validacion',
+        'tipo_sistema_correcto',
+        'obs_tipo_sistema',
+        'obs_tipo_sistema_valido',
+        'latitud',
+        'latitud_validacion',
+        'latitud_correcto',
+        'obs_latitud',
+        'obs_latitud_valido',
+        'longitud',
+        'longitud_validacion',
+        'longitud_correcto',
+        'obs_longitud',
+        'obs_longitud_valido',
 
 
         'evaluacion',
@@ -208,10 +203,7 @@ export default {
     components: {
 		JetDialogModal,
         CardMinaUbicacion,
-		CaracterQueInvoca,
-        SubirArchivo,
-        NombreMina,
-        FechaGenerica,
+		PaginaDosDatosDLProvincia,
 	},
    
   data() {
@@ -223,77 +215,11 @@ export default {
         mostrar_testing:'',
         form_pagina: {
 
-            owner : this.$props.owner,
-            owner_correcto: this.$props.owner_correcto,
-            obs_owner: this.$props.obs_owner,
-            obs_owner_valido:  this.$props.obs_owner_valido,
-
-            arrendatario: this.$props.arrendatario,
-            arrendatario_correcto: this.$props.arrendatario_correcto,
-            obs_arrendatario: this.$props.obs_arrendatario,
-            obs_arrendatario_valido: this.$props.obs_arrendatario_valido,
-
-
-
-            concesionario: this.$props.concesionario,
-            concesionario_correcto: this.$props.concesionario_correcto,
-            obs_concesionario: this.$props.obs_concesionario,
-            obs_concesionario_valido: this.$props.obs_concesionario_valido,
-
-
-
-            otros: this.$props.otros,
-            otros_correcto: this.$props.otros_correcto,
-            obs_otros: this.$props.obs_otros,
-            obs_otros_valido: this.$props.obs_otros_valido,
-
-
-
-
-            constancia_pago_canon: this.$props.constancia_pago_canon,
-            constancia_pago_canon_validacion: this.$props.constancia_pago_canon_validacion,
-            constancia_pago_canon_correcto: this.$props.constancia_pago_canon_correcto,
-            obs_constancia_pago_canon: this.$props.obs_constancia_pago_canon,
-            obs_constancia_pago_canon_valido: this.$props.obs_constancia_pago_canon_valido,
-
-
-            iia: this.$props.iia,
-            iia_canon_validacion: this.$props.iia_canon_validacion,
-            iia_correcto: this.$props.iia_correcto,
-            obs_iia_canon: this.$props.obs_iia_canon,
-            obs_iia_canon_valido: this.$props.obs_iia_canon_valido,
-
-            dia: this.$props.dia,
-            dia_canon_validacion: this.$props.dia_canon_validacion,
-            dia_correcto: this.$props.dia_correcto,
-            obs_dia_canon: this.$props.obs_dia_canon,
-            obs_dia_canon_valido: this.$props.obs_dia_canon_valido,
-
-
-            actividad: this.$props.actividad,
-            actividad_a_desarrollar_validacion: this.$props.actividad_a_desarrollar_validacion,
-            actividad_a_desarrollar_correcto: this.$props.actividad_a_desarrollar_correcto,
-            obs_actividad_a_desarrollar: this.$props.obs_actividad_a_desarrollar,
-            obs_actividad_a_desarrollar_valido: this.$props.obs_actividad_a_desarrollar_valido,
-            acciones_a_desarrollar : this.$props.acciones_a_desarrollar,
-            acciones_a_desarrollar_validacion : this.$props.acciones_a_desarrollar_validacion,
-            acciones_a_desarrollar_correcto : this.$props.acciones_a_desarrollar_correcto,
-            obs_acciones_a_desarrollar : this.$props.obs_acciones_a_desarrollar,
-            obs_acciones_a_desarrollar_valido : this.$props.obs_acciones_a_desarrollar_valido,
-
-
-            fecha_alta_dia : this.$props.fecha_alta_dia,
-            fecha_alta_dia_validacion : this.$props.fecha_alta_dia_validacion,
-            fecha_alta_dia_correcto : this.$props.fecha_alta_dia_correcto,
-            obs_fecha_alta_dia : this.$props.obs_fecha_alta_dia,
-            obs_fecha_alta_dia_valido : this.$props.obs_fecha_alta_dia_valido,
-
-
-            fecha_vencimiento_dia: this.$props.fecha_vencimiento_dia,
-            fecha_vencimiento_dia_validacion: this.$props.fecha_vencimiento_dia_validacion,
-            fecha_vencimiento_dia_correcto: this.$props.fecha_vencimiento_dia_correcto,
-            obs_fecha_vencimiento_dia: this.$props.obs_fecha_vencimiento_dia,
-            obs_fecha_vencimiento_dia_valido: this.$props.obs_fecha_vencimiento_dia_valido,
+            localidad_mina_provincia: this.$props.localidad_mina_provincia,
+            localidad_mina_provincia_validacion: this.$props.localidad_mina_provincia_validacion,
+            localidad_mina_provincia_correcto: this.$props.localidad_mina_provincia_correcto,
+            obs_localidad_mina_provincia: this.$props.obs_localidad_mina_provincia,
+            obs_localidad_mina_provincia_valido: this.$props.obs_localidad_mina_provincia_valido,
 
         },
         
@@ -307,137 +233,41 @@ export default {
 		},
 
 
-        update_owner_correcto(newValue){
-            this.form_pagina.nombre_calle_legal_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        updateobs_owner(newValue){
-            this.form_pagina.obs_nombre_calle_legal = newValue;
-            //tengo que enviarsela al padre
-        },
-        updateobs_owner_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_nombre_calle_legal_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        updatevalor_owner(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.leal_calle = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
         
         
         
         
-        update_arrendatario_correcto(newValue){
-            this.form_pagina.arrendatario_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_arrendatario(newValue){
-            this.form_pagina.obs_arrendatario = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_arrendatario_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_arrendatario_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_arrendatario(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.arrendatario = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
+        
+        
+        
         
 
 
 
 
 
-        update_concesionario_correcto(newValue){
-            this.form_pagina.arrendatario_correcto = newValue;
+
+
+        update_provincia_valido(newValue){
+            this.form_pagina.localidad_mina_provincia_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_concesionario(newValue){
-            this.form_pagina.obs_arrendatario = newValue;
+        update_provincia_correcto(newValue){
+            this.form_pagina.localidad_mina_provincia_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_concesionario_valido(newValue){
+        update_obs_provincia(newValue){
+            this.form_pagina.obs_localidad_mina_provincia = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_provincia_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_arrendatario_valido = newValue;
+            this.form_pagina.obs_localidad_mina_provincia_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_concesionario(newValue){
+        update_valor_provincia(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.arrendatario = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-
-
-
-
-
-
-
-
-        update_otro_correcto(newValue){
-            this.form_pagina.otros_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_otro(newValue){
-            this.form_pagina.obs_otros = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_otro_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_otros_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_otro(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.otros = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        update_canon_valido(newValue){
-            this.form_pagina.constancia_pago_canon_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_canon_correcto(newValue){
-            this.form_pagina.constancia_pago_canon_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_canon(newValue){
-            this.form_pagina.obs_constancia_pago_canon = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_canon_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_constancia_pago_canon_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_canon(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.constancia_pago_canon = newValue;
+            this.form_pagina.localidad_mina_provincia = newValue;
             //tengo que enviarsela al padre
         },
 
