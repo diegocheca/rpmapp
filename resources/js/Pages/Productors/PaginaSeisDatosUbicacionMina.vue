@@ -65,6 +65,7 @@
                     v-bind:obs_leal_provincia="$props.obs_localidad_mina_provincia"
                     v-bind:obs_leal_provincia_valido="$props.obs_localidad_mina_provincia_valido"
                     v-bind:evaluacion="false"
+                    v-bind:testing="mostrar_testing"
                     v-bind:label="'Provincia de Ubicación de Mina'"
                     v-on:changeprovlegalvalido="update_provincia_valido($event)"
                     v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
@@ -81,7 +82,146 @@
                     -- obs_localidad_mina_provincia_valido observacion valida deel padre{{form_pagina.obs_localidad_mina_provincia_valido}}
                  </div>
             </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <PaginaDosDatosDLDepartamento
+                    v-bind:leal_departamento="$props.localidad_mina_departamento"
+                    v-bind:leal_departamento_valido="$props.localidad_mina_departamento_validacion"
+                    v-bind:leal_departamento_correcto="$props.localidad_mina_departamento_correcto"
+                    v-bind:obs_leal_departamento="$props.obs_localidad_mina_departamento"
+                    v-bind:obs_leal_departamento_valido="$props.obs_localidad_mina_departamento_valido"
+                    v-bind:evaluacion="true"
+                    v-bind:testing="mostrar_testing"
+                    v-bind:label="'Departamento de Ubicacion de la Mina'"
+                    v-on:changedptolegalvalido="update_dpto_valido($event)"
+                    v-on:changedptolegalcorrecto="update_dpto_correcto($event)"
+                    v-on:changeobsrdptolegal="updateobs_dpto_legal($event)"
+                    v-on:changeobsdptolegalvalido="update_obs_dpto_valido($event)"
+                    v-on:changevalordptolegal="update_valor_dpto($event)"
+
+                >
+                </PaginaDosDatosDLDepartamento>
+                <div class="flex" v-if="mostrar_testing">
+                    -- dpto _mina_provincia  deel padre{{form_pagina.localidad_mina_departamento}}
+                    -- dpto _mina_provincia_validacion valida deel padre{{form_pagina.localidad_mina_departamento_validacion}}
+                    -- dpto _mina_provincia_correcto correcto deel padre{{form_pagina.localidad_mina_departamento_correcto}}
+                    -- obs_dpto_provincia observacion deel padre{{form_pagina.obs_localidad_mina_departamento}}
+                    -- obs_dpto_provincia_valido observacion valida deel padre{{form_pagina.obs_localidad_mina_departamento_valido}}
+                 </div>
+            </div>
          </div>
+         <div class="flex">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <NombreMina
+                    v-bind:valor_input_props="$props.localidad_mina_localidad"
+                    v-bind:valor_input_validacion="$props.localidad_mina_localidad_validacion"
+                    v-bind:evualacion_correcto="$props.localidad_mina_localidad_correcto"
+                    v-bind:valor_obs="$props.obs_localidad_mina_localidad"
+                    v-bind:valor_valido_obs="$props.obs_localidad_mina_localidad_valido"
+                    v-bind:evaluacion="true"
+                    v-bind:testing = "mostrar_testing"
+                    v-bind:label="'Localidad Donde se encuentra la Mina:'"
+                    v-on:changevalido="update_localidad_valido($event)"
+                    v-on:changecorrecto="update_localidad_correcto($event)"
+                    v-on:changeobs="update_obs_localidad($event)"
+                    v-on:changeobsvalido="update_obs_localidad_valida($event)"
+                    v-on:changevalor="update_valor_localidad($event)"
+                >
+                </NombreMina>
+                <div class="flex" v-if="mostrar_testing">
+                     <br> localidad_mina_localidad de Mina valor padre: {{form_pagina.localidad_mina_localidad}}
+                     <br> localidad_mina_localidad_validacion de Mina  valido del padre: {{form_pagina.localidad_mina_localidad_validacion}}
+                     <br> localidad_mina_localidad_correcto de Mina  correcto deel padre: {{form_pagina.localidad_mina_localidad_correcto}}
+                     <br> obs_localidad_mina_localidad de Mina  observacion deel padre: {{form_pagina.obs_localidad_mina_localidad}}
+                     <br> obs_localidad_mina_localidad_valido de Mina  observacion valida deel padre: {{form_pagina.obs_localidad_mina_localidad_valido}}
+
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <TipoDeSistemaGeo
+                    v-bind:valor_input_props="$props.tipo_sistema"
+                    v-bind:valor_input_validacion="$props.tipo_sistema_validacion"
+                    v-bind:evualacion_correcto="$props.tipo_sistema_correcto"
+                    v-bind:valor_obs="$props.obs_tipo_sistema"
+                    v-bind:valor_valido_obs="$props.obs_tipo_sistema_valido"
+                    v-bind:evaluacion="false"
+                    v-bind:testing = "mostrar_testing"
+                    v-bind:label="'Tipo de Sistema de Coordenadas:'"
+                    v-on:changevalido="update_sist_coor_valido($event)"
+                    v-on:changecorrecto="update_sist_coor_correcto($event)"
+                    v-on:changeobs="update_obs_sist_coor($event)"
+                    v-on:changeobsvalido="update_obs_sist_coor_valida($event)"
+                    v-on:changevalor="update_valor_sist_coor($event)"
+                >
+                </TipoDeSistemaGeo>
+                <div class="flex" v-if="mostrar_testing">
+                     <br> tipo_sistema de Mina valor padre: {{form_pagina.tipo_sistema}}
+                     <br> tipo_sistema_validacion de Mina  valido del padre: {{form_pagina.tipo_sistema_validacion}}
+                     <br> tipo_sistema_correcto de Mina  correcto deel padre: {{form_pagina.tipo_sistema_correcto}}
+                     <br> obs_tipo_sistema de Mina  observacion deel padre: {{form_pagina.obs_tipo_sistema}}
+                     <br> obs_tipo_sistema_valido de Mina  observacion valida deel padre: {{form_pagina.obs_tipo_sistema_valido}}
+
+                </div>
+            </div>
+         </div>
+          <div class="flex">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <NombreMina
+                    v-bind:valor_input_props="$props.latitud"
+                    v-bind:valor_input_validacion="$props.latitud_validacion"
+                    v-bind:evualacion_correcto="$props.latitud_correcto"
+                    v-bind:valor_obs="$props.obs_latitud"
+                    v-bind:valor_valido_obs="$props.obs_latitud_valido"
+                    v-bind:evaluacion="true"
+                    v-bind:testing = "mostrar_testing"
+                    v-bind:label="'Latitud de las Coordenadas:'"
+                    v-on:changevalido="update_latitud_valido($event)"
+                    v-on:changecorrecto="update_latitud_correcto($event)"
+                    v-on:changeobs="update_obs_latitud($event)"
+                    v-on:changeobsvalido="update_obs_latitud_valida($event)"
+                    v-on:changevalor="update_valor_latitud($event)"
+                >
+                </NombreMina>
+                <div class="flex" v-if="mostrar_testing">
+                     <br> latitud de Mina valor padre: {{form_pagina.latitud}}
+                     <br> latitud_validacion de Mina  valido del padre: {{form_pagina.latitud_validacion}}
+                     <br> latitud_correcto de Mina  correcto deel padre: {{form_pagina.latitud_correcto}}
+                     <br> obs_latitud de Mina  observacion deel padre: {{form_pagina.obs_latitud}}
+                     <br> obs_latitud_valido de Mina  observacion valida deel padre: {{form_pagina.obs_latitud_valido}}
+
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <NombreMina
+                    v-bind:valor_input_props="$props.longitud"
+                    v-bind:valor_input_validacion="$props.longitud_validacion"
+                    v-bind:evualacion_correcto="$props.longitud_correcto"
+                    v-bind:valor_obs="$props.obs_longitud"
+                    v-bind:valor_valido_obs="$props.obs_longitud_valido"
+                    v-bind:evaluacion="false"
+                    v-bind:testing = "mostrar_testing"
+                    v-bind:label="'Longitud de las Coordenadas:'"
+                    v-on:changevalido="update_sist_coor_lonvalido($event)"
+                    v-on:changecorrecto="update_sist_coor_loncorrecto($event)"
+                    v-on:changeobs="update_obs_sist_coor_lon($event)"
+                    v-on:changeobsvalido="update_obs_sist_coor_lonvalida($event)"
+                    v-on:changevalor="update_valor_sist_coor_lon($event)"
+                >
+                </NombreMina>
+                <div class="flex" v-if="mostrar_testing">
+                     <br> longitud de Mina valor padre: {{form_pagina.longitud}}
+                     <br> longitud_validacion de Mina  valido del padre: {{form_pagina.longitud_validacion}}
+                     <br> longitud_correcto de Mina  correcto deel padre: {{form_pagina.longitud_correcto}}
+                     <br> obs_longitud de Mina  observacion deel padre: {{form_pagina.obs_longitud}}
+                     <br> obs_longitud_valido de Mina  observacion valida deel padre: {{form_pagina.obs_longitud_valido}}
+
+                </div>
+            </div>
+         </div>
+
+
+
+
+         
          <!-- <div class="flex items-center justify-center">
             <PaginaUnoDatosProductorBotones 
                 :link_volver="route('formulario-alta.index')"
@@ -148,8 +288,9 @@
 import JetDialogModal from '@/Jetstream/DialogModal';
 import CardMinaUbicacion from '@/Jetstream/altas/CardMinaUbicacion';
 import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvincia";
-
-
+import PaginaDosDatosDLDepartamento from "@/Pages/Productors/PaginaDosDatosDLDepartamento";
+import NombreMina from "@/Pages/Productors/NombreMina";
+import TipoDeSistemaGeo from "@/Pages/Productors/TipoDeSistemaGeo";
 
 export default {
      props: [
@@ -204,6 +345,9 @@ export default {
 		JetDialogModal,
         CardMinaUbicacion,
 		PaginaDosDatosDLProvincia,
+        PaginaDosDatosDLDepartamento,
+        NombreMina,
+        TipoDeSistemaGeo,
 	},
    
   data() {
@@ -221,6 +365,41 @@ export default {
             obs_localidad_mina_provincia: this.$props.obs_localidad_mina_provincia,
             obs_localidad_mina_provincia_valido: this.$props.obs_localidad_mina_provincia_valido,
 
+
+            localidad_mina_departamento: this.$props.localidad_mina_departamento,
+            localidad_mina_departamento_validacion: this.$props.localidad_mina_departamento_validacion,
+            localidad_mina_departamento_correcto: this.$props.localidad_mina_departamento_correcto,
+            obs_localidad_mina_departamento: this.$props.obs_localidad_mina_departamento,
+            obs_localidad_mina_departamento_valido: this.$props.obs_localidad_mina_departamento_valido,
+
+            localidad_mina_localidad: this.$props.localidad_mina_localidad,
+            localidad_mina_localidad_validacion: this.$props.localidad_mina_localidad_validacion,
+            localidad_mina_localidad_correcto: this.$props.localidad_mina_localidad_correcto,
+            obs_localidad_mina_localidad: this.$props.obs_localidad_mina_localidad,
+            obs_localidad_mina_localidad_valido: this.$props.obs_localidad_mina_localidad_valido,
+
+
+            tipo_sistema: this.$props.tipo_sistema,
+            tipo_sistema_validacion: this.$props.tipo_sistema_validacion,
+            tipo_sistema_correcto: this.$props.tipo_sistema_correcto,
+            obs_tipo_sistema: this.$props.obs_tipo_sistema,
+            obs_tipo_sistema_valido: this.$props.obs_tipo_sistema_valido,
+
+
+            latitud: this.$props.latitud,
+            latitud_validacion: this.$props.latitud_validacion,
+            latitud_correcto: this.$props.latitud_correcto,
+            obs_latitud: this.$props.obs_latitud,
+            obs_latitud_valido: this.$props.obs_latitud_valido,
+
+
+
+            longitud: this.$props.longitud,
+            longitud_validacion: this.$props.longitud_validacion,
+            longitud_correcto: this.$props.longitud_correcto,
+            obs_longitud: this.$props.obs_longitud,
+            obs_longitud_valido: this.$props.obs_longitud_valido,
+
         },
         
             
@@ -231,21 +410,6 @@ export default {
       cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-
-
-
-
-
 
 
         update_provincia_valido(newValue){
@@ -277,36 +441,32 @@ export default {
 
 
 
-        
 
 
 
 
 
 
-
-
-
-        update_iia_valido(newValue){
-            this.form_pagina.iia_canon_validacion = newValue;
+        update_dpto_valido(newValue){
+            this.form_pagina.localidad_mina_departamento_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        update_iia_correcto(newValue){
-            this.form_pagina.iia_correcto = newValue;
+        update_dpto_correcto(newValue){
+            this.form_pagina.localidad_mina_departamento_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_iia(newValue){
-            this.form_pagina.obs_iia_canon = newValue;
+        updateobs_dpto_legal(newValue){
+            this.form_pagina.obs_localidad_mina_departamento = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_iia_valido(newValue){
+        update_obs_dpto_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_iia_canon_valido = newValue;
+            this.form_pagina.obs_localidad_mina_departamento_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_iia(newValue){
+        update_valor_dpto(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.iia = newValue;
+            this.form_pagina.localidad_mina_departamento = newValue;
             //tengo que enviarsela al padre
         },
 
@@ -321,27 +481,26 @@ export default {
 
 
 
-
-        update_dia_valido(newValue){
-            this.form_pagina.dia_canon_validacion = newValue;
+        update_localidad_valido(newValue){
+            this.form_pagina.localidad_mina_localidad_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        update_dia_correcto(newValue){
-            this.form_pagina.dia_correcto = newValue;
+        update_localidad_correcto(newValue){
+            this.form_pagina.localidad_mina_localidad_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_dia(newValue){
-            this.form_pagina.obs_dia_canon = newValue;
+        update_obs_localidad(newValue){
+            this.form_pagina.obs_localidad_mina_localidad = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_dia_valido(newValue){
+        update_obs_localidad_valida(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_dia_canon_valido = newValue;
+            this.form_pagina.obs_localidad_mina_localidad_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_dia(newValue){
+        update_valor_localidad(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.dia = newValue;
+            this.form_pagina.localidad_mina_localidad = newValue;
             //tengo que enviarsela al padre
         },
 
@@ -355,31 +514,26 @@ export default {
 
 
 
-
-
-
-
-
-        update_actividades_valido(newValue){
-            this.form_pagina.actividad_a_desarrollar_validacion = newValue;
+        update_sist_coor_valido(newValue){
+            this.form_pagina.tipo_sistema_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        update_actividades_correcto(newValue){
-            this.form_pagina.actividad_a_desarrollar_correcto = newValue;
+        update_sist_coor_correcto(newValue){
+            this.form_pagina.tipo_sistema_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_actividades(newValue){
-            this.form_pagina.obs_actividad_a_desarrollar = newValue;
+        update_obs_sist_coor(newValue){
+            this.form_pagina.obs_tipo_sistema = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_actividades_valida(newValue){
+        update_obs_sist_coor_valida(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_actividad_a_desarrollar_valido = newValue;
+            this.form_pagina.obs_tipo_sistema_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_actividades(newValue){
+        update_valor_sist_coor(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.actividad = newValue;
+            this.form_pagina.tipo_sistema = newValue;
             //tengo que enviarsela al padre
         },
 
@@ -390,26 +544,26 @@ export default {
 
 
 
-    update_accionesvalido(newValue){
-            this.form_pagina.acciones_a_desarrollar_validacion = newValue;
+        update_latitud_valido(newValue){
+            this.form_pagina.latitud_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        update_acciones_correcto(newValue){
-            this.form_pagina.acciones_a_desarrollar_correcto = newValue;
+        update_latitud_correcto(newValue){
+            this.form_pagina.latitud_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_acciones(newValue){
-            this.form_pagina.obs_acciones_a_desarrollar = newValue;
+        update_obs_latitud(newValue){
+            this.form_pagina.obs_latitud = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_acciones_valida(newValue){
+        update_obs_latitud_valida(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_acciones_a_desarrollar_valido = newValue;
+            this.form_pagina.obs_latitud_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_acciones(newValue){
+        update_valor_latitud(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.acciones_a_desarrollar = newValue;
+            this.form_pagina.latitud = newValue;
             //tengo que enviarsela al padre
         },
 
@@ -421,67 +575,30 @@ export default {
 
 
 
-
-
-
-        update_fecha_iniciovalido(newValue){
-            this.form_pagina.fecha_alta_dia_validacion = newValue;
+        update_sist_coor_lonvalido(newValue){
+            this.form_pagina.longitud_validacion = newValue;
             //tengo que enviarsela al padre
         },
-        update_fecha_inicio_correcto(newValue){
-            this.form_pagina.fecha_alta_dia_correcto = newValue;
+        update_sist_coor_loncorrecto(newValue){
+            this.form_pagina.longitud_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_fecha_inicio(newValue){
-            this.form_pagina.obs_fecha_alta_dia = newValue;
+        update_obs_sist_coor_lon(newValue){
+            this.form_pagina.obs_longitud = newValue;
             //tengo que enviarsela al padre
         },
-        update_obs_fecha_inicio_valida(newValue){
+        update_obs_sist_coor_lonvalida(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_fecha_alta_dia_valido = newValue;
+            this.form_pagina.obs_longitud_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_valor_fecha_inicio(newValue){
+        update_valor_sist_coor_lon(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.fecha_alta_dia = newValue;
+            this.form_pagina.longitud = newValue;
             //tengo que enviarsela al padre
         },
 
 
-        
-
-
-
-
-
-
-
-
-
-
-
-        update_fecha_fin_valido(newValue){
-            this.form_pagina.fecha_vencimiento_dia_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_fecha_fin_correcto(newValue){
-            this.form_pagina.fecha_vencimiento_dia_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_fecha_fin(newValue){
-            this.form_pagina.obs_fecha_vencimiento_dia = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_fecha_fin_valida(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_fecha_vencimiento_dia_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_fecha_fin(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.fecha_vencimiento_dia = newValue;
-            //tengo que enviarsela al padre
-        },
   }
   
 };

@@ -468,14 +468,16 @@
     ),
     'features' => 
     array (
-      0 => 'teams',
-      1 => 'account-deletion',
+      0 => 'profile-photos',
+      1 => 'api',
+      2 => 'teams',
+      3 => 'account-deletion',
     ),
     'profile_photo_disk' => 'public',
   ),
   'jwt' => 
   array (
-    'secret' => 'ckzcDgGoboekRAr3lekltjgfBxJU9SWfpTM8fZEvcpPNFuoWBwIk1sbwIDA3d2ft',
+    'secret' => NULL,
     'keys' => 
     array (
       'public' => NULL,
@@ -909,7 +911,7 @@
     array (
       'font_dir' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\fonts/',
       'font_cache' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\diego\\AppData\\Local\\Temp',
+      'temp_dir' => 'C:\\Users\\gelu\\AppData\\Local\\Temp',
       'chroot' => 'C:\\xampp\\htdocs\\rpmapp',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',

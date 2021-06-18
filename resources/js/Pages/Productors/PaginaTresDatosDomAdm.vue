@@ -12,6 +12,23 @@
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
             ></CardDomLegal>
         </div>
+        <div class="w-full  bg-white rounded shadow p-6 m-8">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="mostrar_testing"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
+        </div>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <PaginaDosDatosDLNombreCalle
@@ -21,6 +38,7 @@
                     v-bind:obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
                     v-bind:obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
                     v-bind:evaluacion="true"
+                    v-bind:testing="mostrar_testing"
                     v-on:changenombrecallevalido="updatenombrecallevalido($event)"
                     v-on:changenombrecallecorrecto="updatenombrecallecorrecto($event)"
                     v-on:changeobsnombrecalle="updateobsnombrecalle($event)"
@@ -30,11 +48,18 @@
                     
                     
                 ></PaginaDosDatosDLNombreCalle>
-                -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
-                -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
-                -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
-                -- Nombre de calle observacion autoridad deel padre{{form_pagina.obs_nombre_calle_legal}}
-                -- Nombre de calle observacion autoridad valida deel padre{{form_pagina.obs_nombre_calle_legal_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
+                            -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
+                            -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
+                            -- Nombre de calle observacion autoridad deel padre{{form_pagina.obs_nombre_calle_legal}}
+                            -- Nombre de calle observacion autoridad valida deel padre{{form_pagina.obs_nombre_calle_legal_valido}}
+                        </div>
+                    </div>
+                </div>
+                
                 
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -55,13 +80,17 @@
                     
                 >
                 </PaginaDosDatosDLNumeroCalle>
-                 -- numero de calle  deel padre{{form_pagina.leal_numero}}
-                  -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
-                -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
-               -- numero de calle observacion deel padre{{form_pagina.obs_leal_numero}}
-                -- numero de calle observacion valida deel padre{{form_pagina.obs_leal_numero_valido}}
-                
-                
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- numero de calle  deel padre{{form_pagina.leal_numero}}
+                            -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
+                            -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
+                            -- numero de calle observacion deel padre{{form_pagina.obs_leal_numero}}
+                            -- numero de calle observacion valida deel padre{{form_pagina.obs_leal_numero_valido}}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="flex">
@@ -80,11 +109,18 @@
                      v-on:changevalortellegal="updatevalortellegal($event)"
                 >
                 </PaginaDosDatosDLTelefono>
-                 -- telefono de calle  deel padre{{form_pagina.leal_telefono}}
-                  -- telefono de calle valida deel padre{{form_pagina.leal_telefono_valido}}
-                -- telefono de calle correcto deel padre{{form_pagina.leal_telefono_correcto}}
-               -- telefono de calle observacion deel padre{{form_pagina.obs_leal_telefono}}
-                -- telefono de calle observacion valida deel padre{{form_pagina.obs_leal_telefono_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- telefono de calle  deel padre{{form_pagina.leal_telefono}}
+                            -- telefono de calle valida deel padre{{form_pagina.leal_telefono_valido}}
+                            -- telefono de calle correcto deel padre{{form_pagina.leal_telefono_correcto}}
+                            -- telefono de calle observacion deel padre{{form_pagina.obs_leal_telefono}}
+                            -- telefono de calle observacion valida deel padre{{form_pagina.obs_leal_telefono_valido}}
+                        </div>
+                    </div>
+                </div>
+                
                 
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -104,12 +140,18 @@
 
                 >
                 </PaginaDosDatosDLProvincia>
-
-                 -- provincia de calle  deel padre{{form_pagina.leal_provincia}}
-                  -- provincia de calle valida deel padre{{form_pagina.leal_provincia_valido}}
-                -- provincia de calle correcto deel padre{{form_pagina.leal_provincia_correcto}}
-               -- provincia de calle observacion deel padre{{form_pagina.obs_leal_provincia}}
-                -- provincia de calle observacion valida deel padre{{form_pagina.obs_leal_provincia_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- provincia de calle  deel padre{{form_pagina.leal_provincia}}
+                            -- provincia de calle valida deel padre{{form_pagina.leal_provincia_valido}}
+                            -- provincia de calle correcto deel padre{{form_pagina.leal_provincia_correcto}}
+                            -- provincia de calle observacion deel padre{{form_pagina.obs_leal_provincia}}
+                            -- provincia de calle observacion valida deel padre{{form_pagina.obs_leal_provincia_valido}}
+                        </div>
+                    </div>
+                </div>
+                
 
             </div>
          </div>
@@ -130,15 +172,18 @@
 
                 >
                 </PaginaDosDatosDLDepartamento>
-
-                 -- dpto de calle  deel padre{{form_pagina.leal_departamento}}
-                  -- dpto de calle valida deel padre{{form_pagina.leal_departamento_valido}}
-                -- dpto de calle correcto deel padre{{form_pagina.leal_departamento_correcto}}
-               -- dpto de calle observacion deel padre{{form_pagina.obs_leal_departamento}}
-                -- dpto de calle observacion valida deel padre{{form_pagina.obs_leal_departamento_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- dpto de calle  deel padre{{form_pagina.leal_departamento}}
+                            -- dpto de calle valida deel padre{{form_pagina.leal_departamento_valido}}
+                            -- dpto de calle correcto deel padre{{form_pagina.leal_departamento_correcto}}
+                            -- dpto de calle observacion deel padre{{form_pagina.obs_leal_departamento}}
+                            -- dpto de calle observacion valida deel padre{{form_pagina.obs_leal_departamento_valido}}
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <PaginaDosDatosDLocalidad
                     v-bind:leal_localidad="$props.leal_localidad"
@@ -155,16 +200,19 @@
 
                 >
                 </PaginaDosDatosDLocalidad>
-
-                 -- localidad de calle  deel padre{{form_pagina.leal_localidad}}
-                  -- localidad de calle valida deel padre{{form_pagina.leal_localidad_valido}}
-                -- localidad de calle correcto deel padre{{form_pagina.leal_localidad_correcto}}
-               -- localidad de calle observacion deel padre{{form_pagina.obs_leal_localidad}}
-                -- localidad de calle observacion valida deel padre{{form_pagina.obs_leal_localidad_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- localidad de calle  deel padre{{form_pagina.leal_localidad}}
+                            -- localidad de calle valida deel padre{{form_pagina.leal_localidad_valido}}
+                            -- localidad de calle correcto deel padre{{form_pagina.leal_localidad_correcto}}
+                            -- localidad de calle observacion deel padre{{form_pagina.obs_leal_localidad}}
+                            -- localidad de calle observacion valida deel padre{{form_pagina.obs_leal_localidad_valido}}
+                        </div>
+                    </div>
+                </div>
             </div>
-
          </div>
-
          <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <PaginaDosDatosDLCP
@@ -182,15 +230,18 @@
 
                 >
                 </PaginaDosDatosDLCP>
-
-                 -- cod postal de calle  deel padre{{form_pagina.leal_cp}}
-                  -- cod postal de calle valida deel padre{{form_pagina.leal_cp_valido}}
-                -- cod postal de calle correcto deel padre{{form_pagina.leal_cp_correcto}}
-               -- cod postal de calle observacion deel padre{{form_pagina.obs_leal_cp}}
-                -- cod postal de calle observacion valida deel padre{{form_pagina.obs_leal_cp_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- cod postal de calle  deel padre{{form_pagina.leal_cp}}
+                            -- cod postal de calle valida deel padre{{form_pagina.leal_cp_valido}}
+                            -- cod postal de calle correcto deel padre{{form_pagina.leal_cp_correcto}}
+                            -- cod postal de calle observacion deel padre{{form_pagina.obs_leal_cp}}
+                            -- cod postal de calle observacion valida deel padre{{form_pagina.obs_leal_cp_valido}}
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <PaginaDosDatosDLOtro
                     v-bind:leal_otro="$props.leal_otro"
@@ -207,20 +258,19 @@
 
                 >
                 </PaginaDosDatosDLOtro>
-
-                 -- otro de calle  deel padre{{form_pagina.leal_otro}}
-                  -- otro de calle valida deel padre{{form_pagina.leal_otro_valido}}
-                -- otro de calle correcto deel padre{{form_pagina.leal_otro_correcto}}
-               -- otro de calle observacion deel padre{{form_pagina.obs_leal_otro}}
-                -- otro de calle observacion valida deel padre{{form_pagina.obs_leal_otro_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- otro de calle  deel padre{{form_pagina.leal_otro}}
+                            -- otro de calle valida deel padre{{form_pagina.leal_otro_valido}}
+                            -- otro de calle correcto deel padre{{form_pagina.leal_otro_correcto}}
+                            -- otro de calle observacion deel padre{{form_pagina.obs_leal_otro}}
+                            -- otro de calle observacion valida deel padre{{form_pagina.obs_leal_otro_valido}}
+                        </div>
+                    </div>
+                </div>
             </div>
-
          </div>
-
-
-         
-         
-         
          <!-- <div class="flex items-center justify-center">
             <PaginaUnoDatosProductorBotones 
                 :link_volver="route('formulario-alta.index')"
@@ -378,6 +428,7 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
+        mostrar_testing: false,
         form_pagina: {
             leal_calle : this.$props.leal_calle,
             nombre_calle_legal_valido: this.$props.nombre_calle_legal_valido,

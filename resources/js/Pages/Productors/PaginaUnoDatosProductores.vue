@@ -1,3 +1,14 @@
+<style>
+  
+
+  input:checked {
+    background-color: #22c55e; /* bg-green-500 */
+  }
+
+  input:checked ~ span:last-child {
+    --tw-translate-x: 1.75rem; /* translate-x-7 */
+  }
+</style>
 <template>
     <div>
         <h1>{{titulo_pagina}}</h1>
@@ -11,6 +22,18 @@
                 :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
             ></CardProductor>
+            <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="mostrar_testing"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
         </div>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -21,6 +44,8 @@
                     v-bind:obs_razon_social="$props.obs_razon_social"
                     v-bind:obs_razon_social_valido="$props.obs_razon_social_valido"
                     v-bind:evaluacion="false"
+                    v-bind:label="'Razon social'"
+                    v-bind:testing="mostrar_testing"
                     v-on:changerazonsocialvalido="updaterazonsocialvalido($event)"
                     v-on:changerazonsocialcorrecto="updaterazonsocialcorrecto($event)"
                     v-on:changeobsrazonsocial="updateobsrazonsocial($event)"
@@ -28,11 +53,15 @@
                     
                     
                 ></PaginaUnoDatosProductorRazonSocial>
-                -- Razon Social valor input deel padre{{form_pagina.razon_social}}
-                -- Razon Social input valido deel padre{{form_pagina.razon_social_valido}}
-                -- Razon Social rta prod correcta deel padre{{form_pagina.razon_social_correcto}}
-                -- Razon Social observacion autoridad deel padre{{form_pagina.obs_razon_social}}
-                -- Razon Social observacion autoridad valida deel padre{{form_pagina.obs_razon_social_valido}}
+                <div class="flex" v-if="mostrar_testing">
+                        -- Razon Social valor input deel padre{{form_pagina.razon_social}}
+                        -- Razon Social input valido deel padre{{form_pagina.razon_social_valido}}
+                        -- Razon Social rta prod correcta deel padre{{form_pagina.razon_social_correcto}}
+                        -- Razon Social observacion autoridad deel padre{{form_pagina.obs_razon_social}}
+                        -- Razon Social observacion autoridad valida deel padre{{form_pagina.obs_razon_social_valido}}
+                </div>
+
+               
                 
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -280,6 +309,7 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
+        mostrar_testing: false,
         form_pagina: {
             razon_social : this.$props.razon_social,
             razon_social_valido: this.$props.razon_social_valido,

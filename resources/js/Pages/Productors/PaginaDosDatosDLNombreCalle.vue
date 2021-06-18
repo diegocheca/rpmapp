@@ -49,15 +49,36 @@
                 <p  v-bind:class=clase_cartel_nota_evaluacion_nom_calle>{{cartel_nota_evaluacion_nom_calle}}</p>
             </div>
         </div>
-        -- nombre calle:{{leal_calle}}--
-        --nombre calle Valido:{{nombre_calle_legal_valido}}--
-        --nombre calle Valido local:{{calle_legal_valido_local}}--
-        
-        --nombre calle Evalaucion:{{nombre_calle_legal_correcto}}--
-        --nombre calle Obser:{{obs_nombre_calle_legal}}--
-        --nombre calle obsr Valido:{{obs_nombre_calle_legal_valido}}--
-        --Evaluacion {{evaluacion}}--
-        --{{cartel_nota_evaluacion_nom_calle}}--
+        <div class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing hijo</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="testing_hijo"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
+            <div class="flex">
+                <div v-show="testing_hijo">
+                    -- nombre calle:{{leal_calle}}--
+                    --nombre calle Valido:{{nombre_calle_legal_valido}}--
+                    --nombre calle Valido local:{{calle_legal_valido_local}}--
+                    
+                    --nombre calle Evalaucion:{{nombre_calle_legal_correcto}}--
+                    --nombre calle Obser:{{obs_nombre_calle_legal}}--
+                    --nombre calle obsr Valido:{{obs_nombre_calle_legal_valido}}--
+                    --Evaluacion {{evaluacion}}--
+                    --{{cartel_nota_evaluacion_nom_calle}}--
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -70,6 +91,7 @@ export default {
         'obs_nombre_calle_legal', 
         'obs_nombre_calle_legal_valido',
         'evaluacion',
+        'testing',
     ],
   data() {
     return {
@@ -82,6 +104,8 @@ export default {
         calle_legal_valido_local: this.$props.nombre_calle_legal_valido,
         legal_calle_correcto_local: this.$props.nombre_calle_legal_correcto,
         obs_calle_legal_valido_local: this.$props.obs_nombre_calle_legal_valido,
+        testing_hijo: false,
+
         //border-green-500
     }; 
   },

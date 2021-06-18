@@ -23,6 +23,24 @@
             ></CardDomAdmin>
 
         </div>
+        <div class="w-full  bg-white rounded shadow p-6 m-8">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="mostrar_testing"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
+        </div>
+
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <PaginaDosDatosDLNombreCalle 
@@ -32,17 +50,25 @@
                     v-bind:obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
                     v-bind:obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
                     v-bind:evaluacion="true"
+                    v-bind:testing="mostrar_testing"
                     v-on:changenombrecallevalido="updatenombrecallevalido($event)"
                     v-on:changenombrecallecorrecto="updatenombrecallecorrecto($event)"
                     v-on:changeobsnombrecalle="updateobsnombrecalle($event)"
                     v-on:changeobsnombrecallevalido="updateobsnombrecallevalido($event)"
                     v-on:changevalornombrecalle="updatevalornombrecalle($event)"
                 ></PaginaDosDatosDLNombreCalle>
-                -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
-                -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
-                -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
-                -- Nombre de calle observacion autoridad deel padre{{form_pagina.obs_nombre_calle_legal}}
-                -- Nombre de calle observacion autoridad valida deel padre{{form_pagina.obs_nombre_calle_legal_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
+                            -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
+                            -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
+                            -- Nombre de calle observacion autoridad deel padre{{form_pagina.obs_nombre_calle_legal}}
+                            -- Nombre de calle observacion autoridad valida deel padre{{form_pagina.obs_nombre_calle_legal_valido}}
+                        </div>
+                    </div>
+                </div>
+               
                 
             </div>
             <div class="w-full md:w-1/2 px-3">
@@ -56,18 +82,22 @@
                     v-on:changetelnumlegalvalido="updatenumlegalvalido($event)"
                     v-on:changetelnumlegalcorrecto="updatenumlegalcorrecto($event)"
                     v-on:changeobstelnumlegal="updateobs_numlegal($event)"
-                     v-on:changeobstelnumlegalvalido="updateobs_numlegal_valido($event)"
-                     v-on:changevalornumlegal="updatevalornumlegal($event)"
-                    
-
-                    
+                    v-on:changeobstelnumlegalvalido="updateobs_numlegal_valido($event)"
+                    v-on:changevalornumlegal="updatevalornumlegal($event)"
                 >
                 </PaginaDosDatosDLNumeroCalle>
-                 -- numero de calle  deel padre{{form_pagina.leal_numero}}
-                  -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
-                -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
-               -- numero de calle observacion deel padre{{form_pagina.obs_leal_numero}}
-                -- numero de calle observacion valida deel padre{{form_pagina.obs_leal_numero_valido}}
+                <div class="flex items-center justify-center bg-teal-lightest font-sans">
+                    <div class="w-full  bg-white rounded shadow p-6 m-8">
+                        <div class="flex" v-if="mostrar_testing">
+                            -- numero de calle  deel padre{{form_pagina.leal_numero}}
+                            -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
+                            -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
+                            -- numero de calle observacion deel padre{{form_pagina.obs_leal_numero}}
+                            -- numero de calle observacion valida deel padre{{form_pagina.obs_leal_numero_valido}}
+                        </div>
+                    </div>
+                </div>
+                
                 
                 
             </div>
@@ -103,6 +133,7 @@
                     v-bind:obs_leal_provincia="$props.obs_leal_provincia"
                     v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
                     v-bind:evaluacion="false"
+                    v-bind:testing="mostrar_testing"
                     v-bind:label="'Provincia de Domicilio Legal'"
                     v-on:changeprovlegalvalido="updateteprovinciavalido($event)"
                     v-on:changeprovlegalcorrecto="updateteprovinciacorrecto($event)"
@@ -130,6 +161,8 @@
                     v-bind:obs_leal_departamento="$props.obs_leal_departamento"
                     v-bind:obs_leal_departamento_valido="$props.obs_leal_departamento_valido"
                     v-bind:evaluacion="true"
+                    v-bind:testing="mostrar_testing"
+                    v-bind:label="'Departamento de Domicilio Legal'"
                     v-on:changedptolegalvalido="updatetedptovalido($event)"
                     v-on:changedptolegalcorrecto="updatetedptocorrecto($event)"
                     v-on:changeobsrdptolegal="updateobs_dptolegal($event)"
@@ -388,6 +421,7 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
+        mostrar_testing:false,
         form_pagina: {
 
             leal_calle : this.$props.leal_calle,

@@ -3,7 +3,7 @@
         <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="leal_departamento"
-            >Departamento de Domicilio comp:</label
+            >{{label}}</label
         >
         <select
             id="leal_departamento"
@@ -55,15 +55,36 @@
                 <p  v-bind:class=clase_cartel_nota_evaluacion_dpto_calle>{{cartel_nota_evaluacion_dpto_calle}}</p>
             </div>
         </div>
-        -- depto calle:{{leal_departamento}}--
-        --depto calle Valido:{{leal_departamento_valido}}--
-        --depto calle Valido local:{{calle_dpto_legal_valido_local}}--
-        
-        --depto calle Evalaucion:{{leal_departamento_correcto}}--
-        --depto calle Obser:{{obs_leal_departamento}}--
-        --depto calle obsr Valido:{{obs_leal_departamento_valido}}--
-        --Evaluacion {{evaluacion}}--
-        --{{cartel_nota_evaluacion_dpto_calle}}--
+        <div class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing hijo</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="testing_hijo"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
+            <div class="flex">
+                <div v-show="testing_hijo">
+                    -- depto calle:{{leal_departamento}}--
+                    --depto calle Valido:{{leal_departamento_valido}}--
+                    --depto calle Valido local:{{calle_dpto_legal_valido_local}}--
+                    --depto calle Evalaucion:{{leal_departamento_correcto}}--
+                    --depto calle Obser:{{obs_leal_departamento}}--
+                    --depto calle obsr Valido:{{obs_leal_departamento_valido}}--
+                    --Evaluacion {{evaluacion}}--
+                    --{{cartel_nota_evaluacion_dpto_calle}}--
+                </div>
+            </div>
+        </div>
+       
     </div>
 </template>
 
@@ -76,6 +97,8 @@ export default {
         'obs_leal_departamento', 
         'obs_leal_departamento_valido',
         'evaluacion',
+        'testing',
+        'label',
 
 
         
@@ -96,6 +119,7 @@ export default {
         calle_dpto_legal_valido_local: this.$props.leal_departamento_valido,
         legal_calle_dpto_correcto_local: this.$props.leal_departamento_correcto,
         obs_calle_dpto_legal_valido_local: this.$props.obs_leal_departamento_valido,
+        testing_hijo:false,
         //border-green-500
     }; 
   },

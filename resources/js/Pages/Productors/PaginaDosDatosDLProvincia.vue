@@ -3,7 +3,7 @@
         <label
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="leal_provincia"
-            >Provincia de Domicilio comp:</label
+            >{{label}}</label
         >
         <select
             id="leal_provincia"
@@ -55,15 +55,37 @@
                 <p  v-bind:class=clase_cartel_nota_evaluacion_prov_calle>{{cartel_nota_evaluacion_prov_calle}}</p>
             </div>
         </div>
-        -- prov calle:{{leal_provincia}}--
-        --prov calle Valido:{{leal_provincia_valido}}--
-        --prov calle Valido local:{{calle_prov_legal_valido_local}}--
+        <div class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing hijo</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="testing_hijo"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
+            <div class="flex">
+                <div v-show="testing_hijo">
+                    -- prov calle:{{leal_provincia}}--
+                    --prov calle Valido:{{leal_provincia_valido}}--
+                    --prov calle Valido local:{{calle_prov_legal_valido_local}}--
+                    
+                    --prov calle Evalaucion:{{leal_provincia_correcto}}--
+                    --prov calle Obser:{{obs_leal_provincia}}--
+                    --prov calle obsr Valido:{{obs_leal_provincia_valido}}--
+                    --Evaluacion {{evaluacion}}--
+                    --{{cartel_nota_evaluacion_prov_calle}}--
+                </div>
+            </div>
+        </div>
         
-        --prov calle Evalaucion:{{leal_provincia_correcto}}--
-        --prov calle Obser:{{obs_leal_provincia}}--
-        --prov calle obsr Valido:{{obs_leal_provincia_valido}}--
-        --Evaluacion {{evaluacion}}--
-        --{{cartel_nota_evaluacion_prov_calle}}--
     </div>
 </template>
 
@@ -76,6 +98,8 @@ export default {
         'obs_leal_provincia', 
         'obs_leal_provincia_valido',
         'evaluacion',
+        'testing',
+        'label',
     ],
   data() {
     return {
@@ -88,6 +112,7 @@ export default {
         calle_prov_legal_valido_local: this.$props.leal_provincia_valido,
         legal_calle_prov_correcto_local: this.$props.leal_provincia_correcto,
         obs_calle_prov_legal_valido_local: this.$props.obs_leal_provincia_valido,
+        testing_hijo:false,
         //border-green-500
     }; 
   },
