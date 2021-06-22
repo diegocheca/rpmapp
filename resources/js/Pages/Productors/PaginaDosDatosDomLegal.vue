@@ -303,6 +303,64 @@
                 </div>
             </div>
         </div>
+        <br><br>
+         <div class="flex items-center justify-center">
+            <BotonesPaginaDos 
+                :link_volver="route('formulario-alta.index')"
+                :titulo_boton_volver="'volver'"
+                :titulo_boton_guardar="'Guardar Datos del Productor'"
+
+                :leal_calle="$props.leal_calle"
+                :nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
+                :nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
+                :obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
+                :obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
+                :leal_numero="$props.leal_numero"
+                :leal_numero_valido="$props.leal_numero_valido"
+                :leal_numero_correcto="$props.leal_numero_correcto"
+                :obs_leal_numero="$props.obs_leal_numero"
+                :obs_leal_numero_valido="$props.obs_leal_numero_valido"
+                :leal_telefono="$props.leal_telefono"
+                :leal_telefono_valido="$props.leal_telefono_valido"
+                :leal_telefono_correcto="$props.leal_telefono_correcto"
+                :obs_leal_telefono="$props.obs_leal_telefono"
+                :obs_leal_telefono_valido="$props.obs_leal_telefono_valido"
+                :leal_pais="$props.leal_pais"
+                :leal_pais_valido="$props.leal_pais_valido"
+                :leal_pais_correcto="$props.leal_pais_correcto"
+                :obs_leal_pais="$props.obs_leal_pais"
+                :obs_leal_pais_valido="$props.obs_leal_pais_valido"
+                :leal_provincia="$props.leal_provincia"
+                :leal_provincia_valido="$props.leal_provincia_valido"
+                :leal_provincia_correcto="$props.leal_provincia_correcto"
+                :obs_leal_provincia="$props.obs_leal_provincia"
+                :obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
+                :leal_departamento="$props.leal_departamento"
+                :leal_departamento_valido="$props.leal_departamento_valido"
+                :leal_departamento_correcto="$props.leal_departamento_correcto"
+                :obs_leal_departamento="$props.obs_leal_departamento"
+                :obs_leal_departamento_valido="$props.obs_leal_departamento_valido"
+                :leal_localidad="$props.leal_localidad"
+                :leal_localidad_valido="$props.leal_localidad_valido"
+                :leal_localidad_correcto="$props.leal_localidad_correcto"
+                :obs_leal_localidad="$props.obs_leal_localidad"
+                :obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
+                :leal_cp="$props.leal_cp"
+                :leal_cp_valido="$props.leal_cp_valido"
+                :leal_cp_correcto="$props.leal_cp_correcto"
+                :obs_leal_cp="$props.obs_leal_cp"
+                :obs_leal_cp_valido="$props.obs_leal_cp_valido"
+                :leal_otro="$props.leal_otro"
+                :leal_otro_valido="$props.leal_otro_valido"
+                :leal_otro_correcto="$props.leal_otro_correcto"
+                :obs_leal_otro="$props.obs_leal_otro"
+                :obs_leal_otro_valido="$props.obs_leal_otro_valido"
+
+                :evaluacion="true"
+                :id="$props.id"
+            ></BotonesPaginaDos>
+         </div>
+
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
@@ -324,6 +382,9 @@ import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 import InputLocalidad from "@/Pages/Productors/InputLocalidad";
 import InputCP from "@/Pages/Productors/InputCP";
 import InputOtro from "@/Pages/Productors/InputOtro";
+import BotonesPaginaDos from "@/Pages/Productors/BotonesPaginaDos";
+
+
 export default {
      props: [
         'link_volver', 
@@ -336,13 +397,11 @@ export default {
         'nombre_calle_legal_correcto',
         'obs_nombre_calle_legal',
         'obs_nombre_calle_legal_valido',
-
         'leal_numero',
         'leal_numero_valido',
         'leal_numero_correcto',
         'obs_leal_numero',
         'obs_leal_numero_valido',
-
         'leal_telefono',
         'leal_telefono_valido',
         'leal_telefono_correcto',
@@ -395,6 +454,7 @@ export default {
         InputCP,
 		InputLocalidad,
 		InputOtro,
+        BotonesPaginaDos,
 	},
    
   data() {

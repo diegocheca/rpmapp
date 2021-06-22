@@ -1279,6 +1279,22 @@ class FormAltaProductorController extends Controller
 		*/
 
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+		$formulario_provisorio = FormAltaProductor::select(
+			'id',
+			'leal_calle',
+			'leal_numero',
+			'leal_telefono',
+			'leal_pais',
+			'leal_provincia',
+			'leal_departamento',
+			'leal_localidad',
+			'leal_cp',
+			'leal_otro',
+			'email')
+		->where('email', '=',$request->email)
+		->first();
+
 		$formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','inscripciondgr','constaciasociedad',
         'cuit_correcto',
         'obs_cuit',
@@ -1414,76 +1430,142 @@ class FormAltaProductorController extends Controller
 			$request->valor_de_reprobado, 
 
 		);*/
-		return response()->json("todo bien");
+		//return response()->json("todo bien");
 		//die();
 
-		// date_default_timezone_set('America/Argentina/Buenos_Aires');
-		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
-		// ->where('email', '=',$request->email)->first();
-		// //var_dump($formulario_provisorio->id);
-		// if($formulario_provisorio != null)
-		// {
-		// 	//lo encontre y actualizo
-		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
-		// 	$formulario_provisorio->razonsocial = $request->razon_social;
-		// 	$formulario_provisorio->cuit = $request->cuit;
-		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
-		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
-		// 	$formulario_provisorio->email = $request->email;
-		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
-		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
-		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
-		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		// 	$formulario_provisorio->save();
-		// 	return response()->json("se actualizaron los datos correctamente");
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$formulario_provisorio = FormAltaProductor::select(
+			'id',
+			'leal_calle',
+			'leal_calle_correcto',
+			'obs_leal_calle',
 
-		// }
-		// else
-		// {
-		// 	// no encontre el formulario
-		// 	// voy a buscar si el email esta para ser confirmado
-		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
-		// 	//var_dump($email);
-		// 	if($email != null)
-		// 	{
-		// 		//tengo email , reviso si no esta cofnirmado o si
-		// 		if($email->confirmed_at	!= null)
-		// 		{
-		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
-		// 			$formulario_nuevo  = new FormAltaProductor();
-		// 			$formulario_nuevo->razonsocial = $request->razon_social;
-		// 			$formulario_nuevo->cuit = $request->cuit;
-		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
-		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
-		// 			$formulario_nuevo->email = $request->email;
-		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
-		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
-		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
-		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
-		// 			$formulario_nuevo->save();
-		// 			return response()->json("se creo el formulario y se guardo correctamente");
-		// 		}
-		// 		else
-		// 		{
-		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
-		// 			//mando email
+			'leal_numero',
+			'leal_numero_correcto',
+			'obs_leal_numero',
 
-		// 			/*
-		// 			en produccion, descomentar
-		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
-		// 				$request->email,
-		// 				date("Y-m-d H:i:s"),
-		// 				$email->codigo
-		// 			));*/
-		// 			return response()->json("mande un email de mentira");
-		// 		}
+			'leal_telefono',
+			'leal_telefono_correcto',
+			'obs_leal_telefono',
 
-		// 	}
-		// 	else
-		// 	{
-		// 		return response()->json("formulario no encontrado ni tampoco email");
-		// 	}
-		//}
+			'numeroproductor',
+			'numeroproductor_correcto',
+			'obs_numeroproductor',
+
+			'leal_pais',
+
+			'leal_provincia',
+			'leal_provincia_correcto',
+			'obs_leal_provincia',
+
+			'leal_departamento',
+			'leal_departamento_correcto',
+			'obs_leal_departamento',
+
+			'leal_localidad',
+			'leal_localidad_correcto',
+			'obs_leal_localidad',
+
+			'leal_cp',
+			'leal_cp_correcto',
+			'obs_leal_cp',
+
+			'leal_otro',
+			'leal_otro_correcto',
+			'obs_leal_otro',
+
+			'updated_at')
+		->where('id', '=',$request->id)->first();
+		if($formulario_provisorio != null)
+		{
+			//lo encontre y actualizo
+			$formulario_provisorio->leal_calle = $request->leal_calle;
+			$formulario_provisorio->leal_calle_correcto = $request->nombre_calle_legal_correcto;
+			$formulario_provisorio->obs_leal_calle = $request->obs_nombre_calle_legal;
+
+			$formulario_provisorio->leal_numero = $request->leal_numero;
+			$formulario_provisorio->leal_numero_correcto = $request->leal_numero_correcto;
+			$formulario_provisorio->obs_leal_numero = $request->obs_leal_numero;
+
+			$formulario_provisorio->leal_telefono = $request->leal_telefono;
+			$formulario_provisorio->leal_telefono_correcto = $request->leal_telefono_correcto;
+			$formulario_provisorio->obs_leal_telefono = $request->obs_leal_telefono;
+
+			//$formulario_provisorio->leal_pais = $request->domicilio_legal_pais;
+
+			$formulario_provisorio->leal_provincia = $request->leal_provincia;
+			$formulario_provisorio->leal_provincia_correcto = $request->leal_provincia_correcto;
+			$formulario_provisorio->obs_leal_provincia = $request->obs_leal_provincia;
+
+			$formulario_provisorio->leal_departamento = $request->leal_departamento;
+			$formulario_provisorio->leal_departamento_correcto = $request->leal_departamento_correcto;
+			$formulario_provisorio->obs_leal_departamento = $request->obs_leal_departamento;
+
+			$formulario_provisorio->leal_localidad = $request->leal_localidad;
+			$formulario_provisorio->leal_localidad_correcto = $request->leal_localidad_correcto;
+			$formulario_provisorio->obs_leal_localidad = $request->obs_leal_localidad;
+
+			$formulario_provisorio->leal_cp = $request->leal_cp;
+			$formulario_provisorio->leal_cp_correcto = $request->leal_cp_correcto;
+			$formulario_provisorio->obs_leal_cp = $request->obs_leal_cp;
+
+			$formulario_provisorio->leal_otro = $request->leal_otro;
+			$formulario_provisorio->leal_otro_correcto = $request->leal_otro_correcto;
+			$formulario_provisorio->obs_leal_otro = $request->obs_leal_otro;
+
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->save();
+			return response()->json("bien");
+		}
+		else
+		{
+			// no encontre el formulario
+			// voy a buscar si el email esta para ser confirmado
+			//$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
+			//var_dump($email);
+			//if($email != null)
+			//{
+				//tengo email , reviso si no esta cofnirmado o si
+				/*if($email->confirmed_at	!= null)
+				{
+					//el email si ha sido confirmado por eso , tengo q crear una instancia de form
+					$formulario_nuevo  = new FormAltaProductor();
+					$formulario_nuevo->razonsocial = $request->razon_social;
+					$formulario_nuevo->cuit = $request->cuit;
+					$formulario_nuevo->numeroproductor = $request->num_productor;
+					$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
+					$formulario_nuevo->email = $request->email;
+					// $formulario_nuevo->domicilio_prod = $request->streetName;
+					$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
+					$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
+					$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
+					$formulario_nuevo->save();
+					return response()->json("medio");
+				}
+				else
+				{
+					//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
+					//mando email
+
+					/*
+					en produccion, descomentar
+					Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
+						$request->email,
+						date("Y-m-d H:i:s"),
+						$email->codigo
+					));  /
+					return response()->json("mande un email de mentira");
+				}
+				*/
+
+				return response()->json("mande un email de mentira");
+
+			/*}
+			else
+			{
+				return response()->json("formulario no encontrado ni tampoco email");
+			}*/
+		}
 	}
 
 

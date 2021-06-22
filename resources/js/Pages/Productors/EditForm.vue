@@ -5,8 +5,6 @@
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
 					Editar Productor
 				</h1>
-				
-				
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
@@ -16,136 +14,135 @@
 					
 					<br>
 					<!-- Delete Account Confirmation Modal -->
-						<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
-								<template #title>
-										{{modal_tittle}}
-								</template>
+					<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
+							<template #title>
+									{{modal_tittle}}
+							</template>
 
-								<template #content>
-										{{modal_body}}
+							<template #content>
+									{{modal_body}}
 
-										
-								</template>
+									
+							</template>
 
-								<template #footer>
-										<button @click="closeModal">
-												Ok
-										</button>
+							<template #footer>
+									<button @click="closeModal">
+											Ok
+									</button>
 
-										
-								</template>
-						</jet-dialog-modal>
-						<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
-						
-
-						<div class="flex items-center justify-center">
-					<div class="grid grid-cols-1 gap-6 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7">
-						<!-- 1 card -->
-						<CardProductor  
-						:progreso="form.valor_de_progreso"
-						:aprobado="form.valor_de_aprobado"
-						:reprobado="form.valor_de_reprobado" 
-						:lugar="'Argentina, San Juan'"
-						:updated_at="'hace 10 minutos'"
-						:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-						:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-
-						></CardProductor>
-
-						<!-- 2 card -->
-						<CardDomLegal  
-							:progreso="form.valor_de_progreso_dos"
-							:aprobado="form.valor_de_aprobado_dos"
-							:reprobado="form.valor_de_reprobado_dos" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-						></CardDomLegal>
-
-					
-						<!-- 3 card -->
-						
-						<CardDomAdmin  
-							:progreso="form.valor_de_progreso_tres"
-							:aprobado="form.valor_de_aprobado_tres"
-							:reprobado="form.valor_de_reprobado_tres" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-						></CardDomAdmin>
-						
-
-						 <!-- 4 card -->
-						 <CardMinaUno  
-							:progreso="form.valor_de_progreso_cuatro"
-							:aprobado="form.valor_de_aprobado_cuatro"
-							:reprobado="form.valor_de_reprobado_cuatro" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaUno>
-
-						 <!-- 5 card -->
-						<CardMinaDos  
-							:progreso="form.valor_de_progreso_cinco"
-							:aprobado="form.valor_de_aprobado_cinco"
-							:reprobado="form.valor_de_reprobado_cinco" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaDos>
-
-						<CardMinaUbicacion  
-							:progreso="form.valor_de_progreso_seis"
-							:aprobado="form.valor_de_aprobado_seis"
-							:reprobado="form.valor_de_reprobado_seis" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaUbicacion>
-						
-					
-
-						 <!-- 4 card -->
-						 <CardTotal  
-							:progreso="form.valor_de_progreso_seis"
-							:aprobado="form.valor_de_aprobado_seis"
-							:reprobado="form.valor_de_reprobado_seis" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-							></CardTotal>
-						
-				</div>
-		</div>
-		<br>
-				<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
-					<a href="#section_domicilio_legal">
-						<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-								<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
-							</svg>
-						</div>
-					</a>
-				</div>
-				<br>
-				<!-- <div class="flex items-center justify-center">
-						<CardProductor  
+									
+							</template>
+					</jet-dialog-modal>
+					<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
+					<div id="inicio"></div>
+					<div class="flex items-center justify-center">
+						<div class="grid grid-cols-1 gap-6 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7">
+							<!-- 1 card -->
+							<CardProductor  
 							:progreso="form.valor_de_progreso"
 							:aprobado="form.valor_de_aprobado"
 							:reprobado="form.valor_de_reprobado" 
 							:lugar="'Argentina, San Juan'"
 							:updated_at="'hace 10 minutos'"
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardProductor>
-				</div> -->
+							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
+
+							></CardProductor>
+
+							<!-- 2 card -->
+							<CardDomLegal  
+								:progreso="form.valor_de_progreso_dos"
+								:aprobado="form.valor_de_aprobado_dos"
+								:reprobado="form.valor_de_reprobado_dos" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
+							></CardDomLegal>
+
+						
+							<!-- 3 card -->
+							
+							<CardDomAdmin  
+								:progreso="form.valor_de_progreso_tres"
+								:aprobado="form.valor_de_aprobado_tres"
+								:reprobado="form.valor_de_reprobado_tres" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
+							></CardDomAdmin>
+							
+
+							<!-- 4 card -->
+							<CardMinaUno  
+								:progreso="form.valor_de_progreso_cuatro"
+								:aprobado="form.valor_de_aprobado_cuatro"
+								:reprobado="form.valor_de_reprobado_cuatro" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardMinaUno>
+
+							<!-- 5 card -->
+							<CardMinaDos  
+								:progreso="form.valor_de_progreso_cinco"
+								:aprobado="form.valor_de_aprobado_cinco"
+								:reprobado="form.valor_de_reprobado_cinco" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardMinaDos>
+
+							<CardMinaUbicacion  
+								:progreso="form.valor_de_progreso_seis"
+								:aprobado="form.valor_de_aprobado_seis"
+								:reprobado="form.valor_de_reprobado_seis" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardMinaUbicacion>
+							
+						
+
+							<!-- 4 card -->
+							<CardTotal  
+								:progreso="form.valor_de_progreso_seis"
+								:aprobado="form.valor_de_aprobado_seis"
+								:reprobado="form.valor_de_reprobado_seis" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+								></CardTotal>
+							
+						</div>
+					</div>
+					<br>
+					<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
+						<a href="#inicio">
+							<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
+								</svg>
+							</div>
+						</a>
+					</div>
+					<br>
+					<!-- <div class="flex items-center justify-center">
+							<CardProductor  
+								:progreso="form.valor_de_progreso"
+								:aprobado="form.valor_de_aprobado"
+								:reprobado="form.valor_de_reprobado" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardProductor>
+					</div> -->
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -255,7 +252,6 @@
 
 				</PaginaDosDatosDomLegal>
 				<br>
-
 			<div class="flex items-center justify-center">
 				<!-- <CardDomLegal  
 							:progreso="form.valor_de_progreso_dos"
@@ -269,7 +265,6 @@
 			</div>
 			<br>
 			<br>
-
 			<div class="flex items-center justify-center">
 				<!-- <CardDomAdmin  
 					:progreso="form.valor_de_progreso_tres"
@@ -339,7 +334,6 @@
 				>
 
 			</PaginaDosDatosDomLegal>
-
 			<br>
 			<div class="flex items-center justify-center">
 				<!-- <CardMinaUno  
@@ -417,9 +411,7 @@
 				:id="$props.productor.id"
 				:testing="true"
 			>
-
 			</PaginaCuatroDatosMinaUno>
-			
 			<div class="flex flex-col mb-8">
 				<button
 					type="button"
@@ -439,7 +431,7 @@
 			<br>
 			<br>
 			<div class="flex items-center justify-center">
-				<CardMinaDos  
+				<!-- <CardMinaDos  
 							:progreso="form.valor_de_progreso_cinco"
 							:aprobado="form.valor_de_aprobado_cinco"
 							:reprobado="form.valor_de_reprobado_cinco" 
@@ -447,7 +439,7 @@
 							:updated_at="'hace 10 minutos'"
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaDos>
+						></CardMinaDos> -->
 			</div>
 			<br>
 			<br>
@@ -520,22 +512,13 @@
 				:fecha_vencimiento_dia_correcto="form.fecha_vencimiento_dia_correcto"
 				:obs_fecha_vencimiento_dia="form.obs_fecha_vencimiento_dia"
 				:obs_fecha_vencimiento_dia_valido="form.obs_fecha_vencimiento_dia_valido"
-
-
 				
 				:evaluacion="true"
 				:id="$props.productor.id"
 				:testing="true"
 
 			>
-
 			</PaginaCincoDatosMinaDos>
-
-
-
-			
-
-			
 			<br>
 			<br>
 			<br>
@@ -571,9 +554,9 @@
 					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 				></CardMinaUbicacion>
 			</div>
-
-					<br>
-			<br><br>
+			<br>
+			<br>
+			<br>
 			<br>
 			<PaginaSeisDatosUbicacionMina
 				:link_volver="route('formulario-alta.index')"
@@ -624,7 +607,6 @@
 			>
 
 			</PaginaSeisDatosUbicacionMina>
-			
 			<br>
 			<br>
 			<br>
@@ -637,7 +619,6 @@
 				>
 					Guardar: Datos de la Ubicacion de la mina
 				</button>
-				
 				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
 			</div>
 			<br>
