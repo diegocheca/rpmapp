@@ -1,345 +1,329 @@
 <template>
-    <div>
-        <h1>{{titulo_pagina}}</h1>
-        <div class="flex items-center justify-center">
-            <CardDomLegal v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"
-                :progreso="50"
-                :aprobado="50"
-                :reprobado="50" 
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-            ></CardDomLegal>
-
-            <CardDomAdmin v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Administrativo'"
-                :progreso="50"
-                :aprobado="50"
-                :reprobado="50" 
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-            ></CardDomAdmin>
-
+<div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+        <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
+            <label class="flex items-center relative w-max cursor-pointer select-none">
+                <br>
+                <br>
+                <input 
+                type="checkbox" 
+                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                v-model="mostrar_testing"
+                />
+                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+            </label>
+            <label class="flex items-center relative w-max cursor-pointer select-none">
+                <br>
+                <br>
+                <input 
+                type="checkbox" 
+                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
+                v-model="autoridad_minera"
+                />
+                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
+                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
+                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+            </label>
         </div>
-        <div class="w-full  bg-white rounded shadow p-6 m-8">
+        <div>
+            <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
+            <br><br>
+            <div class="flex items-center justify-center">
+                <CardDomLegal v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"
+                    :progreso="50"
+                    :aprobado="50"
+                    :reprobado="50" 
+                    :lugar="'Argentina, San Juan'"
+                    :updated_at="'hace 10 minutos'"
+                    :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+                    :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                ></CardDomLegal>
+
+                <CardDomAdmin v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Administrativo'"
+                    :progreso="50"
+                    :aprobado="50"
+                    :reprobado="50" 
+                    :lugar="'Argentina, San Juan'"
+                    :updated_at="'hace 10 minutos'"
+                    :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+                    :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                ></CardDomAdmin>
+            </div>
+            <br>
+            <br>
             <div class="flex">
-                <label class="flex items-center relative w-max cursor-pointer select-none">
-                    <br>
-                    <span class="text-lg font-bold mr-3">Testing</span>
-                    <br>
-                    <input 
-                    type="checkbox" 
-                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
-                    v-model="mostrar_testing"
-                    />
-                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
-                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
-                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-                </label>
-            </div>
-        </div>
-
-        <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLNombreCalle 
-                    v-bind:leal_calle="$props.leal_calle"
-                    v-bind:nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
-                    v-bind:nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
-                    v-bind:obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
-                    v-bind:obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing="mostrar_testing"
-                    v-on:changenombrecallevalido="updatenombrecallevalido($event)"
-                    v-on:changenombrecallecorrecto="updatenombrecallecorrecto($event)"
-                    v-on:changeobsnombrecalle="updateobsnombrecalle($event)"
-                    v-on:changeobsnombrecallevalido="updateobsnombrecallevalido($event)"
-                    v-on:changevalornombrecalle="updatevalornombrecalle($event)"
-                ></PaginaDosDatosDLNombreCalle>
-                <div class="flex items-center justify-center bg-teal-lightest font-sans">
-                    <div class="w-full  bg-white rounded shadow p-6 m-8">
-                        <div class="flex" v-if="mostrar_testing">
-                            -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
-                            -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
-                            -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
-                            -- Nombre de calle observacion autoridad deel padre{{form_pagina.obs_nombre_calle_legal}}
-                            -- Nombre de calle observacion autoridad valida deel padre{{form_pagina.obs_nombre_calle_legal_valido}}
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputNombreCalle 
+                        v-bind:leal_calle="$props.leal_calle"
+                        v-bind:nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
+                        v-bind:nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
+                        v-bind:obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
+                        v-bind:obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Nombre de Calle Domicilio'"
+                        v-bind:testing="mostrar_testing"
+                        v-on:changenombrecallevalido="updatenombrecallevalido($event)"
+                        v-on:changenombrecallecorrecto="updatenombrecallecorrecto($event)"
+                        v-on:changeobsnombrecalle="updateobsnombrecalle($event)"
+                        v-on:changeobsnombrecallevalido="updateobsnombrecallevalido($event)"
+                        v-on:changevalornombrecalle="updatevalornombrecalle($event)"
+                    ></InputNombreCalle>
+                    <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
+                        <div class="w-full  bg-white rounded shadow p-6 m-8">
+                            <div class="flex" >
+                                -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
+                                -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
+                                -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
+                                -- Nombre de calle observacion autoridad deel padre{{form_pagina.obs_nombre_calle_legal}}
+                                -- Nombre de calle observacion autoridad valida deel padre{{form_pagina.obs_nombre_calle_legal_valido}}
+                            </div>
                         </div>
                     </div>
                 </div>
-               
-                
+                <div class="w-full md:w-1/2 px-3">
+                    <InputNumeroCalle
+                        v-bind:leal_numero="$props.leal_numero"
+                        v-bind:leal_numero_valido="$props.leal_numero_valido"
+                        v-bind:leal_numero_correcto="$props.leal_numero_correcto"
+                        v-bind:obs_leal_numero="$props.obs_leal_numero"
+                        v-bind:obs_leal_numero_valido="$props.obs_leal_numero_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Número de Calle Domicilio'"
+                        v-bind:testing="mostrar_testing"
+                        v-on:changetelnumlegalvalido="updatenumlegalvalido($event)"
+                        v-on:changetelnumlegalcorrecto="updatenumlegalcorrecto($event)"
+                        v-on:changeobstelnumlegal="updateobs_numlegal($event)"
+                        v-on:changeobstelnumlegalvalido="updateobs_numlegal_valido($event)"
+                        v-on:changevalornumlegal="updatevalornumlegal($event)"
+                    >
+                    </InputNumeroCalle>
+                    <div class="flex items-center justify-center bg-teal-lightest font-sans"  v-if="mostrar_testing">
+                        <div class="w-full  bg-white rounded shadow p-6 m-8">
+                            <div class="flex">
+                                -- numero de calle  deel padre{{form_pagina.leal_numero}}
+                                -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
+                                -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
+                                -- numero de calle observacion deel padre{{form_pagina.obs_leal_numero}}
+                                -- numero de calle observacion valida deel padre{{form_pagina.obs_leal_numero_valido}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
             </div>
-            <div class="w-full md:w-1/2 px-3">
-                <PaginaDosDatosDLNumeroCalle
-                    v-bind:leal_numero="$props.leal_numero"
-                    v-bind:leal_numero_valido="$props.leal_numero_valido"
-                    v-bind:leal_numero_correcto="$props.leal_numero_correcto"
-                    v-bind:obs_leal_numero="$props.obs_leal_numero"
-                    v-bind:obs_leal_numero_valido="$props.obs_leal_numero_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changetelnumlegalvalido="updatenumlegalvalido($event)"
-                    v-on:changetelnumlegalcorrecto="updatenumlegalcorrecto($event)"
-                    v-on:changeobstelnumlegal="updateobs_numlegal($event)"
-                    v-on:changeobstelnumlegalvalido="updateobs_numlegal_valido($event)"
-                    v-on:changevalornumlegal="updatevalornumlegal($event)"
-                >
-                </PaginaDosDatosDLNumeroCalle>
-                <div class="flex items-center justify-center bg-teal-lightest font-sans">
-                    <div class="w-full  bg-white rounded shadow p-6 m-8">
-                        <div class="flex" v-if="mostrar_testing">
-                            -- numero de calle  deel padre{{form_pagina.leal_numero}}
-                            -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
-                            -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
-                            -- numero de calle observacion deel padre{{form_pagina.obs_leal_numero}}
-                            -- numero de calle observacion valida deel padre{{form_pagina.obs_leal_numero_valido}}
+            <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputTelefono
+                        v-bind:leal_telefono="$props.leal_telefono"
+                        v-bind:leal_telefono_valido="$props.leal_telefono_valido"
+                        v-bind:leal_telefono_correcto="$props.leal_telefono_correcto"
+                        v-bind:obs_leal_telefono="$props.obs_leal_telefono"
+                        v-bind:obs_leal_telefono_valido="$props.obs_leal_telefono_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Telefono de Domicilio'"
+                        v-bind:testing="mostrar_testing"
+                        v-on:changetellegalvalido="updatetelegalvalido($event)"
+                        v-on:changetellegalcorrecto="updatetellegalcorrecto($event)"
+                        v-on:changeobstellegal="updateobs_tellegal($event)"
+                        v-on:changeobstellegalvalido="updateobs_tellegal_valido($event)"
+                        v-on:changevalortellegal="updatevalortellegal($event)"
+                    >
+                    </InputTelefono>
+                    <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
+                        <div class="w-full  bg-white rounded shadow p-6 m-8">
+                            <div class="flex" >
+                                -- telefono de calle  deel padre{{form_pagina.leal_telefono}}
+                                -- telefono de calle valida deel padre{{form_pagina.leal_telefono_valido}}
+                                -- telefono de calle correcto deel padre{{form_pagina.leal_telefono_correcto}}
+                                -- telefono de calle observacion deel padre{{form_pagina.obs_leal_telefono}}
+                                -- telefono de calle observacion valida deel padre{{form_pagina.obs_leal_telefono_valido}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <SelectProvincia
+                        v-bind:leal_provincia="$props.leal_provincia"
+                        v-bind:leal_provincia_valido="$props.leal_provincia_valido"
+                        v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
+                        v-bind:obs_leal_provfincia="$props.obs_leal_provincia"
+                        v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:label="'Provincia de Domicilio Legal'"
+                        v-on:changeprovlegalvalido="updateteprovinciavalido($event)"
+                        v-on:changeprovlegalcorrecto="updateteprovinciacorrecto($event)"
+                        v-on:changeobsrpovlegal="updateobs_provincialegal($event)"
+                        v-on:changeobsprovlegalvalido="updateobs_provincialegal_valido($event)"
+                        v-on:changevalorprovlegal="updatevalorprovincialegalnumlegal($event)"
+
+                    >
+                    </SelectProvincia>
+                    <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
+                        <div class="w-full  bg-white rounded shadow p-6 m-8">
+                            <div class="flex" >
+                                -- provincia de calle  deel padre{{form_pagina.leal_provincia}}
+                                -- provincia de calle valida deel padre{{form_pagina.leal_provincia_valido}}
+                                -- provincia de calle correcto deel padre{{form_pagina.leal_provincia_correcto}}
+                                -- provincia de calle observacion deel padre{{form_pagina.obs_leal_provincia}}
+                                -- provincia de calle observacion valida deel padre{{form_pagina.obs_leal_provincia_valido}}
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                
-                
+            </div>
+            <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <SelectDepartamento
+                        v-bind:leal_departamento="$props.leal_departamento"
+                        v-bind:leal_departamento_valido="$props.leal_departamento_valido"
+                        v-bind:leal_departamento_correcto="$props.leal_departamento_correcto"
+                        v-bind:obs_leal_departamento="$props.obs_leal_departamento"
+                        v-bind:obs_leal_departamento_valido="$props.obs_leal_departamento_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:label="'Departamento de Domicilio Legal'"
+                        v-on:changedptolegalvalido="updatetedptovalido($event)"
+                        v-on:changedptolegalcorrecto="updatetedptocorrecto($event)"
+                        v-on:changeobsrdptolegal="updateobs_dptolegal($event)"
+                        v-on:changeobsdptolegalvalido="updateobs_dptolegal_valido($event)"
+                        v-on:changevalordptolegal="updatevalordptolegalnumlegal($event)"
+
+                    >
+                    </SelectDepartamento>
+                    <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
+                        <div class="w-full  bg-white rounded shadow p-6 m-8">
+                            <div class="flex" >
+                                -- dpto de calle  deel padre{{form_pagina.leal_departamento}}
+                                -- dpto de calle valida deel padre{{form_pagina.leal_departamento_valido}}
+                                -- dpto de calle correcto deel padre{{form_pagina.leal_departamento_correcto}}
+                                -- dpto de calle observacion deel padre{{form_pagina.obs_leal_departamento}}
+                                -- dpto de calle observacion valida deel padre{{form_pagina.obs_leal_departamento_valido}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputLocalidad
+                        v-bind:leal_localidad="$props.leal_localidad"
+                        v-bind:leal_localidad_valido="$props.leal_localidad_valido"
+                        v-bind:leal_localidad_correcto="$props.leal_localidad_correcto"
+                        v-bind:obs_leal_localidad="$props.obs_leal_localidad"
+                        v-bind:obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
+                         v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:label="'Localidad del Domicilio Legal'"
+                        v-on:changelocalidadlegalvalido="updatelocalidadvalido($event)"
+                        v-on:changelocalidadlegalcorrecto="updatetelocalidadcorrecto($event)"
+                        v-on:changeobsrlocalidadlegal="updateobs_localidadlegal($event)"
+                        v-on:changeobslocalidadlegalvalido="updateobs_localidadlegal_valido($event)"
+                        v-on:changevalorlocalidadlegal="updatevalorlocalidadlegalnumlegal($event)"
+
+                    >
+                    </InputLocalidad>
+                    <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
+                        <div class="w-full  bg-white rounded shadow p-6 m-8">
+                            <div class="flex" >
+                                -- localidad de calle  deel padre{{form_pagina.leal_localidad}}
+                                -- localidad de calle valida deel padre{{form_pagina.leal_localidad_valido}}
+                                -- localidad de calle correcto deel padre{{form_pagina.leal_localidad_correcto}}
+                                -- localidad de calle observacion deel padre{{form_pagina.obs_leal_localidad}}
+                                -- localidad de calle observacion valida deel padre{{form_pagina.obs_leal_localidad_valido}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputCP
+                        v-bind:leal_cp="$props.leal_cp"
+                        v-bind:leal_cp_valido="$props.leal_cp_valido"
+                        v-bind:leal_cp_correcto="$props.leal_cp_correcto"
+                        v-bind:obs_leal_cp="$props.obs_leal_cp"
+                        v-bind:obs_leal_cp_valido="$props.obs_leal_cp_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:label="'Codigo Postal'"
+                        v-on:changecplegalvalido="update_cp_valido($event)"
+                        v-on:changecplegalcorrecto="update_cp_correcto($event)"
+                        v-on:changeobsrcplegal="update_obs_cp_legal($event)"
+                        v-on:changeobscplegalvalido="update_obs_cp_legal_valido($event)"
+                        v-on:changevalorcplegal="update_valor_cp($event)"
+
+                    >
+                    </InputCP>
+                    <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
+                        <div class="w-full  bg-white rounded shadow p-6 m-8">
+                            <div class="flex" >
+                                -- cod postal de calle  deel padre{{form_pagina.leal_cp}}
+                                -- cod postal de calle valida deel padre{{form_pagina.leal_cp_valido}}
+                                -- cod postal de calle correcto deel padre{{form_pagina.leal_cp_correcto}}
+                                -- cod postal de calle observacion deel padre{{form_pagina.obs_leal_cp}}
+                                -- cod postal de calle observacion valida deel padre{{form_pagina.obs_leal_cp_valido}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputOtro
+                        v-bind:leal_otro="$props.leal_otro"
+                        v-bind:leal_otro_valido="$props.leal_otro_valido"
+                        v-bind:leal_otro_correcto="$props.leal_otro_correcto"
+                        v-bind:obs_leal_otro="$props.obs_leal_otro"
+                        v-bind:obs_leal_otro_valido="$props.obs_leal_otro_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:label="'Otro Dato Imporante'"
+                        v-on:changeotrolegalvalido="update_otro_valido($event)"
+                        v-on:changeotrolegalcorrecto="update_otro_correcto($event)"
+                        v-on:changeobsotrolegal="update_obs_otro_legal($event)"
+                        v-on:changeobsotrolegalvalido="update_obs_otro_legal_valido($event)"
+                        v-on:changevalorotrolegal="update_valor_otro($event)"
+
+                    >
+                    </InputOtro>
+                    <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
+                        <div class="w-full  bg-white rounded shadow p-6 m-8">
+                            <div class="flex" >
+                                -- otro de calle  deel padre{{form_pagina.leal_otro}}
+                                -- otro de calle valida deel padre{{form_pagina.leal_otro_valido}}
+                                -- otro de calle correcto deel padre{{form_pagina.leal_otro_correcto}}
+                                -- otro de calle observacion deel padre{{form_pagina.obs_leal_otro}}
+                                -- otro de calle observacion valida deel padre{{form_pagina.obs_leal_otro_valido}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLTelefono
-                    v-bind:leal_telefono="$props.leal_telefono"
-                    v-bind:leal_telefono_valido="$props.leal_telefono_valido"
-                    v-bind:leal_telefono_correcto="$props.leal_telefono_correcto"
-                    v-bind:obs_leal_telefono="$props.obs_leal_telefono"
-                    v-bind:obs_leal_telefono_valido="$props.obs_leal_telefono_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changetellegalvalido="updatetelegalvalido($event)"
-                    v-on:changetellegalcorrecto="updatetellegalcorrecto($event)"
-                    v-on:changeobstellegal="updateobs_tellegal($event)"
-                     v-on:changeobstellegalvalido="updateobs_tellegal_valido($event)"
-                     v-on:changevalortellegal="updatevalortellegal($event)"
-                >
-                </PaginaDosDatosDLTelefono>
-                 -- telefono de calle  deel padre{{form_pagina.leal_telefono}}
-                  -- telefono de calle valida deel padre{{form_pagina.leal_telefono_valido}}
-                -- telefono de calle correcto deel padre{{form_pagina.leal_telefono_correcto}}
-               -- telefono de calle observacion deel padre{{form_pagina.obs_leal_telefono}}
-                -- telefono de calle observacion valida deel padre{{form_pagina.obs_leal_telefono_valido}}
-                
-            </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLProvincia
-                    v-bind:leal_provincia="$props.leal_provincia"
-                    v-bind:leal_provincia_valido="$props.leal_provincia_valido"
-                    v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
-                    v-bind:obs_leal_provincia="$props.obs_leal_provincia"
-                    v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
-                    v-bind:evaluacion="false"
-                    v-bind:testing="mostrar_testing"
-                    v-bind:label="'Provincia de Domicilio Legal'"
-                    v-on:changeprovlegalvalido="updateteprovinciavalido($event)"
-                    v-on:changeprovlegalcorrecto="updateteprovinciacorrecto($event)"
-                    v-on:changeobsrpovlegal="updateobs_provincialegal($event)"
-                    v-on:changeobsprovlegalvalido="updateobs_provincialegal_valido($event)"
-                    v-on:changevalorprovlegal="updatevalorprovincialegalnumlegal($event)"
-
-                >
-                </PaginaDosDatosDLProvincia>
-
-                 -- provincia de calle  deel padre{{form_pagina.leal_provincia}}
-                  -- provincia de calle valida deel padre{{form_pagina.leal_provincia_valido}}
-                -- provincia de calle correcto deel padre{{form_pagina.leal_provincia_correcto}}
-               -- provincia de calle observacion deel padre{{form_pagina.obs_leal_provincia}}
-                -- provincia de calle observacion valida deel padre{{form_pagina.obs_leal_provincia_valido}}
-
-            </div>
-         </div>
-         <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLDepartamento
-                    v-bind:leal_departamento="$props.leal_departamento"
-                    v-bind:leal_departamento_valido="$props.leal_departamento_valido"
-                    v-bind:leal_departamento_correcto="$props.leal_departamento_correcto"
-                    v-bind:obs_leal_departamento="$props.obs_leal_departamento"
-                    v-bind:obs_leal_departamento_valido="$props.obs_leal_departamento_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing="mostrar_testing"
-                    v-bind:label="'Departamento de Domicilio Legal'"
-                    v-on:changedptolegalvalido="updatetedptovalido($event)"
-                    v-on:changedptolegalcorrecto="updatetedptocorrecto($event)"
-                    v-on:changeobsrdptolegal="updateobs_dptolegal($event)"
-                    v-on:changeobsdptolegalvalido="updateobs_dptolegal_valido($event)"
-                    v-on:changevalordptolegal="updatevalordptolegalnumlegal($event)"
-
-                >
-                </PaginaDosDatosDLDepartamento>
-
-                 -- dpto de calle  deel padre{{form_pagina.leal_departamento}}
-                  -- dpto de calle valida deel padre{{form_pagina.leal_departamento_valido}}
-                -- dpto de calle correcto deel padre{{form_pagina.leal_departamento_correcto}}
-               -- dpto de calle observacion deel padre{{form_pagina.obs_leal_departamento}}
-                -- dpto de calle observacion valida deel padre{{form_pagina.obs_leal_departamento_valido}}
-            </div>
-
-
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLocalidad
-                    v-bind:leal_localidad="$props.leal_localidad"
-                    v-bind:leal_localidad_valido="$props.leal_localidad_valido"
-                    v-bind:leal_localidad_correcto="$props.leal_localidad_correcto"
-                    v-bind:obs_leal_localidad="$props.obs_leal_localidad"
-                    v-bind:obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changelocalidadlegalvalido="updatelocalidadvalido($event)"
-                    v-on:changelocalidadlegalcorrecto="updatetelocalidadcorrecto($event)"
-                    v-on:changeobsrlocalidadlegal="updateobs_localidadlegal($event)"
-                    v-on:changeobslocalidadlegalvalido="updateobs_localidadlegal_valido($event)"
-                    v-on:changevalorlocalidadlegal="updatevalorlocalidadlegalnumlegal($event)"
-
-                >
-                </PaginaDosDatosDLocalidad>
-
-                 -- localidad de calle  deel padre{{form_pagina.leal_localidad}}
-                  -- localidad de calle valida deel padre{{form_pagina.leal_localidad_valido}}
-                -- localidad de calle correcto deel padre{{form_pagina.leal_localidad_correcto}}
-               -- localidad de calle observacion deel padre{{form_pagina.obs_leal_localidad}}
-                -- localidad de calle observacion valida deel padre{{form_pagina.obs_leal_localidad_valido}}
-            </div>
-
-         </div>
-
-         <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLCP
-                    v-bind:leal_cp="$props.leal_cp"
-                    v-bind:leal_cp_valido="$props.leal_cp_valido"
-                    v-bind:leal_cp_correcto="$props.leal_cp_correcto"
-                    v-bind:obs_leal_cp="$props.obs_leal_cp"
-                    v-bind:obs_leal_cp_valido="$props.obs_leal_cp_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changecplegalvalido="update_cp_valido($event)"
-                    v-on:changecplegalcorrecto="update_cp_correcto($event)"
-                    v-on:changeobsrcplegal="update_obs_cp_legal($event)"
-                    v-on:changeobscplegalvalido="update_obs_cp_legal_valido($event)"
-                    v-on:changevalorcplegal="update_valor_cp($event)"
-
-                >
-                </PaginaDosDatosDLCP>
-
-                 -- cod postal de calle  deel padre{{form_pagina.leal_cp}}
-                  -- cod postal de calle valida deel padre{{form_pagina.leal_cp_valido}}
-                -- cod postal de calle correcto deel padre{{form_pagina.leal_cp_correcto}}
-               -- cod postal de calle observacion deel padre{{form_pagina.obs_leal_cp}}
-                -- cod postal de calle observacion valida deel padre{{form_pagina.obs_leal_cp_valido}}
-            </div>
-
-
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaDosDatosDLOtro
-                    v-bind:leal_otro="$props.leal_otro"
-                    v-bind:leal_otro_valido="$props.leal_otro_valido"
-                    v-bind:leal_otro_correcto="$props.leal_otro_correcto"
-                    v-bind:obs_leal_otro="$props.obs_leal_otro"
-                    v-bind:obs_leal_otro_valido="$props.obs_leal_otro_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changeotrolegalvalido="update_otro_valido($event)"
-                    v-on:changeotrolegalcorrecto="update_otro_correcto($event)"
-                    v-on:changeobsotrolegal="update_obs_otro_legal($event)"
-                    v-on:changeobsotrolegalvalido="update_obs_otro_legal_valido($event)"
-                    v-on:changevalorotrolegal="update_valor_otro($event)"
-
-                >
-                </PaginaDosDatosDLOtro>
-
-                 -- otro de calle  deel padre{{form_pagina.leal_otro}}
-                  -- otro de calle valida deel padre{{form_pagina.leal_otro_valido}}
-                -- otro de calle correcto deel padre{{form_pagina.leal_otro_correcto}}
-               -- otro de calle observacion deel padre{{form_pagina.obs_leal_otro}}
-                -- otro de calle observacion valida deel padre{{form_pagina.obs_leal_otro_valido}}
-            </div>
-
-         </div>
-
-
-         
-         
-         
-         <!-- <div class="flex items-center justify-center">
-            <PaginaUnoDatosProductorBotones 
-                :link_volver="route('formulario-alta.index')"
-                :titulo_boton_volver="'volver'"
-                :titulo_boton_guardar="'Guardar Datos del Productor'"
-
-                :leal_calle="$props.leal_calle" 
-                :nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
-                :nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
-                :obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
-                :obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
-
-
-                :leal_numero="form.leal_numero"
-                :leal_numero_valido="form.leal_numero_valido"
-                :leal_numero_correcto="form.leal_numero_correcto"
-                :obs_leal_numero="form.obs_leal_numero"
-                :obs_leal_numero_valido="form.obs_leal_numero_valido"
-                :leal_telefono="form.leal_telefono"
-                :leal_telefono_valido="form.leal_telefono_valido"
-                :leal_telefono_correcto="form.leal_telefono_correcto"
-                :obs_leal_telefono="form.obs_leal_telefono"
-                :obs_leal_telefono_valido="form.obs_leal_telefono_valido"
-                :leal_pais="form.leal_pais"
-                :leal_pais_valido="form.leal_pais_valido"
-                :leal_pais_correcto="form.leal_pais_correcto"
-                :obs_leal_pais="form.obs_leal_pais"
-                :obs_leal_pais_valido="form.obs_leal_pais_valido"
-                :leal_provincia="form.leal_provincia"
-                :leal_provincia_valido="form.leal_provincia_valido"
-                :leal_provincia_correcto="form.leal_provincia_correcto"
-                :obs_leal_provincia="form.obs_leal_provincia"
-                :obs_leal_provincia_valido="form.obs_leal_provincia_valido"
-                :leal_departamento="form.leal_departamento"
-                :leal_departamento_valido="form.leal_departamento_valido"
-                :leal_departamento_correcto="form.leal_departamento_correcto"
-                :obs_leal_departamento="form.obs_leal_departamento"
-                :obs_leal_departamento_valido="form.obs_leal_departamento_valido"
-                :leal_localidad="form.leal_localidad"
-                :leal_localidad_valido="form.leal_localidad_valido"
-                :leal_localidad_correcto="form.leal_localidad_correcto"
-                :obs_leal_localidad="form.obs_leal_localidad"
-                :obs_leal_localidad_valido="form.obs_leal_localidad_valido"
-                :leal_cp="form.leal_cp"
-                :leal_cp_valido="form.leal_cp_valido"
-                :leal_cp_correcto="form.leal_cp_correcto"
-                :obs_leal_cp="form.obs_leal_cp"
-                :obs_leal_cp_valido="form.obs_leal_cp_valido"
-                :leal_otro="form.leal_otro"
-                :leal_otro_valido="form.leal_otro_valido"
-                :leal_otro_correcto="form.leal_otro_correcto"
-                :obs_leal_otro="form.obs_leal_otro"
-                :obs_leal_otro_valido="form.obs_leal_otro_valido"
-
-
-                :evaluacion="true"
-                :id="$props.id"
-            ></PaginaUnoDatosProductorBotones>
-         </div> -->
+        <div class="flex justify-end mt-4">
+            <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
+        </div>
     </div>
+
 </template>
 
 <script>
 import JetDialogModal from '@/Jetstream/DialogModal';
 import CardDomLegal from '@/Jetstream/altas/CardDomLegal';
 import CardDomAdmin from '@/Jetstream/altas/CardDomAdmin';
-import PaginaDosDatosDLNombreCalle from "@/Pages/Productors/PaginaDosDatosDLNombreCalle";
+import InputNombreCalle from "@/Pages/Productors/InputNombreCalle";
 
-import PaginaDosDatosDLNumeroCalle from "@/Pages/Productors/PaginaDosDatosDLNumeroCalle";
-import PaginaDosDatosDLTelefono from "@/Pages/Productors/PaginaDosDatosDLTelefono";
-import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvincia";
-import PaginaDosDatosDLDepartamento from "@/Pages/Productors/PaginaDosDatosDLDepartamento";
+import InputNumeroCalle from "@/Pages/Productors/InputNumeroCalle";
+import InputTelefono from "@/Pages/Productors/InputTelefono";
+import SelectProvincia from "@/Pages/Productors/SelectProvincia";
+import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 
-import PaginaDosDatosDLocalidad from "@/Pages/Productors/PaginaDosDatosDLocalidad";
-import PaginaDosDatosDLCP from "@/Pages/Productors/PaginaDosDatosDLCP";
-import PaginaDosDatosDLOtro from "@/Pages/Productors/PaginaDosDatosDLOtro";
-import PaginaUnoDatosProductorConstanciaSociedad from "@/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad";
-import PaginaUnoDatosProductorBotones from "@/Pages/Productors/PaginaUnoDatosProductorBotones";
+import InputLocalidad from "@/Pages/Productors/InputLocalidad";
+import InputCP from "@/Pages/Productors/InputCP";
+import InputOtro from "@/Pages/Productors/InputOtro";
 export default {
      props: [
         'link_volver', 
@@ -403,16 +387,14 @@ export default {
 		JetDialogModal,
 		CardDomLegal,
         CardDomAdmin,
-		PaginaDosDatosDLNombreCalle,
-		PaginaDosDatosDLNumeroCalle,
-		PaginaDosDatosDLTelefono,
-		PaginaDosDatosDLProvincia,
-        PaginaDosDatosDLDepartamento,
-        PaginaDosDatosDLCP,
-		PaginaDosDatosDLocalidad,
-		PaginaDosDatosDLOtro,
-		PaginaUnoDatosProductorConstanciaSociedad,
-		PaginaUnoDatosProductorBotones,
+		InputNombreCalle,
+		InputNumeroCalle,
+		InputTelefono,
+		SelectProvincia,
+        SelectDepartamento,
+        InputCP,
+		InputLocalidad,
+		InputOtro,
 	},
    
   data() {
@@ -422,6 +404,7 @@ export default {
         modal_tittle:'',
         modal_body:'',
         mostrar_testing:false,
+        autoridad_minera: false,
         form_pagina: {
 
             leal_calle : this.$props.leal_calle,

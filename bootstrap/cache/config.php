@@ -477,7 +477,7 @@
   ),
   'jwt' => 
   array (
-    'secret' => NULL,
+    'secret' => 'ckzcDgGoboekRAr3lekltjgfBxJU9SWfpTM8fZEvcpPNFuoWBwIk1sbwIDA3d2ft',
     'keys' => 
     array (
       'public' => NULL,
@@ -911,7 +911,7 @@
     array (
       'font_dir' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\fonts/',
       'font_cache' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\gelu\\AppData\\Local\\Temp',
+      'temp_dir' => 'C:\\Users\\diego\\AppData\\Local\\Temp',
       'chroot' => 'C:\\xampp\\htdocs\\rpmapp',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',

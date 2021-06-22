@@ -93,6 +93,7 @@ class FormAltaProductorController extends Controller
 	{
 		//dd($id);
 		$borradores = FormAltaProductor::find($id);
+		//dd($borradores);
 		return Inertia::render('Productors/EditForm', ['productor' => $borradores]);
 	}
 

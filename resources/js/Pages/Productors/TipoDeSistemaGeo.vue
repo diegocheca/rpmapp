@@ -1,24 +1,27 @@
 <template>
     <div>
-        <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="input_componente"
-            >{{label}}:</label
-        >
-        
-        <select
-            id="input_componente"
-            name="input_componente"
-            v-model="valor_input"
-            v-bind:class=clase_border_de_input
-            :disabled="evaluacion"
-            @input="cambio_input($event.target.value)" 
-        >
-        <option value="1">Geográficas</option>
-        <option value="2">Gauss Kruger Posgar 94</option>
-        <option value="3">Gauss Kruger Posgar 07</option>
-
-        </select>
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        for="input_componente"
+        >{{label}}</label>
+        <div class="flex items-stretch w-full mb-4 relative">
+            <div class="flex">
+                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
+                <img src="http://localhost:8000/svg/pinmap.svg">
+                </span>
+            </div>
+            <select
+                id="input_componente"
+                name="input_componente"
+                v-model="valor_input"
+                v-bind:class=clase_border_de_input
+                :disabled="evaluacion"
+                @input="cambio_input($event.target.value)" 
+            >
+                <option value="1">Geográficas</option>
+                <option value="2">Gauss Kruger Posgar 94</option>
+                <option value="3">Gauss Kruger Posgar 07</option>
+            </select>
+        </div>
         <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}.</p>
         <div class="flex" v-if="evaluacion">
             <div class="w-full md:w-1/3 px-3">

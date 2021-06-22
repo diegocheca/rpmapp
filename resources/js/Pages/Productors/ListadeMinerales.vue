@@ -20,7 +20,7 @@
                     <div class="bg-white shadow-md  rounded-3xl p-4">
                         <div class="flex-none lg:flex">
                             <div class=" h-full w-full lg:h-48 lg:w-48   lg:mb-0 mb-3">
-                                <img src="https://images.unsplash.com/photo-1585399000684-d2f72660f092?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1951&amp;q=80"
+                                <img src="http://localhost:8000/minerales/thumb-Aluminio.png"
                                     alt="Just a flower" class=" w-full  object-scale-down lg:object-cover  lg:h-48 rounded-2xl">
                             </div>
                             <div class="flex-auto ml-3 justify-evenly py-2">

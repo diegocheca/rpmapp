@@ -10,183 +10,221 @@
   }
 </style>
 <template>
-    <div>
-        <h1>{{titulo_pagina}}</h1>
-        <div class="flex items-center justify-center">
-            <CardProductor  
-                :progreso="50"
-                :aprobado="25"
-                :reprobado="25" 
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-            ></CardProductor>
+
+    <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+        <div class="flex justify-center md:justify-end -mt-16  sticky top-0">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/casco-minero.svg" width="50%">
             <label class="flex items-center relative w-max cursor-pointer select-none">
-                    <br>
-                    <br>
-                    <input 
-                    type="checkbox" 
-                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
-                    v-model="mostrar_testing"
-                    />
-                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
-                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
-                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-                </label>
+                <br>
+                <br>
+                <input 
+                type="checkbox" 
+                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                v-model="mostrar_testing"
+                />
+                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+            </label>
+            <label class="flex items-center relative w-max cursor-pointer select-none">
+                <br>
+                <br>
+                <input 
+                type="checkbox" 
+                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
+                v-model="autoridad_minera"
+                />
+                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
+                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
+                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+            </label>
         </div>
-        <div class="flex">
+        <div>
+            <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
+            <br><br>
+            <div class="flex items-center justify-center">
+                <CardProductor  
+                    :progreso="50"
+                    :aprobado="25"
+                    :reprobado="25" 
+                    :lugar="'Argentina, San Juan'"
+                    :updated_at="'hace 10 minutos'"
+                    :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+                    :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                ></CardProductor>
+            </div>
+            <br>
+            <br>
+            <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaUnoDatosProductorRazonSocial 
+                <InputRazonSocial 
                     v-bind:razon_social="$props.razon_social" 
                     v-bind:razon_social_valido="$props.razon_social_valido"
                     v-bind:razon_social_correcto="$props.razon_social_correcto"
                     v-bind:obs_razon_social="$props.obs_razon_social"
                     v-bind:obs_razon_social_valido="$props.obs_razon_social_valido"
-                    v-bind:evaluacion="false"
+                    v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Razon social'"
                     v-bind:testing="mostrar_testing"
                     v-on:changerazonsocialvalido="updaterazonsocialvalido($event)"
                     v-on:changerazonsocialcorrecto="updaterazonsocialcorrecto($event)"
                     v-on:changeobsrazonsocial="updateobsrazonsocial($event)"
                     v-on:changeobsrazonsocialvalido="updateobs_razon_social_valido($event)"
-                    
-                    
-                ></PaginaUnoDatosProductorRazonSocial>
+                ></InputRazonSocial>
                 <div class="flex" v-if="mostrar_testing">
-                        -- Razon Social valor input deel padre{{form_pagina.razon_social}}
-                        -- Razon Social input valido deel padre{{form_pagina.razon_social_valido}}
-                        -- Razon Social rta prod correcta deel padre{{form_pagina.razon_social_correcto}}
-                        -- Razon Social observacion autoridad deel padre{{form_pagina.obs_razon_social}}
-                        -- Razon Social observacion autoridad valida deel padre{{form_pagina.obs_razon_social_valido}}
+                    -- Razon Social valor input deel padre{{form_pagina.razon_social}}
+                    -- Razon Social input valido deel padre{{form_pagina.razon_social_valido}}
+                    -- Razon Social rta prod correcta deel padre{{form_pagina.razon_social_correcto}}
+                    -- Razon Social observacion autoridad deel padre{{form_pagina.obs_razon_social}}
+                    -- Razon Social observacion autoridad valida deel padre{{form_pagina.obs_razon_social_valido}}
                 </div>
-
-               
-                
             </div>
             <div class="w-full md:w-1/2 px-3">
-                <PaginaUnoDatosProductorEmail
+                <InputEmail
                     v-bind:email="$props.email"
                     v-bind:email_valido="$props.email_valido"
                     v-bind:email_correcto="$props.email_correcto"
                     v-bind:obs_email="$props.obs_email"
                     v-bind:obs_email_valido="$props.obs_email_valido"
-                    v-bind:evaluacion="true"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:label="'Email'"
+                    v-bind:testing="mostrar_testing"
                     v-on:changeemailvalido="updateemailvalido($event)"
                     v-on:changeemailcorrecto="updateemailcorrecto($event)"
                     v-on:changeobsemail="updateobs_email($event)"
-                     v-on:changeobsemailvalido="updateobs_email_valido($event)"
-                    
-
-                    
+                    v-on:changeobsemailvalido="updateobs_email_valido($event)"
                 >
-                </PaginaUnoDatosProductorEmail>
-                 -- Emai  deel padre{{form_pagina.email}}
-                  -- Emai valida deel padre{{form_pagina.email_valido}}
-                -- Emai correcto deel padre{{form_pagina.email_correcto}}
-               -- Emai observacion deel padre{{form_pagina.obs_email}}
-                -- Emai observacion valida deel padre{{form_pagina.obs_email_valido}}
-                
-                
+                </InputEmail>
+                <div class="flex" v-if="mostrar_testing">
+                    -- Emai  deel padre{{form_pagina.email}}
+                    -- Emai valida deel padre{{form_pagina.email_valido}}
+                    -- Emai correcto deel padre{{form_pagina.email_correcto}}
+                    -- Emai observacion deel padre{{form_pagina.obs_email}}
+                    -- Emai observacion valida deel padre{{form_pagina.obs_email_valido}}
+                </div>
             </div>
         </div>
          <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaUnoDatosProductorCuit
+                <InputCuit
                     v-bind:cuit="$props.cuit"
                     v-bind:cuit_valido="$props.cuit_valido"
                     v-bind:cuit_correcto="$props.cuit_correcto"
                     v-bind:obs_cuit="$props.obs_cuit"
                     v-bind:obs_cuit_valido="$props.obs_cuit_valido"
-                    v-bind:evaluacion="true"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:label="'Cuit'"
+                    v-bind:testing="mostrar_testing"
                     v-on:changecuitvalido="updatecuitvalido($event)"
                     v-on:changecuitcorrecto="updatecuitcorrecto($event)"
                     v-on:changeobscuit="updateobscuit($event)"
                 >
-                </PaginaUnoDatosProductorCuit>
-                -- cuit valida deel padre{{form_pagina.cuit_valido}}
-                -- cuit correcto deel padre{{form_pagina.cuit_correcto}}
-                -- cuit observacion deel padre{{form_pagina.obs_cuit}}
+                </InputCuit>
+                <div class="flex" v-if="mostrar_testing">
+                    -- cuit valida deel padre{{form_pagina.cuit_valido}}
+                    -- cuit correcto deel padre{{form_pagina.cuit_correcto}}
+                    -- cuit observacion deel padre{{form_pagina.obs_cuit}}
+                </div>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaUnoDatosProductorNumProd
+                <InputNumeroProductor
                     v-bind:numeroproductor="$props.numeroproductor"
                     v-bind:numeroproductor_valido="$props.numeroproductor_valido"
                     v-bind:numeroproductor_correcto="$props.numeroproductor_correcto"
                     v-bind:obs_numeroproductor="$props.obs_numeroproductor"
                     v-bind:obs_numeroproductor_valido="$props.obs_numeroproductor_valido"
-                    v-bind:evaluacion="true"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:label="'Numero de Productor'"
+                    v-bind:testing="mostrar_testing"
                     v-on:changenumprodvalido="updatenumprodvalido($event)"
                     v-on:changenumprodcorrecto="updatenumprodcorrecto($event)"
                     v-on:changeobsnumprod="updateobsnumprod($event)"
                 >
-                </PaginaUnoDatosProductorNumProd>
-
-                -- numero productor valida deel padre{{form_pagina.numeroproductor_valido}}
-                -- numero productor correcto deel padre{{form_pagina.numeroproductor_correcto}}
-                -- numero productor observacion deel padre{{form_pagina.obs_numeroproductor}}
+                </InputNumeroProductor>
+                <div class="flex" v-if="mostrar_testing">
+                    -- numero productor valida deel padre{{form_pagina.numeroproductor_valido}}
+                    -- numero productor correcto deel padre{{form_pagina.numeroproductor_correcto}}
+                    -- numero productor observacion deel padre{{form_pagina.obs_numeroproductor}}
+                </div>
 
             </div>
          </div>
          <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <PaginaUnoDatosProductorTipoSociedad
+                <InputTipoSociedad
                     v-bind:tiposociedad="$props.tiposociedad"
                     v-bind:tiposociedad_valido="$props.tiposociedad_valido"
                     v-bind:tiposociedad_correcto="$props.tiposociedad_correcto"
                     v-bind:obs_tiposociedad="$props.obs_tiposociedad"
                     v-bind:obs_tiposociedad_valido="$props.obs_tiposociedad_valido"
-                    v-bind:evaluacion="false"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:label="'Tipo de Sociedad'"
+                    v-bind:testing="mostrar_testing"
 
                     v-on:changetiposociedadvalido="updatetiposociedadvalido($event)"
                     v-on:changetiposociedadcorrecto="updatetiposociedadcorrecto($event)"
                     v-on:changeobstiposociedad="updateobstiposociedad($event)"
                 >
-                </PaginaUnoDatosProductorTipoSociedad>
-                 -- tipo de sociedad valida deel padre{{form_pagina.tiposociedad_valido}}
-                -- tipo de sociedad correcto deel padre{{form_pagina.tiposociedad_correcto}}
-                -- tipo de sociedad observacion deel padre{{form_pagina.obs_tiposociedad}}
+                </InputTipoSociedad>
+                <div class="flex" v-if="mostrar_testing">
+                    -- tipo de sociedad valida deel padre{{form_pagina.tiposociedad_valido}}
+                    -- tipo de sociedad correcto deel padre{{form_pagina.tiposociedad_correcto}}
+                    -- tipo de sociedad observacion deel padre{{form_pagina.obs_tiposociedad}}
+                </div>
             </div>
          </div>
+         <br>
+         <br>
          <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
-                <PaginaUnoDatosProductorInscripcionDGR
-                    :inscripciondgr="$props.inscripciondgr"
-                    :inscripciondgr_valido="$props.inscripciondgr_valido"
+                <FileInscripcionDGR
+                    :fileinput_valor="$props.inscripciondgr"
+                    :fileinput_valor_valido="$props.inscripciondgr_valido"
                     :inscripciondgr_correcto="$props.inscripciondgr_correcto"
                     :obs_inscripciondgr="$props.obs_inscripciondgr"
                     :obs_inscripciondgr_valido="$props.obs_inscripciondgr_valido"
-                    :evaluacion="true"
+                    :evaluacion="autoridad_minera"
+                    v-bind:label="'Inscripcion DGR'"
+                    v-bind:testing="mostrar_testing"
 
                     v-on:changeinscripciondgrcorrecto="updateinscripciondgrcorrecto($event)"
                     v-on:changeobsinscripciondgr="updateobsinscripciondgr($event)"
                 >
-                </PaginaUnoDatosProductorInscripcionDGR>
-                 -- inscripcion dgr valida deel padre{{form_pagina.inscripciondgr_valido}}
-                -- inscripcion dgr correcto deel padre{{form_pagina.inscripciondgr_correcto}}
-                -- inscripcion dgr observacion deel padre{{form_pagina.obs_inscripciondgr}}
+                </FileInscripcionDGR>
+                <div class="flex" v-if="mostrar_testing">
+                    -- inscripcion dgr valida deel padre{{form_pagina.inscripciondgr_valido}}
+                    -- inscripcion dgr correcto deel padre{{form_pagina.inscripciondgr_correcto}}
+                    -- inscripcion dgr observacion deel padre{{form_pagina.obs_inscripciondgr}}
+                </div>
             </div>
          </div>
+         <br>
+         <br>
          <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
-                <PaginaUnoDatosProductorConstanciaSociedad
-                    :constaciasociedad="$props.constaciasociedad"
-                    :constaciasociedad_valido="$props.constaciasociedad_valido"
-                    :constaciasociedad_correcto="$props.constaciasociedad_correcto"
-                    :obs_constaciasociedad="$props.obs_constaciasociedad"
-                    :obs_constaciasociedad_valido="$props.obs_constaciasociedad_valido"
-                    :evaluacion="true"
+                <FileInscripcionDGR
+                    :fileinput_valor="$props.constaciasociedad"
+                    :fileinput_valor_valido="$props.constaciasociedad_valido"
+                    :inscripciondgr_correcto="$props.constaciasociedad_correcto"
+                    :obs_inscripciondgr="$props.obs_constaciasociedad"
+                    :obs_inscripciondgr_valido="$props.obs_constaciasociedad_valido"
+                    :evaluacion="autoridad_minera"
+                    v-bind:label="'Constancia de sociedad'"
+                    v-bind:testing="mostrar_testing"
                     v-on:changeconstanciasociedadcorrecto="updateconstanciasociedadcorrecto($event)"
                     v-on:changeobsconstanciasociedad="updateobsconstanciasociedad($event)"
                 >
-                </PaginaUnoDatosProductorConstanciaSociedad>
-                -- constancia de sociedad valida deel padre{{form_pagina.constanciasociedad_valido}}
-                -- constancia de sociedad correcto deel padre{{form_pagina.constanciasociedad_correcto}}
-                -- constancia de sociedad observacion deel padre{{form_pagina.obs_constanciasociedad}}
+                </FileInscripcionDGR>
+                <div class="flex" v-if="mostrar_testing">
+                    -- constancia de sociedad valida deel padre{{form_pagina.constanciasociedad_valido}}
+                    -- constancia de sociedad correcto deel padre{{form_pagina.constanciasociedad_correcto}}
+                    -- constancia de sociedad observacion deel padre{{form_pagina.obs_constanciasociedad}}
+                </div>
             </div>
          </div>
+         <br><br>
          <div class="flex items-center justify-center">
-            <PaginaUnoDatosProductorBotones 
+            <BotonesPaginaUna 
                 :link_volver="route('formulario-alta.index')"
                 :titulo_boton_volver="'volver'"
                 :titulo_boton_guardar="'Guardar Datos del Productor'"
@@ -227,22 +265,29 @@
                 :obs_constaciasociedad_valido="$props.obs_constaciasociedad_valido"
                 :evaluacion="true"
                 :id="$props.id"
-            ></PaginaUnoDatosProductorBotones>
+            ></BotonesPaginaUna>
          </div>
+        
+        </div>
+
+
+        <div class="flex justify-end mt-4">
+            <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
+        </div>
     </div>
 </template>
 
 <script>
 import JetDialogModal from '@/Jetstream/DialogModal';
 import CardProductor from '@/Jetstream/altas/CardProductor';
-import PaginaUnoDatosProductorRazonSocial from "@/Pages/Productors/PaginaUnoDatosProductorRazonSocial";
-import PaginaUnoDatosProductorEmail from "@/Pages/Productors/PaginaUnoDatosProductorEmail";
-import PaginaUnoDatosProductorCuit from "@/Pages/Productors/PaginaUnoDatosProductorCuit";
-import PaginaUnoDatosProductorNumProd from "@/Pages/Productors/PaginaUnoDatosProductorNumProd";
-import PaginaUnoDatosProductorTipoSociedad from "@/Pages/Productors/PaginaUnoDatosProductorTipoSociedad";
-import PaginaUnoDatosProductorInscripcionDGR from "@/Pages/Productors/PaginaUnoDatosProductorInscripcionDGR";
+import InputRazonSocial from "@/Pages/Productors/InputRazonSocial";
+import InputEmail from "@/Pages/Productors/InputEmail";
+import InputCuit from "@/Pages/Productors/InputCuit";
+import InputNumeroProductor from "@/Pages/Productors/InputNumeroProductor";
+import InputTipoSociedad from "@/Pages/Productors/InputTipoSociedad";
+import FileInscripcionDGR from "@/Pages/Productors/FileInscripcionDGR";
 import PaginaUnoDatosProductorConstanciaSociedad from "@/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad";
-import PaginaUnoDatosProductorBotones from "@/Pages/Productors/PaginaUnoDatosProductorBotones";
+import BotonesPaginaUna from "@/Pages/Productors/BotonesPaginaUna";
 export default {
      props: [
         'link_volver', 
@@ -293,14 +338,14 @@ export default {
     components: {
 		JetDialogModal,
 		CardProductor,
-		PaginaUnoDatosProductorRazonSocial,
-		PaginaUnoDatosProductorEmail,
-		PaginaUnoDatosProductorCuit,
-		PaginaUnoDatosProductorNumProd,
-		PaginaUnoDatosProductorTipoSociedad,
-		PaginaUnoDatosProductorInscripcionDGR,
+		InputRazonSocial,
+		InputEmail,
+		InputCuit,
+		InputNumeroProductor,
+		InputTipoSociedad,
+		FileInscripcionDGR,
 		PaginaUnoDatosProductorConstanciaSociedad,
-		PaginaUnoDatosProductorBotones,
+		BotonesPaginaUna,
 	},
    
   data() {
@@ -310,6 +355,7 @@ export default {
         modal_tittle:'',
         modal_body:'',
         mostrar_testing: false,
+        autoridad_minera:false,
         form_pagina: {
             razon_social : this.$props.razon_social,
             razon_social_valido: this.$props.razon_social_valido,

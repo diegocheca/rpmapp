@@ -5,12 +5,15 @@
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
 					Editar Productor
 				</h1>
+				
+				
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
 					</div>
 					<br>
 					<hr>
+					
 					<br>
 					<!-- Delete Account Confirmation Modal -->
 						<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
@@ -121,16 +124,18 @@
 						
 				</div>
 		</div>
-
 		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-
-				<div class="flex items-center justify-center">
+				<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
+					<a href="#section_domicilio_legal">
+						<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
+							</svg>
+						</div>
+					</a>
+				</div>
+				<br>
+				<!-- <div class="flex items-center justify-center">
 						<CardProductor  
 							:progreso="form.valor_de_progreso"
 							:aprobado="form.valor_de_aprobado"
@@ -140,31 +145,13 @@
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 						></CardProductor>
-				</div>
-
-				<br>
-				<br>
-				<!-- <PasoUnoEdit
-				:razon_social="form.razon_social"
-				:razon_social_valido="form.razon_social_valido"
-				:razon_social_correcto="form.razon_social_correcto"
-				:obs_razon_social="form.obs_razon_social"
-				:obs_razon_social_valido="form.obs_razon_social_valido"
-				:email="form.email"
-				:email_valido="form.email_valido"
-				:email_correcto="form.email_correcto"
-				:obs_email="form.obs_email"
-				:obs_email_valido="form.obs_email_valido"
-				></PasoUnoEdit> -->
-				<br>
-				<br>
+				</div> -->
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
 					:titulo_boton_volver="'volver'"
 					:titulo_boton_guardar="'Guardar Datos del Productor'"
 					:titulo_pagina="'Pagina datos de Productor'"
-
 
 					:razon_social="form.razon_social" 
 					:razon_social_valido="form.razon_social_valido"
@@ -205,16 +192,7 @@
 					:evaluacion="true"
 					:id="$props.productor.id"
 				>
-
 				</PaginaUnoDatosProductores>
-			<br>
-        <br>
-       
-				<br>
-				<br>
-				<hr>
-				<br>
-				<br>
 				<br>
 				<br>
 				<div id="section_domicilio_legal"></div>
@@ -276,17 +254,10 @@
 					>
 
 				</PaginaDosDatosDomLegal>
-
-				<br>
-				<br>
-				<hr>
-				<br>
-				<br>
-				<br>
 				<br>
 
 			<div class="flex items-center justify-center">
-				<CardDomLegal  
+				<!-- <CardDomLegal  
 							:progreso="form.valor_de_progreso_dos"
 							:aprobado="form.valor_de_aprobado_dos"
 							:reprobado="form.valor_de_reprobado_dos" 
@@ -294,42 +265,23 @@
 							:updated_at="'hace 10 minutos'"
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardDomLegal>
+						></CardDomLegal> -->
 			</div>
-			<br>
-			<br>
-			
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
 			<br>
 			<br>
 
 			<div class="flex items-center justify-center">
-				<CardDomAdmin  
-							:progreso="form.valor_de_progreso_tres"
-							:aprobado="form.valor_de_aprobado_tres"
-							:reprobado="form.valor_de_reprobado_tres" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardDomAdmin>
+				<!-- <CardDomAdmin  
+					:progreso="form.valor_de_progreso_tres"
+					:aprobado="form.valor_de_aprobado_tres"
+					:reprobado="form.valor_de_reprobado_tres" 
+					:lugar="'Argentina, San Juan'"
+					:updated_at="'hace 10 minutos'"
+					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+				></CardDomAdmin> -->
 			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
 			<div id="section_domicilio_administrativo"></div>
-			{{	form.administracion_calle }}
 			<PaginaDosDatosDomLegal
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -388,33 +340,18 @@
 
 			</PaginaDosDatosDomLegal>
 
-			
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
 			<br>
 			<div class="flex items-center justify-center">
-				<CardMinaUno  
-							:progreso="form.valor_de_progreso_cuatro"
-							:aprobado="form.valor_de_aprobado_cuatro"
-							:reprobado="form.valor_de_reprobado_cuatro" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaUno>
+				<!-- <CardMinaUno  
+					:progreso="form.valor_de_progreso_cuatro"
+					:aprobado="form.valor_de_aprobado_cuatro"
+					:reprobado="form.valor_de_reprobado_cuatro" 
+					:lugar="'Argentina, San Juan'"
+					:updated_at="'hace 10 minutos'"
+					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+				></CardMinaUno> -->
 			</div>
-
-
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
 			<div id="section_mina_uno"></div>
 			<PaginaCuatroDatosMinaUno
 				:link_volver="route('formulario-alta.index')"
@@ -767,8 +704,10 @@
 
 
 				</form>
+				
 
 			</div>
+			
 		</div>
 	</app-layout>
 </template>
