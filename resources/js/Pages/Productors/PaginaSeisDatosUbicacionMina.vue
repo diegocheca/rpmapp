@@ -95,6 +95,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing="mostrar_testing"
                     v-bind:label="'Departamento de Ubicacion de la Mina'"
+                    v-bind:lista_departamentos= "lista_departamentos"
                     v-on:changedptolegalvalido="update_dpto_valido($event)"
                     v-on:changedptolegalcorrecto="update_dpto_correcto($event)"
                     v-on:changeobsrdptolegal="updateobs_dpto_legal($event)"
@@ -346,8 +347,12 @@ export default {
             longitud_correcto: this.$props.longitud_correcto,
             obs_longitud: this.$props.obs_longitud,
             obs_longitud_valido: this.$props.obs_longitud_valido,
+            
 
         },
+
+        lista_departamentos:[],
+        lista_localidades:[],
         
             
 
@@ -377,8 +382,21 @@ export default {
             //tengo que enviarsela al padre
         },
         update_valor_provincia(newValue){
-            console.log("traje un"+newValue);
+            let self = this;
+            console.log("cambio la provincia de mi hijo por:"+newValue);
+            
             this.form_pagina.localidad_mina_provincia = newValue;
+            //debo actualizar la lista de departamento que tengo disponibles para elegir
+            axios.post('/datos/traer_departamentos/',{id_prov:newValue})
+                .then(function (response) {
+                    console.log("las deptos son:\n");
+                    self.lista_departamentos = response.data;
+                    console.log(self.lista_departamentos);
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             //tengo que enviarsela al padre
         },
 
@@ -414,6 +432,25 @@ export default {
         update_valor_dpto(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.localidad_mina_departamento = newValue;
+
+            traer_localidades
+
+            let self = this;
+            lista_localidades
+            console.log("cambio la provincia de mi hijo por:"+newValue);
+            
+            this.form_pagina.localidad_mina_provincia = newValue;
+            //debo actualizar la lista de departamento que tengo disponibles para elegir
+            axios.post('/datos/traer_departamentos/',{id_prov:newValue})
+                .then(function (response) {
+                    console.log("las deptos son:\n");
+                    self.lista_departamentos = response.data;
+                    console.log(self.lista_departamentos);
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             //tengo que enviarsela al padre
         },
 

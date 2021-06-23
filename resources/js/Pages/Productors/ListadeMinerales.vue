@@ -67,11 +67,20 @@
                                                 <br>
                                             </div>
                                         </div>
+                                        <div class="grid grid-cols-1 space-y-2"  v-if="$props.tipo_yacimiento === 'segunda'">
+                                            <select
+                                            v-model="mineral.id_mineral"
+                                            @change="cambio_select_mineral_segunda_cat($event, index)"
+                                            >
+                                                <option v-for="opcion in opcionesmineral" v-bind:key="opcion.id" :value="opcion.id">{{opcion.name}}</option>
+                                            </select>
+                                        </div>
+
                                         <select
                                         v-model="mineral.id_mineral"
                                         @change="cambio_select_mineral_segunda_cat($event, index)"
                                         >
-                                            <option v-for="(opcion, index) in opcionesmineral" v-bind:key="index" :value="opcion">{{opcion}}</option>
+                                            <option v-for="opcion in $props.lista_de_minerales" v-bind:key="opcion.id" :value="opcion.id">{{opcion.name}}</option>
                                         </select>
                                     </div>
                                     <div class="flex-1 inline-flex items-center">
@@ -190,6 +199,7 @@ export default {
         'label',
         'label_text_area',
         'tipo_yacimiento',
+        'lista_de_minerales'
     ],
   data() {
     return {
@@ -250,47 +260,7 @@ export default {
                 obs_valida: true,
             }
         ],
-        opcionesmineral : [
-            'Oro',
-            'Plata',
-            'Platino',
-            'Mercurio',
-            'Cobre',
-            'Hierro',
-            'Plomo',
-            'Estaño',
-            'Zinc',
-            'Níquel',
-            'Cobalto',
-            'Bismuto',
-            'Manganeso',
-            'Antimonio',
-            'Wolfram',
-            'Aluminio',
-            'Berilio',
-            'Vanadio',
-            'Cadmio',
-            'Tantalio',
-            'Molibdeno',
-            'Litio',
-            'Potasio',
-            'Hulla',
-            'Lignito',
-            'Antracita',
-            'Uranio',
-            'Torio',
-            'Hidrocarburos Sólidos',
-            'Arsénico',
-            'Cuarzo',
-            'Feldespato',
-            'Mica',
-            'Fluorita',
-            'Fosfatos Calizos',
-            'Azufre',
-            'Boratos',
-            'Piedras Preciosas',
-            'Vapores Endagenos'
-        ],
+        opcionesmineral : this.$props.lista_de_minerales,
         opcionesmineraluno : [],
         index_de_mineral_segunda_cat: '',
         

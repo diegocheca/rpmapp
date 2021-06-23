@@ -20,10 +20,7 @@
             :disabled="evaluacion"
             @input="cambio_input_calle_dpto_legal($event.target.value)" 
             >
-            <option value="Capital">Capital</option>
-            <option value="Chimbas">Chimbas</option>
-            <option value="Rivadavia">Rivadavia</option>
-            <option value="25 de mayo">25 de mayo</option>
+            <option v-for="dpto in $props.lista_departamentos" v-bind:key="dpto.id" :value="dpto.id">{{dpto.nombre}}</option>
             </select>
         </div>
         <p v-bind:class=clase_cartel_nota_legalcalledpto>{{clacartel_nota_legalcalledpto}}.</p>
@@ -80,6 +77,7 @@
             </div>
             <div class="flex">
                 <div v-show="testing_hijo">
+                    {{lista_departamentos}}
                     -- depto calle:{{leal_departamento}}--
                     --depto calle Valido:{{leal_departamento_valido}}--
                     --depto calle Valido local:{{calle_dpto_legal_valido_local}}--
@@ -106,14 +104,7 @@ export default {
         'evaluacion',
         'testing',
         'label',
-
-
-        
-        
-        
-        
-
-
+        'lista_departamentos'
     ],
   data() {
     return {
@@ -165,8 +156,8 @@ export default {
         }
         this.$emit('changeobsrdptolegal',this.$props.obs_leal_departamento)
     },
-    cambio_input_calle_dpto_legal(){
-        if(this.leal_departamento.length <= 4)
+    cambio_input_calle_dpto_legal(value){
+        /*if(this.leal_departamento.length <= 4)
         {
             this.clase_de_input_calle_dpto_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
             this.clacartel_nota_legalcalledpto= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
@@ -186,9 +177,10 @@ export default {
             this.clacartel_nota_legalcalledpto =  'Valor Correcto';
             this.clase_cartel_nota_legalcalledpto =  'text-green-500 text-xs italic';
             this.calle_dpto_legal_valido_local = true;
-        }
-        this.$emit('changedptolegalvalido',this.calle_dpto_legal_valido_local);
-        this.$emit('changevalordptolegal',this.leal_departamento);
+        }*/
+        //this.$emit('changedptolegalvalido',this.calle_dpto_legal_valido_local);
+        
+        this.$emit('changevalordptolegal',value);
      }
   },
 };

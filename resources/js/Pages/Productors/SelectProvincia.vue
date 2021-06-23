@@ -20,10 +20,7 @@
             :disabled="evaluacion"
             @input="cambio_input_calle_prov_legal($event.target.value)" 
             >
-            <option value="San Juan">San Juan</option>
-            <option value="Mendoza">Mendoza</option>
-            <option value="La rioja">La rioja</option>
-            <option value="Buenos Aires">Buenos Aires</option>
+            <option v-for="provincia in lista_provincias" v-bind:key="provincia.id" :value="provincia.id">{{provincia.nombre}}</option>
             </select>
         </div>
         <p v-bind:class=clase_cartel_nota_legalcalleprov>{{cartel_nota_legalcalleprov}}.</p>
@@ -119,7 +116,9 @@ export default {
         calle_prov_legal_valido_local: this.$props.leal_provincia_valido,
         legal_calle_prov_correcto_local: this.$props.leal_provincia_correcto,
         obs_calle_prov_legal_valido_local: this.$props.obs_leal_provincia_valido,
+        leal_provincia_local : this.$props.leal_provincia,
         testing_hijo:false,
+        lista_provincias:[],
         //border-green-500
     }; 
   },
@@ -158,31 +157,54 @@ export default {
         }
         this.$emit('changeobsrpovlegal',this.$props.obs_leal_provincia)
     },
-    cambio_input_calle_prov_legal(){
-        if(this.leal_provincia.length <= 4)
-        {
-            this.clase_de_input_calle_prov_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.cartel_nota_legalcalleprov= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
-            this.clase_cartel_nota_legalcalleprov= 'text-red-500 text-xs italic';
-            this.calle_prov_legal_valido_local = false;
-        }
-        if(this.leal_provincia.length >= 40)
-        {
-            this.clase_de_input_calle_prov_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.cartel_nota_legalcalleprov=  'Valor Incorrecta - debe tener menos de 30 caracteres';
-            this.clase_cartel_nota_legalcalleprov=  'text-red-500 text-xs italic';
-            this.calle_prov_legal_valido_local = false;
-        }
-        if( this.leal_provincia !== '' && this.leal_provincia.length <= 30 && this.leal_provincia.length >= 3)
-        {
-            this.clase_de_input_calle_prov_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.cartel_nota_legalcalleprov =  'Valor Correcto';
-            this.clase_cartel_nota_legalcalleprov =  'text-green-500 text-xs italic';
-            this.calle_prov_legal_valido_local = true;
-        }
-        this.$emit('changeprovlegalvalido',this.calle_prov_legal_valido_local);
-        this.$emit('changevalorprovlegal',this.leal_provincia);
+    cambio_input_calle_prov_legal(value){
+        //alert("cambio la provincia"+value);
+        //voy a buscar los departamento de la provincia
+
+
+
+
+        // if(this.leal_provincia.length <= 4)
+        // {
+        //     this.clase_de_input_calle_prov_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        //     this.cartel_nota_legalcalleprov= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
+        //     this.clase_cartel_nota_legalcalleprov= 'text-red-500 text-xs italic';
+        //     this.calle_prov_legal_valido_local = false;
+        // }
+        // if(this.leal_provincia.length >= 40)
+        // {
+        //     this.clase_de_input_calle_prov_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        //     this.cartel_nota_legalcalleprov=  'Valor Incorrecta - debe tener menos de 30 caracteres';
+        //     this.clase_cartel_nota_legalcalleprov=  'text-red-500 text-xs italic';
+        //     this.calle_prov_legal_valido_local = false;
+        // }
+        // if( this.leal_provincia !== '' && this.leal_provincia.length <= 30 && this.leal_provincia.length >= 3)
+        // {
+        //     this.clase_de_input_calle_prov_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+        //     this.cartel_nota_legalcalleprov =  'Valor Correcto';
+        //     this.clase_cartel_nota_legalcalleprov =  'text-green-500 text-xs italic';
+        //     this.calle_prov_legal_valido_local = true;
+        // }
+        // this.$emit('changeprovlegalvalido',this.calle_prov_legal_valido_local);
+
+
+        this.leal_provincia_local = value;
+        this.$emit('changevalorprovlegal',value);
      }
   },
+  mounted(){
+    let self  = this;
+    this.$nextTick(() => {
+        axios.get('/datos/traer_provincias')
+            .then(function (response) {
+                console.log("las provincias son:\n");
+                self.lista_provincias = response.data;
+                console.log(self.lista_provincias);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+    },
 };
 </script>

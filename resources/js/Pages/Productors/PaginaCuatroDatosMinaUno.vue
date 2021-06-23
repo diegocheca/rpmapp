@@ -306,7 +306,8 @@
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Lista de minerales'"
                         v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
-                        v-bind:tipo_yacimiento="'segunda'"
+                        v-bind:tipo_yacimiento="form_pagina.categoria"
+                        v-bind:lista_de_minerales="lista_de_minerales"
                         v-on:changevalido="update_titulo_contrato_valido($event)"
                         v-on:changecorrecto="update_titulo_contrato_correcto($event)"
                         v-on:changeobs="update_obs_titulo_contrato($event)"
@@ -496,6 +497,7 @@ export default {
             
             
         },
+        lista_de_minerales: [],
         
             
 
@@ -652,9 +654,35 @@ export default {
             //tengo que enviarsela al padre
         },
         update_valor_cat(newValue){
+            let self  =this;
+            //alert("cambie la categoria de:"+newValue);
             console.log("traje un"+newValue);
             this.form_pagina.categoria = newValue;
-            //tengo que enviarsela al padre
+            //alert("cambie la categoria de:"+newValue);
+            let categoria_a_buscar = '';
+            if(newValue === 'primera')
+            {
+                categoria_a_buscar = 'Primera';
+            }
+            if(newValue === 'segunda')
+            {
+                categoria_a_buscar = 'Segunda';
+            }
+            if(newValue === 'tercera')
+            {
+                categoria_a_buscar = 'Tercera';
+            }
+
+           axios.post('/datos/traer_minerales/',{categoria_buscando:categoria_a_buscar})
+                .then(function (response) {
+                    console.log("las manifestaciones son:\n");
+                    self.lista_de_minerales = response.data;
+                    console.log(self.lista_de_minerales);
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
 
 

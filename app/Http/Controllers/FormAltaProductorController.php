@@ -22,6 +22,11 @@ use App\Models\EmailsAConfirmar;
 use App\Models\Productors;
 use App\Models\MinaCantera;
 
+use App\Models\Provincias;
+use App\Models\Departamentos;
+use App\Models\Localidades;
+use App\Models\Minerales;
+
 use \PDF;
 
 use Illuminate\Support\Facades\Storage;
@@ -2195,6 +2200,32 @@ class FormAltaProductorController extends Controller
 		// 	}
 		//}
 	}
+
+	public function traer_provincias_json(){
+		$lista_de_provincias = Provincias::select('id', 'nombre')->get();
+		return response()->json($lista_de_provincias);
+	}
+	public function traer_departamentos_json(Request $request){
+		//dd($request->id_prov);
+		$departamentos = Departamentos::select('id', 'nombre')->where('provincia_id','=', $request->id_prov)->get();
+		return response()->json($departamentos);
+
+	}
+	public function traer_localidades_json(Request $request){
+		//dd($request->id_prov);
+		$departamentos = Departamentos::select('id', 'nombre')->where('provincia_id','=', $request->id_prov)->get();
+		return response()->json($departamentos);
+
+	}
+	
+	public function traer_minerales_json(Request $request){
+		//dd($request->id_manifestacion);
+		$minerales = Minerales::select('id', 'name', 'categoria')->where('categoria','=', $request->categoria_buscando)->get();
+		return response()->json($minerales);
+
+	}
+
+
 
 
 
