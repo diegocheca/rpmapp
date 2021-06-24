@@ -30,11 +30,6 @@ class ReinscripcionesSeeder extends Seeder
             
         ];
 
-        $estados = [
-            'aprobado',
-            'reprobado',
-            'en proceso'
-        ];
         for($i = 0;$i< 100; $i++)
         {
             $nueva_reinscripcion = new Reinscripciones();
@@ -61,7 +56,7 @@ class ReinscripcionesSeeder extends Seeder
             $nueva_reinscripcion->dni = $faker->numberBetween($min=15000000, $max=45000000);
             $nueva_reinscripcion->cargo = $cargos[$faker->numberBetween($min=0, $max=6)];
             $nueva_reinscripcion->created_by = 1;
-            $nueva_reinscripcion->estado = $estados[$faker->numberBetween($min=0, $max=2)];
+            $nueva_reinscripcion->estado = $faker->randomElement(['aprobado','reprobado','en proceso']);
             $nueva_reinscripcion->save();
         }
     }

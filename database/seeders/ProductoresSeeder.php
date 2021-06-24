@@ -82,9 +82,9 @@ class ProductoresSeeder extends Seeder
             $nuevo_productor->numero_expdiente = $faker->numberBetween($min = 1000, $max = 9999);
             $nuevo_productor->created_by = 1;
             $nuevo_productor->estado = 'en proceso';
-            $nuevo_productor->created_at = '2021-03-25 14:42:04';
+            $nuevo_productor->created_at = new Datetime;
             $nuevo_productor->deleted_at = null;
-            $nuevo_productor->updated_at =  '2021-04-22 22:47:22';
+            $nuevo_productor->updated_at = new Datetime;
 
             $nuevo_productor->save();
         }
