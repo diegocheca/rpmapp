@@ -1,16 +1,16 @@
 <?php return array (
   'app' => 
   array (
-    'name' => 'RpmApp',
+    'name' => 'Laravel',
     'env' => 'local',
     'debug' => true,
-    'url' => 'http://localhost:8000',
+    'url' => 'http://localhost',
     'asset_url' => NULL,
     'timezone' => 'UTC',
     'locale' => 'en',
     'fallback_locale' => 'en',
     'faker_locale' => 'en_US',
-    'key' => 'base64:wqwf1/3zRlZEqVvslyGaOXUsYanPrxZh7L3EzZ5LKiU=',
+    'key' => 'base64:pJIOjBApSqCIim4cpIbx+qnycWoB+SyVKwDtQFNjvxI=',
     'cipher' => 'AES-256-CBC',
     'providers' => 
     array (
@@ -192,7 +192,7 @@
       'file' => 
       array (
         'driver' => 'file',
-        'path' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\framework/cache/data',
+        'path' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\framework/cache/data',
       ),
       'memcached' => 
       array (
@@ -232,7 +232,7 @@
         'endpoint' => NULL,
       ),
     ),
-    'prefix' => 'rpmapp_cache',
+    'prefix' => 'laravel_cache',
   ),
   'cors' => 
   array (
@@ -271,7 +271,7 @@
       array (
         'driver' => 'sqlite',
         'url' => NULL,
-        'database' => 'rpmappdb',
+        'database' => 'laravel',
         'prefix' => '',
         'foreign_key_constraints' => true,
       ),
@@ -281,7 +281,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'rpmappdb',
+        'database' => 'laravel',
         'username' => 'root',
         'password' => '',
         'unix_socket' => '',
@@ -301,7 +301,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'rpmappdb',
+        'database' => 'laravel',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -316,7 +316,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '3306',
-        'database' => 'rpmappdb',
+        'database' => 'laravel',
         'username' => 'root',
         'password' => '',
         'charset' => 'utf8',
@@ -331,7 +331,7 @@
         'port' => '5432',
         'database' => 'rpmappdb',
         'username' => 'postgres',
-        'password' => 'Pr0dUcT0R35',
+        'password' => 'qwer1234',
         'charset' => 'utf8',
         'prefix' => '',
         'prefix_indexes' => true,
@@ -346,7 +346,7 @@
       'options' => 
       array (
         'cluster' => 'redis',
-        'prefix' => 'rpmapp_database_',
+        'prefix' => 'laravel_database_',
       ),
       'default' => 
       array (
@@ -374,13 +374,13 @@
       'local' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\app',
+        'root' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\app',
       ),
       'public' => 
       array (
         'driver' => 'local',
-        'root' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\app/public',
-        'url' => 'http://localhost:8000/storage',
+        'root' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\app/public',
+        'url' => 'http://localhost/storage',
         'visibility' => 'public',
       ),
       's3' => 
@@ -396,7 +396,7 @@
     ),
     'links' => 
     array (
-      'C:\\xampp\\htdocs\\rpmapp\\public\\storage' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\app/public',
+      'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\public\\storage' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\app/public',
     ),
   ),
   'fortify-options' => 
@@ -528,13 +528,13 @@
       'single' => 
       array (
         'driver' => 'single',
-        'path' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\logs/laravel.log',
+        'path' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\logs/laravel.log',
         'level' => 'debug',
       ),
       'daily' => 
       array (
         'driver' => 'daily',
-        'path' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\logs/laravel.log',
+        'path' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\logs/laravel.log',
         'level' => 'debug',
         'days' => 14,
       ),
@@ -585,7 +585,7 @@
       ),
       'emergency' => 
       array (
-        'path' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\logs/laravel.log',
+        'path' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\logs/laravel.log',
       ),
     ),
   ),
@@ -597,11 +597,11 @@
       'smtp' => 
       array (
         'transport' => 'smtp',
-        'host' => 'smtp.gmail.com',
-        'port' => '587',
-        'encryption' => 'tls',
-        'username' => 'gismineronacional@gmail.com',
-        'password' => 'deejuagyrepsxtbp',
+        'host' => 'mailhog',
+        'port' => '1025',
+        'encryption' => NULL,
+        'username' => NULL,
+        'password' => NULL,
         'timeout' => NULL,
         'auth_mode' => NULL,
       ),
@@ -634,15 +634,15 @@
     ),
     'from' => 
     array (
-      'address' => 'gismineronacional@gmail.com',
-      'name' => 'RpmApp',
+      'address' => NULL,
+      'name' => 'Laravel',
     ),
     'markdown' => 
     array (
       'theme' => 'default',
       'paths' => 
       array (
-        0 => 'C:\\xampp\\htdocs\\rpmapp\\resources\\views/vendor/mail',
+        0 => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\resources\\views/vendor/mail',
       ),
     ),
   ),
@@ -743,7 +743,7 @@
     'lifetime' => '120',
     'expire_on_close' => false,
     'encrypt' => false,
-    'files' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\framework/sessions',
+    'files' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\framework/sessions',
     'connection' => NULL,
     'table' => 'sessions',
     'store' => NULL,
@@ -752,7 +752,7 @@
       0 => 2,
       1 => 100,
     ),
-    'cookie' => 'rpmapp_session',
+    'cookie' => 'laravel_session',
     'path' => '/',
     'domain' => NULL,
     'secure' => NULL,
@@ -763,9 +763,9 @@
   array (
     'paths' => 
     array (
-      0 => 'C:\\xampp\\htdocs\\rpmapp\\resources\\views',
+      0 => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\resources\\views',
     ),
-    'compiled' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\framework\\views',
+    'compiled' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\framework\\views',
   ),
   'voyager' => 
   array (
@@ -909,10 +909,10 @@
     'orientation' => 'portrait',
     'defines' => 
     array (
-      'font_dir' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\fonts/',
-      'font_cache' => 'C:\\xampp\\htdocs\\rpmapp\\storage\\fonts/',
-      'temp_dir' => 'C:\\Users\\gelu\\AppData\\Local\\Temp',
-      'chroot' => 'C:\\xampp\\htdocs\\rpmapp',
+      'font_dir' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\fonts/',
+      'font_cache' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\storage\\fonts/',
+      'temp_dir' => 'C:\\Users\\KUCHOT~1\\AppData\\Local\\Temp',
+      'chroot' => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp',
       'enable_font_subsetting' => false,
       'pdf_backend' => 'CPDF',
       'default_media_type' => 'screen',
