@@ -1,18 +1,24 @@
 <template>
     <div>
-        <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="numeroproductor"
-            >Numero de Productor:</label
-        >
-        <input
-            id="numeroproductor"
-            name="numeroproductor"
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">{{label}}</label>
+        <div class="flex items-stretch w-full mb-4 relative">
+            <div class="flex">
+                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
+                <svg cxmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M17.35,2.219h-5.934c-0.115,0-0.225,0.045-0.307,0.128l-8.762,8.762c-0.171,0.168-0.171,0.443,0,0.611l5.933,5.934c0.167,0.171,0.443,0.169,0.612,0l8.762-8.763c0.083-0.083,0.128-0.192,0.128-0.307V2.651C17.781,2.414,17.587,2.219,17.35,2.219M16.916,8.405l-8.332,8.332l-5.321-5.321l8.333-8.332h5.32V8.405z M13.891,4.367c-0.957,0-1.729,0.772-1.729,1.729c0,0.957,0.771,1.729,1.729,1.729s1.729-0.772,1.729-1.729C15.619,5.14,14.848,4.367,13.891,4.367 M14.502,6.708c-0.326,0.326-0.896,0.326-1.223,0c-0.338-0.342-0.338-0.882,0-1.224c0.342-0.337,0.881-0.337,1.223,0C14.84,5.826,14.84,6.366,14.502,6.708"></path>
+                </svg>
+                </span>
+            </div>
+            <input 
+            type="text" 
+            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
+            placeholder="@"
             v-model="numeroproductor"
-             v-bind:class=clase_de_input_numprod
+            v-bind:class=clase_de_input_numprod
             :disabled="evaluacion"
-            @input="cambio_input_numprod($event.target.value)" 
-        />
+            @input="cambio_input_numprod($event.target.value)"  
+            >
+        </div>
         <p v-bind:class=clase_cartel_nota_numprod>{{cartel_nota_campo_numprod}}.</p>
         <div class="flex" v-if="evaluacion">
             <div class="w-full md:w-1/3 px-3">
@@ -51,11 +57,33 @@
             </div>
         
         </div>
-        {{numeroproductor}}
-        {{numeroproductor_valido}}
-        {{numeroproductor_correcto}}
-        {{obs_numeroproductor}}
-        {{obs_numeroproductor_valido}}
+        <div class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
+            <div class="flex">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <span class="text-lg font-bold mr-3">Testing hijo</span>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="testing_hijo"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
+            <div class="flex">
+                <div v-show="testing_hijo">
+                    {{numeroproductor}}
+                    {{numeroproductor_valido}}
+                    {{numeroproductor_correcto}}
+                    {{obs_numeroproductor}}
+                    {{obs_numeroproductor_valido}}
+                </div>
+            </div>
+        </div>
+        
     </div>
 </template>
 
@@ -68,6 +96,8 @@ export default {
         'obs_numeroproductor', 
         'obs_numeroproductor_valido',
         'evaluacion',
+        'label',
+        'testing',
     ],
   data() {
     return {
@@ -79,6 +109,7 @@ export default {
         clase_text_area_numprod: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
         clase_cartel_nota_evaluacion_numprod_text_area: 'text-green-500 text-xs italic',
         cartel_nota_evaluacion_numprod_text_area: 'Observacion Correcta',
+        testing_hijo:false,
     };
   },
   methods:{
@@ -112,7 +143,7 @@ export default {
         }
         this.$emit('changeobsnumprod',this.$props.obs_numeroproductor);
     },
-    cambio_input_numprod(){
+    cambio_input_numprod(value){
         if(this.numeroproductor.length <= 4)
         {
             this.clase_de_input_numprod= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
@@ -135,6 +166,7 @@ export default {
             this.numeroproductor_valido_local = true;
         }
         this.$emit('changenumprodvalido',this.numeroproductor_valido_local);
+        this.$emit('changenumprod',value);
 
      }
   },

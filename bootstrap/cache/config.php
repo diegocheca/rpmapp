@@ -468,8 +468,10 @@
     ),
     'features' => 
     array (
-      0 => 'teams',
-      1 => 'account-deletion',
+      0 => 'profile-photos',
+      1 => 'api',
+      2 => 'teams',
+      3 => 'account-deletion',
     ),
     'profile_photo_disk' => 'public',
   ),

@@ -13,20 +13,18 @@
                 </button>
             </template>
         </jet-dialog-modal>
-        <div class="w-full md:w-1/2 px-3">
-            <button
-                type="button"
-                class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-                @click="guardar_avnces_uno"
-            >
-                {{titulo_boton_guardar}}
+        <button
+            type="button"
+            class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
+            @click="guardar_avnces_uno"
+        >
+            {{titulo_boton_guardar}}
+        </button>
+        <a :href="link_volver">
+            <button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
+                {{titulo_boton_volver}}
             </button>
-            <a :href="link_volver">
-                <button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
-                    {{titulo_boton_volver}}
-                </button>
-            </a>
-        </div>
+        </a>
         {{ $props.razon_social}}
         {{ $props.razon_social_valido}}
         {{ $props.razon_social_correcto}}
@@ -47,28 +45,6 @@
         {{ $props.numeroproductor_correcto}}
         {{ $props.obs_numeroproductor}}
         {{ $props.obs_numeroproductor_valido}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 </template>
 
@@ -138,7 +114,7 @@ export default {
             let self = this
             axios.post('/formularios/evaluacion_auto_guardado_uno', {
                     id: this.$props.id,
-                    razon_social:this.$props.razonsocial,
+                    razon_social:this.$props.razon_social,
                     razon_social_valido: this.$props.razon_social_valido,
                     razon_social_correcto: this.$props.razon_social_correcto,
                     obs_razon_social: this.$props.obs_razon_social,
