@@ -142,7 +142,7 @@ export default {
         }
         this.$emit('changeobscuit',this.$props.obs_cuit);
     },
-    cambio_input_cuit(){
+    cambio_input_cuit(value){
         if(this.cuit.length <= 4)
         {
             this.clase_de_input_cuit= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
@@ -165,6 +165,7 @@ export default {
             this.cuit_valido_local = true;
         }
         this.$emit('changecuitvalido',this.cuit_valido_local);
+        this.$emit('changecuit',value);
 
      }
   },

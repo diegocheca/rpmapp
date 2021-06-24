@@ -64,11 +64,11 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Nombre de Calle Domicilio'"
                         v-bind:testing="mostrar_testing"
-                        v-on:changenombrecallevalido="updatenombrecallevalido($event)"
-                        v-on:changenombrecallecorrecto="updatenombrecallecorrecto($event)"
-                        v-on:changeobsnombrecalle="updateobsnombrecalle($event)"
-                        v-on:changeobsnombrecallevalido="updateobsnombrecallevalido($event)"
-                        v-on:changevalornombrecalle="updatevalornombrecalle($event)"
+                        v-on:changenombrecallevalido="update_nombre_calle_valido($event)"
+                        v-on:changenombrecallecorrecto="update_nombre_calle_correcto($event)"
+                        v-on:changeobsnombrecalle="update_obs_nombre_calle($event)"
+                        v-on:changeobsnombrecallevalido="update_obs_nombre_calle_validacion($event)"
+                        v-on:changevalornombrecalle="update_valor_nombre_calle($event)"
                     ></InputNombreCalle>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
@@ -92,11 +92,11 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Número de Calle Domicilio'"
                         v-bind:testing="mostrar_testing"
-                        v-on:changetelnumlegalvalido="updatenumlegalvalido($event)"
-                        v-on:changetelnumlegalcorrecto="updatenumlegalcorrecto($event)"
-                        v-on:changeobstelnumlegal="updateobs_numlegal($event)"
-                        v-on:changeobstelnumlegalvalido="updateobs_numlegal_valido($event)"
-                        v-on:changevalornumlegal="updatevalornumlegal($event)"
+                        v-on:changetelnumlegalvalido="update_num_legal_valido($event)"
+                        v-on:changetelnumlegalcorrecto="update_num_legal_correcto($event)"
+                        v-on:changeobstelnumlegal="update_obs_num_legal($event)"
+                        v-on:changeobstelnumlegalvalido="update_obs_num_legal_valido($event)"
+                        v-on:changevalornumlegal="update_valor_num_legal($event)"
                     >
                     </InputNumeroCalle>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans"  v-if="mostrar_testing">
@@ -126,11 +126,11 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Telefono de Domicilio'"
                         v-bind:testing="mostrar_testing"
-                        v-on:changetellegalvalido="updatetelegalvalido($event)"
-                        v-on:changetellegalcorrecto="updatetellegalcorrecto($event)"
-                        v-on:changeobstellegal="updateobs_tellegal($event)"
-                        v-on:changeobstellegalvalido="updateobs_tellegal_valido($event)"
-                        v-on:changevalortellegal="updatevalortellegal($event)"
+                        v-on:changetellegalvalido="update_tel_legal_valido($event)"
+                        v-on:changetellegalcorrecto="update_tel_legal_correcto($event)"
+                        v-on:changeobstellegal="update_obs_tel_legal($event)"
+                        v-on:changeobstellegalvalido="update_obs_tel_legal_valido($event)"
+                        v-on:changevalortellegal="update_valor_tel_legal($event)"
                     >
                     </InputTelefono>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
@@ -157,11 +157,11 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Provincia de Domicilio Legal'"
-                        v-on:changeprovlegalvalido="updateteprovinciavalido($event)"
-                        v-on:changeprovlegalcorrecto="updateteprovinciacorrecto($event)"
-                        v-on:changeobsrpovlegal="updateobs_provincialegal($event)"
-                        v-on:changeobsprovlegalvalido="updateobs_provincialegal_valido($event)"
-                        v-on:changevalorprovlegal="updatevalorprovincialegalnumlegal($event)"
+                        v-on:changeprovlegalvalido="update_provincia_valido($event)"
+                        v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
+                        v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
+                        v-on:changeobsprovlegalvalido="update_obs_provincia_legal_valido($event)"
+                        v-on:changevalorprovlegal="update_valor_provincia_legal_num_legal($event)"
 
                     >
                     </SelectProvincia>
@@ -189,12 +189,12 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Departamento de Domicilio Legal'"
-                        v-on:changedptolegalvalido="updatetedptovalido($event)"
-                        v-on:changedptolegalcorrecto="updatetedptocorrecto($event)"
-                        v-on:changeobsrdptolegal="updateobs_dptolegal($event)"
-                        v-on:changeobsdptolegalvalido="updateobs_dptolegal_valido($event)"
-                        v-on:changevalordptolegal="updatevalordptolegalnumlegal($event)"
-
+                        v-bind:lista_departamentos= "lista_departamentos"
+                        v-on:changedptolegalvalido="update_dpto_valido($event)"
+                        v-on:changedptolegalcorrecto="update_dpto_correcto($event)"
+                        v-on:changeobsrdptolegal="update_obs_dpto_legal($event)"
+                        v-on:changeobsdptolegalvalido="update_obs_dpto_legal_valido($event)"
+                        v-on:changevalordptolegal="update_valor_dpto_legal_num_legal($event)"
                     >
                     </SelectDepartamento>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
@@ -219,11 +219,11 @@
                          v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Localidad del Domicilio Legal'"
-                        v-on:changelocalidadlegalvalido="updatelocalidadvalido($event)"
-                        v-on:changelocalidadlegalcorrecto="updatetelocalidadcorrecto($event)"
-                        v-on:changeobsrlocalidadlegal="updateobs_localidadlegal($event)"
-                        v-on:changeobslocalidadlegalvalido="updateobs_localidadlegal_valido($event)"
-                        v-on:changevalorlocalidadlegal="updatevalorlocalidadlegalnumlegal($event)"
+                        v-on:changelocalidadlegalvalido="update_localidad_valido($event)"
+                        v-on:changelocalidadlegalcorrecto="update_localidad_correcto($event)"
+                        v-on:changeobsrlocalidadlegal="update_obs_localidad_legal($event)"
+                        v-on:changeobslocalidadlegalvalido="update_obs_localidad_legal_valido($event)"
+                        v-on:changevalorlocalidadlegal="update_valor_localidad_legal_num_legal($event)"
 
                     >
                     </InputLocalidad>
@@ -308,53 +308,55 @@
             <BotonesPaginaDos 
                 :link_volver="route('formulario-alta.index')"
                 :titulo_boton_volver="'volver'"
-                :titulo_boton_guardar="'Guardar Datos del Productor'"
+                :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
 
-                :leal_calle="$props.leal_calle"
-                :nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
-                :nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
-                :obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
-                :obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
-                :leal_numero="$props.leal_numero"
-                :leal_numero_valido="$props.leal_numero_valido"
-                :leal_numero_correcto="$props.leal_numero_correcto"
-                :obs_leal_numero="$props.obs_leal_numero"
-                :obs_leal_numero_valido="$props.obs_leal_numero_valido"
-                :leal_telefono="$props.leal_telefono"
-                :leal_telefono_valido="$props.leal_telefono_valido"
-                :leal_telefono_correcto="$props.leal_telefono_correcto"
-                :obs_leal_telefono="$props.obs_leal_telefono"
-                :obs_leal_telefono_valido="$props.obs_leal_telefono_valido"
-                :leal_pais="$props.leal_pais"
-                :leal_pais_valido="$props.leal_pais_valido"
-                :leal_pais_correcto="$props.leal_pais_correcto"
-                :obs_leal_pais="$props.obs_leal_pais"
-                :obs_leal_pais_valido="$props.obs_leal_pais_valido"
-                :leal_provincia="$props.leal_provincia"
-                :leal_provincia_valido="$props.leal_provincia_valido"
-                :leal_provincia_correcto="$props.leal_provincia_correcto"
-                :obs_leal_provincia="$props.obs_leal_provincia"
-                :obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
-                :leal_departamento="$props.leal_departamento"
-                :leal_departamento_valido="$props.leal_departamento_valido"
-                :leal_departamento_correcto="$props.leal_departamento_correcto"
-                :obs_leal_departamento="$props.obs_leal_departamento"
-                :obs_leal_departamento_valido="$props.obs_leal_departamento_valido"
-                :leal_localidad="$props.leal_localidad"
-                :leal_localidad_valido="$props.leal_localidad_valido"
-                :leal_localidad_correcto="$props.leal_localidad_correcto"
-                :obs_leal_localidad="$props.obs_leal_localidad"
-                :obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
-                :leal_cp="$props.leal_cp"
-                :leal_cp_valido="$props.leal_cp_valido"
-                :leal_cp_correcto="$props.leal_cp_correcto"
-                :obs_leal_cp="$props.obs_leal_cp"
-                :obs_leal_cp_valido="$props.obs_leal_cp_valido"
-                :leal_otro="$props.leal_otro"
-                :leal_otro_valido="$props.leal_otro_valido"
-                :leal_otro_correcto="$props.leal_otro_correcto"
-                :obs_leal_otro="$props.obs_leal_otro"
-                :obs_leal_otro_valido="$props.obs_leal_otro_valido"
+                :leal_calle="form_pagina.leal_calle"
+                :nombre_calle_legal_valido="form_pagina.nombre_calle_legal_valido"
+                :nombre_calle_legal_correcto="form_pagina.nombre_calle_legal_correcto"
+                :obs_nombre_calle_legal="form_pagina.obs_nombre_calle_legal"
+                :obs_nombre_calle_legal_valido="form_pagina.obs_nombre_calle_legal_valido"
+                :leal_numero="form_pagina.leal_numero"
+                :leal_numero_valido="form_pagina.leal_numero_valido"
+                :leal_numero_correcto="form_pagina.leal_numero_correcto"
+                :obs_leal_numero="form_pagina.obs_leal_numero"
+                :obs_leal_numero_valido="form_pagina.obs_leal_numero_valido"
+                :leal_telefono="form_pagina.leal_telefono"
+                :leal_telefono_valido="form_pagina.leal_telefono_valido"
+                :leal_telefono_correcto="form_pagina.leal_telefono_correcto"
+                :obs_leal_telefono="form_pagina.obs_leal_telefono"
+                :obs_leal_telefono_valido="form_pagina.obs_leal_telefono_valido"
+                :leal_pais="form_pagina.leal_pais"
+                :leal_pais_valido="form_pagina.leal_pais_valido"
+                :leal_pais_correcto="form_pagina.leal_pais_correcto"
+                :obs_leal_pais="form_pagina.obs_leal_pais"
+                :obs_leal_pais_valido="form_pagina.obs_leal_pais_valido"
+                :leal_provincia="form_pagina.leal_provincia"
+                :leal_provincia_valido="form_pagina.leal_provincia_valido"
+                :leal_provincia_correcto="form_pagina.leal_provincia_correcto"
+                :obs_leal_provincia="form_pagina.obs_leal_provincia"
+                :obs_leal_provincia_valido="form_pagina.obs_leal_provincia_valido"
+                :leal_departamento="form_pagina.leal_departamento"
+                :leal_departamento_valido="form_pagina.leal_departamento_valido"
+                :leal_departamento_correcto="form_pagina.leal_departamento_correcto"
+                :obs_leal_departamento="form_pagina.obs_leal_departamento"
+                :obs_leal_departamento_valido="form_pagina.obs_leal_departamento_valido"
+                :leal_localidad="form_pagina.leal_localidad"
+                :leal_localidad_valido="form_pagina.leal_localidad_valido"
+                :leal_localidad_correcto="form_pagina.leal_localidad_correcto"
+                :obs_leal_localidad="form_pagina.obs_leal_localidad"
+                :obs_leal_localidad_valido="form_pagina.obs_leal_localidad_valido"
+                :leal_cp="form_pagina.leal_cp"
+                :leal_cp_valido="form_pagina.leal_cp_valido"
+                :leal_cp_correcto="form_pagina.leal_cp_correcto"
+                :obs_leal_cp="form_pagina.obs_leal_cp"
+                :obs_leal_cp_valido="form_pagina.obs_leal_cp_valido"
+                :leal_otro="form_pagina.leal_otro"
+                :leal_otro_valido="form_pagina.leal_otro_valido"
+                :leal_otro_correcto="form_pagina.leal_otro_correcto"
+                :obs_leal_otro="form_pagina.obs_leal_otro"
+                :obs_leal_otro_valido="form_pagina.obs_leal_otro_valido"
+
+                :donde_guardar="$props.donde_estoy"
 
                 :evaluacion="true"
                 :id="$props.id"
@@ -437,6 +439,8 @@ export default {
         'leal_otro_correcto',
         'obs_leal_otro',
         'obs_leal_otro_valido',
+
+        'donde_estoy',
 
         'evaluacion',
         'id'
@@ -525,144 +529,145 @@ export default {
 
 
         },
+        lista_departamentos:[],
+        lista_localidades:[],
     };
   },
   methods:{
       cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
-        updatenombrecallevalido(newValue){
+        //FUNCIONES DE NOMBRE DE CALLE
+        update_nombre_calle_valido(newValue){
                 this.form_pagina.nombre_calle_legal_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatenombrecallecorrecto(newValue){
+        update_nombre_calle_correcto(newValue){
             this.form_pagina.nombre_calle_legal_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobsnombrecalle(newValue){
+        update_obs_nombre_calle(newValue){
             this.form_pagina.obs_nombre_calle_legal = newValue;
             //tengo que enviarsela al padre
         },
-        updateobsnombrecallevalido(newValue){
+        update_obs_nombre_calle_validacion(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.obs_nombre_calle_legal_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalornombrecalle(newValue){
+        update_valor_nombre_calle(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.leal_calle = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-        updatenumlegalvalido(newValue){
+        //FUNCIONES DE Numero de calle
+        update_num_legal_valido(newValue){
             this.form_pagina.leal_numero_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatenumlegalcorrecto(newValue){
+        update_num_legal_correcto(newValue){
             this.form_pagina.leal_numero_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_numlegal(newValue){
+        update_obs_num_legal(newValue){
             this.form_pagina.obs_leal_numero = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_numlegal_valido(newValue){
+        update_obs_num_legal_valido(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.obs_leal_numero_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalornumlegal(newValue){
+        update_valor_num_legal(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.leal_numero = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-        
-        updatetelegalvalido(newValue){
-            this.form_pagina.leal_numero_valido = newValue;
+        //FUNCIONES DE TELEFONO
+        update_tel_legal_valido(newValue){
+            this.form_pagina.leal_telefono_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatetellegalcorrecto(newValue){
-            this.form_pagina.leal_numero_correcto = newValue;
+        update_tel_legal_correcto(newValue){
+            this.form_pagina.leal_telefono_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_tellegal(newValue){
-            this.form_pagina.obs_leal_numero = newValue;
+        update_obs_tel_legal(newValue){
+            this.form_pagina.obs_leal_telefono = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_tellegal_valido(newValue){
+        update_obs_tel_legal_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_leal_numero_valido = newValue;
+            this.form_pagina.obs_leal_telefono_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalortellegal(newValue){
+        update_valor_tel_legal(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.leal_numero = newValue;
+            this.form_pagina.leal_telefono = newValue;
             //tengo que enviarsela al padre
         },
-        
-        
-
-
-
-
-
-
-
-        updateteprovinciavalido(newValue){
+        // FUNCIONES  DE PROVINCIA
+        update_provincia_valido(newValue){
             this.form_pagina.leal_provincia_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updateteprovinciacorrecto(newValue){
+        update_provincia_correcto(newValue){
             this.form_pagina.leal_provincia_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_provincialegal(newValue){
+        update_obs_provincia_legal(newValue){
             this.form_pagina.obs_leal_provincia = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_provincialegal_valido(newValue){
+        update_obs_provincia_legal_valido(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.obs_leal_provincia_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalorprovincialegalnumlegal(newValue){
-            console.log("traje un"+newValue);
+        update_valor_provincia_legal_num_legal(newValue){
+            let self = this;
+            console.log("cambio la provincia de mi hijo por:"+newValue);
+            
+            //this.form_pagina.localidad_mina_provincia = newValue;
             this.form_pagina.leal_provincia = newValue;
+            
+            //debo actualizar la lista de departamento que tengo disponibles para elegir
+            axios.post('/datos/traer_departamentos/',{id_prov:newValue})
+                .then(function (response) {
+                    console.log("las deptos son:\n");
+                    self.lista_departamentos = response.data;
+                    console.log(self.lista_departamentos);
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             //tengo que enviarsela al padre
         },
 
+     
 
 
 
-        updatetedptovalido(newValue){
+
+        update_dpto_valido(newValue){
             this.form_pagina.leal_departamento_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatetedptocorrecto(newValue){
+        update_dpto_correcto(newValue){
             this.form_pagina.leal_departamento_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_dptolegal(newValue){
+        update_obs_dpto_legal(newValue){
             this.form_pagina.obs_leal_departamento = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_dptolegal_valido(newValue){
+        update_obs_dpto_legal_valido(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.obs_leal_departamento_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalordptolegalnumlegal(newValue){
+        update_valor_dpto_legal_num_legal(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.leal_departamento = newValue;
             //tengo que enviarsela al padre
@@ -674,24 +679,24 @@ export default {
 
 
 
-        updatelocalidadvalido(newValue){
+        update_localidad_valido(newValue){
             this.form_pagina.leal_localidad_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatetelocalidadcorrecto(newValue){
+        update_localidad_correcto(newValue){
             this.form_pagina.leal_localidad_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_localidadlegal(newValue){
+        update_obs_localidad_legal(newValue){
             this.form_pagina.obs_leal_localidad = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_localidadlegal_valido(newValue){
+        update_obs_localidad_legal_valido(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.obs_leal_localidad_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatevalorlocalidadlegalnumlegal(newValue){
+        update_valor_localidad_legal_num_legal(newValue){
             console.log("traje un"+newValue);
             this.form_pagina.leal_localidad = newValue;
             //tengo que enviarsela al padre

@@ -15,7 +15,7 @@
         </jet-dialog-modal>
         <button
             type="button"
-            class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
+            class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
             @click="guardar_avnces_uno"
         >
             {{titulo_boton_guardar}}
@@ -114,7 +114,7 @@ export default {
             let self = this
             axios.post('/formularios/evaluacion_auto_guardado_uno', {
                     id: this.$props.id,
-                    razon_social:this.$props.razonsocial,
+                    razon_social:this.$props.razon_social,
                     razon_social_valido: this.$props.razon_social_valido,
                     razon_social_correcto: this.$props.razon_social_correcto,
                     obs_razon_social: this.$props.obs_razon_social,

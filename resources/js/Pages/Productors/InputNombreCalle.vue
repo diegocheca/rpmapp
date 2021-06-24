@@ -153,7 +153,7 @@ export default {
         }
         this.$emit('changeobsnombrecalle',this.$props.obs_nombre_calle_legal)
     },
-    cambio_input_calle_legal(){
+    cambio_input_calle_legal(value){
         if(this.leal_calle.length <= 4)
         {
             this.clase_de_input_calle_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
@@ -176,7 +176,7 @@ export default {
             this.calle_legal_valido_local = true;
         }
         this.$emit('changenombrecallevalido',this.calle_legal_valido_local);
-        this.$emit('changevalornombrecalle',this.leal_calle);
+        this.$emit('changevalornombrecalle',value);
         
 
 

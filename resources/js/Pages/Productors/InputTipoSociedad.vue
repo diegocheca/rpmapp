@@ -145,7 +145,7 @@ export default {
         }
         this.$emit('changeobstiposociedad',this.$props.obs_tiposociedad);
     },
-    cambio_input_tiposociedad(){
+    cambio_input_tiposociedad(value){
         if(this.tiposociedad.length <= 4)
         {
             this.clase_de_input_tiposociedad= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
@@ -168,6 +168,7 @@ export default {
             this.tiposociedad_valido_local = true;
         }
         this.$emit('changetiposociedadvalido',this.tiposociedad_valido_local);
+        this.$emit('changetiposociedad',value);
 
      }
   },

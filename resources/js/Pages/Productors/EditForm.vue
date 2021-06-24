@@ -246,6 +246,8 @@
 					:obs_leal_otro="form.obs_leal_otro"
 					:obs_leal_otro_valido="form.obs_leal_otro_valido"
 
+					:donde_estoy="'legal'"
+
 					:evaluacion="true"
 					:id="$props.productor.id"
 					>
@@ -328,6 +330,8 @@
 				:leal_otro_correcto="form.administracion_otro_correcto"
 				:obs_leal_otro="form.obs_administracion_otro"
 				:obs_leal_otro_valido="form.obs_administracion_otro_valido"
+
+				:donde_estoy="'administrativo'"
 
 				:evaluacion="true"
 				:id="$props.productor.id"
@@ -807,42 +811,42 @@ export default {
 
 				leal_calle: this.$props.productor.leal_calle,
 				nombre_calle_legal_valido:  true,
-				nombre_calle_legal_correcto: 'nada',
-				obs_nombre_calle_legal: '',
-				obs_nombre_calle_legal_valido: false,
+				nombre_calle_legal_correcto: this.$props.productor.leal_calle_correcto,
+				obs_nombre_calle_legal: this.$props.productor.obs_leal_calle,
+				obs_nombre_calle_legal_valido: true,
 
 				leal_numero: this.$props.productor.leal_numero,
 				leal_numero_valido:  true,
-				leal_numero_correcto: 'nada',
-				obs_leal_numero: '',
+				leal_numero_correcto: this.$props.productor.leal_numero_correcto,
+				obs_leal_numero: this.$props.productor.obs_leal_numero,
 				obs_leal_numero_valido: false,
 
 
 				leal_telefono: this.$props.productor.leal_telefono,
 				leal_telefono_valido:  true,
-				leal_telefono_correcto: 'nada',
-				obs_leal_telefono: '',
+				leal_telefono_correcto: this.$props.productor.leal_telefono_correcto,
+				obs_leal_telefono: this.$props.productor.obs_leal_telefono,
 				obs_leal_telefono_valido: false,
 
 
-				leal_pais: this.$props.productor.leal_pais,
+				leal_pais: 'Argentina',
 				leal_pais_valido:  true,
-				leal_pais_correcto: 'nada',
+				leal_pais_correcto: true,
 				obs_leal_pais: '',
 				obs_leal_pais_valido: false,
 
 
 				leal_provincia: this.$props.productor.leal_provincia,
 				leal_provincia_valido:  true,
-				leal_provincia_correcto: 'nada',
-				obs_leal_provincia: '',
+				leal_provincia_correcto: this.$props.productor.leal_provincia_correcto,
+				obs_leal_provincia: this.$props.productor.obs_leal_provincia,
 				obs_leal_provincia_valido: false,
 
 
 				leal_departamento: this.$props.productor.leal_departamento,
 				leal_departamento_valido:  true,
-				leal_departamento_correcto: 'nada',
-				obs_leal_departamento: '',
+				leal_departamento_correcto: this.$props.productor.leal_departamento_correcto,
+				obs_leal_departamento: this.$props.productor.obs_leal_departamento,
 				obs_leal_departamento_valido: false,
 
 				leal_localidad: this.$props.productor.leal_localidad,
@@ -855,8 +859,8 @@ export default {
 
 				leal_cp: this.$props.productor.leal_cp,
 				leal_cp_valido:  true,
-				leal_cp_correcto: 'nada',
-				obs_leal_cp: '',
+				leal_cp_correcto: this.$props.productor.leal_cp_correcto,
+				obs_leal_cp: this.$props.productor.obs_leal_cp,
 				obs_leal_cp_valido: false,
 
 
@@ -864,8 +868,8 @@ export default {
 
 				leal_otro: this.$props.productor.leal_otro,
 				leal_otro_valido:  true,
-				leal_otro_correcto: 'nada',
-				obs_leal_otro: '',
+				leal_otro_correcto: this.$props.productor.leal_otro_correcto,
+				obs_leal_otro: this.$props.productor.obs_leal_otro,
 				obs_leal_otro_valido: false,
 
 

@@ -66,10 +66,11 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Razon social'"
                     v-bind:testing="mostrar_testing"
-                    v-on:changerazonsocialvalido="updaterazonsocialvalido($event)"
-                    v-on:changerazonsocialcorrecto="updaterazonsocialcorrecto($event)"
-                    v-on:changeobsrazonsocial="updateobsrazonsocial($event)"
+                    v-on:changerazonsocialvalido="update_razon_social_valido($event)"
+                    v-on:changerazonsocialcorrecto="update_razon_social_correcto($event)"
+                    v-on:changeobsrazonsocial="update_obs_razon_social($event)"
                     v-on:changeobsrazonsocialvalido="updateobs_razon_social_valido($event)"
+                    v-on:changerazonsocial="update_razon_social($event)"
                 ></InputRazonSocial>
                 <div class="flex" v-if="mostrar_testing">
                     -- Razon Social valor input deel padre{{form_pagina.razon_social}}
@@ -89,10 +90,11 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Email'"
                     v-bind:testing="mostrar_testing"
-                    v-on:changeemailvalido="updateemailvalido($event)"
-                    v-on:changeemailcorrecto="updateemailcorrecto($event)"
-                    v-on:changeobsemail="updateobs_email($event)"
-                    v-on:changeobsemailvalido="updateobs_email_valido($event)"
+                    v-on:changeemailvalido="update_email_valido($event)"
+                    v-on:changeemailcorrecto="update_email_correcto($event)"
+                    v-on:changeobsemail="update_obs_email($event)"
+                    v-on:changeobsemailvalido="update_obs_email_valido($event)"
+                    v-on:changeemail="update_email($event)"
                 >
                 </InputEmail>
                 <div class="flex" v-if="mostrar_testing">
@@ -115,9 +117,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Cuit'"
                     v-bind:testing="mostrar_testing"
-                    v-on:changecuitvalido="updatecuitvalido($event)"
-                    v-on:changecuitcorrecto="updatecuitcorrecto($event)"
-                    v-on:changeobscuit="updateobscuit($event)"
+                    v-on:changecuitvalido="update_cuit_valido($event)"
+                    v-on:changecuitcorrecto="update_cuit_correcto($event)"
+                    v-on:changeobscuit="update_obs_cuit($event)"
+                    v-on:changecuit="update_cuit($event)"
                 >
                 </InputCuit>
                 <div class="flex" v-if="mostrar_testing">
@@ -136,9 +139,11 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Numero de Productor'"
                     v-bind:testing="mostrar_testing"
-                    v-on:changenumprodvalido="updatenumprodvalido($event)"
-                    v-on:changenumprodcorrecto="updatenumprodcorrecto($event)"
-                    v-on:changeobsnumprod="updateobsnumprod($event)"
+                    v-on:changenumprodvalido="update_num_prod_valido($event)"
+                    v-on:changenumprodcorrecto="update_num_prod_correcto($event)"
+                    v-on:changeobsnumprod="update_obs_num_prod($event)"
+                    v-on:changenumprod="update_num_prod($event)"
+                    
                 >
                 </InputNumeroProductor>
                 <div class="flex" v-if="mostrar_testing">
@@ -160,10 +165,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Tipo de Sociedad'"
                     v-bind:testing="mostrar_testing"
-
-                    v-on:changetiposociedadvalido="updatetiposociedadvalido($event)"
-                    v-on:changetiposociedadcorrecto="updatetiposociedadcorrecto($event)"
-                    v-on:changeobstiposociedad="updateobstiposociedad($event)"
+                    v-on:changetiposociedadvalido="update_tipo_sociedad_valido($event)"
+                    v-on:changetiposociedadcorrecto="update_tipo_sociedad_correcto($event)"
+                    v-on:changeobstiposociedad="update_obs_tipo_sociedad($event)"
+                    v-on:changetiposociedad="update_tipo_sociedad($event)"
                 >
                 </InputTipoSociedad>
                 <div class="flex" v-if="mostrar_testing">
@@ -187,8 +192,8 @@
                     v-bind:label="'Inscripcion DGR'"
                     v-bind:testing="mostrar_testing"
 
-                    v-on:changeinscripciondgrcorrecto="updateinscripciondgrcorrecto($event)"
-                    v-on:changeobsinscripciondgr="updateobsinscripciondgr($event)"
+                    v-on:changeinscripciondgrcorrecto="update_inscripcion_dgr_correcto($event)"
+                    v-on:changeobsinscripciondgr="update_obs_inscripcion_dgr($event)"
                 >
                 </FileInscripcionDGR>
                 <div class="flex" v-if="mostrar_testing">
@@ -211,8 +216,8 @@
                     :evaluacion="autoridad_minera"
                     v-bind:label="'Constancia de sociedad'"
                     v-bind:testing="mostrar_testing"
-                    v-on:changeconstanciasociedadcorrecto="updateconstanciasociedadcorrecto($event)"
-                    v-on:changeobsconstanciasociedad="updateobsconstanciasociedad($event)"
+                    v-on:changeconstanciasociedadcorrecto="update_constancia_sociedad_correcto($event)"
+                    v-on:changeobsconstanciasociedad="update_obs_constancia_sociedad($event)"
                 >
                 </FileInscripcionDGR>
                 <div class="flex" v-if="mostrar_testing">
@@ -228,41 +233,41 @@
                 :link_volver="route('formulario-alta.index')"
                 :titulo_boton_volver="'volver'"
                 :titulo_boton_guardar="'Guardar Datos del Productor'"
-                :razon_social="$props.razon_social" 
-                :razon_social_valido="$props.razon_social_valido"
-                :razon_social_correcto="$props.razon_social_correcto"
-                :obs_razon_social="$props.obs_razon_social"
-                :obs_razon_social_valido="$props.obs_razon_social_valido"
-                :email="$props.email"
-                :email_valido="$props.email_valido"
-                :email_correcto="$props.email_correcto"
-                :obs_email="$props.obs_email"
-                :obs_email_valido="$props.obs_email_valido"
-                :cuit="$props.cuit"
-                :cuit_valido="$props.cuit_valido"
-                :cuit_correcto="$props.cuit_correcto"
-                :obs_cuit="$props.obs_cuit"
-                :obs_cuit_valido="$props.obs_cuit_valido"
-                :numeroproductor="$props.numeroproductor"
-                :numeroproductor_valido="$props.numeroproductor_valido"
-                :numeroproductor_correcto="$props.numeroproductor_correcto"
-                :obs_numeroproductor="$props.obs_numeroproductor"
-                :obs_numeroproductor_valido="$props.obs_numeroproductor_valido"
-                :tiposociedad="$props.tiposociedad"
-                :tiposociedad_valido="$props.tiposociedad_valido"
-                :tiposociedad_correcto="$props.tiposociedad_correcto"
-                :obs_tiposociedad="$props.obs_tiposociedad"
-                :obs_tiposociedad_valido="$props.obs_tiposociedad_valido"
-                :inscripciondgr="$props.inscripciondgr"
-                :inscripciondgr_valido="$props.inscripciondgr_valido"
-                :inscripciondgr_correcto="$props.inscripciondgr_correcto"
-                :obs_inscripciondgr="$props.obs_inscripciondgr"
-                :obs_inscripciondgr_valido="$props.obs_inscripciondgr_valido"
-                :constaciasociedad="$props.constaciasociedad"
-                :constaciasociedad_valido="$props.constaciasociedad_valido"
-                :constaciasociedad_correcto="$props.constaciasociedad_correcto"
-                :obs_constaciasociedad="$props.obs_constaciasociedad"
-                :obs_constaciasociedad_valido="$props.obs_constaciasociedad_valido"
+                :razon_social="form_pagina.razon_social" 
+                :razon_social_valido="form_pagina.razon_social_valido"
+                :razon_social_correcto="form_pagina.razon_social_correcto"
+                :obs_razon_social="form_pagina.obs_razon_social"
+                :obs_razon_social_valido="form_pagina.obs_razon_social_valido"
+                :email="form_pagina.email"
+                :email_valido="form_pagina.email_valido"
+                :email_correcto="form_pagina.email_correcto"
+                :obs_email="form_pagina.obs_email"
+                :obs_email_valido="form_pagina.obs_email_valido"
+                :cuit="form_pagina.cuit"
+                :cuit_valido="form_pagina.cuit_valido"
+                :cuit_correcto="form_pagina.cuit_correcto"
+                :obs_cuit="form_pagina.obs_cuit"
+                :obs_cuit_valido="form_pagina.obs_cuit_valido"
+                :numeroproductor="form_pagina.numeroproductor"
+                :numeroproductor_valido="form_pagina.numeroproductor_valido"
+                :numeroproductor_correcto="form_pagina.numeroproductor_correcto"
+                :obs_numeroproductor="form_pagina.obs_numeroproductor"
+                :obs_numeroproductor_valido="form_pagina.obs_numeroproductor_valido"
+                :tiposociedad="form_pagina.tiposociedad"
+                :tiposociedad_valido="form_pagina.tiposociedad_valido"
+                :tiposociedad_correcto="form_pagina.tiposociedad_correcto"
+                :obs_tiposociedad="form_pagina.obs_tiposociedad"
+                :obs_tiposociedad_valido="form_pagina.obs_tiposociedad_valido"
+                :inscripciondgr="form_pagina.inscripciondgr"
+                :inscripciondgr_valido="form_pagina.inscripciondgr_valido"
+                :inscripciondgr_correcto="form_pagina.inscripciondgr_correcto"
+                :obs_inscripciondgr="form_pagina.obs_inscripciondgr"
+                :obs_inscripciondgr_valido="form_pagina.obs_inscripciondgr_valido"
+                :constaciasociedad="form_pagina.constaciasociedad"
+                :constaciasociedad_valido="form_pagina.constaciasociedad_valido"
+                :constaciasociedad_correcto="form_pagina.constaciasociedad_correcto"
+                :obs_constaciasociedad="form_pagina.obs_constaciasociedad"
+                :obs_constaciasociedad_valido="form_pagina.obs_constaciasociedad_valido"
                 :evaluacion="true"
                 :id="$props.id"
             ></BotonesPaginaUna>
@@ -369,15 +374,23 @@ export default {
             obs_email:  this.$props.obs_email,
             obs_email_valido: this.$props.obs_email_valido,
             
-            cuit_valido : this.$props.cuit_valido,
+            cuit : this.$props.cuit,
             cuit_correcto : this.$props.cuit_correcto,
+            cuit_valido : this.$props.cuit_valido,
             obs_cuit : this.$props.obs_cuit,
+            obs_cuit_valido : this.$props.obs_cuit_valido,
+
+            numeroproductor: this.$props.numeroproductor,
             numeroproductor_valido: this.$props.numeroproductor_valido,
             numeroproductor_correcto: this.$props.numeroproductor_correcto,
             obs_numeroproductor: this.$props.obs_numeroproductor,
+            obs_numeroproductor_valido: this.$props.obs_numeroproductor_valido,
+
+            tiposociedad: this.$props.tiposociedad,
             tiposociedad_valido: this.$props.tiposociedad_valido,
             tiposociedad_correcto: this.$props.tiposociedad_correcto,
             obs_tiposociedad: this.$props.obs_tiposociedad,
+            obs_tiposociedad_valido: this.$props.obs_tiposociedad_valido,
 
             inscripciondgr_valido: this.$props.inscripciondgr_valido,
             inscripciondgr_correcto: this.$props.inscripciondgr_correcto,
@@ -397,98 +410,120 @@ export default {
       cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
-        updaterazonsocialvalido(newValue){
+        //FUNCIONES DE RAZON SOCIAL
+        update_razon_social_valido(newValue){
             this.form_pagina.razon_social_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updaterazonsocialcorrecto(newValue){
+        update_razon_social_correcto(newValue){
             this.form_pagina.razon_social_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobsrazonsocial(newValue){
+        update_obs_razon_social(newValue){
             this.form_pagina.obs_razon_social = newValue;
             //tengo que enviarsela al padre
         },
         updateobs_razon_social_valido(newValue){
+      
             console.log("traje un"+newValue);
             this.form_pagina.obs_razon_social_valido = newValue;
             //tengo que enviarsela al padre
         },
-        
-        
-        updateemailvalido(newValue){
+        update_razon_social(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.razon_social = newValue;
+            //tengo que enviarsela al padre
+        },
+        //FUNCIONES DE EMAIL
+        update_email_valido(newValue){
             this.form_pagina.email_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updateemailcorrecto(newValue){
+        update_email_correcto(newValue){
             this.form_pagina.email_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobs_email(newValue){
+        update_obs_email(newValue){
             this.form_pagina.obs_email = newValue;
             //tengo que enviarsela al padre
         },
-        
-        updateobs_email_valido(newValue){
+        update_obs_email_valido(newValue){
             this.form_pagina.obs_email_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatecuitvalido(newValue){
+        update_email(newValue){
+            this.form_pagina.email = newValue;
+            //tengo que enviarsela al padre
+        },
+        //FUNCIONES DE CUIT
+        update_cuit_valido(newValue){
             this.form_pagina.cuit_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatecuitcorrecto(newValue){
+        update_cuit_correcto(newValue){
             this.form_pagina.cuit_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobscuit(newValue){
+        update_obs_cuit(newValue){
             this.form_pagina.obs_cuit = newValue;
             //tengo que enviarsela al padre
         },
-
-        updatenumprodvalido(newValue){
+        update_cuit(newValue){
+            this.form_pagina.cuit = newValue;
+            //tengo que enviarsela al padre
+        },
+        //FUNCIONES DE NUMERO PRODUCTOR
+        update_num_prod_valido(newValue){
             this.form_pagina.numeroproductor_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatenumprodcorrecto(newValue){
+        update_num_prod_correcto(newValue){
             this.form_pagina.numeroproductor_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobsnumprod(newValue){
+        update_obs_num_prod(newValue){
             this.form_pagina.obs_numeroproductor = newValue;
             //tengo que enviarsela al padre
         },
-
-         updatetiposociedadvalido(newValue){
+        update_num_prod(newValue){
+            this.form_pagina.numeroproductor = newValue;
+            //tengo que enviarsela al padre
+        },
+        //FUNCIONES DE TIPO DE SOCIEDAD
+        update_tipo_sociedad_valido(newValue){
             this.form_pagina.tiposociedad_valido = newValue;
             //tengo que enviarsela al padre
         },
-        updatetiposociedadcorrecto(newValue){
+        update_tipo_sociedad_correcto(newValue){
             this.form_pagina.tiposociedad_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobstiposociedad(newValue){
+        update_obs_tipo_sociedad(newValue){
             this.form_pagina.obs_tiposociedad = newValue;
             //tengo que enviarsela al padre
         },
-       
-        updateconstanciasociedadcorrecto(newValue){
+        update_tipo_sociedad(newValue){
+            this.form_pagina.tiposociedad = newValue;
+            //tengo que enviarsela al padre
+        },
+        //FUNCIONES DE Inscripcion dgr
+        update_inscripcion_dgr_correcto(newValue){
+            this.form_pagina.inscripciondgr_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_inscripcion_dgr(newValue){
+            this.form_pagina.obs_inscripciondgr = newValue;
+            //tengo que enviarsela al padre
+        },
+        //FUNCIONES DE Constancias de sociedad
+        update_constancia_sociedad_correcto(newValue){
             this.form_pagina.constanciasociedad_correcto = newValue;
             //tengo que enviarsela al padre
         },
-        updateobsconstanciasociedad(newValue){
+        update_obs_constancia_sociedad(newValue){
             this.form_pagina.obs_constanciasociedad = newValue;
             //tengo que enviarsela al padre
         },
-
-
-        
-
-
-
-
-
-        
   }
   
 };

@@ -210,7 +210,7 @@
                 </div>
             </div>
             <div class="flex">
-                <InputFileGenerico
+                <InputFileGenerico v-if="form_pagina.categoria !== 'tercera'"
                     v-bind:valor_input_props="$props.resolucion_concesion_minera"
                     v-bind:valor_input_validacion="$props.resolucion_concesion_minera_validacion"
                     v-bind:evualacion_correcto="$props.resolucion_concesion_minera_correcto"
@@ -238,7 +238,8 @@
             </div>
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <InputFileGenerico
+                    <InputFileGenerico 
+                    v-if="form_pagina.categoria === 'tercera'"
                         v-bind:valor_input_props="$props.plano_inmueble"
                         v-bind:valor_input_validacion="$props.plano_inmueble_validacion"
                         v-bind:evualacion_correcto="$props.plano_inmueble_correcto"
@@ -269,6 +270,7 @@
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputFileGenerico
+                    v-if="form_pagina.categoria === 'tercera'"
                         v-bind:valor_input_props="$props.titulo_contrato_posecion"
                         v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
                         v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"

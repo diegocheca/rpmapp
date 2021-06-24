@@ -151,7 +151,7 @@ export default {
         
 
     },
-    cambio_input_email(){
+    cambio_input_email(value){
         if(this.email.length <= 4)
         {
             this.clase_de_input_email= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
@@ -174,6 +174,7 @@ export default {
             this.email_valido_local = true;
         }
         this.$emit('changeemailvalido',this.email_valido_local);
+        this.$emit('changeemail',value);
 
      }
   },

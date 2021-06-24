@@ -143,7 +143,7 @@ export default {
         }
         this.$emit('changeobsnumprod',this.$props.obs_numeroproductor);
     },
-    cambio_input_numprod(){
+    cambio_input_numprod(value){
         if(this.numeroproductor.length <= 4)
         {
             this.clase_de_input_numprod= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
@@ -166,6 +166,7 @@ export default {
             this.numeroproductor_valido_local = true;
         }
         this.$emit('changenumprodvalido',this.numeroproductor_valido_local);
+        this.$emit('changenumprod',value);
 
      }
   },

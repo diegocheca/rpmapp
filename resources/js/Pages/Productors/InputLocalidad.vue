@@ -123,7 +123,7 @@ export default {
   methods:{
     actaulizar_variable_legalcallelocalidad(valor) {
         this.legal_calle_localidad_correcto_local = valor;
-        this.$emit('changetellegalcorrecto',this.legal_calle_localidad_correcto_local);
+        this.$emit('changelocalidadlegalcorrecto',this.legal_calle_localidad_correcto_local);
     },
      
       actaulizar_contenido_text_area_calle_legal_localidad(value) {
@@ -133,7 +133,7 @@ export default {
             this.cartel_nota_evaluacion_localidad_calle=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
             this.clase_cartel_nota_evaluacion_localidad_calle=  'text-red-500 text-xs italic';
             this.obs_calle_localidad_legal_valido_local = false;
-            this.$emit('changelocalidadlegalvalido',false);
+            this.$emit('changeobslocalidadlegalvalido',false);
             
         }
         if(this.$props.obs_leal_localidad.length >= 50)
@@ -142,7 +142,7 @@ export default {
             this.cartel_nota_evaluacion_localidad_calle=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
             this.clase_cartel_nota_evaluacion_localidad_calle=  'text-red-500 text-xs italic';
             this.obs_calle_localidad_legal_valido_local = false;
-            this.$emit('changelocalidadlegalvalido',false);
+            this.$emit('changeobslocalidadlegalvalido',false);
         }
         if( this.$props.obs_leal_localidad !== '' && this.$props.obs_leal_localidad.length <= 30 && this.$props.obs_leal_localidad.length >= 3)
         {
@@ -150,12 +150,12 @@ export default {
             this.cartel_nota_evaluacion_localidad_calle=  'Observacion Correcta';
             this.clase_cartel_nota_evaluacion_localidad_calle=  'text-green-500 text-xs italic';
             this.obs_calle_localidad_legal_valido_local = false;
-            this.$emit('changelocalidadlegalvalido',true);
+            this.$emit('changeobslocalidadlegalvalido',true);
             
         }
-        this.$emit('changeobstellegal',this.$props.obs_leal_localidad)
+        this.$emit('changeobsrlocalidadlegal',this.$props.obs_leal_localidad)
     },
-    cambio_input_calle_localidad_legal(){
+    cambio_input_calle_localidad_legal(value){
         if(this.leal_localidad.length <= 4)
         {
             this.clase_de_input_calle_localidad_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
@@ -177,8 +177,8 @@ export default {
             this.clase_cartel_nota_legalcallelocalidad =  'text-green-500 text-xs italic';
             this.calle_localidad_legal_valido_local = true;
         }
-        this.$emit('changetellegalvalido',this.calle_localidad_legal_valido_local);
-        this.$emit('changevalortellegal',this.leal_localidad);
+        this.$emit('changelocalidadlegalvalido',this.calle_localidad_legal_valido_local);
+        this.$emit('changevalorlocalidadlegal',value);
      }
   },
 };

@@ -1256,76 +1256,40 @@ class FormAltaProductorController extends Controller
     //evaluacion de formularios
     public function correccion_guardar_paso_uno(Request $request)
 	{
-		//return response()->json("todo bien");
-		/*
-		Prueba
-		var_dump(
-			$request->cuit_correcto,
-			$request->obs_cuit,
-			$request->razon_social_correcto,
-			$request->obs_razon_social,
-			$request->numeroproductor_correcto,
-			$request->obs_numeroproductor,
-			$request->email_correcto,
-			$request->obs_email,
-			$request->tiposociedad_correcto,
-
-			$request->obs_tiposociedad,
-			$request->inscripciondgr_correcto,
-			$request->obs_inscripciondgr,
-			$request->constaciasociedad_correcto,
-			$request->obs_constaciasociedad,
-			$request->valor_de_progreso,
-			$request->valor_de_aprobado,
-			$request->valor_de_reprobado
-		);
-		return response()->json("todo bien");
-		die();
-		*/
-
+		//var_dump("el id:".$request->id."   - el  cuit es:".$request->cuit);die();
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
-
 		$formulario_provisorio = FormAltaProductor::select(
 			'id',
-			'leal_calle',
-			'leal_numero',
-			'leal_telefono',
-			'leal_pais',
-			'leal_provincia',
-			'leal_departamento',
-			'leal_localidad',
-			'leal_cp',
-			'leal_otro',
-			'email')
-		->where('email', '=',$request->email)
+			'razonsocial',
+			'razon_social_correcto',
+			'obs_razon_social',
+			'cuit',
+			'cuit_correcto',
+			'obs_cuit',
+			'numeroproductor',
+			'numeroproductor_correcto',
+			'obs_numeroproductor',
+			'tiposociedad',	
+			'tiposociedad_correcto',	
+			'obs_tiposociedad',	
+			'email',
+			'email_correcto',
+			'obs_email',
+			'inscripciondgr',
+			'inscripciondgr_correcto',
+			'obs_inscripciondgr',
+			'constaciasociedad',
+			'constaciasociedad_correcto',
+			'obs_constaciasociedad'
+			)
+		->where('id', '=',$request->id)
 		->first();
-
-		$formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','inscripciondgr','constaciasociedad',
-        'cuit_correcto',
-        'obs_cuit',
-        'razon_social_correcto',
-        'obs_razon_social',
-        'numeroproductor_correcto',
-        'obs_numeroproductor',
-        'email_correcto',
-        'obs_email',
-        'tiposociedad_correcto',
-        'obs_tiposociedad',
-        'inscripciondgr_correcto',
-        'obs_inscripciondgr',
-        'constaciasociedad_correcto',
-        'obs_constaciasociedad',
-        'paso_1_progreso',
-        'paso_1_aprobado',
-        'paso_1_reprobado'
-    )
-		->where('id', '=',$request->id)->first();
 		//arreglo las variables
-		if($request->cuit_correcto == 'nada')
-			$request->cuit_correcto = null;
-
 		if($request->razon_social_correcto == 'nada')
 			$request->razon_social_correcto = null;
+
+		if($request->cuit_correcto == 'nada')
+			$request->cuit_correcto = null;
 
 		if($request->numeroproductor_correcto == 'nada')
 			$request->numeroproductor_correcto = null;
@@ -1345,36 +1309,54 @@ class FormAltaProductorController extends Controller
 		if($formulario_provisorio != null)
 		{
 			//lo encontre y actualizo
-			$formulario_provisorio->razon_social_correcto = $request->razon_social_correcto;
-			$formulario_provisorio->obs_razon_social = $request->obs_razon_social;
+			//pregunto si soy autoridad minera o si soy productor
+			if(true){ // soy autoridad minera
+				$formulario_provisorio->razon_social_correcto = $request->razon_social_correcto;
+				$formulario_provisorio->obs_razon_social = $request->obs_razon_social;
+	
+				$formulario_provisorio->email_correcto = $request->email_correcto;
+				$formulario_provisorio->obs_email = $request->obs_email;
+	
+				$formulario_provisorio->cuit_correcto = $request->cuit_correcto;
+				$formulario_provisorio->obs_cuit = $request->obs_cuit;
+	
+				$formulario_provisorio->numeroproductor_correcto = $request->numeroproductor_correcto;
+				$formulario_provisorio->obs_numeroproductor = $request->obs_numeroproductor;
+	
+				$formulario_provisorio->tiposociedad_correcto = $request->tiposociedad_correcto;
+				$formulario_provisorio->obs_tiposociedad = $request->obs_tiposociedad;
+	
+				$formulario_provisorio->inscripciondgr_correcto = $request->inscripciondgr_correcto;
+				$formulario_provisorio->obs_inscripciondgr = $request->obs_inscripciondgr;
+	
+				$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
+				$formulario_provisorio->obs_constaciasociedad = $request->obs_constaciasociedad;
+	
+				$formulario_provisorio->paso_1_progreso = $request->valor_de_progreso;
+				$formulario_provisorio->paso_1_aprobado = $request->valor_de_aprobado;
+				$formulario_provisorio->paso_1_reprobado = $request->valor_de_reprobado;
+	
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
+				return response()->json("grgdgdf se actualizaron los datos correctamente");
+			}
+			else{//soy productor
+				$formulario_provisorio->razonsocial = $request->razon_social;
+				$formulario_provisorio->email = $request->email;
+				$formulario_provisorio->cuit= $request->cuit;
+				$formulario_provisorio->numeroproductor = $request->numeroproductor;
+				$formulario_provisorio->tiposociedad = $request->tiposociedad;
+				//$formulario_provisorio->inscripciondgro = $request->inscripciondgr_correcto;
+				//$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
 
-			$formulario_provisorio->email_correcto = $request->email_correcto;
-			$formulario_provisorio->obs_email = $request->obs_email;
-
-			$formulario_provisorio->cuit_correcto = $request->cuit_correcto;
-			$formulario_provisorio->obs_cuit = $request->obs_cuit;
-
-			$formulario_provisorio->numeroproductor_correcto = $request->numeroproductor_correcto;
-			$formulario_provisorio->obs_numeroproductor = $request->obs_numeroproductor;
-
-			$formulario_provisorio->tiposociedad_correcto = $request->tiposociedad_correcto;
-			$formulario_provisorio->obs_tiposociedad = $request->obs_tiposociedad;
-
-			$formulario_provisorio->inscripciondgr_correcto = $request->inscripciondgr_correcto;
-			$formulario_provisorio->obs_inscripciondgr = $request->obs_inscripciondgr;
-
-			$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
-			$formulario_provisorio->obs_constaciasociedad = $request->obs_constaciasociedad;
-
-			$formulario_provisorio->paso_1_progreso = $request->valor_de_progreso;
-			$formulario_provisorio->paso_1_aprobado = $request->valor_de_aprobado;
-			$formulario_provisorio->paso_1_reprobado = $request->valor_de_reprobado;
-
-			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-			$formulario_provisorio->updated_by = Auth::user()->id;
-			$formulario_provisorio->save();
-			return response()->json("se actualizaron los datos correctamente");
-
+				$formulario_provisorio->save();
+				return response()->json("se actualizaron los datos correctamente, siendo un productor");
+			}
 		}
 		else
 		{
@@ -1385,58 +1367,44 @@ class FormAltaProductorController extends Controller
 	public function correccion_guardar_paso_dos(Request $request)
 	{
 		/*var_dump(
-			$request->razon_social, 
-			$request->razon_social_valido, 
-			$request->razon_social_correcto, 
-			$request->obs_razon_social, 
-			$request->obs_razon_social_valido, 
+			$request->leal_calle, 
+			$request->nombre_calle_legal_valido, 
+			$request->nombre_calle_legal_correcto, 
+			$request->obs_nombre_calle_legal, 
+			$request->obs_nombre_calle_legal_valido, 
 
-			$request->email, 
-			$request->email_valido, 
-			$request->email_correcto, 
-			$request->obs_email, 
-			$request->obs_email_valido, 
+			$request->leal_numero, 
+			$request->leal_numero_valido, 
+			$request->leal_numero_correcto, 
+			$request->obs_leal_numero, 
+			$request->obs_leal_numero_valido, 
 
-			$request->cuit, 
-			$request->cuit_valido, 
-			$request->cuit_correcto, 
-			$request->obs_cuit, 
-			$request->obs_cuit_valido, 
+			$request->leal_telefono, 
+			$request->leal_telefono_valido, 
+			$request->leal_telefono_correcto, 
+			$request->obs_leal_telefono, 
+			$request->obs_leal_telefono_valido, 
 
-			$request->numeroproductor, 
-			$request->numeroproductor_valido, 
-			$request->numeroproductor_correcto, 
-			$request->obs_numeroproductor, 
-			$request->obs_numeroproductor_valido, 
+			$request->leal_provincia, 
+			$request->leal_provincia_valido, 
+			$request->leal_provincia_correcto, 
+			$request->obs_leal_provincia, 
+			$request->obs_leal_provincia_valido, 
 
-			$request->tiposociedad, 
-			$request->tiposociedad_valido, 
-			$request->tiposociedad_correcto, 
-			$request->obs_tiposociedad, 
-			$request->obs_tiposociedad_valido,
-
-
-			$request->inscripciondgr, 
-			$request->inscripciondgr_valido, 
-			$request->inscripciondgr_correcto, 
-			$request->obs_inscripciondgr, 
-			$request->obs_inscripciondgr_valido,
-
-
-			$request->constaciasociedad, 
-			$request->constaciasociedad_valido, 
-			$request->constaciasociedad_correcto, 
-			$request->obs_constaciasociedad, 
-			$request->obs_constaciasociedad_valido,
+			$request->leal_departamento, 
+			$request->leal_departamento_valido, 
+			$request->leal_departamento_correcto, 
+			$request->obs_leal_departamento, 
+			$request->obs_leal_departamento_valido,
 
 
 			$request->valor_de_progreso, 
 			$request->valor_de_aprobado, 
 			$request->valor_de_reprobado, 
 
-		);*/
+		);
 		//return response()->json("todo bien");
-		//die();
+		die();*/
 
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select(
@@ -1483,44 +1451,89 @@ class FormAltaProductorController extends Controller
 		->where('id', '=',$request->id)->first();
 		if($formulario_provisorio != null)
 		{
-			//lo encontre y actualizo
-			$formulario_provisorio->leal_calle = $request->leal_calle;
-			$formulario_provisorio->leal_calle_correcto = $request->nombre_calle_legal_correcto;
-			$formulario_provisorio->obs_leal_calle = $request->obs_nombre_calle_legal;
+			if(true){ // soy autoridad minera
 
-			$formulario_provisorio->leal_numero = $request->leal_numero;
-			$formulario_provisorio->leal_numero_correcto = $request->leal_numero_correcto;
-			$formulario_provisorio->obs_leal_numero = $request->obs_leal_numero;
+				if($request->leal_calle_correcto == 'nada')
+					$request->leal_calle_correcto = null;
 
-			$formulario_provisorio->leal_telefono = $request->leal_telefono;
-			$formulario_provisorio->leal_telefono_correcto = $request->leal_telefono_correcto;
-			$formulario_provisorio->obs_leal_telefono = $request->obs_leal_telefono;
+				if($request->leal_numero_correcto == 'nada')
+					$request->leal_numero_correcto = null;
 
-			//$formulario_provisorio->leal_pais = $request->domicilio_legal_pais;
+				if($request->numeroproductor_correcto == 'nada')
+					$request->numeroproductor_correcto = null;
 
-			$formulario_provisorio->leal_provincia = $request->leal_provincia;
-			$formulario_provisorio->leal_provincia_correcto = $request->leal_provincia_correcto;
-			$formulario_provisorio->obs_leal_provincia = $request->obs_leal_provincia;
+				if($request->leal_telefono_correcto == 'nada')
+					$request->leal_telefono_correcto = null;
 
-			$formulario_provisorio->leal_departamento = $request->leal_departamento;
-			$formulario_provisorio->leal_departamento_correcto = $request->leal_departamento_correcto;
-			$formulario_provisorio->obs_leal_departamento = $request->obs_leal_departamento;
+				if($request->leal_provincia_correcto == 'nada')
+					$request->leal_provincia_correcto = null;
 
-			$formulario_provisorio->leal_localidad = $request->leal_localidad;
-			$formulario_provisorio->leal_localidad_correcto = $request->leal_localidad_correcto;
-			$formulario_provisorio->obs_leal_localidad = $request->obs_leal_localidad;
+				if($request->leal_departamento_correcto == 'nada')
+					$request->leal_departamento_correcto = null;
 
-			$formulario_provisorio->leal_cp = $request->leal_cp;
-			$formulario_provisorio->leal_cp_correcto = $request->leal_cp_correcto;
-			$formulario_provisorio->obs_leal_cp = $request->obs_leal_cp;
+				if($request->leal_localidad_correcto == 'nada')
+					$request->leal_localidad_correcto = null;
 
-			$formulario_provisorio->leal_otro = $request->leal_otro;
-			$formulario_provisorio->leal_otro_correcto = $request->leal_otro_correcto;
-			$formulario_provisorio->obs_leal_otro = $request->obs_leal_otro;
+				if($request->leal_cp_correcto == 'nada')
+					$request->leal_cp_correcto = null;
 
-			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-			$formulario_provisorio->save();
-			return response()->json("bien");
+				if($request->leal_otro_correcto == 'nada')
+					$request->leal_otro_correcto = null;
+
+				//lo encontre y actualizo
+				$formulario_provisorio->leal_calle_correcto = $request->nombre_calle_legal_correcto;
+				$formulario_provisorio->obs_leal_calle = $request->obs_nombre_calle_legal;
+
+				$formulario_provisorio->leal_numero_correcto = $request->leal_numero_correcto;
+				$formulario_provisorio->obs_leal_numero = $request->obs_leal_numero;
+
+				$formulario_provisorio->leal_telefono_correcto = $request->leal_telefono_correcto;
+				$formulario_provisorio->obs_leal_telefono = $request->obs_leal_telefono;
+
+				$formulario_provisorio->leal_pais = 'Argentina';
+
+				$formulario_provisorio->leal_provincia_correcto = $request->leal_provincia_correcto;
+				$formulario_provisorio->obs_leal_provincia = $request->obs_leal_provincia;
+
+				
+				$formulario_provisorio->leal_departamento_correcto = $request->leal_departamento_correcto;
+				$formulario_provisorio->obs_leal_departamento = $request->obs_leal_departamento;
+
+				
+				$formulario_provisorio->leal_localidad_correcto = $request->leal_localidad_correcto;
+				$formulario_provisorio->obs_leal_localidad = $request->obs_leal_localidad;
+
+				
+				$formulario_provisorio->leal_cp_correcto = $request->leal_cp_correcto;
+				$formulario_provisorio->obs_leal_cp = $request->obs_leal_cp;
+
+				
+				$formulario_provisorio->leal_otro_correcto = $request->leal_otro_correcto;
+				$formulario_provisorio->obs_leal_otro = $request->obs_leal_otro;
+
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
+				return response()->json("grgdgdf se actualizaron los datos correctamente");
+			}
+			else{//soy productor
+				$formulario_provisorio->leal_calle = $request->leal_calle;
+				$formulario_provisorio->leal_numero = $request->leal_numero;
+				$formulario_provisorio->leal_telefono = $request->leal_telefono;
+				$formulario_provisorio->leal_provincia = $request->leal_provincia;
+				$formulario_provisorio->leal_departamento = $request->leal_departamento;
+				$formulario_provisorio->leal_localidad = $request->leal_localidad;
+				$formulario_provisorio->leal_cp = $request->leal_cp;
+				$formulario_provisorio->leal_otro = $request->leal_otro;
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+
+				$formulario_provisorio->save();
+				return response()->json("se actualizaron los datos codsadsadsarrectamente, siendo un productor");
+			}
+			
 		}
 		else
 		{
@@ -1576,59 +1589,64 @@ class FormAltaProductorController extends Controller
 
 	public function correccion_guardar_paso_tres(Request $request)
 	{
-		/*var_dump(
-			$request->razon_social, 
-			$request->razon_social_valido, 
-			$request->razon_social_correcto, 
-			$request->obs_razon_social, 
-			$request->obs_razon_social_valido, 
+		var_dump(
+			$request->administracion_calle, 
+			$request->nombre_calle_administracion_valido, 
+			$request->nombre_calle_administracion_correcto, 
+			$request->obs_nombre_calle_administracion, 
+			$request->obs_nombre_calle_administracion_valido, 
 
-			$request->email, 
-			$request->email_valido, 
-			$request->email_correcto, 
-			$request->obs_email, 
-			$request->obs_email_valido, 
+			$request->administracion_numero, 
+			$request->administracion_numero_valido, 
+			$request->administracion_numero_correcto, 
+			$request->obs_administracion_numero, 
+			$request->obs_administracion_numero_valido, 
 
-			$request->cuit, 
-			$request->cuit_valido, 
-			$request->cuit_correcto, 
-			$request->obs_cuit, 
-			$request->obs_cuit_valido, 
+			$request->administracion_telefono, 
+			$request->administracion_telefono_valido, 
+			$request->administracion_telefono_correcto, 
+			$request->obs_administracion_telefono, 
+			$request->obs_administracion_telefono_valido, 
 
-			$request->numeroproductor, 
-			$request->numeroproductor_valido, 
-			$request->numeroproductor_correcto, 
-			$request->obs_numeroproductor, 
-			$request->obs_numeroproductor_valido, 
+			$request->administracion_provincia, 
+			$request->administracion_provincia_valido, 
+			$request->administracion_provincia_correcto, 
+			$request->obs_administracion_provincia, 
+			$request->obs_administracion_provincia_valido, 
 
-			$request->tiposociedad, 
-			$request->tiposociedad_valido, 
-			$request->tiposociedad_correcto, 
-			$request->obs_tiposociedad, 
-			$request->obs_tiposociedad_valido,
+			$request->administracion_departamento, 
+			$request->administracion_departamento_valido, 
+			$request->administracion_departamento_correcto, 
+			$request->obs_administracion_departamento, 
+			$request->obs_administracion_departamento_valido,
 
+			$request->administracion_localidad, 
+			$request->administracion_localidad_valido, 
+			$request->administracion_localidad_correcto, 
+			$request->obs_administracion_localidad, 
+			$request->obs_administracion_localidad_valido,
 
-			$request->inscripciondgr, 
-			$request->inscripciondgr_valido, 
-			$request->inscripciondgr_correcto, 
-			$request->obs_inscripciondgr, 
-			$request->obs_inscripciondgr_valido,
+			$request->administracion_cp, 
+			$request->administracion_cp_valido, 
+			$request->administracion_cp_correcto, 
+			$request->obs_administracion_cp, 
+			$request->obs_administracion_cp_valido,
 
+			$request->administracion_otro, 
+			$request->administracion_otro_valido, 
+			$request->administracion_otro_correcto, 
+			$request->obs_administracion_otro, 
+			$request->obs_administracion_otro_valido,
 
-			$request->constaciasociedad, 
-			$request->constaciasociedad_valido, 
-			$request->constaciasociedad_correcto, 
-			$request->obs_constaciasociedad, 
-			$request->obs_constaciasociedad_valido,
 
 
 			$request->valor_de_progreso, 
 			$request->valor_de_aprobado, 
 			$request->valor_de_reprobado, 
 
-		);*/
+		);
 		return response()->json("todo bien");
-		//die();
+		die();
 
 		// date_default_timezone_set('America/Argentina/Buenos_Aires');
 		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
