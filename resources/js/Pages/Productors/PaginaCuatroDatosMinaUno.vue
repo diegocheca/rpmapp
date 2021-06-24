@@ -154,6 +154,7 @@
                         <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_nombre_mina_valido}}
                     </div>
                 </div>
+                Tipo de Yacimiento: {{form_pagina.mina_cantera}}
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <SelectGenerico
                         v-bind:valor_input_props="$props.categoria"
@@ -331,6 +332,70 @@
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
+
+        <BotonesPaginaCuatro
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
+
+            :numero_expdiente="form_pagina.numero_expdiente"
+            :numero_expdiente_valido="form_pagina.numero_expdiente_valido"
+            :numero_expdiente_correcto="form_pagina.numero_expdiente_correcto"
+            :obs_numero_expdiente="form_pagina.obs_numero_expdiente"
+            :obs_numero_expdiente_valido="form_pagina.obs_numero_expdiente_valido"
+            :categoria="form_pagina.categoria"
+            :categoria_validacion="form_pagina.categoria_validacion"
+            :categoria_correcto="form_pagina.categoria_correcto"
+            :obs_categoria="form_pagina.obs_categoria"
+            :obs_categoria_valido="form_pagina.obs_categoria_valido"
+            :nombre_mina="form_pagina.nombre_mina"
+            :nombre_mina_validacion="form_pagina.nombre_mina_validacion"
+            :nombre_mina_correcto="form_pagina.nombre_mina_correcto"
+            :obs_nombre_mina="form_pagina.obs_nombre_mina"
+            :obs_nombre_mina_valido="form_pagina.obs_nombre_mina_valido"
+            :descripcion_mina="form_pagina.descripcion_mina"
+            :descripcion_mina_validacion="form_pagina.descripcion_mina_validacion"
+            :descripcion_mina_correcto="form_pagina.descripcion_mina_correcto"
+            :obs_descripcion_mina="form_pagina.obs_descripcion_mina"
+            :obs_descripcion_mina_valido="form_pagina.obs_descripcion_mina_valido"
+            :distrito_minero="form_pagina.distrito_minero"
+            :distrito_minero_validacion="form_pagina.distrito_minero_validacion"
+            :distrito_minero_correcto="form_pagina.distrito_minero_correcto"
+            :obs_distrito_minero="form_pagina.obs_distrito_minero"
+            :obs_distrito_minero_valido="form_pagina.obs_distrito_minero_valido"
+            :mina_cantera="form_pagina.mina_cantera"
+            :mina_cantera_validacion="form_pagina.mina_cantera_validacion"
+            :mina_cantera_correcto="form_pagina.mina_cantera_correcto"
+            :obs_mina_cantera="form_pagina.obs_mina_cantera"
+            :obs_mina_cantera_valido="form_pagina.obs_mina_cantera_valido"
+            :plano_inmueble="form_pagina.plano_inmueble"
+            :plano_inmueble_validacion="form_pagina.plano_inmueble_validacion"
+            :plano_inmueble_correcto="form_pagina.plano_inmueble_correcto"
+            :obs_plano_inmueble="form_pagina.obs_plano_inmueble"
+            :obs_plano_inmueble_valido="form_pagina.obs_plano_inmueble_valido"
+            :minerales_variedad="form_pagina.minerales_variedad"
+            :minerales_variedad_validacion="form_pagina.minerales_variedad_validacion"
+            :minerales_variedad_correcto="form_pagina.minerales_variedad_correcto"
+            :obs_minerales_variedad="form_pagina.obs_minerales_variedad"
+            :obs_minerales_variedad_valido="form_pagina.obs_minerales_variedad_valido"
+            :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
+            :resolucion_concesion_minera_validacion="form_pagina.resolucion_concesion_minera_validacion"
+            :resolucion_concesion_minera_correcto="form_pagina.resolucion_concesion_minera_correcto"
+            :obs_resolucion_concesion_minera="form_pagina.obs_resolucion_concesion_minera"
+            :obs_resolucion_concesion_minera_valido="form_pagina.obs_resolucion_concesion_minera_valido"
+            :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
+            :titulo_contrato_posecion_validacion="form_pagina.titulo_contrato_posecion_validacion"
+            :titulo_contrato_posecion_correcto="form_pagina.titulo_contrato_posecion_correcto"
+            :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
+            :obs_titulo_contrato_posecion_valido="form_pagina.obs_titulo_contrato_posecion_valido"
+
+            :donde_guardar="$props.donde_estoy"
+
+            :evaluacion="true"
+            :id="$props.id"
+        >
+
+        </BotonesPaginaCuatro>
     </div>
 </template>
 
@@ -345,7 +410,7 @@ import SelectGenerico from "@/Pages/Productors/SelectGenerico";
 import InputFileGenerico from "@/Pages/Productors/InputFileGenerico";
 import ListadeMinerales from "@/Pages/Productors/ListadeMinerales";
 
-import BotonesPaginaUna from "@/Pages/Productors/BotonesPaginaUna";
+import BotonesPaginaCuatro from "@/Pages/Productors/BotonesPaginaCuatro";
 export default {
      props: [
         'link_volver', 
@@ -363,6 +428,7 @@ export default {
         'categoria_correcto',
         'obs_categoria',
         'obs_categoria_valido',
+
         'nombre_mina',
         'nombre_mina_validacion',
         'nombre_mina_correcto',
@@ -373,6 +439,7 @@ export default {
         'descripcion_mina_correcto',
         'obs_descripcion_mina',
         'obs_descripcion_mina_valido',
+
         'distrito_minero',
         'distrito_minero_validacion',
         'distrito_minero_correcto',
@@ -383,6 +450,7 @@ export default {
         'mina_cantera_correcto',
         'obs_mina_cantera',
         'obs_mina_cantera_valido',
+
         'plano_inmueble',
         'plano_inmueble_validacion',
         'plano_inmueble_correcto',
@@ -393,6 +461,7 @@ export default {
         'minerales_variedad_correcto',
         'obs_minerales_variedad',
         'obs_minerales_variedad_valido',
+
         'resolucion_concesion_minera',
         'resolucion_concesion_minera_validacion',
         'resolucion_concesion_minera_correcto',
@@ -418,7 +487,7 @@ export default {
         SelectGenerico,
         InputFileGenerico,
         ListadeMinerales,
-		BotonesPaginaUna,
+		BotonesPaginaCuatro,
 	},
    
   data() {
@@ -480,6 +549,8 @@ export default {
             obs_titulo_contrato_posecion: this.$props.obs_titulo_contrato_posecion,
             obs_titulo_contrato_posecion_valido: this.$props.obs_titulo_contrato_posecion_valido,
             
+
+            mina_cantera: '',
          
            
             
@@ -509,30 +580,31 @@ export default {
       cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
+        // FUNCIONES DE NUMERO DE EXPEDIENTE
         update_num_exp_valido(newValue){
-                this.form_pagina.nombre_calle_legal_valido = newValue;
+                this.form_pagina.numero_expdiente_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_num_exp_correcto(newValue){
-            this.form_pagina.nombre_calle_legal_correcto = newValue;
+            this.form_pagina.numero_expdiente_correcto = newValue;
             //tengo que enviarsela al padre
         },
         updateobs_num_exp(newValue){
-            this.form_pagina.obs_nombre_calle_legal = newValue;
+            this.form_pagina.obs_numero_expdiente = newValue;
             //tengo que enviarsela al padre
         },
         updateobs_num_exp_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_nombre_calle_legal_valido = newValue;
+            this.form_pagina.obs_numero_expdiente_valido = newValue;
             //tengo que enviarsela al padre
         },
         updatevalor_num_exp(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.leal_calle = newValue;
+            this.form_pagina.numero_expdiente = newValue;
             //tengo que enviarsela al padre
         },
 
-
+        // FUNCIONES DE Distrito MINERO
         update_distrito_minero_valido(newValue){
             this.form_pagina.distrito_minero_validacion = newValue;
             //tengo que enviarsela al padre
@@ -556,24 +628,7 @@ export default {
             //tengo que enviarsela al padre
         },
 
-
-
-        
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // FUNCIONES DE NOMBRE DE MINA
         update_nom_mina_valido(newValue){
             this.form_pagina.nombre_mina_validacion = newValue;
             //tengo que enviarsela al padre
@@ -596,21 +651,7 @@ export default {
             this.form_pagina.nombre_mina = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //FUNCIONES DE DESCRIPCION DE MINA
         update_descripcion_valido(newValue){
             this.form_pagina.descripcion_mina_validacion = newValue;
             //tengo que enviarsela al padre
@@ -635,9 +676,7 @@ export default {
         },
 
 
-
-
-
+        //FUNCIONES DE CATEGORIA
         update_cat_valido(newValue){
             this.form_pagina.categoria_validacion = newValue;
             //tengo que enviarsela al padre
@@ -665,14 +704,17 @@ export default {
             if(newValue === 'primera')
             {
                 categoria_a_buscar = 'Primera';
+                self.form_pagina.mina_cantera='Mina';
             }
             if(newValue === 'segunda')
             {
                 categoria_a_buscar = 'Segunda';
+                self.form_pagina.mina_cantera='Mina';
             }
             if(newValue === 'tercera')
             {
                 categoria_a_buscar = 'Tercera';
+                self.form_pagina.mina_cantera='Cantera';
             }
 
            axios.post('/datos/traer_minerales/',{categoria_buscando:categoria_a_buscar})
