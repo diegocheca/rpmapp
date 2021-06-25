@@ -185,6 +185,7 @@
                     </div>
                 </div>
             </div>
+            los minerales son {{minerales}}
         </div>
     </div>
 </template>
@@ -275,9 +276,13 @@ export default {
     }; 
   },
   methods:{
+    actualizar_valores_padre(){
+        this.$emit('changevalor_lista_minerales',this.minerales);
+    },
     actaulizar_variable_correccion(valor, index) {
         //this.valor_evaluacion_correcto_local = valor;
         this.minerales[index].evaluacion_correcto = valor;
+        this.actualizar_valores_padre();
         //this.$emit('changecorrecto',this.minerales[index].evaluacion_correcto);
     },
      
@@ -308,6 +313,7 @@ export default {
             //this.$emit('changeobsvalido',true);
             
         }
+        this.actualizar_valores_padre();
    // this.$emit('changeobs',this.$props.valor_obs)
     },
     actaulizar_contenido_forma_presentacion(value, index){
@@ -341,6 +347,7 @@ export default {
             
         }
         //this.$emit('changeobs',this.$props.valor_obs)
+        this.actualizar_valores_padre();
         
     },
     cambio_input(){
@@ -365,11 +372,13 @@ export default {
             this.clase_cartel_validacion_input =  'text-green-500 text-xs italic';
             this.validacion_input_local = true;
         }
-        this.$emit('changevalido',this.validacion_input_local);
-        this.$emit('changevalor',this.valor_input);
+        /*this.$emit('changevalido',this.validacion_input_local);
+        this.$emit('changevalor',this.valor_input);*/
+        this.actualizar_valores_padre();
     },
     eliminar_mineral: function(indice){
         this.minerales.splice(indice, 1);
+        this.actualizar_valores_padre();
     },
     agregar_mineral: function(){
         var mineral_aux = {
@@ -396,9 +405,10 @@ export default {
                 thumb: 'http://localhost:8000/minerales/thumbs/3.png'
             };
         this.minerales.push( mineral_aux);
+        this.actualizar_valores_padre();
     },
     cambio_mineral_explotado(index){
-        alert("cambio el select");
+        console.log("cambio el select");
         
     },
     cambio_select_mineral_segunda_cat(event, index){
@@ -465,12 +475,12 @@ export default {
         else{
             
         }
+        this.actualizar_valores_padre();
     },
     cambio_select_tipo_mineral_explotado_segunda_cat: function(event, index){
         console.log("el index es: "+index);
         console.log("acabo de elegir: "+ this.minerales[index].segunda_cat_mineral_explotado);
-        if(this.minerales[index].segunda_cat_mineral_explotado === 'aprovechamiento_comun')
-        {
+        if(this.minerales[index].segunda_cat_mineral_explotado === 'aprovechamiento_comun'){
             this.minerales[index].lista_de_minerales_array = [
             {
                 id:1031 , name: 'Arenas Metalíferas',
@@ -551,6 +561,7 @@ export default {
                 ];
             }
         }
+        this.actualizar_valores_padre();
         
         
     },

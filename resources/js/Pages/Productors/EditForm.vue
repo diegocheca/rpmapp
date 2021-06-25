@@ -416,17 +416,7 @@
 				:testing="true"
 			>
 			</PaginaCuatroDatosMinaUno>
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_cuatro"
-				>
-					Guardar Datos de la Mina
-				</button>
-				
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
+			
 			<br>
 			<br>
 			<br>

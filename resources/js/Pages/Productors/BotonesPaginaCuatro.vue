@@ -75,6 +75,8 @@
         {{$props.titulo_contrato_posecion_correcto}}
         {{$props.obs_titulo_contrato_posecion}}
         {{$props.obs_titulo_contrato_posecion_valido}}
+        {{$props.minerales}}
+        
     </div>
 </template>
 
@@ -136,6 +138,8 @@ export default {
         'titulo_contrato_posecion_correcto',
         'obs_titulo_contrato_posecion',
         'obs_titulo_contrato_posecion_valido',
+
+        'minerales',
 
         'donde_guardar',
 
@@ -212,6 +216,8 @@ export default {
                     titulo_contrato_posecion_correcto: this.$props.titulo_contrato_posecion_correcto,
                     obs_titulo_contrato_posecion: this.$props.obs_titulo_contrato_posecion,
                     obs_titulo_contrato_posecion_valido: this.$props.obs_titulo_contrato_posecion_valido,
+
+                    lista_minerales: this.$props.minerales,
 
 
                     valor_de_progreso: 20,

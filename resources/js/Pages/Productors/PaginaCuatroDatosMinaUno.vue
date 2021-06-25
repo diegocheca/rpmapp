@@ -315,7 +315,7 @@
                         v-on:changecorrecto="update_titulo_contrato_correcto($event)"
                         v-on:changeobs="update_obs_titulo_contrato($event)"
                         v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
-                        v-on:changevalor="update_valor_titulo_contrato($event)"
+                        v-on:changevalor_lista_minerales="update_valor_minerales($event)"
                     >
                     </ListadeMinerales>
                     <div class="flex" v-if="mostrar_testing">
@@ -332,11 +332,13 @@
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
+        <h1>los minerales en el padre son</h1>
+        {{minerales_locales}}
 
         <BotonesPaginaCuatro
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
-            :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
+            :titulo_boton_guardar="'Guardar Datos de la Mina'"
 
             :numero_expdiente="form_pagina.numero_expdiente"
             :numero_expdiente_valido="form_pagina.numero_expdiente_valido"
@@ -388,6 +390,8 @@
             :titulo_contrato_posecion_correcto="form_pagina.titulo_contrato_posecion_correcto"
             :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
             :obs_titulo_contrato_posecion_valido="form_pagina.obs_titulo_contrato_posecion_valido"
+
+            :minerales="minerales_locales"
 
             :donde_guardar="$props.donde_estoy"
 
@@ -571,6 +575,7 @@ export default {
             
         },
         lista_de_minerales: [],
+        minerales_locales: [],
         
             
 
@@ -816,6 +821,22 @@ export default {
             this.form_pagina.titulo_contrato_posecion = newValue;
             //tengo que enviarsela al padre
         },
+
+
+
+
+
+
+
+        //FUNCIONES DE MINERALES
+        //minerales_locales
+        
+        update_valor_minerales(newValue){
+            console.log("traje un"+newValue);
+            this.minerales_locales = newValue;
+            //tengo que enviarsela al padre
+        },
+
   }
   
 };
