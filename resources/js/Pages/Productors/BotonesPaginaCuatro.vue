@@ -25,57 +25,63 @@
                 {{titulo_boton_volver}}
             </button>
         </a>
-        {{$props.numero_expdiente}}
-        {{$props.numero_expdiente_valido}}
-        {{$props.numero_expdiente_correcto}}
-        {{$props.obs_numero_expdiente}}
-        {{$props.obs_numero_expdiente_valido}}
-        {{$props.categoria}}
-        {{$props.categoria_validacion}}
-        {{$props.categoria_correcto}}
-        {{$props.obs_categoria}}
-        {{$props.obs_categoria_valido}}
-        {{$props.nombre_mina}}
-        {{$props.nombre_mina_validacion}}
-        {{$props.nombre_mina_correcto}}
-        {{$props.obs_nombre_mina}}
-        {{$props.obs_nombre_mina_valido}}
-        {{$props.descripcion_mina}}
-        {{$props.descripcion_mina_validacion}}
-        {{$props.descripcion_mina_correcto}}
-        {{$props.obs_descripcion_mina}}
-        {{$props.obs_descripcion_mina_valido}}
-        {{$props.distrito_minero}}
-        {{$props.distrito_minero_validacion}}
-        {{$props.distrito_minero_correcto}}
-        {{$props.obs_distrito_minero}}
-        {{$props.obs_distrito_minero_valido}}
-        {{$props.mina_cantera}}
-        {{$props.mina_cantera_validacion}}
-        {{$props.mina_cantera_correcto}}
-        {{$props.obs_mina_cantera}}
-        {{$props.obs_mina_cantera_valido}}
-        {{$props.plano_inmueble}}
-        {{$props.plano_inmueble_validacion}}
-        {{$props.plano_inmueble_correcto}}
-        {{$props.obs_plano_inmueble}}
-        {{$props.obs_plano_inmueble_valido}}
-        {{$props.minerales_variedad}}
-        {{$props.minerales_variedad_validacion}}
-        {{$props.minerales_variedad_correcto}}
-        {{$props.obs_minerales_variedad}}
-        {{$props.obs_minerales_variedad_valido}}
-        {{$props.resolucion_concesion_minera}}
-        {{$props.resolucion_concesion_minera_validacion}}
-        {{$props.resolucion_concesion_minera_correcto}}
-        {{$props.obs_resolucion_concesion_minera}}
-        {{$props.obs_resolucion_concesion_minera_valido}}
-        {{$props.titulo_contrato_posecion}}
-        {{$props.titulo_contrato_posecion_validacion}}
-        {{$props.titulo_contrato_posecion_correcto}}
-        {{$props.obs_titulo_contrato_posecion}}
-        {{$props.obs_titulo_contrato_posecion_valido}}
-        {{$props.minerales}}
+
+        <div v-show="$props.testing">
+
+            {{$props.numero_expdiente}}
+            {{$props.numero_expdiente_valido}}
+            {{$props.numero_expdiente_correcto}}
+            {{$props.obs_numero_expdiente}}
+            {{$props.obs_numero_expdiente_valido}}
+            {{$props.categoria}}
+            {{$props.categoria_validacion}}
+            {{$props.categoria_correcto}}
+            {{$props.obs_categoria}}
+            {{$props.obs_categoria_valido}}
+            {{$props.nombre_mina}}
+            {{$props.nombre_mina_validacion}}
+            {{$props.nombre_mina_correcto}}
+            {{$props.obs_nombre_mina}}
+            {{$props.obs_nombre_mina_valido}}
+            {{$props.descripcion_mina}}
+            {{$props.descripcion_mina_validacion}}
+            {{$props.descripcion_mina_correcto}}
+            {{$props.obs_descripcion_mina}}
+            {{$props.obs_descripcion_mina_valido}}
+            {{$props.distrito_minero}}
+            {{$props.distrito_minero_validacion}}
+            {{$props.distrito_minero_correcto}}
+            {{$props.obs_distrito_minero}}
+            {{$props.obs_distrito_minero_valido}}
+            {{$props.mina_cantera}}
+            {{$props.mina_cantera_validacion}}
+            {{$props.mina_cantera_correcto}}
+            {{$props.obs_mina_cantera}}
+            {{$props.obs_mina_cantera_valido}}
+            {{$props.plano_inmueble}}
+            {{$props.plano_inmueble_validacion}}
+            {{$props.plano_inmueble_correcto}}
+            {{$props.obs_plano_inmueble}}
+            {{$props.obs_plano_inmueble_valido}}
+            {{$props.minerales_variedad}}
+            {{$props.minerales_variedad_validacion}}
+            {{$props.minerales_variedad_correcto}}
+            {{$props.obs_minerales_variedad}}
+            {{$props.obs_minerales_variedad_valido}}
+            {{$props.resolucion_concesion_minera}}
+            {{$props.resolucion_concesion_minera_validacion}}
+            {{$props.resolucion_concesion_minera_correcto}}
+            {{$props.obs_resolucion_concesion_minera}}
+            {{$props.obs_resolucion_concesion_minera_valido}}
+            {{$props.titulo_contrato_posecion}}
+            {{$props.titulo_contrato_posecion_validacion}}
+            {{$props.titulo_contrato_posecion_correcto}}
+            {{$props.obs_titulo_contrato_posecion}}
+            {{$props.obs_titulo_contrato_posecion_valido}}
+            {{$props.minerales}}
+            
+
+        </div>
         
     </div>
 </template>
@@ -144,6 +150,7 @@ export default {
         'donde_guardar',
 
         'evaluacion',
+        'testing',
         'id'
     ],
     components: {

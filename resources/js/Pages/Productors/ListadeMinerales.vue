@@ -185,7 +185,9 @@
                     </div>
                 </div>
             </div>
-            los minerales son {{minerales}}
+            <div v-show="$props.testing">
+                los minerales son {{minerales}}
+            </div>
         </div>
     </div>
 </template>

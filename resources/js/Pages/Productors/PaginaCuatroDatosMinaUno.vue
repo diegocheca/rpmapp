@@ -332,8 +332,10 @@
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
-        <h1>los minerales en el padre son</h1>
-        {{minerales_locales}}
+        <div v-show="$props.testing">
+            <h1>los minerales en el padre son</h1>
+            {{minerales_locales}}
+        </div>
 
         <BotonesPaginaCuatro
             :link_volver="route('formulario-alta.index')"
@@ -395,7 +397,8 @@
 
             :donde_guardar="$props.donde_estoy"
 
-            :evaluacion="true"
+            :evaluacion="autoridad_minera"
+            :testing ="mostrar_testing"
             :id="$props.id"
         >
 

@@ -1968,12 +1968,13 @@ class FormAltaProductorController extends Controller
 					$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 					$formulario_provisorio->save();
 
-					$i = 0;
-
-					foreach ($request->lista_minerales as $mineral) {
-						var_dump("entre a guardar el mineral:".++$i);
-						var_dump($mineral);
+					//antes de guardar los minerales voy re visar si ya hay minerales. si los hay , los voy a borrar
+					//y luego voy a meter los nuevos minerales
+					$resultado = Minerales_Borradores::where('id_formulario', '=', $request->id)->delete();
+					//var_dump($resultado);
 					
+					$i = 0;
+					foreach ($request->lista_minerales as $mineral) {
 						$nuevo_min = new Minerales_Borradores();
 						$nuevo_min->id_formulario = $request->id;
 						$nuevo_min->id_mineral = $mineral['id_mineral'];
@@ -2000,9 +2001,9 @@ class FormAltaProductorController extends Controller
 						$nuevo_min->estado = "en proceso";
 						$nuevo_min->updated_by =  Auth::user()->id;
 
-						//var_dump($nuevo_min);
+						$nuevo_min->created_at =  null;
+						$nuevo_min->updated_at =  null;
 
-	
 						$nuevo_min->save();
 					}
 					return response()->json("se actualizaron los datos correctamente");

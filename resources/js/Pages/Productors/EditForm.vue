@@ -419,11 +419,6 @@
 			
 			<br>
 			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
 			<div class="flex items-center justify-center">
 				<!-- <CardMinaDos  
 							:progreso="form.valor_de_progreso_cinco"

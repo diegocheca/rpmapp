@@ -2,7 +2,7 @@
     <div class="w-full  bg-white rounded shadow p-6 m-8">
         <div class="flex flex h-96" >
             <div class="w-full md:w-1/3 h-full">
-                <div class="w-full md:w-1/3 px-3">
+                <div class="w-full md:w-3/3 px-3">
                     <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="input_componente"
@@ -18,24 +18,24 @@
                     />
                     <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}.</p>
                 </div>
-                <div class="w-full md:w-1/3 px-3" v-if="evaluacion">
+                <div class="w-full md:w-3/3 px-3" v-if="evaluacion">
                     <span class="text-gray-700">Es correcto?</span>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
+                            <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
                             <span class="ml-2">Si</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
+                            <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
                             <span class="ml-2">No</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
+                            <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
                             <span class="ml-2">Sin evaluar</span>
                         </label>
                     </div>
                 </div>
-                <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-1/3 px-3">
+                <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-3/3 px-3">
                     <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="observaciones"
@@ -52,7 +52,7 @@
                     <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
                 </div>
                 
-                <div class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
+                <div class="w-full md:w-4/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
                     <div class="flex">
                         <label class="flex items-center relative w-max cursor-pointer select-none">
                             <br>

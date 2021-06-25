@@ -358,7 +358,7 @@
 
                 :donde_guardar="$props.donde_estoy"
 
-                :evaluacion="true"
+                :evaluacion="autoridad_minera"
                 :id="$props.id"
             ></BotonesPaginaDos>
          </div>
