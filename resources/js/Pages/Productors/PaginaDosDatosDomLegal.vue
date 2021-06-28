@@ -1,7 +1,13 @@
 <template>
 <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
-            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
+            <a v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"  href="#section_domicilio_legal">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
+            </a>
+            <a v-else href="#section_domicilio_administrativo">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
+            </a>
+
             <label class="flex items-center relative w-max cursor-pointer select-none">
                 <br>
                 <br>

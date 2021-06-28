@@ -12,7 +12,9 @@
 <template>
 <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
     <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
-        <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/mina-parte-dos.svg">
+        <a href="#section_datos_mina_dos">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/mina-parte-dos.svg">
+        </a>
         <label class="flex items-center relative w-max cursor-pointer select-none">
             <br>
             <br>

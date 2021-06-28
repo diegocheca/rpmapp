@@ -59,7 +59,6 @@
                     <div class="flex">
                         <div v-show="testing_hijo">
                             {{fileinput_correcto_local}}
-                            {{tiposociedad_valido_local}}
                         </div>
                     </div>
                 </div>

@@ -13,7 +13,9 @@
 
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16  sticky top-0">
-            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/casco-minero.svg" width="50%">
+            <a href="#section_productor">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/casco-minero.svg" width="50%">
+            </a>
             <label class="flex items-center relative w-max cursor-pointer select-none">
                 <br>
                 <br>
@@ -73,11 +75,11 @@
                     v-on:changerazonsocial="update_razon_social($event)"
                 ></InputRazonSocial>
                 <div class="flex" v-if="mostrar_testing">
-                    -- Razon Social valor input deel padre{{form_pagina.razon_social}}
-                    -- Razon Social input valido deel padre{{form_pagina.razon_social_valido}}
-                    -- Razon Social rta prod correcta deel padre{{form_pagina.razon_social_correcto}}
-                    -- Razon Social observacion autoridad deel padre{{form_pagina.obs_razon_social}}
-                    -- Razon Social observacion autoridad valida deel padre{{form_pagina.obs_razon_social_valido}}
+                    - Razon Social valor input del padre{{form_pagina.razon_social}}
+                    - Razon Social input valido del padre{{form_pagina.razon_social_valido}}
+                    - Razon Social rta prod correcta del padre{{form_pagina.razon_social_correcto}}
+                    - Razon Social observacion autoridad del padre{{form_pagina.obs_razon_social}}
+                    - Razon Social observacion autoridad valida del padre{{form_pagina.obs_razon_social_valido}}
                 </div>
             </div>
             <div class="w-full md:w-1/2 px-3">

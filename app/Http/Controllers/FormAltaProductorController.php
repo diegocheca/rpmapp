@@ -100,7 +100,61 @@ class FormAltaProductorController extends Controller
 	{
 		//dd($id);
 		$borradores = FormAltaProductor::find($id);
-		//dd($borradores);
+
+
+		if(is_null($borradores->razon_social_correcto)) 
+			$borradores->razon_social_correcto = 'nada';
+		elseif(intval($borradores->razon_social_correcto) == 1) 
+			$borradores->razon_social_correcto = true;
+		else $borradores->razon_social_correcto = false;
+
+
+
+		if(is_null($borradores->email_correcto)) 
+			$borradores->email_correcto = 'nada';
+		elseif(intval($borradores->email_correcto) == 1) 
+			$borradores->email_correcto = true;
+		else $borradores->email_correcto = false;
+
+
+		if(is_null($borradores->cuit_correcto)) 
+			$borradores->cuit_correcto = 'nada';
+		elseif(intval($borradores->cuit_correcto) == 1) 
+			$borradores->cuit_correcto = true;
+		else $borradores->cuit_correcto = false;
+
+
+		if(is_null($borradores->numeroproductor_correcto)) 
+			$borradores->numeroproductor_correcto = 'nada';
+		elseif(intval($borradores->numeroproductor_correcto) == 1) 
+			$borradores->numeroproductor_correcto = true;
+		else $borradores->numeroproductor_correcto = false;
+
+
+		if(is_null($borradores->tiposociedad_correcto)) 
+			$borradores->tiposociedad_correcto = 'nada';
+		elseif(intval($borradores->tiposociedad_correcto) == 1) 
+			$borradores->tiposociedad_correcto = true;
+		else $borradores->tiposociedad_correcto = false;
+
+
+		if(is_null($borradores->inscripciondgr_correcto)) 
+			$borradores->inscripciondgr_correcto = 'nada';
+		elseif(intval($borradores->inscripciondgr_correcto) == 1) 
+			$borradores->inscripciondgr_correcto = true;
+		else $borradores->inscripciondgr_correcto = false;
+
+
+		if(is_null($borradores->constanciasociedad_correcto)) 
+			$borradores->constanciasociedad_correcto = 'nada';
+		elseif(intval($borradores->constanciasociedad_correcto) == 1) 
+			$borradores->constanciasociedad_correcto = true;
+		else $borradores->constanciasociedad_correcto = false;
+
+		//dd($borradores->constanciasociedad_correcto);
+
+
+
 		return Inertia::render('Productors/EditForm', ['productor' => $borradores]);
 	}
 
