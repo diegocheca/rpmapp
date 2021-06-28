@@ -70,6 +70,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing="mostrar_testing"
                     v-bind:label="'Provincia de Ubicación de Mina'"
+                    v-bind:lista_provincias="$props.lista_provincias"
                     v-on:changeprovlegalvalido="update_provincia_valido($event)"
                     v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
                     v-on:changeobsrpovlegal="update_obs_provincia($event)"
@@ -282,7 +283,8 @@ export default {
         'obs_longitud',
         'obs_longitud_valido',
 
-
+        'lista_provincias',
+        'lista_dptos',
         'evaluacion',
         'id',
         'testing'
@@ -351,7 +353,7 @@ export default {
 
         },
 
-        lista_departamentos:[],
+        lista_departamentos:this.$props.lista_dptos,
         lista_localidades:[],
         
             
@@ -433,24 +435,21 @@ export default {
             console.log("traje un"+newValue);
             this.form_pagina.localidad_mina_departamento = newValue;
 
-            traer_localidades
-
             let self = this;
-            lista_localidades
             console.log("cambio la provincia de mi hijo por:"+newValue);
             
-            this.form_pagina.localidad_mina_provincia = newValue;
-            //debo actualizar la lista de departamento que tengo disponibles para elegir
-            axios.post('/datos/traer_departamentos/',{id_prov:newValue})
-                .then(function (response) {
-                    console.log("las deptos son:\n");
-                    self.lista_departamentos = response.data;
-                    console.log(self.lista_departamentos);
+            // this.form_pagina.localidad_mina_provincia = newValue;
+            // //debo actualizar la lista de departamento que tengo disponibles para elegir
+            // axios.post('/datos/traer_departamentos/',{id_prov:newValue})
+            //     .then(function (response) {
+            //         console.log("las deptos son:\n");
+            //         self.lista_departamentos = response.data;
+            //         console.log(self.lista_departamentos);
 
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+            //     })
+            //     .catch(function (error) {
+            //         console.log(error);
+            //     });
             //tengo que enviarsela al padre
         },
 

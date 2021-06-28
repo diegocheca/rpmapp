@@ -247,12 +247,16 @@
 					:obs_leal_otro_valido="form.obs_leal_otro_valido"
 
 					:donde_estoy="'legal'"
+					:lista_provincias="lista_provincias"
+					:lista_dptos="lista_dptos_legal"
 
 					:evaluacion="true"
 					:id="$props.productor.id"
 					>
 
 				</PaginaDosDatosDomLegal>
+			
+
 				<br>
 			<div class="flex items-center justify-center">
 				<!-- <CardDomLegal  
@@ -332,10 +336,13 @@
 				:obs_leal_otro_valido="form.obs_administracion_otro_valido"
 
 				:donde_estoy="'administrativo'"
+				:lista_provincias="lista_provincias"
+				:lista_dptos="lista_dptos_admin"
 
 				:evaluacion="true"
 				:id="$props.productor.id"
 				>
+			
 
 			</PaginaDosDatosDomLegal>
 			<br>
@@ -410,6 +417,8 @@
 				:titulo_contrato_posecion_correcto="form.titulo_contrato_posecion_correcto"
 				:obs_titulo_contrato_posecion="form.obs_titulo_contrato_posecion"
 				:obs_titulo_contrato_posecion_valido="form.obs_titulo_contrato_posecion_valido"
+
+			
 
 				:evaluacion="true"
 				:id="$props.productor.id"
@@ -588,6 +597,9 @@
 				:longitud_correcto="form.longitud_correcto"
 				:obs_longitud="form.obs_longitud"
 				:obs_longitud_valido="form.obs_longitud_valido"
+
+				:lista_provincias="lista_provincias"
+				:lista_dptos="lista_dptos_mina"
 				
 				:evaluacion="true"
 				:id="$props.productor.id"
@@ -738,6 +750,10 @@ export default {
 			confirmingUserDeletion:false,
 			modal_tittle: '',
 			modal_body: '',
+			lista_provincias: [],
+			lista_dptos_legal: [],
+			lista_dptos_admin: [],
+			lista_dptos_mina: [],
 			form: {
 				razon_social:this.$props.productor.razonsocial,
 				razon_social_valido: true,
@@ -3250,7 +3266,7 @@ export default {
 		},
 
 		guardar_avances_todo: function(){
-						let self = this
+						let self = this;
 						// Make a request for a user with a given ID
 						axios.post('/formularios/evaluacion_auto_guardado_todo', {
 							id: this.$props.productor.id,
@@ -3277,6 +3293,76 @@ export default {
 		},
 
 	},
+	mounted(){
+    let self  = this;
+	//voy a buscar las provincias
+    this.$nextTick(() => {
+        axios.get('/datos/traer_provincias')
+            .then(function (response) {
+                console.log("las provincias son:\n");
+                self.lista_provincias = response.data;
+                console.log(self.lista_provincias);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+
+		// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
+		// console.log("si");
+		// else console.log("no");
+		// console.log(isNaN(parseInt(this.$props.productor.leal_provincia)));
+
+
+	//voy a buscar los dptos
+	if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.leal_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz , legales son:\n");
+                self.lista_dptos_legal = response.data;
+                console.log(self.lista_dptos_legal);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_legal=[];}
+	if(!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.administracion_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz son:\n");
+                self.lista_dptos_admin = response.data;
+                console.log(self.lista_dptos_admin);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_admin=[];}
+	if(!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.localidad_mina_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz son:\n");
+                self.lista_dptos_mina = response.data;
+                console.log(self.lista_dptos_mina);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_mina=[];}
+	
+	
+    },
 	
 	
 };

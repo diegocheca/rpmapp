@@ -10,17 +10,14 @@
                 </span>
             </div>
             <select 
-            type="text" 
-            maxlength="40"
-            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            id="leal_provincia"
-            name="leal_provincia"
-            v-model="leal_provincia"
-            v-bind:class=clase_de_input_calle_prov_legal
-            :disabled="evaluacion"
-            @input="cambio_input_calle_prov_legal($event.target.value)" 
+                class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
+                id="leal_provincia"
+                name="leal_provincia"
+                v-model="leal_provincia"
+                :disabled="evaluacion"
+                @input="cambio_input_calle_prov_legal($event.target.value)" 
             >
-            <option v-for="provincia in lista_provincias" v-bind:key="provincia.id" :value="provincia.id">{{provincia.nombre}}</option>
+            <option v-for="provincia in $props.lista_provincias" v-bind:key="provincia.id" :value="provincia.id">{{provincia.nombre}}</option>
             </select>
         </div>
         <p v-bind:class=clase_cartel_nota_legalcalleprov>{{cartel_nota_legalcalleprov}}.</p>
@@ -104,10 +101,11 @@ export default {
         'evaluacion',
         'testing',
         'label',
+        'lista_provincias',
+        
     ],
   data() {
     return {
-        clase_de_input_calle_prov_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
         cartel_nota_legalcalleprov: 'Campo Correcto',
         clase_cartel_nota_legalcalleprov: 'text-green-500 text-xs italic',
         clase_text_area_calle_legal_prov: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
@@ -118,7 +116,7 @@ export default {
         obs_calle_prov_legal_valido_local: this.$props.obs_leal_provincia_valido,
         leal_provincia_local : this.$props.leal_provincia,
         testing_hijo:false,
-        lista_provincias:[],
+
         //border-green-500
     }; 
   },
@@ -160,51 +158,10 @@ export default {
     cambio_input_calle_prov_legal(value){
         //alert("cambio la provincia"+value);
         //voy a buscar los departamento de la provincia
-
-
-
-
-        // if(this.leal_provincia.length <= 4)
-        // {
-        //     this.clase_de_input_calle_prov_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-        //     this.cartel_nota_legalcalleprov= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
-        //     this.clase_cartel_nota_legalcalleprov= 'text-red-500 text-xs italic';
-        //     this.calle_prov_legal_valido_local = false;
-        // }
-        // if(this.leal_provincia.length >= 40)
-        // {
-        //     this.clase_de_input_calle_prov_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-        //     this.cartel_nota_legalcalleprov=  'Valor Incorrecta - debe tener menos de 30 caracteres';
-        //     this.clase_cartel_nota_legalcalleprov=  'text-red-500 text-xs italic';
-        //     this.calle_prov_legal_valido_local = false;
-        // }
-        // if( this.leal_provincia !== '' && this.leal_provincia.length <= 30 && this.leal_provincia.length >= 3)
-        // {
-        //     this.clase_de_input_calle_prov_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-        //     this.cartel_nota_legalcalleprov =  'Valor Correcto';
-        //     this.clase_cartel_nota_legalcalleprov =  'text-green-500 text-xs italic';
-        //     this.calle_prov_legal_valido_local = true;
-        // }
-        // this.$emit('changeprovlegalvalido',this.calle_prov_legal_valido_local);
-
-
         this.leal_provincia_local = value;
         this.$emit('changevalorprovlegal',value);
      }
   },
-  mounted(){
-    let self  = this;
-    this.$nextTick(() => {
-        axios.get('/datos/traer_provincias')
-            .then(function (response) {
-                console.log("las provincias son:\n");
-                self.lista_provincias = response.data;
-                console.log(self.lista_provincias);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        });
-    },
+  
 };
 </script>

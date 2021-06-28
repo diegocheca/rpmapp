@@ -17,6 +17,24 @@
                 </label>
             </div>
         </div>
+        <div class="w-full md:w-1/4 px-3" v-if="mostrar_otro_input()">
+            <label
+                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="input_componente"
+                >{{otro_label}}:</label
+            >
+            <div class="mt-2">
+                <input
+                id="otro_input"
+                name="otro_input"
+                v-model="otro_input_local"
+                v-bind:class=clase_de_input_otro
+                :disabled="evaluacion"
+                @input="cambio_input_otro($event.target.value)" 
+                />
+                <p  v-bind:class=clase_texto_validacion_otro_input>{{texto_validacion_otro_input}}</p>
+            </div>
+        </div>
         <div class="w-full md:w-1/4 px-3" v-if="evaluacion">
             <span class="text-gray-700">Es correcto?</span>
             <div class="mt-2">
@@ -82,7 +100,9 @@
 </template>
 
 <script>
+import Input from '../../Jetstream/Input.vue';
 export default {
+  components: { Input },
     props: [
         'valor_input_props', 
         'evualacion_correcto', 
@@ -92,7 +112,9 @@ export default {
         'testing',
         'label',
         'label_true',
-        'label_false'
+        'label_false',
+        'otro_label',
+        'otro_input',
     ],
   data() {
     return {
@@ -106,6 +128,12 @@ export default {
 
         obs_valida: this.$props.obs_valido_props,
         testing_hijo: 'false',
+        clase_de_input_otro: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+        otro_input_local: this.$props.otro_input,
+        otro_input_local_valido: false,
+        texto_validacion_otro_input: 'Otro Dato Incorrecta , debe tener más de dos caractecteres',
+        clase_texto_validacion_otro_input: 'text-red-500 text-xs italic',
+       
         
         //border-green-500
     }; 
@@ -145,11 +173,48 @@ export default {
         }
         this.$emit('changeobs',this.$props.valor_obs)
     },
-  
-    actaulizar_valor_input(){
+    cambio_input_otro(value){
+        //tengo q validar el cambio dentro del input otro
+        //this.otro_input_local = value;
+
+        if(this.otro_input_local.length <= 2)
+        {
+            this.clase_de_input_otro=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.otro_input_local_valido = false,
+            this.texto_validacion_otro_input=  'Otro Dato Incorrecta , debe tener más de dos caractecteres';
+            this.clase_texto_validacion_otro_input=  'text-red-500 text-xs italic';
+            
+        }
+        if(this.otro_input_local.length  >= 50)
+        {
+            this.clase_de_input_otro =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.otro_input_local_valido = false,
+            this.texto_validacion_otro_input=  'Otro Dato Incorrecta , debe tener menos de 50 caractecteres';
+            this.clase_texto_validacion_otro_input=  'text-red-500 text-xs italic';
+        }
+        if( this.otro_input_local !== '' && this.otro_input_local.length <= 49 && this.otro_input_local.length >= 3)
+        {
+            this.clase_de_input_otro= 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.otro_input_local_valido = true,
+            this.texto_validacion_otro_input=  'Otro Dato Correcto';
+            this.clase_texto_validacion_otro_input=  'text-green-500 text-xs italic';
+            
+        }
+        this.$emit('changeotroinput',this.otro_input_local);
+        this.$emit('changeotroinputvalido',this.otro_input_local_valido);
+    },
+
+    actaulizar_valor_input(value){
         //aca pongo si necesito mostrar algun campo adicional
-        this.$emit('changevalor',this.valor_input);
+        this.valor_input = value;
+        this.$emit('changevalor',value);
      },
+     mostrar_otro_input(){
+            console.log(this.valor_input);
+        if(this.$props.otro_label != false && this.valor_input)
+            return true;
+        else return false;
+     }
   },
 };
 </script>

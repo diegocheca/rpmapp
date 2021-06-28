@@ -157,6 +157,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Provincia de Domicilio Legal'"
+                        v-bind:lista_provincias="$props.lista_provincias"
                         v-on:changeprovlegalvalido="update_provincia_valido($event)"
                         v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
                         v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
@@ -189,7 +190,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Departamento de Domicilio Legal'"
-                        v-bind:lista_departamentos= "lista_departamentos"
+                        v-bind:lista_departamentos= "lista_dptos"
                         v-on:changedptolegalvalido="update_dpto_valido($event)"
                         v-on:changedptolegalcorrecto="update_dpto_correcto($event)"
                         v-on:changeobsrdptolegal="update_obs_dpto_legal($event)"
@@ -358,6 +359,7 @@
 
                 :donde_guardar="$props.donde_estoy"
 
+
                 :evaluacion="autoridad_minera"
                 :id="$props.id"
             ></BotonesPaginaDos>
@@ -388,6 +390,8 @@ import BotonesPaginaDos from "@/Pages/Productors/BotonesPaginaDos";
 
 
 export default {
+  watch: {
+  },
      props: [
         'link_volver', 
         'titulo_boton_volver',
@@ -441,6 +445,8 @@ export default {
         'obs_leal_otro_valido',
 
         'donde_estoy',
+        'lista_provincias',
+        'lista_dptos',
 
         'evaluacion',
         'id'

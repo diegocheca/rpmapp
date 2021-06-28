@@ -21,7 +21,7 @@
                 :disabled="evaluacion"
                 @input="cambio_input($event.target.value)" 
                 >
-            <p v-bind:class=clase_cartel_nota_legalcallelocalidad>{{cartel_nota_legalcallelocal}}</p>
+            <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}</p>
             </div>
         <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}</p>
         <div class="flex" v-if="evaluacion">

@@ -480,6 +480,7 @@ export default {
         'obs_titulo_contrato_posecion',
         'obs_titulo_contrato_posecion_valido',
 
+
         'evaluacion',
         'id',
         'testing'
@@ -505,6 +506,9 @@ export default {
         modal_body:'',
         mostrar_testing: false,
         autoridad_minera: false,
+        lista_de_minerales:[],
+
+        
         form_pagina: {
 
             numero_expdiente : this.$props.numero_expdiente,
@@ -558,26 +562,9 @@ export default {
             
 
             mina_cantera: '',
-         
-           
-            
-            
 
-
-
-
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
         },
-        lista_de_minerales: [],
+        
         minerales_locales: [],
         
             
@@ -708,24 +695,14 @@ export default {
             console.log("traje un"+newValue);
             this.form_pagina.categoria = newValue;
             //alert("cambie la categoria de:"+newValue);
-            let categoria_a_buscar = '';
             if(newValue === 'primera')
-            {
-                categoria_a_buscar = 'Primera';
                 self.form_pagina.mina_cantera='Mina';
-            }
             if(newValue === 'segunda')
-            {
-                categoria_a_buscar = 'Segunda';
                 self.form_pagina.mina_cantera='Mina';
-            }
             if(newValue === 'tercera')
-            {
-                categoria_a_buscar = 'Tercera';
                 self.form_pagina.mina_cantera='Cantera';
-            }
 
-           axios.post('/datos/traer_minerales/',{categoria_buscando:categoria_a_buscar})
+           axios.post('/datos/traer_minerales/',{categoria_buscando:newValue})
                 .then(function (response) {
                     console.log("las manifestaciones son:\n");
                     self.lista_de_minerales = response.data;
@@ -839,7 +816,31 @@ export default {
             this.minerales_locales = newValue;
             //tengo que enviarsela al padre
         },
+        // mounted(){
+        //     this.lista_de_minerales = this.$props.lista_minerales_precargados;
+        // }
 
+  },
+  mounted(){
+      //cargo la lista de mienrales por primera vez
+    let self = this;
+    console.log("voy a buscar la categproa:");
+    console.log(this.$props.categoria);
+	if( this.$props.categoria !== '') {
+		//signafica que tengo la lsita de minerales para esta categoria
+		this.$nextTick(() => {
+        axios.post('/datos/traer_minerales',{categoria_buscando:this.$props.categoria})
+            .then(function (response) {
+                console.log("los minerales son:\n");
+                self.lista_de_minerales = response.data;
+                console.log(self.lista_de_minerales);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_de_minerales=[];}
   }
   
 };
