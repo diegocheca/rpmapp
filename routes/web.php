@@ -54,6 +54,9 @@ use App\Http\Controllers\IiadiaController;
 use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
 
+/************* FORMULARIOS WEB *************/
+use App\Http\Controllers\SolicitudesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -208,3 +211,7 @@ Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"
 Route::get('/impresiones/reinscripcion/{id}', [ReinscripcionController::class, "generar_pdf_reinscripcion"])->name('generar-pdf-reinscripcion');
 
 Route::post('/formularios/avisar_formulario_completo/', [FormAltaProductorController::class, "formulario_listo"])->name('formulario-listo');
+
+
+Route::resource('solicitudes', SolicitudesController::class)
+    ->middleware(['auth:sanctum', 'verified']);
