@@ -50,8 +50,10 @@
         <tbody>
             <tr>
                 <td style="font-size:8px;">Ministerio de Mineria <br> Secretaria Técnica</td>
-                <td style="font-size:10px;"> <strong>Planilla de COMERCIANTES AÑO 2021. LEY 494-M</strong></td>
-                <td> <strong>R067 <br> Hoja444 </strong></td>
+                <td style="font-size:10px;"> <strong>SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE 
+                PRODUCTORES COMERCIANTES E INDUSTRIAL MINEROS 
+                <br><br> LEY 6531/94</strong></td>
+                <td> <strong>R065 <br> Hoja 1 </strong></td>
             </tr>
         </tbody>
     </table>
@@ -66,8 +68,8 @@
     <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
       <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
         <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Razon Social: {{$razon_social}}</p></td>
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> N° de Productor Minero: {{$numeroproductor}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Nombre o razón social</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> N° de CUIT __/________/_ </p></td>
         </tr>
       </tbody>
     </table>
@@ -102,13 +104,52 @@
         </tr>
       </tbody>
     </table>
-    <table class="table table-bordered">
+
+     <!-- <span>Domicilio Comercial</span> -->
+     <table class="table table-bordered">
        <tbody>
             <tr>
-                <td style="font-size:10px;">3. &nbsp;&nbsp; DATOS DE LA MINA O CANTERA</td>
+                <td style="font-size:10px;">3. &nbsp;&nbsp; DOMICILIO COMERCIAL </td>
             </tr>
         </tbody>
     </table>
+    <table class="table ">
+      <tbody>
+        <tr>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Calle: {{$leal_calle}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Numero: {{$leal_numero}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Localidad: {{$leal_localidad}}</p></td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table ">
+      <tbody>
+        <tr>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Departamento: {{$leal_departamento}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Telefono: {{$leal_telefono}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Codigo Postal: {{$leal_cp}}</p></td>
+        </tr>
+      </tbody>
+    </table>
+
+<!-- <span>Minerales</span> -->
+    <table class="table table-bordered">
+       <tbody>
+            <tr>
+                <td style="font-size:10px;">4. &nbsp;&nbsp; MINERALES</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table ">
+      <tbody>
+        <tr>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> {{}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:10px;"> Expediente: {{$numero_expdiente}}</p></td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table ">
 
     <table class="table ">
       <tbody>
