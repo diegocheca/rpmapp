@@ -206,6 +206,9 @@ Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"
 //COMERCIANTE
 Route::get('/probando_form_comerciante/', [FormAltaProductorController::class, "pdf_para_comerciantes"])->name('pdf-para-comerciantes');
 
+//INDUSTRIAL
+Route::get('/probando_form_industrial/', [FormAltaProductorController::class, "pdf_para_industrial"])->name('pdf-para-industrial');
+
 
 
 Route::get('/impresiones/reinscripcion/{id}', [ReinscripcionController::class, "generar_pdf_reinscripcion"])->name('generar-pdf-reinscripcion');

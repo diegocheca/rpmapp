@@ -2652,7 +2652,63 @@ class FormAltaProductorController extends Controller
         //else response()->json("error en el email");
     }
 
+	public function pdf_para_industrial(){
+    	$email  = "ochamplin@gmail.com";
+    	date_default_timezone_set('America/Argentina/Buenos_Aires');
+		//habria q buscar en la bd los datos a poner dentro del pdf
+    	$data = [
+            'date_generado' => date('d/m/Y'),
+            //1
+            'razon_social' =>  "Barrick de San juan",
+            'numeroproductor' => 1198981,
+			//2
+			'leal_calle' => "Sargento cabral este" ,
+			'leal_numero' => 184 ,
+			'leal_telefono' => 1919815656 ,
+			'leal_departamento' => "Chimbas" ,
+			'leal_localidad' => "Chimbas City" ,
+			'leal_cp' => 5236 ,
 
+			// //4
+			'nombre_mina' => "la mina de Oro",
+			'numero_expdiente' =>18118,
+			'localidad_mina_departamento' => "Sarmiento",
+			'distrito_minero' => 4894,
+			'localidad_mina_localidad' => "san juan",
+
+			'zona_mina_provincia' =>'zona 4'
+
+			// //5
+			// 'owner' =>$formulario_provisorio->owner,
+			// 'arrendatario' =>$formulario_provisorio->arrendatario,
+			// 'concesionario' =>$formulario_provisorio->concesionario,
+			// 'otros' =>$formulario_provisorio->otros,
+			// 'acciones_a_desarrollar' =>$formulario_provisorio->acciones_a_desarrollar,
+			// 'actividad' =>$formulario_provisorio->actividad,
+			// 'fecha_alta_dia' =>$formulario_provisorio->fecha_alta_dia,
+			// 'fecha_vencimiento_dia' =>$formulario_provisorio->fecha_vencimiento_dia,
+
+			// //6
+
+			// 'localidad_mina_pais' => $formulario_provisorio->localidad_mina_pais,
+			// 'localidad_mina_provincia' => $formulario_provisorio->localidad_mina_provincia,
+			// 'localidad_mina_departamento' => $formulario_provisorio->localidad_mina_departamento,
+			// 'localidad_mina_localidad' => $formulario_provisorio->localidad_mina_localidad,
+			// 'tipo_sistema' => $formulario_provisorio->tipo_sistema,
+			// 'latitud' => $formulario_provisorio->latitud,
+			// 'longitud' => $formulario_provisorio->longitud,
+
+			// //7
+			// 'updated_at' => $formulario_provisorio->updated_at ,
+        ];
+          
+        $pdf = PDF::loadView('pdfs.formulario_productor_industrial', $data);
+    
+        //return $pdf->download('formulario_'.$formulario_provisorio->id.'.pdf');
+        return $pdf->stream('formulario_.pdf');
+//        }
+        //else response()->json("error en el email");
+    }
 
 
 
