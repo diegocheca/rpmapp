@@ -57,6 +57,27 @@
             </tr>
         </tbody>
     </table>
+    <table>
+      <tbody>
+        <tr>
+            <td style="font-size:10px;">
+              <br>Sr. Director de registro
+              <br>Minero y Catastro
+              <br>S__________/__________D
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size:10px;">
+              <br><p style="text-indent:100"> Solicito al Sr. Director, considere la inscripción en el Registro de productores
+                Comerciantes e Industriales Mineros, como <b>Comerciante de Minerales</b> de la unidad económica que represento
+                y cuyos datos indico a continuación, de acuerdo a lo dispuesto en el Capítulo 1 de la Ley 6531, cuyos alcances
+                declaro conocer y cumplir.</p>
+              </td>
+        </tr>
+      </tbody>
+
+
+    </table>
     <table class="table table-bordered">
        <tbody>
             <tr>
