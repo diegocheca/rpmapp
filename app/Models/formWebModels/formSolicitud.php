@@ -15,11 +15,12 @@ class formSolicitud extends Model
         'plazo_solicitado',
         'programa_trabajo',
         'periodo_trabajo',
-        'tiposolicitud_id', 
+        'tiposolicitud_id',
         'cant_UM_otorgada',
+        'id_mina'
     ];
     public function tipo_solicitud()
-    { 
-        return $this->belongsTo(formTipoSolicitud::class,'tiposolicitud_id'); 
+    {
+        return $this->belongsTo(formTipoSolicitud::class, 'tiposolicitud_id');
     }
 }
