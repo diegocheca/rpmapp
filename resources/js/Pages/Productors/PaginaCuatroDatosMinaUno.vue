@@ -1,7 +1,7 @@
 <template>
 <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
-            <a href="#section_productor">
+            <a href="#section_mina_uno">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/tipo_caracter_card.svg">
             </a>
             <label class="flex items-center relative w-max cursor-pointer select-none">
@@ -71,6 +71,7 @@
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Numero de Expediente'"
                         v-bind:icon="'http://localhost:8000/svg/telstreet.svg'"
+                        v-bind:name_correcto="'num_exp_correcto'"
                         v-on:changevalido="update_num_exp_valido($event)"
                         v-on:changecorrecto="update_num_exp_correcto($event)"
                         v-on:changeobs="updateobs_num_exp($event)"
@@ -112,6 +113,7 @@
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Distrito Minero'"
                         v-bind:icon="'http://localhost:8000/svg/numdistrito.svg'"
+                        v-bind:name_correcto="'distrito_correcto'"
                         v-on:changevalido="update_distrito_minero_valido($event)"
                         v-on:changecorrecto="update_distrito_minero_correcto($event)"
                         v-on:changeobs="update_distrito_minero_obs($event)"
@@ -141,6 +143,7 @@
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Nombre de Mina'"
                         v-bind:icon="'http://localhost:8000/svg/nommina.svg'"
+                        v-bind:name_correcto="'nombre_mina_correcto'"
                         v-on:changevalido="update_nom_mina_valido($event)"
                         v-on:changecorrecto="update_nom_mina_correcto($event)"
                         v-on:changeobs="update_obs_nom_mina($event)"
@@ -196,6 +199,7 @@
                     v-bind:testing = "mostrar_testing"
                     v-bind:label="'Descripcion de la Mina'"
                     v-bind:icon="'http://localhost:8000/svg/description.svg'"
+                    v-bind:name_correcto="'descripcion_mina_correcto'"
                     v-on:changevalido="update_descripcion_valido($event)"
                     v-on:changecorrecto="update_descripcion_correcto($event)"
                     v-on:changeobs="update_obs_descripcion($event)"

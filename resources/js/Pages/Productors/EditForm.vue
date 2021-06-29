@@ -180,11 +180,11 @@
 					:inscripciondgr_correcto="form.inscripciondgr_correcto"
 					:obs_inscripciondgr="form.obs_inscripciondgr"
 					:obs_inscripciondgr_valido="form.obs_inscripciondgr_valido"
-					:constaciasociedad="form.constaciasociedad"
-					:constaciasociedad_valido="form.constaciasociedad_valido"
-					:constaciasociedad_correcto="form.constaciasociedad_correcto"
-					:obs_constaciasociedad="form.obs_constaciasociedad"
-					:obs_constaciasociedad_valido="form.obs_constaciasociedad_valido"
+					:constanciasociedad="form.constaciasociedad"
+					:constanciasociedad_valido="form.constaciasociedad_valido"
+					:constanciasociedad_correcto="form.constaciasociedad_correcto"
+					:obs_constanciasociedad="form.obs_constaciasociedad"
+					:obs_constanciasociedad_valido="form.obs_constaciasociedad_valido"
 
 					:evaluacion="true"
 					:id="$props.productor.id"
@@ -796,7 +796,7 @@ export default {
 
 				constaciasociedad: this.$props.productor.constaciasociedad,
 				constaciasociedad_valido: true,
-				constaciasociedad_correcto:  this.$props.productor.constaciasociedad_correcto,
+				constaciasociedad_correcto:  this.$props.productor.constanciasociedad_correcto,
 				obs_constaciasociedad:  this.$props.productor.obs_constaciasociedad,
 				obs_constaciasociedad_valido: false,
 

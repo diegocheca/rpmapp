@@ -153,8 +153,6 @@ class FormAltaProductorController extends Controller
 
 		//dd($borradores->constanciasociedad_correcto);
 
-
-
 		return Inertia::render('Productors/EditForm', ['productor' => $borradores]);
 	}
 
@@ -1341,32 +1339,74 @@ class FormAltaProductorController extends Controller
 		->where('id', '=',$request->id)
 		->first();
 		//arreglo las variables
-		if($request->razon_social_correcto == 'nada')
+		//var_dump($request->razon_social_correcto);
+		//var_dump(is_bool($request->razon_social_correcto));
+		if(is_bool($request->razon_social_correcto))
+			if($request->razon_social_correcto == true)
+				$request->razon_social_correcto = 1;
+			else $request->razon_social_correcto = 0;
+		else//($request->razon_social_correcto == 'nada')
 			$request->razon_social_correcto = null;
-
-		if($request->cuit_correcto == 'nada')
+		
+		if(is_bool($request->cuit_correcto))
+			if($request->cuit_correcto == true)
+				$request->cuit_correcto = 1;
+			else $request->cuit_correcto = 0;
+		else//($request->cuit_correcto == 'nada')
 			$request->cuit_correcto = null;
 
-		if($request->numeroproductor_correcto == 'nada')
+
+
+		if(is_bool($request->numeroproductor_correcto))
+			if($request->numeroproductor_correcto == true)
+				$request->numeroproductor_correcto = 1;
+			else $request->numeroproductor_correcto = 0;
+		else//($request->numeroproductor_correcto == 'nada')
 			$request->numeroproductor_correcto = null;
 
-		if($request->email_correcto == 'nada')
+		
+
+		if(is_bool($request->email_correcto))
+			if($request->email_correcto == true)
+				$request->email_correcto = 1;
+			else $request->email_correcto = 0;
+		else//($request->email_correcto == 'nada')
 			$request->email_correcto = null;
 
-		if($request->tiposociedad_correcto == 'nada')
+
+
+		if(is_bool($request->tiposociedad_correcto))
+			if($request->tiposociedad_correcto == true)
+				$request->tiposociedad_correcto = 1;
+			else $request->tiposociedad_correcto = 0;
+		else//($request->tiposociedad_correcto == 'nada')
 			$request->tiposociedad_correcto = null;
 
-		if($request->inscripciondgr_correcto == 'nada')
+
+
+		if(is_bool($request->inscripciondgr_correcto))
+			if($request->inscripciondgr_correcto == true)
+				$request->inscripciondgr_correcto = 1;
+			else $request->inscripciondgr_correcto = 0;
+		else//($request->inscripciondgr_correcto == 'nada')
 			$request->inscripciondgr_correcto = null;
 
-		if($request->constaciasociedad_correcto == 'nada')
+
+		if(is_bool($request->constaciasociedad_correcto))
+			if($request->constaciasociedad_correcto == true)
+				$request->constaciasociedad_correcto = 1;
+			else $request->constaciasociedad_correcto = 0;
+		else//($request->constaciasociedad_correcto == 'nada')
 			$request->constaciasociedad_correcto = null;
 
+		
 		if($formulario_provisorio != null)
 		{
 			//lo encontre y actualizo
 			//pregunto si soy autoridad minera o si soy productor
-			if(true){ // soy autoridad minera
+			if(false){ // soy autoridad minera
+				//var_dump("voy a meter:");
+				//var_dump($request->razon_social_correcto);die();
 				$formulario_provisorio->razon_social_correcto = $request->razon_social_correcto;
 				$formulario_provisorio->obs_razon_social = $request->obs_razon_social;
 	
@@ -1396,7 +1436,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
-				return response()->json("grgdgdf se actualizaron los datos correctamente");
+				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor
 				$formulario_provisorio->razonsocial = $request->razon_social;

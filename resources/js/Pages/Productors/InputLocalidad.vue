@@ -28,15 +28,15 @@
             <span class="text-gray-700">Es correcto?</span>
             <div class="mt-2">
                 <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio" name="accountType" v-model="leal_localidad_correcto" value="true" v-on:change="actaulizar_variable_legalcallelocalidad(true)">
+                    <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType_localidad" v-model="leal_localidad_correcto" value="true" v-on:change="actaulizar_variable_legalcallelocalidad(true)">
                     <span class="ml-2">Si</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" class="form-radio" name="accountType" v-model="leal_localidad_correcto" value="false" v-on:change="actaulizar_variable_legalcallelocalidad(false)">
+                    <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType_localidad" v-model="leal_localidad_correcto" value="false" v-on:change="actaulizar_variable_legalcallelocalidad(false)">
                     <span class="ml-2">No</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" class="form-radio" name="accountType" v-model="leal_localidad_correcto" value="nada" v-on:change="actaulizar_variable_legalcallelocalidad('nada')">
+                    <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType_localidad" v-model="leal_localidad_correcto" value="nada" v-on:change="actaulizar_variable_legalcallelocalidad('nada')">
                     <span class="ml-2">Sin evaluar</span>
                 </label>
             </div>

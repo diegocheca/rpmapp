@@ -26,15 +26,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="accountType" v-model="leal_provincia_correcto" value="true" v-on:change="cactaulizar_variable_legalcalleprov(true)">
+                        <input type="radio" class="form-radio h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_provincia_correcto" value="true" v-on:change="cactaulizar_variable_legalcalleprov(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="leal_provincia_correcto" value="false" v-on:change="cactaulizar_variable_legalcalleprov(false)">
+                        <input type="radio" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_provincia_correcto" value="false" v-on:change="cactaulizar_variable_legalcalleprov(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="leal_provincia_correcto" value="nada" v-on:change="cactaulizar_variable_legalcalleprov('nada')">
+                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_provincia_correcto" value="nada" v-on:change="cactaulizar_variable_legalcalleprov('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -102,6 +102,7 @@ export default {
         'testing',
         'label',
         'lista_provincias',
+        'name_correcto',
         
     ],
   data() {

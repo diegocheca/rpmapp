@@ -154,7 +154,7 @@
                     
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <SelectProvincia
+                    <SelectProvincia v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"
                         v-bind:leal_provincia="$props.leal_provincia"
                         v-bind:leal_provincia_valido="$props.leal_provincia_valido"
                         v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
@@ -164,6 +164,26 @@
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Provincia de Domicilio Legal'"
                         v-bind:lista_provincias="$props.lista_provincias"
+                        v-bind:name_correcto="'prov_legal_correcto'"
+                        v-on:changeprovlegalvalido="update_provincia_valido($event)"
+                        v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
+                        v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
+                        v-on:changeobsprovlegalvalido="update_obs_provincia_legal_valido($event)"
+                        v-on:changevalorprovlegal="update_valor_provincia_legal_num_legal($event)"
+
+                    >
+                    </SelectProvincia>
+                    <SelectProvincia v-else
+                        v-bind:leal_provincia="$props.leal_provincia"
+                        v-bind:leal_provincia_valido="$props.leal_provincia_valido"
+                        v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
+                        v-bind:obs_leal_provfincia="$props.obs_leal_provincia"
+                        v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:label="'Provincia de Domicilio Legal'"
+                        v-bind:lista_provincias="$props.lista_provincias"
+                        v-bind:name_correcto="'prov_admin_correcto'"
                         v-on:changeprovlegalvalido="update_provincia_valido($event)"
                         v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
                         v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
@@ -223,7 +243,7 @@
                         v-bind:leal_localidad_correcto="$props.leal_localidad_correcto"
                         v-bind:obs_leal_localidad="$props.obs_leal_localidad"
                         v-bind:obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
-                         v-bind:evaluacion="autoridad_minera"
+                        v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Localidad del Domicilio Legal'"
                         v-on:changelocalidadlegalvalido="update_localidad_valido($event)"
@@ -231,7 +251,6 @@
                         v-on:changeobsrlocalidadlegal="update_obs_localidad_legal($event)"
                         v-on:changeobslocalidadlegalvalido="update_obs_localidad_legal_valido($event)"
                         v-on:changevalorlocalidadlegal="update_valor_localidad_legal_num_legal($event)"
-
                     >
                     </InputLocalidad>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">

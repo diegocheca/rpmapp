@@ -11,15 +11,15 @@
                     <span class="text-gray-700">Correcto?</span>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="fileinput_correcto" value="true" v-on:change="actaulizar_variable_fileinput(true)">
+                            <input type="radio" class="form-radio h-5 w-5 text-green-600" :name="name_correcto" v-model="inscripciondgr_correcto" value="true" v-on:change="actaulizar_variable_fileinput(true)">
                             <span class="ml-2">Si</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="fileinput_correcto" value="false" v-on:change="actaulizar_variable_fileinput(false)">
+                            <input type="radio" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="inscripciondgr_correcto" value="false" v-on:change="actaulizar_variable_fileinput(false)">
                             <span class="ml-2">No</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="name_inscripciondgr_correcto" v-model="fileinput_correcto" value="nada"  v-on:change="actaulizar_variable_fileinput('nada')">
+                            <input type="radio" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto" v-model="inscripciondgr_correcto" value="nada"  v-on:change="actaulizar_variable_fileinput('nada')">
                             <span class="ml-2">Sin evaluar</span>
                         </label>
                     </div>
@@ -58,7 +58,9 @@
                     </div>
                     <div class="flex">
                         <div v-show="testing_hijo">
-                            {{fileinput_correcto_local}}
+                            datos del hijo453
+                            {{fileinput_correcto_local}} **
+                            {{$props.inscripciondgr_correcto}}
                         </div>
                     </div>
                 </div>
@@ -98,16 +100,17 @@ export default {
     props: [
         'fileinput_valor', 
         'fileinput_valor_valido', 
-        'fileinput_correcto', 
+        'inscripciondgr_correcto', 
         'obs_fileinput', 
-        'obs_fileinput_valido',
+        'obs_inscripciondgr_valido',
         'evaluacion',
         'label',
         'testing',
+        'name_correcto',
     ],
   data() {
     return {
-        fileinput_correcto_local: this.$props.fileinput_correcto,
+        fileinput_correcto_local: this.$props.inscripciondgr_correcto,
         fileinput_valor_valido_local:this.$props.fileinput_valor_valido,
         clase_text_area_fileinput: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
         clase_cartel_nota_evaluacion_fileinput_text_area: 'text-green-500 text-xs italic',

@@ -73,6 +73,7 @@
                     v-bind:testing="mostrar_testing"
                     v-bind:label="'Provincia de Ubicación de Mina'"
                     v-bind:lista_provincias="$props.lista_provincias"
+                    v-bind:name_correcto="'prov_mina_correcto'"
                     v-on:changeprovlegalvalido="update_provincia_valido($event)"
                     v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
                     v-on:changeobsrpovlegal="update_obs_provincia($event)"

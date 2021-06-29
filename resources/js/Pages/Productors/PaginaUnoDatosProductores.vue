@@ -13,6 +13,8 @@
 
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16  sticky top-0">
+
+            en el hijo es: {{$props.inscripciondgr_correcto}}  - {{$props.constaciasociedad_correcto}}
             <a href="#section_productor">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/casco-minero.svg" width="50%">
             </a>
@@ -185,14 +187,15 @@
          <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
-                    :fileinput_valor="$props.inscripciondgr"
-                    :fileinput_valor_valido="$props.inscripciondgr_valido"
-                    :inscripciondgr_correcto="$props.inscripciondgr_correcto"
-                    :obs_inscripciondgr="$props.obs_inscripciondgr"
-                    :obs_inscripciondgr_valido="$props.obs_inscripciondgr_valido"
-                    :evaluacion="autoridad_minera"
-                    v-bind:label="'Inscripcion DGR'"
+                    v-bind:fileinput_valor="form_pagina.inscripciondgr"
+                    v-bind:fileinput_valor_valido="form_pagina.inscripciondgr_valido"
+                    v-bind:inscripciondgr_correcto="form_pagina.inscripciondgr_correcto"
+                    v-bind:obs_fileinput="form_pagina.obs_inscripciondgr"
+                    v-bind:obs_inscripciondgr_valido="form_pagina.obs_inscripciondgr_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:label="'Inscripción DGR'"
                     v-bind:testing="mostrar_testing"
+                    v-bind:name_correcto="'inscripcion_correcto'"
 
                     v-on:changeinscripciondgrcorrecto="update_inscripcion_dgr_correcto($event)"
                     v-on:changeobsinscripciondgr="update_obs_inscripcion_dgr($event)"
@@ -210,17 +213,25 @@
          <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
-                    :fileinput_valor="$props.constaciasociedad"
-                    :fileinput_valor_valido="$props.constaciasociedad_valido"
-                    :inscripciondgr_correcto="$props.constaciasociedad_correcto"
-                    :obs_inscripciondgr="$props.obs_constaciasociedad"
-                    :obs_inscripciondgr_valido="$props.obs_constaciasociedad_valido"
-                    :evaluacion="autoridad_minera"
+                    v-bind:fileinput_valor="form_pagina.constanciasociedad"
+                    v-bind:fileinput_valor_valido="form_pagina.constanciasociedad_valido"
+                    v-bind:inscripciondgr_correcto="form_pagina.constanciasociedad_correcto"
+                    v-bind:obs_fileinput="form_pagina.obs_constanciasociedad"
+                    v-bind:obs_inscripciondgr_valido="form_pagina.obs_constanciasociedad_valido"
+                    v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Constancia de sociedad'"
                     v-bind:testing="mostrar_testing"
-                    v-on:changeconstanciasociedadcorrecto="update_constancia_sociedad_correcto($event)"
-                    v-on:changeobsconstanciasociedad="update_obs_constancia_sociedad($event)"
+                    v-bind:name_correcto="'constancia_correcto'"
+                    v-on:changeinscripciondgrcorrecto="update_constancia_sociedad_correcto($event)"
+                    v-on:changeobsinscripciondgr="update_obs_constancia_sociedad($event)"
                 >
+
+                
+
+
+
+
+
                 </FileInscripcionDGR>
                 <div class="flex" v-if="mostrar_testing">
                     -- constancia de sociedad valida deel padre{{form_pagina.constanciasociedad_valido}}
@@ -264,12 +275,15 @@
                 :inscripciondgr_valido="form_pagina.inscripciondgr_valido"
                 :inscripciondgr_correcto="form_pagina.inscripciondgr_correcto"
                 :obs_inscripciondgr="form_pagina.obs_inscripciondgr"
-                :obs_inscripciondgr_valido="form_pagina.obs_inscripciondgr_valido"
+                :obs_inscripciondgr_valida="form_pagina.obs_inscripciondgr_valida"
+
+                
                 :constaciasociedad="form_pagina.constaciasociedad"
-                :constaciasociedad_valido="form_pagina.constaciasociedad_valido"
-                :constaciasociedad_correcto="form_pagina.constaciasociedad_correcto"
-                :obs_constaciasociedad="form_pagina.obs_constaciasociedad"
-                :obs_constaciasociedad_valido="form_pagina.obs_constaciasociedad_valido"
+                :constanciasociedad_valido="form_pagina.constanciasociedad_valido"
+                :constanciasociedad_correcto="form_pagina.constanciasociedad_correcto"
+                :obs_constanciasociedad="form_pagina.obs_constanciasociedad"
+                :obs_constanciasociedad_valido="form_pagina.obs_constanciasociedad_valido"
+
                 :evaluacion="true"
                 :id="$props.id"
             ></BotonesPaginaUna>
@@ -332,11 +346,11 @@ export default {
         'inscripciondgr_correcto',
         'obs_inscripciondgr',
         'obs_inscripciondgr_valido',
-        'constaciasociedad',
-        'constaciasociedad_valido',
-        'constaciasociedad_correcto',
-        'obs_constaciasociedad',
-        'obs_constaciasociedad_valido',
+        'constanciasociedad',
+        'constanciasociedad_valido',
+        'constanciasociedad_correcto',
+        'obs_constanciasociedad',
+        'obs_constanciasociedad_valido',
 
         'evaluacion',
         'id'
@@ -394,16 +408,20 @@ export default {
             obs_tiposociedad: this.$props.obs_tiposociedad,
             obs_tiposociedad_valido: this.$props.obs_tiposociedad_valido,
 
+
+
+            inscripciondgr: this.$props.inscripciondgr,
             inscripciondgr_valido: this.$props.inscripciondgr_valido,
             inscripciondgr_correcto: this.$props.inscripciondgr_correcto,
             obs_inscripciondgr: this.$props.obs_inscripciondgr,
+            obs_inscripciondgr_valida: this.$props.obs_inscripciondgr_valido,
 
 
+            constaciasociedad: this.$props.constanciasociedad ,
             constanciasociedad_valido: this.$props.constanciasociedad_valido,
             constanciasociedad_correcto: this.$props.constanciasociedad_correcto,
             obs_constanciasociedad: this.$props.obs_constanciasociedad,
-
-            
+            obs_constanciasociedad_valido: this.$props.obs_constanciasociedad_valido,
 
         },
     };

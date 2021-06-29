@@ -45,6 +45,20 @@
         {{ $props.numeroproductor_correcto}}
         {{ $props.obs_numeroproductor}}
         {{ $props.obs_numeroproductor_valido}}
+
+        <br>
+        valor dgr: {{ $props.inscripciondgr}}
+        
+        --corrlor dgr{{ $props.inscripciondgr_correcto}}
+        --dgr_obs:{{ $props.obs_inscripciondgr}}
+        <br>
+        valor cons:{{ $props.constaciasociedad}}
+        -- corr cons:{{ $props.constanciasociedad_correcto}}
+        --cons_obs:{{ $props.obs_constanciasociedad}}
+
+
+        
+
     </div>
 </template>
 
@@ -85,12 +99,13 @@ export default {
         'inscripciondgr_valido',
         'inscripciondgr_correcto',
         'obs_inscripciondgr',
-        'obs_inscripciondgr_valido',
+        'obs_inscripciondgr_valida',
+
         'constaciasociedad',
-        'constaciasociedad_valido',
-        'constaciasociedad_correcto',
-        'obs_constaciasociedad',
-        'obs_constaciasociedad_valido',
+        'constanciasociedad_valido',
+        'constanciasociedad_correcto',
+        'obs_constanciasociedad',
+        'obs_constanciasociedad_valido',
 
         'evaluacion',
         'id'
@@ -149,13 +164,13 @@ export default {
                     inscripciondgr_valido:  this.$props.inscripciondgr_valido,
                     inscripciondgr_correcto:  this.$props.inscripciondgr_correcto,
                     obs_inscripciondgr: this.$props.obs_inscripciondgr,
-                    obs_inscripciondgr_valido:  this.$props.obs_inscripciondgr_valido,
+                    obs_inscripciondgr_valido:this.$props.obs_inscripciondgr_valido,
 
                     constaciasociedad: this.$props.constaciasociedad,
-                    constaciasociedad_valido: this.$props.constaciasociedad_valido,
-                    constaciasociedad_correcto: this.$props.constaciasociedad_correcto,
-                    obs_constaciasociedad: this.$props.obs_constaciasociedad,
-                    obs_constaciasociedad_valido: this.$props.obs_constaciasociedad_valido,
+                    constaciasociedad_valido: this.$props.constanciasociedad_valido,
+                    constaciasociedad_correcto: this.$props.constanciasociedad_correcto,
+                    obs_constaciasociedad: this.$props.obs_constanciasociedad,
+                    obs_constaciasociedad_valido: this.$props.obs_constanciasociedad_valido,
 
                     valor_de_progreso: 20,
                     valor_de_aprobado: 20,
@@ -167,16 +182,16 @@ export default {
                     if(response.data === "se actualizaron los datos correctamente")
                     {
                         console.log('todo bien');
-                        self.modal_tittle = 'Datos guardados correctamente';
-                        self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
+                        self.modal_tittle = 'Datos guardados correctamente como Autoridad';
+                        self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, siendo Autoridad, gracias por usar este servcio, por favor continue llenando el formulario';
                         self.mostrar_modal_datos_ya_guardados = true;
                     }
                     
-                    if(response.data === "formulario no encontrado")
+                    if(response.data === "se actualizaron los datos correctamente, siendo un productor")
                     {
                         console.log('todo mal, no se encontro');
-                        self.modal_tittle = 'Paso 1 Guardado Fallido';
-                        self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+                        self.modal_tittle = 'Paso 1 Guardado Correctamente como Prod';
+                        self.modal_body = 'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
                         self.mostrar_modal_datos_ya_guardados = true;
                     }
                     else{
