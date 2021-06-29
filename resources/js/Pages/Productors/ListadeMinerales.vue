@@ -49,8 +49,6 @@
                                                 <option value="conceden_preferentemente">Sustancias que se conceden preferentemente al dueño del suelo</option>
                                             </select>
                                         </div>
-                                        
-                                        
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">
                                             <select
                                             v-model="mineral.id_mineral"
@@ -139,15 +137,15 @@
                                                     <span class="text-gray-700">Es correcto?</span>
                                                     <div class="mt-2">
                                                         <label class="inline-flex items-center">
-                                                            <input type="radio" class="form-radio" name="mineral_correccion" v-model="mineral.evaluacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true, index)">
+                                                            <input type="radio" class="form-radio h-5 w-5 text-green-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true, index)">
                                                             <span class="ml-2">Si</span>
                                                         </label>
                                                         <label class="inline-flex items-center ml-6">
-                                                            <input type="radio" class="form-radio" name="mineral_correccion" v-model="mineral.evaluacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false, index)">
+                                                            <input type="radio" class="form-radio h-5 w-5 text-red-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false, index)">
                                                             <span class="ml-2">No</span>
                                                         </label>
                                                         <label class="inline-flex items-center ml-6">
-                                                            <input type="radio" class="form-radio" name="mineral_correccion" v-model="mineral.evaluacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada', index)">
+                                                            <input type="radio" class="form-radio h-5 w-5 text-indigo-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada', index)">
                                                             <span class="ml-2">Sin evaluar</span>
                                                         </label>
                                                     </div>
@@ -245,7 +243,6 @@ export default {
                 obs_valida: true,
                 lista_de_minerales_array:[],
                 thumb: 'http://localhost:8000/minerales/thumbs/3.png'
-
             },
             {
                 id_mineral: '2',

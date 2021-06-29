@@ -150,6 +150,37 @@
                         v-bind:valor_valido_obs="form_pagina.obs_otros_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:label="'Las sustancias son de Aprovechamiento común?'"
+                        v-bind:label_true="'Si'"
+                        v-bind:label_false="'No'"
+                        v-bind:otro_label="'Concesión Minera:'"
+                        v-bind:otro_input="''"
+                        v-on:changecorrecto="update_otro_correcto($event)"
+                        v-on:changeobs="update_obs_otro($event)"
+                        v-on:changeobsvalido="update_obs_otro_valido($event)"
+                        v-on:changevalor="update_valor_otro($event)"
+                        v-on:changeotroinput="update_valor_otro_input($event)"
+                        v-on:changeotroinputvalido="update_valor_otro_input_valido($event)"
+                    ></CaracterQueInvoca>
+                    <div class="flex" v-if="mostrar_testing">
+                            <br> otro de Mina valor padre: {{form_pagina.otros}}
+                            <br> otro de Mina  correcto deel padre: {{form_pagina.otros_correcto}}
+                            <br> otro de Mina  observacion deel padre: {{form_pagina.obs_otros}}
+                            <br> otro de Mina  observacion valida deel padre: {{form_pagina.obs_otros_valido}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            <div class="w-full  bg-white rounded shadow p-6 m-8">
+                <div class="flex">
+                    <CaracterQueInvoca 
+                        v-bind:valor_input_props="form_pagina.otros"
+                        v-bind:evualacion_correcto="form_pagina.otros_correcto"
+                        v-bind:valor_obs="form_pagina.obs_otros"
+                        v-bind:valor_valido_obs="form_pagina.obs_otros_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing ="mostrar_testing"
                         v-bind:label="'Otros'"
                         v-bind:label_true="'Tengo un dato que declarar'"
                         v-bind:label_false="'No tengo más datos a declarar'"
