@@ -103,6 +103,8 @@ class FormAltaProductorController extends Controller
 		$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
 		
 
+		//dd($borradores->categoria);die();
+
 
 		if(is_null($borradores->razon_social_correcto)) 
 			$borradores->razon_social_correcto = 'nada';
@@ -152,6 +154,41 @@ class FormAltaProductorController extends Controller
 		elseif(intval($borradores->constanciasociedad_correcto) == 1) 
 			$borradores->constanciasociedad_correcto = true;
 		else $borradores->constanciasociedad_correcto = false;
+
+
+
+
+
+		if(is_null($borradores->owner_correcto)) 
+			$borradores->owner_correcto = 'nada';
+		elseif(intval($borradores->owner_correcto) == 1) 
+			$borradores->owner_correcto = true;
+		else $borradores->owner_correcto = false;
+
+		if(is_null($borradores->arrendatario_correcto)) 
+			$borradores->arrendatario_correcto = 'nada';
+		elseif(intval($borradores->arrendatario_correcto) == 1) 
+			$borradores->arrendatario_correcto = true;
+		else $borradores->arrendatario_correcto = false;
+
+		if(is_null($borradores->concesionario_correcto)) 
+			$borradores->concesionario_correcto = 'nada';
+		elseif(intval($borradores->concesionario_correcto) == 1) 
+			$borradores->concesionario_correcto = true;
+		else $borradores->concesionario_correcto = false;
+
+		if(is_null($borradores->otros_correcto)) 
+			$borradores->otros_correcto = 'nada';
+		elseif(intval($borradores->otros_correcto) == 1) 
+			$borradores->otros_correcto = true;
+		else $borradores->otros_correcto = false;
+
+		if(is_null($borradores->susteancias_de_aprovechamiento_comun_correcto)) 
+			$borradores->susteancias_de_aprovechamiento_comun_correcto = 'nada';
+		elseif(intval($borradores->susteancias_de_aprovechamiento_comun_correcto) == 1) 
+			$borradores->susteancias_de_aprovechamiento_comun_correcto = true;
+		else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
+
 
 		//dd($minerales_asociados);
 
@@ -2197,57 +2234,45 @@ class FormAltaProductorController extends Controller
 
 	public function correccion_guardar_paso_cinco(Request $request)
 	{
-		/*var_dump(
-			$request->razon_social, 
-			$request->razon_social_valido, 
-			$request->razon_social_correcto, 
-			$request->obs_razon_social, 
-			$request->obs_razon_social_valido, 
+		var_dump(
+			/*$request->owner, 
+			$request->owner_correcto, 
+			$request->obs_owner, 
+			$request->obs_owner_valido, */
 
-			$request->email, 
-			$request->email_valido, 
-			$request->email_correcto, 
-			$request->obs_email, 
-			$request->obs_email_valido, 
+			/*$request->arrendatario, 
+			$request->arrendatario_correcto, 
+			$request->obs_arrendatario, 
+			$request->obs_arrendatario_valido, */
 
-			$request->cuit, 
-			$request->cuit_valido, 
-			$request->cuit_correcto, 
-			$request->obs_cuit, 
-			$request->obs_cuit_valido, 
+			/*$request->concesionario, 
+			$request->concesionario_correcto, 
+			$request->obs_concesionario, 
+			$request->obs_concesionario_valido, */
 
-			$request->numeroproductor, 
-			$request->numeroproductor_valido, 
-			$request->numeroproductor_correcto, 
-			$request->obs_numeroproductor, 
-			$request->obs_numeroproductor_valido, 
-
-			$request->tiposociedad, 
-			$request->tiposociedad_valido, 
-			$request->tiposociedad_correcto, 
-			$request->obs_tiposociedad, 
-			$request->obs_tiposociedad_valido,
+			$request->otros, 
+			$request->otros_correcto, 
+			$request->obs_otros, 
+			$request->obs_otros_valido, 
+			$request->otros_input,
+			$request->otros_input_valido,
+			"--------",
 
 
-			$request->inscripciondgr, 
-			$request->inscripciondgr_valido, 
-			$request->inscripciondgr_correcto, 
-			$request->obs_inscripciondgr, 
-			$request->obs_inscripciondgr_valido,
-
-
-			$request->constaciasociedad, 
-			$request->constaciasociedad_valido, 
-			$request->constaciasociedad_correcto, 
-			$request->obs_constaciasociedad, 
-			$request->obs_constaciasociedad_valido,
-
+			$request->sustancias, 
+			$request->sustancias_correcto, 
+			$request->obs_sustancias, 
+			$request->obs_sustancias_valido, 
+			$request->sustancias_input,
+			$request->sustancias_input_valido,
+			
 
 			$request->valor_de_progreso, 
 			$request->valor_de_aprobado, 
 			$request->valor_de_reprobado, 
 
-		);*/
+		);
+		die();
 		return response()->json("todo bien");
 		//die();
 

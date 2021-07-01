@@ -70,6 +70,8 @@
                     v-bind:label_false="'No soy propietario'"
                     v-bind:otro_label="false"
                     v-bind:otro_input="false"
+                    v-bind:name_correcion="'correcion_propietario'"
+                    v-bind:name_checkbox="'check_propietario'"
                     v-on:changecorrecto="update_owner_correcto($event)"
                     v-on:changeobs="updateobs_owner($event)"
                     v-on:changeobsvalido="updateobs_owner_valido($event)"
@@ -98,6 +100,8 @@
                     v-bind:label_false="'No soy arrendatario'"
                     v-bind:otro_label="false"
                     v-bind:otro_input="false"
+                    v-bind:name_correcion="'correcion_arrendatario'"
+                    v-bind:name_checkbox="'check_arrendatario'"
                     v-on:changecorrecto="update_arrendatario_correcto($event)"
                     v-on:changeobs="update_obs_arrendatario($event)"
                     v-on:changeobsvalido="update_obs_arrendatario_valido($event)"
@@ -126,6 +130,8 @@
                         v-bind:label_false="'No soy concesionario'"
                         v-bind:otro_label="false"
                         v-bind:otro_input="false"
+                        v-bind:name_correcion="'correcion_concesionario'"
+                        v-bind:name_checkbox="'check_concesionario'"
                         v-on:changecorrecto="update_concesionario_correcto($event)"
                         v-on:changeobs="update_obs_concesionario($event)"
                         v-on:changeobsvalido="update_obs_concesionario_valido($event)"
@@ -144,23 +150,25 @@
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <div class="flex">
                     <CaracterQueInvoca 
-                        v-bind:valor_input_props="form_pagina.otros"
-                        v-bind:evualacion_correcto="form_pagina.otros_correcto"
-                        v-bind:valor_obs="form_pagina.obs_otros"
-                        v-bind:valor_valido_obs="form_pagina.obs_otros_valido"
+                        v-bind:valor_input_props="form_pagina.sustancias"
+                        v-bind:evualacion_correcto="form_pagina.sustancias_correcto"
+                        v-bind:valor_obs="form_pagina.obs_sustancias"
+                        v-bind:valor_valido_obs="form_pagina.obs_sustancias_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Las sustancias son de Aprovechamiento común?'"
                         v-bind:label_true="'Si'"
                         v-bind:label_false="'No'"
                         v-bind:otro_label="'Concesión Minera:'"
-                        v-bind:otro_input="''"
-                        v-on:changecorrecto="update_otro_correcto($event)"
-                        v-on:changeobs="update_obs_otro($event)"
-                        v-on:changeobsvalido="update_obs_otro_valido($event)"
-                        v-on:changevalor="update_valor_otro($event)"
-                        v-on:changeotroinput="update_valor_otro_input($event)"
-                        v-on:changeotroinputvalido="update_valor_otro_input_valido($event)"
+                        v-bind:otro_input="form_pagina.sustancias_input"
+                        v-bind:name_correcion="'correcion_sustancias'"
+                        v-bind:name_checkbox="'check_sustancias'"
+                        v-on:changecorrecto="update_sustancias_correcto($event)"
+                        v-on:changeobs="update_obs_sustancias($event)"
+                        v-on:changeobsvalido="update_obs_sustancias_valido($event)"
+                        v-on:changevalor="update_valor_sustancias($event)"
+                        v-on:changeotroinput="update_valor_sustancias_input($event)"
+                        v-on:changeotroinputvalido="update_valor_sustancias_input_valido($event)"
                     ></CaracterQueInvoca>
                     <div class="flex" v-if="mostrar_testing">
                             <br> otro de Mina valor padre: {{form_pagina.otros}}
@@ -185,7 +193,9 @@
                         v-bind:label_true="'Tengo un dato que declarar'"
                         v-bind:label_false="'No tengo más datos a declarar'"
                         v-bind:otro_label="'Aclaracion de otro dato'"
-                        v-bind:otro_input="''"
+                        v-bind:otro_input="form_pagina.otros_input"
+                        v-bind:name_correcion="'correcion_otros'"
+                        v-bind:name_checkbox="'check_otros'"
                         v-on:changecorrecto="update_otro_correcto($event)"
                         v-on:changeobs="update_obs_otro($event)"
                         v-on:changeobsvalido="update_obs_otro_valido($event)"
@@ -289,6 +299,7 @@
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Actividades a Desarrollar la Mina'"
                     v-bind:icon="'http://localhost:8000/svg/description.svg'"
+                    v-bind:name_correcto="'actividades_correcto'"
                     v-on:changevalido="update_actividades_valido($event)"
                     v-on:changecorrecto="update_actividades_correcto($event)"
                     v-on:changeobs="update_obs_actividades($event)"
@@ -316,6 +327,7 @@
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Acciones a Desarrollar la Mina'"
                     v-bind:icon="'http://localhost:8000/svg/description.svg'"
+                    v-bind:name_correcto="'acciones_correcto'"
                     v-on:changevalido="update_accionesvalido($event)"
                     v-on:changecorrecto="update_acciones_correcto($event)"
                     v-on:changeobs="update_obs_acciones($event)"
@@ -399,6 +411,87 @@
         </div>
     </div>
     <div class="flex justify-end mt-4">
+        <BotonesPaginaCinco
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos de la Mina'"
+
+            :owner="form_pagina.owner"
+            :owner_correcto="form_pagina.owner_correcto"
+            :obs_owner="form_pagina.obs_owner"
+            :obs_owner_valido="form_pagina.obs_owner_valido"
+            :arrendatario="form_pagina.arrendatario"
+            :arrendatario_correcto="form_pagina.arrendatario_correcto"
+            :obs_arrendatario="form_pagina.obs_arrendatario"
+            :obs_arrendatario_valido="form_pagina.obs_arrendatario_valido"
+            :concesionario="form_pagina.concesionario"
+            :concesionario_correcto="form_pagina.concesionario_correcto"
+            :obs_concesionario="form_pagina.obs_concesionario"
+            :obs_concesionario_valido="form_pagina.obs_concesionario_valido"
+            :otros="form_pagina.otros"
+            :otros_correcto="form_pagina.otros_correcto"
+            :obs_otros="form_pagina.obs_otros"
+            :obs_otros_valido="form_pagina.obs_otros_valido"
+            :otros_input="form_pagina.otros_input"
+            :otros_input_valido="form_pagina.otros_input_valido"
+            :sustancias="form_pagina.sustancias"
+            :sustancias_correcto="form_pagina.sustancias_correcto"
+            :obs_sustancias="form_pagina.obs_sustancias"
+            :obs_sustancias_valido="form_pagina.obs_sustancias_valido"
+            :sustancias_input="form_pagina.sustancias_input"
+            :sustancias_input_valido="form_pagina.sustancias_input_valido"
+            :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
+            :titulo_contrato_posecion_validacion="form_pagina.titulo_contrato_posecion_validacion"
+            :titulo_contrato_posecion_correcto="form_pagina.titulo_contrato_posecion_correcto"
+            :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
+            :obs_titulo_contrato_posecion_valido="form_pagina.obs_titulo_contrato_posecion_valido"
+            :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
+            :resolucion_concesion_minera_validacion="form_pagina.resolucion_concesion_minera_validacion"
+            :resolucion_concesion_minera_correcto="form_pagina.resolucion_concesion_minera_correcto"
+            :obs_resolucion_concesion_minera="form_pagina.obs_resolucion_concesion_minera"
+            :obs_resolucion_concesion_minera_valido="form_pagina.obs_resolucion_concesion_minera_valido"
+            :constancia_pago_canon="form_pagina.constancia_pago_canon"
+            :constancia_pago_canon_validacion="form_pagina.constancia_pago_canon_validacion"
+            :constancia_pago_canon_correcto="form_pagina.constancia_pago_canon_correcto"
+            :obs_constancia_pago_canon="form_pagina.obs_constancia_pago_canon"
+            :obs_constancia_pago_canon_valido="form_pagina.obs_constancia_pago_canon_valido"
+            :iia="form_pagina.iia"
+            :iia_canon_validacion="form_pagina.iia_canon_validacion"
+            :iia_correcto="form_pagina.iia_correcto"
+            :obs_iia_canon="form_pagina.obs_iia_canon"
+            :obs_iia_canon_valido="form_pagina.obs_iia_canon_valido"
+            :dia="form_pagina.dia"
+            :dia_canon_validacion="form_pagina.dia_canon_validacion"
+            :dia_correcto="form_pagina.dia_correcto"
+            :obs_dia_canon="form_pagina.obs_dia_canon"
+            :obs_dia_canon_valido="form_pagina.obs_dia_canon_valido"
+            :acciones_a_desarrollar="form_pagina.acciones_a_desarrollar"
+            :acciones_a_desarrollar_validacion="form_pagina.acciones_a_desarrollar_validacion"
+            :acciones_a_desarrollar_correcto="form_pagina.acciones_a_desarrollar_correcto"
+            :obs_acciones_a_desarrollar="form_pagina.obs_acciones_a_desarrollar"
+            :obs_acciones_a_desarrollar_valido="form_pagina.obs_acciones_a_desarrollar_valido"
+            :actividad="form_pagina.actividad"
+            :actividad_a_desarrollar_validacion="form_pagina.actividad_a_desarrollar_validacion"
+            :actividad_a_desarrollar_correcto="form_pagina.actividad_a_desarrollar_correcto"
+            :obs_actividad_a_desarrollar="form_pagina.obs_actividad_a_desarrollar"
+            :obs_actividad_a_desarrollar_valido="form_pagina.obs_actividad_a_desarrollar_valido"
+            :fecha_alta_dia="form_pagina.fecha_alta_dia"
+            :fecha_alta_dia_validacion="form_pagina.fecha_alta_dia_validacion"
+            :fecha_alta_dia_correcto="form_pagina.fecha_alta_dia_correcto"
+            :obs_fecha_alta_dia="form_pagina.obs_fecha_alta_dia"
+            :obs_fecha_alta_dia_valido="form_pagina.obs_fecha_alta_dia_valido"
+            :fecha_vencimiento_dia="form_pagina.fecha_vencimiento_dia"
+            :fecha_vencimiento_dia_validacion="form_pagina.fecha_vencimiento_dia_validacion"
+            :fecha_vencimiento_dia_correcto="form_pagina.fecha_vencimiento_dia_correcto"
+            :obs_fecha_vencimiento_dia="form_pagina.obs_fecha_vencimiento_dia"
+            :obs_fecha_vencimiento_dia_valido="form_pagina.obs_fecha_vencimiento_dia_valido"
+
+            :evaluacion="autoridad_minera"
+            :testing ="mostrar_testing"
+            :id="$props.id"
+        >
+
+        </BotonesPaginaCinco>
         <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
     </div>
 </div>
@@ -411,6 +504,7 @@ import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
 import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import NombreMina from "@/Pages/Productors/NombreMina";
 import FechaGenerica from "@/Pages/Productors/FechaGenerica";
+import BotonesPaginaCinco from "@/Pages/Productors/BotonesPaginaCinco";
 
 
 export default {
@@ -436,6 +530,14 @@ export default {
         'otros_correcto',
         'obs_otros',
         'obs_otros_valido',
+        'otros_input',
+        'otros_input_valido',
+        'sustancias',
+        'sustancias_correcto',
+        'obs_sustancias',
+        'obs_sustancias_valido',
+        'sustancias_input',
+        'sustancias_input_valido',
         'titulo_contrato_posecion',
         'titulo_contrato_posecion_validacion',
         'titulo_contrato_posecion_correcto',
@@ -495,6 +597,7 @@ export default {
         SubirArchivo,
         NombreMina,
         FechaGenerica,
+        BotonesPaginaCinco,
 	},
    
   data() {
@@ -531,6 +634,19 @@ export default {
             otros_correcto: this.$props.otros_correcto,
             obs_otros: this.$props.obs_otros,
             obs_otros_valido: this.$props.obs_otros_valido,
+            otros_input: this.$props.otros_input,
+            otros_input_valido: this.$props.otros_input_valido,
+
+
+            sustancias: this.$props.sustancias,
+            sustancias_correcto: this.$props.sustancias_correcto,
+            obs_sustancias: this.$props.obs_sustancias,
+            obs_sustancias_valido: this.$props.obs_sustancias_valido,
+            sustancias_input: this.$props.sustancias_input,
+            sustancias_valido_input: this.$props.sustancias_input_valido,
+
+
+
 
 
 
@@ -647,6 +763,35 @@ export default {
             this.form_pagina.concesionario = newValue;
             //tengo que enviarsela al padre
         },
+        //FUNCIONES DE SUSTANCIAS
+        update_sustancias_correcto(newValue){
+            this.form_pagina.sustancias_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_sustancias(newValue){
+            this.form_pagina.obs_sustancias = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_sustancias_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_sustancias_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_sustancias(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.sustancias = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_sustancias_input(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.sustancias_input = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_sustancias_input_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.sustancias_valido_input = newValue;
+            //tengo que enviarsela al padre
+        },
         // FUNCIONES DE OTRO
         update_otro_correcto(newValue){
             this.form_pagina.otros_correcto = newValue;
@@ -668,7 +813,7 @@ export default {
         },
         update_valor_otro_input(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.otro_caracter_acalaracion = newValue;
+            this.form_pagina.otros_input = newValue;
             //tengo que enviarsela al padre
         },
         update_valor_otro_input_valido(newValue){

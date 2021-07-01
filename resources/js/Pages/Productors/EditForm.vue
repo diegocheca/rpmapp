@@ -402,7 +402,6 @@
 				:obs_minerales_variedad="form.obs_minerales_variedad"
 				:obs_minerales_variedad_valido="form.obs_minerales_variedad_valido"
 
-
 				:resolucion_concesion_minera="form.resolucion_concesion_minera"
 				:resolucion_concesion_minera_validacion="form.resolucion_concesion_minera_validacion"
 				:resolucion_concesion_minera_correcto="form.resolucion_concesion_minera_correcto"
@@ -462,6 +461,17 @@
 				:otros_correcto="form.otros_correcto"
 				:obs_otros="form.obs_otros"
 				:obs_otros_valido="form.obs_otros_valido"
+				:otros_input="form.otros_input"
+				:otros_input_valido="form.otros_input_valido"
+				
+
+				:sustancias="form.sustancias"
+				:sustancias_correcto="form.sustancias_correcto"
+				:obs_sustancias="form.obs_sustancias"
+				:obs_sustancias_valido="form.obs_sustancias_valido"
+				:sustancias_input="form.sustancias_input"
+				:sustancias_input_valido="form.sustancias_input_valido"
+
 				:titulo_contrato_posecion="form.titulo_contrato_posecion"
 				:titulo_contrato_posecion_validacion="form.titulo_contrato_posecion_validacion"
 				:titulo_contrato_posecion_correcto="form.titulo_contrato_posecion_correcto"
@@ -1031,28 +1041,40 @@ export default {
 				valor_de_reprobado_cinco: 100,
 
 				owner: this.$props.productor.owner,
-				owner_correcto: 'nada',
-				obs_owner: '',
+				owner_correcto: this.$props.productor.owner_correcto,
+				obs_owner: this.$props.productor.obs_owner,
 				obs_owner_valido: false,
 
 				arrendatario: this.$props.productor.arrendatario,
-				arrendatario_correcto: 'nada',
-				obs_arrendatario: '',
+				arrendatario_correcto: this.$props.productor.arrendatario_correcto,
+				obs_arrendatario: this.$props.productor.obs_arrendatario,
 				obs_arrendatario_valido: false,
 
 
 				concesionario: this.$props.productor.concesionario,
-				concesionario_correcto: 'nada',
-				obs_concesionario: '',
+				concesionario_correcto: this.$props.productor.concesionario_correcto,
+				obs_concesionario: this.$props.productor.obs_concesionario,
 				obs_concesionario_valido: false,
+				
 
 
 
 
 				otros: this.$props.productor.otros,
-				otros_correcto: 'nada',
-				obs_otros: '',
+				otros_correcto: this.$props.productor.otros_correcto,
+				obs_otros: this.$props.productor.obs_otros,
 				obs_otros_valido: false,
+				otros_input: this.$props.productor.otro_caracter_aclaracion,
+				otros_input_valido: true,
+
+
+				sustancias: this.$props.productor.sustancias_de_aprovechamiento_comun,
+				sustancias_correcto: this.$props.productor.sustancias_de_aprovechamiento_comun_correcto,
+				obs_sustancias: this.$props.productor.obs_sustancias_de_aprovechamiento_comun,
+				obs_sustancias_valido: false,
+				sustancias_input: this.$props.productor.concesion_minera_aclaracion,
+				sustancias_input_valido: true,
+
 
 				titulo_contrato_posecion: this.$props.productor.titulo_contrato_posecion,
 				titulo_contrato_posecion_validacion:  true,
@@ -1095,7 +1117,7 @@ export default {
 				acciones_a_desarrollar_validacion:  true,
 				acciones_a_desarrollar_correcto: 'nada',
 				obs_acciones_a_desarrollar: '',
-				obs_acciones_a_desarrollar_valido: false,
+				obs_acciones_a_desarrollar_valido: this.$props.productor.concesion_minera_aclaracion,
 
 
 
