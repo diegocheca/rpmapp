@@ -10,7 +10,7 @@
     </app-layout>
 </template>
 <script>
-import Mostrar from "./componentes/wizard2.vue";
+import Mostrar from "./componentes/wizard.vue";
 export default {
     components: {
         Mostrar,

@@ -18,6 +18,8 @@ class formSolicitud extends Model
         'periodo_trabajo',
         'tiposolicitud_id', // tipo de solicitud
         'cant_UM_otorgada',
+        //'tipo_persona_razon',//
+        //'id_persona_razonsocial',//
         'id_mina' //mina
     ];
     public function tipo_solicitud()
