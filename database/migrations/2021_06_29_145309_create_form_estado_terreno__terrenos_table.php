@@ -13,8 +13,9 @@ class CreateFormEstadoTerrenoTerrenosTable extends Migration
      */
     public function up()
     {
-        Schema::create('form_estado_terreno__terrenos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('formEstadoTerreno_Terreno', function (Blueprint $table) {
+            $table->integer('id_terreno');
+            $table->integer('id_estadoTerreno');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateFormEstadoTerrenoTerrenosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('form_estado_terreno__terrenos');
+        Schema::dropIfExists('formEstadoTerreno_Terreno');
     }
 }

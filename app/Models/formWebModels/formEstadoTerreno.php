@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class formEstadoTerreno extends Model
 {
     use HasFactory;
+    protected $table = 'formEstadoTerreno';
+    protected $fillable = [
+        'id',
+        'nombre',
+    ];
     public function terreno()
     {
-        return $this->belongsToMany('App\Models\formWebModels\formTerreno');
+        return $this->belongsToMany(formTerreno::class);
     }
 }

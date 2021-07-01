@@ -18,7 +18,7 @@ class SolicitudesController extends Controller
     public function index()
     {
         // $solicitudes = formTipoSolicitud::with(['solicitud'])->get();
-        $solicitudes = formSolicitud::with(['tipo_solicitud'])->get();
+        $solicitudes = formSolicitud::with(['tipo_solicitud','terreno'])->get();
         // return ($solicitudes);
         return  Inertia::render('formWeb/mostrar', ['solicitudes' => $solicitudes]);
     }
@@ -31,6 +31,10 @@ class SolicitudesController extends Controller
     public function create()
     {
         return Inertia::render('formWeb/FormCrear');
+    }
+    public function prueba()
+    {
+        return Inertia::render('formWeb/formPrueba');
     }
 
     /**

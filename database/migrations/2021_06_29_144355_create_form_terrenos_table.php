@@ -13,13 +13,13 @@ class CreateFormTerrenosTable extends Migration
      */
     public function up()
     {
-        Schema::create('form_terrenos', function (Blueprint $table) {
-            $table->id();
+        Schema::create('formTerreno', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('categoria_mineral');
+            $table->string('superficie');
             $table->string('provincia');
             $table->string('departamento');
             $table->string('localidad');
-
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateFormTerrenosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('form_terrenos');
+        Schema::dropIfExists('formTerreno');
     }
 }

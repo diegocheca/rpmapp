@@ -154,7 +154,6 @@
                             </button>
                         </div>
                     </form>
-                    <Mostrar></Mostrar>
                 </div>
             </div>
         </div>
@@ -163,11 +162,9 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import Mostrar from '../Productors/BotonesPaginaCuatro.vue';
 export default {
     components: {
         AppLayout,
-        Mostrar,
     },
     props: {
         errors: Object,

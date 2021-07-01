@@ -13,7 +13,7 @@ class CreateFormEstadoTerrenosTable extends Migration
      */
     public function up()
     {
-        Schema::create('form_estado_terrenos', function (Blueprint $table) {
+        Schema::create('formEstadoTerreno', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_estado');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateFormEstadoTerrenosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('form_estado_terrenos');
+        Schema::dropIfExists('formEstadoTerreno');
     }
 }
