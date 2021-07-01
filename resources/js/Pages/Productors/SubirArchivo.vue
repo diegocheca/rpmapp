@@ -14,7 +14,7 @@
                         v-model="valor_input"
                         v-bind:class=clase_border_de_input
                         :disabled="evaluacion"
-                        @input="cambio_input($event.target.value)" 
+                        @input="cambio_input($event.target.value)"
                     />
                     <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}.</p>
                 </div>
@@ -46,7 +46,7 @@
                         name="observaciones"
                         v-model="valor_obs"
                         v-bind:class=clase_text_area
-                        @input="actaulizar_contenido_text_area($event.target.value)" 
+                        @input="actaulizar_contenido_text_area($event.target.value)"
                         >
                     </textarea>
                     <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
@@ -88,9 +88,9 @@ import Input from '../../Jetstream/Input.vue';
 export default {
   components: { Input },
     props: [
-        'valor_input_props', 
-        'evualacion_correcto', 
-        'valor_obs', 
+        'valor_input_props',
+        'evualacion_correcto',
+        'valor_obs',
         'valor_valido_obs',
         'evaluacion',
         'testing',
@@ -111,16 +111,16 @@ export default {
         valor_evaluacion_correcto_local: this.$props.evualacion_correcto,
 
         obs_valida: this.$props.obs_valido_props,
-        
+
         //border-green-500
-    }; 
+    };
   },
   methods:{
     actaulizar_variable_correccion(valor) {
         this.valor_evaluacion_correcto_local = valor;
         this.$emit('changecorrecto',this.valor_evaluacion_correcto_local);
     },
-     
+
       actaulizar_contenido_text_area(value) {
         if(this.$props.valor_obs.length <= 2)
         {
@@ -129,7 +129,7 @@ export default {
             this.clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
             this.obs_valida = false;
             this.$emit('changeobsvalido',false);
-            
+
         }
         if(this.$props.valor_obs.length >= 50)
         {
@@ -146,7 +146,7 @@ export default {
             this.clase_text_evaluacion_de_text_area=  'text-green-500 text-xs italic';
             this.obs_valida = false;
             this.$emit('changeobsvalido',true);
-            
+
         }
         this.$emit('changeobs',this.$props.valor_obs)
     },

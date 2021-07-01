@@ -1,0 +1,18 @@
+-----REINSCRIPCIONES-----
+    - Sustancia de tercera categoria en terreno fiscal
+        - superficie solicitada
+        - clase de sustancia a explotar
+        - plano de ubicación con coordenadas etc
+        - acreditacion titularidad dominio fiscal
+
+    - Canteras para obras públicas
+        - ubicación en coordenadas
+        - superficie pretendida
+        - tiempo de explotación solicitado
+        - plano de ejecucion de obras
+        - características de los trabajos a emprender
+        - informe oficial actualizado del estado legal del inmbueble (si la propiedad es particular agregar conformidad titular)
+        - denunciar domicilio real y construir domicilio legal
+
+    - Canteras zonas maritimas, fluviales y lacustres
+        -
