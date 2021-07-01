@@ -319,6 +319,7 @@
                         v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
                         v-bind:tipo_yacimiento="form_pagina.categoria"
                         v-bind:lista_de_minerales="lista_de_minerales"
+                        v-bind:lista_de_minerales_pre_cargados="$props.lista_minerales_desde_back"
                         v-on:changevalido="update_titulo_contrato_valido($event)"
                         v-on:changecorrecto="update_titulo_contrato_correcto($event)"
                         v-on:changeobs="update_obs_titulo_contrato($event)"
@@ -488,7 +489,7 @@ export default {
         'obs_titulo_contrato_posecion',
         'obs_titulo_contrato_posecion_valido',
 
-
+        'lista_minerales_desde_back',
         'evaluacion',
         'id',
         'testing'

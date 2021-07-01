@@ -100,6 +100,8 @@ class FormAltaProductorController extends Controller
 	{
 		//dd($id);
 		$borradores = FormAltaProductor::find($id);
+		$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
+		
 
 
 		if(is_null($borradores->razon_social_correcto)) 
@@ -151,9 +153,9 @@ class FormAltaProductorController extends Controller
 			$borradores->constanciasociedad_correcto = true;
 		else $borradores->constanciasociedad_correcto = false;
 
-		//dd($borradores->constanciasociedad_correcto);
+		//dd($minerales_asociados);
 
-		return Inertia::render('Productors/EditForm', ['productor' => $borradores]);
+		return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados]);
 	}
 
 	/**
@@ -2041,7 +2043,7 @@ class FormAltaProductorController extends Controller
 		{
 			//lo encontre y actualizo
 			//pregunto si soy autoridad minera o si soy productor
-			if(true){ // soy autoridad minera
+			if(false){ // soy autoridad minera
 				$formulario_provisorio->numero_expdiente_correcto = $request->numero_expdiente_correcto;
 				$formulario_provisorio->obs_numero_expdiente = $request->obs_numero_expdiente;
 	
@@ -2130,65 +2132,65 @@ class FormAltaProductorController extends Controller
 			else{//soy productor
 				//lo encontre y actualizo
 				var_dump("entre como productor");
-					$formulario_provisorio->numero_expdiente = $request->numero_expdiente;
-					$formulario_provisorio->categoria = $request->categoria;
-					$formulario_provisorio->nombre_mina = $request->nombre_mina;
-					$formulario_provisorio->descripcion_mina = $request->descripcion_mina;
+				//dd($request->categoria);die();
+				$formulario_provisorio->numero_expdiente = $request->numero_expdiente;
+				$formulario_provisorio->categoria = $request->categoria;
+				$formulario_provisorio->nombre_mina = $request->nombre_mina;
+				$formulario_provisorio->descripcion_mina = $request->descripcion_mina;
 
-					$formulario_provisorio->distrito_minero = $request->distrito_minero;
-					$formulario_provisorio->mina_cantera = $request->mina_cantera;
-					//$formulario_provisorio->plano_inmueble = $request->plano_inmueble;
-					//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
+				$formulario_provisorio->distrito_minero = $request->distrito_minero;
+				$formulario_provisorio->mina_cantera = $request->mina_cantera;
+				//$formulario_provisorio->plano_inmueble = $request->plano_inmueble;
+				//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
 
-					//$formulario_provisorio->titulo_contrato_posecion = $request->titulo_contrato_posecion;
-					//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
+				//$formulario_provisorio->titulo_contrato_posecion = $request->titulo_contrato_posecion;
+				//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
 
-					$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-					$formulario_provisorio->save();
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->save();
 
-					//antes de guardar los minerales voy re visar si ya hay minerales. si los hay , los voy a borrar
-					//y luego voy a meter los nuevos minerales
-					$resultado = Minerales_Borradores::where('id_formulario', '=', $request->id)->delete();
-					//var_dump($resultado);
-					
-					$i = 0;
-					foreach ($request->lista_minerales as $mineral) {
-						$nuevo_min = new Minerales_Borradores();
-						$nuevo_min->id_formulario = $request->id;
-						$nuevo_min->id_mineral = $mineral['id_mineral'];
-						$nuevo_min->lugar_donde_se_encuentra = $mineral['lugar_donde_se_enccuentra'];
-						$nuevo_min->variedad = null;
-						$nuevo_min->segunda_cat_mineral_explotado = $mineral['segunda_cat_mineral_explotado'];
-						$nuevo_min->mostrar_lugar_segunda_cat = $mineral['mostrar_lugar_segunda_cat'];
-						$nuevo_min->mostrar_otro_mineral_segunda_cat = $mineral['mostrar_otro_mineral_segunda_cat'];
-						$nuevo_min->otro_mineral_segunda_cat = $mineral['otro_mineral_segunda_cat'];
-						$nuevo_min->observacion = $mineral['observacion'];
-						$nuevo_min->clase_text_area_presentacion = $mineral['clase_text_area_presentacion'];
-						$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = $mineral['clase_text_evaluacion_de_text_area_presentacion'];
-						$nuevo_min->texto_validacion_text_area_presentacion = $mineral['texto_validacion_text_area_presentacion'];
-						$nuevo_min->presentacion_valida = $mineral['presentacion_valida'];
-						$nuevo_min->evaluacion_correcto = $mineral['evaluacion_correcto'];
-						$nuevo_min->observacion_autoridad = $mineral['observacion_autoridad'];
-						$nuevo_min->clase_text_area = $mineral['clase_text_area'];
-						$nuevo_min->clase_text_evaluacion_de_text_area = $mineral['clase_text_evaluacion_de_text_area'];
-						$nuevo_min->texto_validacion_text_area = $mineral['texto_validacion_text_area'];
-						$nuevo_min->obs_valida = $mineral['obs_valida'];
-						$nuevo_min->lista_de_minerales_array = null;
-						$nuevo_min->thumb = $mineral['thumb'];
-						$nuevo_min->created_by = Auth::user()->id;
-						$nuevo_min->estado = "en proceso";
-						$nuevo_min->updated_by =  Auth::user()->id;
+				//antes de guardar los minerales voy re visar si ya hay minerales. si los hay , los voy a borrar
+				//y luego voy a meter los nuevos minerales
+				$resultado = Minerales_Borradores::where('id_formulario', '=', $request->id)->delete();
+				//var_dump($resultado);
+				
+				$i = 0;
+				foreach ($request->lista_minerales as $mineral) {
+					$nuevo_min = new Minerales_Borradores();
+					$nuevo_min->id_formulario = $request->id;
+					$nuevo_min->id_mineral = $mineral['id_mineral'];
+					$nuevo_min->lugar_donde_se_encuentra = $mineral['lugar_donde_se_enccuentra'];
+					$nuevo_min->variedad = null;
+					$nuevo_min->segunda_cat_mineral_explotado = $mineral['segunda_cat_mineral_explotado'];
+					$nuevo_min->mostrar_lugar_segunda_cat = $mineral['mostrar_lugar_segunda_cat'];
+					$nuevo_min->mostrar_otro_mineral_segunda_cat = $mineral['mostrar_otro_mineral_segunda_cat'];
+					$nuevo_min->otro_mineral_segunda_cat = $mineral['otro_mineral_segunda_cat'];
+					$nuevo_min->observacion = $mineral['observacion'];
+					$nuevo_min->clase_text_area_presentacion = $mineral['clase_text_area_presentacion'];
+					$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = $mineral['clase_text_evaluacion_de_text_area_presentacion'];
+					$nuevo_min->texto_validacion_text_area_presentacion = $mineral['texto_validacion_text_area_presentacion'];
+					$nuevo_min->presentacion_valida = $mineral['presentacion_valida'];
+					$nuevo_min->evaluacion_correcto = $mineral['evaluacion_correcto'];
+					$nuevo_min->observacion_autoridad = $mineral['observacion_autoridad'];
+					$nuevo_min->clase_text_area = $mineral['clase_text_area'];
+					$nuevo_min->clase_text_evaluacion_de_text_area = $mineral['clase_text_evaluacion_de_text_area'];
+					$nuevo_min->texto_validacion_text_area = $mineral['texto_validacion_text_area'];
+					$nuevo_min->obs_valida = $mineral['obs_valida'];
+					$nuevo_min->lista_de_minerales_array = null;
+					$nuevo_min->thumb = $mineral['thumb'];
+					$nuevo_min->created_by = Auth::user()->id;
+					$nuevo_min->estado = "en proceso";
+					$nuevo_min->updated_by =  Auth::user()->id;
 
-						$nuevo_min->created_at =  null;
-						$nuevo_min->updated_at =  null;
+					$nuevo_min->created_at =  null;
+					$nuevo_min->updated_at =  null;
 
-						$nuevo_min->save();
-					}
-					return response()->json("se actualizaron los datos correctamente");
+					$nuevo_min->save();
+				}
+				return response()->json("se actualizaron los datos correctamente");
 			}
 		}
-		else
-		{
+		else{
 			return response()->json("formulario no encontrado");
 		}
 	}
