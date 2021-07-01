@@ -11,13 +11,16 @@ class formSolicitud extends Model
     protected $table = 'formSolicitud';
     protected $fillable = [
         'id',
-        'id_terreno', // terreno_id
+        'nroexpediente',
+        'id_terreno', // terreno
         'plazo_solicitado',
         'programa_trabajo',
         'periodo_trabajo',
-        'tiposolicitud_id',
+        'tiposolicitud_id', // tipo de solicitud
         'cant_UM_otorgada',
-        'id_mina'
+        //'tipo_persona_razon',//
+        //'id_persona_razonsocial',//
+        'id_mina' //mina
     ];
     public function tipo_solicitud()
     {
@@ -25,9 +28,17 @@ class formSolicitud extends Model
     }
 
     //Relacion de muchos a muchos con RolPersona
-    public function materias()
+    public function RolPersona()
     {
         return $this->belongsToMany('App\Models\formWebModels\formRolPersona');
     }
 
+    public function terreno()
+    {
+        return $this->hasOne(formTerreno::class, 'id_terreno');
+    }
+    public function mina()
+    {
+        return $this->hasOne(formMina::class, 'id_mina');
+    }
 }

@@ -16,7 +16,10 @@ class CreateFormTipoRolTable extends Migration
         Schema::create('formTipoRol', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_rol');
-            $table->timestamps();
+        // Schema::create('formEstadoTerreno_Terreno', function (Blueprint $table) {
+        //     $table->integer('id_terreno');
+        //     $table->integer('id_estadoTerreno');
+        //     $table->timestamps();
         });
     }
 
@@ -28,5 +31,6 @@ class CreateFormTipoRolTable extends Migration
     public function down()
     {
         Schema::dropIfExists('formTipoRol');
+        // Schema::dropIfExists('formEstadoTerreno_Terreno');
     }
 }

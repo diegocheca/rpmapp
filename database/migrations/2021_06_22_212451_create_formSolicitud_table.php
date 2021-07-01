@@ -15,6 +15,7 @@ class CreateformSolicitudTable extends Migration
     {
         Schema::create('formSolicitud', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nroexpediente',100);
             $table->unsignedInteger('id_terreno')->nullable(); //id tabla terreno
             $table->string('plazo_solicitado',50)->nullable();
             $table->string('programa_trabajo',50)->nullable();

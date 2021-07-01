@@ -14,12 +14,12 @@ class CreateFormTerrenoTable extends Migration
     public function up()
     {
         Schema::create('formTerreno', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('categoria_mineral');
+            $table->string('superficie');
             $table->string('provincia');
             $table->string('departamento');
             $table->string('localidad');
-
             $table->timestamps();
         });
     }

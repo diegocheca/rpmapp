@@ -55,6 +55,7 @@ use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
 
 /************* FORMULARIOS WEB *************/
+
 use App\Http\Controllers\SolicitudesController;
 
 
@@ -81,7 +82,7 @@ Route::get('/', function () {
 Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-    
+
 Route::resource('reinscripciones', ReinscripcionController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
@@ -89,10 +90,10 @@ Route::resource('reinscripciones', ReinscripcionController::class)
 Route::resource('productos', ProductosController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-    
+
 
 Route::resource('iiadias', IiadiaController::class)
-->middleware(['auth:sanctum', 'verified']);
+    ->middleware(['auth:sanctum', 'verified']);
 Route::post('/guardando_dia_iia', [IiadiaController::class, "recibo"])->name('recibo-dia-iia');
 
 // Route::get('list-productos', [ProductosController::class, 'index']);
@@ -105,7 +106,7 @@ Route::resource('pagos', PagocanonminaController::class)
 Route::resource('productores_minas', ProductorMinaController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-    Route::resource('productores', ProductoresController::class)
+Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
@@ -117,7 +118,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
 
-    return Inertia::render('Users/Index',[
+    return Inertia::render('Users/Index', [
         'users' => User::all()
     ]);
 })->name('users.index');
@@ -213,5 +214,14 @@ Route::get('/impresiones/reinscripcion/{id}', [ReinscripcionController::class, "
 Route::post('/formularios/avisar_formulario_completo/', [FormAltaProductorController::class, "formulario_listo"])->name('formulario-listo');
 
 
+
+// Route::group(['prefix' => 'solicitudes'], function () {
 Route::resource('solicitudes', SolicitudesController::class)
     ->middleware(['auth:sanctum', 'verified']);
+
+// Route::get('prueba', 'SolicitudesController@prueba')
+//     ->middleware(['auth:sanctum', 'verified']);
+
+Route::get('/prueba', [SolicitudesController::class, "prueba"])->name('prueba');
+
+// });
