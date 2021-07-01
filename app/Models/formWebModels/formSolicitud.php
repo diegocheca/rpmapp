@@ -23,4 +23,11 @@ class formSolicitud extends Model
     {
         return $this->belongsTo(formTipoSolicitud::class, 'tiposolicitud_id');
     }
+
+    //Relacion de muchos a muchos con RolPersona
+    public function materias()
+    {
+        return $this->belongsToMany('App\Models\formWebModels\formRolPersona');
+    }
+
 }

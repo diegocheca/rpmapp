@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class formEstadoTerreno_Terreno extends Model
 {
-    use HasFactory;
+    //use HasFactory;
+    protected $table = 'formEstadoTerreno_Terreno';
+    protected $fillable = [
+        'id',
+        'terreno_id', 
+        'estadoterreno_id'        
+    ];
     
 }

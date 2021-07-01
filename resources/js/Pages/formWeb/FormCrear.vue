@@ -163,7 +163,9 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import Mostrar from '../Productors/BotonesPaginaCuatro.vue';
+//import Mostrar from '../Productors/BotonesPaginaCuatro.vue';
+//import Mostrar from '../MisComponentes/saludo.vue';
+import Mostrar from '../MisComponentes/DatosPersonales.vue';
 export default {
     components: {
         AppLayout,
