@@ -15,6 +15,7 @@
                 <button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900"  @click="agregar_mineral()"> + Agregar Mineral</button>
                 </div>
             </div>
+            lsita de minerales del nieto: {{$props.lista_de_minerales_pre_cargados}}
             <div class="grid mt-8  gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 <div class="flex flex-col" v-for="(mineral, index) in minerales" v-bind:key="mineral.id">
                     <div class="bg-white shadow-md  rounded-3xl p-4">
@@ -203,7 +204,8 @@ export default {
         'label',
         'label_text_area',
         'tipo_yacimiento',
-        'lista_de_minerales'
+        'lista_de_minerales',
+        'lista_de_minerales_pre_cargados',
     ],
   data() {
     return {
@@ -221,7 +223,7 @@ export default {
         valor_evaluacion_correcto_local: this.$props.evualacion_correcto,
 
         obs_valida: this.$props.obs_valido_props,
-        minerales: [
+        /*minerales: [
             {
                 id_mineral: '1',
                 id_varieadad: '1',
@@ -266,7 +268,8 @@ export default {
                 lista_de_minerales_array:[],
                 thumb: 'http://localhost:8000/minerales/thumbs/3.png'
             }
-        ],
+        ],*/
+        minerales: this.$props.lista_de_minerales_pre_cargados,
         opcionesmineral : this.$props.lista_de_minerales,
         opcionesmineraluno : [],
         index_de_mineral_segunda_cat: '',

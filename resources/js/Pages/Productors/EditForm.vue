@@ -18,18 +18,14 @@
 							<template #title>
 									{{modal_tittle}}
 							</template>
-
 							<template #content>
 									{{modal_body}}
-
 									
 							</template>
-
 							<template #footer>
 									<button @click="closeModal">
 											Ok
 									</button>
-
 									
 							</template>
 					</jet-dialog-modal>
@@ -358,6 +354,7 @@
 				></CardMinaUno> -->
 			</div>
 			<div id="section_mina_uno"></div>
+			
 			<PaginaCuatroDatosMinaUno
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -418,7 +415,7 @@
 				:obs_titulo_contrato_posecion="form.obs_titulo_contrato_posecion"
 				:obs_titulo_contrato_posecion_valido="form.obs_titulo_contrato_posecion_valido"
 
-			
+				:lista_minerales_desde_back = "lista_de_minerales_del_back"
 
 				:evaluacion="true"
 				:id="$props.productor.id"
@@ -744,7 +741,10 @@ export default {
 		PaginaSeisDatosUbicacionMina,
 		ValidationErrors,
 	},
-	props: ["productor"],
+	props: [
+		"productor",
+		"lista_minerales_cargados"
+		],
 	data() {
 		return {
 			confirmingUserDeletion:false,
@@ -754,6 +754,7 @@ export default {
 			lista_dptos_legal: [],
 			lista_dptos_admin: [],
 			lista_dptos_mina: [],
+			lista_de_minerales_del_back : this.$props.lista_minerales_cargados,
 			form: {
 				razon_social:this.$props.productor.razonsocial,
 				razon_social_valido: true,
@@ -966,50 +967,50 @@ export default {
 
 				numero_expdiente: this.$props.productor.numero_expdiente,
 				numero_expdiente_valido:  true,
-				numero_expdiente_correcto: 'nada',
-				obs_numero_expdiente: '',
+				numero_expdiente_correcto: this.$props.productor.numero_expdiente_correcto,
+				obs_numero_expdiente:  this.$props.productor.obs_numero_expdiente,
 				obs_numero_expdiente_valido: false,
 
 
 				categoria: this.$props.productor.categoria,
 				categoria_validacion:  true,
-				categoria_correcto: 'nada',
-				obs_categoria: '',
+				categoria_correcto: this.$props.productor.categoria_correcto,
+				obs_categoria: this.$props.productor.obs_categoria,
 				obs_categoria_valido: false,
 
 				nombre_mina: this.$props.productor.nombre_mina,
 				nombre_mina_validacion:  true,
-				nombre_mina_correcto: 'nada',
-				obs_nombre_mina: '',
+				nombre_mina_correcto: this.$props.productor.nombre_mina_correcto,
+				obs_nombre_mina: this.$props.productor.obs_nombre_mina,
 				obs_nombre_mina_valido: false,
 
 
 				descripcion_mina: this.$props.productor.descripcion_mina,
 				descripcion_mina_validacion:  true,
-				descripcion_mina_correcto: 'nada',
-				obs_descripcion_mina: '',
+				descripcion_mina_correcto: this.$props.productor.descripcion_mina_correcto,
+				obs_descripcion_mina: this.$props.productor.obs_descripcion_mina,
 				obs_descripcion_mina_valido: false,
 
 
 				distrito_minero: this.$props.productor.distrito_minero,
 				distrito_minero_validacion:  true,
-				distrito_minero_correcto: 'nada',
-				obs_distrito_minero: '',
+				distrito_minero_correcto: this.$props.productor.distrito_minero_correcto,
+				obs_distrito_minero: this.$props.productor.obs_distrito_minero,
 				obs_distrito_minero_valido: false,
 
 
 
 				mina_cantera: this.$props.productor.mina_cantera,
 				mina_cantera_validacion:  true,
-				mina_cantera_correcto: 'nada',
-				obs_mina_cantera: '',
+				mina_cantera_correcto: this.$props.productor.mina_cantera_correcto,
+				obs_mina_cantera: this.$props.productor.obs_mina_cantera,
 				obs_mina_cantera_valido: false,
 
 
 				plano_inmueble: this.$props.productor.plano_inmueble,
 				plano_inmueble_validacion:  true,
-				plano_inmueble_correcto: 'nada',
-				obs_plano_inmueble: '',
+				plano_inmueble_correcto: this.$props.productor.plano_inmueble_correcto,
+				obs_plano_inmueble: this.$props.productor.obs_plano_inmueble,
 				obs_plano_inmueble_valido: false,
 
 

@@ -166,8 +166,8 @@ export default {
   },
   methods:{
       guardar_avnces_uno(){
-          if(this.$props.evaluacion)
-          {
+          //if(this.$props.evaluacion)
+          //{
             //Soy autoridad minera
             let self = this
             axios.post('/formularios/evaluacion_auto_guardado_cuatro', {
@@ -260,12 +260,12 @@ export default {
                 })
             //soy una autoridad minera
             
-          }
-          if(!this.$props.evaluacion)
-          {
+          //}
+          //if(!this.$props.evaluacion)
+         // {
               //soy un productor
 
-          }
+         // }
 
       },
       cerrar_modal_datos_uno() {
