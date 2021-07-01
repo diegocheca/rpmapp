@@ -34,8 +34,11 @@ class ReinscripcionController extends Controller
         //
         // return Inertia::render('Reinscripciones/Form');
         return Inertia::render('Reinscripciones/EditForm', [
+            'province' => env('PROVINCE', '')."/reinscripciones",
+            'folder' => 'reinscripciones',
             'reinscripcion' => [],
-            'titleForm' => 'Editar reinscripciones'
+            'titleForm' => 'Editar reinscripciones',
+            'evaluate' => false
         ]);
 
 
@@ -104,8 +107,8 @@ class ReinscripcionController extends Controller
     {
         //
         $reinscripcion = Reinscripciones::find($id);
-
         return Inertia::render('Reinscripciones/EditForm', [
+            'province' => env('PROVINCE', '')."/reinscripciones",
             'reinscripcion' => $reinscripcion,
             'titleForm' => 'Editar reinscripciones',
             'evaluate' => true
@@ -240,4 +243,7 @@ class ReinscripcionController extends Controller
         return $pdf->stream('formulario_.pdf');
     }
 
+    public function getCountries() {
+        
+    }
 }

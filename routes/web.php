@@ -78,15 +78,22 @@ Route::get('/', function () {
 Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-    
-Route::resource('reinscripciones', ReinscripcionController::class)
-    ->middleware(['auth:sanctum', 'verified']);
+
+
+Route::group(['prefix' => 'reinscripciones'], function () {
+    Route::resource('', ReinscripcionController::class)
+        ->middleware(['auth:sanctum', 'verified']);
+
+    Route::get('paises', 'ReinscripcionController@getCountries')
+        ->middleware(['auth:sanctum', 'verified']);
+
+});
 
 
 Route::resource('productos', ProductosController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-    
+
 
 Route::resource('iiadias', IiadiaController::class)
 ->middleware(['auth:sanctum', 'verified']);
@@ -133,7 +140,7 @@ Route::resource('products', ProductController::class)
 Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formulario"])->name('abrir-formulario');
 
 
-//direcciones de formularios 
+//direcciones de formularios
 
 
 
