@@ -1,34 +1,42 @@
 <template>
-    <div>
-        <label
-            class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            for="input_componente"
-            >{{label}}:</label
-        >
+    <div class=" w-full">
+       
         
-        <input
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+         for="input_componente"
+        >{{label}}</label>
+        <div class="flex items-stretch w-full mb-4 relative">
+            <div class="flex">
+                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
+                <img :src="icon">
+                </span>
+            </div>
+           
+            <input
             id="input_componente"
             name="input_componente"
             v-model="valor_input"
             v-bind:class=clase_border_de_input
             :disabled="evaluacion"
             @input="cambio_input($event.target.value)" 
-        />
+            />
+        </div>
+
         <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}.</p>
         <div class="flex" v-if="evaluacion">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
+                        <input type="radio" class="form-radio h-5 w-5 text-green-600" :name="resolucion_correcto" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
+                        <input type="radio" class="form-radio h-5 w-5 text-red-600" :name="resolucion_correcto" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
+                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" :name="resolucion_correcto" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -80,7 +88,9 @@ export default {
         'valor_valido_obs',
         'evaluacion',
         'testing',
-        'label'
+        'label',
+        'icon',
+        'resolucion_correcto',
     ],
   data() {
     return {

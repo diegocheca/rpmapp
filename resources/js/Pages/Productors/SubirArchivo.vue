@@ -2,7 +2,7 @@
     <div class="w-full  bg-white rounded shadow p-6 m-8">
         <div class="flex flex h-96" >
             <div class="w-full md:w-1/3 h-full">
-                <div class="w-full md:w-1/3 px-3">
+                <div class="w-full md:w-3/3 px-3">
                     <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="input_componente"
@@ -18,24 +18,24 @@
                     />
                     <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}.</p>
                 </div>
-                <div class="w-full md:w-1/3 px-3" v-if="evaluacion">
+                <div class="w-full md:w-3/3 px-3" v-if="evaluacion">
                     <span class="text-gray-700">Es correcto?</span>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
+                            <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
                             <span class="ml-2">Si</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
+                            <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
                             <span class="ml-2">No</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
+                            <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
                             <span class="ml-2">Sin evaluar</span>
                         </label>
                     </div>
                 </div>
-                <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-1/3 px-3">
+                <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-3/3 px-3">
                     <label
                         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                         for="observaciones"
@@ -51,13 +51,34 @@
                     </textarea>
                     <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
                 </div>
-                <div v-show="testing">
-                    <br>Valor input:{{valor_input}}<br>
-                    <br>distrtito minero calle Evalaucion:{{evualacion_correcto}}<br>
-                    <br>distrtito minero calle Obser:{{valor_obs}}<br>
-                    <br>distrtito minero calle obsr Valido:{{valor_valido_obs}}<br>
-                    <br>Evaluacion {{evaluacion}}<br>
-                    <br>{{texto_validacion_text_area}}<br>
+                
+                <div class="w-full md:w-4/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
+                    <div class="flex">
+                        <label class="flex items-center relative w-max cursor-pointer select-none">
+                            <br>
+                            <span class="text-lg font-bold mr-3">Testing hijo</span>
+                            <br>
+                            <input 
+                            type="checkbox" 
+                            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                            v-model="testing_hijo"
+                            />
+                            <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                            <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                            <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                        </label>
+                    </div>
+                    <div class="flex">
+                        <div v-show="testing_hijo">
+                            <br>Valor input:{{valor_input}}<br>
+                            <br>distrtito minero calle Evalaucion:{{evualacion_correcto}}<br>
+                            <br>distrtito minero calle Obser:{{valor_obs}}<br>
+                            <br>distrtito minero calle obsr Valido:{{valor_valido_obs}}<br>
+                            <br>Evaluacion {{evaluacion}}<br>
+                            <br>{{texto_validacion_text_area}}<br>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <div class="w-full md:w-2/3 h-full">
@@ -111,7 +132,12 @@ export default {
         valor_evaluacion_correcto_local: this.$props.evualacion_correcto,
 
         obs_valida: this.$props.obs_valido_props,
+<<<<<<< HEAD
 
+=======
+        testing_hijo: 'false',
+        
+>>>>>>> 9530b8437f6d16641d92757d0815ff3a61b4739d
         //border-green-500
     };
   },

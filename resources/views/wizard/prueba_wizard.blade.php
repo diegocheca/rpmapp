@@ -165,7 +165,7 @@
 											<br>
 											<div class="row">
 												<div class="row">
-													<h4>Seleccione Tipo de Tramite que desea realizar:</h4> <i class="ti-info-alt" id="element" ></i>
+													<h4>Seleccione Tipo de Trámite que desea realizar:</h4> <i class="ti-info-alt" id="element" ></i>
 													<div class="middle">
 														<label>
 															<input type="radio" name="radio"  v-model="formulario_seleccionado" value="inscripcion" checked/>
@@ -182,7 +182,7 @@
 														<label>
 															<input type="radio" name="radio" v-model="formulario_seleccionado" value="reinscripcion"/>
 															<div class="reinsc box">
-																<span>Reincripcion</span>
+																<span>Reincripción</span>
 															</div>
 														</label>
 														<label>
@@ -194,7 +194,7 @@
 														<label>
 															<input type="radio" name="radio" v-model="formulario_seleccionado" value="transito"/>
 															<div class="trans box">
-																<span>Guia de Tránsito</span>
+																<span>Guía de Tránsito</span>
 															</div>
 														</label>
 													</div>
@@ -211,7 +211,7 @@
 														leave-active-class="animated bounceOut"
 													>
 														<div v-show="formulario_seleccionado=='inscripcion'">
-															<h4>En que registro solicita su inscripción?</h4>
+															<h4>¿En qué registro solicita su inscripción?</h4>
 															<div class="middle_so" >
 																<label>
 																	<input type="radio" name="radio_tipo" v-model="model.tipo_productor"  value="productor" checked/>
@@ -274,7 +274,7 @@
 														leave-active-class="animated bounceOut"
 													>
 														<div v-show="model.tipo_productor=='productor'">
-															<h4>Primera vez que utiliza este formulario?</h4> <i class="ti-info-alt" id="element1" ></i>
+															<h4>¿Primera vez que utiliza este formulario?</h4> <i class="ti-info-alt" id="element1" ></i>
 															<div class="middle_sis" >
 
 																<label>
@@ -406,12 +406,12 @@
 																		<button type="button" class="btn btn-outline-primary btn-lg" id="recuperar_datos" @click="recuperar_datos"><i class="ti-loop"></i>&nbsp; Recuperar</button>
 																	</div>
 																</div>
+																
 																<br>
 																<br>
 															</transition>
 
-															
-															
+																														
 														</div>
 													</div>
 													</transition>
@@ -4567,48 +4567,58 @@
 					},
 					guardar_avances_uno: function(){
 						// Make a request for a user with a given ID
-						axios.post('{{url("formularios/auto_guardado_uno")}}', {
-								//comun
-								razon_social: this.model.lastName,
-								cuit: this.model.cuit,
-								num_productor: this.model.num_productor,
-								tipo_sociedad: this.model.tipo_sociedad,
-								email: this.model.email,
-								//streetName: this.model.streetName,
-								inscricion_dgr: this.model.inscricion_dgr,
-								constancia_sociedad: this.model.constancia_sociedad,
-								tipo_productor: this.model.tipo_productor,
-							})
-							.then(function (response) {
-								console.log(response.data);
-								if(response.data === 'mande un email de mentira')
-								{
+						if(this.validar_cuit(this.model.cuit)){
 									Swal.fire({
-										title: 'Cuidado!',
-										text: 'El email con el que esta trabajando no ha sido validado. Por favor, hagalo. Hemos enviado un nuevo email a su casilla.',
-										icon: 'warning',
-										confirmButtonText: 'Entendido'
-									});
-								}
-								else{
-									Swal.fire({
-										title: 'Datos Guardados!',
-										text: 'Los datos ingresados en el formulario han sido guardados correctamente.',
-										icon: 'success',
-										confirmButtonText: 'Continuar'
-									});
-								}
-								//nueva pestaña de descarga
-								/*var a = document.createElement("a");
-								a.target = "_blank";
-								a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
-								a.click();*/
-							})
-							.catch(function (error) {
-								// handle error
-								console.log(error);
-							})
-					},
+										title: 'Error',
+										text: 'El CUIT ingresado no es válido.',
+										icon: 'error',
+										confirmButtonText: 'Corregir'
+									});	
+						} else {
+							axios.post('{{url("formularios/auto_guardado_uno")}}', {
+										//comun
+										razon_social: this.model.lastName,
+										cuit: this.model.cuit,
+										num_productor: this.model.num_productor,
+										tipo_sociedad: this.model.tipo_sociedad,
+										email: this.model.email,
+										//streetName: this.model.streetName,
+										inscricion_dgr: this.model.inscricion_dgr,
+										constancia_sociedad: this.model.constancia_sociedad,
+										tipo_productor: this.model.tipo_productor,
+									})
+									.then(function (response) {
+										console.log(response.data);
+										if(response.data === 'mande un email de mentira')
+										{
+											Swal.fire({
+												title: 'Cuidado!',
+												text: 'El email con el que esta trabajando no ha sido validado. Por favor, hagalo. Hemos enviado un nuevo email a su casilla.',
+												icon: 'warning',
+												confirmButtonText: 'Entendido'
+											});
+										}
+										else{
+											Swal.fire({
+												title: 'Datos Guardados!',
+												text: 'Los datos ingresados en el formulario han sido guardados correctamente.',
+												icon: 'success',
+												confirmButtonText: 'Continuar'
+											});
+										}
+										//nueva pestaña de descarga
+										/*var a = document.createElement("a");
+										a.target = "_blank";
+										a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
+										a.click();*/
+									})
+									.catch(function (error) {
+										// handle error
+										console.log(error);
+									})
+						}
+
+										},
 					guardar_avances_dos: function(){
 						// Make a request for a user with a given ID
 						axios.post('{{url("formularios/auto_guardado_dos")}}', {
@@ -4930,357 +4940,382 @@
 					
 					recuperar_datos: function(){
 						let self = this
-						// Make a request for a user with a given ID
-						axios.post('{{url("formularios/buscar_datos_formulario")}}', {
-								//comun
-								email: this.model.email,
-							})
-							.then(function (response) {
-								console.log(response.data);
-								if(response.data === "no esta")
-								{
-									//significa q no lo encontre, muestro error
-									//alert("no se encontraron datos para este email");
-									Swal.fire({
-										title: 'Opps!',
-										text: 'No se encontraron datos para este emial: '+self.model.email,
+
+						if(!this.validEmail(this.model.email)){
+							Swal.fire({
+										title: 'Error',
+										text: 'El correo ingresado no es válido',
 										icon: 'error',
 										confirmButtonText: 'Ok'
 									});
-								}
-								else{
-									//si lo encontre, cargo los datos
-									Swal.fire({
-										title: 'Datos encontrados!',
-										text: 'Se encontraron los datos cargados del email: '+self.model.email,
-										icon: 'success',
-										confirmButtonText: 'Continuar',
-										timer: 2000
-									});
-									self.model.recuperacion_exitosa = true;
-									console.log(response.data.razonsocial);
-									//TAB 1 - Datos de Productor
-									if(response.data.razonsocial !== null)
-									{
-										self.model.lastName = response.data.razonsocial;
-									}
-									if(response.data.cuit !== null)
-									{
-										self.model.cuit = response.data.cuit;
-									}
-									if(response.data.numeroproductor !== null)
-									{
-										self.model.num_productor = response.data.numeroproductor;
-									}
-									if(response.data.tiposociedad !== null)
-									{
-										self.model.tipo_sociedad = response.data.tiposociedad;
-									}
-									if(response.data.email != null)
-									{
-										self.model.email = response.data.email;
-									}
-									// if(response.data.domicilio_prod !== null)
-									// {
-									// 	self.model.streetName = response.data.domicilio_prod;
-									// }
-									if(response.data.inscripciondgr !== null)
-									{
-										self.model.tiene_inscricion_dgr = 'http://localhost:8000/'+ response.data.inscripciondgr;
-									}
-									if(response.data.constaciasociedad !== null)
-									{
-										self.model.tiene_constancia_sociedad = 'http://localhost:8000/'+response.data.constaciasociedad;
-									}
-									
+							
+						} else {
 
-									//TAB 2 - Domicilio Legal
-									if(response.data.leal_calle !== null)
+							// Make a request for a user with a given ID
+							axios.post('{{url("formularios/buscar_datos_formulario")}}', {
+									//comun
+									email: this.model.email,
+								})
+								.then(function (response) {
+									console.log(response.data);
+									if(response.data === "no esta")
 									{
-										self.model.domicilio_legal_calle = response.data.leal_calle;
+										//significa q no lo encontre, muestro error
+										//alert("no se encontraron datos para este email");
+										Swal.fire({
+											title: 'Error',
+											text: 'No se encontraron datos para este email: '+self.model.email,
+											icon: 'error',
+											confirmButtonText: 'Ok'
+										});
 									}
-									if(response.data.leal_numero !== null)
-									{
-										self.model.domicilio_legal_calle_numero = response.data.leal_numero;
-									}
-									if(response.data.leal_telefono !== null)
-									{
-										self.model.domicilio_legal_telefono = response.data.leal_telefono;
-									}
-									if(response.data.leal_pais !== null)
-									{
-										self.model.domicilio_legal_pais = response.data.leal_pais;
-									}
-									if(response.data.leal_provincia !== null)
-									{
-										self.model.domicilio_legal_provincia = response.data.leal_provincia;
-									}
-									if(response.data.leal_departamento !== null)
-									{
-										self.model.domicilio_legal_departamento = response.data.leal_departamento;
-									}
-									if(response.data.leal_localidad !== null)
-									{
-										self.model.domicilio_legal_localidad = response.data.leal_localidad;
-									}
-									if(response.data.leal_cp !== null)
-									{
-										self.model.domicilio_legal_cp = response.data.leal_cp;
-									}
-									if(response.data.leal_otro !== null)
-									{
-										self.model.domicilio_legal_otro = response.data.leal_otro;
-									}
-									//Fin tab 2
-
-
-									//TAB 3 - Domicilio Administrativo
-									if(response.data.administracion_calle !== null)
-									{
-										self.model.domicilio_administrativo_calle = response.data.administracion_calle;
-									}
-									if(response.data.administracion_numero !== null)
-									{
-										self.model.domicilio_administrativo_calle_numero = response.data.administracion_numero;
-									}
-									if(response.data.administracion_telefono !== null)
-									{
-										self.model.domicilio_administrativo_telefono = response.data.administracion_telefono;
-									}
-									if(response.data.administracion_pais !== null)
-									{
-										self.model.domicilio_administrativo_pais = response.data.administracion_pais;
-									}
-									if(response.data.administracion_provincia !== null)
-									{
-										self.model.domicilio_administrativo_provincia = response.data.administracion_provincia;
-									}
-									if(response.data.administracion_departamento !== null)
-									{
-										self.model.domicilio_administrativo_departamento = response.data.administracion_departamento;
-									}
-									if(response.data.administracion_localidad !== null)
-									{
-										self.model.domicilio_administrativo_localidad = response.data.administracion_localidad;
-									}
-									if(response.data.administracion_cp !== null)
-									{
-										self.model.domicilio_administrativo_cp = response.data.administracion_cp;
-									}
-									if(response.data.administracion_otro !== null)
-									{
-										self.model.domicilio_administrativo_otro = response.data.administracion_otro;
-									}
-									//Fin tab 3
-
-
-									//TAB 4 - Datos Mina 1
-									if(response.data.mina_cantera !== null)
-									{
-										self.model.mina_cantera = response.data.mina_cantera;
-									}
-									if(response.data.numero_expdiente !== null)
-									{
-										self.model.numero_expediente = response.data.numero_expdiente;
-									}
-									if(response.data.distrito_minero !== null)
-									{
-										self.model.distrito_minero = response.data.distrito_minero;
-									}
-									if(response.data.nombre_mina !== null)
-									{
-										self.model.nombre_mina = response.data.nombre_mina;
-									}
-									if(response.data.descripcion_mina !== null)
-									{
-										self.model.descripcion_mina = response.data.descripcion_mina;
-									}
-									if(response.data.plano_inmueble !== null)
-									{
-										self.model.tiene_plano_inmueble =  'http://localhost:8000/'+response.data.plano_inmueble;
-									}
-									if(response.data.minerales_variedad !== null)
-									{
-										self.minerales = '';
-										var minerales_json = JSON.parse(response.data.minerales_variedad);
-										console.log(minerales_json);
-										for (x in minerales_json) {
-											if(self.minerales === '')
-												self.minerales = [{
-												"id_mineral" : minerales_json[x].id_mineral,
-												"id_varieadad" : minerales_json[x].id_varieadad,
-												"observacion" : minerales_json[x].observacion,
-											}];
-											else
-											self.minerales.push({
-												"id_mineral" : minerales_json[x].id_mineral,
-												"id_varieadad" : minerales_json[x].id_varieadad,
-												"observacion" : minerales_json[x].observacion,
-											});
-											console.log("esta es la vuelta"+x);
+									else{
+										//si lo encontre, cargo los datos
+										Swal.fire({
+											title: 'Datos encontrados',
+											text: 'Se encontraron los datos cargados para el email: '+self.model.email,
+											icon: 'success',
+											confirmButtonText: 'Continuar',
+											timer: 2000
+										});
+										self.model.recuperacion_exitosa = true;
+										console.log(response.data.razonsocial);
+										//TAB 1 - Datos de Productor
+										if(response.data.razonsocial !== null)
+										{
+											self.model.lastName = response.data.razonsocial;
 										}
-									// 	self.model.tiene_plano_inmueble =  response.data.minerales;
 
-									// mineral.id_mineral
-									// mineral.observacion
-									console.log(self.minerales);
-
-									}
-									if(response.data.categoria !== null)
-									{
-										self.model.categoria_m_c = response.data.categoria;
-									}
-									self.cambio_categoria();
-
-
-									//Fin tab 4
-
-									//TAB 5 - Datos Mina 2
-									// if(response.data.relacion_mina !== null)
-									// {
-									// 	self.model.mina_cantera = response.data.relacion_mina;
-									// }
-									if(response.data.owner !== null)
-									{
-										self.model.owner = response.data.owner;
-									}
-									if(response.data.arrendatario !== null)
-									{
-										self.model.arrendatario = response.data.arrendatario;
-									}
-									if(response.data.concesionario !== null)
-									{
-										self.model.concesionario = response.data.concesionario;
-									}
-									if(response.data.otros !== null)
-									{
-										self.model.otros = response.data.otros;
-									}
-									if(response.data.titulo_contrato_posecion !== null)
-									{
-										self.model.tiene_contrato =  'http://localhost:8000/'+response.data.titulo_contrato_posecion;
-									}
-
-									if(response.data.resolucion_concesion_minera !== null)
-									{
-										self.model.tiene_concesion =  'http://localhost:8000/'+response.data.resolucion_concesion_minera;
-									}
-									
-									if(response.data.constancia_pago_canon !== null)
-									{
-										self.model.tiene_canon =  'http://localhost:8000/'+response.data.constancia_pago_canon;
-									}
-
-									
-									if(response.data.iia !== null)
-									{
-										self.model.tiene_iia =  'http://localhost:8000/'+response.data.iia;
-									}
-									if(response.data.dia !== null)
-									{
-										self.model.tiene_dia =  'http://localhost:8000/'+response.data.dia;
-									}
-									
-
-									if(response.data.actividad !== null)
-									{
-										self.model.actividades = response.data.actividad;
-									}
-									if(response.data.acciones_a_desarrollar !== null)
-									{
-										self.model.acciones = response.data.acciones_a_desarrollar;
-									}
-									
-
-									if(response.data.fecha_alta_dia !== null)
-									{
-										self.model.fecha_incio = response.data.fecha_alta_dia;
-									}
-									if(response.data.fecha_vencimiento_dia !== null)
-									{
-										self.model.fecha_fin = response.data.fecha_vencimiento_dia;
-									}
-
-									//Fin tab 5
-
-
-									
-									
-
-									
-
-								
-								}
-
-									// model:{
-									// 	//tipo de formulario
-									// 	tipo_formulario :  false,
-									// 	sistema :  '',
-									// 	primera_vez: 'si',
-									// 	//Datos personales
-									// 	correo_enviado_si: false,
+										//Validar CUIT
+										if(response.data.cuit !== null)
+										{
+											self.model.cuit = response.data.cuit;
+										}
+										if(response.data.numeroproductor !== null)
+										{
+											self.model.num_productor = response.data.numeroproductor;
+										}
+										if(response.data.tiposociedad !== null)
+										{
+											self.model.tipo_sociedad = response.data.tiposociedad;
+										}
+										if(response.data.email != null)
+										{
+											self.model.email = response.data.email;
+										}
+										// if(response.data.domicilio_prod !== null)
+										// {
+										// 	self.model.streetName = response.data.domicilio_prod;
+										// }
+										if(response.data.inscripciondgr !== null)
+										{
+											self.model.tiene_inscricion_dgr = 'http://localhost:8000/'+ response.data.inscripciondgr;
+										}
+										if(response.data.constaciasociedad !== null)
+										{
+											self.model.tiene_constancia_sociedad = 'http://localhost:8000/'+response.data.constaciasociedad;
+										}
 										
-									// 	//localidad de mina 
-									// 	domicilio_mina_pais:'Argentina',
-									// 	domicilio_mina_provincia:'San Juan',
-									// 	domicilio_mina_departamento:'Sarmiento',
-									// 	domicilio_mina_localidad:'Trinidad',
-									// 	domicilio_mina_cor_long:'5563',
-									// 	domicilio_mina_cor_lat:'La Prov Administrativo',
 
-									// },
+										//TAB 2 - Domicilio Legal
+										if(response.data.leal_calle !== null)
+										{
+											self.model.domicilio_legal_calle = response.data.leal_calle;
+										}
+										if(response.data.leal_numero !== null)
+										{
+											self.model.domicilio_legal_calle_numero = response.data.leal_numero;
+										}
+										if(response.data.leal_telefono !== null)
+										{
+											self.model.domicilio_legal_telefono = response.data.leal_telefono;
+										}
+										if(response.data.leal_pais !== null)
+										{
+											self.model.domicilio_legal_pais = response.data.leal_pais;
+										}
+										if(response.data.leal_provincia !== null)
+										{
+											self.model.domicilio_legal_provincia = response.data.leal_provincia;
+										}
+										if(response.data.leal_departamento !== null)
+										{
+											self.model.domicilio_legal_departamento = response.data.leal_departamento;
+										}
+										if(response.data.leal_localidad !== null)
+										{
+											self.model.domicilio_legal_localidad = response.data.leal_localidad;
+										}
+										if(response.data.leal_cp !== null)
+										{
+											self.model.domicilio_legal_cp = response.data.leal_cp;
+										}
+										if(response.data.leal_otro !== null)
+										{
+											self.model.domicilio_legal_otro = response.data.leal_otro;
+										}
+										//Fin tab 2
 
 
-									// caracter_invoca: null
-									// categoria: null
-									// constaciasociedad: null
-									// constancia_pago_canon: null
-									// created_at: "2021-03-25T14:42:04.000000Z"
-									// created_by: null
-									// : "20-15912278-7"
-									// deleted_at: null
-									// descripcion_mina: null
-									// dia: null
-									// distrito_minero: null
-									// : "7079 Tevin Knoll"
-									// : "ochamplin@gmail.com"
-									// estado: "'"en proceso"'"
-									// fecha_alta_dia: null
-									// fecha_vencimiento_dia: null
-									// id: 6
-									// iia: null
-									// inscripciondgr: null
-									// latitud: null
+										//TAB 3 - Domicilio Administrativo
+										if(response.data.administracion_calle !== null)
+										{
+											self.model.domicilio_administrativo_calle = response.data.administracion_calle;
+										}
+										if(response.data.administracion_numero !== null)
+										{
+											self.model.domicilio_administrativo_calle_numero = response.data.administracion_numero;
+										}
+										if(response.data.administracion_telefono !== null)
+										{
+											self.model.domicilio_administrativo_telefono = response.data.administracion_telefono;
+										}
+										if(response.data.administracion_pais !== null)
+										{
+											self.model.domicilio_administrativo_pais = response.data.administracion_pais;
+										}
+										if(response.data.administracion_provincia !== null)
+										{
+											self.model.domicilio_administrativo_provincia = response.data.administracion_provincia;
+										}
+										if(response.data.administracion_departamento !== null)
+										{
+											self.model.domicilio_administrativo_departamento = response.data.administracion_departamento;
+										}
+										if(response.data.administracion_localidad !== null)
+										{
+											self.model.domicilio_administrativo_localidad = response.data.administracion_localidad;
+										}
+										if(response.data.administracion_cp !== null)
+										{
+											self.model.domicilio_administrativo_cp = response.data.administracion_cp;
+										}
+										if(response.data.administracion_otro !== null)
+										{
+											self.model.domicilio_administrativo_otro = response.data.administracion_otro;
+										}
+										//Fin tab 3
+
+
+										//TAB 4 - Datos Mina 1
+										if(response.data.mina_cantera !== null)
+										{
+											self.model.mina_cantera = response.data.mina_cantera;
+										}
+										if(response.data.numero_expdiente !== null)
+										{
+											self.model.numero_expediente = response.data.numero_expdiente;
+										}
+										if(response.data.distrito_minero !== null)
+										{
+											self.model.distrito_minero = response.data.distrito_minero;
+										}
+										if(response.data.nombre_mina !== null)
+										{
+											self.model.nombre_mina = response.data.nombre_mina;
+										}
+										if(response.data.descripcion_mina !== null)
+										{
+											self.model.descripcion_mina = response.data.descripcion_mina;
+										}
+										if(response.data.plano_inmueble !== null)
+										{
+											self.model.tiene_plano_inmueble =  'http://localhost:8000/'+response.data.plano_inmueble;
+										}
+										if(response.data.minerales_variedad !== null)
+										{
+											self.minerales = '';
+											var minerales_json = JSON.parse(response.data.minerales_variedad);
+											console.log(minerales_json);
+											for (x in minerales_json) {
+												if(self.minerales === '')
+													self.minerales = [{
+													"id_mineral" : minerales_json[x].id_mineral,
+													"id_varieadad" : minerales_json[x].id_varieadad,
+													"observacion" : minerales_json[x].observacion,
+												}];
+												else
+												self.minerales.push({
+													"id_mineral" : minerales_json[x].id_mineral,
+													"id_varieadad" : minerales_json[x].id_varieadad,
+													"observacion" : minerales_json[x].observacion,
+												});
+												console.log("esta es la vuelta"+x);
+											}
+										// 	self.model.tiene_plano_inmueble =  response.data.minerales;
+
+										// mineral.id_mineral
+										// mineral.observacion
+										console.log(self.minerales);
+
+										}
+										if(response.data.categoria !== null)
+										{
+											self.model.categoria_m_c = response.data.categoria;
+										}
+										self.cambio_categoria();
+
+
+										//Fin tab 4
+
+										//TAB 5 - Datos Mina 2
+										// if(response.data.relacion_mina !== null)
+										// {
+										// 	self.model.mina_cantera = response.data.relacion_mina;
+										// }
+										if(response.data.owner !== null)
+										{
+											self.model.owner = response.data.owner;
+										}
+										if(response.data.arrendatario !== null)
+										{
+											self.model.arrendatario = response.data.arrendatario;
+										}
+										if(response.data.concesionario !== null)
+										{
+											self.model.concesionario = response.data.concesionario;
+										}
+										if(response.data.otros !== null)
+										{
+											self.model.otros = response.data.otros;
+										}
+										if(response.data.titulo_contrato_posecion !== null)
+										{
+											self.model.tiene_contrato =  'http://localhost:8000/'+response.data.titulo_contrato_posecion;
+										}
+
+										if(response.data.resolucion_concesion_minera !== null)
+										{
+											self.model.tiene_concesion =  'http://localhost:8000/'+response.data.resolucion_concesion_minera;
+										}
+										
+										if(response.data.constancia_pago_canon !== null)
+										{
+											self.model.tiene_canon =  'http://localhost:8000/'+response.data.constancia_pago_canon;
+										}
+
+										
+										if(response.data.iia !== null)
+										{
+											self.model.tiene_iia =  'http://localhost:8000/'+response.data.iia;
+										}
+										if(response.data.dia !== null)
+										{
+											self.model.tiene_dia =  'http://localhost:8000/'+response.data.dia;
+										}
+										
+
+										if(response.data.actividad !== null)
+										{
+											self.model.actividades = response.data.actividad;
+										}
+										if(response.data.acciones_a_desarrollar !== null)
+										{
+											self.model.acciones = response.data.acciones_a_desarrollar;
+										}
+										
+
+										if(response.data.fecha_alta_dia !== null)
+										{
+											self.model.fecha_incio = response.data.fecha_alta_dia;
+										}
+										if(response.data.fecha_vencimiento_dia !== null)
+										{
+											self.model.fecha_fin = response.data.fecha_vencimiento_dia;
+										}
+
+										//Fin tab 5
+
+
+										
+										
+
+										
+
 									
-									// localidad_mina_departamento: null
-									// localidad_mina_localidad: null
-									// localidad_mina_pais: null
-									// localidad_mina_provincia: null
-									// longitud: null
-									// mina_cantera: null
-									// nombre_mina: null
-									// numero_expdiente: null
-									// numeroproductor: 123123
-									// plano_inmueble: null
-									// resolucion_concesion_minera: null
-									// tiposociedad: "Sociedad Secreta"
-									// titulo_contrato_posecion: null
-									// updated_at: "2021-03-25T14:45:06.000000Z"
-								
+									}
 
-								//nueva pestaña de descarga
-								/*var a = document.createElement("a");
-								a.target = "_blank";
-								a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
-								a.click();*/
-							})
-							.catch(function (error) {
-								// handle error
-								console.log(error);
-							})
-							this.cambio_categoria();
-					},
-					preguntar_email_confirmacion: function(){
+										// model:{
+										// 	//tipo de formulario
+										// 	tipo_formulario :  false,
+										// 	sistema :  '',
+										// 	primera_vez: 'si',
+										// 	//Datos personales
+										// 	correo_enviado_si: false,
+											
+										// 	//localidad de mina 
+										// 	domicilio_mina_pais:'Argentina',
+										// 	domicilio_mina_provincia:'San Juan',
+										// 	domicilio_mina_departamento:'Sarmiento',
+										// 	domicilio_mina_localidad:'Trinidad',
+										// 	domicilio_mina_cor_long:'5563',
+										// 	domicilio_mina_cor_lat:'La Prov Administrativo',
+
+										// },
+
+
+										// caracter_invoca: null
+										// categoria: null
+										// constaciasociedad: null
+										// constancia_pago_canon: null
+										// created_at: "2021-03-25T14:42:04.000000Z"
+										// created_by: null
+										// : "20-15912278-7"
+										// deleted_at: null
+										// descripcion_mina: null
+										// dia: null
+										// distrito_minero: null
+										// : "7079 Tevin Knoll"
+										// : "ochamplin@gmail.com"
+										// estado: "'"en proceso"'"
+										// fecha_alta_dia: null
+										// fecha_vencimiento_dia: null
+										// id: 6
+										// iia: null
+										// inscripciondgr: null
+										// latitud: null
+										
+										// localidad_mina_departamento: null
+										// localidad_mina_localidad: null
+										// localidad_mina_pais: null
+										// localidad_mina_provincia: null
+										// longitud: null
+										// mina_cantera: null
+										// nombre_mina: null
+										// numero_expdiente: null
+										// numeroproductor: 123123
+										// plano_inmueble: null
+										// resolucion_concesion_minera: null
+										// tiposociedad: "Sociedad Secreta"
+										// titulo_contrato_posecion: null
+										// updated_at: "2021-03-25T14:45:06.000000Z"
+									
+
+									//nueva pestaña de descarga
+									/*var a = document.createElement("a");
+									a.target = "_blank";
+									a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
+									a.click();*/
+								})
+								.catch(function (error) {
+									// handle error
+									console.log(error);
+								})
+								this.cambio_categoria();
+					
+					
+					
+					
+					
+							}
+
+						},
+
+
+					
+					
+					
+						preguntar_email_confirmacion: function(){
 						let resultado = false;
 						let self = this
 						axios.post('{{url("formularios/preg_email_validado")}}', {
@@ -5318,55 +5353,86 @@
 					validar_email_datos: function(){
 						// Make a request for a user with a given ID
 						let self = this
-						//this.model.correo_enviado_si = !this.model.correo_enviado_si;
-						//comprobar que los dos emails sean iguales
-						if(this.model.email != this.model.email_confirmacion)
-						{
-							//alert("Los emails no coinciden, por favor, revise.");
-							Swal.fire({
-								title: 'Error!',
-								text: 'Los emails no coinciden, por favor revisarlos.',
-								icon: 'error',
-								confirmButtonText: 'Ok, voy revisar'
-							});
-							self.model.correo_enviado_si = false;
-						}
-						else
-						{//emails iguales
-							axios.post('{{url("formularios/validar_email_formulario")}}', {
-								//comun
-								email: this.model.email,
-								})
-								.then(function (response) {
-									console.log(response.data);
-									if(response.data == 'todo bien')
-									{
-										Swal.fire({
-											title: 'Email Enviado!',
-											text: 'Hemos enviado un email a la casilla declarada, por favor revise su casilla, también en la carpeta de emails no deseados. Una vez que encuentre email por favor hacer clic en su enlace para confirmar la cuenta.',
-											icon: 'warning',
-											confirmButtonText: 'Voy a revisar el email'
-										});
-									}
-									/*setInterval(() => {
-										this.preguntar_email_confirmacion();
-									}, (2000 * 60));*/
-										
 
-									//nueva pestaña de descarga
-									/*var a = document.createElement("a");
-									a.target = "_blank";
-									a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
-									a.click();*/
-								})
-								.catch(function (error) {
-									// handle error
-									console.log(error);
-								})
-							self.model.correo_enviado_si = true;
-						}
-					},
+						if(!this.model.email || !this.model.email_confirmacion){
+							Swal.fire({
+								title: 'Error',
+								text: 'Faltó ingresar su correo dos veces para poder continuar',
+								icon: 'error',
+								confirmButtonText: 'Salir'
+							});
+							self.model.correo_enviado_si = false;							
+						}else{
+								if(!this.validEmail(this.model.email) || !this.validEmail(this.model.email_confirmacion)){
+
+									Swal.fire({
+										title: 'Error',
+										text: 'Correo inválido',
+										icon: 'error',
+										confirmButtonText: 'Salir'
+									});
+									self.model.correo_enviado_si = false;
+
+								} else {
+
+									//this.model.correo_enviado_si = !this.model.correo_enviado_si;
+									//comprobar que los dos emails sean iguales
+									if(this.model.email != this.model.email_confirmacion)
+									{
+										//alert("Los emails no coinciden, por favor, revise.");
+										Swal.fire({
+											title: 'Error',
+											text: 'Los emails no coinciden, por favor revisarlos.',
+											icon: 'error',
+											confirmButtonText: 'Ok, voy revisar'
+										});
+										self.model.correo_enviado_si = false;
+									} else {
+										//emails iguales
+										axios.post('{{url("formularios/validar_email_formulario")}}', {
+											//comun
+											email: this.model.email,
+											})
+											.then(function (response) {
+												console.log(response.data);
+												if(response.data == 'todo bien')
+												{
+													Swal.fire({
+														title: 'Email Enviado!',
+														text: 'Hemos enviado un email a la casilla declarada, por favor revise su casilla, también en la carpeta de emails no deseados. Una vez que encuentre email por favor hacer clic en su enlace para confirmar la cuenta.',
+														icon: 'warning',
+														confirmButtonText: 'Voy a revisar el email'
+													});
+												}
+												/*setInterval(() => {
+													this.preguntar_email_confirmacion();
+												}, (2000 * 60));*/
+													
+
+												//nueva pestaña de descarga
+												/*var a = document.createElement("a");
+												a.target = "_blank";
+												a.href = "http://10.66.150.159:8000/formularios/descargar_pdf_id/"+response.data.id;
+												a.click();*/
+											})
+											.catch(function (error) {
+												// handle error
+												console.log(error);
+											})
+										self.model.correo_enviado_si = true;
+									}
+									}
+								}
+
+
+
+						},
+					validEmail: function (email) {
+      					var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      					return re.test(email);
+    				},
 					validar_cuit_productor: function(){
+						//https://campus.ort.edu.ar/articulo/56654/documento-explicativo
 						let self = this
 						if(
 							(this.reinscripcion_data.cuit_para_validar != '')
@@ -5374,9 +5440,9 @@
 							(this.reinscripcion_data.cuit_para_validar.length == 11)
 							)
 						{
-							//alert("Los emails no coinciden, por favor, revise.");
+							
 							Swal.fire({
-								title: 'Error!',
+								title: 'Error',
 								text: 'El CUIT / CUIL es incorrecto, por favor reviselo.',
 								icon: 'error',
 								confirmButtonText: 'Ok, voy revisar'
@@ -5547,6 +5613,40 @@
 									console.log(error);
 								})
 						}
+					},
+					validar_cuit: function(cuit){
+						
+
+						//minimal validations
+						if(cuit.length!=13 || cuit[2] != '-' || cuit[11] != '-'){
+							return false;
+						}
+
+						//remove bar
+						var cuit2 = cuit.replace(/-/g, ''); 
+						console.log(cuit2);
+
+						//calculation of the check digit
+						var base = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
+						var aux = 0;
+						for(var i=0; i<10; i++){
+							aux += parseInt(cuit2[i], 10)* base[i];
+							console.log(parseInt(cuit2[i], 10));
+							console.log(parseInt(cuit2[i], 10)* base[i]);
+						}
+						console.log(aux);
+						aux = 11 - (aux - ( parseInt((aux / 11), 10) * 11));
+						
+
+						if (aux == 11) aux = 0;
+						if (aux == 10) aux = 9;
+
+						console.log(aux);
+						return aux == parseInt(cuit[10],10);
+
+
+
+
 					},
 					validar_datos_num_exp_mina: function(){
 						let self = this

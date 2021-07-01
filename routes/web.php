@@ -147,6 +147,13 @@ Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formula
 Route::get('/validar_email_productor/{codigo}', [HomeController::class, "valdiar_email_de_productor"])->name('valdiar-email-de-productor');
 
 
+Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->name('traer-provincias');
+Route::post('/datos/traer_departamentos', [FormAltaProductorController::class, "traer_departamentos_json"])->name('traer-departamentos');
+Route::post('/datos/traer_localidades', [FormAltaProductorController::class, "traer_localidades_json"])->name('traer-localidades');
+Route::post('/datos/traer_minerales', [FormAltaProductorController::class, "traer_minerales_json"])->name('traer-minerales');
+
+
+
 Route::post('/formularios/auto_guardado_uno', [FormAltaProductorController::class, "guardar_paso_uno"])->name('guardar-paso-uno');
 Route::post('/formularios/auto_guardado_dos', [FormAltaProductorController::class, "guardar_paso_dos"])->name('guardar-paso-dos');
 Route::post('/formularios/auto_guardado_tres', [FormAltaProductorController::class, "guardar_paso_tres"])->name('guardar-paso-tres');
@@ -202,6 +209,15 @@ Route::post('/formularios/buscar_id_form/', [FormAltaProductorController::class,
 Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_prueba"])->name('probando-pdf');
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
+
+//COMERCIANTE
+Route::get('/probando_form_comerciante/', [FormAltaProductorController::class, "pdf_para_comerciantes"])->name('pdf-para-comerciantes');
+
+//INDUSTRIAL
+Route::get('/probando_form_industrial/', [FormAltaProductorController::class, "pdf_para_industrial"])->name('pdf-para-industrial');
+
+//TRANSITO
+Route::get('/autorizacion_transito/', [FormAltaProductorController::class, "pdf_para_transito"])->name('pdf-para-transito');
 
 
 

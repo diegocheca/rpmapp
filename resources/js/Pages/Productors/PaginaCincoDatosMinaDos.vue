@@ -10,8 +10,39 @@
   }
 </style>
 <template>
+<div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+    <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
+        <a href="#section_datos_mina_dos">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/mina-parte-dos.svg">
+        </a>
+        <label class="flex items-center relative w-max cursor-pointer select-none">
+            <br>
+            <br>
+            <input 
+            type="checkbox" 
+            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+            v-model="mostrar_testing"
+            />
+            <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+            <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+            <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+        </label>
+        <label class="flex items-center relative w-max cursor-pointer select-none">
+            <br>
+            <br>
+            <input 
+            type="checkbox" 
+            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
+            v-model="autoridad_minera"
+            />
+            <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
+            <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
+            <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+        </label>
+    </div>
     <div>
-        <h1>{{titulo_pagina}}</h1>
+        <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
+        <br><br>
         <div class="flex items-center justify-center">
             <CardMinaDos 
                 :progreso="50"
@@ -23,75 +54,56 @@
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
             ></CardMinaDos>
         </div>
-        <div class="w-full  bg-white rounded shadow p-6 m-8">
-            <div class="flex">
-                <label class="flex items-center relative w-max cursor-pointer select-none">
-                    <br>
-                    <span class="text-lg font-bold mr-3">Testing</span>
-                    <br>
-                    <input 
-                    type="checkbox" 
-                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
-                    v-model="mostrar_testing"
-                    />
-                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
-                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
-                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-                </label>
-            </div>
-        </div>
-        <h3>{{mostrar_testing}}</h3>
+        <br>
+        <br>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
-            
-
-
-
             <div class="w-full  bg-white rounded shadow p-6 m-8">
-                <div class="flex w-full" >
-                    <CaracterQueInvoca 
-                        v-bind:valor_input_props="$props.owner"
-                        v-bind:evualacion_correcto="$props.owner_correcto"
-                        v-bind:valor_obs="$props.obs_owner"
-                        v-bind:valor_valido_obs="$props.obs_owner_valido"
-                        v-bind:evaluacion="true"
-                        v-bind:testing = "true"
-                        v-bind:label="'Propietario'"
-                        v-bind:label_true="'Soy Propietario'"
-                        v-bind:label_false="'No soy propietario'"
-                        v-on:changecorrecto="update_owner_correcto($event)"
-                        v-on:changeobs="updateobs_owner($event)"
-                        v-on:changeobsvalido="updateobs_owner_valido($event)"
-                        v-on:changevalor="updatevalor_owner($event)"
-                    ></CaracterQueInvoca>
-                    
-                </div>
+                <CaracterQueInvoca 
+                    v-bind:valor_input_props="form_pagina.owner"
+                    v-bind:evualacion_correcto="form_pagina.owner_correcto"
+                    v-bind:valor_obs="form_pagina.obs_owner"
+                    v-bind:valor_valido_obs="form_pagina.obs_owner_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing ="mostrar_testing"
+                    v-bind:label="'Propietario'"
+                    v-bind:label_true="'Soy Propietario'"
+                    v-bind:label_false="'No soy propietario'"
+                    v-bind:otro_label="false"
+                    v-bind:otro_input="false"
+                    v-on:changecorrecto="update_owner_correcto($event)"
+                    v-on:changeobs="updateobs_owner($event)"
+                    v-on:changeobsvalido="updateobs_owner_valido($event)"
+                    v-on:changevalor="updatevalor_owner($event)"
+                ></CaracterQueInvoca>
                 <div class="flex" v-if="mostrar_testing">
-                            <br> owner de Mina valor padre: {{form_pagina.numero_expdiente}}
-                            <br> owner de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
-                            <br> owner de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
-                            <br> owner de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
-                            <br> owner de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
-                    </div>
+                    <br> owner de Mina valor padre: {{form_pagina.numero_expdiente}}
+                    <br> owner de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
+                    <br> owner de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
+                    <br> owner de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
+                    <br> owner de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
+                </div>
             </div>
         </div>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <CaracterQueInvoca 
-                    v-bind:valor_input_props="$props.arrendatario"
-                    v-bind:evualacion_correcto="$props.arrendatario_correcto"
-                    v-bind:valor_obs="$props.obs_arrendatario"
-                    v-bind:valor_valido_obs="$props.obs_arrendatario_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "false"
+                    v-bind:valor_input_props="form_pagina.arrendatario"
+                    v-bind:evualacion_correcto="form_pagina.arrendatario_correcto"
+                    v-bind:valor_obs="form_pagina.obs_arrendatario"
+                    v-bind:valor_valido_obs="form_pagina.obs_arrendatario_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing ="mostrar_testing"
                     v-bind:label="'Arrendatario'"
-                     v-bind:label_true="'Soy Arrendatario'"
+                    v-bind:label_true="'Soy Arrendatario'"
                     v-bind:label_false="'No soy arrendatario'"
+                    v-bind:otro_label="false"
+                    v-bind:otro_input="false"
                     v-on:changecorrecto="update_arrendatario_correcto($event)"
                     v-on:changeobs="update_obs_arrendatario($event)"
                     v-on:changeobsvalido="update_obs_arrendatario_valido($event)"
                     v-on:changevalor="update_valor_arrendatario($event)"
                 ></CaracterQueInvoca>
-                <div v-show="testing">
+                <div class="flex" v-if="mostrar_testing">
                         <br> arrendatario de Mina valor padre: {{form_pagina.arrendatario}}
                         <br> arrendatario de Mina  correcto deel padre: {{form_pagina.arrendatario_correcto}}
                         <br> arrendatario de Mina  observacion deel padre: {{form_pagina.obs_arrendatario}}
@@ -103,21 +115,23 @@
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <div class="flex">
                     <CaracterQueInvoca 
-                        v-bind:valor_input_props="$props.concesionario"
-                        v-bind:evualacion_correcto="$props.concesionario_correcto"
-                        v-bind:valor_obs="$props.obs_concesionario"
-                        v-bind:valor_valido_obs="$props.obs_concesionario_valido"
-                        v-bind:evaluacion="true"
-                        v-bind:testing = "true"
+                        v-bind:valor_input_props="form_pagina.concesionario"
+                        v-bind:evualacion_correcto="form_pagina.concesionario_correcto"
+                        v-bind:valor_obs="form_pagina.obs_concesionario"
+                        v-bind:valor_valido_obs="form_pagina.obs_concesionario_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing ="mostrar_testing"
                         v-bind:label="'Concesionario'"
-                            v-bind:label_true="'Soy Concesionario'"
+                        v-bind:label_true="'Soy Concesionario'"
                         v-bind:label_false="'No soy concesionario'"
+                        v-bind:otro_label="false"
+                        v-bind:otro_input="false"
                         v-on:changecorrecto="update_concesionario_correcto($event)"
                         v-on:changeobs="update_obs_concesionario($event)"
                         v-on:changeobsvalido="update_obs_concesionario_valido($event)"
                         v-on:changevalor="update_valor_concesionario($event)"
                     ></CaracterQueInvoca>
-                    <div v-show="testing">
+                    <div class="flex" v-if="mostrar_testing">
                             <br> concesionario de Mina valor padre: {{form_pagina.concesionario}}
                             <br> concesionario de Mina  correcto deel padre: {{form_pagina.concesionario_correcto}}
                             <br> concesionario de Mina  observacion deel padre: {{form_pagina.obs_concesionario}}
@@ -130,21 +144,56 @@
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <div class="flex">
                     <CaracterQueInvoca 
-                        v-bind:valor_input_props="$props.otros"
-                        v-bind:evualacion_correcto="$props.otros_correcto"
-                        v-bind:valor_obs="$props.obs_otros"
-                        v-bind:valor_valido_obs="$props.obs_otros_valido"
-                        v-bind:evaluacion="true"
-                        v-bind:testing = "true"
-                        v-bind:label="'Otros'"
-                        v-bind:label_true="'Tengo un dato que declarar'"
-                        v-bind:label_false="'No tengo maás datos a declarar'"
+                        v-bind:valor_input_props="form_pagina.otros"
+                        v-bind:evualacion_correcto="form_pagina.otros_correcto"
+                        v-bind:valor_obs="form_pagina.obs_otros"
+                        v-bind:valor_valido_obs="form_pagina.obs_otros_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing ="mostrar_testing"
+                        v-bind:label="'Las sustancias son de Aprovechamiento común?'"
+                        v-bind:label_true="'Si'"
+                        v-bind:label_false="'No'"
+                        v-bind:otro_label="'Concesión Minera:'"
+                        v-bind:otro_input="''"
                         v-on:changecorrecto="update_otro_correcto($event)"
                         v-on:changeobs="update_obs_otro($event)"
                         v-on:changeobsvalido="update_obs_otro_valido($event)"
                         v-on:changevalor="update_valor_otro($event)"
+                        v-on:changeotroinput="update_valor_otro_input($event)"
+                        v-on:changeotroinputvalido="update_valor_otro_input_valido($event)"
                     ></CaracterQueInvoca>
-                    <div v-show="testing">
+                    <div class="flex" v-if="mostrar_testing">
+                            <br> otro de Mina valor padre: {{form_pagina.otros}}
+                            <br> otro de Mina  correcto deel padre: {{form_pagina.otros_correcto}}
+                            <br> otro de Mina  observacion deel padre: {{form_pagina.obs_otros}}
+                            <br> otro de Mina  observacion valida deel padre: {{form_pagina.obs_otros_valido}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center justify-center bg-teal-lightest font-sans">
+            <div class="w-full  bg-white rounded shadow p-6 m-8">
+                <div class="flex">
+                    <CaracterQueInvoca 
+                        v-bind:valor_input_props="form_pagina.otros"
+                        v-bind:evualacion_correcto="form_pagina.otros_correcto"
+                        v-bind:valor_obs="form_pagina.obs_otros"
+                        v-bind:valor_valido_obs="form_pagina.obs_otros_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing ="mostrar_testing"
+                        v-bind:label="'Otros'"
+                        v-bind:label_true="'Tengo un dato que declarar'"
+                        v-bind:label_false="'No tengo más datos a declarar'"
+                        v-bind:otro_label="'Aclaracion de otro dato'"
+                        v-bind:otro_input="''"
+                        v-on:changecorrecto="update_otro_correcto($event)"
+                        v-on:changeobs="update_obs_otro($event)"
+                        v-on:changeobsvalido="update_obs_otro_valido($event)"
+                        v-on:changevalor="update_valor_otro($event)"
+                        v-on:changeotroinput="update_valor_otro_input($event)"
+                        v-on:changeotroinputvalido="update_valor_otro_input_valido($event)"
+                    ></CaracterQueInvoca>
+                    <div class="flex" v-if="mostrar_testing">
                             <br> otro de Mina valor padre: {{form_pagina.otros}}
                             <br> otro de Mina  correcto deel padre: {{form_pagina.otros_correcto}}
                             <br> otro de Mina  observacion deel padre: {{form_pagina.obs_otros}}
@@ -155,13 +204,13 @@
         </div>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
-                v-bind:valor_input_props="$props.constancia_pago_canon"
-                v-bind:valor_input_validacion="$props.constancia_pago_canon_validacion"
-                v-bind:evualacion_correcto="$props.constancia_pago_canon_correcto"
-                v-bind:valor_obs="$props.obs_constancia_pago_canon"
-                v-bind:valor_valido_obs="$props.obs_constancia_pago_canon_valido"
-                v-bind:evaluacion="true"
-                v-bind:testing = "true"
+                v-bind:valor_input_props="form_pagina.constancia_pago_canon"
+                v-bind:valor_input_validacion="form_pagina.constancia_pago_canon_validacion"
+                v-bind:evualacion_correcto="form_pagina.constancia_pago_canon_correcto"
+                v-bind:valor_obs="form_pagina.obs_constancia_pago_canon"
+                v-bind:valor_valido_obs="form_pagina.obs_constancia_pago_canon_valido"
+                v-bind:evaluacion="autoridad_minera"
+                v-bind:testing ="mostrar_testing"
                 v-bind:label="'Constancia de Pago de Canon'"
                 v-on:changevalido="update_canon_valido($event)"
                 v-on:changecorrecto="update_canon_correcto($event)"
@@ -171,24 +220,22 @@
             >
             </SubirArchivo>
         </div>
-        <div v-show="testing">
+        <div class="flex" v-if="mostrar_testing">
             <br> canon resolucion minera de Mina valor padre: {{form_pagina.constancia_pago_canon}}
             <br> canon resolucion minera de Mina  valido del padre: {{form_pagina.constancia_pago_canon_validacion}}
             <br> canon resolucion minera de Mina  correcto deel padre: {{form_pagina.constancia_pago_canon_correcto}}
             <br> canon resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_constancia_pago_canon}}
             <br> canon resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_constancia_pago_canon_valido}}
         </div>
-
-
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
-                v-bind:valor_input_props="$props.iia"
-                v-bind:valor_input_validacion="$props.iia_canon_validacion"
-                v-bind:evualacion_correcto="$props.iia_correcto"
-                v-bind:valor_obs="$props.obs_iia_canon"
-                v-bind:valor_valido_obs="$props.obs_iia_canon_valido"
-                v-bind:evaluacion="true"
-                v-bind:testing = "true"
+                v-bind:valor_input_props="form_pagina.iia"
+                v-bind:valor_input_validacion="form_pagina.iia_canon_validacion"
+                v-bind:evualacion_correcto="form_pagina.iia_correcto"
+                v-bind:valor_obs="form_pagina.obs_iia_canon"
+                v-bind:valor_valido_obs="form_pagina.obs_iia_canon_valido"
+                v-bind:evaluacion="autoridad_minera"
+                v-bind:testing = "mostrar_testing"
                 v-bind:label="'IIA de Actividad Minera'"
                 v-on:changevalido="update_iia_valido($event)"
                 v-on:changecorrecto="update_iia_correcto($event)"
@@ -198,23 +245,22 @@
             >
             </SubirArchivo>
         </div>
-        <div v-show="testing">
+        <div class="flex" v-if="mostrar_testing">
             <br> iia minera de Mina valor padre: {{form_pagina.iia}}
             <br> iia minera de Mina  valido del padre: {{form_pagina.iia_canon_validacion}}
             <br> iia minera de Mina  correcto deel padre: {{form_pagina.iia_correcto}}
             <br> iia minera de Mina  observacion deel padre: {{form_pagina.obs_iia_canon}}
             <br> iia minera de Mina  observacion valida deel padre: {{form_pagina.obs_iia_canon_valido}}
         </div>
-
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
-                v-bind:valor_input_props="$props.dia"
-                v-bind:valor_input_validacion="$props.dia_canon_validacion"
-                v-bind:evualacion_correcto="$props.dia_correcto"
-                v-bind:valor_obs="$props.obs_dia_canon"
-                v-bind:valor_valido_obs="$props.obs_dia_canon_valido"
+                v-bind:valor_input_props="form_pagina.dia"
+                v-bind:valor_input_validacion="form_pagina.dia_canon_validacion"
+                v-bind:evualacion_correcto="form_pagina.dia_correcto"
+                v-bind:valor_obs="form_pagina.obs_dia_canon"
+                v-bind:valor_valido_obs="form_pagina.obs_dia_canon_valido"
                 v-bind:evaluacion="true"
-                v-bind:testing = "true"
+                v-bind:testing = "mostrar_testing"
                 v-bind:label="'DIA de Actividad Minera'"
                 v-on:changevalido="update_dia_valido($event)"
                 v-on:changecorrecto="update_dia_correcto($event)"
@@ -224,57 +270,52 @@
             >
             </SubirArchivo>
         </div>
-        <div v-show="testing">
+        <div class="flex" v-if="mostrar_testing">
             <br> dia minera de Mina valor padre: {{form_pagina.dia}}
             <br> dia minera de Mina  valido del padre: {{form_pagina.dia_canon_validacion}}
             <br> dia minera de Mina  correcto deel padre: {{form_pagina.dia_correcto}}
             <br> dia minera de Mina  observacion deel padre: {{form_pagina.obs_dia_canon}}
             <br> dia minera de Mina  observacion valida deel padre: {{form_pagina.obs_dia_canon_valido}}
         </div>
-
-        
-         <div class="flex">
+        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
-                    v-bind:valor_input_props="$props.actividad"
-                    v-bind:valor_input_validacion="$props.actividad_a_desarrollar_validacion"
-                    v-bind:evualacion_correcto="$props.actividad_a_desarrollar_correcto"
-                    v-bind:valor_obs="$props.obs_actividad_a_desarrollar"
-                    v-bind:valor_valido_obs="$props.obs_actividad_a_desarrollar_valido"
-                    v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:valor_input_props="form_pagina.actividad"
+                    v-bind:valor_input_validacion="form_pagina.actividad_a_desarrollar_validacion"
+                    v-bind:evualacion_correcto="form_pagina.actividad_a_desarrollar_correcto"
+                    v-bind:valor_obs="form_pagina.obs_actividad_a_desarrollar"
+                    v-bind:valor_valido_obs="form_pagina.obs_actividad_a_desarrollar_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing ="mostrar_testing"
                     v-bind:label="'Actividades a Desarrollar la Mina'"
+                    v-bind:icon="'http://localhost:8000/svg/description.svg'"
                     v-on:changevalido="update_actividades_valido($event)"
                     v-on:changecorrecto="update_actividades_correcto($event)"
                     v-on:changeobs="update_obs_actividades($event)"
                     v-on:changeobsvalido="update_obs_actividades_valida($event)"
                     v-on:changevalor="update_valor_actividades($event)"
                 >
-                
-                
-                
-                
-                
                 </NombreMina>
-                <div v-show="testing">
-                     <br> Actvidades de Mina valor padre: {{form_pagina.actividad}}
-                     <br> Actvidades de Mina  valido del padre: {{form_pagina.actividad_a_desarrollar_validacion}}
-                     <br> Actvidades de Mina  correcto deel padre: {{form_pagina.actividad_a_desarrollar_correcto}}
-                     <br> Actvidades de Mina  observacion deel padre: {{form_pagina.obs_actividad_a_desarrollar}}
-                     <br> Actvidades de Mina  observacion valida deel padre: {{form_pagina.obs_actividad_a_desarrollar_valido}}
+                <div class="flex" v-if="mostrar_testing">
+                    <br> Actvidades de Mina valor padre: {{form_pagina.actividad}}
+                    <br> Actvidades de Mina  valido del padre: {{form_pagina.actividad_a_desarrollar_validacion}}
+                    <br> Actvidades de Mina  correcto deel padre: {{form_pagina.actividad_a_desarrollar_correcto}}
+                    <br> Actvidades de Mina  observacion deel padre: {{form_pagina.obs_actividad_a_desarrollar}}
+                    <br> Actvidades de Mina  observacion valida deel padre: {{form_pagina.obs_actividad_a_desarrollar_valido}}
 
                 </div>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
-                    v-bind:valor_input_props="$props.acciones_a_desarrollar"
-                    v-bind:valor_input_validacion="$props.acciones_a_desarrollar_validacion"
-                    v-bind:evualacion_correcto="$props.acciones_a_desarrollar_correcto"
-                    v-bind:valor_obs="$props.obs_acciones_a_desarrollar"
-                    v-bind:valor_valido_obs="$props.obs_acciones_a_desarrollar_valido"
-                    v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:valor_input_props="form_pagina.acciones_a_desarrollar"
+                    v-bind:valor_input_validacion="form_pagina.acciones_a_desarrollar_validacion"
+                    v-bind:evualacion_correcto="form_pagina.acciones_a_desarrollar_correcto"
+                    v-bind:valor_obs="form_pagina.obs_acciones_a_desarrollar"
+                    v-bind:valor_valido_obs="form_pagina.obs_acciones_a_desarrollar_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing ="mostrar_testing"
                     v-bind:label="'Acciones a Desarrollar la Mina'"
+                    v-bind:icon="'http://localhost:8000/svg/description.svg'"
                     v-on:changevalido="update_accionesvalido($event)"
                     v-on:changecorrecto="update_acciones_correcto($event)"
                     v-on:changeobs="update_obs_acciones($event)"
@@ -282,27 +323,28 @@
                     v-on:changevalor="update_valor_acciones($event)"
                 >
                 </NombreMina>
-                <div v-show="testing">
-                     <br> Acciones de Mina valor padre: {{form_pagina.acciones_a_desarrollar}}
-                     <br> Acciones de Mina  valido del padre: {{form_pagina.acciones_a_desarrollar_validacion}}
-                     <br> Acciones de Mina  correcto deel padre: {{form_pagina.acciones_a_desarrollar_correcto}}
-                     <br> Acciones de Mina  observacion deel padre: {{form_pagina.obs_acciones_a_desarrollar}}
-                     <br> Acciones de Mina  observacion valida deel padre: {{form_pagina.obs_acciones_a_desarrollar_valido}}
+                <div class="flex" v-if="mostrar_testing">
+                    <br> Acciones de Mina valor padre: {{form_pagina.acciones_a_desarrollar}}
+                    <br> Acciones de Mina  valido del padre: {{form_pagina.acciones_a_desarrollar_validacion}}
+                    <br> Acciones de Mina  correcto deel padre: {{form_pagina.acciones_a_desarrollar_correcto}}
+                    <br> Acciones de Mina  observacion deel padre: {{form_pagina.obs_acciones_a_desarrollar}}
+                    <br> Acciones de Mina  observacion valida deel padre: {{form_pagina.obs_acciones_a_desarrollar_valido}}
 
                 </div>
             </div>
-         </div>
-         <div class="flex">
+        </div>
+        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <FechaGenerica
-                    v-bind:valor_input_props="$props.fecha_alta_dia"
-                    v-bind:valor_input_validacion="$props.fecha_alta_dia_validacion"
-                    v-bind:evualacion_correcto="$props.fecha_alta_dia_correcto"
-                    v-bind:valor_obs="$props.obs_fecha_alta_dia"
-                    v-bind:valor_valido_obs="$props.obs_fecha_alta_dia_valido"
-                    v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:valor_input_props="form_pagina.fecha_alta_dia"
+                    v-bind:valor_input_validacion="form_pagina.fecha_alta_dia_validacion"
+                    v-bind:evualacion_correcto="form_pagina.fecha_alta_dia_correcto"
+                    v-bind:valor_obs="form_pagina.obs_fecha_alta_dia"
+                    v-bind:valor_valido_obs="form_pagina.obs_fecha_alta_dia_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing ="mostrar_testing"
                     v-bind:label="'Fecha de Notificacion de DIA'"
+                    v-bind:icon="'http://localhost:8000/svg/calendar.svg'"
                     v-on:changevalido="update_fecha_iniciovalido($event)"
                     v-on:changecorrecto="update_fecha_inicio_correcto($event)"
                     v-on:changeobs="update_obs_fecha_inicio($event)"
@@ -310,25 +352,26 @@
                     v-on:changevalor="update_valor_fecha_inicio($event)"
                 >
                 </FechaGenerica>
-                <div v-show="testing">
-                     <br> Fecha inicio de Mina valor padre: {{form_pagina.fecha_alta_dia}}
-                     <br> Fecha inicio de Mina  valido del padre: {{form_pagina.fecha_alta_dia_validacion}}
-                     <br> Fecha inicio de Mina  correcto deel padre: {{form_pagina.fecha_alta_dia_correcto}}
-                     <br> Fecha inicio de Mina  observacion deel padre: {{form_pagina.obs_fecha_alta_dia}}
-                     <br> Fecha inicio de Mina  observacion valida deel padre: {{form_pagina.obs_fecha_alta_dia_valido}}
+                <div class="flex" v-if="mostrar_testing">
+                    <br> Fecha inicio de Mina valor padre: {{form_pagina.fecha_alta_dia}}
+                    <br> Fecha inicio de Mina  valido del padre: {{form_pagina.fecha_alta_dia_validacion}}
+                    <br> Fecha inicio de Mina  correcto deel padre: {{form_pagina.fecha_alta_dia_correcto}}
+                    <br> Fecha inicio de Mina  observacion deel padre: {{form_pagina.obs_fecha_alta_dia}}
+                    <br> Fecha inicio de Mina  observacion valida deel padre: {{form_pagina.obs_fecha_alta_dia_valido}}
 
                 </div>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <FechaGenerica
-                    v-bind:valor_input_props="$props.fecha_vencimiento_dia"
-                    v-bind:valor_input_validacion="$props.fecha_vencimiento_dia_validacion"
-                    v-bind:evualacion_correcto="$props.fecha_vencimiento_dia_correcto"
-                    v-bind:valor_obs="$props.obs_fecha_vencimiento_dia"
-                    v-bind:valor_valido_obs="$props.obs_fecha_vencimiento_dia_valido"
-                    v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:valor_input_props="form_pagina.fecha_vencimiento_dia"
+                    v-bind:valor_input_validacion="form_pagina.fecha_vencimiento_dia_validacion"
+                    v-bind:evualacion_correcto="form_pagina.fecha_vencimiento_dia_correcto"
+                    v-bind:valor_obs="form_pagina.obs_fecha_vencimiento_dia"
+                    v-bind:valor_valido_obs="form_pagina.obs_fecha_vencimiento_dia_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing ="mostrar_testing"
                     v-bind:label="'Fecha de Vencimiento de DIA'"
+                    v-bind:icon="'http://localhost:8000/svg/calendar.svg'"
                     v-on:changevalido="update_fecha_fin_valido($event)"
                     v-on:changecorrecto="update_fecha_fin_correcto($event)"
                     v-on:changeobs="update_obs_fecha_fin($event)"
@@ -336,84 +379,29 @@
                     v-on:changevalor="update_valor_fecha_fin($event)"
                 >
                 </FechaGenerica>
-                <div v-show="testing">
-                     <br> Fecha fin de Mina valor padre: {{form_pagina.fecha_vencimiento_dia}}
-                     <br> Fecha fin de Mina  valido del padre: {{form_pagina.fecha_vencimiento_dia_validacion}}
-                     <br> Fecha fin de Mina  correcto deel padre: {{form_pagina.fecha_vencimiento_dia_correcto}}
-                     <br> Fecha fin de Mina  observacion deel padre: {{form_pagina.obs_fecha_vencimiento_dia}}
-                     <br> Fecha fin de Mina  observacion valida deel padre: {{form_pagina.obs_fecha_vencimiento_dia_valido}}
+                <div class="flex" v-if="mostrar_testing">
+                    <br> Fecha fin de Mina valor padre: {{form_pagina.fecha_vencimiento_dia}}
+                    <br> Fecha fin de Mina  valido del padre: {{form_pagina.fecha_vencimiento_dia_validacion}}
+                    <br> Fecha fin de Mina  correcto deel padre: {{form_pagina.fecha_vencimiento_dia_correcto}}
+                    <br> Fecha fin de Mina  observacion deel padre: {{form_pagina.obs_fecha_vencimiento_dia}}
+                    <br> Fecha fin de Mina  observacion valida deel padre: {{form_pagina.obs_fecha_vencimiento_dia_valido}}
 
                 </div>
             </div>
-         </div>
-         <div class="flex">
+        </div>
+        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             </div>
-         </div>
-         <div class="flex">
+        </div>
+        <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
             </div>
-         </div>
-         <!-- <div class="flex items-center justify-center">
-            <PaginaUnoDatosProductorBotones 
-                :link_volver="route('formulario-alta.index')"
-                :titulo_boton_volver="'volver'"
-                :titulo_boton_guardar="'Guardar Datos del Productor'"
-
-                :leal_calle="$props.leal_calle" 
-                :nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
-                :nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
-                :obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
-                :obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
-
-
-                :leal_numero="form.leal_numero"
-                :leal_numero_valido="form.leal_numero_valido"
-                :leal_numero_correcto="form.leal_numero_correcto"
-                :obs_leal_numero="form.obs_leal_numero"
-                :obs_leal_numero_valido="form.obs_leal_numero_valido"
-                :leal_telefono="form.leal_telefono"
-                :leal_telefono_valido="form.leal_telefono_valido"
-                :leal_telefono_correcto="form.leal_telefono_correcto"
-                :obs_leal_telefono="form.obs_leal_telefono"
-                :obs_leal_telefono_valido="form.obs_leal_telefono_valido"
-                :leal_pais="form.leal_pais"
-                :leal_pais_valido="form.leal_pais_valido"
-                :leal_pais_correcto="form.leal_pais_correcto"
-                :obs_leal_pais="form.obs_leal_pais"
-                :obs_leal_pais_valido="form.obs_leal_pais_valido"
-                :leal_provincia="form.leal_provincia"
-                :leal_provincia_valido="form.leal_provincia_valido"
-                :leal_provincia_correcto="form.leal_provincia_correcto"
-                :obs_leal_provincia="form.obs_leal_provincia"
-                :obs_leal_provincia_valido="form.obs_leal_provincia_valido"
-                :leal_departamento="form.leal_departamento"
-                :leal_departamento_valido="form.leal_departamento_valido"
-                :leal_departamento_correcto="form.leal_departamento_correcto"
-                :obs_leal_departamento="form.obs_leal_departamento"
-                :obs_leal_departamento_valido="form.obs_leal_departamento_valido"
-                :leal_localidad="form.leal_localidad"
-                :leal_localidad_valido="form.leal_localidad_valido"
-                :leal_localidad_correcto="form.leal_localidad_correcto"
-                :obs_leal_localidad="form.obs_leal_localidad"
-                :obs_leal_localidad_valido="form.obs_leal_localidad_valido"
-                :leal_cp="form.leal_cp"
-                :leal_cp_valido="form.leal_cp_valido"
-                :leal_cp_correcto="form.leal_cp_correcto"
-                :obs_leal_cp="form.obs_leal_cp"
-                :obs_leal_cp_valido="form.obs_leal_cp_valido"
-                :leal_otro="form.leal_otro"
-                :leal_otro_valido="form.leal_otro_valido"
-                :leal_otro_correcto="form.leal_otro_correcto"
-                :obs_leal_otro="form.obs_leal_otro"
-                :obs_leal_otro_valido="form.obs_leal_otro_valido"
-
-
-                :evaluacion="true"
-                :id="$props.id"
-            ></PaginaUnoDatosProductorBotones>
-         </div> -->
+        </div>
     </div>
+    <div class="flex justify-end mt-4">
+        <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
+    </div>
+</div>
 </template>
 
 <script>
@@ -515,7 +503,9 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
-        mostrar_testing:'',
+        mostrar_testing:false,
+        autoridad_minera:false,
+        todas_las_validaciones: true,
         form_pagina: {
 
             owner : this.$props.owner,
@@ -600,32 +590,26 @@ export default {
       cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
-
-
+        // FUNCIONES DE OWNER
         update_owner_correcto(newValue){
-            this.form_pagina.nombre_calle_legal_correcto = newValue;
+            this.form_pagina.owner_correcto = newValue;
             //tengo que enviarsela al padre
         },
         updateobs_owner(newValue){
-            this.form_pagina.obs_nombre_calle_legal = newValue;
+            this.form_pagina.obs_owner = newValue;
             //tengo que enviarsela al padre
         },
         updateobs_owner_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_nombre_calle_legal_valido = newValue;
+            this.form_pagina.obs_owner_valido = newValue;
             //tengo que enviarsela al padre
         },
         updatevalor_owner(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.leal_calle = newValue;
+            this.form_pagina.owner = newValue;
             //tengo que enviarsela al padre
         },
-
-
-        
-        
-        
-        
+        // FUNCIONES DE ARRENDATARIO
         update_arrendatario_correcto(newValue){
             this.form_pagina.arrendatario_correcto = newValue;
             //tengo que enviarsela al padre
@@ -644,42 +628,26 @@ export default {
             this.form_pagina.arrendatario = newValue;
             //tengo que enviarsela al padre
         },
-
-
-        
-
-
-
-
-
+        // FUNCIONES DE CONCESIONARIO
         update_concesionario_correcto(newValue){
-            this.form_pagina.arrendatario_correcto = newValue;
+            this.form_pagina.concesionario_correcto = newValue;
             //tengo que enviarsela al padre
         },
         update_obs_concesionario(newValue){
-            this.form_pagina.obs_arrendatario = newValue;
+            this.form_pagina.obs_concesionario = newValue;
             //tengo que enviarsela al padre
         },
         update_obs_concesionario_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_arrendatario_valido = newValue;
+            this.form_pagina.obs_concesionario_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_valor_concesionario(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.arrendatario = newValue;
+            this.form_pagina.concesionario = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-
+        // FUNCIONES DE OTRO
         update_otro_correcto(newValue){
             this.form_pagina.otros_correcto = newValue;
             //tengo que enviarsela al padre
@@ -698,21 +666,17 @@ export default {
             this.form_pagina.otros = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        update_valor_otro_input(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.otro_caracter_acalaracion = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_valor_otro_input_valido(newValue){
+            console.log("traje un"+newValue);
+            this.todas_las_validaciones = newValue;
+            //tengo que enviarsela al padre
+        },
+        // FUNCIONES DE CANON
         update_canon_valido(newValue){
             this.form_pagina.constancia_pago_canon_validacion = newValue;
             //tengo que enviarsela al padre
@@ -735,23 +699,7 @@ export default {
             this.form_pagina.constancia_pago_canon = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
+        // FUNCIONES DE IIA
         update_iia_valido(newValue){
             this.form_pagina.iia_canon_validacion = newValue;
             //tengo que enviarsela al padre
@@ -774,19 +722,7 @@ export default {
             this.form_pagina.iia = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // FUNCIONES DE DIA
         update_dia_valido(newValue){
             this.form_pagina.dia_canon_validacion = newValue;
             //tengo que enviarsela al padre
@@ -809,22 +745,7 @@ export default {
             this.form_pagina.dia = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // FUNCIONES DE ACTIVIDADES
         update_actividades_valido(newValue){
             this.form_pagina.actividad_a_desarrollar_validacion = newValue;
             //tengo que enviarsela al padre
@@ -847,15 +768,8 @@ export default {
             this.form_pagina.actividad = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-    update_accionesvalido(newValue){
+        // FUNCIONES DE ACCIONES
+        update_accionesvalido(newValue){
             this.form_pagina.acciones_a_desarrollar_validacion = newValue;
             //tengo que enviarsela al padre
         },
@@ -877,18 +791,7 @@ export default {
             this.form_pagina.acciones_a_desarrollar = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-
-
-
+        // FUNCIONES DE FECHA ALTA
         update_fecha_iniciovalido(newValue){
             this.form_pagina.fecha_alta_dia_validacion = newValue;
             //tengo que enviarsela al padre
@@ -911,20 +814,7 @@ export default {
             this.form_pagina.fecha_alta_dia = newValue;
             //tengo que enviarsela al padre
         },
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
+        // FUNCIONES DE FECHA BAJA
         update_fecha_fin_valido(newValue){
             this.form_pagina.fecha_vencimiento_dia_validacion = newValue;
             //tengo que enviarsela al padre

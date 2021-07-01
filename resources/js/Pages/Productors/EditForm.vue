@@ -11,160 +11,144 @@
 					</div>
 					<br>
 					<hr>
+					
 					<br>
 					<!-- Delete Account Confirmation Modal -->
-						<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
-								<template #title>
-										{{modal_tittle}}
-								</template>
+					<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
+							<template #title>
+									{{modal_tittle}}
+							</template>
 
-								<template #content>
-										{{modal_body}}
+							<template #content>
+									{{modal_body}}
 
-										
-								</template>
+									
+							</template>
 
-								<template #footer>
-										<button @click="closeModal">
-												Ok
-										</button>
+							<template #footer>
+									<button @click="closeModal">
+											Ok
+									</button>
 
-										
-								</template>
-						</jet-dialog-modal>
-						<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
-						
-
-						<div class="flex items-center justify-center">
-					<div class="grid grid-cols-1 gap-6 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7">
-						<!-- 1 card -->
-						<CardProductor  
-						:progreso="form.valor_de_progreso"
-						:aprobado="form.valor_de_aprobado"
-						:reprobado="form.valor_de_reprobado" 
-						:lugar="'Argentina, San Juan'"
-						:updated_at="'hace 10 minutos'"
-						:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-						:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-
-						></CardProductor>
-
-						<!-- 2 card -->
-						<CardDomLegal  
-							:progreso="form.valor_de_progreso_dos"
-							:aprobado="form.valor_de_aprobado_dos"
-							:reprobado="form.valor_de_reprobado_dos" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-						></CardDomLegal>
-
-					
-						<!-- 3 card -->
-						
-						<CardDomAdmin  
-							:progreso="form.valor_de_progreso_tres"
-							:aprobado="form.valor_de_aprobado_tres"
-							:reprobado="form.valor_de_reprobado_tres" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-						></CardDomAdmin>
-						
-
-						 <!-- 4 card -->
-						 <CardMinaUno  
-							:progreso="form.valor_de_progreso_cuatro"
-							:aprobado="form.valor_de_aprobado_cuatro"
-							:reprobado="form.valor_de_reprobado_cuatro" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaUno>
-
-						 <!-- 5 card -->
-						<CardMinaDos  
-							:progreso="form.valor_de_progreso_cinco"
-							:aprobado="form.valor_de_aprobado_cinco"
-							:reprobado="form.valor_de_reprobado_cinco" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaDos>
-
-						<CardMinaUbicacion  
-							:progreso="form.valor_de_progreso_seis"
-							:aprobado="form.valor_de_aprobado_seis"
-							:reprobado="form.valor_de_reprobado_seis" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaUbicacion>
-						
-					
-
-						 <!-- 4 card -->
-						 <CardTotal  
-							:progreso="form.valor_de_progreso_seis"
-							:aprobado="form.valor_de_aprobado_seis"
-							:reprobado="form.valor_de_reprobado_seis" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-							></CardTotal>
-						
-				</div>
-		</div>
-
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-
-				<div class="flex items-center justify-center">
-						<CardProductor  
+									
+							</template>
+					</jet-dialog-modal>
+					<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
+					<div id="inicio"></div>
+					<div class="flex items-center justify-center">
+						<div class="grid grid-cols-1 gap-6 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7">
+							<!-- 1 card -->
+							<CardProductor  
 							:progreso="form.valor_de_progreso"
 							:aprobado="form.valor_de_aprobado"
 							:reprobado="form.valor_de_reprobado" 
 							:lugar="'Argentina, San Juan'"
 							:updated_at="'hace 10 minutos'"
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardProductor>
-				</div>
+							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
 
-				<br>
-				<br>
-				<!-- <PasoUnoEdit
-				:razon_social="form.razon_social"
-				:razon_social_valido="form.razon_social_valido"
-				:razon_social_correcto="form.razon_social_correcto"
-				:obs_razon_social="form.obs_razon_social"
-				:obs_razon_social_valido="form.obs_razon_social_valido"
-				:email="form.email"
-				:email_valido="form.email_valido"
-				:email_correcto="form.email_correcto"
-				:obs_email="form.obs_email"
-				:obs_email_valido="form.obs_email_valido"
-				></PasoUnoEdit> -->
-				<br>
-				<br>
+							></CardProductor>
+
+							<!-- 2 card -->
+							<CardDomLegal  
+								:progreso="form.valor_de_progreso_dos"
+								:aprobado="form.valor_de_aprobado_dos"
+								:reprobado="form.valor_de_reprobado_dos" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
+							></CardDomLegal>
+
+						
+							<!-- 3 card -->
+							
+							<CardDomAdmin  
+								:progreso="form.valor_de_progreso_tres"
+								:aprobado="form.valor_de_aprobado_tres"
+								:reprobado="form.valor_de_reprobado_tres" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
+							></CardDomAdmin>
+							
+
+							<!-- 4 card -->
+							<CardMinaUno  
+								:progreso="form.valor_de_progreso_cuatro"
+								:aprobado="form.valor_de_aprobado_cuatro"
+								:reprobado="form.valor_de_reprobado_cuatro" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardMinaUno>
+
+							<!-- 5 card -->
+							<CardMinaDos  
+								:progreso="form.valor_de_progreso_cinco"
+								:aprobado="form.valor_de_aprobado_cinco"
+								:reprobado="form.valor_de_reprobado_cinco" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardMinaDos>
+
+							<CardMinaUbicacion  
+								:progreso="form.valor_de_progreso_seis"
+								:aprobado="form.valor_de_aprobado_seis"
+								:reprobado="form.valor_de_reprobado_seis" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardMinaUbicacion>
+							
+						
+
+							<!-- 4 card -->
+							<CardTotal  
+								:progreso="form.valor_de_progreso_seis"
+								:aprobado="form.valor_de_aprobado_seis"
+								:reprobado="form.valor_de_reprobado_seis" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+								></CardTotal>
+							
+						</div>
+					</div>
+					<br>
+					<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
+						<a href="#inicio">
+							<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6">
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
+								</svg>
+							</div>
+						</a>
+					</div>
+					<br>
+					<!-- <div class="flex items-center justify-center">
+							<CardProductor  
+								:progreso="form.valor_de_progreso"
+								:aprobado="form.valor_de_aprobado"
+								:reprobado="form.valor_de_reprobado" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardProductor>
+					</div> -->
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
 					:titulo_boton_volver="'volver'"
 					:titulo_boton_guardar="'Guardar Datos del Productor'"
 					:titulo_pagina="'Pagina datos de Productor'"
-
 
 					:razon_social="form.razon_social" 
 					:razon_social_valido="form.razon_social_valido"
@@ -196,25 +180,16 @@
 					:inscripciondgr_correcto="form.inscripciondgr_correcto"
 					:obs_inscripciondgr="form.obs_inscripciondgr"
 					:obs_inscripciondgr_valido="form.obs_inscripciondgr_valido"
-					:constaciasociedad="form.constaciasociedad"
-					:constaciasociedad_valido="form.constaciasociedad_valido"
-					:constaciasociedad_correcto="form.constaciasociedad_correcto"
-					:obs_constaciasociedad="form.obs_constaciasociedad"
-					:obs_constaciasociedad_valido="form.obs_constaciasociedad_valido"
+					:constanciasociedad="form.constaciasociedad"
+					:constanciasociedad_valido="form.constaciasociedad_valido"
+					:constanciasociedad_correcto="form.constaciasociedad_correcto"
+					:obs_constanciasociedad="form.obs_constaciasociedad"
+					:obs_constanciasociedad_valido="form.obs_constaciasociedad_valido"
 
 					:evaluacion="true"
 					:id="$props.productor.id"
 				>
-
 				</PaginaUnoDatosProductores>
-			<br>
-        <br>
-       
-				<br>
-				<br>
-				<hr>
-				<br>
-				<br>
 				<br>
 				<br>
 				<div id="section_domicilio_legal"></div>
@@ -271,22 +246,20 @@
 					:obs_leal_otro="form.obs_leal_otro"
 					:obs_leal_otro_valido="form.obs_leal_otro_valido"
 
+					:donde_estoy="'legal'"
+					:lista_provincias="lista_provincias"
+					:lista_dptos="lista_dptos_legal"
+
 					:evaluacion="true"
 					:id="$props.productor.id"
 					>
 
 				</PaginaDosDatosDomLegal>
+			
 
 				<br>
-				<br>
-				<hr>
-				<br>
-				<br>
-				<br>
-				<br>
-
 			<div class="flex items-center justify-center">
-				<CardDomLegal  
+				<!-- <CardDomLegal  
 							:progreso="form.valor_de_progreso_dos"
 							:aprobado="form.valor_de_aprobado_dos"
 							:reprobado="form.valor_de_reprobado_dos" 
@@ -294,42 +267,22 @@
 							:updated_at="'hace 10 minutos'"
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardDomLegal>
+						></CardDomLegal> -->
 			</div>
 			<br>
 			<br>
-			
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
-
 			<div class="flex items-center justify-center">
-				<CardDomAdmin  
-							:progreso="form.valor_de_progreso_tres"
-							:aprobado="form.valor_de_aprobado_tres"
-							:reprobado="form.valor_de_reprobado_tres" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardDomAdmin>
+				<!-- <CardDomAdmin  
+					:progreso="form.valor_de_progreso_tres"
+					:aprobado="form.valor_de_aprobado_tres"
+					:reprobado="form.valor_de_reprobado_tres" 
+					:lugar="'Argentina, San Juan'"
+					:updated_at="'hace 10 minutos'"
+					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+				></CardDomAdmin> -->
 			</div>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
 			<div id="section_domicilio_administrativo"></div>
-			{{	form.administracion_calle }}
 			<PaginaDosDatosDomLegal
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -382,39 +335,28 @@
 				:obs_leal_otro="form.obs_administracion_otro"
 				:obs_leal_otro_valido="form.obs_administracion_otro_valido"
 
+				:donde_estoy="'administrativo'"
+				:lista_provincias="lista_provincias"
+				:lista_dptos="lista_dptos_admin"
+
 				:evaluacion="true"
 				:id="$props.productor.id"
 				>
+			
 
 			</PaginaDosDatosDomLegal>
-
-			
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
 			<br>
 			<div class="flex items-center justify-center">
-				<CardMinaUno  
-							:progreso="form.valor_de_progreso_cuatro"
-							:aprobado="form.valor_de_aprobado_cuatro"
-							:reprobado="form.valor_de_reprobado_cuatro" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaUno>
+				<!-- <CardMinaUno  
+					:progreso="form.valor_de_progreso_cuatro"
+					:aprobado="form.valor_de_aprobado_cuatro"
+					:reprobado="form.valor_de_reprobado_cuatro" 
+					:lugar="'Argentina, San Juan'"
+					:updated_at="'hace 10 minutos'"
+					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+				></CardMinaUno> -->
 			</div>
-
-
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
 			<div id="section_mina_uno"></div>
 			<PaginaCuatroDatosMinaUno
 				:link_volver="route('formulario-alta.index')"
@@ -476,33 +418,18 @@
 				:obs_titulo_contrato_posecion="form.obs_titulo_contrato_posecion"
 				:obs_titulo_contrato_posecion_valido="form.obs_titulo_contrato_posecion_valido"
 
+			
+
 				:evaluacion="true"
 				:id="$props.productor.id"
 				:testing="true"
 			>
-
 			</PaginaCuatroDatosMinaUno>
 			
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_cuatro"
-				>
-					Guardar Datos de la Mina
-				</button>
-				
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
 			<br>
 			<br>
 			<div class="flex items-center justify-center">
-				<CardMinaDos  
+				<!-- <CardMinaDos  
 							:progreso="form.valor_de_progreso_cinco"
 							:aprobado="form.valor_de_aprobado_cinco"
 							:reprobado="form.valor_de_reprobado_cinco" 
@@ -510,7 +437,7 @@
 							:updated_at="'hace 10 minutos'"
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaDos>
+						></CardMinaDos> -->
 			</div>
 			<br>
 			<br>
@@ -583,22 +510,13 @@
 				:fecha_vencimiento_dia_correcto="form.fecha_vencimiento_dia_correcto"
 				:obs_fecha_vencimiento_dia="form.obs_fecha_vencimiento_dia"
 				:obs_fecha_vencimiento_dia_valido="form.obs_fecha_vencimiento_dia_valido"
-
-
 				
 				:evaluacion="true"
 				:id="$props.productor.id"
 				:testing="true"
 
 			>
-
 			</PaginaCincoDatosMinaDos>
-
-
-
-			
-
-			
 			<br>
 			<br>
 			<br>
@@ -634,399 +552,62 @@
 					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 				></CardMinaUbicacion>
 			</div>
-
-					<br>
-			<br><br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="localidad_mina_pais"
-							>País de la Mina</label
-						>
-						<select
-							id="localidad_mina_pais"
-							name="localidad_mina_pais"
-							v-model="form.localidad_mina_pais"
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="-1">Really long option that will likely overlap the chevron</option>
-							<option value="Argentina">Argentina</option>
-							<option value="-3">Option 3</option>
-						</select>
-						<p v-show="form.localidad_mina_pais_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_localidad_mina_pais_correcto" v-model="form.localidad_mina_pais_correcto" value="true" v-on:change="calculo_de_porcentajes_seis(1, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_localidad_mina_pais_correcto" v-model="form.localidad_mina_pais_correcto" value="false" v-on:change="calculo_de_porcentajes_seis(1, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_localidad_mina_pais_correcto" v-model="form.localidad_mina_pais_correcto" value="nada" v-on:change="calculo_de_porcentajes_seis(1, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								
-								<div v-show="!form.localidad_mina_pais_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_localidad_mina_pais"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_localidad_mina_pais"
-										name="obs_localidad_mina_pais"
-										v-model="form.obs_localidad_mina_pais"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									<p v-show="form.obs_localidad_mina_pais_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="localidad_mina_provincia"
-							>Provincia de la mina</label>
-						<select
-							id="localidad_mina_provincia"
-							name="localidad_mina_provincia"
-							v-model="form.localidad_mina_provincia" 
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option :value="null" />
-								<option value="Buenos Aires">Buenos Aires</option>
-								<option value="Buenos Aires-GBA">Buenos Aires-GBA</option>
-								<option value="Capital Federal">Capital Federal</option>
-								<option value="Catamarca">Catamarca</option>
-								<option value="Chaco">Chaco</option>
-								<option value="Chubut">Chubut</option>
-								<option value="Cordoba">Cordoba</option>
-								<option value="Corrientes">Corrientes</option>
-								<option value="Entre Rios">Entre Rios</option>
-								<option value="Formosa">Formosa</option>
-								<option value="Jujuy">Jujuy</option>
-								<option value="La Pampa">La Pampa</option>
-								<option value="La Rioja">La Rioja</option>
-								<option value="Mendoza">Mendoza</option>
-								<option value="Misiones">Misiones</option>
-								<option value="Neuquen">Neuquen</option>
-								<option value="Rio Negro">Rio Negro</option>
-								<option value="Salta">Salta</option>
-								<option value="San Juan">San Juan</option>
-								<option value="San Luis">San Luis</option>
-								<option value="Santa Cruz">Santa Cruz</option>
-								<option value="Santa Fe">Santa Fe</option>
-								<option value="Santiago del Estero">Santiago del Estero</option>
-								<option value="Tierra del Fuego">Tierra del Fuego</option>
-								<option value="Tucuman">Tucuman</option>
-								<option value="Provincia 2 de brazil">Provincia 2 de brazil</option>
-						</select>
-						<p v-show="form.localidad_mina_provincia_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_localidad_mina_provincia_correcto" v-model="form.localidad_mina_provincia_correcto" value="true" v-on:change="calculo_de_porcentajes_seis(2, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_localidad_mina_provincia_correcto" v-model="form.localidad_mina_provincia_correcto" value="false" v-on:change="calculo_de_porcentajes_seis(2, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_localidad_mina_provincia_correcto" v-model="form.localidad_mina_provincia_correcto" value="nada" v-on:change="calculo_de_porcentajes_seis(2, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								<div v-show="!form.localidad_mina_provincia_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_localidad_mina_provincia"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_localidad_mina_provincia"
-										name="obs_localidad_mina_provincia"
-										v-model="form.obs_localidad_mina_provincia"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-
-									
-									<p v-show="form.obs_localidad_mina_provincia_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-					<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="localidad_mina_departamento"
-							>Departamento de la mina</label>
-						<select
-							id="localidad_mina_departamento"
-							name="localidad_mina_departamento"
-							v-model="form.localidad_mina_departamento" 
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option :value="null" />
-								<option value="Buenos Aires">Buenos Aires</option>
-								<option value="Jachal">Jachal</option>
-								<option value="Capital">Capital</option>
-								<option value="Chimbas">Chimbas</option>
-								<option value="Corrientes">Corrientes</option>
-								<option value="Formosa">Formosa</option>
-								<option value="Jujuy">Jujuy</option>
-								<option value="Mendoza">Mendoza</option>
-								<option value="Neuquen">Neuquen</option>
-								<option value="Salta">Salta</option>
-								<option value="Tucuman">Tucuman</option>
-						</select>
-						<p v-show="form.localidad_mina_departamento_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-								<div class="w-full md:w-1/2 px-3">
-									<span class="text-gray-700">Correcto?</span>
-									<div class="mt-2">
-										<label class="inline-flex items-center">
-											<input type="radio" class="form-radio" name="name_localidad_mina_departamento_correcto" v-model="form.localidad_mina_departamento_correcto" value="true" v-on:change="calculo_de_porcentajes_seis(3, true)">
-											<span class="ml-2">Si</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_localidad_mina_departamento_correcto" v-model="form.localidad_mina_departamento_correcto" value="false" v-on:change="calculo_de_porcentajes_seis(3, false)">
-											<span class="ml-2">No</span>
-										</label>
-										<label class="inline-flex items-center ml-6">
-											<input type="radio" class="form-radio" name="name_localidad_mina_departamento_correcto" v-model="form.localidad_mina_departamento_correcto" value="nada" v-on:change="calculo_de_porcentajes_seis(3, 'nada')">
-											<span class="ml-2">Sin evaluar</span>
-										</label>
-									</div>
-								</div>
-								<div  v-show="!form.localidad_mina_departamento_correcto" class="w-full md:w-1/2 px-3">
-									<label
-										class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-										for="obs_localidad_mina_departamento"
-										>Observación:</label
-									>
-									<textarea
-										id="obs_localidad_mina_departamento"
-										name="obs_localidad_mina_departamento"
-										v-model="form.obs_localidad_mina_departamento"
-										class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-									</textarea>
-									<p v-show="form.obs_localidad_mina_departamento_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-								</div>
-						</div>
-				</div>
-			</div>
 			<br>
 			<br>
+			<br>
+			<br>
+			<PaginaSeisDatosUbicacionMina
+				:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
+				:titulo_pagina="'Pagina datos de Mina Segunda Parte'"
 
-			<div class="flex">
-				<div class="w-full md:w-1/2 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="localidad_mina_localidad"
-							>Localidad donde se encuentra la mina:</label
-						>
-						<input
-							id="localidad_mina_localidad"
-							name="localidad_mina_localidad"
-							v-model="form.localidad_mina_localidad"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.localidad_mina_localidad_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="nombre_localidad_mina_localidad_correcto"  v-model="form.localidad_mina_localidad_correcto" value="true" v-on:change="calculo_de_porcentajes_seis(4, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="nombre_localidad_mina_localidad_correcto"  v-model="form.localidad_mina_localidad_correcto" value="false" v-on:change="calculo_de_porcentajes_seis(4, false)">
-										<span class="ml-2">No</span>
-									</label>
-								</div>
-								<label class="inline-flex items-center ml-6">
-									<input type="radio" class="form-radio" name="nombre_localidad_mina_localidad_correcto" v-model="form.localidad_mina_localidad_correcto" value="nada" v-on:change="calculo_de_porcentajes_seis(4, 'nada')">
-									<span class="ml-2">Sin evaluar</span>
-								</label>
-							</div>
-							<div v-show="!form.localidad_mina_localidad_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_localidad_mina_localidad"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_localidad_mina_localidad"
-									name="obs_localidad_mina_localidad"
-									v-model="form.obs_localidad_mina_localidad"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								
-								<p v-show="form.obs_localidad_mina_localidad_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
+				:localidad_mina_pais="form.localidad_mina_pais"
+				:localidad_mina_pais_validacion="form.localidad_mina_pais_validacion"
+				:localidad_mina_pais_correcto="form.localidad_mina_pais_correcto"
+				:obs_localidad_mina_pais="form.obs_localidad_mina_pais"
+				:obs_localidad_mina_pais_valido="form.obs_localidad_mina_pais_valido"
+				:localidad_mina_provincia="form.localidad_mina_provincia"
+				:localidad_mina_provincia_validacion="form.localidad_mina_provincia_validacion"
+				:localidad_mina_provincia_correcto="form.localidad_mina_provincia_correcto"
+				:obs_localidad_mina_provincia="form.obs_localidad_mina_provincia"
+				:obs_localidad_mina_provincia_valido="form.obs_localidad_mina_provincia_valido"
+				:localidad_mina_departamento="form.localidad_mina_departamento"
+				:localidad_mina_departamento_validacion="form.localidad_mina_departamento_validacion"
+				:localidad_mina_departamento_correcto="form.localidad_mina_departamento_correcto"
+				:obs_localidad_mina_departamento="form.obs_localidad_mina_departamento"
+				:obs_localidad_mina_departamento_valido="form.obs_localidad_mina_departamento_valido"
+				:localidad_mina_localidad="form.localidad_mina_localidad"
+				:localidad_mina_localidad_validacion="form.localidad_mina_localidad_validacion"
+				:localidad_mina_localidad_correcto="form.localidad_mina_localidad_correcto"
+				:obs_localidad_mina_localidad="form.obs_localidad_mina_localidad"
+				:obs_localidad_mina_localidad_valido="form.obs_localidad_mina_localidad_valido"
+				:tipo_sistema="form.tipo_sistema"
+				:tipo_sistema_validacion="form.tipo_sistema_validacion"
+				:tipo_sistema_correcto="form.tipo_sistema_correcto"
+				:obs_tipo_sistema="form.obs_tipo_sistema"
+				:obs_tipo_sistema_valido="form.obs_tipo_sistema_valido"
+				:latitud="form.latitud"
+				:latitud_validacion="form.latitud_validacion"
+				:latitud_correcto="form.latitud_correcto"
+				:obs_latitud="form.obs_latitud"
+				:obs_latitud_valido="form.obs_latitud_valido"
+				:longitud="form.longitud"
+				:longitud_validacion="form.longitud_validacion"
+				:longitud_correcto="form.longitud_correcto"
+				:obs_longitud="form.obs_longitud"
+				:obs_longitud_valido="form.obs_longitud_valido"
 
-				</div>
+				:lista_provincias="lista_provincias"
+				:lista_dptos="lista_dptos_mina"
 				
-			</div>
-			<br>
-			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/3 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="tipo_sistema"
-							>Tipo de sistema de Coordenadas</label
-						>
-						<input
-							id="tipo_sistema"
-							name="tipo_sistema"
-							v-model="form.tipo_sistema"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.tipo_sistema_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="nombre_tipo_sistema_correcto"  v-model="form.tipo_sistema_correcto" value="true" v-on:change="calculo_de_porcentajes_seis(5, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="nombre_tipo_sistema_correcto"  v-model="form.tipo_sistema_correcto" value="false" v-on:change="calculo_de_porcentajes_seis(5, false)">
-										<span class="ml-2">No</span>
-									</label>
-								</div>
-								<label class="inline-flex items-center ml-6">
-									<input type="radio" class="form-radio" name="nombre_tipo_sistema_correcto" v-model="form.tipo_sistema_correcto" value="nada" v-on:change="calculo_de_porcentajes_seis(5, 'nada')">
-									<span class="ml-2">Sin evaluar</span>
-								</label>
-							</div>
-							<div v-show="!form.tipo_sistema_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_tipo_sistema"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_tipo_sistema"
-									name="obs_tipo_sistema"
-									v-model="form.obs_tipo_sistema"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								
-								<p v-show="form.obs_tipo_sistema_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
+				:evaluacion="true"
+				:id="$props.productor.id"
+				:testing="true"
 
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="latitud"
-							>Latitud</label
-						>
-						<input
-							id="latitud"
-							name="latitud"
-							v-model="form.latitud"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.latitud_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_latitud_correcto"  v-model="form.latitud_correcto" value="true" v-on:change="calculo_de_porcentajes_seis(6, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_latitud_correcto"  v-model="form.latitud_correcto" value="false" v-on:change="calculo_de_porcentajes_seis(6, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_latitud_correcto" v-model="form.latitud_correcto" value="nada" v-on:change="calculo_de_porcentajes_seis(6, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div  v-show="!form.latitud_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_latitud"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_latitud"
-									name="obs_latitud"
-									v-model="form.obs_latitud"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_latitud_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-				<div class="w-full md:w-1/3 px-3">
-						<label
-							class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-							for="longitud"
-							>Longitud</label
-						>
-						<input
-							id="longitud"
-							name="longitud"
-							v-model="form.longitud"
-							class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-						/>
-						<p v-show="form.longitud_validacion" class="text-red-500 text-xs italic">Please fill out this field.</p>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3">
-								<span class="text-gray-700">Correcto?</span>
-								<div class="mt-2">
-									<label class="inline-flex items-center">
-										<input type="radio" class="form-radio" name="name_longitud_correcto"  v-model="form.longitud_correcto" value="true" v-on:change="calculo_de_porcentajes_seis(7, true)">
-										<span class="ml-2">Si</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_longitud_correcto"  v-model="form.longitud_correcto" value="false" v-on:change="calculo_de_porcentajes_seis(7, false)">
-										<span class="ml-2">No</span>
-									</label>
-									<label class="inline-flex items-center ml-6">
-										<input type="radio" class="form-radio" name="name_longitud_correcto" v-model="form.longitud_correcto" value="nada" v-on:change="calculo_de_porcentajes_seis(7, 'nada')">
-										<span class="ml-2">Sin evaluar</span>
-									</label>
-								</div>
-							</div>
-							<div  v-show="!form.longitud_correcto" class="w-full md:w-2/3 px-3">
-								<label
-									class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-									for="obs_longitud"
-									>Observación:</label
-								>
-								<textarea
-									id="obs_longitud"
-									name="obs_longitud"
-									v-model="form.obs_longitud"
-									class="appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
-								</textarea>
-								<p v-show="form.obs_longitud_valido" class="text-green-500 text-xs italic">Please fill out this field.</p>
-							</div>
-						</div>
-				</div>
-			</div>
-			<br>
+			>
+
+			</PaginaSeisDatosUbicacionMina>
 			<br>
 			<br>
 			<br>
@@ -1039,7 +620,6 @@
 				>
 					Guardar: Datos de la Ubicacion de la mina
 				</button>
-				
 				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
 			</div>
 			<br>
@@ -1106,8 +686,10 @@
 
 
 				</form>
+				
 
 			</div>
+			
 		</div>
 	</app-layout>
 </template>
@@ -1134,6 +716,10 @@ import PaginaDosDatosDomLegal from "@/Pages/Productors/PaginaDosDatosDomLegal";
 
 import PaginaCuatroDatosMinaUno from "@/Pages/Productors/PaginaCuatroDatosMinaUno";
 import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos";
+
+import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
+
+
 import ValidationErrors from '../../Jetstream/ValidationErrors.vue';
  
 export default {
@@ -1155,6 +741,7 @@ export default {
 		PaginaDosDatosDomLegal,
 		PaginaCuatroDatosMinaUno,
 		PaginaCincoDatosMinaDos,
+		PaginaSeisDatosUbicacionMina,
 		ValidationErrors,
 	},
 	props: ["productor"],
@@ -1163,6 +750,10 @@ export default {
 			confirmingUserDeletion:false,
 			modal_tittle: '',
 			modal_body: '',
+			lista_provincias: [],
+			lista_dptos_legal: [],
+			lista_dptos_admin: [],
+			lista_dptos_mina: [],
 			form: {
 				razon_social:this.$props.productor.razonsocial,
 				razon_social_valido: true,
@@ -1205,7 +796,7 @@ export default {
 
 				constaciasociedad: this.$props.productor.constaciasociedad,
 				constaciasociedad_valido: true,
-				constaciasociedad_correcto:  this.$props.productor.constaciasociedad_correcto,
+				constaciasociedad_correcto:  this.$props.productor.constanciasociedad_correcto,
 				obs_constaciasociedad:  this.$props.productor.obs_constaciasociedad,
 				obs_constaciasociedad_valido: false,
 
@@ -1221,42 +812,42 @@ export default {
 
 				leal_calle: this.$props.productor.leal_calle,
 				nombre_calle_legal_valido:  true,
-				nombre_calle_legal_correcto: 'nada',
-				obs_nombre_calle_legal: '',
-				obs_nombre_calle_legal_valido: false,
+				nombre_calle_legal_correcto: this.$props.productor.leal_calle_correcto,
+				obs_nombre_calle_legal: this.$props.productor.obs_leal_calle,
+				obs_nombre_calle_legal_valido: true,
 
 				leal_numero: this.$props.productor.leal_numero,
 				leal_numero_valido:  true,
-				leal_numero_correcto: 'nada',
-				obs_leal_numero: '',
+				leal_numero_correcto: this.$props.productor.leal_numero_correcto,
+				obs_leal_numero: this.$props.productor.obs_leal_numero,
 				obs_leal_numero_valido: false,
 
 
 				leal_telefono: this.$props.productor.leal_telefono,
 				leal_telefono_valido:  true,
-				leal_telefono_correcto: 'nada',
-				obs_leal_telefono: '',
+				leal_telefono_correcto: this.$props.productor.leal_telefono_correcto,
+				obs_leal_telefono: this.$props.productor.obs_leal_telefono,
 				obs_leal_telefono_valido: false,
 
 
-				leal_pais: this.$props.productor.leal_pais,
+				leal_pais: 'Argentina',
 				leal_pais_valido:  true,
-				leal_pais_correcto: 'nada',
+				leal_pais_correcto: true,
 				obs_leal_pais: '',
 				obs_leal_pais_valido: false,
 
 
 				leal_provincia: this.$props.productor.leal_provincia,
 				leal_provincia_valido:  true,
-				leal_provincia_correcto: 'nada',
-				obs_leal_provincia: '',
+				leal_provincia_correcto: this.$props.productor.leal_provincia_correcto,
+				obs_leal_provincia: this.$props.productor.obs_leal_provincia,
 				obs_leal_provincia_valido: false,
 
 
 				leal_departamento: this.$props.productor.leal_departamento,
 				leal_departamento_valido:  true,
-				leal_departamento_correcto: 'nada',
-				obs_leal_departamento: '',
+				leal_departamento_correcto: this.$props.productor.leal_departamento_correcto,
+				obs_leal_departamento: this.$props.productor.obs_leal_departamento,
 				obs_leal_departamento_valido: false,
 
 				leal_localidad: this.$props.productor.leal_localidad,
@@ -1269,8 +860,8 @@ export default {
 
 				leal_cp: this.$props.productor.leal_cp,
 				leal_cp_valido:  true,
-				leal_cp_correcto: 'nada',
-				obs_leal_cp: '',
+				leal_cp_correcto: this.$props.productor.leal_cp_correcto,
+				obs_leal_cp: this.$props.productor.obs_leal_cp,
 				obs_leal_cp_valido: false,
 
 
@@ -1278,8 +869,8 @@ export default {
 
 				leal_otro: this.$props.productor.leal_otro,
 				leal_otro_valido:  true,
-				leal_otro_correcto: 'nada',
-				obs_leal_otro: '',
+				leal_otro_correcto: this.$props.productor.leal_otro_correcto,
+				obs_leal_otro: this.$props.productor.obs_leal_otro,
 				obs_leal_otro_valido: false,
 
 
@@ -3675,7 +3266,7 @@ export default {
 		},
 
 		guardar_avances_todo: function(){
-						let self = this
+						let self = this;
 						// Make a request for a user with a given ID
 						axios.post('/formularios/evaluacion_auto_guardado_todo', {
 							id: this.$props.productor.id,
@@ -3702,6 +3293,76 @@ export default {
 		},
 
 	},
+	mounted(){
+    let self  = this;
+	//voy a buscar las provincias
+    this.$nextTick(() => {
+        axios.get('/datos/traer_provincias')
+            .then(function (response) {
+                console.log("las provincias son:\n");
+                self.lista_provincias = response.data;
+                console.log(self.lista_provincias);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+
+		// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
+		// console.log("si");
+		// else console.log("no");
+		// console.log(isNaN(parseInt(this.$props.productor.leal_provincia)));
+
+
+	//voy a buscar los dptos
+	if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.leal_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz , legales son:\n");
+                self.lista_dptos_legal = response.data;
+                console.log(self.lista_dptos_legal);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_legal=[];}
+	if(!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.administracion_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz son:\n");
+                self.lista_dptos_admin = response.data;
+                console.log(self.lista_dptos_admin);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_admin=[];}
+	if(!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.localidad_mina_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz son:\n");
+                self.lista_dptos_mina = response.data;
+                console.log(self.lista_dptos_mina);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_mina=[];}
+	
+	
+    },
 	
 	
 };

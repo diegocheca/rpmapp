@@ -1,134 +1,206 @@
 <template>
-    <div>
-        <h1>{{titulo_pagina}}</h1>
-        <div class="flex items-center justify-center">
-            <CardMinaUno 
-                :progreso="50"
-                :aprobado="50"
-                :reprobado="50" 
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-            ></CardMinaUno>
+<div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+        <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
+            <a href="#section_mina_uno">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/tipo_caracter_card.svg">
+            </a>
+            <label class="flex items-center relative w-max cursor-pointer select-none">
+                <br>
+                <br>
+                <input 
+                type="checkbox" 
+                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                v-model="mostrar_testing"
+                />
+                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+            </label>
+            <label class="flex items-center relative w-max cursor-pointer select-none">
+                <br>
+                <br>
+                <input 
+                type="checkbox" 
+                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
+                v-model="autoridad_minera"
+                />
+                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
+                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
+                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+            </label>
+
         </div>
-        <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <NumeroExpedienteMina 
-                    v-bind:numero_expdiente="$props.numero_expdiente"
-                    v-bind:numero_expdiente_valido="$props.numero_expdiente_valido"
-                    v-bind:numero_expdiente_correcto="$props.numero_expdiente_correcto"
-                    v-bind:obs_numero_expdiente="$props.obs_numero_expdiente"
-                    v-bind:obs_numero_expdiente_valido="$props.obs_numero_expdiente_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changenumexpvalido="update_num_exp_valido($event)"
-                    v-on:changenumexpcorrecto="update_num_exp_correcto($event)"
-                    v-on:changeobsnumexp="updateobs_num_exp($event)"
-                    v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
-                    v-on:changevalornumexp="updatevalor_num_exp($event)"
-                ></NumeroExpedienteMina>
-                <div v-show="testing">
-                     <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
-                     <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
-                     <br> num exp de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
-                     <br> num exp de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
-                     <br> num exp de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
-                </div>
-
+        <div>
+            <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
+            <br><br>
+            <div class="flex items-center justify-center">
+                <CardMinaUno 
+                    :progreso="50"
+                    :aprobado="50"
+                    :reprobado="50" 
+                    :lugar="'Argentina, San Juan'"
+                    :updated_at="'hace 10 minutos'"
+                    :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+                    :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                ></CardMinaUno>
             </div>
-            <div class="w-full md:w-1/2 px-3">
-                <DistritoMinero
-                    v-bind:distrito_minero="$props.distrito_minero"
-                    v-bind:distrito_minero_validacion="$props.distrito_minero_validacion"
-                    v-bind:distrito_minero_correcto="$props.distrito_minero_correcto"
-                    v-bind:obs_distrito_minero="$props.obs_distrito_minero"
-                    v-bind:obs_distrito_minero_valido="$props.obs_distrito_minero_valido"
-                    v-bind:evaluacion="true"
-                    v-on:changevalido="update_distrito_minero_valido($event)"
-                    v-on:changecorrecto="update_distrito_minero_correcto($event)"
-                    v-on:changeobs="update_distrito_minero_obs($event)"
-                    v-on:changeobsvalido="update_distrito_minero_valido_obs($event)"
-                    v-on:changevalor="update_distrito_minero($event)"
-                >
-                </DistritoMinero>
-                <div v-show="testing">
-                     <br> distrito minero de Mina valor padre: {{form_pagina.distrito_minero}}
-                     <br> distrito minero de Mina  valido del padre: {{form_pagina.distrito_minero_validacion}}
-                     <br> distrito minero de Mina  correcto deel padre: {{form_pagina.distrito_minero_correcto}}
-                     <br> distrito minero de Mina  observacion deel padre: {{form_pagina.obs_distrito_minero}}
-                     <br> distrito minero de Mina  observacion valida deel padre: {{form_pagina.obs_distrito_minero_valido}}
-                </div>
-                
-            </div>
-        </div>
-        Nombre de mina:{{$props.nombre_mina}}
-        <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <NombreMina
-                    v-bind:valor_input_props="$props.nombre_mina"
-                    v-bind:valor_input_validacion="$props.nombre_mina_validacion"
-                    v-bind:evualacion_correcto="$props.nombre_mina_correcto"
-                    v-bind:valor_obs="$props.obs_nombre_mina"
-                    v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
-                    v-bind:evaluacion="false"
-                    v-bind:testing = "true"
-                    v-bind:label="'Nombre de Mina'"
-                    v-on:changevalido="update_nom_mina_valido($event)"
-                    v-on:changecorrecto="update_nom_mina_correcto($event)"
-                    v-on:changeobs="update_obs_nom_mina($event)"
-                    v-on:changeobsvalido="update_obs_nom_mina_valida($event)"
-                    v-on:changevalor="update_valor_nom_mina_($event)"
-                >
-                </NombreMina>
-                <div v-show="testing">
-                     <br> Nombre de Mina valor padre: {{form_pagina.nombre_mina}}
-                     <br> Nombre de Mina  valido del padre: {{form_pagina.nombre_mina_validacion}}
-                     <br> Nombre de Mina  correcto deel padre: {{form_pagina.nombre_mina_correcto}}
-                     <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_nombre_mina}}
-                     <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_nombre_mina_valido}}
+            <br>
+            <br>
+            <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <!-- <NumeroExpedienteMina 
+                        v-bind:numero_expdiente="$props.numero_expdiente"
+                        v-bind:numero_expdiente_valido="$props.numero_expdiente_valido"
+                        v-bind:numero_expdiente_correcto="$props.numero_expdiente_correcto"
+                        v-bind:obs_numero_expdiente="$props.obs_numero_expdiente"
+                        v-bind:obs_numero_expdiente_valido="$props.obs_numero_expdiente_valido"
+                        v-bind:evaluacion="true"
+                        v-on:changenumexpvalido="update_num_exp_valido($event)"
+                        v-on:changenumexpcorrecto="update_num_exp_correcto($event)"
+                        v-on:changeobsnumexp="updateobs_num_exp($event)"
+                        v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
+                        v-on:changevalornumexp="updatevalor_num_exp($event)"
+                    ></NumeroExpedienteMina> -->
+                    <NombreMina
+                        v-bind:valor_input_props="$props.numero_expdiente"
+                        v-bind:valor_input_validacion="$props.numero_expdiente_valido"
+                        v-bind:evualacion_correcto="$props.numero_expdiente_correcto"
+                        v-bind:valor_obs="$props.obs_numero_expdiente"
+                        v-bind:valor_valido_obs="$props.obs_numero_expdiente_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Numero de Expediente'"
+                        v-bind:icon="'http://localhost:8000/svg/telstreet.svg'"
+                        v-bind:name_correcto="'num_exp_correcto'"
+                        v-on:changevalido="update_num_exp_valido($event)"
+                        v-on:changecorrecto="update_num_exp_correcto($event)"
+                        v-on:changeobs="updateobs_num_exp($event)"
+                        v-on:changeobsvalido="updateobs_num_exp_valido($event)"
+                        v-on:changevalor="updatevalor_num_exp($event)"
+                    >
+                    </NombreMina>
+                    <div class="flex" v-if="mostrar_testing">
+                        <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
+                        <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
+                        <br> num exp de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
+                        <br> num exp de Mina  observacion deel padre: {{form_pagina.obs_numero_expdiente}}
+                        <br> num exp de Mina  observacion valida deel padre: {{form_pagina.obs_numero_expdiente_valido}}
+                    </div>
 
                 </div>
-                
-                
-            </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <SelectGenerico
-                    v-bind:valor_input_props="$props.categoria"
-                    v-bind:valor_input_validacion="$props.categoria_validacion"
-                    v-bind:evualacion_correcto="$props.categoria_correcto"
-                    v-bind:valor_obs="$props.obs_categoria"
-                    v-bind:valor_valido_obs="$props.obs_categoria_valido"
-                    v-bind:evaluacion="false"
-                    v-bind:testing = "true"
-                    v-bind:label="'Categoria de Manifestacion'"
-                    v-on:changevalido="update_cat_valido($event)"
-                    v-on:changecorrecto="update_cat_correcto($event)"
-                    v-on:changeobs="update_obs_cat($event)"
-                    v-on:changeobsvalido="update_obs_cat_valida($event)"
-                    v-on:changevalor="update_valor_cat($event)"
-                >
-                </SelectGenerico>
-                <div v-show="testing">
-                     <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
-                     <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
-                     <br> Categoria de Mina  correcto deel padre: {{form_pagina.categoria_correcto}}
-                     <br> Categoria de Mina  observacion deel padre: {{form_pagina.obs_categoria}}
-                     <br> Categoria de Mina  observacion valida deel padre: {{form_pagina.obs_categoria_valido}}
-
+                <div class="w-full md:w-1/2 px-3">
+                    <!-- <DistritoMinero
+                        v-bind:distrito_minero="$props.distrito_minero"
+                        v-bind:distrito_minero_validacion="$props.distrito_minero_validacion"
+                        v-bind:distrito_minero_correcto="$props.distrito_minero_correcto"
+                        v-bind:obs_distrito_minero="$props.obs_distrito_minero"
+                        v-bind:obs_distrito_minero_valido="$props.obs_distrito_minero_valido"
+                        v-bind:evaluacion="true"
+                        v-on:changevalido="update_distrito_minero_valido($event)"
+                        v-on:changecorrecto="update_distrito_minero_correcto($event)"
+                        v-on:changeobs="update_distrito_minero_obs($event)"
+                        v-on:changeobsvalido="update_distrito_minero_valido_obs($event)"
+                        v-on:changevalor="update_distrito_minero($event)"
+                    >
+                    </DistritoMinero> -->
+                    <NombreMina
+                        v-bind:valor_input_props="$props.distrito_minero"
+                        v-bind:valor_input_validacion="$props.distrito_minero_validacion"
+                        v-bind:evualacion_correcto="$props.distrito_minero_correcto"
+                        v-bind:valor_obs="$props.obs_distrito_minero"
+                        v-bind:valor_valido_obs="$props.obs_distrito_minero_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Distrito Minero'"
+                        v-bind:icon="'http://localhost:8000/svg/numdistrito.svg'"
+                        v-bind:name_correcto="'distrito_correcto'"
+                        v-on:changevalido="update_distrito_minero_valido($event)"
+                        v-on:changecorrecto="update_distrito_minero_correcto($event)"
+                        v-on:changeobs="update_distrito_minero_obs($event)"
+                        v-on:changeobsvalido="update_distrito_minero_valido_obs($event)"
+                        v-on:changevalor="update_distrito_minero($event)"
+                    >
+                    </NombreMina>
+                    <div class="flex" v-if="mostrar_testing">
+                        <br> distrito minero de Mina valor padre: {{form_pagina.distrito_minero}}
+                        <br> distrito minero de Mina  valido del padre: {{form_pagina.distrito_minero_validacion}}
+                        <br> distrito minero de Mina  correcto deel padre: {{form_pagina.distrito_minero_correcto}}
+                        <br> distrito minero de Mina  observacion deel padre: {{form_pagina.obs_distrito_minero}}
+                        <br> distrito minero de Mina  observacion valida deel padre: {{form_pagina.obs_distrito_minero_valido}}
+                    </div>
+                    
                 </div>
             </div>
-         </div>
-         <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <NombreMina
+                        v-bind:valor_input_props="$props.nombre_mina"
+                        v-bind:valor_input_validacion="$props.nombre_mina_validacion"
+                        v-bind:evualacion_correcto="$props.nombre_mina_correcto"
+                        v-bind:valor_obs="$props.obs_nombre_mina"
+                        v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Nombre de Mina'"
+                        v-bind:icon="'http://localhost:8000/svg/nommina.svg'"
+                        v-bind:name_correcto="'nombre_mina_correcto'"
+                        v-on:changevalido="update_nom_mina_valido($event)"
+                        v-on:changecorrecto="update_nom_mina_correcto($event)"
+                        v-on:changeobs="update_obs_nom_mina($event)"
+                        v-on:changeobsvalido="update_obs_nom_mina_valida($event)"
+                        v-on:changevalor="update_valor_nom_mina_($event)"
+                    >
+                    </NombreMina>
+                    <div class="flex" v-if="mostrar_testing">
+                        <br> Nombre de Mina valor padre: {{form_pagina.nombre_mina}}
+                        <br> Nombre de Mina  valido del padre: {{form_pagina.nombre_mina_validacion}}
+                        <br> Nombre de Mina  correcto deel padre: {{form_pagina.nombre_mina_correcto}}
+                        <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_nombre_mina}}
+                        <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_nombre_mina_valido}}
+                    </div>
+                </div>
+                Tipo de Yacimiento: {{form_pagina.mina_cantera}}
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <SelectGenerico
+                        v-bind:valor_input_props="$props.categoria"
+                        v-bind:valor_input_validacion="$props.categoria_validacion"
+                        v-bind:evualacion_correcto="$props.categoria_correcto"
+                        v-bind:valor_obs="$props.obs_categoria"
+                        v-bind:valor_valido_obs="$props.obs_categoria_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Categoria de Manifestacion'"
+                        v-bind:icon="'http://localhost:8000/svg/minetest.svg'"
+                        v-bind:name_correccion="'categoria_correccion'"
+                        v-on:changevalido="update_cat_valido($event)"
+                        v-on:changecorrecto="update_cat_correcto($event)"
+                        v-on:changeobs="update_obs_cat($event)"
+                        v-on:changeobsvalido="update_obs_cat_valida($event)"
+                        v-on:changevalor="update_valor_cat($event)"
+                    >
+                    </SelectGenerico>
+                    <div class="flex" v-if="mostrar_testing">
+                        <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
+                        <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
+                        <br> Categoria de Mina  correcto deel padre: {{form_pagina.categoria_correcto}}
+                        <br> Categoria de Mina  observacion deel padre: {{form_pagina.obs_categoria}}
+                        <br> Categoria de Mina  observacion valida deel padre: {{form_pagina.obs_categoria_valido}}
+
+                    </div>
+                </div>
+            </div>
+            <div class="flex w-full">
                 <NombreMina
                     v-bind:valor_input_props="$props.descripcion_mina"
                     v-bind:valor_input_validacion="$props.descripcion_mina_validacion"
                     v-bind:evualacion_correcto="$props.descripcion_mina_correcto"
                     v-bind:valor_obs="$props.obs_descripcion_mina"
                     v-bind:valor_valido_obs="$props.obs_descripcion_mina_valido"
-                    v-bind:evaluacion="false"
-                    v-bind:testing = "true"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Descripcion de la Mina'"
+                    v-bind:icon="'http://localhost:8000/svg/description.svg'"
+                    v-bind:name_correcto="'descripcion_mina_correcto'"
                     v-on:changevalido="update_descripcion_valido($event)"
                     v-on:changecorrecto="update_descripcion_correcto($event)"
                     v-on:changeobs="update_obs_descripcion($event)"
@@ -136,39 +208,27 @@
                     v-on:changevalor="update_valor_descripcion($event)"
                 >
                 </NombreMina>
-                <div v-show="testing">
-                     <br> Nombre de Mina valor padre: {{form_pagina.descripcion_mina}}
-                     <br> Nombre de Mina  valido del padre: {{form_pagina.descripcion_mina_validacion}}
-                     <br> Nombre de Mina  correcto deel padre: {{form_pagina.descripcion_mina_correcto}}
-                     <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_descripcion_mina}}
-                     <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_descripcion_mina_valido}}
+                <div class="flex" v-if="mostrar_testing">
+                    <br> Nombre de Mina valor padre: {{form_pagina.descripcion_mina}}
+                    <br> Nombre de Mina  valido del padre: {{form_pagina.descripcion_mina_validacion}}
+                    <br> Nombre de Mina  correcto deel padre: {{form_pagina.descripcion_mina_correcto}}
+                    <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_descripcion_mina}}
+                    <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_descripcion_mina_valido}}
 
                 </div>
-                
-                
             </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                
-            </div>
-         </div>
-
-        
-        
-        
-        
-        
-
-         <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputFileGenerico
+            <div class="flex">
+                <InputFileGenerico v-if="form_pagina.categoria !== 'tercera'"
                     v-bind:valor_input_props="$props.resolucion_concesion_minera"
                     v-bind:valor_input_validacion="$props.resolucion_concesion_minera_validacion"
                     v-bind:evualacion_correcto="$props.resolucion_concesion_minera_correcto"
                     v-bind:valor_obs="$props.obs_resolucion_concesion_minera"
                     v-bind:valor_valido_obs="$props.obs_resolucion_concesion_minera_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "false"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing = "mostrar_testing"
                     v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
+                    v-bind:icon="'http://localhost:8000/svg/pdf.svg'"
+                    v-bind:name_coreccion="'resolucion_correcto'"
                     v-on:changevalido="update_resol_conce_valido($event)"
                     v-on:changecorrecto="update_resol_conce_correcto($event)"
                     v-on:changeobs="update_obs_resol_conce($event)"
@@ -177,162 +237,180 @@
 
                 >
                 </InputFileGenerico>
-                <div v-show="testing">
-                     <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
-                     <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
-                     <br> concesion resolucion minera de Mina  correcto deel padre: {{form_pagina.resolucion_concesion_minera_correcto}}
-                     <br> concesion resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_resolucion_concesion_minera}}
-                     <br> concesion resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_resolucion_concesion_minera_valido}}
+                <div class="flex" v-if="mostrar_testing">
+                    <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
+                    <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
+                    <br> concesion resolucion minera de Mina  correcto deel padre: {{form_pagina.resolucion_concesion_minera_correcto}}
+                    <br> concesion resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_resolucion_concesion_minera}}
+                    <br> concesion resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_resolucion_concesion_minera_valido}}
                 </div>
             </div>
+            <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputFileGenerico 
+                    v-if="form_pagina.categoria === 'tercera'"
+                        v-bind:valor_input_props="$props.plano_inmueble"
+                        v-bind:valor_input_validacion="$props.plano_inmueble_validacion"
+                        v-bind:evualacion_correcto="$props.plano_inmueble_correcto"
+                        v-bind:valor_obs="$props.obs_plano_inmueble"
+                        v-bind:valor_valido_obs="$props.obs_plano_inmueble_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Plano Inmueble (3° categoria) (*)'"
+                        v-bind:icon="'http://localhost:8000/svg/pdf.svg'"
+                        v-on:changevalido="update_plano_inmueble_valido($event)"
+                        v-on:changecorrecto="update_plano_inmueble_correcto($event)"
+                        v-on:changeobs="update_obs_plano_inmueble($event)"
+                        v-on:changeobsvalido="update_obs_plano_inmueble_valido($event)"
+                        v-on:changevalor="update_valor_plano_inmueble($event)"
 
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputFileGenerico
-                    v-bind:valor_input_props="$props.plano_inmueble"
-                    v-bind:valor_input_validacion="$props.plano_inmueble_validacion"
-                    v-bind:evualacion_correcto="$props.plano_inmueble_correcto"
-                    v-bind:valor_obs="$props.obs_plano_inmueble"
-                    v-bind:valor_valido_obs="$props.obs_plano_inmueble_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "false"
-                    v-bind:label="'Plano Inmueble (3° categoria) (*)'"
-                    v-on:changevalido="update_plano_inmueble_valido($event)"
-                    v-on:changecorrecto="update_plano_inmueble_correcto($event)"
-                    v-on:changeobs="update_obs_plano_inmueble($event)"
-                    v-on:changeobsvalido="update_obs_plano_inmueble_valido($event)"
-                    v-on:changevalor="update_valor_plano_inmueble($event)"
+                    >
+                    </InputFileGenerico>
+                    <div class="flex" v-if="mostrar_testing">
+                        -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
+                        -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
+                        -- plano_inmueble_correcto minera correcto deel padre{{form_pagina.plano_inmueble_correcto}}
+                        -- obs_plano_inmueble minera observacion deel padre{{form_pagina.obs_plano_inmueble}}
+                        -- obs_plano_inmueble_valido minera observacion valida deel padre{{form_pagina.obs_plano_inmueble_valido}}
+                    </div>
+                </div>
 
-                >
-                </InputFileGenerico>
-
-                -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
-                -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
-                -- plano_inmueble_correcto minera correcto deel padre{{form_pagina.plano_inmueble_correcto}}
-                -- obs_plano_inmueble minera observacion deel padre{{form_pagina.obs_plano_inmueble}}
-                -- obs_plano_inmueble_valido minera observacion valida deel padre{{form_pagina.obs_plano_inmueble_valido}}
             </div>
-
-         </div>
-
-         <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputFileGenerico
-                    v-bind:valor_input_props="$props.titulo_contrato_posecion"
-                    v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
-                    v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
-                    v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
-                    v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
-                     v-bind:evaluacion="true"
-                    v-bind:testing = "false"
-                    v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
-                    v-on:changevalido="update_titulo_contrato_valido($event)"
-                    v-on:changecorrecto="update_titulo_contrato_correcto($event)"
-                    v-on:changeobs="update_obs_titulo_contrato($event)"
-                    v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
-                    v-on:changevalor="update_valor_titulo_contrato($event)"
-                >
-                </InputFileGenerico>
-
-                -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
-                -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
-                -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
-                -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
-                -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
+            <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputFileGenerico
+                    v-if="form_pagina.categoria === 'tercera'"
+                        v-bind:valor_input_props="$props.titulo_contrato_posecion"
+                        v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
+                        v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
+                        v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
+                        v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
+                        v-bind:icon="'http://localhost:8000/svg/pdf.svg'"
+                        v-on:changevalido="update_titulo_contrato_valido($event)"
+                        v-on:changecorrecto="update_titulo_contrato_correcto($event)"
+                        v-on:changeobs="update_obs_titulo_contrato($event)"
+                        v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
+                        v-on:changevalor="update_valor_titulo_contrato($event)"
+                    >
+                    </InputFileGenerico>
+                    <div class="flex" v-if="mostrar_testing">
+                        -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
+                        -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
+                        -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
+                        -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
+                        -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
+                    </div>
+                </div>
             </div>
-         </div>
-
-         <div class="flex">
-            <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
-                <ListadeMinerales
-                    v-bind:valor_input_props="$props.titulo_contrato_posecion"
-                    v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
-                    v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
-                    v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
-                    v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "false"
-                    v-bind:label="'Lista de minerales'"
-                    v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
-                    v-bind:tipo_yacimiento="'segunda'"
-                    v-on:changevalido="update_titulo_contrato_valido($event)"
-                    v-on:changecorrecto="update_titulo_contrato_correcto($event)"
-                    v-on:changeobs="update_obs_titulo_contrato($event)"
-                    v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
-                    v-on:changevalor="update_valor_titulo_contrato($event)"
-                >
-                </ListadeMinerales>
-
-                -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
-                -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
-                -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
-                -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
-                -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
+            <div class="flex">
+                <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+                    <ListadeMinerales
+                        v-bind:valor_input_props="$props.titulo_contrato_posecion"
+                        v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
+                        v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
+                        v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
+                        v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Lista de minerales'"
+                        v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
+                        v-bind:tipo_yacimiento="form_pagina.categoria"
+                        v-bind:lista_de_minerales="lista_de_minerales"
+                        v-on:changevalido="update_titulo_contrato_valido($event)"
+                        v-on:changecorrecto="update_titulo_contrato_correcto($event)"
+                        v-on:changeobs="update_obs_titulo_contrato($event)"
+                        v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
+                        v-on:changevalor_lista_minerales="update_valor_minerales($event)"
+                    >
+                    </ListadeMinerales>
+                    <div class="flex" v-if="mostrar_testing">
+                        <h3>Testing de lista de minerales</h3>
+                        -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
+                        -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
+                        -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
+                        -- obs_titulo_contrato_posecion observacion deel padre{{form_pagina.obs_titulo_contrato_posecion}}
+                        -- obs_titulo_contrato_posecion_valido observacion valida deel padre{{form_pagina.obs_titulo_contrato_posecion_valido}}
+                    </div>
+                </div>
             </div>
-         </div>
+        </div>
+        <div class="flex justify-end mt-4">
+            <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
+        </div>
+        <div v-show="$props.testing">
+            <h1>los minerales en el padre son</h1>
+            {{minerales_locales}}
+        </div>
 
+        <BotonesPaginaCuatro
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos de la Mina'"
 
-         
-         
-         
-         <!-- <div class="flex items-center justify-center">
-            <PaginaUnoDatosProductorBotones 
-                :link_volver="route('formulario-alta.index')"
-                :titulo_boton_volver="'volver'"
-                :titulo_boton_guardar="'Guardar Datos del Productor'"
+            :numero_expdiente="form_pagina.numero_expdiente"
+            :numero_expdiente_valido="form_pagina.numero_expdiente_valido"
+            :numero_expdiente_correcto="form_pagina.numero_expdiente_correcto"
+            :obs_numero_expdiente="form_pagina.obs_numero_expdiente"
+            :obs_numero_expdiente_valido="form_pagina.obs_numero_expdiente_valido"
+            :categoria="form_pagina.categoria"
+            :categoria_validacion="form_pagina.categoria_validacion"
+            :categoria_correcto="form_pagina.categoria_correcto"
+            :obs_categoria="form_pagina.obs_categoria"
+            :obs_categoria_valido="form_pagina.obs_categoria_valido"
+            :nombre_mina="form_pagina.nombre_mina"
+            :nombre_mina_validacion="form_pagina.nombre_mina_validacion"
+            :nombre_mina_correcto="form_pagina.nombre_mina_correcto"
+            :obs_nombre_mina="form_pagina.obs_nombre_mina"
+            :obs_nombre_mina_valido="form_pagina.obs_nombre_mina_valido"
+            :descripcion_mina="form_pagina.descripcion_mina"
+            :descripcion_mina_validacion="form_pagina.descripcion_mina_validacion"
+            :descripcion_mina_correcto="form_pagina.descripcion_mina_correcto"
+            :obs_descripcion_mina="form_pagina.obs_descripcion_mina"
+            :obs_descripcion_mina_valido="form_pagina.obs_descripcion_mina_valido"
+            :distrito_minero="form_pagina.distrito_minero"
+            :distrito_minero_validacion="form_pagina.distrito_minero_validacion"
+            :distrito_minero_correcto="form_pagina.distrito_minero_correcto"
+            :obs_distrito_minero="form_pagina.obs_distrito_minero"
+            :obs_distrito_minero_valido="form_pagina.obs_distrito_minero_valido"
+            :mina_cantera="form_pagina.mina_cantera"
+            :mina_cantera_validacion="form_pagina.mina_cantera_validacion"
+            :mina_cantera_correcto="form_pagina.mina_cantera_correcto"
+            :obs_mina_cantera="form_pagina.obs_mina_cantera"
+            :obs_mina_cantera_valido="form_pagina.obs_mina_cantera_valido"
+            :plano_inmueble="form_pagina.plano_inmueble"
+            :plano_inmueble_validacion="form_pagina.plano_inmueble_validacion"
+            :plano_inmueble_correcto="form_pagina.plano_inmueble_correcto"
+            :obs_plano_inmueble="form_pagina.obs_plano_inmueble"
+            :obs_plano_inmueble_valido="form_pagina.obs_plano_inmueble_valido"
+            :minerales_variedad="form_pagina.minerales_variedad"
+            :minerales_variedad_validacion="form_pagina.minerales_variedad_validacion"
+            :minerales_variedad_correcto="form_pagina.minerales_variedad_correcto"
+            :obs_minerales_variedad="form_pagina.obs_minerales_variedad"
+            :obs_minerales_variedad_valido="form_pagina.obs_minerales_variedad_valido"
+            :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
+            :resolucion_concesion_minera_validacion="form_pagina.resolucion_concesion_minera_validacion"
+            :resolucion_concesion_minera_correcto="form_pagina.resolucion_concesion_minera_correcto"
+            :obs_resolucion_concesion_minera="form_pagina.obs_resolucion_concesion_minera"
+            :obs_resolucion_concesion_minera_valido="form_pagina.obs_resolucion_concesion_minera_valido"
+            :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
+            :titulo_contrato_posecion_validacion="form_pagina.titulo_contrato_posecion_validacion"
+            :titulo_contrato_posecion_correcto="form_pagina.titulo_contrato_posecion_correcto"
+            :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
+            :obs_titulo_contrato_posecion_valido="form_pagina.obs_titulo_contrato_posecion_valido"
 
-                :leal_calle="$props.leal_calle" 
-                :nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
-                :nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
-                :obs_nombre_calle_legal="$props.obs_nombre_calle_legal"
-                :obs_nombre_calle_legal_valido="$props.obs_nombre_calle_legal_valido"
+            :minerales="minerales_locales"
 
+            :donde_guardar="$props.donde_estoy"
 
-                :leal_numero="form.leal_numero"
-                :leal_numero_valido="form.leal_numero_valido"
-                :leal_numero_correcto="form.leal_numero_correcto"
-                :obs_leal_numero="form.obs_leal_numero"
-                :obs_leal_numero_valido="form.obs_leal_numero_valido"
-                :leal_telefono="form.leal_telefono"
-                :leal_telefono_valido="form.leal_telefono_valido"
-                :leal_telefono_correcto="form.leal_telefono_correcto"
-                :obs_leal_telefono="form.obs_leal_telefono"
-                :obs_leal_telefono_valido="form.obs_leal_telefono_valido"
-                :leal_pais="form.leal_pais"
-                :leal_pais_valido="form.leal_pais_valido"
-                :leal_pais_correcto="form.leal_pais_correcto"
-                :obs_leal_pais="form.obs_leal_pais"
-                :obs_leal_pais_valido="form.obs_leal_pais_valido"
-                :leal_provincia="form.leal_provincia"
-                :leal_provincia_valido="form.leal_provincia_valido"
-                :leal_provincia_correcto="form.leal_provincia_correcto"
-                :obs_leal_provincia="form.obs_leal_provincia"
-                :obs_leal_provincia_valido="form.obs_leal_provincia_valido"
-                :leal_departamento="form.leal_departamento"
-                :leal_departamento_valido="form.leal_departamento_valido"
-                :leal_departamento_correcto="form.leal_departamento_correcto"
-                :obs_leal_departamento="form.obs_leal_departamento"
-                :obs_leal_departamento_valido="form.obs_leal_departamento_valido"
-                :leal_localidad="form.leal_localidad"
-                :leal_localidad_valido="form.leal_localidad_valido"
-                :leal_localidad_correcto="form.leal_localidad_correcto"
-                :obs_leal_localidad="form.obs_leal_localidad"
-                :obs_leal_localidad_valido="form.obs_leal_localidad_valido"
-                :leal_cp="form.leal_cp"
-                :leal_cp_valido="form.leal_cp_valido"
-                :leal_cp_correcto="form.leal_cp_correcto"
-                :obs_leal_cp="form.obs_leal_cp"
-                :obs_leal_cp_valido="form.obs_leal_cp_valido"
-                :leal_otro="form.leal_otro"
-                :leal_otro_valido="form.leal_otro_valido"
-                :leal_otro_correcto="form.leal_otro_correcto"
-                :obs_leal_otro="form.obs_leal_otro"
-                :obs_leal_otro_valido="form.obs_leal_otro_valido"
+            :evaluacion="autoridad_minera"
+            :testing ="mostrar_testing"
+            :id="$props.id"
+        >
 
-
-                :evaluacion="true"
-                :id="$props.id"
-            ></PaginaUnoDatosProductorBotones>
-         </div> -->
+        </BotonesPaginaCuatro>
     </div>
 </template>
 
@@ -344,12 +422,10 @@ import NumeroExpedienteMina from "@/Pages/Productors/NumeroExpedienteMina";
 import DistritoMinero from "@/Pages/Productors/DistritoMinero";
 import NombreMina from "@/Pages/Productors/NombreMina";
 import SelectGenerico from "@/Pages/Productors/SelectGenerico";
-import PaginaDosDatosDLProvincia from "@/Pages/Productors/PaginaDosDatosDLProvincia";
 import InputFileGenerico from "@/Pages/Productors/InputFileGenerico";
 import ListadeMinerales from "@/Pages/Productors/ListadeMinerales";
 
-import PaginaUnoDatosProductorConstanciaSociedad from "@/Pages/Productors/PaginaUnoDatosProductorConstanciaSociedad";
-import PaginaUnoDatosProductorBotones from "@/Pages/Productors/PaginaUnoDatosProductorBotones";
+import BotonesPaginaCuatro from "@/Pages/Productors/BotonesPaginaCuatro";
 export default {
      props: [
         'link_volver', 
@@ -367,6 +443,7 @@ export default {
         'categoria_correcto',
         'obs_categoria',
         'obs_categoria_valido',
+
         'nombre_mina',
         'nombre_mina_validacion',
         'nombre_mina_correcto',
@@ -377,6 +454,7 @@ export default {
         'descripcion_mina_correcto',
         'obs_descripcion_mina',
         'obs_descripcion_mina_valido',
+
         'distrito_minero',
         'distrito_minero_validacion',
         'distrito_minero_correcto',
@@ -387,6 +465,7 @@ export default {
         'mina_cantera_correcto',
         'obs_mina_cantera',
         'obs_mina_cantera_valido',
+
         'plano_inmueble',
         'plano_inmueble_validacion',
         'plano_inmueble_correcto',
@@ -397,6 +476,7 @@ export default {
         'minerales_variedad_correcto',
         'obs_minerales_variedad',
         'obs_minerales_variedad_valido',
+
         'resolucion_concesion_minera',
         'resolucion_concesion_minera_validacion',
         'resolucion_concesion_minera_correcto',
@@ -407,6 +487,7 @@ export default {
         'titulo_contrato_posecion_correcto',
         'obs_titulo_contrato_posecion',
         'obs_titulo_contrato_posecion_valido',
+
 
         'evaluacion',
         'id',
@@ -420,10 +501,9 @@ export default {
 		DistritoMinero,
 		NombreMina,
         SelectGenerico,
-		PaginaDosDatosDLProvincia,
         InputFileGenerico,
         ListadeMinerales,
-		PaginaUnoDatosProductorBotones,
+		BotonesPaginaCuatro,
 	},
    
   data() {
@@ -432,6 +512,11 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
+        mostrar_testing: false,
+        autoridad_minera: false,
+        lista_de_minerales:[],
+
+        
         form_pagina: {
 
             numero_expdiente : this.$props.numero_expdiente,
@@ -483,25 +568,12 @@ export default {
             obs_titulo_contrato_posecion: this.$props.obs_titulo_contrato_posecion,
             obs_titulo_contrato_posecion_valido: this.$props.obs_titulo_contrato_posecion_valido,
             
-         
-            
-            
-            
 
+            mina_cantera: '',
 
-
-
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
         },
+        
+        minerales_locales: [],
         
             
 
@@ -511,30 +583,31 @@ export default {
       cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
+        // FUNCIONES DE NUMERO DE EXPEDIENTE
         update_num_exp_valido(newValue){
-                this.form_pagina.nombre_calle_legal_valido = newValue;
+                this.form_pagina.numero_expdiente_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_num_exp_correcto(newValue){
-            this.form_pagina.nombre_calle_legal_correcto = newValue;
+            this.form_pagina.numero_expdiente_correcto = newValue;
             //tengo que enviarsela al padre
         },
         updateobs_num_exp(newValue){
-            this.form_pagina.obs_nombre_calle_legal = newValue;
+            this.form_pagina.obs_numero_expdiente = newValue;
             //tengo que enviarsela al padre
         },
         updateobs_num_exp_valido(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.obs_nombre_calle_legal_valido = newValue;
+            this.form_pagina.obs_numero_expdiente_valido = newValue;
             //tengo que enviarsela al padre
         },
         updatevalor_num_exp(newValue){
             console.log("traje un"+newValue);
-            this.form_pagina.leal_calle = newValue;
+            this.form_pagina.numero_expdiente = newValue;
             //tengo que enviarsela al padre
         },
 
-
+        // FUNCIONES DE Distrito MINERO
         update_distrito_minero_valido(newValue){
             this.form_pagina.distrito_minero_validacion = newValue;
             //tengo que enviarsela al padre
@@ -558,24 +631,7 @@ export default {
             //tengo que enviarsela al padre
         },
 
-
-
-        
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // FUNCIONES DE NOMBRE DE MINA
         update_nom_mina_valido(newValue){
             this.form_pagina.nombre_mina_validacion = newValue;
             //tengo que enviarsela al padre
@@ -598,21 +654,7 @@ export default {
             this.form_pagina.nombre_mina = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        //FUNCIONES DE DESCRIPCION DE MINA
         update_descripcion_valido(newValue){
             this.form_pagina.descripcion_mina_validacion = newValue;
             //tengo que enviarsela al padre
@@ -637,9 +679,7 @@ export default {
         },
 
 
-
-
-
+        //FUNCIONES DE CATEGORIA
         update_cat_valido(newValue){
             this.form_pagina.categoria_validacion = newValue;
             //tengo que enviarsela al padre
@@ -658,9 +698,28 @@ export default {
             //tengo que enviarsela al padre
         },
         update_valor_cat(newValue){
+            let self  =this;
+            //alert("cambie la categoria de:"+newValue);
             console.log("traje un"+newValue);
             this.form_pagina.categoria = newValue;
-            //tengo que enviarsela al padre
+            //alert("cambie la categoria de:"+newValue);
+            if(newValue === 'primera')
+                self.form_pagina.mina_cantera='Mina';
+            if(newValue === 'segunda')
+                self.form_pagina.mina_cantera='Mina';
+            if(newValue === 'tercera')
+                self.form_pagina.mina_cantera='Cantera';
+
+           axios.post('/datos/traer_minerales/',{categoria_buscando:newValue})
+                .then(function (response) {
+                    console.log("las manifestaciones son:\n");
+                    self.lista_de_minerales = response.data;
+                    console.log(self.lista_de_minerales);
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         },
 
 
@@ -750,6 +809,46 @@ export default {
             this.form_pagina.titulo_contrato_posecion = newValue;
             //tengo que enviarsela al padre
         },
+
+
+
+
+
+
+
+        //FUNCIONES DE MINERALES
+        //minerales_locales
+        
+        update_valor_minerales(newValue){
+            console.log("traje un"+newValue);
+            this.minerales_locales = newValue;
+            //tengo que enviarsela al padre
+        },
+        // mounted(){
+        //     this.lista_de_minerales = this.$props.lista_minerales_precargados;
+        // }
+
+  },
+  mounted(){
+      //cargo la lista de mienrales por primera vez
+    let self = this;
+    console.log("voy a buscar la categproa:");
+    console.log(this.$props.categoria);
+	if( this.$props.categoria !== '') {
+		//signafica que tengo la lsita de minerales para esta categoria
+		this.$nextTick(() => {
+        axios.post('/datos/traer_minerales',{categoria_buscando:this.$props.categoria})
+            .then(function (response) {
+                console.log("los minerales son:\n");
+                self.lista_de_minerales = response.data;
+                console.log(self.lista_de_minerales);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_de_minerales=[];}
   }
   
 };
