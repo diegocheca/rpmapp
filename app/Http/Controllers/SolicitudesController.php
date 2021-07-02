@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Redirect;
 
 class SolicitudesController extends Controller
 {
+    public function menu()
+	{
+		return view("formWeb.prueba");
+	}
+
     /**
      * Display a listing of the resource.
      *
