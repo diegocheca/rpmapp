@@ -91,9 +91,10 @@
                             <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
                             <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
                             </div>
-                            <p class="pointer-none text-gray-500 "><span class="text-sm">Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
+                            <p class="pointer-none text-gray-500 ">
+                                <span class="text-sm">Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
                         </div>
-                        <input type="file" class="hidden">
+                        <input type="file" class="hidden" @change="cambio_el_archivo">
                     </label>
                 </div>
                 <p class="text-sm text-gray-300">
@@ -140,70 +141,80 @@ export default {
 
         obs_valida: this.$props.obs_valido_props,
         testing_hijo: 'false',
+        photo: null,
+        description: '',
         
         //border-green-500
     }; 
   },
-  methods:{
-    actaulizar_variable_correccion(valor) {
-        this.valor_evaluacion_correcto_local = valor;
-        this.$emit('changecorrecto',this.valor_evaluacion_correcto_local);
-    },
-     
-      actaulizar_contenido_text_area(value) {
-        if(this.$props.valor_obs.length <= 2)
-        {
-            this.clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_text_area=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
-            this.clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
-            this.obs_valida = false;
-            this.$emit('changeobsvalido',false);
+    methods:{
+        actaulizar_variable_correccion(valor) {
+            this.valor_evaluacion_correcto_local = valor;
+            this.$emit('changecorrecto',this.valor_evaluacion_correcto_local);
+        },
+        actaulizar_contenido_text_area(value) {
+            if(this.$props.valor_obs.length <= 2)
+            {
+                this.clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_text_area=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+                this.clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
+                this.obs_valida = false;
+                this.$emit('changeobsvalido',false);
+                
+            }
+            if(this.$props.valor_obs.length >= 50)
+            {
+                this.clase_text_area =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
+                this.clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
+                this.obs_valida = false;
+                this.$emit('changeobsvalido',false);
+            }
+            if( this.$props.valor_obs !== '' && this.$props.valor_obs.length <= 30 && this.$props.valor_obs.length >= 3)
+            {
+                this.clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_text_area=  'Observacion Correcta';
+                this.clase_text_evaluacion_de_text_area=  'text-green-500 text-xs italic';
+                this.obs_valida = false;
+                this.$emit('changeobsvalido',true);
+                
+            }
+            this.$emit('changeobs',this.$props.valor_obs)
+        },
+        cambio_input(){
+            if(this.valor_input.length <= 4)
+            {
+                this.clase_border_de_input= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_input= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
+                this.clase_cartel_validacion_input= 'text-red-500 text-xs italic';
+                this.validacion_input_local = false;
+            }
+            if(this.valor_input.length >= 40)
+            {
+                this.clase_border_de_input =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_input=  'Valor Incorrecta - debe tener menos de 30 caracteres';
+                this.clase_cartel_validacion_input=  'text-red-500 text-xs italic';
+                this.validacion_input_local = false;
+            }
+            if( this.valor_input !== '' && this.valor_input.length <= 30 && this.valor_input.length >= 3)
+            {
+                this.clase_border_de_input=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_input =  'Valor Correcto';
+                this.clase_cartel_validacion_input =  'text-green-500 text-xs italic';
+                this.validacion_input_local = true;
+            }
+            this.$emit('changevalido',this.validacion_input_local);
+            this.$emit('changevalor',this.valor_input);
+        },
+        cambio_el_archivo(event){
+            // `files` is always an array because the file input may be in multiple mode
+            this.photo = event.target.files[0];
+
+
             
-        }
-        if(this.$props.valor_obs.length >= 50)
-        {
-            this.clase_text_area =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
-            this.clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
-            this.obs_valida = false;
-            this.$emit('changeobsvalido',false);
-        }
-        if( this.$props.valor_obs !== '' && this.$props.valor_obs.length <= 30 && this.$props.valor_obs.length >= 3)
-        {
-            this.clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_text_area=  'Observacion Correcta';
-            this.clase_text_evaluacion_de_text_area=  'text-green-500 text-xs italic';
-            this.obs_valida = false;
-            this.$emit('changeobsvalido',true);
             
+            this.$emit('cambioarchivo',this.photo);
         }
-        this.$emit('changeobs',this.$props.valor_obs)
     },
-    cambio_input(){
-        if(this.valor_input.length <= 4)
-        {
-            this.clase_border_de_input= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_input= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
-            this.clase_cartel_validacion_input= 'text-red-500 text-xs italic';
-            this.validacion_input_local = false;
-        }
-        if(this.valor_input.length >= 40)
-        {
-            this.clase_border_de_input =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_input=  'Valor Incorrecta - debe tener menos de 30 caracteres';
-            this.clase_cartel_validacion_input=  'text-red-500 text-xs italic';
-            this.validacion_input_local = false;
-        }
-        if( this.valor_input !== '' && this.valor_input.length <= 30 && this.valor_input.length >= 3)
-        {
-            this.clase_border_de_input=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_input =  'Valor Correcto';
-            this.clase_cartel_validacion_input =  'text-green-500 text-xs italic';
-            this.validacion_input_local = true;
-        }
-        this.$emit('changevalido',this.validacion_input_local);
-        this.$emit('changevalor',this.valor_input);
-     }
-  },
 };
 </script>

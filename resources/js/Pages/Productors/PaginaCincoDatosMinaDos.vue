@@ -212,6 +212,13 @@
                 </div>
             </div>
         </div>
+        <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+         @click="enviar_constancia"
+         >
+            Subir archivo
+        </button>
+        el archivo es: {{constancia_de_prueba}}
+
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
                 v-bind:valor_input_props="form_pagina.constancia_pago_canon"
@@ -227,8 +234,10 @@
                 v-on:changeobs="update_obs_canon($event)"
                 v-on:changeobsvalido="update_obs_canon_valido($event)"
                 v-on:changevalor="update_valor_canon($event)"
+                v-on:cambioarchivo="cambio_el_archivo($event)"
             >
             </SubirArchivo>
+            
         </div>
         <div class="flex" v-if="mostrar_testing">
             <br> canon resolucion minera de Mina valor padre: {{form_pagina.constancia_pago_canon}}
@@ -505,6 +514,7 @@ import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import NombreMina from "@/Pages/Productors/NombreMina";
 import FechaGenerica from "@/Pages/Productors/FechaGenerica";
 import BotonesPaginaCinco from "@/Pages/Productors/BotonesPaginaCinco";
+import Button from '../../Jetstream/Button.vue';
 
 
 export default {
@@ -598,6 +608,7 @@ export default {
         NombreMina,
         FechaGenerica,
         BotonesPaginaCinco,
+        Button,
 	},
    
   data() {
@@ -609,6 +620,7 @@ export default {
         mostrar_testing:false,
         autoridad_minera:false,
         todas_las_validaciones: true,
+        constancia_de_prueba:'',
         form_pagina: {
 
             owner : this.$props.owner,
@@ -982,6 +994,34 @@ export default {
             this.form_pagina.fecha_vencimiento_dia = newValue;
             //tengo que enviarsela al padre
         },
+
+        cambio_el_archivo(newValue){
+            this.constancia_de_prueba = newValue;
+            /*const data = new FormData();
+            data.append('photo', this.photo);
+            data.append('description', this.description);
+            data.append('productId', this.productId);
+            axios.post("/api/photo", data);*/
+
+            
+
+        },
+        enviar_constancia(){
+            console.log("por enviar");
+            const data = new FormData();
+            data.append('archivo', this.constancia_de_prueba);
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.post("http://localhost:8000/formularios/auto_guardado_cinco", data)
+            .then(function (response) {
+                console.log(response.data);
+                
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+        }
+
   }
   
 };

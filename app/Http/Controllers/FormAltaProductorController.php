@@ -33,6 +33,8 @@ use \PDF;
 
 use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Http\UploadedFile;
+
 class FormAltaProductorController extends Controller
 {
 	/**
@@ -679,6 +681,28 @@ class FormAltaProductorController extends Controller
 	
 	public function guardar_paso_cinco(Request $request)
 	{
+		// Validate (size is in KB)
+		// $request->validate([
+		// 	'photo' => 'required|file|image|size:1024|dimensions:max_width=500,max_height=500',
+		// ]);
+
+		// Read file contents...
+
+		$contents = file_get_contents($request->archivo->path());
+        $resultado = Storage::put('public/test', $request->archivo);
+
+
+		//contents = file_get_contents($request->photo->path());
+
+		// ...or just move it somewhere else (eg: local `storage` directory or S3)
+		//$newPath = $request->photo->store('photos', 's3');
+
+		//$contents = file_get_contents($request->archivo->path());
+        //$resultado = Storage::put('test', $request->archivo);
+        var_dump($resultado);
+
+
+		/*
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select('id','owner','arrendatario','concesionario','otros','acciones_a_desarrollar','actividad','fecha_alta_dia', 'fecha_vencimiento_dia', 'email')
 		->where('email', '=',$request->email)
@@ -737,7 +761,7 @@ class FormAltaProductorController extends Controller
 						$request->email,
 						date("Y-m-d H:i:s"),
 						$email->codigo
-					));*/
+					));*
 					return response()->json("mande un email de mentira");
 				}
 
@@ -747,6 +771,7 @@ class FormAltaProductorController extends Controller
 				return response()->json("formulario no encontrado ni tampoco email");
 			}
 		}
+		*/
 	}
 
 	public function guardar_paso_seis(Request $request)
