@@ -139,6 +139,21 @@
 								:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardProductor>
 					</div> -->
+
+					<div class="flex space-x-8 text-3xl">
+
+						<!-- spin -->
+						<button class="animate-spin inline-block py-4 px-8 bg-yellow-500 text-yellow-100 rounded-lg">Spin</button>
+
+						<!-- ping -->
+						<button class="animate-ping inline-block py-4 px-8 bg-blue-500 text-blue-100 rounded-lg">Ping</button>
+
+						<!-- pulse -->
+						<button class="animate-pulse inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
+
+						<!-- bounce -->
+						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
+					</div>
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -529,7 +544,7 @@
 			<br>
 			<br>
 			<br>
-			<div class="flex flex-col mb-8">
+			<!-- <div class="flex flex-col mb-8">
 				<button
 					type="button"
 					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
@@ -539,7 +554,7 @@
 				</button>
 				
 				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
+			</div> -->
 			<br>
 			<br>
 			<br>

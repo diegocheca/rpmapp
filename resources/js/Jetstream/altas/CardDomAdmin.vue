@@ -1,7 +1,7 @@
 <template>
 	<div :class="clase_sup">
 		<div :class="clase_inf">
-			<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-blue-500 left-4 -top-6">
+			<div class="animate-bounce text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-blue-500 left-4 -top-6">
 				<!-- svg  -->
 				<a href="#section_domicilio_administrativo">
 				
