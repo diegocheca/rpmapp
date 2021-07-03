@@ -53,6 +53,7 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\IiadiaController;
 use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
+use App\Http\Controllers\CountriesController;
 
 
 /*
@@ -80,14 +81,25 @@ Route::resource('productors', ProductorsController::class)
 
 
 
-Route::group(['prefix' => 'reinscripciones'], function () {
-    Route::resource('', ReinscripcionController::class)
+// Route::group(['prefix' => 'reinscripciones'], function () {
+    Route::resource('reinscripciones', ReinscripcionController::class)
         ->middleware(['auth:sanctum', 'verified']);
 
-    Route::get('paises', 'ReinscripcionController@getCountries')
-        ->middleware(['auth:sanctum', 'verified']);
+//     Route::get('provincias', 'ReinscripcionController@getCountries')
+//         ->middleware(['auth:sanctum', 'verified']);
 
-});
+// });
+
+    Route::group(['prefix' => 'paises'], function () {
+        // Route::get('paises', 'CountriesController@getCountries')
+        // ->middleware(['auth:sanctum', 'verified']);
+        Route::get('provincias', [CountriesController::class, "getDepartment"])
+        ->middleware(['auth:sanctum', 'verified']);
+        Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
+        ->middleware(['auth:sanctum', 'verified']);
+        Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
+        ->middleware(['auth:sanctum', 'verified']);
+    });
 
 
 Route::resource('productos', ProductosController::class)

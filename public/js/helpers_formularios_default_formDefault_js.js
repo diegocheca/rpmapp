@@ -583,6 +583,104 @@ function getFormSchema(_ref, evaluate) {
         }).observations
       }]
     }]
+  }, // row 3 UBICACION
+  {
+    widthResponsive: 'lg:flex-row',
+    //flex
+    // columns
+    body: [//  col 1
+    {
+      title: 'Ubicación',
+      width: 'lg:w-full',
+      //flex
+      columns: 'grid-cols-1',
+      //grid
+      columnsResponsive: 'lg:grid-cols-2',
+      //inside card
+      img: '/images/laborales.png',
+      inputs: [{
+        label: 'Provincia',
+        value: {},
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+        // get axios
+        async: true,
+        asyncUrl: '/paises/departamentos',
+        inputDepends: ['departamento'],
+        inputClearDepends: ['departamento', 'localidad'],
+        // isLoading: false,
+        //
+        options: dataForm.provincia,
+        name: 'provincia',
+        multiple: false,
+        closeOnSelect: true,
+        searchable: true,
+        placeholder: 'Selecciona una opción',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('provinciaSelect', {
+          is: function is(value) {
+            return _.isEmpty(value) || !value;
+          },
+          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+        }),
+        observation: new _observacionesDefault__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'select',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Departamento',
+        value: {},
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+        // get axios
+        async: true,
+        asyncUrl: '/paises/localidades',
+        inputDepends: ['localidad'],
+        inputClearDepends: ['localidad'],
+        isLoading: false,
+        //
+        options: [],
+        name: 'departamento',
+        multiple: false,
+        closeOnSelect: true,
+        searchable: true,
+        placeholder: 'Selecciona una opción',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('departamentoSelect', {
+          is: function is(value) {
+            return _.isEmpty(value) || !value;
+          },
+          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+        }),
+        observation: new _observacionesDefault__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'select',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Localidad',
+        value: {},
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+        // get axios
+        async: true,
+        isLoading: false,
+        //
+        options: [],
+        name: 'localidad',
+        multiple: false,
+        closeOnSelect: true,
+        searchable: true,
+        placeholder: 'Selecciona una opción',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('localidadSelect', {
+          is: function is(value) {
+            return _.isEmpty(value) || !value;
+          },
+          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+        }),
+        observation: new _observacionesDefault__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'select',
+          evaluate: evaluate
+        }).observations
+      }]
+    }]
   }];
 }
 

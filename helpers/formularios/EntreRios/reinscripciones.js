@@ -3,8 +3,7 @@ import Observations from './observaciones';
 import inputsTypes from '../../enums/inputsTypes';
 import fileAccept from '../../enums/fileAccept';
 
-export function getFormSchema({ ...schema }, evaluate, axios = null) {
-    console.log(axios);
+export function getFormSchema({ ...schema }, evaluate, dataForm) {
     // name => unique
     return [
         // row 1
@@ -47,15 +46,8 @@ export function getFormSchema({ ...schema }, evaluate, axios = null) {
                             observation: new Observations({schema, name: 'nombre_mina', evaluate}).observations
 
                         },
-                        // {
-                        //     label: 'Ubicación',
-                        //     value: schema.ubicacion,
-                        //     type: inputsTypes.TEXT,
-                        //     name: 'ubicacion',
-                        //     validations: yup.string().required('Debes completar este campo'),
-                        //     observation: new Observations({schema, name: 'ubicacion', evaluate}).observations
-
-                        // },
+                        {
+                        },
                         {
                             // inputColsSpan: 'lg:col-span-2',
                             label: 'Certificado de inscripción en AFIP (CUIT)',
@@ -350,11 +342,11 @@ export function getFormSchema({ ...schema }, evaluate, axios = null) {
                                     yup.object().shape({
                                         sustanceSelect: yup.object().when('sustance', {
                                             is: value => _.isEmpty(value),
-                                            then: yup.object().required('Debes elegir un elemento')
+                                            then: yup.object().required('Debes elegir un elemento').nullable()
                                         }),
                                         mineralSelect: yup.object().when('mineral', {
                                             is: value => _.isEmpty(value),
-                                            then: yup.object().required('Debes elegir un elemento')
+                                            then: yup.object().required('Debes elegir un elemento').nullable()
                                         }),
                                         dni2: yup.string().required('Debes ingresar un dni'),
 
@@ -381,16 +373,69 @@ export function getFormSchema({ ...schema }, evaluate, axios = null) {
                     img: '/images/laborales.png',
                     inputs: [
                         {
-                            label: 'País',
+                            label: 'Provincia',
                             value: {},
                             type: inputsTypes.SELECT,
-                            options: this.getAsyncOptionsSelect({ axios, url: '/'}),
-                            name: 'pais',
+                            // get axios
+                            async: true,
+                            asyncUrl: '/paises/departamentos',
+                            inputDepends: ['departamento'],
+                            inputClearDepends: ['departamento', 'localidad'],
+                            // isLoading: false,
+                            //
+                            options: dataForm.provincia,
+                            name: 'provincia',
                             multiple: false,
                             closeOnSelect: true,
                             searchable: true,
                             placeholder: 'Selecciona una opción',
-                            validations: yup.array().min(1, 'Debes seleccionar al menos un elemento').default([]),
+                            validations: yup.object().when('provinciaSelect', {
+                                is: value => _.isEmpty(value) || !value,
+                                then: yup.object().required('Debes elegir un elemento').nullable()
+                            }),
+                            observation: new Observations({schema, name: 'select', evaluate}).observations
+                        },
+                        {
+                            label: 'Departamento',
+                            value: {},
+                            type: inputsTypes.SELECT,
+                            // get axios
+                            async: true,
+                            asyncUrl: '/paises/localidades',
+                            inputDepends: ['localidad'],
+                            inputClearDepends: ['localidad'],
+                            isLoading: false,
+                            //
+                            options: [],
+                            name: 'departamento',
+                            multiple: false,
+                            closeOnSelect: true,
+                            searchable: true,
+                            placeholder: 'Selecciona una opción',
+                            validations: yup.object().when('departamentoSelect', {
+                                is: value => _.isEmpty(value) || !value,
+                                then: yup.object().required('Debes elegir un elemento').nullable()
+                            }),
+                            observation: new Observations({schema, name: 'select', evaluate}).observations
+                        },
+                        {
+                            label: 'Localidad',
+                            value: {},
+                            type: inputsTypes.SELECT,
+                            // get axios
+                            async: true,
+                            isLoading: false,
+                            //
+                            options: [],
+                            name: 'localidad',
+                            multiple: false,
+                            closeOnSelect: true,
+                            searchable: true,
+                            placeholder: 'Selecciona una opción',
+                            validations: yup.object().when('localidadSelect', {
+                                is: value => _.isEmpty(value) || !value,
+                                then: yup.object().required('Debes elegir un elemento').nullable()
+                            }),
                             observation: new Observations({schema, name: 'select', evaluate}).observations
                         },
                     ]

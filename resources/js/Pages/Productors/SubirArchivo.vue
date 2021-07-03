@@ -51,16 +51,16 @@
                     </textarea>
                     <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
                 </div>
-                
+
                 <div class="w-full md:w-4/4 px-3 bg-white rounded shadow p-6 m-8" v-show="testing">
                     <div class="flex">
                         <label class="flex items-center relative w-max cursor-pointer select-none">
                             <br>
                             <span class="text-lg font-bold mr-3">Testing hijo</span>
                             <br>
-                            <input 
-                            type="checkbox" 
-                            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                            <input
+                            type="checkbox"
+                            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500"
                             v-model="testing_hijo"
                             />
                             <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
@@ -132,12 +132,8 @@ export default {
         valor_evaluacion_correcto_local: this.$props.evualacion_correcto,
 
         obs_valida: this.$props.obs_valido_props,
-<<<<<<< HEAD
-
-=======
         testing_hijo: 'false',
-        
->>>>>>> 9530b8437f6d16641d92757d0815ff3a61b4739d
+
         //border-green-500
     };
   },

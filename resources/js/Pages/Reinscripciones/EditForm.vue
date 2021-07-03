@@ -1,14 +1,25 @@
 <template>
 <app-layout>
-    <dynamic-form
+    <form-wizard
         :builder="reinscripcion"
         :titleForm="titleForm"
         :evaluate="evaluate"
         :province="province"
         :buttomLabel="'Editar'"
+        :dataForm="dataForm"
         @valuesForm="submit($event)"
         :dev="true"
     />
+    <!-- <dynamic-form
+        :builder="reinscripcion"
+        :titleForm="titleForm"
+        :evaluate="evaluate"
+        :province="province"
+        :buttomLabel="'Editar'"
+        :dataForm="dataForm"
+        @valuesForm="submit($event)"
+        :dev="true"
+    /> -->
 
 </app-layout>
 </template>
@@ -16,24 +27,33 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 // import DynamicForm from '../../Components/dynamic-form/DynamicForm-validacion-funcionando.vue';
-import DynamicForm from '../../Components/dynamic-form/DynamicForm.vue';
+// import DynamicForm from '../../Components/dynamic-form/DynamicForm.vue';
+import FormWizard from '../../Components/dynamic-form/FormWizard.vue';
+import asd from '../../Components/dynamic-form/asd.vue';
+
 
 export default {
     components: {
         AppLayout,
-        DynamicForm
+        // DynamicForm,
+        FormWizard,
+        asd
     },
     props: [
         "province",
         "reinscripcion",
         "titleForm",
-        "evaluate"
+        "evaluate",
+        "provincia"
     ],
     data() {
 
-
+        const dataForm = {
+            provincia: this.$props.provincia
+        }
         return {
             id: this.$props.reinscripcion.id,
+            dataForm,
         }
     },
     methods: {

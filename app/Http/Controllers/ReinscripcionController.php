@@ -6,6 +6,7 @@ use App\Models\Reinscripciones;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use App\Http\Controllers\CountriesController;
 
 use Carbon\Carbon;
 use Auth;
@@ -31,6 +32,9 @@ class ReinscripcionController extends Controller
      */
     public function create()
     {
+        // dd(CountriesController::getProvinces());
+        $provinces = CountriesController::getProvinces();
+        // dd($provinces);
         //
         // return Inertia::render('Reinscripciones/Form');
         return Inertia::render('Reinscripciones/EditForm', [
@@ -38,7 +42,8 @@ class ReinscripcionController extends Controller
             'folder' => 'reinscripciones',
             'reinscripcion' => [],
             'titleForm' => 'Editar reinscripciones',
-            'evaluate' => false
+            'evaluate' => false,
+            'provincia' => $provinces
         ]);
 
 
@@ -243,7 +248,5 @@ class ReinscripcionController extends Controller
         return $pdf->stream('formulario_.pdf');
     }
 
-    public function getCountries() {
-        
-    }
+
 }

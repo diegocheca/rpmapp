@@ -518,7 +518,91 @@ export function getFormSchema({ ...schema }, evaluate) {
                 },
 
             ]
-        }
+        },
+          // row 3 UBICACION
+          {
+            widthResponsive: 'lg:flex-row', //flex
+            // columns
+            body: [
+                //  col 1
+                {
+                    title: 'Ubicación',
+                    width: 'lg:w-full', //flex
+                    columns: 'grid-cols-1', //grid
+                    columnsResponsive: 'lg:grid-cols-2', //inside card
+                    img: '/images/laborales.png',
+                    inputs: [
+                        {
+                            label: 'Provincia',
+                            value: {},
+                            type: inputsTypes.SELECT,
+                            // get axios
+                            async: true,
+                            asyncUrl: '/paises/departamentos',
+                            inputDepends: ['departamento'],
+                            inputClearDepends: ['departamento', 'localidad'],
+                            // isLoading: false,
+                            //
+                            options: dataForm.provincia,
+                            name: 'provincia',
+                            multiple: false,
+                            closeOnSelect: true,
+                            searchable: true,
+                            placeholder: 'Selecciona una opción',
+                            validations: yup.object().when('provinciaSelect', {
+                                is: value => _.isEmpty(value) || !value,
+                                then: yup.object().required('Debes elegir un elemento').nullable()
+                            }),
+                            observation: new Observations({schema, name: 'select', evaluate}).observations
+                        },
+                        {
+                            label: 'Departamento',
+                            value: {},
+                            type: inputsTypes.SELECT,
+                            // get axios
+                            async: true,
+                            asyncUrl: '/paises/localidades',
+                            inputDepends: ['localidad'],
+                            inputClearDepends: ['localidad'],
+                            isLoading: false,
+                            //
+                            options: [],
+                            name: 'departamento',
+                            multiple: false,
+                            closeOnSelect: true,
+                            searchable: true,
+                            placeholder: 'Selecciona una opción',
+                            validations: yup.object().when('departamentoSelect', {
+                                is: value => _.isEmpty(value) || !value,
+                                then: yup.object().required('Debes elegir un elemento').nullable()
+                            }),
+                            observation: new Observations({schema, name: 'select', evaluate}).observations
+                        },
+                        {
+                            label: 'Localidad',
+                            value: {},
+                            type: inputsTypes.SELECT,
+                            // get axios
+                            async: true,
+                            isLoading: false,
+                            //
+                            options: [],
+                            name: 'localidad',
+                            multiple: false,
+                            closeOnSelect: true,
+                            searchable: true,
+                            placeholder: 'Selecciona una opción',
+                            validations: yup.object().when('localidadSelect', {
+                                is: value => _.isEmpty(value) || !value,
+                                then: yup.object().required('Debes elegir un elemento').nullable()
+                            }),
+                            observation: new Observations({schema, name: 'select', evaluate}).observations
+                        },
+                    ]
+                },
+
+            ]
+        },
     ]
 }
 

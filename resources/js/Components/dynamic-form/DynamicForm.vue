@@ -17,7 +17,7 @@
                             <div v-for="(item, indexItem) in col.inputs" :key="indexItem" class="mb-4" :class="[item.inputColsSpan]">
                                 <div class="flex flex-col">
                                     <label :for="item.name" class="mb-2 uppercase text-md text-grey-darkest flex flex-row">
-                                        {{item.label}} :
+                                        {{item.label}}
                                     </label>
 
                                     <div v-if="item.helpInfo" class="flex items-center bg-blue-100 border-blue-500 text-blue-700 text-sm font-bold px-4 py-3 rounded-md mb-3" role="alert">
@@ -75,7 +75,7 @@
 
                                     <!-- select/multiple -->
                                     <Field v-if="item.type == inputsTypes.SELECT" v-slot="{ field }" :name="item.name">
-                                        <VueMultiselect v-bind="field" v-model="item.value" :value="item.value" :options="item.options" :multiple="item.multiple" :close-on-select="item.closeOnSelect" :searchable="item.searchable" :placeholder="item.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" />
+                                        <VueMultiselect v-bind="field" v-model="item.value" :id="item" :value="item.value" :options="item.options" :ref="item.name" :multiple="item.multiple" :loading="item.isLoading? item.isLoading : false" :close-on-select="item.closeOnSelect" :searchable="item.searchable" :placeholder="item.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" @select="getAsyncOptionsSelect" />
                                     </Field>
 
                                     <!-- file -->
@@ -248,12 +248,12 @@
                 <button type="submit" class=" bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" >{{buttomLabel}}</button>
             </div>
 
-            <inertia-link :href="route('reinscripciones.index')" class="w-20 text-center py-2 mb-4 text-sm font-medium rounded-full block border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
+            <!-- <inertia-link :href="route('reinscripciones.index')" class="w-20 text-center py-2 mb-4 text-sm font-medium rounded-full block border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
                 Volver
-            </inertia-link>
+            </inertia-link> -->
 
             <template v-if="dev">
-                <div class="bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white">
+                <div class="mt-6 bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white">
                     <h3>ERRORS:</h3>
                     <pre>
                         {{errors}}
@@ -263,7 +263,7 @@
             </template>
 
             <template v-if="dev">
-                <div class="bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white">
+                <div class="mt-6 bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white">
                     <h3>VALUES:</h3>
                     <pre>
                         {{values}}
@@ -324,6 +324,10 @@ export default {
             require:false,
             type: String,
             default: 'Guardar'
+        },
+        dataForm: {
+            require: false,
+            type: Array
         }
     },
     emits: [
@@ -341,6 +345,13 @@ export default {
         };
     },
     methods: {
+        async getOptions(value, element) {
+            if(!item.async) {
+                this.getSelectOptions(value, element);
+            } else {
+                await this.getAsyncOptionsSelect(value, element);
+            }
+        },
         getSelectOptions(value, element) {
 
             if(!element.ele.inputDepends) return;
@@ -392,19 +403,59 @@ export default {
 
         },
 
-
-
         addNewRow(item) {
             const row = JSON.parse(JSON.stringify(item.childrens[0]));
             for (let index = 0; index < row.length; index++) {
                 row[index].value = null;
             }
             item.childrens = [...item.childrens, row ];
+        },
+
+        async getAsyncOptionsSelect(value, element){
+            console.log(element);
+            if(!element || !element.inputDepends || element.inputDepends.length == 0) return;
+
+            const elementChange = element.inputDepends;
+            for (let index = 0; index < elementChange.length; index++) {
+                if(value) {
+                    const elementDepends = elementChange[index];
+
+                    this.$refs[elementDepends].isLoading = true;
+                    try {
+                        const response = await axios.get(`${element.asyncUrl}/${value.value}`);
+
+                    //     this.countries = response
+                    //     this.isLoading = false
+
+                        // this.$refs[elementDepends].options.splice(0,this.$refs[elementDepends].options.length);
+                        // this.$refs[elementDepends].select({})
+
+                        for (let index = 0; index < element.inputClearDepends.length; index++) {
+                            const clear = element.inputClearDepends[index];
+                            this.$refs[clear].options.splice(0,this.$refs[clear].options.length);
+                            this.$refs[clear].select({})
+
+                        }
+
+                        for (let index = 0; index < response.data.length; index++) {
+                            const opt = response.data[index];
+                             this.$refs[elementDepends].options.push(opt);
+                        }
+
+                        this.$refs[elementDepends].isLoading = false;
+                    } catch (error) {
+
+                    }
+                }
+            }
+
+
         }
+
     },
     async mounted() {
-        const module = await import(`../../../../helpers/formularios/${this.$props.province}.js`)
-        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.evaluate, axios);
+        const module = await import(`../../../../helpers/formularios/${this.$props.province}`)
+        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.evaluate, this.$props.dataForm);
 
         this.yepSchema = this.formSchema.reduce(createYupSchema, {}, this.$props.evaluate);
 

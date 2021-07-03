@@ -142,13 +142,10 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
-function getFormSchema(_ref, evaluate) {
-  var axios = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
+function getFormSchema(_ref, evaluate, dataForm) {
   var schema = _extends({}, _ref);
 
-  console.log(axios); // name => unique
-
+  // name => unique
   return [// row 1
   {
     widthResponsive: 'lg:flex-row',
@@ -197,15 +194,7 @@ function getFormSchema(_ref, evaluate) {
           name: 'nombre_mina',
           evaluate: evaluate
         }).observations
-      }, // {
-      //     label: 'Ubicación',
-      //     value: schema.ubicacion,
-      //     type: inputsTypes.TEXT,
-      //     name: 'ubicacion',
-      //     validations: yup.string().required('Debes completar este campo'),
-      //     observation: new Observations({schema, name: 'ubicacion', evaluate}).observations
-      // },
-      {
+      }, {}, {
         // inputColsSpan: 'lg:col-span-2',
         label: 'Certificado de inscripción en AFIP (CUIT)',
         value: schema.cuit,
@@ -458,13 +447,13 @@ function getFormSchema(_ref, evaluate) {
             is: function is(value) {
               return _.isEmpty(value);
             },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento')
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
           mineralSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
             is: function is(value) {
               return _.isEmpty(value);
             },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento')
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
           dni2: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar un dni')
         })).strict()
@@ -486,19 +475,81 @@ function getFormSchema(_ref, evaluate) {
       //inside card
       img: '/images/laborales.png',
       inputs: [{
-        label: 'País',
+        label: 'Provincia',
         value: {},
         type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-        options: this.getAsyncOptionsSelect({
-          axios: axios,
-          url: '/'
-        }),
-        name: 'pais',
+        // get axios
+        async: true,
+        asyncUrl: '/paises/departamentos',
+        inputDepends: ['departamento'],
+        inputClearDepends: ['departamento', 'localidad'],
+        // isLoading: false,
+        //
+        options: dataForm.provincia,
+        name: 'provincia',
         multiple: false,
         closeOnSelect: true,
         searchable: true,
         placeholder: 'Selecciona una opción',
-        validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes seleccionar al menos un elemento')["default"]([]),
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('provinciaSelect', {
+          is: function is(value) {
+            return _.isEmpty(value) || !value;
+          },
+          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+        }),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'select',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Departamento',
+        value: {},
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+        // get axios
+        async: true,
+        asyncUrl: '/paises/localidades',
+        inputDepends: ['localidad'],
+        inputClearDepends: ['localidad'],
+        isLoading: false,
+        //
+        options: [],
+        name: 'departamento',
+        multiple: false,
+        closeOnSelect: true,
+        searchable: true,
+        placeholder: 'Selecciona una opción',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('departamentoSelect', {
+          is: function is(value) {
+            return _.isEmpty(value) || !value;
+          },
+          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+        }),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'select',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Localidad',
+        value: {},
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+        // get axios
+        async: true,
+        isLoading: false,
+        //
+        options: [],
+        name: 'localidad',
+        multiple: false,
+        closeOnSelect: true,
+        searchable: true,
+        placeholder: 'Selecciona una opción',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('localidadSelect', {
+          is: function is(value) {
+            return _.isEmpty(value) || !value;
+          },
+          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+        }),
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'select',
