@@ -214,7 +214,7 @@ Route::get('/impresiones/reinscripcion/{id}', [ReinscripcionController::class, "
 Route::post('/formularios/avisar_formulario_completo/', [FormAltaProductorController::class, "formulario_listo"])->name('formulario-listo');
 
 
-
+//FORMULARIOS WEB
 // Route::group(['prefix' => 'solicitudes'], function () {
 Route::resource('solicitudes', SolicitudesController::class)
     ->middleware(['auth:sanctum', 'verified']);
@@ -225,3 +225,4 @@ Route::resource('solicitudes', SolicitudesController::class)
 Route::get('/prueba', [SolicitudesController::class, "prueba"])->name('prueba');
 
 // });
+Route::get('/menu', [SolicitudesController::class, "menu"])->name('menu');
