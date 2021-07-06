@@ -66,6 +66,7 @@
                 </div>
             </div>
         </div>
+        el valor es:{{$props.fileinput_valor}}
         <div class="w-full md:w-1/2 px-3" v-show="fileinput_valor !== ''">
             <object :data=fileinput_valor type="application/pdf" width="100%" height="500px"> 
                 <p>It appears you don't have a PDF plugin for this browser.
@@ -97,6 +98,7 @@
 
 <script>
 export default {
+    
     props: [
         'fileinput_valor', 
         'fileinput_valor_valido', 
@@ -108,7 +110,10 @@ export default {
         'testing',
         'name_correcto',
     ],
+    
   data() {
+      console.log("WL valor es:");
+    console.log(this.$props.fileinput_valor);
     return {
         fileinput_correcto_local: this.$props.inscripciondgr_correcto,
         fileinput_valor_valido_local:this.$props.fileinput_valor_valido,

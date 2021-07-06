@@ -370,6 +370,8 @@ export default {
 	},
    
   data() {
+      console.log("eeeel valor es:");
+      console.log(this.$props.inscripciondgr);
     return {
         saludos: 'Saludame qweqweqwe',
         mostrar_modal_datos_ya_guardados:false,
