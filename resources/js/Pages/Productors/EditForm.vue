@@ -139,6 +139,21 @@
 								:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardProductor>
 					</div> -->
+
+					<div class="flex space-x-8 text-3xl">
+
+						<!-- spin -->
+						<button class="animate-spin inline-block py-4 px-8 bg-yellow-500 text-yellow-100 rounded-lg">Spin</button>
+
+						<!-- ping -->
+						<button class="animate-ping inline-block py-4 px-8 bg-blue-500 text-blue-100 rounded-lg">Ping</button>
+
+						<!-- pulse -->
+						<button class="animate-pulse inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
+
+						<!-- bounce -->
+						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
+					</div>
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -402,7 +417,6 @@
 				:obs_minerales_variedad="form.obs_minerales_variedad"
 				:obs_minerales_variedad_valido="form.obs_minerales_variedad_valido"
 
-
 				:resolucion_concesion_minera="form.resolucion_concesion_minera"
 				:resolucion_concesion_minera_validacion="form.resolucion_concesion_minera_validacion"
 				:resolucion_concesion_minera_correcto="form.resolucion_concesion_minera_correcto"
@@ -462,6 +476,17 @@
 				:otros_correcto="form.otros_correcto"
 				:obs_otros="form.obs_otros"
 				:obs_otros_valido="form.obs_otros_valido"
+				:otros_input="form.otros_input"
+				:otros_input_valido="form.otros_input_valido"
+				
+
+				:sustancias="form.sustancias"
+				:sustancias_correcto="form.sustancias_correcto"
+				:obs_sustancias="form.obs_sustancias"
+				:obs_sustancias_valido="form.obs_sustancias_valido"
+				:sustancias_input="form.sustancias_input"
+				:sustancias_input_valido="form.sustancias_input_valido"
+
 				:titulo_contrato_posecion="form.titulo_contrato_posecion"
 				:titulo_contrato_posecion_validacion="form.titulo_contrato_posecion_validacion"
 				:titulo_contrato_posecion_correcto="form.titulo_contrato_posecion_correcto"
@@ -519,7 +544,7 @@
 			<br>
 			<br>
 			<br>
-			<div class="flex flex-col mb-8">
+			<!-- <div class="flex flex-col mb-8">
 				<button
 					type="button"
 					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
@@ -529,7 +554,7 @@
 				</button>
 				
 				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
+			</div> -->
 			<br>
 			<br>
 			<br>
@@ -1031,28 +1056,40 @@ export default {
 				valor_de_reprobado_cinco: 100,
 
 				owner: this.$props.productor.owner,
-				owner_correcto: 'nada',
-				obs_owner: '',
+				owner_correcto: this.$props.productor.owner_correcto,
+				obs_owner: this.$props.productor.obs_owner,
 				obs_owner_valido: false,
 
 				arrendatario: this.$props.productor.arrendatario,
-				arrendatario_correcto: 'nada',
-				obs_arrendatario: '',
+				arrendatario_correcto: this.$props.productor.arrendatario_correcto,
+				obs_arrendatario: this.$props.productor.obs_arrendatario,
 				obs_arrendatario_valido: false,
 
 
 				concesionario: this.$props.productor.concesionario,
-				concesionario_correcto: 'nada',
-				obs_concesionario: '',
+				concesionario_correcto: this.$props.productor.concesionario_correcto,
+				obs_concesionario: this.$props.productor.obs_concesionario,
 				obs_concesionario_valido: false,
+				
 
 
 
 
 				otros: this.$props.productor.otros,
-				otros_correcto: 'nada',
-				obs_otros: '',
+				otros_correcto: this.$props.productor.otros_correcto,
+				obs_otros: this.$props.productor.obs_otros,
 				obs_otros_valido: false,
+				otros_input: this.$props.productor.otro_caracter_aclaracion,
+				otros_input_valido: true,
+
+
+				sustancias: this.$props.productor.sustancias_de_aprovechamiento_comun,
+				sustancias_correcto: this.$props.productor.sustancias_de_aprovechamiento_comun_correcto,
+				obs_sustancias: this.$props.productor.obs_sustancias_de_aprovechamiento_comun,
+				obs_sustancias_valido: false,
+				sustancias_input: this.$props.productor.concesion_minera_aclaracion,
+				sustancias_input_valido: true,
+
 
 				titulo_contrato_posecion: this.$props.productor.titulo_contrato_posecion,
 				titulo_contrato_posecion_validacion:  true,
@@ -1095,7 +1132,7 @@ export default {
 				acciones_a_desarrollar_validacion:  true,
 				acciones_a_desarrollar_correcto: 'nada',
 				obs_acciones_a_desarrollar: '',
-				obs_acciones_a_desarrollar_valido: false,
+				obs_acciones_a_desarrollar_valido: this.$props.productor.concesion_minera_aclaracion,
 
 
 

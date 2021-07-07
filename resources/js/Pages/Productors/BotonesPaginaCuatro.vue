@@ -15,13 +15,13 @@
         </jet-dialog-modal>
         <button
             type="button"
-            class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
+            class="animate-pulse  text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
             @click="guardar_avnces_uno"
         >
             {{titulo_boton_guardar}}
         </button>
         <a :href="link_volver">
-            <button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
+            <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
                 {{titulo_boton_volver}}
             </button>
         </a>
