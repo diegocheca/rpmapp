@@ -1,83 +1,218 @@
 <template>
 <div>
-
-
-<div class="flex">
-    <div class="w-1/4">
-    <div class="relative mb-2">
-        <div class="w-10 h-10 mx-auto bg-blue-500 rounded-full text-lg text-white flex items-center">
-        <span class="text-center text-white w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path class="heroicon-ui" d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2zm14 8V5H5v6h14zm0 2H5v6h14v-6zM8 9a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-            </svg>
-        </span>
-        </div>
+    <div class="block w-full text-center text-grey-darkest text-2xl p-10">
+        {{ titleForm }}
     </div>
 
-    <div class="text-xs text-center md:text-base">Select Server</div>
+    <div class="flex">
+
+        <div v-for="(item, index) in formSchema" :key="index" :class="`w-1/${formSchema.length}`">
+
+            <div class="relative mb-2">
+                <div v-if="index >= 1" class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
+                    <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
+                        <div class="w-0 py-1 rounded" :class="[currentStep >= index? item.bgColorProgress : '']" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="w-10 h-10 mx-auto rounded-full text-lg text-white flex items-center" :class="[currentStep >= index? item.bgColorIcon : 'bg-gray-300']">
+                    <span class="text-center text-white w-full">
+                        <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                            <path class="heroicon-ui" :d="item.icon" />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="text-xs text-center md:text-base">{{item.titleStep}}</div>
+        </div>
+
     </div>
-
-    <div class="w-1/4">
-    <div class="relative mb-2">
-        <div class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
-        <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-            <div class="w-0 bg-blue-300 py-1 rounded" style="width: 100%;"></div>
+    <Form @submit="onSubmit" :validation-schema="currentSchema" v-slot="{ values, errors }">
+        <div v-for="(item, index) in formSchema" :key="index">
+            <template v-if="currentStep === index">
+                <DynamicInputs :formSchema="item.bodyStep"/>
+            </template>
         </div>
-        </div>
+        <div class="flex gap-x-5 justify-center pt-9">
+            <button v-if="currentStep > 0" type="button" class=" bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" @click="prevStep">Anterior</button>
+            <button v-if="!disableSave" type="submit" class=" bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3">{{currentStep == formSchema.length -1? buttomLabel :'Siguiente'}}</button>
+            <button v-if="currentStep == formSchema.length - 1 && disableSave" type="button" class="flex bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" :disabled="disableSave">              
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Guardando...
+            </button>
 
-        <div class="w-10 h-10 mx-auto bg-blue-500 rounded-full text-lg text-white flex items-center">
-        <span class="text-center text-white w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path class="heroicon-ui" d="M19 10h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2h-2a1 1 0 0 1 0-2h2V8a1 1 0 0 1 2 0v2zM9 12A5 5 0 1 1 9 2a5 5 0 0 1 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm8 11a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v2a1 1 0 0 1-2 0v-2a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v2z"/>
-            </svg>
-        </span>
-        </div>
-    </div>
-
-    <div class="text-xs text-center md:text-base">Add User</div>
-    </div>
-
-    <div class="w-1/4">
-    <div class="relative mb-2">
-        <div class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
-        <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-            <div class="w-0 bg-blue-300 py-1 rounded" style="width: 33%;"></div>
-        </div>
         </div>
 
-        <div class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
-        <span class="text-center text-gray-600 w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path class="heroicon-ui" d="M9 4.58V4c0-1.1.9-2 2-2h2a2 2 0 0 1 2 2v.58a8 8 0 0 1 1.92 1.11l.5-.29a2 2 0 0 1 2.74.73l1 1.74a2 2 0 0 1-.73 2.73l-.5.29a8.06 8.06 0 0 1 0 2.22l.5.3a2 2 0 0 1 .73 2.72l-1 1.74a2 2 0 0 1-2.73.73l-.5-.3A8 8 0 0 1 15 19.43V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-.58a8 8 0 0 1-1.92-1.11l-.5.29a2 2 0 0 1-2.74-.73l-1-1.74a2 2 0 0 1 .73-2.73l.5-.29a8.06 8.06 0 0 1 0-2.22l-.5-.3a2 2 0 0 1-.73-2.72l1-1.74a2 2 0 0 1 2.73-.73l.5.3A8 8 0 0 1 9 4.57zM7.88 7.64l-.54.51-1.77-1.02-1 1.74 1.76 1.01-.17.73a6.02 6.02 0 0 0 0 2.78l.17.73-1.76 1.01 1 1.74 1.77-1.02.54.51a6 6 0 0 0 2.4 1.4l.72.2V20h2v-2.04l.71-.2a6 6 0 0 0 2.41-1.4l.54-.51 1.77 1.02 1-1.74-1.76-1.01.17-.73a6.02 6.02 0 0 0 0-2.78l-.17-.73 1.76-1.01-1-1.74-1.77 1.02-.54-.51a6 6 0 0 0-2.4-1.4l-.72-.2V4h-2v2.04l-.71.2a6 6 0 0 0-2.41 1.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0-2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
-            </svg>
-        </span>
-        </div>
-    </div>
+        <!-- <inertia-link :href="route('reinscripciones.index')" class="w-20 text-center py-2 mb-4 text-sm font-medium rounded-full block border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
+            Volver
+        </inertia-link> -->
 
-    <div class="text-xs text-center md:text-base">Setting</div>
-    </div>
+        <template v-if="dev">
+            <div class="mt-6 bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white">
+                <h3>ERRORS:</h3>
+                <pre>
+                    {{errors}}
+                </pre>
+            </div>
 
-    <div class="w-1/4">
-    <div class="relative mb-2">
-        <div class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
-        <div class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-            <div class="w-0 bg-blue-300 py-1 rounded" style="width: 0%;"></div>
-        </div>
-        </div>
+        </template>
 
-        <div class="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
-        <span class="text-center text-gray-600 w-full">
-            <svg class="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-            <path class="heroicon-ui" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-2.3-8.7l1.3 1.29 3.3-3.3a1 1 0 0 1 1.4 1.42l-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 0 1 1.4-1.42z"/>
-            </svg>
-        </span>
-        </div>
-    </div>
+        <template v-if="dev">
+            <div class="mt-6 bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white">
+                <h3>VALUES:</h3>
+                <pre>
+                    {{values}}
+                </pre>
+            </div>
 
-    <div class="text-xs text-center md:text-base">Finished</div>
-    </div>
-</div>
-
-
+        </template>
+    </Form>
 </div>
 </template>
+
+<script>
+import AppLayout from "@/Layouts/AppLayout";
+
+import { createYupStepSchema } from '../../../../helpers/formularios/default/yupSchemaCreator';
+import DragAndDropFile from "./DragAndDropFile.vue";
+import DynamicInputs from "./DynamicInputs.vue";
+import { Form, Field, ErrorMessage, useForm  } from 'vee-validate';
+import inputsTypes from '../../../../helpers/enums/inputsTypes';
+import VueMultiselect from 'vue-multiselect'
+import * as yup from "yup";
+// import {FormBuilder} from '../../../../helpers/formularios/sanjuan/reinscripciones';
+
+
+export default {
+    components: {
+        AppLayout,
+        Form,
+        Field,
+        ErrorMessage,
+        VueMultiselect,
+        DragAndDropFile,
+        DynamicInputs
+    },
+    props: {
+        builder: {
+            require: true
+        },
+        province: {
+            require: true,
+            type: String,
+        },      
+        titleForm: {
+            require: true,
+            type: String,
+        },
+        evaluate: {
+            require: true,
+            type: Boolean,
+        },
+        dev: {
+            require: false,
+            type: Boolean,
+            default: false
+        },
+        buttomLabel: {
+            require:false,
+            type: String,
+            default: 'Guardar'
+        },
+        dataForm: {
+            require: false,
+            type: Array
+        }
+    },
+    emits: [
+        'valuesForm'
+    ],
+
+    data() {
+        const currentStep = 0;
+        const formValues = {};
+
+        return {
+            title: this.$props.titleForm,
+            inputsTypes: inputsTypes,
+            formSchema: [],
+            yepSchemas: [],
+            currentStep,
+            formValues,
+            disableSave: false
+        };
+    },
+    methods: {
+        onSubmit(values) {            
+            // accumlate the form values with the values from previous steps
+            Object.assign(this.formValues, values);
+
+            if (this.currentStep === this.formSchema.length - 1) {
+                console.log("Done: ", JSON.stringify(this.formValues, null, 2));
+                this.disableSave = true;
+                return;
+            }
+            // console.log("Current values: ");
+            // console.log(JSON.stringify(this.formValues, null, 2));
+            this.currentStep++;
+        },
+
+        prevStep() {
+            if (this.currentStep <= 0) {
+                return;
+            }
+            this.disableSave = false;
+            this.currentStep--;
+        },    
+    },
+    computed: {        
+        currentSchema() {                   
+            return this.yepSchemas? yup.object().shape(this.yepSchemas[this.currentStep]) : {};
+        },
+        progressCurrentStep(){
+
+        }
+    },
+    // watch: {
+    //     formValues(newQuestion, oldQuestion) {
+    //         alert()
+    //     }
+    // },
+    async mounted() {
+        const module = await import(`../../../../helpers/formularios/${this.$props.province}`)
+        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.evaluate, this.$props.dataForm);
+
+        for (let index = 0; index < this.formSchema.length; index++) {
+            this.yepSchemas.push([this.formSchema[index]].reduce(createYupStepSchema, {},this.$props.evaluate));
+
+        }
+
+        //console.log(this.formSchema.map(e => e.bodyStep.map(e1 => e1.body.inputs)));
+        // this.formSchema = subFormSchema.map(e => e.bodyStep);
+
+        // this.yepSchema = this.formSchema.reduce(createYupStepSchema, {}, this.$props.evaluate);
+
+        // this.validateSchema = yup.object().shape(this.yepSchema);
+    },
+};
+</script>
+
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style scoped>
+input:checked ~ .dot {
+  transform: translateX(100%);
+  background-color: #48bb78;
+}
+
+.btn-close-row {
+    position: absolute;
+    right: 36px;
+    z-index: 100;
+    cursor: pointer;
+
+}
+</style>

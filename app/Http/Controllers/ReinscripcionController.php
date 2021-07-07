@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Http\Controllers\CountriesController;
+use Illuminate\Support\Facades\Storage;
 
 use Carbon\Carbon;
 use Auth;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class ReinscripcionController extends Controller
 {
@@ -37,11 +39,14 @@ class ReinscripcionController extends Controller
         // dd($provinces);
         //
         // return Inertia::render('Reinscripciones/Form');
-        return Inertia::render('Reinscripciones/EditForm', [
+        return Inertia::render('Reinscripciones/Form', [
+            'action' => "create",
+            'saveUrl' => "reinscripciones.store",
+            'saveFileUrl' => "/reinscripciones/upload",
             'province' => env('PROVINCE', '')."/reinscripciones",
             'folder' => 'reinscripciones',
             'reinscripcion' => [],
-            'titleForm' => 'Editar reinscripciones',
+            'titleForm' => 'Crear reinscripciones',
             'evaluate' => false,
             'provincia' => $provinces
         ]);
@@ -58,7 +63,7 @@ class ReinscripcionController extends Controller
     public function store(Request $request)
     {
         //
-
+        die("ACA ESTOY");
         dd($request->id_mina);
         $request->validate([
                 'id_mina',
@@ -112,11 +117,18 @@ class ReinscripcionController extends Controller
     {
         //
         $reinscripcion = Reinscripciones::find($id);
-        return Inertia::render('Reinscripciones/EditForm', [
+        $provinces = CountriesController::getProvinces();
+
+        return Inertia::render('Reinscripciones/Form', [
+            'action' => "create",
+            'saveUrl' => "reinscripciones.store",
+            'saveFileUrl' => "/reinscripciones/upload",
             'province' => env('PROVINCE', '')."/reinscripciones",
+            'folder' => 'reinscripciones',
             'reinscripcion' => $reinscripcion,
-            'titleForm' => 'Editar reinscripciones',
-            'evaluate' => true
+            'titleForm' => 'Crear reinscripciones',
+            'evaluate' => false,
+            'provincia' => $provinces
         ]);
 
     }
@@ -248,5 +260,39 @@ class ReinscripcionController extends Controller
         return $pdf->stream('formulario_.pdf');
     }
 
+    public function upload(Request $request)
+    {
+
+        // dd($request);
+
+        // // Validate (size is in KB)
+        // $request->validate([
+        //     // 'photo' => 'required|file|image|size:1024|dimensions:max_width=500,max_height=500',
+        //     'cuit'
+        // ]);
+
+        $files = $request->files->all();
+        $filePaths = [];
+        foreach($files as $key => $file){
+            $uploadedFile = $file->getClientOriginalName();
+            $fileName = $key."-".time().$uploadedFile;
+            $filePath = $request->file($key)->storeAs(env('PROVINCE', '')."/reinscripciones", $fileName, 'public');
+            array_push($filePaths, $filePath);
+        }
+
+        return response()->json($filePaths);
+
+        // $uploadedFile = $request->file('cuit');
+        // $fileName = time().$uploadedFile->getClientOriginalName();
+        // $filePath = $request->file('cuit')->storeAs(env('PROVINCE', '')."/reinscripciones", $fileName, 'public');
+
+        // return $filePath;
+        // // Read file contents...
+        // $contents = file_get_contents($request->cuit->path());
+
+        // // // ...or just move it somewhere else (eg: local `storage` directory or S3)
+        // $newPath = $request->photo->store('cuit', 's3');
+        // var_dump($newPath);
+    }
 
 }

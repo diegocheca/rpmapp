@@ -214,7 +214,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
 
             for (var index = 0; index < value.length; index++) {
               var element = value[index];
-              validation = validation && element.size <= 1000000; // 10MB
+              validation = validation && element.size <= 10000000; // 10MB
             }
 
             return validation; // !value || (value && value.size <= 10)
@@ -229,7 +229,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
 
             for (var index = 0; index < value.length; index++) {
               var element = value[index];
-              validation = validation && [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value].includes(element.type);
+              validation = validation && _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value).includes(element.type);
             }
 
             return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
@@ -251,7 +251,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.label].join()),
         maxSize: 'Tamaño maximo por archivo: 10MB',
         multiple: true,
-        validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(2, 'Solo puedes adjuntar hasta 2 archivo').test({
           name: 'ESCRITURA_FILE_SIZE',
           exclusive: true,
           message: 'Recuerda que cada archivo no debe superar los 10MB',
@@ -261,7 +261,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
 
             for (var index = 0; index < value.length; index++) {
               var element = value[index];
-              validation = validation && element.size <= 1000000; // 10MB
+              validation = validation && element.size <= 10000000; // 10MB
             }
 
             return validation; // !value || (value && value.size <= 10)

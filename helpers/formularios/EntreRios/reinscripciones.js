@@ -71,7 +71,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         let validation = true;
                                         for (let index = 0; index < value.length; index++) {
                                             const element = value[index];
-                                            validation = validation && element.size <= 1000000; // 10MB
+                                            validation = validation && element.size <= 10000000; // 10MB
                                         }
                                         return validation;
                                         // !value || (value && value.size <= 10)
@@ -86,7 +86,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         let validation = true;
                                         for (let index = 0; index < value.length; index++) {
                                             const element = value[index];
-                                            validation = validation && [fileAccept.PDF.value].includes(element.type);
+                                            validation = validation && [...fileAccept.PDF.value].includes(element.type);
                                         }
                                         return validation;
                                         // return !value || (value && [fileAccept.PDF.value].includes(value.type))
@@ -109,7 +109,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             validations: yup
                                 .array()
                                 .min(1, 'Debes adjuntar al menos un elemento').default([])
-                                .max(1, 'Solo puedes adjuntar hasta 1 archivo')
+                                .max(2, 'Solo puedes adjuntar hasta 2 archivo')
                                 .test({
                                     name: 'ESCRITURA_FILE_SIZE',
                                     exclusive: true,
@@ -119,7 +119,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         let validation = true;
                                         for (let index = 0; index < value.length; index++) {
                                             const element = value[index];
-                                            validation = validation && element.size <= 1000000; // 10MB
+                                            validation = validation && element.size <= 10000000; // 10MB
                                         }
                                         return validation;
                                         // !value || (value && value.size <= 10)

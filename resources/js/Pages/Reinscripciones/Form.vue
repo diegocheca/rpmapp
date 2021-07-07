@@ -1,72 +1,137 @@
 <template>
-  <app-layout>
-    <div class="flex items-center h-screen w-full bg-teal-lighter">
-      <div class="w-full bg-white rounded shadow-lg p-8 m-4">
-        <h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
-          Añadir Reinscripcion
-        </h1>
-        <form @submit.prevent="submit" class="mb-6">
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="razon_social"
-              >Razon Social:</label
-            >
-            <input
-              id="razon_social"
-              v-model="form.id_mina"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-            <div v-if="errors.razon_social" class="bg-red-200">El Nombre es Requerido</div>
-          </div>
-          <div class="flex flex-col mb-4">
-            <label
-              class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-              for="email"
-              >Email:</label
-            >
-            <input
-              id="email"
-              v-model="form.id_productor"
-              class="border py-2 px-3 text-grey-darkest"
-            />
-            <div v-if="errors.email" class="bg-red-200">El Email es Requerido</div>
-          </div>
-          <button
-            type="submit"
-            class="block bg-blue-500 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
-          >
-            Añadir
-          </button>
-        </form>
-      </div>
-    </div>
-  </app-layout>
+<app-layout>
+    <!-- <form-wizard
+        :builder="reinscripcion"
+        :titleForm="titleForm"
+        :evaluate="evaluate"
+        :province="province"
+        :buttomLabel="'Editar'"
+        :dataForm="dataForm"
+        @valuesForm="submit($event)"
+        :dev="true"
+    /> -->
+
+    <dynamic-form
+        :builder="reinscripcion"
+        :titleForm="titleForm"
+        :evaluate="evaluate"
+        :province="province"
+        :buttomLabel="'Editar'"
+        :dataForm="dataForm"
+        :action="action"
+        :saveUrl="saveUrl"
+        :saveFileUrl="saveFileUrl"
+        @valuesForm="submit($event)"
+        :dev="false"
+    />
+
+</app-layout>
 </template>
-
-
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
+import DynamicForm from '../../Components/dynamic-form/DynamicForm.vue';
+// import FormWizard from '../../Components/dynamic-form/FormWizard.vue';
+
+
 export default {
-  components: {
-    AppLayout,
-  },
-  props: {
-    errors: Object,
-  },
-  data() {
-    return {
-      form: {
-        razon_social: null,
-        email: null,
-      },
-    };
-  },
-  methods: {
-    submit() {
-      this.$inertia.post(route('reinscripciones.store'), this.form);
+    components: {
+        AppLayout,
+        DynamicForm,
+        // FormWizard,
     },
-  },
-};
+    props: {
+        // Obligatorios
+        action: {
+            require: true,
+            type: String,
+        },
+        saveUrl: {
+            require: true,
+            type: String,
+        },
+        saveFileUrl: {
+            require: true,
+            type: String,
+        },
+        province: {
+            require: true,
+            type: String,
+        },
+        reinscripcion: {
+            require: true,
+            type: Array,
+        },
+        titleForm: {
+            require: true,
+            type: String,
+        },
+        evaluate: {
+            require: true,
+            type: Boolean,
+        },
+        //
+        provincia: {
+            require: true,
+            type: Array,
+        },
+    },
+    data() {
+
+        const dataForm = {
+            provincia: this.$props.provincia
+        }
+        return {
+            id: this.$props.reinscripcion.id,
+            dataForm,
+        }
+    },
+    methods: {
+        async submit(form) {
+            // console.log(form);
+            // let response;
+            // let formData = new FormData();
+
+            // for ( var key in form ) {
+            //     formData.append(key, form[key]);
+            // }
+
+            // try {
+            //     if(this.$props.action == "create") {
+            //         response = await axios.post(this.$props.saveFileUrl, formData);
+
+
+
+            //         this.$inertia.post(route(this.$props.saveUrl), formData);
+            //     } else if(this.$props.action == "update") {
+            //         response = await axios.put(this.$props.saveUrl, {
+            //             params: {
+            //                 id: this.$props.reinscripcion.id
+            //                 }
+            //             }
+            //         )
+            //     }
+            // } catch (error) {
+
+            // }
+
+
+            // if(this.$props.action == "create") {
+            //     // this.$inertia.post(
+            //     //     route("reinscripciones.update", this.id),
+            //     //     form
+            //     // );
+
+            // } else if(this.$props.action == "update") {
+            //     // this.$inertia.put(
+            //     //     route("reinscripciones.update", this.id),
+            //     //     form
+            //     // );
+
+            // }
+
+        },
+    },
+
+}
 </script>

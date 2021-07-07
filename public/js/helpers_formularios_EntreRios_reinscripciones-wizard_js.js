@@ -146,8 +146,12 @@ function getFormSchema(_ref, evaluate, dataForm) {
   var schema = _extends({}, _ref);
 
   // name => unique
+  // icons => https://heroicons.com/ => svg d=""
   return [{
-    step: 1,
+    icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+    bgColorIcon: 'bg-blue-500',
+    bgColorProgress: 'bg-blue-300',
+    titleStep: 'Datos',
     bodyStep: [// row 1
     {
       widthResponsive: 'lg:flex-row',
@@ -155,7 +159,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
       // columns
       body: [//  col 1
       {
-        title: 'Datos',
+        title: 'Info',
         width: 'lg:w-full',
         //flex
         columns: 'grid-cols-1',
@@ -164,6 +168,39 @@ function getFormSchema(_ref, evaluate, dataForm) {
         //inside card
         img: '/images/laborales.png',
         inputs: [{
+          label: 'Email',
+          value: schema.email,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.EMAIL,
+          name: 'email',
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').email('El formato ingresado no es válido'),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: 'email',
+            evaluate: evaluate
+          }).observations
+        }, {
+          label: 'Contraseña',
+          value: schema.password,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.PASSWORD,
+          name: 'password',
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').min(8, 'Debes ingresar al menos 8 caracteres'),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: 'password',
+            evaluate: evaluate
+          }).observations
+        }, {
+          label: 'Confirmar contraseña',
+          value: schema.repeatPassword,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.PASSWORD,
+          name: 'repeatPassword',
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').oneOf([yup__WEBPACK_IMPORTED_MODULE_0__.ref("password")], "Las contraseñas deben ser iguales"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: 'repeatPassword',
+            evaluate: evaluate
+          }).observations
+        }, {
           label: 'Nombre o razón social',
           value: schema.nombre_razon_social,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
@@ -196,7 +233,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
             name: 'nombre_mina',
             evaluate: evaluate
           }).observations
-        }, {}, {
+        }, // {
+        // },
+        {
           // inputColsSpan: 'lg:col-span-2',
           label: 'Certificado de inscripción en AFIP (CUIT)',
           value: schema.cuit,
@@ -216,7 +255,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
 
               for (var index = 0; index < value.length; index++) {
                 var element = value[index];
-                validation = validation && element.size <= 1000000; // 10MB
+                validation = validation && element.size <= 10000000; // 10MB
               }
 
               return validation; // !value || (value && value.size <= 10)
@@ -231,7 +270,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
 
               for (var index = 0; index < value.length; index++) {
                 var element = value[index];
-                validation = validation && [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value].includes(element.type);
+                validation = validation && _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value).includes(element.type);
               }
 
               return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
@@ -263,7 +302,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
 
               for (var index = 0; index < value.length; index++) {
                 var element = value[index];
-                validation = validation && element.size <= 1000000; // 10MB
+                validation = validation && element.size <= 10000000; // 10MB
               }
 
               return validation; // !value || (value && value.size <= 10)
@@ -287,426 +326,17 @@ function getFormSchema(_ref, evaluate, dataForm) {
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'escritura',
-            evaluate: evaluate
-          }).observations
-        }]
-      }]
-    }, // row 2
-    {
-      widthResponsive: 'flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Sustancias minerales que insuatralizan',
-        width: '',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: '',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'List',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.LIST,
-          name: 'List',
-          // columns: 'grid-cols-1',
-          // colSpans + 1
-          // columnsResponsive: 'lg:w-2/5',
-          childrens: [// default value,
-          [{
-            name: 'sustanceSelect',
-            value: null
-          }, {
-            name: 'mineralSelect',
-            value: null
-          }, {
-            name: 'dni',
-            value: null
-          }]],
-          elements: [[{
-            label: 'Sustancia',
-            value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-            colSpan: 'lg:w-2/5',
-            options: [{
-              label: 'Sustancias de aprovechamiento común',
-              value: 'aprovechamiento_comun'
-            }, {
-              label: 'Sustancias que se conceden preferentemente al dueño del suelo',
-              value: 'conceden_preferentemente'
-            }],
-            name: 'sustanceSelect',
-            multiple: false,
-            closeOnSelect: true,
-            searchable: false,
-            inputDepends: ['mineralSelect'],
-            optionsDepends: {
-              aprovechamiento_comun: [{
-                label: 'Arenas Metalíferas',
-                value: 'Arenas Metalíferas'
-              }, {
-                label: 'Piedras Preciosas',
-                value: 'Piedras Preciosas'
-              }, {
-                label: 'Desmontes',
-                value: 'Desmontes'
-              }, {
-                label: 'Relaves',
-                value: 'Relaves'
-              }, {
-                label: 'Escoriales',
-                value: 'Escoriales'
-              }],
-              conceden_preferentemente: [{
-                label: 'Salitres',
-                value: 'Salitres'
-              }, {
-                label: 'Salinas',
-                value: 'Salinas'
-              }, {
-                label: 'Turberas',
-                value: 'Turberas'
-              }, {
-                label: 'Metales no comprendidos en 1° Categ.',
-                value: 'Metales no comprendidos en 1° Categ.'
-              }, {
-                label: 'Abrasivos',
-                value: 'Abrasivos'
-              }, {
-                label: 'Ocres',
-                value: 'Ocres'
-              }, {
-                label: 'Resinas',
-                value: 'Resinas'
-              }, {
-                label: 'Esteatitas',
-                value: 'Esteatitas'
-              }, {
-                label: 'Baritina',
-                value: 'Baritina'
-              }, {
-                label: 'Caparrosas',
-                value: 'Caparrosas'
-              }, {
-                label: 'Grafito',
-                value: 'Grafito'
-              }, {
-                label: 'Caolí­n',
-                value: 'Caolí­n'
-              }, {
-                label: 'Sales Alcalinas o Alcalino Terrosas',
-                value: 'Sales Alcalinas o Alcalino Terrosas'
-              }, {
-                label: 'Amianto',
-                value: 'Amianto'
-              }, {
-                label: 'Bentonita',
-                value: 'Bentonita'
-              }, {
-                label: 'Zeolitas o Minerales Permutantes o Permutíticos',
-                value: 'Zeolitas o Minerales Permutantes o Permutíticos'
-              }]
-            },
-            // validations: yup.object().when('sustanceSelect', {
-            //     is: value => _.isEmpty(value),
-            //     then: yup.object().required('Debes elegir un elemento')
-            // }),
-            placeholder: 'Selecciona una opción'
-          }, {
-            label: 'Mineral Explotado',
-            value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-            colSpan: 'lg:w-2/5',
-            options: [],
-            name: 'mineralSelect',
-            inputDepends: [],
-            multiple: false,
-            closeOnSelect: true,
-            searchable: true,
-            // validations: yup.object().when('mineralSelect', {
-            //     is: value => _.isEmpty(value),
-            //     then: yup.object().required('Debes elegir un elemento')
-            // }),
-            placeholder: 'Selecciona una opción'
-          }, {
-            label: 'DNI',
-            value: schema.dni,
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
-            colSpan: 'lg:w-1/5',
-            name: 'dni2' // validations: yup.string().required('Debes ingresar un dni'),
-
-          }, {
-            colSpan: 'lg:w-5/5',
-            observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-              schema: schema,
-              name: 'row-',
-              evaluate: evaluate
-            }).observations
-          }]],
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().of(yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
-            sustanceSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('sustance', {
-              is: function is(value) {
-                return _.isEmpty(value);
-              },
-              then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-            }),
-            mineralSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
-              is: function is(value) {
-                return _.isEmpty(value);
-              },
-              then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-            }),
-            dni2: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar un dni')
-          })).strict()
-        }]
-      }]
-    }, // row 3 UBICACION
-    {
-      widthResponsive: 'lg:flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Ubicación',
-        width: 'lg:w-full',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: 'lg:grid-cols-2',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'Provincia',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          // get axios
-          async: true,
-          asyncUrl: '/paises/departamentos',
-          inputDepends: ['departamento'],
-          inputClearDepends: ['departamento', 'localidad'],
-          // isLoading: false,
-          //
-          options: dataForm.provincia,
-          name: 'provincia',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: true,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('provinciaSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'select',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Departamento',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          // get axios
-          async: true,
-          asyncUrl: '/paises/localidades',
-          inputDepends: ['localidad'],
-          inputClearDepends: ['localidad'],
-          isLoading: false,
-          //
-          options: [],
-          name: 'departamento',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: true,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('departamentoSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'select',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Localidad',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          // get axios
-          async: true,
-          isLoading: false,
-          //
-          options: [],
-          name: 'localidad',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: true,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('localidadSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'select',
             evaluate: evaluate
           }).observations
         }]
       }]
     }]
   }, {
-    step: 2,
-    bodyStep: [// row 1
-    {
-      widthResponsive: 'lg:flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Datos',
-        width: 'lg:w-full',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: 'lg:grid-cols-2',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'Nombre o razón social',
-          value: schema.nombre_razon_social,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'nombre_razon_social',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'nombre_razon_social',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Domicilio',
-          value: schema.domicilio,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'domicilio',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'domicilio',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
-          value: schema.nombre_mina,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'nombre_mina',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'nombre_mina',
-            evaluate: evaluate
-          }).observations
-        }, {}, {
-          // inputColsSpan: 'lg:col-span-2',
-          label: 'Certificado de inscripción en AFIP (CUIT)',
-          value: schema.cuit,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.FILE,
-          name: 'cuit',
-          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value],
-          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label].join()),
-          maxSize: 'Tamaño maximo por archivo: 10MB',
-          multiple: false,
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
-            name: 'CUIT_SIZE',
-            exclusive: true,
-            message: 'Recuerda que cada archivo no debe superar los 10MB',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
-
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && element.size <= 1000000; // 10MB
-              }
-
-              return validation; // !value || (value && value.size <= 10)
-            }
-          }).test({
-            name: 'CUIT_FILE_FORMAT',
-            exclusive: true,
-            message: 'Hay archivos con extensiones no válidas',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
-
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value].includes(element.type);
-              }
-
-              return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-            }
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'cuit',
-            evaluate: evaluate
-          }).observations
-        }, {
-          // inputColsSpan: 'lg:col-span-2',
-          label: 'Copia escritura del inmueble',
-          helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
-          value: schema.escritura,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.FILE,
-          name: 'escritura',
-          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.value],
-          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.label].join()),
-          maxSize: 'Tamaño maximo por archivo: 10MB',
-          multiple: true,
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
-            name: 'ESCRITURA_FILE_SIZE',
-            exclusive: true,
-            message: 'Recuerda que cada archivo no debe superar los 10MB',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
-
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && element.size <= 1000000; // 10MB
-              }
-
-              return validation; // !value || (value && value.size <= 10)
-            }
-          }).test({
-            name: 'ESCRITURA_FILE_FORMAT',
-            exclusive: true,
-            message: 'Hay archivos con extensiones no válidas',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
-
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && [].concat(_toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value), _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.value)).includes(element.type);
-              }
-
-              return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-            }
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'escritura',
-            evaluate: evaluate
-          }).observations
-        }]
-      }]
-    }, // row 2
-    {
+    icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+    bgColorIcon: 'bg-blue-500',
+    bgColorProgress: 'bg-blue-300',
+    titleStep: 'Datos',
+    bodyStep: [{
       widthResponsive: 'flex-row',
       //flex
       // columns
@@ -837,7 +467,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
             inputDepends: [],
             multiple: false,
             closeOnSelect: true,
-            searchable: true,
+            searchable: false,
             // validations: yup.object().when('mineralSelect', {
             //     is: value => _.isEmpty(value),
             //     then: yup.object().required('Debes elegir un elemento')
@@ -873,424 +503,15 @@ function getFormSchema(_ref, evaluate, dataForm) {
             }),
             dni2: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar un dni')
           })).strict()
-        }]
-      }]
-    }, // row 3 UBICACION
-    {
-      widthResponsive: 'lg:flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Ubicación',
-        width: 'lg:w-full',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: 'lg:grid-cols-2',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'Provincia',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          // get axios
-          async: true,
-          asyncUrl: '/paises/departamentos',
-          inputDepends: ['departamento'],
-          inputClearDepends: ['departamento', 'localidad'],
-          // isLoading: false,
-          //
-          options: dataForm.provincia,
-          name: 'provincia',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: true,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('provinciaSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'select',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Departamento',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          // get axios
-          async: true,
-          asyncUrl: '/paises/localidades',
-          inputDepends: ['localidad'],
-          inputClearDepends: ['localidad'],
-          isLoading: false,
-          //
-          options: [],
-          name: 'departamento',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: true,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('departamentoSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'select',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Localidad',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          // get axios
-          async: true,
-          isLoading: false,
-          //
-          options: [],
-          name: 'localidad',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: true,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('localidadSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'select',
-            evaluate: evaluate
-          }).observations
         }]
       }]
     }]
   }, {
-    step: 3,
-    bodyStep: [// row 1
-    {
-      widthResponsive: 'lg:flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Datos',
-        width: 'lg:w-full',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: 'lg:grid-cols-2',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'Nombre o razón social',
-          value: schema.nombre_razon_social,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'nombre_razon_social',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'nombre_razon_social',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Domicilio',
-          value: schema.domicilio,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'domicilio',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'domicilio',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
-          value: schema.nombre_mina,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'nombre_mina',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'nombre_mina',
-            evaluate: evaluate
-          }).observations
-        }, {}, {
-          // inputColsSpan: 'lg:col-span-2',
-          label: 'Certificado de inscripción en AFIP (CUIT)',
-          value: schema.cuit,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.FILE,
-          name: 'cuit',
-          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value],
-          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label].join()),
-          maxSize: 'Tamaño maximo por archivo: 10MB',
-          multiple: false,
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
-            name: 'CUIT_SIZE',
-            exclusive: true,
-            message: 'Recuerda que cada archivo no debe superar los 10MB',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
-
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && element.size <= 1000000; // 10MB
-              }
-
-              return validation; // !value || (value && value.size <= 10)
-            }
-          }).test({
-            name: 'CUIT_FILE_FORMAT',
-            exclusive: true,
-            message: 'Hay archivos con extensiones no válidas',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
-
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value].includes(element.type);
-              }
-
-              return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-            }
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'cuit',
-            evaluate: evaluate
-          }).observations
-        }, {
-          // inputColsSpan: 'lg:col-span-2',
-          label: 'Copia escritura del inmueble',
-          helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
-          value: schema.escritura,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.FILE,
-          name: 'escritura',
-          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.value],
-          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.label].join()),
-          maxSize: 'Tamaño maximo por archivo: 10MB',
-          multiple: true,
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
-            name: 'ESCRITURA_FILE_SIZE',
-            exclusive: true,
-            message: 'Recuerda que cada archivo no debe superar los 10MB',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
-
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && element.size <= 1000000; // 10MB
-              }
-
-              return validation; // !value || (value && value.size <= 10)
-            }
-          }).test({
-            name: 'ESCRITURA_FILE_FORMAT',
-            exclusive: true,
-            message: 'Hay archivos con extensiones no válidas',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
-
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && [].concat(_toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value), _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.value)).includes(element.type);
-              }
-
-              return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-            }
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'escritura',
-            evaluate: evaluate
-          }).observations
-        }]
-      }]
-    }, // row 2
-    {
-      widthResponsive: 'flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Sustancias minerales que insuatralizan',
-        width: '',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: '',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'List',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.LIST,
-          name: 'List',
-          // columns: 'grid-cols-1',
-          // colSpans + 1
-          // columnsResponsive: 'lg:w-2/5',
-          childrens: [// default value,
-          [{
-            name: 'sustanceSelect',
-            value: null
-          }, {
-            name: 'mineralSelect',
-            value: null
-          }, {
-            name: 'dni',
-            value: null
-          }]],
-          elements: [[{
-            label: 'Sustancia',
-            value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-            colSpan: 'lg:w-2/5',
-            options: [{
-              label: 'Sustancias de aprovechamiento común',
-              value: 'aprovechamiento_comun'
-            }, {
-              label: 'Sustancias que se conceden preferentemente al dueño del suelo',
-              value: 'conceden_preferentemente'
-            }],
-            name: 'sustanceSelect',
-            multiple: false,
-            closeOnSelect: true,
-            searchable: false,
-            inputDepends: ['mineralSelect'],
-            optionsDepends: {
-              aprovechamiento_comun: [{
-                label: 'Arenas Metalíferas',
-                value: 'Arenas Metalíferas'
-              }, {
-                label: 'Piedras Preciosas',
-                value: 'Piedras Preciosas'
-              }, {
-                label: 'Desmontes',
-                value: 'Desmontes'
-              }, {
-                label: 'Relaves',
-                value: 'Relaves'
-              }, {
-                label: 'Escoriales',
-                value: 'Escoriales'
-              }],
-              conceden_preferentemente: [{
-                label: 'Salitres',
-                value: 'Salitres'
-              }, {
-                label: 'Salinas',
-                value: 'Salinas'
-              }, {
-                label: 'Turberas',
-                value: 'Turberas'
-              }, {
-                label: 'Metales no comprendidos en 1° Categ.',
-                value: 'Metales no comprendidos en 1° Categ.'
-              }, {
-                label: 'Abrasivos',
-                value: 'Abrasivos'
-              }, {
-                label: 'Ocres',
-                value: 'Ocres'
-              }, {
-                label: 'Resinas',
-                value: 'Resinas'
-              }, {
-                label: 'Esteatitas',
-                value: 'Esteatitas'
-              }, {
-                label: 'Baritina',
-                value: 'Baritina'
-              }, {
-                label: 'Caparrosas',
-                value: 'Caparrosas'
-              }, {
-                label: 'Grafito',
-                value: 'Grafito'
-              }, {
-                label: 'Caolí­n',
-                value: 'Caolí­n'
-              }, {
-                label: 'Sales Alcalinas o Alcalino Terrosas',
-                value: 'Sales Alcalinas o Alcalino Terrosas'
-              }, {
-                label: 'Amianto',
-                value: 'Amianto'
-              }, {
-                label: 'Bentonita',
-                value: 'Bentonita'
-              }, {
-                label: 'Zeolitas o Minerales Permutantes o Permutíticos',
-                value: 'Zeolitas o Minerales Permutantes o Permutíticos'
-              }]
-            },
-            // validations: yup.object().when('sustanceSelect', {
-            //     is: value => _.isEmpty(value),
-            //     then: yup.object().required('Debes elegir un elemento')
-            // }),
-            placeholder: 'Selecciona una opción'
-          }, {
-            label: 'Mineral Explotado',
-            value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-            colSpan: 'lg:w-2/5',
-            options: [],
-            name: 'mineralSelect',
-            inputDepends: [],
-            multiple: false,
-            closeOnSelect: true,
-            searchable: true,
-            // validations: yup.object().when('mineralSelect', {
-            //     is: value => _.isEmpty(value),
-            //     then: yup.object().required('Debes elegir un elemento')
-            // }),
-            placeholder: 'Selecciona una opción'
-          }, {
-            label: 'DNI',
-            value: schema.dni,
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
-            colSpan: 'lg:w-1/5',
-            name: 'dni2' // validations: yup.string().required('Debes ingresar un dni'),
-
-          }, {
-            colSpan: 'lg:w-5/5',
-            observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-              schema: schema,
-              name: 'row-',
-              evaluate: evaluate
-            }).observations
-          }]],
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().of(yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
-            sustanceSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('sustance', {
-              is: function is(value) {
-                return _.isEmpty(value);
-              },
-              then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-            }),
-            mineralSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
-              is: function is(value) {
-                return _.isEmpty(value);
-              },
-              then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-            }),
-            dni2: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar un dni')
-          })).strict()
-        }]
-      }]
-    }, // row 3 UBICACION
-    {
+    icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+    bgColorIcon: 'bg-blue-500',
+    bgColorProgress: 'bg-blue-300',
+    titleStep: 'Datos',
+    bodyStep: [{
       widthResponsive: 'lg:flex-row',
       //flex
       // columns
@@ -1319,7 +540,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           name: 'provincia',
           multiple: false,
           closeOnSelect: true,
-          searchable: true,
+          searchable: false,
           placeholder: 'Selecciona una opción',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('provinciaSelect', {
             is: function is(value) {
@@ -1329,7 +550,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: 'select',
+            name: 'provincia',
             evaluate: evaluate
           }).observations
         }, {
@@ -1347,7 +568,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           name: 'departamento',
           multiple: false,
           closeOnSelect: true,
-          searchable: true,
+          searchable: false,
           placeholder: 'Selecciona una opción',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('departamentoSelect', {
             is: function is(value) {
@@ -1357,7 +578,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: 'select',
+            name: 'departamento',
             evaluate: evaluate
           }).observations
         }, {
@@ -1372,7 +593,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           name: 'localidad',
           multiple: false,
           closeOnSelect: true,
-          searchable: true,
+          searchable: false,
           placeholder: 'Selecciona una opción',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('localidadSelect', {
             is: function is(value) {
@@ -1382,7 +603,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: 'select',
+            name: 'localidad',
             evaluate: evaluate
           }).observations
         }]

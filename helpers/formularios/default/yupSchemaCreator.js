@@ -43,3 +43,34 @@ export function createYupSchema(schema, config, evaluate) {
     return schema;
 }
 
+export function createYupStepSchema(schema, config, evaluate) {
+    const action = evaluate;
+
+    for (let indexS = 0; indexS < config.bodyStep.length; indexS++) {
+        for (let index = 0; index < config.bodyStep[indexS].body.length; index++) {
+            const inputs = config.bodyStep[indexS].body[index].inputs;
+
+            for (let index2 = 0; index2 < inputs.length; index2++) {
+                const element = inputs[index2];
+
+                const { name, validations = {} } = element;
+
+                if (!_.isEmpty(element.observation)) {
+                    const observationComment = element.observation.comment;
+                    const observationOptions = element.observation.options[0];
+
+                    schema[observationComment.name] = observationComment.validations;
+                    schema[observationOptions.name] = observationOptions.validations;
+                }
+
+                if (_.isEmpty(validations)) continue;
+
+                schema[name] = validations;
+
+            }
+
+        }
+    }
+// console.log(schema);
+    return schema;
+}

@@ -1,5 +1,6 @@
 
 const TEXT = "text"
+const EMAIL = "email"
 const NUMBER = "number"
 const CHECKBOX = "checkbox"
 const RADIO = "radio"
@@ -14,13 +15,15 @@ const INPUTS_DEFAULT = [
     TEXT,
     NUMBER,
     PASSWORD,
-    RADIO
+    RADIO,
+    EMAIL
 ]
 
 
 export default {
     TEXT,
     CHECKBOX,
+    EMAIL,
     NUMBER,
     SELECT,
     RADIO,
