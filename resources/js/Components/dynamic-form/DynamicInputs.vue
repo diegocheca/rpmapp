@@ -99,8 +99,8 @@
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
-                                    <div v-for="(a, id) in item.elements" :key="id" class="flex flex-col lg:flex-row" >
-                                        <!-- :class="[item.columns, item.columnsResponsive]" -->
+                                    <div v-for="(a, id) in item.elements" :key="id" class="grid gap-4" :class="[item.columns, item.columnsResponsive]">
+                                        <!--  -->
 
                                         <div v-bind="field" v-for="(ele, indexElement2) in a" :key="indexElement2" class="p-4 flex flex-col" :class="[ele.colSpan]">
                                                 <!-- <pre>{{a[indexElement2]}}</pre> -->

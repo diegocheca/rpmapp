@@ -124,18 +124,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _observaciones__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./observaciones */ "./helpers/formularios/EntreRios/observaciones.js");
 /* harmony import */ var _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../enums/inputsTypes */ "./helpers/enums/inputsTypes.js");
 /* harmony import */ var _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../enums/fileAccept */ "./helpers/enums/fileAccept.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
@@ -153,143 +141,253 @@ function getFormSchema(_ref, evaluate, dataForm) {
     // columns
     body: [//  col 1
     {
-      title: 'Datos',
+      title: 'Datos de quien completa este formulario',
       width: 'lg:w-full',
       //flex
       columns: 'grid-cols-1',
       //grid
-      columnsResponsive: 'lg:grid-cols-2',
+      columnsResponsive: 'lg:grid-cols-3',
       //inside card
-      img: '/images/laborales.png',
+      // infoCard: ''
+      // img: '/images/laborales.png',
       inputs: [{
-        label: 'Nombre o razón social',
-        value: schema.nombre_razon_social,
+        label: 'Nombre y apellido',
+        value: schema.nombre,
         type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-        name: 'nombre_razon_social',
+        name: 'nombre',
         validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
-          name: 'nombre_razon_social',
+          name: 'nombre',
           evaluate: evaluate
         }).observations
       }, {
-        label: 'Domicilio',
-        value: schema.domicilio,
-        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-        name: 'domicilio',
+        label: 'DNI',
+        value: schema.dni,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'dni',
         validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
-          name: 'domicilio',
+          name: 'dni',
           evaluate: evaluate
         }).observations
       }, {
-        label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
-        value: schema.nombre_mina,
+        label: 'Cargo en la empresa',
+        value: schema.cargo,
         type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-        name: 'nombre_mina',
+        name: 'cargo',
         validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
-          name: 'nombre_mina',
-          evaluate: evaluate
-        }).observations
-      }, {}, {
-        // inputColsSpan: 'lg:col-span-2',
-        label: 'Certificado de inscripción en AFIP (CUIT)',
-        value: schema.cuit,
-        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.FILE,
-        name: 'cuit',
-        accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value],
-        acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label].join()),
-        maxSize: 'Tamaño maximo por archivo: 10MB',
-        multiple: false,
-        validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
-          name: 'CUIT_SIZE',
-          exclusive: true,
-          message: 'Recuerda que cada archivo no debe superar los 10MB',
-          test: function test(value) {
-            if (!value) return true;
-            var validation = true;
-
-            for (var index = 0; index < value.length; index++) {
-              var element = value[index];
-              validation = validation && element.size <= 10000000; // 10MB
-            }
-
-            return validation; // !value || (value && value.size <= 10)
-          }
-        }).test({
-          name: 'CUIT_FILE_FORMAT',
-          exclusive: true,
-          message: 'Hay archivos con extensiones no válidas',
-          test: function test(value) {
-            if (!value) return true;
-            var validation = true;
-
-            for (var index = 0; index < value.length; index++) {
-              var element = value[index];
-              validation = validation && _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value).includes(element.type);
-            }
-
-            return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-          }
-        }),
-        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-          schema: schema,
-          name: 'cuit',
-          evaluate: evaluate
-        }).observations
-      }, {
-        // inputColsSpan: 'lg:col-span-2',
-        label: 'Copia escritura del inmueble',
-        helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
-        value: schema.escritura,
-        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.FILE,
-        name: 'escritura',
-        accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.value],
-        acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.label].join()),
-        maxSize: 'Tamaño maximo por archivo: 10MB',
-        multiple: true,
-        validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(2, 'Solo puedes adjuntar hasta 2 archivo').test({
-          name: 'ESCRITURA_FILE_SIZE',
-          exclusive: true,
-          message: 'Recuerda que cada archivo no debe superar los 10MB',
-          test: function test(value) {
-            if (!value) return true;
-            var validation = true;
-
-            for (var index = 0; index < value.length; index++) {
-              var element = value[index];
-              validation = validation && element.size <= 10000000; // 10MB
-            }
-
-            return validation; // !value || (value && value.size <= 10)
-          }
-        }).test({
-          name: 'ESCRITURA_FILE_FORMAT',
-          exclusive: true,
-          message: 'Hay archivos con extensiones no válidas',
-          test: function test(value) {
-            if (!value) return true;
-            var validation = true;
-
-            for (var index = 0; index < value.length; index++) {
-              var element = value[index];
-              validation = validation && [].concat(_toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value), _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.value)).includes(element.type);
-            }
-
-            return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-          }
-        }),
-        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-          schema: schema,
-          name: 'escritura',
+          name: 'cargo',
           evaluate: evaluate
         }).observations
       }]
     }]
   }, // row 2
+  {
+    widthResponsive: 'lg:flex-row',
+    //flex
+    // columns
+    body: [//  col 1
+    {
+      title: 'Mercado (indicar en que mercados vende su producción)',
+      width: 'lg:w-full',
+      //flex
+      columns: 'grid-cols-1',
+      //grid
+      columnsResponsive: '',
+      //inside card
+      // infoCard: ''
+      // img: '/images/laborales.png',
+      inputs: [{
+        label: 'Porcentaje vendido a Provincia',
+        value: schema.porcentaje_venta_provincia,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'porcentaje_venta_provincia',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'porcentaje_venta_provincia',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Porcentaje vendido a otras Provincias',
+        value: schema.porcentaje_venta_otras_provincias,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'porcentaje_venta_otras_provincias',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'porcentaje_venta_otras_provincias',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Porcentaje Exportado',
+        value: schema.porcentaje_exportado,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'porcentaje_exportado',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'porcentaje_exportado',
+          evaluate: evaluate
+        }).observations
+      }]
+    }, {
+      title: 'Mercado (indicar en que mercados vende su producción)',
+      width: 'lg:w-full',
+      //flex
+      columns: 'grid-cols-1',
+      //grid
+      columnsResponsive: '',
+      //inside card
+      // infoCard: ''
+      // img: '/images/laborales.png',
+      inputs: [{
+        label: 'Prospección',
+        value: schema.prospeccion ? true : false,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.CHECKBOX,
+        name: 'prospeccion',
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'prospeccion',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Explotación',
+        value: schema.explotacion ? true : false,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.CHECKBOX,
+        name: 'explotacion',
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'explotación',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Desarrollo',
+        value: schema.desarrollo ? true : false,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.CHECKBOX,
+        name: 'desarrollo',
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'desarrollo',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Exploración',
+        value: schema.explotacion ? true : false,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.CHECKBOX,
+        name: 'exploracion',
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'exploracion',
+          evaluate: evaluate
+        }).observations
+      }]
+    }]
+  }, //  row 3
+  {
+    widthResponsive: 'flex-row',
+    body: [//  col 1
+    {
+      title: 'Personal ocupado',
+      width: '',
+      columns: 'grid-cols-1',
+      columnsResponsive: 'lg:grid-cols-3',
+      img: '/images/laborales.png',
+      inputs: [{
+        label: 'Profesional Técnico Permanente',
+        value: schema.personal_perm_profesional,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'personal_perm_profesional',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'personal_perm_profesional',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Operarios y Obreros Permanente',
+        value: schema.personal_perm_operarios,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'personal_perm_operarios',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'personal_perm_operarios',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Administrativo Permanente',
+        value: schema.personal_perm_administrativos,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'personal_perm_administrativos',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'personal_perm_administrativos',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Otros Permanente',
+        value: schema.personal_perm_otros,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'personal_perm_otros',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'personal_perm_otros',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Profesional Transitorio',
+        value: schema.personal_trans_profesional,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'personal_trans_profesional',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'personal_trans_profesional',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Operarios y Obreros Transitorio',
+        value: schema.personal_trans_operarios,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'personal_trans_operarios',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'personal_trans_operarios',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Administrativo Transitorio',
+        value: schema.personal_trans_administrativos,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'personal_trans_administrativos',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'personal_trans_administrativos',
+          evaluate: evaluate
+        }).observations
+      }, {
+        label: 'Otros Transitorio',
+        value: schema.personal_trans_otros,
+        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+        name: 'personal_trans_otros',
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
+        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'personal_trans_otros',
+          evaluate: evaluate
+        }).observations
+      }]
+    }]
+  }, // row 4
   {
     widthResponsive: 'flex-row',
     //flex
@@ -299,18 +397,16 @@ function getFormSchema(_ref, evaluate, dataForm) {
       title: 'Sustancias minerales que insuatralizan',
       width: '',
       //flex
-      columns: 'grid-cols-1',
-      //grid
-      columnsResponsive: '',
-      //inside card
+      // columns: '', //grid
+      // columnsResponsive: '', //inside card
       img: '/images/laborales.png',
       inputs: [{
         label: 'List',
         type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.LIST,
         name: 'List',
-        // columns: 'grid-cols-1',
+        columns: 'grid-cols-1',
         // colSpans + 1
-        // columnsResponsive: 'lg:w-2/5',
+        columnsResponsive: 'lg:grid-cols-3',
         childrens: [// default value,
         [{
           name: 'sustanceSelect',
@@ -321,12 +417,30 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, {
           name: 'dni',
           value: null
+        }, {
+          name: 'produccion',
+          value: null
+        }, {
+          name: 'unidades',
+          value: null
+        }, {
+          name: 'precio_venta',
+          value: null
+        }, {
+          name: 'empresa_compradora',
+          value: null
+        }, {
+          name: 'direccion_empresa_compradora',
+          value: null
+        }, {
+          name: 'actividad_empresa_compradora',
+          value: null
         }]],
         elements: [[{
           label: 'Sustancia',
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          colSpan: 'lg:w-2/5',
+          colSpan: '',
           options: [{
             label: 'Sustancias de aprovechamiento común',
             value: 'aprovechamiento_comun'
@@ -415,7 +529,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           label: 'Mineral Explotado',
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          colSpan: 'lg:w-2/5',
+          colSpan: '',
           options: [],
           name: 'mineralSelect',
           inputDepends: [],
@@ -428,12 +542,55 @@ function getFormSchema(_ref, evaluate, dataForm) {
           // }),
           placeholder: 'Selecciona una opción'
         }, {
-          label: 'DNI',
-          value: schema.dni,
+          label: 'Producción',
+          value: schema.produccion,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
-          colSpan: 'lg:w-1/5',
-          name: 'dni2' // validations: yup.string().required('Debes ingresar un dni'),
-
+          name: 'produccion',
+          colSpan: ''
+        }, {
+          label: 'Unidades',
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          colSpan: '',
+          options: [{
+            label: 'toneladas',
+            value: 'toneladas'
+          }, {
+            label: 'mts 3',
+            value: 'mts 3'
+          }, {
+            label: 'otros',
+            value: 'otros'
+          }],
+          name: 'unidades',
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: 'Selecciona una opción'
+        }, {
+          label: 'Precio de Venta (en $)',
+          value: '',
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          name: 'precio_venta',
+          colSpan: ''
+        }, {
+          label: 'Empresa compradora',
+          value: '',
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: 'empresa_compradora',
+          colSpan: ''
+        }, {
+          label: 'Dirección empresa campradora',
+          value: '',
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: 'direccion_empresa_compradora',
+          colSpan: ''
+        }, {
+          label: 'Actividad empresa campradora',
+          value: '',
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: 'actividad_empresa_compradora',
+          colSpan: ''
         }, {
           colSpan: 'lg:w-5/5',
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
@@ -455,106 +612,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
             },
             then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
-          dni2: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar un dni')
+          produccion: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
+          unidades: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
+            is: function is(value) {
+              return _.isEmpty(value);
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+          }),
+          precio_venta: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
+          empresa_compradora: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
+          direccion_empresa_compradora: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
+          actividad_empresa_compradora: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo')
         })).strict()
-      }]
-    }]
-  }, // row 3 UBICACION
-  {
-    widthResponsive: 'lg:flex-row',
-    //flex
-    // columns
-    body: [//  col 1
-    {
-      title: 'Ubicación',
-      width: 'lg:w-full',
-      //flex
-      columns: 'grid-cols-1',
-      //grid
-      columnsResponsive: 'lg:grid-cols-2',
-      //inside card
-      img: '/images/laborales.png',
-      inputs: [{
-        label: 'Provincia',
-        value: {},
-        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-        // get axios
-        async: true,
-        asyncUrl: '/paises/departamentos',
-        inputDepends: ['departamento'],
-        inputClearDepends: ['departamento', 'localidad'],
-        // isLoading: false,
-        //
-        options: dataForm.provincia,
-        name: 'provincia',
-        multiple: false,
-        closeOnSelect: true,
-        searchable: true,
-        placeholder: 'Selecciona una opción',
-        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('provinciaSelect', {
-          is: function is(value) {
-            return _.isEmpty(value) || !value;
-          },
-          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-        }),
-        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-          schema: schema,
-          name: 'select',
-          evaluate: evaluate
-        }).observations
-      }, {
-        label: 'Departamento',
-        value: {},
-        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-        // get axios
-        async: true,
-        asyncUrl: '/paises/localidades',
-        inputDepends: ['localidad'],
-        inputClearDepends: ['localidad'],
-        isLoading: false,
-        //
-        options: [],
-        name: 'departamento',
-        multiple: false,
-        closeOnSelect: true,
-        searchable: true,
-        placeholder: 'Selecciona una opción',
-        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('departamentoSelect', {
-          is: function is(value) {
-            return _.isEmpty(value) || !value;
-          },
-          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-        }),
-        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-          schema: schema,
-          name: 'select',
-          evaluate: evaluate
-        }).observations
-      }, {
-        label: 'Localidad',
-        value: {},
-        type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-        // get axios
-        async: true,
-        isLoading: false,
-        //
-        options: [],
-        name: 'localidad',
-        multiple: false,
-        closeOnSelect: true,
-        searchable: true,
-        placeholder: 'Selecciona una opción',
-        validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('localidadSelect', {
-          is: function is(value) {
-            return _.isEmpty(value) || !value;
-          },
-          then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-        }),
-        observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-          schema: schema,
-          name: 'select',
-          evaluate: evaluate
-        }).observations
       }]
     }]
   }];

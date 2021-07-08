@@ -38,7 +38,7 @@
         </div>
 
 
-        <div  class="flex justify-center pt-9">
+        <div  class="flex justify-center py-9">
             <button v-if="!isSubmit" type="submit" class=" bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" >{{buttomLabel}}</button>
             <button v-if="isSubmit" type="button" class="flex bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" :disabled="disableSave">
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -170,13 +170,14 @@ export default {
 
             let response;
             let formData = new FormData();
-
+            let isFile = false;
             for ( var key in values ) {
                 if( Array.isArray(values[key])) {
                     for (let index = 0; index < values[key].length; index++) {
                         if(!values[key][index] instanceof File) continue;
                         const element = values[key][index];
-                        formData.append(key, element);
+                        formData.append(key+'_'+index, element);
+                        isFile = true;
                     }
                 }
 
@@ -184,7 +185,7 @@ export default {
 
             this.isSubmit = true;
             try {
-                // if(!_.isEmpty(formData)) {
+                if(isFile) {
                     response = await axios.post(this.$props.saveFileUrl, formData, {
                         onUploadProgress: function( progressEvent ) {
                             this.progressUpload = parseInt( Math.round( ( progressEvent.loaded / progressEvent.total ) * 100 ))
@@ -192,12 +193,12 @@ export default {
                         }.bind(this)
                     });
 
-                // }
+                    for ( var key2 in response.data ) {
+                        values[key2] = response.data[key2];
+                    }
+                }
                 if(this.$props.action == "create") {
-
-
-
-                    // this.$inertia.post(route(this.$props.saveUrl), formData);
+                    this.$inertia.post(route(this.$props.saveUrl), values);
                 } else if(this.$props.action == "update") {
                     response = await axios.put(this.$props.saveUrl, {
                         params: {

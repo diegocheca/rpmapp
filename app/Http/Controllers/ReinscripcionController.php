@@ -63,34 +63,10 @@ class ReinscripcionController extends Controller
     public function store(Request $request)
     {
         //
-        die("ACA ESTOY");
-        dd($request->id_mina);
-        $request->validate([
-                'id_mina',
-                'id_productor',
-                'fecha_vto',
-                'prospeccion',
-                'exploracion',
-                'explotacion',
-                'desarrollo',
-                'cantidad_productos',
-                'porcentaje_venta_provincia',
-                'porcentaje_venta_otras_provincias',
-                'porcentaje_exportado',
-                'personal_perm_profesional',
-                'personal_perm_operarios',
-                'personal_perm_administrativos',
-                'personal_perm_otros',
-                'personal_trans_profesional',
-                'personal_trans_operarios',
-                'personal_trans_administrativos',
-                'personal_trans_otros',
-                'nombre',
-                'dni',
-                'cargo',
-                'created_by',
-                'estado',
-        ]);
+        dd($request->all());
+        die;
+        // dd($request->id_mina);
+
         Reinscripciones::create($request->all());
 
         return Redirect::route('reinscripciones.index');
@@ -120,13 +96,13 @@ class ReinscripcionController extends Controller
         $provinces = CountriesController::getProvinces();
 
         return Inertia::render('Reinscripciones/Form', [
-            'action' => "create",
-            'saveUrl' => "reinscripciones.store",
+            'action' => "edit",
+            'saveUrl' => "reinscripciones.update",
             'saveFileUrl' => "/reinscripciones/upload",
             'province' => env('PROVINCE', '')."/reinscripciones",
             'folder' => 'reinscripciones',
             'reinscripcion' => $reinscripcion,
-            'titleForm' => 'Crear reinscripciones',
+            'titleForm' => 'Editar reinscripciones',
             'evaluate' => false,
             'provincia' => $provinces
         ]);
@@ -271,13 +247,15 @@ class ReinscripcionController extends Controller
         //     'cuit'
         // ]);
 
+        //dd($request->files->all());
         $files = $request->files->all();
         $filePaths = [];
         foreach($files as $key => $file){
             $uploadedFile = $file->getClientOriginalName();
             $fileName = $key."-".time().$uploadedFile;
             $filePath = $request->file($key)->storeAs(env('PROVINCE', '')."/reinscripciones", $fileName, 'public');
-            array_push($filePaths, $filePath);
+            $filePaths[$key] = $filePath;
+            // array_push($filePaths, [$key => $filePath]);
         }
 
         return response()->json($filePaths);
