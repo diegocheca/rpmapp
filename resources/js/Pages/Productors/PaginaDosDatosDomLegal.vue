@@ -45,7 +45,10 @@
                     :updated_at="'hace 10 minutos'"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                    :ayuda="ayuda_legal"
+                    v-on:changevalorayuda="update_valor_ayuda_local_legal($event)"
                 ></CardDomLegal>
+
 
                 <CardDomAdmin v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Administrativo'"
                     :progreso="50"
@@ -55,6 +58,8 @@
                     :updated_at="'hace 10 minutos'"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                    :ayuda="ayuda_administrativo"
+                    v-on:changevalorayuda="update_valor_ayuda_local_admi($event)"
                 ></CardDomAdmin>
             </div>
             <br>
@@ -76,6 +81,44 @@
                         v-on:changeobsnombrecallevalido="update_obs_nombre_calle_validacion($event)"
                         v-on:changevalornombrecalle="update_valor_nombre_calle($event)"
                     ></InputNombreCalle>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -105,6 +148,44 @@
                         v-on:changevalornumlegal="update_valor_num_legal($event)"
                     >
                     </InputNumeroCalle>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans"  v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex">
@@ -139,6 +220,44 @@
                         v-on:changevalortellegal="update_valor_tel_legal($event)"
                     >
                     </InputTelefono>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -192,6 +311,44 @@
 
                     >
                     </SelectProvincia>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -224,6 +381,44 @@
                         v-on:changevalordptolegal="update_valor_dpto_legal_num_legal($event)"
                     >
                     </SelectDepartamento>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -253,6 +448,44 @@
                         v-on:changevalorlocalidadlegal="update_valor_localidad_legal_num_legal($event)"
                     >
                     </InputLocalidad>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -285,6 +518,44 @@
 
                     >
                     </InputCP>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -315,6 +586,44 @@
 
                     >
                     </InputOtro>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -500,6 +809,8 @@ export default {
         modal_body:'',
         mostrar_testing:false,
         autoridad_minera: false,
+        ayuda_legal: false,
+        ayuda_administrativo: false,
         form_pagina: {
 
             leal_calle : this.$props.leal_calle,
@@ -801,15 +1112,14 @@ export default {
         },
 
 
-
-
-
-
-
-
-
-        
-  }
-  
+        //mostrar ayuda
+        update_valor_ayuda_local_legal(newValor){
+            this.ayuda_legal = newValor;
+        },
+         //mostrar ayuda
+        update_valor_ayuda_local_admi(newValor){
+            this.ayuda_administrativo = newValor;
+        },
+    }
 };
 </script>

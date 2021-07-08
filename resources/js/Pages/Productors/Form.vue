@@ -15,19 +15,19 @@
 					<br>
 					<!-- Delete Account Confirmation Modal -->
 					<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
-							<template #title>
-									{{modal_tittle}}
-							</template>
-							<template #content>
-									{{modal_body}}
-									
-							</template>
-							<template #footer>
-									<button @click="closeModal">
-											Ok
-									</button>
-									
-							</template>
+						<template #title>
+								{{modal_tittle}}
+						</template>
+						<template #content>
+								{{modal_body}}
+								
+						</template>
+						<template #footer>
+								<button @click="closeModal">
+										Ok
+								</button>
+								
+						</template>
 					</jet-dialog-modal>
 					<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
 					<div id="inicio"></div>
@@ -133,7 +133,7 @@
 					:link_volver="route('formulario-alta.index')"
 					:titulo_boton_volver="'volver'"
 					:titulo_boton_guardar="'Guardar Datos del Productor'"
-					:titulo_pagina="'Pagina datos de Productor'"
+					:titulo_pagina="'Página datos de Productor'"
 
 					:razon_social="form.razon_social" 
 					:razon_social_valido="form.razon_social_valido"

@@ -42,6 +42,8 @@
                     :updated_at="'hace 10 minutos'"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                    :ayuda="ayuda_local"
+                    v-on:changevalorayuda="update_valor_ayuda_local($event)"
                 ></CardMinaUno>
             </div>
             <br>
@@ -79,6 +81,26 @@
                         v-on:changevalor="updatevalor_num_exp($event)"
                     >
                     </NombreMina>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+
                     <div class="flex" v-if="mostrar_testing">
                         <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
                         <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
@@ -121,6 +143,25 @@
                         v-on:changevalor="update_distrito_minero($event)"
                     >
                     </NombreMina>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         <br> distrito minero de Mina valor padre: {{form_pagina.distrito_minero}}
                         <br> distrito minero de Mina  valido del padre: {{form_pagina.distrito_minero_validacion}}
@@ -151,6 +192,25 @@
                         v-on:changevalor="update_valor_nom_mina_($event)"
                     >
                     </NombreMina>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         <br> Nombre de Mina valor padre: {{form_pagina.nombre_mina}}
                         <br> Nombre de Mina  valido del padre: {{form_pagina.nombre_mina_validacion}}
@@ -179,6 +239,25 @@
                         v-on:changevalor="update_valor_cat($event)"
                     >
                     </SelectGenerico>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
                         <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
@@ -208,6 +287,25 @@
                     v-on:changevalor="update_valor_descripcion($event)"
                 >
                 </NombreMina>
+                <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                 <div class="flex" v-if="mostrar_testing">
                     <br> Nombre de Mina valor padre: {{form_pagina.descripcion_mina}}
                     <br> Nombre de Mina  valido del padre: {{form_pagina.descripcion_mina_validacion}}
@@ -237,6 +335,25 @@
 
                 >
                 </InputFileGenerico>
+                <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                 <div class="flex" v-if="mostrar_testing">
                     <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
                     <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
@@ -266,6 +383,25 @@
 
                     >
                     </InputFileGenerico>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
                         -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
@@ -296,6 +432,25 @@
                         v-on:changevalor="update_valor_titulo_contrato($event)"
                     >
                     </InputFileGenerico>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
                         -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
@@ -327,6 +482,25 @@
                         v-on:changevalor_lista_minerales="update_valor_minerales($event)"
                     >
                     </ListadeMinerales>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         <h3>Testing de lista de minerales</h3>
                         -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
@@ -515,6 +689,7 @@ export default {
         modal_body:'',
         mostrar_testing: false,
         autoridad_minera: false,
+        ayuda_local: false,
         lista_de_minerales:[],
 
         
@@ -809,6 +984,12 @@ export default {
             console.log("traje un"+newValue);
             this.form_pagina.titulo_contrato_posecion = newValue;
             //tengo que enviarsela al padre
+        },
+
+
+        //mostrar ayuda
+        update_valor_ayuda_local(newValor){
+            this.ayuda_local = newValor;
         },
 
 

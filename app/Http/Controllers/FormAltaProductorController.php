@@ -38,309 +38,309 @@ use Illuminate\Http\UploadedFile;
 class FormAltaProductorController extends Controller
 {
 
-		protected $tipo_productor;
-        protected $cuit;
-        protected $cuit_correcto;
-        protected $obs_cuit;
-        protected $razonsocial;
-        protected $razon_social_correcto;
-        protected $obs_razon_social;
-        protected $numeroproductor;
-        protected $numeroproductor_correcto;
-        protected $obs_numeroproductor;
-        protected $email;
-        protected $email_correcto;
-        protected $obs_email;
-        protected $tiposociedad;
-        protected $tiposociedad_correcto;
-        protected $obs_tiposociedad;
-        protected $inscripciondgr;
-        protected $inscripciondgr_correcto;
-        protected $obs_inscripciondgr;
-        protected $constaciasociedad;
-        protected $constaciasociedad_correcto;
-        protected $obs_constaciasociedad;
-        protected $paso_1_progreso;
-        protected $paso_1_aprobado;
-        protected $paso_1_reprobado;
-        protected $leal_calle;
-        protected $leal_numero;
-        protected $leal_telefono;
-        protected $leal_pais;
-        protected $leal_provincia;
-        protected $leal_departamento;
-        protected $leal_localidad;
-        protected $leal_cp;
-        protected $leal_otro;
-        protected $administracion_calle;
-        protected $administracion_numero;
-        protected $administracion_telefono;
-        protected $administracion_pais;
-        protected $administracion_provincia;
-        protected $administracion_departamento;
-        protected $administracion_localidad;
-        protected $administracion_cp;
-        protected $administracion_otro;
-        protected $numero_expdiente;
-        protected $categoria;
-        protected $nombre_mina;
-        protected $descripcion_mina;
-        protected $distrito_minero;
-        protected $mina_cantera;
-        protected $plano_inmueble;
-        protected $minerales_variedad;
-        protected $owner;
-        protected $arrendatario;
-        protected $concesionario;
-        protected $otros;
-        protected $titulo_contrato_posecion;
-        protected $resolucion_concesion_minera;
-        protected $constancia_pago_canon;
-        protected $iia;
-        protected $dia;
-        protected $acciones_a_desarrollar;
-        protected $actividad;
-        protected $fecha_alta_dia;
-        protected $fecha_vencimiento_dia;
-        protected $localidad_mina_pais;
-        protected $localidad_mina_provincia;
-        protected $localidad_mina_departamento;
-        protected $localidad_mina_localidad;
-        protected $tipo_sistema;
-        protected $longitud;
-        protected $latitud;
-        protected $created_by;
-        protected $estado;
-        protected $tipo_tramite;
-        protected $updated_by;
-        protected $updated_paso_uno;
-        protected $updated_paso_dos;
-        protected $leal_calle_correcto;
-        protected $obs_leal_calle;
-        protected $leal_numero_correcto;
-        protected $obs_leal_numero;
-        protected $leal_telefono_correcto;
-        protected $obs_leal_telefono;
-        protected $leal_provincia_correcto;
-        protected $obs_leal_provincia;
-        protected $leal_departamento_correcto;
-        protected $obs_leal_departamento;
-        protected $leal_localidad_correcto;
-        protected $obs_leal_localidad;
-        protected $leal_cp_correcto;
-        protected $obs_leal_cp;
-        protected $leal_otro_correcto;
-        protected $obs_leal_otro;
-        protected $paso_2_progreso;
-        protected $paso_2_aprobado;
-        protected $paso_2_reprobado;
-        protected $administracion_calle_correcto;
-        protected $obs_administracion_calle;
-        protected $administracion_numero_correcto;
-        protected $obs_administracion_numero;
-        protected $administracion_telefono_correcto;
-        protected $obs_administracion_telefono;
-        protected $administracion_provincia_correcto;
-        protected $obs_administracion_provincia;
-        protected $administracion_departamento_correcto;
-        protected $obs_administracion_departamento;
-        protected $administracion_localidad_correcto;
-        protected $obs_administracion_localidad;
-        protected $administracion_cp_correcto;
-        protected $obs_administracion_cp;
-        protected $administracion_otro_correcto;
-        protected $obs_administracion_otro;
-        protected $paso_3_progreso;
-        protected $paso_3_aprobado;
-        protected $paso_3_reprobado;
-        protected $numero_expdiente_correcto;
-        protected $obs_numero_expdiente;
-        protected $categoria_correcto;
-        protected $obs_categoria;
-        protected $nombre_mina_correcto;
-        protected $obs_nombre_mina;
-        protected $descripcion_mina_correcto;
-        protected $obs_descripcion_mina;
-        protected $obs_distrito_minero;
-        protected $distrito_minero_correcto;
-        protected $mina_cantera_correcto;
-        protected $obs_mina_cantera;
-        protected $plano_inmueble_correcto;
-        protected $obs_plano_inmueble;
-        protected $obs_resolucion_concesion_minera;
-        protected $resolucion_concesion_minera_correcto;
-        protected $titulo_contrato_posecion_correcto;
-        protected $obs_titulo_contrato_posecion;
-        protected $paso_4_progreso;
-        protected $paso_4_aprobado;
-        protected $paso_4_reprobado;
-        protected $updated_paso_cuatro;
-        protected $updated_paso_tres;
-        protected $otro_caracter_acalaracion;
-        protected $concesion_minera_acalracion;
-        protected $owner_correcto;
-        protected $obs_owner;
-        protected $arrendatario_correcto;
-        protected $obs_arrendatario;
-        protected $concesionario_correcto;
-        protected $obs_concesionario;
-        protected $otros_correcto;
-        protected $obs_otros;
-        protected $sustancias_de_aprovechamiento_comun_correcto;
-        protected $obs_sustancias_de_aprovechamiento_comun_correcto;
+		public $tipo_productor;
+        public $cuit;
+        public $cuit_correcto;
+        public $obs_cuit;
+        public $razonsocial;
+        public $razon_social_correcto;
+        public $obs_razon_social;
+        public $numeroproductor;
+        public $numeroproductor_correcto;
+        public $obs_numeroproductor;
+        public $email;
+        public $email_correcto;
+        public $obs_email;
+        public $tiposociedad;
+        public $tiposociedad_correcto;
+        public $obs_tiposociedad;
+        public $inscripciondgr;
+        public $inscripciondgr_correcto;
+        public $obs_inscripciondgr;
+        public $constaciasociedad;
+        public $constaciasociedad_correcto;
+        public $obs_constaciasociedad;
+        public $paso_1_progreso;
+        public $paso_1_aprobado;
+        public $paso_1_reprobado;
+        public $leal_calle;
+        public $leal_numero;
+        public $leal_telefono;
+        public $leal_pais;
+        public $leal_provincia;
+        public $leal_departamento;
+        public $leal_localidad;
+        public $leal_cp;
+        public $leal_otro;
+        public $administracion_calle;
+        public $administracion_numero;
+        public $administracion_telefono;
+        public $administracion_pais;
+        public $administracion_provincia;
+        public $administracion_departamento;
+        public $administracion_localidad;
+        public $administracion_cp;
+        public $administracion_otro;
+        public $numero_expdiente;
+        public $categoria;
+        public $nombre_mina;
+        public $descripcion_mina;
+        public $distrito_minero;
+        public $mina_cantera;
+        public $plano_inmueble;
+        public $minerales_variedad;
+        public $owner;
+        public $arrendatario;
+        public $concesionario;
+        public $otros;
+        public $titulo_contrato_posecion;
+        public $resolucion_concesion_minera;
+        public $constancia_pago_canon;
+        public $iia;
+        public $dia;
+        public $acciones_a_desarrollar;
+        public $actividad;
+        public $fecha_alta_dia;
+        public $fecha_vencimiento_dia;
+        public $localidad_mina_pais;
+        public $localidad_mina_provincia;
+        public $localidad_mina_departamento;
+        public $localidad_mina_localidad;
+        public $tipo_sistema;
+        public $longitud;
+        public $latitud;
+        public $created_by;
+        public $estado;
+        public $tipo_tramite;
+        public $updated_by;
+        public $updated_paso_uno;
+        public $updated_paso_dos;
+        public $leal_calle_correcto;
+        public $obs_leal_calle;
+        public $leal_numero_correcto;
+        public $obs_leal_numero;
+        public $leal_telefono_correcto;
+        public $obs_leal_telefono;
+        public $leal_provincia_correcto;
+        public $obs_leal_provincia;
+        public $leal_departamento_correcto;
+        public $obs_leal_departamento;
+        public $leal_localidad_correcto;
+        public $obs_leal_localidad;
+        public $leal_cp_correcto;
+        public $obs_leal_cp;
+        public $leal_otro_correcto;
+        public $obs_leal_otro;
+        public $paso_2_progreso;
+        public $paso_2_aprobado;
+        public $paso_2_reprobado;
+        public $administracion_calle_correcto;
+        public $obs_administracion_calle;
+        public $administracion_numero_correcto;
+        public $obs_administracion_numero;
+        public $administracion_telefono_correcto;
+        public $obs_administracion_telefono;
+        public $administracion_provincia_correcto;
+        public $obs_administracion_provincia;
+        public $administracion_departamento_correcto;
+        public $obs_administracion_departamento;
+        public $administracion_localidad_correcto;
+        public $obs_administracion_localidad;
+        public $administracion_cp_correcto;
+        public $obs_administracion_cp;
+        public $administracion_otro_correcto;
+        public $obs_administracion_otro;
+        public $paso_3_progreso;
+        public $paso_3_aprobado;
+        public $paso_3_reprobado;
+        public $numero_expdiente_correcto;
+        public $obs_numero_expdiente;
+        public $categoria_correcto;
+        public $obs_categoria;
+        public $nombre_mina_correcto;
+        public $obs_nombre_mina;
+        public $descripcion_mina_correcto;
+        public $obs_descripcion_mina;
+        public $obs_distrito_minero;
+        public $distrito_minero_correcto;
+        public $mina_cantera_correcto;
+        public $obs_mina_cantera;
+        public $plano_inmueble_correcto;
+        public $obs_plano_inmueble;
+        public $obs_resolucion_concesion_minera;
+        public $resolucion_concesion_minera_correcto;
+        public $titulo_contrato_posecion_correcto;
+        public $obs_titulo_contrato_posecion;
+        public $paso_4_progreso;
+        public $paso_4_aprobado;
+        public $paso_4_reprobado;
+        public $updated_paso_cuatro;
+        public $updated_paso_tres;
+        public $otro_caracter_acalaracion;
+        public $concesion_minera_acalracion;
+        public $owner_correcto;
+        public $obs_owner;
+        public $arrendatario_correcto;
+        public $obs_arrendatario;
+        public $concesionario_correcto;
+        public $obs_concesionario;
+        public $otros_correcto;
+        public $obs_otros;
+        public $sustancias_de_aprovechamiento_comun_correcto;
+        public $obs_sustancias_de_aprovechamiento_comun_correcto;
 
 	public function __construct(
-			$id,
-			$tipo_productor,
-			$cuit,
-			$cuit_correcto,
-			$obs_cuit,
-			$razonsocial,
-			$razon_social_correcto,
-			$obs_razon_social,
-			$numeroproductor,
-			$numeroproductor_correcto,
-			$obs_numeroproductor,
-			$email,
-			$email_correcto,
-			$obs_email,
-			$tiposociedad,
-			$tiposociedad_correcto,
-			$obs_tiposociedad,
-			$inscripciondgr,
-			$inscripciondgr_correcto,
-			$obs_inscripciondgr,
-			$constaciasociedad,
-			$constaciasociedad_correcto,
-			$obs_constaciasociedad,
-			$paso_1_progreso,
-			$paso_1_aprobado,
-			$paso_1_reprobado,
-			$leal_calle,
-			$leal_numero,
-			$leal_telefono,
-			$leal_pais,
-			$leal_provincia,
-			$leal_departamento,
-			$leal_localidad,
-			$leal_cp,
-			$leal_otro,
-			$administracion_calle,
-			$administracion_numero,
-			$administracion_telefono,
-			$administracion_pais,
-			$administracion_provincia,
-			$administracion_departamento,
-			$administracion_localidad,
-			$administracion_cp,
-			$administracion_otro,
-			$numero_expdiente,
-			$categoria,
-			$nombre_mina,
-			$descripcion_mina,
-			$distrito_minero,
-			$mina_cantera,
-			$plano_inmueble,
-			$minerales_variedad,
-			$owner,
-			$arrendatario,
-			$concesionario,
-			$otros,
-			$titulo_contrato_posecion,
-			$resolucion_concesion_minera,
-			$constancia_pago_canon,
-			$iia,
-			$dia,
-			$acciones_a_desarrollar,
-			$actividad,
-			$fecha_alta_dia,
-			$fecha_vencimiento_dia,
-			$localidad_mina_pais,
-			$localidad_mina_provincia,
-			$localidad_mina_departamento,
-			$localidad_mina_localidad,
-			$tipo_sistema,
-			$longitud,
-			$latitud,
-			$created_by,
-			$estado,
-			$tipo_tramite,
-			$updated_by,
-			$updated_paso_uno,
-			$updated_paso_dos,
-			$leal_calle_correcto,
-			$obs_leal_calle,
-			$leal_numero_correcto,
-			$obs_leal_numero,
-			$leal_telefono_correcto,
-			$obs_leal_telefono,
-			$leal_provincia_correcto,
-			$obs_leal_provincia,
-			$leal_departamento_correcto,
-			$obs_leal_departamento,
-			$leal_localidad_correcto,
-			$obs_leal_localidad,
-			$leal_cp_correcto,
-			$obs_leal_cp,
-			$leal_otro_correcto,
-			$obs_leal_otro,
-			$paso_2_progreso,
-			$paso_2_aprobado,
-			$paso_2_reprobado,
-			$administracion_calle_correcto,
-			$obs_administracion_calle,
-			$administracion_numero_correcto,
-			$obs_administracion_numero,
-			$administracion_telefono_correcto,
-			$obs_administracion_telefono,
-			$administracion_provincia_correcto,
-			$obs_administracion_provincia,
-			$administracion_departamento_correcto,
-			$obs_administracion_departamento,
-			$administracion_localidad_correcto,
-			$obs_administracion_localidad,
-			$administracion_cp_correcto,
-			$obs_administracion_cp,
-			$administracion_otro_correcto,
-			$obs_administracion_otro,
-			$paso_3_progreso,
-			$paso_3_aprobado,
-			$paso_3_reprobado,
-			$numero_expdiente_correcto,
-			$obs_numero_expdiente,
-			$categoria_correcto,
-			$obs_categoria,
-			$nombre_mina_correcto,
-			$obs_nombre_mina,
-			$descripcion_mina_correcto,
-			$obs_descripcion_mina,
-			$obs_distrito_minero,
-			$distrito_minero_correcto,
-			$mina_cantera_correcto,
-			$obs_mina_cantera,
-			$plano_inmueble_correcto,
-			$obs_plano_inmueble,
-			$obs_resolucion_concesion_minera,
-			$resolucion_concesion_minera_correcto,
-			$titulo_contrato_posecion_correcto,
-			$obs_titulo_contrato_posecion,
-			$paso_4_progreso,
-			$paso_4_aprobado,
-			$paso_4_reprobado,
-			$updated_paso_cuatro,
-			$updated_paso_tres,
-			$otro_caracter_acalaracion,
-			$concesion_minera_acalracion,
-			$owner_correcto,
-			$obs_owner,
-			$arrendatario_correcto,
-			$obs_arrendatario,
-			$concesionario_correcto,
-			$obs_concesionario,
-			$otros_correcto,
-			$obs_otros,
-			$sustancias_de_aprovechamiento_comun_correcto,
-			$obs_sustancias_de_aprovechamiento_comun_correcto
+			$id = null,
+			$tipo_productor = null,
+			$cuit = null,
+			$cuit_correcto = null,
+			$obs_cuit = null,
+			$razonsocial = null,
+			$razon_social_correcto = null,
+			$obs_razon_social = null,
+			$numeroproductor = null,
+			$numeroproductor_correcto = null,
+			$obs_numeroproductor = null,
+			$email = null,
+			$email_correcto = null,
+			$obs_email = null,
+			$tiposociedad = null,
+			$tiposociedad_correcto = null,
+			$obs_tiposociedad = null,
+			$inscripciondgr = null,
+			$inscripciondgr_correcto = null,
+			$obs_inscripciondgr = null,
+			$constaciasociedad = null,
+			$constaciasociedad_correcto = null,
+			$obs_constaciasociedad = null,
+			$paso_1_progreso = null,
+			$paso_1_aprobado = null,
+			$paso_1_reprobado = null,
+			$leal_calle = null,
+			$leal_numero = null,
+			$leal_telefono = null,
+			$leal_pais = null,
+			$leal_provincia = null,
+			$leal_departamento = null,
+			$leal_localidad = null,
+			$leal_cp = null,
+			$leal_otro = null,
+			$administracion_calle = null,
+			$administracion_numero = null,
+			$administracion_telefono = null,
+			$administracion_pais = null,
+			$administracion_provincia = null,
+			$administracion_departamento = null,
+			$administracion_localidad = null,
+			$administracion_cp = null,
+			$administracion_otro = null,
+			$numero_expdiente = null,
+			$categoria = null,
+			$nombre_mina = null,
+			$descripcion_mina = null,
+			$distrito_minero = null,
+			$mina_cantera = null,
+			$plano_inmueble = null,
+			$minerales_variedad = null,
+			$owner = null,
+			$arrendatario = null,
+			$concesionario = null,
+			$otros = null,
+			$titulo_contrato_posecion = null,
+			$resolucion_concesion_minera = null,
+			$constancia_pago_canon = null,
+			$iia = null,
+			$dia = null,
+			$acciones_a_desarrollar = null,
+			$actividad = null,
+			$fecha_alta_dia = null,
+			$fecha_vencimiento_dia = null,
+			$localidad_mina_pais = null,
+			$localidad_mina_provincia = null,
+			$localidad_mina_departamento = null,
+			$localidad_mina_localidad = null,
+			$tipo_sistema = null,
+			$longitud = null,
+			$latitud = null,
+			$created_by = null,
+			$estado = null,
+			$tipo_tramite = null,
+			$updated_by = null,
+			$updated_paso_uno = null,
+			$updated_paso_dos = null,
+			$leal_calle_correcto = null,
+			$obs_leal_calle = null,
+			$leal_numero_correcto = null,
+			$obs_leal_numero = null,
+			$leal_telefono_correcto = null,
+			$obs_leal_telefono = null,
+			$leal_provincia_correcto = null,
+			$obs_leal_provincia = null,
+			$leal_departamento_correcto = null,
+			$obs_leal_departamento = null,
+			$leal_localidad_correcto = null,
+			$obs_leal_localidad = null,
+			$leal_cp_correcto = null,
+			$obs_leal_cp = null,
+			$leal_otro_correcto = null,
+			$obs_leal_otro = null,
+			$paso_2_progreso = null,
+			$paso_2_aprobado = null,
+			$paso_2_reprobado = null,
+			$administracion_calle_correcto = null,
+			$obs_administracion_calle = null,
+			$administracion_numero_correcto = null,
+			$obs_administracion_numero = null,
+			$administracion_telefono_correcto = null,
+			$obs_administracion_telefono = null,
+			$administracion_provincia_correcto = null,
+			$obs_administracion_provincia = null,
+			$administracion_departamento_correcto = null,
+			$obs_administracion_departamento = null,
+			$administracion_localidad_correcto = null,
+			$obs_administracion_localidad = null,
+			$administracion_cp_correcto = null,
+			$obs_administracion_cp = null,
+			$administracion_otro_correcto = null,
+			$obs_administracion_otro = null,
+			$paso_3_progreso = null,
+			$paso_3_aprobado = null,
+			$paso_3_reprobado = null,
+			$numero_expdiente_correcto = null,
+			$obs_numero_expdiente = null,
+			$categoria_correcto = null,
+			$obs_categoria = null,
+			$nombre_mina_correcto = null,
+			$obs_nombre_mina = null,
+			$descripcion_mina_correcto = null,
+			$obs_descripcion_mina = null,
+			$obs_distrito_minero = null,
+			$distrito_minero_correcto = null,
+			$mina_cantera_correcto = null,
+			$obs_mina_cantera = null,
+			$plano_inmueble_correcto = null,
+			$obs_plano_inmueble = null,
+			$obs_resolucion_concesion_minera = null,
+			$resolucion_concesion_minera_correcto = null,
+			$titulo_contrato_posecion_correcto = null,
+			$obs_titulo_contrato_posecion = null,
+			$paso_4_progreso = null,
+			$paso_4_aprobado = null,
+			$paso_4_reprobado = null,
+			$updated_paso_cuatro = null,
+			$updated_paso_tres = null,
+			$otro_caracter_acalaracion = null,
+			$concesion_minera_acalracion = null,
+			$owner_correcto = null,
+			$obs_owner = null,
+			$arrendatario_correcto = null,
+			$obs_arrendatario = null,
+			$concesionario_correcto = null,
+			$obs_concesionario = null,
+			$otros_correcto = null,
+			$obs_otros = null,
+			$sustancias_de_aprovechamiento_comun_correcto = null,
+			$obs_sustancias_de_aprovechamiento_comun_correcto = null
 	)
     {
 		if($id == null)
@@ -527,173 +527,175 @@ class FormAltaProductorController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
+	public function dame_un_productor_vacio(){
+		$productor_a_devolver = new FormAltaProductor();
+		$productor_a_devolver->id = null;
+		$productor_a_devolver->tipo_productor = null;
+		$productor_a_devolver->cuit = null;
+		$productor_a_devolver->cuit_correcto = null;
+		$productor_a_devolver->obs_cuit = null;
+		$productor_a_devolver->razonsocial = null;
+		$productor_a_devolver->razon_social_correcto = null;
+		$productor_a_devolver->obs_razon_social = null;
+		$productor_a_devolver->numeroproductor = null;
+		$productor_a_devolver->numeroproductor_correcto = null;
+		$productor_a_devolver->obs_numeroproductor = null;
+		$productor_a_devolver->email = null;
+		$productor_a_devolver->email_correcto = null;
+		$productor_a_devolver->obs_email = null;
+		$productor_a_devolver->tiposociedad = null;
+		$productor_a_devolver->tiposociedad_correcto = null;
+		$productor_a_devolver->obs_tiposociedad = null;
+		$productor_a_devolver->inscripciondgr = null;
+		$productor_a_devolver->inscripciondgr_correcto = null;
+		$productor_a_devolver->obs_inscripciondgr = null;
+		$productor_a_devolver->constaciasociedad = null;
+		$productor_a_devolver->constaciasociedad_correcto = null;
+		$productor_a_devolver->obs_constaciasociedad = null;
+		$productor_a_devolver->paso_1_progreso = null;
+		$productor_a_devolver->paso_1_aprobado = null;
+		$productor_a_devolver->paso_1_reprobado = null;
+		$productor_a_devolver->leal_calle = null;
+		$productor_a_devolver->leal_numero = null;
+		$productor_a_devolver->leal_telefono = null;
+		$productor_a_devolver->leal_pais = null;
+		$productor_a_devolver->leal_provincia = null;
+		$productor_a_devolver->leal_departamento = null;
+		$productor_a_devolver->leal_localidad = null;
+		$productor_a_devolver->leal_cp = null;
+		$productor_a_devolver->leal_otro = null;
+		$productor_a_devolver->administracion_calle = null;
+		$productor_a_devolver->administracion_numero = null;
+		$productor_a_devolver->administracion_telefono = null;
+		$productor_a_devolver->administracion_pais = null;
+		$productor_a_devolver->administracion_provincia = null;
+		$productor_a_devolver->administracion_departamento = null;
+		$productor_a_devolver->administracion_localidad = null;
+		$productor_a_devolver->administracion_cp = null;
+		$productor_a_devolver->administracion_otro = null;
+		$productor_a_devolver->numero_expdiente = null;
+		$productor_a_devolver->categoria = null;
+		$productor_a_devolver->nombre_mina = null;
+		$productor_a_devolver->descripcion_mina = null;
+		$productor_a_devolver->distrito_minero = null;
+		$productor_a_devolver->mina_cantera = null;
+		$productor_a_devolver->plano_inmueble = null;
+		$productor_a_devolver->minerales_variedad = null;
+		$productor_a_devolver->owner = null;
+		$productor_a_devolver->arrendatario = null;
+		$productor_a_devolver->concesionario = null;
+		$productor_a_devolver->otros = null;
+		$productor_a_devolver->titulo_contrato_posecion = null;
+		$productor_a_devolver->resolucion_concesion_minera = null;
+		$productor_a_devolver->constancia_pago_canon = null;
+		$productor_a_devolver->iia = null;
+		$productor_a_devolver->dia = null;
+		$productor_a_devolver->acciones_a_desarrollar = null;
+		$productor_a_devolver->actividad = null;
+		$productor_a_devolver->fecha_alta_dia = null;
+		$productor_a_devolver->fecha_vencimiento_dia = null;
+		$productor_a_devolver->localidad_mina_pais = null;
+		$productor_a_devolver->localidad_mina_provincia = null;
+		$productor_a_devolver->localidad_mina_departamento = null;
+		$productor_a_devolver->localidad_mina_localidad = null;
+		$productor_a_devolver->tipo_sistema = null;
+		$productor_a_devolver->longitud = null;
+		$productor_a_devolver->latitud = null;
+		$productor_a_devolver->created_by = null;
+		$productor_a_devolver->estado = null;
+		$productor_a_devolver->tipo_tramite = null;
+		$productor_a_devolver->updated_by = null;
+		$productor_a_devolver->created_by = null;
+		$productor_a_devolver->created_by = null;
+		$productor_a_devolver->updated_by = null;
+		$productor_a_devolver->updated_paso_uno = null;
+		$productor_a_devolver->updated_paso_dos = null;
+		$productor_a_devolver->leal_calle_correcto = null;
+		$productor_a_devolver->obs_leal_calle = null;
+		$productor_a_devolver->leal_numero_correcto = null;
+		$productor_a_devolver->obs_leal_numero = null;
+		$productor_a_devolver->leal_telefono_correcto = null;
+		$productor_a_devolver->obs_leal_telefono = null;
+		$productor_a_devolver->leal_provincia_correcto = null;
+		$productor_a_devolver->obs_leal_provincia = null;
+		$productor_a_devolver->leal_departamento_correcto = null;
+		$productor_a_devolver->obs_leal_departamento = null;
+		$productor_a_devolver->leal_localidad_correcto = null;
+		$productor_a_devolver->obs_leal_localidad = null;
+		$productor_a_devolver->leal_cp_correcto = null;
+		$productor_a_devolver->obs_leal_cp = null;
+		$productor_a_devolver->leal_otro_correcto = null;
+		$productor_a_devolver->obs_leal_otro = null;
+		$productor_a_devolver->paso_2_progreso = null;
+		$productor_a_devolver->paso_2_aprobado = null;
+		$productor_a_devolver->paso_2_reprobado = null;
+		$productor_a_devolver->administracion_calle_correcto = null;
+		$productor_a_devolver->obs_administracion_calle = null;
+		$productor_a_devolver->administracion_numero_correcto = null;
+		$productor_a_devolver->obs_administracion_numero = null;
+		$productor_a_devolver->administracion_telefono_correcto = null;
+		$productor_a_devolver->obs_administracion_telefono = null;
+		$productor_a_devolver->administracion_provincia_correcto = null;
+		$productor_a_devolver->obs_administracion_provincia = null;
+		$productor_a_devolver->administracion_departamento_correcto = null;
+		$productor_a_devolver->obs_administracion_departamento = null;
+		$productor_a_devolver->administracion_localidad_correcto = null;
+		$productor_a_devolver->obs_administracion_localidad = null;
+		$productor_a_devolver->administracion_cp_correcto = null;
+		$productor_a_devolver->obs_administracion_cp = null;
+		$productor_a_devolver->administracion_otro_correcto = null;
+		$productor_a_devolver->obs_administracion_otro = null;
+		$productor_a_devolver->paso_3_progreso = null;
+		$productor_a_devolver->paso_3_aprobado = null;
+		$productor_a_devolver->paso_3_reprobado = null;
+		$productor_a_devolver->numero_expdiente_correcto = null;
+		$productor_a_devolver->obs_numero_expdiente = null;
+		$productor_a_devolver->categoria_correcto = null;
+		$productor_a_devolver->obs_categoria = null;
+		$productor_a_devolver->nombre_mina_correcto = null;
+		$productor_a_devolver->obs_nombre_mina = null;
+		$productor_a_devolver->descripcion_mina_correcto = null;
+		$productor_a_devolver->obs_descripcion_mina = null;
+		$productor_a_devolver->obs_distrito_minero = null;
+		$productor_a_devolver->distrito_minero_correcto = null;
+		$productor_a_devolver->mina_cantera_correcto = null;
+		$productor_a_devolver->obs_mina_cantera = null;
+		$productor_a_devolver->plano_inmueble_correcto = null;
+		$productor_a_devolver->obs_plano_inmueble = null;
+		$productor_a_devolver->obs_resolucion_concesion_minera = null;
+		$productor_a_devolver->resolucion_concesion_minera_correcto = null;
+		$productor_a_devolver->titulo_contrato_posecion_correcto = null;
+		$productor_a_devolver->obs_titulo_contrato_posecion = null;
+		$productor_a_devolver->paso_4_progreso = null;
+		$productor_a_devolver->paso_4_aprobado = null;
+		$productor_a_devolver->paso_4_reprobado = null;
+		$productor_a_devolver->updated_paso_cuatro = null;
+		$productor_a_devolver->updated_paso_tres = "null";
+		$productor_a_devolver->otro_caracter_acalaracion = null;
+		$productor_a_devolver->concesion_minera_acalracion = null;
+		$productor_a_devolver->concesion_minera_acalracion = null;
+		$productor_a_devolver->owner_correcto = null;
+		$productor_a_devolver->obs_owner = null;
+		$productor_a_devolver->arrendatario_correcto = null;
+		$productor_a_devolver->obs_arrendatario = null;
+		$productor_a_devolver->concesionario_correcto = null;
+		$productor_a_devolver->obs_concesionario = null;
+		$productor_a_devolver->otros_correcto = null;
+		$productor_a_devolver->obs_otros = 33;
+		$productor_a_devolver->sustancias_de_aprovechamiento_comun_correcto = null;
+		$productor_a_devolver->obs_sustancias_de_aprovechamiento_comun_correcto = null;
+		return $productor_a_devolver;
+
+		//var_dump($productor_a_devolver);die();
+	}
 	public function create()
 	{
 		//
-		$productor = new FormAltaProductor(
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			null,
-			33,
-			null,
-			null,
-
-		);
-		var_dump($productor);die();
+		$productor = $this->dame_un_productor_vacio();
 		//$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
 		$minerales_asociados = Minerales_Borradores::all();
 		
-        //var_dump($productor);die();*/
+        //var_dump($minerales_asociados);die();
 		return Inertia::render('Productors/Form',['productor' => $productor, 'lista_minerales_cargados' => $minerales_asociados]);
 	}
 

@@ -55,6 +55,8 @@
                     :updated_at="'hace 10 minutos'"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                    :ayuda="mostrar_ayuda"
+                    v-on:changevalorayuda="update_valor_ayuda_local($event)"
                 ></CardProductor>
             </div>
             <br>
@@ -76,6 +78,25 @@
                     v-on:changeobsrazonsocialvalido="updateobs_razon_social_valido($event)"
                     v-on:changerazonsocial="update_razon_social($event)"
                 ></InputRazonSocial>
+                <div v-show="mostrar_ayuda">
+                    <br>
+                    <div   class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                            m quisquam doloremque placeat op.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     - Razon Social valor input del padre{{form_pagina.razon_social}}
                     - Razon Social input valido del padre{{form_pagina.razon_social_valido}}
@@ -101,6 +122,25 @@
                     v-on:changeemail="update_email($event)"
                 >
                 </InputEmail>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                            m quisquam doloremque placeat op.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- Emai  deel padre{{form_pagina.email}}
                     -- Emai valida deel padre{{form_pagina.email_valido}}
@@ -127,6 +167,25 @@
                     v-on:changecuit="update_cuit($event)"
                 >
                 </InputCuit>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                            m quisquam doloremque placeat op.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- cuit valida deel padre{{form_pagina.cuit_valido}}
                     -- cuit correcto deel padre{{form_pagina.cuit_correcto}}
@@ -150,6 +209,25 @@
                     
                 >
                 </InputNumeroProductor>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                            m quisquam doloremque placeat op.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- numero productor valida deel padre{{form_pagina.numeroproductor_valido}}
                     -- numero productor correcto deel padre{{form_pagina.numeroproductor_correcto}}
@@ -175,6 +253,25 @@
                     v-on:changetiposociedad="update_tipo_sociedad($event)"
                 >
                 </InputTipoSociedad>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                            m quisquam doloremque placeat op.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- tipo de sociedad valida deel padre{{form_pagina.tiposociedad_valido}}
                     -- tipo de sociedad correcto deel padre{{form_pagina.tiposociedad_correcto}}
@@ -201,6 +298,25 @@
                     v-on:changeobsinscripciondgr="update_obs_inscripcion_dgr($event)"
                 >
                 </FileInscripcionDGR>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                            m quisquam doloremque placeat op.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- inscripcion dgr valida deel padre{{form_pagina.inscripciondgr_valido}}
                     -- inscripcion dgr correcto deel padre{{form_pagina.inscripciondgr_correcto}}
@@ -225,14 +341,22 @@
                     v-on:changeinscripciondgrcorrecto="update_constancia_sociedad_correcto($event)"
                     v-on:changeobsinscripciondgr="update_obs_constancia_sociedad($event)"
                 >
-
-                
-
-
-
-
-
                 </FileInscripcionDGR>
+                <div  v-show="mostrar_ayuda" class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    <p class="p-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                        m quisquam doloremque placeat op.
+                    </p>
+                    <br>
+                </div>
+                
                 <div class="flex" v-if="mostrar_testing">
                     -- constancia de sociedad valida deel padre{{form_pagina.constanciasociedad_valido}}
                     -- constancia de sociedad correcto deel padre{{form_pagina.constanciasociedad_correcto}}
@@ -379,6 +503,7 @@ export default {
         modal_body:'',
         mostrar_testing: false,
         autoridad_minera:false,
+        mostrar_ayuda: false,
         form_pagina: {
             razon_social : this.$props.razon_social,
             razon_social_valido: this.$props.razon_social_valido,
@@ -546,6 +671,11 @@ export default {
             this.form_pagina.obs_constanciasociedad = newValue;
             //tengo que enviarsela al padre
         },
+
+        //mostrar ayuda
+        update_valor_ayuda_local(newValor){
+            this.mostrar_ayuda = newValor;
+        }
   }
   
 };
