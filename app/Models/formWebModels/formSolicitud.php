@@ -35,10 +35,16 @@ class formSolicitud extends Model
 
     public function terreno()
     {
-        return $this->hasOne(formTerreno::class, 'id_terreno');
+        return $this->hasOne(formTerreno::class, 'terreno_id');
     }
     public function mina()
     {
-        return $this->hasOne(formMina::class, 'id_mina');
+        return $this->hasOne(formMina::class, 'mina_id');
     }
+
+    public function razonsocial()
+    {
+        return $this->hasOne(formRazonsocial::class, 'razonsocial_id');
+    }
+
 }

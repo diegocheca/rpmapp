@@ -13,8 +13,8 @@ class formTipoSolicitud extends Model
         'id',
         'nombre',
     ];
-    // public function solicitud()
-    // {
-    //     return $this->hasMany(formSolicitud::class,'idtipo_solicitud'); 
-    // }
+     public function solicitud()
+     {
+         return $this->hasMany(formSolicitud::class,'tiposolicitud_id'); 
+     }
 }
