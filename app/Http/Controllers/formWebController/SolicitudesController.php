@@ -1,12 +1,13 @@
 <?php
+namespace App\Http\Controllers\formWebController;
 
-namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\formWebModels\formSolicitud;
 use App\Models\formWebModels\formTipoSolicitud;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\CountriesController;
 
 class SolicitudesController extends Controller
 {
@@ -35,7 +36,25 @@ class SolicitudesController extends Controller
      */
     public function create()
     {
-        return Inertia::render('formWeb/FormCrear');
+        //return Inertia::render('formWeb/FormCrear');
+        // dd(CountriesController::getProvinces());
+        $provinces = CountriesController::getProvinces();
+        // dd(env('PROVINCE', ''));
+        //
+        // return Inertia::render('Reinscripciones/Form');
+        return Inertia::render('formWeb/Form', [
+            'action' => "create",
+            'saveUrl' => "solicitudes.store",
+            // 'saveFileUrl' => "/solicitudes/upload",
+            'saveFileUrl' => "solicitudes.update",
+            'province' => env('PROVINCE', 'sanjuan')."/reinscripciones-wizard",
+            'folder' => 'solicitudes',
+            'reinscripcion' => [],
+            'titleForm' => 'Crear Solicitud',
+            'evaluate' => false,
+            'provincia' => $provinces
+        ]);
+
     }
     public function prueba()
     {

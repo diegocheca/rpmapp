@@ -1,6 +1,6 @@
 <template>
     <!-- component -->
-    <div class="w-full py-6">
+    <!-- <div class="w-full py-6">
         <div class="flex">
             <div class="w-1/4">
                 <div class="relative mb-2">
@@ -299,5 +299,223 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+
+            <section class="text-gray-900 body-font">
+            <div class="container px-5 py-12 mx-auto">
+                <div
+                    class="block lg:flex lg:space-x-2 sm:px-4 px-2 py-12 mb-10"
+                >
+                    <div class="w-full lg:w-2/3">
+                        <a class="block rounded w-full lg:flex mb-10" href=".">
+                            <div
+                                class="
+                                    h-48
+                                    lg:w-48
+                                    flex-none
+                                    bg-cover
+                                    text-center
+                                    overflow-hidden
+                                    opacity-75
+                                "
+                            ></div>
+                            <div
+                                class="
+                                    bg-white
+                                    rounded
+                                    px-4
+                                    py-4
+                                    flex flex-col
+                                    justify-between
+                                    leading-normal
+                                    shadow
+                                "
+                            >
+                                <div>
+                                    <div
+                                        class="
+                                            mt-3
+                                            md:mt-0
+                                            text-gray-700
+                                            font-bold
+                                            text-3xl
+                                            mb-2
+                                        "
+                                    >
+                                        Aliquam venenatis nisl id purus rhoncus,
+                                        in efficitur sem hendrerit.
+                                    </div>
+                                </div>
+                                <div class="flex mt-3">
+                                    <img
+                                        alt=""
+                                        src="https://randomuser.me/api/portraits/men/11.jpg"
+                                        class="
+                                            h-10
+                                            w-10
+                                            rounded-full
+                                            mr-2
+                                            object-cover
+                                        "
+                                    />
+                                    <div>
+                                        <p
+                                            class="
+                                                font-semibold
+                                                text-gray-700 text-sm
+                                                capitalize
+                                            "
+                                        >
+                                            eduard franz
+                                        </p>
+                                        <p class="text-gray-600 text-xs">
+                                            14 Aug
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a class="block rounded w-full lg:flex mb-10" href=".">
+                            <div
+                                class="
+                                    h-48
+                                    lg:w-48
+                                    flex-none
+                                    bg-cover
+                                    text-center
+                                    overflow-hidden
+                                    opacity-75
+                                "
+                            ></div>
+                            <div
+                                class="
+                                    bg-white
+                                    rounded
+                                    px-4
+                                    py-4
+                                    flex flex-col
+                                    justify-between
+                                    leading-normal
+                                    shadow
+                                "
+                            >
+                                <div>
+                                    <div
+                                        class="
+                                            mt-3
+                                            md:mt-0
+                                            text-gray-700
+                                            font-bold
+                                            text-3xl
+                                            mb-2
+                                        "
+                                    >
+                                        Aliquam venenatis nisl id purus rhoncus,
+                                        in efficitur sem hendrerit.
+                                    </div>
+                                </div>
+                                <div class="flex mt-3">
+                                    <img
+                                        alt=""
+                                        src="https://randomuser.me/api/portraits/men/11.jpg"
+                                        class="
+                                            h-10
+                                            w-10
+                                            rounded-full
+                                            mr-2
+                                            object-cover
+                                        "
+                                    />
+                                    <div>
+                                        <p
+                                            class="
+                                                font-semibold
+                                                text-gray-700 text-sm
+                                                capitalize
+                                            "
+                                        >
+                                            eduard franz
+                                        </p>
+                                        <p class="text-gray-600 text-xs">
+                                            14 Aug
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="block rounded w-full lg:flex mb-10" href=".">
+                            <div
+                                class="
+                                    h-48
+                                    lg:w-48
+                                    flex-none
+                                    bg-cover
+                                    text-center
+                                    overflow-hidden
+                                    opacity-75
+                                "
+                            ></div>
+                            <div
+                                class="
+                                    bg-white
+                                    rounded
+                                    px-4
+                                    py-4
+                                    flex flex-col
+                                    justify-between
+                                    leading-normal
+                                    shadow
+                                "
+                            >
+                                <div>
+                                    <div
+                                        class="
+                                            mt-3
+                                            md:mt-0
+                                            text-gray-700
+                                            font-bold
+                                            text-3xl
+                                            mb-2
+                                        "
+                                    >
+                                        Aliquam venenatis nisl id purus rhoncus,
+                                        in efficitur sem hendrerit.
+                                    </div>
+                                </div>
+                                <div class="flex mt-3">
+                                    <img
+                                        alt=""
+                                        src="https://randomuser.me/api/portraits/men/11.jpg"
+                                        class="
+                                            h-10
+                                            w-10
+                                            rounded-full
+                                            mr-2
+                                            object-cover
+                                        "
+                                    />
+                                    <div>
+                                        <p
+                                            class="
+                                                font-semibold
+                                                text-gray-700 text-sm
+                                                capitalize
+                                            "
+                                        >
+                                            eduard franz
+                                        </p>
+                                        <p class="text-gray-600 text-xs">
+                                            14 Aug
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 </template>

@@ -56,7 +56,8 @@ use App\Http\Controllers\ProductoresController;
 
 /************* FORMULARIOS WEB *************/
 
-use App\Http\Controllers\SolicitudesController;
+//use App\Http\Controllers\SolicitudesController;
+use App\Http\Controllers\formWebController\SolicitudesController;
 
 
 /*
@@ -148,9 +149,6 @@ Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "trae
 Route::post('/datos/traer_departamentos', [FormAltaProductorController::class, "traer_departamentos_json"])->name('traer-departamentos');
 Route::post('/datos/traer_localidades', [FormAltaProductorController::class, "traer_localidades_json"])->name('traer-localidades');
 Route::post('/datos/traer_minerales', [FormAltaProductorController::class, "traer_minerales_json"])->name('traer-minerales');
-
-
-
 Route::post('/formularios/auto_guardado_uno', [FormAltaProductorController::class, "guardar_paso_uno"])->name('guardar-paso-uno');
 Route::post('/formularios/auto_guardado_dos', [FormAltaProductorController::class, "guardar_paso_dos"])->name('guardar-paso-dos');
 Route::post('/formularios/auto_guardado_tres', [FormAltaProductorController::class, "guardar_paso_tres"])->name('guardar-paso-tres');
