@@ -1,7 +1,6 @@
 <template>
 <app-layout>
     <form-wizard
-        :builder="reinscripcion"
         :titleForm="titleForm"
         :evaluate="evaluate"
         :province="province"
@@ -58,10 +57,10 @@ export default {
             require: true,
             type: String,
         },
-        reinscripcion: {
-            require: true,
-            type: Array,
-        },
+        // reinscripcion: {
+        //     require: true,
+        //     type: Array,
+        // },
         titleForm: {
             require: true,
             type: String,
@@ -82,13 +81,13 @@ export default {
             provincia: this.$props.provincia
         }
         return {
-            id: this.$props.reinscripcion.id,
+            // id: this.$props.reinscripcion.id,
             dataForm,
         }
     },
     methods: {
         async submit(form) {
-            // console.log(form);
+            console.log(form);
             // let response;
             // let formData = new FormData();
 
