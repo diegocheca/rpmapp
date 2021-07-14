@@ -43,6 +43,7 @@
                     >
                         Nuevo
                     </inertia-link>
+
                     <inertia-link
                         href="/prueba"
                         class="
@@ -65,6 +66,7 @@
                     >
                         prueba
                     </inertia-link>
+                    
                     <inertia-link
                         href="/menu"
                         class="

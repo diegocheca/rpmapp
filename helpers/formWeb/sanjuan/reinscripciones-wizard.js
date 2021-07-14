@@ -1,7 +1,4 @@
 import * as yup from 'yup';
-// import Observations from './observaciones';
-// import inputsTypes from '../../enums/inputsTypes';
-// import fileAccept from '../../enums/fileAccept';
 import Observations from './observaciones';
 import inputsTypes from '../../enums/inputsTypes';
 import fileAccept from '../../enums/fileAccept';
@@ -10,11 +7,12 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
     return [
+        //Datos Solicitante
         {
             icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
             bgColorIcon: 'bg-blue-500',
             bgColorProgress: 'bg-blue-300',
-            titleStep: 'Datos',
+            titleStep: 'Solicitante',
             bodyStep: [
                 // row 1
                 {
@@ -23,167 +21,131 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                     body: [
                         //  col 1
                         {
-                            title: 'Datos Persona',
+                            title: 'Datos Personales',
                             width: 'lg:w-full', //flex
                             columns: 'grid-cols-1', //grid
-                            columnsResponsive: 'lg:grid-cols-2', //inside card
+                            columnsResponsive: 'lg:grid-cols-3', //inside card
                             img: '/images/laborales.png',
                             inputs: [
+                                //nombre
                                 {
-                                    label: 'Email',
-                                    value: schema.email,
-                                    type: inputsTypes.EMAIL,
-                                    name: 'email',
-                                    validations: yup.string().required('Debes completar este campo').email('El formato ingresado no es válido'),
-                                    observation: new Observations({schema, name: 'email', evaluate}).observations
-
-                                },
-                                {
-                                    label: 'Contraseña',
-                                    value: schema.password,
-                                    type: inputsTypes.PASSWORD,
-                                    name: 'password',
-                                    validations: yup.string().required('Debes completar este campo').min(8, 'Debes ingresar al menos 8 caracteres'),
-                                    observation: new Observations({schema, name: 'password', evaluate}).observations
-
-                                },
-                                {
-                                    label: 'Confirmar contraseña',
-                                    value: schema.repeatPassword,
-                                    type: inputsTypes.PASSWORD,
-                                    name: 'repeatPassword',
-                                    validations: yup
-                                        .string()
-                                        .required('Debes completar este campo')
-                                        .oneOf([yup.ref("password")], "Las contraseñas deben ser iguales"),
-                                    observation: new Observations({schema, name: 'repeatPassword', evaluate}).observations
-
-                                },
-                                {
-                                    label: 'Nombre o razón social',
-                                    value: schema.nombre_razon_social,
+                                    label: 'Nombre',
+                                    value: schema.nombre,
                                     type: inputsTypes.TEXT,
-                                    name: 'nombre_razon_social',
+                                    name: 'nombre',
                                     validations: yup.string().required('Debes completar este campo'),
-                                    observation: new Observations({schema, name: 'nombre_razon_social', evaluate}).observations
+                                    observation: new Observations({schema, name: 'nombre', evaluate}).observations
 
                                 },
+                                //apellido
                                 {
-                                    label: 'Domicilio',
-                                    value: schema.domicilio,
+                                    label: 'Apellido',
+                                    value: schema.apellido,
                                     type: inputsTypes.TEXT,
-                                    name: 'domicilio',
+                                    name: 'apellido',
                                     validations: yup.string().required('Debes completar este campo'),
-                                    observation: new Observations({schema, name: 'domicilio', evaluate}).observations
+                                    observation: new Observations({schema, name: 'apellido', evaluate}).observations
 
                                 },
+                                //sexo
                                 {
-                                    label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
-                                    value: schema.nombre_mina,
+                                    label: 'Sexo',
+                                    value: schema.sexo,
                                     type: inputsTypes.TEXT,
-                                    name: 'nombre_mina',
+                                    name: 'sexo',
                                     validations: yup.string().required('Debes completar este campo'),
-                                    observation: new Observations({schema, name: 'nombre_mina', evaluate}).observations
+                                    observation: new Observations({schema, name: 'sexo', evaluate}).observations
 
                                 },
-                                // {
-                                // },
+                                //tipo de dni
                                 {
-                                    // inputColsSpan: 'lg:col-span-2',
-                                    label: 'Certificado de inscripción en AFIP (CUIT)',
-                                    value: schema.cuit,
-                                    type: inputsTypes.FILE,
-                                    name: 'cuit',
-                                    accept: [fileAccept.PDF.value],
-                                    acceptLabel: `Archivos admitidos: ${[fileAccept.PDF.label].join()}`,
-                                    maxSize: 'Tamaño maximo por archivo: 10MB',
-                                    multiple: false,
-                                    validations: yup
-                                        .array()
-                                        .min(1, 'Debes adjuntar al menos un elemento').default([])
-                                        .max(1, 'Solo puedes adjuntar hasta 1 archivo')
-                                        .test({
-                                            name: 'CUIT_SIZE',
-                                            exclusive: true,
-                                            message: 'Recuerda que cada archivo no debe superar los 10MB',
-                                            test: (value) => {
-                                                if (!value) return true;
-                                                let validation = true;
-                                                for (let index = 0; index < value.length; index++) {
-                                                    const element = value[index];
-                                                    validation = validation && element.size <= 10000000; // 10MB
-                                                }
-                                                return validation;
-                                                // !value || (value && value.size <= 10)
-                                            }
-                                        })
-                                        .test({
-                                            name: 'CUIT_FILE_FORMAT',
-                                            exclusive: true,
-                                            message: 'Hay archivos con extensiones no válidas',
-                                            test: (value) => {
-                                                if (!value) return true;
-                                                let validation = true;
-                                                for (let index = 0; index < value.length; index++) {
-                                                    const element = value[index];
-                                                    validation = validation && [...fileAccept.PDF.value].includes(element.type);
-                                                }
-                                                return validation;
-                                                // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-                                            }
-                                        }),
-
-                                    observation: new Observations({schema, name: 'cuit', evaluate}).observations
+                                    label: 'Tipo de DNI',
+                                    value: schema.tipo_dni,
+                                    type: inputsTypes.SELECT, 
+                                    placeholder: 'Selecciona una opción',                                  
+                                    options:[
+                                        {
+                                            label: 'Documento Unico',
+                                            value: 'documento_unico',
+                                        },
+                                        {
+                                            label: 'Pasaporte',
+                                            value: 'Pasaporte',
+                                        }
+                                    ],                                    
+                                    name: 'tipo_dni',
+                                   // validations: yup.string().required('Debes completar este campo'),
+                                   // observation: new Observations({schema, name: 'tipo_dni', evaluate}).observations
+                                    
                                 },
+                                //numero de dni
                                 {
-                                    // inputColsSpan: 'lg:col-span-2',
-                                    label: 'Copia escritura del inmueble',
-                                    helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
-                                    value: schema.escritura,
-                                    type: inputsTypes.FILE,
-                                    name: 'escritura',
-                                    accept: [fileAccept.PDF.value, fileAccept.IMAGE.value],
-                                    acceptLabel: `Archivos admitidos: ${[fileAccept.PDF.label, fileAccept.IMAGE.label].join()}`,
-                                    maxSize: 'Tamaño maximo por archivo: 10MB',
-                                    multiple: true,
-                                    validations: yup
-                                        .array()
-                                        .min(1, 'Debes adjuntar al menos un elemento').default([])
-                                        .max(1, 'Solo puedes adjuntar hasta 1 archivo')
-                                        .test({
-                                            name: 'ESCRITURA_FILE_SIZE',
-                                            exclusive: true,
-                                            message: 'Recuerda que cada archivo no debe superar los 10MB',
-                                            test: (value) => {
-                                                if (!value) return true;
-                                                let validation = true;
-                                                for (let index = 0; index < value.length; index++) {
-                                                    const element = value[index];
-                                                    validation = validation && element.size <= 10000000; // 10MB
-                                                }
-                                                return validation;
-                                                // !value || (value && value.size <= 10)
-                                            }
-                                        })
-                                        .test({
-                                            name: 'ESCRITURA_FILE_FORMAT',
-                                            exclusive: true,
-                                            message: 'Hay archivos con extensiones no válidas',
-                                            test: (value) => {
-                                                if (!value) return true;
-                                                let validation = true;
+                                    label: 'Numero de Documento',
+                                    value: schema.numero_dni,
+                                    type: inputsTypes.TEXT,
+                                    // type: inputsTypes.SELECT,
+                                    name: 'numero_dni',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'tipo_dni', evaluate}).observations
 
-                                                for (let index = 0; index < value.length; index++) {
-                                                    const element = value[index];
-                                                    validation = validation && [...fileAccept.PDF.value, ...fileAccept.IMAGE.value].includes(element.type);
-                                                }
-                                                return validation;
-                                                // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-                                            }
-                                        }),
-
-                                    observation: new Observations({schema, name: 'escritura', evaluate}).observations
                                 },
+                                
+                                                            
+                               
+                               //fecha de nacimiento
+                                {
+                                    label: 'Fecha de Nacimiento',
+                                    value: schema.fecha_nacimiento,
+                                    type: inputsTypes.DATE,
+                                    name: 'fecha_nacimiento',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'fecha_nacimiento', evaluate}).observations
+
+                                },
+                                //nacionalidad
+                                {
+                                    label: 'Nacionalidad',
+                                    value: schema.nacionalidad,
+                                    type: inputsTypes.TEXT,
+                                    name: 'nacionalidad',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'nacionalidad', evaluate}).observations
+
+                                },
+                                //Estado Civil
+                                {
+                                    label: 'Estado Civil',
+                                    value: schema.estado_civil,
+                                    type: inputsTypes.SELECT,
+                                    name: 'estado_civil',
+                                     options:[
+                                        {
+                                            label: 'Soltero',
+                                            value: 'Soltero',
+                                        },
+                                        {
+                                            label: 'Casado',
+                                            value: 'Casado',
+                                        },
+                                        {
+                                            label: 'Divorsiado',
+                                            value: 'Divorsiado',
+                                        }
+                                    ],
+                                    // validations: yup.string().required('Debes completar este campo'),
+                                    // observation: new Observations({schema, name: 'estado_civil', evaluate}).observations
+
+                                },
+                                //profesion
+                                {
+                                    label: 'Profesión',
+                                    value: schema.profesion,
+                                    type: inputsTypes.TEXT,
+                                    name: 'profesion',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'profesion', evaluate}).observations
+
+                                }, 
                             ]
                         },
 
@@ -191,11 +153,13 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                 },
             ]
         },
+
+        //Datos Representante Legal
         {
             icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
             bgColorIcon: 'bg-blue-500',
             bgColorProgress: 'bg-blue-300',
-            titleStep: 'Datos',
+            titleStep: 'R.L',
             bodyStep: [
                 {
                     widthResponsive: 'flex-row', //flex
@@ -408,11 +372,13 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                 },
             ]
         },
+
+        //Ubicacion Solicitud Exploración /Matricula Catastral
         {
             icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
             bgColorIcon: 'bg-blue-500',
             bgColorProgress: 'bg-blue-300',
-            titleStep: 'Datos',
+            titleStep: 'Ubi.y MC',
             bodyStep: [
                 {
                     widthResponsive: 'lg:flex-row', //flex
@@ -499,6 +465,466 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                 },
             ]
         },
+        
+        //Coordenadass GaussKruger / Categoria Mineral
+        {
+            icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+            bgColorIcon: 'bg-blue-500',
+            bgColorProgress: 'bg-blue-300',
+            titleStep: 'Coord.y Cat.',
+            bodyStep: [
+                {
+                    widthResponsive: 'lg:flex-row', //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: 'Ubicación',
+                            width: 'lg:w-full', //flex
+                            columns: 'grid-cols-1', //grid
+                            columnsResponsive: 'lg:grid-cols-2', //inside card
+                            img: '/images/laborales.png',
+                            inputs: [
+                                {
+                                    label: 'Provincia',
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    asyncUrl: '/paises/departamentos',
+                                    inputDepends: ['departamento'],
+                                    inputClearDepends: ['departamento', 'localidad'],
+                                    // isLoading: false,
+                                    //
+                                    options: dataForm.provincia,
+                                    name: 'provincia',
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: 'Selecciona una opción',
+                                    validations: yup.object().when('provinciaSelect', {
+                                        is: value => _.isEmpty(value) || !value,
+                                        then: yup.object().required('Debes elegir un elemento').nullable()
+                                    }),
+                                    observation: new Observations({schema, name: 'provincia', evaluate}).observations
+                                },
+                                {
+                                    label: 'Departamento',
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    asyncUrl: '/paises/localidades',
+                                    inputDepends: ['localidad'],
+                                    inputClearDepends: ['localidad'],
+                                    isLoading: false,
+                                    //
+                                    options: [],
+                                    name: 'departamento',
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: 'Selecciona una opción',
+                                    validations: yup.object().when('departamentoSelect', {
+                                        is: value => _.isEmpty(value) || !value,
+                                        then: yup.object().required('Debes elegir un elemento').nullable()
+                                    }),
+                                    observation: new Observations({schema, name: 'departamento', evaluate}).observations
+                                },
+                                {
+                                    label: 'Localidad',
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    isLoading: false,
+                                    //
+                                    options: [],
+                                    name: 'localidad',
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: 'Selecciona una opción',
+                                    validations: yup.object().when('localidadSelect', {
+                                        is: value => _.isEmpty(value) || !value,
+                                        then: yup.object().required('Debes elegir un elemento').nullable()
+                                    }),
+                                    observation: new Observations({schema, name: 'localidad', evaluate}).observations
+                                },
+                            ]
+                        },
+
+                    ]
+                },
+            ]
+        },
+
+        //Datos Propietario
+        {
+            icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+            bgColorIcon: 'bg-blue-500',
+            bgColorProgress: 'bg-blue-300',
+            titleStep: 'Propietario',
+            bodyStep: [
+                // row 1
+                {
+                    widthResponsive: 'lg:flex-row', //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: 'Datos Persona',
+                            width: 'lg:w-full', //flex
+                            columns: 'grid-cols-1', //grid
+                            columnsResponsive: 'lg:grid-cols-2', //inside card
+                            img: '/images/laborales.png',
+                            inputs: [
+                                {
+                                    label: 'Email',
+                                    value: schema.email,
+                                    type: inputsTypes.EMAIL,
+                                    name: 'email',
+                                    validations: yup.string().required('Debes completar este campo').email('El formato ingresado no es válido'),
+                                    observation: new Observations({schema, name: 'email', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Contraseña',
+                                    value: schema.password,
+                                    type: inputsTypes.PASSWORD,
+                                    name: 'password',
+                                    validations: yup.string().required('Debes completar este campo').min(8, 'Debes ingresar al menos 8 caracteres'),
+                                    observation: new Observations({schema, name: 'password', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Confirmar contraseña',
+                                    value: schema.repeatPassword,
+                                    type: inputsTypes.PASSWORD,
+                                    name: 'repeatPassword',
+                                    validations: yup
+                                        .string()
+                                        .required('Debes completar este campo')
+                                        .oneOf([yup.ref("password")], "Las contraseñas deben ser iguales"),
+                                    observation: new Observations({schema, name: 'repeatPassword', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Nombre o razón social',
+                                    value: schema.nombre_razon_social,
+                                    type: inputsTypes.TEXT,
+                                    name: 'nombre_razon_social',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'nombre_razon_social', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Domicilio',
+                                    value: schema.domicilio,
+                                    type: inputsTypes.TEXT,
+                                    name: 'domicilio',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'domicilio', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
+                                    value: schema.nombre_mina,
+                                    type: inputsTypes.TEXT,
+                                    name: 'nombre_mina',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'nombre_mina', evaluate}).observations
+
+                                },
+                                // {
+                                // },
+                                {
+                                    // inputColsSpan: 'lg:col-span-2',
+                                    label: 'Certificado de inscripción en AFIP (CUIT)',
+                                    value: schema.cuit,
+                                    type: inputsTypes.FILE,
+                                    name: 'cuit',
+                                    accept: [fileAccept.PDF.value],
+                                    acceptLabel: `Archivos admitidos: ${[fileAccept.PDF.label].join()}`,
+                                    maxSize: 'Tamaño maximo por archivo: 10MB',
+                                    multiple: false,
+                                    validations: yup
+                                        .array()
+                                        .min(1, 'Debes adjuntar al menos un elemento').default([])
+                                        .max(1, 'Solo puedes adjuntar hasta 1 archivo')
+                                        .test({
+                                            name: 'CUIT_SIZE',
+                                            exclusive: true,
+                                            message: 'Recuerda que cada archivo no debe superar los 10MB',
+                                            test: (value) => {
+                                                if (!value) return true;
+                                                let validation = true;
+                                                for (let index = 0; index < value.length; index++) {
+                                                    const element = value[index];
+                                                    validation = validation && element.size <= 10000000; // 10MB
+                                                }
+                                                return validation;
+                                                // !value || (value && value.size <= 10)
+                                            }
+                                        })
+                                        .test({
+                                            name: 'CUIT_FILE_FORMAT',
+                                            exclusive: true,
+                                            message: 'Hay archivos con extensiones no válidas',
+                                            test: (value) => {
+                                                if (!value) return true;
+                                                let validation = true;
+                                                for (let index = 0; index < value.length; index++) {
+                                                    const element = value[index];
+                                                    validation = validation && [...fileAccept.PDF.value].includes(element.type);
+                                                }
+                                                return validation;
+                                                // return !value || (value && [fileAccept.PDF.value].includes(value.type))
+                                            }
+                                        }),
+
+                                    observation: new Observations({schema, name: 'cuit', evaluate}).observations
+                                },
+                                {
+                                    // inputColsSpan: 'lg:col-span-2',
+                                    label: 'Copia escritura del inmueble',
+                                    helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
+                                    value: schema.escritura,
+                                    type: inputsTypes.FILE,
+                                    name: 'escritura',
+                                    accept: [fileAccept.PDF.value, fileAccept.IMAGE.value],
+                                    acceptLabel: `Archivos admitidos: ${[fileAccept.PDF.label, fileAccept.IMAGE.label].join()}`,
+                                    maxSize: 'Tamaño maximo por archivo: 10MB',
+                                    multiple: true,
+                                    validations: yup
+                                        .array()
+                                        .min(1, 'Debes adjuntar al menos un elemento').default([])
+                                        .max(1, 'Solo puedes adjuntar hasta 1 archivo')
+                                        .test({
+                                            name: 'ESCRITURA_FILE_SIZE',
+                                            exclusive: true,
+                                            message: 'Recuerda que cada archivo no debe superar los 10MB',
+                                            test: (value) => {
+                                                if (!value) return true;
+                                                let validation = true;
+                                                for (let index = 0; index < value.length; index++) {
+                                                    const element = value[index];
+                                                    validation = validation && element.size <= 10000000; // 10MB
+                                                }
+                                                return validation;
+                                                // !value || (value && value.size <= 10)
+                                            }
+                                        })
+                                        .test({
+                                            name: 'ESCRITURA_FILE_FORMAT',
+                                            exclusive: true,
+                                            message: 'Hay archivos con extensiones no válidas',
+                                            test: (value) => {
+                                                if (!value) return true;
+                                                let validation = true;
+
+                                                for (let index = 0; index < value.length; index++) {
+                                                    const element = value[index];
+                                                    validation = validation && [...fileAccept.PDF.value, ...fileAccept.IMAGE.value].includes(element.type);
+                                                }
+                                                return validation;
+                                                // return !value || (value && [fileAccept.PDF.value].includes(value.type))
+                                            }
+                                        }),
+
+                                    observation: new Observations({schema, name: 'escritura', evaluate}).observations
+                                },
+                            ]
+                        },
+
+                    ]
+                },
+            ]
+        },
+
+        //Declaracion Jurada y Informe Regitro Catastral
+        {
+            icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+            bgColorIcon: 'bg-blue-500',
+            bgColorProgress: 'bg-blue-300',
+            titleStep: 'D.J y Inf.Reg.Catas',
+            bodyStep: [
+                // row 1
+                {
+                    widthResponsive: 'lg:flex-row', //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: 'Datos Persona',
+                            width: 'lg:w-full', //flex
+                            columns: 'grid-cols-1', //grid
+                            columnsResponsive: 'lg:grid-cols-2', //inside card
+                            img: '/images/laborales.png',
+                            inputs: [
+                                {
+                                    label: 'Email',
+                                    value: schema.email,
+                                    type: inputsTypes.EMAIL,
+                                    name: 'email',
+                                    validations: yup.string().required('Debes completar este campo').email('El formato ingresado no es válido'),
+                                    observation: new Observations({schema, name: 'email', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Contraseña',
+                                    value: schema.password,
+                                    type: inputsTypes.PASSWORD,
+                                    name: 'password',
+                                    validations: yup.string().required('Debes completar este campo').min(8, 'Debes ingresar al menos 8 caracteres'),
+                                    observation: new Observations({schema, name: 'password', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Confirmar contraseña',
+                                    value: schema.repeatPassword,
+                                    type: inputsTypes.PASSWORD,
+                                    name: 'repeatPassword',
+                                    validations: yup
+                                        .string()
+                                        .required('Debes completar este campo')
+                                        .oneOf([yup.ref("password")], "Las contraseñas deben ser iguales"),
+                                    observation: new Observations({schema, name: 'repeatPassword', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Nombre o razón social',
+                                    value: schema.nombre_razon_social,
+                                    type: inputsTypes.TEXT,
+                                    name: 'nombre_razon_social',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'nombre_razon_social', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Domicilio',
+                                    value: schema.domicilio,
+                                    type: inputsTypes.TEXT,
+                                    name: 'domicilio',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'domicilio', evaluate}).observations
+
+                                },
+                                {
+                                    label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
+                                    value: schema.nombre_mina,
+                                    type: inputsTypes.TEXT,
+                                    name: 'nombre_mina',
+                                    validations: yup.string().required('Debes completar este campo'),
+                                    observation: new Observations({schema, name: 'nombre_mina', evaluate}).observations
+
+                                },
+                                // {
+                                // },
+                                {
+                                    // inputColsSpan: 'lg:col-span-2',
+                                    label: 'Certificado de inscripción en AFIP (CUIT)',
+                                    value: schema.cuit,
+                                    type: inputsTypes.FILE,
+                                    name: 'cuit',
+                                    accept: [fileAccept.PDF.value],
+                                    acceptLabel: `Archivos admitidos: ${[fileAccept.PDF.label].join()}`,
+                                    maxSize: 'Tamaño maximo por archivo: 10MB',
+                                    multiple: false,
+                                    validations: yup
+                                        .array()
+                                        .min(1, 'Debes adjuntar al menos un elemento').default([])
+                                        .max(1, 'Solo puedes adjuntar hasta 1 archivo')
+                                        .test({
+                                            name: 'CUIT_SIZE',
+                                            exclusive: true,
+                                            message: 'Recuerda que cada archivo no debe superar los 10MB',
+                                            test: (value) => {
+                                                if (!value) return true;
+                                                let validation = true;
+                                                for (let index = 0; index < value.length; index++) {
+                                                    const element = value[index];
+                                                    validation = validation && element.size <= 10000000; // 10MB
+                                                }
+                                                return validation;
+                                                // !value || (value && value.size <= 10)
+                                            }
+                                        })
+                                        .test({
+                                            name: 'CUIT_FILE_FORMAT',
+                                            exclusive: true,
+                                            message: 'Hay archivos con extensiones no válidas',
+                                            test: (value) => {
+                                                if (!value) return true;
+                                                let validation = true;
+                                                for (let index = 0; index < value.length; index++) {
+                                                    const element = value[index];
+                                                    validation = validation && [...fileAccept.PDF.value].includes(element.type);
+                                                }
+                                                return validation;
+                                                // return !value || (value && [fileAccept.PDF.value].includes(value.type))
+                                            }
+                                        }),
+
+                                    observation: new Observations({schema, name: 'cuit', evaluate}).observations
+                                },
+                                {
+                                    // inputColsSpan: 'lg:col-span-2',
+                                    label: 'Copia escritura del inmueble',
+                                    helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
+                                    value: schema.escritura,
+                                    type: inputsTypes.FILE,
+                                    name: 'escritura',
+                                    accept: [fileAccept.PDF.value, fileAccept.IMAGE.value],
+                                    acceptLabel: `Archivos admitidos: ${[fileAccept.PDF.label, fileAccept.IMAGE.label].join()}`,
+                                    maxSize: 'Tamaño maximo por archivo: 10MB',
+                                    multiple: true,
+                                    validations: yup
+                                        .array()
+                                        .min(1, 'Debes adjuntar al menos un elemento').default([])
+                                        .max(1, 'Solo puedes adjuntar hasta 1 archivo')
+                                        .test({
+                                            name: 'ESCRITURA_FILE_SIZE',
+                                            exclusive: true,
+                                            message: 'Recuerda que cada archivo no debe superar los 10MB',
+                                            test: (value) => {
+                                                if (!value) return true;
+                                                let validation = true;
+                                                for (let index = 0; index < value.length; index++) {
+                                                    const element = value[index];
+                                                    validation = validation && element.size <= 10000000; // 10MB
+                                                }
+                                                return validation;
+                                                // !value || (value && value.size <= 10)
+                                            }
+                                        })
+                                        .test({
+                                            name: 'ESCRITURA_FILE_FORMAT',
+                                            exclusive: true,
+                                            message: 'Hay archivos con extensiones no válidas',
+                                            test: (value) => {
+                                                if (!value) return true;
+                                                let validation = true;
+
+                                                for (let index = 0; index < value.length; index++) {
+                                                    const element = value[index];
+                                                    validation = validation && [...fileAccept.PDF.value, ...fileAccept.IMAGE.value].includes(element.type);
+                                                }
+                                                return validation;
+                                                // return !value || (value && [fileAccept.PDF.value].includes(value.type))
+                                            }
+                                        }),
+
+                                    observation: new Observations({schema, name: 'escritura', evaluate}).observations
+                                },
+                            ]
+                        },
+
+                    ]
+                },
+            ]
+        },
+
     ]
 }
 

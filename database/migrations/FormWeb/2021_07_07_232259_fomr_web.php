@@ -19,7 +19,7 @@ class FomrWeb extends Migration
             $table->string('cuit', 13)->nullable(); 
 
             $table->timestamps();
-        }); 
+        });
 
         Schema::create('formSolicitud', function (Blueprint $table) {
             $table->bigIncrements('id');

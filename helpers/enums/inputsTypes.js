@@ -9,6 +9,7 @@ const TEXTAREA = "textarea"
 const SELECT = "select"
 const FILE = "file"
 const LIST = "list"
+const DATE ="date"
 
 
 const INPUTS_DEFAULT = [
@@ -16,7 +17,10 @@ const INPUTS_DEFAULT = [
     NUMBER,
     PASSWORD,
     RADIO,
-    EMAIL
+    EMAIL,
+    SELECT,
+    DATE
+    
 ]
 
 
@@ -31,5 +35,6 @@ export default {
     TEXTAREA,
     FILE,
     LIST,
-    INPUTS_DEFAULT
+    INPUTS_DEFAULT,
+    DATE
 }
