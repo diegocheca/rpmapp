@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reinscripciones;
+use App\Models\Productos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -62,12 +63,58 @@ class ReinscripcionController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        dd($request->all());
-        die;
-        // dd($request->id_mina);
+        // dd($request->all());
+        $reinscripcion = $request->all();
+        $saveData = [];
+        $newProducts = [];
+        foreach($reinscripcion as $key => $data){
+            if($data == "on") {
+                $saveData[$key] = 1;
+                continue;
+            }
+            if($key == "List") {
+                $saveData["cantidad_productos"] = count($data);
 
-        Reinscripciones::create($request->all());
+                for($i = 0; $i < count($data); $i++) {
+                    $product = [];
+
+                    foreach($data[$i] as $key2 => $data2){
+
+                        if(in_array($key2, ["nombre_mineral", "variedad", "unidades"]) ) {
+                            $product[$key2] = json_encode($data2);
+                            // $product[$key2] = $data2["value"];
+                            continue;
+                        }
+
+                        $product[$key2] = $data2;
+                        // $product["variedad"] =
+                        // $product["otra_unidad"] =
+                        $product["estado"] = "en proceso";
+                    }
+
+                    array_push($newProducts, $product);
+                }
+
+                continue;
+            }
+
+            $saveData[$key] = $data;
+        }
+
+
+        // VER ESOS CAMPOS!!!
+        $saveData['id_mina'] = 1;
+        $saveData['id_productor'] = 6;
+        $saveData['fecha_vto'] = '2022-06-08';
+        $saveData['estado'] = 'en proceso';
+
+
+        $newReinscription = Reinscripciones::create($saveData);
+
+        for($i = 0; $i < count($newProducts); $i++) {
+            $newProducts[$i]["id_reinscripcion"] = $newReinscription["id"];
+            Productos::create($newProducts[$i]);
+        }
 
         return Redirect::route('reinscripciones.index');
     }
@@ -91,12 +138,12 @@ class ReinscripcionController extends Controller
      */
     public function edit($id)
     {
-        //
         $reinscripcion = Reinscripciones::find($id);
+        $reinscripcion->productos = Productos::where('id_reinscripcion', $reinscripcion->id)->get();
         $provinces = CountriesController::getProvinces();
 
         return Inertia::render('Reinscripciones/Form', [
-            'action' => "edit",
+            'action' => "update",
             'saveUrl' => "reinscripciones.update",
             'saveFileUrl' => "/reinscripciones/upload",
             'province' => env('PROVINCE', '')."/reinscripciones",
@@ -116,10 +163,66 @@ class ReinscripcionController extends Controller
      * @param  \App\Models\Reinscripciones  $reinscripcion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reinscripciones $reinscripcion)
+    public function update(Request $request, $id)
     {
-        //
-        $reinscripcion->update($request->all());
+        $dataReinscripcion = $request->all();
+        $saveData = [];
+        $newProducts = [];
+        foreach($dataReinscripcion as $key => $data){
+            if($data == "on") {
+                $saveData[$key] = 1;
+                continue;
+            }
+            if($key == "List") {
+                $saveData["cantidad_productos"] = count($data);
+
+                for($i = 0; $i < count($data); $i++) {
+                    $product = [];
+
+                    foreach($data[$i] as $key2 => $data2){
+
+                        if(in_array($key2, ["nombre_mineral", "variedad", "unidades"]) ) {
+                            $product[$key2] = json_encode($data2);
+                            // $product[$key2] = $data2["value"];
+                            continue;
+                        }
+
+                        $product[$key2] = $data2;
+                        // $product["variedad"] =
+                        // $product["otra_unidad"] =
+                        $product["estado"] = "en proceso";
+                    }
+
+                    array_push($newProducts, $product);
+                }
+
+                continue;
+            }
+
+            $saveData[$key] = $data;
+        }
+
+
+        // VER ESOS CAMPOS!!!
+        // $saveData['id_mina'] = 1;
+        // $saveData['id_productor'] = 6;
+        // $saveData['fecha_vto'] = '2022-06-08';
+        $saveData['estado'] = 'en proceso';
+
+        // update reinscripcion
+        $toUpdate = Reinscripciones::find($id);
+        $toUpdate->update($saveData);
+
+        // delete productos
+        $deletedRows = Productos::where('id_reinscripcion', $id)->delete();
+
+        return Redirect::route('reinscripciones.index');
+
+        for($i = 0; $i < count($newProducts); $i++) {
+            $newProducts[$i]["id_reinscripcion"] = $id;
+
+            Productos::create($newProducts[$i]);
+        }
         return Redirect::route('reinscripciones.index');
     }
 
@@ -238,16 +341,6 @@ class ReinscripcionController extends Controller
 
     public function upload(Request $request)
     {
-
-        // dd($request);
-
-        // // Validate (size is in KB)
-        // $request->validate([
-        //     // 'photo' => 'required|file|image|size:1024|dimensions:max_width=500,max_height=500',
-        //     'cuit'
-        // ]);
-
-        //dd($request->files->all());
         $files = $request->files->all();
         $filePaths = [];
         foreach($files as $key => $file){
@@ -255,22 +348,9 @@ class ReinscripcionController extends Controller
             $fileName = $key."-".time().$uploadedFile;
             $filePath = $request->file($key)->storeAs(env('PROVINCE', '')."/reinscripciones", $fileName, 'public');
             $filePaths[$key] = $filePath;
-            // array_push($filePaths, [$key => $filePath]);
         }
 
         return response()->json($filePaths);
-
-        // $uploadedFile = $request->file('cuit');
-        // $fileName = time().$uploadedFile->getClientOriginalName();
-        // $filePath = $request->file('cuit')->storeAs(env('PROVINCE', '')."/reinscripciones", $fileName, 'public');
-
-        // return $filePath;
-        // // Read file contents...
-        // $contents = file_get_contents($request->cuit->path());
-
-        // // // ...or just move it somewhere else (eg: local `storage` directory or S3)
-        // $newPath = $request->photo->store('cuit', 's3');
-        // var_dump($newPath);
     }
 
 }

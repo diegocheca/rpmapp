@@ -407,35 +407,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         columns: 'grid-cols-1',
         // colSpans + 1
         columnsResponsive: 'lg:grid-cols-3',
-        childrens: [// default value,
-        [{
-          name: 'sustanceSelect',
-          value: null
-        }, {
-          name: 'mineralSelect',
-          value: null
-        }, {
-          name: 'dni',
-          value: null
-        }, {
-          name: 'produccion',
-          value: null
-        }, {
-          name: 'unidades',
-          value: null
-        }, {
-          name: 'precio_venta',
-          value: null
-        }, {
-          name: 'empresa_compradora',
-          value: null
-        }, {
-          name: 'direccion_empresa_compradora',
-          value: null
-        }, {
-          name: 'actividad_empresa_compradora',
-          value: null
-        }]],
+        childrens: getChildrens(schema.productos),
         elements: [[{
           label: 'Sustancia',
           value: {},
@@ -448,11 +420,11 @@ function getFormSchema(_ref, evaluate, dataForm) {
             label: 'Sustancias que se conceden preferentemente al dueño del suelo',
             value: 'conceden_preferentemente'
           }],
-          name: 'sustanceSelect',
+          name: 'variedad',
           multiple: false,
           closeOnSelect: true,
           searchable: false,
-          inputDepends: ['mineralSelect'],
+          inputDepends: ['nombre_mineral'],
           optionsDepends: {
             aprovechamiento_comun: [{
               label: 'Arenas Metalíferas',
@@ -531,7 +503,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           colSpan: '',
           options: [],
-          name: 'mineralSelect',
+          name: 'nombre_mineral',
           inputDepends: [],
           multiple: false,
           closeOnSelect: true,
@@ -573,60 +545,118 @@ function getFormSchema(_ref, evaluate, dataForm) {
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
           name: 'precio_venta',
           colSpan: ''
-        }, {
-          label: 'Empresa compradora',
-          value: '',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'empresa_compradora',
-          colSpan: ''
-        }, {
-          label: 'Dirección empresa campradora',
-          value: '',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'direccion_empresa_compradora',
-          colSpan: ''
-        }, {
-          label: 'Actividad empresa campradora',
-          value: '',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: 'actividad_empresa_compradora',
-          colSpan: ''
-        }, {
-          colSpan: 'lg:w-5/5',
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
-            schema: schema,
-            name: 'row-',
-            evaluate: evaluate
-          }).observations
-        }]],
+        } // {
+        //     label: 'Empresa compradora',
+        //     value: '',
+        //     type: inputsTypes.TEXT,
+        //     name: 'empresa_compradora',
+        //     colSpan: '',
+        // },
+        // {
+        //     label: 'Dirección empresa campradora',
+        //     value: '',
+        //     type: inputsTypes.TEXT,
+        //     name: 'direccion_empresa_compradora',
+        //     colSpan: '',
+        // },
+        // {
+        //     label: 'Actividad empresa campradora',
+        //     value: '',
+        //     type: inputsTypes.TEXT,
+        //     name: 'actividad_empresa_compradora',
+        //     colSpan: '',
+        // },
+        // {
+        //     colSpan: 'lg:w-5/5',
+        //     observation: new Observations({schema, name: 'row-', evaluate}).observations
+        // }
+        ]],
         validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().of(yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
-          sustanceSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('sustance', {
+          variedad: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('sustance', {
             is: function is(value) {
               return _.isEmpty(value);
             },
             then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
-          mineralSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
+          nombre_mineral: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
             is: function is(value) {
               return _.isEmpty(value);
             },
             then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
-          produccion: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          unidades: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
+          produccion: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').nullable(),
+          unidades: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('unidadesSelect', {
             is: function is(value) {
               return _.isEmpty(value);
             },
             then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
-          precio_venta: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          empresa_compradora: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          direccion_empresa_compradora: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          actividad_empresa_compradora: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo')
+          precio_venta: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').nullable() // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+          // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+          // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+
         })).strict()
       }]
     }]
   }];
+}
+
+function getChildrens(data) {
+  var child = [// default value,
+  {
+    name: 'variedad',
+    value: null
+  }, {
+    name: 'nombre_mineral',
+    value: null
+  }, {
+    name: 'produccion',
+    value: null
+  }, {
+    name: 'unidades',
+    value: null
+  }, {
+    name: 'precio_venta',
+    value: null
+  }, {
+    name: 'empresa_compradora',
+    value: null
+  }, {
+    name: 'direccion_empresa_compradora',
+    value: null
+  }, {
+    name: 'actividad_empresa_compradora',
+    value: null
+  }];
+
+  if (!data || data.length == 0) {
+    return [child];
+  }
+
+  var newChildrens = [];
+
+  for (var index = 0; index < data.length; index++) {
+    var object = data[index];
+    var clone = JSON.parse(JSON.stringify(child));
+
+    var _loop = function _loop(property) {
+      var i = clone.findIndex(function (e) {
+        return e.name == property;
+      });
+      if (i == -1) return "continue";
+      clone[i].value = object[property];
+    };
+
+    for (var property in object) {
+      var _ret = _loop(property);
+
+      if (_ret === "continue") continue;
+    }
+
+    newChildrens.push(clone);
+  }
+
+  return newChildrens;
 }
 
 /***/ })

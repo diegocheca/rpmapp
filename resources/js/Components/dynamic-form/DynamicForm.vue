@@ -177,7 +177,7 @@ export default {
                         if(!values[key][index] instanceof File) continue;
                         const element = values[key][index];
                         formData.append(key+'_'+index, element);
-                        isFile = true;
+                        //isFile = true;
                     }
                 }
 
@@ -200,12 +200,7 @@ export default {
                 if(this.$props.action == "create") {
                     this.$inertia.post(route(this.$props.saveUrl), values);
                 } else if(this.$props.action == "update") {
-                    response = await axios.put(this.$props.saveUrl, {
-                        params: {
-                            id: this.$props.reinscripcion.id
-                            }
-                        }
-                    )
+                    this.$inertia.put(route("reinscripciones.update", this.$props.builder.id), values);
                 }
             } catch (error) {
 

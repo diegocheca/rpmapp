@@ -94,16 +94,17 @@
                             <!-- LIST ELEMENTS -->
                             <template v-if="item.type == inputsTypes.LIST">
                                 <fieldset class="px-5 my-3 bg-blue-100 rounded-lg" v-for="(element, indexElement) in item.childrens" :key="indexElement" >
+                                    <!-- <pre>{{element}}</pre> -->
                                     <div v-if="!evaluate" class="btn-close-row">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="#EF4444" @click="removeRowDynamic(item, indexElement)">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
                                     <div v-for="(a, id) in item.elements" :key="id" class="grid gap-4" :class="[item.columns, item.columnsResponsive]">
-                                        <!--  -->
+                                        <!-- <pre>{{element}}</pre> -->
 
                                         <div v-bind="field" v-for="(ele, indexElement2) in a" :key="indexElement2" class="p-4 flex flex-col" :class="[ele.colSpan]">
-                                                <!-- <pre>{{a[indexElement2]}}</pre> -->
+                                                <!-- <pre>{{a[indexElement2].value}}</pre> -->
                                                 <!-- {{`${item.label}[${indexElement}].${a[indexElement2].name}`}} -->
                                             <label v-if="ele.label" :for="ele.label" class="mb-2 uppercase text-md text-grey-darkest">{{ele.label}} :</label>
 
@@ -136,10 +137,10 @@
                                             </div>
 
                                             <!-- default -->
-                                            <Field v-if="inputsTypes.INPUTS_DEFAULT.indexOf(a[indexElement2].type) > -1" :value="a[indexElement2].value" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :type="a[indexElement2].type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false" />
+                                            <Field v-if="inputsTypes.INPUTS_DEFAULT.indexOf(a[indexElement2].type) > -1" :value="element[indexElement2].value" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :type="a[indexElement2].type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false" />
 
                                             <!-- textarea -->
-                                            <Field v-if="ele.type == inputsTypes.TEXTAREA" :value="ele.value" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :as="ele.type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false" />
+                                            <Field v-if="ele.type == inputsTypes.TEXTAREA" :value="element[indexElement2].value" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :as="ele.type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false" />
 
 
                                             <!-- file -->
@@ -158,9 +159,10 @@
                                                 </div>
                                             </Field>
 
-                                            <!-- select / multiselect -->
-                                            <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`">
-                                                <VueMultiselect  v-bind="field" v-model="element[indexElement2].value" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :ref="`${indexElement}-${a[indexElement2].name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" @select="getSelectOptions" @remove="removeOptions" :disabled="evaluate? true: false">
+                                            <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field, value }" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :value="element[indexElement2].value? JSON.parse(element[indexElement2].value) : {}">
+                                                <p v-show="dev">{{ newValue = value}}</p>
+
+                                                <VueMultiselect  v-bind="field" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :ref="`${indexElement}-${a[indexElement2].name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" @select="getSelectOptions" @remove="removeOptions" :disabled="evaluate? true: false" v-model="newValue" >
                                                 </VueMultiselect>
                                             </Field>
 
@@ -370,8 +372,15 @@ export default {
             }
 
 
-        }
+        },
 
+        getValueInput(elementArray, value) {
+            const element = elementArray.find(e => e.value == value);
+            return element? element : {}
+        },
+        dd() {
+            alert("adasd")
+        }
     },
 };
 </script>

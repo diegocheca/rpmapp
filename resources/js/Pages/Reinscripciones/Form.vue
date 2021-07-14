@@ -21,13 +21,13 @@
         :titleForm="titleForm"
         :evaluate="evaluate"
         :province="province"
-        :buttomLabel="'Editar'"
+        :buttomLabel=" id? 'Editar' : 'Guardar'"
         :dataForm="dataForm"
         :action="action"
         :saveUrl="saveUrl"
         :saveFileUrl="saveFileUrl"
         @valuesForm="submit($event)"
-        :dev="false"
+        :dev="true"
     />
 
 </app-layout>
