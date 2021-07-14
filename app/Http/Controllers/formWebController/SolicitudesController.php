@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\formWebController;
 
 use App\Http\Controllers\Controller;
@@ -12,9 +13,9 @@ use App\Http\Controllers\CountriesController;
 class SolicitudesController extends Controller
 {
     public function menu()
-	{
-		return view("formWeb.prueba");
-	}
+    {
+        return view("formWeb.prueba");
+    }
 
     /**
      * Display a listing of the resource.
@@ -24,7 +25,7 @@ class SolicitudesController extends Controller
     public function index()
     {
         // $solicitudes = formTipoSolicitud::with(['solicitud'])->get();
-        $solicitudes = formSolicitud::with(['tipo_solicitud','terreno'])->get();
+        $solicitudes = formSolicitud::with(['tipo_solicitud', 'terreno'])->get();
         // return ($solicitudes);
         return  Inertia::render('formWeb/mostrar', ['solicitudes' => $solicitudes]);
     }
@@ -47,14 +48,13 @@ class SolicitudesController extends Controller
             'saveUrl' => "solicitudes.store",
             // 'saveFileUrl' => "/solicitudes/upload",
             'saveFileUrl' => "solicitudes.update",
-            'province' => env('PROVINCE', 'sanjuan')."/reinscripciones-wizard",
+            'province' => env('PROVINCE', 'sanjuan') . "/reinscripciones-wizard",
             'folder' => 'solicitudes',
             'reinscripcion' => [],
             'titleForm' => 'Crear Solicitud',
             'evaluate' => false,
             'provincia' => $provinces
         ]);
-
     }
     public function prueba()
     {
@@ -67,9 +67,53 @@ class SolicitudesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function postSolicitudes(Request $request)
+    {
+        $Step = $request->step;
+        $Datos = $request->datos;
+        // if ($Step == 1) {
+        //     foreach ($Datos as $key => $value) {
+        //         if ($key == 'provincia' || $key == 'departamento' || $key == 'localidad') {
+        //             echo $key . ': ' . $value['label'] . "\n";
+        //             continue;
+        //         }
+        //         echo $key . ': ' . $value . "\n";
+        //     }
+        // } else {
+        //     echo 'no es 1';
+        // }
+
+        switch ($Step) {
+            case 1:
+                echo 'Step 1';
+                break;
+            case 2:
+                echo 'Step 2';
+                break;
+            case 3:
+                echo 'Step 3';
+                break;
+            case 4:
+                echo 'Step 4';
+                break;
+            case 5:
+                echo 'Step 5';
+                break;
+
+            default:
+                echo 'Ninguno';
+                break;
+        }
+
+        // dd($request);
+        return response()->json('ok');
+    }
+
     public function store(Request $request)
     {
-        formSolicitud::create($request->all());
+        // dd($request);
+        // dd(isset($request->content));
+        //formSolicitud::create($request->all()); content
         return Redirect::route('solicitudes.index');
     }
 

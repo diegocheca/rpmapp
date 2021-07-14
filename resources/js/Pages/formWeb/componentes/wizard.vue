@@ -1,6 +1,6 @@
 <template>
     <!-- component -->
-    <!-- <div class="w-full py-6">
+    <div class="w-full py-6">
         <div class="flex">
             <div class="w-1/4">
                 <div class="relative mb-2">
@@ -299,10 +299,10 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
 
-            <section class="text-gray-900 body-font">
+            <!-- <section class="text-gray-900 body-font">
             <div class="container px-5 py-12 mx-auto">
                 <div
                     class="block lg:flex lg:space-x-2 sm:px-4 px-2 py-12 mb-10"
@@ -517,5 +517,5 @@
                 </div>
             </div>
         </section>
-
+ -->
 </template>

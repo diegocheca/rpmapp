@@ -53,6 +53,8 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\IiadiaController;
 use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
+use App\Http\Controllers\CountriesController;
+
 
 /************* FORMULARIOS WEB *************/
 
@@ -211,12 +213,24 @@ Route::get('/impresiones/reinscripcion/{id}', [ReinscripcionController::class, "
 
 Route::post('/formularios/avisar_formulario_completo/', [FormAltaProductorController::class, "formulario_listo"])->name('formulario-listo');
 
+Route::group(['prefix' => 'paises'], function () {
+    // Route::get('paises', 'CountriesController@getCountries')
+    // ->middleware(['auth:sanctum', 'verified']);
+    Route::get('provincias', [CountriesController::class, "getDepartment"])
+        ->middleware(['auth:sanctum', 'verified']);
+    Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
+        ->middleware(['auth:sanctum', 'verified']);
+    Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
+        ->middleware(['auth:sanctum', 'verified']);
+});
 
 //FORMULARIOS WEB
 // Route::group(['prefix' => 'solicitudes'], function () {
 Route::resource('solicitudes', SolicitudesController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
+Route::post('solicitudes/solicitudesDatos', [SolicitudesController::class,'postSolicitudes'])
+    ->middleware(['auth:sanctum', 'verified']);
 // Route::get('prueba', 'SolicitudesController@prueba')
 //     ->middleware(['auth:sanctum', 'verified']);
 

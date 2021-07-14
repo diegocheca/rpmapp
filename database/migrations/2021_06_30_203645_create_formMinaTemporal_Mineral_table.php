@@ -14,7 +14,7 @@ class CreateFormMinaTemporalMineralTable extends Migration
     public function up()
     {
         Schema::create('formMinaTemporal_Mineral', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('estado_mineral');
 
             $table->unsignedBigInteger('minatemporal_id');

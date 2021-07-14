@@ -1,8 +1,6 @@
 <template>
     <app-layout>
         <Mostrar></Mostrar>
-        <Mostrar></Mostrar>
-        <Mostrar></Mostrar>
         <!--Winzard-->
         <!-- <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -22,17 +20,17 @@
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import Mostrar from "./componentes/pruebaComp.vue";
-import DatosPersonales from "./componentes/DatosPersonales.vue";
-import DatosRepresentanteLegal from "./componentes/DatosRepresentanteLegal.vue";
-import UbicacionSolicitudExploracion from "./componentes/UbicacionSolicitudExploracion.vue";
+import Mostrar from "./componentes/wizard.vue";
+// import DatosPersonales from "./componentes/DatosPersonales.vue";
+// import DatosRepresentanteLegal from "./componentes/DatosRepresentanteLegal.vue";
+// import UbicacionSolicitudExploracion from "./componentes/UbicacionSolicitudExploracion.vue";
 export default {
     components: {
         AppLayout,
         Mostrar,
-        DatosPersonales,
-        DatosRepresentanteLegal,
-        UbicacionSolicitudExploracion,
+        // DatosPersonales,
+        // DatosRepresentanteLegal,
+        // UbicacionSolicitudExploracion,
     },
     props: {
         errors: Object,
