@@ -77,6 +77,7 @@
                             </svg>
                         </span>
                     </div>
+                    
                 </div>
 
                 <div class="text-xs text-center md:text-base">
@@ -240,6 +241,10 @@ export default {
             require: true,
             type: String,
         },
+        tipo_documento: {
+            require: true,
+            type: String,
+        },
         titleForm: {
             require: true,
             type: String,
@@ -329,6 +334,7 @@ export default {
         const module = await import(
             `../../../../../helpers/formWeb/${this.$props.province}`
         );
+        
         this.formSchema = module.getFormSchema(
             this.$props.builder,
             this.$props.evaluate,

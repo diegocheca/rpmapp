@@ -17,7 +17,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
             bgColorProgress: "bg-blue-300",
             titleStep: "SOLICITANTE",
             bodyStep: [
-                // row 1
+                // row 1 Datos solicitante
                 {
                     widthResponsive: "lg:flex-row", //flex
                     // columns
@@ -92,7 +92,6 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         evaluate,
                                     }).observations,
                                 },
-
                                 //tipo de documento
                                  {
                                      label: "tipo de documento",
@@ -208,10 +207,29 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         evaluate,
                                     }).observations,
                                     
-                                },
+                                },                                                    
+                            ],
+                        },
+                    ],
+                },
+
+                //row 2 Domicilio legal
+                {
+                    widthResponsive: "lg:flex-row", //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: "Domicilio Legal",
+                            width: "lg:w-full", //flex
+                            columns: "grid-cols-1", //grid
+                            columnsResponsive: "lg:grid-cols-1", //inside card
+                            img: "/images/laborales.png",
+                            inputs: [  
+                              
                                 //DOMICILIO LEGAL
                                 {
-                                    label: "Domicilio ",
+                                    label: "Domicilio",
                                     value: schema.domicilio,
                                     type: inputsTypes.TEXT,
                                     name: "domicilio",
@@ -223,10 +241,189 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         name: "domicilio",
                                         evaluate,
                                     }).observations,
-                                },
+                                },                           
+                            ],
+                        },
+                    ],
+                },
+
+                // row 3 Domicilio legal provincia/dpto/localidad
+                {
+                    widthResponsive: "lg:flex-row", //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: "Domicilio Legal",
+                            width: "lg:w-full", //flex
+                            columns: "grid-cols-1", //grid
+                            columnsResponsive: "lg:grid-cols-3", //inside card
+                            img: "/images/laborales.png",
+                            inputs: [ 
                                 //provincia
                                 {
-                                    label: "Provincia",
+                                    label: "Provincia ",
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    asyncUrl: "/paises/departamentos",
+                                    inputDepends: ["departamento"],
+                                    inputClearDepends: [
+                                        "departamento",
+                                        "localidad",
+                                    ],
+                                    // isLoading: false,
+                                    //
+                                    options: dataForm.provincia,
+                                    name: "provincia",
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: "Selecciona una opción",
+                                    validations: yup
+                                        .object()
+                                        .when("provinciaSelect", {
+                                            is: (value) =>
+                                                _.isEmpty(value) || !value,
+                                            then: yup
+                                                .object()
+                                                .required(
+                                                    "Debes elegir un elemento"
+                                                )
+                                                .nullable(),
+                                        }),
+                                    observation: new Observations({
+                                        schema,
+                                        name: "provincia",
+                                        evaluate,
+                                    }).observations,
+                                },
+                              
+                                //Departamento
+                                {
+                                    label: "Departamento",
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    asyncUrl: "/paises/localidades",
+                                    inputDepends: ["localidad"],
+                                    inputClearDepends: ["localidad"],
+                                    isLoading: false,
+                                    //
+                                    options: [],
+                                    name: "departamento",
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: "Selecciona una opción",
+                                    validations: yup
+                                        .object()
+                                        .when("departamentoSelect", {
+                                            is: (value) =>
+                                                _.isEmpty(value) || !value,
+                                            then: yup
+                                                .object()
+                                                .required(
+                                                    "Debes elegir un elemento"
+                                                )
+                                                .nullable(),
+                                        }),
+                                    observation: new Observations({
+                                        schema,
+                                        name: "departamento",
+                                        evaluate,
+                                    }).observations,
+                                },
+                                //localidad
+                                {
+                                    label: "Localidad",
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    isLoading: false,
+                                    //
+                                    options: [],
+                                    name: "localidad",
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: "Selecciona una opción",
+                                    validations: yup
+                                        .object()
+                                        .when("localidadSelect", {
+                                            is: (value) =>
+                                                _.isEmpty(value) || !value,
+                                            then: yup
+                                                .object()
+                                                .required(
+                                                    "Debes elegir un elemento"
+                                                )
+                                                .nullable(),
+                                        }),
+                                    observation: new Observations({
+                                        schema,
+                                        name: "localidad",
+                                        evaluate,
+                                    }).observations,
+                                },                              
+                            ],
+                        },
+                    ],
+                },
+                
+                //row 4 Domicilio Real
+                {
+                    widthResponsive: "lg:flex-row", //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: "Domicilio Real",
+                            width: "lg:w-full", //flex
+                            columns: "grid-cols-1", //grid
+                            columnsResponsive: "lg:grid-cols-1", //inside card
+                            img: "/images/laborales.png",
+                            inputs: [  
+                              
+                                //DOMICILIO LEGAL
+                                {
+                                    label: "Domicilio",
+                                    value: schema.domicilio,
+                                    type: inputsTypes.TEXT,
+                                    name: "domicilio",
+                                    validations: yup
+                                        .string()
+                                        .required("Debes completar este campo"),
+                                    observation: new Observations({
+                                        schema,
+                                        name: "domicilio",
+                                        evaluate,
+                                    }).observations,
+                                },                           
+                            ],
+                        },
+                    ],
+                },
+
+                // row 5 Domicilio real provincia/dpto/localidad
+                {
+                    widthResponsive: "lg:flex-row", //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: "Domicilio Real",
+                            width: "lg:w-full", //flex
+                            columns: "grid-cols-1", //grid
+                            columnsResponsive: "lg:grid-cols-3", //inside card
+                            img: "/images/laborales.png",
+                            inputs: [ 
+                                //provincia
+                                {
+                                    label: "Provincia ",
                                     value: {},
                                     type: inputsTypes.SELECT,
                                     // get axios

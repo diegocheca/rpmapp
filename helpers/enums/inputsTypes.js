@@ -18,7 +18,7 @@ const INPUTS_DEFAULT = [
     PASSWORD,
     RADIO,
     EMAIL,
-    SELECT,
+   // SELECT,
     DATE
     
 ]

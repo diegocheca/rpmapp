@@ -9,6 +9,8 @@ use App\Models\formWebModels\formTipoSolicitud;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\formWebController\TipoDocumentoController;
+use App\Models\formWebModels\formTipoDocumento;
 
 class SolicitudesController extends Controller
 {
@@ -40,6 +42,7 @@ class SolicitudesController extends Controller
         //return Inertia::render('formWeb/FormCrear');
         // dd(CountriesController::getProvinces());
         $provinces = CountriesController::getProvinces();
+        $tipo_documento = TipoDocumentoController::getTipoDocumento();
         // dd(env('PROVINCE', ''));
         //
         // return Inertia::render('Reinscripciones/Form');
@@ -53,7 +56,10 @@ class SolicitudesController extends Controller
             'reinscripcion' => [],
             'titleForm' => 'Crear Solicitud',
             'evaluate' => false,
-            'provincia' => $provinces
+            'provincia' => $provinces,
+            'tipo_documento'=>$tipo_documento,
+
+             
         ]);
     }
     public function prueba()

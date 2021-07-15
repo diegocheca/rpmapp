@@ -57,10 +57,10 @@ export default {
             require: true,
             type: String,
         },
-        // reinscripcion: {
-        //     require: true,
-        //     type: Array,
-        // },
+        tipo_documento: {
+            require: true,
+            type: String,
+        },
         titleForm: {
             require: true,
             type: String,
@@ -78,7 +78,8 @@ export default {
     data() {
 
         const dataForm = {
-            provincia: this.$props.provincia
+            provincia: this.$props.provincia,
+            tipo_documento: this.$props.tipo_documento
         }
         return {
             // id: this.$props.reinscripcion.id,

@@ -56,11 +56,12 @@ use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 
 
+
 /************* FORMULARIOS WEB *************/
 
 //use App\Http\Controllers\SolicitudesController;
 use App\Http\Controllers\formWebController\SolicitudesController;
-
+use App\Http\Controllers\formWebController\TipoDocumentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,8 +143,6 @@ Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formula
 
 //direcciones de formularios 
 
-
-
 Route::get('/validar_email_productor/{codigo}', [HomeController::class, "valdiar_email_de_productor"])->name('valdiar-email-de-productor');
 
 
@@ -160,16 +159,12 @@ Route::post('/formularios/auto_guardado_seis', [FormAltaProductorController::cla
 
 Route::post('/formularios/buscar_datos_formulario', [FormAltaProductorController::class, "buscar_datos_formulario_por_email"])->name('guardar-paso-dossss');
 
-
-
-
 Route::post('/formularios/auto_guardado_reinscripcion', [ReinscripcionController::class, "guardar_reinscripcion"])->name('auto-guardado-reinscripcion');
 
 
 Route::post('/formularios/validar_email_formulario', [FormAltaProductorController::class, "validar_email_productor"])->name('validar-email-formulario');
 Route::post('/formularios/validar_cuit_reinscripcion', [FormAltaProductorController::class, "validar_cuit_prod_reinscripcion"])->name('validar-cuit-prod-reinscripcion');
 Route::post('/formularios/validar_mina_para_prod', [FormAltaProductorController::class, "validar_mina_prod_reinscripcion"])->name('validar-mina-prod-reinscripcion');
-
 
 
 Route::get('/gracias_confirmacion/{codigo}', [FormAltaProductorController::class, "validar_email_desde_email"])->name('validar-email-desde-email');
@@ -198,9 +193,6 @@ Route::get('/thank_you', [HomeController::class, "thanks"])->name('thanks');
 
 Route::post('/recibiendo_pdf', [FormAltaProductorController::class, "recibo"])->name('recibo-pdf');
 
-
-
-
 Route::get('/formularios/descargar_formulario/{id}', [FormAltaProductorController::class, "descargar_formulario"])->name('descargar-formulario');
 Route::post('/formularios/buscar_id_form/', [FormAltaProductorController::class, "buscador_de_id"])->name('buscador-de-id');
 Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_prueba"])->name('probando-pdf');
@@ -224,6 +216,7 @@ Route::group(['prefix' => 'paises'], function () {
         ->middleware(['auth:sanctum', 'verified']);
 });
 
+
 //FORMULARIOS WEB
 // Route::group(['prefix' => 'solicitudes'], function () {
 Route::resource('solicitudes', SolicitudesController::class)
@@ -238,3 +231,6 @@ Route::get('/prueba', [SolicitudesController::class, "prueba"])->name('prueba');
 
 // });
 Route::get('/menu', [SolicitudesController::class, "menu"])->name('menu');
+
+Route::get('tipo_documento', [TipoDocumentoController::class, "getTipoDocumento"])
+        ->middleware(['auth:sanctum', 'verified']);

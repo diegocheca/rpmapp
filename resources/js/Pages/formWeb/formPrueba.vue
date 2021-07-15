@@ -1,24 +1,6 @@
 <template>
-<<<<<<< HEAD
     <app-layout>      
        
-=======
-    <app-layout>
-        <Mostrar></Mostrar>
-        <!--Winzard-->
-        <!-- <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <Mostrar></Mostrar>
-                </div>
-            </div>
-        </div> -->
-        <!--Datos Personales-->
-        <!-- <DatosPersonales></DatosPersonales> -->
-        <!--Datos Representante Legal-->
-        <!-- <DatosRepresentanteLegal></DatosRepresentanteLegal> -->
-        <!--Ubicacion Solicitud de Exploracion-->
->>>>>>> fa9c44ce57b85f81e29c4681475b450468ac2e5d
         <div >
             <UbicacionSolicitudExploracion></UbicacionSolicitudExploracion> 
         </div> 

@@ -124,7 +124,7 @@ class FomrWeb extends Migration
             $table->string('nombre', 50)->nullable();
             $table->string('sexo', 50)->nullable();
             $table->string('apellido', 50)->nullable();
-            $table->string('tipo_doc', 50)->nullable();
+            // $table->string('tipo_doc', 50)->nullable();
             $table->date('fecha_nacimiento');
             $table->string('nacionalidad', 50)->nullable();
             $table->string('profesion', 50)->nullable();
@@ -135,20 +135,24 @@ class FomrWeb extends Migration
             $table->string('domi_real', 50)->nullable();
             $table->string('prov_domi_real', 50)->nullable();
             $table->string('dpto_domi_real', 50)->nullable(); 
+            $table->unsignedBigInteger('tipodocumento_id');
+
+            $table->foreign('tipodocumento_id')->references('id')->on('fromTipoDocumento');
 
             $table->timestamps();
         });
 
-        Schema::create('formRolPersona', function (Blueprint $table) {
-            $table->bigIncrements('id');
+         Schema::create('formRolPersona', function (Blueprint $table) {
+             $table->bigIncrements('id');
 
-            $table->unsignedBigInteger('persona_id');
-            $table->unsignedBigInteger('tiporol_id');
+             $table->unsignedBigInteger('persona_id');
+             $table->unsignedBigInteger('tiporol_id');
 
-            $table->foreign('persona_id')->references('id')->on('persona');  
-            $table->foreign('tiporol_id')->references('id')->on('fromTipoRol');
-            $table->timestamps();
-        });
+             $table->foreign('persona_id')->references('id')->on('persona');  
+             $table->foreign('tiporol_id')->references('id')->on('fromTipoRol');
+             
+             $table->timestamps();
+         });
 
         Schema::create('formRolPersona_Solicitud', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -161,6 +165,13 @@ class FomrWeb extends Migration
 
             $table->timestamps();
         });
+        
+        Schema::create('formTipoDocumento', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');            
+
+            $table->timestamps();
+        });      
     }
 
     /**
@@ -182,5 +193,7 @@ class FomrWeb extends Migration
         Schema::dropIfExists('formPersona');
         Schema::dropIfExists('formRolPersona');
         Schema::dropIfExists('formRolPersona_Solicitud');
+        Schema::dropIfExists('formTipoDocumento');
+      
     }
 }
