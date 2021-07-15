@@ -4,11 +4,16 @@ namespace App\Http\Controllers\formWebController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\formWebModels\formSolicitud;
-use App\Models\formWebModels\formTipoSolicitud;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\CountriesController;
+//Modelos DB
+use App\Models\formWebModels\formSolicitud;
+use App\Models\formWebModels\formTipoSolicitud;
+// use App\Models\formWebModels\formPersona;
+// use App\Models\formWebModels\formRazonSocial;
+// use App\Models\formWebModels\formEstadoTerreno;
+
 
 class SolicitudesController extends Controller
 {
@@ -71,21 +76,19 @@ class SolicitudesController extends Controller
     {
         $Step = $request->step;
         $Datos = $request->datos;
-        // if ($Step == 1) {
-        //     foreach ($Datos as $key => $value) {
-        //         if ($key == 'provincia' || $key == 'departamento' || $key == 'localidad') {
-        //             echo $key . ': ' . $value['label'] . "\n";
-        //             continue;
-        //         }
-        //         echo $key . ': ' . $value . "\n";
-        //     }
-        // } else {
-        //     echo 'no es 1';
-        // }
 
         switch ($Step) {
             case 1:
                 echo 'Step 1';
+                foreach ($Datos as $key => $value) {
+                    if ($key == 'provincia' || $key == 'departamento' || $key == 'localidad') {
+                        //Guargar Localidad, Departamento, Provincia
+                        echo $key . ': ' . $value['label'] . "\n";
+                        continue;
+                    }
+                    //Guardar DNI, Nombre, Apellido, (todos los datos de la persona)
+                    echo $key . ': ' . $value . "\n";
+                }
                 break;
             case 2:
                 echo 'Step 2';

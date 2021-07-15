@@ -12,11 +12,11 @@ class FomrWeb extends Migration
      * @return void
      */
     public function up()
-    {  
+    {
         Schema::create('formRazonSocial', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre', 200);           
-            $table->string('cuit', 13)->nullable(); 
+            $table->string('nombre', 200);
+            $table->string('cuit', 13)->nullable();
 
             $table->timestamps();
         });
@@ -44,7 +44,7 @@ class FomrWeb extends Migration
         Schema::create('formTipoSolicitud', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 100)->default(null);
-            
+
             $table->timestamps();
         });
 
@@ -55,7 +55,7 @@ class FomrWeb extends Migration
             $table->string('provincia');
             $table->string('departamento');
             $table->string('localidad');
-            
+
             $table->timestamps();
         });
 
@@ -120,11 +120,11 @@ class FomrWeb extends Migration
 
         Schema::create('formPersona', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('dni', 10);            
+            $table->string('dni', 10);
             $table->string('nombre', 50)->nullable();
             $table->string('sexo', 50)->nullable();
             $table->string('apellido', 50)->nullable();
-            $table->string('tipo_doc', 50)->nullable();
+            // $table->string('tipo_doc', 50)->nullable();
             $table->date('fecha_nacimiento');
             $table->string('nacionalidad', 50)->nullable();
             $table->string('profesion', 50)->nullable();
@@ -134,7 +134,10 @@ class FomrWeb extends Migration
             $table->string('dpto_domi_legal', 50)->nullable();
             $table->string('domi_real', 50)->nullable();
             $table->string('prov_domi_real', 50)->nullable();
-            $table->string('dpto_domi_real', 50)->nullable(); 
+            $table->string('dpto_domi_real', 50)->nullable();
+            $table->unsignedBigInteger('tipodocumento_id');
+
+            $table->foreign('tipodocumento_id')->references('id')->on('fromTipoDocumento');
 
             $table->timestamps();
         });
@@ -145,7 +148,7 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('persona_id');
             $table->unsignedBigInteger('tiporol_id');
 
-            $table->foreign('persona_id')->references('id')->on('persona');  
+            $table->foreign('persona_id')->references('id')->on('persona');
             $table->foreign('tiporol_id')->references('id')->on('fromTipoRol');
             $table->timestamps();
         });
@@ -158,6 +161,13 @@ class FomrWeb extends Migration
 
             $table->foreign('solicitud_id')->references('id')->on('formSolicitud');
             $table->foreign('rolpersona_id')->references('id')->on('formRolPersona');
+
+            $table->timestamps();
+        });
+
+        Schema::create('formTipoDocumento', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');            
 
             $table->timestamps();
         });
@@ -182,5 +192,6 @@ class FomrWeb extends Migration
         Schema::dropIfExists('formPersona');
         Schema::dropIfExists('formRolPersona');
         Schema::dropIfExists('formRolPersona_Solicitud');
+        Schema::dropIfExists('formTipoDocumento');
     }
 }

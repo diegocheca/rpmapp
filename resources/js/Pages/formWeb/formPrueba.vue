@@ -1,8 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <app-layout>      
-       
-=======
     <app-layout>
         <Mostrar></Mostrar>
         <!--Winzard-->
@@ -18,7 +14,6 @@
         <!--Datos Representante Legal-->
         <!-- <DatosRepresentanteLegal></DatosRepresentanteLegal> -->
         <!--Ubicacion Solicitud de Exploracion-->
->>>>>>> fa9c44ce57b85f81e29c4681475b450468ac2e5d
         <div >
             <UbicacionSolicitudExploracion></UbicacionSolicitudExploracion> 
         </div> 

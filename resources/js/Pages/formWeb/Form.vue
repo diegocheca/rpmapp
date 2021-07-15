@@ -87,7 +87,7 @@ export default {
     },
     methods: {
         async submit(form) {
-            console.log(form);
+            console.log('Finalizado');
             // let response;
             // let formData = new FormData();
 
