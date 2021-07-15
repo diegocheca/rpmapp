@@ -21,26 +21,6 @@ class FomrWeb extends Migration
             $table->timestamps();
         });
 
-        Schema::create('formSolicitud', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nroexpediente', 100);
-            $table->unsignedInteger('terreno_id')->nullable(); //id tabla terreno
-            $table->string('plazo_solicitado', 50)->nullable();
-            $table->string('programa_trabajo', 50)->nullable();
-            $table->string('periodo_trabajo', 50)->nullable();
-            $table->unsignedInteger('tiposolicitud_id')->nullable(); //id tipo solicitudes
-            $table->integer('cant_UM_otorgada')->nullable();
-            $table->unsignedInteger('mina_id')->nullable(); //id de mina
-            $table->unsignedInteger('razonsocial_id')->nullable(); //id tabla terreno
-
-            $table->foreign('terreno_id')->references('id')->on('formTerreno');
-            $table->foreign('tiposolicitud_id')->references('id')->on('formTipoSolicitud');
-            $table->foreign('mina_id')->references('id')->on('formMinaTemporal');
-            $table->foreign('razonsocial_id')->references('id')->on('formRazonSocial');
-
-            $table->timestamps();
-        });
-
         Schema::create('formTipoSolicitud', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 100)->default(null);
@@ -95,7 +75,7 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('mineral_id');
 
             $table->foreign('minatemporal_id')->references('id')->on('formMinaTemporal');
-            $table->foreign('mineral_id')->references('id')->on('mineral');
+            //$table->foreign('mineral_id')->references('id')->on('mineral');
 
             $table->timestamps();
         });
@@ -118,6 +98,13 @@ class FomrWeb extends Migration
             $table->string('nombre_rol');
         });
 
+        Schema::create('formTipoDocumento', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nombre');
+
+            $table->timestamps();
+        });
+
         Schema::create('formPersona', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('dni', 10);
@@ -134,25 +121,45 @@ class FomrWeb extends Migration
             $table->string('dpto_domi_legal', 50)->nullable();
             $table->string('domi_real', 50)->nullable();
             $table->string('prov_domi_real', 50)->nullable();
-            $table->string('dpto_domi_real', 50)->nullable(); 
+            $table->string('dpto_domi_real', 50)->nullable();
             $table->unsignedBigInteger('tipodocumento_id');
 
-            $table->foreign('tipodocumento_id')->references('id')->on('fromTipoDocumento');
+            $table->foreign('tipodocumento_id')->references('id')->on('formTipoDocumento');
 
             $table->timestamps();
         });
 
-         Schema::create('formRolPersona', function (Blueprint $table) {
-             $table->bigIncrements('id');
+        Schema::create('formRolPersona', function (Blueprint $table) {
+            $table->bigIncrements('id');
 
-             $table->unsignedBigInteger('persona_id');
-             $table->unsignedBigInteger('tiporol_id');
+            $table->unsignedBigInteger('persona_id');
+            $table->unsignedBigInteger('tiporol_id');
 
-             $table->foreign('persona_id')->references('id')->on('persona');  
-             $table->foreign('tiporol_id')->references('id')->on('fromTipoRol');
-             
-             $table->timestamps();
-         });
+            $table->foreign('persona_id')->references('id')->on('formPersona');
+            $table->foreign('tiporol_id')->references('id')->on('formTipoRol');
+
+            $table->timestamps();
+        });
+
+        Schema::create('formSolicitud', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nroexpediente', 100);
+            $table->unsignedInteger('terreno_id')->nullable(); //id tabla terreno
+            $table->string('plazo_solicitado', 50)->nullable();
+            $table->string('programa_trabajo', 50)->nullable();
+            $table->string('periodo_trabajo', 50)->nullable();
+            $table->unsignedInteger('tiposolicitud_id')->nullable(); //id tipo solicitudes
+            $table->integer('cant_UM_otorgada')->nullable();
+            $table->unsignedInteger('mina_id')->nullable(); //id de mina
+            $table->unsignedInteger('razonsocial_id')->nullable(); //id tabla terreno
+
+            $table->foreign('terreno_id')->references('id')->on('formTerreno');
+            $table->foreign('tiposolicitud_id')->references('id')->on('formTipoSolicitud');
+            $table->foreign('mina_id')->references('id')->on('formMinaTemporal');
+            $table->foreign('razonsocial_id')->references('id')->on('formRazonSocial');
+
+            $table->timestamps();
+        });
 
         Schema::create('formRolPersona_Solicitud', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -165,14 +172,7 @@ class FomrWeb extends Migration
 
             $table->timestamps();
         });
-        
 
-        Schema::create('formTipoDocumento', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('nombre');            
-
-            $table->timestamps();
-        });      
     }
 
     /**
@@ -195,6 +195,5 @@ class FomrWeb extends Migration
         Schema::dropIfExists('formRolPersona');
         Schema::dropIfExists('formRolPersona_Solicitud');
         Schema::dropIfExists('formTipoDocumento');
-      
     }
 }
