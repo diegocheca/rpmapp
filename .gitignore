@@ -17,3 +17,8 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 public/js/app.js
+public/js/helpers_formWeb_sanjuan_observaciones_js.js
+public/js/helpers_formWeb_sanjuan_reinscripciones-wizard_copy_js.js
+public/js/helpers_formWeb_sanjuan_reinscripciones-wizard_js.js
+bootstrap/cache/config.php
+.vscode/settings.json
