@@ -11,7 +11,8 @@ class formTipoDocumento extends Model
     protected $table = 'formTipoDocumento';
     protected $fillable = [
         'id',
-        'nombre'        
+        'nombre'       
+       
     ];
 
     public function tipodocumento()

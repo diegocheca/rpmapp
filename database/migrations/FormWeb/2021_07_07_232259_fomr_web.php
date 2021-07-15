@@ -12,11 +12,11 @@ class FomrWeb extends Migration
      * @return void
      */
     public function up()
-    {  
+    {
         Schema::create('formRazonSocial', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombre', 200);           
-            $table->string('cuit', 13)->nullable(); 
+            $table->string('nombre', 200);
+            $table->string('cuit', 13)->nullable();
 
             $table->timestamps();
         });
@@ -44,7 +44,7 @@ class FomrWeb extends Migration
         Schema::create('formTipoSolicitud', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre', 100)->default(null);
-            
+
             $table->timestamps();
         });
 
@@ -55,7 +55,7 @@ class FomrWeb extends Migration
             $table->string('provincia');
             $table->string('departamento');
             $table->string('localidad');
-            
+
             $table->timestamps();
         });
 
@@ -120,7 +120,7 @@ class FomrWeb extends Migration
 
         Schema::create('formPersona', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('dni', 10);            
+            $table->string('dni', 10);
             $table->string('nombre', 50)->nullable();
             $table->string('sexo', 50)->nullable();
             $table->string('apellido', 50)->nullable();
@@ -166,6 +166,7 @@ class FomrWeb extends Migration
             $table->timestamps();
         });
         
+
         Schema::create('formTipoDocumento', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');            
