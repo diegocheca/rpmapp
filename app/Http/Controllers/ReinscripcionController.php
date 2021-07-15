@@ -216,8 +216,6 @@ class ReinscripcionController extends Controller
         // delete productos
         $deletedRows = Productos::where('id_reinscripcion', $id)->delete();
 
-        return Redirect::route('reinscripciones.index');
-
         for($i = 0; $i < count($newProducts); $i++) {
             $newProducts[$i]["id_reinscripcion"] = $id;
 
