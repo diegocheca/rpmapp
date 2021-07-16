@@ -208,7 +208,7 @@ Route::post('/formularios/avisar_formulario_completo/', [FormAltaProductorContro
 Route::group(['prefix' => 'paises'], function () {
     // Route::get('paises', 'CountriesController@getCountries')
     // ->middleware(['auth:sanctum', 'verified']);
-    Route::get('provincias', [CountriesController::class, "getDepartment"])
+    Route::get('provincias', [CountriesController::class, "getProvinces"])
         ->middleware(['auth:sanctum', 'verified']);
     Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
         ->middleware(['auth:sanctum', 'verified']);

@@ -373,23 +373,23 @@ function getFormSchema(_ref, evaluate, dataForm) {
         img: "/images/laborales.png",
         inputs: [//provincia
         {
-          label: "Provincia ",
+          label: "Provincia",
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           // get axios
           async: true,
           asyncUrl: "/paises/departamentos",
-          inputDepends: ["departamento"],
-          inputClearDepends: ["departamento", "localidad"],
+          inputDepends: ["departamentoLegal"],
+          inputClearDepends: ["departamentoLegal", "localidadLegal"],
           // isLoading: false,
           //
           options: dataForm.provincia,
-          name: "provincia",
+          name: "provinciaLegal",
           multiple: false,
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("provinciaSelect", {
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("provinciaLegalSelect", {
             is: function is(value) {
               return _.isEmpty(value) || !value;
             },
@@ -397,7 +397,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: "provincia",
+            name: "provinciaLegal",
             evaluate: evaluate
           }).observations
         }, //Departamento
@@ -408,17 +408,17 @@ function getFormSchema(_ref, evaluate, dataForm) {
           // get axios
           async: true,
           asyncUrl: "/paises/localidades",
-          inputDepends: ["localidad"],
-          inputClearDepends: ["localidad"],
+          inputDepends: ["localidadLegal"],
+          inputClearDepends: ["localidadLegal"],
           isLoading: false,
           //
           options: [],
-          name: "departamento",
+          name: "departamentoLegal",
           multiple: false,
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("departamentoSelect", {
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("departamentoLegalSelect", {
             is: function is(value) {
               return _.isEmpty(value) || !value;
             },
@@ -426,7 +426,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: "departamento",
+            name: "departamentoLegal",
             evaluate: evaluate
           }).observations
         }, //localidad
@@ -439,12 +439,12 @@ function getFormSchema(_ref, evaluate, dataForm) {
           isLoading: false,
           //
           options: [],
-          name: "localidad",
+          name: "localidadLegal",
           multiple: false,
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("localidadSelect", {
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("localidadLegalSelect", {
             is: function is(value) {
               return _.isEmpty(value) || !value;
             },
@@ -452,7 +452,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: "localidad",
+            name: "localidadLegal",
             evaluate: evaluate
           }).observations
         }]

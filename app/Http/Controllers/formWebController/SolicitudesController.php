@@ -48,7 +48,7 @@ class SolicitudesController extends Controller
         // dd(CountriesController::getProvinces());
         $provinces = CountriesController::getProvinces();
         $tipo_documento = TipoDocumentoController::getTipoDocumento();
-        // dd(env('PROVINCE', ''));
+        // dd(env('PROVINCE', 'sanjuan'));
         //
         // return Inertia::render('Reinscripciones/Form');
         return Inertia::render('formWeb/Form', [

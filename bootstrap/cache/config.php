@@ -329,7 +329,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '5432',
-        'database' => 'rpmappdb',
+        'database' => 'rpmappdb2',
         'username' => 'postgres',
         'password' => 'qwer1234',
         'charset' => 'utf8',

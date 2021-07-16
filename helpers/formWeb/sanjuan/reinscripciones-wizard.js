@@ -262,28 +262,28 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             inputs: [ 
                                 //provincia
                                 {
-                                    label: "Provincia ",
+                                    label: "Provincia",
                                     value: {},
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
                                     asyncUrl: "/paises/departamentos",
-                                    inputDepends: ["departamento"],
+                                    inputDepends: ["departamentoLegal"],
                                     inputClearDepends: [
-                                        "departamento",
-                                        "localidad",
+                                        "departamentoLegal",
+                                        "localidadLegal",
                                     ],
                                     // isLoading: false,
                                     //
                                     options: dataForm.provincia,
-                                    name: "provincia",
+                                    name: "provinciaLegal",
                                     multiple: false,
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
                                     validations: yup
                                         .object()
-                                        .when("provinciaSelect", {
+                                        .when("provinciaLegalSelect", {
                                             is: (value) =>
                                                 _.isEmpty(value) || !value,
                                             then: yup
@@ -295,7 +295,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         }),
                                     observation: new Observations({
                                         schema,
-                                        name: "provincia",
+                                        name: "provinciaLegal",
                                         evaluate,
                                     }).observations,
                                 },
@@ -308,19 +308,19 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     // get axios
                                     async: true,
                                     asyncUrl: "/paises/localidades",
-                                    inputDepends: ["localidad"],
-                                    inputClearDepends: ["localidad"],
+                                    inputDepends: ["localidadLegal"],
+                                    inputClearDepends: ["localidadLegal"],
                                     isLoading: false,
                                     //
                                     options: [],
-                                    name: "departamento",
+                                    name: "departamentoLegal",
                                     multiple: false,
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
                                     validations: yup
                                         .object()
-                                        .when("departamentoSelect", {
+                                        .when("departamentoLegalSelect", {
                                             is: (value) =>
                                                 _.isEmpty(value) || !value,
                                             then: yup
@@ -332,7 +332,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         }),
                                     observation: new Observations({
                                         schema,
-                                        name: "departamento",
+                                        name: "departamentoLegal",
                                         evaluate,
                                     }).observations,
                                 },
@@ -346,14 +346,14 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     isLoading: false,
                                     //
                                     options: [],
-                                    name: "localidad",
+                                    name: "localidadLegal",
                                     multiple: false,
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
                                     validations: yup
                                         .object()
-                                        .when("localidadSelect", {
+                                        .when("localidadLegalSelect", {
                                             is: (value) =>
                                                 _.isEmpty(value) || !value,
                                             then: yup
@@ -365,7 +365,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         }),
                                     observation: new Observations({
                                         schema,
-                                        name: "localidad",
+                                        name: "localidadLegal",
                                         evaluate,
                                     }).observations,
                                 },                              
