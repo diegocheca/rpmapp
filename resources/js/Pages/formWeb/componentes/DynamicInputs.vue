@@ -32,7 +32,7 @@
                                 :for="item.name"
                                 class="
                                     mb-2
-                                    uppercase
+                                     
                                     text-md text-grey-darkest
                                     flex flex-row
                                 "
@@ -292,7 +292,7 @@
                                                 :for="ele.label"
                                                 class="
                                                     mb-2
-                                                    uppercase
+                                                     
                                                     text-md text-grey-darkest
                                                 "
                                                 >{{ ele.label }} :</label
@@ -605,7 +605,7 @@
                                                         :for="ele.name"
                                                         class="
                                                             mb-2
-                                                            uppercase
+                                                             
                                                             text-md
                                                             text-grey-darkest
                                                         "
@@ -717,7 +717,7 @@
                                         :for="item.name"
                                         class="
                                             mb-2
-                                            uppercase
+                                             
                                             text-md text-grey-darkest
                                         "
                                         >{{

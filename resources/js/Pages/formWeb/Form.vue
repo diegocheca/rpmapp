@@ -4,7 +4,7 @@
         :titleForm="titleForm"
         :evaluate="evaluate"
         :province="province"
-        :buttomLabel="'Editar'"
+        :buttomLabel="'Enviar'"
         :dataForm="dataForm"
         @valuesForm="submit($event)"
         :dev="true"

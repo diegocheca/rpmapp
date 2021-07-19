@@ -63,7 +63,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                 },
                                 //Sexo
                                 {
-                                    label: "SEXO",
+                                    label: "Sexo",
                                     value: {},
                                     type: inputsTypes.SELECT, 
                                     name: "sexo",
@@ -94,7 +94,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                 },
                                 //tipo de documento
                                  {
-                                     label: "tipo de documento",
+                                     label: "Tipo de Documento",
                                      value:{},
                                      type: inputsTypes.SELECT,
                                      async: true,
@@ -132,7 +132,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                 },
                                 //FECHA DE NACIMIENTO
                                 {
-                                    label: "FECHA DE NACIMIENTO",
+                                    label: "Fecha de Nacimiento",
                                     value: schema.fecha_nacimiento,
                                     type: inputsTypes.DATE,
                                     name: "fecha_nacimiento",
@@ -162,7 +162,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                 },
                                 //PROFESION
                                 {
-                                    label: "Profesion",
+                                    label: "Profesión",
                                     value: schema.Profesion,
                                     type: inputsTypes.TEXT,
                                     name: "profesion",
@@ -177,7 +177,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                 },
                                 //ESTADO CIVIL
                                 {
-                                    label: "ESTADO CIVIL",
+                                    label: "Estado Civil",
                                     value: {},
                                     type: inputsTypes.SELECT, 
                                     name: "estado_civil",
@@ -232,13 +232,13 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     label: "Domicilio",
                                     value: schema.domicilio,
                                     type: inputsTypes.TEXT,
-                                    name: "domicilio",
+                                    name: "domicilioLegal",
                                     validations: yup
                                         .string()
                                         .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
-                                        name: "domicilio",
+                                        name: "domicilioLegal",
                                         evaluate,
                                     }).observations,
                                 },                           
@@ -262,7 +262,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             inputs: [ 
                                 //provincia
                                 {
-                                    label: "Provincia",
+                                    label: "Provincia Legal",
                                     value: {},
                                     type: inputsTypes.SELECT,
                                     // get axios

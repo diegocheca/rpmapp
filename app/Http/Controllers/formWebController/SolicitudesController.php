@@ -62,9 +62,9 @@ class SolicitudesController extends Controller
             'titleForm' => 'Crear Solicitud',
             'evaluate' => false,
             'provincia' => $provinces,
-            'tipo_documento'=>$tipo_documento,
+            'tipo_documento' => $tipo_documento,
 
-             
+
         ]);
     }
     public function prueba()
@@ -85,14 +85,14 @@ class SolicitudesController extends Controller
 
         switch ($Step) {
             case 1:
-                echo 'Step 1';
+                echo 'Step 1' . "\n";
                 foreach ($Datos as $key => $value) {
-                    if ($key == 'provincia' || $key == 'departamento' || $key == 'localidad') {
+                    if ($key == 'provincia' || $key == 'departamento' || $key == 'localidad' || $key == 'provinciaLegal' || $key == 'departamentoLegal' || $key == 'localidadLegal' || $key == 'sexo' || $key == 'tipo_documento' || $key == 'estado_civil') {
                         //Guargar Localidad, Departamento, Provincia
                         echo $key . ': ' . $value['label'] . "\n";
                         continue;
                     }
-                    //Guardar DNI, Nombre, Apellido, (todos los datos de la persona)
+                    // Guardar DNI, Nombre, Apellido, (todos los datos de la persona)
                     echo $key . ': ' . $value . "\n";
                 }
                 break;

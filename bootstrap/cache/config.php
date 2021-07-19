@@ -966,6 +966,24 @@
     'local_sites_path' => '',
     'housekeeping_endpoint_prefix' => '_ignition',
   ),
+  'inertia' => 
+  array (
+    'testing' => 
+    array (
+      'ensure_pages_exist' => true,
+      'page_paths' => 
+      array (
+        0 => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\resources\\js/Pages',
+      ),
+      'page_extensions' => 
+      array (
+        0 => 'js',
+        1 => 'svelte',
+        2 => 'ts',
+        3 => 'vue',
+      ),
+    ),
+  ),
   'image' => 
   array (
     'driver' => 'gd',
