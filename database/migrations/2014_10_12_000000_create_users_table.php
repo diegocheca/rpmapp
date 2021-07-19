@@ -24,10 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
             //$table->integer('account_id', 11);
-            $table->string('first_name', 50)->default(null);
-            $table->string('last_name', 50)->default(null);
-            $table->boolean('owner')->nullable()->default(null);
-            $table->string('photo_path', 100)->default(null);
+            $table->string('first_name', 50)->nullable();
+            $table->string('last_name', 50)->nullable();
+            $table->boolean('owner')->nullable()->nullable();
+            $table->string('photo_path', 100)->nullable();
 
         });
     }

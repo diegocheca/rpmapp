@@ -80,7 +80,7 @@ class ProductoSeeder extends Seeder
                 'Salitres',
                 'Tierras Piritosas y Aluminosas',
                 'Turberas',
-                'Zeolitas o Minerales Permutantes o Permutíticos'
+                'Zeolitas o Minerales Permutantes o Permutíticos',
                 'Piedras Calizas',
                 'Calcáreas',
                 'Margas',
