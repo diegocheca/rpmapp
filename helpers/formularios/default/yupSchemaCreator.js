@@ -25,7 +25,7 @@ export function createYupSchema(schema, config, evaluate) {
             // } else {
                 if (!_.isEmpty(element.observation)) {
                     const observationComment = element.observation.comment;
-                    const observationOptions = element.observation.options[0];
+                    const observationOptions = element.observation;
 
                     schema[observationComment.name] = observationComment.validations;
                     schema[observationOptions.name] = observationOptions.validations;
@@ -39,6 +39,7 @@ export function createYupSchema(schema, config, evaluate) {
         }
 
     }
+    // delete schema['undefined'];
 // console.log(schema);
     return schema;
 }
@@ -57,7 +58,7 @@ export function createYupStepSchema(schema, config, evaluate) {
 
                 if (!_.isEmpty(element.observation)) {
                     const observationComment = element.observation.comment;
-                    const observationOptions = element.observation.options[0];
+                    const observationOptions = element.observation;
 
                     schema[observationComment.name] = observationComment.validations;
                     schema[observationOptions.name] = observationOptions.validations;

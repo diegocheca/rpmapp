@@ -25,8 +25,8 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             value: schema.nombre,
                             type: inputsTypes.TEXT,
                             name: 'nombre',
-                            validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'nombre', evaluate}).observations
+                            validations: yup.string().required('Debes completar este campo').nullable(),
+                            observation: new Observations({schema, name: 'nombre', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                         {
@@ -35,7 +35,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'dni',
                             validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'dni', evaluate}).observations
+                            observation: new Observations({schema, name: 'dni', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                         {
@@ -44,7 +44,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.TEXT,
                             name: 'cargo',
                             validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'cargo', evaluate}).observations
+                            observation: new Observations({schema, name: 'cargo', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                     ]
@@ -72,7 +72,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'porcentaje_venta_provincia',
                             validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'porcentaje_venta_provincia', evaluate}).observations
+                            observation: new Observations({schema, name: 'porcentaje_venta_provincia', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                         {
@@ -81,7 +81,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'porcentaje_venta_otras_provincias',
                             validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'porcentaje_venta_otras_provincias', evaluate}).observations
+                            observation: new Observations({schema, name: 'porcentaje_venta_otras_provincias', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                         {
@@ -90,7 +90,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'porcentaje_exportado',
                             validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'porcentaje_exportado', evaluate}).observations
+                            observation: new Observations({schema, name: 'porcentaje_exportado', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                     ]
@@ -108,7 +108,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             value: schema.prospeccion? true : false,
                             type: inputsTypes.CHECKBOX,
                             name: 'prospeccion',
-                            observation: new Observations({schema, name: 'prospeccion', evaluate}).observations
+                            observation: new Observations({schema, name: 'prospeccion', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                         {
@@ -116,7 +116,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             value: schema.explotacion? true : false,
                             type: inputsTypes.CHECKBOX,
                             name: 'explotacion',
-                            observation: new Observations({schema, name: 'explotación', evaluate}).observations
+                            observation: new Observations({schema, name: 'explotacion', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                         {
@@ -124,7 +124,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             value: schema.desarrollo? true : false,
                             type: inputsTypes.CHECKBOX,
                             name: 'desarrollo',
-                            observation: new Observations({schema, name: 'desarrollo', evaluate}).observations
+                            observation: new Observations({schema, name: 'desarrollo', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                         {
@@ -132,7 +132,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             value: schema.explotacion? true : false,
                             type: inputsTypes.CHECKBOX,
                             name: 'exploracion',
-                            observation: new Observations({schema, name: 'exploracion', evaluate}).observations
+                            observation: new Observations({schema, name: 'exploracion', evaluate, revisionData : dataForm.revisionData}).observations
 
                         }
                     ]
@@ -158,7 +158,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'personal_perm_profesional',
                             validations: yup.string().required('Debes ingresar una cantidad.'),
-                            observation: new Observations({schema, name: 'personal_perm_profesional', evaluate}).observations
+                            observation: new Observations({schema, name: 'personal_perm_profesional', evaluate, revisionData : dataForm.revisionData}).observations
 
                         },
                         {
@@ -167,7 +167,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'personal_perm_operarios',
                             validations: yup.string().required('Debes ingresar una cantidad.'),
-                            observation: new Observations({schema, name: 'personal_perm_operarios', evaluate}).observations
+                            observation: new Observations({schema, name: 'personal_perm_operarios', evaluate, revisionData : dataForm.revisionData}).observations
                         },
                         {
                             label: 'Administrativo Permanente',
@@ -175,7 +175,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'personal_perm_administrativos',
                             validations: yup.string().required('Debes ingresar una cantidad.'),
-                            observation: new Observations({schema, name: 'personal_perm_administrativos', evaluate}).observations
+                            observation: new Observations({schema, name: 'personal_perm_administrativos', evaluate, revisionData : dataForm.revisionData}).observations
                         },
                         {
                             label: 'Otros Permanente',
@@ -183,7 +183,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'personal_perm_otros',
                             validations: yup.string().required('Debes ingresar una cantidad.'),
-                            observation: new Observations({schema, name: 'personal_perm_otros', evaluate}).observations
+                            observation: new Observations({schema, name: 'personal_perm_otros', evaluate, revisionData : dataForm.revisionData}).observations
                         },
                         {
                             label: 'Profesional Transitorio',
@@ -191,7 +191,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'personal_trans_profesional',
                             validations: yup.string().required('Debes ingresar una cantidad.'),
-                            observation: new Observations({schema, name: 'personal_trans_profesional', evaluate}).observations
+                            observation: new Observations({schema, name: 'personal_trans_profesional', evaluate, revisionData : dataForm.revisionData}).observations
                         },
                         {
                             label: 'Operarios y Obreros Transitorio',
@@ -199,7 +199,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'personal_trans_operarios',
                             validations: yup.string().required('Debes ingresar una cantidad.'),
-                            observation: new Observations({schema, name: 'personal_trans_operarios', evaluate}).observations
+                            observation: new Observations({schema, name: 'personal_trans_operarios', evaluate, revisionData : dataForm.revisionData}).observations
                         },
                         {
                             label: 'Administrativo Transitorio',
@@ -207,7 +207,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'personal_trans_administrativos',
                             validations: yup.string().required('Debes ingresar una cantidad.'),
-                            observation: new Observations({schema, name: 'personal_trans_administrativos', evaluate}).observations
+                            observation: new Observations({schema, name: 'personal_trans_administrativos', evaluate, revisionData : dataForm.revisionData}).observations
                         },
                         {
                             label: 'Otros Transitorio',
@@ -215,7 +215,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             type: inputsTypes.NUMBER,
                             name: 'personal_trans_otros',
                             validations: yup.string().required('Debes ingresar una cantidad.'),
-                            observation: new Observations({schema, name: 'personal_trans_otros', evaluate}).observations
+                            observation: new Observations({schema, name: 'personal_trans_otros', evaluate, revisionData : dataForm.revisionData}).observations
                         },
 
                     ]
@@ -247,144 +247,73 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             elements: [
                                 [
                                     {
-                                        label: 'Sustancia',
+                                        label: 'Producto Extraído',
                                         value: {},
                                         type: inputsTypes.SELECT,
                                         colSpan: '',
                                         options: [
                                             {
-                                                label: 'Sustancias de aprovechamiento común',
-                                                value: 'aprovechamiento_comun',
+                                                label: 'toneladas',
+                                                value: 'toneladas',
                                             },
                                             {
-                                                label: 'Sustancias que se conceden preferentemente al dueño del suelo',
-                                                value: 'conceden_preferentemente',
+                                                label: 'mts 3',
+                                                value: 'mts 3',
+                                            },
+                                            {
+                                                label: 'otros',
+                                                value: 'otros',
                                             }
+                                            // {
+                                            //     label: 'Oro',
+                                            //     value: 'Oro',
+                                            // },
+                                            // {
+                                            //     label: 'Plata',
+                                            //     value: 'Plata',
+                                            // },
+                                            // {
+                                            //     label: 'Cobre',
+                                            //     value: 'Cobre',
+                                            // },
+                                            // {
+                                            //     label: 'Hierro',
+                                            //     value: 'Hierro',
+                                            // },
+                                            // {
+                                            //     label: 'Cal',
+                                            //     value: 'Cal',
+                                            // },
+                                            // {
+                                            //     label: 'Ripio',
+                                            //     value: 'Ripio',
+                                            // },
+                                            // {
+                                            //     label: 'Platino',
+                                            //     value: 'Platino',
+                                            // },
+                                            // {
+                                            //     label: 'Diamante',
+                                            //     value: 'Diamante',
+                                            // }
                                         ],
-                                        name: 'variedad',
+                                        name: 'nombre_mineral',
                                         multiple: false,
                                         closeOnSelect: true,
                                         searchable: false,
-                                        inputDepends: ['nombre_mineral'],
-                                        optionsDepends:
-                                            {
-                                                aprovechamiento_comun : [
-                                                    {
-                                                        label: 'Arenas Metalíferas',
-                                                        value: 'Arenas Metalíferas'
-                                                    },
-                                                    {
-                                                        label: 'Piedras Preciosas',
-                                                        value: 'Piedras Preciosas'
-                                                    },
-                                                    {
-                                                        label: 'Desmontes',
-                                                        value: 'Desmontes'
-                                                    },
-                                                    {
-                                                        label: 'Relaves',
-                                                        value: 'Relaves'
-                                                    },
-                                                    {
-                                                        label: 'Escoriales',
-                                                        value: 'Escoriales'
-                                                    },
-                                                ],
-                                                conceden_preferentemente: [
-                                                    {
-                                                        label: 'Salitres',
-                                                        value: 'Salitres'
-                                                    },
-                                                    {
-                                                        label: 'Salinas',
-                                                        value: 'Salinas'
-                                                    },
-                                                    {
-                                                        label: 'Turberas',
-                                                        value: 'Turberas'
-                                                    },
-                                                    {
-                                                        label: 'Metales no comprendidos en 1° Categ.',
-                                                        value: 'Metales no comprendidos en 1° Categ.'
-                                                    },
-                                                    {
-                                                        label: 'Abrasivos',
-                                                        value: 'Abrasivos'
-                                                    },
-                                                    {
-                                                        label: 'Ocres',
-                                                        value: 'Ocres'
-                                                    },
-                                                    {
-                                                        label: 'Resinas',
-                                                        value: 'Resinas'
-                                                    },
-                                                    {
-                                                        label: 'Esteatitas',
-                                                        value: 'Esteatitas'
-                                                    },
-                                                    {
-                                                        label: 'Baritina',
-                                                        value: 'Baritina'
-                                                    },
-                                                    {
-                                                        label: 'Caparrosas',
-                                                        value: 'Caparrosas'
-                                                    },
-                                                    {
-                                                        label: 'Grafito',
-                                                        value: 'Grafito'
-                                                    },
-                                                    {
-                                                        label: 'Caolí­n',
-                                                        value: 'Caolí­n'
-                                                    },
-                                                    {
-                                                        label: 'Sales Alcalinas o Alcalino Terrosas',
-                                                        value: 'Sales Alcalinas o Alcalino Terrosas'
-                                                    },
-                                                    {
-                                                        label: 'Amianto',
-                                                        value: 'Amianto'
-                                                    },
-                                                    {
-                                                        label: 'Bentonita',
-                                                        value: 'Bentonita'
-                                                    },
-                                                    {
-                                                        label: 'Zeolitas o Minerales Permutantes o Permutíticos',
-                                                        value: 'Zeolitas o Minerales Permutantes o Permutíticos'
-                                                    },
-                                                ]
-                                            }
-                                        ,
-                                        // validations: yup.object().when('sustanceSelect', {
-                                        //     is: value => _.isEmpty(value),
-                                        //     then: yup.object().required('Debes elegir un elemento')
-                                        // }),
                                         placeholder: 'Selecciona una opción',
-
+                                        // observation: new Observations({schema, name: 'nombre_mineral', evaluate, revisionData : dataForm.revisionData}).observations
                                     },
                                     {
-                                        label: 'Mineral Explotado',
-                                        value: {},
-                                        type: inputsTypes.SELECT,
+                                        label: 'Variedad de',
+                                        value: '',
+                                        type: inputsTypes.TEXT,
+                                        name: 'variedad',
                                         colSpan: '',
-                                        options: [],
-                                        name: 'nombre_mineral',
-                                        inputDepends: [],
-                                        multiple: false,
-                                        closeOnSelect: true,
-                                        searchable: true,
-                                        // validations: yup.object().when('mineralSelect', {
-                                        //     is: value => _.isEmpty(value),
-                                        //     then: yup.object().required('Debes elegir un elemento')
-                                        // }),
-                                        placeholder: 'Selecciona una opción',
                                     },
                                     {
                                         label: 'Producción',
-                                        value: schema.produccion,
+                                        value: '',
                                         type: inputsTypes.NUMBER,
                                         name: 'produccion',
                                         colSpan: '',
@@ -443,10 +372,11 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     //     name: 'actividad_empresa_compradora',
                                     //     colSpan: '',
                                     // },
-                                    // {
-                                    //     colSpan: 'lg:w-5/5',
-                                    //     observation: new Observations({schema, name: 'row-', evaluate}).observations
-                                    // }
+                                    {
+                                        colSpan: 'lg:w-5/5',
+                                        type: 'observation',
+                                        ...new Observations({schema, name: 'row', evaluate, revisionData : dataForm.revisionData}).observations
+                                    }
 
                                 ]
                             ],
@@ -454,23 +384,22 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                 .array()
                                 .of(
                                     yup.object().shape({
-                                        variedad: yup.object().when('sustance', {
-                                            is: value => _.isEmpty(value),
-                                            then: yup.object().required('Debes elegir un elemento').nullable()
-                                        }),
+                                        variedad: yup.string().nullable().required('Debes completar este campo'),
                                         nombre_mineral: yup.object().when('mineral', {
                                             is: value => _.isEmpty(value),
-                                            then: yup.object().required('Debes elegir un elemento').nullable()
+                                            then: yup.object().nullable().required('Debes elegir un elemento')
                                         }),
-                                        produccion: yup.string().required('Debes completar este campo').nullable(),
+                                        produccion: yup.string().nullable().required('Debes completar este campo'),
                                         unidades: yup.object().when('unidadesSelect', {
                                                 is: value => _.isEmpty(value),
-                                                then: yup.object().required('Debes elegir un elemento').nullable()
+                                                then: yup.object().nullable().required('Debes elegir un elemento')
                                         }),
-                                        precio_venta: yup.string().required('Debes completar este campo').nullable(),
+                                        precio_venta: yup.string().nullable().required('Debes completar este campo'),
                                         // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
                                         // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
                                         // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                        row_evaluacion: evaluate? yup.string().oneOf(["aprobado", "rechazado", "sin evaluar"]).nullable().required('Debes seleccionar una opción') : {},
+                                        row_comentario: evaluate? yup.string().when('observacion_row', { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación') }).nullable() : {}
                                     })
                                 )
                                 .strict(),
@@ -485,13 +414,16 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
 }
 
 function getChildrens(data) {
+    // los objetos deben tener el mismo orden que en el arreglo de los elementoss
     let child =[ // default value,
         {
-            name: 'variedad',
+            name: 'nombre_mineral',
             value: null,
+            // solo necesario para los selects que el valor se ha guardado como un json
+            select: true
         },
         {
-            name: 'nombre_mineral',
+            name: 'variedad',
             value: null,
         },
         {
@@ -501,23 +433,29 @@ function getChildrens(data) {
         {
             name: 'unidades',
             value: null,
+            select: true
         },
         {
             name: 'precio_venta',
             value: null,
         },
+        // {
+        //     name: 'empresa_compradora',
+        //     value: null,
+        // },
+        // {
+        //     name: 'direccion_empresa_compradora',
+        //     value: null,
+        // },
+        // {
+        //     name: 'actividad_empresa_compradora',
+        //     value: null,
+        // },
         {
-            name: 'empresa_compradora',
+            name: 'observacion_row',
             value: null,
-        },
-        {
-            name: 'direccion_empresa_compradora',
-            value: null,
-        },
-        {
-            name: 'actividad_empresa_compradora',
-            value: null,
-        },
+            comment: null
+        }
     ]
 
     if (!data || data.length == 0) {
@@ -531,10 +469,21 @@ function getChildrens(data) {
         for (const property in object) {
             const i = clone.findIndex(e => e.name == property);
             if (i == -1) continue;
-            clone[i].value = object[property];
+            if (clone[i].select) {
+                clone[i].value = JSON.parse(object[property]);
+            } else {
+                clone[i].value = object[property];
+            }
         }
+        console.log(clone);
         newChildrens.push(clone);
     }
+
+    // newChildrens.push({
+    //     name: 'observacion_row',
+    //     value: null,
+    // });
+
     return newChildrens;
 }
 

@@ -23,48 +23,27 @@ export function getFormSchema({ ...schema }, evaluate) {
             body: [
                 //  col 1
                 {
-                    title: 'Datos Personales',
+                    title: 'Sustancias minerales que insuatralizan',
                     width: '', //flex
-                    columns: 'grid-cols-1', //grid
-                    columnsResponsive: '', //inside card
+                    // columns: '', //grid
+                    // columnsResponsive: '', //inside card
                     img: '/images/laborales.png',
                     inputs: [
-                        // {
-                        //     label: 'DNI',
-                        //     value: schema.dni,
-                        //     type: inputsTypes.NUMBER,
-                        //     name: 'dni',
-                        //     validations: yup.string().required('Debes ingresar un dni.'),
-                        //     observation: new Observations({schema, name: 'dni', evaluate}).observations
-                        // },
                         {
                             label: 'List',
                             type: inputsTypes.LIST,
                             name: 'List',
-                            // columns: 'grid-cols-1',
+                            columns: 'grid-cols-1',
                             // colSpans + 1
-                            // columnsResponsive: 'lg:w-2/5',
-                            childrens: [ // default value,
-                                [{
-                                    name: 'sustanceSelect',
-                                    value: null,
-                                },
-                                {
-                                    name: 'mineralSelect',
-                                    value: null,
-                                },
-                                {
-                                    name: 'dni',
-                                    value: null,
-                                },]
-                            ],
+                            columnsResponsive: 'lg:grid-cols-3',
+                            childrens: getChildrens(schema.productos),
                             elements: [
                                 [
                                     {
                                         label: 'Sustancia',
                                         value: {},
                                         type: inputsTypes.SELECT,
-                                        colSpan: 'lg:w-2/5',
+                                        colSpan: '',
                                         options: [
                                             {
                                                 label: 'Sustancias de aprovechamiento común',
@@ -75,11 +54,11 @@ export function getFormSchema({ ...schema }, evaluate) {
                                                 value: 'conceden_preferentemente',
                                             }
                                         ],
-                                        name: 'sustanceSelect',
+                                        name: 'variedad',
                                         multiple: false,
                                         closeOnSelect: true,
                                         searchable: false,
-                                        inputDepends: ['mineralSelect'],
+                                        inputDepends: ['nombre_mineral'],
                                         optionsDepends:
                                             {
                                                 aprovechamiento_comun : [
@@ -183,9 +162,9 @@ export function getFormSchema({ ...schema }, evaluate) {
                                         label: 'Mineral Explotado',
                                         value: {},
                                         type: inputsTypes.SELECT,
-                                        colSpan: 'lg:w-2/5',
+                                        colSpan: '',
                                         options: [],
-                                        name: 'mineralSelect',
+                                        name: 'nombre_mineral',
                                         inputDepends: [],
                                         multiple: false,
                                         closeOnSelect: true,
@@ -197,17 +176,70 @@ export function getFormSchema({ ...schema }, evaluate) {
                                         placeholder: 'Selecciona una opción',
                                     },
                                     {
-                                        label: 'DNI',
-                                        value: schema.dni,
+                                        label: 'Producción',
+                                        value: schema.produccion,
                                         type: inputsTypes.NUMBER,
-                                        colSpan: 'lg:w-1/5',
-                                        name: 'dni2',
-                                        // validations: yup.string().required('Debes ingresar un dni'),
+                                        name: 'produccion',
+                                        colSpan: '',
                                     },
                                     {
-                                        colSpan: 'lg:w-5/5',
-                                        observation: new Observations({schema, name: 'row-', evaluate}).observations
-                                    }
+                                        label: 'Unidades',
+                                        value: {},
+                                        type: inputsTypes.SELECT,
+                                        colSpan: '',
+                                        options: [
+                                            {
+                                                label: 'toneladas',
+                                                value: 'toneladas',
+                                            },
+                                            {
+                                                label: 'mts 3',
+                                                value: 'mts 3',
+                                            },
+                                            {
+                                                label: 'otros',
+                                                value: 'otros',
+                                            }
+                                        ],
+                                        name: 'unidades',
+                                        multiple: false,
+                                        closeOnSelect: true,
+                                        searchable: false,
+                                        placeholder: 'Selecciona una opción',
+
+                                    },
+                                    {
+                                        label: 'Precio de Venta (en $)',
+                                        value: '',
+                                        type: inputsTypes.NUMBER,
+                                        name: 'precio_venta',
+                                        colSpan: '',
+                                    },
+                                    // {
+                                    //     label: 'Empresa compradora',
+                                    //     value: '',
+                                    //     type: inputsTypes.TEXT,
+                                    //     name: 'empresa_compradora',
+                                    //     colSpan: '',
+                                    // },
+                                    // {
+                                    //     label: 'Dirección empresa campradora',
+                                    //     value: '',
+                                    //     type: inputsTypes.TEXT,
+                                    //     name: 'direccion_empresa_compradora',
+                                    //     colSpan: '',
+                                    // },
+                                    // {
+                                    //     label: 'Actividad empresa campradora',
+                                    //     value: '',
+                                    //     type: inputsTypes.TEXT,
+                                    //     name: 'actividad_empresa_compradora',
+                                    //     colSpan: '',
+                                    // },
+                                    // {
+                                    //     colSpan: 'lg:w-5/5',
+                                    //     observation: new Observations({schema, name: 'row-', evaluate}).observations
+                                    // }
 
                                 ]
                             ],
@@ -215,20 +247,27 @@ export function getFormSchema({ ...schema }, evaluate) {
                                 .array()
                                 .of(
                                     yup.object().shape({
-                                        sustanceSelect: yup.object().when('sustance', {
+                                        variedad: yup.object().when('sustance', {
                                             is: value => _.isEmpty(value),
-                                            then: yup.object().required('Debes elegir un elemento')
+                                            then: yup.object().required('Debes elegir un elemento').nullable()
                                         }),
-                                        mineralSelect: yup.object().when('mineral', {
+                                        nombre_mineral: yup.object().when('mineral', {
                                             is: value => _.isEmpty(value),
-                                            then: yup.object().required('Debes elegir un elemento')
+                                            then: yup.object().required('Debes elegir un elemento').nullable()
                                         }),
-                                        dni2: yup.string().required('Debes ingresar un dni')
+                                        produccion: yup.string().required('Debes completar este campo').nullable(),
+                                        unidades: yup.object().when('unidadesSelect', {
+                                                is: value => _.isEmpty(value),
+                                                then: yup.object().required('Debes elegir un elemento').nullable()
+                                        }),
+                                        precio_venta: yup.string().required('Debes completar este campo').nullable(),
+                                        // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                        // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                        // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
                                     })
                                 )
                                 .strict(),
                         },
-
                     ]
                 },
 
@@ -606,3 +645,56 @@ export function getFormSchema({ ...schema }, evaluate) {
     ]
 }
 
+function getChildrens(data) {
+    let child =[ // default value,
+        {
+            name: 'variedad',
+            value: null,
+        },
+        {
+            name: 'nombre_mineral',
+            value: null,
+        },
+        {
+            name: 'produccion',
+            value: null,
+        },
+        {
+            name: 'unidades',
+            value: null,
+        },
+        {
+            name: 'precio_venta',
+            value: null,
+        },
+        {
+            name: 'empresa_compradora',
+            value: null,
+        },
+        {
+            name: 'direccion_empresa_compradora',
+            value: null,
+        },
+        {
+            name: 'actividad_empresa_compradora',
+            value: null,
+        },
+    ]
+
+    if (!data || data.length == 0) {
+        return [child];
+    }
+
+    let newChildrens = [];
+    for (let index = 0; index < data.length; index++) {
+        const object = data[index];
+        let clone = JSON.parse(JSON.stringify(child));
+        for (const property in object) {
+            const i = clone.findIndex(e => e.name == property);
+            if (i == -1) continue;
+            clone[i].value = object[property];
+        }
+        newChildrens.push(clone);
+    }
+    return newChildrens;
+}

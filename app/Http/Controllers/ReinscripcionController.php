@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HistorialReinscripciones;
 use App\Models\Reinscripciones;
 use App\Models\Productos;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -48,6 +50,7 @@ class ReinscripcionController extends Controller
             'folder' => 'reinscripciones',
             'reinscripcion' => [],
             'titleForm' => 'Crear reinscripciones',
+            'titleBtnSave' => 'Guardar',
             'evaluate' => false,
             'provincia' => $provinces
         ]);
@@ -150,10 +153,67 @@ class ReinscripcionController extends Controller
             'folder' => 'reinscripciones',
             'reinscripcion' => $reinscripcion,
             'titleForm' => 'Editar reinscripciones',
+            'titleBtnSave' => 'Editar',
             'evaluate' => false,
             'provincia' => $provinces
         ]);
 
+    }
+
+     /**
+     * Show the form for evaluate and editing the specified resource.
+     *
+     * @param  Integer $id
+     * @return \Illuminate\Http\Response
+     */
+    public function revision($id)
+    {
+        $reinscripcion = Reinscripciones::find($id);
+        $reinscripcion->productos = Productos::where('id_reinscripcion', $reinscripcion->id)->get();
+        $provinces = CountriesController::getProvinces();
+        $revisionData = HistorialReinscripciones::where('id_reinscripcion', $reinscripcion->id)->orderByDesc('created_at')->first();
+
+        return Inertia::render('Reinscripciones/Form', [
+            'action' => "evaluate",
+            'saveUrl' => "reinscripciones.update-observations",
+            // 'saveFileUrl' => "/reinscripciones/upload",
+            // 'folder' => 'reinscripciones',
+            'province' => env('PROVINCE', '')."/reinscripciones",
+            'reinscripcion' => $reinscripcion,
+            'revisionData' => $revisionData,
+            'titleForm' => 'Evaluar reinscripciones',
+            'titleBtnSave' => 'Guardar Revisión',
+            'evaluate' => true,
+            'provincia' => $provinces
+        ]);
+
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  Integer $id
+     * @return \Illuminate\Http\Response
+     */
+    public function saveRevision(Request $request, $id)
+    {
+
+        $dataReinscripcion = $request->all();
+        $dataReinscripcionFilter = [];
+        // $dataReinscripcionFilterNotObservacion = [];
+
+        foreach ($dataReinscripcion as $key => $value) {
+            if(str_contains($key, "_evaluacion") || str_contains($key, "_comentario"))
+                $dataReinscripcionFilter[$key] = $value;
+        }
+
+        $dataReinscripcionFilter["id_reinscripcion"] = $id;
+        // dd($dataReinscripcionFilter);
+
+       HistorialReinscripciones::create($dataReinscripcionFilter);
+
+        return Redirect::route('reinscripciones.index');
     }
 
     /**
@@ -181,7 +241,7 @@ class ReinscripcionController extends Controller
 
                     foreach($data[$i] as $key2 => $data2){
 
-                        if(in_array($key2, ["nombre_mineral", "variedad", "unidades"]) ) {
+                        if(in_array($key2, ["nombre_mineral", "unidades"]) ) {
                             $product[$key2] = json_encode($data2);
                             // $product[$key2] = $data2["value"];
                             continue;

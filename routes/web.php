@@ -80,12 +80,17 @@ Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
+// REINSCRIPCIONES
 
 // Route::group(['prefix' => 'reinscripciones'], function () {
+    Route::get('reinscripciones/revision/{id}', [ReinscripcionController::class, "revision"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.revision');
+    Route::put('reinscripciones/revision/{id}', [ReinscripcionController::class, "saveRevision"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.saveRevision');
     Route::resource('reinscripciones', ReinscripcionController::class)
         ->middleware(['auth:sanctum', 'verified']);
-    Route::post('reinscripciones/upload', [ReinscripcionController::class, "upload"])
-        ->middleware(['auth:sanctum', 'verified']);
+        Route::post('reinscripciones/upload', [ReinscripcionController::class, "upload"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.upload');
 //     Route::get('provincias', 'ReinscripcionController@getCountries')
 //         ->middleware(['auth:sanctum', 'verified']);
 

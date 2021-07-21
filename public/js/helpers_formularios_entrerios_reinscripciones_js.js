@@ -70,28 +70,27 @@ var Observaciones = /*#__PURE__*/function () {
     value: function getFormSchema(data) {
       if (!data.evaluate) return {};
       return {
+        name: "".concat(data.name, "_evaluacion"),
+        value: data.revisionData ? data.revisionData["".concat(data.name, "_evaluacion")] : '',
         options: [{
           label: 'Si',
           value: 'aprobado',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO,
-          name: "observacion_".concat(data.name),
-          validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().oneOf(["aprobado", "rechazado", "sin evaluar"]).required('Debes seleccionar una opción')
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
         }, {
           label: 'No',
           value: 'rechazado',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO,
-          name: "observacion_".concat(data.name)
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
         }, {
           label: 'Sin evaluar',
           value: 'sin evaluar',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO,
-          name: "observacion_".concat(data.name)
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
         }],
+        validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().oneOf(["aprobado", "rechazado", "sin evaluar"]).required('Debes seleccionar una opción'),
         comment: {
           label: 'OBSERVACIÓN',
-          value: '',
+          value: data.revisionData ? data.revisionData["".concat(data.name, "_comentario")] : '',
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.TEXTAREA,
-          name: "observacion_comentario_".concat(data.name),
+          name: "".concat(data.name, "_comentario"),
           validationType: "string",
           validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("observacion_".concat(data.name), {
             is: "rechazado",
@@ -124,6 +123,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _observaciones__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./observaciones */ "./helpers/formularios/EntreRios/observaciones.js");
 /* harmony import */ var _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../enums/inputsTypes */ "./helpers/enums/inputsTypes.js");
 /* harmony import */ var _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../enums/fileAccept */ "./helpers/enums/fileAccept.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 
@@ -155,11 +160,12 @@ function getFormSchema(_ref, evaluate, dataForm) {
         value: schema.nombre,
         type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
         name: 'nombre',
-        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
+        validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').nullable(),
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'nombre',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'DNI',
@@ -170,7 +176,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'dni',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Cargo en la empresa',
@@ -181,7 +188,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'cargo',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }]
     }]
@@ -210,7 +218,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'porcentaje_venta_provincia',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Porcentaje vendido a otras Provincias',
@@ -221,7 +230,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'porcentaje_venta_otras_provincias',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Porcentaje Exportado',
@@ -232,7 +242,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'porcentaje_exportado',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }]
     }, {
@@ -253,7 +264,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'prospeccion',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Explotación',
@@ -262,8 +274,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
         name: 'explotacion',
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
-          name: 'explotación',
-          evaluate: evaluate
+          name: 'explotacion',
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Desarrollo',
@@ -273,7 +286,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'desarrollo',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Exploración',
@@ -283,7 +297,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'exploracion',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }]
     }]
@@ -306,7 +321,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_perm_profesional',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Operarios y Obreros Permanente',
@@ -317,7 +333,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_perm_operarios',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Administrativo Permanente',
@@ -328,7 +345,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_perm_administrativos',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Otros Permanente',
@@ -339,7 +357,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_perm_otros',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Profesional Transitorio',
@@ -350,7 +369,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_trans_profesional',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Operarios y Obreros Transitorio',
@@ -361,7 +381,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_trans_operarios',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Administrativo Transitorio',
@@ -372,7 +393,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_trans_administrativos',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }, {
         label: 'Otros Transitorio',
@@ -383,7 +405,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_trans_otros',
-          evaluate: evaluate
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
         }).observations
       }]
     }]
@@ -409,113 +432,67 @@ function getFormSchema(_ref, evaluate, dataForm) {
         columnsResponsive: 'lg:grid-cols-3',
         childrens: getChildrens(schema.productos),
         elements: [[{
-          label: 'Sustancia',
+          label: 'Producto Extraído',
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           colSpan: '',
           options: [{
-            label: 'Sustancias de aprovechamiento común',
-            value: 'aprovechamiento_comun'
+            label: 'toneladas',
+            value: 'toneladas'
           }, {
-            label: 'Sustancias que se conceden preferentemente al dueño del suelo',
-            value: 'conceden_preferentemente'
-          }],
-          name: 'variedad',
+            label: 'mts 3',
+            value: 'mts 3'
+          }, {
+            label: 'otros',
+            value: 'otros'
+          } // {
+          //     label: 'Oro',
+          //     value: 'Oro',
+          // },
+          // {
+          //     label: 'Plata',
+          //     value: 'Plata',
+          // },
+          // {
+          //     label: 'Cobre',
+          //     value: 'Cobre',
+          // },
+          // {
+          //     label: 'Hierro',
+          //     value: 'Hierro',
+          // },
+          // {
+          //     label: 'Cal',
+          //     value: 'Cal',
+          // },
+          // {
+          //     label: 'Ripio',
+          //     value: 'Ripio',
+          // },
+          // {
+          //     label: 'Platino',
+          //     value: 'Platino',
+          // },
+          // {
+          //     label: 'Diamante',
+          //     value: 'Diamante',
+          // }
+          ],
+          name: 'nombre_mineral',
           multiple: false,
           closeOnSelect: true,
           searchable: false,
-          inputDepends: ['nombre_mineral'],
-          optionsDepends: {
-            aprovechamiento_comun: [{
-              label: 'Arenas Metalíferas',
-              value: 'Arenas Metalíferas'
-            }, {
-              label: 'Piedras Preciosas',
-              value: 'Piedras Preciosas'
-            }, {
-              label: 'Desmontes',
-              value: 'Desmontes'
-            }, {
-              label: 'Relaves',
-              value: 'Relaves'
-            }, {
-              label: 'Escoriales',
-              value: 'Escoriales'
-            }],
-            conceden_preferentemente: [{
-              label: 'Salitres',
-              value: 'Salitres'
-            }, {
-              label: 'Salinas',
-              value: 'Salinas'
-            }, {
-              label: 'Turberas',
-              value: 'Turberas'
-            }, {
-              label: 'Metales no comprendidos en 1° Categ.',
-              value: 'Metales no comprendidos en 1° Categ.'
-            }, {
-              label: 'Abrasivos',
-              value: 'Abrasivos'
-            }, {
-              label: 'Ocres',
-              value: 'Ocres'
-            }, {
-              label: 'Resinas',
-              value: 'Resinas'
-            }, {
-              label: 'Esteatitas',
-              value: 'Esteatitas'
-            }, {
-              label: 'Baritina',
-              value: 'Baritina'
-            }, {
-              label: 'Caparrosas',
-              value: 'Caparrosas'
-            }, {
-              label: 'Grafito',
-              value: 'Grafito'
-            }, {
-              label: 'Caolí­n',
-              value: 'Caolí­n'
-            }, {
-              label: 'Sales Alcalinas o Alcalino Terrosas',
-              value: 'Sales Alcalinas o Alcalino Terrosas'
-            }, {
-              label: 'Amianto',
-              value: 'Amianto'
-            }, {
-              label: 'Bentonita',
-              value: 'Bentonita'
-            }, {
-              label: 'Zeolitas o Minerales Permutantes o Permutíticos',
-              value: 'Zeolitas o Minerales Permutantes o Permutíticos'
-            }]
-          },
-          // validations: yup.object().when('sustanceSelect', {
-          //     is: value => _.isEmpty(value),
-          //     then: yup.object().required('Debes elegir un elemento')
-          // }),
-          placeholder: 'Selecciona una opción'
+          placeholder: 'Selecciona una opción' // observation: new Observations({schema, name: 'nombre_mineral', evaluate, revisionData : dataForm.revisionData}).observations
+
         }, {
-          label: 'Mineral Explotado',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          colSpan: '',
-          options: [],
-          name: 'nombre_mineral',
-          inputDepends: [],
-          multiple: false,
-          closeOnSelect: true,
-          searchable: true,
-          // validations: yup.object().when('mineralSelect', {
-          //     is: value => _.isEmpty(value),
-          //     then: yup.object().required('Debes elegir un elemento')
-          // }),
-          placeholder: 'Selecciona una opción'
+          label: 'Variedad de',
+          value: '',
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: 'variedad',
+          colSpan: ''
         }, {
           label: 'Producción',
-          value: schema.produccion,
+          value: '',
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
           name: 'produccion',
           colSpan: ''
@@ -545,7 +522,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
           name: 'precio_venta',
           colSpan: ''
-        } // {
+        }, // {
         //     label: 'Empresa compradora',
         //     value: '',
         //     type: inputsTypes.TEXT,
@@ -566,35 +543,39 @@ function getFormSchema(_ref, evaluate, dataForm) {
         //     name: 'actividad_empresa_compradora',
         //     colSpan: '',
         // },
-        // {
-        //     colSpan: 'lg:w-5/5',
-        //     observation: new Observations({schema, name: 'row-', evaluate}).observations
-        // }
-        ]],
+        _objectSpread({
+          colSpan: 'lg:w-5/5',
+          type: 'observation'
+        }, new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          schema: schema,
+          name: 'row',
+          evaluate: evaluate,
+          revisionData: dataForm.revisionData
+        }).observations)]],
         validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().of(yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
-          variedad: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('sustance', {
-            is: function is(value) {
-              return _.isEmpty(value);
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
+          variedad: yup__WEBPACK_IMPORTED_MODULE_0__.string().nullable().required('Debes completar este campo'),
           nombre_mineral: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
             is: function is(value) {
               return _.isEmpty(value);
             },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().nullable().required('Debes elegir un elemento')
           }),
-          produccion: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').nullable(),
+          produccion: yup__WEBPACK_IMPORTED_MODULE_0__.string().nullable().required('Debes completar este campo'),
           unidades: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('unidadesSelect', {
             is: function is(value) {
               return _.isEmpty(value);
             },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().nullable().required('Debes elegir un elemento')
           }),
-          precio_venta: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').nullable() // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+          precio_venta: yup__WEBPACK_IMPORTED_MODULE_0__.string().nullable().required('Debes completar este campo'),
+          // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
           // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
           // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
-
+          row_evaluacion: evaluate ? yup__WEBPACK_IMPORTED_MODULE_0__.string().oneOf(["aprobado", "rechazado", "sin evaluar"]).nullable().required('Debes seleccionar una opción') : {},
+          row_comentario: evaluate ? yup__WEBPACK_IMPORTED_MODULE_0__.string().when('observacion_row', {
+            is: "rechazado",
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación')
+          }).nullable() : {}
         })).strict()
       }]
     }]
@@ -602,31 +583,42 @@ function getFormSchema(_ref, evaluate, dataForm) {
 }
 
 function getChildrens(data) {
+  // los objetos deben tener el mismo orden que en el arreglo de los elementoss
   var child = [// default value,
   {
-    name: 'variedad',
-    value: null
-  }, {
     name: 'nombre_mineral',
+    value: null,
+    // solo necesario para los selects que el valor se ha guardado como un json
+    select: true
+  }, {
+    name: 'variedad',
     value: null
   }, {
     name: 'produccion',
     value: null
   }, {
     name: 'unidades',
-    value: null
+    value: null,
+    select: true
   }, {
     name: 'precio_venta',
     value: null
-  }, {
-    name: 'empresa_compradora',
-    value: null
-  }, {
-    name: 'direccion_empresa_compradora',
-    value: null
-  }, {
-    name: 'actividad_empresa_compradora',
-    value: null
+  }, // {
+  //     name: 'empresa_compradora',
+  //     value: null,
+  // },
+  // {
+  //     name: 'direccion_empresa_compradora',
+  //     value: null,
+  // },
+  // {
+  //     name: 'actividad_empresa_compradora',
+  //     value: null,
+  // },
+  {
+    name: 'observacion_row',
+    value: null,
+    comment: null
   }];
 
   if (!data || data.length == 0) {
@@ -644,7 +636,12 @@ function getChildrens(data) {
         return e.name == property;
       });
       if (i == -1) return "continue";
-      clone[i].value = object[property];
+
+      if (clone[i].select) {
+        clone[i].value = JSON.parse(object[property]);
+      } else {
+        clone[i].value = object[property];
+      }
     };
 
     for (var property in object) {
@@ -653,8 +650,13 @@ function getChildrens(data) {
       if (_ret === "continue") continue;
     }
 
+    console.log(clone);
     newChildrens.push(clone);
-  }
+  } // newChildrens.push({
+  //     name: 'observacion_row',
+  //     value: null,
+  // });
+
 
   return newChildrens;
 }

@@ -8,7 +8,9 @@
 
 
     <div class="overflow-x-auto">
-            <a :href="route('reinscripciones.create')" class="flex w-full lg:w-1/6 px-9 py-4 mb-4 mt-4 ml-8 text-base font-semibold rounded-full block border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nueva Reinscripcion</a>
+        <div class="w-11/12 flex flex-row-reverse mt-3">
+            <a :href="route('reinscripciones.create')" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3">Nueva Reinscripcion</a>
+        </div>
         <div class="min-w-screen flex items-center justify-center font-sans overflow-hidden">
             <div class="w-full lg:w-5/6">
                 <div class="bg-white shadow-md rounded my-6">
@@ -44,12 +46,13 @@
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
-                                        <!-- <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                            </svg>
-                                        </div> -->
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <a :href="route('reinscripciones.revision', reinscripcion.id)">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                                                </svg>
+                                            </a>
+                                        </div>
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a :href="route('reinscripciones.edit', reinscripcion.id)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
