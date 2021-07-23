@@ -66,15 +66,15 @@
                 </div>
             </div>
         </div>
-        el valor es:{{$props.fileinput_valor}}
-        <div class="w-full md:w-1/2 px-3" v-show="fileinput_valor !== ''">
+        el valor es:{{$props.fileinput_valor}}*
+        <div class="w-full md:w-1/2 px-3" v-if="typeof($props.fileinput_valor) === 'undefined'">
             <object :data=fileinput_valor type="application/pdf" width="100%" height="500px"> 
                 <p>It appears you don't have a PDF plugin for this browser.
                     No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
                 download the PDF file.</a></p>  
             </object>
         </div>
-        <div v-show="fileinput_valor === ''" class="w-full md:w-2/3 h-full" >
+        <div v-else class="w-full md:w-2/3 h-full" >
             <div class="flex items-center justify-center w-full h-full">
                 <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                     <div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
@@ -112,7 +112,7 @@ export default {
     ],
     
   data() {
-      console.log("WL valor es:");
+      console.log("La contancia es valor es:");
     console.log(this.$props.fileinput_valor);
     return {
         fileinput_correcto_local: this.$props.inscripciondgr_correcto,

@@ -122,9 +122,15 @@ export default {
     };
   },
   methods:{
-      guardar_avnces_uno(){
-          if(this.$props.evaluacion)
-          {
+       mandar_id_al_padre(id){
+        this.$emit('CreeUnNuevoId',id);
+
+
+    },
+    guardar_avnces_uno(){
+        alert("el id q mando es:"+this.$props.id);
+        if(this.$props.evaluacion)
+        {
             //Soy autoridad minera
             let self = this
             axios.post('/formularios/evaluacion_auto_guardado_uno', {
@@ -194,6 +200,15 @@ export default {
                         self.modal_body = 'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
                         self.mostrar_modal_datos_ya_guardados = true;
                     }
+                    if(!isNaN(response.data))
+                    {
+                        console.log('todo bien, se creo el productor');
+                        self.modal_tittle = 'Se creo el nuevo Productor';
+                        self.modal_body = 'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias. su id es:'+response.data;
+                        self.mostrar_modal_datos_ya_guardados = true;
+                        self.mandar_id_al_padre(response.data);
+                    }
+
                     else{
                         console.log('NO todo bien');	
                     }
@@ -206,16 +221,17 @@ export default {
             //soy una autoridad minera
             
           }
-          if(!this.$props.evaluacion)
-          {
+        if(!this.$props.evaluacion)
+        {
               //soy un productor
 
-          }
+        }
 
-      },
-      cerrar_modal_datos_uno() {
+    },
+    cerrar_modal_datos_uno() {
 				this.mostrar_modal_datos_ya_guardados = false
 		},
+   
   }
   
 };

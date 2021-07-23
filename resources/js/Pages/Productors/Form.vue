@@ -3,7 +3,7 @@
 		<div class="flex items-center  w-full bg-teal-lighter">
 			<div class="w-full bg-white rounded shadow-lg p-8 m-4">
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
-					Agregar Productor
+					Agregar Productor con id {{form.id}}
 				</h1>
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
@@ -172,7 +172,9 @@
 					:obs_constanciasociedad_valido="form.obs_constaciasociedad_valido"
 
 					:evaluacion="true"
-					:id="$props.productor.id"
+					:id="form.id"
+					
+					v-on:CreeUnNuevoIdPasoAAbuelo="update_id_recien_creado_en_abuelo($event)"
 				>
 				</PaginaUnoDatosProductores>
 				<br>
@@ -236,7 +238,7 @@
 					:lista_dptos="lista_dptos_legal"
 
 					:evaluacion="true"
-					:id="$props.productor.id"
+					:id="form.id"
 					>
 
 				</PaginaDosDatosDomLegal>
@@ -307,7 +309,7 @@
 				:lista_dptos="lista_dptos_admin"
 
 				:evaluacion="true"
-				:id="$props.productor.id"
+				:id="form.id"
 				>
 			
 
@@ -379,7 +381,7 @@
 				:lista_minerales_desde_back = "lista_de_minerales_del_back"
 
 				:evaluacion="true"
-				:id="$props.productor.id"
+				:id="form.id"
 				:testing="true"
 			>
 			</PaginaCuatroDatosMinaUno>
@@ -481,7 +483,7 @@
 				:obs_fecha_vencimiento_dia_valido="form.obs_fecha_vencimiento_dia_valido"
 				
 				:evaluacion="true"
-				:id="$props.productor.id"
+				:id="form.id"
 				:testing="true"
 
 			>
@@ -571,7 +573,7 @@
 				:lista_dptos="lista_dptos_mina"
 				
 				:evaluacion="true"
-				:id="$props.productor.id"
+				:id="form.id"
 				:testing="true"
 
 			>
@@ -721,6 +723,8 @@ export default {
 			lista_dptos_mina: [],
 			lista_de_minerales_del_back : this.$props.lista_minerales_cargados,
 			form: {
+				id:this.$props.productor.id,
+
 				razon_social:this.$props.productor.razonsocial,
 				razon_social_valido: true,
 				razon_social_correcto: this.$props.productor.razon_social_correcto,
@@ -1196,6 +1200,11 @@ export default {
 							// handle error
 							console.log(error);
 						})
+		},
+
+		update_id_recien_creado_en_abuelo(id_nuevo){
+			console.log("recibi el id:"+id_nuevo+" - desde el nieto");
+			this.form.id = id_nuevo;
 		},
 
 	},

@@ -93,8 +93,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es el número de expediente con el cual se ha tramitado el expediente.
                             </p>
                             
                         </div>
@@ -155,8 +154,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es el distrito minero asignado en el expediente con el cual se ha tramitado el expediente.
                             </p>
                             
                         </div>
@@ -204,8 +202,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es el nombre que se le ha asignado a la mina.
                             </p>
                             
                         </div>
@@ -251,8 +248,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Debe seleccionar la opción que usted está registrando, ya sea mina o cantera.
                             </p>
                             
                         </div>
@@ -299,8 +295,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                En este campo debe ser completado con la descripcion de la mina.
                             </p>
                             
                         </div>
@@ -494,8 +489,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Debe completar la lista de minerales con aquellos minerales que justamente serán explotados en este yacimiento.
                             </p>
                             
                         </div>

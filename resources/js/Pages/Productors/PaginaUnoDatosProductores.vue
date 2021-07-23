@@ -90,8 +90,7 @@
                         ring-blue-100">
                     
                         <p class="p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                            m quisquam doloremque placeat op.
+                            En caso de ser una persona física, debe completar este campo con su nombre y apellido. En caso de ser una empresa debe completar este campo con el nombre con el que se identifica ante la AFIP.
                         </p>
                         
                     </div>
@@ -134,8 +133,7 @@
                         ring-blue-100">
                     
                         <p class="p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                            m quisquam doloremque placeat op.
+                            Es el email donde recibirá notificaciones. Ejemplo: nombre@ejemplo.com
                         </p>
                         
                     </div>
@@ -179,8 +177,7 @@
                         ring-blue-100">
                     
                         <p class="p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                            m quisquam doloremque placeat op.
+                            Es el número de CUIT asignado por la AFIP. Formato: XX-XXXXXXXXXX-X.
                         </p>
                         
                     </div>
@@ -221,8 +218,7 @@
                         ring-blue-100">
                     
                         <p class="p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                            m quisquam doloremque placeat op.
+                            Este es el número único con el que se identifican los productores, si usted no lo posee, el sistema le asignara uno.
                         </p>
                         
                     </div>
@@ -265,8 +261,7 @@
                         ring-blue-100">
                     
                         <p class="p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                            m quisquam doloremque placeat op.
+                            Es el tipo de sociedad conformada.
                         </p>
                         
                     </div>
@@ -310,14 +305,14 @@
                         ring-blue-100">
                     
                         <p class="p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                            m quisquam doloremque placeat op.
+                            Esta constancia puede ser descargada desde la página de la AFIP. Debe ser un archivo del tipo PDF.
                         </p>
                         
                     </div>
                     <br>
                 </div>
                 <div class="flex" v-if="mostrar_testing">
+                    -- valor inscripcion dgr:{{form_pagina.inscripciondgr}}*
                     -- inscripcion dgr valida deel padre{{form_pagina.inscripciondgr_valido}}
                     -- inscripcion dgr correcto deel padre{{form_pagina.inscripciondgr_correcto}}
                     -- inscripcion dgr observacion deel padre{{form_pagina.obs_inscripciondgr}}
@@ -329,7 +324,7 @@
          <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
-                    v-bind:fileinput_valor="form_pagina.constanciasociedad"
+                    v-bind:fileinput_valor="form_pagina.constaciasociedad"
                     v-bind:fileinput_valor_valido="form_pagina.constanciasociedad_valido"
                     v-bind:inscripciondgr_correcto="form_pagina.constanciasociedad_correcto"
                     v-bind:obs_fileinput="form_pagina.obs_constanciasociedad"
@@ -351,13 +346,13 @@
                         ring-4
                         ring-blue-100">
                     <p class="p-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                        m quisquam doloremque placeat op.
+                        Esta constancia debe ser descargada desde la página de la AFIP. Debe ser un archivo PDF.
                     </p>
                     <br>
                 </div>
                 
                 <div class="flex" v-if="mostrar_testing">
+                    -- valor constancia sociedad:{{form_pagina.constanciasociedad}}*
                     -- constancia de sociedad valida deel padre{{form_pagina.constanciasociedad_valido}}
                     -- constancia de sociedad correcto deel padre{{form_pagina.constanciasociedad_correcto}}
                     -- constancia de sociedad observacion deel padre{{form_pagina.obs_constanciasociedad}}
@@ -410,7 +405,10 @@
 
                 :evaluacion="true"
                 :id="$props.id"
-            ></BotonesPaginaUna>
+
+                v-on:CreeUnNuevoId="update_id_recien_creado($event)"
+            ></BotonesPaginaUna> el id es:{{$props.id}}*
+            
          </div>
         
         </div>
@@ -675,6 +673,10 @@ export default {
         //mostrar ayuda
         update_valor_ayuda_local(newValor){
             this.mostrar_ayuda = newValor;
+        },
+
+        update_id_recien_creado(id_nuevo){
+            this.$emit('CreeUnNuevoIdPasoAAbuelo',id_nuevo);
         }
   }
   

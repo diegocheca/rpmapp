@@ -93,8 +93,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede específicar una intersección de calles).
                             </p>
                             
                         </div>
@@ -112,8 +111,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).
                             </p>
                             
                         </div>
@@ -160,8 +158,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es la numeracón del domicilio que se esta declarando. Este es un valor numérico.
                             </p>
                             
                         </div>
@@ -179,8 +176,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es la numeración del domicilio que se esta declarando. Este es un valor númerico.
                             </p>
                             
                         </div>
@@ -232,8 +228,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es el número de productor otorgado por el ministerio de minería
                             </p>
                             
                         </div>
@@ -251,8 +246,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es el número del productor otorgado por el ministerio de minería
                             </p>
                             
                         </div>
@@ -323,8 +317,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Provincia donde se encuentra el domicilio legal en la provincia.
                             </p>
                             
                         </div>
@@ -342,8 +335,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Provincia donde se encuentra el domicilio de la Administración Central.
                             </p>
                             
                         </div>
@@ -393,8 +385,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Departamento donde se encuentra el domicilio legal en la provincia.
                             </p>
                             
                         </div>
@@ -412,8 +403,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Departamento donde se encuentra el domicilio de la Administración Central.
                             </p>
                             
                         </div>
@@ -460,8 +450,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es la localidad donde se encuentra el domicilio.
                             </p>
                             
                         </div>
@@ -479,8 +468,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Es la localidad donde se encuentra el domicilio.
                             </p>
                             
                         </div>
@@ -530,8 +518,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Código postal correspondiente al domicilio.
                             </p>
                             
                         </div>
@@ -549,8 +536,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Código postal correspondiente al domicilio.
                             </p>
                             
                         </div>
@@ -598,8 +584,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Legal ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Este campo es para el caso de que considere necesario brindar algún dato adicional que aporte más precisión en la ubicación del domicilio de la Administración principal.
                             </p>
                             
                         </div>
@@ -617,8 +602,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Administrativo ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Este campo es par el caso de que se considere necesario brindar algún dato extra. El cuál apote más presición de la ubicación del domicilio legal.
                             </p>
                             
                         </div>
@@ -643,7 +627,7 @@
             <BotonesPaginaDos 
                 :link_volver="route('formulario-alta.index')"
                 :titulo_boton_volver="'volver'"
-                :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
+                :titulo_boton_guardar="'Guardar Datos del Domicilio'"
 
                 :leal_calle="form_pagina.leal_calle"
                 :nombre_calle_legal_valido="form_pagina.nombre_calle_legal_valido"

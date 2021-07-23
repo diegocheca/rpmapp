@@ -16,7 +16,7 @@
         <button
             type="button"
             class="animate-pulse  text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
-            @click="guardar_avnces_uno"
+            @click="guardar_avnces_cuatro"
         >
             {{titulo_boton_guardar}}
         </button>
@@ -165,7 +165,7 @@ export default {
     };
   },
   methods:{
-      guardar_avnces_uno(){
+      guardar_avnces_cuatro(){
           //if(this.$props.evaluacion)
           //{
             //Soy autoridad minera
@@ -225,6 +225,8 @@ export default {
                     obs_titulo_contrato_posecion_valido: this.$props.obs_titulo_contrato_posecion_valido,
 
                     lista_minerales: this.$props.minerales,
+
+                    es_evaluacion: this.$props.evaluacion,
 
 
                     valor_de_progreso: 20,

@@ -16,7 +16,7 @@
         <button
             type="button"
             class="animate-pulse text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
-            @click="guardar_avnces_uno"
+            @click="guardar_avnces_dos"
         >
             {{titulo_boton_guardar}}
         </button>
@@ -144,20 +144,21 @@ export default {
     components: {
 		JetDialogModal,
 	},
-  data() {
+data() {
     return {
-      saludos: 'Saludame qweqweqwe',
-      mostrar_modal_datos_ya_guardados:false,
+        saludos: 'Saludame qweqweqwe',
+        mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:''
     };
-  },
-  methods:{
-      guardar_avnces_uno(){
-          if(this.$props.evaluacion)
-          {
-              console.log('mi donde guardar es:');
-              console.log(this.$props.donde_guardar);
+},
+methods:{
+    guardar_avnces_dos(){
+        //alert("por guardar paso 2");
+        //if(this.$props.evaluacion)
+        //{
+            console.log('mi donde guardar es:');
+            console.log(this.$props.donde_guardar);
             //Soy autoridad minera
             let self = this
             if(this.$props.donde_guardar === 'legal' )
@@ -213,6 +214,8 @@ export default {
                     leal_otro_correcto: this.$props.leal_otro_correcto,
                     obs_leal_otro: this.$props.obs_leal_otro,
                     obs_leal_otro_valido: this.$props.obs_leal_otro_valido,
+
+                    es_evaluacion: this.$props.evaluacion,
 
 
                     valor_de_progreso: 20,
@@ -302,6 +305,8 @@ export default {
                     obs_administracion_otro: this.$props.obs_leal_otro,
                     obs_administracion_otro_valido: this.$props.obs_leal_otro_valido,
 
+                    es_evaluacion: this.$props.evaluacion,
+
 
                     valor_de_progreso: 20,
                     valor_de_aprobado: 20,
@@ -313,7 +318,7 @@ export default {
                     if(response.data === "se actualizaron los datos correctamente")
                     {
                         console.log('todo bien');
-                        self.modal_tittle = 'Datos guardados correctamente';
+                        self.modal_tittle = 'Datos de paso 3 guardados correctamente';
                         self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
                         self.mostrar_modal_datos_ya_guardados = true;
                     }
@@ -340,18 +345,15 @@ export default {
             
             //soy una autoridad minera
             
-          }
-          if(!this.$props.evaluacion)
-          {
+          //}
+          //if(!this.$props.evaluacion)
+          //{
               //soy un productor
 
-          }
-
-      },
-      cerrar_modal_datos_uno() {
+    },
+    cerrar_modal_datos_uno() {
 				this.mostrar_modal_datos_ya_guardados = false
 		},
-  }
-  
+    }
 };
 </script>
