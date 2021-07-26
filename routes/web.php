@@ -179,6 +179,7 @@ Route::post('/formularios/evaluacion_auto_guardado_cuatro', [FormAltaProductorCo
 Route::post('/formularios/evaluacion_auto_guardado_cinco', [FormAltaProductorController::class, "correccion_guardar_paso_cinco"])->name('correccion_guardar-paso-cinco');
 Route::post('/formularios/evaluacion_auto_guardado_seis', [FormAltaProductorController::class, "correccion_guardar_paso_seis"])->name('correccion_guardar-paso-seis');
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
+Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');
 
 //Route::get('/formularios/preg_email_validado/{email}', [FormAltaProductorController::class, "preguntar_email_confirmado"])->name('preguntar-email-confirmado');
 Route::post('/formularios/preg_email_validado/', [FormAltaProductorController::class, "preguntar_email_confirmado"])->name('preguntar-email-confirmado');

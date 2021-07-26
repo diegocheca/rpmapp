@@ -369,7 +369,7 @@
 				></CardMinaUno> -->
 			</div>
 			<div id="section_mina_uno"></div>
-			
+			el id es: {{$props.productor.id}}
 			<PaginaCuatroDatosMinaUno
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -454,6 +454,7 @@
 			<br>
 			<br>
 			<div id="section_datos_mina_dos"></div>
+			
 			<PaginaCincoDatosMinaDos
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -540,10 +541,6 @@
 			>
 			</PaginaCincoDatosMinaDos>
 			<br>
-			<br>
-			<br>
-			<br>
-			<br>
 			<!-- <div class="flex flex-col mb-8">
 				<button
 					type="button"
@@ -555,28 +552,7 @@
 				
 				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
 			</div> -->
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
 			<div id="section_datos_mina_ubicacion"></div>
-			<div class="flex items-center justify-center">
-				<CardMinaUbicacion  
-					:progreso="form.valor_de_progreso_seis"
-					:aprobado="form.valor_de_aprobado_seis"
-					:reprobado="form.valor_de_reprobado_seis" 
-					:lugar="'Argentina, San Juan'"
-					:updated_at="'hace 10 minutos'"
-					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-				></CardMinaUbicacion>
-			</div>
-			<br>
-			<br>
-			<br>
 			<br>
 			<PaginaSeisDatosUbicacionMina
 				:link_volver="route('formulario-alta.index')"
@@ -631,28 +607,11 @@
 
 			</PaginaSeisDatosUbicacionMina>
 			<br>
-			<br>
-			<br>
-			<br>
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_seis"
-				>
-					Guardar: Datos de la Ubicacion de la mina
-				</button>
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
-			<br>
-			<br>
-			<br>
+			
 			<hr>
 			<br>
-			<br>
-			<br>
-			<br>
-					<div class="flex flex-col mb-4">
+			<div class="flex">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 							for="name"
@@ -665,7 +624,7 @@
 							class="border py-2 px-3 text-grey-darkest"
 						/>
 					</div>
-					<div class="flex flex-col mb-4">
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 							for="estado"
@@ -675,39 +634,39 @@
 							id="estado"
 							name="estado"
 							v-model="form.estado"
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="presentado">Presentado</option>
+							class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+							<option value="en proceso">En proceso</option>
 							<option value="en revision">En revision</option>
-							<option value="con observacion">Aprobado con Observaciones</option>
+							<option value="aprobado">Aprobado</option>
 							<option value="reprobado">Reprobado</option>
+							<option value="con observacion">Con Observacion</option>
+							
 						</select>
 					</div>
-					<div class="flex flex-col mb-8">
-							<!-- type="submit" -->
-						<button
-							@click="guardar_avances_todo"
-							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-						>
-							Actualizar
-						</button>
-						<inertia-link
-							:href="route('productors.index')"
-							class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
-						>
-							Volver
-						</inertia-link>
-					</div>
-
-					<!-- <div class="mr-6">
-							<button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Learn More</button>
-							<button class="px-8 py-3.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900">New</button>
-							<button class="px-7 py-3   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-yellow-200 hover:bg-yellow-300 text-yellow-900">New</button>
-							<button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900">New</button>
-							<button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-purple-300 bg-indigo-200 hover:bg-indigo-300 text-indigo-900">New</button>
-						</div> -->
-
-
-				</form>
+			</div>
+			<br>
+			<br>
+			<br>
+			<div class="flex">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<inertia-link
+						:href="route('productors.index')"
+						class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+					>
+						Volver
+					</inertia-link>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<button
+						@click="guardar_avances_todo"
+						class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
+					>
+						Actualizar
+					</button>
+					
+				</div>
+			</div>
+		</form>
 				
 
 			</div>
@@ -3308,6 +3267,8 @@ export default {
 						// Make a request for a user with a given ID
 						axios.post('/formularios/evaluacion_auto_guardado_todo', {
 							id: this.$props.productor.id,
+							estado: this.form.estado,
+							es_evaluacion: 'true',
 
 						})
 						.then(function (response) {

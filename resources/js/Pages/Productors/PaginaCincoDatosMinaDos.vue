@@ -309,13 +309,11 @@
                 </div>
             </div>
         </div>
-        <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+        <!-- <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
          @click="enviar_constancia"
          >
             Subir archivo
-        </button>
-        el archivo es: {{constancia_de_prueba}}
-
+        </button> -->
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
                 v-bind:valor_input_props="form_pagina.constancia_pago_canon"
@@ -362,6 +360,9 @@
             <br> canon resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_constancia_pago_canon}}
             <br> canon resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_constancia_pago_canon_valido}}
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
                 v-bind:valor_input_props="form_pagina.iia"
@@ -377,6 +378,7 @@
                 v-on:changeobs="update_obs_iia($event)"
                 v-on:changeobsvalido="update_obs_iia_valido($event)"
                 v-on:changevalor="update_valor_iia($event)"
+                v-on:cambioarchivo="cambio_el_archivo_iia($event)"
             >
             </SubirArchivo>
             <div v-show="ayuda_local" >
@@ -399,6 +401,7 @@
                         <br>
                     </div>
         </div>
+
         <div class="flex" v-if="mostrar_testing">
             <br> iia minera de Mina valor padre: {{form_pagina.iia}}
             <br> iia minera de Mina  valido del padre: {{form_pagina.iia_canon_validacion}}
@@ -406,6 +409,9 @@
             <br> iia minera de Mina  observacion deel padre: {{form_pagina.obs_iia_canon}}
             <br> iia minera de Mina  observacion valida deel padre: {{form_pagina.obs_iia_canon_valido}}
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
                 v-bind:valor_input_props="form_pagina.dia"
@@ -421,6 +427,7 @@
                 v-on:changeobs="update_obs_dia($event)"
                 v-on:changeobsvalido="update_obs_dia_valido($event)"
                 v-on:changevalor="update_valor_dia($event)"
+                v-on:cambioarchivo="cambio_el_archivo_dia($event)"
             >
             </SubirArchivo>
             <div v-show="ayuda_local" >
@@ -450,6 +457,9 @@
             <br> dia minera de Mina  observacion deel padre: {{form_pagina.obs_dia_canon}}
             <br> dia minera de Mina  observacion valida deel padre: {{form_pagina.obs_dia_canon_valido}}
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
@@ -546,6 +556,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <FechaGenerica
@@ -851,6 +862,9 @@ export default {
         autoridad_minera:false,
         todas_las_validaciones: true,
         constancia_de_prueba:'',
+        iia_archivo:'',
+        dia_archivo:'',
+
         ayuda_local: false,
         form_pagina: {
 
@@ -1228,14 +1242,20 @@ export default {
 
         cambio_el_archivo(newValue){
             this.constancia_de_prueba = newValue;
+            this.form_pagina.constancia_pago_canon = this.constancia_de_prueba;
             /*const data = new FormData();
             data.append('photo', this.photo);
             data.append('description', this.description);
             data.append('productId', this.productId);
             axios.post("/api/photo", data);*/
-
-            
-
+        },
+        cambio_el_archivo_iia(newValue){
+            this.iia_archivo = newValue;
+            this.form_pagina.iia = newValue;
+        },
+        cambio_el_archivo_dia(newValue){
+            this.dia_archivo = newValue;
+            this.form_pagina.dia = newValue;
         },
         //mostrar ayuda
         update_valor_ayuda_local(newValor){

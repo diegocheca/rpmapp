@@ -3,8 +3,15 @@
 		<div class="flex items-center  w-full bg-teal-lighter">
 			<div class="w-full bg-white rounded shadow-lg p-8 m-4">
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
-					Agregar Productor con id {{form.id}}
+					Dandose de Alta como nuevo Productor Minero, id {{form.id}}
 				</h1>
+				<button
+					type="button"
+					class="animate-pulse text-white text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
+					@click="mostrar_explicacion"
+				>
+					Necesita Ayuda?
+				</button>
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
@@ -24,12 +31,12 @@
 						</template>
 						<template #footer>
 								<button @click="closeModal">
-										Ok
+										Comenzemos
 								</button>
 								
 						</template>
 					</jet-dialog-modal>
-					<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
+					
 					<div id="inicio"></div>
 					<div class="flex items-center justify-center">
 						<div class="grid grid-cols-1 gap-6 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7">
@@ -179,6 +186,7 @@
 				</PaginaUnoDatosProductores>
 				<br>
 				<br>
+				los depertamentos son{{lista_dptos_legal}}
 				<div id="section_domicilio_legal"></div>
 				<PaginaDosDatosDomLegal
 					:link_volver="route('formulario-alta.index')"
@@ -1164,6 +1172,82 @@ export default {
 			nuevo: this.$props.productor,
 		};
 	},
+	mounted(){
+		console.log("corriendo ene l mounted");
+		let self  = this;
+		//self.pasar_los_num_a_boolean();
+		//self.buscar_provincias();
+		//let self  = this;
+		//voy a buscar las provincias
+		this.$nextTick(() => {
+			axios.get('/datos/traer_provincias')
+				.then(function (response) {
+					console.log("las provincias son:\n");
+					self.lista_provincias = response.data;
+					console.log(self.lista_provincias);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+			});
+
+			// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
+			// console.log("si");
+			// else console.log("no");
+			// console.log(isNaN(parseInt(this.$props.productor.leal_provincia)));
+
+
+		//voy a buscar los dptos
+		if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+			//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+			this.$nextTick(() => {
+			axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.leal_provincia)})
+				.then(function (response) {
+					console.log("los deptos desde la raiz , legales son:\n");
+					self.lista_dptos_legal = response.data;
+					console.log(self.lista_dptos_legal);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+			});
+		}
+		else{self.lista_dptos_legal=[];}
+		if(!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+			//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+			this.$nextTick(() => {
+			axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.administracion_provincia)})
+				.then(function (response) {
+					console.log("los deptos desde la raiz son:\n");
+					self.lista_dptos_admin = response.data;
+					console.log(self.lista_dptos_admin);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+			});
+		}
+		else{self.lista_dptos_admin=[];}
+		if(!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+			//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+			this.$nextTick(() => {
+			axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.localidad_mina_provincia)})
+				.then(function (response) {
+					console.log("los deptos desde la raiz son:\n");
+					self.lista_dptos_mina = response.data;
+					console.log(self.lista_dptos_mina);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+			});
+		}
+		else{self.lista_dptos_mina=[];}
+	
+		
+
+		
+	},
 	methods: {
 		submit() {
 			this.$inertia.put(
@@ -1206,78 +1290,128 @@ export default {
 			console.log("recibi el id:"+id_nuevo+" - desde el nieto");
 			this.form.id = id_nuevo;
 		},
+		mostrar_explicacion(){
+			this.confirmingUserDeletion = true;
+			this.modal_body = "En este formulario usted puede presentar la solicitud de alta de productor minero. Con esta acción usted demuestra interes en inscribirse como tal, pervio a una evaluación de su solicitud (el presente formulario)."
+			this.modal_tittle="Explicación de alta de Productores Mineros"
+		},
+
+		pasar_los_num_a_boolean(){
+			let self  = this;
+			//voy a pasar los 0 y 1 a false y true, respectivamente
+			console.log("por transformar los ownder");
+			if(this.$props.productor.owner === 0)
+			{
+				self.form.owner = false;
+				self.$props.productor.owner = false;
+			}
+			else{
+				self.form.owner = true;
+				self.$props.productor.owner = true;
+			}
+			console.log("el owner es");
+			console.log(self.form.owner);
+			if(this.$props.productor.arrendatario === 0)
+			{
+				self.form.arrendatario = false;
+				self.$props.productor.arrendatario = false;
+			}
+			else{
+				self.form.arrendatario = true;
+				self.$props.productor.arrendatario = true;
+			}
+			if(this.$props.productor.concesionario === 0)
+			{
+				self.form.concesionario = false;
+				self.$props.productor.concesionario = false;
+			}
+			else{
+				self.form.concesionario = true;
+				self.$props.productor.concesionario = true;
+			}
+			if(this.$props.productor.otros === 0)
+			{
+				self.form.otros = false;
+				self.$props.productor.otros = false;
+			}
+			else{
+				self.form.otros = true;
+				self.$props.productor.otros = true;
+			}
+			if(this.$props.productor.sustancias === 0)
+			{
+				self.form.sustancias = false;
+				self.$props.productor.sustancias = false;
+			}
+			else{
+				self.form.sustancias = true;
+				self.$props.productor.sustancias = true;
+			}
+
+		},
+		buscar_provincias(){
+			//voy a buscar las provincias
+			this.$nextTick(() => {
+			axios.get('/datos/traer_provincias')
+				.then(function (response) {
+					console.log("las provincias son:\n");
+					self.lista_provincias = response.data;
+					console.log(self.lista_provincias);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+			});
+			//voy a buscar los dptos
+			if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+				//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+				this.$nextTick(() => {
+				axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.leal_provincia)})
+					.then(function (response) {
+						console.log("los deptos desde la raiz , legales son:\n");
+						self.lista_dptos_legal = response.data;
+						console.log(self.lista_dptos_legal);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				});
+			}
+			else{self.lista_dptos_legal=[];}
+			if(!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+				//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+				this.$nextTick(() => {
+				axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.administracion_provincia)})
+					.then(function (response) {
+						console.log("los deptos desde la raiz son:\n");
+						self.lista_dptos_admin = response.data;
+						console.log(self.lista_dptos_admin);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				});
+			}
+			else{self.lista_dptos_admin=[];}
+			if(!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+				//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+				this.$nextTick(() => {
+				axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.localidad_mina_provincia)})
+					.then(function (response) {
+						console.log("los deptos desde la raiz son:\n");
+						self.lista_dptos_mina = response.data;
+						console.log(self.lista_dptos_mina);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				});
+			}
+			else{self.lista_dptos_mina=[];}
+		}
 
 	},
-	mounted(){
-    let self  = this;
-	//voy a buscar las provincias
-    this.$nextTick(() => {
-        axios.get('/datos/traer_provincias')
-            .then(function (response) {
-                console.log("las provincias son:\n");
-                self.lista_provincias = response.data;
-                console.log(self.lista_provincias);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        });
-
-		// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
-		// console.log("si");
-		// else console.log("no");
-		// console.log(isNaN(parseInt(this.$props.productor.leal_provincia)));
-
-
-	//voy a buscar los dptos
-	if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
-		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
-		this.$nextTick(() => {
-        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.leal_provincia)})
-            .then(function (response) {
-                console.log("los deptos desde la raiz , legales son:\n");
-                self.lista_dptos_legal = response.data;
-                console.log(self.lista_dptos_legal);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        });
-	}
-	else{self.lista_dptos_legal=[];}
-	if(!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
-		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
-		this.$nextTick(() => {
-        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.administracion_provincia)})
-            .then(function (response) {
-                console.log("los deptos desde la raiz son:\n");
-                self.lista_dptos_admin = response.data;
-                console.log(self.lista_dptos_admin);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        });
-	}
-	else{self.lista_dptos_admin=[];}
-	if(!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
-		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
-		this.$nextTick(() => {
-        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.localidad_mina_provincia)})
-            .then(function (response) {
-                console.log("los deptos desde la raiz son:\n");
-                self.lista_dptos_mina = response.data;
-                console.log(self.lista_dptos_mina);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        });
-	}
-	else{self.lista_dptos_mina=[];}
 	
-	
-    },
 	
 	
 };

@@ -13,6 +13,7 @@
                 </button>
             </template>
         </jet-dialog-modal>
+        el id es: {{$props.id}}
         <button
             type="button"
             class="animate-pulse  text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
@@ -169,75 +170,116 @@ export default {
           //if(this.$props.evaluacion)
           //{
             //Soy autoridad minera
-            let self = this
-            axios.post('/formularios/evaluacion_auto_guardado_cuatro', {
-                    id: this.$props.id,
-
-                    numero_expdiente: this.$props.numero_expdiente,
-                    numero_expdiente_valido: this.$props.numero_expdiente_valido,
-                    numero_expdiente_correcto: this.$props.numero_expdiente_correcto,
-                    obs_numero_expdiente: this.$props.obs_numero_expdiente,
-                    obs_numero_expdiente_valido: this.$props.obs_numero_expdiente_valido,
-                    categoria: this.$props.categoria,
-                    categoria_validacion: this.$props.categoria_validacion,
-                    categoria_correcto: this.$props.categoria_correcto,
-                    obs_categoria: this.$props.obs_categoria,
-                    obs_categoria_valido: this.$props.obs_categoria_valido,
-                    nombre_mina: this.$props.nombre_mina,
-                    nombre_mina_validacion: this.$props.nombre_mina_validacion,
-                    nombre_mina_correcto: this.$props.nombre_mina_correcto,
-                    obs_nombre_mina: this.$props.obs_nombre_mina,
-                    obs_nombre_mina_valido: this.$props.obs_nombre_mina_valido,
-                    descripcion_mina: this.$props.descripcion_mina,
-                    descripcion_mina_validacion: this.$props.descripcion_mina_validacion,
-                    descripcion_mina_correcto: this.$props.descripcion_mina_correcto,
-                    obs_descripcion_mina: this.$props.obs_descripcion_mina,
-                    obs_descripcion_mina_valido: this.$props.obs_descripcion_mina_valido,
-                    distrito_minero: this.$props.distrito_minero,
-                    distrito_minero_validacion: this.$props.distrito_minero_validacion,
-                    distrito_minero_correcto: this.$props.distrito_minero_correcto,
-                    obs_distrito_minero: this.$props.obs_distrito_minero,
-                    obs_distrito_minero_valido: this.$props.obs_distrito_minero_valido,
-                    mina_cantera: this.$props.mina_cantera,
-                    mina_cantera_validacion: this.$props.mina_cantera_validacion,
-                    mina_cantera_correcto: this.$props.mina_cantera_correcto,
-                    obs_mina_cantera: this.$props.obs_mina_cantera,
-                    obs_mina_cantera_valido: this.$props.obs_mina_cantera_valido,
-                    plano_inmueble: this.$props.plano_inmueble,
-                    plano_inmueble_validacion: this.$props.plano_inmueble_validacion,
-                    plano_inmueble_correcto: this.$props.plano_inmueble_correcto,
-                    obs_plano_inmueble: this.$props.obs_plano_inmueble,
-                    obs_plano_inmueble_valido: this.$props.obs_plano_inmueble_valido,
-                    minerales_variedad: this.$props.minerales_variedad,
-                    minerales_variedad_validacion: this.$props.minerales_variedad_validacion,
-                    minerales_variedad_correcto: this.$props.minerales_variedad_correcto,
-                    obs_minerales_variedad: this.$props.obs_minerales_variedad,
-                    obs_minerales_variedad_valido: this.$props.obs_minerales_variedad_valido,
-                    resolucion_concesion_minera: this.$props.resolucion_concesion_minera,
-                    resolucion_concesion_minera_validacion: this.$props.resolucion_concesion_minera_validacion,
-                    resolucion_concesion_minera_correcto: this.$props.resolucion_concesion_minera_correcto,
-                    obs_resolucion_concesion_minera: this.$props.obs_resolucion_concesion_minera,
-                    obs_resolucion_concesion_minera_valido: this.$props.obs_resolucion_concesion_minera_valido,
-                    titulo_contrato_posecion: this.$props.titulo_contrato_posecion,
-                    titulo_contrato_posecion_validacion: this.$props.titulo_contrato_posecion_validacion,
-                    titulo_contrato_posecion_correcto: this.$props.titulo_contrato_posecion_correcto,
-                    obs_titulo_contrato_posecion: this.$props.obs_titulo_contrato_posecion,
-                    obs_titulo_contrato_posecion_valido: this.$props.obs_titulo_contrato_posecion_valido,
-
-                    lista_minerales: this.$props.minerales,
-
-                    es_evaluacion: this.$props.evaluacion,
-
-
-                    valor_de_progreso: 20,
-                    valor_de_aprobado: 20,
-                    valor_de_reprobado: 20,
-
-                })
+            let self = this;
+            const data = new FormData();
+            data.append('id', this.$props.id);
+            data.append('numero_expdiente',  this.$props.numero_expdiente);
+            data.append('numero_expdiente_valido',  this.$props.numero_expdiente_valido);
+            data.append('numero_expdiente_correcto',  this.$props.numero_expdiente_correcto);
+            data.append('obs_numero_expdiente',  this.$props.obs_numero_expdiente);
+            data.append('obs_numero_expdiente_valido',  this.$props.obs_numero_expdiente_valido);
+            data.append('categoria',  this.$props.categoria);
+            data.append('categoria_validacion',  this.$props.categoria_validacion);
+            data.append('categoria_correcto',  this.$props.categoria_correcto);
+            data.append('obs_categoria',  this.$props.obs_categoria);
+            data.append('obs_categoria_valido',  this.$props.obs_categoria_valido);
+            data.append('nombre_mina',  this.$props.nombre_mina);
+            data.append('nombre_mina_validacion',  this.$props.nombre_mina_validacion);
+            data.append('nombre_mina_correcto',  this.$props.nombre_mina_correcto);
+            data.append('obs_nombre_mina',  this.$props.obs_nombre_mina);
+            data.append('obs_nombre_mina_valido',  this.$props.obs_nombre_mina_valido);
+            data.append('descripcion_mina',  this.$props.descripcion_mina);
+            data.append('descripcion_mina_validacion',  this.$props.descripcion_mina_validacion);
+            data.append('descripcion_mina_correcto',  this.$props.descripcion_mina_correcto);
+            data.append('obs_descripcion_mina',  this.$props.obs_descripcion_mina);
+            data.append('obs_descripcion_mina_valido',  this.$props.obs_descripcion_mina_valido);
+            data.append('distrito_minero',  this.$props.distrito_minero);
+            data.append('distrito_minero_validacion',  this.$props.distrito_minero_validacion);
+            data.append('distrito_minero_correcto',  this.$props.distrito_minero_correcto);
+            data.append('obs_distrito_minero',  this.$props.obs_distrito_minero);
+            data.append('obs_distrito_minero_valido',  this.$props.obs_distrito_minero_valido);
+            data.append('mina_cantera',  this.$props.mina_cantera);
+            data.append('mina_cantera_validacion',  this.$props.mina_cantera_validacion);
+            data.append('mina_cantera_correcto',  this.$props.mina_cantera_correcto);
+            data.append('obs_mina_cantera',  this.$props.obs_mina_cantera);
+            data.append('obs_mina_cantera_valido',  this.$props.obs_mina_cantera_valido);
+            data.append('plano_inmueble',  this.$props.plano_inmueble);
+            data.append('plano_inmueble_validacion',  this.$props.plano_inmueble_validacion);
+            data.append('plano_inmueble_correcto',  this.$props.plano_inmueble_correcto);
+            data.append('obs_plano_inmueble',  this.$props.obs_plano_inmueble);
+            data.append('obs_plano_inmueble_valido',  this.$props.obs_plano_inmueble_valido);
+            data.append('minerales_variedad',  this.$props.minerales_variedad);
+            data.append('minerales_variedad_validacion',  this.$props.minerales_variedad_validacion);
+            data.append('minerales_variedad_correcto',  this.$props.minerales_variedad_correcto);
+            data.append('obs_minerales_variedad',  this.$props.obs_minerales_variedad);
+            data.append('obs_minerales_variedad_valido',  this.$props.obs_minerales_variedad_valido);
+            data.append('resolucion_concesion_minera',  this.$props.resolucion_concesion_minera);
+            data.append('resolucion_concesion_minera_validacion',  this.$props.resolucion_concesion_minera_validacion);
+            data.append('resolucion_concesion_minera_correcto',  this.$props.resolucion_concesion_minera_correcto);
+            data.append('obs_resolucion_concesion_minera',  this.$props.obs_resolucion_concesion_minera);
+            data.append('obs_resolucion_concesion_minera_valido',  this.$props.obs_resolucion_concesion_minera_valido);
+            data.append('titulo_contrato_posecion',  this.$props.titulo_contrato_posecion);
+            data.append('titulo_contrato_posecion_validacion',  this.$props.titulo_contrato_posecion_validacion);
+            data.append('titulo_contrato_posecion_correcto',  this.$props.titulo_contrato_posecion_correcto);
+            data.append('obs_titulo_contrato_posecion',  this.$props.obs_titulo_contrato_posecion);
+            data.append('obs_titulo_contrato_posecion_valido',  this.$props.obs_titulo_contrato_posecion_valido);
+            data.append('lista_minerales',  this.$props.minerales);
+            data.append('es_evaluacion',  this.$props.evaluacion);
+            data.append('valor_de_progreso',  20);
+            data.append('valor_de_aprobado',  20);
+            data.append('valor_de_reprobado',  20);
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.post("http://localhost:8000/formularios/evaluacion_auto_guardado_cuatro", data) 
                 .then(function (response) {
                     console.log(response.data);
                     if(response.data === "se actualizaron los datos correctamente")
                     {
+
+
+
+                        axios.post("http://localhost:8000/formularios/guardar_lista_minerales", {
+                            id: this.$props.id,
+                            lista_minerales: this.$props.minerales,
+                            es_evaluacion:  this.$props.evaluacion
+                            } ) 
+                        .then(function (response) {
+                            console.log(response.data);
+                            if(response.data === "se actualizaron los datos correctamente")
+                            {
+
+                                
+                                console.log('todo bien');
+                                self.modal_tittle = 'Datos guardados correctamente';
+                                self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
+                                self.mostrar_modal_datos_ya_guardados = true;
+                            }
+                            
+                            if(response.data === "formulario no encontrado")
+                            {
+                                console.log('todo mal, no se encontro');
+                                self.modal_tittle = 'Paso 1 Guardado Fallido';
+                                self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+                                self.mostrar_modal_datos_ya_guardados = true;
+                            }
+                            else{
+                                console.log('NO todo bien');	
+                            }
+                            
+                        })
+                        .catch(function (error) {
+                            // handle error
+                            console.log(error);
+                        })
+
+
+
+
+
+
+
+
+
+
                         console.log('todo bien');
                         self.modal_tittle = 'Datos guardados correctamente';
                         self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';

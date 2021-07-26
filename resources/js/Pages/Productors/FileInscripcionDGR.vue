@@ -66,15 +66,7 @@
                 </div>
             </div>
         </div>
-        el valor es:{{$props.fileinput_valor}}*
-        <div class="w-full md:w-1/2 px-3" v-if="typeof($props.fileinput_valor) === 'undefined'">
-            <object :data=fileinput_valor type="application/pdf" width="100%" height="500px"> 
-                <p>It appears you don't have a PDF plugin for this browser.
-                    No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
-                download the PDF file.</a></p>  
-            </object>
-        </div>
-        <div v-else class="w-full md:w-2/3 h-full" >
+        <div  v-if="valor_input===null || valor_input === undefined" class="w-full md:w-2/3 h-full" >
             <div class="flex items-center justify-center w-full h-full">
                 <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
                     <div class="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
@@ -86,13 +78,21 @@
                         </div>
                         <p class="pointer-none text-gray-500 "><span class="text-sm">Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
                     </div>
-                    <input type="file" class="hidden">
+                    <input type="file" class="hidden" @change="cambio_el_archivo">
                 </label>
             </div>
             <p class="text-sm text-gray-300">
                 <span>Tipos de archivos: doc,pdf,tipos de imagenes</span>
             </p>
         </div>
+        <div class="w-full md:w-1/2 px-3" v-else>
+            <object :data=valor_input type="application/pdf" width="100%" height="500px"> 
+                    <p>It appears you don't have a PDF plugin for this browser.
+                        No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
+                    download the PDF file.</a></p>  
+                </object>
+        </div>
+        
     </div>
 </template>
 
@@ -111,48 +111,52 @@ export default {
         'name_correcto',
     ],
     
-  data() {
-      console.log("La contancia es valor es:");
-    console.log(this.$props.fileinput_valor);
-    return {
-        fileinput_correcto_local: this.$props.inscripciondgr_correcto,
-        fileinput_valor_valido_local:this.$props.fileinput_valor_valido,
-        clase_text_area_fileinput: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-        clase_cartel_nota_evaluacion_fileinput_text_area: 'text-green-500 text-xs italic',
-        cartel_nota_evaluacion_fileinput_text_area: 'Observacion Correcta',
-        testing_hijo:false,
-    };
-  },
-  methods:{
-    actaulizar_variable_fileinput(valor) {
-        this.fileinput_correcto_local = valor;
-        console.log(this.fileinput_correcto_local);
-        this.$emit('changeinscripciondgrcorrecto',this.fileinput_correcto_local);
-       
+    data() {
+        console.log("La contancia es valor es:");
+        console.log(this.$props.fileinput_valor);
+        return {
+            valor_input: this.$props.fileinput_valor,
+            fileinput_correcto_local: this.$props.inscripciondgr_correcto,
+            fileinput_valor_valido_local:this.$props.fileinput_valor_valido,
+            clase_text_area_fileinput: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+            clase_cartel_nota_evaluacion_fileinput_text_area: 'text-green-500 text-xs italic',
+            cartel_nota_evaluacion_fileinput_text_area: 'Observacion Correcta',
+            testing_hijo:false,
+            photo: null,
+        };
     },
-    actaulizar_contenido_text_area_inscripciondgr(value) {
-        if(this.$props.obs_fileinput.length <= 2)
-        {
-            this.clase_text_area_fileinput=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.cartel_nota_evaluacion_fileinput_text_area=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
-            this.clase_cartel_nota_evaluacion_fileinput_text_area=  'text-red-500 text-xs italic';
+    methods:{
+        actaulizar_variable_fileinput(valor) {
+            this.fileinput_correcto_local = valor;
+            console.log(this.fileinput_correcto_local);
+            this.$emit('changeinscripciondgrcorrecto',this.fileinput_correcto_local);
+        },
+        actaulizar_contenido_text_area_inscripciondgr(value) {
+            if(this.$props.obs_fileinput.length <= 2)
+            {
+                this.clase_text_area_fileinput=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.cartel_nota_evaluacion_fileinput_text_area=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+                this.clase_cartel_nota_evaluacion_fileinput_text_area=  'text-red-500 text-xs italic';
+            }
+            if(this.$props.obs_fileinput.length >= 50)
+            {
+                this.clase_text_area_fileinput =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.cartel_nota_evaluacion_fileinput_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
+                this.clase_cartel_nota_evaluacion_fileinput_text_area=  'text-red-500 text-xs italic';
+            }
+            if( this.$props.obs_fileinput !== '' && this.$props.obs_fileinput.length <= 30 && this.$props.obs_fileinput.length >= 3)
+            {
+                this.clase_text_area_fileinput=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.cartel_nota_evaluacion_fileinput_text_area=  'Observacion Correcta';
+                this.clase_cartel_nota_evaluacion_fileinput_text_area=  'text-green-500 text-xs italic';
+            }
+            this.$emit('changeobsinscripciondgr',this.$props.obs_fileinput);
+        },
+        cambio_el_archivo(event){
+            this.photo = event.target.files[0];
+            this.$emit('cambioarchivo',this.photo);
         }
-        if(this.$props.obs_fileinput.length >= 50)
-        {
-            this.clase_text_area_fileinput =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.cartel_nota_evaluacion_fileinput_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
-            this.clase_cartel_nota_evaluacion_fileinput_text_area=  'text-red-500 text-xs italic';
-        }
-        if( this.$props.obs_fileinput !== '' && this.$props.obs_fileinput.length <= 30 && this.$props.obs_fileinput.length >= 3)
-        {
-            this.clase_text_area_fileinput=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.cartel_nota_evaluacion_fileinput_text_area=  'Observacion Correcta';
-            this.clase_cartel_nota_evaluacion_fileinput_text_area=  'text-green-500 text-xs italic';
-        }
-        this.$emit('changeobsinscripciondgr',this.$props.obs_fileinput);
+        
     },
-    
-  },
-  
 };
 </script>

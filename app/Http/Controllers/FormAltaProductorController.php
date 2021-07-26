@@ -6,7 +6,7 @@ use App\Models\FormAltaProductor;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Facades\Redirect;
 use Carbon\Carbon;
 use Auth;
 use Illuminate\Support\Facades\Mail;
@@ -186,8 +186,45 @@ class FormAltaProductorController extends Controller
         public $obs_concesionario;
         public $otros_correcto;
         public $obs_otros;
+		public $sustancias_de_aprovechamiento_comun;
         public $sustancias_de_aprovechamiento_comun_correcto;
         public $obs_sustancias_de_aprovechamiento_comun_correcto;
+
+		public $constancia_pago_canon_correcto;
+        public $obs_constancia_pago_canon;
+        public $iia_correcto;
+        public $obs_iia;
+        public $dia_correcto;
+        public $obs_dia;
+        public $acciones_a_desarrollar_correcto;
+        public $obs_acciones_a_desarrollar;
+        public $actividad_correcto;
+        public $obs_actividad;
+        public $fecha_alta_dia_correcto;
+        public $obs_fecha_alta_dia;
+        public $paso_5_progreso;
+        public $paso_5_aprobado;
+        public $paso_5_reprobado;
+        public $fecha_vencimiento_dia_correcto;
+        public $obs_fecha_vencimiento_dia;
+        public $updated_paso_cinco;
+		
+		public $localidad_mina_provincia_correcto;
+		public $obs_localidad_mina_provincia;
+		public $localidad_mina_departamento_correcto;
+		public $obs_localidad_mina_departamento;
+		public $localidad_mina_localidad_correcto;
+		public $obs_localidad_mina_localidad;
+		public $tipo_sistema_correcto;
+		public $obs_tipo_sistema;
+		public $longitud_correcto;
+		public $obs_longitud;
+		public $latitud_correcto;
+		public $obs_latitud;
+		public $paso_6_progreso;
+		public $paso_6_aprobado;
+		public $paso_6_reprobado;
+		public $updated_paso_seis;
 
 	public function __construct(
 			$id = null,
@@ -339,8 +376,43 @@ class FormAltaProductorController extends Controller
 			$obs_concesionario = null,
 			$otros_correcto = null,
 			$obs_otros = null,
+			$sustancias_de_aprovechamiento_comun = null,
 			$sustancias_de_aprovechamiento_comun_correcto = null,
-			$obs_sustancias_de_aprovechamiento_comun_correcto = null
+			$obs_sustancias_de_aprovechamiento_comun_correcto = null,
+			$constancia_pago_canon_correcto= null,
+			$obs_constancia_pago_canon= null,
+			$iia_correcto= null,
+			$obs_iia= null,
+			$dia_correcto= null,
+			$obs_dia= null,
+			$acciones_a_desarrollar_correcto= null,
+			$obs_acciones_a_desarrollar= null,
+			$actividad_correcto= null,
+			$obs_actividad= null,
+			$fecha_alta_dia_correcto= null,
+			$obs_fecha_alta_dia= null,
+			$paso_5_progreso= null,
+			$paso_5_aprobado= null,
+			$paso_5_reprobado= null,
+			$fecha_vencimiento_dia_correcto= null,
+			$obs_fecha_vencimiento_dia= null,
+			$updated_paso_cinco= null,
+			$localidad_mina_provincia_correcto= null,
+			$obs_localidad_mina_provincia= null,
+			$localidad_mina_departamento_correcto= null,
+			$obs_localidad_mina_departamento= null,
+			$localidad_mina_localidad_correcto= null,
+			$obs_localidad_mina_localidad= null,
+			$tipo_sistema_correcto= null,
+			$obs_tipo_sistema= null,
+			$longitud_correcto= null,
+			$obs_longitud= null,
+			$latitud_correcto= null,
+			$obs_latitud= null,
+			$paso_6_progreso= null,
+			$paso_6_aprobado= null,
+			$paso_6_reprobado= null,
+			$updated_paso_seis= null
 	)
     {
 		if($id == null)
@@ -498,8 +570,43 @@ class FormAltaProductorController extends Controller
 			$this->obs_concesionario = null;
 			$this->otros_correcto = null;
 			$this->obs_otros = 33;
+			$this->sustancias_de_aprovechamiento_comun=null;
 			$this->sustancias_de_aprovechamiento_comun_correcto = null;
 			$this->obs_sustancias_de_aprovechamiento_comun_correcto = null;
+			$this->constancia_pago_canon_correcto= null;
+			$this->obs_constancia_pago_canon= null;
+			$this->iia_correcto= null;
+			$this->obs_iia= null;
+			$this->dia_correcto= null;
+			$this->obs_dia= null;
+			$this->acciones_a_desarrollar_correcto= null;
+			$this->obs_acciones_a_desarrollar= null;
+			$this->actividad_correcto= null;
+			$this->obs_actividad= null;
+			$this->fecha_alta_dia_correcto= null;
+			$this->obs_fecha_alta_dia= null;
+			$this->paso_5_progreso= null;
+			$this->paso_5_aprobado= null;
+			$this->paso_5_reprobado= null;
+			$this->fecha_vencimiento_dia_correcto= null;
+			$this->obs_fecha_vencimiento_dia= null;
+			$this->updated_paso_cinco= null;
+			$this->localidad_mina_provincia_correcto= null;
+			$this->obs_localidad_mina_provincia= null;
+			$this->localidad_mina_departamento_correcto= null;
+			$this->obs_localidad_mina_departamento= null;
+			$this->localidad_mina_localidad_correcto= null;
+			$this->obs_localidad_mina_localidad= null;
+			$this->tipo_sistema_correcto= null;
+			$this->obs_tipo_sistema= null;
+			$this->longitud_correcto= null;
+			$this->obs_longitud= null;
+			$this->latitud_correcto= null;
+			$this->obs_latitud= null;
+			$this->paso_6_progreso= null;
+			$this->paso_6_aprobado= null;
+			$this->paso_6_reprobado= null;
+			$this->updated_paso_seis= null;
 
 
 		}
@@ -684,14 +791,91 @@ class FormAltaProductorController extends Controller
 		$productor_a_devolver->obs_otros = 33;
 		$productor_a_devolver->sustancias_de_aprovechamiento_comun_correcto = null;
 		$productor_a_devolver->obs_sustancias_de_aprovechamiento_comun_correcto = null;
+
+		$productor_a_devolver->constancia_pago_canon_correcto= null;
+		$productor_a_devolver->obs_constancia_pago_canon= null;
+		$productor_a_devolver->iia_correcto= null;
+		$productor_a_devolver->obs_iia= null;
+		$productor_a_devolver->dia_correcto= null;
+		$productor_a_devolver->obs_dia= null;
+		$productor_a_devolver->acciones_a_desarrollar_correcto= null;
+		$productor_a_devolver->obs_acciones_a_desarrollar= null;
+		$productor_a_devolver->actividad_correcto= null;
+		$productor_a_devolver->obs_actividad= null;
+		$productor_a_devolver->fecha_alta_dia_correcto= null;
+		$productor_a_devolver->obs_fecha_alta_dia= null;
+		$productor_a_devolver->paso_5_progreso= null;
+		$productor_a_devolver->paso_5_aprobado= null;
+		$productor_a_devolver->paso_5_reprobado= null;
+		$productor_a_devolver->fecha_vencimiento_dia_correcto= null;
+		$productor_a_devolver->obs_fecha_vencimiento_dia= null;
+		$productor_a_devolver->updated_paso_cinco= null;
+		$productor_a_devolver->localidad_mina_provincia_correcto= null;
+		$productor_a_devolver->obs_localidad_mina_provincia= null;
+		$productor_a_devolver->localidad_mina_departamento_correcto= null;
+		$productor_a_devolver->obs_localidad_mina_departamento= null;
+		$productor_a_devolver->localidad_mina_localidad_correcto= null;
+		$productor_a_devolver->obs_localidad_mina_localidad= null;
+		$productor_a_devolver->tipo_sistema_correcto= null;
+		$productor_a_devolver->obs_tipo_sistema= null;
+		$productor_a_devolver->longitud_correcto= null;
+		$productor_a_devolver->obs_longitud= null;
+		$productor_a_devolver->latitud_correcto= null;
+		$productor_a_devolver->obs_latitud= null;
+		$productor_a_devolver->paso_6_progreso= null;
+		$productor_a_devolver->paso_6_aprobado= null;
+		$productor_a_devolver->paso_6_reprobado= null;
+		$productor_a_devolver->updated_paso_seis= null;
 		return $productor_a_devolver;
 
 		//var_dump($productor_a_devolver);die();
+	}
+	public function prasar_num_a_boolean($objeto){
+		if(($objeto->owner == null) || ($objeto->owner === 0))
+			$objeto->owner = false;
+		else $objeto->owner = true;
+		if(($objeto->arrendatario == null) || ($objeto->arrendatario === 0))
+			$objeto->arrendatario = false;
+		else $objeto->arrendatario = true;
+		if(($objeto->concesionario == null) || ($objeto->concesionario === 0))
+			$objeto->concesionario = false;
+		else $objeto->concesionario = true;
+		if(($objeto->otros == null) || ($objeto->otros === 0))
+			$objeto->otros = false;
+		else $objeto->otros = true;
+		if(($objeto->sustancias_de_aprovechamiento_comun == null) || ($objeto->sustancias_de_aprovechamiento_comun === 0))
+			$objeto->sustancias_de_aprovechamiento_comun = false;
+		else $objeto->sustancias_de_aprovechamiento_comun = true;
+		if($objeto->fecha_alta_dia != null)
+			$objeto->fecha_alta_dia = date("Y-m-d", strtotime($objeto->fecha_alta_dia));
+		if($objeto->fecha_vencimiento_dia != null)
+			$objeto->fecha_vencimiento_dia = date("Y-m-d", strtotime($objeto->fecha_vencimiento_dia));
+
+		if($objeto->constancia_pago_canon != null)
+			$objeto->constancia_pago_canon = "http://localhost:8000/".str_replace("public","storage",$objeto->constancia_pago_canon);
+		if($objeto->iia != null)
+			$objeto->iia = "http://localhost:8000/".str_replace("public","storage",$objeto->iia);
+		if($objeto->dia != null)
+			$objeto->dia = "http://localhost:8000/".str_replace("public","storage",$objeto->dia);
+		
+		if($objeto->inscripciondgr != null)
+			$objeto->inscripciondgr = "http://localhost:8000/".str_replace("public","storage",$objeto->inscripciondgr);
+			
+			
+		if($objeto->constaciasociedad != null)
+			$objeto->constaciasociedad = "http://localhost:8000/".str_replace("public","storage",$objeto->constaciasociedad);
+			if($objeto->resolucion_concesion_minera != null)
+			$objeto->resolucion_concesion_minera = "http://localhost:8000/".str_replace("public","storage",$objeto->resolucion_concesion_minera);
+		
+		return $objeto;
 	}
 	public function create()
 	{
 		//
 		$productor = $this->dame_un_productor_vacio();
+		//var_dump($productor->owner);
+		$productor = $this->prasar_num_a_boolean($productor);
+		//var_dump($productor->owner);die();
 		//$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
 		$minerales_asociados = Minerales_Borradores::all();
 		
@@ -740,6 +924,10 @@ class FormAltaProductorController extends Controller
 	{
 		//dd($id);
 		$borradores = FormAltaProductor::find($id);
+
+		//var_dump($borradores->owner);
+		$borradores = $this->prasar_num_a_boolean($borradores);
+		//var_dump($borradores->constancia_pago_canon);die();
 		$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
 		
 
@@ -856,11 +1044,14 @@ class FormAltaProductorController extends Controller
 	 * @param  \App\Models\FormAltaProductor  $formAltaProductor
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy(FormAltaProductor $formAltaProductor)
+	public function destroy($id)
 	{
 		//
-		$formAltaProductor->delete();
-		return FormAltaProductor::route('formulario-alta.index');
+		//dd($id);
+		$formAltaProductor = FormAltaProductor::find($id)->delete();
+		return Redirect::route('formulario-alta.index');
+		// $borradores = FormAltaProductor::all();
+		// return Inertia::render('Productors/List', ['borradores' => $borradores]);
 	}
 	
 	public function mostrar_formulario()
@@ -1009,8 +1200,8 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->titulo_contrato_posecion =  str_replace("public","storage",$formulario_provisorio->titulo_contrato_posecion);
 			if($formulario_provisorio->resolucion_concesion_minera	 != null)
 				$formulario_provisorio->resolucion_concesion_minera	 =  str_replace("public","storage",$formulario_provisorio->resolucion_concesion_minera);
-			if($formulario_provisorio->constancia_pago_canon	 != null)
-				$formulario_provisorio->constancia_pago_canon	 =  str_replace("public","storage",$formulario_provisorio->constancia_pago_canon);
+			if($formulario_provisorio->constancia_pago_canon != null)
+				$formulario_provisorio->constancia_pago_canon =  str_replace("public","storage",$formulario_provisorio->constancia_pago_canon);
 			if($formulario_provisorio->iia	 != null)
 				$formulario_provisorio->iia	 =  str_replace("public","storage",$formulario_provisorio->iia);
 			if($formulario_provisorio->dia	 != null)
@@ -1996,7 +2187,6 @@ class FormAltaProductorController extends Controller
 			//7
 			'updated_at' => $formulario_provisorio->updated_at ,
         ];
-          
         //$pdf = PDF::loadView('pdfs.formulario_inscripcion_productor', $data);
     
         //return $pdf->download('formulario_'.$formulario_provisorio->id.'.pdf');
@@ -2013,33 +2203,40 @@ class FormAltaProductorController extends Controller
     public function correccion_guardar_paso_uno(Request $request)
 	{
 		//var_dump("el id:".$request->id."   - el  cuit es:".$request->cuit);die();
+		//var_dump($request->constaciasociedad);die();
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
-		$formulario_provisorio = FormAltaProductor::select(
-			'id',
-			'razonsocial',
-			'razon_social_correcto',
-			'obs_razon_social',
-			'cuit',
-			'cuit_correcto',
-			'obs_cuit',
-			'numeroproductor',
-			'numeroproductor_correcto',
-			'obs_numeroproductor',
-			'tiposociedad',	
-			'tiposociedad_correcto',	
-			'obs_tiposociedad',	
-			'email',
-			'email_correcto',
-			'obs_email',
-			'inscripciondgr',
-			'inscripciondgr_correcto',
-			'obs_inscripciondgr',
-			'constaciasociedad',
-			'constaciasociedad_correcto',
-			'obs_constaciasociedad'
-			)
-		->where('id', '=',$request->id)
-		->first();
+		//var_dump($request->id);die();
+		if($request->id == 'null') $request->id = null;
+		if($request->cuit != null)
+			$request->cuit = str_replace(array("#", "'", "-"), '', $request->cuit);
+		if($request->id!= null)
+			$formulario_provisorio = FormAltaProductor::select(
+				'id',
+				'razonsocial',
+				'razon_social_correcto',
+				'obs_razon_social',
+				'cuit',
+				'cuit_correcto',
+				'obs_cuit',
+				'numeroproductor',
+				'numeroproductor_correcto',
+				'obs_numeroproductor',
+				'tiposociedad',	
+				'tiposociedad_correcto',	
+				'obs_tiposociedad',	
+				'email',
+				'email_correcto',
+				'obs_email',
+				'inscripciondgr',
+				'inscripciondgr_correcto',
+				'obs_inscripciondgr',
+				'constaciasociedad',
+				'constaciasociedad_correcto',
+				'obs_constaciasociedad'
+				)
+			->where('id', '=',$request->id)
+			->first();
+		else $formulario_provisorio= null;
 		//arreglo las variables
 		//var_dump($formulario_provisorio);die();
 		//var_dump(is_bool($request->razon_social_correcto));
@@ -2106,7 +2303,7 @@ class FormAltaProductorController extends Controller
 		{
 			//lo encontre y actualizo
 			//pregunto si soy autoridad minera o si soy productor
-			if(false){ // soy autoridad minera
+			if($request->es_evaluacion){ // soy autoridad minera
 				//var_dump("voy a meter:");
 				//var_dump($request->razon_social_correcto);die();
 				$formulario_provisorio->razon_social_correcto = $request->razon_social_correcto;
@@ -2146,8 +2343,20 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->cuit= $request->cuit;
 				$formulario_provisorio->numeroproductor = $request->numeroproductor;
 				$formulario_provisorio->tiposociedad = $request->tiposociedad;
-				//$formulario_provisorio->inscripciondgro = $request->inscripciondgr_correcto;
-				//$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
+				
+				if($request->constaciasociedad != null || $request->constaciasociedad != '')
+				{
+					$contents = file_get_contents($request->constaciasociedad->path());
+					$formulario_provisorio->constaciasociedad =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constaciasociedad);
+				}
+				else $formulario_provisorio->constaciasociedad =null;
+				if($request->inscripciondgr != null || $request->inscripciondgr != '')
+				{
+					$contents = file_get_contents($request->inscripciondgr->path());
+					$formulario_provisorio->inscripciondgr =  Storage::put('public/files_formularios'.'/'.$request->id, $request->inscripciondgr);
+				}
+				else $formulario_provisorio->inscripciondgr = null;
+
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
@@ -2170,8 +2379,23 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->cuit= $request->cuit;
 				$formulario_provisorio->numeroproductor = $request->numeroproductor;
 				$formulario_provisorio->tiposociedad = $request->tiposociedad;
-				//$formulario_provisorio->inscripciondgro = $request->inscripciondgr_correcto;
-				//$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
+
+				if($request->constaciasociedad != null || $request->constaciasociedad != '')
+				{
+					$contents = file_get_contents($request->constaciasociedad->path());
+					$formulario_provisorio->constaciasociedad =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constaciasociedad);
+				}
+				else $formulario_provisorio->constaciasociedad =null;
+				if($request->inscripciondgr != null || $request->inscripciondgr != '')
+				{
+					$contents = file_get_contents($request->inscripciondgr->path());
+					$formulario_provisorio->inscripciondgr =  Storage::put('public/files_formularios'.'/'.$request->id, $request->inscripciondgr);
+				}
+				else $formulario_provisorio->inscripciondgr = null;
+
+
+				
+				$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
@@ -2616,17 +2840,16 @@ class FormAltaProductorController extends Controller
 	public function correccion_guardar_paso_cuatro(Request $request)
 	{
 		// var_dump(
-		// 	$request->lista_minerales, 
-			
-		// 	$request->valor_de_progreso, 
-		// 	$request->valor_de_aprobado, 
-		// 	$request->valor_de_reprobado, 
-
+		// 	$request->id,
+		// 	$request->resolucion_concesion_minera,
+		// 	$request->lista_minerales
 		// );
 		// die();
 		//return response()->json("todo bien");
 
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		if($request->es_evaluacion == 'true') $request->es_evaluacion = true;
+		else $request->es_evaluacion=false;
 		$formulario_provisorio = FormAltaProductor::select(
 			'id',
 
@@ -2812,56 +3035,56 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
 				//ahora voy a guardar los minerales y sus modificaciones
-				foreach ($request->lista_minerales as $mineral) {
-					//primero tengo que buscar el registro que voy a actualizar
+				// foreach ($request->lista_minerales as $mineral) {
+				// 	//primero tengo que buscar el registro que voy a actualizar
 
-					$nuevo_min = Minerales_Borradores::select('*')
-					->where('id_formulario','=',$request->id)
-					->where('id_mineral','=',$mineral['id_mineral'])
-					->first();
-					//$nuevo_min->id_formulario = $request->id;
-					//$nuevo_min->id_mineral = $mineral['id_mineral'];
-					//$nuevo_min->lugar_donde_se_encuentra = $mineral['lugar_donde_se_enccuentra'];
-					//$nuevo_min->variedad = null;
-					//$nuevo_min->segunda_cat_mineral_explotado = $mineral['segunda_cat_mineral_explotado'];
-					//$nuevo_min->mostrar_lugar_segunda_cat = $mineral['mostrar_lugar_segunda_cat'];
-					//$nuevo_min->mostrar_otro_mineral_segunda_cat = $mineral['mostrar_otro_mineral_segunda_cat'];
-					//$nuevo_min->otro_mineral_segunda_cat = $mineral['otro_mineral_segunda_cat'];
-					//$nuevo_min->observacion = $mineral['observacion'];
-					//$nuevo_min->clase_text_area_presentacion = $mineral['clase_text_area_presentacion'];
-					//$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = $mineral['clase_text_evaluacion_de_text_area_presentacion'];
-					//$nuevo_min->texto_validacion_text_area_presentacion = $mineral['texto_validacion_text_area_presentacion'];
-					//$nuevo_min->presentacion_valida = $mineral['presentacion_valida'];
+				// 	$nuevo_min = Minerales_Borradores::select('*')
+				// 	->where('id_formulario','=',$request->id)
+				// 	->where('id_mineral','=',$mineral['id_mineral'])
+				// 	->first();
+				// 	//$nuevo_min->id_formulario = $request->id;
+				// 	//$nuevo_min->id_mineral = $mineral['id_mineral'];
+				// 	//$nuevo_min->lugar_donde_se_encuentra = $mineral['lugar_donde_se_enccuentra'];
+				// 	//$nuevo_min->variedad = null;
+				// 	//$nuevo_min->segunda_cat_mineral_explotado = $mineral['segunda_cat_mineral_explotado'];
+				// 	//$nuevo_min->mostrar_lugar_segunda_cat = $mineral['mostrar_lugar_segunda_cat'];
+				// 	//$nuevo_min->mostrar_otro_mineral_segunda_cat = $mineral['mostrar_otro_mineral_segunda_cat'];
+				// 	//$nuevo_min->otro_mineral_segunda_cat = $mineral['otro_mineral_segunda_cat'];
+				// 	//$nuevo_min->observacion = $mineral['observacion'];
+				// 	//$nuevo_min->clase_text_area_presentacion = $mineral['clase_text_area_presentacion'];
+				// 	//$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = $mineral['clase_text_evaluacion_de_text_area_presentacion'];
+				// 	//$nuevo_min->texto_validacion_text_area_presentacion = $mineral['texto_validacion_text_area_presentacion'];
+				// 	//$nuevo_min->presentacion_valida = $mineral['presentacion_valida'];
 
-					if($nuevo_min != null){// encontre el mineral a actualizar
-						//solo voy a modifciar los campos que puede escribir la autoridad
-						//modifico el valor para guardarlo en pgadmin
-						if(is_bool($mineral['evaluacion_correcto']))
-							if($mineral['evaluacion_correcto'] == true)
-							$nuevo_min->evaluacion_correcto = 1;
-							else $nuevo_min->evaluacion_correcto = 0;
-						else//($request->resolucion_concesion_minera_correcto == 'nada')
-							$nuevo_min->evaluacion_correcto = null;
-							$nuevo_min->evaluacion_correcto = $mineral['evaluacion_correcto'];
-							$nuevo_min->observacion_autoridad = $mineral['observacion_autoridad'];
-							$nuevo_min->clase_text_area = $mineral['clase_text_area'];
-							$nuevo_min->clase_text_evaluacion_de_text_area = $mineral['clase_text_evaluacion_de_text_area'];
-							$nuevo_min->texto_validacion_text_area = $mineral['texto_validacion_text_area'];
-							$nuevo_min->obs_valida = $mineral['obs_valida'];
-							//$nuevo_min->lista_de_minerales_array = null;
-							//$nuevo_min->thumb = $mineral['thumb'];
-							$nuevo_min->estado = "evaluado";
-							$nuevo_min->updated_by =  Auth::user()->id;
-							$nuevo_min->save();
-					}
-					else continue; // no encuntre el mineral que me esta pasando
-				}
+				// 	if($nuevo_min != null){// encontre el mineral a actualizar
+				// 		//solo voy a modifciar los campos que puede escribir la autoridad
+				// 		//modifico el valor para guardarlo en pgadmin
+				// 		if(is_bool($mineral['evaluacion_correcto']))
+				// 			if($mineral['evaluacion_correcto'] == true)
+				// 			$nuevo_min->evaluacion_correcto = 1;
+				// 			else $nuevo_min->evaluacion_correcto = 0;
+				// 		else//($request->resolucion_concesion_minera_correcto == 'nada')
+				// 			$nuevo_min->evaluacion_correcto = null;
+				// 			$nuevo_min->evaluacion_correcto = $mineral['evaluacion_correcto'];
+				// 			$nuevo_min->observacion_autoridad = $mineral['observacion_autoridad'];
+				// 			$nuevo_min->clase_text_area = $mineral['clase_text_area'];
+				// 			$nuevo_min->clase_text_evaluacion_de_text_area = $mineral['clase_text_evaluacion_de_text_area'];
+				// 			$nuevo_min->texto_validacion_text_area = $mineral['texto_validacion_text_area'];
+				// 			$nuevo_min->obs_valida = $mineral['obs_valida'];
+				// 			//$nuevo_min->lista_de_minerales_array = null;
+				// 			//$nuevo_min->thumb = $mineral['thumb'];
+				// 			$nuevo_min->estado = "evaluado";
+				// 			$nuevo_min->updated_by =  Auth::user()->id;
+				// 			$nuevo_min->save();
+				// 	}
+				// 	else continue; // no encuntre el mineral que me esta pasando
+				// }
 				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor
 				//lo encontre y actualizo
-				var_dump("entre como productor");
-				//dd($request->categoria);die();
+				//var_dump("entre como productor");
+				//dd($request->resolucion_concesion_minera);die();
 				$formulario_provisorio->numero_expdiente = $request->numero_expdiente;
 				$formulario_provisorio->categoria = $request->categoria;
 				$formulario_provisorio->nombre_mina = $request->nombre_mina;
@@ -2871,6 +3094,15 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->mina_cantera = $request->mina_cantera;
 				//$formulario_provisorio->plano_inmueble = $request->plano_inmueble;
 				//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
+
+				if($request->resolucion_concesion_minera != null && $request->resolucion_concesion_minera != '' && $formulario_provisorio->resolucion_concesion_minera != null)
+				{
+					$contents = file_get_contents($request->resolucion_concesion_minera->path());
+					$formulario_provisorio->resolucion_concesion_minera =  Storage::put('public/files_formularios'.'/'.$request->id, $request->resolucion_concesion_minera);
+				}
+				else $formulario_provisorio->resolucion_concesion_minera =null;
+				
+
 
 				//$formulario_provisorio->titulo_contrato_posecion = $request->titulo_contrato_posecion;
 				//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
@@ -2884,38 +3116,38 @@ class FormAltaProductorController extends Controller
 				//var_dump($resultado);
 				
 				$i = 0;
-				foreach ($request->lista_minerales as $mineral) {
-					$nuevo_min = new Minerales_Borradores();
-					$nuevo_min->id_formulario = $request->id;
-					$nuevo_min->id_mineral = $mineral['id_mineral'];
-					$nuevo_min->lugar_donde_se_encuentra = $mineral['lugar_donde_se_enccuentra'];
-					$nuevo_min->variedad = null;
-					$nuevo_min->segunda_cat_mineral_explotado = $mineral['segunda_cat_mineral_explotado'];
-					$nuevo_min->mostrar_lugar_segunda_cat = $mineral['mostrar_lugar_segunda_cat'];
-					$nuevo_min->mostrar_otro_mineral_segunda_cat = $mineral['mostrar_otro_mineral_segunda_cat'];
-					$nuevo_min->otro_mineral_segunda_cat = $mineral['otro_mineral_segunda_cat'];
-					$nuevo_min->observacion = $mineral['observacion'];
-					$nuevo_min->clase_text_area_presentacion = $mineral['clase_text_area_presentacion'];
-					$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = $mineral['clase_text_evaluacion_de_text_area_presentacion'];
-					$nuevo_min->texto_validacion_text_area_presentacion = $mineral['texto_validacion_text_area_presentacion'];
-					$nuevo_min->presentacion_valida = $mineral['presentacion_valida'];
-					$nuevo_min->evaluacion_correcto = $mineral['evaluacion_correcto'];
-					$nuevo_min->observacion_autoridad = $mineral['observacion_autoridad'];
-					$nuevo_min->clase_text_area = $mineral['clase_text_area'];
-					$nuevo_min->clase_text_evaluacion_de_text_area = $mineral['clase_text_evaluacion_de_text_area'];
-					$nuevo_min->texto_validacion_text_area = $mineral['texto_validacion_text_area'];
-					$nuevo_min->obs_valida = $mineral['obs_valida'];
-					$nuevo_min->lista_de_minerales_array = null;
-					$nuevo_min->thumb = $mineral['thumb'];
-					$nuevo_min->created_by = Auth::user()->id;
-					$nuevo_min->estado = "en proceso";
-					$nuevo_min->updated_by =  Auth::user()->id;
+				// foreach ($request->lista_minerales as $mineral) {
+				// 	$nuevo_min = new Minerales_Borradores();
+				// 	$nuevo_min->id_formulario = $request->id;
+				// 	$nuevo_min->id_mineral = $mineral['id_mineral'];
+				// 	$nuevo_min->lugar_donde_se_encuentra = $mineral['lugar_donde_se_enccuentra'];
+				// 	$nuevo_min->variedad = null;
+				// 	$nuevo_min->segunda_cat_mineral_explotado = $mineral['segunda_cat_mineral_explotado'];
+				// 	$nuevo_min->mostrar_lugar_segunda_cat = $mineral['mostrar_lugar_segunda_cat'];
+				// 	$nuevo_min->mostrar_otro_mineral_segunda_cat = $mineral['mostrar_otro_mineral_segunda_cat'];
+				// 	$nuevo_min->otro_mineral_segunda_cat = $mineral['otro_mineral_segunda_cat'];
+				// 	$nuevo_min->observacion = $mineral['observacion'];
+				// 	$nuevo_min->clase_text_area_presentacion = $mineral['clase_text_area_presentacion'];
+				// 	$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = $mineral['clase_text_evaluacion_de_text_area_presentacion'];
+				// 	$nuevo_min->texto_validacion_text_area_presentacion = $mineral['texto_validacion_text_area_presentacion'];
+				// 	$nuevo_min->presentacion_valida = $mineral['presentacion_valida'];
+				// 	$nuevo_min->evaluacion_correcto = $mineral['evaluacion_correcto'];
+				// 	$nuevo_min->observacion_autoridad = $mineral['observacion_autoridad'];
+				// 	$nuevo_min->clase_text_area = $mineral['clase_text_area'];
+				// 	$nuevo_min->clase_text_evaluacion_de_text_area = $mineral['clase_text_evaluacion_de_text_area'];
+				// 	$nuevo_min->texto_validacion_text_area = $mineral['texto_validacion_text_area'];
+				// 	$nuevo_min->obs_valida = $mineral['obs_valida'];
+				// 	$nuevo_min->lista_de_minerales_array = null;
+				// 	$nuevo_min->thumb = $mineral['thumb'];
+				// 	$nuevo_min->created_by = Auth::user()->id;
+				// 	$nuevo_min->estado = "en proceso";
+				// 	$nuevo_min->updated_by =  Auth::user()->id;
 
-					$nuevo_min->created_at =  null;
-					$nuevo_min->updated_at =  null;
+				// 	$nuevo_min->created_at =  null;
+				// 	$nuevo_min->updated_at =  null;
 
-					$nuevo_min->save();
-				}
+				// 	$nuevo_min->save();
+				// }
 				return response()->json("se actualizaron los datos correctamente");
 			}
 		}
@@ -2923,25 +3155,169 @@ class FormAltaProductorController extends Controller
 			return response()->json("formulario no encontrado");
 		}
 	}
+	public function guardar_lista_minerales(Request $request){
+		$formulario_provisorio = FormAltaProductor::select(
+			'id',
 
+			'numero_expdiente',
+			'numero_expdiente_correcto',
+			'obs_numero_expdiente',
+
+
+			'categoria',
+			'categoria_correcto',
+			'obs_categoria',
+
+
+			'nombre_mina',
+			'nombre_mina_correcto',
+			'obs_nombre_mina',
+
+
+			'descripcion_mina',
+			'descripcion_mina_correcto',
+			'obs_descripcion_mina',
+			
+			
+			'distrito_minero',
+			'distrito_minero_correcto',
+			'obs_distrito_minero',
+			
+			
+			'mina_cantera',
+			'mina_cantera_correcto',
+			'obs_mina_cantera',
+			
+			
+			'plano_inmueble',
+			'plano_inmueble_correcto',
+			'obs_plano_inmueble',
+			
+			
+			'minerales_variedad',
+
+			'resolucion_concesion_minera',
+			'resolucion_concesion_minera_correcto',
+			'obs_resolucion_concesion_minera',
+			
+			'titulo_contrato_posecion',
+			
+			'titulo_contrato_posecion_correcto',
+			'obs_titulo_contrato_posecion',
+			
+			'paso_4_progreso',
+			'paso_4_aprobado',
+			'paso_4_reprobado',
+
+			'updated_by',
+			'updated_at'
+			)
+		->where('id', '=',$request->id)->first();
+		$i = 0;
+		if($request->es_evaluacion){ // soy autoridad minera
+			//ahora voy a guardar los minerales y sus modificaciones
+			foreach ($request->lista_minerales as $mineral) {
+				//primero tengo que buscar el registro que voy a actualizar
+
+				$nuevo_min = Minerales_Borradores::select('*')
+				->where('id_formulario','=',$request->id)
+				->where('id_mineral','=',$mineral['id_mineral'])
+				->first();
+				//$nuevo_min->id_formulario = $request->id;
+				//$nuevo_min->id_mineral = $mineral['id_mineral'];
+				//$nuevo_min->lugar_donde_se_encuentra = $mineral['lugar_donde_se_enccuentra'];
+				//$nuevo_min->variedad = null;
+				//$nuevo_min->segunda_cat_mineral_explotado = $mineral['segunda_cat_mineral_explotado'];
+				//$nuevo_min->mostrar_lugar_segunda_cat = $mineral['mostrar_lugar_segunda_cat'];
+				//$nuevo_min->mostrar_otro_mineral_segunda_cat = $mineral['mostrar_otro_mineral_segunda_cat'];
+				//$nuevo_min->otro_mineral_segunda_cat = $mineral['otro_mineral_segunda_cat'];
+				//$nuevo_min->observacion = $mineral['observacion'];
+				//$nuevo_min->clase_text_area_presentacion = $mineral['clase_text_area_presentacion'];
+				//$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = $mineral['clase_text_evaluacion_de_text_area_presentacion'];
+				//$nuevo_min->texto_validacion_text_area_presentacion = $mineral['texto_validacion_text_area_presentacion'];
+				//$nuevo_min->presentacion_valida = $mineral['presentacion_valida'];
+
+				if($nuevo_min != null){// encontre el mineral a actualizar
+					//solo voy a modifciar los campos que puede escribir la autoridad
+					//modifico el valor para guardarlo en pgadmin
+					if(is_bool($mineral['evaluacion_correcto']))
+						if($mineral['evaluacion_correcto'] == true)
+						$nuevo_min->evaluacion_correcto = 1;
+						else $nuevo_min->evaluacion_correcto = 0;
+					else//($request->resolucion_concesion_minera_correcto == 'nada')
+						$nuevo_min->evaluacion_correcto = null;
+						$nuevo_min->evaluacion_correcto = $mineral['evaluacion_correcto'];
+						$nuevo_min->observacion_autoridad = $mineral['observacion_autoridad'];
+						$nuevo_min->clase_text_area = $mineral['clase_text_area'];
+						$nuevo_min->clase_text_evaluacion_de_text_area = $mineral['clase_text_evaluacion_de_text_area'];
+						$nuevo_min->texto_validacion_text_area = $mineral['texto_validacion_text_area'];
+						$nuevo_min->obs_valida = $mineral['obs_valida'];
+						//$nuevo_min->lista_de_minerales_array = null;
+						//$nuevo_min->thumb = $mineral['thumb'];
+						$nuevo_min->estado = "evaluado";
+						$nuevo_min->updated_by =  Auth::user()->id;
+						$nuevo_min->save();
+				}
+				else continue; // no encuntre el mineral que me esta pasando
+			}
+		}
+		else
+		{ // soy produc
+			foreach ($request->lista_minerales as $mineral) {
+				$nuevo_min = new Minerales_Borradores();
+				$nuevo_min->id_formulario = $request->id;
+				$nuevo_min->id_mineral = $mineral['id_mineral'];
+				$nuevo_min->lugar_donde_se_encuentra = $mineral['lugar_donde_se_enccuentra'];
+				$nuevo_min->variedad = null;
+				$nuevo_min->segunda_cat_mineral_explotado = $mineral['segunda_cat_mineral_explotado'];
+				$nuevo_min->mostrar_lugar_segunda_cat = $mineral['mostrar_lugar_segunda_cat'];
+				$nuevo_min->mostrar_otro_mineral_segunda_cat = $mineral['mostrar_otro_mineral_segunda_cat'];
+				$nuevo_min->otro_mineral_segunda_cat = $mineral['otro_mineral_segunda_cat'];
+				$nuevo_min->observacion = $mineral['observacion'];
+				$nuevo_min->clase_text_area_presentacion = $mineral['clase_text_area_presentacion'];
+				$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = $mineral['clase_text_evaluacion_de_text_area_presentacion'];
+				$nuevo_min->texto_validacion_text_area_presentacion = $mineral['texto_validacion_text_area_presentacion'];
+				$nuevo_min->presentacion_valida = $mineral['presentacion_valida'];
+				$nuevo_min->evaluacion_correcto = $mineral['evaluacion_correcto'];
+				$nuevo_min->observacion_autoridad = $mineral['observacion_autoridad'];
+				$nuevo_min->clase_text_area = $mineral['clase_text_area'];
+				$nuevo_min->clase_text_evaluacion_de_text_area = $mineral['clase_text_evaluacion_de_text_area'];
+				$nuevo_min->texto_validacion_text_area = $mineral['texto_validacion_text_area'];
+				$nuevo_min->obs_valida = $mineral['obs_valida'];
+				$nuevo_min->lista_de_minerales_array = null;
+				$nuevo_min->thumb = $mineral['thumb'];
+				$nuevo_min->created_by = Auth::user()->id;
+				$nuevo_min->estado = "en proceso";
+				$nuevo_min->updated_by =  Auth::user()->id;
+	
+				$nuevo_min->created_at =  null;
+				$nuevo_min->updated_at =  null;
+	
+				$nuevo_min->save();
+			}
+			return response()->json("se actualizaron los datos correctamente");
+		}
+		
+
+
+			
+
+	}
 	public function correccion_guardar_paso_cinco(Request $request)
 	{
-		var_dump(
-			/*$request->owner, 
+		/*var_dump(
+			$request->owner, 
 			$request->owner_correcto, 
 			$request->obs_owner, 
-			$request->obs_owner_valido, */
-
-			/*$request->arrendatario, 
+			$request->obs_owner_valido,
+			$request->arrendatario, 
 			$request->arrendatario_correcto, 
 			$request->obs_arrendatario, 
-			$request->obs_arrendatario_valido, */
-
-			/*$request->concesionario, 
+			$request->obs_arrendatario_valido,
+			$request->concesionario, 
 			$request->concesionario_correcto, 
 			$request->obs_concesionario, 
-			$request->obs_concesionario_valido, */
-
+			$request->obs_concesionario_valido,
 			$request->otros, 
 			$request->otros_correcto, 
 			$request->obs_otros, 
@@ -2949,23 +3325,312 @@ class FormAltaProductorController extends Controller
 			$request->otros_input,
 			$request->otros_input_valido,
 			"--------",
-
-
 			$request->sustancias, 
 			$request->sustancias_correcto, 
 			$request->obs_sustancias, 
 			$request->obs_sustancias_valido, 
 			$request->sustancias_input,
 			$request->sustancias_input_valido,
-			
-
 			$request->valor_de_progreso, 
 			$request->valor_de_aprobado, 
 			$request->valor_de_reprobado, 
+			$request->acciones_a_desarrollar, 
+			$request->actividad, 
+			$request->fecha_alta_dia, 
+			$request->fecha_vencimiento_dia, 
+			$request->dia, 
+			$request->iia, 
+			$request->constancia_pago_canon, 
+			$request->es_evaluacion, 
+		);*/
+		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
+		//var_dump($test_mode_mail);
+		//die();
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$formulario_provisorio = FormAltaProductor::select(
+			'id',
 
-		);
-		die();
-		return response()->json("todo bien");
+
+			'owner',
+			'owner_correcto',
+			'obs_owner',
+
+
+			'arrendatario',
+			'arrendatario_correcto',
+			'obs_arrendatario',
+
+
+			'concesionario',
+			'concesionario_correcto',
+			'obs_concesionario',
+
+
+			'otros',
+			'otros_correcto',
+			'obs_otros',
+			
+			
+			'sustancias_de_aprovechamiento_comun',
+			'sustancias_de_aprovechamiento_comun_correcto',
+			'obs_sustancias_de_aprovechamiento_comun_correcto',
+			
+			
+			'constancia_pago_canon',
+			'constancia_pago_canon_correcto',
+			'obs_constancia_pago_canon',
+			
+			
+
+
+			'iia',
+			'iia_correcto',
+			'obs_iia',
+
+			'dia',
+			'dia_correcto',
+			'obs_dia',
+			
+			'acciones_a_desarrollar',
+			'acciones_a_desarrollar_correcto',
+			'obs_acciones_a_desarrollar',
+
+			'actividad',
+			'actividad_correcto',
+			'obs_actividad',
+
+			'fecha_alta_dia',
+			'fecha_alta_dia_correcto',
+			'obs_fecha_alta_dia',
+
+			
+			'fecha_vencimiento_dia',
+			'fecha_vencimiento_dia_correcto',
+			'obs_fecha_vencimiento_dia',
+			
+			'paso_5_progreso',
+			'paso_5_aprobado',
+			'paso_5_reprobado',
+
+			'updated_paso_cinco',
+			'updated_by',
+			'updated_at'
+			)
+		->where('id', '=',$request->id)->first();
+		//var_dump($formulario_provisorio->id);
+		//'lista_minerales',
+
+		//PARA LOS INPUT DE TRUE O FALSE
+		if($request->owner != null)
+			$request->owner = $request->owner === 'true'? 1: 0;
+			
+		if($request->arrendatario != null)
+			$request->arrendatario = $request->arrendatario === 'true'? 1: 0;
+
+		if($request->concesionario!= null)
+			$request->concesionario = $request->concesionario === 'true'? 1: 0;
+
+		if($request->otros != null)
+			$request->otros = $request->otros === 'true'? 1: 0;
+
+		if($request->sustancias_de_aprovechamiento_comun!= null)
+			$request->sustancias_de_aprovechamiento_comun = $request->sustancias_de_aprovechamiento_comun === 'true'? 1: 0;
+
+		//PARA LA EVALUACION
+		if(is_bool($request->owner_correcto))
+			if($request->owner_correcto == true)
+				$request->owner_correcto = 1;
+			else $request->owner_correcto = 0;
+		else//($request->numero_expdiente_correcto == 'nada')
+			$request->owner_correcto = null;
+
+
+		if(is_bool($request->arrendatario_correcto))
+			if($request->arrendatario_correcto == true)
+				$request->arrendatario_correcto = 1;
+			else $request->arrendatario_correcto = 0;
+		else//($request->categoria_correcto == 'nada')
+			$request->arrendatario_correcto = null;
+
+		if(is_bool($request->concesionario_correcto))
+			if($request->concesionario_correcto == true)
+				$request->concesionario_correcto = 1;
+			else $request->concesionario_correcto = 0;
+		else//($request->concesionario_correcto == 'nada')
+			$request->concesionario_correcto = null;
+
+
+		if(is_bool($request->otros_correcto))
+			if($request->otros_correcto == true)
+				$request->otros_correcto = 1;
+			else $request->otros_correcto = 0;
+		else//($request->otros_correcto == 'nada')
+			$request->otros_correcto = null;
+
+
+		if(is_bool($request->sustancias_de_aprovechamiento_comun_correcto))
+			if($request->sustancias_de_aprovechamiento_comun_correcto == true)
+				$request->sustancias_de_aprovechamiento_comun_correcto = 1;
+			else $request->sustancias_de_aprovechamiento_comun_correcto = 0;
+		else//($request->sustancias_de_aprovechamiento_comun_correcto == 'nada')
+			$request->sustancias_de_aprovechamiento_comun_correcto = null;
+
+
+		if(is_bool($request->constancia_pago_canon_correcto))
+			if($request->constancia_pago_canon_correcto == true)
+				$request->constancia_pago_canon_correcto = 1;
+			else $request->constancia_pago_canon_correcto = 0;
+		else//($request->constancia_pago_canon_correcto == 'nada')
+			$request->constancia_pago_canon_correcto = null;
+
+
+		if(is_bool($request->iia_correcto))
+			if($request->iia_correcto == true)
+				$request->iia_correcto = 1;
+			else $request->iia_correcto = 0;
+		else//($request->iia_correcto == 'nada')
+			$request->iia_correcto = null;
+
+
+		if(is_bool($request->dia_correcto))
+			if($request->dia_correcto == true)
+				$request->dia_correcto = 1;
+			else $request->dia_correcto = 0;
+		else//($request->dia_correcto == 'nada')
+			$request->dia_correcto = null;
+
+
+		if(is_bool($request->acciones_a_desarrollar_correcto))
+			if($request->acciones_a_desarrollar_correcto == true)
+				$request->acciones_a_desarrollar_correcto = 1;
+			else $request->acciones_a_desarrollar_correcto = 0;
+		else//($request->acciones_a_desarrollar_correcto == 'nada')
+			$request->acciones_a_desarrollar_correcto = null;
+
+		if(is_bool($request->actividad_correcto))
+			if($request->actividad_correcto == true)
+				$request->actividad_correcto = 1;
+			else $request->actividad_correcto = 0;
+		else//($request->actividad_correcto == 'nada')
+			$request->actividad_correcto = null;
+
+
+		if(is_bool($request->fecha_alta_dia_correcto))
+			if($request->fecha_alta_dia_correcto == true)
+				$request->fecha_alta_dia_correcto = 1;
+			else $request->fecha_alta_dia_correcto = 0;
+		else//($request->fecha_alta_dia_correcto == 'nada')
+			$request->fecha_alta_dia_correcto = null;
+
+
+		if(is_bool($request->fecha_vencimiento_dia_correcto))
+			if($request->fecha_vencimiento_dia_correcto == true)
+				$request->fecha_vencimiento_dia_correcto = 1;
+			else $request->fecha_vencimiento_dia_correcto = 0;
+		else//($request->fecha_vencimiento_dia_correcto == 'nada')
+			$request->fecha_vencimiento_dia_correcto = null;
+
+
+		//dd($request->obs_numero_expdiente);
+		//die();
+
+
+		//return response()->json("todo bien");
+
+		if($formulario_provisorio != null)
+		{
+			//lo encontre y actualizo
+			//pregunto si soy autoridad minera o si soy productor
+			if($request->es_evaluacion){ // soy autoridad minera
+				$formulario_provisorio->owner_correcto = $request->owner_correcto;
+				$formulario_provisorio->obs_owner = $request->obs_owner;
+	
+				$formulario_provisorio->arrendatario_correcto = $request->arrendatario_correcto;
+				$formulario_provisorio->obs_arrendatario = $request->obs_arrendatario;
+
+				$formulario_provisorio->concesionario_correcto = $request->concesionario_correcto;
+				$formulario_provisorio->obs_concesionario = $request->obs_concesionario;
+	
+				$formulario_provisorio->otros_correcto = $request->otros_correcto;
+				$formulario_provisorio->obs_otros = $request->obs_otros;
+	
+				$formulario_provisorio->sustancias_de_aprovechamiento_comun_correcto = $request->sustancias_correcto;
+				$formulario_provisorio->obs_sustancias_de_aprovechamiento_comun_correcto = $request->obs_sustancias;
+	
+
+				
+				$formulario_provisorio->constancia_pago_canon_correcto = $request->constancia_pago_canon_correcto;
+				$formulario_provisorio->obs_constancia_pago_canon = $request->obs_constancia_pago_canon;
+
+				$formulario_provisorio->iia_correcto = $request->iia_correcto;
+				$formulario_provisorio->obs_iia = $request->obs_iia_canon;
+
+				$formulario_provisorio->dia_correcto = $request->dia_correcto;
+				$formulario_provisorio->obs_dia = $request->obs_dia_canon;
+
+				$formulario_provisorio->acciones_a_desarrollar_correcto = $request->acciones_a_desarrollar_correcto;
+				$formulario_provisorio->obs_acciones_a_desarrollar = $request->obs_acciones_a_desarrollar;
+
+				$formulario_provisorio->actividad_correcto = $request->actividad_a_desarrollar_correcto;
+				$formulario_provisorio->obs_actividad = $request->obs_actividad_a_desarrollar;
+
+				$formulario_provisorio->fecha_alta_dia_correcto = $request->fecha_alta_dia_correcto;
+				$formulario_provisorio->obs_fecha_alta_dia = $request->obs_fecha_alta_dia;
+
+				$formulario_provisorio->fecha_vencimiento_dia_correcto = $request->fecha_vencimiento_dia_correcto;
+				$formulario_provisorio->obs_fecha_vencimiento_dia = $request->obs_fecha_vencimiento_dia;
+
+				$formulario_provisorio->paso_5_progreso = $request->valor_de_progreso;
+				$formulario_provisorio->paso_5_aprobado = $request->valor_de_aprobado;
+				$formulario_provisorio->paso_5_reprobado = $request->valor_de_reprobado;
+	
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_cinco = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
+				//ahora voy a guardar los minerales y sus modificaciones
+			
+				return response()->json("se actualizaron los datos correctamente");
+			}
+			else{//soy productor
+				//lo encontre y actualizo
+				/*var_dump("entre como productor");
+				die();*/
+				$formulario_provisorio->owner = $request->owner;
+				$formulario_provisorio->arrendatario = $request->arrendatario;
+				$formulario_provisorio->concesionario = $request->concesionario;
+				$formulario_provisorio->otros = $request->otros;
+
+				$formulario_provisorio->sustancias_de_aprovechamiento_comun = $request->sustancias;
+				//este es un archivo
+				$contents = file_get_contents($request->constancia_pago_canon->path());
+				$formulario_provisorio->constancia_pago_canon =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constancia_pago_canon);
+				//este es un archivo
+				$contents = file_get_contents($request->iia->path());
+				$formulario_provisorio->iia =  Storage::put('public/files_formularios'.'/'.$request->id, $request->iia);
+				//este es un archivo
+				$contents = file_get_contents($request->dia->path());
+				$formulario_provisorio->dia =  Storage::put('public/files_formularios'.'/'.$request->id, $request->dia);
+				$formulario_provisorio->acciones_a_desarrollar = $request->acciones_a_desarrollar;
+				$formulario_provisorio->actividad = $request->actividad;
+
+				$formulario_provisorio->fecha_alta_dia = $request->fecha_alta_dia;
+				$formulario_provisorio->fecha_vencimiento_dia = $request->fecha_vencimiento_dia;
+
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->save();
+				return response()->json("se actualizaron los datos correctamente");
+
+				//antes de guardar los minerales voy re visar si ya hay minerales. si los hay , los voy a borrar
+				//y luego voy a meter los nuevos minerales
+				//var_dump($resultado);
+				
+				
+			}
+		}
+		else{
+			return response()->json("formulario no encontrado");
+		}
 		//die();
 
 		// date_default_timezone_set('America/Argentina/Buenos_Aires');
@@ -3040,240 +3705,232 @@ class FormAltaProductorController extends Controller
 
 	public function correccion_guardar_paso_seis(Request $request)
 	{
-		var_dump(
-			$request->id,
-			$request->localidad_mina_provincia,
-			$request->localidad_mina_provincia_validacion,
-			$request->localidad_mina_provincia_correcto,
-			$request->obs_localidad_mina_provincia,
-			$request->obs_localidad_mina_provincia_valido,
-			$request->localidad_mina_departamento,
-			$request->localidad_mina_departamento_validacion,
-			$request->localidad_mina_departamento_correcto,
-			$request->obs_localidad_mina_departamento,
-			$request->obs_localidad_mina_departamento_valido,
-			$request->localidad_mina_localidad,
-			$request->localidad_mina_localidad_validacion,
-			$request->localidad_mina_localidad_correcto,
-			$request->obs_localidad_mina_localidad,
-			$request->obs_localidad_mina_localidad_valido,
-			$request->tipo_sistema,
-			$request->tipo_sistema_validacion,
-			$request->tipo_sistema_correcto,
-			$request->obs_tipo_sistema,
-			$request->obs_tipo_sistema_valido,
-			$request->latitud,
-			$request->latitud_validacion,
-			$request->latitud_correcto,
-			$request->obs_latitud,
-			$request->obs_latitud_valido,
-			$request->longitud,
-			$request->longitud_validacion,
-			$request->longitud_correcto,
-			$request->obs_longitud,
-			$request->obs_longitud_valido,
+		// var_dump(
+		// 	$request->id,
+		// 	$request->localidad_mina_provincia,
+		// 	$request->localidad_mina_provincia_validacion,
+		// 	$request->localidad_mina_provincia_correcto,
+		// 	$request->obs_localidad_mina_provincia,
+		// 	$request->obs_localidad_mina_provincia_valido,
+		// 	$request->localidad_mina_departamento,
+		// 	$request->localidad_mina_departamento_validacion,
+		// 	$request->localidad_mina_departamento_correcto,
+		// 	$request->obs_localidad_mina_departamento,
+		// 	$request->obs_localidad_mina_departamento_valido,
+		// 	$request->localidad_mina_localidad,
+		// 	$request->localidad_mina_localidad_validacion,
+		// 	$request->localidad_mina_localidad_correcto,
+		// 	$request->obs_localidad_mina_localidad,
+		// 	$request->obs_localidad_mina_localidad_valido,
+		// 	$request->tipo_sistema,
+		// 	$request->tipo_sistema_validacion,
+		// 	$request->tipo_sistema_correcto,
+		// 	$request->obs_tipo_sistema,
+		// 	$request->obs_tipo_sistema_valido,
+		// 	$request->latitud,
+		// 	$request->latitud_validacion,
+		// 	$request->latitud_correcto,
+		// 	$request->obs_latitud,
+		// 	$request->obs_latitud_valido,
+		// 	$request->longitud,
+		// 	$request->longitud_validacion,
+		// 	$request->longitud_correcto,
+		// 	$request->obs_longitud,
+		// 	$request->obs_longitud_valido,
+		// 	$request->valor_de_progreso, 
+		// 	$request->valor_de_aprobado, 
+		// 	$request->valor_de_reprobado, 
+		// );
+		// //return response()->json("todo bien");
+		// die();
 
-			$request->valor_de_progreso, 
-			$request->valor_de_aprobado, 
-			$request->valor_de_reprobado, 
+		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
+		//var_dump($test_mode_mail);
+		//die();
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$formulario_provisorio = FormAltaProductor::select(
+			'id',
 
-		);
-		//return response()->json("todo bien");
-		die();
+			'localidad_mina_pais',
 
-		// date_default_timezone_set('America/Argentina/Buenos_Aires');
-		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
-		// ->where('email', '=',$request->email)->first();
-		// //var_dump($formulario_provisorio->id);
-		// if($formulario_provisorio != null)
-		// {
-		// 	//lo encontre y actualizo
-		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
-		// 	$formulario_provisorio->razonsocial = $request->razon_social;
-		// 	$formulario_provisorio->cuit = $request->cuit;
-		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
-		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
-		// 	$formulario_provisorio->email = $request->email;
-		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
-		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
-		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
-		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		// 	$formulario_provisorio->save();
-		// 	return response()->json("se actualizaron los datos correctamente");
+			'localidad_mina_provincia',
+			'localidad_mina_provincia_correcto',
+			'obs_localidad_mina_provincia',
 
-		// }
-		// else
-		// {
-		// 	// no encontre el formulario
-		// 	// voy a buscar si el email esta para ser confirmado
-		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
-		// 	//var_dump($email);
-		// 	if($email != null)
-		// 	{
-		// 		//tengo email , reviso si no esta cofnirmado o si
-		// 		if($email->confirmed_at	!= null)
-		// 		{
-		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
-		// 			$formulario_nuevo  = new FormAltaProductor();
-		// 			$formulario_nuevo->razonsocial = $request->razon_social;
-		// 			$formulario_nuevo->cuit = $request->cuit;
-		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
-		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
-		// 			$formulario_nuevo->email = $request->email;
-		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
-		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
-		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
-		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
-		// 			$formulario_nuevo->save();
-		// 			return response()->json("se creo el formulario y se guardo correctamente");
-		// 		}
-		// 		else
-		// 		{
-		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
-		// 			//mando email
+			'localidad_mina_departamento',
+			'localidad_mina_departamento_correcto',
+			'obs_localidad_mina_departamento',
 
-		// 			/*
-		// 			en produccion, descomentar
-		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
-		// 				$request->email,
-		// 				date("Y-m-d H:i:s"),
-		// 				$email->codigo
-		// 			));*/
-		// 			return response()->json("mande un email de mentira");
-		// 		}
+			'localidad_mina_localidad',
+			'localidad_mina_localidad_correcto',
+			'obs_localidad_mina_localidad',
+			
+			
+			'tipo_sistema',
+			'tipo_sistema_correcto',
+			'obs_tipo_sistema',
+			
+			
+			'longitud',
+			'longitud_correcto',
+			'obs_longitud',
+			
+			'latitud',
+			'latitud_correcto',
+			'obs_latitud',
 
-		// 	}
-		// 	else
-		// 	{
-		// 		return response()->json("formulario no encontrado ni tampoco email");
-		// 	}
-		//}
+			'paso_6_progreso',
+			'paso_6_aprobado',
+			'paso_6_reprobado',
+
+			'updated_paso_seis',
+			'updated_by',
+			'updated_at'
+			)
+		->where('id', '=',$request->id)->first();
+		/*var_dump($formulario_provisorio->id);
+		die();*/
+		//'lista_minerales',
+
+		
+		//PARA LA EVALUACION
+		if(is_bool($request->localidad_mina_provincia_correcto))
+			if($request->localidad_mina_provincia_correcto == true)
+				$request->localidad_mina_provincia_correcto = 1;
+			else $request->localidad_mina_provincia_correcto = 0;
+		else
+			$request->localidad_mina_provincia_correcto = null;
+
+		if(is_bool($request->localidad_mina_departamento_correcto))
+			if($request->localidad_mina_departamento_correcto == true)
+				$request->localidad_mina_departamento_correcto = 1;
+			else $request->localidad_mina_departamento_correcto = 0;
+		else
+			$request->localidad_mina_departamento_correcto = null;
+
+		if(is_bool($request->localidad_mina_localidad_correcto))
+			if($request->localidad_mina_localidad_correcto == true)
+				$request->localidad_mina_localidad_correcto = 1;
+			else $request->localidad_mina_localidad_correcto = 0;
+		else
+			$request->localidad_mina_localidad_correcto = null;
+
+
+		if(is_bool($request->tipo_sistema_correcto))
+			if($request->tipo_sistema_correcto == true)
+				$request->tipo_sistema_correcto = 1;
+			else $request->tipo_sistema_correcto = 0;
+		else
+			$request->tipo_sistema_correcto = null;
+
+
+		if(is_bool($request->longitud_correcto))
+			if($request->longitud_correcto == true)
+				$request->longitud_correcto = 1;
+			else $request->longitud_correcto = 0;
+		else
+			$request->longitud_correcto = null;
+
+
+		if(is_bool($request->latitud_correcto))
+			if($request->latitud_correcto == true)
+				$request->latitud_correcto = 1;
+			else $request->latitud_correcto = 0;
+		else
+			$request->latitud_correcto = null;
+
+		if($formulario_provisorio != null)
+		{
+			//lo encontre y actualizo
+			//pregunto si soy autoridad minera o si soy productor
+			if($request->es_evaluacion){ // soy autoridad minera
+				//dd("ffff");
+				$formulario_provisorio->localidad_mina_provincia_correcto = $request->localidad_mina_provincia_correcto;
+				$formulario_provisorio->obs_localidad_mina_provincia = $request->obs_localidad_mina_provincia;
+	
+				$formulario_provisorio->localidad_mina_departamento_correcto = $request->localidad_mina_departamento_correcto;
+				$formulario_provisorio->obs_localidad_mina_departamento = $request->obs_localidad_mina_departamento;
+	
+				$formulario_provisorio->localidad_mina_localidad_correcto = $request->localidad_mina_localidad_correcto;
+				$formulario_provisorio->obs_localidad_mina_localidad = $request->obs_localidad_mina_localidad;
+	
+				$formulario_provisorio->tipo_sistema_correcto = $request->tipo_sistema_correcto;
+				$formulario_provisorio->obs_tipo_sistema = $request->obs_tipo_sistema;
+	
+				$formulario_provisorio->longitud_correcto = $request->longitud_correcto;
+				$formulario_provisorio->obs_longitud = $request->obs_longitud;
+
+				$formulario_provisorio->latitud_correcto = $request->latitud_correcto;
+				$formulario_provisorio->obs_latitud = $request->obs_latitud;
+
+				$formulario_provisorio->paso_6_progreso = $request->valor_de_progreso;
+				$formulario_provisorio->paso_6_aprobado = $request->valor_de_aprobado;
+				$formulario_provisorio->paso_6_reprobado = $request->valor_de_reprobado;
+	
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_seis = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
+				//ahora voy a guardar los minerales y sus modificaciones
+			
+				return response()->json("se actualizaron los datos correctamente");
+			}
+			else{//soy productor
+				//dd("wwwwwwww");
+				//lo encontre y actualizo
+				/*var_dump("entre como productor");
+				die();*/
+				$formulario_provisorio->localidad_mina_pais = "Argentina";
+				$formulario_provisorio->localidad_mina_provincia = $request->localidad_mina_provincia;
+				$formulario_provisorio->localidad_mina_departamento = $request->localidad_mina_departamento;
+				$formulario_provisorio->localidad_mina_localidad = $request->localidad_mina_localidad;
+
+				$formulario_provisorio->tipo_sistema = $request->tipo_sistema;
+				$formulario_provisorio->longitud = $request->longitud;
+				$formulario_provisorio->latitud =  $request->latitud;
+
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_seis = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
+				return response()->json("se actualizaron los datos correctamente");
+
+				//antes de guardar los minerales voy re visar si ya hay minerales. si los hay , los voy a borrar
+				//y luego voy a meter los nuevos minerales
+				//var_dump($resultado);
+				
+				
+			}
+		}
+		else{
+			return response()->json("formulario no encontrado");
+		}
+
 	}
 
 	public function correccion_guardar_paso_todo(Request $request)
 	{
-		/*var_dump(
-			$request->razon_social, 
-			$request->razon_social_valido, 
-			$request->razon_social_correcto, 
-			$request->obs_razon_social, 
-			$request->obs_razon_social_valido, 
-
-			$request->email, 
-			$request->email_valido, 
-			$request->email_correcto, 
-			$request->obs_email, 
-			$request->obs_email_valido, 
-
-			$request->cuit, 
-			$request->cuit_valido, 
-			$request->cuit_correcto, 
-			$request->obs_cuit, 
-			$request->obs_cuit_valido, 
-
-			$request->numeroproductor, 
-			$request->numeroproductor_valido, 
-			$request->numeroproductor_correcto, 
-			$request->obs_numeroproductor, 
-			$request->obs_numeroproductor_valido, 
-
-			$request->tiposociedad, 
-			$request->tiposociedad_valido, 
-			$request->tiposociedad_correcto, 
-			$request->obs_tiposociedad, 
-			$request->obs_tiposociedad_valido,
-
-
-			$request->inscripciondgr, 
-			$request->inscripciondgr_valido, 
-			$request->inscripciondgr_correcto, 
-			$request->obs_inscripciondgr, 
-			$request->obs_inscripciondgr_valido,
-
-
-			$request->constaciasociedad, 
-			$request->constaciasociedad_valido, 
-			$request->constaciasociedad_correcto, 
-			$request->obs_constaciasociedad, 
-			$request->obs_constaciasociedad_valido,
-
-
-			$request->valor_de_progreso, 
-			$request->valor_de_aprobado, 
-			$request->valor_de_reprobado, 
-
-		);*/
-		return response()->json("todo bien");
-		//die();
-
-		// date_default_timezone_set('America/Argentina/Buenos_Aires');
-		// $formulario_provisorio = FormAltaProductor::select('id','razonsocial','cuit','numeroproductor','tiposociedad',	'email','domicilio_prod','inscripciondgr','constaciasociedad')
-		// ->where('email', '=',$request->email)->first();
-		// //var_dump($formulario_provisorio->id);
-		// if($formulario_provisorio != null)
-		// {
-		// 	//lo encontre y actualizo
-		// 	$formulario_provisorio->tipo_productor = $request->tipo_productor;
-		// 	$formulario_provisorio->razonsocial = $request->razon_social;
-		// 	$formulario_provisorio->cuit = $request->cuit;
-		// 	$formulario_provisorio->numeroproductor = $request->num_productor;
-		// 	$formulario_provisorio->tiposociedad = $request->tipo_sociedad;
-		// 	$formulario_provisorio->email = $request->email;
-		// 	// $formulario_provisorio->domicilio_prod = $request->streetName;
-		// 	$formulario_provisorio->inscripciondgr = $request->inscricion_dgr;
-		// 	$formulario_provisorio->constaciasociedad = $request->constancia_sociedad;
-		// 	$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		// 	$formulario_provisorio->save();
-		// 	return response()->json("se actualizaron los datos correctamente");
-
-		// }
-		// else
-		// {
-		// 	// no encontre el formulario
-		// 	// voy a buscar si el email esta para ser confirmado
-		// 	$email = EmailsAConfirmar::select('*')->where('email', '=', $request->email)->first();
-		// 	//var_dump($email);
-		// 	if($email != null)
-		// 	{
-		// 		//tengo email , reviso si no esta cofnirmado o si
-		// 		if($email->confirmed_at	!= null)
-		// 		{
-		// 			//el email si ha sido confirmado por eso , tengo q crear una instancia de form
-		// 			$formulario_nuevo  = new FormAltaProductor();
-		// 			$formulario_nuevo->razonsocial = $request->razon_social;
-		// 			$formulario_nuevo->cuit = $request->cuit;
-		// 			$formulario_nuevo->numeroproductor = $request->num_productor;
-		// 			$formulario_nuevo->tiposociedad = $request->tipo_sociedad;
-		// 			$formulario_nuevo->email = $request->email;
-		// 			// $formulario_nuevo->domicilio_prod = $request->streetName;
-		// 			//$formulario_nuevo->inscripciondgr = $request->inscricion_dgr;
-		// 			//$formulario_nuevo->constaciasociedad = $request->constancia_sociedad;
-		// 			$formulario_nuevo->updated_at = date("Y-m-d H:i:s");
-		// 			$formulario_nuevo->save();
-		// 			return response()->json("se creo el formulario y se guardo correctamente");
-		// 		}
-		// 		else
-		// 		{
-		// 			//tengo email , pero no ha sido confirmado, solicito que lo confirmen para recien guardar
-		// 			//mando email
-
-		// 			/*
-		// 			en produccion, descomentar
-		// 			Mail::to($to_email)->send(new ValidarEmailProductorPrimeraVez(
-		// 				$request->email,
-		// 				date("Y-m-d H:i:s"),
-		// 				$email->codigo
-		// 			));*/
-		// 			return response()->json("mande un email de mentira");
-		// 		}
-
-		// 	}
-		// 	else
-		// 	{
-		// 		return response()->json("formulario no encontrado ni tampoco email");
-		// 	}
-		//}
+		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$formulario_provisorio = FormAltaProductor::select(
+			'id',
+			'estado',
+			'updated_by',
+			'updated_at'
+			)
+		->where('id', '=',$request->id)->first();
+		if($request->es_evaluacion){ // soy autoridad minera
+			$formulario_provisorio->estado = $request->estado;
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_by = Auth::user()->id;
+			$formulario_provisorio->save();
+			return response()->json("todo bien");
+		}
+		else{//soy productor
+			return response()->json("error");
+		}
 	}
+		
 
 	public function traer_provincias_json(){
 		$lista_de_provincias = Provincias::select('id', 'nombre')->get();

@@ -311,7 +311,26 @@
                 </div>
             </div>
             <div class="flex">
-                <InputFileGenerico v-if="form_pagina.categoria !== 'tercera'"
+
+                <SubirArchivo v-if="form_pagina.categoria !== 'tercera'"
+                    v-bind:valor_input_props="form_pagina.resolucion_concesion_minera"
+                    v-bind:valor_input_validacion="form_pagina.resolucion_concesion_minera_validacion"
+                    v-bind:evualacion_correcto="form_pagina.resolucion_concesion_minera_correcto"
+                    v-bind:valor_obs="form_pagina.obs_resolucion_concesion_minera"
+                    v-bind:valor_valido_obs="form_pagina.obs_resolucion_concesion_minera_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing ="mostrar_testing"
+                    v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
+                    v-on:changevalido="update_resol_conce_valido($event)"
+                    v-on:changecorrecto="update_resol_conce_correcto($event)"
+                    v-on:changeobs="update_obs_resol_conce($event)"
+                    v-on:changeobsvalido="update_obs_canon_valido($event)"
+                    v-on:changevalor="update_obs_resol_conce_valido($event)"
+                    v-on:cambioarchivo="cambio_el_archivo_resolucion($event)"
+                >
+                </SubirArchivo>
+
+                <!-- <InputFileGenerico v-if="form_pagina.categoria !== 'tercera'"
                     v-bind:valor_input_props="$props.resolucion_concesion_minera"
                     v-bind:valor_input_validacion="$props.resolucion_concesion_minera_validacion"
                     v-bind:evualacion_correcto="$props.resolucion_concesion_minera_correcto"
@@ -329,7 +348,7 @@
                     v-on:changevalor="update_valor_resol_conce($event)"
 
                 >
-                </InputFileGenerico>
+                </InputFileGenerico> -->
                 <div v-show="ayuda_local" >
                         <br>
                         <div  class="
@@ -513,7 +532,7 @@
             <h1>los minerales en el padre son</h1>
             {{minerales_locales}}
         </div>
-
+el id es: {{$props.id}}
         <BotonesPaginaCuatro
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
@@ -593,7 +612,7 @@ import NombreMina from "@/Pages/Productors/NombreMina";
 import SelectGenerico from "@/Pages/Productors/SelectGenerico";
 import InputFileGenerico from "@/Pages/Productors/InputFileGenerico";
 import ListadeMinerales from "@/Pages/Productors/ListadeMinerales";
-
+import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import BotonesPaginaCuatro from "@/Pages/Productors/BotonesPaginaCuatro";
 export default {
      props: [
@@ -673,6 +692,7 @@ export default {
         InputFileGenerico,
         ListadeMinerales,
 		BotonesPaginaCuatro,
+        SubirArchivo,
 	},
    
   data() {
@@ -684,6 +704,7 @@ export default {
         mostrar_testing: false,
         autoridad_minera: false,
         ayuda_local: false,
+        resolucion_local: '',
         lista_de_minerales:[],
 
         
@@ -896,7 +917,10 @@ export default {
 
 
 
-
+        cambio_el_archivo_resolucion(newValue){
+            this.resolucion_local = newValue;
+            this.form_pagina.resolucion_concesion_minera = this.resolucion_local;
+        },
 
 
 

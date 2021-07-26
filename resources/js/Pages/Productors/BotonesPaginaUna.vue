@@ -128,61 +128,55 @@ export default {
 
     },
     guardar_avnces_uno(){
-        alert("el id q mando es:"+this.$props.id);
+        // alert("el id q mando es:"+this.$props.id);
+
         if(this.$props.evaluacion)
         {
             //Soy autoridad minera
-            let self = this
-            axios.post('/formularios/evaluacion_auto_guardado_uno', {
-                    id: this.$props.id,
-                    razon_social:this.$props.razon_social,
-                    razon_social_valido: this.$props.razon_social_valido,
-                    razon_social_correcto: this.$props.razon_social_correcto,
-                    obs_razon_social: this.$props.obs_razon_social,
-                    obs_razon_social_valido: this.$props.obs_razon_social_valido,
-
-                    email: this.$props.email,
-                    email_valido: this.$props.email_valido,
-                    email_correcto:  this.$props.email_correcto,
-                    obs_email: this.$props.obs_email,
-                    obs_email_valido: this.$props.obs_email_valido,
-
-                    cuit: this.$props.cuit,
-                    cuit_valido: this.$props.cuit_valido,
-                    cuit_correcto:  this.$props.cuit_correcto,
-                    obs_cuit: this.$props.obs_cuit,
-                    obs_cuit_valido: this.$props.obs_cuit_valido,
-
-                    numeroproductor: this.$props.numeroproductor,
-                    numeroproductor_valido: this.$props.numeroproductor_valido,
-                    numeroproductor_correcto: this.$props.numeroproductor_correcto,
-                    obs_numeroproductor: this.$props.obs_numeroproductor,
-                    obs_numeroproductor_valido: this.$props.obs_numeroproductor_valido,
-
-                    tiposociedad: this.$props.tiposociedad,
-                    tiposociedad_valido: this.$props.tiposociedad_valido, 
-                    tiposociedad_correcto: this.$props.tiposociedad_correcto, 
-                    obs_tiposociedad: this.$props.obs_tiposociedad, 
-                    obs_tiposociedad_valido: this.$props.obs_tiposociedad_valido, 
-
-
-                    inscripciondgr: this.$props.inscripciondgr,
-                    inscripciondgr_valido:  this.$props.inscripciondgr_valido,
-                    inscripciondgr_correcto:  this.$props.inscripciondgr_correcto,
-                    obs_inscripciondgr: this.$props.obs_inscripciondgr,
-                    obs_inscripciondgr_valido:this.$props.obs_inscripciondgr_valido,
-
-                    constaciasociedad: this.$props.constaciasociedad,
-                    constaciasociedad_valido: this.$props.constanciasociedad_valido,
-                    constaciasociedad_correcto: this.$props.constanciasociedad_correcto,
-                    obs_constaciasociedad: this.$props.obs_constanciasociedad,
-                    obs_constaciasociedad_valido: this.$props.obs_constanciasociedad_valido,
-
-                    valor_de_progreso: 20,
-                    valor_de_aprobado: 20,
-                    valor_de_reprobado: 20,
-
-                })
+            let self = this;
+            const data = new FormData();
+            data.append('id', this.$props.id);
+            data.append('razon_social', this.$props.razon_social);
+            data.append('razon_social_valido',  this.$props.razon_social_valido);
+            data.append('razon_social_correcto',  this.$props.razon_social_correcto);
+            data.append('obs_razon_social',  this.$props.obs_razon_social);
+            data.append('obs_razon_social_valido',  this.$props.obs_razon_social_valido);
+            data.append('email',  this.$props.email);
+            data.append('email_valido',  this.$props.email_valido);
+            data.append('email_correcto',   this.$props.email_correcto);
+            data.append('obs_email',  this.$props.obs_email);
+            data.append('obs_email_valido',  this.$props.obs_email_valido);
+            data.append('cuit',  this.$props.cuit);
+            data.append('cuit_valido',  this.$props.cuit_valido);
+            data.append('cuit_correcto',   this.$props.cuit_correcto);
+            data.append('obs_cuit',  this.$props.obs_cuit);
+            data.append('obs_cuit_valido',  this.$props.obs_cuit_valido);
+            data.append('numeroproductor',  this.$props.numeroproductor);
+            data.append('numeroproductor_valido',  this.$props.numeroproductor_valido);
+            data.append('numeroproductor_correcto',  this.$props.numeroproductor_correcto);
+            data.append('obs_numeroproductor',  this.$props.obs_numeroproductor);
+            data.append('obs_numeroproductor_valido',  this.$props.obs_numeroproductor_valido);
+            data.append('tiposociedad',  this.$props.tiposociedad);
+            data.append('tiposociedad_valido',  this.$props.tiposociedad_valido,);
+            data.append('tiposociedad_correcto',  this.$props.tiposociedad_correcto,);
+            data.append('obs_tiposociedad',  this.$props.obs_tiposociedad,);
+            data.append('obs_tiposociedad_valido',  this.$props.obs_tiposociedad_valido,);
+            data.append('inscripciondgr',  this.$props.inscripciondgr);
+            data.append('inscripciondgr_valido',   this.$props.inscripciondgr_valido);
+            data.append('inscripciondgr_correcto',   this.$props.inscripciondgr_correcto);
+            data.append('obs_inscripciondgr',  this.$props.obs_inscripciondgr);
+            data.append('obs_inscripciondgr_valido', this.$props.obs_inscripciondgr_valido);
+            data.append('constaciasociedad',  this.$props.constaciasociedad);
+            data.append('constaciasociedad_valido',  this.$props.constanciasociedad_valido);
+            data.append('constaciasociedad_correcto',  this.$props.constanciasociedad_correcto);
+            data.append('obs_constaciasociedad',  this.$props.obs_constanciasociedad);
+            data.append('obs_constaciasociedad_valido',  this.$props.obs_constanciasociedad_valido);
+            data.append('valor_de_progreso',  20);
+            data.append('valor_de_aprobado',  20);
+            data.append('valor_de_reprobado',  20);
+            data.append('es_evaluacion', this.$props.evaluacion);
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.post('/formularios/evaluacion_auto_guardado_uno', data)
                 .then(function (response) {
                     console.log(response.data);
                     if(response.data === "se actualizaron los datos correctamente")

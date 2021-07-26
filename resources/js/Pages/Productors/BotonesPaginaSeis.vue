@@ -128,7 +128,6 @@ export default {
             let self = this
             axios.post('/formularios/evaluacion_auto_guardado_seis', {
                     id: this.$props.id,
-
                     localidad_mina_provincia: this.$props.localidad_mina_provincia,
                     localidad_mina_provincia_validacion: this.$props.localidad_mina_provincia_validacion,
                     localidad_mina_provincia_correcto: this.$props.localidad_mina_provincia_correcto,
@@ -159,8 +158,7 @@ export default {
                     longitud_correcto: this.$props.longitud_correcto,
                     obs_longitud: this.$props.obs_longitud,
                     obs_longitud_valido: this.$props.obs_longitud_valido,
-
-
+                    es_evaluacion: this.$props.evaluacion,
                     valor_de_progreso: 20,
                     valor_de_aprobado: 20,
                     valor_de_reprobado: 20,

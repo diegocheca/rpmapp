@@ -291,6 +291,7 @@
 
                     v-on:changeinscripciondgrcorrecto="update_inscripcion_dgr_correcto($event)"
                     v-on:changeobsinscripciondgr="update_obs_inscripcion_dgr($event)"
+                    v-on:cambioarchivo="update_archivo_dgr($event)"
                 >
                 </FileInscripcionDGR>
                 <div v-show="mostrar_ayuda" >
@@ -335,6 +336,7 @@
                     v-bind:name_correcto="'constancia_correcto'"
                     v-on:changeinscripciondgrcorrecto="update_constancia_sociedad_correcto($event)"
                     v-on:changeobsinscripciondgr="update_obs_constancia_sociedad($event)"
+                    v-on:cambioarchivo="update_archivo_constancia($event)"
                 >
                 </FileInscripcionDGR>
                 <div  v-show="mostrar_ayuda" class="
@@ -669,16 +671,22 @@ export default {
             this.form_pagina.obs_constanciasociedad = newValue;
             //tengo que enviarsela al padre
         },
-
         //mostrar ayuda
         update_valor_ayuda_local(newValor){
             this.mostrar_ayuda = newValor;
         },
-
         update_id_recien_creado(id_nuevo){
             this.$emit('CreeUnNuevoIdPasoAAbuelo',id_nuevo);
-        }
-  }
-  
+        },
+        update_archivo_dgr(value){
+            this.form_pagina.inscripciondgr = value;
+            // console.log("cambio el archivo de la dgr");
+            // console.log(this.form_pagina.inscripciondgr);
+        },
+        update_archivo_constancia(value){
+            this.form_pagina.constaciasociedad = value;
+        },
+        
+    }
 };
 </script>

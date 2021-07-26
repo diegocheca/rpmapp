@@ -365,7 +365,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Departamento de Domicilio Legal'"
-                        v-bind:lista_departamentos= "lista_dptos"
+                        v-bind:lista_departamentos= "lista_departamentos"
                         v-on:changedptolegalvalido="update_dpto_valido($event)"
                         v-on:changedptolegalcorrecto="update_dpto_correcto($event)"
                         v-on:changeobsrdptolegal="update_obs_dpto_legal($event)"
@@ -960,9 +960,9 @@ export default {
             //debo actualizar la lista de departamento que tengo disponibles para elegir
             axios.post('/datos/traer_departamentos/',{id_prov:newValue})
                 .then(function (response) {
-                    console.log("las deptos son:\n");
+                    //console.log("las deptos son:\n");
                     self.lista_departamentos = response.data;
-                    console.log(self.lista_departamentos);
+                    //console.log(self.lista_departamentos[0]);
 
                 })
                 .catch(function (error) {

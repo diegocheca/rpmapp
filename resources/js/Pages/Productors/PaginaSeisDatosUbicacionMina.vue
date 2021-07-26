@@ -373,18 +373,13 @@
             :obs_longitud="form_pagina.obs_longitud"
             :obs_longitud_valido="form_pagina.obs_longitud_valido"
 
-            :minerales="minerales_locales"
-
             :donde_guardar="$props.donde_estoy"
 
             :evaluacion="autoridad_minera"
             :testing ="mostrar_testing"
             :id="$props.id"
         >
-
         </BotonesPaginaSeis>
-        <button class="animate-pulse inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
-
     </div>
 </template>
 

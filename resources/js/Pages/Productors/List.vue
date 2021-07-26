@@ -109,8 +109,8 @@
 
 
 
-      <br><br><br>
-      <div class="overflow-x-auto">
+        <br><br><br>
+        <div class="overflow-x-auto">
         <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
             <div class="w-full lg:w-5/6">
                 <div class="bg-white shadow-md rounded my-6">
@@ -152,7 +152,11 @@
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
-                                    <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Active</span>
+                                    <span v-if="productor.estado === 'en proceso'"  class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En proceso</span>
+                                    <span v-if="productor.estado === 'aprobado'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Aprobado</span>
+                                    <span v-if="productor.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
+                                    <span v-if="productor.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
+                                    <span v-if="productor.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
@@ -169,13 +173,18 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <a :href="route('formulario-alta.destroy', productor.id)">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                </svg>
-                                            </a>
-                                        </div>
+
+                                        <inertia-link
+                                        method="delete"
+                                        :href="route('formulario-alta.destroy', productor.id)"
+                                        class="px-2 font-semibold leading-5 text-xs rounded-full bg-red-100 text-red-500 hover:text-red-800"
+                                        >
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                        </inertia-link>
+
+                                        
                                     </div>
                                 </td>
                                 
@@ -576,33 +585,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-  
-        <div class="py-3 sm:max-w-xl sm:mx-auto">
-            <div class="bg-white shadow-lg border-gray-100 max-h-80	 border sm:rounded-3xl p-8 flex space-x-8">
-            <div class="h-48 overflow-visible w-1/2">
-                <img class="rounded-3xl shadow-lg" src="http://localhost:8000/minerales/zinc.png" alt="">
-            </div>
-            <div class="flex flex-col w-1/2 space-y-4">
-                <div class="flex justify-between items-start">
-                <h2 class="text-3xl font-bold">Sweet Tooth: El niño ciervo</h2>
-                <div class="bg-yellow-400 font-bold rounded-xl p-2">7.2</div>
-                </div>
-                <div>
-                <div class="text-sm text-gray-400">Series</div>
-                <div class="text-lg text-gray-800">2019</div>
-                </div>
-                <p class=" text-gray-400 max-h-40 overflow-y-hidden">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <div class="flex text-2xl font-bold text-a">$83.90</div>
-            </div>
-
-            </div>
-        </div>
-        
         </div>
     </body>
   </app-layout>
