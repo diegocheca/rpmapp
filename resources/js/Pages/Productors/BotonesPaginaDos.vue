@@ -25,48 +25,51 @@
                 {{titulo_boton_volver}}
             </button>
         </a>
-        {{ $props.leal_calle}}
-        {{ $props.nombre_calle_legal_valido}}
-        {{ $props.nombre_calle_legal_correcto}}
-        {{ $props.obs_nombre_calle_legal}}
-        {{ $props.obs_nombre_calle_legal_valido}}
-        {{ $props.leal_numero}}
-        {{ $props.leal_numero_valido}}
-        {{ $props.leal_numero_correcto}}
-        {{ $props.obs_leal_numero}}
-        {{ $props.obs_leal_numero_valido}}
-        {{ $props.leal_telefono}}
-        {{ $props.leal_telefono_valido}}
-        {{ $props.leal_telefono_correcto}}
-        {{ $props.obs_leal_telefono}}
-        {{ $props.obs_leal_telefono_valido}}
-        {{ $props.leal_provincia}}
-        {{ $props.leal_provincia_valido}}
-        {{ $props.leal_provincia_correcto}}
-        {{ $props.obs_leal_provincia}}
-        {{ $props.obs_leal_provincia_valido}}
-        {{ $props.leal_departamento}}
-        {{ $props.leal_departamento_valido}}
-        {{ $props.leal_departamento_correcto}}
-        {{ $props.obs_leal_departamento}}
-        {{ $props.obs_leal_departamento_valido}}
-        {{ $props.leal_localidad}}
-        {{ $props.leal_localidad_valido}}
-        {{ $props.leal_localidad_correcto}}
-        {{ $props.obs_leal_localidad}}
-        {{ $props.obs_leal_localidad_valido}}
+        <div v-if="mostrar_testing">
 
-        {{ $props.leal_cp}}
-        {{ $props.leal_cp_valido}}
-        {{ $props.leal_cp_correcto}}
-        {{ $props.obs_leal_cp}}
-        {{ $props.obs_leal_cp_valido}}
+            {{ $props.leal_calle}}
+            {{ $props.nombre_calle_legal_valido}}
+            {{ $props.nombre_calle_legal_correcto}}
+            {{ $props.obs_nombre_calle_legal}}
+            {{ $props.obs_nombre_calle_legal_valido}}
+            {{ $props.leal_numero}}
+            {{ $props.leal_numero_valido}}
+            {{ $props.leal_numero_correcto}}
+            {{ $props.obs_leal_numero}}
+            {{ $props.obs_leal_numero_valido}}
+            {{ $props.leal_telefono}}
+            {{ $props.leal_telefono_valido}}
+            {{ $props.leal_telefono_correcto}}
+            {{ $props.obs_leal_telefono}}
+            {{ $props.obs_leal_telefono_valido}}
+            {{ $props.leal_provincia}}
+            {{ $props.leal_provincia_valido}}
+            {{ $props.leal_provincia_correcto}}
+            {{ $props.obs_leal_provincia}}
+            {{ $props.obs_leal_provincia_valido}}
+            {{ $props.leal_departamento}}
+            {{ $props.leal_departamento_valido}}
+            {{ $props.leal_departamento_correcto}}
+            {{ $props.obs_leal_departamento}}
+            {{ $props.obs_leal_departamento_valido}}
+            {{ $props.leal_localidad}}
+            {{ $props.leal_localidad_valido}}
+            {{ $props.leal_localidad_correcto}}
+            {{ $props.obs_leal_localidad}}
+            {{ $props.obs_leal_localidad_valido}}
 
-        {{ $props.leal_otro}}
-        {{ $props.leal_otro_valido}}
-        {{ $props.leal_otro_correcto}}
-        {{ $props.obs_leal_otro}}
-        {{ $props.obs_leal_otro_valido}}
+            {{ $props.leal_cp}}
+            {{ $props.leal_cp_valido}}
+            {{ $props.leal_cp_correcto}}
+            {{ $props.obs_leal_cp}}
+            {{ $props.obs_leal_cp_valido}}
+
+            {{ $props.leal_otro}}
+            {{ $props.leal_otro_valido}}
+            {{ $props.leal_otro_correcto}}
+            {{ $props.obs_leal_otro}}
+            {{ $props.obs_leal_otro_valido}}
+        </div>
 
 
 
@@ -139,7 +142,8 @@ export default {
         'donde_guardar',
 
         'evaluacion',
-        'id'
+        'id',
+        'mostrar_testing'
     ],
     components: {
 		JetDialogModal,
@@ -227,7 +231,7 @@ methods:{
                     console.log(response.data);
                     if(response.data === "se actualizaron los datos correctamente")
                     {
-                        console.log('todo bien');
+                        console.log('se actualizaron los datos correctamente, siendo un productor');
                         self.modal_tittle = 'Datos guardados correctamente';
                         self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
                         self.mostrar_modal_datos_ya_guardados = true;

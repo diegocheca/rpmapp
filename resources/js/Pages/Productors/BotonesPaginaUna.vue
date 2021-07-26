@@ -25,36 +25,39 @@
                 {{titulo_boton_volver}}
             </button>
         </a>
-        {{ $props.razon_social}}
-        {{ $props.razon_social_valido}}
-        {{ $props.razon_social_correcto}}
-        {{ $props.obs_razon_social}}
-        {{ $props.obs_razon_social_valido}}
-        {{ $props.email}}
-        {{ $props.email_valido}}
-        {{ $props.email_correcto}}
-        {{ $props.obs_email}}
-        {{ $props.obs_email_valido}}
-        {{ $props.cuit}}
-        {{ $props.cuit_valido}}
-        {{ $props.cuit_correcto}}
-        {{ $props.obs_cuit}}
-        {{ $props.obs_cuit_valido}}
-        {{ $props.numeroproductor}}
-        {{ $props.numeroproductor_valido}}
-        {{ $props.numeroproductor_correcto}}
-        {{ $props.obs_numeroproductor}}
-        {{ $props.obs_numeroproductor_valido}}
+        <div v-if="$props.testing">
 
-        <br>
-        valor dgr: {{ $props.inscripciondgr}}
-        
-        --corrlor dgr{{ $props.inscripciondgr_correcto}}
-        --dgr_obs:{{ $props.obs_inscripciondgr}}
-        <br>
-        valor cons:{{ $props.constaciasociedad}}
-        -- corr cons:{{ $props.constanciasociedad_correcto}}
-        --cons_obs:{{ $props.obs_constanciasociedad}}
+            {{ $props.razon_social}}
+            {{ $props.razon_social_valido}}
+            {{ $props.razon_social_correcto}}
+            {{ $props.obs_razon_social}}
+            {{ $props.obs_razon_social_valido}}
+            {{ $props.email}}
+            {{ $props.email_valido}}
+            {{ $props.email_correcto}}
+            {{ $props.obs_email}}
+            {{ $props.obs_email_valido}}
+            {{ $props.cuit}}
+            {{ $props.cuit_valido}}
+            {{ $props.cuit_correcto}}
+            {{ $props.obs_cuit}}
+            {{ $props.obs_cuit_valido}}
+            {{ $props.numeroproductor}}
+            {{ $props.numeroproductor_valido}}
+            {{ $props.numeroproductor_correcto}}
+            {{ $props.obs_numeroproductor}}
+            {{ $props.obs_numeroproductor_valido}}
+
+            <br>
+            valor dgr: {{ $props.inscripciondgr}}
+            
+            --corrlor dgr{{ $props.inscripciondgr_correcto}}
+            --dgr_obs:{{ $props.obs_inscripciondgr}}
+            <br>
+            valor cons:{{ $props.constaciasociedad}}
+            -- corr cons:{{ $props.constanciasociedad_correcto}}
+            --cons_obs:{{ $props.obs_constanciasociedad}}
+        </div>
 
 
         
@@ -108,7 +111,9 @@ export default {
         'obs_constanciasociedad_valido',
 
         'evaluacion',
-        'id'
+        'id',
+        'testing'
+
     ],
     components: {
 		JetDialogModal,

@@ -2397,6 +2397,7 @@ class FormAltaProductorController extends Controller
 				
 				$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->estado = "borrador";
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 
@@ -2846,7 +2847,7 @@ class FormAltaProductorController extends Controller
 		// );
 		// die();
 		//return response()->json("todo bien");
-
+		
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		if($request->es_evaluacion == 'true') $request->es_evaluacion = true;
 		else $request->es_evaluacion=false;
@@ -3094,19 +3095,20 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->mina_cantera = $request->mina_cantera;
 				//$formulario_provisorio->plano_inmueble = $request->plano_inmueble;
 				//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
-
+				//var_dump($request->resolucion_concesion_minera);die();
+				
 				if($request->resolucion_concesion_minera != null && $request->resolucion_concesion_minera != '' && $formulario_provisorio->resolucion_concesion_minera != null)
-				{
-					$contents = file_get_contents($request->resolucion_concesion_minera->path());
-					$formulario_provisorio->resolucion_concesion_minera =  Storage::put('public/files_formularios'.'/'.$request->id, $request->resolucion_concesion_minera);
+				{//no es un archivo vacio
+					if(substr($request->resolucion_concesion_minera,0, strlen('http://localhost:8000/storage/files_formularios')) != 'http://localhost:8000/storage/files_formularios' )
+					{
+						$contents = file_get_contents($request->resolucion_concesion_minera->path());
+						$formulario_provisorio->resolucion_concesion_minera =  Storage::put('public/files_formularios'.'/'.$request->id, $request->resolucion_concesion_minera);
+					}
+					//else //signifca que el archivo ya estaba cargado y no se modifico
 				}
 				else $formulario_provisorio->resolucion_concesion_minera =null;
-				
-
-
 				//$formulario_provisorio->titulo_contrato_posecion = $request->titulo_contrato_posecion;
 				//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
-
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->save();
 
@@ -3214,6 +3216,7 @@ class FormAltaProductorController extends Controller
 			)
 		->where('id', '=',$request->id)->first();
 		$i = 0;
+		
 		if($request->es_evaluacion){ // soy autoridad minera
 			//ahora voy a guardar los minerales y sus modificaciones
 			foreach ($request->lista_minerales as $mineral) {
@@ -3344,6 +3347,17 @@ class FormAltaProductorController extends Controller
 			$request->es_evaluacion, 
 		);*/
 		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
+		if($request->fecha_alta_dia == 'null')
+			$request->fecha_alta_dia = null;
+		if($request->fecha_vencimiento_dia == 'null')
+			$request->fecha_vencimiento_dia = null;
+		if($request->acciones_a_desarrollar == 'null')
+			$request->acciones_a_desarrollar = $request->acciones_a_desarrollar;
+		if($request->actividad == 'null')
+			$request->actividad = $request->actividad;
+		if($request->sustancias_input == 'null' || $request->sustancias_input == '')
+			$request->sustancias_input= null;
+
 		//var_dump($test_mode_mail);
 		//die();
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
@@ -3414,7 +3428,8 @@ class FormAltaProductorController extends Controller
 
 			'updated_paso_cinco',
 			'updated_by',
-			'updated_at'
+			'updated_at',
+			'sustancias_de_aprovechamiento_comun_aclaracion'
 			)
 		->where('id', '=',$request->id)->first();
 		//var_dump($formulario_provisorio->id);
@@ -3433,8 +3448,8 @@ class FormAltaProductorController extends Controller
 		if($request->otros != null)
 			$request->otros = $request->otros === 'true'? 1: 0;
 
-		if($request->sustancias_de_aprovechamiento_comun!= null)
-			$request->sustancias_de_aprovechamiento_comun = $request->sustancias_de_aprovechamiento_comun === 'true'? 1: 0;
+		if($request->sustancias!= null)
+			$request->sustancias = $request->sustancias === 'true'? 1: 0;
 
 		//PARA LA EVALUACION
 		if(is_bool($request->owner_correcto))
@@ -3601,21 +3616,57 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->concesionario = $request->concesionario;
 				$formulario_provisorio->otros = $request->otros;
 
-				$formulario_provisorio->sustancias_de_aprovechamiento_comun = $request->sustancias;
-				//este es un archivo
-				$contents = file_get_contents($request->constancia_pago_canon->path());
-				$formulario_provisorio->constancia_pago_canon =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constancia_pago_canon);
-				//este es un archivo
-				$contents = file_get_contents($request->iia->path());
-				$formulario_provisorio->iia =  Storage::put('public/files_formularios'.'/'.$request->id, $request->iia);
-				//este es un archivo
-				$contents = file_get_contents($request->dia->path());
-				$formulario_provisorio->dia =  Storage::put('public/files_formularios'.'/'.$request->id, $request->dia);
-				$formulario_provisorio->acciones_a_desarrollar = $request->acciones_a_desarrollar;
-				$formulario_provisorio->actividad = $request->actividad;
+				if($request->sustancias == true || $request->sustancias == 1)
+				{
+					$formulario_provisorio->sustancias_de_aprovechamiento_comun = 1;
+					$formulario_provisorio->sustancias_de_aprovechamiento_comun_aclaracion = $request->sustancias_input;
+				}
+				else
+				{
+					$formulario_provisorio->sustancias_de_aprovechamiento_comun = 0;
+					$formulario_provisorio->sustancias_de_aprovechamiento_comun_aclaracion = null;
+				}
 
-				$formulario_provisorio->fecha_alta_dia = $request->fecha_alta_dia;
-				$formulario_provisorio->fecha_vencimiento_dia = $request->fecha_vencimiento_dia;
+				//este es un archivo
+				if($request->constancia_pago_canon != null && $request->constancia_pago_canon != '' && $formulario_provisorio->constancia_pago_canon != null)
+				{//no es un archivo vacio
+					if(substr($request->constancia_pago_canon,0, strlen('http://localhost:8000/storage/files_formularios')) != 'http://localhost:8000/storage/files_formularios' )
+					{
+						$contents = file_get_contents($request->constancia_pago_canon->path());
+						$formulario_provisorio->constancia_pago_canon =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constancia_pago_canon);
+					}
+					//else //signifca que el archivo ya estaba cargado y no se modifico
+				}
+				// ya esta en null - else $formulario_provisorio->constancia_pago_canon =null;
+				
+				//este es un archivo
+				if($request->iia != null && $request->iia != '' && $formulario_provisorio->iia != null)
+				{//no es un archivo vacio
+					if(substr($request->iia,0, strlen('http://localhost:8000/storage/files_formularios')) != 'http://localhost:8000/storage/files_formularios' )
+					{
+						$contents = file_get_contents($request->iia->path());
+						$formulario_provisorio->iia =  Storage::put('public/files_formularios'.'/'.$request->id, $request->iia);
+					}
+				}
+				//este es un archivo
+				if($request->dia != null && $request->dia != '' && $formulario_provisorio->dia != null)
+				{//no es un archivo vacio
+					if(substr($request->dia,0, strlen('http://localhost:8000/storage/files_formularios')) != 'http://localhost:8000/storage/files_formularios' )
+					{
+						$contents = file_get_contents($request->dia->path());
+						$formulario_provisorio->dia =  Storage::put('public/files_formularios'.'/'.$request->id, $request->dia);
+					}
+				}
+				if($request->acciones_a_desarrollar != null)
+					$formulario_provisorio->acciones_a_desarrollar = $request->acciones_a_desarrollar;
+				if($request->actividad != null)
+					$formulario_provisorio->actividad = $request->actividad;
+
+
+				if($request->fecha_alta_dia != null)
+					$formulario_provisorio->fecha_alta_dia = $request->fecha_alta_dia;
+				if($request->fecha_vencimiento_dia != null)
+					$formulario_provisorio->fecha_vencimiento_dia = $request->fecha_vencimiento_dia;
 
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->save();

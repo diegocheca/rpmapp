@@ -140,20 +140,20 @@
 							></CardProductor>
 					</div> -->
 
-					<div class="flex space-x-8 text-3xl">
+					<!--<div class="flex space-x-8 text-3xl">
 
-						<!-- spin -->
+						<!- spin ->
 						<button class="animate-spin inline-block py-4 px-8 bg-yellow-500 text-yellow-100 rounded-lg">Spin</button>
 
-						<!-- ping -->
+						<!- ping ->
 						<button class="animate-ping inline-block py-4 px-8 bg-blue-500 text-blue-100 rounded-lg">Ping</button>
 
-						<!-- pulse -->
+						<!- pulse ->
 						<button class="animate-pulse inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
 
-						<!-- bounce -->
+						<!- bounce ->
 						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
-					</div>
+					</div>-->
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -557,8 +557,8 @@
 			<PaginaSeisDatosUbicacionMina
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
-				:titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
-				:titulo_pagina="'Pagina datos de Mina Segunda Parte'"
+				:titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
+				:titulo_pagina="'Pagina datos de Ubicacion de la Mina'"
 
 				:localidad_mina_pais="form.localidad_mina_pais"
 				:localidad_mina_pais_validacion="form.localidad_mina_pais_validacion"
@@ -636,6 +636,7 @@
 							v-model="form.estado"
 							class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 							<option value="en proceso">En proceso</option>
+							<option value="borrador">Borrador</option>
 							<option value="en revision">En revision</option>
 							<option value="aprobado">Aprobado</option>
 							<option value="reprobado">Reprobado</option>

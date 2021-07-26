@@ -405,8 +405,9 @@
                 :obs_constanciasociedad="form_pagina.obs_constanciasociedad"
                 :obs_constanciasociedad_valido="form_pagina.obs_constanciasociedad_valido"
 
-                :evaluacion="true"
+                :evaluacion="autoridad_minera"
                 :id="$props.id"
+                :testing ="mostrar_testing"
 
                 v-on:CreeUnNuevoId="update_id_recien_creado($event)"
             ></BotonesPaginaUna> el id es:{{$props.id}}*

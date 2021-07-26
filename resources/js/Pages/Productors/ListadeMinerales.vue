@@ -15,7 +15,7 @@
                 <button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900"  @click="agregar_mineral()"> + Agregar Mineral</button>
                 </div>
             </div>
-            lsita de minerales del nieto: {{$props.lista_de_minerales_pre_cargados}}
+            <!-- lsita de minerales del nieto: {{$props.lista_de_minerales_pre_cargados}} -->
             <div class="grid mt-8  gap-8 grid-cols-1 md:grid-cols-1 xl:grid-cols-1">
                 <div class="flex flex-col" v-for="(mineral, index) in minerales" v-bind:key="mineral.id">
                     <div class="bg-white shadow-md  rounded-3xl p-4">
@@ -32,7 +32,9 @@
                                     <h2 class="flex-auto text-lg font-medium">{{mineral.id_mineral}}</h2>
                                 </div>
                                 <p class="mt-3"></p>
-                                tipo de yacimiento es:{{$props.tipo_yacimiento}}
+                                tipo de yacimiento es:
+                                <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{{$props.tipo_yacimiento}}</span>
+                                
                                 <div class="flex py-4  text-sm text-gray-600">
                                     <div class="flex-1 inline-flex items-center">
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">

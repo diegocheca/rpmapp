@@ -217,6 +217,7 @@
                     </div>
                 </div>
                 Tipo de Yacimiento: {{form_pagina.mina_cantera}}
+                la categoria ya seleccionada : {{$props.categoria}}
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <SelectGenerico
                         v-bind:valor_input_props="$props.categoria"
@@ -532,7 +533,7 @@
             <h1>los minerales en el padre son</h1>
             {{minerales_locales}}
         </div>
-el id es: {{$props.id}}
+<!-- el id es: {{$props.id}} -->
         <BotonesPaginaCuatro
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"

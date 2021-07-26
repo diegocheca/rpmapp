@@ -156,7 +156,7 @@ class FormAltaProductor extends Model
         'updated_paso_tres',
         'otro_caracter_acalaracion',
         'concesion_minera_acalracion',
-        'concesion_minera_acalracion',
+        'sustancias_de_aprovechamiento_comun',
         'owner_correcto',
         'obs_owner',
         'arrendatario_correcto',
@@ -201,6 +201,7 @@ class FormAltaProductor extends Model
 		'paso_6_aprobado',
 		'paso_6_reprobado',
 		'updated_paso_seis',
+        'sustancias_de_aprovechamiento_comun_aclaracion'
 
     ];
     

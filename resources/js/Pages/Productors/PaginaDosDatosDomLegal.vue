@@ -680,6 +680,7 @@
 
                 :evaluacion="autoridad_minera"
                 :id="$props.id"
+                :testing ="mostrar_testing"
             ></BotonesPaginaDos>
          </div>
 

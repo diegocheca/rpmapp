@@ -234,10 +234,74 @@ export default {
                     console.log(response.data);
                     if(response.data === "se actualizaron los datos correctamente")
                     {
+                        // axios.post("http://localhost:8000/formularios/guardar_lista_minerales", {
+                        //     id: this.$props.id,
+                        //     lista_minerales: this.$props.minerales,
+                        //     es_evaluacion:  this.$props.evaluacion
+                        //     } ) 
+                        // .then(function (response) {
+                        //     console.log(response.data);
+                        //     if(response.data === "se actualizaron los datos correctamente")
+                        //     {
+
+                                
+                        //         console.log('todo bien');
+                        //         self.modal_tittle = 'Datos guardados correctamente';
+                        //         self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
+                        //         self.mostrar_modal_datos_ya_guardados = true;
+                        //     }
+                            
+                        //     if(response.data === "formulario no encontrado")
+                        //     {
+                        //         console.log('todo mal, no se encontro');
+                        //         self.modal_tittle = 'Paso 1 Guardado Fallido';
+                        //         self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+                        //         self.mostrar_modal_datos_ya_guardados = true;
+                        //     }
+                        //     else{
+                        //         console.log('NO todo bien');	
+                        //     }
+                            
+                        // })
+                        // .catch(function (error) {
+                        //     // handle error
+                        //     console.log(error);
+                        // })
 
 
 
-                        axios.post("http://localhost:8000/formularios/guardar_lista_minerales", {
+
+
+
+
+
+
+
+                        console.log('todo bien');
+                        self.modal_tittle = 'Datos guardados correctamente';
+                        self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
+                        self.mostrar_modal_datos_ya_guardados = true;
+                    }
+                    
+                    if(response.data === "formulario no encontrado")
+                    {
+                        console.log('todo mal, no se encontro');
+                        self.modal_tittle = 'Paso 1 Guardado Fallido';
+                        self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+                        self.mostrar_modal_datos_ya_guardados = true;
+                    }
+                    else{
+                        console.log('NO todo bien');	
+                    }
+                    
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                });
+
+
+                axios.post("http://localhost:8000/formularios/guardar_lista_minerales", {
                             id: this.$props.id,
                             lista_minerales: this.$props.minerales,
                             es_evaluacion:  this.$props.evaluacion
@@ -271,37 +335,6 @@ export default {
                             console.log(error);
                         })
 
-
-
-
-
-
-
-
-
-
-                        console.log('todo bien');
-                        self.modal_tittle = 'Datos guardados correctamente';
-                        self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
-                        self.mostrar_modal_datos_ya_guardados = true;
-                    }
-                    
-                    if(response.data === "formulario no encontrado")
-                    {
-                        console.log('todo mal, no se encontro');
-                        self.modal_tittle = 'Paso 1 Guardado Fallido';
-                        self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
-                        self.mostrar_modal_datos_ya_guardados = true;
-                    }
-                    else{
-                        console.log('NO todo bien');	
-                    }
-                    
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
             //soy una autoridad minera
             
           //}
