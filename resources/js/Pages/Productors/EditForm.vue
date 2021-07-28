@@ -369,7 +369,6 @@
 				></CardMinaUno> -->
 			</div>
 			<div id="section_mina_uno"></div>
-			el id es: {{$props.productor.id}}
 			<PaginaCuatroDatosMinaUno
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"

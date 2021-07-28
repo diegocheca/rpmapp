@@ -11,7 +11,7 @@
             </div>
             <input 
             type="text" 
-            placeholder="@"
+            placeholder="Ingrese el nombre de la calle"
             id="leal_calle"
             name="leal_calle"
             v-model="leal_calle"

@@ -2239,71 +2239,98 @@ class FormAltaProductorController extends Controller
 		else $formulario_provisorio= null;
 		//arreglo las variables
 		//var_dump($formulario_provisorio);die();
-		//var_dump(is_bool($request->razon_social_correcto));
-		if(is_bool($request->razon_social_correcto))
-			if($request->razon_social_correcto == true)
-				$request->razon_social_correcto = 1;
-			else $request->razon_social_correcto = 0;
-		else//($request->razon_social_correcto == 'nada')
-			$request->razon_social_correcto = null;
-		
-		if(is_bool($request->cuit_correcto))
-			if($request->cuit_correcto == true)
-				$request->cuit_correcto = 1;
-			else $request->cuit_correcto = 0;
-		else//($request->cuit_correcto == 'nada')
-			$request->cuit_correcto = null;
-
-
-
-		if(is_bool($request->numeroproductor_correcto))
-			if($request->numeroproductor_correcto == true)
-				$request->numeroproductor_correcto = 1;
-			else $request->numeroproductor_correcto = 0;
-		else//($request->numeroproductor_correcto == 'nada')
-			$request->numeroproductor_correcto = null;
-
+		//var_dump($request->razon_social_correcto);die();
 		
 
-		if(is_bool($request->email_correcto))
-			if($request->email_correcto == true)
-				$request->email_correcto = 1;
-			else $request->email_correcto = 0;
-		else//($request->email_correcto == 'nada')
-			$request->email_correcto = null;
-
-
-
-		if(is_bool($request->tiposociedad_correcto))
-			if($request->tiposociedad_correcto == true)
-				$request->tiposociedad_correcto = 1;
-			else $request->tiposociedad_correcto = 0;
-		else//($request->tiposociedad_correcto == 'nada')
-			$request->tiposociedad_correcto = null;
-
-
-
-		if(is_bool($request->inscripciondgr_correcto))
-			if($request->inscripciondgr_correcto == true)
-				$request->inscripciondgr_correcto = 1;
-			else $request->inscripciondgr_correcto = 0;
-		else//($request->inscripciondgr_correcto == 'nada')
-			$request->inscripciondgr_correcto = null;
-
-
-		if(is_bool($request->constaciasociedad_correcto))
-			if($request->constaciasociedad_correcto == true)
-				$request->constaciasociedad_correcto = 1;
-			else $request->constaciasociedad_correcto = 0;
-		else//($request->constaciasociedad_correcto == 'nada')
-			$request->constaciasociedad_correcto = null;
-
-		
 		if($formulario_provisorio != null)
 		{
 			//lo encontre y actualizo
 			//pregunto si soy autoridad minera o si soy productor
 			if($request->es_evaluacion){ // soy autoridad minera
+				//preparos los boolean deel front
+				if($request->razon_social_correcto === 'true')
+					$request->razon_social_correcto = 1;
+				if($request->razon_social_correcto === 'false')
+					$request->razon_social_correcto = 0;
+				else
+					$request->razon_social_correcto = null;
+				
+				
+				if($request->cuit_correcto === 'true')
+					$request->cuit_correcto = 1;
+				if($request->cuit_correcto === 'false')
+					$request->cuit_correcto = 0;
+				else
+					$request->cuit_correcto = null;
+
+				
+				if($request->numeroproductor_correcto === 'true')
+					$request->numeroproductor_correcto = 1;
+				if($request->numeroproductor_correcto === 'false')
+					$request->numeroproductor_correcto = 0;
+				else
+					$request->numeroproductor_correcto = null;
+				
+				if($request->email_correcto === 'true')
+					$request->email_correcto = 1;
+				if($request->email_correcto === 'false')
+					$request->email_correcto = 0;
+				else
+					$request->email_correcto = null;
+
+				
+				if(strlen($request->tiposociedad_correcto)  == strlen("true"))
+					$request->tiposociedad_correcto = 1;
+				if($request->tiposociedad_correcto == "false")
+					$request->tiposociedad_correcto = 0;
+				else
+					$request->tiposociedad_correcto = null;
+
+
+				$aux1 = $request->inscripciondgr_correcto;
+				$aux2 = "true" ;
+
+				if($aux1 ==$aux2)
+				{
+					$request->tiposociedad_correcto = 1;
+				}
+				else
+				{
+					if(strlen($request->tiposociedad_correcto) == strlen("false"))
+						$request->tiposociedad_correcto = 0;
+					else
+						$request->tiposociedad_correcto = null;
+				}
+				
+
+					$aux1 = $request->inscripciondgr_correcto;
+					$aux2 = "true" ;
+				if($aux1 == $aux2)
+				{
+					$request->inscripciondgr_correcto = 1;
+				}
+				else
+				{
+					if(strlen($request->inscripciondgr_correcto) == strlen("false"))
+						$request->inscripciondgr_correcto = 0;
+					else
+						$request->inscripciondgr_correcto = null;
+				}
+
+				$aux1 = $request->constaciasociedad_correcto;
+				$aux2 = "true" ;
+				if($aux1 == $aux2)
+				{
+					$request->constaciasociedad_correcto = 1;
+				}
+				else 
+				{
+					if(strlen($request->constaciasociedad_correcto) == strlen("false"))
+						$request->constaciasociedad_correcto = 0;
+					else
+						$request->constaciasociedad_correcto = null;
+				}
+
 				//var_dump("voy a meter:");
 				//var_dump($request->razon_social_correcto);die();
 				$formulario_provisorio->razon_social_correcto = $request->razon_social_correcto;

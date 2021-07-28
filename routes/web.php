@@ -53,7 +53,7 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\IiadiaController;
 use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
-
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,13 +122,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
 Route::resource('formulario-alta', FormAltaProductorController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
+// Route::group(['prefix' => 'admin'], function () {
+//     Voyager::routes();
+// });
 
 Route::resource('products', ProductController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
+
+    Route::resource('users', UsersController::class)
+    ->middleware(['auth:sanctum', 'verified']);
 
 Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formulario"])->name('abrir-formulario');
 

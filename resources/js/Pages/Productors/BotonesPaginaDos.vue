@@ -229,7 +229,7 @@ methods:{
                 })
                 .then(function (response) {
                     console.log(response.data);
-                    if(response.data === "se actualizaron los datos correctamente")
+                    if(response.data === "se actualizaron los datos correctamente, siendo un productor")
                     {
                         console.log('se actualizaron los datos correctamente, siendo un productor');
                         self.modal_tittle = 'Datos guardados correctamente';
