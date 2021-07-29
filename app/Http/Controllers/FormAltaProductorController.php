@@ -986,6 +986,14 @@ class FormAltaProductorController extends Controller
 
 
 
+		if(is_null($borradores->leal_departamento_correcto)) 
+			$borradores->leal_departamento_correcto = 'nada';
+		elseif(intval($borradores->leal_departamento_correcto) == 1) 
+			$borradores->leal_departamento_correcto = true;
+		else $borradores->leal_departamento_correcto = false;
+
+
+
 
 		if(is_null($borradores->owner_correcto)) 
 			$borradores->owner_correcto = 'nada';
@@ -1018,7 +1026,7 @@ class FormAltaProductorController extends Controller
 		else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
 
 
-		//dd($minerales_asociados);
+		//dd($borradores->obs_administracion_provincia);
 
 		return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados]);
 	}
@@ -2207,6 +2215,9 @@ class FormAltaProductorController extends Controller
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		//var_dump($request->id);die();
 		if($request->id == 'null') $request->id = null;
+		if($request->es_evaluacion == 'false')
+			$request->es_evaluacion =false;
+		else $request->es_evaluacion =true;
 		if($request->cuit != null)
 			$request->cuit = str_replace(array("#", "'", "-"), '', $request->cuit);
 		if($request->id!= null)
@@ -2240,10 +2251,10 @@ class FormAltaProductorController extends Controller
 		//arreglo las variables
 		//var_dump($formulario_provisorio);die();
 		//var_dump($request->razon_social_correcto);die();
-		
 
 		if($formulario_provisorio != null)
 		{
+			
 			//lo encontre y actualizo
 			//pregunto si soy autoridad minera o si soy productor
 			if($request->es_evaluacion){ // soy autoridad minera
@@ -2365,31 +2376,50 @@ class FormAltaProductorController extends Controller
 				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor
+				//var_dump(is_object($request->constaciasociedad));die();
+
 				$formulario_provisorio->razonsocial = $request->razon_social;
 				$formulario_provisorio->email = $request->email;
 				$formulario_provisorio->cuit= $request->cuit;
 				$formulario_provisorio->numeroproductor = $request->numeroproductor;
 				$formulario_provisorio->tiposociedad = $request->tiposociedad;
 				
-				if($request->constaciasociedad != null || $request->constaciasociedad != '')
+				if(
+					($request->constaciasociedad != null)
+					&&
+					($request->constaciasociedad != '')
+					&&
+					(is_object($request->constaciasociedad)) 
+				)
 				{
 					$contents = file_get_contents($request->constaciasociedad->path());
 					$formulario_provisorio->constaciasociedad =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constaciasociedad);
 				}
-				else $formulario_provisorio->constaciasociedad =null;
-				if($request->inscripciondgr != null || $request->inscripciondgr != '')
+				//else $formulario_provisorio->constaciasociedad =null;
+				if(
+					($request->inscripciondgr != null)
+					&&
+					($request->inscripciondgr != '')
+					&&
+					(is_object($request->inscripciondgr)) 
+				)
 				{
 					$contents = file_get_contents($request->inscripciondgr->path());
 					$formulario_provisorio->inscripciondgr =  Storage::put('public/files_formularios'.'/'.$request->id, $request->inscripciondgr);
 				}
-				else $formulario_provisorio->inscripciondgr = null;
+				//else $formulario_provisorio->inscripciondgr = null;
 
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 
 				$formulario_provisorio->save();
-				return response()->json("se actualizaron los datos correctamente, siendo un productor");
+				return response()->json([
+					'status' => 'ok',
+					'msg' => 'Datos actualizados correctamente.',
+					'path_inscripcion' =>$formulario_provisorio->inscripciondgr,
+					'path_constaciasociedad' =>$formulario_provisorio->constaciasociedad,
+				],201);
 			}
 		}
 		else
@@ -2480,6 +2510,11 @@ class FormAltaProductorController extends Controller
 		);
 		//return response()->json("todo bien");
 		die();*/
+		// var_dump(
+		// 	$request->leal_numero_correcto, 
+		// );
+		// die();
+		//var_dump($request->leal_otro_correcto);die();
 
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select(
@@ -2525,36 +2560,44 @@ class FormAltaProductorController extends Controller
 			'updated_at')
 		->where('id', '=',$request->id)->first();
 		//var_dump($request->id);die();
+		
 		if($formulario_provisorio != null)
 		{
 			if($request->es_evaluacion){ // soy autoridad minera
 
-				if($request->leal_calle_correcto == 'nada')
+				if( (!is_bool($request->leal_calle_correcto)) && ($request->leal_calle_correcto == 'nada'))
 					$request->leal_calle_correcto = null;
 
-				if($request->leal_numero_correcto == 'nada')
+				if( (!is_bool($request->leal_numero_correcto)) && ($request->leal_numero_correcto == 'nada'))
 					$request->leal_numero_correcto = null;
 
-				if($request->numeroproductor_correcto == 'nada')
+				if( (!is_bool($request->numeroproductor_correcto)) && ($request->numeroproductor_correcto == 'nada'))
 					$request->numeroproductor_correcto = null;
 
-				if($request->leal_telefono_correcto == 'nada')
+				if( (!is_bool($request->leal_telefono_correcto)) && ($request->leal_telefono_correcto == 'nada'))
 					$request->leal_telefono_correcto = null;
 
-				if($request->leal_provincia_correcto == 'nada')
+				if( (!is_bool($request->leal_provincia_correcto)) && ($request->leal_provincia_correcto == 'nada'))
 					$request->leal_provincia_correcto = null;
-
-				if($request->leal_departamento_correcto == 'nada')
+				//var_dump($request->leal_departamento_correcto);
+				if( (!is_bool($request->leal_departamento_correcto)) && ($request->leal_departamento_correcto == 'nada'))
 					$request->leal_departamento_correcto = null;
-
-				if($request->leal_localidad_correcto == 'nada')
+				//var_dump($request->leal_departamento_correcto);die();
+				if( (!is_bool($request->leal_localidad_correcto)) && ($request->leal_localidad_correcto == 'nada'))
 					$request->leal_localidad_correcto = null;
 
-				if($request->leal_cp_correcto == 'nada')
+				if( (!is_bool($request->leal_cp_correcto)) && ($request->leal_cp_correcto == 'nada'))
 					$request->leal_cp_correcto = null;
-
-				if($request->leal_otro_correcto == 'nada')
+					
+				//var_dump($request->leal_otro_correcto);
+				if( (!is_bool($request->leal_otro_correcto)) && ($request->leal_otro_correcto == 'nada'))
+				{
 					$request->leal_otro_correcto = null;
+				//	echo("entre");
+
+				}
+				//var_dump($request->leal_otro_correcto);die();
+					
 
 				//lo encontre y actualizo
 				$formulario_provisorio->leal_calle_correcto = $request->nombre_calle_legal_correcto;
@@ -2591,7 +2634,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
-				return response()->json("grgdgdf se actualizaron los datos correctamente");
+				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor
 				$formulario_provisorio->leal_calle = $request->leal_calle;
@@ -2724,6 +2767,7 @@ class FormAltaProductorController extends Controller
 		return response()->json("todo bien");
 		die();*/
 
+		
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select(
 			'id',
@@ -2778,32 +2822,47 @@ class FormAltaProductorController extends Controller
 			//encontre el formulario, entonces tengo que actualizarlo
 			if($request->es_evaluacion){ // soy autoridad minera
 
-				if($request->administracion_calle_correcto == 'nada')
+				if( (!is_bool($request->administracion_calle_correcto)) && ($request->administracion_calle_correcto == 'nada'))
 					$request->administracion_calle_correcto = null;
 
-				if($request->administracion_numero_correcto == 'nada')
+				if( (!is_bool($request->administracion_numero_correcto)) && ($request->administracion_numero_correcto == 'nada'))
 					$request->administracion_numero_correcto = null;
 
-				if($request->numeroproductor_correcto == 'nada')
+				if( (!is_bool($request->numeroproductor_correcto)) && ($request->numeroproductor_correcto == 'nada'))
 					$request->numeroproductor_correcto = null;
 
-				if($request->administracion_telefono_correcto == 'nada')
+				if( (!is_bool($request->administracion_telefono_correcto)) && ($request->administracion_telefono_correcto == 'nada'))
 					$request->administracion_telefono_correcto = null;
 
-				if($request->administracion_provincia_correcto == 'nada')
+				if( (!is_bool($request->administracion_provincia_correcto)) && ($request->administracion_provincia_correcto == 'nada'))
 					$request->administracion_provincia_correcto = null;
 
-				if($request->administracion_departamento_correcto == 'nada')
+				if( (!is_bool($request->administracion_departamento_correcto)) && ($request->administracion_departamento_correcto == 'nada'))
 					$request->administracion_departamento_correcto = null;
 
-				if($request->administracion_localidad_correcto == 'nada')
+				if( (!is_bool($request->administracion_localidad_correcto)) && ($request->administracion_localidad_correcto == 'nada'))
 					$request->administracion_localidad_correcto = null;
 
-				if($request->administracion_cp_correcto == 'nada')
+				if( (!is_bool($request->administracion_cp_correcto)) && ($request->administracion_cp_correcto == 'nada'))
 					$request->administracion_cp_correcto = null;
 
-				if($request->administracion_otro_correcto == 'nada')
+				if( (!is_bool($request->administracion_otro_correcto)) && ($request->administracion_otro_correcto == 'nada'))
 					$request->administracion_otro_correcto = null;
+				
+
+					// var_dump(
+					// 	$request->id, 
+					// 	$request->nombre_calle_administracion_correcto, 
+					// 	$request->administracion_numero_correcto, 
+					// 	$request->administracion_telefono_correcto, 
+					// 	$request->administracion_provincia_correcto, 
+					// 	$request->administracion_departamento_correcto, 
+					// 	$request->administracion_localidad_correcto, 
+					// 	$request->administracion_cp_correcto, 
+					// 	$request->administracion_otro_correcto, 
+					// );
+					// die();
+			
 
 				//lo encontre y actualizo
 				$formulario_provisorio->administracion_calle_correcto = $request->nombre_calle_administracion_correcto;
@@ -2837,11 +2896,11 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->obs_administracion_otro = $request->obs_administracion_otro;
 
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-				$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_tres = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				
 				$formulario_provisorio->save();
-				return response()->json("grgdgdf se actualizaron los datos correctamente");
+				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor
 				//var_dump("soy productores");die();
@@ -3821,9 +3880,9 @@ class FormAltaProductorController extends Controller
 		// );
 		// //return response()->json("todo bien");
 		// die();
-
-		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
-		//var_dump($test_mode_mail);
+		//var_dump($request->es_evaluacion);
+		//$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
+		//var_dump($request->es_evaluacion);
 		//die();
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select(
@@ -3866,63 +3925,40 @@ class FormAltaProductorController extends Controller
 			'updated_at'
 			)
 		->where('id', '=',$request->id)->first();
-		/*var_dump($formulario_provisorio->id);
-		die();*/
-		//'lista_minerales',
-
+	// var_dump($formulario_provisorio->id);
+	// 	die();
 		
 		//PARA LA EVALUACION
-		if(is_bool($request->localidad_mina_provincia_correcto))
-			if($request->localidad_mina_provincia_correcto == true)
-				$request->localidad_mina_provincia_correcto = 1;
-			else $request->localidad_mina_provincia_correcto = 0;
-		else
+		//var_dump($request->localidad_mina_provincia_correcto);
+		if(!is_bool($request->localidad_mina_provincia_correcto))
 			$request->localidad_mina_provincia_correcto = null;
-
-		if(is_bool($request->localidad_mina_departamento_correcto))
-			if($request->localidad_mina_departamento_correcto == true)
-				$request->localidad_mina_departamento_correcto = 1;
-			else $request->localidad_mina_departamento_correcto = 0;
-		else
+		//var_dump($request->localidad_mina_provincia_correcto);
+		if(!is_bool($request->localidad_mina_departamento_correcto))
 			$request->localidad_mina_departamento_correcto = null;
 
-		if(is_bool($request->localidad_mina_localidad_correcto))
-			if($request->localidad_mina_localidad_correcto == true)
-				$request->localidad_mina_localidad_correcto = 1;
-			else $request->localidad_mina_localidad_correcto = 0;
-		else
+		if(!is_bool($request->localidad_mina_localidad_correcto))
 			$request->localidad_mina_localidad_correcto = null;
 
 
-		if(is_bool($request->tipo_sistema_correcto))
-			if($request->tipo_sistema_correcto == true)
-				$request->tipo_sistema_correcto = 1;
-			else $request->tipo_sistema_correcto = 0;
-		else
+		if(!is_bool($request->tipo_sistema_correcto))
 			$request->tipo_sistema_correcto = null;
 
 
-		if(is_bool($request->longitud_correcto))
-			if($request->longitud_correcto == true)
-				$request->longitud_correcto = 1;
-			else $request->longitud_correcto = 0;
-		else
+		if(!is_bool($request->longitud_correcto))
 			$request->longitud_correcto = null;
 
 
-		if(is_bool($request->latitud_correcto))
-			if($request->latitud_correcto == true)
-				$request->latitud_correcto = 1;
-			else $request->latitud_correcto = 0;
-		else
+		if(!is_bool($request->latitud_correcto))
 			$request->latitud_correcto = null;
-
+		
+		//var_dump($formulario_provisorio->id);die();
 		if($formulario_provisorio != null)
 		{
 			//lo encontre y actualizo
 			//pregunto si soy autoridad minera o si soy productor
+			//var_dump($request->es_evaluacion);
 			if($request->es_evaluacion){ // soy autoridad minera
-				//dd("ffff");
+				//var_dump("sadasd");die();
 				$formulario_provisorio->localidad_mina_provincia_correcto = $request->localidad_mina_provincia_correcto;
 				$formulario_provisorio->obs_localidad_mina_provincia = $request->obs_localidad_mina_provincia;
 	

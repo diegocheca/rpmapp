@@ -293,6 +293,7 @@
 					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 				></CardDomAdmin> -->
 			</div>
+			dqdqwdq correcto:{{form.obs_administracion_provincia}}
 			<div id="section_domicilio_administrativo"></div>
 			<PaginaDosDatosDomLegal
 				:link_volver="route('formulario-alta.index')"
@@ -869,31 +870,27 @@ export default {
 
 				administracion_calle: this.$props.productor.administracion_calle,
 				administracion_calle_valido:  true,
-				administracion_calle_correcto: 'nada',
-				obs_administracion_calle_nombre: '',
+				administracion_calle_correcto:  this.$props.productor.administracion_calle_correcto,
+				obs_administracion_calle_nombre:  this.$props.productor.obs_administracion_calle_nombre,
 				obs_administracion_calle_nombre_valido: false,
 				
-				
-				
-				
-
 				administracion_numero: this.$props.productor.administracion_numero,
 				administracion_numero_valido:  true,
-				administracion_numero_correcto: 'nada',
-				obs_administracion_numero_nombre: '',
+				administracion_numero_correcto: this.$props.productor.administracion_numero_correcto,
+				obs_administracion_numero_nombre: this.$props.productor.obs_administracion_numero,
 				obs_administracion_numero_nombre_valido: false,
 
 				administracion_telefono: this.$props.productor.administracion_telefono,
 				administracion_telefono_valido:  true,
-				administracion_telefono_correcto: 'nada',
-				obs_administracion_telefono_nombre: '',
+				administracion_telefono_correcto: this.$props.productor.administracion_telefono_correcto,
+				obs_administracion_telefono_nombre: this.$props.productor.obs_administracion_telefono,
 				obs_administracion_telefono_nombre_valido: false,
 
 
 				administracion_pais: this.$props.productor.administracion_pais,
 				administracion_pais_valido:  true,
-				administracion_pais_correcto: 'nada',
-				obs_administracion_pais: '',
+				administracion_pais_correcto: this.$props.productor.administracion_pais_correcto,
+				obs_administracion_pais: this.$props.productor.obs_administracion_pais,
 				obs_administracion_pais_valido: false,
 
 
@@ -901,16 +898,16 @@ export default {
 
 				administracion_provincia: this.$props.productor.administracion_provincia,
 				administracion_provincia_valido:  true,
-				administracion_provincia_correcto: 'nada',
-				obs_administracion_provincia: '',
+				administracion_provincia_correcto: this.$props.productor.administracion_provincia_correcto,
+				obs_administracion_provincia: this.$props.productor.obs_administracion_provincia,
 				obs_administracion_provincia_valido: false,
 
 
 
 				administracion_departamento: this.$props.productor.administracion_departamento,
 				administracion_departamento_valido:  true,
-				administracion_departamento_correcto: 'nada',
-				obs_administracion_departamento: '',
+				administracion_departamento_correcto: this.$props.productor.administracion_departamento_correcto,
+				obs_administracion_departamento: this.$props.productor.obs_administracion_departamento,
 				obs_administracion_departamento_valido: false,
 
 
@@ -919,14 +916,14 @@ export default {
 
 				administracion_localidad: this.$props.productor.administracion_localidad,
 				administracion_localidad_valido:  true,
-				administracion_localidad_correcto: 'nada',
-				obs_administracion_localidad: '',
+				administracion_localidad_correcto: this.$props.productor.administracion_localidad_correcto,
+				obs_administracion_localidad: this.$props.productor.obs_administracion_localidad,
 				obs_administracion_localidad_valido: false,
 
 				administracion_cp: this.$props.productor.administracion_cp,
 				administracion_cp_valido:  true,
-				administracion_cp_correcto: 'nada',
-				obs_administracion_cp: '',
+				administracion_cp_correcto: this.$props.productor.administracion_cp_correcto,
+				obs_administracion_cp: this.$props.productor.obs_administracion_cp,
 				obs_administracion_cp_valido: false,
 
 
@@ -935,8 +932,8 @@ export default {
 
 				administracion_otro: this.$props.productor.administracion_otro,
 				administracion_otro_valido:  true,
-				administracion_otro_correcto: 'nada',
-				obs_administracion_otro: '',
+				administracion_otro_correcto: this.$props.productor.administracion_otro_correcto,
+				obs_administracion_otro: this.$props.productor.obs_administracion_otro,
 				obs_administracion_otro_valido: false,
 
 
@@ -1124,20 +1121,20 @@ export default {
 
 				localidad_mina_pais: this.$props.productor.localidad_mina_pais,
 				localidad_mina_pais_validacion:  true,
-				localidad_mina_pais_correcto: 'nada',
-				obs_localidad_mina_pais: '',
+				localidad_mina_pais_correcto: this.$props.productor.localidad_mina_pais_correcto,
+				obs_localidad_mina_pais:  this.$props.productor.obs_localidad_mina_pais,
 				obs_localidad_mina_pais_valido: false,
 
 				localidad_mina_provincia: this.$props.productor.localidad_mina_provincia,
 				localidad_mina_provincia_validacion:  true,
-				localidad_mina_provincia_correcto: 'nada',
-				obs_localidad_mina_provincia: '',
+				localidad_mina_provincia_correcto: this.$props.productor.localidad_mina_provincia_correcto,
+				obs_localidad_mina_provincia:this.$props.productor.obs_localidad_mina_provincia,
 				obs_localidad_mina_provincia_valido: false,
 
 				localidad_mina_departamento: this.$props.productor.localidad_mina_departamento,
 				localidad_mina_departamento_validacion:  true,
-				localidad_mina_departamento_correcto: 'nada',
-				obs_localidad_mina_departamento: '',
+				localidad_mina_departamento_correcto:this.$props.productor.localidad_mina_departamento_correcto,
+				obs_localidad_mina_departamento:this.$props.productor.obs_localidad_mina_departamento,
 				obs_localidad_mina_departamento_valido: false,
 
 
@@ -1145,29 +1142,29 @@ export default {
 
 				localidad_mina_localidad: this.$props.productor.localidad_mina_localidad,
 				localidad_mina_localidad_validacion:  true,
-				localidad_mina_localidad_correcto: 'nada',
-				obs_localidad_mina_localidad: '',
+				localidad_mina_localidad_correcto:this.$props.productor.localidad_mina_localidad_correcto,
+				obs_localidad_mina_localidad:this.$props.productor.obs_localidad_mina_localidad,
 				obs_localidad_mina_localidad_valido: false,
 
 
 				tipo_sistema: this.$props.productor.tipo_sistema,
 				tipo_sistema_validacion:  true,
-				tipo_sistema_correcto: 'nada',
-				obs_tipo_sistema: '',
+				tipo_sistema_correcto:  this.$props.productor.tipo_sistema_correcto,
+				obs_tipo_sistema:   this.$props.productor.obs_tipo_sistema,
 				obs_tipo_sistema_valido: false,
 
 
 
 				latitud: this.$props.productor.latitud,
 				latitud_validacion:  true,
-				latitud_correcto: 'nada',
-				obs_latitud: '',
+				latitud_correcto:  this.$props.productor.latitud_correcto,
+				obs_latitud:   this.$props.productor.obs_latitud,
 				obs_latitud_valido: false,
 
 				longitud: this.$props.productor.longitud,
 				longitud_validacion:  true,
-				longitud_correcto: 'nada',
-				obs_longitud: '',
+				longitud_correcto: this.$props.productor.longitud_correcto,
+				obs_longitud:  this.$props.productor.obs_longitud,
 				obs_longitud_valido: false,
 
 				created_by: this.$props.productor.created_by,

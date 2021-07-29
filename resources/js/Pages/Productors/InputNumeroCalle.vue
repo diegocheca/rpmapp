@@ -121,7 +121,7 @@ export default {
   methods:{
     actaulizar_variable_legalcallenum(valor) {
         this.legal_calle_num_correcto_local = valor;
-        this.$emit('changenumlegalcorrecto',this.legal_calle_num_correcto_local);
+        this.$emit('changenumlegalcorrecto',valor);
     },
      
       actaulizar_contenido_text_area_calle_legal_num(value) {

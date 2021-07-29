@@ -140,9 +140,9 @@
                         v-bind:label="'Número de Calle Domicilio'"
                         v-bind:testing="mostrar_testing"
                         v-on:changetelnumlegalvalido="update_num_legal_valido($event)"
-                        v-on:changetelnumlegalcorrecto="update_num_legal_correcto($event)"
-                        v-on:changeobstelnumlegal="update_obs_num_legal($event)"
-                        v-on:changeobstelnumlegalvalido="update_obs_num_legal_valido($event)"
+                        v-on:changenumlegalcorrecto="update_num_legal_correcto($event)"
+                        v-on:changeobsnumlegal="update_obs_num_legal($event)"
+                        v-on:changenumlegalvalido="update_obs_num_legal_valido($event)"
                         v-on:changevalornumlegal="update_valor_num_legal($event)"
                     >
                     </InputNumeroCalle>
@@ -271,7 +271,7 @@
                         v-bind:leal_provincia="$props.leal_provincia"
                         v-bind:leal_provincia_valido="$props.leal_provincia_valido"
                         v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
-                        v-bind:obs_leal_provfincia="$props.obs_leal_provincia"
+                        v-bind:obs_leal_provincia="$props.obs_leal_provincia"
                         v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
@@ -290,7 +290,7 @@
                         v-bind:leal_provincia="$props.leal_provincia"
                         v-bind:leal_provincia_valido="$props.leal_provincia_valido"
                         v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
-                        v-bind:obs_leal_provfincia="$props.obs_leal_provincia"
+                        v-bind:obs_leal_provincia="$props.obs_leal_provincia"
                         v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
@@ -893,6 +893,7 @@ export default {
             //tengo que enviarsela al padre
         },
         update_num_legal_correcto(newValue){
+            console.log(newValue);
             this.form_pagina.leal_numero_correcto = newValue;
             //tengo que enviarsela al padre
         },
@@ -906,7 +907,7 @@ export default {
             //tengo que enviarsela al padre
         },
         update_valor_num_legal(newValue){
-            console.log("traje un"+newValue);
+            console.log("traje dddddddddddddun"+newValue);
             this.form_pagina.leal_numero = newValue;
             //tengo que enviarsela al padre
         },
@@ -1078,10 +1079,12 @@ export default {
             //tengo que enviarsela al padre
         },
         update_otro_correcto(newValue){
+            console.log("cambie orto correcto"+newValue);
             this.form_pagina.leal_otro_correcto = newValue;
             //tengo que enviarsela al padre
         },
         update_obs_otro_legal(newValue){
+            console.log("cambie el otro");
             this.form_pagina.obs_leal_otro = newValue;
             //tengo que enviarsela al padre
         },

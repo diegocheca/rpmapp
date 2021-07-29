@@ -125,7 +125,7 @@ export default {
   methods:{
     actaulizar_variable_legalcalle_otro(valor) {
         this.legal_calle_otro_correcto_local = valor;
-        this.$emit('changeotrolegalcorrecto',this.legal_calle_otro_correcto_local);
+        this.$emit('changeotrolegalcorrecto',valor);
     },
      
       actaulizar_contenido_text_area_calle_legal_otro(value) {

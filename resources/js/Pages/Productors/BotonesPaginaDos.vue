@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex items-center justify-center w-full">
         <jet-dialog-modal :show="mostrar_modal_datos_ya_guardados" @close="cerrar_modal_datos_uno">
             <template #title>
                     {{modal_tittle}}
@@ -13,18 +13,28 @@
                 </button>
             </template>
         </jet-dialog-modal>
-        <button
-            type="button"
-            class="animate-pulse text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
-            @click="guardar_avnces_dos"
-        >
-            {{titulo_boton_guardar}}
-        </button>
-        <a :href="link_volver">
-            <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
-                {{titulo_boton_volver}}
-            </button>
-        </a>
+
+         <div class="flex w-full">
+            <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
+                <a :href="link_volver">
+                    <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
+                        {{titulo_boton_volver}}
+                    </button>
+                </a>
+            </div>
+            <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
+                <button
+                    type="button"
+                    class="animate-pulse text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
+                    @click="guardar_avnces_dos"
+                >
+                    {{titulo_boton_guardar}}
+                </button>
+            </div>
+
+        </div>
+
+        
         <div v-if="mostrar_testing">
 
             {{ $props.leal_calle}}
@@ -229,7 +239,7 @@ methods:{
                 })
                 .then(function (response) {
                     console.log(response.data);
-                    if(response.data === "se actualizaron los datos correctamente, siendo un productor")
+                    if(response.data === "se actualizaron los datos correctamente")
                     {
                         console.log('se actualizaron los datos correctamente, siendo un productor');
                         self.modal_tittle = 'Datos guardados correctamente';

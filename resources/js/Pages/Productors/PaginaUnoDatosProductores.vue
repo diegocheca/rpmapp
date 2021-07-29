@@ -14,7 +14,6 @@
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16  sticky top-0">
 
-            en el hijo es: {{$props.inscripciondgr_correcto}}  - {{$props.constaciasociedad_correcto}}
             <a href="#section_productor">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/casco-minero.svg" width="50%">
             </a>
@@ -148,7 +147,7 @@
                 </div>
             </div>
         </div>
-         <div class="flex">
+        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputCuit
                     v-bind:cuit="$props.cuit"
@@ -231,8 +230,8 @@
                 </div>
 
             </div>
-         </div>
-         <div class="flex">
+        </div>
+        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputTipoSociedad
                     v-bind:tiposociedad="$props.tiposociedad"
@@ -273,10 +272,11 @@
                     -- tipo de sociedad observacion deel padre{{form_pagina.obs_tiposociedad}}
                 </div>
             </div>
-         </div>
-         <br>
-         <br>
-         <div class="flex">
+        </div>
+        <br>
+        <br>
+        <div class="flex">
+            <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
                     v-bind:fileinput_valor="form_pagina.inscripciondgr"
@@ -312,6 +312,7 @@
                     </div>
                     <br>
                 </div>
+                <br>
                 <div class="flex" v-if="mostrar_testing">
                     -- valor inscripcion dgr:{{form_pagina.inscripciondgr}}*
                     -- inscripcion dgr valida deel padre{{form_pagina.inscripciondgr_valido}}
@@ -352,7 +353,7 @@
                     </p>
                     <br>
                 </div>
-                
+                <br>
                 <div class="flex" v-if="mostrar_testing">
                     -- valor constancia sociedad:{{form_pagina.constanciasociedad}}*
                     -- constancia de sociedad valida deel padre{{form_pagina.constanciasociedad_valido}}
@@ -410,7 +411,14 @@
                 :testing ="mostrar_testing"
 
                 v-on:CreeUnNuevoId="update_id_recien_creado($event)"
-            ></BotonesPaginaUna> el id es:{{$props.id}}*
+                v-on:actualizarinscripcion="update_inscripcion($event)"
+                v-on:actualizaconstancia="update_constancia($event)"
+
+
+
+                
+
+            ></BotonesPaginaUna>
             
          </div>
         
@@ -687,6 +695,24 @@ export default {
         update_archivo_constancia(value){
             this.form_pagina.constaciasociedad = value;
         },
+
+        update_inscripcion(value){
+            console.log("actualizando la inscripcion desde la pagina");
+            this.form_pagina.inscripciondgr = value;
+            //this.$emit('ActualizarPathInscripcionAAbuelo',value);
+        },
+
+
+        update_constancia(value){
+            this.form_pagina.constaciasociedad = value;
+           // this.$emit('ActualizarPathConstanciaAAbuelo',value);
+        },
+
+        
+
+
+
+        
         
     }
 };

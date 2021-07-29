@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="flex items-center justify-center w-full">
         <jet-dialog-modal :show="mostrar_modal_datos_ya_guardados" @close="cerrar_modal_datos_uno">
             <template #title>
                     {{modal_tittle}}
@@ -13,18 +13,25 @@
                 </button>
             </template>
         </jet-dialog-modal>
-        <button
-            type="button"
-            class=" animate-pulse text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
-            @click="guardar_avnces_uno"
-        >
-            {{titulo_boton_guardar}}
-        </button>
-        <a :href="link_volver">
-            <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
-                {{titulo_boton_volver}}
-            </button>
-        </a>
+        <div class="flex w-full">
+            <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
+                <a :href="link_volver">
+                    <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
+                        {{titulo_boton_volver}}
+                    </button>
+                </a>
+            </div>
+            <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
+                <button
+                    type="button"
+                    class=" animate-pulse text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
+                    @click="guardar_avnces_uno"
+                >
+                    {{titulo_boton_guardar}}
+                </button>
+            </div>
+
+        </div>
         <div v-if="$props.testing">
 
             {{ $props.razon_social}}
@@ -132,11 +139,23 @@ export default {
 
 
     },
-    guardar_avnces_uno(){
-        // alert("el id q mando es:"+this.$props.id);
+    actualizar_inscripcion_nueva(pathnueva){
+        console.log("actualizando la inscripcion");
+        this.$emit('actualizarinscripcion',pathnueva);
 
-        if(this.$props.evaluacion)
-        {
+
+    },
+    actualizar_cosntancia_nueva(pathnueva){
+        this.$emit('actualizaconstancia',pathnueva);
+
+
+    },
+
+    guardar_avnces_uno(){
+        //alert("el id q mando es:"+this.$props.evaluacion);
+
+        // if(this.$props.evaluacion)
+        // {
             //Soy autoridad minera
             let self = this;
             const data = new FormData();
@@ -183,7 +202,22 @@ export default {
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
             axios.post('/formularios/evaluacion_auto_guardado_uno', data)
                 .then(function (response) {
-                    console.log(response.data);
+                    console.log(response.data.msg);
+                    if(response.data.msg === "Datos actualizados correctamente.")
+                    {
+                        console.log('todo bien');
+                        self.modal_tittle = 'Datos guardados correctamente como Autoridad';
+                        self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, siendo Autoridad, gracias por usar este servcio, por favor continue llenando el formulario';
+                        self.mostrar_modal_datos_ya_guardados = true;
+                        console.log(response.data.path_inscripcion);
+                        console.log(response.data.path_constaciasociedad);
+                        if(response.data.path_inscripcion !== '')
+                            self.actualizar_inscripcion_nueva(response.data.path_inscripcion);
+                        if(response.data.path_constaciasociedad !== '')
+                            self.actualizar_cosntancia_nueva(response.data.path_constaciasociedad);
+
+                    }
+                    
                     if(response.data === "se actualizaron los datos correctamente")
                     {
                         console.log('todo bien');
@@ -219,12 +253,12 @@ export default {
                 })
             //soy una autoridad minera
             
-          }
-        if(!this.$props.evaluacion)
-        {
-              //soy un productor
+        //   }
+        // if(!this.$props.evaluacion)
+        // {
+        //       //soy un productor
 
-        }
+        // }
 
     },
     cerrar_modal_datos_uno() {
