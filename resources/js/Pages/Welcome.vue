@@ -9,6 +9,8 @@
             <div class="mt-8 text-2xl">
                 Bienvenido al sistema de Registro de Productores Mineros!
             </div>
+            <a :href="route('register')">Registrarse</a>  
+            
 
             <div class="mt-6 text-gray-500">
                 Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
@@ -23,6 +25,10 @@
             <div><ChartPie /></div>
             <div><ChartPie /></div>
         </div>
+
+        <div><TimeLine /></div>
+        <div><LineChart /></div>
+        
         <!-- <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
             <div class="p-6">
                 <div class="flex items-center">
@@ -104,12 +110,16 @@
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     import ChartBar from '@/Components/charts/bar'
     import ChartPie from '@/Components/charts/pie'
+    import TimeLine from '@/Components/charts/timeline'
+    import LineChart from '../Components/charts/linechart.vue'
     export default {
         components: {
             JetApplicationLogo,
             JetAuthenticationCardLogo,
             ChartBar,
-            ChartPie
+            ChartPie,
+            TimeLine,
+            LineChart
         },
     }
 </script>

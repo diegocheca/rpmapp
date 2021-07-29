@@ -13,7 +13,7 @@
             type="text" 
             maxlength="30"
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Núumero de calle"
+            placeholder="Número de calle"
             id="leal_numero"
             name="leal_numero"
             v-model="leal_numero"
@@ -121,7 +121,7 @@ export default {
   methods:{
     actaulizar_variable_legalcallenum(valor) {
         this.legal_calle_num_correcto_local = valor;
-        this.$emit('changenumlegalcorrecto',this.legal_calle_num_correcto_local);
+        this.$emit('changenumlegalcorrecto',valor);
     },
      
       actaulizar_contenido_text_area_calle_legal_num(value) {

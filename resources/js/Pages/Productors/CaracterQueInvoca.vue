@@ -29,7 +29,6 @@
                 name="otro_input"
                 v-model="otro_input_local"
                 v-bind:class=clase_de_input_otro
-                :disabled="evaluacion"
                 @input="cambio_input_otro($event.target.value)" 
                 />
                 <p  v-bind:class=clase_texto_validacion_otro_input>{{texto_validacion_otro_input}}</p>
