@@ -31,13 +31,14 @@
     <Form @submit="onSubmit" :validation-schema="currentSchema" v-slot="{ values, errors }">
         <div v-for="(item, index) in formSchema" :key="index">
             <template v-if="currentStep === index">
-                <DynamicInputs :formSchema="item.bodyStep"/>
+                <!-- <DynamicInputs :formSchema="item.bodyStep"/> -->
+                <DynamicInputs :formSchema="item.bodyStep" :action="action" :evaluate="evaluate" :valuesForm="values" />
             </template>
         </div>
-        <div class="flex gap-x-5 justify-center pt-9">
-            <button v-if="currentStep > 0" type="button" class=" bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" @click="prevStep">Anterior</button>
+        <div class="flex gap-x-5 justify-center my-10">
+            <button v-if="!disableSave && currentStep > 0" type="button" class=" bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" @click="prevStep">Anterior</button>
             <button v-if="!disableSave" type="submit" class=" bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3">{{currentStep == formSchema.length -1? buttomLabel :'Siguiente'}}</button>
-            <button v-if="currentStep == formSchema.length - 1 && disableSave" type="button" class="flex bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" :disabled="disableSave">              
+            <button v-if="currentStep == formSchema.length - 1 && disableSave" type="button" class="flex bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3" :disabled="disableSave">
                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -52,16 +53,12 @@
         </inertia-link> -->
 
         <template v-if="dev">
-            <div class="mt-6 bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white">
+            <div class="mt-6 bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white ">
                 <h3>ERRORS:</h3>
-                <pre>
+                <pre class="flex">
                     {{errors}}
                 </pre>
             </div>
-
-        </template>
-
-        <template v-if="dev">
             <div class="mt-6 bg-clip-border p-6 bg-indigo-600 border-4 border-indigo-300 border-dashed text-white">
                 <h3>VALUES:</h3>
                 <pre>
@@ -98,13 +95,28 @@ export default {
         DynamicInputs
     },
     props: {
+        action: {
+            require: true,
+            type: String,
+        },
+        saveUrl: {
+            require: true,
+            type: String,
+        },
+        saveFileUrl: {
+            require: true,
+            type: String,
+        },
         builder: {
             require: true
         },
         province: {
             require: true,
             type: String,
-        },      
+        },
+        // schema: {
+        //     require: true
+        // },
         titleForm: {
             require: true,
             type: String,
@@ -137,6 +149,10 @@ export default {
         const formValues = {};
 
         return {
+            progressUpload: 0,
+            showProgressUpload: false ,
+            isSubmit: false,
+
             title: this.$props.titleForm,
             inputsTypes: inputsTypes,
             formSchema: [],
@@ -147,13 +163,14 @@ export default {
         };
     },
     methods: {
-        onSubmit(values) {            
+        onSubmit(values) {
             // accumlate the form values with the values from previous steps
             Object.assign(this.formValues, values);
 
             if (this.currentStep === this.formSchema.length - 1) {
+                this.saveForm();
                 console.log("Done: ", JSON.stringify(this.formValues, null, 2));
-                this.disableSave = true;
+                //this.disableSave = true;
                 return;
             }
             // console.log("Current values: ");
@@ -167,10 +184,61 @@ export default {
             }
             this.disableSave = false;
             this.currentStep--;
-        },    
+        },
+        async saveForm() {
+            let response;
+            let formData = new FormData();
+            let isFile = false;
+            for ( var key in this.formValues ) {
+                if( Array.isArray(this.formValues[key])) {
+                    for (let index = 0; index < this.formValues[key].length; index++) {
+                        if(!this.formValues[key][index] instanceof File) continue;
+                        const element = this.formValues[key][index];
+                        formData.append(key+'_'+index, element);
+                        //isFile = true;
+                    }
+                }
+
+            }
+
+            this.isSubmit = true;
+            try {
+                if(isFile) {
+                    response = await axios.post(this.$props.saveFileUrl, formData, {
+                        onUploadProgress: function( progressEvent ) {
+                            this.progressUpload = parseInt( Math.round( ( progressEvent.loaded / progressEvent.total ) * 100 ))
+                            this.showProgressUpload = true;
+                        }.bind(this)
+                    });
+
+                    for ( var key2 in response.data ) {
+                        values[key2] = response.data[key2];
+                    }
+                }
+
+                switch (this.$props.action) {
+                    case "create":
+                        this.$inertia.post(route(this.$props.saveUrl), this.formValues);
+                        break;
+
+                    case "update":
+                        this.$inertia.put(route("reinscripciones.update", this.$props.builder.id), this.formValues);
+                        break;
+
+                    case "evaluate":
+                        this.$inertia.put(route("reinscripciones.updateRevision", this.$props.builder.id), this.formValues);
+                        break;
+
+                }
+
+            } catch (error) {
+
+            }
+             this.isSubmit = false;
+        }
     },
-    computed: {        
-        currentSchema() {                   
+    computed: {
+        currentSchema() {
             return this.yepSchemas? yup.object().shape(this.yepSchemas[this.currentStep]) : {};
         },
         progressCurrentStep(){
@@ -184,7 +252,7 @@ export default {
     // },
     async mounted() {
         const module = await import(`../../../../helpers/formularios/${this.$props.province}`)
-        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.evaluate, this.$props.dataForm);
+        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.action, this.$props.dataForm);
 
         for (let index = 0; index < this.formSchema.length; index++) {
             this.yepSchemas.push([this.formSchema[index]].reduce(createYupStepSchema, {},this.$props.evaluate));
@@ -209,7 +277,8 @@ input:checked ~ .dot {
 }
 
 .btn-close-row {
-    position: absolute;
+    position: relative;
+    transform: translate(110%, -45%);
     right: 36px;
     z-index: 100;
     cursor: pointer;

@@ -23,7 +23,8 @@
                 <div><ChartPie /></div>
                 <div><ChartPie /></div>
             </div>
-
+            <ChartMap />
+            <ChartStackBar class="" />
         </div>
         <!-- <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
             <div class="p-6">
@@ -106,12 +107,15 @@
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     import ChartBar from '@/Components/charts/bar'
     import ChartPie from '@/Components/charts/pie'
+    import ChartMap from '@/Components/charts/map'
+
     export default {
         components: {
             JetApplicationLogo,
             JetAuthenticationCardLogo,
             ChartBar,
-            ChartPie
+            ChartPie,
+            ChartMap
         },
     }
 </script>

@@ -13,6 +13,9 @@ class HistorialReinscripciones extends Model
     protected $table = 'historial_reinscripciones';
 
     protected $date = ['created_at', 'deleted_at', 'updated_at' ];
+    protected $casts = [
+        'productos' => 'array',
+    ];
     protected $fillable = [
         "id_reinscripcion",
         "nombre_evaluacion",
@@ -29,8 +32,8 @@ class HistorialReinscripciones extends Model
         "porcentaje_exportado_comentario",
         "prospeccion_evaluacion",
         "prospeccion_comentario",
-        "explotación_evaluacion",
-        "explotación_comentario",
+        "explotacion_evaluacion",
+        "explotacion_comentario",
         "desarrollo_evaluacion",
         "desarrollo_comentario",
         "exploracion_evaluacion",
@@ -51,5 +54,7 @@ class HistorialReinscripciones extends Model
         "personal_trans_administrativos_comentario",
         "personal_trans_otros_evaluacion",
         "personal_trans_otros_comentario",
+        "productos"
     ];
+
 }

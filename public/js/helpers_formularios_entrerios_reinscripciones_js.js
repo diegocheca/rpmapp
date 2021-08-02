@@ -68,10 +68,11 @@ var Observaciones = /*#__PURE__*/function () {
   _createClass(Observaciones, [{
     key: "getFormSchema",
     value: function getFormSchema(data) {
-      if (!data.evaluate) return {};
+      console.log(data);
+      if (data.action == 'create') return {};
       return {
         name: "".concat(data.name, "_evaluacion"),
-        value: data.revisionData ? data.revisionData["".concat(data.name, "_evaluacion")] : '',
+        value: data.schema["".concat(data.name, "_evaluacion")],
         options: [{
           label: 'Si',
           value: 'aprobado',
@@ -85,17 +86,17 @@ var Observaciones = /*#__PURE__*/function () {
           value: 'sin evaluar',
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
         }],
-        validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().oneOf(["aprobado", "rechazado", "sin evaluar"]).required('Debes seleccionar una opción'),
+        validations: data.action == 'evaluate' ? yup__WEBPACK_IMPORTED_MODULE_1__.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').required('Debes seleccionar una opción').nullable() : null,
         comment: {
           label: 'OBSERVACIÓN',
-          value: data.revisionData ? data.revisionData["".concat(data.name, "_comentario")] : '',
+          value: data.schema["".concat(data.name, "_comentario")],
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.TEXTAREA,
           name: "".concat(data.name, "_comentario"),
           validationType: "string",
           validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("observacion_".concat(data.name), {
             is: "rechazado",
             then: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').required('Debes agregar una observación')
-          })
+          }).nullable()
         }
       };
     }
@@ -164,8 +165,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'nombre',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'DNI',
@@ -176,8 +176,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'dni',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Cargo en la empresa',
@@ -188,8 +187,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'cargo',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }]
     }]
@@ -218,8 +216,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'porcentaje_venta_provincia',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Porcentaje vendido a otras Provincias',
@@ -230,8 +227,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'porcentaje_venta_otras_provincias',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Porcentaje Exportado',
@@ -242,8 +238,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'porcentaje_exportado',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }]
     }, {
@@ -264,8 +259,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'prospeccion',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Explotación',
@@ -275,8 +269,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'explotacion',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Desarrollo',
@@ -286,8 +279,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'desarrollo',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Exploración',
@@ -297,8 +289,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'exploracion',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }]
     }]
@@ -321,8 +312,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_perm_profesional',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Operarios y Obreros Permanente',
@@ -333,8 +323,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_perm_operarios',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Administrativo Permanente',
@@ -345,8 +334,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_perm_administrativos',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Otros Permanente',
@@ -357,8 +345,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_perm_otros',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Profesional Transitorio',
@@ -369,8 +356,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_trans_profesional',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Operarios y Obreros Transitorio',
@@ -381,8 +367,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_trans_operarios',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Administrativo Transitorio',
@@ -393,8 +378,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_trans_administrativos',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }, {
         label: 'Otros Transitorio',
@@ -405,8 +389,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'personal_trans_otros',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations
       }]
     }]
@@ -424,9 +407,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
       // columnsResponsive: '', //inside card
       img: '/images/laborales.png',
       inputs: [{
-        label: 'List',
+        label: '',
         type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.LIST,
-        name: 'List',
+        name: 'Productos',
         columns: 'grid-cols-1',
         // colSpans + 1
         columnsResponsive: 'lg:grid-cols-3',
@@ -437,52 +420,35 @@ function getFormSchema(_ref, evaluate, dataForm) {
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           colSpan: '',
           options: [{
-            label: 'toneladas',
-            value: 'toneladas'
+            label: 'Oro',
+            value: 'Oro'
           }, {
-            label: 'mts 3',
-            value: 'mts 3'
+            label: 'Plata',
+            value: 'Plata'
           }, {
-            label: 'otros',
-            value: 'otros'
-          } // {
-          //     label: 'Oro',
-          //     value: 'Oro',
-          // },
-          // {
-          //     label: 'Plata',
-          //     value: 'Plata',
-          // },
-          // {
-          //     label: 'Cobre',
-          //     value: 'Cobre',
-          // },
-          // {
-          //     label: 'Hierro',
-          //     value: 'Hierro',
-          // },
-          // {
-          //     label: 'Cal',
-          //     value: 'Cal',
-          // },
-          // {
-          //     label: 'Ripio',
-          //     value: 'Ripio',
-          // },
-          // {
-          //     label: 'Platino',
-          //     value: 'Platino',
-          // },
-          // {
-          //     label: 'Diamante',
-          //     value: 'Diamante',
-          // }
-          ],
+            label: 'Cobre',
+            value: 'Cobre'
+          }, {
+            label: 'Hierro',
+            value: 'Hierro'
+          }, {
+            label: 'Cal',
+            value: 'Cal'
+          }, {
+            label: 'Ripio',
+            value: 'Ripio'
+          }, {
+            label: 'Platino',
+            value: 'Platino'
+          }, {
+            label: 'Diamante',
+            value: 'Diamante'
+          }],
           name: 'nombre_mineral',
           multiple: false,
           closeOnSelect: true,
           searchable: false,
-          placeholder: 'Selecciona una opción' // observation: new Observations({schema, name: 'nombre_mineral', evaluate, revisionData : dataForm.revisionData}).observations
+          placeholder: 'Selecciona una opción' // observation: new Observations({schema, name: 'nombre_mineral', evaluate}).observations
 
         }, {
           label: 'Variedad de',
@@ -549,8 +515,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
           schema: schema,
           name: 'row',
-          evaluate: evaluate,
-          revisionData: dataForm.revisionData
+          evaluate: evaluate
         }).observations)]],
         validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().of(yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
           variedad: yup__WEBPACK_IMPORTED_MODULE_0__.string().nullable().required('Debes completar este campo'),
@@ -582,10 +547,12 @@ function getFormSchema(_ref, evaluate, dataForm) {
   }];
 }
 
-function getChildrens(data) {
+function getChildrens(data, observation) {
   // los objetos deben tener el mismo orden que en el arreglo de los elementoss
   var child = [// default value,
   {
+    // id elemento, solo agregar al primer objeto
+    id: null,
     name: 'nombre_mineral',
     value: null,
     // solo necesario para los selects que el valor se ha guardado como un json
@@ -615,8 +582,9 @@ function getChildrens(data) {
   //     name: 'actividad_empresa_compradora',
   //     value: null,
   // },
+  // si existen evaluaciones, se debe mantener este elemento sin modificar
   {
-    name: 'observacion_row',
+    name: 'row_evaluacion',
     value: null,
     comment: null
   }];
@@ -642,15 +610,31 @@ function getChildrens(data) {
       } else {
         clone[i].value = object[property];
       }
+
+      if (typeof clone[i].id !== 'undefined') {
+        clone[i].id = object["id"];
+      }
     };
 
     for (var property in object) {
       var _ret = _loop(property);
 
       if (_ret === "continue") continue;
-    }
+    } // set result observation
+    // let obs = clone.find(e => e.name == 'row_evaluacion');
+    // if (obs) {
+    //     const obsSave = observation.find(e => e.id == clone[0].id);
+    //     if (obsSave) {
+    //         obs.value = obsSave.row_evaluacion;
+    //         obs.comment = obsSave.row_comentario
+    //     }
+    // }
+    // if (clone[0].row_evaluacion) {
+    //     observation[obs]
+    // }
+    // console.log(clone);
 
-    console.log(clone);
+
     newChildrens.push(clone);
   } // newChildrens.push({
   //     name: 'observacion_row',

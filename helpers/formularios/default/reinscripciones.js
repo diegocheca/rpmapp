@@ -13,136 +13,39 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
             body: [
                 //  col 1
                 {
-                    title: 'Datos',
+                    title: 'Datos de quien completa este formulario',
                     width: 'lg:w-full', //flex
                     columns: 'grid-cols-1', //grid
-                    columnsResponsive: 'lg:grid-cols-2', //inside card
-                    img: '/images/laborales.png',
+                    columnsResponsive: 'lg:grid-cols-3', //inside card
+                    // infoCard: ''
+                   // img: '/images/laborales.png',
                     inputs: [
                         {
-                            label: 'Nombre o razón social',
-                            value: schema.nombre_razon_social,
+                            label: 'Nombre y apellido',
+                            value: schema.nombre,
                             type: inputsTypes.TEXT,
-                            name: 'nombre_razon_social',
-                            validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'nombre_razon_social', evaluate}).observations
+                            name: 'nombre',
+                            validations: yup.string().required('Debes completar este campo').nullable(),
+                            observation: new Observations({schema, name: 'nombre', evaluate}).observations
 
                         },
                         {
-                            label: 'Domicilio',
-                            value: schema.domicilio,
+                            label: 'DNI',
+                            value: schema.dni,
+                            type: inputsTypes.NUMBER,
+                            name: 'dni',
+                            validations: yup.string().required('Debes completar este campo'),
+                            observation: new Observations({schema, name: 'dni', evaluate}).observations
+
+                        },
+                        {
+                            label: 'Cargo en la empresa',
+                            value: schema.cargo,
                             type: inputsTypes.TEXT,
-                            name: 'domicilio',
+                            name: 'cargo',
                             validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'domicilio', evaluate}).observations
+                            observation: new Observations({schema, name: 'cargo', evaluate}).observations
 
-                        },
-                        {
-                            label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
-                            value: schema.nombre_mina,
-                            type: inputsTypes.TEXT,
-                            name: 'nombre_mina',
-                            validations: yup.string().required('Debes completar este campo'),
-                            observation: new Observations({schema, name: 'nombre_mina', evaluate}).observations
-
-                        },
-                        {
-                        },
-                        {
-                            // inputColsSpan: 'lg:col-span-2',
-                            label: 'Certificado de inscripción en AFIP (CUIT)',
-                            value: schema.cuit,
-                            type: inputsTypes.FILE,
-                            name: 'cuit',
-                            accept: [fileAccept.PDF.value],
-                            acceptLabel: `Archivos admitidos: ${[fileAccept.PDF.label].join()}`,
-                            maxSize: 'Tamaño maximo por archivo: 10MB',
-                            multiple: false,
-                            validations: yup
-                                .array()
-                                .min(1, 'Debes adjuntar al menos un elemento').default([])
-                                .max(1, 'Solo puedes adjuntar hasta 1 archivo')
-                                .test({
-                                    name: 'CUIT_SIZE',
-                                    exclusive: true,
-                                    message: 'Recuerda que cada archivo no debe superar los 10MB',
-                                    test: (value) => {
-                                        if (!value) return true;
-                                        let validation = true;
-                                        for (let index = 0; index < value.length; index++) {
-                                            const element = value[index];
-                                            validation = validation && element.size <= 10000000; // 10MB
-                                        }
-                                        return validation;
-                                        // !value || (value && value.size <= 10)
-                                    }
-                                })
-                                .test({
-                                    name: 'CUIT_FILE_FORMAT',
-                                    exclusive: true,
-                                    message: 'Hay archivos con extensiones no válidas',
-                                    test: (value) => {
-                                        if (!value) return true;
-                                        let validation = true;
-                                        for (let index = 0; index < value.length; index++) {
-                                            const element = value[index];
-                                            validation = validation && [...fileAccept.PDF.value].includes(element.type);
-                                        }
-                                        return validation;
-                                        // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-                                    }
-                                }),
-
-                            observation: new Observations({schema, name: 'cuit', evaluate}).observations
-                        },
-                        {
-                            // inputColsSpan: 'lg:col-span-2',
-                            label: 'Copia escritura del inmueble',
-                            helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
-                            value: schema.escritura,
-                            type: inputsTypes.FILE,
-                            name: 'escritura',
-                            accept: [fileAccept.PDF.value, fileAccept.IMAGE.value],
-                            acceptLabel: `Archivos admitidos: ${[fileAccept.PDF.label, fileAccept.IMAGE.label].join()}`,
-                            maxSize: 'Tamaño maximo por archivo: 10MB',
-                            multiple: true,
-                            validations: yup
-                                .array()
-                                .min(1, 'Debes adjuntar al menos un elemento').default([])
-                                .max(2, 'Solo puedes adjuntar hasta 2 archivo')
-                                .test({
-                                    name: 'ESCRITURA_FILE_SIZE',
-                                    exclusive: true,
-                                    message: 'Recuerda que cada archivo no debe superar los 10MB',
-                                    test: (value) => {
-                                        if (!value) return true;
-                                        let validation = true;
-                                        for (let index = 0; index < value.length; index++) {
-                                            const element = value[index];
-                                            validation = validation && element.size <= 10000000; // 10MB
-                                        }
-                                        return validation;
-                                        // !value || (value && value.size <= 10)
-                                    }
-                                })
-                                .test({
-                                    name: 'ESCRITURA_FILE_FORMAT',
-                                    exclusive: true,
-                                    message: 'Hay archivos con extensiones no válidas',
-                                    test: (value) => {
-                                        if (!value) return true;
-                                        let validation = true;
-
-                                        for (let index = 0; index < value.length; index++) {
-                                            const element = value[index];
-                                            validation = validation && [...fileAccept.PDF.value, ...fileAccept.IMAGE.value].includes(element.type);
-                                        }
-                                        return validation;
-                                        // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-                                    }
-                                }),
-
-                            observation: new Observations({schema, name: 'escritura', evaluate}).observations
                         },
                     ]
                 },
@@ -151,6 +54,177 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
         },
         // row 2
         {
+            widthResponsive: 'lg:flex-row', //flex
+            // columns
+            body: [
+                //  col 1
+                {
+                    title: 'Mercado (indicar en que mercados vende su producción)',
+                    width: 'lg:w-full', //flex
+                    columns: 'grid-cols-1', //grid
+                    columnsResponsive: '', //inside card
+                    // infoCard: ''
+                   // img: '/images/laborales.png',
+                    inputs: [
+                        {
+                            label: 'Porcentaje vendido a Provincia',
+                            value: schema.porcentaje_venta_provincia,
+                            type: inputsTypes.NUMBER,
+                            name: 'porcentaje_venta_provincia',
+                            validations: yup.string().required('Debes completar este campo'),
+                            observation: new Observations({schema, name: 'porcentaje_venta_provincia', evaluate}).observations
+
+                        },
+                        {
+                            label: 'Porcentaje vendido a otras Provincias',
+                            value: schema.porcentaje_venta_otras_provincias,
+                            type: inputsTypes.NUMBER,
+                            name: 'porcentaje_venta_otras_provincias',
+                            validations: yup.string().required('Debes completar este campo'),
+                            observation: new Observations({schema, name: 'porcentaje_venta_otras_provincias', evaluate}).observations
+
+                        },
+                        {
+                            label: 'Porcentaje Exportado',
+                            value: schema.porcentaje_exportado,
+                            type: inputsTypes.NUMBER,
+                            name: 'porcentaje_exportado',
+                            validations: yup.string().required('Debes completar este campo'),
+                            observation: new Observations({schema, name: 'porcentaje_exportado', evaluate}).observations
+
+                        },
+                    ]
+                },
+                {
+                    title: 'Mercado (indicar en que mercados vende su producción)',
+                    width: 'lg:w-full', //flex
+                    columns: 'grid-cols-1', //grid
+                    columnsResponsive: '', //inside card
+                    // infoCard: ''
+                   // img: '/images/laborales.png',
+                    inputs: [
+                        {
+                            label: 'Prospección',
+                            value: schema.prospeccion? true : false,
+                            type: inputsTypes.CHECKBOX,
+                            name: 'prospeccion',
+                            observation: new Observations({schema, name: 'prospeccion', evaluate}).observations
+
+                        },
+                        {
+                            label: 'Explotación',
+                            value: schema.explotacion? true : false,
+                            type: inputsTypes.CHECKBOX,
+                            name: 'explotacion',
+                            observation: new Observations({schema, name: 'explotacion', evaluate}).observations
+
+                        },
+                        {
+                            label: 'Desarrollo',
+                            value: schema.desarrollo? true : false,
+                            type: inputsTypes.CHECKBOX,
+                            name: 'desarrollo',
+                            observation: new Observations({schema, name: 'desarrollo', evaluate}).observations
+
+                        },
+                        {
+                            label: 'Exploración',
+                            value: schema.explotacion? true : false,
+                            type: inputsTypes.CHECKBOX,
+                            name: 'exploracion',
+                            observation: new Observations({schema, name: 'exploracion', evaluate}).observations
+
+                        }
+                    ]
+                },
+
+            ]
+        },
+        //  row 3
+        {
+            widthResponsive: 'flex-row',
+            body: [
+                //  col 1
+                {
+                    title: 'Personal ocupado',
+                    width: '',
+                    columns: 'grid-cols-1',
+                    columnsResponsive: 'lg:grid-cols-3',
+                    img: '/images/laborales.png',
+                    inputs: [
+                        {
+                            label: 'Profesional Técnico Permanente',
+                            value: schema.personal_perm_profesional,
+                            type: inputsTypes.NUMBER,
+                            name: 'personal_perm_profesional',
+                            validations: yup.string().required('Debes ingresar una cantidad.'),
+                            observation: new Observations({schema, name: 'personal_perm_profesional', evaluate}).observations
+
+                        },
+                        {
+                            label: 'Operarios y Obreros Permanente',
+                            value: schema.personal_perm_operarios ,
+                            type: inputsTypes.NUMBER,
+                            name: 'personal_perm_operarios',
+                            validations: yup.string().required('Debes ingresar una cantidad.'),
+                            observation: new Observations({schema, name: 'personal_perm_operarios', evaluate}).observations
+                        },
+                        {
+                            label: 'Administrativo Permanente',
+                            value: schema.personal_perm_administrativos,
+                            type: inputsTypes.NUMBER,
+                            name: 'personal_perm_administrativos',
+                            validations: yup.string().required('Debes ingresar una cantidad.'),
+                            observation: new Observations({schema, name: 'personal_perm_administrativos', evaluate}).observations
+                        },
+                        {
+                            label: 'Otros Permanente',
+                            value: schema.personal_perm_otros,
+                            type: inputsTypes.NUMBER,
+                            name: 'personal_perm_otros',
+                            validations: yup.string().required('Debes ingresar una cantidad.'),
+                            observation: new Observations({schema, name: 'personal_perm_otros', evaluate}).observations
+                        },
+                        {
+                            label: 'Profesional Transitorio',
+                            value: schema.personal_trans_profesional,
+                            type: inputsTypes.NUMBER,
+                            name: 'personal_trans_profesional',
+                            validations: yup.string().required('Debes ingresar una cantidad.'),
+                            observation: new Observations({schema, name: 'personal_trans_profesional', evaluate}).observations
+                        },
+                        {
+                            label: 'Operarios y Obreros Transitorio',
+                            value: schema.personal_trans_operarios ,
+                            type: inputsTypes.NUMBER,
+                            name: 'personal_trans_operarios',
+                            validations: yup.string().required('Debes ingresar una cantidad.'),
+                            observation: new Observations({schema, name: 'personal_trans_operarios', evaluate}).observations
+                        },
+                        {
+                            label: 'Administrativo Transitorio',
+                            value: schema.personal_trans_administrativos,
+                            type: inputsTypes.NUMBER,
+                            name: 'personal_trans_administrativos',
+                            validations: yup.string().required('Debes ingresar una cantidad.'),
+                            observation: new Observations({schema, name: 'personal_trans_administrativos', evaluate}).observations
+                        },
+                        {
+                            label: 'Otros Transitorio',
+                            value: schema.personal_trans_otros,
+                            type: inputsTypes.NUMBER,
+                            name: 'personal_trans_otros',
+                            validations: yup.string().required('Debes ingresar una cantidad.'),
+                            observation: new Observations({schema, name: 'personal_trans_otros', evaluate}).observations
+                        },
+
+                    ]
+                },
+
+            ]
+        },
+        // row 4
+        {
             widthResponsive: 'flex-row', //flex
             // columns
             body: [
@@ -158,180 +232,138 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                 {
                     title: 'Sustancias minerales que insuatralizan',
                     width: '', //flex
-                    columns: 'grid-cols-1', //grid
-                    columnsResponsive: '', //inside card
+                    // columns: '', //grid
+                    // columnsResponsive: '', //inside card
                     img: '/images/laborales.png',
                     inputs: [
                         {
-                            label: 'List',
+                            label: '',
                             type: inputsTypes.LIST,
-                            name: 'List',
-                            // columns: 'grid-cols-1',
+                            name: 'Productos',
+                            columns: 'grid-cols-1',
                             // colSpans + 1
-                            // columnsResponsive: 'lg:w-2/5',
-                            childrens: [ // default value,
-                                [{
-                                    name: 'sustanceSelect',
-                                    value: null,
-                                },
-                                {
-                                    name: 'mineralSelect',
-                                    value: null,
-                                },
-                                {
-                                    name: 'dni',
-                                    value: null,
-                                },]
-                            ],
+                            columnsResponsive: 'lg:grid-cols-3',
+                            childrens: getChildrens(schema.productos),
                             elements: [
                                 [
                                     {
-                                        label: 'Sustancia',
+                                        label: 'Producto Extraído',
                                         value: {},
                                         type: inputsTypes.SELECT,
-                                        colSpan: 'lg:w-2/5',
+                                        colSpan: '',
                                         options: [
                                             {
-                                                label: 'Sustancias de aprovechamiento común',
-                                                value: 'aprovechamiento_comun',
+                                                label: 'Oro',
+                                                value: 'Oro',
                                             },
                                             {
-                                                label: 'Sustancias que se conceden preferentemente al dueño del suelo',
-                                                value: 'conceden_preferentemente',
+                                                label: 'Plata',
+                                                value: 'Plata',
+                                            },
+                                            {
+                                                label: 'Cobre',
+                                                value: 'Cobre',
+                                            },
+                                            {
+                                                label: 'Hierro',
+                                                value: 'Hierro',
+                                            },
+                                            {
+                                                label: 'Cal',
+                                                value: 'Cal',
+                                            },
+                                            {
+                                                label: 'Ripio',
+                                                value: 'Ripio',
+                                            },
+                                            {
+                                                label: 'Platino',
+                                                value: 'Platino',
+                                            },
+                                            {
+                                                label: 'Diamante',
+                                                value: 'Diamante',
                                             }
                                         ],
-                                        name: 'sustanceSelect',
+                                        name: 'nombre_mineral',
                                         multiple: false,
                                         closeOnSelect: true,
                                         searchable: false,
-                                        inputDepends: ['mineralSelect'],
-                                        optionsDepends:
+                                        placeholder: 'Selecciona una opción',
+                                        // observation: new Observations({schema, name: 'nombre_mineral', evaluate}).observations
+                                    },
+                                    {
+                                        label: 'Variedad de',
+                                        value: '',
+                                        type: inputsTypes.TEXT,
+                                        name: 'variedad',
+                                        colSpan: '',
+                                    },
+                                    {
+                                        label: 'Producción',
+                                        value: '',
+                                        type: inputsTypes.NUMBER,
+                                        name: 'produccion',
+                                        colSpan: '',
+                                    },
+                                    {
+                                        label: 'Unidades',
+                                        value: {},
+                                        type: inputsTypes.SELECT,
+                                        colSpan: '',
+                                        options: [
                                             {
-                                                aprovechamiento_comun : [
-                                                    {
-                                                        label: 'Arenas Metalíferas',
-                                                        value: 'Arenas Metalíferas'
-                                                    },
-                                                    {
-                                                        label: 'Piedras Preciosas',
-                                                        value: 'Piedras Preciosas'
-                                                    },
-                                                    {
-                                                        label: 'Desmontes',
-                                                        value: 'Desmontes'
-                                                    },
-                                                    {
-                                                        label: 'Relaves',
-                                                        value: 'Relaves'
-                                                    },
-                                                    {
-                                                        label: 'Escoriales',
-                                                        value: 'Escoriales'
-                                                    },
-                                                ],
-                                                conceden_preferentemente: [
-                                                    {
-                                                        label: 'Salitres',
-                                                        value: 'Salitres'
-                                                    },
-                                                    {
-                                                        label: 'Salinas',
-                                                        value: 'Salinas'
-                                                    },
-                                                    {
-                                                        label: 'Turberas',
-                                                        value: 'Turberas'
-                                                    },
-                                                    {
-                                                        label: 'Metales no comprendidos en 1° Categ.',
-                                                        value: 'Metales no comprendidos en 1° Categ.'
-                                                    },
-                                                    {
-                                                        label: 'Abrasivos',
-                                                        value: 'Abrasivos'
-                                                    },
-                                                    {
-                                                        label: 'Ocres',
-                                                        value: 'Ocres'
-                                                    },
-                                                    {
-                                                        label: 'Resinas',
-                                                        value: 'Resinas'
-                                                    },
-                                                    {
-                                                        label: 'Esteatitas',
-                                                        value: 'Esteatitas'
-                                                    },
-                                                    {
-                                                        label: 'Baritina',
-                                                        value: 'Baritina'
-                                                    },
-                                                    {
-                                                        label: 'Caparrosas',
-                                                        value: 'Caparrosas'
-                                                    },
-                                                    {
-                                                        label: 'Grafito',
-                                                        value: 'Grafito'
-                                                    },
-                                                    {
-                                                        label: 'Caolí­n',
-                                                        value: 'Caolí­n'
-                                                    },
-                                                    {
-                                                        label: 'Sales Alcalinas o Alcalino Terrosas',
-                                                        value: 'Sales Alcalinas o Alcalino Terrosas'
-                                                    },
-                                                    {
-                                                        label: 'Amianto',
-                                                        value: 'Amianto'
-                                                    },
-                                                    {
-                                                        label: 'Bentonita',
-                                                        value: 'Bentonita'
-                                                    },
-                                                    {
-                                                        label: 'Zeolitas o Minerales Permutantes o Permutíticos',
-                                                        value: 'Zeolitas o Minerales Permutantes o Permutíticos'
-                                                    },
-                                                ]
+                                                label: 'toneladas',
+                                                value: 'toneladas',
+                                            },
+                                            {
+                                                label: 'mts 3',
+                                                value: 'mts 3',
+                                            },
+                                            {
+                                                label: 'otros',
+                                                value: 'otros',
                                             }
-                                        ,
-                                        // validations: yup.object().when('sustanceSelect', {
-                                        //     is: value => _.isEmpty(value),
-                                        //     then: yup.object().required('Debes elegir un elemento')
-                                        // }),
+                                        ],
+                                        name: 'unidades',
+                                        multiple: false,
+                                        closeOnSelect: true,
+                                        searchable: false,
                                         placeholder: 'Selecciona una opción',
 
                                     },
                                     {
-                                        label: 'Mineral Explotado',
-                                        value: {},
-                                        type: inputsTypes.SELECT,
-                                        colSpan: 'lg:w-2/5',
-                                        options: [],
-                                        name: 'mineralSelect',
-                                        inputDepends: [],
-                                        multiple: false,
-                                        closeOnSelect: true,
-                                        searchable: true,
-                                        // validations: yup.object().when('mineralSelect', {
-                                        //     is: value => _.isEmpty(value),
-                                        //     then: yup.object().required('Debes elegir un elemento')
-                                        // }),
-                                        placeholder: 'Selecciona una opción',
-                                    },
-                                    {
-                                        label: 'DNI',
-                                        value: schema.dni,
+                                        label: 'Precio de Venta (en $)',
+                                        value: '',
                                         type: inputsTypes.NUMBER,
-                                        colSpan: 'lg:w-1/5',
-                                        name: 'dni2',
-                                        // validations: yup.string().required('Debes ingresar un dni'),
+                                        name: 'precio_venta',
+                                        colSpan: '',
                                     },
+                                    // {
+                                    //     label: 'Empresa compradora',
+                                    //     value: '',
+                                    //     type: inputsTypes.TEXT,
+                                    //     name: 'empresa_compradora',
+                                    //     colSpan: '',
+                                    // },
+                                    // {
+                                    //     label: 'Dirección empresa campradora',
+                                    //     value: '',
+                                    //     type: inputsTypes.TEXT,
+                                    //     name: 'direccion_empresa_compradora',
+                                    //     colSpan: '',
+                                    // },
+                                    // {
+                                    //     label: 'Actividad empresa campradora',
+                                    //     value: '',
+                                    //     type: inputsTypes.TEXT,
+                                    //     name: 'actividad_empresa_compradora',
+                                    //     colSpan: '',
+                                    // },
                                     {
                                         colSpan: 'lg:w-5/5',
-                                        observation: new Observations({schema, name: 'row-', evaluate}).observations
+                                        type: 'observation',
+                                        ...new Observations({schema, name: 'row', evaluate}).observations
                                     }
 
                                 ]
@@ -340,16 +372,22 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                 .array()
                                 .of(
                                     yup.object().shape({
-                                        sustanceSelect: yup.object().when('sustance', {
+                                        variedad: yup.string().nullable().required('Debes completar este campo'),
+                                        nombre_mineral: yup.object().when('mineral', {
                                             is: value => _.isEmpty(value),
-                                            then: yup.object().required('Debes elegir un elemento').nullable()
+                                            then: yup.object().nullable().required('Debes elegir un elemento')
                                         }),
-                                        mineralSelect: yup.object().when('mineral', {
-                                            is: value => _.isEmpty(value),
-                                            then: yup.object().required('Debes elegir un elemento').nullable()
+                                        produccion: yup.string().nullable().required('Debes completar este campo'),
+                                        unidades: yup.object().when('unidadesSelect', {
+                                                is: value => _.isEmpty(value),
+                                                then: yup.object().nullable().required('Debes elegir un elemento')
                                         }),
-                                       // dni2: yup.string().required('Debes ingresar un dni'),
-
+                                        precio_venta: yup.string().nullable().required('Debes completar este campo'),
+                                        // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                        // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                        // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                        row_evaluacion: evaluate? yup.string().oneOf(["aprobado", "rechazado", "sin evaluar"]).nullable().required('Debes seleccionar una opción') : {},
+                                        row_comentario: evaluate? yup.string().when('observacion_row', { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación') }).nullable() : {}
                                     })
                                 )
                                 .strict(),
@@ -359,92 +397,108 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
 
             ]
         },
-        // row 3 UBICACION
-        {
-            widthResponsive: 'lg:flex-row', //flex
-            // columns
-            body: [
-                //  col 1
-                {
-                    title: 'Ubicación',
-                    width: 'lg:w-full', //flex
-                    columns: 'grid-cols-1', //grid
-                    columnsResponsive: 'lg:grid-cols-2', //inside card
-                    img: '/images/laborales.png',
-                    inputs: [
-                        {
-                            label: 'Provincia',
-                            value: {},
-                            type: inputsTypes.SELECT,
-                            // get axios
-                            async: true,
-                            asyncUrl: '/paises/departamentos',
-                            inputDepends: ['departamento'],
-                            inputClearDepends: ['departamento', 'localidad'],
-                            // isLoading: false,
-                            //
-                            options: dataForm.provincia,
-                            name: 'provincia',
-                            multiple: false,
-                            closeOnSelect: true,
-                            searchable: true,
-                            placeholder: 'Selecciona una opción',
-                            validations: yup.object().when('provinciaSelect', {
-                                is: value => _.isEmpty(value) || !value,
-                                then: yup.object().required('Debes elegir un elemento').nullable()
-                            }),
-                            observation: new Observations({schema, name: 'select', evaluate}).observations
-                        },
-                        {
-                            label: 'Departamento',
-                            value: {},
-                            type: inputsTypes.SELECT,
-                            // get axios
-                            async: true,
-                            asyncUrl: '/paises/localidades',
-                            inputDepends: ['localidad'],
-                            inputClearDepends: ['localidad'],
-                            isLoading: false,
-                            //
-                            options: [],
-                            name: 'departamento',
-                            multiple: false,
-                            closeOnSelect: true,
-                            searchable: true,
-                            placeholder: 'Selecciona una opción',
-                            validations: yup.object().when('departamentoSelect', {
-                                is: value => _.isEmpty(value) || !value,
-                                then: yup.object().required('Debes elegir un elemento').nullable()
-                            }),
-                            observation: new Observations({schema, name: 'select', evaluate}).observations
-                        },
-                        {
-                            label: 'Localidad',
-                            value: {},
-                            type: inputsTypes.SELECT,
-                            // get axios
-                            async: true,
-                            isLoading: false,
-                            //
-                            options: [],
-                            name: 'localidad',
-                            multiple: false,
-                            closeOnSelect: true,
-                            searchable: true,
-                            placeholder: 'Selecciona una opción',
-                            validations: yup.object().when('localidadSelect', {
-                                is: value => _.isEmpty(value) || !value,
-                                then: yup.object().required('Debes elegir un elemento').nullable()
-                            }),
-                            observation: new Observations({schema, name: 'select', evaluate}).observations
-                        },
-                    ]
-                },
 
-            ]
-        },
     ]
 }
 
+function getChildrens(data, observation) {
+    // los objetos deben tener el mismo orden que en el arreglo de los elementoss
+    let child =[ // default value,
+        {
+            // id elemento, solo agregar al primer objeto
+            id: null,
+            name: 'nombre_mineral',
+            value: null,
+            // solo necesario para los selects que el valor se ha guardado como un json
+            select: true
+        },
+        {
+            name: 'variedad',
+            value: null,
+        },
+        {
+            name: 'produccion',
+            value: null,
+        },
+        {
+            name: 'unidades',
+            value: null,
+            select: true
+        },
+        {
+            name: 'precio_venta',
+            value: null,
+        },
+        // {
+        //     name: 'empresa_compradora',
+        //     value: null,
+        // },
+        // {
+        //     name: 'direccion_empresa_compradora',
+        //     value: null,
+        // },
+        // {
+        //     name: 'actividad_empresa_compradora',
+        //     value: null,
+        // },
 
+        // si existen evaluaciones, se debe mantener este elemento sin modificar
+        {
+            name: 'row_evaluacion',
+            value: null,
+            comment: null
+        }
+    ]
+
+    if (!data || data.length == 0) {
+        return [child];
+    }
+
+    let newChildrens = [];
+    for (let index = 0; index < data.length; index++) {
+        const object = data[index];
+        let clone = JSON.parse(JSON.stringify(child));
+        for (const property in object) {
+            const i = clone.findIndex(e => e.name == property);
+
+            if (i == -1) continue;
+
+            if (clone[i].select) {
+                clone[i].value = JSON.parse(object[property]);
+            } else {
+                clone[i].value = object[property];
+            }
+            if (typeof clone[i].id !== 'undefined') {
+                clone[i].id = object["id"];
+            }
+
+
+        }
+
+        // set result observation
+        // let obs = clone.find(e => e.name == 'row_evaluacion');
+        // if (obs) {
+        //     const obsSave = observation.find(e => e.id == clone[0].id);
+        //     if (obsSave) {
+        //         obs.value = obsSave.row_evaluacion;
+        //         obs.comment = obsSave.row_comentario
+        //     }
+        // }
+        // if (clone[0].row_evaluacion) {
+        //     observation[obs]
+
+        // }
+
+
+        // console.log(clone);
+        newChildrens.push(clone);
+    }
+
+    // newChildrens.push({
+    //     name: 'observacion_row',
+    //     value: null,
+    // });
+
+    return newChildrens;
+}
 

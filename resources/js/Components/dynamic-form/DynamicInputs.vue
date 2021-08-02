@@ -1,7 +1,7 @@
 <template>
     <div class="items-center bg-teal-lighter">
         <!-- row -->
-        <div v-for="(row, indexRow) in formSchema" :key="indexRow" class="flex flex-col" :class="row.widthResponsive">
+        <div v-for="(row, indexRow) in formSchema" :key="indexRow" class="flex flex-col justify-center" :class="row.widthResponsive">
             <!-- column -->
             <div v-for="(col, indexCol) in row.body" :key="indexCol" class="bg-white rounded shadow-lg p-8 m-4" :class="col.width">
                 <div class="font-bold text-lg">{{col.title}}</div>
@@ -33,7 +33,7 @@
                                             <!-- toggle -->
                                             <div class="relative">
                                             <!-- input -->
-                                            <input :type="item.type" :name="item.name" :id="item.name" class="sr-only" v-model="item.value" v-bind="field" :disabled="evaluate? true: false"/>
+                                            <input :type="item.type" :name="item.name" :id="item.name" class="sr-only" v-model="item.value" v-bind="field" :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado') ? true: false"/>
                                             <!-- line -->
                                             <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
                                             <!-- dot -->
@@ -60,8 +60,14 @@
                             </div>
 
                             <!-- default -->
-                            <Field v-if="inputsTypes.INPUTS_DEFAULT.indexOf(item.type) > -1" :value="item.value" :name="item.name" :type="item.type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false"  />
-                            <!-- <ErrorMessage class="text-red-500" :name="item.name" /> -->
+                            <label v-if="inputsTypes.INPUTS_DEFAULT.indexOf(item.type) > -1" class="relative block">
+                                <Field  :value="item.value" :name="item.name" :type="item.type" class="rounded-md py-2 px-3 text-grey-darkest appearance-none w-full block  " :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado') ? true: false"  :class="[ statusColors[ item.observation.value ] ]" />
+                                <svg v-if="action != 'create' && (item.observation.value == 'aprobado')" xmlns="http://www.w3.org/2000/svg" class="pointer-events-none w-8 h-8 absolute top-1/2 transform -translate-y-1/2 left-3 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#10B981"/>
+                                </svg>
+
+                            </label>
+
 
                             <!-- textarea -->
                             <Field v-if="item.type == inputsTypes.TEXTAREA" :value="item.value" :name="item.name" :as="item.type" class="rounded-md py-2 px-3 text-grey-darkest" />
@@ -91,10 +97,14 @@
                             <!-- Display error -->
                             <ErrorMessage class="text-red-500" :name="item.name" />
 
+                            <!-- Display error to evaluate -->
+                            <!-- <pre>{{as= col.inputs}}</pre> -->
+                            <span role="alert" class="text-red-500" v-if="item.type != inputsTypes.LIST && action != 'create' && !evaluate && item.observation.value == 'rechazado' "> OBSERVACIÓN: {{item.observation.comment.value}}</span>
+                            <!-- <pre>{{errorEvaluation}}</pre> -->
+
                             <!-- LIST ELEMENTS -->
                             <template v-if="item.type == inputsTypes.LIST">
-                                <fieldset class="px-5 my-3 bg-blue-100 rounded-lg" v-for="(element, indexElement) in item.childrens" :key="indexElement" >
-                                    <!-- <pre>{{element}}</pre> -->
+                                <fieldset class="px-5 my-3 bg-blue-100 rounded-lg" v-for="(element, indexElement) in item.childrens" :key="indexElement">
                                     <div v-if="!evaluate" class="btn-close-row">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="#EF4444" @click="removeRowDynamic(item, indexElement)">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
@@ -105,9 +115,9 @@
 
                                         <div v-bind="field" v-for="(ele, indexElement2) in a" :key="indexElement2" class="p-4 flex flex-col" :class="[ele.colSpan]">
                                                 <!-- <pre>{{a[indexElement2].value}}</pre> -->
-                                                <!-- {{`${item.label}[${indexElement}].${a[indexElement2].name}`}} -->
+                                                <!-- {{`${item.name}[${indexElement}].${a[indexElement2].name}`}} -->
                                             <label v-if="ele.label" :for="ele.label" class="mb-2 uppercase text-md text-grey-darkest">{{ele.label}} :</label>
-
+                                            <Field v-show="false" :name="`${item.name}[${indexElement}].id`" :value="element[indexElement2].id" />
                                             <!-- checkbox -->
                                             <div v-if="ele.type == inputsTypes.CHECKBOX">
 
@@ -121,7 +131,7 @@
                                                             <!-- toggle -->
                                                             <div class="relative">
                                                             <!-- input -->
-                                                            <input :type="ele.type" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :id="ele.name" class="sr-only" v-model="ele.value" v-bind="field" :disabled="evaluate? true: false"/>
+                                                            <input :type="ele.type" :name="`${item.name}[${indexElement}].${a[indexElement2].name}`" :id="ele.name" class="sr-only" v-model="ele.value" v-bind="field" :disabled="evaluate? true: false"/>
                                                             <!-- line -->
                                                             <div class="w-10 h-4 bg-gray-400 rounded-full shadow-inner"></div>
                                                             <!-- dot -->
@@ -137,14 +147,14 @@
                                             </div>
 
                                             <!-- default -->
-                                            <Field v-if="inputsTypes.INPUTS_DEFAULT.indexOf(a[indexElement2].type) > -1" :value="element[indexElement2].value" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :type="a[indexElement2].type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false" />
+                                            <Field v-if="inputsTypes.INPUTS_DEFAULT.indexOf(a[indexElement2].type) > -1" :value="element[indexElement2].value" :name="`${item.name}[${indexElement}].${a[indexElement2].name}`" :type="a[indexElement2].type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false" />
 
                                             <!-- textarea -->
-                                            <Field v-if="ele.type == inputsTypes.TEXTAREA" :value="element[indexElement2].value" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :as="ele.type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false" />
+                                            <Field v-if="ele.type == inputsTypes.TEXTAREA" :value="element[indexElement2].value" :name="`${item.name}[${indexElement}].${a[indexElement2].name}`" :as="ele.type" class="rounded-md py-2 px-3 text-grey-darkest" :disabled="evaluate? true: false" />
 
 
                                             <!-- file -->
-                                            <Field v-if="ele.type == inputsTypes.FILE" v-slot="{ field }" :type="ele.type" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`">
+                                            <Field v-if="ele.type == inputsTypes.FILE" v-slot="{ field }" :type="ele.type" :name="`${item.name}[${indexElement}].${a[indexElement2].name}`">
                                                 <div v-if="!evaluate" class="w-full h-full">
                                                     <DragAndDropFile v-bind="field" :accept="ele.accept" :acceptLabel="ele.acceptLabel" />
                                                 </div>
@@ -159,18 +169,18 @@
                                                 </div>
                                             </Field>
 
-                                            <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :value="element[indexElement2].value">
-                                                <VueMultiselect  v-bind="field" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :ref="`${indexElement}-${a[indexElement2].name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" @select="getSelectOptions" @remove="removeOptions" :disabled="evaluate? true: false" v-model="element[indexElement2].value" >
+                                            <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${item.name}[${indexElement}].${a[indexElement2].name}`" :value="element[indexElement2].value">
+                                                <VueMultiselect  v-bind="field" :name="`${item.name}[${indexElement}].${a[indexElement2].name}`" :ref="`${indexElement}-${a[indexElement2].name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" @select="getSelectOptions" @remove="removeOptions" :disabled="evaluate? true: false" v-model="element[indexElement2].value" >
                                                 </VueMultiselect>
                                             </Field>
 
                                             <!-- display error -->
-                                            <ErrorMessage v-if="!a[indexElement2].type == 'observation'" class="text-red-500" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" />
+                                            <ErrorMessage v-if="a[indexElement2].type != 'observation'" class="text-red-500" :name="`${item.name}[${indexElement}].${a[indexElement2].name}`" />
 
                                             <!-- review -->
 
                                             <!-- observacion para la fila completa -->
-                                            <div v-if="evaluate &&  a[indexElement2].type == 'observation'" class="grid grid-row-2 p-4 rounded-lg" :class="[ valuesForm[item.label] &&  valuesForm[ item.label ][ indexElement ][ a[ indexElement2 ].name ] == 'rechazado'? 'bg-red-200' : 'bg-blue-200' ]" >
+                                            <div v-if="evaluate &&  a[indexElement2].type == 'observation'" class="grid grid-row-2 p-4 rounded-lg" :class="[ action != 'create' && valuesForm[item.name] &&  valuesForm[ item.name ][ indexElement ][ a[ indexElement2 ].name ] == 'rechazado'? 'bg-red-200' : 'bg-blue-200' ]" >
                                                 <div class="w-full flex flex-wrap">
                                                     <span class="w-full text-gray-700">
                                                         Correcto?
@@ -178,19 +188,23 @@
                                                     <!-- <pre>{{a[indexElement2]}}</pre> -->
                                                     <div v-for="(obs, index) in a[indexElement2].options" :key="index">
                                                         <label>
-                                                            <Field :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" :type="obs.type" class="mx-2 text-grey-darkest" :value="obs.value"  />
+                                                            <Field :name="`${item.name}[${indexElement}].${a[indexElement2].name}`" :type="obs.type" class="mx-2 text-grey-darkest" :value="obs.value" v-model="element[indexElement2].value"  />
                                                             <span>{{obs.label}}</span>
                                                         </label>
                                                     </div>
-                                                    <ErrorMessage class="w-full text-red-500" :name="`${item.label}[${indexElement}].${a[indexElement2].name}`" />
+                                                    <ErrorMessage class="w-full text-red-500" :name="`${item.name}[${indexElement}].${a[indexElement2].name}`" />
                                                 </div>
-                                                <div v-show="valuesForm[item.label] &&  valuesForm[ item.label ][ indexElement ][ a[ indexElement2 ].name ] == 'rechazado'" class="w-full flex flex-col transition duration-500 ease-in mt-3">
+                                                <div v-show="element[indexElement2].value == 'rechazado'" class="w-full flex flex-col transition duration-500 ease-in mt-3">
                                                     <label :for="ele.name" class="mb-2 uppercase text-md text-grey-darkest">{{a[ indexElement2 ].comment.label}} :</label>
-                                                    <Field :name="`${item.label}[${indexElement}].${a[ indexElement2 ].comment.name}`" :as="a[ indexElement2 ].comment.type" class="rounded-md py-2 px-3 text-grey-darkest" :value="element[ indexElement2 ].comment" />
-                                                    <ErrorMessage class="text-red-500" :name="`${item.label}[${indexElement}].${a[ indexElement2 ].comment.name}`" />
+                                                    <Field :name="`${item.name}[${indexElement}].${a[ indexElement2 ].comment.name}`" :as="a[ indexElement2 ].comment.type" class="rounded-md py-2 px-3 text-grey-darkest" :value="element[indexElement2].comment" />
+                                                    <ErrorMessage class="text-red-500" :name="`${item.name}[${indexElement}].${a[ indexElement2 ].comment.name}`" />
 
                                                 </div>
+
                                             </div>
+                                            <!-- Display error to evaluate -->
+                                            <span role="alert" class="text-red-500" v-if="action != 'create' && !evaluate && element[indexElement2].value == 'rechazado' "> OBSERVACIÓN: {{element[indexElement2].comment}}</span>
+
                                             <!-- observacion para cada elemento -->
                                             <!-- <div v-if="evaluate &&  a[indexElement2].observation" class="grid grid-row-2 p-4 rounded-lg" :class="[ valuesForm[ a[ indexElement2 ].observation ] != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]" >
                                                 <div class="w-full flex flex-wrap">
@@ -227,7 +241,7 @@
 
 
                             <!-- review -->
-                            <div class="grid grid-rows-2 grid-flow-col p-4 mt-5 rounded-lg" v-if="evaluate &&  item.observation && item.type != inputsTypes.LIST" :class="[valuesForm[item.observation.name] != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]">
+                            <div class="grid grid-rows-2 grid-flow-col p-4 mt-5 rounded-lg" v-if="evaluate &&  item.observation && item.type != inputsTypes.LIST" :class="[action != 'create' && valuesForm[item.observation.name] != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]">
                                 <div class="w-full flex flex-wrap">
                                     <span class="w-full text-gray-700">
                                         Correcto?
@@ -240,7 +254,7 @@
                                     </div>
                                     <ErrorMessage class="w-full text-red-500" :name="item.observation.name" />
                                 </div>
-                                <div v-show="valuesForm[item.observation.name] == 'rechazado'" class="w-full flex flex-col transition duration-500 ease-in">
+                                <div v-show="action != 'create' && valuesForm[item.observation.name] == 'rechazado'" class="w-full flex flex-col transition duration-500 ease-in">
                                     <label :for="item.name" class="mb-2 uppercase text-md text-grey-darkest">{{item.observation.comment.label}} :</label>
                                     <Field :name="item.observation.comment.name" :as="item.observation.comment.type" class="rounded-md py-2 px-3 text-grey-darkest" :value="item.observation.comment.value" />
                                     <ErrorMessage class="text-red-500" :name="item.observation.comment.name" />
@@ -285,13 +299,28 @@ export default {
             require: true,
             type: Boolean,
         },
+        action: {
+            require: true,
+            type: String,
+        },
         valuesForm: {
             require: true,
-        }
+        },
+        // errorEvaluation: {
+        //     require: true,
+        //     type: Array
+        // }
     },
     data() {
+        const statusColors = {
+            'aprobado': 'border-green-500 pl-14',
+            'rechazado': 'border-red-500',
+            'sin evaluar': ''
+        }
+
         return {
             inputsTypes: inputsTypes,
+            statusColors
         };
     },
     methods: {
@@ -340,7 +369,8 @@ export default {
         },
         removeRowDynamic(item, indexDelete) {
             if(item.childrens.length == 1) {
-                this.addNewRow(item);
+                return
+                // this.addNewRow(item);
             }
             item.childrens.splice(indexDelete, 1);
             // alert(JSON.stringify(item.childrens, null, 2));
@@ -350,6 +380,7 @@ export default {
             for (let index = 0; index < row.length; index++) {
                 row[index].value = null;
             }
+            row[0].id = null;
             item.childrens = [...item.childrens, row ];
         },
 
@@ -414,9 +445,41 @@ input:checked ~ .dot {
   background-color: #48bb78;
 }
 
-.btn-close-row {
+/* input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 40px;
+    border: 2px solid #d9d9d9;
+    outline: none;
+    border-radius: 30px;
+    transition: .3s;
+}
+input[type="checkbox"]::before {
+    content: "";
     position: absolute;
-    right: 36px;
+    top: 6px;
+    left: 7px;
+    width: 34px;
+    height: 34px;
+    background: #cccccc;
+    border-radius: 50%;
+    transition: .3s ease;
+}
+input[type="checkbox"]:checked:before {
+   transform: translateX(60px);
+   background: #3399ff;
+}
+input[type="checkbox"]:checked {
+   transform: translateX(60px);
+   background: #3399ff;
+} */
+
+.btn-close-row {
+    /* position: absolute; */
+    /* right: 36px; */
+    transform: translate(110%, -45%);
+    float: right;
     z-index: 100;
     cursor: pointer;
 

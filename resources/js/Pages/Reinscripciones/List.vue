@@ -3,7 +3,7 @@
     <h2
       class="text-center text-2xl font-bold leading-7 text-gray-300 sm:text-3xl sm:truncate bg-gray-800"
     >
-      Reinscripciones Ya cargadas
+      Reinscripciones
     </h2>
 
 
@@ -12,7 +12,13 @@
             <a :href="route('reinscripciones.create')" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3">Nueva Reinscripcion</a>
         </div>
         <div class="min-w-screen flex items-center justify-center font-sans overflow-hidden">
-            <div class="w-full lg:w-5/6">
+            <div v-if="reinscripciones.length == 0" class="w-full flex flex-col items-center mt-14 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                </svg>
+                <p class="text-2xl">No se han registrado reinscripciones</p>
+            </div>
+            <div v-if="reinscripciones.length > 0" class="w-full lg:w-5/6">
                 <div class="bg-white shadow-md rounded my-6">
                     <table class="min-w-max w-full table-auto">
                         <thead>
@@ -42,7 +48,7 @@
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
-                                    <span class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">{{ reinscripcion.estado }}</span>
+                                    <span class=" py-1 px-3 rounded-full text-xs" :class="[statusColors[reinscripcion.estado]]">{{ reinscripcion.estado }}</span>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
@@ -94,5 +100,18 @@ export default {
   components: {
     AppLayout,
   },
+  data() {
+    const statusColors = {
+        'aprobado': 'bg-green-200 text-green-600',
+        'rechazado': 'bg-red-200 text-red-600',
+        'en proceso': 'bg-yellow-200 text-yellow-600'
+    }
+
+
+    return {
+        statusColors
+    }
+  },
+
 };
 </script>

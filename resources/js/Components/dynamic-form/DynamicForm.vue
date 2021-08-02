@@ -5,7 +5,7 @@
     </div>
     <Form @submit="onSubmit" :validation-schema="validateSchema" v-slot="{ values, errors }">
 
-        <DynamicInputs :formSchema="formSchema" :evaluate="evaluate" :valuesForm="values"/>
+        <DynamicInputs :formSchema="formSchema" :action="action" :evaluate="evaluate" :valuesForm="values" />
 
         <!-- <div class="flex">
             <div class="w-1/2">
@@ -208,7 +208,7 @@ export default {
                         break;
 
                     case "evaluate":
-                        this.$inertia.put(route("reinscripciones.saveRevision", this.$props.builder.id), values);
+                        this.$inertia.put(route("reinscripciones.updateRevision", this.$props.builder.id), values);
                         break;
 
                 }
@@ -226,7 +226,7 @@ export default {
     },
     async mounted() {
         const module = await import(`../../../../helpers/formularios/${this.$props.province}`)
-        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.evaluate, this.$props.dataForm);
+        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.evaluate);
 
         this.yepSchema = this.formSchema.reduce(createYupSchema, {}, this.$props.evaluate);
 
@@ -243,7 +243,8 @@ input:checked ~ .dot {
 }
 
 .btn-close-row {
-    position: absolute;
+    position: relative;
+    transform: translate(110%, -45%);
     right: 36px;
     z-index: 100;
     cursor: pointer;
