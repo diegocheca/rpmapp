@@ -293,7 +293,6 @@
 					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 				></CardDomAdmin> -->
 			</div>
-			dqdqwdq correcto:{{form.obs_administracion_provincia}}
 			<div id="section_domicilio_administrativo"></div>
 			<PaginaDosDatosDomLegal
 				:link_volver="route('formulario-alta.index')"
@@ -370,6 +369,7 @@
 				></CardMinaUno> -->
 			</div>
 			<div id="section_mina_uno"></div>
+
 			<PaginaCuatroDatosMinaUno
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -437,8 +437,6 @@
 			>
 			</PaginaCuatroDatosMinaUno>
 			
-			<br>
-			<br>
 			<div class="flex items-center justify-center">
 				<!-- <CardMinaDos  
 							:progreso="form.valor_de_progreso_cinco"
@@ -450,7 +448,6 @@
 							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 						></CardMinaDos> -->
 			</div>
-			<br>
 			<br>
 			<br>
 			<div id="section_datos_mina_dos"></div>
