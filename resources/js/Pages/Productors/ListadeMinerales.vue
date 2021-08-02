@@ -12,7 +12,7 @@
                 <div class="font-base tracking-tight text-gray-600">Lista de minerales seleccionales.</div>
                 </div>
                 <div class="flex items-center">
-                <button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900"  @click="agregar_mineral()"> + Agregar Mineral</button>
+                <button :disabled="$props.evaluacion" class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900"  @click="agregar_mineral()"> + Agregar Mineral</button>
                 </div>
             </div>
             <!-- lsita de minerales del nieto: {{$props.lista_de_minerales_pre_cargados}} -->
@@ -38,7 +38,7 @@
                                 <div class="flex py-4  text-sm text-gray-600">
                                     <div class="flex-1 inline-flex items-center">
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">
-                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none"
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none"
                                             viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                     d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
@@ -47,13 +47,14 @@
                                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                             </svg>
                                             <label for="select_mineral_explotado">Mineral Explotado:</label>
-                                            <select  class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
+                                            <select  :disabled="$props.evaluacion" class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
                                                 <option value="aprovechamiento_comun">Sustancias de aprovechamiento común</option>
                                                 <option value="conceden_preferentemente">Sustancias que se conceden preferentemente al dueño del suelo</option>
                                             </select>
                                         </div>
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">
                                             <select
+                                            :disabled="$props.evaluacion"
                                             v-model="mineral.id_mineral"
                                             @change="cambio_select_mineral_segunda_cat($event, index)"
                                             >
@@ -63,7 +64,7 @@
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">
                                             <div v-show="mineral.mostrar_lugar_segunda_cat">
                                                 <label for="select_lugar_mineral">Lugar donde se encuentra:</label>
-                                                <select  class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra" @change="cambio_mineral_explotado($event, index)" >
+                                                <select  :disabled="$props.evaluacion" class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra" @change="cambio_mineral_explotado($event, index)" >
                                                     <option value="lecho_de_los_rios">Lechos de los ríos</option>
                                                     <option value="aguas_corrientes">Aguas Corrientes</option>
                                                     <option value="placeres">Placeres</option>
@@ -73,6 +74,7 @@
                                         </div>
                                         <div class="flex" v-if="$props.tipo_yacimiento !== 'segunda'">
                                             <select
+                                            :disabled="$props.evaluacion"
                                             v-model="mineral.id_mineral"
                                             @change="cambio_select_mineral_segunda_cat($event, index)"
                                             >
@@ -82,7 +84,7 @@
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">
                                             <div v-show="mineral.mostrar_otro_mineral_segunda_cat">
                                                 <label for="otro_mineral_segunda_categoria">Nombre del mineral no comprendido en 1° categoría:</label>
-                                                <input type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
+                                                <input :disabled="$props.evaluacion" type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
                                                 <br>
                                             </div>
                                         </div>
@@ -106,6 +108,7 @@
                                         :</label
                                         >
                                         <textarea
+                                            :disabled="$props.evaluacion"
                                             id="presentacion_natural"
                                             name="presentacion_natural"
                                             v-model="mineral.observacion"
@@ -174,6 +177,7 @@
                                     </div>
                                     <div class="w-full md:w-1/3 px-3">
                                         <button
+                                            :disabled="$props.evaluacion"
                                             class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900"
                                             type="button" aria-label="like"
                                             @click="eliminar_mineral(index)"

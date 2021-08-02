@@ -13,7 +13,6 @@
                 </button>
             </template>
         </jet-dialog-modal>
-        el id es: {{$props.id}}
         <button
             type="button"
             class="animate-pulse  text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"

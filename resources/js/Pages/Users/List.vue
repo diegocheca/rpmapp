@@ -1,16 +1,13 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
     <app-layout>
-        <h2 class="text-center text-2xl font-bold leading-7 text-gray-300 sm:text-3xl sm:truncate py-4 bg-gray-800">
-            Product Stock Inertia
-        </h2>
         <body class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                     <div
                         class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
                     >
-                        <a :href="route('formulario-alta.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Borrador</button></a>
+                        <a :href="route('formulario-alta.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Usuario</button></a>
                         <div class="overflow-x-auto">
                             <div class="min-w-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
                                 <div class="w-full lg:w-5/6">
@@ -77,6 +74,7 @@
                         </div>
                     </div>
                 </div>
+                <ChartPieB></ChartPieB>
             </div>
         </body>
     </app-layout>
@@ -96,8 +94,13 @@
   // More people...
 ]
 
+
+
+
 import AppLayout from "@/Layouts/AppLayout";
 import Saludo from "@/Pages/MisComponentes/saludo";
+import ChartPieB from '@/Components/charts/pieUsuarios'
+
 export default {
     
     props: {
@@ -105,7 +108,8 @@ export default {
     },
     components: {
         AppLayout,
-        Saludo
+        Saludo,
+        ChartPieB,
     },
     setup() {
         return {

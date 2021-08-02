@@ -102,6 +102,7 @@
               </tbody>
             </table>
           </div>
+          <ChartBarM></ChartBarM>
         </div>
         <saludo></saludo>
       </div>
@@ -112,13 +113,14 @@
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-
+import ChartBarM from '@/Components/charts/barminerales'
 export default {
   props: {
     reinscripciones: Array,
   },
   components: {
     AppLayout,
+    ChartBarM
   },
 };
 </script>
