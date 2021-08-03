@@ -14,7 +14,6 @@
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16  sticky top-0">
 
-            en el hijo es: {{$props.inscripciondgr_correcto}}  - {{$props.constaciasociedad_correcto}}
             <a href="#section_productor">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/casco-minero.svg" width="50%">
             </a>
@@ -55,6 +54,8 @@
                     :updated_at="'hace 10 minutos'"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                    :ayuda="mostrar_ayuda"
+                    v-on:changevalorayuda="update_valor_ayuda_local($event)"
                 ></CardProductor>
             </div>
             <br>
@@ -76,6 +77,24 @@
                     v-on:changeobsrazonsocialvalido="updateobs_razon_social_valido($event)"
                     v-on:changerazonsocial="update_razon_social($event)"
                 ></InputRazonSocial>
+                <div v-show="mostrar_ayuda">
+                    <br>
+                    <div   class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            En caso de ser una persona física, debe completar este campo con su nombre y apellido. En caso de ser una empresa debe completar este campo con el nombre con el que se identifica ante la AFIP.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     - Razon Social valor input del padre{{form_pagina.razon_social}}
                     - Razon Social input valido del padre{{form_pagina.razon_social_valido}}
@@ -101,6 +120,24 @@
                     v-on:changeemail="update_email($event)"
                 >
                 </InputEmail>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Es el email donde recibirá notificaciones. Ejemplo: nombre@ejemplo.com
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- Emai  deel padre{{form_pagina.email}}
                     -- Emai valida deel padre{{form_pagina.email_valido}}
@@ -110,7 +147,7 @@
                 </div>
             </div>
         </div>
-         <div class="flex">
+        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputCuit
                     v-bind:cuit="$props.cuit"
@@ -127,6 +164,24 @@
                     v-on:changecuit="update_cuit($event)"
                 >
                 </InputCuit>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Es el número de CUIT asignado por la AFIP. Formato: XX-XXXXXXXXXX-X.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- cuit valida deel padre{{form_pagina.cuit_valido}}
                     -- cuit correcto deel padre{{form_pagina.cuit_correcto}}
@@ -150,6 +205,24 @@
                     
                 >
                 </InputNumeroProductor>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Este es el número único con el que se identifican los productores, si usted no lo posee, el sistema le asignara uno.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- numero productor valida deel padre{{form_pagina.numeroproductor_valido}}
                     -- numero productor correcto deel padre{{form_pagina.numeroproductor_correcto}}
@@ -157,8 +230,8 @@
                 </div>
 
             </div>
-         </div>
-         <div class="flex">
+        </div>
+        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputTipoSociedad
                     v-bind:tiposociedad="$props.tiposociedad"
@@ -175,16 +248,35 @@
                     v-on:changetiposociedad="update_tipo_sociedad($event)"
                 >
                 </InputTipoSociedad>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Es el tipo de sociedad conformada.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
                 <div class="flex" v-if="mostrar_testing">
                     -- tipo de sociedad valida deel padre{{form_pagina.tiposociedad_valido}}
                     -- tipo de sociedad correcto deel padre{{form_pagina.tiposociedad_correcto}}
                     -- tipo de sociedad observacion deel padre{{form_pagina.obs_tiposociedad}}
                 </div>
             </div>
-         </div>
-         <br>
-         <br>
-         <div class="flex">
+        </div>
+        <br>
+        <br>
+        <div class="flex">
+            <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
                     v-bind:fileinput_valor="form_pagina.inscripciondgr"
@@ -199,9 +291,30 @@
 
                     v-on:changeinscripciondgrcorrecto="update_inscripcion_dgr_correcto($event)"
                     v-on:changeobsinscripciondgr="update_obs_inscripcion_dgr($event)"
+                    v-on:cambioarchivo="update_archivo_dgr($event)"
                 >
                 </FileInscripcionDGR>
+                <div v-show="mostrar_ayuda" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Esta constancia puede ser descargada desde la página de la AFIP. Debe ser un archivo del tipo PDF.
+                        </p>
+                        
+                    </div>
+                    <br>
+                </div>
+                <br>
                 <div class="flex" v-if="mostrar_testing">
+                    -- valor inscripcion dgr:{{form_pagina.inscripciondgr}}*
                     -- inscripcion dgr valida deel padre{{form_pagina.inscripciondgr_valido}}
                     -- inscripcion dgr correcto deel padre{{form_pagina.inscripciondgr_correcto}}
                     -- inscripcion dgr observacion deel padre{{form_pagina.obs_inscripciondgr}}
@@ -213,7 +326,7 @@
          <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
-                    v-bind:fileinput_valor="form_pagina.constanciasociedad"
+                    v-bind:fileinput_valor="form_pagina.constaciasociedad"
                     v-bind:fileinput_valor_valido="form_pagina.constanciasociedad_valido"
                     v-bind:inscripciondgr_correcto="form_pagina.constanciasociedad_correcto"
                     v-bind:obs_fileinput="form_pagina.obs_constanciasociedad"
@@ -224,16 +337,25 @@
                     v-bind:name_correcto="'constancia_correcto'"
                     v-on:changeinscripciondgrcorrecto="update_constancia_sociedad_correcto($event)"
                     v-on:changeobsinscripciondgr="update_obs_constancia_sociedad($event)"
+                    v-on:cambioarchivo="update_archivo_constancia($event)"
                 >
-
-                
-
-
-
-
-
                 </FileInscripcionDGR>
+                <div  v-show="mostrar_ayuda" class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    <p class="p-3">
+                        Esta constancia debe ser descargada desde la página de la AFIP. Debe ser un archivo PDF.
+                    </p>
+                    <br>
+                </div>
+                <br>
                 <div class="flex" v-if="mostrar_testing">
+                    -- valor constancia sociedad:{{form_pagina.constanciasociedad}}*
                     -- constancia de sociedad valida deel padre{{form_pagina.constanciasociedad_valido}}
                     -- constancia de sociedad correcto deel padre{{form_pagina.constanciasociedad_correcto}}
                     -- constancia de sociedad observacion deel padre{{form_pagina.obs_constanciasociedad}}
@@ -284,9 +406,20 @@
                 :obs_constanciasociedad="form_pagina.obs_constanciasociedad"
                 :obs_constanciasociedad_valido="form_pagina.obs_constanciasociedad_valido"
 
-                :evaluacion="true"
+                :evaluacion="autoridad_minera"
                 :id="$props.id"
+                :testing ="mostrar_testing"
+
+                v-on:CreeUnNuevoId="update_id_recien_creado($event)"
+                v-on:actualizarinscripcion="update_inscripcion($event)"
+                v-on:actualizaconstancia="update_constancia($event)"
+
+
+
+                
+
             ></BotonesPaginaUna>
+            
          </div>
         
         </div>
@@ -370,6 +503,8 @@ export default {
 	},
    
   data() {
+      console.log("eeeel valor es:");
+      console.log(this.$props.inscripciondgr);
     return {
         saludos: 'Saludame qweqweqwe',
         mostrar_modal_datos_ya_guardados:false,
@@ -377,6 +512,7 @@ export default {
         modal_body:'',
         mostrar_testing: false,
         autoridad_minera:false,
+        mostrar_ayuda: false,
         form_pagina: {
             razon_social : this.$props.razon_social,
             razon_social_valido: this.$props.razon_social_valido,
@@ -544,7 +680,40 @@ export default {
             this.form_pagina.obs_constanciasociedad = newValue;
             //tengo que enviarsela al padre
         },
-  }
-  
+        //mostrar ayuda
+        update_valor_ayuda_local(newValor){
+            this.mostrar_ayuda = newValor;
+        },
+        update_id_recien_creado(id_nuevo){
+            this.$emit('CreeUnNuevoIdPasoAAbuelo',id_nuevo);
+        },
+        update_archivo_dgr(value){
+            this.form_pagina.inscripciondgr = value;
+            // console.log("cambio el archivo de la dgr");
+            // console.log(this.form_pagina.inscripciondgr);
+        },
+        update_archivo_constancia(value){
+            this.form_pagina.constaciasociedad = value;
+        },
+
+        update_inscripcion(value){
+            console.log("actualizando la inscripcion desde la pagina");
+            this.form_pagina.inscripciondgr = value;
+            //this.$emit('ActualizarPathInscripcionAAbuelo',value);
+        },
+
+
+        update_constancia(value){
+            this.form_pagina.constaciasociedad = value;
+           // this.$emit('ActualizarPathConstanciaAAbuelo',value);
+        },
+
+        
+
+
+
+        
+        
+    }
 };
 </script>

@@ -15,46 +15,46 @@ export default {
     data() {
         return {
             bars: [{
-                "province": "provincia 1",
+                "province": "San Jaun",
                 "productors": 2025
                 }, {
-                "province": "provincia 2",
+                "province": "Catamarca",
                 "productors": 1882
                 }, {
-                "province": "provincia 3",
+                "province": "La Rioja",
                 "productors": 1809
                 }, {
-                "province": "provincia 4",
+                "province": "Jujuy",
                 "productors": 1322
                 }, {
-                "province": "provincia 5",
+                "province": "Chaco",
                 "productors": 1122
                 }, {
-                "province": "provincia 6",
+                "province": "Santiago del Estero",
                 "productors": 1114
                 }, {
-                "province": "provincia 7",
+                "province": "Cordoba",
                 "productors": 984
                 }, {
-                "province": "provincia 8",
+                "province": "Rio Negro",
                 "productors": 711
                 }, {
-                "province": "provincia 9",
+                "province": "Formosa",
                 "productors": 665
                 }, {
-                "province": "provincia 10",
+                "province": "Salta",
                 "productors": 580
                 }, {
-                "province": "provincia 11",
+                "province": "Mendoza",
                 "productors": 443
                 }, {
-                "province": "provincia 12",
+                "province": "San Luis",
                 "productors": 441
                 }, {
-                "province": "provincia 13",
+                "province": "Buenos Aires",
                 "productors": 395
                 }, {
-                "province": "provincia 14",
+                "province": "La Pampa",
                 "productors": 395
             }]
         }

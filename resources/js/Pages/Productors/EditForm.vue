@@ -140,20 +140,20 @@
 							></CardProductor>
 					</div> -->
 
-					<div class="flex space-x-8 text-3xl">
+					<!--<div class="flex space-x-8 text-3xl">
 
-						<!-- spin -->
+						<!- spin ->
 						<button class="animate-spin inline-block py-4 px-8 bg-yellow-500 text-yellow-100 rounded-lg">Spin</button>
 
-						<!-- ping -->
+						<!- ping ->
 						<button class="animate-ping inline-block py-4 px-8 bg-blue-500 text-blue-100 rounded-lg">Ping</button>
 
-						<!-- pulse -->
+						<!- pulse ->
 						<button class="animate-pulse inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
 
-						<!-- bounce -->
+						<!- bounce ->
 						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
-					</div>
+					</div>-->
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -369,7 +369,7 @@
 				></CardMinaUno> -->
 			</div>
 			<div id="section_mina_uno"></div>
-			
+
 			<PaginaCuatroDatosMinaUno
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -437,8 +437,6 @@
 			>
 			</PaginaCuatroDatosMinaUno>
 			
-			<br>
-			<br>
 			<div class="flex items-center justify-center">
 				<!-- <CardMinaDos  
 							:progreso="form.valor_de_progreso_cinco"
@@ -452,8 +450,8 @@
 			</div>
 			<br>
 			<br>
-			<br>
 			<div id="section_datos_mina_dos"></div>
+			
 			<PaginaCincoDatosMinaDos
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -540,10 +538,6 @@
 			>
 			</PaginaCincoDatosMinaDos>
 			<br>
-			<br>
-			<br>
-			<br>
-			<br>
 			<!-- <div class="flex flex-col mb-8">
 				<button
 					type="button"
@@ -555,34 +549,13 @@
 				
 				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
 			</div> -->
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
 			<div id="section_datos_mina_ubicacion"></div>
-			<div class="flex items-center justify-center">
-				<CardMinaUbicacion  
-					:progreso="form.valor_de_progreso_seis"
-					:aprobado="form.valor_de_aprobado_seis"
-					:reprobado="form.valor_de_reprobado_seis" 
-					:lugar="'Argentina, San Juan'"
-					:updated_at="'hace 10 minutos'"
-					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-				></CardMinaUbicacion>
-			</div>
-			<br>
-			<br>
-			<br>
 			<br>
 			<PaginaSeisDatosUbicacionMina
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
-				:titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
-				:titulo_pagina="'Pagina datos de Mina Segunda Parte'"
+				:titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
+				:titulo_pagina="'Pagina datos de Ubicacion de la Mina'"
 
 				:localidad_mina_pais="form.localidad_mina_pais"
 				:localidad_mina_pais_validacion="form.localidad_mina_pais_validacion"
@@ -631,28 +604,11 @@
 
 			</PaginaSeisDatosUbicacionMina>
 			<br>
-			<br>
-			<br>
-			<br>
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_seis"
-				>
-					Guardar: Datos de la Ubicacion de la mina
-				</button>
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
-			<br>
-			<br>
-			<br>
+			
 			<hr>
 			<br>
-			<br>
-			<br>
-			<br>
-					<div class="flex flex-col mb-4">
+			<div class="flex">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 							for="name"
@@ -665,7 +621,7 @@
 							class="border py-2 px-3 text-grey-darkest"
 						/>
 					</div>
-					<div class="flex flex-col mb-4">
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 							for="estado"
@@ -675,39 +631,40 @@
 							id="estado"
 							name="estado"
 							v-model="form.estado"
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="presentado">Presentado</option>
+							class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+							<option value="en proceso">En proceso</option>
+							<option value="borrador">Borrador</option>
 							<option value="en revision">En revision</option>
-							<option value="con observacion">Aprobado con Observaciones</option>
+							<option value="aprobado">Aprobado</option>
 							<option value="reprobado">Reprobado</option>
+							<option value="con observacion">Con Observacion</option>
+							
 						</select>
 					</div>
-					<div class="flex flex-col mb-8">
-							<!-- type="submit" -->
-						<button
-							@click="guardar_avances_todo"
-							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-						>
-							Actualizar
-						</button>
-						<inertia-link
-							:href="route('productors.index')"
-							class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
-						>
-							Volver
-						</inertia-link>
-					</div>
-
-					<!-- <div class="mr-6">
-							<button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Learn More</button>
-							<button class="px-8 py-3.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900">New</button>
-							<button class="px-7 py-3   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-yellow-200 hover:bg-yellow-300 text-yellow-900">New</button>
-							<button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900">New</button>
-							<button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-purple-300 bg-indigo-200 hover:bg-indigo-300 text-indigo-900">New</button>
-						</div> -->
-
-
-				</form>
+			</div>
+			<br>
+			<br>
+			<br>
+			<div class="flex">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<inertia-link
+						:href="route('productors.index')"
+						class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+					>
+						Volver
+					</inertia-link>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<button
+						@click="guardar_avances_todo"
+						class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
+					>
+						Actualizar
+					</button>
+					
+				</div>
+			</div>
+		</form>
 				
 
 			</div>
@@ -910,31 +867,27 @@ export default {
 
 				administracion_calle: this.$props.productor.administracion_calle,
 				administracion_calle_valido:  true,
-				administracion_calle_correcto: 'nada',
-				obs_administracion_calle_nombre: '',
+				administracion_calle_correcto:  this.$props.productor.administracion_calle_correcto,
+				obs_administracion_calle_nombre:  this.$props.productor.obs_administracion_calle_nombre,
 				obs_administracion_calle_nombre_valido: false,
 				
-				
-				
-				
-
 				administracion_numero: this.$props.productor.administracion_numero,
 				administracion_numero_valido:  true,
-				administracion_numero_correcto: 'nada',
-				obs_administracion_numero_nombre: '',
+				administracion_numero_correcto: this.$props.productor.administracion_numero_correcto,
+				obs_administracion_numero_nombre: this.$props.productor.obs_administracion_numero,
 				obs_administracion_numero_nombre_valido: false,
 
 				administracion_telefono: this.$props.productor.administracion_telefono,
 				administracion_telefono_valido:  true,
-				administracion_telefono_correcto: 'nada',
-				obs_administracion_telefono_nombre: '',
+				administracion_telefono_correcto: this.$props.productor.administracion_telefono_correcto,
+				obs_administracion_telefono_nombre: this.$props.productor.obs_administracion_telefono,
 				obs_administracion_telefono_nombre_valido: false,
 
 
 				administracion_pais: this.$props.productor.administracion_pais,
 				administracion_pais_valido:  true,
-				administracion_pais_correcto: 'nada',
-				obs_administracion_pais: '',
+				administracion_pais_correcto: this.$props.productor.administracion_pais_correcto,
+				obs_administracion_pais: this.$props.productor.obs_administracion_pais,
 				obs_administracion_pais_valido: false,
 
 
@@ -942,16 +895,16 @@ export default {
 
 				administracion_provincia: this.$props.productor.administracion_provincia,
 				administracion_provincia_valido:  true,
-				administracion_provincia_correcto: 'nada',
-				obs_administracion_provincia: '',
+				administracion_provincia_correcto: this.$props.productor.administracion_provincia_correcto,
+				obs_administracion_provincia: this.$props.productor.obs_administracion_provincia,
 				obs_administracion_provincia_valido: false,
 
 
 
 				administracion_departamento: this.$props.productor.administracion_departamento,
 				administracion_departamento_valido:  true,
-				administracion_departamento_correcto: 'nada',
-				obs_administracion_departamento: '',
+				administracion_departamento_correcto: this.$props.productor.administracion_departamento_correcto,
+				obs_administracion_departamento: this.$props.productor.obs_administracion_departamento,
 				obs_administracion_departamento_valido: false,
 
 
@@ -960,14 +913,14 @@ export default {
 
 				administracion_localidad: this.$props.productor.administracion_localidad,
 				administracion_localidad_valido:  true,
-				administracion_localidad_correcto: 'nada',
-				obs_administracion_localidad: '',
+				administracion_localidad_correcto: this.$props.productor.administracion_localidad_correcto,
+				obs_administracion_localidad: this.$props.productor.obs_administracion_localidad,
 				obs_administracion_localidad_valido: false,
 
 				administracion_cp: this.$props.productor.administracion_cp,
 				administracion_cp_valido:  true,
-				administracion_cp_correcto: 'nada',
-				obs_administracion_cp: '',
+				administracion_cp_correcto: this.$props.productor.administracion_cp_correcto,
+				obs_administracion_cp: this.$props.productor.obs_administracion_cp,
 				obs_administracion_cp_valido: false,
 
 
@@ -976,8 +929,8 @@ export default {
 
 				administracion_otro: this.$props.productor.administracion_otro,
 				administracion_otro_valido:  true,
-				administracion_otro_correcto: 'nada',
-				obs_administracion_otro: '',
+				administracion_otro_correcto: this.$props.productor.administracion_otro_correcto,
+				obs_administracion_otro: this.$props.productor.obs_administracion_otro,
 				obs_administracion_otro_valido: false,
 
 
@@ -1165,20 +1118,20 @@ export default {
 
 				localidad_mina_pais: this.$props.productor.localidad_mina_pais,
 				localidad_mina_pais_validacion:  true,
-				localidad_mina_pais_correcto: 'nada',
-				obs_localidad_mina_pais: '',
+				localidad_mina_pais_correcto: this.$props.productor.localidad_mina_pais_correcto,
+				obs_localidad_mina_pais:  this.$props.productor.obs_localidad_mina_pais,
 				obs_localidad_mina_pais_valido: false,
 
 				localidad_mina_provincia: this.$props.productor.localidad_mina_provincia,
 				localidad_mina_provincia_validacion:  true,
-				localidad_mina_provincia_correcto: 'nada',
-				obs_localidad_mina_provincia: '',
+				localidad_mina_provincia_correcto: this.$props.productor.localidad_mina_provincia_correcto,
+				obs_localidad_mina_provincia:this.$props.productor.obs_localidad_mina_provincia,
 				obs_localidad_mina_provincia_valido: false,
 
 				localidad_mina_departamento: this.$props.productor.localidad_mina_departamento,
 				localidad_mina_departamento_validacion:  true,
-				localidad_mina_departamento_correcto: 'nada',
-				obs_localidad_mina_departamento: '',
+				localidad_mina_departamento_correcto:this.$props.productor.localidad_mina_departamento_correcto,
+				obs_localidad_mina_departamento:this.$props.productor.obs_localidad_mina_departamento,
 				obs_localidad_mina_departamento_valido: false,
 
 
@@ -1186,29 +1139,29 @@ export default {
 
 				localidad_mina_localidad: this.$props.productor.localidad_mina_localidad,
 				localidad_mina_localidad_validacion:  true,
-				localidad_mina_localidad_correcto: 'nada',
-				obs_localidad_mina_localidad: '',
+				localidad_mina_localidad_correcto:this.$props.productor.localidad_mina_localidad_correcto,
+				obs_localidad_mina_localidad:this.$props.productor.obs_localidad_mina_localidad,
 				obs_localidad_mina_localidad_valido: false,
 
 
 				tipo_sistema: this.$props.productor.tipo_sistema,
 				tipo_sistema_validacion:  true,
-				tipo_sistema_correcto: 'nada',
-				obs_tipo_sistema: '',
+				tipo_sistema_correcto:  this.$props.productor.tipo_sistema_correcto,
+				obs_tipo_sistema:   this.$props.productor.obs_tipo_sistema,
 				obs_tipo_sistema_valido: false,
 
 
 
 				latitud: this.$props.productor.latitud,
 				latitud_validacion:  true,
-				latitud_correcto: 'nada',
-				obs_latitud: '',
+				latitud_correcto:  this.$props.productor.latitud_correcto,
+				obs_latitud:   this.$props.productor.obs_latitud,
 				obs_latitud_valido: false,
 
 				longitud: this.$props.productor.longitud,
 				longitud_validacion:  true,
-				longitud_correcto: 'nada',
-				obs_longitud: '',
+				longitud_correcto: this.$props.productor.longitud_correcto,
+				obs_longitud:  this.$props.productor.obs_longitud,
 				obs_longitud_valido: false,
 
 				created_by: this.$props.productor.created_by,
@@ -3308,6 +3261,8 @@ export default {
 						// Make a request for a user with a given ID
 						axios.post('/formularios/evaluacion_auto_guardado_todo', {
 							id: this.$props.productor.id,
+							estado: this.form.estado,
+							es_evaluacion: 'true',
 
 						})
 						.then(function (response) {

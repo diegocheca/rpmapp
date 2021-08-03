@@ -42,6 +42,8 @@
                     :updated_at="'hace 10 minutos'"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                    :ayuda="ayuda_local"
+                    v-on:changevalorayuda="update_valor_ayuda_local($event)"
                 ></CardMinaUno>
             </div>
             <br>
@@ -79,6 +81,25 @@
                         v-on:changevalor="updatevalor_num_exp($event)"
                     >
                     </NombreMina>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es el número de expediente con el cual se ha tramitado el expediente.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+
                     <div class="flex" v-if="mostrar_testing">
                         <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
                         <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
@@ -121,6 +142,24 @@
                         v-on:changevalor="update_distrito_minero($event)"
                     >
                     </NombreMina>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es el distrito minero asignado en el expediente con el cual se ha tramitado el expediente.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         <br> distrito minero de Mina valor padre: {{form_pagina.distrito_minero}}
                         <br> distrito minero de Mina  valido del padre: {{form_pagina.distrito_minero_validacion}}
@@ -130,6 +169,62 @@
                     </div>
                     
                 </div>
+            </div>
+            <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <SelectGenerico
+                        v-bind:valor_input_props="$props.categoria"
+                        v-bind:valor_input_validacion="$props.categoria_validacion"
+                        v-bind:evualacion_correcto="$props.categoria_correcto"
+                        v-bind:valor_obs="$props.obs_categoria"
+                        v-bind:valor_valido_obs="$props.obs_categoria_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Categoria de Manifestacion'"
+                        v-bind:icon="'http://localhost:8000/svg/minetest.svg'"
+                        v-bind:name_correccion="'categoria_correccion'"
+                        v-on:changevalido="update_cat_valido($event)"
+                        v-on:changecorrecto="update_cat_correcto($event)"
+                        v-on:changeobs="update_obs_cat($event)"
+                        v-on:changeobsvalido="update_obs_cat_valida($event)"
+                        v-on:changevalor="update_valor_cat($event)"
+                    >
+                    </SelectGenerico>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Debe seleccionar la opción que usted está registrando, ya sea mina o cantera.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div class="flex" v-if="mostrar_testing">
+                        <br> Categoria de Mina valor padre: {{$props.categoria}}
+                        <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
+                        <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
+                        <br> Categoria de Mina  correcto deel padre: {{form_pagina.categoria_correcto}}
+                        <br> Categoria de Mina  observacion deel padre: {{form_pagina.obs_categoria}}
+                        <br> Categoria de Mina  observacion valida deel padre: {{form_pagina.obs_categoria_valido}}
+
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <div v-if="form_pagina.categoria === 'primera' || $props.categoria === 'primera' " class="w-40 h-40 m-4 bg-gradient-to-r from-blue-600 to-blue-300 rounded-2xl items-center justify-center text-center text-white py-16">Mina de Primera Categoria </div>
+                    <div v-if="form_pagina.categoria === 'segunda' || $props.categoria === 'segunda'" class="w-40 h-40 m-4 bg-gradient-to-r from-purple-600 to-purple-300 rounded-2xl items-center justify-center text-center text-white py-16">Mina de Segunda Categoria</div>
+                    <div v-if="form_pagina.categoria === 'tercera' || $props.categoria === 'tercera'" class="w-40 h-40 m-4 bg-gradient-to-r from-green-600 to-green-300 rounded-2xl items-center justify-center text-center text-white py-16">Cantera de Tercer Categoria</div>
+                    
+                </div>
+                
             </div>
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -151,6 +246,24 @@
                         v-on:changevalor="update_valor_nom_mina_($event)"
                     >
                     </NombreMina>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es el nombre que se le ha asignado a la mina.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         <br> Nombre de Mina valor padre: {{form_pagina.nombre_mina}}
                         <br> Nombre de Mina  valido del padre: {{form_pagina.nombre_mina_validacion}}
@@ -159,90 +272,118 @@
                         <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_nombre_mina_valido}}
                     </div>
                 </div>
-                Tipo de Yacimiento: {{form_pagina.mina_cantera}}
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <SelectGenerico
-                        v-bind:valor_input_props="$props.categoria"
-                        v-bind:valor_input_validacion="$props.categoria_validacion"
-                        v-bind:evualacion_correcto="$props.categoria_correcto"
-                        v-bind:valor_obs="$props.obs_categoria"
-                        v-bind:valor_valido_obs="$props.obs_categoria_valido"
+                    <NombreMina
+                        v-bind:valor_input_props="$props.descripcion_mina"
+                        v-bind:valor_input_validacion="$props.descripcion_mina_validacion"
+                        v-bind:evualacion_correcto="$props.descripcion_mina_correcto"
+                        v-bind:valor_obs="$props.obs_descripcion_mina"
+                        v-bind:valor_valido_obs="$props.obs_descripcion_mina_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
-                        v-bind:label="'Categoria de Manifestacion'"
-                        v-bind:icon="'http://localhost:8000/svg/minetest.svg'"
-                        v-bind:name_correccion="'categoria_correccion'"
-                        v-on:changevalido="update_cat_valido($event)"
-                        v-on:changecorrecto="update_cat_correcto($event)"
-                        v-on:changeobs="update_obs_cat($event)"
-                        v-on:changeobsvalido="update_obs_cat_valida($event)"
-                        v-on:changevalor="update_valor_cat($event)"
+                        v-bind:label="'Descripcion de la Mina'"
+                        v-bind:icon="'http://localhost:8000/svg/description.svg'"
+                        v-bind:name_correcto="'descripcion_mina_correcto'"
+                        v-on:changevalido="update_descripcion_valido($event)"
+                        v-on:changecorrecto="update_descripcion_correcto($event)"
+                        v-on:changeobs="update_obs_descripcion($event)"
+                        v-on:changeobsvalido="update_obs_descripcion_valida($event)"
+                        v-on:changevalor="update_valor_descripcion($event)"
                     >
-                    </SelectGenerico>
+                    </NombreMina>
+                    <div v-show="ayuda_local" >
+                            <br>
+                            <div  class="
+                                bg-blue-50
+                                text-gray-800
+                                bg-opacity-20
+                                text-opacity-80
+                                ring
+                                ring-4
+                                ring-blue-100">
+                            
+                                <p class="p-3">
+                                    En este campo debe ser completado con la descripcion de la mina.
+                                </p>
+                                
+                            </div>
+                            <br>
+                        </div>
                     <div class="flex" v-if="mostrar_testing">
-                        <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
-                        <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
-                        <br> Categoria de Mina  correcto deel padre: {{form_pagina.categoria_correcto}}
-                        <br> Categoria de Mina  observacion deel padre: {{form_pagina.obs_categoria}}
-                        <br> Categoria de Mina  observacion valida deel padre: {{form_pagina.obs_categoria_valido}}
+                        <br> Nombre de Mina valor padre: {{form_pagina.descripcion_mina}}
+                        <br> Nombre de Mina  valido del padre: {{form_pagina.descripcion_mina_validacion}}
+                        <br> Nombre de Mina  correcto deel padre: {{form_pagina.descripcion_mina_correcto}}
+                        <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_descripcion_mina}}
+                        <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_descripcion_mina_valido}}
 
                     </div>
                 </div>
             </div>
-            <div class="flex w-full">
-                <NombreMina
-                    v-bind:valor_input_props="$props.descripcion_mina"
-                    v-bind:valor_input_validacion="$props.descripcion_mina_validacion"
-                    v-bind:evualacion_correcto="$props.descripcion_mina_correcto"
-                    v-bind:valor_obs="$props.obs_descripcion_mina"
-                    v-bind:valor_valido_obs="$props.obs_descripcion_mina_valido"
-                    v-bind:evaluacion="autoridad_minera"
-                    v-bind:testing = "mostrar_testing"
-                    v-bind:label="'Descripcion de la Mina'"
-                    v-bind:icon="'http://localhost:8000/svg/description.svg'"
-                    v-bind:name_correcto="'descripcion_mina_correcto'"
-                    v-on:changevalido="update_descripcion_valido($event)"
-                    v-on:changecorrecto="update_descripcion_correcto($event)"
-                    v-on:changeobs="update_obs_descripcion($event)"
-                    v-on:changeobsvalido="update_obs_descripcion_valida($event)"
-                    v-on:changevalor="update_valor_descripcion($event)"
-                >
-                </NombreMina>
-                <div class="flex" v-if="mostrar_testing">
-                    <br> Nombre de Mina valor padre: {{form_pagina.descripcion_mina}}
-                    <br> Nombre de Mina  valido del padre: {{form_pagina.descripcion_mina_validacion}}
-                    <br> Nombre de Mina  correcto deel padre: {{form_pagina.descripcion_mina_correcto}}
-                    <br> Nombre de Mina  observacion deel padre: {{form_pagina.obs_descripcion_mina}}
-                    <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_descripcion_mina_valido}}
-
-                </div>
-            </div>
             <div class="flex">
-                <InputFileGenerico v-if="form_pagina.categoria !== 'tercera'"
-                    v-bind:valor_input_props="$props.resolucion_concesion_minera"
-                    v-bind:valor_input_validacion="$props.resolucion_concesion_minera_validacion"
-                    v-bind:evualacion_correcto="$props.resolucion_concesion_minera_correcto"
-                    v-bind:valor_obs="$props.obs_resolucion_concesion_minera"
-                    v-bind:valor_valido_obs="$props.obs_resolucion_concesion_minera_valido"
-                    v-bind:evaluacion="autoridad_minera"
-                    v-bind:testing = "mostrar_testing"
-                    v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
-                    v-bind:icon="'http://localhost:8000/svg/pdf.svg'"
-                    v-bind:name_coreccion="'resolucion_correcto'"
-                    v-on:changevalido="update_resol_conce_valido($event)"
-                    v-on:changecorrecto="update_resol_conce_correcto($event)"
-                    v-on:changeobs="update_obs_resol_conce($event)"
-                    v-on:changeobsvalido="update_obs_resol_conce_valido($event)"
-                    v-on:changevalor="update_valor_resol_conce($event)"
+                <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+                    <SubirArchivo v-if="form_pagina.categoria !== 'tercera'"
+                        v-bind:valor_input_props="form_pagina.resolucion_concesion_minera"
+                        v-bind:valor_input_validacion="form_pagina.resolucion_concesion_minera_validacion"
+                        v-bind:evualacion_correcto="form_pagina.resolucion_concesion_minera_correcto"
+                        v-bind:valor_obs="form_pagina.obs_resolucion_concesion_minera"
+                        v-bind:valor_valido_obs="form_pagina.obs_resolucion_concesion_minera_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing ="mostrar_testing"
+                        v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
+                        v-on:changevalido="update_resol_conce_valido($event)"
+                        v-on:changecorrecto="update_resol_conce_correcto($event)"
+                        v-on:changeobs="update_obs_resol_conce($event)"
+                        v-on:changeobsvalido="update_obs_canon_valido($event)"
+                        v-on:changevalor="update_obs_resol_conce_valido($event)"
+                        v-on:cambioarchivo="cambio_el_archivo_resolucion($event)"
+                    >
+                    </SubirArchivo>
 
-                >
-                </InputFileGenerico>
-                <div class="flex" v-if="mostrar_testing">
-                    <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
-                    <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
-                    <br> concesion resolucion minera de Mina  correcto deel padre: {{form_pagina.resolucion_concesion_minera_correcto}}
-                    <br> concesion resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_resolucion_concesion_minera}}
-                    <br> concesion resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_resolucion_concesion_minera_valido}}
+                    <!-- <InputFileGenerico v-if="form_pagina.categoria !== 'tercera'"
+                        v-bind:valor_input_props="$props.resolucion_concesion_minera"
+                        v-bind:valor_input_validacion="$props.resolucion_concesion_minera_validacion"
+                        v-bind:evualacion_correcto="$props.resolucion_concesion_minera_correcto"
+                        v-bind:valor_obs="$props.obs_resolucion_concesion_minera"
+                        v-bind:valor_valido_obs="$props.obs_resolucion_concesion_minera_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing = "mostrar_testing"
+                        v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
+                        v-bind:icon="'http://localhost:8000/svg/pdf.svg'"
+                        v-bind:name_coreccion="'resolucion_correcto'"
+                        v-on:changevalido="update_resol_conce_valido($event)"
+                        v-on:changecorrecto="update_resol_conce_correcto($event)"
+                        v-on:changeobs="update_obs_resol_conce($event)"
+                        v-on:changeobsvalido="update_obs_resol_conce_valido($event)"
+                        v-on:changevalor="update_valor_resol_conce($event)"
+
+                    >
+                    </InputFileGenerico> -->
+                    <div v-show="ayuda_local" >
+                            <br>
+                            <div  class="
+                                bg-blue-50
+                                text-gray-800
+                                bg-opacity-20
+                                text-opacity-80
+                                ring
+                                ring-4
+                                ring-blue-100">
+                            
+                                <p class="p-3">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                    m quisquam doloremque placeat op.
+                                </p>
+                                
+                            </div>
+                            <br>
+                        </div>
+                    <div class="flex" v-if="mostrar_testing">
+                        <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
+                        <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
+                        <br> concesion resolucion minera de Mina  correcto deel padre: {{form_pagina.resolucion_concesion_minera_correcto}}
+                        <br> concesion resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_resolucion_concesion_minera}}
+                        <br> concesion resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_resolucion_concesion_minera_valido}}
+                    </div>
                 </div>
             </div>
             <div class="flex">
@@ -266,6 +407,25 @@
 
                     >
                     </InputFileGenerico>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
                         -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
@@ -296,6 +456,25 @@
                         v-on:changevalor="update_valor_titulo_contrato($event)"
                     >
                     </InputFileGenerico>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
                         -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
@@ -327,6 +506,24 @@
                         v-on:changevalor_lista_minerales="update_valor_minerales($event)"
                     >
                     </ListadeMinerales>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Debe completar la lista de minerales con aquellos minerales que justamente serán explotados en este yacimiento.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         <h3>Testing de lista de minerales</h3>
                         -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
@@ -341,11 +538,11 @@
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
-        <div v-show="$props.testing">
+        <div v-show="mostrar_testing">
             <h1>los minerales en el padre son</h1>
             {{minerales_locales}}
         </div>
-
+<!-- el id es: {{$props.id}} -->
         <BotonesPaginaCuatro
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
@@ -425,7 +622,7 @@ import NombreMina from "@/Pages/Productors/NombreMina";
 import SelectGenerico from "@/Pages/Productors/SelectGenerico";
 import InputFileGenerico from "@/Pages/Productors/InputFileGenerico";
 import ListadeMinerales from "@/Pages/Productors/ListadeMinerales";
-
+import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import BotonesPaginaCuatro from "@/Pages/Productors/BotonesPaginaCuatro";
 export default {
      props: [
@@ -505,6 +702,7 @@ export default {
         InputFileGenerico,
         ListadeMinerales,
 		BotonesPaginaCuatro,
+        SubirArchivo,
 	},
    
   data() {
@@ -515,6 +713,8 @@ export default {
         modal_body:'',
         mostrar_testing: false,
         autoridad_minera: false,
+        ayuda_local: false,
+        resolucion_local: '',
         lista_de_minerales:[],
 
         
@@ -727,7 +927,10 @@ export default {
 
 
 
-
+        cambio_el_archivo_resolucion(newValue){
+            this.resolucion_local = newValue;
+            this.form_pagina.resolucion_concesion_minera = this.resolucion_local;
+        },
 
 
 
@@ -809,6 +1012,12 @@ export default {
             console.log("traje un"+newValue);
             this.form_pagina.titulo_contrato_posecion = newValue;
             //tengo que enviarsela al padre
+        },
+
+
+        //mostrar ayuda
+        update_valor_ayuda_local(newValor){
+            this.ayuda_local = newValor;
         },
 
 

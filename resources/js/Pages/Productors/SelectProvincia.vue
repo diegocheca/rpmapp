@@ -79,8 +79,8 @@
                     --prov calle Valido local:{{calle_prov_legal_valido_local}}--
                     
                     --prov calle Evalaucion:{{leal_provincia_correcto}}--
-                    --prov calle Obser:{{obs_leal_provincia}}--
-                    --prov calle obsr Valido:{{obs_leal_provincia_valido}}--
+                    --prov calle Obser:{{observacion_prod}}**
+                    --prov calle obsr Valido:{{$props.obs_leal_provincia_valido}}--
                     --Evaluacion {{evaluacion}}--
                     --{{cartel_nota_evaluacion_prov_calle}}--
                 </div>
@@ -116,6 +116,7 @@ export default {
         legal_calle_prov_correcto_local: this.$props.leal_provincia_correcto,
         obs_calle_prov_legal_valido_local: this.$props.obs_leal_provincia_valido,
         leal_provincia_local : this.$props.leal_provincia,
+        observacion_prod: this.$props.obs_leal_provincia,
         testing_hijo:false,
 
         //border-green-500

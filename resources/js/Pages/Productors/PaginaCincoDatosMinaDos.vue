@@ -52,6 +52,8 @@
                 :updated_at="'hace 10 minutos'"
                 :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                :ayuda="ayuda_local"
+                v-on:changevalorayuda="update_valor_ayuda_local($event)"
             ></CardMinaDos>
         </div>
         <br>
@@ -77,6 +79,25 @@
                     v-on:changeobsvalido="updateobs_owner_valido($event)"
                     v-on:changevalor="updatevalor_owner($event)"
                 ></CaracterQueInvoca>
+                <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                 <div class="flex" v-if="mostrar_testing">
                     <br> owner de Mina valor padre: {{form_pagina.numero_expdiente}}
                     <br> owner de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
@@ -107,6 +128,25 @@
                     v-on:changeobsvalido="update_obs_arrendatario_valido($event)"
                     v-on:changevalor="update_valor_arrendatario($event)"
                 ></CaracterQueInvoca>
+                <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                 <div class="flex" v-if="mostrar_testing">
                         <br> arrendatario de Mina valor padre: {{form_pagina.arrendatario}}
                         <br> arrendatario de Mina  correcto deel padre: {{form_pagina.arrendatario_correcto}}
@@ -137,6 +177,25 @@
                         v-on:changeobsvalido="update_obs_concesionario_valido($event)"
                         v-on:changevalor="update_valor_concesionario($event)"
                     ></CaracterQueInvoca>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                             <br> concesionario de Mina valor padre: {{form_pagina.concesionario}}
                             <br> concesionario de Mina  correcto deel padre: {{form_pagina.concesionario_correcto}}
@@ -170,6 +229,25 @@
                         v-on:changeotroinput="update_valor_sustancias_input($event)"
                         v-on:changeotroinputvalido="update_valor_sustancias_input_valido($event)"
                     ></CaracterQueInvoca>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                             <br> otro de Mina valor padre: {{form_pagina.otros}}
                             <br> otro de Mina  correcto deel padre: {{form_pagina.otros_correcto}}
@@ -203,6 +281,25 @@
                         v-on:changeotroinput="update_valor_otro_input($event)"
                         v-on:changeotroinputvalido="update_valor_otro_input_valido($event)"
                     ></CaracterQueInvoca>
+                    <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                             <br> otro de Mina valor padre: {{form_pagina.otros}}
                             <br> otro de Mina  correcto deel padre: {{form_pagina.otros_correcto}}
@@ -212,6 +309,11 @@
                 </div>
             </div>
         </div>
+        <!-- <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+         @click="enviar_constancia"
+         >
+            Subir archivo
+        </button> -->
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
                 v-bind:valor_input_props="form_pagina.constancia_pago_canon"
@@ -227,8 +329,29 @@
                 v-on:changeobs="update_obs_canon($event)"
                 v-on:changeobsvalido="update_obs_canon_valido($event)"
                 v-on:changevalor="update_valor_canon($event)"
+                v-on:cambioarchivo="cambio_el_archivo($event)"
             >
             </SubirArchivo>
+            <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+            
         </div>
         <div class="flex" v-if="mostrar_testing">
             <br> canon resolucion minera de Mina valor padre: {{form_pagina.constancia_pago_canon}}
@@ -237,6 +360,9 @@
             <br> canon resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_constancia_pago_canon}}
             <br> canon resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_constancia_pago_canon_valido}}
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
                 v-bind:valor_input_props="form_pagina.iia"
@@ -252,9 +378,30 @@
                 v-on:changeobs="update_obs_iia($event)"
                 v-on:changeobsvalido="update_obs_iia_valido($event)"
                 v-on:changevalor="update_valor_iia($event)"
+                v-on:cambioarchivo="cambio_el_archivo_iia($event)"
             >
             </SubirArchivo>
+            <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
         </div>
+
         <div class="flex" v-if="mostrar_testing">
             <br> iia minera de Mina valor padre: {{form_pagina.iia}}
             <br> iia minera de Mina  valido del padre: {{form_pagina.iia_canon_validacion}}
@@ -262,6 +409,9 @@
             <br> iia minera de Mina  observacion deel padre: {{form_pagina.obs_iia_canon}}
             <br> iia minera de Mina  observacion valida deel padre: {{form_pagina.obs_iia_canon_valido}}
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <SubirArchivo
                 v-bind:valor_input_props="form_pagina.dia"
@@ -277,8 +427,28 @@
                 v-on:changeobs="update_obs_dia($event)"
                 v-on:changeobsvalido="update_obs_dia_valido($event)"
                 v-on:changevalor="update_valor_dia($event)"
+                v-on:cambioarchivo="cambio_el_archivo_dia($event)"
             >
             </SubirArchivo>
+            <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
         </div>
         <div class="flex" v-if="mostrar_testing">
             <br> dia minera de Mina valor padre: {{form_pagina.dia}}
@@ -287,6 +457,9 @@
             <br> dia minera de Mina  observacion deel padre: {{form_pagina.obs_dia_canon}}
             <br> dia minera de Mina  observacion valida deel padre: {{form_pagina.obs_dia_canon_valido}}
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
@@ -307,6 +480,25 @@
                     v-on:changevalor="update_valor_actividades($event)"
                 >
                 </NombreMina>
+                <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                 <div class="flex" v-if="mostrar_testing">
                     <br> Actvidades de Mina valor padre: {{form_pagina.actividad}}
                     <br> Actvidades de Mina  valido del padre: {{form_pagina.actividad_a_desarrollar_validacion}}
@@ -335,6 +527,25 @@
                     v-on:changevalor="update_valor_acciones($event)"
                 >
                 </NombreMina>
+                <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                 <div class="flex" v-if="mostrar_testing">
                     <br> Acciones de Mina valor padre: {{form_pagina.acciones_a_desarrollar}}
                     <br> Acciones de Mina  valido del padre: {{form_pagina.acciones_a_desarrollar_validacion}}
@@ -345,6 +556,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <FechaGenerica
@@ -364,6 +576,25 @@
                     v-on:changevalor="update_valor_fecha_inicio($event)"
                 >
                 </FechaGenerica>
+                <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                 <div class="flex" v-if="mostrar_testing">
                     <br> Fecha inicio de Mina valor padre: {{form_pagina.fecha_alta_dia}}
                     <br> Fecha inicio de Mina  valido del padre: {{form_pagina.fecha_alta_dia_validacion}}
@@ -391,6 +622,25 @@
                     v-on:changevalor="update_valor_fecha_fin($event)"
                 >
                 </FechaGenerica>
+                <div v-show="ayuda_local" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                                m quisquam doloremque placeat op.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                 <div class="flex" v-if="mostrar_testing">
                     <br> Fecha fin de Mina valor padre: {{form_pagina.fecha_vencimiento_dia}}
                     <br> Fecha fin de Mina  valido del padre: {{form_pagina.fecha_vencimiento_dia_validacion}}
@@ -505,6 +755,7 @@ import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import NombreMina from "@/Pages/Productors/NombreMina";
 import FechaGenerica from "@/Pages/Productors/FechaGenerica";
 import BotonesPaginaCinco from "@/Pages/Productors/BotonesPaginaCinco";
+import Button from '../../Jetstream/Button.vue';
 
 
 export default {
@@ -598,6 +849,7 @@ export default {
         NombreMina,
         FechaGenerica,
         BotonesPaginaCinco,
+        Button,
 	},
    
   data() {
@@ -609,6 +861,11 @@ export default {
         mostrar_testing:false,
         autoridad_minera:false,
         todas_las_validaciones: true,
+        constancia_de_prueba:'',
+        iia_archivo:'',
+        dia_archivo:'',
+
+        ayuda_local: false,
         form_pagina: {
 
             owner : this.$props.owner,
@@ -982,6 +1239,44 @@ export default {
             this.form_pagina.fecha_vencimiento_dia = newValue;
             //tengo que enviarsela al padre
         },
+
+        cambio_el_archivo(newValue){
+            this.constancia_de_prueba = newValue;
+            this.form_pagina.constancia_pago_canon = this.constancia_de_prueba;
+            /*const data = new FormData();
+            data.append('photo', this.photo);
+            data.append('description', this.description);
+            data.append('productId', this.productId);
+            axios.post("/api/photo", data);*/
+        },
+        cambio_el_archivo_iia(newValue){
+            this.iia_archivo = newValue;
+            this.form_pagina.iia = newValue;
+        },
+        cambio_el_archivo_dia(newValue){
+            this.dia_archivo = newValue;
+            this.form_pagina.dia = newValue;
+        },
+        //mostrar ayuda
+        update_valor_ayuda_local(newValor){
+            this.ayuda_local = newValor;
+        },
+        enviar_constancia(){
+            console.log("por enviar");
+            const data = new FormData();
+            data.append('archivo', this.constancia_de_prueba);
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.post("http://localhost:8000/formularios/auto_guardado_cinco", data)
+            .then(function (response) {
+                console.log(response.data);
+                
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+        }
+
   }
   
 };
