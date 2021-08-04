@@ -376,7 +376,7 @@
                                 
                             </div>
                             <br>
-                        </div>
+                    </div>
                     <div class="flex" v-if="mostrar_testing">
                         <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
                         <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}

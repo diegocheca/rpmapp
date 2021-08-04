@@ -9,26 +9,8 @@
         <main class="bg-gray-100 dark:bg-gray-800 rounded-2xl relative relative">
     <div class="flex items-start justify-between">
         <div class="h-screen hidden lg:block my-4 ml-4 shadow-lg relative w-80">
-            <div class="bg-white h-full rounded-2xl dark:bg-gray-700">
+            <div class="bg-white rounded-2xl dark:bg-gray-700">
                 <div class="flex items-center justify-center pt-6">
-                    <svg width="35" height="30" viewBox="0 0 256 366" version="1.1" preserveAspectRatio="xMidYMid">
-                        <defs>
-                            <linearGradient x1="12.5189534%" y1="85.2128611%" x2="88.2282959%" y2="10.0225497%" id="linearGradient-1">
-                                <stop stop-color="#FF0057" stop-opacity="0.16" offset="0%">
-                                </stop>
-                                <stop stop-color="#FF0057" offset="86.1354%">
-                                </stop>
-                            </linearGradient>
-                        </defs>
-                        <g>
-                            <path d="M0,60.8538006 C0,27.245261 27.245304,0 60.8542121,0 L117.027019,0 L255.996549,0 L255.996549,86.5999776 C255.996549,103.404155 242.374096,117.027222 225.569919,117.027222 L145.80812,117.027222 C130.003299,117.277829 117.242615,130.060011 117.027019,145.872817 L117.027019,335.28252 C117.027019,352.087312 103.404567,365.709764 86.5997749,365.709764 L0,365.709764 L0,117.027222 L0,60.8538006 Z" fill="#001B38">
-                            </path>
-                            <circle fill="url(#linearGradient-1)" transform="translate(147.013244, 147.014675) rotate(90.000000) translate(-147.013244, -147.014675) " cx="147.013244" cy="147.014675" r="78.9933938">
-                            </circle>
-                            <circle fill="url(#linearGradient-1)" opacity="0.5" transform="translate(147.013244, 147.014675) rotate(90.000000) translate(-147.013244, -147.014675) " cx="147.013244" cy="147.014675" r="78.9933938">
-                            </circle>
-                        </g>
-                    </svg>
                 </div>
                 <div class="flex-shrink-0 m-6 relative overflow-hidden bg-purple-500 rounded-lg max-w-xs shadow-lg">
                     <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
@@ -40,9 +22,9 @@
                         <img class="relative w-40" src="http://localhost:8000/minerales/thumbs/1171.png" alt="">
                     </div>
                     <div class="relative text-white px-6 pb-6 mt-6">
-                        <span class="block opacity-75 -mb-1">Outdoor</span>
+                        <span class="block opacity-75 -mb-1">Mineral más Producido</span>
                         <div class="flex justify-between">
-                        <span class="block font-semibold text-xl">Oak Tree</span>
+                        <span class="block font-semibold text-xl">Torio</span>
                         <span class="block bg-white rounded-full text-purple-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$68.50</span>
                         </div>
                     </div>
@@ -56,10 +38,10 @@
                         <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
                         <img class="relative w-40" src="http://localhost:8000/minerales/thumbs/1132.png" alt="">
                     </div>
-                    <div class="relative text-white px-6 pb-6 mt-6">
-                        <span class="block opacity-75 -mb-1">Indoor</span>
+                    <div class="relative text-gray px-6 pb-6 mt-6">
+                        <span class="block opacity-75 -mb-1">2° Mineral más Producido</span>
                         <div class="flex justify-between">
-                        <span class="block font-semibold text-xl">Peace Lily</span>
+                        <span class="block font-semibold text-xl">Litio</span>
                         <span class="block bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$36.00</span>
                         </div>
                     </div>
@@ -73,15 +55,16 @@
                         <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
                         <img class="relative w-40" src="http://localhost:8000/minerales/thumbs/1104.png" alt="">
                     </div>
-                    <div class="relative text-white px-6 pb-6 mt-6">
-                        <span class="block opacity-75 -mb-1">Outdoor</span>
+                    <div class="relative text-gray px-6 pb-6 mt-6">
+                        <span class="block opacity-75 -mb-1">3° Mineral más vendido</span>
                         <div class="flex justify-between">
-                        <span class="block font-semibold text-xl">Monstera</span>
+                        <span class="block font-semibold text-xl">Berilio</span>
                         <span class="block bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
                         </div>
                     </div>
+                    
                 </div>
-                
+                <br>
                 <!-- <nav class="mt-6">
                     <div>
                         <a class="w-full font-thin uppercase text-blue-500 flex items-center p-4 my-2 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-blue-100 border-r-4 border-blue-500 dark:from-gray-700 dark:to-gray-800 border-r-4 border-blue-500" href="#">
@@ -185,7 +168,7 @@
             <header class="w-full shadow-lg bg-white dark:bg-gray-700 items-center h-16 rounded-2xl z-40">
                 <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
                     <div class="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
-                        <div class="container relative left-0 z-50 flex w-3/4 h-auto h-full">
+                        <div class="container relative left-0 z-50 flex w-1/4 h-auto h-full">
                             <div class="relative flex items-center w-full lg:w-64 h-full group">
                                 <div class="absolute z-50 flex items-center justify-center block w-auto h-10 p-3 pr-2 text-sm text-gray-500 uppercase cursor-pointer sm:hidden">
                                     <svg fill="none" class="relative w-5 h-5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
@@ -203,13 +186,189 @@
                                     </div>
                             </div>
                         </div>
+                        <div class="container relative left-0 z-50 flex w-1/4 h-auto h-full">
+                            <label class="flex items-center relative w-max cursor-pointer select-none">
+                                <br>
+                                <br>
+                                <input 
+                                type="checkbox" 
+                                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
+                                v-model="autoridad_minera"
+                                />
+                                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
+                                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
+                                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                            </label>
+                            <!-- Toggle dark theme button -->
+                            <button aria-hidden="true" class="relative focus:outline-none" x-cloak @click="toggleTheme">
+                            <div
+                                class="w-12 h-6 transition rounded-full outline-none bg-primary-100 dark:bg-primary-lighter"
+                            ></div>
+                            <div
+                                class="absolute top-0 left-0 inline-flex items-center justify-center w-6 h-6 transition-all duration-200 transform scale-110 rounded-full shadow-sm"
+                                :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
+                            >
+                                <svg
+                                x-show="!isDark"
+                                class="w-4 h-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                                />
+                                </svg>
+                                <svg
+                                x-show="isDark"
+                                class="w-4 h-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                                />
+                                </svg>
+                            </div>
+                            </button>
+                            <!-- Notification button -->
+                            <button
+                            @click="openNotificationsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
+                            class="p-2 transition-colors duration-200 rounded-full text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark focus:outline-none focus:bg-primary-100 dark:focus:bg-primary-dark focus:ring-primary-darker"
+                            >
+                            <span class="sr-only">Open notifications panel</span>
+                            <svg
+                                class="w-7 h-7"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                                />
+                            </svg>
+                            </button>
+                            <!-- Search button -->
+                            <button
+                            @click="openSearchPanel(); $nextTick(() => { $refs.searchInput.focus(); setTimeout(() => {isMobileSubMenuOpen= false}, 100) })"
+                            class="p-2 transition-colors duration-200 rounded-full text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark focus:outline-none focus:bg-primary-100 dark:focus:bg-primary-dark focus:ring-primary-darker"
+                            >
+                            <span class="sr-only">Open search panel</span>
+                            <svg
+                                class="w-7 h-7"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                aria-hidden="true"
+                            >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                />
+                            </svg>
+                            </button>
+                            <!-- Settings button -->
+                            <button
+                            @click="openSettingsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
+                            class="p-2 transition-colors duration-200 rounded-full text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark focus:outline-none focus:bg-primary-100 dark:focus:bg-primary-dark focus:ring-primary-darker"
+                            >
+                            <span class="sr-only">Open settings panel</span>
+                            <svg
+                                class="w-7 h-7"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                                />
+                                <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                            </svg>
+                            </button>
+                            <!-- User avatar button -->
+                            <div class="relative ml-auto" x-data="{ open: false }">
+                            <button
+                                @click="open = !open"
+                                type="button"
+                                aria-haspopup="true"
+                                :aria-expanded="open ? 'true' : 'false'"
+                                class="block transition-opacity duration-200 rounded-full dark:opacity-75 dark:hover:opacity-100 focus:outline-none focus:ring dark:focus:opacity-100"
+                            >
+                                <span class="sr-only">User menu</span>
+                                <img class="w-10 h-10 rounded-full" src="build/images/avatar.jpg" alt="Ahmed Kamel" />
+                            </button>
+
+                            <!-- User dropdown menu -->
+                            <div
+                                x-show="open"
+                                x-transition:enter="transition-all transform ease-out"
+                                x-transition:enter-start="translate-y-1/2 opacity-0"
+                                x-transition:enter-end="translate-y-0 opacity-100"
+                                x-transition:leave="transition-all transform ease-in"
+                                x-transition:leave-start="translate-y-0 opacity-100"
+                                x-transition:leave-end="translate-y-1/2 opacity-0"
+                                @click.away="open = false"
+                                class="absolute right-0 w-48 py-1 origin-top-right bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark"
+                                role="menu"
+                                aria-orientation="vertical"
+                                aria-label="User menu"
+                            >
+                                <a
+                                href="#"
+                                role="menuitem"
+                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                >
+                                Your Profile
+                                </a>
+                                <a
+                                href="#"
+                                role="menuitem"
+                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                >
+                                Settings
+                                </a>
+                                <a
+                                href="#"
+                                role="menuitem"
+                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                                >
+                                Logout
+                                </a>
+                            </div>
+                            </div>
+                        </div>
                         <div class="relative p-1 flex items-center justify-end w-1/4 ml-5 mr-4 sm:mr-0 sm:right-auto">
                             <a href="#" class="block relative">
                                 <img alt="profil" src="/images/person/1.jpg" class="mx-auto object-cover rounded-full h-10 w-10 "/>
                             </a>
                         </div>
                     </div>
-                    
                 </div>
             </header>
             <header class="w-full h-28 shadow-lg bg-white dark:bg-gray-700 items-center h-16 rounded-2xl z-40">
@@ -221,18 +380,27 @@
                     </div>
                     <div class="flex flex-col flex-grow ml-4">
                         <div class="text-sm text-gray-500">Users</div>
-                        <div class="font-bold text-lg">1259</div>
+                        <div class="font-bold text-lg">5</div>
                     </div>
                     </div>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-3">
                     <div class="flex flex-row bg-white shadow-sm rounded p-4">
                     <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-green-100 text-green-500">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <a  :href="route('pagos.index')">
+                        <svg 
+                        class="w-10 h-10" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24" 
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"></path></svg>
+                        </a>
                     </div>
+                    
                     <div class="flex flex-col flex-grow ml-4">
-                        <div class="text-sm text-gray-500">Orders</div>
-                        <div class="font-bold text-lg">230</div>
+                        <div class="text-sm text-gray-500">Canon Mineros</div>
+                        <div class="font-bold text-lg">3</div>
                     </div>
                     </div>
                 </div>
@@ -242,8 +410,8 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     </div>
                     <div class="flex flex-col flex-grow ml-4">
-                        <div class="text-sm text-gray-500">New Clients</div>
-                        <div class="font-bold text-lg">190</div>
+                        <div class="text-sm text-gray-500">Productores</div>
+                        <div class="font-bold text-lg">4</div>
                     </div>
                     </div>
                 </div>
@@ -253,8 +421,8 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     </div>
                     <div class="flex flex-col flex-grow ml-4">
-                        <div class="text-sm text-gray-500">Revenue</div>
-                        <div class="font-bold text-lg">$ 32k</div>
+                        <div class="text-sm text-gray-500">Minas/Cant</div>
+                        <div class="font-bold text-lg">3</div>
                     </div>
                     </div>
                 </div>
@@ -272,29 +440,34 @@
 
                 <div class="pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
                     <div class="flex flex-col flex-wrap sm:flex-row ">
-                        <div class="w-full sm:w-1/2 xl:w-1/3">
+                        <div class="w-full sm:w-1/2 xl:w-3/12">
                             <div class="mb-4">
                                 <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full">
                                     <div class="flex items-center justify-between mb-6">
                                         <div class="flex items-center">
                                             <span class="rounded-xl relative p-2 bg-blue-100">
-                                                <svg width="25" height="25" viewBox="0 0 256 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid">
-                                                    <path d="M255.878 133.451c0-10.734-.871-18.567-2.756-26.69H130.55v48.448h71.947c-1.45 12.04-9.283 30.172-26.69 42.356l-.244 1.622 38.755 30.023 2.685.268c24.659-22.774 38.875-56.282 38.875-96.027" fill="#4285F4">
-                                                    </path>
-                                                    <path d="M130.55 261.1c35.248 0 64.839-11.605 86.453-31.622l-41.196-31.913c-11.024 7.688-25.82 13.055-45.257 13.055-34.523 0-63.824-22.773-74.269-54.25l-1.531.13-40.298 31.187-.527 1.465C35.393 231.798 79.49 261.1 130.55 261.1" fill="#34A853">
-                                                    </path>
-                                                    <path d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782" fill="#FBBC05">
-                                                    </path>
-                                                    <path d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251" fill="#EB4335">
-                                                    </path>
-                                                </svg>
+                                               <a  :href="route('users.index')" >
+                                                    <svg
+                                                    class="w-10 h-10"
+                                                    aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                    >
+                                                    <path 
+                                                    fill-rule="evenodd" 
+                                                    d="M4 15a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm8-1a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm0 1a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM.115 3.18A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 14 12H2a.5.5 0 0 1-.491-.408l-1.5-8a.5.5 0 0 1 .106-.411zm.987.82 1.313 7h11.17l1.313-7H1.102z"/>
+                                                    <path fill-rule="evenodd" d="M6 1a2.498 2.498 0 0 1 4 0c.818 0 1.545.394 2 1 .67 0 1.552.57 2 1h-2c-.314 0-.611-.15-.8-.4-.274-.365-.71-.6-1.2-.6-.314 0-.611-.15-.8-.4a1.497 1.497 0 0 0-2.4 0c-.189.25-.486.4-.8.4-.507 0-.955.251-1.228.638-.09.13-.194.25-.308.362H3c.13-.147.401-.432.562-.545a1.63 1.63 0 0 0 .393-.393A2.498 2.498 0 0 1 6 1z"/>
+                                                    </svg>
+                                                </a>
                                             </span>
                                             <div class="flex flex-col">
                                                 <span class="font-bold text-md text-black dark:text-white ml-2">
-                                                    Google
+                                                    Productores
                                                 </span>
                                                 <span class="text-sm text-gray-500 dark:text-white ml-2">
-                                                    Google Inc.
+                                                    Últimos productores
                                                 </span>
                                             </div>
                                         </div>
@@ -315,16 +488,16 @@
                                     </div>
                                     <div class="flex items-center justify-between mb-4 space-x-12">
                                         <span class="px-2 py-1 flex items-center font-semibold text-xs rounded-md text-gray-500 bg-gray-200">
-                                            PROGRESS
+                                            EN EVALUACIÓN
                                         </span>
                                         <span class="px-2 py-1 flex items-center font-semibold text-xs rounded-md text-red-400 border border-red-400  bg-white">
-                                            HIGHT PRIORITY
+                                            RESPUESTA PENDIENTE
                                         </span>
                                     </div>
                                     <div class="block m-auto">
                                         <div>
                                             <span class="text-sm inline-block text-gray-500 dark:text-gray-100">
-                                                Task done :
+                                                Campos evaluados :
                                                 <span class="text-gray-700 dark:text-white font-bold">
                                                     25
                                                 </span>
@@ -338,28 +511,19 @@
                                     </div>
                                     <div class="flex items-center justify-start my-4 space-x-4">
                                         <span class="px-2 py-1 flex items-center text-xs rounded-md font-semibold text-green-500 bg-green-50">
-                                            IOS APP
+                                            Mina Primer Categoría
                                         </span>
                                         <span class="px-2 py-1 flex items-center text-xs rounded-md text-blue-500 font-semibold bg-blue-100">
-                                            UI/UX
+                                            Mineral: Cobre
                                         </span>
                                     </div>
                                     <div class="flex -space-x-2">
                                         <a href="#" class="">
-                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/1.jpg" alt="Guy"/>
-                                        </a>
-                                        <a href="#" class="">
-                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/2.jpeg" alt="Max"/>
-                                        </a>
-                                        <a href="#" class="">
-                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/3.jpg" alt="Charles"/>
-                                        </a>
-                                        <a href="#" class="">
-                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/4.jpg" alt="Jade"/>
+                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="http://localhost:8000/storage/profile-photos/eYIUn5nN4rFHDsjnHqmsvg1XUoZAOi6ijrKQYq0W.png" alt="Guy"/>
                                         </a>
                                     </div>
-                                    <span class="px-2 py-1 flex w-36 mt-4 items-center text-xs rounded-md font-semibold text-yellow-500 bg-yellow-100">
-                                        DUE DATE : 18 JUN
+                                    <span class="px-2 py-1 flex w-48 mt-4 items-center text-xs rounded-md font-semibold text-yellow-500 bg-yellow-100">
+                                        Presentado: Hace 15 días
                                     </span>
                                 </div>
                             </div>
@@ -368,25 +532,29 @@
                                     <div class="flex items-center justify-between mb-6">
                                         <div class="flex items-center">
                                             <span class="rounded-xl relative p-2 bg-blue-100">
-                                                <svg width="25" height="25" viewBox="0 0 2447.6 2452.5" xmlns="http://www.w3.org/2000/svg">
-                                                    <g clip-rule="evenodd" fill-rule="evenodd">
-                                                        <path d="m897.4 0c-135.3.1-244.8 109.9-244.7 245.2-.1 135.3 109.5 245.1 244.8 245.2h244.8v-245.1c.1-135.3-109.5-245.1-244.9-245.3.1 0 .1 0 0 0m0 654h-652.6c-135.3.1-244.9 109.9-244.8 245.2-.2 135.3 109.4 245.1 244.7 245.3h652.7c135.3-.1 244.9-109.9 244.8-245.2.1-135.4-109.5-245.2-244.8-245.3z" fill="#36c5f0">
-                                                        </path>
-                                                        <path d="m2447.6 899.2c.1-135.3-109.5-245.1-244.8-245.2-135.3.1-244.9 109.9-244.8 245.2v245.3h244.8c135.3-.1 244.9-109.9 244.8-245.3zm-652.7 0v-654c.1-135.2-109.4-245-244.7-245.2-135.3.1-244.9 109.9-244.8 245.2v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.3z" fill="#2eb67d">
-                                                        </path>
-                                                        <path d="m1550.1 2452.5c135.3-.1 244.9-109.9 244.8-245.2.1-135.3-109.5-245.1-244.8-245.2h-244.8v245.2c-.1 135.2 109.5 245 244.8 245.2zm0-654.1h652.7c135.3-.1 244.9-109.9 244.8-245.2.2-135.3-109.4-245.1-244.7-245.3h-652.7c-135.3.1-244.9 109.9-244.8 245.2-.1 135.4 109.4 245.2 244.7 245.3z" fill="#ecb22e">
-                                                        </path>
-                                                        <path d="m0 1553.2c-.1 135.3 109.5 245.1 244.8 245.2 135.3-.1 244.9-109.9 244.8-245.2v-245.2h-244.8c-135.3.1-244.9 109.9-244.8 245.2zm652.7 0v654c-.2 135.3 109.4 245.1 244.7 245.3 135.3-.1 244.9-109.9 244.8-245.2v-653.9c.2-135.3-109.4-245.1-244.7-245.3-135.4 0-244.9 109.8-244.8 245.1 0 0 0 .1 0 0" fill="#e01e5a">
-                                                        </path>
-                                                    </g>
-                                                </svg>
+                                                <a  :href="route('pagos.index')" >
+                                                    <svg
+                                                    class="w-14 h-14"
+                                                    aria-hidden="true"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none"
+                                                    viewBox="0 0 24 24"
+                                                    stroke="currentColor"
+                                                    >
+                                                    <path 
+                                                    stroke-linecap="round"
+                                                        stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                                                    </svg>
+                                                </a>
                                             </span>
                                             <div class="flex flex-col">
                                                 <span class="font-bold text-md text-black dark:text-white ml-2">
-                                                    Slack
+                                                    Pagos Canon Minero
                                                 </span>
                                                 <span class="text-sm text-gray-500 dark:text-white ml-2">
-                                                    Slack corporation
+                                                    Próximos vencimientos
                                                 </span>
                                             </div>
                                         </div>
@@ -407,20 +575,20 @@
                                     </div>
                                     <div class="flex items-center justify-between mb-4 space-x-12">
                                         <span class="px-2 py-1 flex items-center font-semibold text-xs rounded-md text-green-700 bg-green-50">
-                                            COMPLETED
+                                            Por Vencer
                                         </span>
                                         <span class="px-2 py-1 flex items-center font-semibold text-xs rounded-md text-green-600 border border-green-600 bg-white">
-                                            MEDIUM PRIORITY
+                                            Requiere Aviso
                                         </span>
                                     </div>
                                     <div class="block m-auto">
                                         <div>
                                             <span class="text-sm inline-block text-gray-500 dark:text-gray-100">
-                                                Task done :
+                                                Días restantes :
                                                 <span class="text-gray-700 dark:text-white font-bold">
-                                                    50
+                                                    10
                                                 </span>
-                                                /50
+                                                /10
                                             </span>
                                         </div>
                                         <div class="w-full h-2 bg-gray-200 rounded-full mt-2">
@@ -430,37 +598,28 @@
                                     </div>
                                     <div class="flex items-center justify-start my-4 space-x-4">
                                         <span class="px-2 py-1 flex items-center text-xs rounded-md font-semibold text-green-500 bg-green-50">
-                                            IOS APP
+                                            Mina Primer Categoria
                                         </span>
                                         <span class="px-2 py-1 flex items-center text-xs rounded-md text-yellow-600 font-semibold bg-yellow-200">
-                                            ANDROID
+                                            Mineral: Litio
                                         </span>
                                     </div>
                                     <div class="flex -space-x-2">
                                         <a href="#" class="">
-                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/1.jpg" alt="Guy"/>
-                                        </a>
-                                        <a href="#" class="">
-                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/2.jpeg" alt="Max"/>
-                                        </a>
-                                        <a href="#" class="">
-                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/3.jpg" alt="Charles"/>
-                                        </a>
-                                        <a href="#" class="">
-                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="/images/person/4.jpg" alt="Jade"/>
+                                            <img class="inline-block h-10 w-10 rounded-full object-cover ring-2 ring-white" src="http://localhost:8000/storage/profile-photos/xrQp3HSR1OOcnFIveCX6ZdVFH2gwCZ7PZxLP5G1E.jpg" alt="Guy"/>
                                         </a>
                                     </div>
-                                    <span class="px-2 py-1 flex w-36 mt-4 items-center text-xs rounded-md font-semibold text-yellow-500 bg-yellow-100">
-                                        DUE DATE : 18 JUN
+                                    <span class="px-2 py-1 flex w-48 mt-4 items-center text-xs rounded-md font-semibold text-yellow-500 bg-yellow-100">
+                                        Dueda Actual: $ 15.000
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full sm:w-1/2 xl:w-1/3">
+                        <div class="w-full sm:w-1/2 xl:w-4/12">
                             <div class="mb-4 mx-0 sm:ml-4 xl:mr-4">
                                 <div class="shadow-lg rounded-2xl bg-white dark:bg-gray-700 w-full">
                                     <p class="font-bold text-md p-4 text-black dark:text-white">
-                                        My Tasks
+                                        Solicitudes Presentadas
                                         <span class="text-sm text-gray-500 dark:text-gray-300 dark:text-white ml-2">
                                             (05)
                                         </span>
@@ -472,7 +631,7 @@
                                                     01
                                                 </span>
                                                 <span>
-                                                    Create wireframe
+                                                    Mina Primer Categoria
                                                 </span>
                                             </div>
                                             <svg width="20" height="20" fill="currentColor" class="mx-4 text-gray-400 dark:text-gray-300" viewBox="0 0 1024 1024">
@@ -488,22 +647,9 @@
                                                     02
                                                 </span>
                                                 <span>
-                                                    Dashboard design
+                                                    Mina Segunda Categoria
                                                 </span>
-                                                <span class="lg:ml-6 ml-2 flex items-center text-gray-400 dark:text-gray-300">
-                                                    3
-                                                    <svg width="15" height="15" fill="currentColor" class="ml-1" viewBox="0 0 512 512">
-                                                        <path d="M256 32C114.6 32 0 125.1 0 240c0 47.6 19.9 91.2 52.9 126.3C38 405.7 7 439.1 6.5 439.5c-6.6 7-8.4 17.2-4.6 26S14.4 480 24 480c61.5 0 110-25.7 139.1-46.3C192 442.8 223.2 448 256 448c141.4 0 256-93.1 256-208S397.4 32 256 32zm0 368c-26.7 0-53.1-4.1-78.4-12.1l-22.7-7.2l-19.5 13.8c-14.3 10.1-33.9 21.4-57.5 29c7.3-12.1 14.4-25.7 19.9-40.2l10.6-28.1l-20.6-21.8C69.7 314.1 48 282.2 48 240c0-88.2 93.3-160 208-160s208 71.8 208 160s-93.3 160-208 160z" fill="currentColor">
-                                                        </path>
-                                                    </svg>
-                                                </span>
-                                                <span class="mx-4 flex items-center text-gray-400 dark:text-gray-300">
-                                                    3
-                                                    <svg width="15" height="15" class="ml-1" fill="currentColor" viewBox="0 0 384 512">
-                                                        <path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 36.4 24.3 67.1 57.5 76.8c-.6 16.1-4.2 28.5-11 36.9c-15.4 19.2-49.3 22.4-85.2 25.7c-28.2 2.6-57.4 5.4-81.3 16.9v-144c32.5-10.2 56-40.5 56-76.3c0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-34-21.2-63.1-51.2-74.6c3.1-5.2 7.8-9.8 14.9-13.4c16.2-8.2 40.4-10.4 66.1-12.8c42.2-3.9 90-8.4 118.2-43.4c14-17.4 21.1-39.8 21.6-67.9c31.6-10.8 54.4-40.7 54.4-75.9zM80 64c8.8 0 16 7.2 16 16s-7.2 16-16 16s-16-7.2-16-16s7.2-16 16-16zm0 384c-8.8 0-16-7.2-16-16s7.2-16 16-16s16 7.2 16 16s-7.2 16-16 16zm224-320c8.8 0 16 7.2 16 16s-7.2 16-16 16s-16-7.2-16-16s7.2-16 16-16z" fill="currentColor">
-                                                        </path>
-                                                    </svg>
-                                                </span>
+                                                
                                             </div>
                                             <svg width="20" height="20" fill="currentColor" class="mx-4 text-gray-400 dark:text-gray-300" viewBox="0 0 1024 1024">
                                                 <path d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0 0 51.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z" fill="currentColor">
@@ -518,7 +664,7 @@
                                                     03
                                                 </span>
                                                 <span>
-                                                    Components card
+                                                    Mina Primer Categoria
                                                 </span>
                                                 <span class="lg:ml-6 ml-2 flex items-center text-gray-400 dark:text-gray-300">
                                                     3
@@ -541,7 +687,7 @@
                                                     04
                                                 </span>
                                                 <span class="line-through">
-                                                    Google logo design
+                                                    Cantera Tercer Categoria
                                                 </span>
                                             </div>
                                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 1024 1024" class="text-green-500 mx-4">
@@ -555,7 +701,7 @@
                                                     05
                                                 </span>
                                                 <span class="line-through">
-                                                    Header navigation
+                                                    Cantera Tercer Categoria
                                                 </span>
                                             </div>
                                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 1024 1024" class="text-green-500 mx-4">
@@ -569,19 +715,12 @@
                                                     06
                                                 </span>
                                                 <span>
-                                                    International
+                                                    Mina Primer Categoria
                                                 </span>
                                                 <span class="lg:ml-6 ml-2 flex items-center text-gray-400 dark:text-gray-300">
                                                     3
                                                     <svg width="15" height="15" fill="currentColor" class="ml-1" viewBox="0 0 512 512">
                                                         <path d="M256 32C114.6 32 0 125.1 0 240c0 47.6 19.9 91.2 52.9 126.3C38 405.7 7 439.1 6.5 439.5c-6.6 7-8.4 17.2-4.6 26S14.4 480 24 480c61.5 0 110-25.7 139.1-46.3C192 442.8 223.2 448 256 448c141.4 0 256-93.1 256-208S397.4 32 256 32zm0 368c-26.7 0-53.1-4.1-78.4-12.1l-22.7-7.2l-19.5 13.8c-14.3 10.1-33.9 21.4-57.5 29c7.3-12.1 14.4-25.7 19.9-40.2l10.6-28.1l-20.6-21.8C69.7 314.1 48 282.2 48 240c0-88.2 93.3-160 208-160s208 71.8 208 160s-93.3 160-208 160z" fill="currentColor">
-                                                        </path>
-                                                    </svg>
-                                                </span>
-                                                <span class="mx-4 flex items-center text-gray-400 dark:text-gray-300">
-                                                    3
-                                                    <svg width="15" height="15" class="ml-1" fill="currentColor" viewBox="0 0 384 512">
-                                                        <path d="M384 144c0-44.2-35.8-80-80-80s-80 35.8-80 80c0 36.4 24.3 67.1 57.5 76.8c-.6 16.1-4.2 28.5-11 36.9c-15.4 19.2-49.3 22.4-85.2 25.7c-28.2 2.6-57.4 5.4-81.3 16.9v-144c32.5-10.2 56-40.5 56-76.3c0-44.2-35.8-80-80-80S0 35.8 0 80c0 35.8 23.5 66.1 56 76.3v199.3C23.5 365.9 0 396.2 0 432c0 44.2 35.8 80 80 80s80-35.8 80-80c0-34-21.2-63.1-51.2-74.6c3.1-5.2 7.8-9.8 14.9-13.4c16.2-8.2 40.4-10.4 66.1-12.8c42.2-3.9 90-8.4 118.2-43.4c14-17.4 21.1-39.8 21.6-67.9c31.6-10.8 54.4-40.7 54.4-75.9zM80 64c8.8 0 16 7.2 16 16s-7.2 16-16 16s-16-7.2-16-16s7.2-16 16-16zm0 384c-8.8 0-16-7.2-16-16s7.2-16 16-16s16 7.2 16 16s-7.2 16-16 16zm224-320c8.8 0 16 7.2 16 16s-7.2 16-16 16s-16-7.2-16-16s7.2-16 16-16z" fill="currentColor">
                                                         </path>
                                                     </svg>
                                                 </span>
@@ -599,7 +738,7 @@
                                                     07
                                                 </span>
                                                 <span>
-                                                    Production data
+                                                    Cantera de Tercer Categoria
                                                 </span>
                                             </div>
                                             <svg width="20" height="20" fill="currentColor" class="mx-4 text-gray-400 dark:text-gray-300" viewBox="0 0 1024 1024">
@@ -739,14 +878,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full sm:w-1/2 xl:w-1/3">
+                        <div class="w-full sm:w-1/2 xl:w-5/12">
                             <div class="mb-4">
                                 <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
                                     <div class="flex flex-wrap overflow-hidden">
                                         <div class="w-full rounded shadow-sm">
                                             <div class="flex items-center justify-between mb-4">
                                                 <div class="text-left font-bold text-xl text-black dark:text-white">
-                                                    Dec 2021
+                                                    Agosto 2021
                                                 </div>
                                                 <div class="flex space-x-4">
                                                     <button class="p-2 rounded-full bg-blue-500 text-white">
@@ -767,22 +906,22 @@
                                                 <table class="w-full dark:text-white">
                                                     <tr>
                                                         <th class="py-3 px-2 md:px-3 ">
-                                                            S
+                                                            D
+                                                        </th>
+                                                        <th class="py-3 px-2 md:px-3 ">
+                                                            L
                                                         </th>
                                                         <th class="py-3 px-2 md:px-3 ">
                                                             M
                                                         </th>
                                                         <th class="py-3 px-2 md:px-3 ">
-                                                            T
+                                                            M
                                                         </th>
                                                         <th class="py-3 px-2 md:px-3 ">
-                                                            W
+                                                            J
                                                         </th>
                                                         <th class="py-3 px-2 md:px-3 ">
-                                                            T
-                                                        </th>
-                                                        <th class="py-3 px-2 md:px-3 ">
-                                                            F
+                                                            V
                                                         </th>
                                                         <th class="py-3 px-2 md:px-3 ">
                                                             S
@@ -821,7 +960,9 @@
                                                             </span>
                                                         </td>
                                                         <td class="py-3 px-2 md:px-3  hover:text-blue-500 text-center cursor-pointer">
-                                                            4
+                                                            <span class="p-2 rounded-full bg-blue-500">
+                                                                4
+                                                            </span>
                                                         </td>
                                                         <td class="py-3 px-2 md:px-3  hover:text-blue-500 text-center cursor-pointer">
                                                             5
@@ -852,9 +993,7 @@
                                                             12
                                                         </td>
                                                         <td class="py-3 px-2 md:px-3  text-center text-white cursor-pointer">
-                                                            <span class="p-2 rounded-full bg-blue-500">
-                                                                13
-                                                            </span>
+                                                            13
                                                         </td>
                                                         <td class="py-3 px-2 md:px-3  hover:text-blue-500 text-center cursor-pointer">
                                                             14
@@ -999,82 +1138,83 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center bg-gray-200 text-gray-800">
-                <div class="w-full flex px-3">
-                    <div class="bg-white p-2 w-80 max-w-3xl sm:w-full sm:p-4 h-auto sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none">
-                        <div
-                            style='background: url("https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")'
-                            class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-100 bg-center bg-cover"
-                        ></div>
-                        <div class="flex sm:flex-1 flex-col gap-2 p-1">
-                            <h1 class="text-lg sm:text-xl font-semibold  text-gray-600">
-                                This is the title for your card. This is really cool
-                            </h1>
-                            <p class="text-gray-500 text-sm sm:text-base line-clamp-3">
-                                This is the desctiption fo
-                            </p>
-                            <div class="flex gap-4 mt-auto">
-                            <button
-                                class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
-                            >
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z"></path></svg>
-                                <span>556</span>
-                            </button>
-                            <button
-                                class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
-                            >
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M464 512a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm200 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm-400 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm661.2-173.6c-22.6-53.7-55-101.9-96.3-143.3a444.35 444.35 0 0 0-143.3-96.3C630.6 75.7 572.2 64 512 64h-2c-60.6.3-119.3 12.3-174.5 35.9a445.35 445.35 0 0 0-142 96.5c-40.9 41.3-73 89.3-95.2 142.8-23 55.4-34.6 114.3-34.3 174.9A449.4 449.4 0 0 0 112 714v152a46 46 0 0 0 46 46h152.1A449.4 449.4 0 0 0 510 960h2.1c59.9 0 118-11.6 172.7-34.3a444.48 444.48 0 0 0 142.8-95.2c41.3-40.9 73.8-88.7 96.5-142 23.6-55.2 35.6-113.9 35.9-174.5.3-60.9-11.5-120-34.8-175.6zm-151.1 438C704 845.8 611 884 512 884h-1.7c-60.3-.3-120.2-15.3-173.1-43.5l-8.4-4.5H188V695.2l-4.5-8.4C155.3 633.9 140.3 574 140 513.7c-.4-99.7 37.7-193.3 107.6-263.8 69.8-70.5 163.1-109.5 262.8-109.9h1.7c50 0 98.5 9.7 144.2 28.9 44.6 18.7 84.6 45.6 119 80 34.3 34.3 61.3 74.4 80 119 19.4 46.2 29.1 95.2 28.9 145.8-.6 99.6-39.7 192.9-110.1 262.7z"></path></svg>
-                                <span>56</span>
-                            </button>
-                            <button
-                                class='ml-auto flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
-                            >
-                                <span>Read more</span>
-                            </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full flex px-3">
-                    <div class="bg-white p-2 w-80 max-w-3xl sm:w-full sm:p-4 h-auto sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none">
-                        <div
-                            style='background: url("https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")'
-                            class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-100 bg-center bg-cover"
-                        ></div>
-                        <div class="flex sm:flex-1 flex-col gap-2 p-1">
-                            <h1 class="text-lg sm:text-xl font-semibold  text-gray-600">
-                                This is the title for your card. This is really cool
-                            </h1>
-                            <p class="text-gray-500 text-sm sm:text-base line-clamp-3">
-                                This is the desctiption for your card. This is r
-                            </p>
-                            <div class="flex gap-4 mt-auto">
-                            <button
-                                class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
-                            >
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z"></path></svg>
-                                <span>556</span>
-                            </button>
-                            <button
-                                class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
-                            >
-                                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M464 512a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm200 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm-400 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm661.2-173.6c-22.6-53.7-55-101.9-96.3-143.3a444.35 444.35 0 0 0-143.3-96.3C630.6 75.7 572.2 64 512 64h-2c-60.6.3-119.3 12.3-174.5 35.9a445.35 445.35 0 0 0-142 96.5c-40.9 41.3-73 89.3-95.2 142.8-23 55.4-34.6 114.3-34.3 174.9A449.4 449.4 0 0 0 112 714v152a46 46 0 0 0 46 46h152.1A449.4 449.4 0 0 0 510 960h2.1c59.9 0 118-11.6 172.7-34.3a444.48 444.48 0 0 0 142.8-95.2c41.3-40.9 73.8-88.7 96.5-142 23.6-55.2 35.6-113.9 35.9-174.5.3-60.9-11.5-120-34.8-175.6zm-151.1 438C704 845.8 611 884 512 884h-1.7c-60.3-.3-120.2-15.3-173.1-43.5l-8.4-4.5H188V695.2l-4.5-8.4C155.3 633.9 140.3 574 140 513.7c-.4-99.7 37.7-193.3 107.6-263.8 69.8-70.5 163.1-109.5 262.8-109.9h1.7c50 0 98.5 9.7 144.2 28.9 44.6 18.7 84.6 45.6 119 80 34.3 34.3 61.3 74.4 80 119 19.4 46.2 29.1 95.2 28.9 145.8-.6 99.6-39.7 192.9-110.1 262.7z"></path></svg>
-                                <span>56</span>
-                            </button>
-                            <button
-                                class='ml-auto flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
-                            >
-                                <span>Read more</span>
-                            </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                    
                     <div class="flex flex-col flex-wrap sm:flex-row ">
                         <ChartBar />
                     </div>
+                    <div class="flex items-center bg-gray-200 text-gray-800">
+                        <div class="w-full flex px-3">
+                            <div class="bg-white p-2 w-80 max-w-3xl sm:w-full sm:p-4 h-auto sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none">
+                                <div
+                                    style='background: url("https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")'
+                                    class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-100 bg-center bg-cover"
+                                ></div>
+                                <div class="flex sm:flex-1 flex-col gap-2 p-1">
+                                    <h1 class="text-lg sm:text-xl font-semibold  text-gray-600">
+                                        This is the title for your card. This is really cool
+                                    </h1>
+                                    <p class="text-gray-500 text-sm sm:text-base line-clamp-3">
+                                        This is the desctiption fo
+                                    </p>
+                                    <div class="flex gap-4 mt-auto">
+                                    <button
+                                        class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
+                                    >
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z"></path></svg>
+                                        <span>556</span>
+                                    </button>
+                                    <button
+                                        class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
+                                    >
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M464 512a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm200 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm-400 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm661.2-173.6c-22.6-53.7-55-101.9-96.3-143.3a444.35 444.35 0 0 0-143.3-96.3C630.6 75.7 572.2 64 512 64h-2c-60.6.3-119.3 12.3-174.5 35.9a445.35 445.35 0 0 0-142 96.5c-40.9 41.3-73 89.3-95.2 142.8-23 55.4-34.6 114.3-34.3 174.9A449.4 449.4 0 0 0 112 714v152a46 46 0 0 0 46 46h152.1A449.4 449.4 0 0 0 510 960h2.1c59.9 0 118-11.6 172.7-34.3a444.48 444.48 0 0 0 142.8-95.2c41.3-40.9 73.8-88.7 96.5-142 23.6-55.2 35.6-113.9 35.9-174.5.3-60.9-11.5-120-34.8-175.6zm-151.1 438C704 845.8 611 884 512 884h-1.7c-60.3-.3-120.2-15.3-173.1-43.5l-8.4-4.5H188V695.2l-4.5-8.4C155.3 633.9 140.3 574 140 513.7c-.4-99.7 37.7-193.3 107.6-263.8 69.8-70.5 163.1-109.5 262.8-109.9h1.7c50 0 98.5 9.7 144.2 28.9 44.6 18.7 84.6 45.6 119 80 34.3 34.3 61.3 74.4 80 119 19.4 46.2 29.1 95.2 28.9 145.8-.6 99.6-39.7 192.9-110.1 262.7z"></path></svg>
+                                        <span>56</span>
+                                    </button>
+                                    <button
+                                        class='ml-auto flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
+                                    >
+                                        <span>Read more</span>
+                                    </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full flex px-3">
+                            <div class="bg-white p-2 w-80 max-w-3xl sm:w-full sm:p-4 h-auto sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none">
+                                <div
+                                    style='background: url("https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")'
+                                    class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-100 bg-center bg-cover"
+                                ></div>
+                                <div class="flex sm:flex-1 flex-col gap-2 p-1">
+                                    <h1 class="text-lg sm:text-xl font-semibold  text-gray-600">
+                                        This is the title for your card. This is really cool
+                                    </h1>
+                                    <p class="text-gray-500 text-sm sm:text-base line-clamp-3">
+                                        This is the desctiption for your card. This is r
+                                    </p>
+                                    <div class="flex gap-4 mt-auto">
+                                    <button
+                                        class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
+                                    >
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z"></path></svg>
+                                        <span>556</span>
+                                    </button>
+                                    <button
+                                        class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
+                                    >
+                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M464 512a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm200 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm-400 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm661.2-173.6c-22.6-53.7-55-101.9-96.3-143.3a444.35 444.35 0 0 0-143.3-96.3C630.6 75.7 572.2 64 512 64h-2c-60.6.3-119.3 12.3-174.5 35.9a445.35 445.35 0 0 0-142 96.5c-40.9 41.3-73 89.3-95.2 142.8-23 55.4-34.6 114.3-34.3 174.9A449.4 449.4 0 0 0 112 714v152a46 46 0 0 0 46 46h152.1A449.4 449.4 0 0 0 510 960h2.1c59.9 0 118-11.6 172.7-34.3a444.48 444.48 0 0 0 142.8-95.2c41.3-40.9 73.8-88.7 96.5-142 23.6-55.2 35.6-113.9 35.9-174.5.3-60.9-11.5-120-34.8-175.6zm-151.1 438C704 845.8 611 884 512 884h-1.7c-60.3-.3-120.2-15.3-173.1-43.5l-8.4-4.5H188V695.2l-4.5-8.4C155.3 633.9 140.3 574 140 513.7c-.4-99.7 37.7-193.3 107.6-263.8 69.8-70.5 163.1-109.5 262.8-109.9h1.7c50 0 98.5 9.7 144.2 28.9 44.6 18.7 84.6 45.6 119 80 34.3 34.3 61.3 74.4 80 119 19.4 46.2 29.1 95.2 28.9 145.8-.6 99.6-39.7 192.9-110.1 262.7z"></path></svg>
+                                        <span>56</span>
+                                    </button>
+                                    <button
+                                        class='ml-auto flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
+                                    >
+                                        <span>Read more</span>
+                                    </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -1231,6 +1371,13 @@
             ChartBar,
             JetAuthenticationCardLogo,
         },
+
+        
+        data() {
+            return {
+                autoridad_minera: false,
+            };
+        }
     }
 </script>
 <style>

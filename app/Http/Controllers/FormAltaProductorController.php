@@ -29,6 +29,8 @@ use App\Models\Minerales;
 
 use App\Models\Minerales_Borradores;
 
+use App\Models\User;
+
 use \PDF;
 
 use Illuminate\Support\Facades\Storage;
@@ -929,9 +931,11 @@ class FormAltaProductorController extends Controller
 		$borradores = $this->prasar_num_a_boolean($borradores);
 		//var_dump($borradores->constancia_pago_canon);die();
 		$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
+
+		$datos_creador = User::find($borradores->created_by);
 		
 
-		//dd($borradores->categoria);die();
+	// var_dump($datos_creador->name);die();
 
 
 		if(is_null($borradores->razon_social_correcto)) 
@@ -1028,7 +1032,7 @@ class FormAltaProductorController extends Controller
 
 		//dd($borradores->categoria);
 
-		return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados]);
+		return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador]);
 	}
 
 	/**
@@ -3391,18 +3395,6 @@ class FormAltaProductorController extends Controller
 	public function correccion_guardar_paso_cinco(Request $request)
 	{
 		/*var_dump(
-			$request->owner, 
-			$request->owner_correcto, 
-			$request->obs_owner, 
-			$request->obs_owner_valido,
-			$request->arrendatario, 
-			$request->arrendatario_correcto, 
-			$request->obs_arrendatario, 
-			$request->obs_arrendatario_valido,
-			$request->concesionario, 
-			$request->concesionario_correcto, 
-			$request->obs_concesionario, 
-			$request->obs_concesionario_valido,
 			$request->otros, 
 			$request->otros_correcto, 
 			$request->obs_otros, 
@@ -3416,25 +3408,54 @@ class FormAltaProductorController extends Controller
 			$request->obs_sustancias_valido, 
 			$request->sustancias_input,
 			$request->sustancias_input_valido,
-			$request->valor_de_progreso, 
-			$request->valor_de_aprobado, 
-			$request->valor_de_reprobado, 
-			$request->acciones_a_desarrollar, 
-			$request->actividad, 
-			$request->fecha_alta_dia, 
-			$request->fecha_vencimiento_dia, 
-			$request->dia, 
-			$request->iia, 
-			$request->constancia_pago_canon, 
-			$request->es_evaluacion, 
-		);*/
+		);
+		die();*/
 		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
 		if($request->fecha_alta_dia == 'null')
 			$request->fecha_alta_dia = null;
 		if($request->fecha_vencimiento_dia == 'null')
 			$request->fecha_vencimiento_dia = null;
+
 		if($request->acciones_a_desarrollar == 'null')
-			$request->acciones_a_desarrollar = $request->acciones_a_desarrollar;
+			$request->acciones_a_desarrollar = null;
+
+
+		if($request->owner == 'null')
+			$request->owner = null;
+		if($request->owner == 'false')
+			$request->owner = false;
+		if($request->owner == 'true')
+			$request->owner = true;
+
+		if($request->arrendatario == 'null')
+			$request->arrendatario = null;
+		if($request->arrendatario == 'false')
+			$request->arrendatario = false;
+		if($request->arrendatario == 'true')
+			$request->arrendatario = true;
+		
+		if($request->concesionario == 'null')
+			$request->concesionario = null;
+		if($request->concesionario == 'false')
+			$request->concesionario = false;
+		if($request->concesionario == 'true')
+			$request->concesionario = true;
+
+
+		if($request->sustancias == 'null')
+			$request->sustancias = null;
+		if($request->sustancias == 'false')
+			$request->sustancias = false;
+		if($request->sustancias == 'true')
+			$request->sustancias = true;
+
+		if($request->otros == 'null')
+			$request->otros = null;
+		if($request->otros == 'false')
+			$request->otros = false;
+		if($request->otros == 'true')
+			$request->otros = true;
+
 		if($request->actividad == 'null')
 			$request->actividad = $request->actividad;
 		if($request->sustancias_input == 'null' || $request->sustancias_input == '')
@@ -3517,116 +3538,7 @@ class FormAltaProductorController extends Controller
 		//var_dump($formulario_provisorio->id);
 		//'lista_minerales',
 
-		//PARA LOS INPUT DE TRUE O FALSE
-		if($request->owner != null)
-			$request->owner = $request->owner === 'true'? 1: 0;
-			
-		if($request->arrendatario != null)
-			$request->arrendatario = $request->arrendatario === 'true'? 1: 0;
-
-		if($request->concesionario!= null)
-			$request->concesionario = $request->concesionario === 'true'? 1: 0;
-
-		if($request->otros != null)
-			$request->otros = $request->otros === 'true'? 1: 0;
-
-		if($request->sustancias!= null)
-			$request->sustancias = $request->sustancias === 'true'? 1: 0;
-
-		//PARA LA EVALUACION
-		if(is_bool($request->owner_correcto))
-			if($request->owner_correcto == true)
-				$request->owner_correcto = 1;
-			else $request->owner_correcto = 0;
-		else//($request->numero_expdiente_correcto == 'nada')
-			$request->owner_correcto = null;
-
-
-		if(is_bool($request->arrendatario_correcto))
-			if($request->arrendatario_correcto == true)
-				$request->arrendatario_correcto = 1;
-			else $request->arrendatario_correcto = 0;
-		else//($request->categoria_correcto == 'nada')
-			$request->arrendatario_correcto = null;
-
-		if(is_bool($request->concesionario_correcto))
-			if($request->concesionario_correcto == true)
-				$request->concesionario_correcto = 1;
-			else $request->concesionario_correcto = 0;
-		else//($request->concesionario_correcto == 'nada')
-			$request->concesionario_correcto = null;
-
-
-		if(is_bool($request->otros_correcto))
-			if($request->otros_correcto == true)
-				$request->otros_correcto = 1;
-			else $request->otros_correcto = 0;
-		else//($request->otros_correcto == 'nada')
-			$request->otros_correcto = null;
-
-
-		if(is_bool($request->sustancias_de_aprovechamiento_comun_correcto))
-			if($request->sustancias_de_aprovechamiento_comun_correcto == true)
-				$request->sustancias_de_aprovechamiento_comun_correcto = 1;
-			else $request->sustancias_de_aprovechamiento_comun_correcto = 0;
-		else//($request->sustancias_de_aprovechamiento_comun_correcto == 'nada')
-			$request->sustancias_de_aprovechamiento_comun_correcto = null;
-
-
-		if(is_bool($request->constancia_pago_canon_correcto))
-			if($request->constancia_pago_canon_correcto == true)
-				$request->constancia_pago_canon_correcto = 1;
-			else $request->constancia_pago_canon_correcto = 0;
-		else//($request->constancia_pago_canon_correcto == 'nada')
-			$request->constancia_pago_canon_correcto = null;
-
-
-		if(is_bool($request->iia_correcto))
-			if($request->iia_correcto == true)
-				$request->iia_correcto = 1;
-			else $request->iia_correcto = 0;
-		else//($request->iia_correcto == 'nada')
-			$request->iia_correcto = null;
-
-
-		if(is_bool($request->dia_correcto))
-			if($request->dia_correcto == true)
-				$request->dia_correcto = 1;
-			else $request->dia_correcto = 0;
-		else//($request->dia_correcto == 'nada')
-			$request->dia_correcto = null;
-
-
-		if(is_bool($request->acciones_a_desarrollar_correcto))
-			if($request->acciones_a_desarrollar_correcto == true)
-				$request->acciones_a_desarrollar_correcto = 1;
-			else $request->acciones_a_desarrollar_correcto = 0;
-		else//($request->acciones_a_desarrollar_correcto == 'nada')
-			$request->acciones_a_desarrollar_correcto = null;
-
-		if(is_bool($request->actividad_correcto))
-			if($request->actividad_correcto == true)
-				$request->actividad_correcto = 1;
-			else $request->actividad_correcto = 0;
-		else//($request->actividad_correcto == 'nada')
-			$request->actividad_correcto = null;
-
-
-		if(is_bool($request->fecha_alta_dia_correcto))
-			if($request->fecha_alta_dia_correcto == true)
-				$request->fecha_alta_dia_correcto = 1;
-			else $request->fecha_alta_dia_correcto = 0;
-		else//($request->fecha_alta_dia_correcto == 'nada')
-			$request->fecha_alta_dia_correcto = null;
-
-
-		if(is_bool($request->fecha_vencimiento_dia_correcto))
-			if($request->fecha_vencimiento_dia_correcto == true)
-				$request->fecha_vencimiento_dia_correcto = 1;
-			else $request->fecha_vencimiento_dia_correcto = 0;
-		else//($request->fecha_vencimiento_dia_correcto == 'nada')
-			$request->fecha_vencimiento_dia_correcto = null;
-
+		
 
 		//dd($request->obs_numero_expdiente);
 		//die();
@@ -3639,6 +3551,139 @@ class FormAltaProductorController extends Controller
 			//lo encontre y actualizo
 			//pregunto si soy autoridad minera o si soy productor
 			if($request->es_evaluacion){ // soy autoridad minera
+
+				//PARA LOS INPUT DE TRUE O FALSE
+				if($request->owner != null)
+				$request->owner = $request->owner === 'true'? 1: 0;
+				
+			if($request->arrendatario != null)
+				$request->arrendatario = $request->arrendatario === 'true'? 1: 0;
+
+			if($request->concesionario!= null)
+				$request->concesionario = $request->concesionario === 'true'? 1: 0;
+
+			if($request->otros != null)
+				$request->otros = $request->otros === 'true'? 1: 0;
+
+			if($request->sustancias!= null)
+				$request->sustancias = $request->sustancias === 'true'? 1: 0;
+
+			//PARA LA EVALUACION
+			if( (!is_bool($request->owner_correcto)) && ($request->owner_correcto == 'nada'))
+				$request->owner_correcto = null;
+			elseif($request->owner_correcto == 'false')
+				$request->owner_correcto = false;
+			elseif($request->owner_correcto == 'true')
+				$request->owner_correcto = true;
+
+
+
+			if( (!is_bool($request->arrendatario_correcto)) && ($request->arrendatario_correcto == 'nada'))
+				$request->arrendatario_correcto = null;
+			elseif($request->arrendatario_correcto == 'false')
+				$request->arrendatario_correcto = false;
+			elseif($request->arrendatario_correcto == 'true')
+				$request->arrendatario_correcto = true;
+
+
+	
+
+			if( (!is_bool($request->concesionario_correcto)) && ($request->concesionario_correcto == 'nada'))
+				$request->concesionario_correcto = null;
+			elseif($request->concesionario_correcto == 'false')
+				$request->concesionario_correcto = false;
+			elseif($request->concesionario_correcto == 'true')
+				$request->concesionario_correcto = true;
+
+
+
+			if( (!is_bool($request->otros_correcto)) && ($request->otros_correcto == 'nada'))
+				$request->otros_correcto = null;
+			elseif($request->otros_correcto == 'false')
+				$request->otros_correcto = false;
+			elseif($request->otros_correcto == 'true')
+				$request->otros_correcto = true;
+
+		
+
+			if( (!is_bool($request->sustancias_correcto)) && ($request->sustancias_correcto == 'nada'))
+				$request->sustancias_correcto = null;
+			elseif($request->sustancias_correcto == 'false')
+				$request->sustancias_correcto = false;
+			elseif($request->sustancias_correcto == 'true')
+				$request->sustancias_correcto = true;
+
+
+
+			if( (!is_bool($request->resolucion_concesion_minera_correcto)) && ($request->resolucion_concesion_minera_correcto == 'nada'))
+				$request->resolucion_concesion_minera_correcto = null;
+			elseif($request->resolucion_concesion_minera_correcto == 'false')
+				$request->resolucion_concesion_minera_correcto = false;
+			elseif($request->resolucion_concesion_minera_correcto == 'true')
+				$request->resolucion_concesion_minera_correcto = true;
+
+
+			if( (!is_bool($request->constancia_pago_canon_correcto)) && ($request->constancia_pago_canon_correcto == 'nada'))
+				$request->constancia_pago_canon_correcto = null;
+			elseif($request->constancia_pago_canon_correcto == 'false')
+				$request->constancia_pago_canon_correcto = false;
+			elseif($request->constancia_pago_canon_correcto == 'true')
+				$request->constancia_pago_canon_correcto = true;
+
+
+
+			if( (!is_bool($request->iia_correcto)) && ($request->iia_correcto == 'nada'))
+				$request->iia_correcto = null;
+			elseif($request->iia_correcto == 'false')
+				$request->iia_correcto = false;
+			elseif($request->iia_correcto == 'true')
+				$request->iia_correcto = true;
+
+
+
+
+
+			if( (!is_bool($request->dia_correcto)) && ($request->dia_correcto == 'nada'))
+				$request->dia_correcto = null;
+			elseif($request->dia_correcto == 'false')
+				$request->dia_correcto = false;
+			elseif($request->dia_correcto == 'true')
+				$request->dia_correcto = true;
+
+
+
+			
+				
+
+			if( (!is_bool($request->acciones_a_desarrollar_correcto)) && ($request->acciones_a_desarrollar_correcto == 'nada'))
+				$request->acciones_a_desarrollar_correcto = null;
+			elseif($request->acciones_a_desarrollar_correcto == 'false')
+				$request->acciones_a_desarrollar_correcto = false;
+			elseif($request->acciones_a_desarrollar_correcto == 'true')
+				$request->acciones_a_desarrollar_correcto = true;
+
+			if( (!is_bool($request->actividad_a_desarrollar_correcto)) && ($request->actividad_a_desarrollar_correcto == 'nada'))
+				$request->actividad_a_desarrollar_correcto = null;
+			elseif($request->actividad_a_desarrollar_correcto == 'false')
+				$request->actividad_a_desarrollar_correcto = false;
+			elseif($request->actividad_a_desarrollar_correcto == 'true')
+				$request->actividad_a_desarrollar_correcto = true;
+
+			if( (!is_bool($request->fecha_alta_dia_correcto)) && ($request->fecha_alta_dia_correcto == 'nada'))
+				$request->fecha_alta_dia_correcto = null;
+			elseif($request->fecha_alta_dia_correcto == 'false')
+				$request->fecha_alta_dia_correcto = false;
+			elseif($request->fecha_alta_dia_correcto == 'true')
+				$request->fecha_alta_dia_correcto = true;
+
+			if( (!is_bool($request->fecha_vencimiento_dia_correcto)) && ($request->fecha_vencimiento_dia_correcto == 'nada'))
+				$request->fecha_vencimiento_dia_correcto = null;
+			elseif($request->fecha_vencimiento_dia_correcto == 'false')
+				$request->fecha_vencimiento_dia_correcto = false;
+			elseif($request->fecha_vencimiento_dia_correcto == 'true')
+				$request->fecha_vencimiento_dia_correcto = true;
+
+
 				$formulario_provisorio->owner_correcto = $request->owner_correcto;
 				$formulario_provisorio->obs_owner = $request->obs_owner;
 	
@@ -3696,8 +3741,9 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->owner = $request->owner;
 				$formulario_provisorio->arrendatario = $request->arrendatario;
 				$formulario_provisorio->concesionario = $request->concesionario;
-				$formulario_provisorio->otros = $request->otros;
-
+				//$formulario_provisorio->otros = $request->otros;
+				/*var_dump($request->sustancias);
+				die();*/
 				if($request->sustancias == true || $request->sustancias == 1)
 				{
 					$formulario_provisorio->sustancias_de_aprovechamiento_comun = 1;
@@ -3707,6 +3753,16 @@ class FormAltaProductorController extends Controller
 				{
 					$formulario_provisorio->sustancias_de_aprovechamiento_comun = 0;
 					$formulario_provisorio->sustancias_de_aprovechamiento_comun_aclaracion = null;
+				}
+				if($request->otros == true || $request->otros == 1)
+				{
+					$formulario_provisorio->otros = 1;
+					$formulario_provisorio->otro_caracter_acalaracion = $request->otros_input;
+				}
+				else
+				{
+					$formulario_provisorio->otros = 0;
+					$formulario_provisorio->otro_caracter_acalaracion = null;
 				}
 
 				//este es un archivo

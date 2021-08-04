@@ -11,7 +11,6 @@
 					</div>
 					<br>
 					<hr>
-					
 					<br>
 					<!-- Delete Account Confirmation Modal -->
 					<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
@@ -120,9 +119,9 @@
 					<br>
 					<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
 						<a href="#inicio">
-							<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
+							<div class="flex items-center absolute shadow-xl left-8 top-10">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="animate-bounce bi bi-arrow-up" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
 								</svg>
 							</div>
 						</a>
@@ -199,6 +198,15 @@
 
 					:evaluacion="true"
 					:id="$props.productor.id"
+
+					v-on:ChangeRazonSocialEvaluacion="update_razon_social_evaluacion($event)"
+					v-on:ChangeCuitEvaluacion="update_cuit_evaluacion($event)"
+					v-on:ChangeNumProdEvaluacion="update_num_prod_evaluacion($event)"
+					v-on:ChangeTipoSociedadEvaluacion="update_tipo_sociedad_evaluacion($event)"
+					v-on:ChangeInscripcionDGREvaluacion="update_inscripcion_dgr_evaluacion($event)"
+					v-on:ChangeConstanciaSociedadEvaluacion="update_constancia_sociedad_evaluacion($event)"
+
+
 				>
 				</PaginaUnoDatosProductores>
 				<br>
@@ -451,7 +459,6 @@
 			<br>
 			<br>
 			<div id="section_datos_mina_dos"></div>
-			
 			<PaginaCincoDatosMinaDos
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -612,7 +619,7 @@
 						<label
 							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 							for="name"
-							>created_by:</label
+							>Creado Por:</label
 						>
 						<input
 							id="cuit"
@@ -656,7 +663,8 @@
 				</div>
 				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 					<button
-						@click="guardar_avances_todo"
+						
+						@click="mostrar_modal_aprobar"
 						class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
 					>
 						Actualizar
@@ -664,6 +672,22 @@
 					
 				</div>
 			</div>
+			<jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
+					<template #title>
+							{{modal_tittle_apro}}
+					</template>
+					<template #content>
+							{{modal_body_apro}}
+							
+					</template>
+					<template #footer>
+							<button @click="closeModalAprobar">
+									Ok
+							</button>
+							
+					</template>
+			</jet-dialog-modal>
+
 		</form>
 				
 
@@ -725,13 +749,19 @@ export default {
 	},
 	props: [
 		"productor",
-		"lista_minerales_cargados"
+		"lista_minerales_cargados",
+		"creado",
 		],
 	data() {
 		return {
 			confirmingUserDeletion:false,
 			modal_tittle: '',
 			modal_body: '',
+			AvisoAprueba: false,
+			modal_tittle_apro: '',
+			modal_body_apro: '',
+
+
 			lista_provincias: [],
 			lista_dptos_legal: [],
 			lista_dptos_admin: [],
@@ -1032,7 +1062,7 @@ export default {
 				otros_correcto: this.$props.productor.otros_correcto,
 				obs_otros: this.$props.productor.obs_otros,
 				obs_otros_valido: false,
-				otros_input: this.$props.productor.otro_caracter_aclaracion,
+				otros_input: this.$props.productor.otro_caracter_acalaracion,
 				otros_input_valido: true,
 
 
@@ -1040,7 +1070,7 @@ export default {
 				sustancias_correcto: this.$props.productor.sustancias_de_aprovechamiento_comun_correcto,
 				obs_sustancias: this.$props.productor.obs_sustancias_de_aprovechamiento_comun,
 				obs_sustancias_valido: false,
-				sustancias_input: this.$props.productor.concesion_minera_aclaracion,
+				sustancias_input: this.$props.productor.sustancias_de_aprovechamiento_comun_aclaracion,
 				sustancias_input_valido: true,
 
 
@@ -1164,7 +1194,7 @@ export default {
 				obs_longitud:  this.$props.productor.obs_longitud,
 				obs_longitud_valido: false,
 
-				created_by: this.$props.productor.created_by,
+				created_by: this.$props.creado.name,
 				estado: this.$props.productor.estado,
 
 				
@@ -1184,6 +1214,72 @@ export default {
 				this.confirmingUserDeletion = false
 				//this.form.reset()
 		},
+		closeModalAprobar(){
+			this.AvisoAprueba = false
+		},
+		mostrar_modal_aprobar(){
+			this.AvisoAprueba = true;
+			this.modal_tittle_apro = "Advertencia: esta por aprobar esta solicitud de Productor";
+			this.modal_body_apro = " \n \n <br> <h1>Hola desde html</h1><br><hr><br><span>otra vez hola</span>";
+			$form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+			//<!-- @click="guardar_avances_todo" -->
+			
+		},
+		evaluacion_de_evaluaciones(){
+			let sin_problemas='';
+			if(this.form.razon_social_correcto === false)
+				sin_problemas += "\n La Razon Social ha sido Reprobada ";
+			if(this.form.razon_social_correcto === 'nada')
+				sin_problemas += "\n La Razon Social no ha sido evaluada ";
+			
+			if(this.form.cuit_correcto === false)
+				sin_problemas += "\n El CUIT ha sido Reprobado ";
+			if(this.form.cuit_correcto === 'nada')
+				sin_problemas += "\n El CUIR no ha sido evaluado ";
+
+			if(this.form.numeroproductor_correcto === false)
+				sin_problemas += "\n El Numero de Productor ha sido Reprobado ";
+			if(this.form.numeroproductor_correcto === 'nada')
+				sin_problemas += "\n El Numero de Productor no ha sido evaluado ";
+
+			if(this.form.tiposociedad_correcto === false)
+				sin_problemas += "\n El tipo de sociedad ha sido Reprobado ";
+			if(this.form.tiposociedad_correcto === 'nada')
+				sin_problemas += "\n El tipo de sociedad no ha sido evaluado ";
+
+			if(this.form.inscripciondgr_correcto === false)
+				sin_problemas += "\n La inscripcion de la DGR ha sido Reprobada ";
+			if(this.form.inscripciondgr_correcto === 'nada')
+				sin_problemas += "\n La inscripcion de la DGR no ha sido evaluada ";
+
+			if(this.form.constaciasociedad_correcto === false)
+				sin_problemas += "\n La constancia de Sociedad ha sido Reprobada ";
+			if(this.form.constaciasociedad_correcto === 'nada')
+				sin_problemas += "\n La constacia de Sociedad no ha sido evaluada ";
+		},
+		update_razon_social_evaluacion(valorEvaluacion){
+			this.form.razon_social_correcto = valorEvaluacion;
+		},
+		update_cuit_evaluacion(valorEvaluacion){
+			this.form.cuit_correcto = valorEvaluacion;
+		},
+		update_num_prod_evaluacion(valorEvaluacion){
+			this.form.numeroproductor_correcto = valorEvaluacion;
+		},
+		update_tipo_sociedad_evaluacion(valorEvaluacion){
+			this.form.tiposociedad_correcto = valorEvaluacion;
+		},
+		update_inscripcion_dgr_evaluacion(valorEvaluacion){
+			this.form.inscripciondgr_correcto = valorEvaluacion;
+		},
+		update_constancia_sociedad_evaluacion(valorEvaluacion){
+			this.form.constaciasociedad_correcto = valorEvaluacion;
+		},
+
+		
+
+		
+		
 		actaulizar_variables_correctas(que_cambio, valor) {
 			if(que_cambio == 1)
 			{

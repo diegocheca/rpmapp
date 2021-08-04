@@ -314,25 +314,26 @@
          >
             Subir archivo
         </button> -->
-        <div class="flex items-center justify-center bg-teal-lightest font-sans">
-            <SubirArchivo
-                v-bind:valor_input_props="form_pagina.constancia_pago_canon"
-                v-bind:valor_input_validacion="form_pagina.constancia_pago_canon_validacion"
-                v-bind:evualacion_correcto="form_pagina.constancia_pago_canon_correcto"
-                v-bind:valor_obs="form_pagina.obs_constancia_pago_canon"
-                v-bind:valor_valido_obs="form_pagina.obs_constancia_pago_canon_valido"
-                v-bind:evaluacion="autoridad_minera"
-                v-bind:testing ="mostrar_testing"
-                v-bind:label="'Constancia de Pago de Canon'"
-                v-on:changevalido="update_canon_valido($event)"
-                v-on:changecorrecto="update_canon_correcto($event)"
-                v-on:changeobs="update_obs_canon($event)"
-                v-on:changeobsvalido="update_obs_canon_valido($event)"
-                v-on:changevalor="update_valor_canon($event)"
-                v-on:cambioarchivo="cambio_el_archivo($event)"
-            >
-            </SubirArchivo>
-            <div v-show="ayuda_local" >
+        <div class="flex">
+                <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+                    <SubirArchivo
+                        v-bind:valor_input_props="form_pagina.constancia_pago_canon"
+                        v-bind:valor_input_validacion="form_pagina.constancia_pago_canon_validacion"
+                        v-bind:evualacion_correcto="form_pagina.constancia_pago_canon_correcto"
+                        v-bind:valor_obs="form_pagina.obs_constancia_pago_canon"
+                        v-bind:valor_valido_obs="form_pagina.obs_constancia_pago_canon_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing ="mostrar_testing"
+                        v-bind:label="'Constancia de Pago de Canon'"
+                        v-on:changevalido="update_canon_valido($event)"
+                        v-on:changecorrecto="update_canon_correcto($event)"
+                        v-on:changeobs="update_obs_canon($event)"
+                        v-on:changeobsvalido="update_obs_canon_valido($event)"
+                        v-on:changevalor="update_valor_canon($event)"
+                        v-on:cambioarchivo="cambio_el_archivo($event)"
+                    >
+                    </SubirArchivo>
+                    <div v-show="ayuda_local" >
                         <br>
                         <div  class="
                             bg-blue-50
@@ -351,111 +352,115 @@
                         </div>
                         <br>
                     </div>
-            
-        </div>
-        <div class="flex" v-if="mostrar_testing">
-            <br> canon resolucion minera de Mina valor padre: {{form_pagina.constancia_pago_canon}}
-            <br> canon resolucion minera de Mina  valido del padre: {{form_pagina.constancia_pago_canon_validacion}}
-            <br> canon resolucion minera de Mina  correcto deel padre: {{form_pagina.constancia_pago_canon_correcto}}
-            <br> canon resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_constancia_pago_canon}}
-            <br> canon resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_constancia_pago_canon_valido}}
+                    <div class="flex" v-if="mostrar_testing">
+                        <br> canon resolucion minera de Mina valor padre: {{form_pagina.constancia_pago_canon}}
+                        <br> canon resolucion minera de Mina  valido del padre: {{form_pagina.constancia_pago_canon_validacion}}
+                        <br> canon resolucion minera de Mina  correcto deel padre: {{form_pagina.constancia_pago_canon_correcto}}
+                        <br> canon resolucion minera de Mina  observacion deel padre: {{form_pagina.obs_constancia_pago_canon}}
+                        <br> canon resolucion minera de Mina  observacion valida deel padre: {{form_pagina.obs_constancia_pago_canon_valido}}
+                    </div>
+            </div>
         </div>
         <br>
         <hr>
         <br>
-        <div class="flex items-center justify-center bg-teal-lightest font-sans">
-            <SubirArchivo
-                v-bind:valor_input_props="form_pagina.iia"
-                v-bind:valor_input_validacion="form_pagina.iia_canon_validacion"
-                v-bind:evualacion_correcto="form_pagina.iia_correcto"
-                v-bind:valor_obs="form_pagina.obs_iia_canon"
-                v-bind:valor_valido_obs="form_pagina.obs_iia_canon_valido"
-                v-bind:evaluacion="autoridad_minera"
-                v-bind:testing = "mostrar_testing"
-                v-bind:label="'IIA de Actividad Minera'"
-                v-on:changevalido="update_iia_valido($event)"
-                v-on:changecorrecto="update_iia_correcto($event)"
-                v-on:changeobs="update_obs_iia($event)"
-                v-on:changeobsvalido="update_obs_iia_valido($event)"
-                v-on:changevalor="update_valor_iia($event)"
-                v-on:cambioarchivo="cambio_el_archivo_iia($event)"
-            >
-            </SubirArchivo>
-            <div v-show="ayuda_local" >
-                        <br>
-                        <div  class="
-                            bg-blue-50
-                            text-gray-800
-                            bg-opacity-20
-                            text-opacity-80
-                            ring
-                            ring-4
-                            ring-blue-100">
+        <div class="flex">
+            <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+                <SubirArchivo
+                    v-bind:valor_input_props="form_pagina.iia"
+                    v-bind:valor_input_validacion="form_pagina.iia_canon_validacion"
+                    v-bind:evualacion_correcto="form_pagina.iia_correcto"
+                    v-bind:valor_obs="form_pagina.obs_iia_canon"
+                    v-bind:valor_valido_obs="form_pagina.obs_iia_canon_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing = "mostrar_testing"
+                    v-bind:label="'IIA de Actividad Minera'"
+                    v-on:changevalido="update_iia_valido($event)"
+                    v-on:changecorrecto="update_iia_correcto($event)"
+                    v-on:changeobs="update_obs_iia($event)"
+                    v-on:changeobsvalido="update_obs_iia_valido($event)"
+                    v-on:changevalor="update_valor_iia($event)"
+                    v-on:cambioarchivo="cambio_el_archivo_iia($event)"
+                >
+                </SubirArchivo>
+                <div v-show="ayuda_local" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                            m quisquam doloremque placeat op.
+                        </p>
                         
-                            <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
-                            </p>
-                            
-                        </div>
-                        <br>
                     </div>
+                    <br>
+                </div>
+                <div class="flex" v-if="mostrar_testing">
+                    <br> iia minera de Mina valor padre: {{form_pagina.iia}}
+                    <br> iia minera de Mina  valido del padre: {{form_pagina.iia_canon_validacion}}
+                    <br> iia minera de Mina  correcto deel padre: {{form_pagina.iia_correcto}}
+                    <br> iia minera de Mina  observacion deel padre: {{form_pagina.obs_iia_canon}}
+                    <br> iia minera de Mina  observacion valida deel padre: {{form_pagina.obs_iia_canon_valido}}
+                </div>
+            </div>
         </div>
 
-        <div class="flex" v-if="mostrar_testing">
-            <br> iia minera de Mina valor padre: {{form_pagina.iia}}
-            <br> iia minera de Mina  valido del padre: {{form_pagina.iia_canon_validacion}}
-            <br> iia minera de Mina  correcto deel padre: {{form_pagina.iia_correcto}}
-            <br> iia minera de Mina  observacion deel padre: {{form_pagina.obs_iia_canon}}
-            <br> iia minera de Mina  observacion valida deel padre: {{form_pagina.obs_iia_canon_valido}}
-        </div>
         <br>
         <hr>
         <br>
-        <div class="flex items-center justify-center bg-teal-lightest font-sans">
-            <SubirArchivo
-                v-bind:valor_input_props="form_pagina.dia"
-                v-bind:valor_input_validacion="form_pagina.dia_canon_validacion"
-                v-bind:evualacion_correcto="form_pagina.dia_correcto"
-                v-bind:valor_obs="form_pagina.obs_dia_canon"
-                v-bind:valor_valido_obs="form_pagina.obs_dia_canon_valido"
-                v-bind:evaluacion="true"
-                v-bind:testing = "mostrar_testing"
-                v-bind:label="'DIA de Actividad Minera'"
-                v-on:changevalido="update_dia_valido($event)"
-                v-on:changecorrecto="update_dia_correcto($event)"
-                v-on:changeobs="update_obs_dia($event)"
-                v-on:changeobsvalido="update_obs_dia_valido($event)"
-                v-on:changevalor="update_valor_dia($event)"
-                v-on:cambioarchivo="cambio_el_archivo_dia($event)"
-            >
-            </SubirArchivo>
-            <div v-show="ayuda_local" >
-                        <br>
-                        <div  class="
-                            bg-blue-50
-                            text-gray-800
-                            bg-opacity-20
-                            text-opacity-80
-                            ring
-                            ring-4
-                            ring-blue-100">
+        <div class="flex">
+            <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+                <SubirArchivo
+                    v-bind:valor_input_props="form_pagina.dia"
+                    v-bind:valor_input_validacion="form_pagina.dia_canon_validacion"
+                    v-bind:evualacion_correcto="form_pagina.dia_correcto"
+                    v-bind:valor_obs="form_pagina.obs_dia_canon"
+                    v-bind:valor_valido_obs="form_pagina.obs_dia_canon_valido"
+                    v-bind:evaluacion="true"
+                    v-bind:testing = "mostrar_testing"
+                    v-bind:label="'DIA de Actividad Minera'"
+                    v-on:changevalido="update_dia_valido($event)"
+                    v-on:changecorrecto="update_dia_correcto($event)"
+                    v-on:changeobs="update_obs_dia($event)"
+                    v-on:changeobsvalido="update_obs_dia_valido($event)"
+                    v-on:changevalor="update_valor_dia($event)"
+                    v-on:cambioarchivo="cambio_el_archivo_dia($event)"
+                >
+                </SubirArchivo>
+                <div v-show="ayuda_local" >
+                    <br>
+                    <div  class="
+                        bg-blue-50
+                        text-gray-800
+                        bg-opacity-20
+                        text-opacity-80
+                        ring
+                        ring-4
+                        ring-blue-100">
+                    
+                        <p class="p-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
+                            m quisquam doloremque placeat op.
+                        </p>
                         
-                            <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
-                            </p>
-                            
-                        </div>
-                        <br>
                     </div>
-        </div>
-        <div class="flex" v-if="mostrar_testing">
-            <br> dia minera de Mina valor padre: {{form_pagina.dia}}
-            <br> dia minera de Mina  valido del padre: {{form_pagina.dia_canon_validacion}}
-            <br> dia minera de Mina  correcto deel padre: {{form_pagina.dia_correcto}}
-            <br> dia minera de Mina  observacion deel padre: {{form_pagina.obs_dia_canon}}
-            <br> dia minera de Mina  observacion valida deel padre: {{form_pagina.obs_dia_canon_valido}}
+                    <br>
+                </div>
+                <div class="flex" v-if="mostrar_testing">
+                    <br> dia minera de Mina valor padre: {{form_pagina.dia}}
+                    <br> dia minera de Mina  valido del padre: {{form_pagina.dia_canon_validacion}}
+                    <br> dia minera de Mina  correcto deel padre: {{form_pagina.dia_correcto}}
+                    <br> dia minera de Mina  observacion deel padre: {{form_pagina.obs_dia_canon}}
+                    <br> dia minera de Mina  observacion valida deel padre: {{form_pagina.obs_dia_canon_valido}}
+                </div>
+            </div>
         </div>
         <br>
         <hr>
