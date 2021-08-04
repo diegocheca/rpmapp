@@ -2253,7 +2253,7 @@ class FormAltaProductorController extends Controller
 			->first();
 		else $formulario_provisorio= null;
 		//arreglo las variables
-		//var_dump($formulario_provisorio);die();
+		
 		//var_dump($request->razon_social_correcto);die();
 
 		if($formulario_provisorio != null)
@@ -2263,42 +2263,44 @@ class FormAltaProductorController extends Controller
 			//pregunto si soy autoridad minera o si soy productor
 			if($request->es_evaluacion){ // soy autoridad minera
 				//preparos los boolean deel front
-				if($request->razon_social_correcto === 'true')
+				if($request->razon_social_correcto == 'true')
 					$request->razon_social_correcto = 1;
-				if($request->razon_social_correcto === 'false')
+				elseif($request->razon_social_correcto == 'false')
 					$request->razon_social_correcto = 0;
-				else
+				elseif($request->razon_social_correcto == 'nada')
 					$request->razon_social_correcto = null;
 				
 				
-				if($request->cuit_correcto === 'true')
+				if($request->cuit_correcto == 'true')
 					$request->cuit_correcto = 1;
-				if($request->cuit_correcto === 'false')
+				elseif($request->cuit_correcto == 'false')
 					$request->cuit_correcto = 0;
-				else
+				elseif($request->cuit_correcto == 'nada')
 					$request->cuit_correcto = null;
 
 				
-				if($request->numeroproductor_correcto === 'true')
+				if($request->numeroproductor_correcto == 'true')
 					$request->numeroproductor_correcto = 1;
-				if($request->numeroproductor_correcto === 'false')
+				elseif($request->numeroproductor_correcto == 'false')
 					$request->numeroproductor_correcto = 0;
-				else
+				elseif($request->numeroproductor_correcto == 'nada')
 					$request->numeroproductor_correcto = null;
 				
+				//var_dump($request->email_correcto);
 				if($request->email_correcto === 'true')
 					$request->email_correcto = 1;
-				if($request->email_correcto === 'false')
+				elseif($request->email_correcto === 'false')
 					$request->email_correcto = 0;
-				else
+				elseif($request->email_correcto === 'nada')
 					$request->email_correcto = null;
-
+				
+				//var_dump($request->razon_social_correcto);die();
 				
 				if(strlen($request->tiposociedad_correcto)  == strlen("true"))
 					$request->tiposociedad_correcto = 1;
-				if($request->tiposociedad_correcto == "false")
+				elseif($request->tiposociedad_correcto === 'false')
 					$request->tiposociedad_correcto = 0;
-				else
+				elseif($request->tiposociedad_correcto === 'nada')
 					$request->tiposociedad_correcto = null;
 
 
@@ -2347,7 +2349,7 @@ class FormAltaProductorController extends Controller
 				}
 
 				//var_dump("voy a meter:");
-				//var_dump($request->razon_social_correcto);die();
+				//var_dump($request->email_correcto);die();
 				$formulario_provisorio->razon_social_correcto = $request->razon_social_correcto;
 				$formulario_provisorio->obs_razon_social = $request->obs_razon_social;
 	

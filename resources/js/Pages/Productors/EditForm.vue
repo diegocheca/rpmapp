@@ -621,6 +621,7 @@
 							for="name"
 							>Creado Por:</label
 						>
+						<br>
 						<input
 							id="cuit"
 							disabled
@@ -632,8 +633,20 @@
 						<label
 							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 							for="estado"
-							>Estado:</label
-						>
+							>Estado Actual:</label><br>
+							<span v-if="$props.productor.estado === 'en proceso'"  class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En proceso</span>
+							<span v-if="$props.productor.estado === 'borrador'"  class="bg-pink-200 text-pink-600 py-1 px-3 rounded-full text-xs">Borrador</span>
+							<span v-if="$props.productor.estado === 'aprobado'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Aprobado</span>
+							<span v-if="$props.productor.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
+							<span v-if="$props.productor.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
+							<span v-if="$props.productor.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
+					</div>
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+						<label
+							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+							for="estado"
+							>Nuevo Estado:</label
+						><br>
 						<select
 							id="estado"
 							name="estado"
@@ -681,10 +694,33 @@
 							
 					</template>
 					<template #footer>
-							<button @click="closeModalAprobar">
-									Ok
-							</button>
-							
+						<div class="flex">
+							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+								<button  @click="closeModalAprobar" class="animate-pulse py-3 px-6 text-white rounded-lg bg-yellow-400 shadow-lg block md:inline-block">
+									Vuelvo a revisar
+
+								</button>
+							</div>
+							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+								<button
+									v-show="mostrar_boton_aprobar"
+									@click="closeModalAprobar"
+									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
+								>
+									Actualizar
+								</button>
+							</div>
+
+							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+								<button
+									v-show="mostrar_boton_aprobar_de_todos_modos"
+									@click="closeModalAprobar"
+									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
+								>
+									Actualizar de todos Modos
+								</button>
+							</div>
+						</div>
 					</template>
 			</jet-dialog-modal>
 
@@ -766,6 +802,8 @@ export default {
 			lista_dptos_legal: [],
 			lista_dptos_admin: [],
 			lista_dptos_mina: [],
+			mostrar_boton_aprobar: false,
+			mostrar_boton_aprobar_de_todos_modos: false,
 			lista_de_minerales_del_back : this.$props.lista_minerales_cargados,
 			form: {
 				razon_social:this.$props.productor.razonsocial,
@@ -1218,12 +1256,24 @@ export default {
 			this.AvisoAprueba = false
 		},
 		mostrar_modal_aprobar(){
+			let form_evaluacion_valida = '';
 			this.AvisoAprueba = true;
 			this.modal_tittle_apro = "Advertencia: esta por aprobar esta solicitud de Productor";
-			this.modal_body_apro = " \n \n <br> <h1>Hola desde html</h1><br><hr><br><span>otra vez hola</span>";
-			$form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+			form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+			if(form_evaluacion_valida === '')
+			{
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+				this.mostrar_boton_aprobar = true;
+				this.mostrar_boton_aprobar_de_todos_modos = false;
+			}
+			else {
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" + form_evaluacion_valida;
+				this.mostrar_boton_aprobar = false;
+				this.mostrar_boton_aprobar_de_todos_modos = true;
+			}
 			//<!-- @click="guardar_avances_todo" -->
-			
 		},
 		evaluacion_de_evaluaciones(){
 			let sin_problemas='';
@@ -1256,6 +1306,7 @@ export default {
 				sin_problemas += "\n La constancia de Sociedad ha sido Reprobada ";
 			if(this.form.constaciasociedad_correcto === 'nada')
 				sin_problemas += "\n La constacia de Sociedad no ha sido evaluada ";
+			return sin_problemas;
 		},
 		update_razon_social_evaluacion(valorEvaluacion){
 			this.form.razon_social_correcto = valorEvaluacion;
