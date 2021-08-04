@@ -53,6 +53,8 @@ use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\IiadiaController;
 use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
+use App\Http\Controllers\CountriesController;
+
 use App\Http\Controllers\UsersController;
 
 /*
@@ -78,15 +80,41 @@ Route::get('/', function () {
 Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-    
-Route::resource('reinscripciones', ReinscripcionController::class)
-    ->middleware(['auth:sanctum', 'verified']);
+
+// REINSCRIPCIONES
+
+// Route::group(['prefix' => 'reinscripciones'], function () {
+    Route::get('reinscripciones/revision/{id}', [ReinscripcionController::class, "revision"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.revision');
+    Route::put('reinscripciones/saveRevision/{id}', [ReinscripcionController::class, "saveRevision"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.saveRevision');
+    Route::put('reinscripciones/updateRevision/{id}', [ReinscripcionController::class, "updateRevision"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.updateRevision');
+    Route::resource('reinscripciones', ReinscripcionController::class)
+        ->middleware(['auth:sanctum', 'verified']);
+        Route::post('reinscripciones/upload', [ReinscripcionController::class, "upload"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.upload');
+//     Route::get('provincias', 'ReinscripcionController@getCountries')
+//         ->middleware(['auth:sanctum', 'verified']);
+
+// });
+
+    Route::group(['prefix' => 'paises'], function () {
+        // Route::get('paises', 'CountriesController@getCountries')
+        // ->middleware(['auth:sanctum', 'verified']);
+        Route::get('provincias', [CountriesController::class, "getDepartment"])
+        ->middleware(['auth:sanctum', 'verified']);
+        Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
+        ->middleware(['auth:sanctum', 'verified']);
+        Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
+        ->middleware(['auth:sanctum', 'verified']);
+    });
 
 
 Route::resource('productos', ProductosController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-    
+
 
 Route::resource('iiadias', IiadiaController::class)
 ->middleware(['auth:sanctum', 'verified']);
@@ -136,7 +164,7 @@ Route::resource('products', ProductController::class)
 Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formulario"])->name('abrir-formulario');
 
 
-//direcciones de formularios 
+//direcciones de formularios
 
 
 

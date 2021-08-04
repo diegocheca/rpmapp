@@ -25,4 +25,5 @@ class Productos extends Model
         'created_by',
         'estado',
     ];
+
 }

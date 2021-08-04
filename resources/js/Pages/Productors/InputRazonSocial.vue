@@ -9,14 +9,14 @@
                 </svg>
                 </span>
             </div>
-            <input 
-            type="text" 
-            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
+            <input
+            type="text"
+            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow"
             placeholder="Razon Social"
             v-model="razon_social"
             v-bind:class=clase_de_input_razon_social
             :disabled="evaluacion"
-            @input="cambio_input_razonsocial($event.target.value)" 
+            @input="cambio_input_razonsocial($event.target.value)"
             >
         </div>
         <p v-bind:class=clase_cartel_nota_campo>{{cartel_nota_campo}}.</p>
@@ -49,7 +49,7 @@
                     name="obs_razon_social"
                     v-model="obs_razon_social"
                     v-bind:class=clase_text_area
-                    @input="updateValue($event.target.value)" 
+                    @input="updateValue($event.target.value)"
                     >
                 </textarea>
                 <p  v-bind:class=clase_cartel_nota_evaluacion>{{cartel_nota_evaluacion}}</p>
@@ -61,9 +61,9 @@
                     <br>
                     <span class="text-lg font-bold mr-3">Testing hijo</span>
                     <br>
-                    <input 
-                    type="checkbox" 
-                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    <input
+                    type="checkbox"
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500"
                     v-model="testing_hijo"
                     />
                     <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
@@ -76,7 +76,7 @@
                     -- Razon:{{razon_social}}--
                     --Razon Valido:{{razon_social_valido}}--
                     --Razon Valido local:{{razon_social_valido_local}}--
-                    
+
                     --Razon Evalaucion:{{razon_social_correcto}}--
                     --Razon Obser:{{obs_razon_social}}--
                     --Razon obsr Valido:{{obs_razon_social_valido_local}}--
@@ -85,17 +85,17 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 </template>
 
 <script>
 export default {
     props: [
-        'razon_social', 
-        'razon_social_valido', 
-        'razon_social_correcto', 
-        'obs_razon_social', 
+        'razon_social',
+        'razon_social_valido',
+        'razon_social_correcto',
+        'obs_razon_social',
         'obs_razon_social_valido',
         'evaluacion',
         'label',
@@ -114,7 +114,7 @@ export default {
         obs_razon_social_valido_local: this.$props.obs_razon_social_valido,
         testing_hijo:false,
         //border-green-500
-    }; 
+    };
   },
   methods:{
     actaulizar_variable_razonsocial(valor) {
@@ -139,7 +139,7 @@ export default {
         //     this.clase_de_input_razon_social =  'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
         // }
     },
-     
+
       updateValue(value) {
         if(this.$props.obs_razon_social.length <= 2)
         {
@@ -148,7 +148,7 @@ export default {
             this.clase_cartel_nota_evaluacion=  'text-red-500 text-xs italic';
             this.obs_razon_social_valido_local = false;
             this.$emit('changeobsrazonsocialvalido',false);
-            
+
         }
         if(this.$props.obs_razon_social.length >= 50)
         {
@@ -165,7 +165,7 @@ export default {
             this.clase_cartel_nota_evaluacion=  'text-green-500 text-xs italic';
             this.obs_razon_social_valido_local = false;
             this.$emit('changeobsrazonsocialvalido',true);
-            
+
         }
         this.$emit('changeobsrazonsocial',this.$props.obs_razon_social)
     },

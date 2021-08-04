@@ -35,7 +35,7 @@
                         name="observaciones"
                         v-model="valor_obs"
                         v-bind:class=clase_text_area
-                        @input="actaulizar_contenido_text_area($event.target.value)" 
+                        @input="actaulizar_contenido_text_area($event.target.value)"
                         >
                     </textarea>
                     <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
@@ -46,9 +46,9 @@
                             <br>
                             <span class="text-lg font-bold mr-3">Testing hijo</span>
                             <br>
-                            <input 
-                            type="checkbox" 
-                            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                            <input
+                            type="checkbox"
+                            class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500"
                             v-model="testing_hijo"
                             />
                             <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
@@ -91,10 +91,10 @@
             </p>
         </div>
         <div class="w-full md:w-1/2 px-3" v-else>
-            <object :data=valor_input type="application/pdf" width="100%" height="500px"> 
+            <object :data=valor_input type="application/pdf" width="100%" height="500px">
                 <p>It appears you don't have a PDF plugin for this browser.
                     No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
-                download the PDF file.</a></p>  
+                download the PDF file.</a></p>
             </object>
             <div class="flex items-center justify-center w-full">
                 <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">
@@ -122,9 +122,9 @@ import Input from '../../Jetstream/Input.vue';
 export default {
   components: { Input },
     props: [
-        'valor_input_props', 
-        'evualacion_correcto', 
-        'valor_obs', 
+        'valor_input_props',
+        'evualacion_correcto',
+        'valor_obs',
         'valor_valido_obs',
         'evaluacion',
         'testing',
@@ -148,9 +148,9 @@ export default {
         testing_hijo: 'false',
         photo: null,
         description: '',
-        
+
         //border-green-500
-    }; 
+    };
   },
     methods:{
         actaulizar_variable_correccion(valor) {
@@ -165,7 +165,7 @@ export default {
                 this.clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
                 this.obs_valida = false;
                 this.$emit('changeobsvalido',false);
-                
+
             }
             if(this.$props.valor_obs.length >= 50)
             {
@@ -182,7 +182,7 @@ export default {
                 this.clase_text_evaluacion_de_text_area=  'text-green-500 text-xs italic';
                 this.obs_valida = false;
                 this.$emit('changeobsvalido',true);
-                
+
             }
             this.$emit('changeobs',this.$props.valor_obs)
         },
