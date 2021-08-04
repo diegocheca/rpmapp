@@ -186,186 +186,9 @@
                                     </div>
                             </div>
                         </div>
-                        <div class="container relative left-0 z-50 flex w-1/4 h-auto h-full">
-                            <label class="flex items-center relative w-max cursor-pointer select-none">
-                                <br>
-                                <br>
-                                <input 
-                                type="checkbox" 
-                                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
-                                v-model="autoridad_minera"
-                                />
-                                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
-                                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
-                                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-                            </label>
-                            <!-- Toggle dark theme button -->
-                            <button aria-hidden="true" class="relative focus:outline-none" x-cloak @click="toggleTheme">
-                            <div
-                                class="w-12 h-6 transition rounded-full outline-none bg-primary-100 dark:bg-primary-lighter"
-                            ></div>
-                            <div
-                                class="absolute top-0 left-0 inline-flex items-center justify-center w-6 h-6 transition-all duration-200 transform scale-110 rounded-full shadow-sm"
-                                :class="{ 'translate-x-0 -translate-y-px  bg-white text-primary-dark': !isDark, 'translate-x-6 text-primary-100 bg-primary-darker': isDark }"
-                            >
-                                <svg
-                                x-show="!isDark"
-                                class="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                                />
-                                </svg>
-                                <svg
-                                x-show="isDark"
-                                class="w-4 h-4"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                                />
-                                </svg>
-                            </div>
-                            </button>
-                            <!-- Notification button -->
-                            <button
-                            @click="openNotificationsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
-                            class="p-2 transition-colors duration-200 rounded-full text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark focus:outline-none focus:bg-primary-100 dark:focus:bg-primary-dark focus:ring-primary-darker"
-                            >
-                            <span class="sr-only">Open notifications panel</span>
-                            <svg
-                                class="w-7 h-7"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                                />
-                            </svg>
-                            </button>
-                            <!-- Search button -->
-                            <button
-                            @click="openSearchPanel(); $nextTick(() => { $refs.searchInput.focus(); setTimeout(() => {isMobileSubMenuOpen= false}, 100) })"
-                            class="p-2 transition-colors duration-200 rounded-full text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark focus:outline-none focus:bg-primary-100 dark:focus:bg-primary-dark focus:ring-primary-darker"
-                            >
-                            <span class="sr-only">Open search panel</span>
-                            <svg
-                                class="w-7 h-7"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                aria-hidden="true"
-                            >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                                />
-                            </svg>
-                            </button>
-                            <!-- Settings button -->
-                            <button
-                            @click="openSettingsPanel(); $nextTick(() => { isMobileSubMenuOpen = false })"
-                            class="p-2 transition-colors duration-200 rounded-full text-primary-lighter bg-primary-50 hover:text-primary hover:bg-primary-100 dark:hover:text-light dark:hover:bg-primary-dark dark:bg-dark focus:outline-none focus:bg-primary-100 dark:focus:bg-primary-dark focus:ring-primary-darker"
-                            >
-                            <span class="sr-only">Open settings panel</span>
-                            <svg
-                                class="w-7 h-7"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                                />
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                />
-                            </svg>
-                            </button>
-                            <!-- User avatar button -->
-                            <div class="relative ml-auto" x-data="{ open: false }">
-                            <button
-                                @click="open = !open"
-                                type="button"
-                                aria-haspopup="true"
-                                :aria-expanded="open ? 'true' : 'false'"
-                                class="block transition-opacity duration-200 rounded-full dark:opacity-75 dark:hover:opacity-100 focus:outline-none focus:ring dark:focus:opacity-100"
-                            >
-                                <span class="sr-only">User menu</span>
-                                <img class="w-10 h-10 rounded-full" src="build/images/avatar.jpg" alt="Ahmed Kamel" />
-                            </button>
-
-                            <!-- User dropdown menu -->
-                            <div
-                                x-show="open"
-                                x-transition:enter="transition-all transform ease-out"
-                                x-transition:enter-start="translate-y-1/2 opacity-0"
-                                x-transition:enter-end="translate-y-0 opacity-100"
-                                x-transition:leave="transition-all transform ease-in"
-                                x-transition:leave-start="translate-y-0 opacity-100"
-                                x-transition:leave-end="translate-y-1/2 opacity-0"
-                                @click.away="open = false"
-                                class="absolute right-0 w-48 py-1 origin-top-right bg-white rounded-md shadow-lg top-12 ring-1 ring-black ring-opacity-5 dark:bg-dark"
-                                role="menu"
-                                aria-orientation="vertical"
-                                aria-label="User menu"
-                            >
-                                <a
-                                href="#"
-                                role="menuitem"
-                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                >
-                                Your Profile
-                                </a>
-                                <a
-                                href="#"
-                                role="menuitem"
-                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                >
-                                Settings
-                                </a>
-                                <a
-                                href="#"
-                                role="menuitem"
-                                class="block px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
-                                >
-                                Logout
-                                </a>
-                            </div>
-                            </div>
-                        </div>
                         <div class="relative p-1 flex items-center justify-end w-1/4 ml-5 mr-4 sm:mr-0 sm:right-auto">
                             <a href="#" class="block relative">
-                                <img alt="profil" src="/images/person/1.jpg" class="mx-auto object-cover rounded-full h-10 w-10 "/>
+                                <img alt="profil" src="http://localhost:8000/storage/profile-photos/eYIUn5nN4rFHDsjnHqmsvg1XUoZAOi6ijrKQYq0W.png" class="mx-auto object-cover rounded-full h-10 w-10 "/>
                             </a>
                         </div>
                     </div>
@@ -1145,33 +968,22 @@
                         <div class="w-full flex px-3">
                             <div class="bg-white p-2 w-80 max-w-3xl sm:w-full sm:p-4 h-auto sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none">
                                 <div
-                                    style='background: url("https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")'
+                                    style='background: url("http://localhost:8000/minerales/Molibden.png")'
                                     class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-100 bg-center bg-cover"
                                 ></div>
                                 <div class="flex sm:flex-1 flex-col gap-2 p-1">
                                     <h1 class="text-lg sm:text-xl font-semibold  text-gray-600">
-                                        This is the title for your card. This is really cool
+                                        Molibden
                                     </h1>
                                     <p class="text-gray-500 text-sm sm:text-base line-clamp-3">
-                                        This is the desctiption fo
+                                        Cantidad de Molibden producida durante el mes de Julio
                                     </p>
                                     <div class="flex gap-4 mt-auto">
-                                    <button
-                                        class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
-                                    >
-                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z"></path></svg>
-                                        <span>556</span>
-                                    </button>
-                                    <button
-                                        class='flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
-                                    >
-                                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M464 512a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm200 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm-400 0a48 48 0 1 0 96 0 48 48 0 1 0-96 0zm661.2-173.6c-22.6-53.7-55-101.9-96.3-143.3a444.35 444.35 0 0 0-143.3-96.3C630.6 75.7 572.2 64 512 64h-2c-60.6.3-119.3 12.3-174.5 35.9a445.35 445.35 0 0 0-142 96.5c-40.9 41.3-73 89.3-95.2 142.8-23 55.4-34.6 114.3-34.3 174.9A449.4 449.4 0 0 0 112 714v152a46 46 0 0 0 46 46h152.1A449.4 449.4 0 0 0 510 960h2.1c59.9 0 118-11.6 172.7-34.3a444.48 444.48 0 0 0 142.8-95.2c41.3-40.9 73.8-88.7 96.5-142 23.6-55.2 35.6-113.9 35.9-174.5.3-60.9-11.5-120-34.8-175.6zm-151.1 438C704 845.8 611 884 512 884h-1.7c-60.3-.3-120.2-15.3-173.1-43.5l-8.4-4.5H188V695.2l-4.5-8.4C155.3 633.9 140.3 574 140 513.7c-.4-99.7 37.7-193.3 107.6-263.8 69.8-70.5 163.1-109.5 262.8-109.9h1.7c50 0 98.5 9.7 144.2 28.9 44.6 18.7 84.6 45.6 119 80 34.3 34.3 61.3 74.4 80 119 19.4 46.2 29.1 95.2 28.9 145.8-.6 99.6-39.7 192.9-110.1 262.7z"></path></svg>
-                                        <span>56</span>
-                                    </button>
+                                    
                                     <button
                                         class='ml-auto flex items-center gap-1 sm:text-lg border border-gray-300 px-3 py-1 rounded-full hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'
                                     >
-                                        <span>Read more</span>
+                                        <span>Ver más</span>
                                     </button>
                                     </div>
                                 </div>
@@ -1180,15 +992,15 @@
                         <div class="w-full flex px-3">
                             <div class="bg-white p-2 w-80 max-w-3xl sm:w-full sm:p-4 h-auto sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none">
                                 <div
-                                    style='background: url("https://images.unsplash.com/photo-1426604966848-d7adac402bff?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bmF0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60")'
+                                    style='background: url("http://localhost:8000/minerales/thumbs/1175.png")'
                                     class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-100 bg-center bg-cover"
                                 ></div>
                                 <div class="flex sm:flex-1 flex-col gap-2 p-1">
                                     <h1 class="text-lg sm:text-xl font-semibold  text-gray-600">
-                                        This is the title for your card. This is really cool
+                                        Vanadio
                                     </h1>
                                     <p class="text-gray-500 text-sm sm:text-base line-clamp-3">
-                                        This is the desctiption for your card. This is r
+                                        Cantidad de Vanadio producida durante el mes de Julio
                                     </p>
                                     <div class="flex gap-4 mt-auto">
                                     <button
@@ -1213,6 +1025,9 @@
                             </div>
                         </div>
                     </div>
+
+
+                    
                     
                     
                 </div>
@@ -1230,11 +1045,11 @@
                         <table class="table text-gray-400 border-separate space-y-6 text-sm">
                             <thead class="bg-gray-800 text-gray-500">
                                 <tr>
-                                    <th class="p-3">Brand</th>
-                                    <th class="p-3 text-left">Category</th>
-                                    <th class="p-3 text-left">Price</th>
-                                    <th class="p-3 text-left">Status</th>
-                                    <th class="p-3 text-left">Action</th>
+                                    <th class="p-3">Productor</th>
+                                    <th class="p-3 text-left">Productos</th>
+                                    <th class="p-3 text-left">Precio</th>
+                                    <th class="p-3 text-left">Mineral</th>
+                                    <th class="p-3 text-left">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1243,29 +1058,29 @@
                                         <div class="flex align-items-center">
                                             <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
                                             <div class="ml-3">
-                                                <div class="">Appple</div>
-                                                <div class="text-gray-500">mail@rgmail.com</div>
+                                                <div class="">Minas Argentinas</div>
+                                                <div class="text-gray-500">minas_argentinas@rgmail.com</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="p-3">
-                                        Technology
+                                        Oro y Plata
                                     </td>
                                     <td class="p-3 font-bold">
-                                        200.00$
+                                        200.00$ / tonelada
                                     </td>
                                     <td class="p-3">
-                                        <span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
+                                        <span class="bg-green-400 text-gray-50 rounded-md px-2">Oro</span>
                                     </td>
                                     <td class="p-3 ">
                                         <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                            <i class="material-icons-outlined text-base">visibility</i>
+                                            <i class="material-icons-outlined text-base">Ver</i>
                                         </a>
                                         <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
-                                            <i class="material-icons-outlined text-base">edit</i>
+                                            <i class="material-icons-outlined text-base">Editar</i>
                                         </a>
                                         <a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
-                                            <i class="material-icons-round text-base">delete_outline</i>
+                                            <i class="material-icons-round text-base">Contactar</i>
                                         </a>
                                     </td>
                                 </tr>
@@ -1274,29 +1089,29 @@
                                         <div class="flex align-items-center">
                                             <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
                                             <div class="ml-3">
-                                                <div class="">Realme</div>
+                                                <div class="">Yamana Gold</div>
                                                 <div class="text-gray-500">mail@rgmail.com</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="p-3">
-                                        Technology
+                                        Oro
                                     </td>
                                     <td class="p-3 font-bold">
-                                        200.00$
+                                        200.00$ / tonelada
                                     </td>
                                     <td class="p-3">
-                                        <span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
+                                        <span class="bg-red-400 text-gray-50 rounded-md px-2">Plata</span>
                                     </td>
                                     <td class="p-3">
                                         <a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
-                                            <i class="material-icons-outlined text-base">visibility</i>
+                                            <i class="material-icons-outlined text-base">Ver</i>
                                         </a>
                                         <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                            <i class="material-icons-outlined text-base">edit</i>
+                                            <i class="material-icons-outlined text-base">Editar</i>
                                         </a>
                                         <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                            <i class="material-icons-round text-base">delete_outline</i>
+                                            <i class="material-icons-round text-base">Contactar</i>
                                         </a>
                                     </td>
                                 </tr>
@@ -1305,29 +1120,29 @@
                                         <div class="flex align-items-center">
                                             <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
                                             <div class="ml-3">
-                                                <div class="">Samsung</div>
+                                                <div class="">Minas del Sol</div>
                                                 <div class="text-gray-500">mail@rgmail.com</div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="p-3">
-                                        Technology
+                                        Cobre
                                     </td>
                                     <td class="p-3 font-bold">
-                                        200.00$
+                                        200.00$ / tonelada
                                     </td>
                                     <td class="p-3">
-                                        <span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
+                                        <span class="bg-yellow-400 text-gray-50  rounded-md px-2">Cobre</span>
                                     </td>
                                     <td class="p-3">
                                         <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                            <i class="material-icons-outlined text-base">visibility</i>
+                                            <i class="material-icons-outlined text-base">Ver</i>
                                         </a>
                                         <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                            <i class="material-icons-outlined text-base">edit</i>
+                                            <i class="material-icons-outlined text-base">Editar</i>
                                         </a>
                                         <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                            <i class="material-icons-round text-base">delete_outline</i>
+                                            <i class="material-icons-round text-base">Contactar</i>
                                         </a>
                                     </td>
                                 </tr>
@@ -1360,7 +1175,7 @@
     import Welcome from '@/Jetstream/Welcome'
     import ChartPie from '@/Components/charts/pie'
     import ChartBar from '@/Components/charts/bar'
-        import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
+    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
 
     export default {
         components: {
