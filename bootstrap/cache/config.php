@@ -329,7 +329,7 @@
         'url' => NULL,
         'host' => '127.0.0.1',
         'port' => '5432',
-        'database' => 'rpmappdb2',
+        'database' => 'rpmappdb',
         'username' => 'postgres',
         'password' => 'qwer1234',
         'charset' => 'utf8',
@@ -468,10 +468,8 @@
     ),
     'features' => 
     array (
-      0 => 'profile-photos',
-      1 => 'api',
-      2 => 'teams',
-      3 => 'account-deletion',
+      0 => 'teams',
+      1 => 'account-deletion',
     ),
     'profile_photo_disk' => 'public',
   ),
@@ -644,6 +642,54 @@
       array (
         0 => 'C:\\wamp64\\www\\rpmProduccion\\rpmapp\\resources\\views/vendor/mail',
       ),
+    ),
+  ),
+  'permission' => 
+  array (
+    'models' => 
+    array (
+      'permission' => 'Spatie\\Permission\\Models\\Permission',
+      'role' => 'Spatie\\Permission\\Models\\Role',
+    ),
+    'table_names' => 
+    array (
+      'roles' => 'roles',
+      'permissions' => 'permissions',
+      'model_has_permissions' => 'model_has_permissions',
+      'model_has_roles' => 'model_has_roles',
+      'role_has_permissions' => 'role_has_permissions',
+    ),
+    'column_names' => 
+    array (
+      'model_morph_key' => 'model_id',
+    ),
+    'display_permission_in_exception' => false,
+    'display_role_in_exception' => false,
+    'enable_wildcard_permission' => false,
+    'cache' => 
+    array (
+      'expiration_time' => 
+      DateInterval::__set_state(array(
+         'y' => 0,
+         'm' => 0,
+         'd' => 0,
+         'h' => 24,
+         'i' => 0,
+         's' => 0,
+         'f' => 0.0,
+         'weekday' => 0,
+         'weekday_behavior' => 0,
+         'first_last_day_of' => 0,
+         'invert' => 0,
+         'days' => false,
+         'special_type' => 0,
+         'special_amount' => 0,
+         'have_weekday_relative' => 0,
+         'have_special_relative' => 0,
+      )),
+      'key' => 'spatie.permission.cache',
+      'model_key' => 'name',
+      'store' => 'default',
     ),
   ),
   'queue' => 
@@ -868,10 +914,6 @@
       ),
       'zoom' => 11,
     ),
-    'settings' => 
-    array (
-      'cache' => false,
-    ),
     'compass_in_production' => false,
     'media' => 
     array (
@@ -892,16 +934,6 @@
     'add-hook-menu-item' => true,
     'add-hook-permissions' => true,
     'publish-vendor-files' => true,
-  ),
-  'laravel-widgets' => 
-  array (
-    'use_jquery_for_ajax_calls' => false,
-    'route_middleware' => 
-    array (
-      0 => 'web',
-    ),
-    'widget_stub' => 'vendor/arrilot/laravel-widgets/src/Console/stubs/widget.stub',
-    'widget_plain_stub' => 'vendor/arrilot/laravel-widgets/src/Console/stubs/widget_plain.stub',
   ),
   'dompdf' => 
   array (
@@ -983,10 +1015,6 @@
         3 => 'vue',
       ),
     ),
-  ),
-  'image' => 
-  array (
-    'driver' => 'gd',
   ),
   'trustedproxy' => 
   array (

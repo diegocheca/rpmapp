@@ -200,7 +200,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }).observations
         }, //Sexo
         {
-          label: "SEXO",
+          label: "Sexo",
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           name: "sexo",
@@ -227,7 +227,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }).observations
         }, //tipo de documento
         {
-          label: "tipo de documento",
+          label: "Tipo de Documento",
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           async: true,
@@ -264,7 +264,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }).observations
         }, //FECHA DE NACIMIENTO
         {
-          label: "FECHA DE NACIMIENTO",
+          label: "Fecha de Nacimiento",
           value: schema.fecha_nacimiento,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.DATE,
           name: "fecha_nacimiento",
@@ -288,7 +288,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }).observations
         }, //PROFESION
         {
-          label: "Profesion",
+          label: "Profesión",
           value: schema.Profesion,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "profesion",
@@ -300,7 +300,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }).observations
         }, //ESTADO CIVIL
         {
-          label: "ESTADO CIVIL",
+          label: "Estado Civil",
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           name: "estado_civil",
@@ -347,11 +347,11 @@ function getFormSchema(_ref, evaluate, dataForm) {
           label: "Domicilio",
           value: schema.domicilio,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
-          name: "domicilio",
+          name: "domicilioLegal",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: "domicilio",
+            name: "domicilioLegal",
             evaluate: evaluate
           }).observations
         }]
@@ -373,7 +373,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         img: "/images/laborales.png",
         inputs: [//provincia
         {
-          label: "Provincia",
+          label: "Provincia Legal",
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           // get axios
