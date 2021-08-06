@@ -51,7 +51,7 @@ use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 
-
+use App\Http\Controllers\UsersController;
 
 /************* FORMULARIOS WEB *************/
 
@@ -86,8 +86,34 @@ Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
-Route::resource('reinscripciones', ReinscripcionController::class)
-    ->middleware(['auth:sanctum', 'verified']);
+// REINSCRIPCIONES
+
+// Route::group(['prefix' => 'reinscripciones'], function () {
+    Route::get('reinscripciones/revision/{id}', [ReinscripcionController::class, "revision"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.revision');
+    Route::put('reinscripciones/saveRevision/{id}', [ReinscripcionController::class, "saveRevision"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.saveRevision');
+    Route::put('reinscripciones/updateRevision/{id}', [ReinscripcionController::class, "updateRevision"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.updateRevision');
+    Route::resource('reinscripciones', ReinscripcionController::class)
+        ->middleware(['auth:sanctum', 'verified']);
+        Route::post('reinscripciones/upload', [ReinscripcionController::class, "upload"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.upload');
+//     Route::get('provincias', 'ReinscripcionController@getCountries')
+//         ->middleware(['auth:sanctum', 'verified']);
+
+// });
+
+    Route::group(['prefix' => 'paises'], function () {
+        // Route::get('paises', 'CountriesController@getCountries')
+        // ->middleware(['auth:sanctum', 'verified']);
+        Route::get('provincias', [CountriesController::class, "getDepartment"])
+        ->middleware(['auth:sanctum', 'verified']);
+        Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
+        ->middleware(['auth:sanctum', 'verified']);
+        Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
+        ->middleware(['auth:sanctum', 'verified']);
+    });
 
 
 Route::resource('productos', ProductosController::class)
@@ -137,10 +163,13 @@ Route::resource('products', ProductController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 
+    Route::resource('users', UsersController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
 Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formulario"])->name('abrir-formulario');
 
 
-//direcciones de formularios 
+//direcciones de formularios
 
 Route::get('/validar_email_productor/{codigo}', [HomeController::class, "valdiar_email_de_productor"])->name('valdiar-email-de-productor');
 
@@ -177,6 +206,7 @@ Route::post('/formularios/evaluacion_auto_guardado_cuatro', [FormAltaProductorCo
 Route::post('/formularios/evaluacion_auto_guardado_cinco', [FormAltaProductorController::class, "correccion_guardar_paso_cinco"])->name('correccion_guardar-paso-cinco');
 Route::post('/formularios/evaluacion_auto_guardado_seis', [FormAltaProductorController::class, "correccion_guardar_paso_seis"])->name('correccion_guardar-paso-seis');
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
+Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');
 
 //Route::get('/formularios/preg_email_validado/{email}', [FormAltaProductorController::class, "preguntar_email_confirmado"])->name('preguntar-email-confirmado');
 Route::post('/formularios/preg_email_validado/', [FormAltaProductorController::class, "preguntar_email_confirmado"])->name('preguntar-email-confirmado');
@@ -197,6 +227,15 @@ Route::post('/formularios/buscar_id_form/', [FormAltaProductorController::class,
 Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_prueba"])->name('probando-pdf');
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
+
+//COMERCIANTE
+Route::get('/probando_form_comerciante/', [FormAltaProductorController::class, "pdf_para_comerciantes"])->name('pdf-para-comerciantes');
+
+//INDUSTRIAL
+Route::get('/probando_form_industrial/', [FormAltaProductorController::class, "pdf_para_industrial"])->name('pdf-para-industrial');
+
+//TRANSITO
+Route::get('/autorizacion_transito/', [FormAltaProductorController::class, "pdf_para_transito"])->name('pdf-para-transito');
 
 
 

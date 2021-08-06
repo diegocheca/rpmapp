@@ -11,25 +11,20 @@
 					</div>
 					<br>
 					<hr>
-					
 					<br>
 					<!-- Delete Account Confirmation Modal -->
 					<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
 							<template #title>
 									{{modal_tittle}}
 							</template>
-
 							<template #content>
 									{{modal_body}}
-
 									
 							</template>
-
 							<template #footer>
 									<button @click="closeModal">
 											Ok
 									</button>
-
 									
 							</template>
 					</jet-dialog-modal>
@@ -124,9 +119,9 @@
 					<br>
 					<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
 						<a href="#inicio">
-							<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
+							<div class="flex items-center absolute shadow-xl left-8 top-10">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="animate-bounce bi bi-arrow-up" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
 								</svg>
 							</div>
 						</a>
@@ -143,6 +138,21 @@
 								:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardProductor>
 					</div> -->
+
+					<!--<div class="flex space-x-8 text-3xl">
+
+						<!- spin ->
+						<button class="animate-spin inline-block py-4 px-8 bg-yellow-500 text-yellow-100 rounded-lg">Spin</button>
+
+						<!- ping ->
+						<button class="animate-ping inline-block py-4 px-8 bg-blue-500 text-blue-100 rounded-lg">Ping</button>
+
+						<!- pulse ->
+						<button class="animate-pulse inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
+
+						<!- bounce ->
+						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
+					</div>-->
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -180,14 +190,23 @@
 					:inscripciondgr_correcto="form.inscripciondgr_correcto"
 					:obs_inscripciondgr="form.obs_inscripciondgr"
 					:obs_inscripciondgr_valido="form.obs_inscripciondgr_valido"
-					:constaciasociedad="form.constaciasociedad"
-					:constaciasociedad_valido="form.constaciasociedad_valido"
-					:constaciasociedad_correcto="form.constaciasociedad_correcto"
-					:obs_constaciasociedad="form.obs_constaciasociedad"
-					:obs_constaciasociedad_valido="form.obs_constaciasociedad_valido"
+					:constanciasociedad="form.constaciasociedad"
+					:constanciasociedad_valido="form.constaciasociedad_valido"
+					:constanciasociedad_correcto="form.constaciasociedad_correcto"
+					:obs_constanciasociedad="form.obs_constaciasociedad"
+					:obs_constanciasociedad_valido="form.obs_constaciasociedad_valido"
 
 					:evaluacion="true"
 					:id="$props.productor.id"
+
+					v-on:ChangeRazonSocialEvaluacion="update_razon_social_evaluacion($event)"
+					v-on:ChangeCuitEvaluacion="update_cuit_evaluacion($event)"
+					v-on:ChangeNumProdEvaluacion="update_num_prod_evaluacion($event)"
+					v-on:ChangeTipoSociedadEvaluacion="update_tipo_sociedad_evaluacion($event)"
+					v-on:ChangeInscripcionDGREvaluacion="update_inscripcion_dgr_evaluacion($event)"
+					v-on:ChangeConstanciaSociedadEvaluacion="update_constancia_sociedad_evaluacion($event)"
+
+
 				>
 				</PaginaUnoDatosProductores>
 				<br>
@@ -247,12 +266,16 @@
 					:obs_leal_otro_valido="form.obs_leal_otro_valido"
 
 					:donde_estoy="'legal'"
+					:lista_provincias="lista_provincias"
+					:lista_dptos="lista_dptos_legal"
 
 					:evaluacion="true"
 					:id="$props.productor.id"
 					>
 
 				</PaginaDosDatosDomLegal>
+			
+
 				<br>
 			<div class="flex items-center justify-center">
 				<!-- <CardDomLegal  
@@ -332,10 +355,13 @@
 				:obs_leal_otro_valido="form.obs_administracion_otro_valido"
 
 				:donde_estoy="'administrativo'"
+				:lista_provincias="lista_provincias"
+				:lista_dptos="lista_dptos_admin"
 
 				:evaluacion="true"
 				:id="$props.productor.id"
 				>
+			
 
 			</PaginaDosDatosDomLegal>
 			<br>
@@ -351,6 +377,7 @@
 				></CardMinaUno> -->
 			</div>
 			<div id="section_mina_uno"></div>
+
 			<PaginaCuatroDatosMinaUno
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -398,7 +425,6 @@
 				:obs_minerales_variedad="form.obs_minerales_variedad"
 				:obs_minerales_variedad_valido="form.obs_minerales_variedad_valido"
 
-
 				:resolucion_concesion_minera="form.resolucion_concesion_minera"
 				:resolucion_concesion_minera_validacion="form.resolucion_concesion_minera_validacion"
 				:resolucion_concesion_minera_correcto="form.resolucion_concesion_minera_correcto"
@@ -411,29 +437,14 @@
 				:obs_titulo_contrato_posecion="form.obs_titulo_contrato_posecion"
 				:obs_titulo_contrato_posecion_valido="form.obs_titulo_contrato_posecion_valido"
 
+				:lista_minerales_desde_back = "lista_de_minerales_del_back"
+
 				:evaluacion="true"
 				:id="$props.productor.id"
 				:testing="true"
 			>
 			</PaginaCuatroDatosMinaUno>
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_cuatro"
-				>
-					Guardar Datos de la Mina
-				</button>
-				
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
+			
 			<div class="flex items-center justify-center">
 				<!-- <CardMinaDos  
 							:progreso="form.valor_de_progreso_cinco"
@@ -445,7 +456,6 @@
 							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
 						></CardMinaDos> -->
 			</div>
-			<br>
 			<br>
 			<br>
 			<div id="section_datos_mina_dos"></div>
@@ -471,6 +481,17 @@
 				:otros_correcto="form.otros_correcto"
 				:obs_otros="form.obs_otros"
 				:obs_otros_valido="form.obs_otros_valido"
+				:otros_input="form.otros_input"
+				:otros_input_valido="form.otros_input_valido"
+				
+
+				:sustancias="form.sustancias"
+				:sustancias_correcto="form.sustancias_correcto"
+				:obs_sustancias="form.obs_sustancias"
+				:obs_sustancias_valido="form.obs_sustancias_valido"
+				:sustancias_input="form.sustancias_input"
+				:sustancias_input_valido="form.sustancias_input_valido"
+
 				:titulo_contrato_posecion="form.titulo_contrato_posecion"
 				:titulo_contrato_posecion_validacion="form.titulo_contrato_posecion_validacion"
 				:titulo_contrato_posecion_correcto="form.titulo_contrato_posecion_correcto"
@@ -524,11 +545,7 @@
 			>
 			</PaginaCincoDatosMinaDos>
 			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div class="flex flex-col mb-8">
+			<!-- <div class="flex flex-col mb-8">
 				<button
 					type="button"
 					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
@@ -538,35 +555,14 @@
 				</button>
 				
 				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
+			</div> -->
 			<div id="section_datos_mina_ubicacion"></div>
-			<div class="flex items-center justify-center">
-				<CardMinaUbicacion  
-					:progreso="form.valor_de_progreso_seis"
-					:aprobado="form.valor_de_aprobado_seis"
-					:reprobado="form.valor_de_reprobado_seis" 
-					:lugar="'Argentina, San Juan'"
-					:updated_at="'hace 10 minutos'"
-					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-				></CardMinaUbicacion>
-			</div>
-			<br>
-			<br>
-			<br>
 			<br>
 			<PaginaSeisDatosUbicacionMina
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
-				:titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
-				:titulo_pagina="'Pagina datos de Mina Segunda Parte'"
+				:titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
+				:titulo_pagina="'Pagina datos de Ubicacion de la Mina'"
 
 				:localidad_mina_pais="form.localidad_mina_pais"
 				:localidad_mina_pais_validacion="form.localidad_mina_pais_validacion"
@@ -603,6 +599,9 @@
 				:longitud_correcto="form.longitud_correcto"
 				:obs_longitud="form.obs_longitud"
 				:obs_longitud_valido="form.obs_longitud_valido"
+
+				:lista_provincias="lista_provincias"
+				:lista_dptos="lista_dptos_mina"
 				
 				:evaluacion="true"
 				:id="$props.productor.id"
@@ -612,33 +611,17 @@
 
 			</PaginaSeisDatosUbicacionMina>
 			<br>
-			<br>
-			<br>
-			<br>
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_seis"
-				>
-					Guardar: Datos de la Ubicacion de la mina
-				</button>
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div>
-			<br>
-			<br>
-			<br>
+			
 			<hr>
 			<br>
-			<br>
-			<br>
-			<br>
-					<div class="flex flex-col mb-4">
+			<div class="flex">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 							for="name"
-							>created_by:</label
+							>Creado Por:</label
 						>
+						<br>
 						<input
 							id="cuit"
 							disabled
@@ -646,49 +629,102 @@
 							class="border py-2 px-3 text-grey-darkest"
 						/>
 					</div>
-					<div class="flex flex-col mb-4">
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<label
 							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 							for="estado"
-							>Estado:</label
-						>
+							>Estado Actual:</label><br>
+							<span v-if="$props.productor.estado === 'en proceso'"  class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En proceso</span>
+							<span v-if="$props.productor.estado === 'borrador'"  class="bg-pink-200 text-pink-600 py-1 px-3 rounded-full text-xs">Borrador</span>
+							<span v-if="$props.productor.estado === 'aprobado'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Aprobado</span>
+							<span v-if="$props.productor.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
+							<span v-if="$props.productor.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
+							<span v-if="$props.productor.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
+					</div>
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+						<label
+							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+							for="estado"
+							>Nuevo Estado:</label
+						><br>
 						<select
 							id="estado"
 							name="estado"
 							v-model="form.estado"
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="presentado">Presentado</option>
+							class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+							<option value="en proceso">En proceso</option>
+							<option value="borrador">Borrador</option>
 							<option value="en revision">En revision</option>
-							<option value="con observacion">Aprobado con Observaciones</option>
+							<option value="aprobado">Aprobado</option>
 							<option value="reprobado">Reprobado</option>
+							<option value="con observacion">Con Observacion</option>
+							
 						</select>
 					</div>
-					<div class="flex flex-col mb-8">
-							<!-- type="submit" -->
-						<button
-							@click="guardar_avances_todo"
-							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-						>
-							Actualizar
-						</button>
-						<inertia-link
-							:href="route('productors.index')"
-							class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
-						>
-							Volver
-						</inertia-link>
-					</div>
+			</div>
+			<br>
+			<br>
+			<br>
+			<div class="flex">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<inertia-link
+						:href="route('productors.index')"
+						class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+					>
+						Volver
+					</inertia-link>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<button
+						
+						@click="mostrar_modal_aprobar"
+						class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
+					>
+						Actualizar
+					</button>
+					
+				</div>
+			</div>
+			<jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
+					<template #title>
+							{{modal_tittle_apro}}
+					</template>
+					<template #content>
+							{{modal_body_apro}}
+							
+					</template>
+					<template #footer>
+						<div class="flex">
+							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+								<button  @click="closeModalAprobar" class="animate-pulse py-3 px-6 text-white rounded-lg bg-yellow-400 shadow-lg block md:inline-block">
+									Vuelvo a revisar
 
-					<!-- <div class="mr-6">
-							<button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Learn More</button>
-							<button class="px-8 py-3.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900">New</button>
-							<button class="px-7 py-3   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-yellow-200 hover:bg-yellow-300 text-yellow-900">New</button>
-							<button class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900">New</button>
-							<button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-purple-300 bg-indigo-200 hover:bg-indigo-300 text-indigo-900">New</button>
-						</div> -->
+								</button>
+							</div>
+							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+								<button
+									v-show="mostrar_boton_aprobar"
+									@click="closeModalAprobar"
+									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
+								>
+									Actualizar
+								</button>
+							</div>
 
+							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+								<button
+									v-show="mostrar_boton_aprobar_de_todos_modos"
+									@click="closeModalAprobar"
+									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
+								>
+									Actualizar de todos Modos
+								</button>
+							</div>
+						</div>
+					</template>
+			</jet-dialog-modal>
 
-				</form>
+		</form>
 				
 
 			</div>
@@ -747,12 +783,28 @@ export default {
 		PaginaSeisDatosUbicacionMina,
 		ValidationErrors,
 	},
-	props: ["productor"],
+	props: [
+		"productor",
+		"lista_minerales_cargados",
+		"creado",
+		],
 	data() {
 		return {
 			confirmingUserDeletion:false,
 			modal_tittle: '',
 			modal_body: '',
+			AvisoAprueba: false,
+			modal_tittle_apro: '',
+			modal_body_apro: '',
+
+
+			lista_provincias: [],
+			lista_dptos_legal: [],
+			lista_dptos_admin: [],
+			lista_dptos_mina: [],
+			mostrar_boton_aprobar: false,
+			mostrar_boton_aprobar_de_todos_modos: false,
+			lista_de_minerales_del_back : this.$props.lista_minerales_cargados,
 			form: {
 				razon_social:this.$props.productor.razonsocial,
 				razon_social_valido: true,
@@ -795,7 +847,7 @@ export default {
 
 				constaciasociedad: this.$props.productor.constaciasociedad,
 				constaciasociedad_valido: true,
-				constaciasociedad_correcto:  this.$props.productor.constaciasociedad_correcto,
+				constaciasociedad_correcto:  this.$props.productor.constanciasociedad_correcto,
 				obs_constaciasociedad:  this.$props.productor.obs_constaciasociedad,
 				obs_constaciasociedad_valido: false,
 
@@ -883,31 +935,27 @@ export default {
 
 				administracion_calle: this.$props.productor.administracion_calle,
 				administracion_calle_valido:  true,
-				administracion_calle_correcto: 'nada',
-				obs_administracion_calle_nombre: '',
+				administracion_calle_correcto:  this.$props.productor.administracion_calle_correcto,
+				obs_administracion_calle_nombre:  this.$props.productor.obs_administracion_calle_nombre,
 				obs_administracion_calle_nombre_valido: false,
 				
-				
-				
-				
-
 				administracion_numero: this.$props.productor.administracion_numero,
 				administracion_numero_valido:  true,
-				administracion_numero_correcto: 'nada',
-				obs_administracion_numero_nombre: '',
+				administracion_numero_correcto: this.$props.productor.administracion_numero_correcto,
+				obs_administracion_numero_nombre: this.$props.productor.obs_administracion_numero,
 				obs_administracion_numero_nombre_valido: false,
 
 				administracion_telefono: this.$props.productor.administracion_telefono,
 				administracion_telefono_valido:  true,
-				administracion_telefono_correcto: 'nada',
-				obs_administracion_telefono_nombre: '',
+				administracion_telefono_correcto: this.$props.productor.administracion_telefono_correcto,
+				obs_administracion_telefono_nombre: this.$props.productor.obs_administracion_telefono,
 				obs_administracion_telefono_nombre_valido: false,
 
 
 				administracion_pais: this.$props.productor.administracion_pais,
 				administracion_pais_valido:  true,
-				administracion_pais_correcto: 'nada',
-				obs_administracion_pais: '',
+				administracion_pais_correcto: this.$props.productor.administracion_pais_correcto,
+				obs_administracion_pais: this.$props.productor.obs_administracion_pais,
 				obs_administracion_pais_valido: false,
 
 
@@ -915,16 +963,16 @@ export default {
 
 				administracion_provincia: this.$props.productor.administracion_provincia,
 				administracion_provincia_valido:  true,
-				administracion_provincia_correcto: 'nada',
-				obs_administracion_provincia: '',
+				administracion_provincia_correcto: this.$props.productor.administracion_provincia_correcto,
+				obs_administracion_provincia: this.$props.productor.obs_administracion_provincia,
 				obs_administracion_provincia_valido: false,
 
 
 
 				administracion_departamento: this.$props.productor.administracion_departamento,
 				administracion_departamento_valido:  true,
-				administracion_departamento_correcto: 'nada',
-				obs_administracion_departamento: '',
+				administracion_departamento_correcto: this.$props.productor.administracion_departamento_correcto,
+				obs_administracion_departamento: this.$props.productor.obs_administracion_departamento,
 				obs_administracion_departamento_valido: false,
 
 
@@ -933,14 +981,14 @@ export default {
 
 				administracion_localidad: this.$props.productor.administracion_localidad,
 				administracion_localidad_valido:  true,
-				administracion_localidad_correcto: 'nada',
-				obs_administracion_localidad: '',
+				administracion_localidad_correcto: this.$props.productor.administracion_localidad_correcto,
+				obs_administracion_localidad: this.$props.productor.obs_administracion_localidad,
 				obs_administracion_localidad_valido: false,
 
 				administracion_cp: this.$props.productor.administracion_cp,
 				administracion_cp_valido:  true,
-				administracion_cp_correcto: 'nada',
-				obs_administracion_cp: '',
+				administracion_cp_correcto: this.$props.productor.administracion_cp_correcto,
+				obs_administracion_cp: this.$props.productor.obs_administracion_cp,
 				obs_administracion_cp_valido: false,
 
 
@@ -949,8 +997,8 @@ export default {
 
 				administracion_otro: this.$props.productor.administracion_otro,
 				administracion_otro_valido:  true,
-				administracion_otro_correcto: 'nada',
-				obs_administracion_otro: '',
+				administracion_otro_correcto: this.$props.productor.administracion_otro_correcto,
+				obs_administracion_otro: this.$props.productor.obs_administracion_otro,
 				obs_administracion_otro_valido: false,
 
 
@@ -965,50 +1013,50 @@ export default {
 
 				numero_expdiente: this.$props.productor.numero_expdiente,
 				numero_expdiente_valido:  true,
-				numero_expdiente_correcto: 'nada',
-				obs_numero_expdiente: '',
+				numero_expdiente_correcto: this.$props.productor.numero_expdiente_correcto,
+				obs_numero_expdiente:  this.$props.productor.obs_numero_expdiente,
 				obs_numero_expdiente_valido: false,
 
 
 				categoria: this.$props.productor.categoria,
 				categoria_validacion:  true,
-				categoria_correcto: 'nada',
-				obs_categoria: '',
+				categoria_correcto: this.$props.productor.categoria_correcto,
+				obs_categoria: this.$props.productor.obs_categoria,
 				obs_categoria_valido: false,
 
 				nombre_mina: this.$props.productor.nombre_mina,
 				nombre_mina_validacion:  true,
-				nombre_mina_correcto: 'nada',
-				obs_nombre_mina: '',
+				nombre_mina_correcto: this.$props.productor.nombre_mina_correcto,
+				obs_nombre_mina: this.$props.productor.obs_nombre_mina,
 				obs_nombre_mina_valido: false,
 
 
 				descripcion_mina: this.$props.productor.descripcion_mina,
 				descripcion_mina_validacion:  true,
-				descripcion_mina_correcto: 'nada',
-				obs_descripcion_mina: '',
+				descripcion_mina_correcto: this.$props.productor.descripcion_mina_correcto,
+				obs_descripcion_mina: this.$props.productor.obs_descripcion_mina,
 				obs_descripcion_mina_valido: false,
 
 
 				distrito_minero: this.$props.productor.distrito_minero,
 				distrito_minero_validacion:  true,
-				distrito_minero_correcto: 'nada',
-				obs_distrito_minero: '',
+				distrito_minero_correcto: this.$props.productor.distrito_minero_correcto,
+				obs_distrito_minero: this.$props.productor.obs_distrito_minero,
 				obs_distrito_minero_valido: false,
 
 
 
 				mina_cantera: this.$props.productor.mina_cantera,
 				mina_cantera_validacion:  true,
-				mina_cantera_correcto: 'nada',
-				obs_mina_cantera: '',
+				mina_cantera_correcto: this.$props.productor.mina_cantera_correcto,
+				obs_mina_cantera: this.$props.productor.obs_mina_cantera,
 				obs_mina_cantera_valido: false,
 
 
 				plano_inmueble: this.$props.productor.plano_inmueble,
 				plano_inmueble_validacion:  true,
-				plano_inmueble_correcto: 'nada',
-				obs_plano_inmueble: '',
+				plano_inmueble_correcto: this.$props.productor.plano_inmueble_correcto,
+				obs_plano_inmueble: this.$props.productor.obs_plano_inmueble,
 				obs_plano_inmueble_valido: false,
 
 
@@ -1029,28 +1077,40 @@ export default {
 				valor_de_reprobado_cinco: 100,
 
 				owner: this.$props.productor.owner,
-				owner_correcto: 'nada',
-				obs_owner: '',
+				owner_correcto: this.$props.productor.owner_correcto,
+				obs_owner: this.$props.productor.obs_owner,
 				obs_owner_valido: false,
 
 				arrendatario: this.$props.productor.arrendatario,
-				arrendatario_correcto: 'nada',
-				obs_arrendatario: '',
+				arrendatario_correcto: this.$props.productor.arrendatario_correcto,
+				obs_arrendatario: this.$props.productor.obs_arrendatario,
 				obs_arrendatario_valido: false,
 
 
 				concesionario: this.$props.productor.concesionario,
-				concesionario_correcto: 'nada',
-				obs_concesionario: '',
+				concesionario_correcto: this.$props.productor.concesionario_correcto,
+				obs_concesionario: this.$props.productor.obs_concesionario,
 				obs_concesionario_valido: false,
+				
 
 
 
 
 				otros: this.$props.productor.otros,
-				otros_correcto: 'nada',
-				obs_otros: '',
+				otros_correcto: this.$props.productor.otros_correcto,
+				obs_otros: this.$props.productor.obs_otros,
 				obs_otros_valido: false,
+				otros_input: this.$props.productor.otro_caracter_acalaracion,
+				otros_input_valido: true,
+
+
+				sustancias: this.$props.productor.sustancias_de_aprovechamiento_comun,
+				sustancias_correcto: this.$props.productor.sustancias_de_aprovechamiento_comun_correcto,
+				obs_sustancias: this.$props.productor.obs_sustancias_de_aprovechamiento_comun,
+				obs_sustancias_valido: false,
+				sustancias_input: this.$props.productor.sustancias_de_aprovechamiento_comun_aclaracion,
+				sustancias_input_valido: true,
+
 
 				titulo_contrato_posecion: this.$props.productor.titulo_contrato_posecion,
 				titulo_contrato_posecion_validacion:  true,
@@ -1093,7 +1153,7 @@ export default {
 				acciones_a_desarrollar_validacion:  true,
 				acciones_a_desarrollar_correcto: 'nada',
 				obs_acciones_a_desarrollar: '',
-				obs_acciones_a_desarrollar_valido: false,
+				obs_acciones_a_desarrollar_valido: this.$props.productor.concesion_minera_aclaracion,
 
 
 
@@ -1126,20 +1186,20 @@ export default {
 
 				localidad_mina_pais: this.$props.productor.localidad_mina_pais,
 				localidad_mina_pais_validacion:  true,
-				localidad_mina_pais_correcto: 'nada',
-				obs_localidad_mina_pais: '',
+				localidad_mina_pais_correcto: this.$props.productor.localidad_mina_pais_correcto,
+				obs_localidad_mina_pais:  this.$props.productor.obs_localidad_mina_pais,
 				obs_localidad_mina_pais_valido: false,
 
 				localidad_mina_provincia: this.$props.productor.localidad_mina_provincia,
 				localidad_mina_provincia_validacion:  true,
-				localidad_mina_provincia_correcto: 'nada',
-				obs_localidad_mina_provincia: '',
+				localidad_mina_provincia_correcto: this.$props.productor.localidad_mina_provincia_correcto,
+				obs_localidad_mina_provincia:this.$props.productor.obs_localidad_mina_provincia,
 				obs_localidad_mina_provincia_valido: false,
 
 				localidad_mina_departamento: this.$props.productor.localidad_mina_departamento,
 				localidad_mina_departamento_validacion:  true,
-				localidad_mina_departamento_correcto: 'nada',
-				obs_localidad_mina_departamento: '',
+				localidad_mina_departamento_correcto:this.$props.productor.localidad_mina_departamento_correcto,
+				obs_localidad_mina_departamento:this.$props.productor.obs_localidad_mina_departamento,
 				obs_localidad_mina_departamento_valido: false,
 
 
@@ -1147,32 +1207,32 @@ export default {
 
 				localidad_mina_localidad: this.$props.productor.localidad_mina_localidad,
 				localidad_mina_localidad_validacion:  true,
-				localidad_mina_localidad_correcto: 'nada',
-				obs_localidad_mina_localidad: '',
+				localidad_mina_localidad_correcto:this.$props.productor.localidad_mina_localidad_correcto,
+				obs_localidad_mina_localidad:this.$props.productor.obs_localidad_mina_localidad,
 				obs_localidad_mina_localidad_valido: false,
 
 
 				tipo_sistema: this.$props.productor.tipo_sistema,
 				tipo_sistema_validacion:  true,
-				tipo_sistema_correcto: 'nada',
-				obs_tipo_sistema: '',
+				tipo_sistema_correcto:  this.$props.productor.tipo_sistema_correcto,
+				obs_tipo_sistema:   this.$props.productor.obs_tipo_sistema,
 				obs_tipo_sistema_valido: false,
 
 
 
 				latitud: this.$props.productor.latitud,
 				latitud_validacion:  true,
-				latitud_correcto: 'nada',
-				obs_latitud: '',
+				latitud_correcto:  this.$props.productor.latitud_correcto,
+				obs_latitud:   this.$props.productor.obs_latitud,
 				obs_latitud_valido: false,
 
 				longitud: this.$props.productor.longitud,
 				longitud_validacion:  true,
-				longitud_correcto: 'nada',
-				obs_longitud: '',
+				longitud_correcto: this.$props.productor.longitud_correcto,
+				obs_longitud:  this.$props.productor.obs_longitud,
 				obs_longitud_valido: false,
 
-				created_by: this.$props.productor.created_by,
+				created_by: this.$props.creado.name,
 				estado: this.$props.productor.estado,
 
 				
@@ -1192,6 +1252,85 @@ export default {
 				this.confirmingUserDeletion = false
 				//this.form.reset()
 		},
+		closeModalAprobar(){
+			this.AvisoAprueba = false
+		},
+		mostrar_modal_aprobar(){
+			let form_evaluacion_valida = '';
+			this.AvisoAprueba = true;
+			this.modal_tittle_apro = "Advertencia: esta por aprobar esta solicitud de Productor";
+			form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+			if(form_evaluacion_valida === '')
+			{
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+				this.mostrar_boton_aprobar = true;
+				this.mostrar_boton_aprobar_de_todos_modos = false;
+			}
+			else {
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" + form_evaluacion_valida;
+				this.mostrar_boton_aprobar = false;
+				this.mostrar_boton_aprobar_de_todos_modos = true;
+			}
+			//<!-- @click="guardar_avances_todo" -->
+		},
+		evaluacion_de_evaluaciones(){
+			let sin_problemas='';
+			if(this.form.razon_social_correcto === false)
+				sin_problemas += "\n La Razon Social ha sido Reprobada ";
+			if(this.form.razon_social_correcto === 'nada')
+				sin_problemas += "\n La Razon Social no ha sido evaluada ";
+			
+			if(this.form.cuit_correcto === false)
+				sin_problemas += "\n El CUIT ha sido Reprobado ";
+			if(this.form.cuit_correcto === 'nada')
+				sin_problemas += "\n El CUIR no ha sido evaluado ";
+
+			if(this.form.numeroproductor_correcto === false)
+				sin_problemas += "\n El Numero de Productor ha sido Reprobado ";
+			if(this.form.numeroproductor_correcto === 'nada')
+				sin_problemas += "\n El Numero de Productor no ha sido evaluado ";
+
+			if(this.form.tiposociedad_correcto === false)
+				sin_problemas += "\n El tipo de sociedad ha sido Reprobado ";
+			if(this.form.tiposociedad_correcto === 'nada')
+				sin_problemas += "\n El tipo de sociedad no ha sido evaluado ";
+
+			if(this.form.inscripciondgr_correcto === false)
+				sin_problemas += "\n La inscripcion de la DGR ha sido Reprobada ";
+			if(this.form.inscripciondgr_correcto === 'nada')
+				sin_problemas += "\n La inscripcion de la DGR no ha sido evaluada ";
+
+			if(this.form.constaciasociedad_correcto === false)
+				sin_problemas += "\n La constancia de Sociedad ha sido Reprobada ";
+			if(this.form.constaciasociedad_correcto === 'nada')
+				sin_problemas += "\n La constacia de Sociedad no ha sido evaluada ";
+			return sin_problemas;
+		},
+		update_razon_social_evaluacion(valorEvaluacion){
+			this.form.razon_social_correcto = valorEvaluacion;
+		},
+		update_cuit_evaluacion(valorEvaluacion){
+			this.form.cuit_correcto = valorEvaluacion;
+		},
+		update_num_prod_evaluacion(valorEvaluacion){
+			this.form.numeroproductor_correcto = valorEvaluacion;
+		},
+		update_tipo_sociedad_evaluacion(valorEvaluacion){
+			this.form.tiposociedad_correcto = valorEvaluacion;
+		},
+		update_inscripcion_dgr_evaluacion(valorEvaluacion){
+			this.form.inscripciondgr_correcto = valorEvaluacion;
+		},
+		update_constancia_sociedad_evaluacion(valorEvaluacion){
+			this.form.constaciasociedad_correcto = valorEvaluacion;
+		},
+
+		
+
+		
+		
 		actaulizar_variables_correctas(que_cambio, valor) {
 			if(que_cambio == 1)
 			{
@@ -3265,10 +3404,12 @@ export default {
 		},
 
 		guardar_avances_todo: function(){
-						let self = this
+						let self = this;
 						// Make a request for a user with a given ID
 						axios.post('/formularios/evaluacion_auto_guardado_todo', {
 							id: this.$props.productor.id,
+							estado: this.form.estado,
+							es_evaluacion: 'true',
 
 						})
 						.then(function (response) {
@@ -3292,6 +3433,76 @@ export default {
 		},
 
 	},
+	mounted(){
+    let self  = this;
+	//voy a buscar las provincias
+    this.$nextTick(() => {
+        axios.get('/datos/traer_provincias')
+            .then(function (response) {
+                console.log("las provincias son:\n");
+                self.lista_provincias = response.data;
+                console.log(self.lista_provincias);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+
+		// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
+		// console.log("si");
+		// else console.log("no");
+		// console.log(isNaN(parseInt(this.$props.productor.leal_provincia)));
+
+
+	//voy a buscar los dptos
+	if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.leal_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz , legales son:\n");
+                self.lista_dptos_legal = response.data;
+                console.log(self.lista_dptos_legal);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_legal=[];}
+	if(!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.administracion_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz son:\n");
+                self.lista_dptos_admin = response.data;
+                console.log(self.lista_dptos_admin);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_admin=[];}
+	if(!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+		this.$nextTick(() => {
+        axios.post('/datos/traer_departamentos',{id_prov:parseInt(this.$props.productor.localidad_mina_provincia)})
+            .then(function (response) {
+                console.log("los deptos desde la raiz son:\n");
+                self.lista_dptos_mina = response.data;
+                console.log(self.lista_dptos_mina);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        });
+	}
+	else{self.lista_dptos_mina=[];}
+	
+	
+    },
 	
 	
 };

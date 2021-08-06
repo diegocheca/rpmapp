@@ -1,7 +1,13 @@
 <template>
 <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
-            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
+            <a v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"  href="#section_domicilio_legal">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
+            </a>
+            <a v-else href="#section_domicilio_administrativo">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
+            </a>
+
             <label class="flex items-center relative w-max cursor-pointer select-none">
                 <br>
                 <br>
@@ -39,7 +45,10 @@
                     :updated_at="'hace 10 minutos'"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                    :ayuda="ayuda_legal"
+                    v-on:changevalorayuda="update_valor_ayuda_local_legal($event)"
                 ></CardDomLegal>
+
 
                 <CardDomAdmin v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Administrativo'"
                     :progreso="50"
@@ -49,6 +58,8 @@
                     :updated_at="'hace 10 minutos'"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+                    :ayuda="ayuda_administrativo"
+                    v-on:changevalorayuda="update_valor_ayuda_local_admi($event)"
                 ></CardDomAdmin>
             </div>
             <br>
@@ -70,6 +81,42 @@
                         v-on:changeobsnombrecallevalido="update_obs_nombre_calle_validacion($event)"
                         v-on:changevalornombrecalle="update_valor_nombre_calle($event)"
                     ></InputNombreCalle>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede específicar una intersección de calles).
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es el nombre de la(s) calle(s) donde se encuentra la oficina legal (también se puede especificar una intersección de calles).
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -93,12 +140,48 @@
                         v-bind:label="'Número de Calle Domicilio'"
                         v-bind:testing="mostrar_testing"
                         v-on:changetelnumlegalvalido="update_num_legal_valido($event)"
-                        v-on:changetelnumlegalcorrecto="update_num_legal_correcto($event)"
-                        v-on:changeobstelnumlegal="update_obs_num_legal($event)"
-                        v-on:changeobstelnumlegalvalido="update_obs_num_legal_valido($event)"
+                        v-on:changenumlegalcorrecto="update_num_legal_correcto($event)"
+                        v-on:changeobsnumlegal="update_obs_num_legal($event)"
+                        v-on:changenumlegalvalido="update_obs_num_legal_valido($event)"
                         v-on:changevalornumlegal="update_valor_num_legal($event)"
                     >
                     </InputNumeroCalle>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es la numeracón del domicilio que se esta declarando. Este es un valor numérico.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es la numeración del domicilio que se esta declarando. Este es un valor númerico.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans"  v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex">
@@ -133,6 +216,42 @@
                         v-on:changevalortellegal="update_valor_tel_legal($event)"
                     >
                     </InputTelefono>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es el número de productor otorgado por el ministerio de minería
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es el número del productor otorgado por el ministerio de minería
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -148,15 +267,17 @@
                     
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <SelectProvincia
+                    <SelectProvincia v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"
                         v-bind:leal_provincia="$props.leal_provincia"
                         v-bind:leal_provincia_valido="$props.leal_provincia_valido"
                         v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
-                        v-bind:obs_leal_provfincia="$props.obs_leal_provincia"
+                        v-bind:obs_leal_provincia="$props.obs_leal_provincia"
                         v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Provincia de Domicilio Legal'"
+                        v-bind:lista_provincias="$props.lista_provincias"
+                        v-bind:name_correcto="'prov_legal_correcto'"
                         v-on:changeprovlegalvalido="update_provincia_valido($event)"
                         v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
                         v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
@@ -165,6 +286,61 @@
 
                     >
                     </SelectProvincia>
+                    <SelectProvincia v-else
+                        v-bind:leal_provincia="$props.leal_provincia"
+                        v-bind:leal_provincia_valido="$props.leal_provincia_valido"
+                        v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
+                        v-bind:obs_leal_provincia="$props.obs_leal_provincia"
+                        v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:label="'Provincia de Domicilio Legal'"
+                        v-bind:lista_provincias="$props.lista_provincias"
+                        v-bind:name_correcto="'prov_admin_correcto'"
+                        v-on:changeprovlegalvalido="update_provincia_valido($event)"
+                        v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
+                        v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
+                        v-on:changeobsprovlegalvalido="update_obs_provincia_legal_valido($event)"
+                        v-on:changevalorprovlegal="update_valor_provincia_legal_num_legal($event)"
+
+                    >
+                    </SelectProvincia>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Provincia donde se encuentra el domicilio legal en la provincia.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Provincia donde se encuentra el domicilio de la Administración Central.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -197,6 +373,42 @@
                         v-on:changevalordptolegal="update_valor_dpto_legal_num_legal($event)"
                     >
                     </SelectDepartamento>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Departamento donde se encuentra el domicilio legal en la provincia.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Departamento donde se encuentra el domicilio de la Administración Central.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -216,7 +428,7 @@
                         v-bind:leal_localidad_correcto="$props.leal_localidad_correcto"
                         v-bind:obs_leal_localidad="$props.obs_leal_localidad"
                         v-bind:obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
-                         v-bind:evaluacion="autoridad_minera"
+                        v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Localidad del Domicilio Legal'"
                         v-on:changelocalidadlegalvalido="update_localidad_valido($event)"
@@ -224,9 +436,44 @@
                         v-on:changeobsrlocalidadlegal="update_obs_localidad_legal($event)"
                         v-on:changeobslocalidadlegalvalido="update_obs_localidad_legal_valido($event)"
                         v-on:changevalorlocalidadlegal="update_valor_localidad_legal_num_legal($event)"
-
                     >
                     </InputLocalidad>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es la localidad donde se encuentra el domicilio.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es la localidad donde se encuentra el domicilio.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -259,6 +506,42 @@
 
                     >
                     </InputCP>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Código postal correspondiente al domicilio.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Código postal correspondiente al domicilio.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -289,6 +572,42 @@
 
                     >
                     </InputOtro>
+                    <div v-show="ayuda_legal">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Este campo es para el caso de que considere necesario brindar algún dato adicional que aporte más precisión en la ubicación del domicilio de la Administración principal.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div v-show="ayuda_administrativo">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Este campo es par el caso de que se considere necesario brindar algún dato extra. El cuál apote más presición de la ubicación del domicilio legal.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
                             <div class="flex" >
@@ -308,7 +627,7 @@
             <BotonesPaginaDos 
                 :link_volver="route('formulario-alta.index')"
                 :titulo_boton_volver="'volver'"
-                :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
+                :titulo_boton_guardar="'Guardar Datos del Domicilio'"
 
                 :leal_calle="form_pagina.leal_calle"
                 :nombre_calle_legal_valido="form_pagina.nombre_calle_legal_valido"
@@ -358,8 +677,10 @@
 
                 :donde_guardar="$props.donde_estoy"
 
-                :evaluacion="true"
+
+                :evaluacion="autoridad_minera"
                 :id="$props.id"
+                :testing ="mostrar_testing"
             ></BotonesPaginaDos>
          </div>
 
@@ -388,6 +709,8 @@ import BotonesPaginaDos from "@/Pages/Productors/BotonesPaginaDos";
 
 
 export default {
+  watch: {
+  },
      props: [
         'link_volver', 
         'titulo_boton_volver',
@@ -441,6 +764,8 @@ export default {
         'obs_leal_otro_valido',
 
         'donde_estoy',
+        'lista_provincias',
+        'lista_dptos',
 
         'evaluacion',
         'id'
@@ -469,6 +794,8 @@ export default {
         modal_body:'',
         mostrar_testing:false,
         autoridad_minera: false,
+        ayuda_legal: false,
+        ayuda_administrativo: false,
         form_pagina: {
 
             leal_calle : this.$props.leal_calle,
@@ -566,6 +893,7 @@ export default {
             //tengo que enviarsela al padre
         },
         update_num_legal_correcto(newValue){
+            console.log(newValue);
             this.form_pagina.leal_numero_correcto = newValue;
             //tengo que enviarsela al padre
         },
@@ -579,7 +907,7 @@ export default {
             //tengo que enviarsela al padre
         },
         update_valor_num_legal(newValue){
-            console.log("traje un"+newValue);
+            console.log("traje dddddddddddddun"+newValue);
             this.form_pagina.leal_numero = newValue;
             //tengo que enviarsela al padre
         },
@@ -634,9 +962,9 @@ export default {
             //debo actualizar la lista de departamento que tengo disponibles para elegir
             axios.post('/datos/traer_departamentos/',{id_prov:newValue})
                 .then(function (response) {
-                    console.log("las deptos son:\n");
+                    //console.log("las deptos son:\n");
                     self.lista_departamentos = response.data;
-                    console.log(self.lista_departamentos);
+                    //console.log(self.lista_departamentos[0]);
 
                 })
                 .catch(function (error) {
@@ -751,10 +1079,12 @@ export default {
             //tengo que enviarsela al padre
         },
         update_otro_correcto(newValue){
+            console.log("cambie orto correcto"+newValue);
             this.form_pagina.leal_otro_correcto = newValue;
             //tengo que enviarsela al padre
         },
         update_obs_otro_legal(newValue){
+            console.log("cambie el otro");
             this.form_pagina.obs_leal_otro = newValue;
             //tengo que enviarsela al padre
         },
@@ -770,15 +1100,14 @@ export default {
         },
 
 
-
-
-
-
-
-
-
-        
-  }
-  
+        //mostrar ayuda
+        update_valor_ayuda_local_legal(newValor){
+            this.ayuda_legal = newValor;
+        },
+         //mostrar ayuda
+        update_valor_ayuda_local_admi(newValor){
+            this.ayuda_administrativo = newValor;
+        },
+    }
 };
 </script>

@@ -32,12 +32,13 @@
     "dependencies": {
         "@amcharts/amcharts4": "^4.10.19",
         "primevue": "^3.6.0",
-        "vee-validate": "^4.4.8",
         "vue-form-wizard": "^0.8.4",
         "vue-has-error-laravel": "^0.1.16",
+        "vuetify": "^2.5.8",
+        "@amcharts/amcharts4-geodata": "^4.1.21",
+        "vee-validate": "^4.4.6",
         "vue-multiselect": "^3.0.0-alpha.2",
         "vue3-file-selector": "^1.0.1",
-        "vuetify": "^2.5.8",
         "yup": "^0.32.9"
     }
 }

@@ -46,7 +46,6 @@ class CountriesController extends Controller
 		$localidades = Localidades::select('id as value', 'nombre as label')->where('departamento_id','=', $id)
         ->orderBy('label')
         ->get();
-	
 		return response()->json($localidades);
 
 	}

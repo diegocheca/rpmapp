@@ -28,15 +28,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="leal_otro_correcto" value="true" v-on:change="actaulizar_variable_legalcalle_otro(true)">
+                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType_otro" v-model="leal_otro_correcto" value="true" v-on:change="actaulizar_variable_legalcalle_otro(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="leal_otro_correcto" value="false" v-on:change="actaulizar_variable_legalcalle_otro(false)">
+                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType_otro" v-model="leal_otro_correcto" value="false" v-on:change="actaulizar_variable_legalcalle_otro(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="leal_otro_correcto" value="nada" v-on:change="actaulizar_variable_legalcalle_otro('nada')">
+                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType_otro" v-model="leal_otro_correcto" value="nada" v-on:change="actaulizar_variable_legalcalle_otro('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -125,7 +125,7 @@ export default {
   methods:{
     actaulizar_variable_legalcalle_otro(valor) {
         this.legal_calle_otro_correcto_local = valor;
-        this.$emit('changeotrolegalcorrecto',this.legal_calle_otro_correcto_local);
+        this.$emit('changeotrolegalcorrecto',valor);
     },
      
       actaulizar_contenido_text_area_calle_legal_otro(value) {

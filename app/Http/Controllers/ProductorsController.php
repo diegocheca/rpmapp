@@ -31,7 +31,8 @@ class ProductorsController extends Controller
     public function create()
     {
         //
-        return Inertia::render('Productors/Form');
+     
+        return Inertia::render('Productors/Form', ['productor' => $productor]);
     }
 
     /**

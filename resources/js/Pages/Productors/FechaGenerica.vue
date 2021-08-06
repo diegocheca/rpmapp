@@ -12,7 +12,7 @@
                 </div>
                 <input 
                 class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-                placeholder="Núumero de calle"
+                placeholder="fehca"
                 id="input_componente"
                 name="input_componente"
                 type="date"
@@ -21,7 +21,7 @@
                 :disabled="evaluacion"
                 @input="cambio_input($event.target.value)" 
                 >
-            <p v-bind:class=clase_cartel_nota_legalcallelocalidad>{{cartel_nota_legalcallelocal}}</p>
+            <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}</p>
             </div>
         <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}</p>
         <div class="flex" v-if="evaluacion">
@@ -29,15 +29,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
+                        <input type="radio" class="form-radio  h-5 w-5 text-green-600" :name="name_correcto" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
+                        <input type="radio" class="form-radio  h-5 w-5 text-red-600" :name="name_correcto" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
+                        <input type="radio" class="form-radio  h-5 w-5 text-indigo-600" :name="name_correcto" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -102,7 +102,8 @@ export default {
         'evaluacion',
         'testing',
         'label',
-        'icon'
+        'icon',
+        'name_correcto',
     ],
   data() {
     return {

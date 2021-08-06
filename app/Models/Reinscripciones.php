@@ -40,4 +40,10 @@ class Reinscripciones extends Model
         'created_by',
         'estado',
     ];
+
+    public function productos()
+    {
+        return $this->hasMany(Productos::class, 'id_reinscripcion');
+    }
+
 }

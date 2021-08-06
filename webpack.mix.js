@@ -17,7 +17,7 @@ mix.js('resources/js/app.js', 'public/js').vue()
         require('tailwindcss'),
     ])
     .webpackConfig(require('./webpack.config'));
-
+    mix.disableNotifications();
 if (mix.inProduction()) {
     mix.version();
 }
