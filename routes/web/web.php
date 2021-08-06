@@ -34,10 +34,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 */
 
-
-
-
-
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -63,6 +59,9 @@ use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\formWebController\SolicitudesController;
 use App\Http\Controllers\formWebController\TipoDocumentoController;
 
+/************* ROLES *************/
+
+use App\Http\Controllers\Admin\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -220,17 +219,20 @@ Route::group(['prefix' => 'paises'], function () {
 //FORMULARIOS WEB
 // Route::group(['prefix' => 'solicitudes'], function () {
 Route::resource('solicitudes', SolicitudesController::class)
-    ->middleware(['auth:sanctum', 'verified']);
+    ->middleware(['auth:sanctum', 'verified'])
+    ->names('solicitudes');
 
-Route::post('solicitudes/solicitudesDatos', [SolicitudesController::class,'postSolicitudes'])
+Route::post('solicitudes/solicitudesDatos', [SolicitudesController::class, 'postSolicitudes'])
     ->middleware(['auth:sanctum', 'verified']);
 // Route::get('prueba', 'SolicitudesController@prueba')
 //     ->middleware(['auth:sanctum', 'verified']);
 
+// Route::get('/prueba', [SolicitudesController::class, "prueba"])->name('solicitudes.joanna');
 Route::get('/prueba', [SolicitudesController::class, "prueba"])->name('prueba');
 
 // });
 Route::get('/menu', [SolicitudesController::class, "menu"])->name('menu');
 
 Route::get('tipo_documento', [TipoDocumentoController::class, "getTipoDocumento"])
-        ->middleware(['auth:sanctum', 'verified']);
+    ->middleware(['auth:sanctum', 'verified']);
+

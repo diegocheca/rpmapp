@@ -8,13 +8,14 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\formWebController\TipoDocumentoController;
-use App\Models\formWebModels\formTipoDocumento;
 //Modelos DB
+use App\Models\formWebModels\formTipoDocumento;
 use App\Models\formWebModels\formSolicitud;
 use App\Models\formWebModels\formTipoSolicitud;
 // use App\Models\formWebModels\formPersona;
 // use App\Models\formWebModels\formRazonSocial;
 // use App\Models\formWebModels\formEstadoTerreno;
+
 
 
 class SolicitudesController extends Controller
@@ -69,7 +70,7 @@ class SolicitudesController extends Controller
     }
     public function prueba()
     {
-        return Inertia::render('formWeb/formPrueba');
+       return Inertia::render('formWeb/formPrueba');
     }
 
     /**

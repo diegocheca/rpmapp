@@ -20,7 +20,8 @@
         "laravel/sanctum": "^2.6",
         "laravel/tinker": "^2.5",
         "laravelcollective/html": "^6.2",
-        "tcg/voyager": "^1.4",
+        "spatie/laravel-permission": "^4.2",
+        "symfony/finder": "^5.3",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

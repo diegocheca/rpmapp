@@ -359,7 +359,6 @@
                                             </button>
                                         </span>
                                     </template>
-
                                     <template #content>
                                         <!-- Account Management -->
                                         <div
@@ -377,6 +376,11 @@
                                             :href="route('profile.show')"
                                         >
                                             Profile
+                                        </jet-dropdown-link>
+                                        <jet-dropdown-link
+                                            :href="route('admin.users.index')"
+                                        >
+                                            Configuración
                                         </jet-dropdown-link>
 
                                         <jet-dropdown-link
