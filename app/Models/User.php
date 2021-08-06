@@ -10,10 +10,12 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
+
 //nuevo
 //use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends \TCG\Voyager\Models\User 
+class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
@@ -21,12 +23,15 @@ class User extends \TCG\Voyager\Models\User
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $table = 'users';
+
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -51,7 +56,7 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    
     /**
      * The accessors to append to the model's array form.
      *
@@ -60,6 +65,15 @@ class User extends \TCG\Voyager\Models\User
     protected $appends = [
         'profile_photo_url',
     ];
+    
+    public function getPermissionArray()
+    {
+        // dd($this->getAllPermissions());
+        // echo $this;
+        return $this->getAllPermissions()->mapWithKeys(function ($pr) {
+            return [$pr['name'] => true];
+        });
+    }
 
     //nuevo para jwt
     public function getJWTIdentifier()
