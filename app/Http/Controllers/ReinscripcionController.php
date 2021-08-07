@@ -46,7 +46,7 @@ class ReinscripcionController extends Controller
             'action' => "create",
             'saveUrl' => "reinscripciones.store",
             'saveFileUrl' => "/reinscripciones/upload",
-            'province' => env('PROVINCE', '')."/reinscripciones-wizard",
+            'province' => env('PROVINCE', 'EntreRios')."/reinscripciones-wizard",
             'folder' => 'reinscripciones',
             'reinscripcion' => [],
             'titleForm' => 'Crear reinscripción',
@@ -150,7 +150,7 @@ class ReinscripcionController extends Controller
             'action' => "update",
             'saveUrl' => "reinscripciones.update",
             // 'saveFileUrl' => "/reinscripciones/upload",
-            'province' => env('PROVINCE', '')."/reinscripciones-wizard",
+            'province' => env('PROVINCE', 'EntreRios')."/reinscripciones-wizard",
             // 'folder' => 'reinscripciones',
             'reinscripcion' => $reinscripcion,
             'titleForm' => 'Editar reinscripciones',
@@ -178,7 +178,7 @@ class ReinscripcionController extends Controller
             'saveUrl' => "reinscripciones.updateRevision",
             // 'saveFileUrl' => "/reinscripciones/upload",
             // 'folder' => 'reinscripciones',
-            'province' => env('PROVINCE', '')."/reinscripciones-wizard",
+            'province' => env('PROVINCE', 'EntreRios')."/reinscripciones-wizard",
             'reinscripcion' => $reinscripcion,
             'titleForm' => 'Evaluar reinscripciones',
             'titleBtnSave' => 'Guardar Revisión',
@@ -460,7 +460,7 @@ class ReinscripcionController extends Controller
         foreach($files as $key => $file){
             $uploadedFile = $file->getClientOriginalName();
             $fileName = $key."-".time().$uploadedFile;
-            $filePath = $request->file($key)->storeAs(env('PROVINCE', '')."/reinscripciones", $fileName, 'public');
+            $filePath = $request->file($key)->storeAs(env('PROVINCE', 'EntreRios')."/reinscripciones", $fileName, 'public');
             $filePaths[$key] = $filePath;
         }
 
