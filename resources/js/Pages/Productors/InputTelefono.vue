@@ -121,8 +121,8 @@ export default {
   },
   methods:{
     actaulizar_variable_legalcalletel(valor) {
-        this.legal_calle_tel_correcto_local = valor;
-        this.$emit('changetellegalcorrecto',this.legal_calle_tel_correcto_local);
+        this.leal_telefono_correcto = valor;
+        this.$emit('changetellegalcorrecto',this.leal_telefono_correcto);
     },
      
       actaulizar_contenido_text_area_calle_legal_tel(value) {

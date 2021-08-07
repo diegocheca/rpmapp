@@ -1,15 +1,10 @@
 <template>
 	<div :class="clase_sup">
 		<div :class="clase_inf">
-			<div class="animate-bounce text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-blue-500 left-4 -top-6">
-				<!-- svg  -->
-				<a href="#section_domicilio_administrativo">
-				
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path d="M17.283,5.549h-5.26V4.335c0-0.222-0.183-0.404-0.404-0.404H8.381c-0.222,0-0.404,0.182-0.404,0.404v1.214h-5.26c-0.223,0-0.405,0.182-0.405,0.405v9.71c0,0.223,0.182,0.405,0.405,0.405h14.566c0.223,0,0.404-0.183,0.404-0.405v-9.71C17.688,5.731,17.506,5.549,17.283,5.549 M8.786,4.74h2.428v0.809H8.786V4.74z M16.879,15.26H3.122v-4.046h5.665v1.201c0,0.223,0.182,0.404,0.405,0.404h1.618c0.222,0,0.405-0.182,0.405-0.404v-1.201h5.665V15.26z M9.595,9.583h0.81v2.428h-0.81V9.583zM16.879,10.405h-5.665V9.19c0-0.222-0.183-0.405-0.405-0.405H9.191c-0.223,0-0.405,0.183-0.405,0.405v1.215H3.122V6.358h13.757V10.405z"></path>
-				</svg>
+			
+			<a href="#section_domicilio_administrativo">
+					<img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
 				</a>
-			</div>
 			<div class="mt-8">
 				<p class="text-xl font-semibold my-2">Datos del Domicilio de Administración Central</p>
 				<div class="flex space-x-2 text-gray-400 text-sm">
@@ -25,28 +20,28 @@
 					<p>{{updated_at}}</p> 
 				</div>
 				<div class="border-t-2"></div>
-				<div class="flex justify-between">
-					 <div class="my-4">
-						<p class="font-semibold text-base mb-2">Progreso</p>
+				<div class="flex justify-between"  v-if="$props.evaluacion">
+					<div class="my-4">
+						<p class="font-semibold text-base mb-2">Prog</p>
 						<div class="text-base text-gray-400 font-semibold">
 							<p>{{progreso}} %</p>
 						</div>
 					</div>
 					<div class="my-4">
-						<p class="font-semibold text-base text-green-500 mb-2">Aprobado</p>
+						<p class="font-semibold text-base text-green-500 mb-2">Apro</p>
 						<div class="text-base text-green-500 font-semibold">
 							<p>{{aprobado}} %</p>
 						</div>
 					</div>
 					<div class="my-4">
-						<p class="font-semibold text-base text-red-400 mb-2">Reprobado</p>
+						<p class="font-semibold text-base text-red-400 mb-2">Repr</p>
 						<div class="text-base text-red-400 font-semibold">
 							<p>{{reprobado}} %</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="mt-4">
+			<div class="mt-4" v-if="mostrarayuda">
 				<label class="flex items-center relative w-max cursor-pointer select-none">
 					Necesita ayuda?
 					<br>
@@ -74,6 +69,8 @@
 				'reprobado', 
 				'lugar', 
 				'updated_at',
+				'mostrarayuda',
+				'evaluacion',
 				'clase_sup',
 				'clase_inf',
 				'ayuda',

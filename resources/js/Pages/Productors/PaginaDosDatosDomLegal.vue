@@ -7,31 +7,33 @@
             <a v-else href="#section_domicilio_administrativo">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
             </a>
+            <div v-if="$props.testing">
 
-            <label class="flex items-center relative w-max cursor-pointer select-none">
-                <br>
-                <br>
-                <input 
-                type="checkbox" 
-                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
-                v-model="mostrar_testing"
-                />
-                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
-                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
-                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-            </label>
-            <label class="flex items-center relative w-max cursor-pointer select-none">
-                <br>
-                <br>
-                <input 
-                type="checkbox" 
-                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
-                v-model="autoridad_minera"
-                />
-                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
-                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
-                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-            </label>
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="mostrar_testing"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
+                    v-model="autoridad_minera"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
         </div>
         <div>
             <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
@@ -43,6 +45,8 @@
                     :reprobado="50" 
                     :lugar="'Argentina, San Juan'"
                     :updated_at="'hace 10 minutos'"
+                    :mostrarayuda = true
+                    :evaluacion ="autoridad_minera"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
                     :ayuda="ayuda_legal"
@@ -56,6 +60,8 @@
                     :reprobado="50" 
                     :lugar="'Argentina, San Juan'"
                     :updated_at="'hace 10 minutos'"
+                    :mostrarayuda = true
+                    :evaluacion ="autoridad_minera"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
                     :ayuda="ayuda_administrativo"
@@ -768,6 +774,7 @@ export default {
         'lista_dptos',
 
         'evaluacion',
+        'testing',
         'id'
     ],
  
@@ -793,7 +800,7 @@ export default {
         modal_tittle:'',
         modal_body:'',
         mostrar_testing:false,
-        autoridad_minera: false,
+        autoridad_minera: this.$props.evaluacion,
         ayuda_legal: false,
         ayuda_administrativo: false,
         form_pagina: {

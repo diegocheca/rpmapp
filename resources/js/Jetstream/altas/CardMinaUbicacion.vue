@@ -2,12 +2,8 @@
 	<div :class="clase_sup">
 		<div :class="clase_inf">
 			<a href="#section_datos_mina_ubicacion">
-				<div class="animate-bounce text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-blue-500 left-4 -top-6">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path d="M10,1.375c-3.17,0-5.75,2.548-5.75,5.682c0,6.685,5.259,11.276,5.483,11.469c0.152,0.132,0.382,0.132,0.534,0c0.224-0.193,5.481-4.784,5.483-11.469C15.75,3.923,13.171,1.375,10,1.375 M10,17.653c-1.064-1.024-4.929-5.127-4.929-10.596c0-2.68,2.212-4.861,4.929-4.861s4.929,2.181,4.929,4.861C14.927,12.518,11.063,16.627,10,17.653 M10,3.839c-1.815,0-3.286,1.47-3.286,3.286s1.47,3.286,3.286,3.286s3.286-1.47,3.286-3.286S11.815,3.839,10,3.839 M10,9.589c-1.359,0-2.464-1.105-2.464-2.464S8.641,4.661,10,4.661s2.464,1.105,2.464,2.464S11.359,9.589,10,9.589"></path>
-					</svg>
-				</div>
-			</a>
+                <img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/plano-minero.svg">
+            </a>
 			<div class="mt-8">
 				<p class="text-xl font-semibold my-2">Datos de la Ubicacion de Mina</p>
 				<div class="flex space-x-2 text-gray-400 text-sm">
@@ -23,28 +19,28 @@
 					<p>{{updated_at}}</p> 
 				</div>
 				<div class="border-t-2"></div>
-				<div class="flex justify-between">
-					 <div class="my-4">
-						<p class="font-semibold text-base mb-2">Progreso</p>
+				<div class="flex justify-between" v-if="$props.evaluacion">
+					<div class="my-4">
+						<p class="font-semibold text-base mb-2">Prog</p>
 						<div class="text-base text-gray-400 font-semibold">
 							<p>{{progreso}} %</p>
 						</div>
 					</div>
 					<div class="my-4">
-						<p class="font-semibold text-base text-green-500 mb-2">Aprobado</p>
+						<p class="font-semibold text-base text-green-500 mb-2">Apr</p>
 						<div class="text-base text-green-500 font-semibold">
 							<p>{{aprobado}} %</p>
 						</div>
 					</div>
 					<div class="my-4">
-						<p class="font-semibold text-base text-red-400 mb-2">Reprobado</p>
+						<p class="font-semibold text-base text-red-400 mb-2">Repr</p>
 						<div class="text-base text-red-400 font-semibold">
 							<p>{{reprobado}} %</p>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="mt-4">
+			<div class="mt-4" v-if="mostrarayuda">
 				<label class="flex items-center relative w-max cursor-pointer select-none">
 					Necesita ayuda?
 					<br>
@@ -72,6 +68,8 @@
 			'reprobado', 
 			'lugar', 
 			'updated_at',
+			'mostrarayuda',
+			'evaluacion',
 			'clase_sup',
 			'clase_inf',
 			'ayuda'

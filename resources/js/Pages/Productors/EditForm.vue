@@ -39,6 +39,8 @@
 							:reprobado="form.valor_de_reprobado" 
 							:lugar="'Argentina, San Juan'"
 							:updated_at="'hace 10 minutos'"
+							:mostrarayuda = false
+							:evaluacion ="evaluacion_global"
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
 
@@ -51,6 +53,8 @@
 								:reprobado="form.valor_de_reprobado_dos" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:mostrarayuda = false
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
 							></CardDomLegal>
@@ -64,6 +68,8 @@
 								:reprobado="form.valor_de_reprobado_tres" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:mostrarayuda = false
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
 							></CardDomAdmin>
@@ -76,6 +82,8 @@
 								:reprobado="form.valor_de_reprobado_cuatro" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:mostrarayuda= false
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardMinaUno>
@@ -87,6 +95,8 @@
 								:reprobado="form.valor_de_reprobado_cinco" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:mostrarayuda= false
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardMinaDos>
@@ -97,6 +107,7 @@
 								:reprobado="form.valor_de_reprobado_seis" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardMinaUbicacion>
@@ -105,6 +116,7 @@
 
 							<!-- 4 card -->
 							<CardTotal  
+								v-if="evaluacion_global"
 								:progreso="form.valor_de_progreso_seis"
 								:aprobado="form.valor_de_aprobado_seis"
 								:reprobado="form.valor_de_reprobado_seis" 
@@ -154,6 +166,7 @@
 						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
 					</div>-->
 				<div id="section_productor"></div>
+				razon: {{form.razon_social_correcto}}
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
 					:titulo_boton_volver="'volver'"
@@ -196,7 +209,10 @@
 					:obs_constanciasociedad="form.obs_constaciasociedad"
 					:obs_constanciasociedad_valido="form.obs_constaciasociedad_valido"
 
-					:evaluacion="true"
+
+					:evaluacion ="evaluacion_global"
+					:testing ="testing_global"
+					
 					:id="$props.productor.id"
 
 					v-on:ChangeRazonSocialEvaluacion="update_razon_social_evaluacion($event)"
@@ -269,7 +285,8 @@
 					:lista_provincias="lista_provincias"
 					:lista_dptos="lista_dptos_legal"
 
-					:evaluacion="true"
+					:evaluacion ="evaluacion_global"
+					:testing ="testing_global"
 					:id="$props.productor.id"
 					>
 
@@ -358,7 +375,8 @@
 				:lista_provincias="lista_provincias"
 				:lista_dptos="lista_dptos_admin"
 
-				:evaluacion="true"
+				:evaluacion ="evaluacion_global"
+				:testing="testing_global"
 				:id="$props.productor.id"
 				>
 			
@@ -439,9 +457,9 @@
 
 				:lista_minerales_desde_back = "lista_de_minerales_del_back"
 
-				:evaluacion="true"
+				:evaluacion ="evaluacion_global"
 				:id="$props.productor.id"
-				:testing="true"
+				:testing="testing_global"
 			>
 			</PaginaCuatroDatosMinaUno>
 			
@@ -538,9 +556,9 @@
 				:obs_fecha_vencimiento_dia="form.obs_fecha_vencimiento_dia"
 				:obs_fecha_vencimiento_dia_valido="form.obs_fecha_vencimiento_dia_valido"
 				
-				:evaluacion="true"
+				:evaluacion ="evaluacion_global"
 				:id="$props.productor.id"
-				:testing="true"
+				:testing="testing_global"
 
 			>
 			</PaginaCincoDatosMinaDos>
@@ -603,9 +621,9 @@
 				:lista_provincias="lista_provincias"
 				:lista_dptos="lista_dptos_mina"
 				
-				:evaluacion="true"
+				:evaluacion ="evaluacion_global"
 				:id="$props.productor.id"
-				:testing="true"
+				:testing="testing_global"
 
 			>
 
@@ -614,76 +632,127 @@
 			
 			<hr>
 			<br>
-			<div class="flex">
+			<div class="flex" v-if="evaluacion_global">
 				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<label
-							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-							for="name"
-							>Creado Por:</label
-						>
-						<br>
-						<input
-							id="cuit"
-							disabled
-							v-model="form.created_by"
-							class="border py-2 px-3 text-grey-darkest"
-						/>
-					</div>
-					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<label
-							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-							for="estado"
-							>Estado Actual:</label><br>
-							<span v-if="$props.productor.estado === 'en proceso'"  class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En proceso</span>
-							<span v-if="$props.productor.estado === 'borrador'"  class="bg-pink-200 text-pink-600 py-1 px-3 rounded-full text-xs">Borrador</span>
-							<span v-if="$props.productor.estado === 'aprobado'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Aprobado</span>
-							<span v-if="$props.productor.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
-							<span v-if="$props.productor.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
-							<span v-if="$props.productor.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
-					</div>
-					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<label
-							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-							for="estado"
-							>Nuevo Estado:</label
-						><br>
-						<select
-							id="estado"
-							name="estado"
-							v-model="form.estado"
-							class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="en proceso">En proceso</option>
-							<option value="borrador">Borrador</option>
-							<option value="en revision">En revision</option>
-							<option value="aprobado">Aprobado</option>
-							<option value="reprobado">Reprobado</option>
-							<option value="con observacion">Con Observacion</option>
-							
-						</select>
-					</div>
+					<label
+						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+						for="name"
+						>Creado Por:</label
+					>
+					<br>
+					<input
+						id="cuit"
+						disabled
+						v-model="form.created_by"
+						class="border py-2 px-3 text-grey-darkest"
+					/>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label
+						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+						for="estado"
+						>Estado Actual:</label><br>
+						<span v-if="$props.productor.estado === 'en proceso'"  class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En proceso</span>
+						<span v-if="$props.productor.estado === 'borrador'"  class="bg-pink-200 text-pink-600 py-1 px-3 rounded-full text-xs">Borrador</span>
+						<span v-if="$props.productor.estado === 'aprobado'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Aprobado</span>
+						<span v-if="$props.productor.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
+						<span v-if="$props.productor.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
+						<span v-if="$props.productor.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label
+						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+						for="estado"
+						>Nuevo Estado:</label
+					><br>
+					<select
+						id="estado"
+						name="estado"
+						v-model="form.estado"
+						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+						<option value="en proceso">En proceso</option>
+						<option value="borrador">Borrador</option>
+						<option value="en revision">En revision</option>
+						<option value="aprobado">Aprobado</option>
+						<option value="reprobado">Reprobado</option>
+						<option value="con observacion">Con Observacion</option>
+						
+					</select>
+				</div>
+			</div>
+			<div class="flex" v-else>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label
+						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+						for="name"
+						>Actualizado Por última vez:</label
+					>
+					<br>
+					<input
+						id="cuit"
+						disabled
+						v-model="form.updated_at"
+						class="border py-2 px-3 text-grey-darkest"
+					/>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label
+						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+						for="estado"
+						>Estado Actual:</label><br>
+						<span v-if="$props.productor.estado === 'en proceso'"  class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En proceso</span>
+						<span v-if="$props.productor.estado === 'borrador'"  class="bg-pink-200 text-pink-600 py-1 px-3 rounded-full text-xs">Borrador</span>
+						<span v-if="$props.productor.estado === 'aprobado'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Aprobado</span>
+						<span v-if="$props.productor.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
+						<span v-if="$props.productor.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
+						<span v-if="$props.productor.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label
+						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+						for="estado"
+						>Nuevo Estado:</label
+					><br>
+					{{form.estado}}
+					<select
+						id="estado"
+						name="estado"
+						v-model="form.estado"
+						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+						<option value="borrador">Borrador</option>
+						<option value="presentado">Presentar</option>
+						
+					</select>
+				</div>
 			</div>
 			<br>
 			<br>
 			<br>
 			<div class="flex">
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-					<inertia-link
-						:href="route('productors.index')"
-						class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
-					>
-						Volver
-					</inertia-link>
-				</div>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-					<button
-						
-						@click="mostrar_modal_aprobar"
-						class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					>
-						Actualizar
-					</button>
-					
-				</div>
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+						<inertia-link
+							:href="route('productors.index')"
+							class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+						>
+							Volver
+						</inertia-link>
+					</div>
+					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+						<button
+							v-if="evaluacion_global"
+							@click="mostrar_modal_aprobar"
+							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
+						>
+							Actualizar
+						</button>
+						<button
+							v-if="!evaluacion_global"
+							@click="mostrar_modal_presentar"
+							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
+						>
+							Actualizar
+						</button>
+					</div>
 			</div>
 			<jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
 					<template #title>
@@ -723,7 +792,6 @@
 						</div>
 					</template>
 			</jet-dialog-modal>
-
 		</form>
 				
 
@@ -796,6 +864,9 @@ export default {
 			AvisoAprueba: false,
 			modal_tittle_apro: '',
 			modal_body_apro: '',
+			evaluacion_global: false,
+			testing_global: true,
+
 
 
 			lista_provincias: [],
@@ -1255,7 +1326,29 @@ export default {
 		closeModalAprobar(){
 			this.AvisoAprueba = false
 		},
+		mostrar_modal_presentar(){
+			//soy productor y estoy por presentar el formulario
+			let form_evaluacion_valida = '';
+			this.AvisoAprueba = true;
+			this.modal_tittle_apro = "Advertencia: esta por presentar esta solicitud de Productor.";
+			form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+			if(form_evaluacion_valida === '')
+			{
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+				this.mostrar_boton_aprobar = true;
+				this.mostrar_boton_aprobar_de_todos_modos = false;
+			}
+			else {
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" + form_evaluacion_valida;
+				this.mostrar_boton_aprobar = false;
+				this.mostrar_boton_aprobar_de_todos_modos = true;
+			}
+			//<!-- @click="guardar_avances_todo" -->
+		},
 		mostrar_modal_aprobar(){
+			//soy autoridad y estoy por cambiar el estado del formulario
 			let form_evaluacion_valida = '';
 			this.AvisoAprueba = true;
 			this.modal_tittle_apro = "Advertencia: esta por aprobar esta solicitud de Productor";

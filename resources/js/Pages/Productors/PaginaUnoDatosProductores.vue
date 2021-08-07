@@ -13,34 +13,35 @@
 
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16  sticky top-0">
-
             <a href="#section_productor">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/casco-minero.svg" width="50%">
             </a>
-            <label class="flex items-center relative w-max cursor-pointer select-none">
-                <br>
-                <br>
-                <input 
-                type="checkbox" 
-                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
-                v-model="mostrar_testing"
-                />
-                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
-                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
-                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-            </label>
-            <label class="flex items-center relative w-max cursor-pointer select-none">
-                <br>
-                <br>
-                <input 
-                type="checkbox" 
-                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
-                v-model="autoridad_minera"
-                />
-                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
-                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
-                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-            </label>
+            <div v-if="$props.testing">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="mostrar_testing"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
+                    v-model="autoridad_minera"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
         </div>
         <div>
             <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
@@ -52,6 +53,8 @@
                     :reprobado="25" 
                     :lugar="'Argentina, San Juan'"
                     :updated_at="'hace 10 minutos'"
+                    :mostrarayuda = true
+                    :evaluacion ="autoridad_minera"
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
                     :ayuda="mostrar_ayuda"
@@ -62,12 +65,14 @@
             <br>
             <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            {{$props.razon_social_correcto}}
+            {{form_pagina.razon_social_correcto}}
                 <InputRazonSocial 
-                    v-bind:razon_social="$props.razon_social" 
-                    v-bind:razon_social_valido="$props.razon_social_valido"
-                    v-bind:razon_social_correcto="$props.razon_social_correcto"
-                    v-bind:obs_razon_social="$props.obs_razon_social"
-                    v-bind:obs_razon_social_valido="$props.obs_razon_social_valido"
+                    v-bind:razon_social="form_pagina.razon_social" 
+                    v-bind:razon_social_valido="form_pagina.razon_social_valido"
+                    v-bind:razon_social_correcto="form_pagina.razon_social_correcto"
+                    v-bind:obs_razon_social="form_pagina.obs_razon_social"
+                    v-bind:obs_razon_social_valido="form_pagina.obs_razon_social_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Razon social'"
                     v-bind:testing="mostrar_testing"
@@ -105,11 +110,11 @@
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <InputEmail
-                    v-bind:email="$props.email"
-                    v-bind:email_valido="$props.email_valido"
-                    v-bind:email_correcto="$props.email_correcto"
-                    v-bind:obs_email="$props.obs_email"
-                    v-bind:obs_email_valido="$props.obs_email_valido"
+                    v-bind:email="form_pagina.email"
+                    v-bind:email_valido="form_pagina.email_valido"
+                    v-bind:email_correcto="form_pagina.email_correcto"
+                    v-bind:obs_email="form_pagina.obs_email"
+                    v-bind:obs_email_valido="form_pagina.obs_email_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Email'"
                     v-bind:testing="mostrar_testing"
@@ -150,11 +155,11 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputCuit
-                    v-bind:cuit="$props.cuit"
-                    v-bind:cuit_valido="$props.cuit_valido"
-                    v-bind:cuit_correcto="$props.cuit_correcto"
-                    v-bind:obs_cuit="$props.obs_cuit"
-                    v-bind:obs_cuit_valido="$props.obs_cuit_valido"
+                    v-bind:cuit="form_pagina.cuit"
+                    v-bind:cuit_valido="form_pagina.cuit_valido"
+                    v-bind:cuit_correcto="form_pagina.cuit_correcto"
+                    v-bind:obs_cuit="form_pagina.obs_cuit"
+                    v-bind:obs_cuit_valido="form_pagina.obs_cuit_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Cuit'"
                     v-bind:testing="mostrar_testing"
@@ -190,11 +195,11 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputNumeroProductor
-                    v-bind:numeroproductor="$props.numeroproductor"
-                    v-bind:numeroproductor_valido="$props.numeroproductor_valido"
-                    v-bind:numeroproductor_correcto="$props.numeroproductor_correcto"
-                    v-bind:obs_numeroproductor="$props.obs_numeroproductor"
-                    v-bind:obs_numeroproductor_valido="$props.obs_numeroproductor_valido"
+                    v-bind:numeroproductor="form_pagina.numeroproductor"
+                    v-bind:numeroproductor_valido="form_pagina.numeroproductor_valido"
+                    v-bind:numeroproductor_correcto="form_pagina.numeroproductor_correcto"
+                    v-bind:obs_numeroproductor="form_pagina.obs_numeroproductor"
+                    v-bind:obs_numeroproductor_valido="form_pagina.obs_numeroproductor_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Numero de Productor'"
                     v-bind:testing="mostrar_testing"
@@ -234,11 +239,11 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputTipoSociedad
-                    v-bind:tiposociedad="$props.tiposociedad"
-                    v-bind:tiposociedad_valido="$props.tiposociedad_valido"
-                    v-bind:tiposociedad_correcto="$props.tiposociedad_correcto"
-                    v-bind:obs_tiposociedad="$props.obs_tiposociedad"
-                    v-bind:obs_tiposociedad_valido="$props.obs_tiposociedad_valido"
+                    v-bind:tiposociedad="form_pagina.tiposociedad"
+                    v-bind:tiposociedad_valido="form_pagina.tiposociedad_valido"
+                    v-bind:tiposociedad_correcto="form_pagina.tiposociedad_correcto"
+                    v-bind:obs_tiposociedad="form_pagina.obs_tiposociedad"
+                    v-bind:obs_tiposociedad_valido="form_pagina.obs_tiposociedad_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Tipo de Sociedad'"
                     v-bind:testing="mostrar_testing"
@@ -486,6 +491,7 @@ export default {
         'obs_constanciasociedad_valido',
 
         'evaluacion',
+        'testing',
         'id'
     ],
  
@@ -511,7 +517,7 @@ export default {
         modal_tittle:'',
         modal_body:'',
         mostrar_testing: false,
-        autoridad_minera:false,
+        autoridad_minera:this.$props.evaluacion,
         mostrar_ayuda: false,
         form_pagina: {
             razon_social : this.$props.razon_social,

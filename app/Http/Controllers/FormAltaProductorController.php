@@ -925,114 +925,144 @@ class FormAltaProductorController extends Controller
 	public function edit($id)
 	{
 		//dd($id);
-		$borradores = FormAltaProductor::find($id);
-
-		//var_dump($borradores->owner);
-		$borradores = $this->prasar_num_a_boolean($borradores);
-		//var_dump($borradores->constancia_pago_canon);die();
-		$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
-
-		$datos_creador = User::find($borradores->created_by);
 		
+		$soy_autoridad_minera = true;
+		if(Auth::user()->id == 1)
+			$entro = true;
+		elseif($soy_autoridad_minera)
+			$entro = true;
+		else{
+			$borradores = FormAltaProductor::select('created_by')->where("id", "=", $id)->first();
+			//dd($borradores->created_by);
+			if($borradores->created_by == Auth::user()->id ){
+				$entro = true;
+			}
+			else{
+				$entro = false;
+			}
+		}
+		$entro= false;
+		//dd($entro);
+		if($entro)
+		{
+			
+		
+			$borradores = FormAltaProductor::find($id);
 
-	// var_dump($datos_creador->name);die();
+			//var_dump($borradores->owner);
+			$borradores = $this->prasar_num_a_boolean($borradores);
+			//var_dump($borradores->constancia_pago_canon);die();
+			$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
 
+			$datos_creador = User::find($borradores->created_by);
+			
 
-		if(is_null($borradores->razon_social_correcto)) 
-			$borradores->razon_social_correcto = 'nada';
-		elseif(intval($borradores->razon_social_correcto) == 1) 
-			$borradores->razon_social_correcto = true;
-		else $borradores->razon_social_correcto = false;
-
-
-
-		if(is_null($borradores->email_correcto)) 
-			$borradores->email_correcto = 'nada';
-		elseif(intval($borradores->email_correcto) == 1) 
-			$borradores->email_correcto = true;
-		else $borradores->email_correcto = false;
-
-
-		if(is_null($borradores->cuit_correcto)) 
-			$borradores->cuit_correcto = 'nada';
-		elseif(intval($borradores->cuit_correcto) == 1) 
-			$borradores->cuit_correcto = true;
-		else $borradores->cuit_correcto = false;
-
-
-		if(is_null($borradores->numeroproductor_correcto)) 
-			$borradores->numeroproductor_correcto = 'nada';
-		elseif(intval($borradores->numeroproductor_correcto) == 1) 
-			$borradores->numeroproductor_correcto = true;
-		else $borradores->numeroproductor_correcto = false;
-
-
-		if(is_null($borradores->tiposociedad_correcto)) 
-			$borradores->tiposociedad_correcto = 'nada';
-		elseif(intval($borradores->tiposociedad_correcto) == 1) 
-			$borradores->tiposociedad_correcto = true;
-		else $borradores->tiposociedad_correcto = false;
+			// var_dump($datos_creador->name);die();
 
 
-		if(is_null($borradores->inscripciondgr_correcto)) 
-			$borradores->inscripciondgr_correcto = 'nada';
-		elseif(intval($borradores->inscripciondgr_correcto) == 1) 
-			$borradores->inscripciondgr_correcto = true;
-		else $borradores->inscripciondgr_correcto = false;
+			if(is_null($borradores->razon_social_correcto)) 
+				$borradores->razon_social_correcto = 'nada';
+			elseif(intval($borradores->razon_social_correcto) == 1) 
+				$borradores->razon_social_correcto = true;
+			else $borradores->razon_social_correcto = false;
 
-
-		if(is_null($borradores->constanciasociedad_correcto)) 
-			$borradores->constanciasociedad_correcto = 'nada';
-		elseif(intval($borradores->constanciasociedad_correcto) == 1) 
-			$borradores->constanciasociedad_correcto = true;
-		else $borradores->constanciasociedad_correcto = false;
+			//ar_dump($borradores->razon_social_correcto);die();
 
 
 
-
-		if(is_null($borradores->leal_departamento_correcto)) 
-			$borradores->leal_departamento_correcto = 'nada';
-		elseif(intval($borradores->leal_departamento_correcto) == 1) 
-			$borradores->leal_departamento_correcto = true;
-		else $borradores->leal_departamento_correcto = false;
-
+			if(is_null($borradores->email_correcto)) 
+				$borradores->email_correcto = 'nada';
+			elseif(intval($borradores->email_correcto) == 1) 
+				$borradores->email_correcto = true;
+			else $borradores->email_correcto = false;
 
 
-
-		if(is_null($borradores->owner_correcto)) 
-			$borradores->owner_correcto = 'nada';
-		elseif(intval($borradores->owner_correcto) == 1) 
-			$borradores->owner_correcto = true;
-		else $borradores->owner_correcto = false;
-
-		if(is_null($borradores->arrendatario_correcto)) 
-			$borradores->arrendatario_correcto = 'nada';
-		elseif(intval($borradores->arrendatario_correcto) == 1) 
-			$borradores->arrendatario_correcto = true;
-		else $borradores->arrendatario_correcto = false;
-
-		if(is_null($borradores->concesionario_correcto)) 
-			$borradores->concesionario_correcto = 'nada';
-		elseif(intval($borradores->concesionario_correcto) == 1) 
-			$borradores->concesionario_correcto = true;
-		else $borradores->concesionario_correcto = false;
-
-		if(is_null($borradores->otros_correcto)) 
-			$borradores->otros_correcto = 'nada';
-		elseif(intval($borradores->otros_correcto) == 1) 
-			$borradores->otros_correcto = true;
-		else $borradores->otros_correcto = false;
-
-		if(is_null($borradores->susteancias_de_aprovechamiento_comun_correcto)) 
-			$borradores->susteancias_de_aprovechamiento_comun_correcto = 'nada';
-		elseif(intval($borradores->susteancias_de_aprovechamiento_comun_correcto) == 1) 
-			$borradores->susteancias_de_aprovechamiento_comun_correcto = true;
-		else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
+			if(is_null($borradores->cuit_correcto)) 
+				$borradores->cuit_correcto = 'nada';
+			elseif(intval($borradores->cuit_correcto) == 1) 
+				$borradores->cuit_correcto = true;
+			else $borradores->cuit_correcto = false;
 
 
-		//dd($borradores->categoria);
+			if(is_null($borradores->numeroproductor_correcto)) 
+				$borradores->numeroproductor_correcto = 'nada';
+			elseif(intval($borradores->numeroproductor_correcto) == 1) 
+				$borradores->numeroproductor_correcto = true;
+			else $borradores->numeroproductor_correcto = false;
 
-		return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador]);
+
+			if(is_null($borradores->tiposociedad_correcto)) 
+				$borradores->tiposociedad_correcto = 'nada';
+			elseif(intval($borradores->tiposociedad_correcto) == 1) 
+				$borradores->tiposociedad_correcto = true;
+			else $borradores->tiposociedad_correcto = false;
+
+
+			if(is_null($borradores->inscripciondgr_correcto)) 
+				$borradores->inscripciondgr_correcto = 'nada';
+			elseif(intval($borradores->inscripciondgr_correcto) == 1) 
+				$borradores->inscripciondgr_correcto = true;
+			else $borradores->inscripciondgr_correcto = false;
+
+
+			if(is_null($borradores->constanciasociedad_correcto)) 
+				$borradores->constanciasociedad_correcto = 'nada';
+			elseif(intval($borradores->constanciasociedad_correcto) == 1) 
+				$borradores->constanciasociedad_correcto = true;
+			else $borradores->constanciasociedad_correcto = false;
+
+
+
+
+			if(is_null($borradores->leal_departamento_correcto)) 
+				$borradores->leal_departamento_correcto = 'nada';
+			elseif(intval($borradores->leal_departamento_correcto) == 1) 
+				$borradores->leal_departamento_correcto = true;
+			else $borradores->leal_departamento_correcto = false;
+
+
+
+
+			if(is_null($borradores->owner_correcto)) 
+				$borradores->owner_correcto = 'nada';
+			elseif(intval($borradores->owner_correcto) == 1) 
+				$borradores->owner_correcto = true;
+			else $borradores->owner_correcto = false;
+
+			if(is_null($borradores->arrendatario_correcto)) 
+				$borradores->arrendatario_correcto = 'nada';
+			elseif(intval($borradores->arrendatario_correcto) == 1) 
+				$borradores->arrendatario_correcto = true;
+			else $borradores->arrendatario_correcto = false;
+
+			if(is_null($borradores->concesionario_correcto)) 
+				$borradores->concesionario_correcto = 'nada';
+			elseif(intval($borradores->concesionario_correcto) == 1) 
+				$borradores->concesionario_correcto = true;
+			else $borradores->concesionario_correcto = false;
+
+			if(is_null($borradores->otros_correcto)) 
+				$borradores->otros_correcto = 'nada';
+			elseif(intval($borradores->otros_correcto) == 1) 
+				$borradores->otros_correcto = true;
+			else $borradores->otros_correcto = false;
+
+			if(is_null($borradores->susteancias_de_aprovechamiento_comun_correcto)) 
+				$borradores->susteancias_de_aprovechamiento_comun_correcto = 'nada';
+			elseif(intval($borradores->susteancias_de_aprovechamiento_comun_correcto) == 1) 
+				$borradores->susteancias_de_aprovechamiento_comun_correcto = true;
+			else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
+
+
+			//dd($borradores->categoria);
+
+			return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador]);
+		}
+		else{
+			//dd("acad");
+			return Inertia::render('Common/SinPermisos');
+			//dd("usted no tiene permisos de entrar");
+		}
 	}
 
 	/**
@@ -2269,6 +2299,7 @@ class FormAltaProductorController extends Controller
 					$request->razon_social_correcto = 0;
 				elseif($request->razon_social_correcto == 'nada')
 					$request->razon_social_correcto = null;
+
 				
 				
 				if($request->cuit_correcto == 'true')
@@ -2286,7 +2317,7 @@ class FormAltaProductorController extends Controller
 				elseif($request->numeroproductor_correcto == 'nada')
 					$request->numeroproductor_correcto = null;
 				
-				//var_dump($request->email_correcto);
+				
 				if($request->email_correcto === 'true')
 					$request->email_correcto = 1;
 				elseif($request->email_correcto === 'false')
@@ -2352,6 +2383,8 @@ class FormAltaProductorController extends Controller
 				//var_dump($request->email_correcto);die();
 				$formulario_provisorio->razon_social_correcto = $request->razon_social_correcto;
 				$formulario_provisorio->obs_razon_social = $request->obs_razon_social;
+
+				//var_dump($request->razon_social_correcto, $request->obs_razon_social);die();
 	
 				$formulario_provisorio->email_correcto = $request->email_correcto;
 				$formulario_provisorio->obs_email = $request->obs_email;
