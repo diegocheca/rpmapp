@@ -1944,15 +1944,15 @@ class FormAltaProductorController extends Controller
     }
 
     
-    public function ejemplo_pdf_prueba(){
-    	$email  = "ochamplin@gmail.com";
-
+    public function ejemplo_pdf_prueba($id){
+    	//$email  = "ochamplin@gmail.com";
+		dd("El Id enviado en el parametro es: ".$id);
     	date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select('*')
-		->where('email', '=',$email)->first();
-		//var_dump($formulario_provisorio->id);
+		->where('id', '=',$id)->first();
 		if($formulario_provisorio != null)
 		{
+			dd("Encontró datos");
 			//modifico la path de los archivos
 			if($formulario_provisorio->inscripciondgr != null)
 				$formulario_provisorio->inscripciondgr = "si posee";
@@ -1974,79 +1974,82 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->fecha_alta_dia	= date("Y-m-d", strtotime($formulario_provisorio->fecha_alta_dia) ); 
 			if($formulario_provisorio->fecha_vencimiento_dia != null)
 				$formulario_provisorio->fecha_vencimiento_dia = date("Y-m-d", strtotime($formulario_provisorio->fecha_vencimiento_dia) ); 
-    	$data = [
-            'title' => 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94',
-            'date_generado' => date('d/m/Y'),
-            //1
-            'razon_social' =>  $formulario_provisorio->razon_social,
-			'ciut' =>  $formulario_provisorio->cuit,
-            'numeroproductor' => $formulario_provisorio->numeroproductor,
-            'tiposociedad' => $formulario_provisorio->tiposociedad,
-            'email' => $formulario_provisorio->email,
-			'inscripciondgr' => $formulario_provisorio->inscripciondgr ,
-			'constaciasociedad' => $formulario_provisorio->constaciasociedad ,
+    		$data = [
+            	'title' => 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94',
+            	'date_generado' => date('d/m/Y'),
+            	//1
+            	'razon_social' =>  $formulario_provisorio->razon_social,
+				'ciut' =>  $formulario_provisorio->cuit,
+            	'numeroproductor' => $formulario_provisorio->numeroproductor,
+            	'tiposociedad' => $formulario_provisorio->tiposociedad,
+            	'email' => $formulario_provisorio->email,
+				'inscripciondgr' => $formulario_provisorio->inscripciondgr ,
+				'constaciasociedad' => $formulario_provisorio->constaciasociedad ,
+				//2
+				'leal_calle' => $formulario_provisorio->leal_calle ,
+				'leal_numero' => $formulario_provisorio->leal_numero ,
+				'leal_telefono' => $formulario_provisorio->leal_telefono ,
+				'leal_pais' => $formulario_provisorio->leal_pais ,
+				'leal_provincia' => $formulario_provisorio->leal_provincia ,
+				'leal_departamento' => $formulario_provisorio->leal_departamento ,
+				'leal_localidad' => $formulario_provisorio->leal_localidad ,
+				'leal_cp' => $formulario_provisorio->leal_cp ,
+				'leal_otro' => $formulario_provisorio->leal_otro ,
 
-			//2
-			'leal_calle' => $formulario_provisorio->leal_calle ,
-			'leal_numero' => $formulario_provisorio->leal_numero ,
-			'leal_telefono' => $formulario_provisorio->leal_telefono ,
-			'leal_pais' => $formulario_provisorio->leal_pais ,
-			'leal_provincia' => $formulario_provisorio->leal_provincia ,
-			'leal_departamento' => $formulario_provisorio->leal_departamento ,
-			'leal_localidad' => $formulario_provisorio->leal_localidad ,
-			'leal_cp' => $formulario_provisorio->leal_cp ,
-			'leal_otro' => $formulario_provisorio->leal_otro ,
+				//3
+				'administracion_calle' => $formulario_provisorio->administracion_calle,
+				'administracion_numero' => $formulario_provisorio->administracion_numero,
+				'administracion_telefono' => $formulario_provisorio->administracion_telefono,
+				'administracion_pais' => $formulario_provisorio->administracion_pais,
+				'administracion_provincia' => $formulario_provisorio->administracion_provincia,
+				'administracion_departamento' => $formulario_provisorio->administracion_departamento,
+				'administracion_localidad' => $formulario_provisorio->administracion_localidad,
+				'administracion_cp' => $formulario_provisorio->administracion_cp,
+				'administracion_otro' => $formulario_provisorio->administracion_otro,
 
-			//3
-			'administracion_calle' => $formulario_provisorio->administracion_calle,
-			'administracion_numero' => $formulario_provisorio->administracion_numero,
-			'administracion_telefono' => $formulario_provisorio->administracion_telefono,
-			'administracion_pais' => $formulario_provisorio->administracion_pais,
-			'administracion_provincia' => $formulario_provisorio->administracion_provincia,
-			'administracion_departamento' => $formulario_provisorio->administracion_departamento,
-			'administracion_localidad' => $formulario_provisorio->administracion_localidad,
-			'administracion_cp' => $formulario_provisorio->administracion_cp,
-			'administracion_otro' => $formulario_provisorio->administracion_otro,
+				//4
+				'mina_cantera' =>$formulario_provisorio->mina_cantera,
+				'numero_expdiente' =>$formulario_provisorio->numero_expdiente,
+				'distrito_minero' =>$formulario_provisorio->distrito_minero,
+				'descripcion_mina' =>$formulario_provisorio->descripcion_mina,
+				'nombre_mina' =>$formulario_provisorio->nombre_mina,
+				'categoria' =>$formulario_provisorio->categoria,
+				'minerales_variedad' =>$formulario_provisorio->minerales_variedad,
 
-			//4
-			'mina_cantera' =>$formulario_provisorio->mina_cantera,
-			'numero_expdiente' =>$formulario_provisorio->numero_expdiente,
-			'distrito_minero' =>$formulario_provisorio->distrito_minero,
-			'descripcion_mina' =>$formulario_provisorio->descripcion_mina,
-			'nombre_mina' =>$formulario_provisorio->nombre_mina,
-			'categoria' =>$formulario_provisorio->categoria,
-			'minerales_variedad' =>$formulario_provisorio->minerales_variedad,
+				//5
+				'owner' =>$formulario_provisorio->owner,
+				'arrendatario' =>$formulario_provisorio->arrendatario,
+				'concesionario' =>$formulario_provisorio->concesionario,
+				'otros' =>$formulario_provisorio->otros,
+				'acciones_a_desarrollar' =>$formulario_provisorio->acciones_a_desarrollar,
+				'actividad' =>$formulario_provisorio->actividad,
+				'fecha_alta_dia' =>$formulario_provisorio->fecha_alta_dia,
+				'fecha_vencimiento_dia' =>$formulario_provisorio->fecha_vencimiento_dia,
 
-			//5
-			'owner' =>$formulario_provisorio->owner,
-			'arrendatario' =>$formulario_provisorio->arrendatario,
-			'concesionario' =>$formulario_provisorio->concesionario,
-			'otros' =>$formulario_provisorio->otros,
-			'acciones_a_desarrollar' =>$formulario_provisorio->acciones_a_desarrollar,
-			'actividad' =>$formulario_provisorio->actividad,
-			'fecha_alta_dia' =>$formulario_provisorio->fecha_alta_dia,
-			'fecha_vencimiento_dia' =>$formulario_provisorio->fecha_vencimiento_dia,
+				//6
 
-			//6
+				'localidad_mina_pais' => $formulario_provisorio->localidad_mina_pais,
+				'localidad_mina_provincia' => $formulario_provisorio->localidad_mina_provincia,
+				'localidad_mina_departamento' => $formulario_provisorio->localidad_mina_departamento,
+				'localidad_mina_localidad' => $formulario_provisorio->localidad_mina_localidad,
+				'tipo_sistema' => $formulario_provisorio->tipo_sistema,
+				'latitud' => $formulario_provisorio->latitud,
+				'longitud' => $formulario_provisorio->longitud,
 
-			'localidad_mina_pais' => $formulario_provisorio->localidad_mina_pais,
-			'localidad_mina_provincia' => $formulario_provisorio->localidad_mina_provincia,
-			'localidad_mina_departamento' => $formulario_provisorio->localidad_mina_departamento,
-			'localidad_mina_localidad' => $formulario_provisorio->localidad_mina_localidad,
-			'tipo_sistema' => $formulario_provisorio->tipo_sistema,
-			'latitud' => $formulario_provisorio->latitud,
-			'longitud' => $formulario_provisorio->longitud,
-
-			//7
-			'updated_at' => $formulario_provisorio->updated_at ,
-        ];
-          
-        $pdf = PDF::loadView('pdfs.formulario_inscripcion_productor', $data);
-    
-        //return $pdf->download('formulario_'.$formulario_provisorio->id.'.pdf');
-        return $pdf->stream('formulario_.pdf');
+				//7
+				'updated_at' => $formulario_provisorio->updated_at ,
+			];
+        	var_dump($data);
+			//die();
+        	$pdf = PDF::loadView('pdfs.formulario_inscripcion_productor', $data);
+        	//return $pdf->download('formulario_'.$formulario_provisorio->id.'.pdf');
+        	return $pdf->stream('formulario_.pdf');
         }
-        else response()->json("error en el email");
+        else
+		{
+			dd("LA CONSULTA NO TRAE RESULTADOS") ;
+			response()->json("error en el email");
+		}
     }
     
     public function ejemplo_pdf_prueba_reinscripcion(){
