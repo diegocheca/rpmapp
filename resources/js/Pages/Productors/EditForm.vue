@@ -781,7 +781,7 @@
 							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
 								<button
 									v-show="mostrar_boton_aprobar_de_todos_modos"
-									@click="closeModalAprobar"
+									@click="presentar_de_todos_modos"
 									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
 								>
 									Actualizar de todos Modos
@@ -790,6 +790,27 @@
 						</div>
 					</template>
 			</jet-dialog-modal>
+
+			<jet-dialog-modal :show="mostrar_modal_datos_ya_guardados" @close="cerrar_modal_datos_uno">
+            <template #title>
+                    {{modal_tittle}}
+            </template>
+            <template #content>
+                    {{modal_body}}
+            </template>
+            <template #footer>
+				<inertia-link
+							:href="route('formulario-alta.index')"
+							class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+						>
+							Volver
+						</inertia-link>
+                <button @click="cerrar_modal_datos_uno">
+                        Ok
+                </button>
+            </template>
+        </jet-dialog-modal>
+
 		</form>
 				
 
@@ -864,7 +885,7 @@ export default {
 			modal_body_apro: '',
 			evaluacion_global: false,
 			testing_global: false,
-
+			mostrar_modal_datos_ya_guardados:false,
 
 
 			lista_provincias: [],
@@ -1344,6 +1365,38 @@ export default {
 				this.mostrar_boton_aprobar_de_todos_modos = true;
 			}
 			//<!-- @click="guardar_avances_todo" -->
+		},
+		presentar_de_todos_modos(){
+			let self = this;
+            const data = new FormData();
+            data.append('id', this.$props.productor.id);
+            data.append('estado', self.form.estado);
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.post("http://localhost:8000/formularios/presentar_borrador", data)
+            .then(function (response) {
+                console.log(response.data);
+                if(response.data === "todo bien")
+                    {
+                        console.log('todo bien');
+                        self.modal_tittle = 'Se actualizo estado';
+                        self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
+						self.closeModalAprobar = false;
+                        self.mostrar_modal_datos_ya_guardados = true;
+                    }
+                    
+                    if(response.data === "formulario no encontrado")
+                    {
+                        console.log('todo mal, no se encontro');
+                        self.modal_tittle = 'Paso 1 Guardado Fallido';
+                        self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+                        self.mostrar_modal_datos_ya_guardados = true;
+                    }
+                    else{
+                        console.log('NO todo bien');	
+                    }
+                
+            })
+
 		},
 		mostrar_modal_aprobar(){
 			//soy autoridad y estoy por cambiar el estado del formulario

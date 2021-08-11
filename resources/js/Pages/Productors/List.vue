@@ -66,7 +66,7 @@
                                                 </svg>
                                             </div>
                                             <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                                <a :href="route('formulario-alta.edit', productor.id)">
+                                                <a v-if="mostrar_editar(productor.estado)" :href="route('formulario-alta.edit', productor.id)">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                     </svg>
@@ -74,6 +74,7 @@
                                             </div>
 
                                             <inertia-link
+                                            v-if= "mostrar_borrar(productor.estado)"
                                             method="delete"
                                             :href="route('formulario-alta.destroy', productor.id)"
                                             class="px-2 font-semibold leading-5 text-xs rounded-full bg-red-100 text-red-500 hover:text-red-800"
@@ -499,11 +500,55 @@ import ChartPieB from '@/Components/charts/pieBorradores'
 
 export default {
   props: {
+
     borradores: Array,
+    lista_minerales_cargados: Array,
+    soy_autoridad: Boolean,
+    soy_administrador: Boolean,
+    soy_productor: Boolean,
   },
   components: {
     AppLayout,
     ChartPieB,
   },
+  methods:{
+        mostrar_editar(estado){
+            if(this.$props.soy_productor === true || this.$props.soy_productor === 'true')
+            {
+                if(estado=== 'en proceso')
+                    return false;
+                if(estado=== 'borrador')
+                    return true;
+                if(estado=== 'con observacion')
+                    return true;
+                if(estado=== 'aprobado')
+                    return false;
+                if(estado=== 'en revision')
+                    return false;
+                if(estado=== 'reprobado')
+                    return false;
+            }
+            else return true;
+        },
+        mostrar_borrar(estado){
+            if(this.$props.soy_productor === true || this.$props.soy_productor === 'true')
+            {
+                if(estado=== 'en proceso')
+                    return false;
+                if(estado=== 'borrador')
+                    return true;
+                if(estado=== 'con observacion')
+                    return false;
+                if(estado=== 'aprobado')
+                    return false;
+                if(estado=== 'en revision')
+                    return false;
+                if(estado=== 'reprobado')
+                    return false;
+            }
+            else return true;
+        },
+        
+    }
 };
 </script>

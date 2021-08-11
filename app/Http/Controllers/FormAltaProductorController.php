@@ -627,8 +627,10 @@ class FormAltaProductorController extends Controller
 	{
 		//filtro por autoridad minera o autoridad
 		//pregunto si soy admin
+		//dd(Auth::user()->id_provincia);die();
 		$soy_administrador = false;
 		$soy_autoridad = false;
+		$soy_productor =false;
 		if(Auth::user()->hasRole('Administrador'))
 		{
 			$soy_administrador = true;
@@ -638,14 +640,17 @@ class FormAltaProductorController extends Controller
 		{
 			//soy autoridad minera, entonces traigo todo de mi prov
 			$soy_autoridad = true;
-			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->provincia);
+			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->get();
 		}
 		else{
 			//soy productor, entonces traigo solo mis borradores
-			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->provincia)->where('created_by', '=',Auth::user()->id );
+			$soy_productor =true;
+			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->get();
 		}
+		
+		//var_dump($borradores);die();
 		//var_dump($formularios);die();
-		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador]);
+		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador, 'soy_productor' => $soy_productor]);
 	}
 
 	/**
@@ -971,7 +976,7 @@ class FormAltaProductorController extends Controller
 		}
 		else{
 			//soy productor, entonces traigo solo mis borradores
-			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->provincia)->where('created_by', '=',Auth::user()->id );
+			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id );
 			$entro = true;
 		}
 
@@ -1102,6 +1107,8 @@ class FormAltaProductorController extends Controller
 			elseif(intval($borradores->susteancias_de_aprovechamiento_comun_correcto) == 1) 
 				$borradores->susteancias_de_aprovechamiento_comun_correcto = true;
 			else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
+
+			
 
 
 			//dd($borradores->categoria);
@@ -2294,6 +2301,7 @@ class FormAltaProductorController extends Controller
     //evaluacion de formularios
     public function correccion_guardar_paso_uno(Request $request)
 	{
+		//dd(Auth::user()->id_provincia);
 		//var_dump("el id:".$request->id."   - el  cuit es:".$request->cuit);die();
 		//var_dump($request->constaciasociedad);die();
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
@@ -2547,7 +2555,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->created_by = Auth::user()->id;
 
-				$formulario_provisorio->provincia = Auth::user()->provincia;
+				$formulario_provisorio->provincia = Auth::user()->id_provincia;
 
 				$formulario_provisorio->save();
 				return response()->json($formulario_provisorio->id);
@@ -4207,6 +4215,34 @@ class FormAltaProductorController extends Controller
 		->where('id', '=',$request->id)->first();
 		if($request->es_evaluacion){ // soy autoridad minera
 			$formulario_provisorio->estado = $request->estado;
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_by = Auth::user()->id;
+			$formulario_provisorio->save();
+			return response()->json("todo bien");
+		}
+		else{//soy productor
+			return response()->json("error");
+		}
+	}
+
+	public function presentar_borrador(Request $request)
+	{
+		//dd($request->id);
+		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$formulario_provisorio = FormAltaProductor::select(
+			'id',
+			'estado',
+			'updated_by',
+			'updated_at'
+			)
+		->where('id', '=',$request->id)->first();
+		if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')){ // soy autoridad minera
+
+			if($request->estado == 'presentado' )
+				$formulario_provisorio->estado = "en proceso";
+			else
+				$formulario_provisorio->estado = $request->estado;
 			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 			$formulario_provisorio->updated_by = Auth::user()->id;
 			$formulario_provisorio->save();
