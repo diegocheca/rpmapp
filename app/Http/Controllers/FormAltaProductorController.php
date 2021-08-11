@@ -924,7 +924,8 @@ class FormAltaProductorController extends Controller
 	 */
 	public function edit($id)
 	{
-		//dd($id);
+		// dd(Auth::user());
+		dd(Auth::user()->hasRole('Administrador'));
 		
 		$soy_autoridad_minera = true;
 		if(Auth::user()->id == 1)

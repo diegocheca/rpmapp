@@ -33,7 +33,7 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'id_provincia'
     ];
 
     /**
@@ -56,7 +56,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
     /**
      * The accessors to append to the model's array form.
      *
@@ -65,7 +65,7 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    
+
     public function getPermissionArray()
     {
         // dd($this->getAllPermissions());

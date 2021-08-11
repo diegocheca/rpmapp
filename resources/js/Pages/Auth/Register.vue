@@ -1,4 +1,12 @@
 <template>
+    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <inertia-link
+            :href="route('login')"
+            class="text-sm text-gray-700 underline"
+        >
+            Ingresar
+        </inertia-link>
+    </div>
     <jet-authentication-card>
         <template #logo>
             <jet-authentication-card-logo />
@@ -35,6 +43,9 @@
                 /> -->
                 <!-- <div class="relative inline-flex self-center"> -->
                 <select
+                    id="provincia"
+                    v-model="form.id_provincia"
+                    required
                     class="
                         mt-1
                         block
@@ -52,11 +63,11 @@
                 >
                     <option>Seleccione Provincia...</option>
                     <option
-                        v-for="provincia in lista_provincias"
-                        v-bind:key="provincia.id"
-                        :value="provincia.id"
+                        v-for="prov in lista_provincias"
+                        v-bind:key="prov.id"
+                        :value="prov.id"
                     >
-                        {{ provincia.nombre }}
+                        {{ prov.nombre }}
                     </option>
                 </select>
                 <!-- </div> -->
@@ -188,6 +199,7 @@ export default {
                 password: "",
                 password_confirmation: "",
                 terms: false,
+                id_provincia: "",
             }),
         };
     },
@@ -207,9 +219,9 @@ export default {
             axios
                 .get("/datos/traer_provincias")
                 .then(function (response) {
-                    console.log("las provincias son:\n");
+                    // console.log("las provincias son:\n");
                     self.lista_provincias = response.data;
-                    console.log(self.lista_provincias);
+                    // console.log(self.lista_provincias);
                 })
                 .catch(function (error) {
                     console.log(error);
