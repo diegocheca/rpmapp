@@ -102,6 +102,7 @@
                                 >
                                     Productores
                                 </jet-nav-link>
+                                
 
                                 <jet-nav-link
                                     :href="route('solicitudes.index')"

@@ -166,7 +166,6 @@
 						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
 					</div>-->
 				<div id="section_productor"></div>
-				razon: {{form.razon_social_correcto}}
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
 					:titulo_boton_volver="'volver'"
@@ -713,7 +712,6 @@
 						for="estado"
 						>Nuevo Estado:</label
 					><br>
-					{{form.estado}}
 					<select
 						id="estado"
 						name="estado"
@@ -731,7 +729,7 @@
 			<div class="flex">
 					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 						<inertia-link
-							:href="route('productors.index')"
+							:href="route('formulario-alta.index')"
 							class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
 						>
 							Volver
@@ -865,7 +863,7 @@ export default {
 			modal_tittle_apro: '',
 			modal_body_apro: '',
 			evaluacion_global: false,
-			testing_global: true,
+			testing_global: false,
 
 
 

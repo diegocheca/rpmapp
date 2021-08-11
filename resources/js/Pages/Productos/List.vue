@@ -1,15 +1,9 @@
 <template>
   <app-layout>
-    <h2
-      class="text-center text-2xl font-bold leading-7 text-gray-300 sm:text-3xl sm:truncate py-4 bg-gray-800"
-    >
+    <h2 class="text-center text-2xl font-bold leading-7 text-gray-300 sm:text-3xl sm:truncate py-4 bg-gray-800" >
       Productos Ya cargados
     </h2>
-
-
-
-<a :href="route('productos.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Producto</button></a>
-
+    <a :href="route('productos.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Producto</button></a>
      <div class="overflow-x-auto">
         <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
             <div class="w-full lg:w-5/6">
@@ -104,8 +98,6 @@
             </div>
         </div>
     </div>
-
-
     <body class="flex flex-col">
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -226,17 +218,16 @@
 								</template>
 						</jet-dialog-modal>
 						<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
-
-            <!-- <pagination class="mt-6" :links="data.links"></pagination>
- -->
   </app-layout>
 </template>
 
 
 <script>
+
+
+
 import AppLayout from "@/Layouts/AppLayout";
 import JetDialogModal from '@/Jetstream/DialogModal';
-import Pagination from '@/Components/Pagination'
 //import Button from '../../Jetstream/Button.vue';
 
 export default {

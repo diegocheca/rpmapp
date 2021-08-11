@@ -127,8 +127,6 @@
 						</jet-dialog-modal>
 						<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
 
-            <!-- <pagination class="mt-6" :links="data.links"></pagination>
- -->
   </app-layout>
 </template>
 
@@ -136,7 +134,6 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import JetDialogModal from '@/Jetstream/DialogModal';
-import Pagination from '@/Components/Pagination'
 //import Button from '../../Jetstream/Button.vue';
 
 export default {

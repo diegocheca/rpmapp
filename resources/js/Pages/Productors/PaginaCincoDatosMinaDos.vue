@@ -376,7 +376,7 @@
                     v-bind:valor_obs="form_pagina.obs_iia_canon"
                     v-bind:valor_valido_obs="form_pagina.obs_iia_canon_valido"
                     v-bind:evaluacion="autoridad_minera"
-                    v-bind:testing = "mostrar_testing"
+                    v-bind:testing="mostrar_testing"
                     v-bind:label="'IIA de Actividad Minera'"
                     v-on:changevalido="update_iia_valido($event)"
                     v-on:changecorrecto="update_iia_correcto($event)"
@@ -426,8 +426,8 @@
                     v-bind:evualacion_correcto="form_pagina.dia_correcto"
                     v-bind:valor_obs="form_pagina.obs_dia_canon"
                     v-bind:valor_valido_obs="form_pagina.obs_dia_canon_valido"
-                    v-bind:evaluacion="true"
-                    v-bind:testing = "mostrar_testing"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing="mostrar_testing"
                     v-bind:label="'DIA de Actividad Minera'"
                     v-on:changevalido="update_dia_valido($event)"
                     v-on:changecorrecto="update_dia_correcto($event)"
@@ -477,7 +477,7 @@
                     v-bind:valor_obs="form_pagina.obs_actividad_a_desarrollar"
                     v-bind:valor_valido_obs="form_pagina.obs_actividad_a_desarrollar_valido"
                     v-bind:evaluacion="autoridad_minera"
-                    v-bind:testing ="mostrar_testing"
+                    v-bind:testing="mostrar_testing"
                     v-bind:label="'Actividades a Desarrollar la Mina'"
                     v-bind:icon="'http://localhost:8000/svg/description.svg'"
                     v-bind:name_correcto="'actividades_correcto'"
@@ -866,7 +866,7 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
-        mostrar_testing:false,
+        mostrar_testing: this.$props.testing,
         autoridad_minera:this.$props.evaluacion,
         todas_las_validaciones: true,
         constancia_de_prueba:'',

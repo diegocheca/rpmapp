@@ -47,6 +47,8 @@
 							:reprobado="form.valor_de_reprobado" 
 							:lugar="'Argentina, San Juan'"
 							:updated_at="'hace 10 minutos'"
+							:mostrarayuda = false
+							:evaluacion ="evaluacion_global"
 							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 							:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
 
@@ -59,6 +61,8 @@
 								:reprobado="form.valor_de_reprobado_dos" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:mostrarayuda = false
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
 							></CardDomLegal>
@@ -72,6 +76,8 @@
 								:reprobado="form.valor_de_reprobado_tres" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:mostrarayuda = false
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
 							></CardDomAdmin>
@@ -84,6 +90,8 @@
 								:reprobado="form.valor_de_reprobado_cuatro" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:mostrarayuda= false
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardMinaUno>
@@ -95,6 +103,8 @@
 								:reprobado="form.valor_de_reprobado_cinco" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:mostrarayuda= false
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardMinaDos>
@@ -105,6 +115,7 @@
 								:reprobado="form.valor_de_reprobado_seis" 
 								:lugar="'Argentina, San Juan'"
 								:updated_at="'hace 10 minutos'"
+								:evaluacion ="evaluacion_global"
 								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardMinaUbicacion>
@@ -113,6 +124,7 @@
 
 							<!-- 4 card -->
 							<CardTotal  
+								v-if="evaluacion_global"
 								:progreso="form.valor_de_progreso_seis"
 								:aprobado="form.valor_de_aprobado_seis"
 								:reprobado="form.valor_de_reprobado_seis" 
@@ -127,14 +139,15 @@
 					<br>
 					<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
 						<a href="#inicio">
-							<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6">
-								<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-									<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
+							<div class="flex items-center absolute shadow-xl left-8 top-10">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="animate-bounce bi bi-arrow-up" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
 								</svg>
 							</div>
 						</a>
 					</div>
 					<br>
+
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -178,15 +191,22 @@
 					:obs_constanciasociedad="form.obs_constaciasociedad"
 					:obs_constanciasociedad_valido="form.obs_constaciasociedad_valido"
 
-					:evaluacion="true"
-					:id="form.id"
+					:evaluacion ="evaluacion_global"
+					:testing ="testing_global"
 					
-					v-on:CreeUnNuevoIdPasoAAbuelo="update_id_recien_creado_en_abuelo($event)"
+					:id="form.id"
+
+					v-on:ChangeRazonSocialEvaluacion="update_razon_social_evaluacion($event)"
+					v-on:ChangeCuitEvaluacion="update_cuit_evaluacion($event)"
+					v-on:ChangeNumProdEvaluacion="update_num_prod_evaluacion($event)"
+					v-on:ChangeTipoSociedadEvaluacion="update_tipo_sociedad_evaluacion($event)"
+					v-on:ChangeInscripcionDGREvaluacion="update_inscripcion_dgr_evaluacion($event)"
+					v-on:ChangeConstanciaSociedadEvaluacion="update_constancia_sociedad_evaluacion($event)"
+					v-on:CreeUnNuevoIdPasoAAbuelo="update_id_nuevo($event)"
 				>
 				</PaginaUnoDatosProductores>
 				<br>
 				<br>
-				los depertamentos son{{lista_dptos_legal}}
 				<div id="section_domicilio_legal"></div>
 				<PaginaDosDatosDomLegal
 					:link_volver="route('formulario-alta.index')"
@@ -245,7 +265,8 @@
 					:lista_provincias="lista_provincias"
 					:lista_dptos="lista_dptos_legal"
 
-					:evaluacion="true"
+					:evaluacion ="evaluacion_global"
+					:testing ="testing_global"
 					:id="form.id"
 					>
 
@@ -316,7 +337,8 @@
 				:lista_provincias="lista_provincias"
 				:lista_dptos="lista_dptos_admin"
 
-				:evaluacion="true"
+				:evaluacion ="evaluacion_global"
+				:testing="testing_global"
 				:id="form.id"
 				>
 			
@@ -388,26 +410,15 @@
 
 				:lista_minerales_desde_back = "lista_de_minerales_del_back"
 
-				:evaluacion="true"
+				:evaluacion ="evaluacion_global"
 				:id="form.id"
-				:testing="true"
+				:testing="testing_global"
 			>
 			</PaginaCuatroDatosMinaUno>
 			
 			<br>
 			<br>
-			<div class="flex items-center justify-center">
-				<!-- <CardMinaDos  
-							:progreso="form.valor_de_progreso_cinco"
-							:aprobado="form.valor_de_aprobado_cinco"
-							:reprobado="form.valor_de_reprobado_cinco" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardMinaDos> -->
-			</div>
-			<br>
+			<div class="flex items-center justify-center"></div>
 			<br>
 			<br>
 			<div id="section_datos_mina_dos"></div>
@@ -490,51 +501,12 @@
 				:obs_fecha_vencimiento_dia="form.obs_fecha_vencimiento_dia"
 				:obs_fecha_vencimiento_dia_valido="form.obs_fecha_vencimiento_dia_valido"
 				
-				:evaluacion="true"
+				:evaluacion ="evaluacion_global"
 				:id="form.id"
-				:testing="true"
-
+				:testing="testing_global"
 			>
 			</PaginaCincoDatosMinaDos>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<!-- <div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_cinco"
-				>
-					Guardar: Datos de la Mina o Cantera (2)
-				</button>
-				
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
-			</div> -->
-			<br>
-			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
 			<div id="section_datos_mina_ubicacion"></div>
-			<div class="flex items-center justify-center">
-				<CardMinaUbicacion  
-					:progreso="form.valor_de_progreso_seis"
-					:aprobado="form.valor_de_aprobado_seis"
-					:reprobado="form.valor_de_reprobado_seis" 
-					:lugar="'Argentina, San Juan'"
-					:updated_at="'hace 10 minutos'"
-					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-				></CardMinaUbicacion>
-			</div>
-			<br>
-			<br>
-			<br>
-			<br>
 			<PaginaSeisDatosUbicacionMina
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -580,87 +552,68 @@
 				:lista_provincias="lista_provincias"
 				:lista_dptos="lista_dptos_mina"
 				
-				:evaluacion="true"
+				:evaluacion ="evaluacion_global"
 				:id="form.id"
-				:testing="true"
+				:testing="testing_global"
 
 			>
 
 			</PaginaSeisDatosUbicacionMina>
-			<br>
-			<br>
-			<br>
-			<br>
-			<div class="flex flex-col mb-8">
-				<button
-					type="button"
-					class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-					@click="guardar_avances_seis"
-				>
-					Guardar: Datos de la Ubicacion de la mina
-				</button>
-				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
+			<div class="flex">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label
+						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+						for="name"
+						>created_by:</label
+					>
+					<input
+						id="cuit"
+						disabled
+						v-model="form.created_by"
+						class="border py-2 px-3 text-grey-darkest"
+					/>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<label
+						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+						for="estado"
+						>Estado:</label
+					>
+					<select
+						id="estado"
+						name="estado"
+						v-model="form.estado"
+						class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+						<option value="presentado">Presentado</option>
+						<option value="en revision">En revision</option>
+						<option value="con observacion">Aprobado con Observaciones</option>
+						<option value="reprobado">Reprobado</option>
+					</select>
+				</div>
 			</div>
 			<br>
 			<br>
-			<br>
-			<hr>
-			<br>
-			<br>
-			<br>
-			<br>
-					<div class="flex flex-col mb-4">
-						<label
-							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-							for="name"
-							>created_by:</label
-						>
-						<input
-							id="cuit"
-							disabled
-							v-model="form.created_by"
-							class="border py-2 px-3 text-grey-darkest"
-						/>
-					</div>
-					<div class="flex flex-col mb-4">
-						<label
-							class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-							for="estado"
-							>Estado:</label
-						>
-						<select
-							id="estado"
-							name="estado"
-							v-model="form.estado"
-							class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-							<option value="presentado">Presentado</option>
-							<option value="en revision">En revision</option>
-							<option value="con observacion">Aprobado con Observaciones</option>
-							<option value="reprobado">Reprobado</option>
-						</select>
-					</div>
-					<div class="flex flex-col mb-8">
-							<!-- type="submit" -->
-						<button
-							@click="guardar_avances_todo"
-							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-						>
-							Actualizar
-						</button>
-						<inertia-link
-							:href="route('productors.index')"
-							class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
-						>
-							Volver
-						</inertia-link>
-					</div>
-
-				</form>
-				
-
+			<div class="flex">
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<inertia-link
+						:href="route('formulario-alta.index')"
+						class="px-4 py-2 mb-4 text-sm font-medium rounded-full border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+					>
+						Volver
+					</inertia-link>
+				</div>
+				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+					<button
+						@click="guardar_avances_todo"
+						class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
+					>
+						Actualizar
+					</button>
+				</div>
 			</div>
-			
-		</div>
+		</form>
+	</div>
+	</div>
 	</app-layout>
 </template>
 <script>
@@ -716,7 +669,9 @@ export default {
 	},
 	props: [
 		"productor",
-		"lista_minerales_cargados"
+		"lista_minerales_cargados",
+		"soy_autoridad",
+		"soy_administrador",
 		],
 	data() {
     console.log("ffffeeeeqqeeeel valor es:");
@@ -725,6 +680,9 @@ export default {
 			confirmingUserDeletion:false,
 			modal_tittle: '',
 			modal_body: '',
+			evaluacion_global: this.$props.soy_autoridad,
+			testing_global: this.$props.soy_administrador,
+
 			lista_provincias: [],
 			lista_dptos_legal: [],
 			lista_dptos_admin: [],
@@ -1408,7 +1366,29 @@ export default {
 				});
 			}
 			else{self.lista_dptos_mina=[];}
-		}
+		},
+		update_razon_social_evaluacion(valorEvaluacion){
+			this.form.razon_social_correcto = valorEvaluacion;
+		},
+		update_cuit_evaluacion(valorEvaluacion){
+			this.form.cuit_correcto = valorEvaluacion;
+		},
+		update_num_prod_evaluacion(valorEvaluacion){
+			this.form.numeroproductor_correcto = valorEvaluacion;
+		},
+		update_tipo_sociedad_evaluacion(valorEvaluacion){
+			this.form.tiposociedad_correcto = valorEvaluacion;
+		},
+		update_inscripcion_dgr_evaluacion(valorEvaluacion){
+			this.form.inscripciondgr_correcto = valorEvaluacion;
+		},
+		update_constancia_sociedad_evaluacion(valorEvaluacion){
+			this.form.constaciasociedad_correcto = valorEvaluacion;
+		},
+		update_id_nuevo(valorEvaluacion){
+			this.form.id = valorEvaluacion;
+		},
+		
 
 	},
 	

@@ -7,7 +7,8 @@
                     <div
                         class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
                     >
-                        <a :href="route('formulario-alta.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Usuario</button></a>
+                        <a :href="route('formulario-alta.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nueva Atuoridad Minera</button></a>
+                        <a :href="route('formulario-alta.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Productor</button></a>
                         <div class="overflow-x-auto">
                             <div class="min-w-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
                                 <div class="w-full lg:w-5/6">
@@ -16,7 +17,7 @@
                                                 <thead>
                                                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                                         <th scope="col" class="py-3 px-6 text-left">
-                                                        Name
+                                                        Nombre
                                                         </th>
                                                         <th scope="col" class="py-3 px-6 text-left">
                                                         Title

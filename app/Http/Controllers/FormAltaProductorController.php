@@ -625,10 +625,27 @@ class FormAltaProductorController extends Controller
 	 */
 	public function index()
 	{
-		//
-		$borradores = FormAltaProductor::all();
+		//filtro por autoridad minera o autoridad
+		//pregunto si soy admin
+		$soy_administrador = false;
+		$soy_autoridad = false;
+		if(Auth::user()->hasRole('Administrador'))
+		{
+			$soy_administrador = true;
+			$borradores = FormAltaProductor::all();
+		}
+		elseif(Auth::user()->hasRole('Autoridad'))
+		{
+			//soy autoridad minera, entonces traigo todo de mi prov
+			$soy_autoridad = true;
+			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->provincia);
+		}
+		else{
+			//soy productor, entonces traigo solo mis borradores
+			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->provincia)->where('created_by', '=',Auth::user()->id );
+		}
 		//var_dump($formularios);die();
-		return Inertia::render('Productors/List', ['borradores' => $borradores]);
+		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador]);
 	}
 
 	/**
@@ -869,6 +886,14 @@ class FormAltaProductorController extends Controller
 			if($objeto->resolucion_concesion_minera != null)
 			$objeto->resolucion_concesion_minera = "http://localhost:8000/".str_replace("public","storage",$objeto->resolucion_concesion_minera);
 		
+				
+		if($objeto->titulo_contrato_posecion != null)
+		$objeto->titulo_contrato_posecion = "http://localhost:8000/".str_replace("public","storage",$objeto->titulo_contrato_posecion);
+	
+
+		if($objeto->plano_inmueble != null)
+		$objeto->plano_inmueble = "http://localhost:8000/".str_replace("public","storage",$objeto->plano_inmueble);
+	
 		return $objeto;
 	}
 	public function create()
@@ -882,7 +907,7 @@ class FormAltaProductorController extends Controller
 		$minerales_asociados = Minerales_Borradores::all();
 		
         //var_dump($minerales_asociados);die();
-		return Inertia::render('Productors/Form',['productor' => $productor, 'lista_minerales_cargados' => $minerales_asociados]);
+		return Inertia::render('Productors/Form',['productor' => $productor, 'lista_minerales_cargados' => $minerales_asociados, 'soy_autoridad' => false, 'soy_administrador' => false]);
 	}
 
 	/**
@@ -926,8 +951,32 @@ class FormAltaProductorController extends Controller
 	{
 		// dd(Auth::user());
 		dd(Auth::user()->hasRole('Administrador'));
+		//dd(Auth::user()->hasRole('Administrador'));
+
+		//empiezo sin poder entrar
+		$entro = false;
+
+		//filtro por autoridad minera o autoridad
+		//pregunto si soy admin
+		if(Auth::user()->hasRole('Administrador'))
+		{
+			$soy_administrador = true;
+			$entro = true;
+		}
+		elseif(Auth::user()->hasRole('Autoridad'))
+		{
+			//soy autoridad minera, entonces traigo todo de mi prov
+			$soy_autoridad_minera = true;
+			$entro = true;
+		}
+		else{
+			//soy productor, entonces traigo solo mis borradores
+			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->provincia)->where('created_by', '=',Auth::user()->id );
+			$entro = true;
+		}
+
 		
-		$soy_autoridad_minera = true;
+		/*$soy_autoridad_minera = true;
 		if(Auth::user()->id == 1)
 			$entro = true;
 		elseif($soy_autoridad_minera)
@@ -942,7 +991,7 @@ class FormAltaProductorController extends Controller
 				$entro = false;
 			}
 		}
-		$entro= false;
+		$entro= true;*/
 		//dd($entro);
 		if($entro)
 		{
@@ -958,7 +1007,7 @@ class FormAltaProductorController extends Controller
 			$datos_creador = User::find($borradores->created_by);
 			
 
-			// var_dump($datos_creador->name);die();
+			//var_dump($borradores->created_by);die();
 
 
 			if(is_null($borradores->razon_social_correcto)) 
@@ -2476,14 +2525,13 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->cuit= $request->cuit;
 				$formulario_provisorio->numeroproductor = $request->numeroproductor;
 				$formulario_provisorio->tiposociedad = $request->tiposociedad;
-
-				if($request->constaciasociedad != null || $request->constaciasociedad != '')
+				if(($request->constaciasociedad != 'null') && ($request->constaciasociedad != null || $request->constaciasociedad != ''))
 				{
 					$contents = file_get_contents($request->constaciasociedad->path());
 					$formulario_provisorio->constaciasociedad =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constaciasociedad);
 				}
 				else $formulario_provisorio->constaciasociedad =null;
-				if($request->inscripciondgr != null || $request->inscripciondgr != '')
+				if(($request->constaciasociedad != 'null') && ($request->inscripciondgr != null || $request->inscripciondgr != ''))
 				{
 					$contents = file_get_contents($request->inscripciondgr->path());
 					$formulario_provisorio->inscripciondgr =  Storage::put('public/files_formularios'.'/'.$request->id, $request->inscripciondgr);
@@ -2492,11 +2540,14 @@ class FormAltaProductorController extends Controller
 
 
 				
-				$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
+				//$formulario_provisorio->constaciasociedad_correcto = $request->constaciasociedad_correcto;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->estado = "borrador";
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->created_by = Auth::user()->id;
+
+				$formulario_provisorio->provincia = Auth::user()->provincia;
 
 				$formulario_provisorio->save();
 				return response()->json($formulario_provisorio->id);
@@ -2690,7 +2741,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_by = Auth::user()->id;
 
 				$formulario_provisorio->save();
-				return response()->json("se actualizaron los datos codsadsadsarrectamente, siendo un productor");
+				return response()->json("se actualizaron los datos correctamente");
 			}
 			
 		}
@@ -3205,6 +3256,8 @@ class FormAltaProductorController extends Controller
 				//var_dump($request->resolucion_concesion_minera);die();
 
 				if(
+					($request->resolucion_concesion_minera != 'null')
+					&&
 					($request->resolucion_concesion_minera != null)
 					&&
 					($request->resolucion_concesion_minera != '')
@@ -3215,6 +3268,37 @@ class FormAltaProductorController extends Controller
 					$contents = file_get_contents($request->resolucion_concesion_minera->path());
 					$formulario_provisorio->resolucion_concesion_minera =  Storage::put('public/files_formularios'.'/'.$request->id, $request->resolucion_concesion_minera);
 				}
+
+				if(
+					($request->titulo_contrato_posecion != 'null')
+					&&
+					($request->titulo_contrato_posecion != null)
+					&&
+					($request->titulo_contrato_posecion != '')
+					&&
+					(is_object($request->titulo_contrato_posecion)) 
+				)
+				{
+					$contents = file_get_contents($request->titulo_contrato_posecion->path());
+					$formulario_provisorio->titulo_contrato_posecion =  Storage::put('public/files_formularios'.'/'.$request->id, $request->titulo_contrato_posecion);
+				}
+
+
+
+				if(
+					($request->plano_inmueble != 'null')
+					&&
+					($request->plano_inmueble != null)
+					&&
+					($request->plano_inmueble != '')
+					&&
+					(is_object($request->plano_inmueble)) 
+				)
+				{
+					$contents = file_get_contents($request->plano_inmueble->path());
+					$formulario_provisorio->plano_inmueble =  Storage::put('public/files_formularios'.'/'.$request->id, $request->plano_inmueble);
+				}
+
 				//$formulario_provisorio->titulo_contrato_posecion = $request->titulo_contrato_posecion;
 				//$formulario_provisorio->resolucion_concesion_minera = $request->resolucion_concesion_minera;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
