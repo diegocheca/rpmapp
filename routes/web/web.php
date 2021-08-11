@@ -167,7 +167,8 @@ Route::resource('products', ProductController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formulario"])->name('abrir-formulario');
-Route::get('/pdf-formulario-alta/{id}', [FormAltaProductorController::class, "ejemplo_pdf_prueba"])->name('pdf-formulario-alta');
+
+Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
 
 
 //direcciones de formularios

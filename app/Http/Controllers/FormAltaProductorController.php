@@ -1944,15 +1944,13 @@ class FormAltaProductorController extends Controller
     }
 
     
-    public function ejemplo_pdf_prueba($id){
+    public function formulario_alta_pdf($id){
     	//$email  = "ochamplin@gmail.com";
-		dd("El Id enviado en el parametro es: ".$id);
     	date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select('*')
 		->where('id', '=',$id)->first();
 		if($formulario_provisorio != null)
 		{
-			dd("Encontró datos");
 			//modifico la path de los archivos
 			if($formulario_provisorio->inscripciondgr != null)
 				$formulario_provisorio->inscripciondgr = "si posee";
@@ -1978,7 +1976,7 @@ class FormAltaProductorController extends Controller
             	'title' => 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94',
             	'date_generado' => date('d/m/Y'),
             	//1
-            	'razon_social' =>  $formulario_provisorio->razon_social,
+            	'razon_social' =>  $formulario_provisorio->razonsocial,
 				'ciut' =>  $formulario_provisorio->cuit,
             	'numeroproductor' => $formulario_provisorio->numeroproductor,
             	'tiposociedad' => $formulario_provisorio->tiposociedad,
@@ -2039,7 +2037,7 @@ class FormAltaProductorController extends Controller
 				//7
 				'updated_at' => $formulario_provisorio->updated_at ,
 			];
-        	var_dump($data);
+        	//var_dump($data);
 			//die();
         	$pdf = PDF::loadView('pdfs.formulario_inscripcion_productor', $data);
         	//return $pdf->download('formulario_'.$formulario_provisorio->id.'.pdf');
@@ -2047,8 +2045,8 @@ class FormAltaProductorController extends Controller
         }
         else
 		{
-			dd("LA CONSULTA NO TRAE RESULTADOS") ;
-			response()->json("error en el email");
+			//dd("LA CONSULTA NO TRAE RESULTADOS") ;
+			response()->json("Error en el id");
 		}
     }
     
