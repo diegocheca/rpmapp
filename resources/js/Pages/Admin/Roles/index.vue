@@ -18,7 +18,7 @@
             </h1>
             <div class="py-12">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div class="overflow-hidden shadow-xl sm:rounded-lg">
+                    <div class="overflow-hidden shadow-xl sm:rounded-md">
                         <inertia-link
                             align="right"
                             v-if="hasAnyPermission(['admin.roles.create'])"
@@ -35,6 +35,7 @@
                                 rounded
                             "
                             type="button"
+                            as="button"
                         >
                             <svg
                                 aria-hidden="true"
@@ -55,7 +56,7 @@
 
                         <table
                             class="
-                                rounded-t-lg
+                                rounded-t-md
                                 mt-5
                                 min-w-full
                                 mx-auto
@@ -204,7 +205,7 @@
                                                 font-semibold
                                                 py-2
                                                 px-4
-                                                rounded-lg
+                                                rounded-sm
                                                 shadow-md
                                                 hover:bg-purple-700
                                                 focus:outline-none
@@ -214,6 +215,7 @@
                                                 focus:ring-offset-purple-200
                                             "
                                             type="button"
+                                            as="button"
                                         >
                                             Editar
                                         </inertia-link>
@@ -232,13 +234,14 @@
                                                 )
                                             "
                                             class="
+                                                ml-1
                                                 flex-shrink-0
                                                 bg-pink-500
                                                 text-white text-base
                                                 font-semibold
                                                 py-2
                                                 px-4
-                                                rounded-lg
+                                                rounded-sm
                                                 shadow-md
                                                 hover:bg-pink-700
                                                 focus:outline-none

@@ -360,7 +360,7 @@ export default {
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style src="vue-multiselect/dist/vue-multiselect.css" scoped></style>
 <style scoped>
 input:checked ~ .dot {
     transform: translateX(100%);
