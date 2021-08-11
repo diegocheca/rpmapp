@@ -389,26 +389,27 @@
                 </div>
             </div>
             <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <InputFileGenerico 
-                    v-if="form_pagina.categoria === 'tercera'"
-                        v-bind:valor_input_props="$props.plano_inmueble"
-                        v-bind:valor_input_validacion="$props.plano_inmueble_validacion"
-                        v-bind:evualacion_correcto="$props.plano_inmueble_correcto"
-                        v-bind:valor_obs="$props.obs_plano_inmueble"
-                        v-bind:valor_valido_obs="$props.obs_plano_inmueble_valido"
+                <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+                    <SubirArchivo 
+                        v-if="form_pagina.categoria === 'tercera'"
+                        v-bind:valor_input_props="form_pagina.plano_inmueble"
+                        v-bind:valor_input_validacion="form_pagina.plano_inmueble_validacion"
+                        v-bind:evualacion_correcto="form_pagina.plano_inmueble_correcto"
+                        v-bind:valor_obs="form_pagina.obs_plano_inmueble"
+                        v-bind:valor_valido_obs="form_pagina.obs_plano_inmueble_valido"
                         v-bind:evaluacion="autoridad_minera"
-                        v-bind:testing = "mostrar_testing"
+                        v-bind:testing ="mostrar_testing"
                         v-bind:label="'Plano Inmueble (3° categoria) (*)'"
-                        v-bind:icon="'http://localhost:8000/svg/pdf.svg'"
                         v-on:changevalido="update_plano_inmueble_valido($event)"
                         v-on:changecorrecto="update_plano_inmueble_correcto($event)"
                         v-on:changeobs="update_obs_plano_inmueble($event)"
                         v-on:changeobsvalido="update_obs_plano_inmueble_valido($event)"
                         v-on:changevalor="update_valor_plano_inmueble($event)"
-
+                        v-on:cambioarchivo="cambio_el_archivo_inmueble($event)"
                     >
-                    </InputFileGenerico>
+                    </SubirArchivo>
+
+                    
                     <div v-show="ayuda_local" >
                         <br>
                         <div  class="
@@ -438,26 +439,29 @@
                 </div>
 
             </div>
+            <br>
+            <br>
             <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <InputFileGenerico
-                    v-if="form_pagina.categoria === 'tercera'"
-                        v-bind:valor_input_props="$props.titulo_contrato_posecion"
-                        v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
-                        v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
-                        v-bind:valor_obs="$props.obs_titulo_contrato_posecion"
-                        v-bind:valor_valido_obs="$props.obs_titulo_contrato_posecion_valido"
+                <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+                    <SubirArchivo 
+                        v-if="form_pagina.categoria === 'tercera'"
+                        v-bind:valor_input_props="form_pagina.titulo_contrato_posecion"
+                        v-bind:valor_input_validacion="form_pagina.titulo_contrato_posecion_validacion"
+                        v-bind:evualacion_correcto="form_pagina.titulo_contrato_posecion_correcto"
+                        v-bind:valor_obs="form_pagina.obs_titulo_contrato_posecion"
+                        v-bind:valor_valido_obs="form_pagina.obs_titulo_contrato_posecion_valido"
                         v-bind:evaluacion="autoridad_minera"
-                        v-bind:testing = "mostrar_testing"
+                        v-bind:testing ="mostrar_testing"
                         v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
-                        v-bind:icon="'http://localhost:8000/svg/pdf.svg'"
                         v-on:changevalido="update_titulo_contrato_valido($event)"
                         v-on:changecorrecto="update_titulo_contrato_correcto($event)"
                         v-on:changeobs="update_obs_titulo_contrato($event)"
                         v-on:changeobsvalido="update_obs_titulo_contrato_valido($event)"
                         v-on:changevalor="update_valor_titulo_contrato($event)"
+                        v-on:cambioarchivo="cambio_el_archivo_titulo($event)"
                     >
-                    </InputFileGenerico>
+                    </SubirArchivo>
+                    
                     <div v-show="ayuda_local" >
                         <br>
                         <div  class="
@@ -713,10 +717,13 @@ export default {
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
-        mostrar_testing: false,
+        mostrar_testing: this.$props.testing,
         autoridad_minera:this.$props.evaluacion,
         ayuda_local: false,
         resolucion_local: '',
+        inmueble_local: '',
+        titulo_local: '',
+
         lista_de_minerales:[],
 
         
@@ -749,6 +756,11 @@ export default {
             obs_descripcion_mina_valido: this.$props.obs_descripcion_mina_valido,
 
 
+            categoria: this.$props.categoria,
+            categoria_validacion: this.$props.categoria_validacion,
+            categoria_correcto: this.$props.categoria_correcto,
+            obs_categoria: this.$props.obs_categoria,
+            obs_categoria_valido: this.$props.obs_categoria_valido,
 
             resolucion_concesion_minera : this.$props.resolucion_concesion_minera,
             resolucion_concesion_minera_validacion: this.$props.resolucion_concesion_minera_validacion,
@@ -933,6 +945,16 @@ export default {
             this.resolucion_local = newValue;
             this.form_pagina.resolucion_concesion_minera = this.resolucion_local;
         },
+
+        cambio_el_archivo_inmueble(newValue){
+            this.inmueble_local = newValue;
+            this.form_pagina.plano_inmueble = this.inmueble_local;
+        },
+        cambio_el_archivo_titulo(newValue){
+            this.titulo_local = newValue;
+            this.form_pagina.titulo_contrato_posecion = this.titulo_local;
+        },
+
 
 
 
