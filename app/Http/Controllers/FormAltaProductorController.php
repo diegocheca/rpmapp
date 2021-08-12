@@ -954,30 +954,252 @@ class FormAltaProductorController extends Controller
 	 */
 	public function edit($id)
 	{
+		//seteo que puedo editar y que no
+		$disables = [
+			"razon_social" => false,
+			"razon_social_correccion" => false,
+			"razon_social_observacion" => false,
+			"email" => false,
+			"email_correccion" => false,
+			"email_observacion" => false,
+			"cuit" => false,
+			"cuit_correccion" => false,
+			"cuit_observacion" => false,
+			"num_prod" => false,
+			"num_prod_correccion" => false,
+			"num_prod_observacion" => false,
+			"tipo_sociedad" => false,
+			"tipo_sociedad_correccion" => false,
+			"tipo_sociedad_observacion" => false,
+			"inscripcion_dgr" => false,
+			"inscripcion_dgr_correccion" => false,
+			"inscripcion_dgr_observacion" => false,
+			"constancia_sociedad" => false,
+			"cosntancia_sociedad_correccion" => false,
+			"cosntancia_sociedad_observacion" => false,
+			"legal_calle" => false,
+			"legal_calle_correccion" => false,
+			"legal_calle_observacion" => false,
+			"legal_calle_num" => false,
+			"legal_calle_num_correccion" => false,
+			"legal_calle_num_observacion" => false,
+			"legal_telefono" => false,
+			"legal_telefono_correccion" => false,
+			"legal_telefono_observacion" => false,
+			"legal_prov" => false,
+			"legal_prov_correccion" => false,
+			"legal_prov_observacion" => false,
+			"legal_dpto" => false,
+			"legal_dpto_correccion" => false,
+			"legal_dpto_observacion" => false,
+			"legal_localidad" => false,
+			"legal_localidad_correccion" => false,
+			"legal_localidad_observacion" => false,
+			"legal_cod_pos" => false,
+			"legal_cod_pos_correccion" => false,
+			"legal_cod_pos_observacion" => false,
+			"legal_otro" => false,
+			"legal_otro_correccion" => false,
+			"legal_otro_observacion" => false,
+			"administracion_calle" => false,
+			"administracion_correccion" => false,
+			"administracion_observacion" => false,
+			"administracion_calle_num" => false,
+			"administracion_calle_num_correccion" => false,
+			"administracion_calle_num_observacion" => false,
+			"administracion_telefono" => false,
+			"administracion_telefono_correccion" => false,
+			"administracion_telefono_observacion" => false,
+			"administracion_prov" => false,
+			"administracion_prov_correccion" => false,
+			"administracion_prov_observacion" => false,
+			"administracion_dpto" => false,
+			"administracion_dpto_correccion" => false,
+			"administracion_dpto_observacion" => false,
+			"administracion_localidad" => false,
+			"administracion_localidad_correccion" => false,
+			"administracion_localidad_observacion" => false,
+			"administracion_cod_pos" => false,
+			"administracion_cod_pos_correccion" => false,
+			"administracion_cod_pos_observacion" => false,
+			"administracion_otro" => false,
+			"administracion_otro_correccion" => false,
+			"administracion_otro_observacion" => false,
+
+
+			"num_exp" => false,
+			"num_exp_correccion" => false,
+			"num_exp_observacion" => false,
+			"distrito" => false,
+			"distrito_correccion" => false,
+			"distrito_observacion" => false,
+			"categoria" => false,
+			"categoria_correccion" => false,
+			"categoria_observacion" => false,
+			"nombre_mina" => false,
+			"nombre_mina_correccion" => false,
+			"nombre_mina_observacion" => false,
+			"descripcion_mina" => false,
+			"descripcion_correccion" => false,
+			"descripcion_observacion" => false,
+			"resolucion_concesion" => false,
+			"resolucion_concesion_correccion" => false,
+			"resolucion_concesion_observacion" => false,
+			"plano_mina" => false,
+			"plano_mina_correccion" => false,
+			"plano_mina_observacion" => false,
+			"minerales" => false,
+			"minerales_correccion" => false,
+			"minerales_observacion" => false,
+			"owner" => false,
+			"owner_correccion" => false,
+			"owner_observacion" => false,
+			"arrendatario" => false,
+			"arrendatario_correccion" => false,
+			"arrendatario_observacion" => false,
+			"concesionario" => false,
+			"concesionario_correccion" => false,
+			"concesionario_observacion" => false,
+			"sustancias" => false,
+			"sustancias_correccion" => false,
+			"sustancias_observacion" => false,
+			"otros" => false,
+			"otros_correccion" => false,
+			"otros_observacion" => false,
+			"contancias_canon" => false,
+			"constancias_canon_correccion" => false,
+			"constancias_canon_observacion" => false,
+			"dia" => false,
+			"dia_correccion" => false,
+			"dia_observacion" => false,
+			"iia" => false,
+			"iia_correccion" => false,
+			"iia_observacion" => false,
+			"actividades" => false,
+			"actividades_correccion" => false,
+			"actividades_observacion" => false,
+			"acciones" => false,
+			"acciones_correccion" => false,
+			"acciones_observacion" => false,
+			"fecha_inicio" => false,
+			"fecha_inicio_correccion" => false,
+			"fecha_inicio_observacion" => false,
+			"fecha_fin" => false,
+			"fecha_fin_correccion" => false,
+			"fecha_fin_observacion" => false,
+
+
+			"ubicacion_prov" => false,
+			"ubicacion_prov_correccion" => false,
+			"ubicacion_prov_observacion" => false,
+			"ubicacion_dpto" => false,
+			"ubicacion_dpto_correccion" => false,
+			"ubicacion_dpto_observacion" => false,
+			"ubicacion_localidad" => false,
+			"ubicacion_localidad_correccion" => false,
+			"ubicacion_localidad_observacion" => false,
+			"ubicacion_sistema" => false,
+			"ubicacion_sistema_correccion" => false,
+			"ubicacion_sistema_observacion" => false,
+			"ubicacion_latitud" => false,
+			"ubicacion_latitud_correccion" => false,
+			"ubicacion_latitud_observacion" => false,
+			"ubicacion_long" => false,
+			"ubicacion_long_correccion" => false,
+			"ubicacion_long_observacion" => false,
+			"ubicacion_estado" => false,
+			"ubicacion_estado_correccion" => false,
+			"ubicacion_estado_observacion" => false,
+		];
+		$mostrar = [
+			"razon_social" => false,
+			"email" => false,
+			"cuit" => false,
+			"num_prod" => false,
+			"tipo_sociedad" => false,
+			"inscripcion_dgr" => false,
+			"constancia_sociedad" => false,
+			"legal_calle" => false,
+			"legal_calle_num" => false,
+			"legal_telefono" => false,
+			"legal_prov" => false,
+			"legal_dpto" => false,
+			"legal_localidad" => false,
+			"legal_cod_pos" => false,
+			"legal_otro" => false,
+			"administracion_calle" => false,
+			"administracion_calle_num" => false,
+			"administracion_telefono" => false,
+			"administracion_prov" => false,
+			"administracion_dpto" => false,
+			"administracion_localidad" => false,
+			"administracion_cod_pos" => false,
+			"administracion_otro" => false,
+			"num_exp" => false,
+			"distrito" => false,
+			"categoria" => false,
+			"nombre_mina" => false,
+			"descripcion_mina" => false,
+			"resolucion_concesion" => false,
+			"plano_mina" => false,
+			"minerales" => false,
+			"owner" => false,
+			"arrendatario" => false,
+			"concesionario" => false,
+			"sustancias" => false,
+			"otros" => false,
+			"contancias_canon" => false,
+			"dia" => false,
+			"iia" => false,
+			"actividades" => false,
+			"acciones" => false,
+			"fecha_inicio" => false,
+			"fecha_fin" => false,
+			"ubicacion_prov" => false,
+			"ubicacion_dpto" => false,
+			"ubicacion_localidad" => false,
+			"ubicacion_sistema" => false,
+			"ubicacion_latitud" => false,
+			"ubicacion_long" => false,
+			"ubicacion_estado" => false,
+
+			"boton_actualizar" => true,
+		];
+
 		// dd(Auth::user());
-		dd(Auth::user()->hasRole('Administrador'));
+		//dd(Auth::user()->hasRole('Administrador'));
 		//dd(Auth::user()->hasRole('Administrador'));
 
 		//empiezo sin poder entrar
 		$entro = false;
+		$soy_administrador = false;
+		$soy_autoridad_minera = false;
+		$soy_productor = false;
 
 		//filtro por autoridad minera o autoridad
 		//pregunto si soy admin
 		if(Auth::user()->hasRole('Administrador'))
 		{
 			$soy_administrador = true;
+			$soy_autoridad_minera = true;
+			$soy_productor = true;
 			$entro = true;
 		}
 		elseif(Auth::user()->hasRole('Autoridad'))
 		{
 			//soy autoridad minera, entonces traigo todo de mi prov
+			$soy_administrador = false;
 			$soy_autoridad_minera = true;
+			$soy_productor = false;
 			$entro = true;
 		}
 		else{
 			//soy productor, entonces traigo solo mis borradores
 			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id );
 			$entro = true;
+			$soy_administrador = false;
+			$soy_autoridad_minera = false;
+			$soy_productor = true;
 		}
 
 		
@@ -997,7 +1219,7 @@ class FormAltaProductorController extends Controller
 			}
 		}
 		$entro= true;*/
-		//dd($entro);
+		//dd($soy_administrador,$soy_autoridad_minera);
 		if($entro)
 		{
 			
@@ -1113,7 +1335,7 @@ class FormAltaProductorController extends Controller
 
 			//dd($borradores->categoria);
 
-			return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador]);
+			return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador,"soy_administrador" => $soy_administrador,"soy_autoridad_minera" => $soy_autoridad_minera, "soy_productor" => $soy_productor]);
 		}
 		else{
 			//dd("acad");

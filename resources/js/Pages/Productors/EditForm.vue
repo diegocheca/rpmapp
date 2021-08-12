@@ -165,6 +165,10 @@
 						<!- bounce ->
 						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
 					</div>-->
+					
+					<h2>hola </h2>
+					auto:{{evaluacion_global}}
+					admin: {{testing_global}}
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -874,6 +878,10 @@ export default {
 		"productor",
 		"lista_minerales_cargados",
 		"creado",
+		"soy_administrador",
+		"soy_autoridad_minera",
+		"soy_productor",
+
 		],
 	data() {
 		return {
@@ -883,8 +891,8 @@ export default {
 			AvisoAprueba: false,
 			modal_tittle_apro: '',
 			modal_body_apro: '',
-			evaluacion_global: false,
-			testing_global: false,
+			evaluacion_global: this.$props.soy_autoridad_minera,
+			testing_global: this.$props.soy_administrador,
 			mostrar_modal_datos_ya_guardados:false,
 
 
