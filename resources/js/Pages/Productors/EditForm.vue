@@ -168,7 +168,7 @@
 					
 					<h2>hola </h2>
 					auto:{{evaluacion_global}}
-					admin: {{testing_global}}
+					admin: {{$props.disables.ubicacion_prov}}
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					:link_volver="route('formulario-alta.index')"
@@ -181,42 +181,78 @@
 					:razon_social_correcto="form.razon_social_correcto"
 					:obs_razon_social="form.obs_razon_social"
 					:obs_razon_social_valido="form.obs_razon_social_valido"
+					:mostrar_razon_social="$props.mostrar.razon_social"
+					:desactivar_razon_social="$props.disables.razon_social"
+					:mostrar_razon_social_correccion="$props.mostrar.razon_social_correccion"
+					:desactivar_razon_social_correccion="$props.disables.razon_social_correccion"
 					:email="form.email"
 					:email_valido="form.email_valido"
 					:email_correcto="form.email_correcto"
 					:obs_email="form.obs_email"
 					:obs_email_valido="form.obs_email_valido"
+					:mostrar_email="$props.mostrar.email"
+					:desactivar_email="$props.disables.email"
+					:mostrar_email_correcion="$props.mostrar.email_correcion"
+					:desactivar_email_correcion="$props.disables.email_correcion"
 					:cuit="form.cuit"
 					:cuit_valido="form.cuit_valido"
 					:cuit_correcto="form.cuit_correcto"
 					:obs_cuit="form.obs_cuit"
 					:obs_cuit_valido="form.obs_cuit_valido"
+					:mostrar_cuit="$props.mostrar.cuit"
+					:desactivar_cuit="$props.disables.cuit"
+					:mostrar_cuit_correcion="$props.mostrar.cuit_correcion"
+					:desactivar_cuit_correcion="$props.disables.cuit_correcion"
+					
 					:numeroproductor="form.numeroproductor"
 					:numeroproductor_valido="form.numeroproductor_valido"
 					:numeroproductor_correcto="form.numeroproductor_correcto"
 					:obs_numeroproductor="form.obs_numeroproductor"
 					:obs_numeroproductor_valido="form.obs_numeroproductor_valido"
+					:mostrar_num_prod="$props.mostrar.num_prod"
+					:desactivar_num_prod="$props.disables.num_prod"
+					:mostrar_num_prod_correcion="$props.mostrar.num_prod_correcion"
+					:desactivar_num_prod_correcion="$props.disables.num_prod_correcion"
+					
 					:tiposociedad="form.tiposociedad"
 					:tiposociedad_valido="form.tiposociedad_valido"
 					:tiposociedad_correcto="form.tiposociedad_correcto"
 					:obs_tiposociedad="form.obs_tiposociedad"
 					:obs_tiposociedad_valido="form.obs_tiposociedad_valido"
+					:mostrar_tipo_sociedad="$props.mostrar.tipo_sociedad"
+					:desactivar_tipo_sociedad="$props.disables.tipo_sociedad"
+					:mostrar_tipo_sociedad_correcion="$props.mostrar.num_prod_correcion"
+					:desactivar_tipo_sociedad_correcion="$props.disables.num_prod_correcion"
+					
 					:inscripciondgr="form.inscripciondgr"
 					:inscripciondgr_valido="form.inscripciondgr_valido"
 					:inscripciondgr_correcto="form.inscripciondgr_correcto"
 					:obs_inscripciondgr="form.obs_inscripciondgr"
 					:obs_inscripciondgr_valido="form.obs_inscripciondgr_valido"
+					:mostrar_inscripcion_dgr="$props.mostrar.inscripcion_dgr"
+					:desactivar_inscripcion_dgr="$props.disables.inscripcion_dgr"
+					:mostrar_inscripcion_dgr_correcion="$props.mostrar.inscripcion_dgr_correcion"
+					:desactivar_inscripcion_dgr_correcion="$props.disables.inscripcion_dgr_correcion"
+					
+
 					:constanciasociedad="form.constaciasociedad"
 					:constanciasociedad_valido="form.constaciasociedad_valido"
 					:constanciasociedad_correcto="form.constaciasociedad_correcto"
 					:obs_constanciasociedad="form.obs_constaciasociedad"
 					:obs_constanciasociedad_valido="form.obs_constaciasociedad_valido"
+					:mostrar_constancia_sociedad="$props.mostrar.constancia_sociedad"
+					:desactivar_iconstancia_sociedad="$props.disables.constancia_sociedad"
+					:mostrar_constancia_sociedad_correcion="$props.mostrar.constancia_sociedad_correcion"
+					:desactivar_constancia_sociedad_correcion="$props.disables.constancia_sociedad_correcion"
+					
 
 
 					:evaluacion ="evaluacion_global"
 					:testing ="testing_global"
 					
 					:id="$props.productor.id"
+
+
 
 					v-on:ChangeRazonSocialEvaluacion="update_razon_social_evaluacion($event)"
 					v-on:ChangeCuitEvaluacion="update_cuit_evaluacion($event)"
@@ -881,6 +917,8 @@ export default {
 		"soy_administrador",
 		"soy_autoridad_minera",
 		"soy_productor",
+		"disables",
+		"mostrar",
 
 		],
 	data() {

@@ -1026,7 +1026,6 @@ class FormAltaProductorController extends Controller
 			"administracion_otro_correccion" => false,
 			"administracion_otro_observacion" => false,
 
-
 			"num_exp" => false,
 			"num_exp_correccion" => false,
 			"num_exp_observacion" => false,
@@ -1087,7 +1086,6 @@ class FormAltaProductorController extends Controller
 			"fecha_fin" => false,
 			"fecha_fin_correccion" => false,
 			"fecha_fin_observacion" => false,
-
 
 			"ubicacion_prov" => false,
 			"ubicacion_prov_correccion" => false,
@@ -1335,7 +1333,13 @@ class FormAltaProductorController extends Controller
 
 			//dd($borradores->categoria);
 
-			return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador,"soy_administrador" => $soy_administrador,"soy_autoridad_minera" => $soy_autoridad_minera, "soy_productor" => $soy_productor]);
+			return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador,
+			"soy_administrador" => $soy_administrador,
+			"soy_autoridad_minera" => $soy_autoridad_minera,
+			"soy_productor" => $soy_productor,
+			"disables" => $disables,
+			"mostrar" => $mostrar,
+		]);
 		}
 		else{
 			//dd("acad");
