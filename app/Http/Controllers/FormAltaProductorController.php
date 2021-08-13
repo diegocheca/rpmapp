@@ -1115,7 +1115,7 @@ class FormAltaProductorController extends Controller
 			"num_prod_correccion" => false,
 			"tipo_sociedad" => false,
 			"tipo_sociedad_correccion" => false,
-			"tipo_sociedad_observacion" => false,
+			"tipo_sociedad_observaciono" => false,
 			"inscripcion_dgr" => false,
 			"inscripcion_dgr_correccion" => false,
 			"constancia_sociedad" => false,
