@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
 
+
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
@@ -37,6 +38,7 @@ class CreateNewUser implements CreatesNewUsers
                 'id_provincia' => $input['id_provincia'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
+                $user->assignRole('Productor');
                 $this->createTeam($user);
             });
         });

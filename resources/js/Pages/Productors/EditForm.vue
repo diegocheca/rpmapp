@@ -862,8 +862,8 @@ export default {
 			AvisoAprueba: false,
 			modal_tittle_apro: '',
 			modal_body_apro: '',
-			evaluacion_global: false,
-			testing_global: false,
+			evaluacion_global: true,
+			testing_global: true,
 
 
 

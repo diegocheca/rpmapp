@@ -950,7 +950,7 @@ class FormAltaProductorController extends Controller
 	public function edit($id)
 	{
 		// dd(Auth::user());
-		dd(Auth::user()->hasRole('Administrador'));
+		// dd(Auth::user()->hasRole('Administrador'));
 		//dd(Auth::user()->hasRole('Administrador'));
 
 		//empiezo sin poder entrar
