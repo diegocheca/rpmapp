@@ -65,9 +65,12 @@
             <br>
             <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            {{$props.razon_social_correcto}}
-            {{form_pagina.razon_social_correcto}}
+            {{$props.mostrar_razon_social}}
+            {{$props.desactivar_razon_social}}
+            {{$props.mostrar_razon_social_correccion}}
+            {{$props.desactivar_razon_social_correccion}}
                 <InputRazonSocial 
+                    v-if="$props.mostrar_razon_social"
                     v-bind:razon_social="form_pagina.razon_social" 
                     v-bind:razon_social_valido="form_pagina.razon_social_valido"
                     v-bind:razon_social_correcto="form_pagina.razon_social_correcto"
@@ -76,6 +79,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Razon social'"
                     v-bind:testing="mostrar_testing"
+                    v-bind:razonsocial_disable="$props.desactivar_razon_social"
+                    v-bind:razonsocial_correccion_mostrar="$props.mostrar_razon_social_correccion"
+                    v-bind:razonsocial_correccion_desactivar="$props.desactivar_razon_social_correccion"
+
                     v-on:changerazonsocialvalido="update_razon_social_valido($event)"
                     v-on:changerazonsocialcorrecto="update_razon_social_correcto($event)"
                     v-on:changeobsrazonsocial="update_obs_razon_social($event)"
@@ -110,6 +117,7 @@
             </div>
             <div class="w-full md:w-1/2 px-3">
                 <InputEmail
+                    v-if="$props.mostrar_email"
                     v-bind:email="form_pagina.email"
                     v-bind:email_valido="form_pagina.email_valido"
                     v-bind:email_correcto="form_pagina.email_correcto"
@@ -118,6 +126,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Email'"
                     v-bind:testing="mostrar_testing"
+                    v-bind:email_disable="$props.desactivar_email"
+                    v-bind:email_correccion_mostrar="$props.mostrar_email_correccion"
+                    v-bind:email_correccion_desactivar="$props.desactivar_email_correccion"
+
                     v-on:changeemailvalido="update_email_valido($event)"
                     v-on:changeemailcorrecto="update_email_correcto($event)"
                     v-on:changeobsemail="update_obs_email($event)"
@@ -155,6 +167,7 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputCuit
+                    v-if="$props.mostrar_cuit"
                     v-bind:cuit="form_pagina.cuit"
                     v-bind:cuit_valido="form_pagina.cuit_valido"
                     v-bind:cuit_correcto="form_pagina.cuit_correcto"
@@ -163,6 +176,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Cuit'"
                     v-bind:testing="mostrar_testing"
+                    v-bind:cuit_disable="$props.desactivar_cuit"
+                    v-bind:cuit_correccion_mostrar="$props.mostrar_cuit_correccion"
+                    v-bind:cuit_correccion_desactivar="$props.desactivar_cuit_correccion"
+
                     v-on:changecuitvalido="update_cuit_valido($event)"
                     v-on:changecuitcorrecto="update_cuit_correcto($event)"
                     v-on:changeobscuit="update_obs_cuit($event)"
@@ -195,6 +212,7 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputNumeroProductor
+                    v-if="$props.mostrar_num_prod"
                     v-bind:numeroproductor="form_pagina.numeroproductor"
                     v-bind:numeroproductor_valido="form_pagina.numeroproductor_valido"
                     v-bind:numeroproductor_correcto="form_pagina.numeroproductor_correcto"
@@ -203,6 +221,11 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Numero de Productor'"
                     v-bind:testing="mostrar_testing"
+                    v-bind:num_prod_disable="$props.desactivar_num_prod"
+                    v-bind:num_prod_correccion_mostrar="$props.mostrar_num_prod_correccion"
+                    v-bind:num_prod_correccion_desactivar="$props.desactivar_num_prod_correccion"
+
+
                     v-on:changenumprodvalido="update_num_prod_valido($event)"
                     v-on:changenumprodcorrecto="update_num_prod_correcto($event)"
                     v-on:changeobsnumprod="update_obs_num_prod($event)"
@@ -239,6 +262,7 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputTipoSociedad
+                    v-if="$props.mostrar_tipo_sociedad"
                     v-bind:tiposociedad="form_pagina.tiposociedad"
                     v-bind:tiposociedad_valido="form_pagina.tiposociedad_valido"
                     v-bind:tiposociedad_correcto="form_pagina.tiposociedad_correcto"
@@ -247,6 +271,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:label="'Tipo de Sociedad'"
                     v-bind:testing="mostrar_testing"
+                    v-bind:tipo_sociedad_disable="$props.desactivar_tipo_sociedad"
+                    v-bind:tipo_sociedad_correccion_mostrar="$props.mostrar_tipo_sociedad_correccion"
+                    v-bind:tipo_sociedad_correccion_desactivar="$props.desactivar_tipo_sociedad_correccion"
+
                     v-on:changetiposociedadvalido="update_tipo_sociedad_valido($event)"
                     v-on:changetiposociedadcorrecto="update_tipo_sociedad_correcto($event)"
                     v-on:changeobstiposociedad="update_obs_tipo_sociedad($event)"
@@ -284,6 +312,7 @@
             <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
+                    v-if="$props.mostrar_inscripcion_dgr"
                     v-bind:fileinput_valor="form_pagina.inscripciondgr"
                     v-bind:fileinput_valor_valido="form_pagina.inscripciondgr_valido"
                     v-bind:inscripciondgr_correcto="form_pagina.inscripciondgr_correcto"
@@ -293,6 +322,9 @@
                     v-bind:label="'Inscripción DGR'"
                     v-bind:testing="mostrar_testing"
                     v-bind:name_correcto="'inscripcion_correcto'"
+                    v-bind:inscripcion_disable="$props.desactivar_inscripcion_dgr"
+                    v-bind:inscripcion_correccion_mostrar="$props.mostrar_inscripcion_dgr_correccion"
+                    v-bind:inscripcion_correccion_desactivar="$props.desactivar_inscripcion_dgr_correccion"
 
                     v-on:changeinscripciondgrcorrecto="update_inscripcion_dgr_correcto($event)"
                     v-on:changeobsinscripciondgr="update_obs_inscripcion_dgr($event)"
@@ -331,6 +363,7 @@
          <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
+                    v-if="$props.mostrar_constancia_sociedad"
                     v-bind:fileinput_valor="form_pagina.constaciasociedad"
                     v-bind:fileinput_valor_valido="form_pagina.constanciasociedad_valido"
                     v-bind:inscripciondgr_correcto="form_pagina.constanciasociedad_correcto"
@@ -340,6 +373,10 @@
                     v-bind:label="'Constancia de sociedad'"
                     v-bind:testing="mostrar_testing"
                     v-bind:name_correcto="'constancia_correcto'"
+                    v-bind:inscripcion_disable="$props.desactivar_constancia_sociedad"
+                    v-bind:inscripcion_correccion_mostrar="$props.mostrar_constancia_sociedad_correccion"
+                    v-bind:inscripcion_correccion_desactivar="$props.desactivar_constancia_sociedad_correccion"
+
                     v-on:changeinscripciondgrcorrecto="update_constancia_sociedad_correcto($event)"
                     v-on:changeobsinscripciondgr="update_obs_constancia_sociedad($event)"
                     v-on:cambioarchivo="update_archivo_constancia($event)"
@@ -370,6 +407,8 @@
          <br><br>
          <div class="flex items-center justify-center">
             <BotonesPaginaUna 
+                v-if="$props.mostrar_boton_guardar_uno"
+
                 :link_volver="route('formulario-alta.index')"
                 :titulo_boton_volver="'volver'"
                 :titulo_boton_guardar="'Guardar Datos del Productor'"
@@ -415,6 +454,8 @@
                 :id="$props.id"
                 :testing ="mostrar_testing"
 
+                :desactivar_boton_guardar_uno="$props.desactivar_boton_guardar_uno"
+
                 v-on:CreeUnNuevoId="update_id_recien_creado($event)"
                 v-on:actualizarinscripcion="update_inscripcion($event)"
                 v-on:actualizaconstancia="update_constancia($event)"
@@ -459,36 +500,75 @@ export default {
         'razon_social_correcto',
         'obs_razon_social',
         'obs_razon_social_valido',
+        'mostrar_razon_social',
+        'desactivar_razon_social',
+        'mostrar_razon_social_correccion',
+        'desactivar_razon_social_correccion',
+					
+
         'email',
         'email_valido',
         'email_correcto',
         'obs_email',
         'obs_email_valido',
+        'mostrar_email',
+        'desactivar_email',
+        'mostrar_email_correccion',
+        'desactivar_email_correccion',
+
         'cuit',
         'cuit_valido',
         'cuit_correcto',
         'obs_cuit',
         'obs_cuit_valido',
+        'mostrar_cuit',
+        'desactivar_cuit',
+        'mostrar_cuit_correccion',
+        'desactivar_cuit_correccion',
+
         'numeroproductor',
         'numeroproductor_valido',
         'numeroproductor_correcto',
         'obs_numeroproductor',
         'obs_numeroproductor_valido',
+        'mostrar_num_prod',
+        'desactivar_num_prod',
+        'mostrar_num_prod_correccion',
+        'desactivar_num_prod_correccion',
+
         'tiposociedad',
         'tiposociedad_valido',
         'tiposociedad_correcto',
         'obs_tiposociedad',
         'obs_tiposociedad_valido',
+        'mostrar_tipo_sociedad',
+        'desactivar_tipo_sociedad',
+        'mostrar_tipo_sociedad_correccion',
+        'desactivar_tipo_sociedad_correccion',
+
         'inscripciondgr',
         'inscripciondgr_valido',
         'inscripciondgr_correcto',
         'obs_inscripciondgr',
         'obs_inscripciondgr_valido',
+        'mostrar_inscripcion_dgr',
+        'desactivar_inscripcion_dgr',
+        'mostrar_inscripcion_dgr_correccion',
+        'desactivar_inscripcion_dgr_correccion',
+
         'constanciasociedad',
         'constanciasociedad_valido',
         'constanciasociedad_correcto',
         'obs_constanciasociedad',
         'obs_constanciasociedad_valido',
+        'mostrar_constancia_sociedad',
+        'desactivar_constancia_sociedad',
+        'mostrar_constancia_sociedad_correccion',
+        'desactivar_constancia_sociedad_correccion',
+
+        'mostrar_boton_guardar_uno',
+        'desactivar_boton_guardar_uno',
+
 
         'evaluacion',
         'testing',

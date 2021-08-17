@@ -64,6 +64,11 @@
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <CaracterQueInvoca 
+
+
+
+                    v-if="$props.mostrar_owner"
+
                     v-bind:valor_input_props="form_pagina.owner"
                     v-bind:evualacion_correcto="form_pagina.owner_correcto"
                     v-bind:valor_obs="form_pagina.obs_owner"
@@ -77,6 +82,9 @@
                     v-bind:otro_input="false"
                     v-bind:name_correcion="'correcion_propietario'"
                     v-bind:name_checkbox="'check_propietario'"
+                    v-bind:desactivar_owner="$props.desactivar_owner"
+                    v-bind:mostrar_owner_correccion="$props.mostrar_owner_correccion"
+                    v-bind:desactivar_owner_correccion="$props.desactivar_owner_correccion"
                     v-on:changecorrecto="update_owner_correcto($event)"
                     v-on:changeobs="updateobs_owner($event)"
                     v-on:changeobsvalido="updateobs_owner_valido($event)"
@@ -113,6 +121,7 @@
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <CaracterQueInvoca 
+                v-if="$props.mostrar_arrendatario"
                     v-bind:valor_input_props="form_pagina.arrendatario"
                     v-bind:evualacion_correcto="form_pagina.arrendatario_correcto"
                     v-bind:valor_obs="form_pagina.obs_arrendatario"
@@ -126,6 +135,10 @@
                     v-bind:otro_input="false"
                     v-bind:name_correcion="'correcion_arrendatario'"
                     v-bind:name_checkbox="'check_arrendatario'"
+                    v-bind:desactivar_owner="$props.desactivar_arrendatario"
+                    v-bind:mostrar_owner_correccion="$props.mostrar_arrendatario_correccion"
+                    v-bind:desactivar_owner_correccion="$props.desactivar_arrendatario_correccion"
+                    
                     v-on:changecorrecto="update_arrendatario_correcto($event)"
                     v-on:changeobs="update_obs_arrendatario($event)"
                     v-on:changeobsvalido="update_obs_arrendatario_valido($event)"
@@ -162,6 +175,8 @@
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <div class="flex">
                     <CaracterQueInvoca 
+                        v-if="$props.mostrar_concesionario"
+
                         v-bind:valor_input_props="form_pagina.concesionario"
                         v-bind:evualacion_correcto="form_pagina.concesionario_correcto"
                         v-bind:valor_obs="form_pagina.obs_concesionario"
@@ -175,6 +190,10 @@
                         v-bind:otro_input="false"
                         v-bind:name_correcion="'correcion_concesionario'"
                         v-bind:name_checkbox="'check_concesionario'"
+                        v-bind:desactivar_owner="$props.desactivar_concesionario"
+                        v-bind:mostrar_owner_correccion="$props.mostrar_concesionario_correccion"
+                        v-bind:desactivar_owner_correccion="$props.desactivar_concesionario_correccion"
+                    
                         v-on:changecorrecto="update_concesionario_correcto($event)"
                         v-on:changeobs="update_obs_concesionario($event)"
                         v-on:changeobsvalido="update_obs_concesionario_valido($event)"
@@ -212,6 +231,7 @@
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <div class="flex">
                     <CaracterQueInvoca 
+                    v-if="$props.mostrar_sustancias"
                         v-bind:valor_input_props="form_pagina.sustancias"
                         v-bind:evualacion_correcto="form_pagina.sustancias_correcto"
                         v-bind:valor_obs="form_pagina.obs_sustancias"
@@ -225,6 +245,10 @@
                         v-bind:otro_input="form_pagina.sustancias_input"
                         v-bind:name_correcion="'correcion_sustancias'"
                         v-bind:name_checkbox="'check_sustancias'"
+                        v-bind:desactivar_owner="$props.desactivar_sustancias"
+                        v-bind:mostrar_owner_correccion="$props.mostrar_sustancias_correccion"
+                        v-bind:desactivar_owner_correccion="$props.desactivar_sustancias_correccion"
+
                         v-on:changecorrecto="update_sustancias_correcto($event)"
                         v-on:changeobs="update_obs_sustancias($event)"
                         v-on:changeobsvalido="update_obs_sustancias_valido($event)"
@@ -264,6 +288,8 @@
             <div class="w-full  bg-white rounded shadow p-6 m-8">
                 <div class="flex">
                     <CaracterQueInvoca 
+                    v-if="$props.mostrar_otros"
+
                         v-bind:valor_input_props="form_pagina.otros"
                         v-bind:evualacion_correcto="form_pagina.otros_correcto"
                         v-bind:valor_obs="form_pagina.obs_otros"
@@ -277,6 +303,10 @@
                         v-bind:otro_input="form_pagina.otros_input"
                         v-bind:name_correcion="'correcion_otros'"
                         v-bind:name_checkbox="'check_otros'"
+                        v-bind:desactivar_owner="$props.desactivar_otros"
+                        v-bind:mostrar_owner_correccion="$props.mostrar_otros_correccion"
+                        v-bind:desactivar_owner_correccion="$props.desactivar_otros_correccion"
+
                         v-on:changecorrecto="update_otro_correcto($event)"
                         v-on:changeobs="update_obs_otro($event)"
                         v-on:changeobsvalido="update_obs_otro_valido($event)"
@@ -320,6 +350,7 @@
         <div class="flex">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo
+                        v-if="$props.mostrar_contancias_canon"
                         v-bind:valor_input_props="form_pagina.constancia_pago_canon"
                         v-bind:valor_input_validacion="form_pagina.constancia_pago_canon_validacion"
                         v-bind:evualacion_correcto="form_pagina.constancia_pago_canon_correcto"
@@ -328,6 +359,11 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Constancia de Pago de Canon'"
+                        v-bind:desactivar_input="$props.desactivar_contancias_canon"
+                        v-bind:mostrar_correccion="$props.mostrar_contancias_canon_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_contancias_canon_correccion"
+
+
                         v-on:changevalido="update_canon_valido($event)"
                         v-on:changecorrecto="update_canon_correcto($event)"
                         v-on:changeobs="update_obs_canon($event)"
@@ -370,6 +406,8 @@
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo
+                v-if="$props.mostrar_iia"
+
                     v-bind:valor_input_props="form_pagina.iia"
                     v-bind:valor_input_validacion="form_pagina.iia_canon_validacion"
                     v-bind:evualacion_correcto="form_pagina.iia_correcto"
@@ -378,6 +416,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing="mostrar_testing"
                     v-bind:label="'IIA de Actividad Minera'"
+                    v-bind:desactivar_input="$props.desactivar_iia"
+                    v-bind:mostrar_correccion="$props.mostrar_iia_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_iia_correccion"
+
                     v-on:changevalido="update_iia_valido($event)"
                     v-on:changecorrecto="update_iia_correcto($event)"
                     v-on:changeobs="update_obs_iia($event)"
@@ -421,6 +463,8 @@
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo
+                v-if="$props.mostrar_dia"
+
                     v-bind:valor_input_props="form_pagina.dia"
                     v-bind:valor_input_validacion="form_pagina.dia_canon_validacion"
                     v-bind:evualacion_correcto="form_pagina.dia_correcto"
@@ -429,6 +473,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing="mostrar_testing"
                     v-bind:label="'DIA de Actividad Minera'"
+                    v-bind:desactivar_input="$props.desactivar_dia"
+                    v-bind:mostrar_correccion="$props.mostrar_dia_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_dia_correccion"
+
                     v-on:changevalido="update_dia_valido($event)"
                     v-on:changecorrecto="update_dia_correcto($event)"
                     v-on:changeobs="update_obs_dia($event)"
@@ -471,6 +519,8 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
+                v-if="$props.mostrar_actividad"
+
                     v-bind:valor_input_props="form_pagina.actividad"
                     v-bind:valor_input_validacion="form_pagina.actividad_a_desarrollar_validacion"
                     v-bind:evualacion_correcto="form_pagina.actividad_a_desarrollar_correcto"
@@ -481,6 +531,10 @@
                     v-bind:label="'Actividades a Desarrollar la Mina'"
                     v-bind:icon="'http://localhost:8000/svg/description.svg'"
                     v-bind:name_correcto="'actividades_correcto'"
+                    v-bind:desactivar_input="$props.desactivar_actividad"
+                    v-bind:mostrar_correccion="$props.mostrar_actividad_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_actividad_correccion"
+
                     v-on:changevalido="update_actividades_valido($event)"
                     v-on:changecorrecto="update_actividades_correcto($event)"
                     v-on:changeobs="update_obs_actividades($event)"
@@ -518,6 +572,8 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
+                v-if="$props.mostrar_acciones"
+
                     v-bind:valor_input_props="form_pagina.acciones_a_desarrollar"
                     v-bind:valor_input_validacion="form_pagina.acciones_a_desarrollar_validacion"
                     v-bind:evualacion_correcto="form_pagina.acciones_a_desarrollar_correcto"
@@ -528,6 +584,10 @@
                     v-bind:label="'Acciones a Desarrollar la Mina'"
                     v-bind:icon="'http://localhost:8000/svg/description.svg'"
                     v-bind:name_correcto="'acciones_correcto'"
+                    v-bind:desactivar_input="$props.desactivar_acciones"
+                    v-bind:mostrar_correccion="$props.mostrar_acciones_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_acciones_correccion"
+
                     v-on:changevalido="update_accionesvalido($event)"
                     v-on:changecorrecto="update_acciones_correcto($event)"
                     v-on:changeobs="update_obs_acciones($event)"
@@ -568,6 +628,9 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <FechaGenerica
+                v-if="$props.mostrar_fecha_alta_dia"
+
+
                     v-bind:valor_input_props="form_pagina.fecha_alta_dia"
                     v-bind:valor_input_validacion="form_pagina.fecha_alta_dia_validacion"
                     v-bind:evualacion_correcto="form_pagina.fecha_alta_dia_correcto"
@@ -577,6 +640,10 @@
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Fecha de Notificacion de DIA'"
                     v-bind:icon="'http://localhost:8000/svg/calendar.svg'"
+                    v-bind:desactivar_input="$props.desactivar_fecha_alta_dia"
+                    v-bind:mostrar_correccion="$props.mostrar_fecha_alta_dia_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_fecha_alta_dia_correccion"
+
                     v-on:changevalido="update_fecha_iniciovalido($event)"
                     v-on:changecorrecto="update_fecha_inicio_correcto($event)"
                     v-on:changeobs="update_obs_fecha_inicio($event)"
@@ -614,6 +681,8 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <FechaGenerica
+                v-if="$props.mostrar_fecha_vencimiento_dia"
+
                     v-bind:valor_input_props="form_pagina.fecha_vencimiento_dia"
                     v-bind:valor_input_validacion="form_pagina.fecha_vencimiento_dia_validacion"
                     v-bind:evualacion_correcto="form_pagina.fecha_vencimiento_dia_correcto"
@@ -623,6 +692,10 @@
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Fecha de Vencimiento de DIA'"
                     v-bind:icon="'http://localhost:8000/svg/calendar.svg'"
+                    v-bind:desactivar_input="$props.desactivar_fecha_vencimiento_dia"
+                    v-bind:mostrar_correccion="$props.mostrar_fecha_vencimiento_dia_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_fecha_vencimiento_dia_correccion"
+
                     v-on:changevalido="update_fecha_fin_valido($event)"
                     v-on:changecorrecto="update_fecha_fin_correcto($event)"
                     v-on:changeobs="update_obs_fecha_fin($event)"
@@ -670,6 +743,7 @@
     </div>
     <div class="flex justify-end mt-4">
         <BotonesPaginaCinco
+        v-if="$props.mostrar_boton_guardar_cinco"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de la Mina'"
@@ -777,71 +851,148 @@ export default {
         'owner_correcto',
         'obs_owner',
         'obs_owner_valido',
+        'mostrar_owner',
+        'desactivar_owner',
+        'mostrar_owner_correccion',
+        'desactivar_owner_correccion',
+
         'arrendatario',
         'arrendatario_correcto',
         'obs_arrendatario',
         'obs_arrendatario_valido',
+        'mostrar_arrendatario',
+        'desactivar_arrendatario',
+        'mostrar_arrendatario_correccion',
+        'desactivar_arrendatario_correccion',
+
         'concesionario',
         'concesionario_correcto',
         'obs_concesionario',
         'obs_concesionario_valido',
+        'mostrar_concesionario',
+        'desactivar_concesionario',
+        'mostrar_concesionario_correccion',
+        'desactivar_concesionario_correccion',
+
         'otros',
         'otros_correcto',
         'obs_otros',
         'obs_otros_valido',
         'otros_input',
         'otros_input_valido',
+        'mostrar_otros',
+        'desactivar_otros',
+        'mostrar_otros_correccion',
+        'desactivar_otros_correccion',
+
+
+
         'sustancias',
         'sustancias_correcto',
         'obs_sustancias',
         'obs_sustancias_valido',
         'sustancias_input',
         'sustancias_input_valido',
+        'mostrar_sustancias',
+        'desactivar_sustancias',
+        'mostrar_sustancias_correccion',
+        'desactivar_sustancias_correccion',
+
+
         'titulo_contrato_posecion',
         'titulo_contrato_posecion_validacion',
         'titulo_contrato_posecion_correcto',
         'obs_titulo_contrato_posecion',
         'obs_titulo_contrato_posecion_valido',
+        'mostrar_titulo',
+        'desactivar_titulo',
+        'mostrar_titulo_correccion',
+        'desactivar_titulo_correccion',
+
+
         'resolucion_concesion_minera',
         'resolucion_concesion_minera_validacion',
         'resolucion_concesion_minera_correcto',
         'obs_resolucion_concesion_minera',
         'obs_resolucion_concesion_minera_valido',
+        'mostrar_concesion',
+        'desactivar_concesion',
+        'mostrar_concesion_correccion',
+        'desactivar_concesion_correccion',
+
         'constancia_pago_canon',
         'constancia_pago_canon_validacion',
         'constancia_pago_canon_correcto',
         'obs_constancia_pago_canon',
         'obs_constancia_pago_canon_valido',
+        'mostrar_contancias_canon',
+        'desactivar_contancias_canon',
+        'mostrar_contancias_canon_correccion',
+        'desactivar_contancias_canon_correccion',
+
         'iia',
         'iia_canon_validacion',
         'iia_correcto',
         'obs_iia_canon',
         'obs_iia_canon_valido',
+        'mostrar_iia',
+        'desactivar_iia',
+        'mostrar_iia_correccion',
+        'desactivar_iia_correccion',
+
         'dia',
         'dia_canon_validacion',
         'dia_correcto',
         'obs_dia_canon',
         'obs_dia_canon_valido',
+        'mostrar_dia',
+        'desactivar_dia',
+        'mostrar_dia_correccion',
+        'desactivar_dia_correccion',
+
         'acciones_a_desarrollar',
         'acciones_a_desarrollar_validacion',
         'acciones_a_desarrollar_correcto',
         'obs_acciones_a_desarrollar',
         'obs_acciones_a_desarrollar_valido',
+        'mostrar_acciones',
+        'desactivar_acciones',
+        'mostrar_acciones_correccion',
+        'desactivar_acciones_correccion',
+
+
         'actividad',
         'actividad_a_desarrollar_validacion',
         'actividad_a_desarrollar_correcto',
         'obs_actividad_a_desarrollar',
         'obs_actividad_a_desarrollar_valido',
+        'mostrar_actividad',
+        'desactivar_actividad',
+        'mostrar_actividad_correccion',
+        'desactivar_actividad_correccion',
+
         'fecha_alta_dia',
         'fecha_alta_dia_validacion',
         'fecha_alta_dia_correcto',
         'obs_fecha_alta_dia',
         'obs_fecha_alta_dia_valido',
+        'mostrar_fecha_alta_dia',
+        'desactivar_fecha_alta_dia',
+        'mostrar_fecha_alta_dia_correccion',
+        'desactivar_fecha_alta_dia_correccion',
+
         'fecha_vencimiento_dia',
         'fecha_vencimiento_dia_validacion',
         'fecha_vencimiento_dia_correcto',
         'obs_fecha_vencimiento_dia',
         'obs_fecha_vencimiento_dia_valido',
+        'mostrar_fecha_vencimiento_dia',
+        'desactivar_fecha_vencimiento_dia',
+        'mostrar_fecha_vencimiento_dia_correccion',
+        'desactivar_fecha_vencimiento_dia_correccion',
+
+        'mostrar_boton_guardar_cinco',
+        'desactivar_boton_guardar_cinco',
 
 
         'evaluacion',

@@ -73,6 +73,7 @@
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputNombreCalle 
+                        v-if="$props.mostrar_calle_legal"
                         v-bind:leal_calle="$props.leal_calle"
                         v-bind:nombre_calle_legal_valido="$props.nombre_calle_legal_valido"
                         v-bind:nombre_calle_legal_correcto="$props.nombre_calle_legal_correcto"
@@ -81,6 +82,10 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Nombre de Calle Domicilio'"
                         v-bind:testing="mostrar_testing"
+                        v-bind:desactivar_calle_legal="$props.desactivar_calle_legal"
+                        v-bind:mostrar_calle_legal_correccion="$props.mostrar_calle_legal_correccion"
+                        v-bind:desactivar_calle_legal_correccion="$props.desactivar_calle_legal_correccion"
+
                         v-on:changenombrecallevalido="update_nombre_calle_valido($event)"
                         v-on:changenombrecallecorrecto="update_nombre_calle_correcto($event)"
                         v-on:changeobsnombrecalle="update_obs_nombre_calle($event)"
@@ -136,7 +141,8 @@
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 px-3">
-                    <InputNumeroCalle
+                <InputNumeroCalle
+                        v-if="$props.mostrar_legal_calle_num"
                         v-bind:leal_numero="$props.leal_numero"
                         v-bind:leal_numero_valido="$props.leal_numero_valido"
                         v-bind:leal_numero_correcto="$props.leal_numero_correcto"
@@ -145,6 +151,10 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Número de Calle Domicilio'"
                         v-bind:testing="mostrar_testing"
+                        v-bind:desactivar_legal_calle_num="$props.desactivar_legal_calle_num"
+                        v-bind:mostrar_legal_calle_num_correccion="$props.mostrar_legal_calle_num_correccion"
+                        v-bind:desactivar_legal_calle_num_correccion="$props.desactivar_legal_calle_num_correccion"
+
                         v-on:changetelnumlegalvalido="update_num_legal_valido($event)"
                         v-on:changenumlegalcorrecto="update_num_legal_correcto($event)"
                         v-on:changeobsnumlegal="update_obs_num_legal($event)"
@@ -180,7 +190,10 @@
                             ring
                             ring-4
                             ring-blue-100">
-                        
+                        v-bind:desactivar_legal_calle_num="$props.desactivar_legal_calle_num"
+                        v-bind:mostrar_legal_calle_num_correccion="$props.mostrar_legal_calle_num_correccion"
+                        v-bind:desactivar_legal_calle_num_correccion="$props.desactivar_legal_calle_num_correccion"
+
                             <p class="p-3">
                                 Es la numeración del domicilio que se esta declarando. Este es un valor númerico.
                             </p>
@@ -206,7 +219,13 @@
             </div>
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                
+
+
+
+
                     <InputTelefono
+                        v-if="$props.mostrar_legal_telefono"
                         v-bind:leal_telefono="$props.leal_telefono"
                         v-bind:leal_telefono_valido="$props.leal_telefono_valido"
                         v-bind:leal_telefono_correcto="$props.leal_telefono_correcto"
@@ -215,6 +234,10 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Telefono de Domicilio'"
                         v-bind:testing="mostrar_testing"
+                        v-bind:desactivar_legal_telefono="$props.desactivar_legal_telefono"
+                        v-bind:mostrar_legal_telefono_correccion="$props.mostrar_legal_telefono_correccion"
+                        v-bind:desactivar_legal_telefono_correccion="$props.desactivar_legal_telefono_correccion"
+
                         v-on:changetellegalvalido="update_tel_legal_valido($event)"
                         v-on:changetellegalcorrecto="update_tel_legal_correcto($event)"
                         v-on:changeobstellegal="update_obs_tel_legal($event)"
@@ -273,7 +296,13 @@
                     
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <SelectProvincia v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal'"
+
+                
+
+
+
+                    <SelectProvincia 
+                    v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal' && $props.mostrar_legal_prov"
                         v-bind:leal_provincia="$props.leal_provincia"
                         v-bind:leal_provincia_valido="$props.leal_provincia_valido"
                         v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
@@ -284,6 +313,12 @@
                         v-bind:label="'Provincia de Domicilio Legal'"
                         v-bind:lista_provincias="$props.lista_provincias"
                         v-bind:name_correcto="'prov_legal_correcto'"
+                        v-bind:desactivar_legal_prov="$props.desactivar_legal_prov"
+                        v-bind:mostrar_legal_prov_correccion="$props.mostrar_legal_prov_correccion"
+                        v-bind:desactivar_legal_prov_correccion="$props.desactivar_legal_prov_correccion"
+
+
+
                         v-on:changeprovlegalvalido="update_provincia_valido($event)"
                         v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
                         v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
@@ -292,7 +327,8 @@
 
                     >
                     </SelectProvincia>
-                    <SelectProvincia v-else
+                    <SelectProvincia 
+                    v-if=" titulo_boton_guardar !==  'Guardar Datos del Domicilio Legal' && $props.mostrar_legal_prov"
                         v-bind:leal_provincia="$props.leal_provincia"
                         v-bind:leal_provincia_valido="$props.leal_provincia_valido"
                         v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
@@ -303,6 +339,10 @@
                         v-bind:label="'Provincia de Domicilio Legal'"
                         v-bind:lista_provincias="$props.lista_provincias"
                         v-bind:name_correcto="'prov_admin_correcto'"
+                        v-bind:desactivar_legal_prov="$props.desactivar_legal_prov"
+                        v-bind:mostrar_legal_prov_correccion="$props.mostrar_legal_prov_correccion"
+                        v-bind:desactivar_legal_prov_correccion="$props.desactivar_legal_prov_correccion"
+
                         v-on:changeprovlegalvalido="update_provincia_valido($event)"
                         v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
                         v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
@@ -362,7 +402,12 @@
             </div>
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                
+
+
+
                     <SelectDepartamento
+                    v-if="$props.mostrar_legal_dpto"
                         v-bind:leal_departamento="$props.leal_departamento"
                         v-bind:leal_departamento_valido="$props.leal_departamento_valido"
                         v-bind:leal_departamento_correcto="$props.leal_departamento_correcto"
@@ -372,6 +417,10 @@
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Departamento de Domicilio Legal'"
                         v-bind:lista_departamentos= "lista_departamentos"
+                        v-bind:desactivar_legal_dpto="$props.desactivar_legal_dpto"
+                        v-bind:mostrar_legal_dpto_correccion="$props.mostrar_legal_dpto_correccion"
+                        v-bind:desactivar_legal_dpto_correccion="$props.desactivar_legal_dpto_correccion"
+
                         v-on:changedptolegalvalido="update_dpto_valido($event)"
                         v-on:changedptolegalcorrecto="update_dpto_correcto($event)"
                         v-on:changeobsrdptolegal="update_obs_dpto_legal($event)"
@@ -428,7 +477,13 @@
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                
+
+
+
+
                     <InputLocalidad
+                    v-if="$props.mostrar_legal_localidad"
                         v-bind:leal_localidad="$props.leal_localidad"
                         v-bind:leal_localidad_valido="$props.leal_localidad_valido"
                         v-bind:leal_localidad_correcto="$props.leal_localidad_correcto"
@@ -437,6 +492,10 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Localidad del Domicilio Legal'"
+                        v-bind:desactivar_legal_localidad="$props.desactivar_legal_localidad"
+                        v-bind:mostrar_legal_localidad_correccion="$props.mostrar_legal_localidad_correccion"
+                        v-bind:desactivar_legal_localidad_correccion="$props.desactivar_legal_localidad_correccion"
+
                         v-on:changelocalidadlegalvalido="update_localidad_valido($event)"
                         v-on:changelocalidadlegalcorrecto="update_localidad_correcto($event)"
                         v-on:changeobsrlocalidadlegal="update_obs_localidad_legal($event)"
@@ -495,7 +554,12 @@
             </div>
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                
+
+
+
                     <InputCP
+                    v-if="$props.mostrar_legal_cod_pos"
                         v-bind:leal_cp="$props.leal_cp"
                         v-bind:leal_cp_valido="$props.leal_cp_valido"
                         v-bind:leal_cp_correcto="$props.leal_cp_correcto"
@@ -504,6 +568,10 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Codigo Postal'"
+                        v-bind:desactivar_legal_cod_pos="$props.desactivar_legal_cod_pos"
+                        v-bind:mostrar_legal_cod_pos_correccion="$props.mostrar_legal_cod_pos_correccion"
+                        v-bind:desactivar_legal_cod_pos_correccion="$props.desactivar_legal_cod_pos_correccion"
+
                         v-on:changecplegalvalido="update_cp_valido($event)"
                         v-on:changecplegalcorrecto="update_cp_correcto($event)"
                         v-on:changeobsrcplegal="update_obs_cp_legal($event)"
@@ -562,6 +630,13 @@
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputOtro
+
+                    
+
+
+
+
+                    v-if="$props.mostrar_legal_otro"
                         v-bind:leal_otro="$props.leal_otro"
                         v-bind:leal_otro_valido="$props.leal_otro_valido"
                         v-bind:leal_otro_correcto="$props.leal_otro_correcto"
@@ -570,6 +645,10 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Otro Dato Imporante'"
+                        v-bind:desactivar_legal_otro="$props.desactivar_legal_otro"
+                        v-bind:mostrar_legal_otro_correccion="$props.mostrar_legal_otro_correccion"
+                        v-bind:desactivar_legal_otro_correccion="$props.desactivar_legal_otro_correccion"
+
                         v-on:changeotrolegalvalido="update_otro_valido($event)"
                         v-on:changeotrolegalcorrecto="update_otro_correcto($event)"
                         v-on:changeobsotrolegal="update_obs_otro_legal($event)"
@@ -631,6 +710,7 @@
         <br><br>
          <div class="flex items-center justify-center">
             <BotonesPaginaDos 
+            v-if="mostrar_boton_guardar_dos"
                 :link_volver="route('formulario-alta.index')"
                 :titulo_boton_volver="'volver'"
                 :titulo_boton_guardar="'Guardar Datos del Domicilio'"
@@ -728,50 +808,97 @@ export default {
         'nombre_calle_legal_correcto',
         'obs_nombre_calle_legal',
         'obs_nombre_calle_legal_valido',
+        'mostrar_calle_legal',
+        'desactivar_calle_legal',
+        'mostrar_calle_legal_correccion',
+        'desactivar_calle_legal_correccion',
+
         'leal_numero',
         'leal_numero_valido',
         'leal_numero_correcto',
         'obs_leal_numero',
         'obs_leal_numero_valido',
+        'mostrar_legal_calle_num',
+        'desactivar_legal_calle_num',
+        'mostrar_legal_calle_num_correccion',
+        'desactivar_legal_calle_num_correccion',
+
+
+
+
         'leal_telefono',
         'leal_telefono_valido',
         'leal_telefono_correcto',
         'obs_leal_telefono',
         'obs_leal_telefono_valido',
+        'mostrar_legal_telefono',
+        'desactivar_legal_telefono',
+        'mostrar_legal_telefono_correccion',
+        'desactivar_legal_telefono_correccion',
+
         'leal_pais',
         'leal_pais_valido',
         'leal_pais_correcto',
         'obs_leal_pais',
         'obs_leal_pais_valido',
+
         'leal_provincia',
         'leal_provincia_valido',
         'leal_provincia_correcto',
         'obs_leal_provincia',
         'obs_leal_provincia_valido',
+        'mostrar_legal_prov',
+        'desactivar_legal_prov',
+        'mostrar_legal_prov_correccion',
+        'desactivar_legal_prov_correccion',
+
         'leal_departamento',
         'leal_departamento_valido',
         'leal_departamento_correcto',
         'obs_leal_departamento',
         'obs_leal_departamento_valido',
+        'mostrar_legal_dpto',
+        'desactivar_legal_dpto',
+        'mostrar_legal_dpto_correccion',
+        'desactivar_legal_dpto_correccion',
+
+
         'leal_localidad',
         'leal_localidad_valido',
         'leal_localidad_correcto',
         'obs_leal_localidad',
         'obs_leal_localidad_valido',
+        'mostrar_legal_localidad',
+        'desactivar_legal_localidad',
+        'mostrar_legal_localidad_correccion',
+        'desactivar_legal_localidad_correccion',
+
         'leal_cp',
         'leal_cp_valido',
         'leal_cp_correcto',
         'obs_leal_cp',
         'obs_leal_cp_valido',
+        'mostrar_legal_cod_pos',
+        'desactivar_legal_cod_pos',
+        'mostrar_legal_cod_pos_correccion',
+        'desactivar_legal_cod_pos_correccion',
+
         'leal_otro',
         'leal_otro_valido',
         'leal_otro_correcto',
         'obs_leal_otro',
         'obs_leal_otro_valido',
+        'mostrar_legal_otro',
+        'desactivar_legal_otro',
+        'mostrar_legal_otro_correccion',
+        'desactivar_legal_otro_correccion',
 
         'donde_estoy',
         'lista_provincias',
         'lista_dptos',
+
+        'mostrar_boton_guardar_dos',
+        'desactivar_boton_guardar_dos',
 
         'evaluacion',
         'testing',

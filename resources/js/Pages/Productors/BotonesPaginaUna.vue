@@ -24,6 +24,7 @@
             <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
                 <button
                     type="button"
+                    :disabled="$props.desactivar_boton_guardar_uno"
                     class=" animate-pulse text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
                     @click="guardar_avnces_uno"
                 >
@@ -116,6 +117,8 @@ export default {
         'constanciasociedad_correcto',
         'obs_constanciasociedad',
         'obs_constanciasociedad_valido',
+
+        'desactivar_boton_guardar_uno',
 
         'evaluacion',
         'id',
