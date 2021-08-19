@@ -457,6 +457,9 @@
                 :desactivar_boton_guardar_uno="$props.desactivar_boton_guardar_uno"
 
                 v-on:CreeUnNuevoId="update_id_recien_creado($event)"
+                v-on:CreeUnNuevoIdAdcional="update_id_adicional_recien_creado($event)"
+
+                
                 v-on:actualizarinscripcion="update_inscripcion($event)"
                 v-on:actualizaconstancia="update_constancia($event)"
 
@@ -465,9 +468,7 @@
                 
 
             ></BotonesPaginaUna>
-            
-         </div>
-        
+        </div>
         </div>
 
 
@@ -773,6 +774,10 @@ export default {
         update_id_recien_creado(id_nuevo){
             this.$emit('CreeUnNuevoIdPasoAAbuelo',id_nuevo);
         },
+        update_id_adicional_recien_creado(id_nuevo){
+            this.$emit('CreeUnNuevoIdAdcionalPasoAAbuelo',id_nuevo);
+        },
+        
         update_archivo_dgr(value){
             this.form_pagina.inscripciondgr = value;
             // console.log("cambio el archivo de la dgr");
