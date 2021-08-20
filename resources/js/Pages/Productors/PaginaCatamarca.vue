@@ -89,12 +89,11 @@
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
                         v-if="$props.mostrar_nombre_gestor"
-                    
-                        v-bind:valor_input_props="''"
-                        v-bind:valor_input_validacion="''"
-                        v-bind:evualacion_correcto="''"
-                        v-bind:valor_obs="''"
-                        v-bind:valor_valido_obs="''"
+                        v-bind:valor_input_props="'form.gestor_nombre_apellido'"
+                        v-bind:valor_input_validacion="'form.gestor_nombre_apellido_valido'"
+                        v-bind:evualacion_correcto="'form.gestor_nombre_apellido_correcto'"
+                        v-bind:valor_obs="'form.obs_gestor_nombre_apellido'"
+                        v-bind:valor_valido_obs="'form.obs_gestor_nombre_valido'"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Nombre y Apellido del Gestor:'"
@@ -103,11 +102,11 @@
                         v-bind:mostrar_correccion="$props.mostrar_nombre_gestor_correccion"
                         v-bind:desactivar_correccion="$props.desactivar_nombre_gestor_correccion"
 
-                        v-on:changevalido="update_localidad_valido($event)"
-                        v-on:changecorrecto="update_localidad_correcto($event)"
-                        v-on:changeobs="update_obs_localidad($event)"
-                        v-on:changeobsvalido="update_obs_localidad_valida($event)"
-                        v-on:changevalor="update_valor_localidad($event)"
+                        v-on:changevalido="update_nombre_gestor_valido($event)"
+                        v-on:changecorrecto="update_nombre_gestor_correcto($event)"
+                        v-on:changeobs="update_obs_nombre_gestor($event)"
+                        v-on:changeobsvalido="update_obs_nombre_gestor_valida($event)"
+                        v-on:changevalor="update_valor_nombre_gestor($event)"
                     >
                     </NombreMina>
                 </div>
@@ -115,11 +114,11 @@
                     <NombreMina
                         v-if="$props.mostrar_dni_gestor"
 
-                        v-bind:valor_input_props="''"
-                        v-bind:valor_input_validacion="''"
-                        v-bind:evualacion_correcto="''"
-                        v-bind:valor_obs="''"
-                        v-bind:valor_valido_obs="''"
+                        v-bind:valor_input_props="'form.gestor_dni'"
+                        v-bind:valor_input_validacion="'form.gestor_dni_valido'"
+                        v-bind:evualacion_correcto="'form.gestor_dni_correcto'"
+                        v-bind:valor_obs="'form.obs_gestor_dni'"
+                        v-bind:valor_valido_obs="'form.obs_gestor_dni_valido'"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'DNI del Gestor:'"
@@ -128,11 +127,11 @@
                         v-bind:mostrar_correccion="$props.mostrar_dni_gestor_correccion"
                         v-bind:desactivar_correccion="$props.desactivar_dni_gestor_correccion"
 
-                        v-on:changevalido="update_localidad_valido($event)"
-                        v-on:changecorrecto="update_localidad_correcto($event)"
-                        v-on:changeobs="update_obs_localidad($event)"
-                        v-on:changeobsvalido="update_obs_localidad_valida($event)"
-                        v-on:changevalor="update_valor_localidad($event)"
+                        v-on:changevalido="update_gestor_dni_valido($event)"
+                        v-on:changecorrecto="update_gestor_dni_correcto($event)"
+                        v-on:changeobs="update_obs_gestor_dni($event)"
+                        v-on:changeobsvalido="update_obs_gestor_dni_valida($event)"
+                        v-on:changevalor="update_valor_gestor_dni($event)"
                     >
                     </NombreMina>
                 </div>
@@ -143,11 +142,17 @@
                 <NombreMina
                     v-if="$props.mostrar_profesion_gestor"
 
-                    v-bind:valor_input_props="''"
-                    v-bind:valor_input_validacion="''"
-                    v-bind:evualacion_correcto="''"
-                    v-bind:valor_obs="''"
-                    v-bind:valor_valido_obs="''"
+
+
+
+
+
+
+                    v-bind:valor_input_props="'form.gestor_profesion'"
+                    v-bind:valor_input_validacion="'form.gestor_profesion_valido'"
+                    v-bind:evualacion_correcto="'form.gestor_profesion_correcto'"
+                    v-bind:valor_obs="'form.obs_gestor_profesion'"
+                    v-bind:valor_valido_obs="'form.obs_gestor_profesion_valido'"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Profesión del Gestor:'"
@@ -156,11 +161,11 @@
                     v-bind:mostrar_correccion="$props.mostrar_profesion_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_profesion_gestor_correccion"
 
-                    v-on:changevalido="update_localidad_valido($event)"
-                    v-on:changecorrecto="update_localidad_correcto($event)"
-                    v-on:changeobs="update_obs_localidad($event)"
-                    v-on:changeobsvalido="update_obs_localidad_valida($event)"
-                    v-on:changevalor="update_valor_localidad($event)"
+                    v-on:changevalido="update_gestor_profesion_valido($event)"
+                    v-on:changecorrecto="update_gestor_profesion_correcto($event)"
+                    v-on:changeobs="update_obs_gestor_profesion($event)"
+                    v-on:changeobsvalido="update_obs_gestor_profesion_valida($event)"
+                    v-on:changevalor="update_valor_gestor_profesion($event)"
                 >
                 </NombreMina>
             </div>
@@ -168,11 +173,17 @@
                 <NombreMina
                     v-if="$props.mostrar_telefono_gestor"
 
-                    v-bind:valor_input_props="''"
-                    v-bind:valor_input_validacion="''"
-                    v-bind:evualacion_correcto="''"
-                    v-bind:valor_obs="''"
-                    v-bind:valor_valido_obs="''"
+
+
+
+
+
+
+                    v-bind:valor_input_props="'form.gestor_telefono'"
+                    v-bind:valor_input_validacion="'form.gestor_telefono_valido'"
+                    v-bind:evualacion_correcto="'form.gestor_telefono_correcto'"
+                    v-bind:valor_obs="'form.obs_gestor_telefono'"
+                    v-bind:valor_valido_obs="'form.obs_gestor_telefono_valido'"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Telefono del Gestor:'"
@@ -181,11 +192,11 @@
                     v-bind:mostrar_correccion="$props.mostrar_telefono_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_telefono_gestor_correccion"
 
-                    v-on:changevalido="update_localidad_valido($event)"
-                    v-on:changecorrecto="update_localidad_correcto($event)"
-                    v-on:changeobs="update_obs_localidad($event)"
-                    v-on:changeobsvalido="update_obs_localidad_valida($event)"
-                    v-on:changevalor="update_valor_localidad($event)"
+                    v-on:changevalido="update_gestor_telefono_valido($event)"
+                    v-on:changecorrecto="update_gestor_telefono_correcto($event)"
+                    v-on:changeobs="update_obs_gestor_telefono($event)"
+                    v-on:changeobsvalido="update_obs_gestor_telefono_valida($event)"
+                    v-on:changevalor="update_valor_gestor_telefono($event)"
                 >
                 </NombreMina>
             </div>
@@ -195,11 +206,17 @@
                 <NombreMina
                     v-if="$props.mostrar_email_gestor"
 
-                    v-bind:valor_input_props="''"
-                    v-bind:valor_input_validacion="''"
-                    v-bind:evualacion_correcto="''"
-                    v-bind:valor_obs="''"
-                    v-bind:valor_valido_obs="''"
+
+
+
+
+
+
+                    v-bind:valor_input_props="'form.gestor_email'"
+                    v-bind:valor_input_validacion="'form.gestor_email_valido'"
+                    v-bind:evualacion_correcto="'form.gestor_email_correcto'"
+                    v-bind:valor_obs="'form.obs_gestor_email'"
+                    v-bind:valor_valido_obs="'form.obs_gestor_email_valido'"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Email del Gestor:'"
@@ -208,11 +225,11 @@
                     v-bind:mostrar_correccion="$props.mostrar_email_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_email_gestor_correccion"
 
-                    v-on:changevalido="update_localidad_valido($event)"
-                    v-on:changecorrecto="update_localidad_correcto($event)"
-                    v-on:changeobs="update_obs_localidad($event)"
-                    v-on:changeobsvalido="update_obs_localidad_valida($event)"
-                    v-on:changevalor="update_valor_localidad($event)"
+                    v-on:changevalido="update_gestor_email_valido($event)"
+                    v-on:changecorrecto="update_gestor_email_correcto($event)"
+                    v-on:changeobs="update_obs_gestor_email($event)"
+                    v-on:changeobsvalido="update_obs_gestor_email_valida($event)"
+                    v-on:changevalor="update_valor_gestor_email($event)"
                 >
                 </NombreMina>
                 <div v-show="ayuda_local" >
@@ -244,11 +261,11 @@
                 <NombreMina
                     v-if="$props.mostrar_notificacion_gestor"
 
-                    v-bind:valor_input_props="''"
-                    v-bind:valor_input_validacion="''"
-                    v-bind:evualacion_correcto="''"
-                    v-bind:valor_obs="''"
-                    v-bind:valor_valido_obs="''"
+                    v-bind:valor_input_props="'form.gestor_notificacion'"
+                    v-bind:valor_input_validacion="'form.gestor_notificacion_valido'"
+                    v-bind:evualacion_correcto="'form.gestor_notificacion_correcto'"
+                    v-bind:valor_obs="'form.obs_gestor_notificacion'"
+                    v-bind:valor_valido_obs="'form.obs_gestor_notificacion_valido'"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Notificar al Gestor:'"
@@ -257,11 +274,11 @@
                     v-bind:mostrar_correccion="$props.mostrar_notificacion_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_notificacion_gestor_correccion"
 
-                    v-on:changevalido="update_localidad_valido($event)"
-                    v-on:changecorrecto="update_localidad_correcto($event)"
-                    v-on:changeobs="update_obs_localidad($event)"
-                    v-on:changeobsvalido="update_obs_localidad_valida($event)"
-                    v-on:changevalor="update_valor_localidad($event)"
+                    v-on:changevalido="update_gestor_noti_valido($event)"
+                    v-on:changecorrecto="update_gestor_noti_correcto($event)"
+                    v-on:changeobs="update_obs_gestor_noti($event)"
+                    v-on:changeobsvalido="update_obs_gestor_noti_valida($event)"
+                    v-on:changevalor="update_valor_gestor_noti($event)"
                 >
                 </NombreMina>
                 <div v-show="ayuda_local" >
@@ -399,11 +416,11 @@
                 <SubirArchivo 
                 v-if="$props.mostrar_autorizacion_gestor"
 
-                    v-bind:valor_input_props="''"
-                    v-bind:valor_input_validacion="''"
-                    v-bind:evualacion_correcto="''"
-                    v-bind:valor_obs="''"
-                    v-bind:valor_valido_obs="''"
+                    v-bind:valor_input_props="'form.autorizacion_gestor'"
+                    v-bind:valor_input_validacion="'form.autorizacion_gestor_valido'"
+                    v-bind:evualacion_correcto="'form.autorizacion_gestor_correcto'"
+                    v-bind:valor_obs="'form.obs_autorizacion_gestor'"
+                    v-bind:valor_valido_obs="'form.obs_autorizacion_gestor_valido'"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Autorizacion de que el Gestor Representa la Empresa'"
@@ -411,12 +428,12 @@
                     v-bind:mostrar_correccion="$props.mostrar_autorizacion_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_autorizacion_gestor_correccion"
 
-                    v-on:changevalido="update_resol_conce_valido($event)"
-                    v-on:changecorrecto="update_resol_conce_correcto($event)"
-                    v-on:changeobs="update_obs_resol_conce($event)"
-                    v-on:changeobsvalido="update_obs_canon_valido($event)"
-                    v-on:changevalor="update_obs_resol_conce_valido($event)"
-                    v-on:cambioarchivo="cambio_el_archivo_resolucion($event)"
+                    v-on:changevalido="update_gestor_autorizacion_valido($event)"
+                    v-on:changecorrecto="update_gestor_autorizacion_correcto($event)"
+                    v-on:changeobs="update_obs_gestor_autorizacion($event)"
+                    v-on:changeobsvalido="update_obs_gestor_autorizacion_valido($event)"
+                    v-on:changevalor="update_obs_gestor_autorizacion_valido($event)"
+                    v-on:cambioarchivo="cambio_el_archivo_gestor_autorizacion($event)"
                 >
                 </SubirArchivo>
                 <div v-show="ayuda_local" >
@@ -451,11 +468,17 @@
                 <SubirArchivo 
                     v-if="$props.mostrar_constancia_afip"
 
-                    v-bind:valor_input_props="''"
-                    v-bind:valor_input_validacion="''"
-                    v-bind:evualacion_correcto="''"
-                    v-bind:valor_obs="''"
-                    v-bind:valor_valido_obs="''"
+
+
+
+
+
+
+                    v-bind:valor_input_props="'form.constancia_afip'"
+                    v-bind:valor_input_validacion="'form.constancia_afip_valido'"
+                    v-bind:evualacion_correcto="'form.constancia_afip_correcto'"
+                    v-bind:valor_obs="'form.obs_constancia_afip'"
+                    v-bind:valor_valido_obs="'form.obs_constancia_afip_valido'"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Constancia de AFIP'"
@@ -463,12 +486,12 @@
                     v-bind:mostrar_correccion="$props.mostrar_constancia_afip_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_constancia_afip_correccion"
 
-                    v-on:changevalido="update_resol_conce_valido($event)"
-                    v-on:changecorrecto="update_resol_conce_correcto($event)"
-                    v-on:changeobs="update_obs_resol_conce($event)"
-                    v-on:changeobsvalido="update_obs_canon_valido($event)"
-                    v-on:changevalor="update_obs_resol_conce_valido($event)"
-                    v-on:cambioarchivo="cambio_el_archivo_resolucion($event)"
+                    v-on:changevalido="update_constancia_afip_valido($event)"
+                    v-on:changecorrecto="update_constancia_afip_correcto($event)"
+                    v-on:changeobs="update_obs_constancia_afip($event)"
+                    v-on:changeobsvalido="update_obs_constancia_afip_valido($event)"
+                    v-on:changevalor="update_obs_constancia_afip_valido($event)"
+                    v-on:cambioarchivo="cambio_el_archivo_constancia_afip($event)"
                 >
                 </SubirArchivo>
                 <div v-show="ayuda_local" >
@@ -749,41 +772,171 @@ export default {
 		},
 
 
-        update_provincia_valido(newValue){
-            this.form_pagina.localidad_mina_provincia_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_provincia_correcto(newValue){
-            this.form_pagina.localidad_mina_provincia_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_provincia(newValue){
-            this.form_pagina.obs_localidad_mina_provincia = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_provincia_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_localidad_mina_provincia_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_provincia(newValue){
-            let self = this;
-            console.log("cambio la provincia de mi hijo por:"+newValue);
-            
-            this.form_pagina.localidad_mina_provincia = newValue;
-            //debo actualizar la lista de departamento que tengo disponibles para elegir
-            axios.post('/datos/traer_departamentos/',{id_prov:newValue})
-                .then(function (response) {
-                    console.log("las deptos son:\n");
-                    self.lista_departamentos = response.data;
-                    console.log(self.lista_departamentos);
 
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+
+
+
+
+       //FUNCIONES DE NOMBRE DE GESTOR
+        update_nombre_gestor_valido(newValue){
+            this.form.gestor_nombre_apellido_valido = newValue;
+        },
+        update_nombre_gestor_correcto(newValue){
+            this.form.gestor_nombre_apellido_correcto = newValue;
+        },
+        update_obs_nombre_gestor(newValue){
+            this.form.obs_gestor_nombre_apellido = newValue;
+        },
+        update_obs_nombre_gestor_valida(newValue){
+            this.form.obs_gestor_nombre_valido = newValue;
+        },
+        update_valor_nombre_gestor(newValue){
+            this.form.gestor_nombre_apellido = newValue;
+        },
+
+
+        //FUNCIONES DE DNI DE GESTOR
+        update_gestor_dni_valido(newValue){
+            this.form.gestor_dni_valido = newValue;
+        },
+        update_gestor_dni_correcto(newValue){
+            this.form.gestor_dni_correcto = newValue;
+        },
+        update_obs_gestor_dni(newValue){
+            this.form.obs_gestor_dni = newValue;
+        },
+        update_obs_gestor_dni_valida(newValue){
+            this.form.obs_gestor_dni_valido = newValue;
+        },
+        update_valor_gestor_dni(newValue){
+            this.form.gestor_dni = newValue;
+        },
+
+
+        //FUNCIONES DE PROFESION DE GESTOR
+        update_gestor_profesion_valido(newValue){
+            this.form.gestor_profesion_valido = newValue;
+        },
+        update_gestor_profesion_correcto(newValue){
+            this.form.gestor_profesion_correcto= newValue;
+        },
+        update_obs_gestor_profesion(newValue){
+            this.form.obs_gestor_profesion = newValue;
+        },
+        update_obs_gestor_profesion_valida(newValue){
+            this.form.obs_gestor_profesion_valido = newValue;
+        },
+        update_valor_gestor_profesion(newValue){
+            this.form.gestor_profesion = newValue;
+        },
+
+         //FUNCIONES DE Telefono DE GESTOR
+        update_gestor_telefono_valido(newValue){
+            this.form.gestor_telefono_valido = newValue;
+        },
+        update_gestor_telefono_correcto(newValue){
+            this.form.gestor_telefono_correcto= newValue;
+        },
+        update_obs_gestor_telefono(newValue){
+            this.form.obs_gestor_telefono = newValue;
+        },
+        update_obs_gestor_telefono_valida(newValue){
+            this.form.obs_gestor_telefono_valido = newValue;
+        },
+        update_valor_gestor_telefono(newValue){
+            this.form.gestor_telefono = newValue;
+        },
+
+
+
+         //FUNCIONES DE N OTIFICACION DE GESTOR
+        update_gestor_noti_valido(newValue){
+            this.form.gestor_notificacion_valido = newValue;
+        },
+        update_gestor_noti_correcto(newValue){
+            this.form.gestor_notificacion_correcto= newValue;
+        },
+        update_obs_gestor_noti(newValue){
+            this.form.obs_gestor_notificacion = newValue;
+        },
+        update_obs_gestor_noti_valida(newValue){
+            this.form.obs_gestor_notificacion_valido = newValue;
+        },
+        update_valor_gestor_noti(newValue){
+            this.form.gestor_notificacion = newValue;
+        },
+
+
+         //FUNCIONES DE PROFESION DE GESTOR
+        update_gestor_email_valido(newValue){
+            this.form.gestor_email_valido = newValue;
+        },
+        update_gestor_email_correcto(newValue){
+            this.form.gestor_email_correcto= newValue;
+        },
+        update_obs_gestor_email(newValue){
+            this.form.obs_gestor_email = newValue;
+        },
+        update_obs_gestor_email_valida(newValue){
+            this.form.obs_gestor_email_valido = newValue;
+        },
+        update_valor_gestor_email(newValue){
+            this.form.gestor_email = newValue;
+        },
+
+
+        update_gestor_autorizacion_valido(newValue){
+            this.form.autorizacion_gestor_valido = newValue;
             //tengo que enviarsela al padre
         },
+        update_gestor_autorizacion_correcto(newValue){
+            this.form.autorizacion_gestor_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_gestor_autorizacion(newValue){
+            this.form.obs_autorizacion_gestor = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_gestor_autorizacion_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form.obs_autorizacion_gestor_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        cambio_el_archivo_gestor_autorizacion(newValue){
+            console.log("traje un"+newValue);
+            this.form.autorizacion_gestor = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+        update_constancia_afip_valido(newValue){
+            this.form.constancia_afip_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_constancia_afip_correcto(newValue){
+            this.form.constancia_afip_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_constancia_afip(newValue){
+            this.form.obs_constancia_afip = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_constancia_afip_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form.obs_constancia_afip_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        cambio_el_archivo_constancia_afip(newValue){
+            console.log("traje un"+newValue);
+            this.form.constancia_afip = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+
+
+
+
 
 
 
