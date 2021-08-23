@@ -1,4 +1,4 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["helpers_formularios_SanJuan_reinscripciones_js"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["helpers_formularios_sanjuan_reinscripciones_js"],{
 
 /***/ "./helpers/enums/fileAccept.js":
 /*!*************************************!*\
@@ -36,9 +36,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./helpers/formularios/SanJuan/observaciones.js":
+/***/ "./helpers/formularios/sanjuan/observaciones.js":
 /*!******************************************************!*\
-  !*** ./helpers/formularios/SanJuan/observaciones.js ***!
+  !*** ./helpers/formularios/sanjuan/observaciones.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -109,9 +109,9 @@ var Observaciones = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./helpers/formularios/SanJuan/reinscripciones.js":
+/***/ "./helpers/formularios/sanjuan/reinscripciones.js":
 /*!********************************************************!*\
-  !*** ./helpers/formularios/SanJuan/reinscripciones.js ***!
+  !*** ./helpers/formularios/sanjuan/reinscripciones.js ***!
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -121,7 +121,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getFormSchema": () => (/* binding */ getFormSchema)
 /* harmony export */ });
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
-/* harmony import */ var _observaciones__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./observaciones */ "./helpers/formularios/SanJuan/observaciones.js");
+/* harmony import */ var _observaciones__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./observaciones */ "./helpers/formularios/sanjuan/observaciones.js");
 /* harmony import */ var _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../enums/inputsTypes */ "./helpers/enums/inputsTypes.js");
 /* harmony import */ var _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../enums/fileAccept */ "./helpers/enums/fileAccept.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }

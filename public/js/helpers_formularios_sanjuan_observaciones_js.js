@@ -1,8 +1,8 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["helpers_formularios_SanJuan_observaciones_js"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["helpers_formularios_sanjuan_observaciones_js"],{
 
-/***/ "./helpers/formularios/SanJuan/observaciones.js":
+/***/ "./helpers/formularios/sanjuan/observaciones.js":
 /*!******************************************************!*\
-  !*** ./helpers/formularios/SanJuan/observaciones.js ***!
+  !*** ./helpers/formularios/sanjuan/observaciones.js ***!
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 

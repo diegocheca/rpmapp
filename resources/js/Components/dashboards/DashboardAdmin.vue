@@ -7,33 +7,33 @@
         </template>
 
         <main class="p-4 md:p-14 bg-gray-100 dark:bg-gray-800 md:space-x-4 space-y-4">
-            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
                  <div class="grid grid-cols-12 gap-2">
-                <div class="col-span-12 sm:col-span-6 md:col-span-3">
-                    <div class="flex flex-row bg-white shadow-sm rounded p-4">
-                    <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-blue-100 text-blue-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
+                    <div class="col-span-12 sm:col-span-6 md:col-span-3">
+                        <div class="flex flex-row bg-white shadow-sm rounded p-4">
+                            <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-blue-100 text-blue-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            </div>
+                            <div class="flex flex-col flex-grow ml-4">
+                                <div class="text-sm text-gray-500">Nuevas inscripciones</div>
+                                <vue3-autocounter
+                                    class="font-bold text-lg"
+                                    ref="counter1"
+                                    :startAmount="0"
+                                    :endAmount="17"
+                                    :duration="3"
+                                    prefix=""
+                                    suffix=""
+                                    separator=""
+                                    decimalSeparator=""
+                                    :decimals="0"
+                                    :autoinit="true"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex flex-col flex-grow ml-4">
-                        <div class="text-sm text-gray-500">Nuevas inscripciones</div>
-                        <vue3-autocounter
-                            class="font-bold text-lg"
-                            ref="counter1"
-                            :startAmount="0"
-                            :endAmount="17"
-                            :duration="3"
-                            prefix=""
-                            suffix=""
-                            separator=""
-                            decimalSeparator=""
-                            :decimals="0"
-                            :autoinit="true"
-                        />
-                    </div>
-                    </div>
-                </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-3">
                     <div class="flex flex-row bg-white shadow-sm rounded p-4">
                     <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-green-100 text-green-500">
@@ -43,20 +43,20 @@
                     </div>
                     <div class="flex flex-col flex-grow ml-4">
                         <div class="text-sm text-gray-500">Nuevas reinscripciones</div>
-                        <vue3-autocounter
-                            class="font-bold text-lg"
-                            ref="counter1"
-                            :startAmount="0"
-                            :endAmount="33"
-                            :duration="3"
-                            prefix=""
-                            suffix=""
-                            separator=""
-                            decimalSeparator=""
-                            :decimals="0"
-                            :autoinit="true"
-                        />
-                    </div>
+                            <vue3-autocounter
+                                class="font-bold text-lg"
+                                ref="counter1"
+                                :startAmount="0"
+                                :endAmount="33"
+                                :duration="3"
+                                prefix=""
+                                suffix=""
+                                separator=""
+                                decimalSeparator=""
+                                :decimals="0"
+                                :autoinit="true"
+                            />
+                        </div>
                     </div>
                 </div>
                 <div class="col-span-12 sm:col-span-6 md:col-span-3">
@@ -123,72 +123,81 @@
                 </div>
                 </div>
             </div>
-            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 ">
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                 <div class=" md:w-1/4 space-y-4">
 
                     <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
-                        <vue3-autocounter
-                            class="text-4xl count-number"
-                            ref="counter1"
-                            :startAmount="0"
-                            :endAmount="17"
-                            :duration="3"
-                            prefix=""
-                            suffix=""
-                            separator=""
-                            decimalSeparator=""
-                            :decimals="0"
-                            :autoinit="true"
-                        />
-                        <div class="">productores mineros</div>
+                        <a :href="'#'" class="cursor-pointer">
+                            <vue3-autocounter
+                                class="text-4xl count-number"
+                                ref="counter1"
+                                :startAmount="0"
+                                :endAmount="17"
+                                :duration="3"
+                                prefix=""
+                                suffix=""
+                                separator=""
+                                decimalSeparator=""
+                                :decimals="0"
+                                :autoinit="true"
+                            />
+                            <div class="">productores mineros</div>
+
+                        </a>
                     </div>
                     <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
-                        <vue3-autocounter
-                            class="text-4xl count-number"
-                            ref="counter2"
-                            :startAmount="0"
-                            :endAmount="250"
-                            :duration="3"
-                            prefix=""
-                            suffix=""
-                            separator=""
-                            decimalSeparator=""
-                            :decimals="0"
-                            :autoinit="true"
-                        />
-                        <div class="">productores mineros</div>
+                        <a :href="'#'" class="cursor-pointer">
+                            <vue3-autocounter
+                                class="text-4xl count-number"
+                                ref="counter2"
+                                :startAmount="0"
+                                :endAmount="250"
+                                :duration="3"
+                                prefix=""
+                                suffix=""
+                                separator=""
+                                decimalSeparator=""
+                                :decimals="0"
+                                :autoinit="true"
+                            />
+                            <div class="">productores mineros</div>
+                        </a>
                     </div>
                     <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
-                        <vue3-autocounter
-                            class="text-4xl count-number"
-                            ref="counter3"
-                            :startAmount="0"
-                            :endAmount="22"
-                            :duration="3"
-                            prefix=""
-                            suffix=""
-                            separator=""
-                            decimalSeparator=""
-                            :decimals="0"
-                            :autoinit="true"
-                        />
-                        <div class="">productores mineros</div>
+                        <a :href="'#'" class="cursor-pointer">
+                            <vue3-autocounter
+                                class="text-4xl count-number"
+                                ref="counter3"
+                                :startAmount="0"
+                                :endAmount="22"
+                                :duration="3"
+                                prefix=""
+                                suffix=""
+                                separator=""
+                                decimalSeparator=""
+                                :decimals="0"
+                                :autoinit="true"
+                            />
+                            <div class="">productores mineros</div>
+                        </a>
                     </div>
                     <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
-                        <vue3-autocounter
-                            class="text-4xl count-number"
-                            ref="counter4"
-                            :startAmount="0"
-                            :endAmount="65"
-                            :duration="3"
-                            prefix=""
-                            suffix=""
-                            separator=""
-                            decimalSeparator=""
-                            :decimals="0"
-                            :autoinit="true"
-                        />
-                        <div class="">productores mineros</div>
+                        <a :href="'#'" class="cursor-pointer">
+                            <vue3-autocounter
+                                class="text-4xl count-number"
+                                ref="counter4"
+                                :startAmount="0"
+                                :endAmount="65"
+                                :duration="3"
+                                prefix=""
+                                suffix=""
+                                separator=""
+                                decimalSeparator=""
+                                :decimals="0"
+                                :autoinit="true"
+                            />
+                            <div class="">productores mineros</div>
+                        </a>
                     </div>
                 </div>
                 <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
@@ -196,7 +205,7 @@
                 </div>
             </div>
 
-            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full">
+            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
                 <!-- <div class="flex items-center justify-center ">
                     <input type="checkbox" name="toggle" class="hidden" />
                     <label

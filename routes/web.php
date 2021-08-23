@@ -137,6 +137,8 @@ Route::resource('productores_minas', ProductorMinaController::class)
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    // admin
+    // productor
     return Inertia::render('Dashboard', ['userType' => 'productor']);
 })->name('dashboard');
 
