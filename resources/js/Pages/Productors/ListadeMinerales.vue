@@ -12,7 +12,7 @@
                 <div class="font-base tracking-tight text-gray-600">Lista de minerales seleccionales.</div>
                 </div>
                 <div class="flex items-center">
-                <button :disabled="$props.evaluacion" class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900"  @click="agregar_mineral()"> + Agregar Mineral</button>
+                <button :disabled="$props.evaluacion || $props.desactivar_input" class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900"  @click="agregar_mineral()"> + Agregar Mineral</button>
                 </div>
             </div>
             <!-- lsita de minerales del nieto: {{$props.lista_de_minerales_pre_cargados}} -->
@@ -47,14 +47,14 @@
                                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                                             </svg>
                                             <label for="select_mineral_explotado">Mineral Explotado:</label>
-                                            <select  :disabled="$props.evaluacion" class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
+                                            <select  :disabled="$props.evaluacion || $props.desactivar_input" class="form-control" id="select_mineral_explotado" name="select_mineral_explotado"  v-model="mineral.segunda_cat_mineral_explotado" @change="cambio_select_tipo_mineral_explotado_segunda_cat($event, index)">
                                                 <option value="aprovechamiento_comun">Sustancias de aprovechamiento común</option>
                                                 <option value="conceden_preferentemente">Sustancias que se conceden preferentemente al dueño del suelo</option>
                                             </select>
                                         </div>
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">
                                             <select
-                                            :disabled="$props.evaluacion"
+                                            :disabled="$props.evaluacion || $props.desactivar_input"
                                             v-model="mineral.id_mineral"
                                             @change="cambio_select_mineral_segunda_cat($event, index)"
                                             >
@@ -64,7 +64,7 @@
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">
                                             <div v-show="mineral.mostrar_lugar_segunda_cat">
                                                 <label for="select_lugar_mineral">Lugar donde se encuentra:</label>
-                                                <select  :disabled="$props.evaluacion" class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra" @change="cambio_mineral_explotado($event, index)" >
+                                                <select  :disabled="$props.evaluacion || $props.desactivar_input" class="form-control" id="select_lugar_mineral" name="select_lugar_mineral" v-model="mineral.lugar_donde_se_enccuentra" @change="cambio_mineral_explotado($event, index)" >
                                                     <option value="lecho_de_los_rios">Lechos de los ríos</option>
                                                     <option value="aguas_corrientes">Aguas Corrientes</option>
                                                     <option value="placeres">Placeres</option>
@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="flex" v-if="$props.tipo_yacimiento !== 'segunda'">
                                             <select
-                                            :disabled="$props.evaluacion"
+                                            :disabled="$props.evaluacion || $props.desactivar_input"
                                             v-model="mineral.id_mineral"
                                             @change="cambio_select_mineral_segunda_cat($event, index)"
                                             >
@@ -84,7 +84,7 @@
                                         <div class="flex"  v-if="$props.tipo_yacimiento === 'segunda'">
                                             <div v-show="mineral.mostrar_otro_mineral_segunda_cat">
                                                 <label for="otro_mineral_segunda_categoria">Nombre del mineral no comprendido en 1° categoría:</label>
-                                                <input :disabled="$props.evaluacion" type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
+                                                <input :disabled="$props.evaluacion || $props.desactivar_input" type="text" maxlength="25" class="form-control" name="otro_mineral_segunda_categoria" id="otro_mineral_segunda_categoria" v-model="mineral.otro_mineral_segunda_cat">
                                                 <br>
                                             </div>
                                         </div>
@@ -108,7 +108,7 @@
                                         :</label
                                         >
                                         <textarea
-                                            :disabled="$props.evaluacion"
+                                            :disabled="$props.evaluacion || $props.desactivar_input"
                                             id="presentacion_natural"
                                             name="presentacion_natural"
                                             v-model="mineral.observacion"
@@ -136,22 +136,22 @@
                                             </span>
                                             <span>62 Products</span>
                                         </button> -->
-                                        <div  v-if="evaluacion" >
+                                        <div  v-if="evaluacion || $props.mostrar_correccion" >
                                             <h3>Seccion de evaluacion</h3>
                                             <div class="flex">
                                                 <div class="w-full md:w-1/3 px-3">
                                                     <span class="text-gray-700">Es correcto?</span>
                                                     <div class="mt-2">
                                                         <label class="inline-flex items-center">
-                                                            <input type="radio" class="form-radio h-5 w-5 text-green-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true, index)">
+                                                            <input type="radio" :disabled="desactivar_correccion" class="form-radio h-5 w-5 text-green-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true, index)">
                                                             <span class="ml-2">Si</span>
                                                         </label>
                                                         <label class="inline-flex items-center ml-6">
-                                                            <input type="radio" class="form-radio h-5 w-5 text-red-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false, index)">
+                                                            <input type="radio" :disabled="desactivar_correccion" class="form-radio h-5 w-5 text-red-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false, index)">
                                                             <span class="ml-2">No</span>
                                                         </label>
                                                         <label class="inline-flex items-center ml-6">
-                                                            <input type="radio" class="form-radio h-5 w-5 text-indigo-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada', index)">
+                                                            <input type="radio" :disabled="desactivar_correccion" class="form-radio h-5 w-5 text-indigo-400" :name="'name_mineral_correccion'.index" v-model="mineral.evaluacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada', index)">
                                                             <span class="ml-2">Sin evaluar</span>
                                                         </label>
                                                     </div>
@@ -167,6 +167,7 @@
                                                         name="observaciones"
                                                         v-model="mineral.observacion_autoridad"
                                                         v-bind:class=mineral.clase_text_area
+                                                        :disabled="desactivar_correccion"
                                                         @input="actaulizar_contenido_text_area($event.target.value, index)" 
                                                         >
                                                     </textarea>
@@ -177,7 +178,7 @@
                                     </div>
                                     <div class="w-full md:w-1/3 px-3">
                                         <button
-                                            :disabled="$props.evaluacion"
+                                            :disabled="$props.evaluacion  || $props.desactivar_input"
                                             class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-red-200 hover:bg-red-300 text-red-900"
                                             type="button" aria-label="like"
                                             @click="eliminar_mineral(index)"
@@ -212,6 +213,10 @@ export default {
         'tipo_yacimiento',
         'lista_de_minerales',
         'lista_de_minerales_pre_cargados',
+        'desactivar_input',
+        'mostrar_correccion',
+        'desactivar_correccion',
+
     ],
   data() {
     return {

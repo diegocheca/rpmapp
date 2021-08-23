@@ -1,7 +1,7 @@
 <template>
     <div>
         <jet-banner />
-        
+
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
@@ -11,13 +11,24 @@
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
                                 <inertia-link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                                    <jet-application-mark
+                                        class="block h-9 w-auto"
+                                    />
                                 </inertia-link>
                             </div>
 
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                            <div
+                                class="
+                                    hidden
+                                    space-x-8
+                                    sm:-my-px sm:ml-10 sm:flex
+                                "
+                            >
+                                <jet-nav-link
+                                    :href="route('dashboard')"
+                                    :active="route().current('dashboard')"
+                                >
                                     Dashboard
                                 </jet-nav-link>
                                 <!-- <jet-nav-link
@@ -40,11 +51,13 @@
                                 </jet-nav-link>
                                 <jet-nav-link
                                     :href="route('formulario-alta.index')"
-                                    :active="route().current('formulario-alta.index')"
+                                    :active="
+                                        route().current('formulario-alta.index')
+                                    "
                                 >
                                     Borradores
                                 </jet-nav-link>
-                                
+
                                 <jet-nav-link
                                     :href="route('pagos.index')"
                                     :active="route().current('pagos.index')"
@@ -53,7 +66,9 @@
                                 </jet-nav-link>
                                 <jet-nav-link
                                     :href="route('reinscripciones.index')"
-                                    :active="route().current('reinscripciones.index')"
+                                    :active="
+                                        route().current('reinscripciones.index')
+                                    "
                                 >
                                     Reinscripciones
                                 </jet-nav-link>
@@ -71,15 +86,31 @@
                                 </jet-nav-link>
                                 <jet-nav-link
                                     :href="route('productores_minas.index')"
-                                    :active="route().current('productores_minas.index')"
+                                    :active="
+                                        route().current(
+                                            'productores_minas.index'
+                                        )
+                                    "
                                 >
                                     ProdMina
                                 </jet-nav-link>
                                 <jet-nav-link
                                     :href="route('productores.index')"
-                                    :active="route().current('productores.index')"
+                                    :active="
+                                        route().current('productores.index')
+                                    "
                                 >
                                     Productores
+                                </jet-nav-link>
+                                
+
+                                <jet-nav-link
+                                    :href="route('solicitudes.index')"
+                                    :active="
+                                        route().current('solicitudes.index')
+                                    "
+                                >
+                                    Formularios WEB
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -87,14 +118,51 @@
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <div class="ml-3 relative">
                                 <!-- Teams Dropdown -->
-                                <jet-dropdown align="right" width="60" v-if="$page.props.jetstream.hasTeamFeatures">
+                                <jet-dropdown
+                                    align="right"
+                                    width="60"
+                                    v-if="$page.props.jetstream.hasTeamFeatures"
+                                >
                                     <template #trigger>
                                         <span class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
-                                                {{ $page.props.user.current_team.name }}
+                                            <button
+                                                type="button"
+                                                class="
+                                                    inline-flex
+                                                    items-center
+                                                    px-3
+                                                    py-2
+                                                    border border-transparent
+                                                    text-sm
+                                                    leading-4
+                                                    font-medium
+                                                    rounded-md
+                                                    text-gray-500
+                                                    bg-white
+                                                    hover:bg-gray-50
+                                                    hover:text-gray-700
+                                                    focus:outline-none
+                                                    focus:bg-gray-50
+                                                    active:bg-gray-50
+                                                    transition
+                                                "
+                                            >
+                                                {{
+                                                    $page.props.user
+                                                        .current_team.name
+                                                }}
 
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                <svg
+                                                    class="ml-2 -mr-0.5 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"
+                                                    />
                                                 </svg>
                                             </button>
                                         </span>
@@ -103,33 +171,115 @@
                                     <template #content>
                                         <div class="w-60">
                                             <!-- Team Management -->
-                                            <template v-if="$page.props.jetstream.hasTeamFeatures">
-                                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                            <template
+                                                v-if="
+                                                    $page.props.jetstream
+                                                        .hasTeamFeatures
+                                                "
+                                            >
+                                                <div
+                                                    class="
+                                                        block
+                                                        px-4
+                                                        py-2
+                                                        text-xs text-gray-400
+                                                    "
+                                                >
                                                     Manage Team
                                                 </div>
 
                                                 <!-- Team Settings -->
-                                                <jet-dropdown-link :href="route('teams.show', $page.props.user.current_team)">
+                                                <jet-dropdown-link
+                                                    :href="
+                                                        route(
+                                                            'teams.show',
+                                                            $page.props.user
+                                                                .current_team
+                                                        )
+                                                    "
+                                                >
                                                     Team Settings
                                                 </jet-dropdown-link>
 
-                                                <jet-dropdown-link :href="route('teams.create')" v-if="$page.props.jetstream.canCreateTeams">
+                                                <jet-dropdown-link
+                                                    :href="
+                                                        route('teams.create')
+                                                    "
+                                                    v-if="
+                                                        $page.props.jetstream
+                                                            .canCreateTeams
+                                                    "
+                                                >
                                                     Create New Team
                                                 </jet-dropdown-link>
 
-                                                <div class="border-t border-gray-100"></div>
+                                                <div
+                                                    class="
+                                                        border-t border-gray-100
+                                                    "
+                                                ></div>
 
                                                 <!-- Team Switcher -->
-                                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                                <div
+                                                    class="
+                                                        block
+                                                        px-4
+                                                        py-2
+                                                        text-xs text-gray-400
+                                                    "
+                                                >
                                                     Switch Teams
                                                 </div>
 
-                                                <template v-for="team in $page.props.user.all_teams" :key="team.id">
-                                                    <form @submit.prevent="switchToTeam(team)">
-                                                        <jet-dropdown-link as="button">
-                                                            <div class="flex items-center">
-                                                                <svg v-if="team.id == $page.props.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                                                <div>{{ team.name }}</div>
+                                                <template
+                                                    v-for="team in $page.props
+                                                        .user.all_teams"
+                                                    :key="team.id"
+                                                >
+                                                    <form
+                                                        @submit.prevent="
+                                                            switchToTeam(team)
+                                                        "
+                                                    >
+                                                        <jet-dropdown-link
+                                                            as="button"
+                                                        >
+                                                            <div
+                                                                class="
+                                                                    flex
+                                                                    items-center
+                                                                "
+                                                            >
+                                                                <svg
+                                                                    v-if="
+                                                                        team.id ==
+                                                                        $page
+                                                                            .props
+                                                                            .user
+                                                                            .current_team_id
+                                                                    "
+                                                                    class="
+                                                                        mr-2
+                                                                        h-5
+                                                                        w-5
+                                                                        text-green-400
+                                                                    "
+                                                                    fill="none"
+                                                                    stroke-linecap="round"
+                                                                    stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    stroke="currentColor"
+                                                                    viewBox="0 0 24 24"
+                                                                >
+                                                                    <path
+                                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                                    ></path>
+                                                                </svg>
+                                                                <div>
+                                                                    {{
+                                                                        team.name
+                                                                    }}
+                                                                </div>
                                                             </div>
                                                         </jet-dropdown-link>
                                                     </form>
@@ -144,36 +294,113 @@
                             <div class="ml-3 relative">
                                 <jet-dropdown align="right" width="48">
                                     <template #trigger>
-                                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name" />
+                                        <button
+                                            v-if="
+                                                $page.props.jetstream
+                                                    .managesProfilePhotos
+                                            "
+                                            class="
+                                                flex
+                                                text-sm
+                                                border-2 border-transparent
+                                                rounded-full
+                                                focus:outline-none
+                                                focus:border-gray-300
+                                                transition
+                                            "
+                                        >
+                                            <img
+                                                class="
+                                                    h-8
+                                                    w-8
+                                                    rounded-full
+                                                    object-cover
+                                                "
+                                                :src="
+                                                    $page.props.user
+                                                        .profile_photo_url
+                                                "
+                                                :alt="$page.props.user.name"
+                                            />
                                         </button>
 
-                                        <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                        <span
+                                            v-else
+                                            class="inline-flex rounded-md"
+                                        >
+                                            <button
+                                                type="button"
+                                                class="
+                                                    inline-flex
+                                                    items-center
+                                                    px-3
+                                                    py-2
+                                                    border border-transparent
+                                                    text-sm
+                                                    leading-4
+                                                    font-medium
+                                                    rounded-md
+                                                    text-gray-500
+                                                    bg-white
+                                                    hover:text-gray-700
+                                                    focus:outline-none
+                                                    transition
+                                                "
+                                            >
                                                 {{ $page.props.user.name }}
 
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                <svg
+                                                    class="ml-2 -mr-0.5 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"
+                                                    />
                                                 </svg>
                                             </button>
                                         </span>
                                     </template>
-
                                     <template #content>
                                         <!-- Account Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
+                                        <div
+                                            class="
+                                                block
+                                                px-4
+                                                py-2
+                                                text-xs text-gray-400
+                                            "
+                                        >
                                             Manage Account
                                         </div>
 
-                                        <jet-dropdown-link :href="route('profile.show')">
+                                        <jet-dropdown-link
+                                            :href="route('profile.show')"
+                                        >
                                             Profile
                                         </jet-dropdown-link>
+                                        <jet-dropdown-link
+                                            :href="route('admin.users.index')"
+                                        >
+                                            Configuración
+                                        </jet-dropdown-link>
 
-                                        <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                                        <jet-dropdown-link
+                                            :href="route('api-tokens.index')"
+                                            v-if="
+                                                $page.props.jetstream
+                                                    .hasApiFeatures
+                                            "
+                                        >
                                             API Tokens
                                         </jet-dropdown-link>
 
-                                        <div class="border-t border-gray-100"></div>
+                                        <div
+                                            class="border-t border-gray-100"
+                                        ></div>
 
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
@@ -188,24 +415,67 @@
 
                         <!-- Hamburger -->
                         <div class="-mr-2 flex items-center sm:hidden">
-                            <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
-                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                    <path :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            <button
+                                @click="
+                                    showingNavigationDropdown =
+                                        !showingNavigationDropdown
+                                "
+                                class="
+                                    inline-flex
+                                    items-center
+                                    justify-center
+                                    p-2
+                                    rounded-md
+                                    text-gray-400
+                                    hover:text-gray-500 hover:bg-gray-100
+                                    focus:outline-none
+                                    focus:bg-gray-100
+                                    focus:text-gray-500
+                                    transition
+                                "
+                            >
+                                <svg
+                                    class="h-6 w-6"
+                                    stroke="currentColor"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        :class="{
+                                            hidden: showingNavigationDropdown,
+                                            'inline-flex':
+                                                !showingNavigationDropdown,
+                                        }"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                    <path
+                                        :class="{
+                                            hidden: !showingNavigationDropdown,
+                                            'inline-flex':
+                                                showingNavigationDropdown,
+                                        }"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
                                 </svg>
                             </button>
                         </div>
                     </div>
                 </div>
                 <!-- Hamburger -->
-                        <div class="-mr-2 flex items-center">
+                        <!-- <div class="-mr-2 flex items-center">
                             <button @click="showingNavigationDropdown = ! showingNavigationDropdown" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                                     <path :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                             </button>
-                        </div>
+                        </div> -->
                         <!-- menu curvo-->
                         <div >
                             <div class="flex antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
@@ -233,22 +503,7 @@
                                     <div class="z-10 flex flex-col flex-1">
                                         <div class="flex items-center justify-between flex-shrink-0 w-64 p-4">
                                         <!-- Logo -->
-                                        <a href="#">
-                                            <span class="sr-only">K-UI</span>
-                                            <svg
-                                            aria-hidden="true"
-                                            class="w-16 h-auto text-blue-600"
-                                            viewBox="0 0 96 53"
-                                            fill="currentColor"
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                            <path
-                                                fill-rule="evenodd"
-                                                clip-rule="evenodd"
-                                                d="M7.69141 34.7031L13.9492 28.1992L32.0898 52H40.1758L18.4492 23.418L38.5938 0.8125H30.4375L7.69141 26.125V0.8125H0.941406V52H7.69141V34.7031ZM35.3008 26.9102H52.457V21.6016H35.3008V26.9102ZM89.1914 13V35.5117C89.1914 39.2148 88.1719 42.0859 86.1328 44.125C84.1172 46.1641 81.1992 47.1836 77.3789 47.1836C73.6055 47.1836 70.6992 46.1641 68.6602 44.125C66.6211 42.0625 65.6016 39.1797 65.6016 35.4766V0.8125H58.9219V35.6875C58.9688 40.9844 60.6562 45.1445 63.9844 48.168C67.3125 51.1914 71.7773 52.7031 77.3789 52.7031L79.1719 52.6328C84.3281 52.2578 88.4062 50.5352 91.4062 47.4648C94.4297 44.3945 95.9531 40.4453 95.9766 35.6172V13H89.1914ZM89 8H96V1H89V8Z"
-                                            />
-                                            </svg>
-                                        </a>
+                                            <jet-authentication-card-logo />
                                         <!-- Close btn -->
                                         <button @click="isSidebarOpen = false" class="p-1 rounded-lg focus:outline-none focus:ring">
                                             <svg
@@ -445,7 +700,7 @@
                                             <span>Comerciantes</span>
                                         </a>   
 
-                                        <a  :href="route('users.index')" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                                        <a  :href="route('pagos.index')" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
                                             <svg
                                             class="w-6 h-6"
                                             aria-hidden="true"
@@ -557,10 +812,18 @@
                             <!-- fin menu curvo-->
 
                 <!-- Responsive Navigation Menu -->
-                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
+                <div
+                    :class="{
+                        block: showingNavigationDropdown,
+                        hidden: !showingNavigationDropdown,
+                    }"
+                    class="sm:hidden"
+                >
                     <div class="pt-2 pb-3 space-y-1">
-                        
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                        <jet-responsive-nav-link
+                            :href="route('dashboard')"
+                            :active="route().current('dashboard')"
+                        >
                             Dashboard
                         </jet-responsive-nav-link>
                         <!-- <jet-responsive-nav-link
@@ -569,94 +832,115 @@
                           >
                             Productos
                           </jet-responsive-nav-link> -->
-                          <!-- <jet-responsive-nav-link
+                        <!-- <jet-responsive-nav-link
                             :href="route('products.create')"
                             :active="route().current('products.create')"
                           >
                             añadir
                           </jet-responsive-nav-link> -->
-                           <jet-responsive-nav-link
+                        <jet-responsive-nav-link
                             :href="route('formulario-alta.index')"
                             :active="route().current('formulario-alta.index')"
-                          >
+                        >
                             Borradores
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('productors.create')"
                             :active="route().current('productors.create')"
-                          >
+                        >
                             AñadirProd
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('pagos.index')"
                             :active="route().current('pagos.index')"
-                          >
+                        >
                             Pagos
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('pagos.create')"
                             :active="route().current('pagos.create')"
-                          >
+                        >
                             MasPagos
-                          </jet-responsive-nav-link>
-                         <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('reinscripciones.index')"
                             :active="route().current('reinscripciones.index')"
-                          >
+                        >
                             Reinscripciones
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('reinscripciones.create')"
                             :active="route().current('reinscripciones.create')"
-                          >
+                        >
                             Reins nuevo
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('productos.index')"
                             :active="route().current('productos.index')"
-                          >
+                        >
                             Productos
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('iiadias.index')"
                             :active="route().current('iiadias.index')"
-                          >
+                        >
                             IIAs y Dias
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('productores_minas.index')"
                             :active="route().current('productores_minas.index')"
-                          >
+                        >
                             ProdMina
-                          </jet-responsive-nav-link>
-                          <jet-responsive-nav-link
+                        </jet-responsive-nav-link>
+                        <jet-responsive-nav-link
                             :href="route('productores.index')"
                             :active="route().current('productores.index')"
-                          >
+                        >
                             Productores
-                          </jet-responsive-nav-link>
-                          
+                        </jet-responsive-nav-link>
                     </div>
 
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="flex items-center px-4">
-                            <div v-if="$page.props.jetstream.managesProfilePhotos" class="flex-shrink-0 mr-3" >
-                                <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name" />
+                            <div
+                                v-if="
+                                    $page.props.jetstream.managesProfilePhotos
+                                "
+                                class="flex-shrink-0 mr-3"
+                            >
+                                <img
+                                    class="h-10 w-10 rounded-full object-cover"
+                                    :src="$page.props.user.profile_photo_url"
+                                    :alt="$page.props.user.name"
+                                />
                             </div>
 
                             <div>
-                                <div class="font-medium text-base text-gray-800">{{ $page.props.user.name }}</div>
-                                <div class="font-medium text-sm text-gray-500">{{ $page.props.user.email }}</div>
+                                <div
+                                    class="font-medium text-base text-gray-800"
+                                >
+                                    {{ $page.props.user.name }}
+                                </div>
+                                <div class="font-medium text-sm text-gray-500">
+                                    {{ $page.props.user.email }}
+                                </div>
                             </div>
                         </div>
 
                         <div class="mt-3 space-y-1">
-                            <jet-responsive-nav-link :href="route('profile.show')" :active="route().current('profile.show')">
+                            <jet-responsive-nav-link
+                                :href="route('profile.show')"
+                                :active="route().current('profile.show')"
+                            >
                                 Profile
                             </jet-responsive-nav-link>
 
-                            <jet-responsive-nav-link :href="route('api-tokens.index')" :active="route().current('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
+                            <jet-responsive-nav-link
+                                :href="route('api-tokens.index')"
+                                :active="route().current('api-tokens.index')"
+                                v-if="$page.props.jetstream.hasApiFeatures"
+                            >
                                 API Tokens
                             </jet-responsive-nav-link>
 
@@ -668,34 +952,86 @@
                             </form>
 
                             <!-- Team Management -->
-                            <template v-if="$page.props.jetstream.hasTeamFeatures">
+                            <template
+                                v-if="$page.props.jetstream.hasTeamFeatures"
+                            >
                                 <div class="border-t border-gray-200"></div>
 
-                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                <div
+                                    class="
+                                        block
+                                        px-4
+                                        py-2
+                                        text-xs text-gray-400
+                                    "
+                                >
                                     Manage Team
                                 </div>
 
                                 <!-- Team Settings -->
-                                <jet-responsive-nav-link :href="route('teams.show', $page.props.user.current_team)" :active="route().current('teams.show')">
+                                <jet-responsive-nav-link
+                                    :href="
+                                        route(
+                                            'teams.show',
+                                            $page.props.user.current_team
+                                        )
+                                    "
+                                    :active="route().current('teams.show')"
+                                >
                                     Team Settings
                                 </jet-responsive-nav-link>
 
-                                <jet-responsive-nav-link :href="route('teams.create')" :active="route().current('teams.create')">
+                                <jet-responsive-nav-link
+                                    :href="route('teams.create')"
+                                    :active="route().current('teams.create')"
+                                >
                                     Create New Team
                                 </jet-responsive-nav-link>
 
                                 <div class="border-t border-gray-200"></div>
 
                                 <!-- Team Switcher -->
-                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                <div
+                                    class="
+                                        block
+                                        px-4
+                                        py-2
+                                        text-xs text-gray-400
+                                    "
+                                >
                                     Switch Teams
                                 </div>
 
-                                <template v-for="team in $page.props.user.all_teams" :key="team.id">
+                                <template
+                                    v-for="team in $page.props.user.all_teams"
+                                    :key="team.id"
+                                >
                                     <form @submit.prevent="switchToTeam(team)">
                                         <jet-responsive-nav-link as="button">
                                             <div class="flex items-center">
-                                                <svg v-if="team.id == $page.props.user.current_team_id" class="mr-2 h-5 w-5 text-green-400" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                <svg
+                                                    v-if="
+                                                        team.id ==
+                                                        $page.props.user
+                                                            .current_team_id
+                                                    "
+                                                    class="
+                                                        mr-2
+                                                        h-5
+                                                        w-5
+                                                        text-green-400
+                                                    "
+                                                    fill="none"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    stroke="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                    ></path>
+                                                </svg>
                                                 <div>{{ team.name }}</div>
                                             </div>
                                         </jet-responsive-nav-link>
@@ -706,7 +1042,6 @@
                     </div>
                 </div>
             </nav>
-            
 
             <!-- Page Heading -->
             <!-- <header class="bg-white shadow" v-if="$slots.header">
@@ -963,7 +1298,6 @@
                     </div> -->
                     <slot></slot>
                 </div>
-                
             </main>
         </div>
     </div>
@@ -976,7 +1310,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
-
+    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     export default {
         components: {
             JetApplicationMark,
@@ -985,6 +1319,7 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            JetAuthenticationCardLogo,
         },
 
         data() {
@@ -994,20 +1329,11 @@
             }
         },
 
-        methods: {
-            switchToTeam(team) {
-                this.$inertia.put(route('current-team.update'), {
-                    'team_id': team.id
-                }, {
-                    preserveState: false
-                })
-            },
-
-            logout() {
-                this.$inertia.post(route('logout'));
-            },
-        }
+        logout() {
+            this.$inertia.post(route("logout"));
+        },
     }
+
 </script>
 <style scoped>
 .slide-fade-enter-active {

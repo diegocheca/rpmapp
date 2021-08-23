@@ -8,11 +8,11 @@
             >
             <div class="mt-2">
                 <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio h-5 w-5 text-green-300" :name="name_checkbox" v-model="valor_input" value="true" v-on:change="actaulizar_valor_input(true)">
+                    <input type="radio" :disabled="desactivar_owner" class="form-radio h-5 w-5 text-green-300" :name="name_checkbox" v-model="valor_input" value="true" v-on:change="actaulizar_valor_input(true)">
                     <span class="ml-2">{{label_true}}</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" class="form-radio h-5 w-5 text-red-300" :name="name_checkbox" v-model="valor_input" value="false" v-on:change="actaulizar_valor_input(false)">
+                    <input type="radio" :disabled="desactivar_owner" class="form-radio h-5 w-5 text-red-300" :name="name_checkbox" v-model="valor_input" value="false" v-on:change="actaulizar_valor_input(false)">
                     <span class="ml-2">{{label_false}}</span>
                 </label>
             </div>
@@ -34,24 +34,24 @@
                 <p  v-bind:class=clase_texto_validacion_otro_input>{{texto_validacion_otro_input}}</p>
             </div>
         </div>
-        <div class="w-full md:w-1/4 px-3" v-if="evaluacion">
+        <div class="w-full md:w-1/4 px-3" v-if="evaluacion || mostrar_owner_correccion">
             <span class="text-gray-700">Es correcto?</span>
             <div class="mt-2">
                 <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio h-5 w-5 text-green-600" :name="name_correcion" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
+                    <input type="radio" :disabled="desactivar_owner_correccion" class="form-radio h-5 w-5 text-green-600" :name="name_correcion" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
                     <span class="ml-2">Si</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" class="form-radio h-5 w-5 text-red-600" :name="name_correcion" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
+                    <input type="radio" :disabled="desactivar_owner_correccion" class="form-radio h-5 w-5 text-red-600" :name="name_correcion" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
                     <span class="ml-2">No</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcion" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
+                    <input type="radio" :disabled="desactivar_owner_correccion" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcion" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
                     <span class="ml-2">Sin evaluar</span>
                 </label>
             </div>
         </div>
-        <div v-show="!valor_evaluacion_correcto_local" class="w-full md:w-1/4 px-3">
+        <div v-show="!valor_evaluacion_correcto_local &&  $props.evaluacion" class="w-full md:w-1/4 px-3">
             <label
                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 for="observaciones"
@@ -62,6 +62,7 @@
                 name="observaciones"
                 v-model="valor_obs"
                 v-bind:class=clase_text_area
+                :disabled="desactivar_owner_correccion" 
                 @input="actaulizar_contenido_text_area($event.target.value)" 
                 >
             </textarea>
@@ -116,6 +117,9 @@ export default {
         'otro_input',
         'name_correcion',
         'name_checkbox',
+        'desactivar_owner',
+        'mostrar_owner_correccion',
+        'desactivar_owner_correccion',
     ],
   data() {
     return {

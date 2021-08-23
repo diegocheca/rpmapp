@@ -6,20 +6,20 @@
                 for="input_componente"
                 >{{label}}:
             </label>
-            <div class="flex" v-if="evaluacion">
+            <div class="flex" v-if="evaluacion || mostrar_correccion">
                 <div class="w-full md:w-1/3 px-3">
                     <span class="text-gray-700">Es correcto?</span>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
+                            <input type="radio" :disabled="desactivar_correccion" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
                             <span class="ml-2">Si</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
+                            <input type="radio" :disabled="desactivar_correccion" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
                             <span class="ml-2">No</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
+                            <input type="radio" :disabled="desactivar_correccion" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
                             <span class="ml-2">Sin evaluar</span>
                         </label>
                     </div>
@@ -35,6 +35,7 @@
                         name="observaciones"
                         v-model="valor_obs"
                         v-bind:class=clase_text_area
+                        :disabled="desactivar_correccion"
                         @input="actaulizar_contenido_text_area($event.target.value)"
                         >
                     </textarea>
@@ -83,7 +84,7 @@
                         <p class="pointer-none text-gray-500 ">
                             <span class="text-sm">Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
                     </div>
-                    <input type="file" class="hidden" @change="cambio_el_archivo">
+                    <input :disabled="desactivar_input" type="file" class="hidden" @change="cambio_el_archivo">
                 </label>
             </div>
             <p class="text-sm text-gray-300">
@@ -107,7 +108,7 @@
                         </div>
                         <p class="pointer-none text-gray-500 "><span class="text-sm">Para cambiar el archivo: Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
                     </div>
-                    <input type="file" class="hidden" @change="cambio_el_archivo">
+                    <input :disabled="desactivar_input" type="file" class="hidden" @change="cambio_el_archivo">
                 </label>
             </div>
             <p class="text-sm text-gray-300">
@@ -129,6 +130,9 @@ export default {
         'evaluacion',
         'testing',
         'label',
+        'desactivar_input',
+        'mostrar_correccion',
+        'desactivar_correccion',
     ],
   data() {
     return {

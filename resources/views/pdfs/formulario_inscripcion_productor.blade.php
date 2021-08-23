@@ -98,11 +98,11 @@
         </tbody>
     </table>
 
-    <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Razon Social: {{$razon_social}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> N° CUIT: {{$ciut}}</p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td  style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Razon Social: {{$razon_social}}</p></td>
+          <td  style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> N° CUIT: {{$ciut}}</p></td>
         </tr>
       </tbody>
     </table>
@@ -124,21 +124,21 @@
    
 
 
-   <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Calle: {{$leal_calle}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Numero: {{$leal_numero}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Localidad: {{$leal_localidad}}</p></td>
+   <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Calle: {{$leal_calle}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Numero: {{$leal_numero}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Localidad: {{$leal_localidad}}</p></td>
         </tr>
       </tbody>
     </table>
-    <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Departamento: {{$leal_departamento}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Telefono: {{$leal_telefono}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Codigo Postal: {{$leal_cp}}</p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Departamento: {{$leal_departamento}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Telefono: {{$leal_telefono}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Codigo Postal: {{$leal_cp}}</p></td>
         </tr>
       </tbody>
     </table>
@@ -162,21 +162,21 @@
         </tbody>
     </table>
 
-    <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Calle: {{$administracion_calle}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Numero: {{$administracion_numero}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Localidad: {{$administracion_localidad}}</p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Calle: {{$administracion_calle}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Numero: {{$administracion_numero}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Localidad: {{$administracion_localidad}}</p></td>
         </tr>
       </tbody>
     </table>
-    <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Departamento: {{$administracion_departamento}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Telefono: {{$administracion_telefono}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Codigo Postal: {{$administracion_cp}}</p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Departamento: {{$administracion_departamento}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Telefono: {{$administracion_telefono}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Codigo Postal: {{$administracion_cp}}</p></td>
         </tr>
       </tbody>
     </table>
@@ -189,42 +189,42 @@
 
 
     <!-- <span>Datos Mina</span> -->
-    <table class="table table-bordered">
-       <tbody>
-            <tr>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+       <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+            <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
                 <td style="font-size:10px;">2. &nbsp;&nbsp; DATOS DE LA MINA O CANTERA</td>
             </tr>
         </tbody>
     </table>
 
-    <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Nombre: {{$nombre_mina}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Expediente: {{$numero_expdiente}}</p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Nombre: {{$nombre_mina}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Expediente: {{$numero_expdiente}}</p></td>
         </tr>
       </tbody>
     </table>
-    <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Departamento:: {{$localidad_mina_departamento}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Distrito Minero: {{$distrito_minero}}</p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Departamento:: {{$localidad_mina_departamento}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Distrito Minero: {{$distrito_minero}}</p></td>
         </tr>
       </tbody>
     </table>
-    <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Localidad:: {{$localidad_mina_localidad}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;"> Zona: {{$localidad_mina_provincia}}</p></td>
+    <table  class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Localidad:: {{$localidad_mina_localidad}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Zona: {{$localidad_mina_provincia}}</p></td>
         </tr>
       </tbody>
     </table>
-     <table class="table ">
-      <tbody>
-        <tr>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Mineral: {{$minerales_variedad}}</p></td>
+     <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> Mineral: {{$minerales_variedad}}</p></td>
         </tr>
       </tbody>
     </table>
@@ -237,31 +237,31 @@
             </tr>
         </tbody>
     </table>
-    <table class="table table-borderless" >
-      <tbody>
-        <tr style="border-bottom: 1px solid black;">
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Dueño: {{$owner}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Arrendatario: {{$arrendatario}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Concesionario: {{$concesionario}}</p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Otro: {{$otros}}</p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> Dueño: {{$owner}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> Arrendatario: {{$arrendatario}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> Concesionario: {{$concesionario}}</p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> Otro: {{$otros}}</p></td>
         </tr>
       </tbody>
     </table>
     <br>
-    <table class="table table-borderless">
-      <tbody>
-        <tr style="border-bottom: 1px solid black;">
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Titulo que adjunta:</p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> Titulo que adjunta:</p></td>
         </tr>
       </tbody>
     </table>
     <br>
-    <table class="table table-borderless">
-      <tbody>
-        <tr style="border-bottom: 1px solid black;">
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Firma: </p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">Aclaracion: </p></td>
-          <td style="border-bottom: 1px solid black;"><p style="font-size:12px;">D.N.I.: </p></td>
+    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
+      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> Firma: </p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> Aclaracion: </p></td>
+          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> D.N.I.: </p></td>
         </tr>
       </tbody>
     </table>

@@ -15,30 +15,32 @@
             <a href="#section_datos_mina_ubicacion">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/plano-minero.svg">
             </a>
-            <label class="flex items-center relative w-max cursor-pointer select-none">
-                <br>
-                <br>
-                <input 
-                type="checkbox" 
-                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
-                v-model="mostrar_testing"
-                />
-                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
-                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
-                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-            </label>
-            <label class="flex items-center relative w-max cursor-pointer select-none">
-                <br>
-                <br>
-                <input 
-                type="checkbox" 
-                class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
-                v-model="autoridad_minera"
-                />
-                <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
-                <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
-                <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-            </label>
+            <div v-if="$props.testing">
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
+                    v-model="mostrar_testing"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+                <label class="flex items-center relative w-max cursor-pointer select-none">
+                    <br>
+                    <br>
+                    <input 
+                    type="checkbox" 
+                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
+                    v-model="autoridad_minera"
+                    />
+                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
+                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
+                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+                </label>
+            </div>
         </div>
         <div>
             <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
@@ -66,6 +68,8 @@
             <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <SelectProvincia
+                v-if="mostrar_ubicacion_prov"
+
                     v-bind:leal_provincia="$props.localidad_mina_provincia"
                     v-bind:leal_provincia_valido="$props.localidad_mina_provincia_validacion"
                     v-bind:leal_provincia_correcto="$props.localidad_mina_provincia_correcto"
@@ -76,6 +80,10 @@
                     v-bind:label="'Provincia de Ubicación de Mina'"
                     v-bind:lista_provincias="$props.lista_provincias"
                     v-bind:name_correcto="'prov_mina_correcto'"
+                    v-bind:desactivar_legal_prov="$props.desactivar_ubicacion_prov"
+                    v-bind:mostrar_legal_prov_correccion="$props.mostrar_ubicacion_prov_correccion"
+                    v-bind:desactivar_legal_prov_correccion="$props.desactivar_ubicacion_prov_correccion"
+
                     v-on:changeprovlegalvalido="update_provincia_valido($event)"
                     v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
                     v-on:changeobsrpovlegal="update_obs_provincia($event)"
@@ -110,6 +118,8 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <SelectDepartamento
+                v-if="mostrar_ubicacion_dpto"
+
                     v-bind:leal_departamento="$props.localidad_mina_departamento"
                     v-bind:leal_departamento_valido="$props.localidad_mina_departamento_validacion"
                     v-bind:leal_departamento_correcto="$props.localidad_mina_departamento_correcto"
@@ -119,6 +129,10 @@
                     v-bind:testing="mostrar_testing"
                     v-bind:label="'Departamento de Ubicacion de la Mina'"
                     v-bind:lista_departamentos= "lista_departamentos"
+                    v-bind:desactivar_legal_dpto="$props.desactivar_ubicacion_dpto"
+                    v-bind:mostrar_legal_dpto_correccion="$props.mostrar_ubicacion_dpto_correccion"
+                    v-bind:desactivar_legal_dpto_correccion="$props.desactivar_ubicacion_dpto_correccion"
+
                     v-on:changedptolegalvalido="update_dpto_valido($event)"
                     v-on:changedptolegalcorrecto="update_dpto_correcto($event)"
                     v-on:changeobsrdptolegal="updateobs_dpto_legal($event)"
@@ -155,6 +169,8 @@
             <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
+                    v-if="mostrar_ubicacion_localidad"
+                
                     v-bind:valor_input_props="$props.localidad_mina_localidad"
                     v-bind:valor_input_validacion="$props.localidad_mina_localidad_validacion"
                     v-bind:evualacion_correcto="$props.localidad_mina_localidad_correcto"
@@ -164,6 +180,10 @@
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Localidad Donde se encuentra la Mina:'"
                     v-bind:icon="'http://localhost:8000/svg/state.svg'"
+                    v-bind:desactivar_input="$props.desactivar_ubicacion_localidad"
+                    v-bind:mostrar_correccion="$props.mostrar_ubicacion_localidad_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_ubicacion_localidad_correccion"
+
                     v-on:changevalido="update_localidad_valido($event)"
                     v-on:changecorrecto="update_localidad_correcto($event)"
                     v-on:changeobs="update_obs_localidad($event)"
@@ -198,6 +218,8 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <TipoDeSistemaGeo
+                v-if="$props.mostrar_ubicacion_sistema"
+                
                     v-bind:valor_input_props="$props.tipo_sistema"
                     v-bind:valor_input_validacion="$props.tipo_sistema_validacion"
                     v-bind:evualacion_correcto="$props.tipo_sistema_correcto"
@@ -206,6 +228,10 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Tipo de Sistema de Coordenadas:'"
+                    v-bind:desactivar_input="$props.desactivar_ubicacion_sistema"
+                    v-bind:mostrar_correccion="$props.mostrar_ubicacion_sistema_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_ubicacion_sistema_correccion"
+
                     v-on:changevalido="update_sist_coor_valido($event)"
                     v-on:changecorrecto="update_sist_coor_correcto($event)"
                     v-on:changeobs="update_obs_sist_coor($event)"
@@ -242,6 +268,8 @@
             <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
+                v-if="$props.mostrar_ubicacion_latitud"
+
                     v-bind:valor_input_props="$props.latitud"
                     v-bind:valor_input_validacion="$props.latitud_validacion"
                     v-bind:evualacion_correcto="$props.latitud_correcto"
@@ -251,6 +279,11 @@
                     v-bind:testing = "mostrar_testing"
                     v-bind:label="'Latitud de las Coordenadas:'"
                     v-bind:icon="'http://localhost:8000/svg/pinmap.svg'"
+                    v-bind:desactivar_input="$props.desactivar_ubicacion_latitud"
+                    v-bind:mostrar_correccion="$props.mostrar_ubicacion_latitud_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_ubicacion_latitud_correccion"
+
+
                     v-on:changevalido="update_latitud_valido($event)"
                     v-on:changecorrecto="update_latitud_correcto($event)"
                     v-on:changeobs="update_obs_latitud($event)"
@@ -287,6 +320,8 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
+                v-if="$props.mostrar_ubicacion_long"
+
                     v-bind:valor_input_props="$props.longitud"
                     v-bind:valor_input_validacion="$props.longitud_validacion"
                     v-bind:evualacion_correcto="$props.longitud_correcto"
@@ -296,6 +331,10 @@
                     v-bind:testing = "mostrar_testing"
                     v-bind:label="'Longitud de las Coordenadas:'"
                     v-bind:icon="'http://localhost:8000/svg/pinmap.svg'"
+                    v-bind:desactivar_input="$props.desactivar_ubicacion_long"
+                    v-bind:mostrar_correccion="$props.mostrar_ubicacion_long_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_ubicacion_long_correccion"
+
                     v-on:changevalido="update_sist_coor_lonvalido($event)"
                     v-on:changecorrecto="update_sist_coor_loncorrecto($event)"
                     v-on:changeobs="update_obs_sist_coor_lon($event)"
@@ -332,10 +371,12 @@
             </div>
             </div>
         </div>
+        
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
         <BotonesPaginaSeis
+        v-if="$props.mostrar_boton_guardar_seis"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
@@ -407,34 +448,67 @@ export default {
         'localidad_mina_provincia_correcto',
         'obs_localidad_mina_provincia',
         'obs_localidad_mina_provincia_valido',
+        'mostrar_ubicacion_prov',
+        'desactivar_ubicacion_prov',
+        'mostrar_ubicacion_prov_correccion',
+        'desactivar_ubicacion_prov_correccion',
+
         'localidad_mina_departamento',
         'localidad_mina_departamento_validacion',
         'localidad_mina_departamento_correcto',
         'obs_localidad_mina_departamento',
         'obs_localidad_mina_departamento_valido',
+        'mostrar_ubicacion_dpto',
+        'desactivar_ubicacion_dpto',
+        'mostrar_ubicacion_dpto_correccion',
+        'desactivar_ubicacion_dpto_correccion',
+
         'localidad_mina_localidad',
         'localidad_mina_localidad_validacion',
         'localidad_mina_localidad_correcto',
         'obs_localidad_mina_localidad',
         'obs_localidad_mina_localidad_valido',
+        'mostrar_ubicacion_localidad',
+        'desactivar_ubicacion_localidad',
+        'mostrar_ubicacion_localidad_correccion',
+        'desactivar_ubicacion_localidad_correccion',
+
         'tipo_sistema',
         'tipo_sistema_validacion',
         'tipo_sistema_correcto',
         'obs_tipo_sistema',
         'obs_tipo_sistema_valido',
+        'mostrar_ubicacion_sistema',
+        'desactivar_ubicacion_sistema',
+        'mostrar_ubicacion_sistema_correccion',
+        'desactivar_ubicacion_sistema_correccion',
+
         'latitud',
         'latitud_validacion',
         'latitud_correcto',
         'obs_latitud',
         'obs_latitud_valido',
+        'mostrar_ubicacion_latitud',
+        'desactivar_ubicacion_latitud',
+        'mostrar_ubicacion_latitud_correccion',
+        'desactivar_ubicacion_latitud_correccion',
+
         'longitud',
         'longitud_validacion',
         'longitud_correcto',
         'obs_longitud',
         'obs_longitud_valido',
+        'mostrar_ubicacion_long',
+        'desactivar_ubicacion_long',
+        'mostrar_ubicacion_long_correccion',
+        'desactivar_ubicacion_long_correccion',
 
         'lista_provincias',
         'lista_dptos',
+
+        'mostrar_boton_guardar_seis',
+        'desactivar_boton_guardar_seis',
+
         'evaluacion',
         'id',
         'testing'
@@ -457,7 +531,7 @@ export default {
         modal_tittle:'',
         modal_body:'',
         mostrar_testing:false,
-        autoridad_minera:false,
+        autoridad_minera:this.$props.evaluacion,
         ayuda_local: false,
         form_pagina: {
 
