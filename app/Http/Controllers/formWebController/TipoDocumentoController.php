@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\formWebController;
+
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
@@ -17,11 +18,13 @@ class TipoDocumentoController extends Controller
 
     // public static function getTipoDocumento($id, Request $request){
 
-        public static function getTipoDocumento(){		
-         $lista_tipo_documento = formTipoDocumento::all('id as value', 'nombre as label'); 
-        return $lista_tipo_documento;     
-	}
-    
+    public static function getTipoDocumento()
+    {
+        $lista_tipo_documento = formTipoDocumento::all('id as value', 'nombre as label');
+        echo $lista_tipo_documento;
+        return $lista_tipo_documento;
+    }
+
     public function index()
     {
         //
