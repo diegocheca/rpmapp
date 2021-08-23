@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\formWebModels\formTerreno;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,5 +20,11 @@ class Minerales extends Model
         'write_uid',
         'write_date',
     ];
+
+    public function terreno()
+    {
+        return $this->belongsToMany(formTerreno::class);
+        
+    }
 
 }

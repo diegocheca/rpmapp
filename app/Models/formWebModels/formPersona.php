@@ -12,6 +12,7 @@ class formPersona extends Model
     protected $fillable = [
         'id',
         'nombre',
+        'razon_social',
         'dni',
         'sexo',          
         'apellido',
@@ -19,12 +20,18 @@ class formPersona extends Model
         'nacionalidad',
         'profefsion',
         'estado_civil',
-        'domi_legal',
-        'prov_domi_legal',
-        'dpto_domi_legal',
-        'domi_real',
-        'prov_domi_real',
-        'dpto_domi_real',
+        
+
+        'domicilioLegal',
+        'provinciaLegal',
+        'departamentoLegal',
+        'localidadLegal',
+
+        'domicilio',
+        'provincia',
+        'departamento',
+        'localidad',
+
         'tipodocumento_id',
 
     ];
@@ -33,4 +40,11 @@ class formPersona extends Model
     {
         return $this->hasMany('App\Models\formWebModels\formTipoDocumento');
     }
+    
+     public function solicitud()
+     {
+         return $this->belongsToMany(formSolicitud::class);
+     }  
+
+   
 }

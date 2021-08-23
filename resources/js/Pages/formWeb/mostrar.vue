@@ -1,288 +1,52 @@
 <template>
     <app-layout>
-        <template #header>
-            <h1
-                class="
-                    text-center text-2xl
-                    font-bold
-                    leading-7
-                    text-gray-300
-                    sm:text-3xl sm:truncate
-                    py-4
-                    bg-gradient-to-l
-                    from-indigo-500
-                    to-indigo-800
-                "
-            >
-                LISTA DE SOLICITUDES
-            </h1>
+        <template #header>           
         </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <inertia-link
-                        :href="route('solicitudes.create')"
-                        class="
-                            flex-shrink-0
-                            bg-blue-500
-                            text-white text-base
-                            font-semibold
-                            py-2
-                            px-4
-                            rounded-lg
-                            shadow-md
-                            hover:bg-blue-700
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-blue-500
-                            focus:ring-offset-2
-                            focus:ring-offset-blue-200
-                        "
-                        type="button"
-                    >
-                        Nuevo
-                    </inertia-link>
-
-                    <inertia-link
-                        href="/prueba"
-                        class="
-                            flex-shrink-0
-                            bg-blue-500
-                            text-white text-base
-                            font-semibold
-                            py-2
-                            px-4
-                            rounded-lg
-                            shadow-md
-                            hover:bg-blue-700
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-blue-500
-                            focus:ring-offset-2
-                            focus:ring-offset-blue-200
-                        "
-                        type="button"
-                    >
-                        prueba
-                    </inertia-link>
-                    
-                    <inertia-link
-                        href="/menu"
-                        class="
-                            flex-shrink-0
-                            bg-blue-500
-                            text-white text-base
-                            font-semibold
-                            py-2
-                            px-4
-                            rounded-lg
-                            shadow-md
-                            hover:bg-blue-700
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-blue-500
-                            focus:ring-offset-2
-                            focus:ring-offset-blue-200
-                        "
-                        type="button"
-                    >
-                        Menu
-                    </inertia-link>
-
-                    <table
-                        class="
-                            rounded-t-lg
-                            mt-5
-                            min-w-full
-                            mx-auto
-                            bg-gray-800
-                            text-gray-100
-                        "
-                    >
-                        <thead>
-                            <tr class="text-left border-b border-gray-300">
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    ID
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    Plazo Solicitado
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    Periodo Trabajo
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    Nombre Solicitud
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-center text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    Acciones
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody
-                            class="
-                                bg-gray-700
-                                border-b border-gray-600
-                                text-gray-200
-                            "
-                        >
-                            <tr
-                                v-for="solicitud in solicitudes"
-                                :key="solicitud.id"
-                            >
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium">
-                                                {{ solicitud.id }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm">
-                                        {{ solicitud.plazo_solicitado }}
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm">
-                                        {{ solicitud.periodo_trabajo }}
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm">
-                                        {{ solicitud.tipo_solicitud.nombre }}
-                                    </div>
-                                </td>
-                                <td class="flex m-2">
-                                    <inertia-link
-                                        :href="
-                                            route(
-                                                'solicitudes.edit',
-                                                solicitud.id
-                                            )
-                                        "
-                                        class="
-                                            flex-shrink-0
-                                            bg-purple-600
-                                            text-white text-base
-                                            font-semibold
-                                            py-2
-                                            px-4
-                                            rounded-lg
-                                            shadow-md
-                                            hover:bg-purple-700
-                                            focus:outline-none
-                                            focus:ring-2
-                                            focus:ring-purple-500
-                                            focus:ring-offset-2
-                                            focus:ring-offset-purple-200
-                                        "
-                                        type="button"
-                                    >
-                                        Editar
-                                    </inertia-link>
-                                    <inertia-link
-                                        method="delete"
-                                        :href="
-                                            route(
-                                                'solicitudes.destroy',
-                                                solicitud.id
-                                            )
-                                        "
-                                        class="
-                                            flex-shrink-0
-                                            bg-pink-500
-                                            text-white text-base
-                                            font-semibold
-                                            py-2
-                                            px-4
-                                            rounded-lg
-                                            shadow-md
-                                            hover:bg-pink-700
-                                            focus:outline-none
-                                            focus:ring-2
-                                            focus:ring-pink-500
-                                            focus:ring-offset-2
-                                            focus:ring-offset-pink-200
-                                        "
-                                        type="button"
-                                    >
-                                        Borrar
-                                    </inertia-link>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+       
+            
+        <main class="grid place-items-center min-h-screen bg-gradient-to-t from-blue-200 to-indigo-900 p-5">
+        <div>
+          <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-200 mb-5 text-center">Bienvenido</h1>
+          <section class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- CARD 1 -->
+            <div class="bg-gray-900 shadow-lg rounded p-3 ">
+              <div class="group relative">
+                <img class="w-full md:w-72 block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg" alt="" />
+                <div class="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">
+                   <inertia-link :href="route('solicitudes.create')" type="button" class="text-white text-lg" name="exploracion">Solicitud Exploración</inertia-link> 
                 </div>
+              </div>           
             </div>
+            <!-- END OF CARD 1 -->
+
+            <!-- CARD 2 -->
+            <div class="bg-gray-900 shadow-lg rounded p-3">
+              <div class="group relative">
+                <img class="w-full md:w-72 block rounded" src="https://upload.wikimedia.org/wikipedia/en/c/ca/Tycho_-_Awake.png" alt="" />
+                <div class="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">
+                <inertia-link :href="route('descubrimiento')" type="button" class="text-white text-lg">Solicitud Descubriminto</inertia-link>
+                </div>
+              </div>        
+            </div> 
+            <!-- END OF CARD 2 -->
+
+            
+          </section>
         </div>
-    </app-layout>
+        </main>
+   </app-layout>
 </template>
 
 <script>
 import AppLayout from "@/Layouts/AppLayout";
+import Label from '../../Jetstream/Label.vue';
 export default {
     props: {
         solicitudes: Array,
     },
     components: {
-        AppLayout,
+        AppLayout
+        //Label,
     },
 };
 </script>

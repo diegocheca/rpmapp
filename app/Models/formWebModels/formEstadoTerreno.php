@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class formEstadoTerreno extends Model
 {
-    //use HasFactory;
+    use HasFactory;
     protected $table = 'formEstadoTerreno';
     protected $fillable = [
         'id',

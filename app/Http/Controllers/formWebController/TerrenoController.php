@@ -4,10 +4,9 @@ namespace App\Http\Controllers\formWebController;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\formWebModels\formTipoDocumento;
+use App\Models\formWebModels\formTerreno;
 
-
-class TipoDocumentoController extends Controller
+class TerrenoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +16,7 @@ class TipoDocumentoController extends Controller
 
     // public static function getTipoDocumento($id, Request $request){
 
-        public static function getTipoDocumento(){		
-         $lista_tipo_documento = formTipoDocumento::all('id as value', 'nombre as label'); 
-        return $lista_tipo_documento;     
-	}
-    
+     
     public function index()
     {
         //

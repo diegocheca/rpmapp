@@ -4,10 +4,10 @@ namespace App\Http\Controllers\formWebController;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Models\formWebModels\formTipoDocumento;
+use App\Models\Minerales;
 
 
-class TipoDocumentoController extends Controller
+class MineralController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,9 @@ class TipoDocumentoController extends Controller
 
     // public static function getTipoDocumento($id, Request $request){
 
-        public static function getTipoDocumento(){		
-         $lista_tipo_documento = formTipoDocumento::all('id as value', 'nombre as label'); 
-        return $lista_tipo_documento;     
+        public static function getMineral(){		
+         $lista_mineral = Minerales::all('id as value', 'name as label'); 
+        return $lista_mineral;     
 	}
     
     public function index()
