@@ -101,7 +101,7 @@
                                 "
                             >
                                 <inertia-link
-                                    :href="route('admin.categoria.index')"
+                                    :href="route('admin.categorias.index')"
                                     class="
                                         w-auto
                                         bg-gray-500
@@ -148,21 +148,21 @@ export default {
         AppLayout,
     },
     props: {
-        categorias: Array,
+        categoria: Array,
         info:String,
     },
     data() {
         return {
             form: {
-                name: this.$props.categorias.name,
-                description: this.$props.categorias.description,
+                name: this.$props.categoria.name,
+                description: this.$props.categoria.description,
             },
         };
     },
     methods: {
         submit() {
             this.$inertia.put(
-                route("admin.categoria.update", this.$props.categorias.id),
+                route("admin.categorias.update", this.$props.categoria.id),
                 this.form
             );
         },

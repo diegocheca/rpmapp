@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $nom = strtolower($request->name);
         $categorias = Category::create(['name' => $nom, 'description' => $request->description]);
 
-        return Redirect::route('admin.permisos.index', $categorias);
+        return Redirect::route('admin.categorias.index', $categorias);
     }
 
     public function show($id)
@@ -49,16 +49,25 @@ class CategoryController extends Controller
 
     public function edit(Category $categoria)
     {
-        return  Inertia::render('Admin/Categorias/edit');
+        return  Inertia::render('Admin/Categorias/edit', ['categoria' => $categoria]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $categoria)
     {
-        //
+        $request->validate([
+            'name',
+            'description'
+        ]);
+        $categoria->update([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+        return Redirect::route('admin.categorias.index')->with('info', 'El permisos se actualizó con éxito');
     }
 
-    public function destroy($id)
+    public function destroy(Category $categoria)
     {
-        //
+        $categoria->delete();
+        return Redirect::route('admin.categorias.index')->with('info', 'El permisos se se eliminó con éxito');
     }
 }

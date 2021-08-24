@@ -91,7 +91,7 @@
                           hover:font-black
                         "
                       >
-                        {{ categoria.name }}
+                        {{ categoria.description }}
                       </li>
                     </div>
                   </ul>

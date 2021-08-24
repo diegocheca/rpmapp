@@ -30,7 +30,7 @@ class RoleController extends Controller
     public function create()
     {
         $permisos = Permission::all();
-        $categories = Category::all('id', 'name');
+        $categories = Category::all('id', 'name', 'description');
 
         return  Inertia::render('Admin/Roles/create', ['permisos' => $permisos, 'categorias' => $categories]);
     }
@@ -59,7 +59,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $role->hasAllPermissions(Permission::all());
-        $categories = Category::all('id', 'name');
+        $categories = Category::all('id', 'name', 'description');
         // $categories = Category::with('permissions')->get();
         // dd ($role);
         // echo $categories;
