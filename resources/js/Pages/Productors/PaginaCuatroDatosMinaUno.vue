@@ -65,7 +65,14 @@
                         v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
                         v-on:changevalornumexp="updatevalor_num_exp($event)"
                     ></NumeroExpedienteMina> -->
+                    
+
+
+
+
                     <NombreMina
+                    v-if="$props.mostrar_num_exp"
+
                         v-bind:valor_input_props="$props.numero_expdiente"
                         v-bind:valor_input_validacion="$props.numero_expdiente_valido"
                         v-bind:evualacion_correcto="$props.numero_expdiente_correcto"
@@ -76,6 +83,11 @@
                         v-bind:label="'Numero de Expediente'"
                         v-bind:icon="'http://localhost:8000/svg/telstreet.svg'"
                         v-bind:name_correcto="'num_exp_correcto'"
+                        v-bind:desactivar_input="$props.desactivar_num_exp"
+                        v-bind:mostrar_correccion="$props.mostrar_num_exp_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_num_exp_correccion"
+
+
                         v-on:changevalido="update_num_exp_valido($event)"
                         v-on:changecorrecto="update_num_exp_correcto($event)"
                         v-on:changeobs="updateobs_num_exp($event)"
@@ -127,6 +139,14 @@
                     >
                     </DistritoMinero> -->
                     <NombreMina
+                    v-if="$props.mostrar_distrito"
+
+
+
+
+
+
+
                         v-bind:valor_input_props="$props.distrito_minero"
                         v-bind:valor_input_validacion="$props.distrito_minero_validacion"
                         v-bind:evualacion_correcto="$props.distrito_minero_correcto"
@@ -137,6 +157,11 @@
                         v-bind:label="'Distrito Minero'"
                         v-bind:icon="'http://localhost:8000/svg/numdistrito.svg'"
                         v-bind:name_correcto="'distrito_correcto'"
+                        v-bind:desactivar_input="$props.desactivar_distrito"
+                        v-bind:mostrar_correccion="$props.mostrar_distrito_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_distrito_correccion"
+
+
                         v-on:changevalido="update_distrito_minero_valido($event)"
                         v-on:changecorrecto="update_distrito_minero_correcto($event)"
                         v-on:changeobs="update_distrito_minero_obs($event)"
@@ -175,6 +200,8 @@
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <SelectGenerico
+                        v-if="mostrar_categoria"
+
                         v-bind:valor_input_props="$props.categoria"
                         v-bind:valor_input_validacion="$props.categoria_validacion"
                         v-bind:evualacion_correcto="$props.categoria_correcto"
@@ -185,6 +212,10 @@
                         v-bind:label="'Categoria de Manifestacion'"
                         v-bind:icon="'http://localhost:8000/svg/minetest.svg'"
                         v-bind:name_correccion="'categoria_correccion'"
+                        v-bind:desactivar_input="$props.desactivar_categoria"
+                        v-bind:mostrar_correccion="$props.mostrar_categoria_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_categoria_correccion"
+
                         v-on:changevalido="update_cat_valido($event)"
                         v-on:changecorrecto="update_cat_correcto($event)"
                         v-on:changeobs="update_obs_cat($event)"
@@ -231,6 +262,8 @@
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
+                    v-if="$props.mostrar_nombre_mina"
+
                         v-bind:valor_input_props="$props.nombre_mina"
                         v-bind:valor_input_validacion="$props.nombre_mina_validacion"
                         v-bind:evualacion_correcto="$props.nombre_mina_correcto"
@@ -241,6 +274,10 @@
                         v-bind:label="'Nombre de Mina'"
                         v-bind:icon="'http://localhost:8000/svg/nommina.svg'"
                         v-bind:name_correcto="'nombre_mina_correcto'"
+                        v-bind:desactivar_input="$props.desactivar_nombre_mina"
+                        v-bind:mostrar_correccion="$props.mostrar_nombre_mina_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_nombre_mina_correccion"
+
                         v-on:changevalido="update_nom_mina_valido($event)"
                         v-on:changecorrecto="update_nom_mina_correcto($event)"
                         v-on:changeobs="update_obs_nom_mina($event)"
@@ -276,6 +313,8 @@
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
+                    v-if="$props.mostrar_descripcion_mina"
+
                         v-bind:valor_input_props="$props.descripcion_mina"
                         v-bind:valor_input_validacion="$props.descripcion_mina_validacion"
                         v-bind:evualacion_correcto="$props.descripcion_mina_correcto"
@@ -286,6 +325,10 @@
                         v-bind:label="'Descripcion de la Mina'"
                         v-bind:icon="'http://localhost:8000/svg/description.svg'"
                         v-bind:name_correcto="'descripcion_mina_correcto'"
+                         v-bind:desactivar_input="$props.desactivar_descripcion_mina"
+                        v-bind:mostrar_correccion="$props.mostrar_descripcion_mina_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_descripcion_mina_correccion"
+
                         v-on:changevalido="update_descripcion_valido($event)"
                         v-on:changecorrecto="update_descripcion_correcto($event)"
                         v-on:changeobs="update_obs_descripcion($event)"
@@ -323,7 +366,13 @@
             </div>
             <div class="flex">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
-                    <SubirArchivo v-if="form_pagina.categoria !== 'tercera'"
+                    <SubirArchivo 
+
+                    
+
+
+
+                    v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_resolucion_concesion"
                         v-bind:valor_input_props="form_pagina.resolucion_concesion_minera"
                         v-bind:valor_input_validacion="form_pagina.resolucion_concesion_minera_validacion"
                         v-bind:evualacion_correcto="form_pagina.resolucion_concesion_minera_correcto"
@@ -332,6 +381,11 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
+                        v-bind:desactivar_input="$props.desactivar_resolucion_concesion"
+                        v-bind:mostrar_correccion="$props.mostrar_resolucion_concesion_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_resolucion_concesion_correccion"
+
+
                         v-on:changevalido="update_resol_conce_valido($event)"
                         v-on:changecorrecto="update_resol_conce_correcto($event)"
                         v-on:changeobs="update_obs_resol_conce($event)"
@@ -391,7 +445,8 @@
             <div class="flex">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
-                        v-if="form_pagina.categoria === 'tercera'"
+                        v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_plano_mina"
+
                         v-bind:valor_input_props="form_pagina.plano_inmueble"
                         v-bind:valor_input_validacion="form_pagina.plano_inmueble_validacion"
                         v-bind:evualacion_correcto="form_pagina.plano_inmueble_correcto"
@@ -400,6 +455,14 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Plano Inmueble (3° categoria) (*)'"
+                        v-bind:desactivar_input="$props.desactivar_plano_mina"
+                        v-bind:mostrar_correccion="$props.mostrar_plano_mina_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_plano_mina_correccion"
+
+
+
+
+
                         v-on:changevalido="update_plano_inmueble_valido($event)"
                         v-on:changecorrecto="update_plano_inmueble_correcto($event)"
                         v-on:changeobs="update_obs_plano_inmueble($event)"
@@ -444,7 +507,8 @@
             <div class="flex">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
-                        v-if="form_pagina.categoria === 'tercera'"
+                    v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_titulo"
+
                         v-bind:valor_input_props="form_pagina.titulo_contrato_posecion"
                         v-bind:valor_input_validacion="form_pagina.titulo_contrato_posecion_validacion"
                         v-bind:evualacion_correcto="form_pagina.titulo_contrato_posecion_correcto"
@@ -453,6 +517,10 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
+                        v-bind:desactivar_input="$props.desactivar_titulo"
+                        v-bind:mostrar_correccion="$props.mostrar_titulo_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_titulo_correccion"
+
                         v-on:changevalido="update_titulo_contrato_valido($event)"
                         v-on:changecorrecto="update_titulo_contrato_correcto($event)"
                         v-on:changeobs="update_obs_titulo_contrato($event)"
@@ -493,6 +561,8 @@
             <div class="flex">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <ListadeMinerales
+
+                        v-if="$props.mostrar_minerales"
                         v-bind:valor_input_props="$props.titulo_contrato_posecion"
                         v-bind:valor_input_validacion="$props.titulo_contrato_posecion_validacion"
                         v-bind:evualacion_correcto="$props.titulo_contrato_posecion_correcto"
@@ -505,6 +575,11 @@
                         v-bind:tipo_yacimiento="form_pagina.categoria"
                         v-bind:lista_de_minerales="lista_de_minerales"
                         v-bind:lista_de_minerales_pre_cargados="$props.lista_minerales_desde_back"
+                        v-bind:desactivar_input="$props.desactivar_minerales"
+                        v-bind:mostrar_correccion="$props.mostrar_minerales_correccion"
+                        v-bind:desactivar_correccion="$props.desactivar_minerales_correccion"
+
+
                         v-on:changevalido="update_titulo_contrato_valido($event)"
                         v-on:changecorrecto="update_titulo_contrato_correcto($event)"
                         v-on:changeobs="update_obs_titulo_contrato($event)"
@@ -550,6 +625,8 @@
         </div>
 <!-- el id es: {{$props.id}} -->
         <BotonesPaginaCuatro
+        v-if="$props.mostrar_boton_guardar_cuatro"
+
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de la Mina'"
@@ -642,28 +719,53 @@ export default {
         'numero_expdiente_correcto',
         'obs_numero_expdiente',
         'obs_numero_expdiente_valido',
+        'mostrar_num_exp',
+        'desactivar_num_exp',
+        'mostrar_num_exp_correccion',
+        'desactivar_num_exp_correccion',
+
         'categoria',
         'categoria_validacion',
         'categoria_correcto',
         'obs_categoria',
         'obs_categoria_valido',
+        'mostrar_categoria',
+        'desactivar_categoria',
+        'mostrar_categoria_correccion',
+        'desactivar_categoria_correccion',
+
 
         'nombre_mina',
         'nombre_mina_validacion',
         'nombre_mina_correcto',
         'obs_nombre_mina',
         'obs_nombre_mina_valido',
+        'mostrar_nombre_mina',
+        'desactivar_nombre_mina',
+        'mostrar_nombre_mina_correccion',
+        'desactivar_nombre_mina_correccion',
+
         'descripcion_mina',
         'descripcion_mina_validacion',
         'descripcion_mina_correcto',
         'obs_descripcion_mina',
         'obs_descripcion_mina_valido',
+        'mostrar_descripcion_mina',
+        'desactivar_descripcion_mina',
+        'mostrar_descripcion_mina_correccion',
+        'desactivar_descripcion_mina_correccion',
+
 
         'distrito_minero',
         'distrito_minero_validacion',
         'distrito_minero_correcto',
         'obs_distrito_minero',
         'obs_distrito_minero_valido',
+        'mostrar_distrito',
+        'desactivar_distrito',
+        'mostrar_distrito_correccion',
+        'desactivar_distrito_correccion',
+
         'mina_cantera',
         'mina_cantera_validacion',
         'mina_cantera_correcto',
@@ -675,24 +777,50 @@ export default {
         'plano_inmueble_correcto',
         'obs_plano_inmueble',
         'obs_plano_inmueble_valido',
+        'mostrar_plano_mina',
+        'desactivar_plano_mina',
+        'mostrar_plano_mina_correccion',
+        'desactivar_plano_mina_correccion',
+
         'minerales_variedad',
         'minerales_variedad_validacion',
         'minerales_variedad_correcto',
         'obs_minerales_variedad',
         'obs_minerales_variedad_valido',
+        'mostrar_minerales',
+        'desactivar_minerales',
+        'mostrar_minerales_correccion',
+        'desactivar_minerales_correccion',
+
 
         'resolucion_concesion_minera',
         'resolucion_concesion_minera_validacion',
         'resolucion_concesion_minera_correcto',
         'obs_resolucion_concesion_minera',
         'obs_resolucion_concesion_minera_valido',
+        'mostrar_resolucion_concesion',
+        'desactivar_resolucion_concesion',
+        'mostrar_resolucion_concesion_correccion',
+        'desactivar_resolucion_concesion_correccion',
+
         'titulo_contrato_posecion',
         'titulo_contrato_posecion_validacion',
         'titulo_contrato_posecion_correcto',
         'obs_titulo_contrato_posecion',
         'obs_titulo_contrato_posecion_valido',
+        'mostrar_titulo',
+        'desactivar_titulo',
+        'mostrar_titulo_correccion',
+        'desactivar_titulo_correccion',
+
 
         'lista_minerales_desde_back',
+
+
+        'mostrar_boton_guardar_cuatro',
+        'desactivar_boton_guardar_cuatro',
+
+
         'evaluacion',
         'id',
         'testing'

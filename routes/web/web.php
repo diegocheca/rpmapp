@@ -125,6 +125,8 @@ Route::post('/formularios/auto_guardado_cuatro', [FormAltaProductorController::c
 Route::post('/formularios/auto_guardado_cinco', [FormAltaProductorController::class, "guardar_paso_cinco"])->name('guardar-paso-cinco');
 Route::post('/formularios/auto_guardado_seis', [FormAltaProductorController::class, "guardar_paso_seis"])->name('guardar-paso-seis');
 
+Route::post('/formularios/presentar_borrador', [FormAltaProductorController::class, "presentar_borrador"])->name('presentar-borrador');
+
 Route::post('/formularios/buscar_datos_formulario', [FormAltaProductorController::class, "buscar_datos_formulario_por_email"])->name('guardar-paso-dossss');
 
 Route::post('/formularios/auto_guardado_reinscripcion', [ReinscripcionController::class, "guardar_reinscripcion"])->name('auto-guardado-reinscripcion');
@@ -164,6 +166,8 @@ Route::post('/formularios/buscar_id_form/', [FormAltaProductorController::class,
 Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_prueba"])->name('probando-pdf');
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
+Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
+
 
 //COMERCIANTE
 Route::get('/probando_form_comerciante/', [FormAltaProductorController::class, "pdf_para_comerciantes"])->name('pdf-para-comerciantes');

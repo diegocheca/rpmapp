@@ -24,6 +24,7 @@
             <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
                 <button
                     type="button"
+                    :disabled="$props.desactivar_boton_guardar_uno"
                     class=" animate-pulse text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
                     @click="guardar_avnces_uno"
                 >
@@ -117,6 +118,8 @@ export default {
         'obs_constanciasociedad',
         'obs_constanciasociedad_valido',
 
+        'desactivar_boton_guardar_uno',
+
         'evaluacion',
         'id',
         'testing'
@@ -125,20 +128,22 @@ export default {
     components: {
 		JetDialogModal,
 	},
-  data() {
-    return {
-      saludos: 'Saludame qweqweqwe',
-      mostrar_modal_datos_ya_guardados:false,
-        modal_tittle:'',
-        modal_body:''
-    };
-  },
-  methods:{
-       mandar_id_al_padre(id){
-        this.$emit('CreeUnNuevoId',id);
-
-
+    data() {
+        return {
+            saludos: 'Saludame qweqweqwe',
+            mostrar_modal_datos_ya_guardados:false,
+            modal_tittle:'',
+            modal_body:''
+        };
     },
+    methods:{
+    mandar_id_al_padre(id){
+        this.$emit('CreeUnNuevoId',id);
+    },
+    mandar_id_adicional_al_padre(id){
+        this.$emit('CreeUnNuevoIdAdcional',id);
+    },
+    
     actualizar_inscripcion_nueva(pathnueva){
         console.log("actualizando la inscripcion");
         this.$emit('actualizarinscripcion',pathnueva);
@@ -233,13 +238,14 @@ export default {
                         self.modal_body = 'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
                         self.mostrar_modal_datos_ya_guardados = true;
                     }
-                    if(!isNaN(response.data))
+                    if(response.data.msg === "se creo el borrador")
                     {
-                        console.log('todo bien, se creo el productor');
-                        self.modal_tittle = 'Se creo el nuevo Productor';
-                        self.modal_body = 'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias. su id es:'+response.data;
+                        console.log('todo bien, se creo el borrador');
+                        self.modal_tittle = 'Se creó correctamente nuevo Borrador';
+                        self.modal_body = 'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias por usar este servicio. El id es:'+response.data.id + ' - Ademas el estado del borrador es:'+response.data.estado;
                         self.mostrar_modal_datos_ya_guardados = true;
-                        self.mandar_id_al_padre(response.data);
+                        self.mandar_id_al_padre(response.data.id);
+                        self.mandar_id_adicional_al_padre(response.data.id_adicional);
                     }
 
                     else{

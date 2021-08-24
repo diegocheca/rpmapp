@@ -6,20 +6,20 @@
                 for="fileinput_valor"
                 >{{label}}:</label
             >
-            <div class="flex"  v-if="evaluacion">
+            <div class="flex"  v-if="evaluacion || inscripcion_correccion_mostrar">
                 <div class="w-full md:w-1/3 px-3">
                     <span class="text-gray-700">Correcto?</span>
                     <div class="mt-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio h-5 w-5 text-green-400" :name="name_correcto" v-model="inscripciondgr_correcto" value="true" v-on:change="actaulizar_variable_fileinput(true)">
+                            <input type="radio" :disabled="$props.inscripcion_correccion_desactivar" class="form-radio h-5 w-5 text-green-400" :name="name_correcto" v-model="inscripciondgr_correcto" value="true" v-on:change="actaulizar_variable_fileinput(true)">
                             <span class="ml-2">Si</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio h-5 w-5 text-red-400" :name="name_correcto" v-model="inscripciondgr_correcto" value="false" v-on:change="actaulizar_variable_fileinput(false)">
+                            <input type="radio" :disabled="$props.inscripcion_correccion_desactivar" class="form-radio h-5 w-5 text-red-400" :name="name_correcto" v-model="inscripciondgr_correcto" value="false" v-on:change="actaulizar_variable_fileinput(false)">
                             <span class="ml-2">No</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input type="radio" class="form-radio h-5 w-5 text-indigo-400" :name="name_correcto" v-model="inscripciondgr_correcto" value="nada"  v-on:change="actaulizar_variable_fileinput('nada')">
+                            <input type="radio" :disabled="$props.inscripcion_correccion_desactivar" class="form-radio h-5 w-5 text-indigo-400" :name="name_correcto" v-model="inscripciondgr_correcto" value="nada"  v-on:change="actaulizar_variable_fileinput('nada')">
                             <span class="ml-2">Sin evaluar</span>
                         </label>
                     </div>
@@ -35,6 +35,7 @@
                         name="obs_fileinput"
                         v-model="obs_fileinput"
                         v-bind:class=clase_text_area_fileinput
+                        :disabled="$props.inscripcion_correccion_desactivar" 
                         @input="actaulizar_contenido_text_area_inscripciondgr($event.target.value)" 
                         >
                     </textarea>
@@ -78,7 +79,7 @@
                         </div>
                         <p class="pointer-none text-gray-500 "><span class="text-sm">Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
                     </div>
-                    <input type="file" class="hidden" @change="cambio_el_archivo">
+                    <input :disabled="$props.inscripcion_disable" type="file" class="hidden" @change="cambio_el_archivo">
                 </label>
             </div>
             <p class="text-sm text-gray-300">
@@ -108,7 +109,7 @@
                         </div>
                         <p class="pointer-none text-gray-500 "><span class="text-sm">Para cambiar el archivo: Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
                     </div>
-                    <input type="file" class="hidden" @change="cambio_el_archivo">
+                    <input :disabled="$props.inscripcion_disable" type="file" class="hidden" @change="cambio_el_archivo">
                 </label>
             </div>
             <p class="text-sm text-gray-300">
@@ -133,6 +134,9 @@ export default {
         'label',
         'testing',
         'name_correcto',
+        'inscripcion_disable',
+        'inscripcion_correccion_mostrar',
+        'inscripcion_correccion_desactivar',
     ],
     
     data() {

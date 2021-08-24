@@ -1,5 +1,8 @@
 <template>
     <div>
+        {{$props.email_disable}}
+        {{$props.email_correccion_mostrar}}
+        {{$props.email_correccion_desactivar}}
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">{{label}}</label>
             <div class="flex items-stretch w-full mb-4 relative">
                 <div class="flex">
@@ -15,25 +18,25 @@
                 placeholder="Email"
                 v-model="email"
                 v-bind:class=clase_de_input_email
-                :disabled="evaluacion"
+                :disabled="evaluacion || $props.email_disable"
                 @input="cambio_input_email($event.target.value)"
                 >
             </div>
         <p v-bind:class=clase_cartel_nota_email>{{cartel_nota_campo}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || email_correccion_mostrar">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="name_email_correcto"  v-model="email_correcto" value="true" v-on:change="actaulizar_variable_email(true)">
+                        <input type="radio" :disabled="$props.email_correccion_desactivar" class="form-radio h-5 w-5 text-green-600" name="name_email_correcto"  v-model="email_correcto" value="true" v-on:change="actaulizar_variable_email(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="name_email_correcto"  v-model="email_correcto" value="false" v-on:change="actaulizar_variable_email(false)">
+                        <input type="radio" :disabled="$props.email_correccion_desactivar" class="form-radio h-5 w-5 text-red-600" name="name_email_correcto"  v-model="email_correcto" value="false" v-on:change="actaulizar_variable_email(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="name_email_correcto" v-model="email_correcto" value="nada" v-on:change="actaulizar_variable_email('nada')">
+                        <input type="radio" :disabled="$props.email_correccion_desactivar" class="form-radio h-5 w-5 text-indigo-600" name="name_email_correcto" v-model="email_correcto" value="nada" v-on:change="actaulizar_variable_email('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -49,6 +52,7 @@
                     name="obs_email"
                     v-model="obs_email"
                     v-bind:class=clase_text_area_email
+                    :disabled="$props.email_correccion_desactivar"
                     @input="actaulizar_contenido_text_area($event.target.value)" 
                     >
                 </textarea>
@@ -96,19 +100,23 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'email_disable',
+        'email_correccion_mostrar',
+        'email_correccion_desactivar',
+
     ],
   data() {
     return {
-      clase_de_input_email: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-      clase_cartel_nota_email: 'text-green-500 text-xs italic',
-      cartel_nota_campo: 'Campo Correcto',
-      email_correcto_local: this.$props.email_correcto,
-      email_valido_local:this.$props.email_valido,
-      obs_email_valido_local:this.$props.obs_email_valido,
-      clase_text_area_email: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-      clase_cartel_nota_evaluacion_email_text_area: 'text-green-500 text-xs italic',
-      cartel_nota_evaluacion_email_text_area: 'Observacion Correcta',
-      testing_hijo:false,
+        clase_de_input_email: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+        clase_cartel_nota_email: 'text-green-500 text-xs italic',
+        cartel_nota_campo: 'Campo Correcto',
+        email_correcto_local: this.$props.email_correcto,
+        email_valido_local:this.$props.email_valido,
+        obs_email_valido_local:this.$props.obs_email_valido,
+        clase_text_area_email: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+        clase_cartel_nota_evaluacion_email_text_area: 'text-green-500 text-xs italic',
+        cartel_nota_evaluacion_email_text_area: 'Observacion Correcta',
+        testing_hijo:false,
 
 
     };
