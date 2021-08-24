@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\Admin\Category;
 
 class RoleController extends Controller
 {
@@ -29,7 +30,9 @@ class RoleController extends Controller
     public function create()
     {
         $permisos = Permission::all();
-        return  Inertia::render('Admin/Roles/create', ['permisos' => $permisos]);
+        $categories = Category::all('id', 'name');
+
+        return  Inertia::render('Admin/Roles/create', ['permisos' => $permisos, 'categorias' => $categories]);
     }
 
     public function store(Request $request)
@@ -56,8 +59,10 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $role->hasAllPermissions(Permission::all());
+        $categories = Category::all('id', 'name');
+        // $categories = Category::with('permissions')->get();
         // dd ($role);
-        // echo $role;
+        // echo $categories;
         $permisos = Permission::all();
         // echo $permisos;
         $permisosAll = [];
@@ -70,6 +75,7 @@ class RoleController extends Controller
                 'id' => $per->id,
                 'name' => $per->name,
                 'description' => $per->description,
+                'category_id' => $per->category_id,
                 'value' => false,
             );
             $rolPerm = $role->permissions;
@@ -80,6 +86,7 @@ class RoleController extends Controller
                         'id' => $per->id,
                         'name' => $per->name,
                         'description' => $per->description,
+                        'category_id' => $per->category_id,
                         'value' => true,
                     );
                     array_push($permisosRoles, $key->id);
@@ -92,7 +99,7 @@ class RoleController extends Controller
         $permisosRoles = collect($permisosRoles);
         $permisosAll = (collect($permisosAll));
         // echo $permisosRoles;
-        return  Inertia::render('Admin/Roles/edit', ['roles' => $role, 'permisos' => $permisosAll, 'permisosRoles' => $permisosRoles]); //pasar informacion del Rol
+        return  Inertia::render('Admin/Roles/edit', ['roles' => $role, 'permisos' => $permisosAll, 'permisosRoles' => $permisosRoles, 'categorias' => $categories]); //pasar informacion del Rol
     }
 
     public function update(Request $request, Role $role)

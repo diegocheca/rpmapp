@@ -21,9 +21,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <form @submit.prevent="submit" class="mb-6">
-              <div
-                class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-8 mt-5 mx-7"
-              >
+              <div class="grid grid-cols-1 md:grid-cols-2 md:gap-8 mt-5 mx-7">
                 <div class="grid grid-cols-1">
                   <label
                     class="
@@ -53,8 +51,8 @@
                 </div>
               </div>
               <!--  LISTA DE ROLES -->
-              <div class="grid grid-cols-1 gap-5 mt-5 mx-7">
-                <div>
+              <div class="grid grid-cols-1 mt-5 mx-7">
+                <div class="mb-3">
                   <label
                     class="
                       uppercase
@@ -64,24 +62,71 @@
                     "
                     >Listados de Permisos</label
                   >
-                  <div class="grid grid-cols-4 grid-rows-3 gap-1">
-                    <div v-for="(permiso, index) in permisos" :key="index">
-                      <label>
-                        <input
-                          :id="permiso.name"
-                          :value="permiso.id"
-                          name="rol"
-                          checked="false"
-                          type="checkbox"
-                          class="mr-1"
-                          v-model="form.checkedpermisos"
-                        />
-                        {{ permiso.description }}
-                      </label>
+                </div>
+                <div style="bg-white">
+                  <ul class="flex cursor-pointer">
+                    <div v-for="(categoria, index) in categorias" :key="index">
+                      <li
+                        v-on:click="activetab = categoria.id"
+                        v-bind:class="[
+                          activetab === categoria.id
+                            ? 'active border-gray-400 text-white bg-blue-700 font-black'
+                            : '',
+                        ]"
+                        class="
+                          py-2
+                          px-6
+                          bg-white
+                          rounded-t-lg
+                          text-gray-500
+                          focus:outline-none
+                          border-b-2
+                          hover:text-white
+                          hover:border-b-2
+                          hover:font-medium
+                          hover:bg-blue-700
+                          hover:border-gray-400
+                          hover:font-black
+                        "
+                      >
+                        {{ categoria.name }}
+                      </li>
+                    </div>
+                  </ul>
+                </div>
+                <div
+                  class="content"
+                  v-for="(categoria, index) in categorias"
+                  :key="index"
+                >
+                  <div v-if="activetab === categoria.id" class="tabcontent">
+                    <!--  LISTA DE ROLES -->
+                    <div class="grid grid-cols-1 mt-5 mx-7">
+                      <div>
+                        <div class="grid grid-cols-4 grid-rows-3 gap-1">
+                          <div
+                            v-for="(permiso, index) in filterCategory"
+                            :key="index"
+                          >
+                            <label v-if="permiso.category_id === categoria.id">
+                              <input
+                                :id="permiso.name"
+                                :value="permiso.id"
+                                name="rol"
+                                checked="false"
+                                type="checkbox"
+                                class="mr-1"
+                                v-model="form.checkedpermisos"
+                              />
+                              {{ permiso.description }}
+                            </label>
+                          </div>
+                        </div>
+                        <br />
+                        <span>Permisos ID: {{ form.checkedpermisos }}</span>
+                      </div>
                     </div>
                   </div>
-                  <br>
-                  <span>Permisos ID: {{ form.checkedpermisos }}</span>
                 </div>
               </div>
               <div class="flex justify-end md:gap-8 gap-4 pt-5 pb-5 pr-5">
@@ -128,6 +173,7 @@
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayoutAdmin";
+import { number } from "@amcharts/amcharts4/core";
 export default {
   components: {
     AppLayout,
@@ -136,20 +182,29 @@ export default {
     roles: Array,
     permisos: Array,
     permisosRoles: Array,
+    categorias: Array,
     info: String,
   },
   data() {
     return {
       form: {
         name: this.$props.roles.name,
-        // description: this.$props.roles.description,
-        // roles: this.$props.roles,
         checkedpermisos: [],
       },
+      activetab: 1,
     };
+  },
+  computed: {
+    filterCategory() {
+      return this.permisos.filter(
+        (item, index) => item.category_id === this.activetab
+      );
+    },
   },
   mounted() {
     this.form.checkedpermisos = this.$props.permisosRoles;
+    // console.log(this.$props.permisos);
+    // console.log(this.$props.permisosRoles);
   },
   // directives: {
   //     focus: {
