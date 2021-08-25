@@ -89,11 +89,11 @@
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
                         v-if="$props.mostrar_nombre_gestor"
-                        v-bind:valor_input_props="'form.gestor_nombre_apellido'"
-                        v-bind:valor_input_validacion="'form.gestor_nombre_apellido_valido'"
-                        v-bind:evualacion_correcto="'form.gestor_nombre_apellido_correcto'"
-                        v-bind:valor_obs="'form.obs_gestor_nombre_apellido'"
-                        v-bind:valor_valido_obs="'form.obs_gestor_nombre_valido'"
+                        v-bind:valor_input_props="form.gestor_nombre_apellido"
+                        v-bind:valor_input_validacion="form.gestor_nombre_apellido_valido"
+                        v-bind:evualacion_correcto="form.gestor_nombre_apellido_correcto"
+                        v-bind:valor_obs="form.obs_gestor_nombre_apellido"
+                        v-bind:valor_valido_obs="form.obs_gestor_nombre_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Nombre y Apellido del Gestor:'"
@@ -114,11 +114,11 @@
                     <NombreMina
                         v-if="$props.mostrar_dni_gestor"
 
-                        v-bind:valor_input_props="'form.gestor_dni'"
-                        v-bind:valor_input_validacion="'form.gestor_dni_valido'"
-                        v-bind:evualacion_correcto="'form.gestor_dni_correcto'"
-                        v-bind:valor_obs="'form.obs_gestor_dni'"
-                        v-bind:valor_valido_obs="'form.obs_gestor_dni_valido'"
+                        v-bind:valor_input_props="form.gestor_dni"
+                        v-bind:valor_input_validacion="form.gestor_dni_valido"
+                        v-bind:evualacion_correcto="form.gestor_dni_correcto"
+                        v-bind:valor_obs="form.obs_gestor_dni"
+                        v-bind:valor_valido_obs="form.obs_gestor_dni_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'DNI del Gestor:'"
@@ -148,11 +148,11 @@
 
 
 
-                    v-bind:valor_input_props="'form.gestor_profesion'"
-                    v-bind:valor_input_validacion="'form.gestor_profesion_valido'"
-                    v-bind:evualacion_correcto="'form.gestor_profesion_correcto'"
-                    v-bind:valor_obs="'form.obs_gestor_profesion'"
-                    v-bind:valor_valido_obs="'form.obs_gestor_profesion_valido'"
+                    v-bind:valor_input_props="form.gestor_profesion"
+                    v-bind:valor_input_validacion="form.gestor_profesion_valido"
+                    v-bind:evualacion_correcto="form.gestor_profesion_correcto"
+                    v-bind:valor_obs="form.obs_gestor_profesion"
+                    v-bind:valor_valido_obs="form.obs_gestor_profesion_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Profesión del Gestor:'"
@@ -179,11 +179,11 @@
 
 
 
-                    v-bind:valor_input_props="'form.gestor_telefono'"
-                    v-bind:valor_input_validacion="'form.gestor_telefono_valido'"
-                    v-bind:evualacion_correcto="'form.gestor_telefono_correcto'"
-                    v-bind:valor_obs="'form.obs_gestor_telefono'"
-                    v-bind:valor_valido_obs="'form.obs_gestor_telefono_valido'"
+                    v-bind:valor_input_props="form.gestor_telefono"
+                    v-bind:valor_input_validacion="form.gestor_telefono_valido"
+                    v-bind:evualacion_correcto="form.gestor_telefono_correcto"
+                    v-bind:valor_obs="form.obs_gestor_telefono"
+                    v-bind:valor_valido_obs="form.obs_gestor_telefono_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Telefono del Gestor:'"
@@ -212,11 +212,11 @@
 
 
 
-                    v-bind:valor_input_props="'form.gestor_email'"
-                    v-bind:valor_input_validacion="'form.gestor_email_valido'"
-                    v-bind:evualacion_correcto="'form.gestor_email_correcto'"
-                    v-bind:valor_obs="'form.obs_gestor_email'"
-                    v-bind:valor_valido_obs="'form.obs_gestor_email_valido'"
+                    v-bind:valor_input_props="form.gestor_email"
+                    v-bind:valor_input_validacion="form.gestor_email_valido"
+                    v-bind:evualacion_correcto="form.gestor_email_correcto"
+                    v-bind:valor_obs="form.obs_gestor_email"
+                    v-bind:valor_valido_obs="form.obs_gestor_email_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Email del Gestor:'"
@@ -261,11 +261,11 @@
                 <NombreMina
                     v-if="$props.mostrar_notificacion_gestor"
 
-                    v-bind:valor_input_props="'form.gestor_notificacion'"
-                    v-bind:valor_input_validacion="'form.gestor_notificacion_valido'"
-                    v-bind:evualacion_correcto="'form.gestor_notificacion_correcto'"
-                    v-bind:valor_obs="'form.obs_gestor_notificacion'"
-                    v-bind:valor_valido_obs="'form.obs_gestor_notificacion_valido'"
+                    v-bind:valor_input_props="form.gestor_notificacion"
+                    v-bind:valor_input_validacion="form.gestor_notificacion_valido"
+                    v-bind:evualacion_correcto="form.gestor_notificacion_correcto"
+                    v-bind:valor_obs="form.obs_gestor_notificacion"
+                    v-bind:valor_valido_obs="form.obs_gestor_notificacion_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Notificar al Gestor:'"
@@ -312,11 +312,11 @@
                 <SubirArchivo 
                 v-if="$props.mostrar_foto_productor"
 
-                    v-bind:valor_input_props="''"
-                    v-bind:valor_input_validacion="''"
-                    v-bind:evualacion_correcto="''"
-                    v-bind:valor_obs="''"
-                    v-bind:valor_valido_obs="''"
+                    v-bind:valor_input_props="form.foto_4x4"
+                    v-bind:valor_input_validacion="form.foto_4x4_valido"
+                    v-bind:evualacion_correcto="form.foto_4x4_correcto"
+                    v-bind:valor_obs="form.obs_foto_4x4"
+                    v-bind:valor_valido_obs="form.obs_foto_4x4_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Foto 4x4'"
@@ -324,12 +324,12 @@
                     v-bind:mostrar_correccion="$props.mostrar_foto_productor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_foto_productor_correccion"
 
-                    v-on:changevalido="update_resol_conce_valido($event)"
-                    v-on:changecorrecto="update_resol_conce_correcto($event)"
-                    v-on:changeobs="update_obs_resol_conce($event)"
-                    v-on:changeobsvalido="update_obs_canon_valido($event)"
-                    v-on:changevalor="update_obs_resol_conce_valido($event)"
-                    v-on:cambioarchivo="cambio_el_archivo_resolucion($event)"
+                    v-on:changevalido="update_foto_valido($event)"
+                    v-on:changecorrecto="update_foto_correcto($event)"
+                    v-on:changeobs="update_obs_foto($event)"
+                    v-on:changeobsvalido="update_obs_foto_valido($event)"
+                    v-on:changevalor="update_obs_foto_valido($event)"
+                    v-on:cambioarchivo="cambio_el_archivo_foto($event)"
                 >
                 </SubirArchivo>
                 <div v-show="ayuda_local" >
@@ -360,22 +360,56 @@
             </div>
         </div>
         <div class="flex">
+        <!--'mostrar_dni_productor',
+        'desactivar_dni_productor',
+        'mostrar_dni_productor_correccion',
+        'desactivar_dni_productor_correccion',
+
+
+        '',
+        '',
+        '',
+        '',
+        '',-->
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo 
                 v-if="$props.mostrar_dni_productor"
 
-                    v-bind:valor_input_props="''"
-                    v-bind:valor_input_validacion="''"
-                    v-bind:evualacion_correcto="''"
-                    v-bind:valor_obs="''"
-                    v-bind:valor_valido_obs="''"
+                    v-bind:valor_input_props="form.primer_hoja_dni"
+                    v-bind:valor_input_validacion="form.hoja_dni_valido"
+                    v-bind:evualacion_correcto="form.hoja_dni_correcto"
+                    v-bind:valor_obs="form.obs_hoja_dni"
+                    v-bind:valor_valido_obs="form.obs_hoja_dni_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
-                    v-bind:label="'Copia de 1° y 2° hoja de D.N.I.'"
+                    v-bind:label="'Copia de 1° hoja de D.N.I.'"
                     v-bind:desactivar_input="$props.desactivar_dni_productor"
                     v-bind:mostrar_correccion="$props.mostrar_dni_productor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_dni_productor_correccion"
 
+                    v-on:changevalido="update_resol_conce_valido($event)"
+                    v-on:changecorrecto="update_resol_conce_correcto($event)"
+                    v-on:changeobs="update_obs_resol_conce($event)"
+                    v-on:changeobsvalido="update_obs_canon_valido($event)"
+                    v-on:changevalor="update_obs_resol_conce_valido($event)"
+                    v-on:cambioarchivo="cambio_el_archivo_resolucion($event)"
+                >
+                </SubirArchivo>
+                <SubirArchivo 
+                v-if="$props.mostrar_dni_productor"
+
+                    v-bind:valor_input_props="form.form.segunda_hoja_dni"
+                    v-bind:valor_input_validacion="form.form.segunda_hoja_dni_valido"
+                    v-bind:evualacion_correcto="form.form.segunda_hoja_dni_correcto"
+                    v-bind:valor_obs="form.form.obs_segunda_hoja_dni"
+                    v-bind:valor_valido_obs="form.form.obs_segunda_hoja_dni_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing ="mostrar_testing"
+                    v-bind:label="'Copia de 2° hoja de D.N.I.'"
+                    v-bind:desactivar_input="$props.desactivar_dni_productor"
+                    v-bind:mostrar_correccion="$props.mostrar_dni_productor_correccion"
+                    v-bind:desactivar_correccion="$props.desactivar_dni_productor_correccion"
+                    
                     v-on:changevalido="update_resol_conce_valido($event)"
                     v-on:changecorrecto="update_resol_conce_correcto($event)"
                     v-on:changeobs="update_obs_resol_conce($event)"
@@ -416,11 +450,11 @@
                 <SubirArchivo 
                 v-if="$props.mostrar_autorizacion_gestor"
 
-                    v-bind:valor_input_props="'form.autorizacion_gestor'"
-                    v-bind:valor_input_validacion="'form.autorizacion_gestor_valido'"
-                    v-bind:evualacion_correcto="'form.autorizacion_gestor_correcto'"
-                    v-bind:valor_obs="'form.obs_autorizacion_gestor'"
-                    v-bind:valor_valido_obs="'form.obs_autorizacion_gestor_valido'"
+                    v-bind:valor_input_props="form.autorizacion_gestor"
+                    v-bind:valor_input_validacion="form.autorizacion_gestor_valido"
+                    v-bind:evualacion_correcto="form.autorizacion_gestor_correcto"
+                    v-bind:valor_obs="form.obs_autorizacion_gestor"
+                    v-bind:valor_valido_obs="form.obs_autorizacion_gestor_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Autorizacion de que el Gestor Representa la Empresa'"
@@ -468,17 +502,11 @@
                 <SubirArchivo 
                     v-if="$props.mostrar_constancia_afip"
 
-
-
-
-
-
-
-                    v-bind:valor_input_props="'form.constancia_afip'"
-                    v-bind:valor_input_validacion="'form.constancia_afip_valido'"
-                    v-bind:evualacion_correcto="'form.constancia_afip_correcto'"
-                    v-bind:valor_obs="'form.obs_constancia_afip'"
-                    v-bind:valor_valido_obs="'form.obs_constancia_afip_valido'"
+                    v-bind:valor_input_props="form.constancia_afip"
+                    v-bind:valor_input_validacion="form.constancia_afip_valido"
+                    v-bind:evualacion_correcto="form.constancia_afip_correcto"
+                    v-bind:valor_obs="form.obs_constancia_afip"
+                    v-bind:valor_valido_obs="form.obs_constancia_afip_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Constancia de AFIP'"
@@ -527,6 +555,129 @@
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
+        <!--<BotonesPaginaCatamarca
+        v-if="$props.mostrar_boton_guardar_cuatro"
+
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos de la Mina'"
+
+
+            form.gestor_nombre_apellido
+form.gestor_nombre_apellido_valido
+form.gestor_nombre_apellido_correcto
+form.obs_gestor_nombre_apellido
+form.obs_gestor_nombre_valido
+
+
+form.gestor_dni
+form.gestor_dni_valido
+form.gestor_dni_correcto
+form.obs_gestor_dni
+form.obs_gestor_dni_valido
+
+
+form.gestor_profesion
+form.gestor_profesion_valido
+form.gestor_profesion_correcto
+form.obs_gestor_profesion
+form.obs_gestor_profesion_valido
+
+form.gestor_telefono
+form.gestor_telefono_valido
+form.gestor_telefono_correcto
+form.obs_gestor_telefono
+form.obs_gestor_telefono_valido
+
+
+form.gestor_email
+form.gestor_email_valido
+form.gestor_email_correcto
+form.obs_gestor_email
+form.obs_gestor_email_valido
+
+
+form.gestor_notificacion
+form.gestor_notificacion_valido
+form.gestor_notificacion_correcto
+form.obs_gestor_notificacion
+form.obs_gestor_notificacion_valido
+
+
+form.foto_4x4
+form.foto_4x4_valido
+form.foto_4x4_correcto
+form.obs_foto_4x4
+form.obs_foto_4x4_valido
+
+form.autorizacion_gestor
+form.autorizacion_gestor_valido
+form.autorizacion_gestor_correcto
+form.obs_autorizacion_gestor
+form.obs_autorizacion_gestor_valido
+
+
+            :numero_expdiente="form_pagina.numero_expdiente"
+            :numero_expdiente_valido="form_pagina.numero_expdiente_valido"
+            :numero_expdiente_correcto="form_pagina.numero_expdiente_correcto"
+            :obs_numero_expdiente="form_pagina.obs_numero_expdiente"
+            :obs_numero_expdiente_valido="form_pagina.obs_numero_expdiente_valido"
+            :categoria="form_pagina.categoria"
+            :categoria_validacion="form_pagina.categoria_validacion"
+            :categoria_correcto="form_pagina.categoria_correcto"
+            :obs_categoria="form_pagina.obs_categoria"
+            :obs_categoria_valido="form_pagina.obs_categoria_valido"
+            :nombre_mina="form_pagina.nombre_mina"
+            :nombre_mina_validacion="form_pagina.nombre_mina_validacion"
+            :nombre_mina_correcto="form_pagina.nombre_mina_correcto"
+            :obs_nombre_mina="form_pagina.obs_nombre_mina"
+            :obs_nombre_mina_valido="form_pagina.obs_nombre_mina_valido"
+            :descripcion_mina="form_pagina.descripcion_mina"
+            :descripcion_mina_validacion="form_pagina.descripcion_mina_validacion"
+            :descripcion_mina_correcto="form_pagina.descripcion_mina_correcto"
+            :obs_descripcion_mina="form_pagina.obs_descripcion_mina"
+            :obs_descripcion_mina_valido="form_pagina.obs_descripcion_mina_valido"
+            :distrito_minero="form_pagina.distrito_minero"
+            :distrito_minero_validacion="form_pagina.distrito_minero_validacion"
+            :distrito_minero_correcto="form_pagina.distrito_minero_correcto"
+            :obs_distrito_minero="form_pagina.obs_distrito_minero"
+            :obs_distrito_minero_valido="form_pagina.obs_distrito_minero_valido"
+            :mina_cantera="form_pagina.mina_cantera"
+            :mina_cantera_validacion="form_pagina.mina_cantera_validacion"
+            :mina_cantera_correcto="form_pagina.mina_cantera_correcto"
+            :obs_mina_cantera="form_pagina.obs_mina_cantera"
+            :obs_mina_cantera_valido="form_pagina.obs_mina_cantera_valido"
+            :plano_inmueble="form_pagina.plano_inmueble"
+            :plano_inmueble_validacion="form_pagina.plano_inmueble_validacion"
+            :plano_inmueble_correcto="form_pagina.plano_inmueble_correcto"
+            :obs_plano_inmueble="form_pagina.obs_plano_inmueble"
+            :obs_plano_inmueble_valido="form_pagina.obs_plano_inmueble_valido"
+            :minerales_variedad="form_pagina.minerales_variedad"
+            :minerales_variedad_validacion="form_pagina.minerales_variedad_validacion"
+            :minerales_variedad_correcto="form_pagina.minerales_variedad_correcto"
+            :obs_minerales_variedad="form_pagina.obs_minerales_variedad"
+            :obs_minerales_variedad_valido="form_pagina.obs_minerales_variedad_valido"
+            :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
+            :resolucion_concesion_minera_validacion="form_pagina.resolucion_concesion_minera_validacion"
+            :resolucion_concesion_minera_correcto="form_pagina.resolucion_concesion_minera_correcto"
+            :obs_resolucion_concesion_minera="form_pagina.obs_resolucion_concesion_minera"
+            :obs_resolucion_concesion_minera_valido="form_pagina.obs_resolucion_concesion_minera_valido"
+            :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
+            :titulo_contrato_posecion_validacion="form_pagina.titulo_contrato_posecion_validacion"
+            :titulo_contrato_posecion_correcto="form_pagina.titulo_contrato_posecion_correcto"
+            :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
+            :obs_titulo_contrato_posecion_valido="form_pagina.obs_titulo_contrato_posecion_valido"
+
+            :minerales="minerales_locales"
+
+            :donde_guardar="$props.donde_estoy"
+
+            :evaluacion="autoridad_minera"
+            :testing ="mostrar_testing"
+            :id="$props.id"
+        >
+
+        </BotonesPaginaCatamarca>-->
         
     </div>
 </template>
@@ -540,6 +691,8 @@ import NombreMina from "@/Pages/Productors/NombreMina";
 import TipoDeSistemaGeo from "@/Pages/Productors/TipoDeSistemaGeo";
 import BotonesPaginaSeis from "@/Pages/Productors/BotonesPaginaSeis";
 import SubirArchivo from "@/Pages/Productors/SubirArchivo";
+//import BotonesPaginaCatamarca from "@/Pages/Productors/BotonesPaginaCatamarca";
+
 import Label from '../../Jetstream/Label.vue';
 export default {
      props: [
@@ -674,110 +827,102 @@ export default {
         TipoDeSistemaGeo,
         BotonesPaginaSeis,
         SubirArchivo,
+        //BotonesPaginaCatamarca,
 	},
-   
-  data() {
-    return {
-        saludos: 'Saludame qweqweqwe',
-        mostrar_modal_datos_ya_guardados:false,
-        modal_tittle:'',
-        modal_body:'',
-        mostrar_testing:false,
-        autoridad_minera:this.$props.evaluacion,
-        ayuda_local: false,
-        form_pagina: {
-
+    data() {
+        return {
+            saludos: 'Saludame qweqweqwe',
+            mostrar_modal_datos_ya_guardados:false,
+            modal_tittle:'',
+            modal_body:'',
+            mostrar_testing:false,
+            autoridad_minera:this.$props.evaluacion,
+            ayuda_local: false,
+            form_pagina: {
                 gestor_nombre_apellido:this.$props.gestor_nombre_apellido,
-				gestor_nombre_apellido_valido: this.$props.gestor_nombre_apellido_valido,
-				gestor_nombre_apellido_correcto: this.$props.gestor_nombre_apellido_correcto,
-				obs_gestor_nombre_apellido: this.$props.obs_gestor_nombre_apellido,
-				obs_gestor_nombre_valido: this.$props.obs_gestor_nombre_valido,
+                gestor_nombre_apellido_valido: this.$props.gestor_nombre_apellido_valido,
+                gestor_nombre_apellido_correcto: this.$props.gestor_nombre_apellido_correcto,
+                obs_gestor_nombre_apellido: this.$props.obs_gestor_nombre_apellido,
+                obs_gestor_nombre_valido: this.$props.obs_gestor_nombre_valido,
 
-				gestor_dni:this.$props.gestor_dni,
-				gestor_dni_valido: this.$props.gestor_dni_valido,
-				gestor_dni_correcto: this.$props.gestor_dni_correcto,
-				obs_gestor_dni: this.$props.obs_gestor_dni,
-				obs_gestor_dni_valido: this.$props.obs_gestor_dni_valido,
+                gestor_dni:this.$props.gestor_dni,
+                gestor_dni_valido: this.$props.gestor_dni_valido,
+                gestor_dni_correcto: this.$props.gestor_dni_correcto,
+                obs_gestor_dni: this.$props.obs_gestor_dni,
+                obs_gestor_dni_valido: this.$props.obs_gestor_dni_valido,
 
-				gestor_profesion:this.$props.gestor_profesion,
-				gestor_profesion_valido: this.$props.gestor_profesion_valido,
-				gestor_profesion_correcto: this.$props.gestor_profesion_correcto,
-				obs_gestor_profesion: this.$props.obs_gestor_profesion,
-				obs_gestor_profesion_valido: this.$props.obs_gestor_profesion_valido,
+                gestor_profesion:this.$props.gestor_profesion,
+                gestor_profesion_valido: this.$props.gestor_profesion_valido,
+                gestor_profesion_correcto: this.$props.gestor_profesion_correcto,
+                obs_gestor_profesion: this.$props.obs_gestor_profesion,
+                obs_gestor_profesion_valido: this.$props.obs_gestor_profesion_valido,
 
-				gestor_telefono:this.$props.gestor_telefono,
-				gestor_telefono_valido: this.$props.gestor_telefono_valido,
-				gestor_telefono_correcto: this.$props.gestor_telefono_correcto,
-				obs_gestor_telefono: this.$props.obs_gestor_telefono,
-				obs_gestor_telefono_valido: this.$props.obs_gestor_telefono_valido,
+                gestor_telefono:this.$props.gestor_telefono,
+                gestor_telefono_valido: this.$props.gestor_telefono_valido,
+                gestor_telefono_correcto: this.$props.gestor_telefono_correcto,
+                obs_gestor_telefono: this.$props.obs_gestor_telefono,
+                obs_gestor_telefono_valido: this.$props.obs_gestor_telefono_valido,
 
-				gestor_notificacion:this.$props.gestor_notificacion,
-				gestor_notificacion_valido: this.$props.gestor_notificacion_valido,
-				gestor_notificacion_correcto: this.$props.gestor_notificacion_correcto,
-				obs_gestor_notificacion: this.$props.obs_gestor_notificacion,
-				obs_gestor_notificacion_valido: this.$props.obs_gestor_notificacion_valido,
+                gestor_notificacion:this.$props.gestor_notificacion,
+                gestor_notificacion_valido: this.$props.gestor_notificacion_valido,
+                gestor_notificacion_correcto: this.$props.gestor_notificacion_correcto,
+                obs_gestor_notificacion: this.$props.obs_gestor_notificacion,
+                obs_gestor_notificacion_valido: this.$props.obs_gestor_notificacion_valido,
 
-				gestor_email:this.$props.gestor_email,
-				gestor_email_valido: this.$props.gestor_email_valido,
-				gestor_email_correcto: this.$props.gestor_email_correcto,
-				obs_gestor_email: this.$props.obs_gestor_email,
-				obs_gestor_email_valido: this.$props.obs_gestor_email_valido,
+                gestor_email:this.$props.gestor_email,
+                gestor_email_valido: this.$props.gestor_email_valido,
+                gestor_email_correcto: this.$props.gestor_email_correcto,
+                obs_gestor_email: this.$props.obs_gestor_email,
+                obs_gestor_email_valido: this.$props.obs_gestor_email_valido,
 
-				primer_hoja_dni:this.$props.primer_hoja_dni,
-				hoja_dni_valido: this.$props.hoja_dni_valido,
-				hoja_dni_correcto: this.$props.hoja_dni_correcto,
-				obs_hoja_dni: this.$props.obs_hoja_dni,
-				obs_hoja_dni_valido: this.$props.obs_hoja_dni_valido,
+                primer_hoja_dni:this.$props.primer_hoja_dni,
+                hoja_dni_valido: this.$props.hoja_dni_valido,
+                hoja_dni_correcto: this.$props.hoja_dni_correcto,
+                obs_hoja_dni: this.$props.obs_hoja_dni,
+                obs_hoja_dni_valido: this.$props.obs_hoja_dni_valido,
 
-				segunda_hoja_dni:this.$props.segunda_hoja_dni,
-				segunda_hoja_dni_valido: this.$props.segunda_hoja_dni_valido,
-				segunda_hoja_dni_correcto: this.$props.segunda_hoja_dni_correcto,
-				obs_segunda_hoja_dni: this.$props.obs_segunda_hoja_dni,
-				obs_segunda_hoja_dni_valido: this.$props.obs_segunda_hoja_dni_valido,
+                segunda_hoja_dni:this.$props.segunda_hoja_dni,
+                segunda_hoja_dni_valido: this.$props.segunda_hoja_dni_valido,
+                segunda_hoja_dni_correcto: this.$props.segunda_hoja_dni_correcto,
+                obs_segunda_hoja_dni: this.$props.obs_segunda_hoja_dni,
+                obs_segunda_hoja_dni_valido: this.$props.obs_segunda_hoja_dni_valido,
 
-				foto_4x4:this.$props.foto_4x4,
-				foto_4x4_valido: this.$props.foto_4x4_valido,
-				foto_4x4_correcto: this.$props.foto_4x4_correcto,
-				obs_foto_4x4: this.$props.obs_foto_4x4,
-				obs_foto_4x4_valido: this.$props.obs_foto_4x4_valido,
+                foto_4x4:this.$props.foto_4x4,
+                foto_4x4_valido: this.$props.foto_4x4_valido,
+                foto_4x4_correcto: this.$props.foto_4x4_correcto,
+                obs_foto_4x4: this.$props.obs_foto_4x4,
+                obs_foto_4x4_valido: this.$props.obs_foto_4x4_valido,
 
-				constancia_afip:this.$props.constancia_afip,
-				constancia_afip_valido: this.$props.constancia_afip_valido,
-				constancia_afip_correcto: this.$props.constancia_afip_correcto,
-				obs_constancia_afip: this.$props.obs_constancia_afip,
-				obs_constancia_afip_valido: this.$props.obs_constancia_afip_valido,
+                constancia_afip:this.$props.constancia_afip,
+                constancia_afip_valido: this.$props.constancia_afip_valido,
+                constancia_afip_correcto: this.$props.constancia_afip_correcto,
+                obs_constancia_afip: this.$props.obs_constancia_afip,
+                obs_constancia_afip_valido: this.$props.obs_constancia_afip_valido,
 
 
-				autorizacion_gestor:this.$props.autorizacion_gestor,
-				autorizacion_gestor_valido: this.$props.autorizacion_gestor_valido,
-				autorizacion_gestor_correcto: this.$props.autorizacion_gestor_correcto,
-				obs_autorizacion_gestor: this.$props.obs_autorizacion_gestor,
-				obs_autorizacion_gestor_valido: this.$props.obs_autorizacion_gestor_valido,
+                autorizacion_gestor:this.$props.autorizacion_gestor,
+                autorizacion_gestor_valido: this.$props.autorizacion_gestor_valido,
+                autorizacion_gestor_correcto: this.$props.autorizacion_gestor_correcto,
+                obs_autorizacion_gestor: this.$props.obs_autorizacion_gestor,
+                obs_autorizacion_gestor_valido: this.$props.obs_autorizacion_gestor_valido,
 
-				valor_de_progreso:  100,
-				valor_de_aprobado:  100,
-				valor_de_reprobado:  100,
-        },
-
-        lista_departamentos:[],
-        lista_localidades:[],
-        
-            
-
-    };
-  },
-  methods:{
-      cerrar_modal_datos_uno() {
+                valor_de_progreso:  100,
+                valor_de_aprobado:  100,
+                valor_de_reprobado:  100,
+            },
+            lista_departamentos:[],
+            lista_localidades:[],
+        };
+    },
+    methods:{
+        cerrar_modal_datos_uno() {
             this.mostrar_modal_datos_ya_guardados = false
 		},
 
 
 
 
-
-
-
-       //FUNCIONES DE NOMBRE DE GESTOR
+        //FUNCIONES DE NOMBRE DE GESTOR
         update_nombre_gestor_valido(newValue){
             this.form.gestor_nombre_apellido_valido = newValue;
         },
@@ -793,7 +938,6 @@ export default {
         update_valor_nombre_gestor(newValue){
             this.form.gestor_nombre_apellido = newValue;
         },
-
 
         //FUNCIONES DE DNI DE GESTOR
         update_gestor_dni_valido(newValue){
@@ -812,7 +956,6 @@ export default {
             this.form.gestor_dni = newValue;
         },
 
-
         //FUNCIONES DE PROFESION DE GESTOR
         update_gestor_profesion_valido(newValue){
             this.form.gestor_profesion_valido = newValue;
@@ -830,7 +973,7 @@ export default {
             this.form.gestor_profesion = newValue;
         },
 
-         //FUNCIONES DE Telefono DE GESTOR
+        //FUNCIONES DE Telefono DE GESTOR
         update_gestor_telefono_valido(newValue){
             this.form.gestor_telefono_valido = newValue;
         },
@@ -847,9 +990,7 @@ export default {
             this.form.gestor_telefono = newValue;
         },
 
-
-
-         //FUNCIONES DE N OTIFICACION DE GESTOR
+        //FUNCIONES DE N OTIFICACION DE GESTOR
         update_gestor_noti_valido(newValue){
             this.form.gestor_notificacion_valido = newValue;
         },
@@ -866,8 +1007,7 @@ export default {
             this.form.gestor_notificacion = newValue;
         },
 
-
-         //FUNCIONES DE PROFESION DE GESTOR
+        //FUNCIONES DE PROFESION DE GESTOR
         update_gestor_email_valido(newValue){
             this.form.gestor_email_valido = newValue;
         },
@@ -883,7 +1023,6 @@ export default {
         update_valor_gestor_email(newValue){
             this.form.gestor_email = newValue;
         },
-
 
         update_gestor_autorizacion_valido(newValue){
             this.form.autorizacion_gestor_valido = newValue;
@@ -932,190 +1071,25 @@ export default {
             //tengo que enviarsela al padre
         },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        update_dpto_valido(newValue){
-            this.form_pagina.localidad_mina_departamento_validacion = newValue;
-            //tengo que enviarsela al padre
+        update_foto_valido(newValue){
+            this.form.foto_4x4_valido = newValue;
         },
-        update_dpto_correcto(newValue){
-            this.form_pagina.localidad_mina_departamento_correcto = newValue;
-            //tengo que enviarsela al padre
+        update_foto_correcto(newValue){
+            this.form.foto_4x4_correcto = newValue;
         },
-        updateobs_dpto_legal(newValue){
-            this.form_pagina.obs_localidad_mina_departamento = newValue;
-            //tengo que enviarsela al padre
+        update_obs_foto(newValue){
+            this.form.obs_foto_4x4 = newValue;
         },
-        update_obs_dpto_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_localidad_mina_departamento_valido = newValue;
-            //tengo que enviarsela al padre
+        update_obs_foto_valido(newValue){
+            this.form.obs_foto_4x4_valido = newValue;
         },
-        update_valor_dpto(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.localidad_mina_departamento = newValue;
-
-            let self = this;
-            console.log("cambio la provincia de mi hijo por:"+newValue);
-            
-            // this.form_pagina.localidad_mina_provincia = newValue;
-            // //debo actualizar la lista de departamento que tengo disponibles para elegir
-            // axios.post('/datos/traer_departamentos/',{id_prov:newValue})
-            //     .then(function (response) {
-            //         console.log("las deptos son:\n");
-            //         self.lista_departamentos = response.data;
-            //         console.log(self.lista_departamentos);
-
-            //     })
-            //     .catch(function (error) {
-            //         console.log(error);
-            //     });
-            //tengo que enviarsela al padre
+        cambio_el_archivo_foto(newValue){
+            this.form.foto_4x4 = newValue;
         },
 
 
 
 
-
-
-
-
-
-
-
-
-        update_localidad_valido(newValue){
-            this.form_pagina.localidad_mina_localidad_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_localidad_correcto(newValue){
-            this.form_pagina.localidad_mina_localidad_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_localidad(newValue){
-            this.form_pagina.obs_localidad_mina_localidad = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_localidad_valida(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_localidad_mina_localidad_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_localidad(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.localidad_mina_localidad = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-
-
-
-
-
-
-
-
-
-        update_sist_coor_valido(newValue){
-            this.form_pagina.tipo_sistema_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_sist_coor_correcto(newValue){
-            this.form_pagina.tipo_sistema_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_sist_coor(newValue){
-            this.form_pagina.obs_tipo_sistema = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_sist_coor_valida(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_tipo_sistema_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_sist_coor(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.tipo_sistema = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-
-
-
-
-
-
-        update_latitud_valido(newValue){
-            this.form_pagina.latitud_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_latitud_correcto(newValue){
-            this.form_pagina.latitud_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_latitud(newValue){
-            this.form_pagina.obs_latitud = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_latitud_valida(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_latitud_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_latitud(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.latitud = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-
-
-
-
-
-
-
-        update_sist_coor_lonvalido(newValue){
-            this.form_pagina.longitud_validacion = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_sist_coor_loncorrecto(newValue){
-            this.form_pagina.longitud_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_sist_coor_lon(newValue){
-            this.form_pagina.obs_longitud = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_sist_coor_lonvalida(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_longitud_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_valor_sist_coor_lon(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.longitud = newValue;
-            //tengo que enviarsela al padre
-        },
 
         //mostrar ayuda
         update_valor_ayuda_local(newValor){

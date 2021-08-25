@@ -916,12 +916,6 @@
 				:desactivar_nombre_gestor_correccion="$props.disables.nombre_gestor_correccion"
 
 
-
-
-
-
-
-
 				:gestor_dni="form_particular.gestor_dni"
 				:gestor_dni_valido="form_particular.gestor_dni_valido"
 				:gestor_dni_correcto="form_particular.gestor_dni_correcto"
@@ -931,12 +925,6 @@
 				:desactivar_dni_gestor="$props.disables.dni_gestor"
 				:mostrar_dni_gestor_correccion="$props.mostrar.dni_gestor_correccion"
 				:desactivar_dni_gestor_correccion="$props.disables.dni_gestor_correccion"
-
-				
-
-
-
-
 
 
 				:gestor_profesion="form_particular.gestor_profesion"
@@ -948,11 +936,6 @@
 				:desactivar_profesion_gestor="$props.disables.profesion_gestor"
 				:mostrar_profesion_gestor_correccion="$props.mostrar.profesion_gestor_correccion"
 				:desactivar_profesion_gestor_correccion="$props.disables.profesion_gestor_correccion"
-
-
-				
-
-
 
 
 				:gestor_telefono="form_particular.gestor_telefono"
@@ -978,8 +961,6 @@
 				:desactivar_notificacion_gestor_correccion="$props.disables.notificacion_gestor_correccion"
 
 
-
-
 				:gestor_email="form_particular.gestor_email"
 				:gestor_email_valido="form_particular.gestor_email_valido"
 				:gestor_email_correcto="form_particular.gestor_email_correcto"
@@ -989,7 +970,6 @@
 				:desactivar_email_gestor="$props.disables.email_gestor"
 				:mostrar_email_gestor_correccion="$props.mostrar.email_gestor_correccion"
 				:desactivar_email_gestor_correccion="$props.disables.email_gestor_correccion"
-
 
 
 				:primer_hoja_dni="form_particular.primer_hoja_dni"
@@ -1004,21 +984,11 @@
 				:desactivar_dni_productor_correccion="$props.disables.dni_productor_correccion"
 
 
-
 				:segunda_hoja_dni="form_particular.segunda_hoja_dni"
 				:segunda_hoja_dni_valido="form_particular.segunda_hoja_dni_valido"
 				:segunda_hoja_dni_correcto="form_particular.segunda_hoja_dni_correcto"
 				:obs_segunda_hoja_dni="form_particular.obs_segunda_hoja_dni"
 				:obs_segunda_hoja_dni_valido="form_particular.obs_segunda_hoja_dni_valido"
-
-
-
-
-
-
-
-
-
 
 
 				:foto_4x4="form_particular.foto_4x4"
@@ -1032,12 +1002,6 @@
 				:desactivar_foto_productor_correccion="$props.disables.foto_productor_correccion"
 
 
-				
-
-
-
-
-
 				:constancia_afip="form_particular.constancia_afip"
 				:constancia_afip_valido="form_particular.constancia_afip_valido"
 				:constancia_afip_correcto="form_particular.constancia_afip_correcto"
@@ -1047,12 +1011,6 @@
 				:desactivar_constancia_afip="$props.disables.constancia_afip"
 				:mostrar_constancia_afip_correccion="$props.mostrar.constancia_afip_correccion"
 				:desactivar_constancia_afip_correccion="$props.disables.constancia_afip_correccion"
-
-
-
-
-
-
 
 
 				:autorizacion_gestor="form_particular.autorizacion_gestor"
@@ -1065,9 +1023,6 @@
 				:desactivar_autorizacion_gestor="$props.disables.autorizacion_gestor"
 				:mostrar_autorizacion_gestor_correccion="$props.mostrar.autorizacion_gestor_correccion"
 				:desactivar_autorizacion_gestor_correccion="$props.disables.autorizacion_gestor_correccion"
-
-
-
 
 
 				:mostrar_boton_guardar_cinco="$props.mostrar.boton_guardar_cinco"
