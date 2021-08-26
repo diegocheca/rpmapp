@@ -1,4 +1,19 @@
 <template>
+    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <inertia-link
+            :href="route('login')"
+            class="text-sm text-gray-700 underline"
+        >
+            Ingresar
+        </inertia-link>
+        <inertia-link
+            :href="route('register')"
+            class="ml-4 text-sm text-gray-700 underline"
+        >
+            Registrarte
+        </inertia-link>
+    </div>
+
     <div>
         <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
             <div>
@@ -9,14 +24,16 @@
             <div class="mt-8 text-2xl">
                 Bienvenido al sistema de Registro de Productores Mineros!
             </div>
-            <a :href="route('register')">Registrarse</a>  
-            
+            <a :href="route('register')">Registrarse</a>
 
             <div class="mt-6 text-gray-500">
-                Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-                to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-                you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-                ecosystem to be a breath of fresh air. We hope you love it.
+                Laravel Jetstream provides a beautiful, robust starting point
+                for your next Laravel application. Laravel is designed to help
+                you build your application using a development environment that
+                is simple, powerful, and enjoyable. We believe you should love
+                expressing your creativity through programming, so we have spent
+                time carefully crafting the Laravel ecosystem to be a breath of
+                fresh air. We hope you love it.
             </div>
         </div>
 
@@ -28,7 +45,7 @@
 
         <div><TimeLine /></div>
         <div><LineChart /></div>
-        
+
         <!-- <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
             <div class="p-6">
                 <div class="flex items-center">
@@ -106,20 +123,20 @@
 </template>
 
 <script>
-    import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-    import ChartBar from '@/Components/charts/bar'
-    import ChartPie from '@/Components/charts/pie'
-    import TimeLine from '@/Components/charts/timeline'
-    import LineChart from '../Components/charts/linechart.vue'
-    export default {
-        components: {
-            JetApplicationLogo,
-            JetAuthenticationCardLogo,
-            ChartBar,
-            ChartPie,
-            TimeLine,
-            LineChart
-        },
-    }
+import JetApplicationLogo from "@/Jetstream/ApplicationLogo";
+import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
+import ChartBar from "@/Components/charts/bar";
+import ChartPie from "@/Components/charts/pie";
+import TimeLine from "@/Components/charts/timeline";
+import LineChart from "../Components/charts/linechart.vue";
+export default {
+    components: {
+        JetApplicationLogo,
+        JetAuthenticationCardLogo,
+        ChartBar,
+        ChartPie,
+        TimeLine,
+        LineChart,
+    },
+};
 </script>

@@ -5,12 +5,12 @@
   </div>
 </template>
 <script>
-    import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
-    import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
-    import ChartPie from '@/Components/charts/pie'
-    import ChartBar from '@/Components/charts/bar'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
+import JetApplicationLogo from "@/Jetstream/ApplicationLogo";
+import AppLayout from "@/Layouts/AppLayout";
+import Welcome from "@/Jetstream/Welcome";
+import ChartPie from "@/Components/charts/pie";
+import ChartBar from "@/Components/charts/bar";
+import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 
     import DashboardAdmin from '@/Components/dashboards/DashboardAdmin'
     import DashboardProductor from '@/Components/dashboards/DashboardProductor'

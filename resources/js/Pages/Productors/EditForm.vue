@@ -1161,15 +1161,13 @@
                     {{modal_body}}
             </template>
             <template #footer>
-				<inertia-link
+				
+                <inertia-link
 							:href="route('formulario-alta.index')"
-							class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+							class="px-4 py-2  text-sm font-medium rounded-full  border-b border-green-300 bg-green-200 hover:bg-green-300 text-green-900"
 						>
-							Volver
+							Ok, volver a lista de borradores
 						</inertia-link>
-                <button @click="cerrar_modal_datos_uno">
-                        Ok
-                </button>
             </template>
         </jet-dialog-modal>
 
@@ -1743,13 +1741,25 @@ export default {
             axios.post("http://localhost:8000/formularios/presentar_borrador", data)
             .then(function (response) {
                 console.log(response.data);
-                if(response.data === "todo bien")
+                if(response.data.msg === 'Datos actualizados correctamente.')
                     {
-                        console.log('todo bien');
-                        self.modal_tittle = 'Se actualizo estado';
-                        self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
-						self.closeModalAprobar = false;
-                        self.mostrar_modal_datos_ya_guardados = true;
+						if(self.form.estado === 'aprobado') // lo aprobe en el back, siendo autoridad
+						{
+							console.log('todo bien');
+							self.modal_tittle = 'Se aprobó la solicitud';
+							self.modal_body = 'Se ha guardado el estado de la solicitud como aprobado. Esta acción implica que la persona que presentó este formulario será considerado como productor.';
+							self.closeModalAprobar = false;
+							self.mostrar_modal_datos_ya_guardados = true;
+						}
+						if(self.form.estado === 'presentado') // lo presente como productor
+						{
+							console.log('todo bien');
+							self.modal_tittle = 'Se actualizo estado';
+							self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
+							self.closeModalAprobar = false;
+							self.mostrar_modal_datos_ya_guardados = true;
+						}
+                        
                     }
                     
                     if(response.data === "formulario no encontrado")

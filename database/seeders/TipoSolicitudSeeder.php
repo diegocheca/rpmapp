@@ -15,6 +15,14 @@ class TipoSolicitudSeeder extends Seeder
      */
     public function run()
     {
-        //$tipo = formTipoSolicitud::
+        //$tipo = formTipoSolicitud:: 
+        formTipoSolicitud::create([
+            'id' => 1,
+            'nombre' => 'Solicitud de exploracion',
+        ]);
+        formTipoSolicitud::create([
+            'id' => 2,
+            'nombre' => 'Manifestación de descubrimiento',
+        ]);
     }
 }
