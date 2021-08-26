@@ -90,14 +90,21 @@ Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    // admin
+    // productor
+    return Inertia::render('Dashboard', ['userType' => 'productor']);
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard1', function () {
+    return Inertia::render('Dashboard1');
+})->name('dashboard1');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
     return Inertia::render('Users/Index', [
         'users' => User::all()
     ]);
 })->name('users.index');
+
 
 Route::resource('formulario-alta', FormAltaProductorController::class)
     ->middleware(['auth:sanctum', 'verified']);
