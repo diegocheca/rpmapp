@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
+use Auth;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -92,7 +93,14 @@ Route::resource('productores', ProductoresController::class)
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // admin
     // productor
-    return Inertia::render('Dashboard', ['userType' => 'productor']);
+    $mi_rol = '';
+    if(Auth::user()->hasRole('Autoridad'))
+        $mi_rol = 'admin';
+    if(Auth::user()->hasRole('Administrador'))
+        $mi_rol = 'admin';
+    if(Auth::user()->hasRole('Productor'))
+        $mi_rol = 'productor';
+    return Inertia::render('Dashboard', ['userType' => $mi_rol]);
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard1', function () {
