@@ -461,7 +461,7 @@ console.log(props.titleForm)
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style src="vue-multiselect/dist/vue-multiselect.css" scoped></style>
 <style scoped>
 /* CHECKBOX TOGGLE SWITCH */
 /* .toggle-checkbox:checked {

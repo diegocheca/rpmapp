@@ -7,22 +7,8 @@
         :buttomLabel="'Enviar'"
         :dataForm="dataForm"
         @valuesForm="submit($event)"
-        :dev="true"
-    />
-
-    <!-- <dynamic-form
-        :builder="reinscripcion"
-        :titleForm="titleForm"
-        :evaluate="evaluate"
-        :province="province"
-        :buttomLabel="'Editar'"
-        :dataForm="dataForm"
-        :action="action"
-        :saveUrl="saveUrl"
-        :saveFileUrl="saveFileUrl"
-        @valuesForm="submit($event)"
         :dev="false"
-    /> -->
+    />
 
 </app-layout>
 </template>
