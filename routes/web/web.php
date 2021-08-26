@@ -105,6 +105,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
     ]);
 })->name('users.index');
 
+
 Route::resource('formulario-alta', FormAltaProductorController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
