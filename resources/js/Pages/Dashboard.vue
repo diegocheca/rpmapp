@@ -12,6 +12,9 @@
     import ChartBar from '@/Components/charts/bar'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
 
+    import DashboardAdmin from '@/Components/dashboards/DashboardAdmin'
+    import DashboardProductor from '@/Components/dashboards/DashboardProductor'
+
     export default {
         components: {
             DashboardAdmin,

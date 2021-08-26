@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex justify-center content-center w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-2" :class="[ porcentajeReinscripcion == 100? 'border-green-400' : 'border-indigo-400' ]">
                     <!-- sin reinscripciones -->
-                    <!-- <a :href="route('reinscripciones.create')" class="cursor-pointer">
+                    <a :href="route('reinscripciones.create')" class="cursor-pointer">
                         <div class="w-full flex flex-col items-center text-gray-400">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
@@ -46,9 +46,9 @@
 
 
                         </div>
-                    </a> -->
+                    </a>
                     <!-- porcentaje inscripcion -->
-                    <div class="flex-col my-auto">
+                    <!-- <div class="flex-col my-auto">
                         <vue3-autocounter
                             class="text-4xl count-number"
                             ref="counter1"
@@ -63,7 +63,7 @@
                             :autoinit="true"
                         />
                         <div class="">porcentaje de aprobación de la última reinscripción</div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="flex flex-col my-10 px-8 shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-2 border-indigo-400">
