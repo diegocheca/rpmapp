@@ -89,11 +89,11 @@
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
                         v-if="$props.mostrar_nombre_gestor"
-                        v-bind:valor_input_props="form.gestor_nombre_apellido"
-                        v-bind:valor_input_validacion="form.gestor_nombre_apellido_valido"
-                        v-bind:evualacion_correcto="form.gestor_nombre_apellido_correcto"
-                        v-bind:valor_obs="form.obs_gestor_nombre_apellido"
-                        v-bind:valor_valido_obs="form.obs_gestor_nombre_valido"
+                        v-bind:valor_input_props="form_pagina.gestor_nombre_apellido"
+                        v-bind:valor_input_validacion="form_pagina.gestor_nombre_apellido_valido"
+                        v-bind:evualacion_correcto="form_pagina.gestor_nombre_apellido_correcto"
+                        v-bind:valor_obs="form_pagina.obs_gestor_nombre_apellido"
+                        v-bind:valor_valido_obs="form_pagina.obs_gestor_nombre_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Nombre y Apellido del Gestor:'"
@@ -114,11 +114,11 @@
                     <NombreMina
                         v-if="$props.mostrar_dni_gestor"
 
-                        v-bind:valor_input_props="form.gestor_dni"
-                        v-bind:valor_input_validacion="form.gestor_dni_valido"
-                        v-bind:evualacion_correcto="form.gestor_dni_correcto"
-                        v-bind:valor_obs="form.obs_gestor_dni"
-                        v-bind:valor_valido_obs="form.obs_gestor_dni_valido"
+                        v-bind:valor_input_props="form_pagina.gestor_dni"
+                        v-bind:valor_input_validacion="form_pagina.gestor_dni_valido"
+                        v-bind:evualacion_correcto="form_pagina.gestor_dni_correcto"
+                        v-bind:valor_obs="form_pagina.obs_gestor_dni"
+                        v-bind:valor_valido_obs="form_pagina.obs_gestor_dni_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'DNI del Gestor:'"
@@ -148,11 +148,11 @@
 
 
 
-                    v-bind:valor_input_props="form.gestor_profesion"
-                    v-bind:valor_input_validacion="form.gestor_profesion_valido"
-                    v-bind:evualacion_correcto="form.gestor_profesion_correcto"
-                    v-bind:valor_obs="form.obs_gestor_profesion"
-                    v-bind:valor_valido_obs="form.obs_gestor_profesion_valido"
+                    v-bind:valor_input_props="form_pagina.gestor_profesion"
+                    v-bind:valor_input_validacion="form_pagina.gestor_profesion_valido"
+                    v-bind:evualacion_correcto="form_pagina.gestor_profesion_correcto"
+                    v-bind:valor_obs="form_pagina.obs_gestor_profesion"
+                    v-bind:valor_valido_obs="form_pagina.obs_gestor_profesion_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Profesión del Gestor:'"
@@ -179,11 +179,11 @@
 
 
 
-                    v-bind:valor_input_props="form.gestor_telefono"
-                    v-bind:valor_input_validacion="form.gestor_telefono_valido"
-                    v-bind:evualacion_correcto="form.gestor_telefono_correcto"
-                    v-bind:valor_obs="form.obs_gestor_telefono"
-                    v-bind:valor_valido_obs="form.obs_gestor_telefono_valido"
+                    v-bind:valor_input_props="form_pagina.gestor_telefono"
+                    v-bind:valor_input_validacion="form_pagina.gestor_telefono_valido"
+                    v-bind:evualacion_correcto="form_pagina.gestor_telefono_correcto"
+                    v-bind:valor_obs="form_pagina.obs_gestor_telefono"
+                    v-bind:valor_valido_obs="form_pagina.obs_gestor_telefono_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Telefono del Gestor:'"
@@ -212,11 +212,11 @@
 
 
 
-                    v-bind:valor_input_props="form.gestor_email"
-                    v-bind:valor_input_validacion="form.gestor_email_valido"
-                    v-bind:evualacion_correcto="form.gestor_email_correcto"
-                    v-bind:valor_obs="form.obs_gestor_email"
-                    v-bind:valor_valido_obs="form.obs_gestor_email_valido"
+                    v-bind:valor_input_props="form_pagina.gestor_email"
+                    v-bind:valor_input_validacion="form_pagina.gestor_email_valido"
+                    v-bind:evualacion_correcto="form_pagina.gestor_email_correcto"
+                    v-bind:valor_obs="form_pagina.obs_gestor_email"
+                    v-bind:valor_valido_obs="form_pagina.obs_gestor_email_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Email del Gestor:'"
@@ -261,11 +261,11 @@
                 <NombreMina
                     v-if="$props.mostrar_notificacion_gestor"
 
-                    v-bind:valor_input_props="form.gestor_notificacion"
-                    v-bind:valor_input_validacion="form.gestor_notificacion_valido"
-                    v-bind:evualacion_correcto="form.gestor_notificacion_correcto"
-                    v-bind:valor_obs="form.obs_gestor_notificacion"
-                    v-bind:valor_valido_obs="form.obs_gestor_notificacion_valido"
+                    v-bind:valor_input_props="form_pagina.gestor_notificacion"
+                    v-bind:valor_input_validacion="form_pagina.gestor_notificacion_valido"
+                    v-bind:evualacion_correcto="form_pagina.gestor_notificacion_correcto"
+                    v-bind:valor_obs="form_pagina.obs_gestor_notificacion"
+                    v-bind:valor_valido_obs="form_pagina.obs_gestor_notificacion_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Notificar al Gestor:'"
@@ -312,11 +312,11 @@
                 <SubirArchivo 
                 v-if="$props.mostrar_foto_productor"
 
-                    v-bind:valor_input_props="form.foto_4x4"
-                    v-bind:valor_input_validacion="form.foto_4x4_valido"
-                    v-bind:evualacion_correcto="form.foto_4x4_correcto"
-                    v-bind:valor_obs="form.obs_foto_4x4"
-                    v-bind:valor_valido_obs="form.obs_foto_4x4_valido"
+                    v-bind:valor_input_props="form_pagina.foto_4x4"
+                    v-bind:valor_input_validacion="form_pagina.foto_4x4_valido"
+                    v-bind:evualacion_correcto="form_pagina.foto_4x4_correcto"
+                    v-bind:valor_obs="form_pagina.obs_foto_4x4"
+                    v-bind:valor_valido_obs="form_pagina.obs_foto_4x4_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Foto 4x4'"
@@ -375,11 +375,11 @@
                 <SubirArchivo 
                 v-if="$props.mostrar_dni_productor"
 
-                    v-bind:valor_input_props="form.primer_hoja_dni"
-                    v-bind:valor_input_validacion="form.hoja_dni_valido"
-                    v-bind:evualacion_correcto="form.hoja_dni_correcto"
-                    v-bind:valor_obs="form.obs_hoja_dni"
-                    v-bind:valor_valido_obs="form.obs_hoja_dni_valido"
+                    v-bind:valor_input_props="form_pagina.primer_hoja_dni"
+                    v-bind:valor_input_validacion="form_pagina.hoja_dni_valido"
+                    v-bind:evualacion_correcto="form_pagina.hoja_dni_correcto"
+                    v-bind:valor_obs="form_pagina.obs_hoja_dni"
+                    v-bind:valor_valido_obs="form_pagina.obs_hoja_dni_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Copia de 1° hoja de D.N.I.'"
@@ -398,11 +398,11 @@
                 <SubirArchivo 
                 v-if="$props.mostrar_dni_productor"
 
-                    v-bind:valor_input_props="form.form.segunda_hoja_dni"
-                    v-bind:valor_input_validacion="form.form.segunda_hoja_dni_valido"
-                    v-bind:evualacion_correcto="form.form.segunda_hoja_dni_correcto"
-                    v-bind:valor_obs="form.form.obs_segunda_hoja_dni"
-                    v-bind:valor_valido_obs="form.form.obs_segunda_hoja_dni_valido"
+                    v-bind:valor_input_props="form_pagina.segunda_hoja_dni"
+                    v-bind:valor_input_validacion="form_pagina.segunda_hoja_dni_valido"
+                    v-bind:evualacion_correcto="form_pagina.segunda_hoja_dni_correcto"
+                    v-bind:valor_obs="form_pagina.obs_segunda_hoja_dni"
+                    v-bind:valor_valido_obs="form_pagina.obs_segunda_hoja_dni_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Copia de 2° hoja de D.N.I.'"
@@ -450,11 +450,11 @@
                 <SubirArchivo 
                 v-if="$props.mostrar_autorizacion_gestor"
 
-                    v-bind:valor_input_props="form.autorizacion_gestor"
-                    v-bind:valor_input_validacion="form.autorizacion_gestor_valido"
-                    v-bind:evualacion_correcto="form.autorizacion_gestor_correcto"
-                    v-bind:valor_obs="form.obs_autorizacion_gestor"
-                    v-bind:valor_valido_obs="form.obs_autorizacion_gestor_valido"
+                    v-bind:valor_input_props="form_pagina.autorizacion_gestor"
+                    v-bind:valor_input_validacion="form_pagina.autorizacion_gestor_valido"
+                    v-bind:evualacion_correcto="form_pagina.autorizacion_gestor_correcto"
+                    v-bind:valor_obs="form_pagina.obs_autorizacion_gestor"
+                    v-bind:valor_valido_obs="form_pagina.obs_autorizacion_gestor_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Autorizacion de que el Gestor Representa la Empresa'"
@@ -502,11 +502,11 @@
                 <SubirArchivo 
                     v-if="$props.mostrar_constancia_afip"
 
-                    v-bind:valor_input_props="form.constancia_afip"
-                    v-bind:valor_input_validacion="form.constancia_afip_valido"
-                    v-bind:evualacion_correcto="form.constancia_afip_correcto"
-                    v-bind:valor_obs="form.obs_constancia_afip"
-                    v-bind:valor_valido_obs="form.obs_constancia_afip_valido"
+                    v-bind:valor_input_props="form_pagina.constancia_afip"
+                    v-bind:valor_input_validacion="form_pagina.constancia_afip_valido"
+                    v-bind:evualacion_correcto="form_pagina.constancia_afip_correcto"
+                    v-bind:valor_obs="form_pagina.obs_constancia_afip"
+                    v-bind:valor_valido_obs="form_pagina.obs_constancia_afip_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Constancia de AFIP'"
@@ -924,167 +924,167 @@ export default {
 
         //FUNCIONES DE NOMBRE DE GESTOR
         update_nombre_gestor_valido(newValue){
-            this.form.gestor_nombre_apellido_valido = newValue;
+            this.form_pagina.gestor_nombre_apellido_valido = newValue;
         },
         update_nombre_gestor_correcto(newValue){
-            this.form.gestor_nombre_apellido_correcto = newValue;
+            this.form_pagina.gestor_nombre_apellido_correcto = newValue;
         },
         update_obs_nombre_gestor(newValue){
-            this.form.obs_gestor_nombre_apellido = newValue;
+            this.form_pagina.obs_gestor_nombre_apellido = newValue;
         },
         update_obs_nombre_gestor_valida(newValue){
-            this.form.obs_gestor_nombre_valido = newValue;
+            this.form_pagina.obs_gestor_nombre_valido = newValue;
         },
         update_valor_nombre_gestor(newValue){
-            this.form.gestor_nombre_apellido = newValue;
+            this.form_pagina.gestor_nombre_apellido = newValue;
         },
 
         //FUNCIONES DE DNI DE GESTOR
         update_gestor_dni_valido(newValue){
-            this.form.gestor_dni_valido = newValue;
+            this.form_pagina.gestor_dni_valido = newValue;
         },
         update_gestor_dni_correcto(newValue){
-            this.form.gestor_dni_correcto = newValue;
+            this.form_pagina.gestor_dni_correcto = newValue;
         },
         update_obs_gestor_dni(newValue){
-            this.form.obs_gestor_dni = newValue;
+            this.form_pagina.obs_gestor_dni = newValue;
         },
         update_obs_gestor_dni_valida(newValue){
-            this.form.obs_gestor_dni_valido = newValue;
+            this.form_pagina.obs_gestor_dni_valido = newValue;
         },
         update_valor_gestor_dni(newValue){
-            this.form.gestor_dni = newValue;
+            this.form_pagina.gestor_dni = newValue;
         },
 
         //FUNCIONES DE PROFESION DE GESTOR
         update_gestor_profesion_valido(newValue){
-            this.form.gestor_profesion_valido = newValue;
+            this.form_pagina.gestor_profesion_valido = newValue;
         },
         update_gestor_profesion_correcto(newValue){
-            this.form.gestor_profesion_correcto= newValue;
+            this.form_pagina.gestor_profesion_correcto= newValue;
         },
         update_obs_gestor_profesion(newValue){
-            this.form.obs_gestor_profesion = newValue;
+            this.form_pagina.obs_gestor_profesion = newValue;
         },
         update_obs_gestor_profesion_valida(newValue){
-            this.form.obs_gestor_profesion_valido = newValue;
+            this.form_pagina.obs_gestor_profesion_valido = newValue;
         },
         update_valor_gestor_profesion(newValue){
-            this.form.gestor_profesion = newValue;
+            this.form_pagina.gestor_profesion = newValue;
         },
 
         //FUNCIONES DE Telefono DE GESTOR
         update_gestor_telefono_valido(newValue){
-            this.form.gestor_telefono_valido = newValue;
+            this.form_pagina.gestor_telefono_valido = newValue;
         },
         update_gestor_telefono_correcto(newValue){
-            this.form.gestor_telefono_correcto= newValue;
+            this.form_pagina.gestor_telefono_correcto= newValue;
         },
         update_obs_gestor_telefono(newValue){
-            this.form.obs_gestor_telefono = newValue;
+            this.form_pagina.obs_gestor_telefono = newValue;
         },
         update_obs_gestor_telefono_valida(newValue){
-            this.form.obs_gestor_telefono_valido = newValue;
+            this.form_pagina.obs_gestor_telefono_valido = newValue;
         },
         update_valor_gestor_telefono(newValue){
-            this.form.gestor_telefono = newValue;
+            this.form_pagina.gestor_telefono = newValue;
         },
 
         //FUNCIONES DE N OTIFICACION DE GESTOR
         update_gestor_noti_valido(newValue){
-            this.form.gestor_notificacion_valido = newValue;
+            this.form_pagina.gestor_notificacion_valido = newValue;
         },
         update_gestor_noti_correcto(newValue){
-            this.form.gestor_notificacion_correcto= newValue;
+            this.form_pagina.gestor_notificacion_correcto= newValue;
         },
         update_obs_gestor_noti(newValue){
-            this.form.obs_gestor_notificacion = newValue;
+            this.form_pagina.obs_gestor_notificacion = newValue;
         },
         update_obs_gestor_noti_valida(newValue){
-            this.form.obs_gestor_notificacion_valido = newValue;
+            this.form_pagina.obs_gestor_notificacion_valido = newValue;
         },
         update_valor_gestor_noti(newValue){
-            this.form.gestor_notificacion = newValue;
+            this.form_pagina.gestor_notificacion = newValue;
         },
 
         //FUNCIONES DE PROFESION DE GESTOR
         update_gestor_email_valido(newValue){
-            this.form.gestor_email_valido = newValue;
+            this.form_pagina.gestor_email_valido = newValue;
         },
         update_gestor_email_correcto(newValue){
-            this.form.gestor_email_correcto= newValue;
+            this.form_pagina.gestor_email_correcto= newValue;
         },
         update_obs_gestor_email(newValue){
-            this.form.obs_gestor_email = newValue;
+            this.form_pagina.obs_gestor_email = newValue;
         },
         update_obs_gestor_email_valida(newValue){
-            this.form.obs_gestor_email_valido = newValue;
+            this.form_pagina.obs_gestor_email_valido = newValue;
         },
         update_valor_gestor_email(newValue){
-            this.form.gestor_email = newValue;
+            this.form_pagina.gestor_email = newValue;
         },
 
         update_gestor_autorizacion_valido(newValue){
-            this.form.autorizacion_gestor_valido = newValue;
+            this.form_pagina.autorizacion_gestor_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_gestor_autorizacion_correcto(newValue){
-            this.form.autorizacion_gestor_correcto = newValue;
+            this.form_pagina.autorizacion_gestor_correcto = newValue;
             //tengo que enviarsela al padre
         },
         update_obs_gestor_autorizacion(newValue){
-            this.form.obs_autorizacion_gestor = newValue;
+            this.form_pagina.obs_autorizacion_gestor = newValue;
             //tengo que enviarsela al padre
         },
         update_obs_gestor_autorizacion_valido(newValue){
             console.log("traje un"+newValue);
-            this.form.obs_autorizacion_gestor_valido = newValue;
+            this.form_pagina.obs_autorizacion_gestor_valido = newValue;
             //tengo que enviarsela al padre
         },
         cambio_el_archivo_gestor_autorizacion(newValue){
             console.log("traje un"+newValue);
-            this.form.autorizacion_gestor = newValue;
+            this.form_pagina.autorizacion_gestor = newValue;
             //tengo que enviarsela al padre
         },
 
 
         update_constancia_afip_valido(newValue){
-            this.form.constancia_afip_valido = newValue;
+            this.form_pagina.constancia_afip_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_constancia_afip_correcto(newValue){
-            this.form.constancia_afip_correcto = newValue;
+            this.form_pagina.constancia_afip_correcto = newValue;
             //tengo que enviarsela al padre
         },
         update_obs_constancia_afip(newValue){
-            this.form.obs_constancia_afip = newValue;
+            this.form_pagina.obs_constancia_afip = newValue;
             //tengo que enviarsela al padre
         },
         update_obs_constancia_afip_valido(newValue){
             console.log("traje un"+newValue);
-            this.form.obs_constancia_afip_valido = newValue;
+            this.form_pagina.obs_constancia_afip_valido = newValue;
             //tengo que enviarsela al padre
         },
         cambio_el_archivo_constancia_afip(newValue){
             console.log("traje un"+newValue);
-            this.form.constancia_afip = newValue;
+            this.form_pagina.constancia_afip = newValue;
             //tengo que enviarsela al padre
         },
 
         update_foto_valido(newValue){
-            this.form.foto_4x4_valido = newValue;
+            this.form_pagina.foto_4x4_valido = newValue;
         },
         update_foto_correcto(newValue){
-            this.form.foto_4x4_correcto = newValue;
+            this.form_pagina.foto_4x4_correcto = newValue;
         },
         update_obs_foto(newValue){
-            this.form.obs_foto_4x4 = newValue;
+            this.form_pagina.obs_foto_4x4 = newValue;
         },
         update_obs_foto_valido(newValue){
-            this.form.obs_foto_4x4_valido = newValue;
+            this.form_pagina.obs_foto_4x4_valido = newValue;
         },
         cambio_el_archivo_foto(newValue){
-            this.form.foto_4x4 = newValue;
+            this.form_pagina.foto_4x4 = newValue;
         },
 
 
