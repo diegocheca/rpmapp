@@ -3483,6 +3483,7 @@ export default {
         });
     },
 
+<<<<<<< HEAD
     guardar_avances_cuatro: function () {
       let self = this;
       // Make a request for a user with a given ID
@@ -3559,6 +3560,2285 @@ export default {
         .catch(function (error) {
           // handle error
           console.log(error);
+=======
+				
+				
+			},
+			nuevo: this.$props.productor,
+		};
+	},
+	methods: {
+		submit() {
+			this.$inertia.put(
+				route("productors.update", this.$props.productors.id),
+				this.form
+			);
+		},
+		closeModal() {
+				this.confirmingUserDeletion = false
+				//this.form.reset()
+		},
+		closeModalAprobar(){
+			this.AvisoAprueba = false
+		},
+		mostrar_modal_presentar(){
+			//soy productor y estoy por presentar el formulario
+			let form_evaluacion_valida = '';
+			this.AvisoAprueba = true;
+			this.modal_tittle_apro = "Advertencia: esta por presentar esta solicitud de Productor.";
+			form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+			if(form_evaluacion_valida === '')
+			{
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+				this.mostrar_boton_aprobar = true;
+				this.mostrar_boton_aprobar_de_todos_modos = false;
+			}
+			else {
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" + form_evaluacion_valida;
+				this.mostrar_boton_aprobar = false;
+				this.mostrar_boton_aprobar_de_todos_modos = true;
+			}
+			//<!-- @click="guardar_avances_todo" -->
+		},
+		presentar_de_todos_modos(){
+			let self = this;
+            const data = new FormData();
+            data.append('id', this.$props.productor.id);
+            data.append('estado', self.form.estado);
+            axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+            axios.post("http://localhost:8000/formularios/presentar_borrador", data)
+            .then(function (response) {
+                console.log(response.data);
+                if(response.data.msg === 'Datos actualizados correctamente.')
+                    {
+						if(self.form.estado === 'aprobado') // lo aprobe en el back, siendo autoridad
+						{
+							console.log('todo bien');
+							self.modal_tittle = 'Se aprobó la solicitud';
+							self.modal_body = 'Se ha guardado el estado de la solicitud como aprobado. Esta acción implica que la persona que presentó este formulario será considerado como productor.';
+							self.closeModalAprobar = false;
+							self.mostrar_modal_datos_ya_guardados = true;
+						}
+						if(self.form.estado === 'presentado') // lo presente como productor
+						{
+							console.log('todo bien');
+							self.modal_tittle = 'Se actualizo estado';
+							self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
+							self.closeModalAprobar = false;
+							self.mostrar_modal_datos_ya_guardados = true;
+						}
+                        
+                    }
+                    
+                    if(response.data === "formulario no encontrado")
+                    {
+                        console.log('todo mal, no se encontro');
+                        self.modal_tittle = 'Paso 1 Guardado Fallido';
+                        self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+                        self.mostrar_modal_datos_ya_guardados = true;
+                    }
+                    else{
+                        console.log('NO todo bien');	
+                    }
+                
+            })
+
+		},
+		mostrar_modal_aprobar(){
+			//soy autoridad y estoy por cambiar el estado del formulario
+			let form_evaluacion_valida = '';
+			this.AvisoAprueba = true;
+			this.modal_tittle_apro = "Advertencia: esta por aprobar esta solicitud de Productor";
+			form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+			if(form_evaluacion_valida === '')
+			{
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+				this.mostrar_boton_aprobar = true;
+				this.mostrar_boton_aprobar_de_todos_modos = false;
+			}
+			else {
+				//el formulario esta bien hecho y no tiene observaciones
+				this.modal_body_apro = " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" + form_evaluacion_valida;
+				this.mostrar_boton_aprobar = false;
+				this.mostrar_boton_aprobar_de_todos_modos = true;
+			}
+			//<!-- @click="guardar_avances_todo" -->
+		},
+		evaluacion_de_evaluaciones(){
+			let sin_problemas='';
+			if(this.form.razon_social_correcto === false)
+				sin_problemas += "\n La Razon Social ha sido Reprobada ";
+			if(this.form.razon_social_correcto === 'nada')
+				sin_problemas += "\n La Razon Social no ha sido evaluada ";
+			
+			if(this.form.cuit_correcto === false)
+				sin_problemas += "\n El CUIT ha sido Reprobado ";
+			if(this.form.cuit_correcto === 'nada')
+				sin_problemas += "\n El CUIR no ha sido evaluado ";
+
+			if(this.form.numeroproductor_correcto === false)
+				sin_problemas += "\n El Numero de Productor ha sido Reprobado ";
+			if(this.form.numeroproductor_correcto === 'nada')
+				sin_problemas += "\n El Numero de Productor no ha sido evaluado ";
+
+			if(this.form.tiposociedad_correcto === false)
+				sin_problemas += "\n El tipo de sociedad ha sido Reprobado ";
+			if(this.form.tiposociedad_correcto === 'nada')
+				sin_problemas += "\n El tipo de sociedad no ha sido evaluado ";
+
+			if(this.form.inscripciondgr_correcto === false)
+				sin_problemas += "\n La inscripcion de la DGR ha sido Reprobada ";
+			if(this.form.inscripciondgr_correcto === 'nada')
+				sin_problemas += "\n La inscripcion de la DGR no ha sido evaluada ";
+
+			if(this.form.constaciasociedad_correcto === false)
+				sin_problemas += "\n La constancia de Sociedad ha sido Reprobada ";
+			if(this.form.constaciasociedad_correcto === 'nada')
+				sin_problemas += "\n La constacia de Sociedad no ha sido evaluada ";
+			return sin_problemas;
+		},
+		update_razon_social_evaluacion(valorEvaluacion){
+			this.form.razon_social_correcto = valorEvaluacion;
+		},
+		update_cuit_evaluacion(valorEvaluacion){
+			this.form.cuit_correcto = valorEvaluacion;
+		},
+		update_num_prod_evaluacion(valorEvaluacion){
+			this.form.numeroproductor_correcto = valorEvaluacion;
+		},
+		update_tipo_sociedad_evaluacion(valorEvaluacion){
+			this.form.tiposociedad_correcto = valorEvaluacion;
+		},
+		update_inscripcion_dgr_evaluacion(valorEvaluacion){
+			this.form.inscripciondgr_correcto = valorEvaluacion;
+		},
+		update_constancia_sociedad_evaluacion(valorEvaluacion){
+			this.form.constaciasociedad_correcto = valorEvaluacion;
+		},
+
+		
+
+		
+		
+		actaulizar_variables_correctas(que_cambio, valor) {
+			if(que_cambio == 1)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.razon_social_correcto= true;
+				if(valor == false)
+					this.form.razon_social_correcto= false;
+				if(valor == 'nada')
+					this.form.razon_social_correcto= 'nada';
+			}
+			if(que_cambio == 2)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.email_correcto= true;
+				if(valor == false)
+					this.form.email_correcto= false;
+				if(valor == 'nada')
+					this.form.email_correcto= 'nada';
+			}
+			if(que_cambio == 3)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.cuit_correcto= true;
+				if(valor == false)
+					this.form.cuit_correcto= false;
+				if(valor == 'nada')
+					this.form.cuit_correcto= 'nada';
+			}
+
+			if(que_cambio == 4)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.numeroproductor_correcto= true;
+				if(valor == false)
+					this.form.numeroproductor_correcto= false;
+				if(valor == 'nada')
+					this.form.numeroproductor_correcto= 'nada';
+			}
+
+			if(que_cambio == 5)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.tiposociedad_correcto= true;
+				if(valor == false)
+					this.form.tiposociedad_correcto= false;
+				if(valor == 'nada')
+					this.form.tiposociedad_correcto= 'nada';
+			}
+
+			if(que_cambio == 6)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.inscripciondgr_correcto= true;
+				if(valor == false)
+					this.form.inscripciondgr_correcto= false;
+				if(valor == 'nada')
+					this.form.inscripciondgr_correcto= 'nada';
+			}
+
+
+			if(que_cambio == 7)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.constaciasociedad_correcto= true;
+				if(valor == false)
+					this.form.constaciasociedad_correcto= false;
+				if(valor == 'nada')
+					this.form.constaciasociedad_correcto= 'nada';
+			}
+		},
+		actaulizar_variables_correctas_dos(que_cambio, valor) {
+			if(que_cambio == 1)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.nombre_calle_legal_correcto= true;
+				if(valor == false)
+					this.form.nombre_calle_legal_correcto= false;
+				if(valor == 'nada')
+					this.form.nombre_calle_legal_correcto= 'nada';
+			}
+			if(que_cambio == 2)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.leal_numero_correcto= true;
+				if(valor == false)
+					this.form.leal_numero_correcto= false;
+				if(valor == 'nada')
+					this.form.leal_numero_correcto= 'nada';
+			}
+			if(que_cambio == 3)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.leal_telefono_correcto= true;
+				if(valor == false)
+					this.form.leal_telefono_correcto= false;
+				if(valor == 'nada')
+					this.form.leal_telefono_correcto= 'nada';
+			}
+
+			if(que_cambio == 4)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.leal_pais_correcto= true;
+				if(valor == false)
+					this.form.leal_pais_correcto= false;
+				if(valor == 'nada')
+					this.form.leal_pais_correcto= 'nada';
+			}
+
+			if(que_cambio == 5)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.leal_provincia_correcto= true;
+				if(valor == false)
+					this.form.leal_provincia_correcto= false;
+				if(valor == 'nada')
+					this.form.leal_provincia_correcto= 'nada';
+			}
+
+			if(que_cambio == 6)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.leal_departamento_correcto= true;
+				if(valor == false)
+					this.form.leal_departamento_correcto= false;
+				if(valor == 'nada')
+					this.form.leal_departamento_correcto= 'nada';
+			}
+
+
+			if(que_cambio == 7)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.leal_localidad_correcto= true;
+				if(valor == false)
+					this.form.leal_localidad_correcto= false;
+				if(valor == 'nada')
+					this.form.leal_localidad_correcto= 'nada';
+			}
+
+			if(que_cambio == 8)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.leal_cp_correcto= true;
+				if(valor == false)
+					this.form.leal_cp_correcto= false;
+				if(valor == 'nada')
+					this.form.leal_cp_correcto= 'nada';
+			}
+
+			if(que_cambio == 9)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.leal_otro_correcto= true;
+				if(valor == false)
+					this.form.leal_otro_correcto= false;
+				if(valor == 'nada')
+					this.form.leal_otro_correcto= 'nada';
+			}
+		},
+
+		actaulizar_variables_correctas_tres(que_cambio, valor) {
+			if(que_cambio == 1)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_calle_correcto= true;
+				if(valor == false)
+					this.form.administracion_calle_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_calle_correcto= 'nada';
+			}
+			if(que_cambio == 2)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_numero_correcto= true;
+				if(valor == false)
+					this.form.administracion_numero_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_numero_correcto= 'nada';
+			}
+			if(que_cambio == 3)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_telefono_correcto= true;
+				if(valor == false)
+					this.form.administracion_telefono_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_telefono_correcto= 'nada';
+			}
+
+			if(que_cambio == 4)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_pais_correcto= true;
+				if(valor == false)
+					this.form.administracion_pais_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_pais_correcto= 'nada';
+			}
+
+			if(que_cambio == 5)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_provincia_correcto= true;
+				if(valor == false)
+					this.form.administracion_provincia_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_provincia_correcto= 'nada';
+			}
+
+			if(que_cambio == 6)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_departamento_correcto= true;
+				if(valor == false)
+					this.form.administracion_departamento_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_departamento_correcto= 'nada';
+			}
+
+
+			if(que_cambio == 7)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_localidad_correcto= true;
+				if(valor == false)
+					this.form.administracion_localidad_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_localidad_correcto= 'nada';
+			}
+
+			if(que_cambio == 8)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_cp_correcto= true;
+				if(valor == false)
+					this.form.administracion_cp_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_cp_correcto= 'nada';
+			}
+
+			if(que_cambio == 9)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_otro_correcto= true;
+				if(valor == false)
+					this.form.administracion_otro_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_otro_correcto= 'nada';
+			}
+		},
+		actaulizar_variables_correctas_cuatro(que_cambio, valor) {
+			if(que_cambio == 1)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.numero_expdiente_correcto= true;
+				if(valor == false)
+					this.form.numero_expdiente_correcto= false;
+				if(valor == 'nada')
+					this.form.numero_expdiente_correcto= 'nada';
+			}
+			if(que_cambio == 2)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.categoria_correcto= true;
+				if(valor == false)
+					this.form.categoria_correcto= false;
+				if(valor == 'nada')
+					this.form.categoria_correcto= 'nada';
+			}
+			if(que_cambio == 3)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.nombre_mina_correcto= true;
+				if(valor == false)
+					this.form.nombre_mina_correcto= false;
+				if(valor == 'nada')
+					this.form.nombre_mina_correcto= 'nada';
+			}
+
+			if(que_cambio == 4)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.descripcion_mina_correcto= true;
+				if(valor == false)
+					this.form.descripcion_mina_correcto= false;
+				if(valor == 'nada')
+					this.form.descripcion_mina_correcto= 'nada';
+			}
+
+			if(que_cambio == 5)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.distrito_minero_correcto= true;
+				if(valor == false)
+					this.form.distrito_minero_correcto= false;
+				if(valor == 'nada')
+					this.form.distrito_minero_correcto= 'nada';
+			}
+
+			if(que_cambio == 6)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.mina_cantera_correcto= true;
+				if(valor == false)
+					this.form.mina_cantera_correcto= false;
+				if(valor == 'nada')
+					this.form.mina_cantera_correcto= 'nada';
+			}
+
+
+			if(que_cambio == 7)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.mina_cantera_correcto= true;
+				if(valor == false)
+					this.form.mina_cantera_correcto= false;
+				if(valor == 'nada')
+					this.form.mina_cantera_correcto= 'nada';
+			}
+
+			if(que_cambio == 8)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.minerales_variedad_correcto= true;
+				if(valor == false)
+					this.form.minerales_variedad_correcto= false;
+				if(valor == 'nada')
+					this.form.minerales_variedad_correcto= 'nada';
+			}
+
+			if(que_cambio == 9)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.administracion_otro_correcto= true;
+				if(valor == false)
+					this.form.administracion_otro_correcto= false;
+				if(valor == 'nada')
+					this.form.administracion_otro_correcto= 'nada';
+			}
+		},
+		actaulizar_variables_correctas_cinco(que_cambio, valor) {
+			if(que_cambio == 1)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.owner_correcto= true;
+				if(valor == false)
+					this.form.owner_correcto= false;
+				if(valor == 'nada')
+					this.form.owner_correcto= 'nada';
+			}
+			if(que_cambio == 2)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.arrendatario_correcto= true;
+				if(valor == false)
+					this.form.arrendatario_correcto= false;
+				if(valor == 'nada')
+					this.form.arrendatario_correcto= 'nada';
+			}
+			if(que_cambio == 3)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.concesionario_correcto= true;
+				if(valor == false)
+					this.form.concesionario_correcto= false;
+				if(valor == 'nada')
+					this.form.concesionario_correcto= 'nada';
+			}
+
+			if(que_cambio == 4)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.otros_correcto= true;
+				if(valor == false)
+					this.form.otros_correcto= false;
+				if(valor == 'nada')
+					this.form.otros_correcto= 'nada';
+			}
+
+			if(que_cambio == 5)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.titulo_contrato_posecion_correcto= true;
+				if(valor == false)
+					this.form.titulo_contrato_posecion_correcto= false;
+				if(valor == 'nada')
+					this.form.titulo_contrato_posecion_correcto= 'nada';
+			}
+
+			if(que_cambio == 6)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.resolucion_concesion_minera_correcto= true;
+				if(valor == false)
+					this.form.resolucion_concesion_minera_correcto= false;
+				if(valor == 'nada')
+					this.form.resolucion_concesion_minera_correcto= 'nada';
+			}
+
+
+			if(que_cambio == 7)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.constancia_pago_canon_correcto= true;
+				if(valor == false)
+					this.form.constancia_pago_canon_correcto= false;
+				if(valor == 'nada')
+					this.form.constancia_pago_canon_correcto= 'nada';
+			}
+
+			if(que_cambio == 8)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.iia_correcto= true;
+				if(valor == false)
+					this.form.iia_correcto= false;
+				if(valor == 'nada')
+					this.form.iia_correcto= 'nada';
+			}
+
+			if(que_cambio == 9)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.dia_correcto= true;
+				if(valor == false)
+					this.form.dia_correcto= false;
+				if(valor == 'nada')
+					this.form.dia_correcto= 'nada';
+			}
+			if(que_cambio == 10)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.acciones_a_desarrollar_correcto= true;
+				if(valor == false)
+					this.form.acciones_a_desarrollar_correcto= false;
+				if(valor == 'nada')
+					this.form.acciones_a_desarrollar_correcto= 'nada';
+			}
+			if(que_cambio == 11)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.actividad_a_desarrollar_correcto= true;
+				if(valor == false)
+					this.form.actividad_a_desarrollar_correcto= false;
+				if(valor == 'nada')
+					this.form.actividad_a_desarrollar_correcto= 'nada';
+			}
+			if(que_cambio == 12)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.fecha_alta_dia_correcto= true;
+				if(valor == false)
+					this.form.fecha_alta_dia_correcto= false;
+				if(valor == 'nada')
+					this.form.fecha_alta_dia_correcto= 'nada';
+			}
+			if(que_cambio == 13)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.fecha_vencimiento_dia_correcto= true;
+				if(valor == false)
+					this.form.fecha_vencimiento_dia_correcto= false;
+				if(valor == 'nada')
+					this.form.fecha_vencimiento_dia_correcto= 'nada';
+			}
+		},
+		actaulizar_variables_correctas_seis(que_cambio, valor) {
+			if(que_cambio == 1)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.localidad_mina_pais_correcto= true;
+				if(valor == false)
+					this.form.localidad_mina_pais_correcto= false;
+				if(valor == 'nada')
+					this.form.localidad_mina_pais_correcto= 'nada';
+			}
+			if(que_cambio == 2)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.localidad_mina_provincia_correcto= true;
+				if(valor == false)
+					this.form.localidad_mina_provincia_correcto= false;
+				if(valor == 'nada')
+					this.form.localidad_mina_provincia_correcto= 'nada';
+			}
+			if(que_cambio == 3)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.localidad_mina_departamento_correcto= true;
+				if(valor == false)
+					this.form.localidad_mina_departamento_correcto= false;
+				if(valor == 'nada')
+					this.form.localidad_mina_departamento_correcto= 'nada';
+			}
+
+			if(que_cambio == 4)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.localidad_mina_localidad_correcto= true;
+				if(valor == false)
+					this.form.localidad_mina_localidad_correcto= false;
+				if(valor == 'nada')
+					this.form.localidad_mina_localidad_correcto= 'nada';
+			}
+
+			if(que_cambio == 5)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.tipo_sistema_correcto= true;
+				if(valor == false)
+					this.form.tipo_sistema_correcto= false;
+				if(valor == 'nada')
+					this.form.tipo_sistema_correcto= 'nada';
+			}
+
+			if(que_cambio == 6)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.latitud_correcto= true;
+				if(valor == false)
+					this.form.latitud_correcto= false;
+				if(valor == 'nada')
+					this.form.latitud_correcto= 'nada';
+			}
+
+
+			if(que_cambio == 7)
+			{
+				// significa que camvio la razon_social
+				if(valor == true)
+					this.form.longitud_correcto= true;
+				if(valor == false)
+					this.form.longitud_correcto= false;
+				if(valor == 'nada')
+					this.form.longitud_correcto= 'nada';
+			}
+			
+		},
+		calculo_de_porcentajes(que_cambio, valor) {
+			var aprobados = 0;
+			var progreso = 0;
+			var reprobado = 0;
+
+			this.actaulizar_variables_correctas(que_cambio, valor);
+
+
+
+			if(this.form.razon_social_correcto == true)
+			{
+				aprobados ++;
+			}
+			if(this.form.razon_social_correcto == false)
+			{
+				reprobado ++;
+			}
+			if(this.form.razon_social_correcto == 'nada')
+			{
+				progreso++;
+			}
+
+			if(this.form.email_correcto == true)
+			{
+				aprobados ++;
+			}
+			if(this.form.email_correcto == false)
+			{
+				reprobado ++;
+			}
+			if(this.form.email_correcto == 'nada')
+			{
+				progreso++;
+			}
+
+
+			if(this.form.cuit_correcto == true)
+			{
+				aprobados ++;
+			}
+			if(this.form.cuit_correcto == false)
+			{
+				reprobado ++;
+			}
+			if(this.form.cuit_correcto == 'nada')
+			{
+				progreso++;
+			}
+
+
+			if(this.form.numeroproductor_correcto == true)
+			{
+				aprobados ++;
+			}
+			if(this.form.numeroproductor_correcto == false)
+			{
+				reprobado ++;
+			}
+			if(this.form.numeroproductor_correcto == 'nada')
+			{
+				progreso++;
+			}
+
+			if(this.form.tiposociedad_correcto == true)
+			{
+				aprobados ++;
+			}
+			if(this.form.tiposociedad_correcto == false)
+			{
+				reprobado ++;
+			}
+			if(this.form.tiposociedad_correcto == 'nada')
+			{
+				progreso++;
+			}
+
+
+			if(this.form.inscripciondgr_correcto == true)
+			{
+				aprobados ++;
+			}
+			if(this.form.inscripciondgr_correcto == false)
+			{
+				reprobado ++;
+			}
+			if(this.form.inscripciondgr_correcto == 'nada')
+			{
+				progreso++;
+			}
+
+
+			if(this.form.constaciasociedad_correcto == true)
+			{
+				aprobados ++;
+			}
+			if(this.form.constaciasociedad_correcto == false)
+			{
+				reprobado ++;
+			}
+			if(this.form.constaciasociedad_correcto == 'nada')
+			{
+				progreso++;
+			}
+
+			//calcular porcentajes
+
+			this.form.valor_de_progreso = (progreso * 100 ) / 7;
+			this.form.valor_de_aprobado = (aprobados * 100 ) / 7;
+			this.form.valor_de_reprobado = (reprobado * 100 ) / 7;
+
+			if(progreso == 7)
+				this.form.valor_de_progreso = 100;
+			if(aprobados == 7)
+				this.form.valor_de_aprobado = 100;
+			if(reprobado == 7)
+				this.form.valor_de_reprobado = 100;
+
+
+			this.form.valor_de_progreso =  this.form.valor_de_progreso.toFixed(2);
+			this.form.valor_de_aprobado =  this.form.valor_de_aprobado.toFixed(2);
+			this.form.valor_de_reprobado = this.form.valor_de_reprobado.toFixed(2);
+
+		},
+		
+		calculo_de_porcentajes_dos(que_cambio, valor) {
+			var aprobados_dos = 0;
+			var progreso_dos = 0;
+			var reprobado_dos = 0;
+
+			this.actaulizar_variables_correctas_dos(que_cambio, valor);
+
+
+
+			if(this.form.nombre_calle_legal_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.nombre_calle_legal_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.nombre_calle_legal_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+			if(this.form.leal_numero_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_numero_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_numero_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+
+			if(this.form.leal_telefono_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_telefono_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_telefono_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+
+			if(this.form.leal_pais_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_pais_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_pais_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+			if(this.form.leal_provincia_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_provincia_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_provincia_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+
+			if(this.form.leal_departamento_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_departamento_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_departamento_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+
+			if(this.form.leal_localidad_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_localidad_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_localidad_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+
+
+			if(this.form.leal_cp_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_cp_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_cp_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+
+
+			if(this.form.leal_localidad_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_localidad_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_localidad_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+
+
+			if(this.form.leal_otro_correcto == true)
+			{
+				aprobados_dos ++;
+			}
+			if(this.form.leal_otro_correcto == false)
+			{
+				reprobado_dos ++;
+			}
+			if(this.form.leal_otro_correcto == 'nada')
+			{
+				progreso_dos++;
+			}
+
+
+
+			//calcular porcentajes
+
+			this.form.valor_de_progreso_dos = (progreso_dos * 100 ) / 9;
+			this.form.valor_de_aprobado_dos = (aprobados_dos * 100 ) / 9;
+			this.form.valor_de_reprobado_dos = (reprobado_dos * 100 ) / 9;
+
+			if(progreso_dos == 9)
+				this.form.valor_de_progreso_dos = 100;
+			if(aprobados_dos == 9)
+				this.form.valor_de_aprobado_dos = 100;
+			if(reprobado_dos == 9)
+				this.form.valor_de_reprobado_dos = 100;
+
+
+			this.form.valor_de_progreso_dos =  this.form.valor_de_progreso_dos.toFixed(2);
+			this.form.valor_de_aprobado_dos =  this.form.valor_de_aprobado_dos.toFixed(2);
+			this.form.valor_de_reprobado_dos = this.form.valor_de_reprobado_dos.toFixed(2);
+
+		},
+		calculo_de_porcentajes_tres(que_cambio, valor) {
+			var aprobados_tres = 0;
+			var progreso_tres = 0;
+			var reprobado_tres = 0;
+
+			this.actaulizar_variables_correctas_tres(que_cambio, valor);
+
+
+
+			if(this.form.administracion_calle_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_calle_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_calle_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+			if(this.form.administracion_numero_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_numero_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_numero_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+
+			if(this.form.administracion_telefono_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_telefono_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_telefono_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+
+			if(this.form.administracion_pais_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_pais_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_pais_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+			if(this.form.administracion_departamento_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_departamento_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_departamento_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+
+			if(this.form.administracion_provincia_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_provincia_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_provincia_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+
+			if(this.form.administracion_localidad_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_localidad_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_localidad_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+
+
+			if(this.form.administracion_cp_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_cp_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_cp_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+
+
+			if(this.form.administracion_otro_correcto == true)
+			{
+				aprobados_tres ++;
+			}
+			if(this.form.administracion_otro_correcto == false)
+			{
+				reprobado_tres ++;
+			}
+			if(this.form.administracion_otro_correcto == 'nada')
+			{
+				progreso_tres++;
+			}
+
+
+
+			//calcular porcentajes
+
+			this.form.valor_de_progreso_tres = (progreso_tres * 100 ) / 9;
+			this.form.valor_de_aprobado_tres = (aprobados_tres * 100 ) / 9;
+			this.form.valor_de_reprobado_tres = (reprobado_tres * 100 ) / 9;
+
+			if(progreso_tres == 9)
+				this.form.valor_de_progreso_tres = 100;
+			if(aprobados_tres == 9)
+				this.form.valor_de_aprobado_tres = 100;
+			if(reprobado_tres == 9)
+				this.form.valor_de_reprobado_tres = 100;
+
+
+			this.form.valor_de_progreso_tres =  this.form.valor_de_progreso_tres.toFixed(2);
+			this.form.valor_de_aprobado_tres =  this.form.valor_de_aprobado_tres.toFixed(2);
+			this.form.valor_de_reprobado_tres = this.form.valor_de_reprobado_tres.toFixed(2);
+
+		},
+		
+		calculo_de_porcentajes_cuatro(que_cambio, valor) {
+			var aprobados_cuatro = 0;
+			var progreso_cuatro = 0;
+			var reprobado_cuatro = 0;
+
+			this.actaulizar_variables_correctas_cuatro(que_cambio, valor);
+
+
+
+			if(this.form.numero_expdiente_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.numero_expdiente_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.numero_expdiente_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+			if(this.form.categoria_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.categoria_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.categoria_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+
+			if(this.form.nombre_mina_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.nombre_mina_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.nombre_mina_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+
+			if(this.form.descripcion_mina_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.descripcion_mina_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.descripcion_mina_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+			if(this.form.distrito_minero_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.distrito_minero_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.distrito_minero_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+
+			if(this.form.mina_cantera_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.mina_cantera_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.mina_cantera_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+
+			if(this.form.mina_cantera_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.mina_cantera_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.mina_cantera_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+
+
+			if(this.form.minerales_variedad_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.minerales_variedad_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.minerales_variedad_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+
+
+			if(this.form.administracion_otro_correcto == true)
+			{
+				aprobados_cuatro ++;
+			}
+			if(this.form.administracion_otro_correcto == false)
+			{
+				reprobado_cuatro ++;
+			}
+			if(this.form.administracion_otro_correcto == 'nada')
+			{
+				progreso_cuatro++;
+			}
+
+
+
+			//calcular porcentajes
+
+			this.form.valor_de_progreso_cuatro = (progreso_cuatro * 100 ) / 9;
+			this.form.valor_de_aprobado_cuatro = (aprobados_cuatro * 100 ) / 9;
+			this.form.valor_de_reprobado_cuatro = (reprobado_cuatro * 100 ) / 9;
+
+			if(progreso_cuatro == 9)
+				this.form.valor_de_progreso_cuatro = 100;
+			if(aprobados_cuatro == 9)
+				this.form.valor_de_aprobado_cuatro = 100;
+			if(reprobado_cuatro == 9)
+				this.form.valor_de_reprobado_cuatro = 100;
+
+
+			this.form.valor_de_progreso_cuatro =  this.form.valor_de_progreso_cuatro.toFixed(2);
+			this.form.valor_de_aprobado_cuatro =  this.form.valor_de_aprobado_cuatro.toFixed(2);
+			this.form.valor_de_reprobado_cuatro = this.form.valor_de_reprobado_cuatro.toFixed(2);
+
+		},
+
+
+		calculo_de_porcentajes_cinco(que_cambio, valor) {
+			var aprobados_cinco = 0;
+			var progreso_cinco = 0;
+			var reprobado_cinco = 0;
+
+			this.actaulizar_variables_correctas_cinco(que_cambio, valor);
+
+
+
+			if(this.form.owner_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.owner_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.owner_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+
+			if(this.form.arrendatario_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.arrendatario_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.arrendatario_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+			if(this.form.concesionario_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.concesionario_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.concesionario_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+			if(this.form.otros_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.otros_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.otros_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+			if(this.form.titulo_contrato_posecion_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.titulo_contrato_posecion_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.titulo_contrato_posecion_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+			if(this.form.resolucion_concesion_minera_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.resolucion_concesion_minera_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.resolucion_concesion_minera_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+			if(this.form.constancia_pago_canon_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.constancia_pago_canon_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.constancia_pago_canon_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+
+			if(this.form.iia_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.iia_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.iia_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+
+			if(this.form.dia_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.dia_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.dia_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+			if(this.form.acciones_a_desarrollar_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.acciones_a_desarrollar_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.acciones_a_desarrollar_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+			if(this.form.actividad_a_desarrollar_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.actividad_a_desarrollar_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.actividad_a_desarrollar_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+			if(this.form.fecha_alta_dia_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.fecha_alta_dia_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.fecha_alta_dia_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+			if(this.form.fecha_vencimiento_dia_correcto == true)
+			{
+				aprobados_cinco ++;
+			}
+			if(this.form.fecha_vencimiento_dia_correcto == false)
+			{
+				reprobado_cinco ++;
+			}
+			if(this.form.fecha_vencimiento_dia_correcto == 'nada')
+			{
+				progreso_cinco++;
+			}
+
+
+
+
+
+			//calcular porcentajes
+
+			this.form.valor_de_progreso_cinco = (progreso_cinco * 100 ) / 13;
+			this.form.valor_de_aprobado_cinco = (aprobados_cinco * 100 ) / 13;
+			this.form.valor_de_reprobado_cinco = (reprobado_cinco * 100 ) / 13;
+
+			if(progreso_cinco == 13)
+				this.form.valor_de_progreso_cinco = 100;
+			if(aprobados_cinco == 13)
+				this.form.valor_de_aprobado_cinco = 100;
+			if(reprobado_cinco == 13)
+				this.form.valor_de_reprobado_cinco = 100;
+
+
+			this.form.valor_de_progreso_cinco =  this.form.valor_de_progreso_cinco.toFixed(2);
+			this.form.valor_de_aprobado_cinco =  this.form.valor_de_aprobado_cinco.toFixed(2);
+			this.form.valor_de_reprobado_cinco = this.form.valor_de_reprobado_cinco.toFixed(2);
+
+		},
+		calculo_de_porcentajes_seis(que_cambio, valor) {
+			var aprobados_seis = 0;
+			var progreso_seis = 0;
+			var reprobado_seis = 0;
+
+			this.actaulizar_variables_correctas_seis(que_cambio, valor);
+
+
+
+			if(this.form.localidad_mina_pais_correcto == true)
+			{
+				aprobados_seis ++;
+			}
+			if(this.form.localidad_mina_pais_correcto == false)
+			{
+				reprobado_seis ++;
+			}
+			if(this.form.localidad_mina_pais_correcto == 'nada')
+			{
+				progreso_seis++;
+			}
+
+
+
+			if(this.form.localidad_mina_provincia_correcto == true)
+			{
+				aprobados_seis ++;
+			}
+			if(this.form.localidad_mina_provincia_correcto == false)
+			{
+				reprobado_seis ++;
+			}
+			if(this.form.localidad_mina_provincia_correcto == 'nada')
+			{
+				progreso_seis++;
+			}
+
+
+			if(this.form.localidad_mina_departamento_correcto == true)
+			{
+				aprobados_seis ++;
+			}
+			if(this.form.localidad_mina_departamento_correcto == false)
+			{
+				reprobado_seis ++;
+			}
+			if(this.form.localidad_mina_departamento_correcto == 'nada')
+			{
+				progreso_seis++;
+			}
+
+
+			if(this.form.localidad_mina_localidad_correcto == true)
+			{
+				aprobados_seis ++;
+			}
+			if(this.form.localidad_mina_localidad_correcto == false)
+			{
+				reprobado_seis ++;
+			}
+			if(this.form.localidad_mina_localidad_correcto == 'nada')
+			{
+				progreso_seis++;
+			}
+
+			if(this.form.tipo_sistema_correcto == true)
+			{
+				aprobados_seis ++;
+			}
+			if(this.form.tipo_sistema_correcto == false)
+			{
+				reprobado_seis ++;
+			}
+			if(this.form.tipo_sistema_correcto == 'nada')
+			{
+				progreso_seis++;
+			}
+
+
+			if(this.form.latitud_correcto == true)
+			{
+				aprobados_seis ++;
+			}
+			if(this.form.latitud_correcto == false)
+			{
+				reprobado_seis ++;
+			}
+			if(this.form.latitud_correcto == 'nada')
+			{
+				progreso_seis++;
+			}
+
+
+			if(this.form.longitud_correcto == true)
+			{
+				aprobados_seis ++;
+			}
+			if(this.form.longitud_correcto == false)
+			{
+				reprobado_seis ++;
+			}
+			if(this.form.longitud_correcto == 'nada')
+			{
+				progreso_seis++;
+			}
+			//calcular porcentajes
+			this.form.valor_de_progreso_seis = (progreso_seis * 100 ) / 7;
+			this.form.valor_de_aprobado_seis = (aprobados_seis * 100 ) / 7;
+			this.form.valor_de_reprobado_seis = (reprobado_seis * 100 ) / 7;
+
+			if(progreso_seis == 7)
+				this.form.valor_de_progreso_seis = 100;
+			if(aprobados_seis == 7)
+				this.form.valor_de_aprobado_seis = 100;
+			if(reprobado_seis == 7)
+				this.form.valor_de_reprobado_seis = 100;
+
+
+			this.form.valor_de_progreso_seis =  this.form.valor_de_progreso_seis.toFixed(2);
+			this.form.valor_de_aprobado_seis =  this.form.valor_de_aprobado_seis.toFixed(2);
+			this.form.valor_de_reprobado_seis = this.form.valor_de_reprobado_seis.toFixed(2);
+
+		},
+		guardar_avances_uno: function(){
+						let self = this
+						// Make a request for a user with a given ID
+						axios.post('/formularios/evaluacion_auto_guardado_uno', {
+								id: this.$props.productor.id,
+								razon_social:this.$props.productor.razonsocial,
+								razon_social_valido: this.form.razon_social_valido,
+								razon_social_correcto: this.form.razon_social_correcto,
+								obs_razon_social: this.form.obs_razon_social,
+								obs_razon_social_valido: this.form.obs_razon_social_valido,
+
+								email: this.$props.productor.email,
+								email_valido: this.form.email_valido,
+								email_correcto:  this.form.email_correcto,
+								obs_email: this.form.obs_email,
+								obs_email_valido: this.form.obs_email_valido,
+
+								cuit: this.$props.productor.cuit,
+								cuit_valido: this.form.cuit_valido,
+								cuit_correcto:  this.form.cuit_correcto,
+								obs_cuit: this.form.obs_cuit,
+								obs_cuit_valido: this.form.obs_cuit_valido,
+
+								numeroproductor: this.$props.productor.numeroproductor,
+								numeroproductor_valido: this.form.numeroproductor_valido,
+								numeroproductor_correcto: this.form.numeroproductor_correcto,
+								obs_numeroproductor: this.form.obs_numeroproductor,
+								obs_numeroproductor_valido: this.form.obs_numeroproductor_valido,
+
+								tiposociedad: this.$props.productor.tiposociedad,
+								tiposociedad_valido: this.form.tiposociedad_valido, 
+								tiposociedad_correcto: this.form.tiposociedad_correcto, 
+								obs_tiposociedad: this.form.obs_tiposociedad, 
+								obs_tiposociedad_valido: this.form.obs_tiposociedad_valido, 
+
+
+								inscripciondgr: this.$props.productor.inscripciondgr,
+								inscripciondgr_valido:  this.form.inscripciondgr_valido,
+								inscripciondgr_correcto:  this.form.inscripciondgr_correcto,
+								obs_inscripciondgr: this.form.obs_inscripciondgr,
+								obs_inscripciondgr_valido:  this.form.obs_inscripciondgr_valido,
+
+								constaciasociedad: this.$props.productor.constaciasociedad,
+								constaciasociedad_valido: this.form.constaciasociedad_valido,
+								constaciasociedad_correcto: this.form.constaciasociedad_correcto,
+								obs_constaciasociedad: this.form.obs_constaciasociedad,
+								obs_constaciasociedad_valido: this.form.obs_constaciasociedad_valido,
+
+								valor_de_progreso: this.form.valor_de_progreso,
+								valor_de_aprobado: this.form.valor_de_aprobado,
+								valor_de_reprobado: this.form.valor_de_reprobado,
+
+							})
+							.then(function (response) {
+								console.log(response.data);
+								if(response.data === "se actualizaron los datos correctamente")
+								{
+									console.log('todo bien');
+									self.modal_tittle = 'Paso 1 Guardado Exitosamente';
+									self.modal_body =  'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias'
+									self.confirmingUserDeletion = true;
+								}
+								
+								if(response.data === "formulario no encontrado")
+								{
+									console.log('todo mal, no se encontro');
+									self.modal_tittle = 'Paso 1 Guardado Fallido';
+									self.modal_body =  'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias'
+									self.confirmingUserDeletion = true;
+								}
+								else{
+									console.log('NO todo bien');	
+								}
+								
+							})
+							.catch(function (error) {
+								// handle error
+								console.log(error);
+							})
+		},
+		guardar_avances_dos: function(){
+						let self = this
+						// Make a request for a user with a given ID
+						axios.post('/formularios/evaluacion_auto_guardado_dos', {
+								id: this.$props.productor.id,
+								leal_calle:this.$props.productor.leal_calle,
+
+								nombre_calle_legal_valido: this.form.nombre_calle_legal_valido,
+								nombre_calle_legal_correcto: this.form.nombre_calle_legal_correcto,
+								obs_nombre_calle_legal: this.form.obs_nombre_calle_legal,
+								obs_nombre_calle_legal_valido: this.form.obs_nombre_calle_legal_valido,
+
+								leal_numero: this.$props.productor.leal_numero,
+								leal_numero_valido: this.form.leal_numero_valido,
+								leal_numero_correcto:  this.form.leal_numero_correcto,
+								obs_leal_numero: this.form.obs_leal_numero,
+								obs_leal_numero_valido: this.form.obs_leal_numero_valido,
+
+								leal_telefono: this.$props.productor.leal_telefono,
+								leal_telefono_valido: this.form.leal_telefono_valido,
+								leal_telefono_correcto:  this.form.leal_telefono_correcto,
+								obs_leal_telefono: this.form.obs_leal_telefono,
+								obs_leal_telefono_valido: this.form.obs_leal_telefono_valido,
+
+								leal_pais: this.$props.productor.leal_pais,
+								leal_pais_valido: this.form.leal_pais_valido,
+								leal_pais_correcto: this.form.leal_pais_correcto,
+								obs_leal_pais: this.form.obs_leal_pais,
+								obs_leal_pais_valido: this.form.obs_leal_pais_valido,
+
+								leal_provincia: this.$props.productor.leal_provincia,
+								leal_provincia_valido:  this.form.leal_provincia_valido,
+								leal_provincia_correcto:  this.form.leal_provincia_correcto,
+								obs_leal_provincia: this.form.obs_leal_provincia,
+								obs_leal_provincia_valido:  this.form.obs_leal_provincia_valido,
+
+								leal_departamento: this.$props.productor.leal_departamento,
+								leal_departamento_valido: this.form.leal_departamento_valido,
+								leal_departamento_correcto: this.form.leal_departamento_correcto,
+								obs_leal_departamento: this.form.obs_leal_departamento,
+								obs_leal_departamento_valido: this.form.obs_leal_departamento_valido,
+
+
+								leal_localidad: this.$props.productor.leal_localidad,
+								leal_localidad_valido: this.form.leal_localidad_valido,
+								leal_localidad_correcto: this.form.leal_localidad_correcto,
+								obs_leal_localidad: this.form.obs_leal_localidad,
+								obs_leal_localidad_valido: this.form.obs_leal_localidad_valido,
+
+
+
+								leal_cp: this.$props.productor.leal_cp,
+								leal_cp_valido: this.form.leal_cp_valido,
+								leal_cp_correcto: this.form.leal_cp_correcto,
+								obs_leal_cp: this.form.obs_leal_cp,
+								obs_leal_cp_valido: this.form.obs_leal_cp_valido,
+
+
+
+								leal_otro: this.$props.productor.leal_otro,
+								leal_otro_valido: this.form.leal_otro_valido,
+								leal_otro_correcto: this.form.leal_otro_correcto,
+								obs_leal_otro: this.form.obs_leal_otro,
+								obs_leal_otro_valido: this.form.obs_leal_otro_valido,
+
+
+								valor_de_progreso: this.form.valor_de_progreso_dos,
+								valor_de_aprobado: this.form.valor_de_aprobado_dos,
+								valor_de_reprobado: this.form.valor_de_reprobado_dos,
+
+							})
+							.then(function (response) {
+								console.log(response.data);
+								if(response.data === "todo bien")
+								{
+									console.log('todo bien');
+									self.modal_tittle = 'Paso 2 Guardado Exitosamente';
+									self.modal_body =  'Se ha guardado correctamente la información referida al paso 2: Datos del Domicilio Legal en la Provincia. Gracias'
+									self.confirmingUserDeletion = true;
+								}
+								else{
+									console.log('NO todo bien');	
+								}
+								
+							})
+							.catch(function (error) {
+								// handle error
+								console.log(error);
+							})
+		},
+
+		guardar_avances_tres: function(){
+						let self = this
+						// Make a request for a user with a given ID
+						axios.post('/formularios/evaluacion_auto_guardado_tres', {
+								id: this.$props.productor.id,
+
+								administracion_calle:this.$props.productor.administracion_calle,
+								administracion_calle_valido: this.form.administracion_calle_valido,
+								administracion_calle_correcto: this.form.administracion_calle_correcto,
+								obs_administracion_calle_nombre: this.form.obs_administracion_calle_nombre,
+								obs_administracion_calle_nombre_valido: this.form.obs_administracion_calle_nombre_valido,
+
+								administracion_numero: this.$props.productor.administracion_numero,
+								administracion_numero_valido: this.form.administracion_numero_valido,
+								administracion_numero_correcto:  this.form.administracion_numero_correcto,
+								obs_administracion_numero_nombre: this.form.obs_administracion_numero_nombre,
+								obs_administracion_numero_nombre_valido: this.form.obs_administracion_numero_nombre_valido,
+
+								administracion_telefono: this.$props.productor.administracion_telefono,
+								administracion_telefono_valido: this.form.administracion_telefono_valido,
+								administracion_telefono_correcto:  this.form.administracion_telefono_correcto,
+								obs_administracion_telefono_nombre: this.form.obs_administracion_telefono_nombre,
+								obs_administracion_telefono_nombre_valido: this.form.obs_administracion_telefono_nombre_valido,
+
+								administracion_pais: this.$props.productor.administracion_pais,
+								administracion_pais_valido: this.form.administracion_pais_valido,
+								administracion_pais_correcto: this.form.administracion_pais_correcto,
+								obs_administracion_pais: this.form.obs_administracion_pais,
+								obs_administracion_pais_valido: this.form.obs_administracion_pais_valido,
+
+								administracion_provincia: this.$props.productor.administracion_provincia,
+								administracion_provincia_valido:  this.form.administracion_provincia_valido,
+								administracion_provincia_correcto:  this.form.administracion_provincia_correcto,
+								obs_administracion_provincia: this.form.obs_administracion_provincia,
+								obs_administracion_provincia_valido:  this.form.obs_administracion_provincia_valido,
+
+								administracion_departamento: this.$props.productor.administracion_departamento,
+								administracion_departamento_valido: this.form.administracion_departamento_valido,
+								administracion_departamento_correcto: this.form.administracion_departamento_correcto,
+								obs_administracion_departamento: this.form.obs_administracion_departamento,
+								obs_administracion_departamento_valido: this.form.obs_administracion_departamento_valido,
+
+
+
+								administracion_localidad: this.$props.productor.administracion_localidad,
+								administracion_localidad_valido: this.form.administracion_localidad_valido,
+								administracion_localidad_correcto: this.form.administracion_localidad_correcto,
+								obs_administracion_localidad: this.form.obs_administracion_localidad,
+								obs_administracion_localidad_valido: this.form.obs_administracion_localidad_valido,
+
+
+								administracion_cp: this.$props.productor.administracion_cp,
+								administracion_cp_valido: this.form.administracion_cp_valido,
+								administracion_cp_correcto: this.form.administracion_cp_correcto,
+								obs_administracion_cp: this.form.obs_administracion_cp,
+								obs_administracion_cp_valido: this.form.obs_administracion_cp_valido,
+
+
+								administracion_otro: this.$props.productor.administracion_otro,
+								administracion_otro_valido: this.form.administracion_otro_valido,
+								administracion_otro_correcto: this.form.administracion_otro_correcto,
+								obs_administracion_otro: this.form.obs_administracion_otro,
+								obs_administracion_otro_valido: this.form.obs_administracion_otro_valido,
+
+
+								valor_de_progreso: this.form.valor_de_progreso_tres,
+								valor_de_aprobado: this.form.valor_de_aprobado_tres,
+								valor_de_reprobado: this.form.valor_de_reprobado_tres,
+
+							})
+							.then(function (response) {
+								console.log(response.data);
+								if(response.data === "todo bien")
+								{
+									console.log('todo bien');
+									self.modal_tittle = 'Paso 3 Guardado Exitosamente';
+									self.modal_body =  'Se ha guardado correctamente la información referida al paso 3: Datos del Domicilio de la Administracion Central. Gracias'
+									self.confirmingUserDeletion = true;
+								}
+								else{
+									console.log('NO todo bien');	
+								}
+								
+							})
+							.catch(function (error) {
+								// handle error
+								console.log(error);
+							})
+		},
+
+		guardar_avances_cuatro: function(){
+						let self = this
+						// Make a request for a user with a given ID
+						axios.post('/formularios/evaluacion_auto_guardado_cuatro', {
+								id: this.$props.productor.id,
+
+								numero_expdiente:this.$props.productor.numero_expdiente,
+								numero_expdiente_valido: this.form.numero_expdiente_valido,
+								numero_expdiente_correcto: this.form.numero_expdiente_correcto,
+								obs_numero_expdiente: this.form.obs_numero_expdiente,
+								obs_numero_expdiente_valido: this.form.obs_numero_expdiente_valido,
+
+								categoria: this.$props.productor.categoria,
+								categoria_validacion: this.form.categoria_validacion,
+								categoria_correcto:  this.form.categoria_correcto,
+								obs_categoria: this.form.obs_categoria,
+								obs_categoria_valido: this.form.obs_categoria_valido,
+
+								nombre_mina: this.$props.productor.nombre_mina,
+								nombre_mina_validacion: this.form.nombre_mina_validacion,
+								nombre_mina_correcto:  this.form.nombre_mina_correcto,
+								obs_nombre_mina: this.form.obs_nombre_mina,
+								obs_nombre_mina_valido: this.form.obs_nombre_mina_valido,
+
+								descripcion_mina: this.$props.productor.descripcion_mina,
+								descripcion_mina_validacion: this.form.descripcion_mina_validacion,
+								descripcion_mina_correcto: this.form.descripcion_mina_correcto,
+								obs_descripcion_mina: this.form.obs_descripcion_mina,
+								obs_descripcion_mina_valido: this.form.obs_descripcion_mina_valido,
+
+								distrito_minero: this.$props.productor.distrito_minero,
+								distrito_minero_validacion:  this.form.distrito_minero_validacion,
+								distrito_minero_correcto:  this.form.distrito_minero_correcto,
+								obs_distrito_minero: this.form.obs_distrito_minero,
+								obs_distrito_minero_valido:  this.form.obs_distrito_minero_valido,
+
+								mina_cantera: this.$props.productor.mina_cantera,
+								mina_cantera_validacion: this.form.mina_cantera_validacion,
+								mina_cantera_correcto: this.form.mina_cantera_correcto,
+								obs_mina_cantera: this.form.obs_mina_cantera,
+								obs_mina_cantera_valido: this.form.obs_mina_cantera_valido,
+
+								plano_inmueble: this.$props.productor.plano_inmueble,
+								plano_inmueble_validacion: this.form.plano_inmueble_validacion,
+								plano_inmueble_correcto: this.form.plano_inmueble_correcto,
+								obs_plano_inmueble: this.form.obs_plano_inmueble,
+								obs_plano_inmueble_valido: this.form.obs_plano_inmueble_valido,
+
+								minerales_variedad: this.$props.productor.minerales_variedad,
+								minerales_variedad_validacion: this.form.minerales_variedad_validacion,
+								minerales_variedad_correcto: this.form.minerales_variedad_correcto,
+								obs_minerales_variedad: this.form.obs_minerales_variedad,
+								obs_minerales_variedad_valido: this.form.obs_minerales_variedad_valido,
+
+								valor_de_progreso: this.form.valor_de_progreso_cuatro,
+								valor_de_aprobado: this.form.valor_de_aprobado_cuatro,
+								valor_de_reprobado: this.form.valor_de_reprobado_cuatro,
+
+							})
+							.then(function (response) {
+								console.log(response.data);
+								if(response.data === "todo bien")
+								{
+									console.log('todo bien');
+									self.modal_tittle = 'Paso 4 Guardado Exitosamente';
+									self.modal_body =  'Se ha guardado correctamente la información referida al paso 4: Datos de la mina. Gracias'
+									self.confirmingUserDeletion = true;
+								}
+								else{
+									console.log('NO todo bien');	
+								}
+								
+							})
+							.catch(function (error) {
+								// handle error
+								console.log(error);
+							})
+		},
+		
+		guardar_avances_cinco: function(){
+						let self = this
+						// Make a request for a user with a given ID
+						axios.post('/formularios/evaluacion_auto_guardado_cinco', {
+								id: this.$props.productor.id,
+
+								owner:this.$props.productor.owner,
+								owner_correcto: this.form.owner_correcto,
+								obs_owner: this.form.obs_owner,
+								obs_owner_valido: this.form.obs_owner_valido,
+
+								arrendatario: this.$props.productor.arrendatario,
+								arrendatario_correcto: this.form.arrendatario_correcto,
+								obs_arrendatario:  this.form.obs_arrendatario,
+								obs_arrendatario_valido: this.form.obs_arrendatario_valido,
+
+								concesionario: this.$props.productor.concesionario,
+								concesionario_correcto: this.form.concesionario_correcto,
+								obs_concesionario:  this.form.obs_concesionario,
+								obs_concesionario_valido: this.form.obs_concesionario_valido,
+
+								otros: this.$props.productor.otros,
+								otros_correcto: this.form.otros_correcto,
+								obs_otros: this.form.obs_otros,
+								obs_otros_valido: this.form.obs_otros_valido,
+
+								titulo_contrato_posecion: this.$props.productor.titulo_contrato_posecion,
+								titulo_contrato_posecion_validacion:  this.form.titulo_contrato_posecion_validacion,
+								titulo_contrato_posecion_correcto:  this.form.titulo_contrato_posecion_correcto,
+								obs_titulo_contrato_posecion: this.form.obs_titulo_contrato_posecion,
+								obs_titulo_contrato_posecion_valido:  this.form.obs_titulo_contrato_posecion_valido,
+
+								resolucion_concesion_minera: this.$props.productor.resolucion_concesion_minera,
+								resolucion_concesion_minera_validacion: this.form.resolucion_concesion_minera_validacion,
+								resolucion_concesion_minera_correcto: this.form.resolucion_concesion_minera_correcto,
+								obs_resolucion_concesion_minera: this.form.obs_resolucion_concesion_minera,
+								obs_resolucion_concesion_minera_valido: this.form.obs_resolucion_concesion_minera_valido,
+
+								constancia_pago_canon: this.$props.productor.constancia_pago_canon,
+								constancia_pago_canon_validacion: this.form.constancia_pago_canon_validacion,
+								constancia_pago_canon_correcto: this.form.constancia_pago_canon_correcto,
+								obs_constancia_pago_canon: this.form.obs_constancia_pago_canon,
+								obs_constancia_pago_canon_valido: this.form.obs_constancia_pago_canon_valido,
+
+
+
+								iia: this.$props.productor.iia,
+								iia_canon_validacion: this.form.iia_canon_validacion,
+								iia_correcto: this.form.iia_correcto,
+								obs_iia_canon: this.form.obs_iia_canon,
+								obs_iia_canon_valido: this.form.obs_iia_canon_valido,
+
+
+								dia: this.$props.productor.dia,
+								dia_canon_validacion: this.form.dia_canon_validacion,
+								dia_correcto: this.form.dia_correcto,
+								obs_dia_canon: this.form.obs_dia_canon,
+								obs_dia_canon_valido: this.form.obs_dia_canon_valido,
+
+
+								acciones_a_desarrollar: this.$props.productor.acciones_a_desarrollar,
+								acciones_a_desarrollar_validacion: this.form.acciones_a_desarrollar_validacion,
+								acciones_a_desarrollar_correcto: this.form.acciones_a_desarrollar_correcto,
+								obs_acciones_a_desarrollar: this.form.obs_acciones_a_desarrollar,
+								obs_acciones_a_desarrollar_valido: this.form.obs_acciones_a_desarrollar_valido,
+
+
+
+								actividad: this.$props.productor.actividad,
+								actividad_a_desarrollar_validacion: this.form.actividad_a_desarrollar_validacion,
+								actividad_a_desarrollar_correcto: this.form.actividad_a_desarrollar_correcto,
+								obs_actividad_a_desarrollar: this.form.obs_actividad_a_desarrollar,
+								obs_actividad_a_desarrollar_valido: this.form.obs_actividad_a_desarrollar_valido,
+
+
+
+								fecha_alta_dia: this.$props.productor.fecha_alta_dia,
+								fecha_alta_dia_validacion: this.form.fecha_alta_dia_validacion,
+								fecha_alta_dia_correcto: this.form.fecha_alta_dia_correcto,
+								obs_fecha_alta_dia: this.form.obs_fecha_alta_dia,
+								obs_fecha_alta_dia_valido: this.form.obs_fecha_alta_dia_valido,
+
+
+
+								fecha_vencimiento_dia: this.$props.productor.fecha_vencimiento_dia,
+								fecha_vencimiento_dia_validacion: this.form.fecha_vencimiento_dia_validacion,
+								fecha_vencimiento_dia_correcto: this.form.fecha_vencimiento_dia_correcto,
+								obs_fecha_vencimiento_dia: this.form.obs_fecha_vencimiento_dia,
+								obs_fecha_vencimiento_dia_valido: this.form.obs_fecha_vencimiento_dia_valido,
+
+
+
+								valor_de_progreso: this.form.valor_de_progreso_cinco,
+								valor_de_aprobado: this.form.valor_de_aprobado_cinco,
+								valor_de_reprobado: this.form.valor_de_reprobado_cinco,
+
+							})
+							.then(function (response) {
+								console.log(response.data);
+								if(response.data === "todo bien")
+								{
+									console.log('todo bien');
+									self.modal_tittle = 'Paso 5 Guardado Exitosamente';
+									self.modal_body =  'Se ha guardado correctamente la información referida al paso 5: Datos de la mina. Gracias'
+									self.confirmingUserDeletion = true;
+								}
+								else{
+									console.log('NO todo bien');	
+								}
+								
+							})
+							.catch(function (error) {
+								// handle error
+								console.log(error);
+							})
+		},
+		
+		guardar_avances_seis: function(){
+						let self = this
+						// Make a request for a user with a given ID
+						axios.post('/formularios/evaluacion_auto_guardado_seis', {
+							id: this.$props.productor.id,
+
+							localidad_mina_pais: this.$props.productor.localidad_mina_pais,
+							localidad_mina_pais_validacion:  this.form.localidad_mina_pais_validacion,
+							localidad_mina_pais_correcto:  this.form.localidad_mina_pais_correcto,
+							obs_localidad_mina_pais: this.form.obs_localidad_mina_pais,
+							obs_localidad_mina_pais_valido:  this.form.obs_localidad_mina_pais_valido,
+
+							localidad_mina_provincia: this.$props.productor.localidad_mina_provincia,
+							localidad_mina_provincia_validacion: this.form.localidad_mina_provincia_validacion,
+							localidad_mina_provincia_correcto: this.form.localidad_mina_provincia_correcto,
+							obs_localidad_mina_provincia: this.form.obs_localidad_mina_provincia,
+							obs_localidad_mina_provincia_valido: this.form.obs_localidad_mina_provincia_valido,
+
+							localidad_mina_departamento: this.$props.productor.localidad_mina_departamento,
+							localidad_mina_departamento_validacion: this.form.localidad_mina_departamento_validacion,
+							localidad_mina_departamento_correcto: this.form.localidad_mina_departamento_correcto,
+							obs_localidad_mina_departamento: this.form.obs_localidad_mina_departamento,
+							obs_localidad_mina_departamento_valido: this.form.obs_localidad_mina_departamento_valido,
+
+
+
+							localidad_mina_localidad: this.$props.productor.localidad_mina_localidad,
+							localidad_mina_localidad_validacion: this.form.localidad_mina_localidad_validacion,
+							localidad_mina_localidad_correcto: this.form.localidad_mina_localidad_correcto,
+							obs_localidad_mina_localidad: this.form.obs_localidad_mina_localidad,
+							obs_localidad_mina_localidad_valido: this.form.obs_localidad_mina_localidad_valido,
+
+
+							tipo_sistema: this.$props.productor.tipo_sistema,
+							tipo_sistema_validacion: this.form.tipo_sistema_validacion,
+							tipo_sistema_correcto: this.form.tipo_sistema_correcto,
+							obs_tipo_sistema: this.form.obs_tipo_sistema,
+							obs_tipo_sistema_valido: this.form.obs_tipo_sistema_valido,
+
+
+							latitud: this.$props.productor.latitud,
+							latitud_validacion: this.form.latitud_validacion,
+							latitud_correcto: this.form.latitud_correcto,
+							obs_latitud: this.form.obs_latitud,
+							obs_latitud_valido: this.form.obs_latitud_valido,
+
+
+
+							longitud: this.$props.productor.longitud,
+							longitud_validacion: this.form.longitud_validacion,
+							longitud_correcto: this.form.longitud_correcto,
+							obs_longitud: this.form.obs_longitud,
+							obs_longitud_valido: this.form.obs_longitud_valido,
+
+							valor_de_progreso: this.form.valor_de_progreso_seis,
+							valor_de_aprobado: this.form.valor_de_aprobado_seis,
+							valor_de_reprobado: this.form.valor_de_reprobado_seis,
+
+						})
+						.then(function (response) {
+							console.log(response.data);
+							if(response.data === "todo bien")
+							{
+								console.log('todo bien');
+								self.modal_tittle = 'Paso 6 Guardado Exitosamente';
+								self.modal_body =  'Se ha guardado correctamente la información referida al paso 6: Datos de la ubicacion de la mina. Gracias'
+								self.confirmingUserDeletion = true;
+							}
+							else{
+								console.log('NO todo bien');	
+							}
+							
+						})
+						.catch(function (error) {
+							// handle error
+							console.log(error);
+						})
+		},
+
+		guardar_avances_todo: function(){
+						let self = this;
+						// Make a request for a user with a given ID
+						axios.post('/formularios/evaluacion_auto_guardado_todo', {
+							id: this.$props.productor.id,
+							estado: this.form.estado,
+							es_evaluacion: 'true',
+
+						})
+						.then(function (response) {
+							console.log(response.data);
+							if(response.data === "todo bien")
+							{
+								console.log('todo bien');
+								self.modal_tittle = 'Paso de todo';
+								self.modal_body =  'Se ha guardado correctamente la información . se GUARDO TODO. Gracias'
+								self.confirmingUserDeletion = true;
+							}
+							else{
+								console.log('NO todo bien');	
+							}
+							
+						})
+						.catch(function (error) {
+							// handle error
+							console.log(error);
+						})
+		},
+
+	},
+	mounted(){
+    let self  = this;
+	//voy a buscar las provincias
+    this.$nextTick(() => {
+        axios.get('/datos/traer_provincias')
+            .then(function (response) {
+                console.log("las provincias son:\n");
+                self.lista_provincias = response.data;
+                console.log(self.lista_provincias);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+>>>>>>> main
         });
     },
 
