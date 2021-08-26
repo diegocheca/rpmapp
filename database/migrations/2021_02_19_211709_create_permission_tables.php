@@ -20,11 +20,21 @@ class CreatePermissionTables extends Migration
             throw new \Exception('Error: config/permission.php not loaded. Run [php artisan config:clear] and try again.');
         }
 
+        Schema::create($tableNames['categories'], function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name')->unique();
+            $table->text('description')->nullable();
+            $table->timestamps();
+
+            $table->unique(['name', 'guard_name']);
+        });
+
         Schema::create($tableNames['permissions'], function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');       // For MySQL 8.0 use string('name', 125);
             $table->string('description');       // 
             $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
             $table->unique(['name', 'guard_name']);
@@ -111,5 +121,6 @@ class CreatePermissionTables extends Migration
         Schema::drop($tableNames['model_has_permissions']);
         Schema::drop($tableNames['roles']);
         Schema::drop($tableNames['permissions']);
+        Schema::drop($tableNames['categories']);
     }
 }
