@@ -149,7 +149,7 @@
                         ring-blue-100">
                     
                         <p class="p-3">
-                            Es el email donde recibirá notificaciones. Ejemplo: nombre@ejemplo.com
+                            En este email usted recibirá notificaciones y será constituido como domicilio electrónico. Pudiendo ser o no el mismo que el del usuario. Ejemplo: nombre@ejemplo.com
                         </p>
                         
                     </div>

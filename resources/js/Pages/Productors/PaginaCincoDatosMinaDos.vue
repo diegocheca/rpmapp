@@ -517,6 +517,7 @@
         <hr>
         <br>
         <div class="flex">
+            actividad:{{$props.mostrar_actividad}}
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
                 v-if="$props.mostrar_actividad"

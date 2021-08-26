@@ -17,7 +17,7 @@ class MinaCantera extends Model
 
     protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
-    	'tipo',
+        'tipo',
         'localidad_mina_pais',
         'localidad_mina_provincia',
         'localidad_mina_departamento',

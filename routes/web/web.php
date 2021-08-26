@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
+use Auth;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -90,14 +91,28 @@ Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    // admin
+    // productor
+    $mi_rol = '';
+    if(Auth::user()->hasRole('Autoridad'))
+        $mi_rol = 'admin';
+    if(Auth::user()->hasRole('Administrador'))
+        $mi_rol = 'admin';
+    if(Auth::user()->hasRole('Productor'))
+        $mi_rol = 'productor';
+    return Inertia::render('Dashboard', ['userType' => $mi_rol]);
 })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard1', function () {
+    return Inertia::render('Dashboard1');
+})->name('dashboard1');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
     return Inertia::render('Users/Index', [
         'users' => User::all()
     ]);
 })->name('users.index');
+
 
 Route::resource('formulario-alta', FormAltaProductorController::class)
     ->middleware(['auth:sanctum', 'verified']);
@@ -137,7 +152,10 @@ Route::post('/formularios/validar_mina_para_prod', [FormAltaProductorController:
 
 Route::get('/gracias_confirmacion/{codigo}', [FormAltaProductorController::class, "validar_email_desde_email"])->name('validar-email-desde-email');
 
+
+Route::get('/formularios/prueba_aprobado/{id}', [FormAltaProductorController::class, "test_aprobado_email"])->name('test-aprobado-email');
 //evaluacion de formularios presentados
+
 
 Route::post('/formularios/evaluacion_auto_guardado_uno', [FormAltaProductorController::class, "correccion_guardar_paso_uno"])->name('correccion_guardar-paso-uno');
 Route::post('/formularios/evaluacion_auto_guardado_dos', [FormAltaProductorController::class, "correccion_guardar_paso_dos"])->name('correccion_guardar-paso-dos');
