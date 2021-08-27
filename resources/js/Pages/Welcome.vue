@@ -24,7 +24,6 @@
             <div class="mt-8 text-2xl">
                 Bienvenido al sistema de Registro de Productores Mineros!
             </div>
-            <a :href="route('register')">Registrarse</a>
 
             <div class="mt-6 text-gray-500">
                 Laravel Jetstream provides a beautiful, robust starting point
