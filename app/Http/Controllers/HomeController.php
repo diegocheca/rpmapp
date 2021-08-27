@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\EmailsAConfirmar;
-
+use Auth;
+use Inertia\Inertia;
 class HomeController extends Controller
 {
     /**
@@ -22,6 +23,17 @@ class HomeController extends Controller
     {
         //
         return view("confirmation.index");
+    }
+    public function dashboard()
+    {
+        $mi_rol = '';
+        if(Auth::user()->hasRole('Autoridad'))
+            $mi_rol = 'admin';
+        if(Auth::user()->hasRole('Administrador'))
+            $mi_rol = 'admin';
+        if(Auth::user()->hasRole('Productor'))
+            $mi_rol = 'productor';
+        return Inertia::render('Dashboard', ['userType' => $mi_rol]);
     }
 
 
