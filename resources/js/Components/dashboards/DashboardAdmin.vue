@@ -201,7 +201,7 @@
                     </div>
                 </div>
                 <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
-                    <ChartPie />
+                    <ChartPie :dataChart="dataChart" />
                 </div>
             </div>
 
@@ -242,8 +242,8 @@
 
 
                 </div>
-                <ChartBar v-if="!chartShow"/>
-                <ChartMap v-else/>
+                <ChartBar v-if="!chartShow" :dataChart="dataChart" />
+                <ChartMap v-else :dataChart="dataChart" />
             </div>
 
         </main>
@@ -271,9 +271,14 @@
             JetAuthenticationCardLogo,
             Vue3autocounter,
         },
+        props: {
+            dataChart: {
+                required: true
+            }
+        },
         data() {
             return {
-                chartShow: false
+                chartShow: false,
             }
         },
         methods: {

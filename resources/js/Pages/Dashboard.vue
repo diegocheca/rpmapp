@@ -1,6 +1,6 @@
 <template>
   <div>
-      <DashboardAdmin v-if="userType == 'admin'" />
+      <DashboardAdmin v-if="userType == 'admin'" :dataChart="dataChart" />
       <DashboardProductor v-if="userType == 'productor'" />
   </div>
 </template>
@@ -24,8 +24,10 @@ import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
             userType: {
                 required: true,
                 default: 'admin'
+            },
+            dataChart: {
+                required: true
             }
-
         },
         data() {
             return {

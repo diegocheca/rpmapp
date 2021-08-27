@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
-use Auth;
+
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -94,13 +94,23 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // admin
     // productor
     $mi_rol = '';
+
+    $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
+    $dataChart = new stdClass;
+    $axis = new stdClass();
+    $axis->x = 'departamentos';
+    $axis->y = 'cantidad';
+    $dataChart->axis = $axis;
+    $dataChart->data = $departments;
+    $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
+
     if(Auth::user()->hasRole('Autoridad'))
         $mi_rol = 'admin';
     if(Auth::user()->hasRole('Administrador'))
         $mi_rol = 'admin';
     if(Auth::user()->hasRole('Productor'))
         $mi_rol = 'productor';
-    return Inertia::render('Dashboard', ['userType' => $mi_rol]);
+    return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart ]);
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard1', function () {
