@@ -5,6 +5,7 @@ yarn-error.log
 
 /public/js/app.js
 
+
 # Laravel 4 specific
 bootstrap/compiled.php
 bootstrap/cache
