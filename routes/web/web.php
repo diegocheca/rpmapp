@@ -4,7 +4,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
+<<<<<<< HEAD
 
+=======
+//use Illuminate\Auth as Auth;
+>>>>>>> main
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -90,6 +94,7 @@ Route::resource('productores_minas', ProductorMinaController::class)
 Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
+<<<<<<< HEAD
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // admin
     // productor
@@ -112,6 +117,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
         $mi_rol = 'productor';
     return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart ]);
 })->name('dashboard');
+=======
+
+
+Route::get('dashboard', [HomeController::class, "dashboard"])
+        ->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+
+>>>>>>> main
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard1', function () {
     return Inertia::render('Dashboard1');
