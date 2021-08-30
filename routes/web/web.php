@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
 // use Illuminate\Support\Facades\Auth;
-use Auth;
+// use Auth;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
