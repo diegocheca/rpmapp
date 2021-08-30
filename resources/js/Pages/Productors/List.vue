@@ -10,6 +10,7 @@
     <body class="flex flex-col">
         <div class="overflow-x-auto">
             <div class="min-w-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
+                App name: {{ $inertia.page.props.appName }}
                 <div class="w-full lg:w-5/6">
                     <div class="bg-white shadow-md rounded my-6">
                         <table class="min-w-max w-full table-auto">
@@ -82,8 +83,6 @@
                                                     </svg>
                                                 </a>
                                             </div>
-
-
                                             <inertia-link
                                             v-if= "mostrar_borrar(productor.estado)"
                                             method="delete"
@@ -97,10 +96,7 @@
                                             
                                         </div>
                                     </td>
-                                    
-
                                 </tr>
-
                                 <!-- <tr class="border-b border-gray-200 hover:bg-gray-100">
                                     <td class="py-3 px-6 text-left whitespace-nowrap">
                                         <div class="flex items-center">
@@ -495,7 +491,13 @@
                     </div>
                 </div>
             </div>
-            <ChartPieB></ChartPieB>
+            <ChartPieB 
+            :aprobados="$props.datos_donut.aprobados"
+            :reprobados="$props.datos_donut.reprobados"
+            :borrador_cant="$props.datos_donut.borrador_cant"
+            :revision="$props.datos_donut.revision"
+            :observacion="$props.datos_donut.observacion"
+            ></ChartPieB>
         </div>
 
         
@@ -510,12 +512,12 @@ import ChartPieB from '@/Components/charts/pieBorradores'
 
 export default {
   props: {
-
     borradores: Array,
     lista_minerales_cargados: Array,
     soy_autoridad: Boolean,
     soy_administrador: Boolean,
     soy_productor: Boolean,
+    datos_donut: Array,
   },
   components: {
     AppLayout,
@@ -577,6 +579,9 @@ export default {
             else return true;
         },
         
+    },
+    mounted(){
+        console.log(this.$props.datos_donut.aprobados);
     }
 };
 </script>

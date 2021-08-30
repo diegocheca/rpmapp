@@ -637,30 +637,68 @@ class FormAltaProductorController extends Controller
 	{
 		//filtro por autoridad minera o autoridad
 		//pregunto si soy admin
-		//dd(Auth::user()->id_provincia);die();
+		//dd(env('APP_URL'));die();
 		$soy_administrador = false;
 		$soy_autoridad = false;
 		$soy_productor =false;
+		$grafico_donut = []; 
+		$temp = '';
 		if(Auth::user()->hasRole('Administrador'))
 		{
 			$soy_administrador = true;
 			$borradores = FormAltaProductor::all();
+			//calculo valores para los productores
+			$temp = FormAltaProductor::select('id')->where('estado', '=','aprobado')->get();
+			$grafico_donut["aprobados"] = count($temp);
+			$temp= FormAltaProductor::select('id')->where('estado', '=','reprobado')->get();
+			$grafico_donut["reprobados"]  = count($temp);
+			$temp = FormAltaProductor::select('id')->where('estado', '=','borrador')->get();
+			$grafico_donut["borrador_cant"] = count($temp);
+			$temp = FormAltaProductor::select('id')->where('estado', '=','en revision')->get();
+			$grafico_donut["revision"] = count($temp);
+			$temp = FormAltaProductor::select('id')->where('estado', '=','con observacion')->get();
+			$grafico_donut["observacion"]  = count($temp);
+
 		}
 		elseif(Auth::user()->hasRole('Autoridad'))
 		{
 			//soy autoridad minera, entonces traigo todo de mi prov
 			$soy_autoridad = true;
 			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->get();
+			//calculo valores para los productores
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=','aprobado')->get();
+			$grafico_donut["aprobados"] = count($temp);
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=','reprobado')->get();
+			$grafico_donut["reprobados"]= count($temp);
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=','borrador')->get();
+			$grafico_donut["borrador_cant"] = count($temp);
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=','en revision')->get();
+			$grafico_donut["revision"] = count($temp);
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=','con observacion')->get();
+			$grafico_donut["observacion"] = count($temp);
 		}
 		else{
 			//soy productor, entonces traigo solo mis borradores
 			$soy_productor =true;
 			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->get();
+			//calculo valores para los productores
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->where('estado', '=','aprobado')->get();
+			$grafico_donut["aprobados"] = count($temp);
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->where('estado', '=','reprobado')->get();
+			$grafico_donut["reprobados"]= count($temp);
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->where('estado', '=','borrador')->get();
+			$grafico_donut["borrador_cant"] = count($temp);
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->where('estado', '=','en revision')->get();
+			$grafico_donut["revision"] = count($temp);
+			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->where('estado', '=','con observacion')->get();
+			$grafico_donut["observacion"] = count($temp);
 		}
+
+		
 		
 		//var_dump($borradores);die();
 		//var_dump($formularios);die();
-		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador, 'soy_productor' => $soy_productor]);
+		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador, 'soy_productor' => $soy_productor, 'datos_donut' => $grafico_donut]);
 	}
 
 	/**
@@ -939,28 +977,28 @@ class FormAltaProductorController extends Controller
 			$objeto->fecha_vencimiento_dia = date("Y-m-d", strtotime($objeto->fecha_vencimiento_dia));
 
 		if($objeto->constancia_pago_canon != null)
-			$objeto->constancia_pago_canon = "http://localhost:8000/".str_replace("public","storage",$objeto->constancia_pago_canon);
+			$objeto->constancia_pago_canon = env('APP_URL').str_replace("public","storage",$objeto->constancia_pago_canon);
 		if($objeto->iia != null)
-			$objeto->iia = "http://localhost:8000/".str_replace("public","storage",$objeto->iia);
+			$objeto->iia = env('APP_URL').str_replace("public","storage",$objeto->iia);
 		if($objeto->dia != null)
-			$objeto->dia = "http://localhost:8000/".str_replace("public","storage",$objeto->dia);
+			$objeto->dia = env('APP_URL').str_replace("public","storage",$objeto->dia);
 		
 		if($objeto->inscripciondgr != null)
-			$objeto->inscripciondgr = "http://localhost:8000/".str_replace("public","storage",$objeto->inscripciondgr);
+			$objeto->inscripciondgr = env('APP_URL').str_replace("public","storage",$objeto->inscripciondgr);
 			
 			
 		if($objeto->constaciasociedad != null)
-			$objeto->constaciasociedad = "http://localhost:8000/".str_replace("public","storage",$objeto->constaciasociedad);
+			$objeto->constaciasociedad = env('APP_URL').str_replace("public","storage",$objeto->constaciasociedad);
 			if($objeto->resolucion_concesion_minera != null)
-			$objeto->resolucion_concesion_minera = "http://localhost:8000/".str_replace("public","storage",$objeto->resolucion_concesion_minera);
+			$objeto->resolucion_concesion_minera = env('APP_URL').str_replace("public","storage",$objeto->resolucion_concesion_minera);
 		
 				
 		if($objeto->titulo_contrato_posecion != null)
-		$objeto->titulo_contrato_posecion = "http://localhost:8000/".str_replace("public","storage",$objeto->titulo_contrato_posecion);
+		$objeto->titulo_contrato_posecion = env('APP_URL').str_replace("public","storage",$objeto->titulo_contrato_posecion);
 	
 
 		if($objeto->plano_inmueble != null)
-		$objeto->plano_inmueble = "http://localhost:8000/".str_replace("public","storage",$objeto->plano_inmueble);
+		$objeto->plano_inmueble = env('APP_URL').str_replace("public","storage",$objeto->plano_inmueble);
 	
 		return $objeto;
 	}
@@ -7580,7 +7618,7 @@ class FormAltaProductorController extends Controller
 				//este es un archivo
 				if($request->constancia_pago_canon != null && $request->constancia_pago_canon != '' && $formulario_provisorio->constancia_pago_canon != null)
 				{//no es un archivo vacio
-					if(substr($request->constancia_pago_canon,0, strlen('http://localhost:8000/storage/files_formularios')) != 'http://localhost:8000/storage/files_formularios' )
+					if(substr($request->constancia_pago_canon,0, strlen(env('APP_URL').'/storage/files_formularios')) != env('APP_URL').'/storage/files_formularios' )
 					{
 						$contents = file_get_contents($request->constancia_pago_canon->path());
 						$formulario_provisorio->constancia_pago_canon =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constancia_pago_canon);
@@ -7592,7 +7630,7 @@ class FormAltaProductorController extends Controller
 				//este es un archivo
 				if($request->iia != null && $request->iia != '' && $formulario_provisorio->iia != null)
 				{//no es un archivo vacio
-					if(substr($request->iia,0, strlen('http://localhost:8000/storage/files_formularios')) != 'http://localhost:8000/storage/files_formularios' )
+					if(substr($request->iia,0, strlen(env('APP_URL').'/storage/files_formularios')) != env('APP_URL').'/storage/files_formularios' )
 					{
 						$contents = file_get_contents($request->iia->path());
 						$formulario_provisorio->iia =  Storage::put('public/files_formularios'.'/'.$request->id, $request->iia);
@@ -7601,7 +7639,7 @@ class FormAltaProductorController extends Controller
 				//este es un archivo
 				if($request->dia != null && $request->dia != '' && $formulario_provisorio->dia != null)
 				{//no es un archivo vacio
-					if(substr($request->dia,0, strlen('http://localhost:8000/storage/files_formularios')) != 'http://localhost:8000/storage/files_formularios' )
+					if(substr($request->dia,0, strlen(env('APP_URL').'/storage/files_formularios')) != env('APP_URL').'/storage/files_formularios' )
 					{
 						$contents = file_get_contents($request->dia->path());
 						$formulario_provisorio->dia =  Storage::put('public/files_formularios'.'/'.$request->id, $request->dia);
