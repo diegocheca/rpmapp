@@ -29,7 +29,7 @@
                   Borradores
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="false"
                   :href="route('pagos.index')"
                   :active="route().current('pagos.index')"
                 >
@@ -42,21 +42,21 @@
                   Reinscripciones
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="false"
                   :href="route('productos.index')"
                   :active="route().current('productos.index')"
                 >
                   Producto
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="false"
                   :href="route('iiadias.index')"
                   :active="route().current('iiadias.index')"
                 >
                   IIASyDIAS
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="false"
                   :href="route('productores_minas.index')"
                   :active="route().current('productores_minas.index')"
                 >
@@ -69,7 +69,7 @@
                   Productores
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="false"
                   :href="route('formweb.solicitudes.index')"
                   :active="route().current('formweb.solicitudes.index')"
                 >
@@ -435,7 +435,7 @@
                 <span>Borradores</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="false"
                 :href="route('pagos.index')"
                 :active="route().current('pagos.index')"
                 class="
@@ -510,7 +510,7 @@
                 <span>Reinscripciones</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="false"
                 :href="route('productos.index')"
                 :active="route().current('productos.index')"
                 class="
@@ -548,7 +548,7 @@
                 <span>Producto</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="false"
                 :href="route('iiadias.index')"
                 :active="route().current('iiadias.index')"
                 class="
@@ -586,7 +586,7 @@
                 <span>IIASyDIAS</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="false"
                 :href="route('productores_minas.index')"
                 :active="route().current('productores_minas.index')"
                 class="
@@ -657,7 +657,7 @@
                 <span>Productores</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="false"
                 :href="route('formweb.solicitudes.index')"
                 :active="route().current('formweb.solicitudes.index')"
                 class="
