@@ -697,7 +697,7 @@ class FormAltaProductorController extends Controller
 		
 		
 		//var_dump($borradores);die();
-		//var_dump($formularios);die();
+		//var_dump($borradores);die();
 		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador, 'soy_productor' => $soy_productor, 'datos_donut' => $grafico_donut]);
 	}
 
