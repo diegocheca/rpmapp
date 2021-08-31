@@ -637,12 +637,19 @@ class FormAltaProductorController extends Controller
 	{
 		//filtro por autoridad minera o autoridad
 		//pregunto si soy admin
+<<<<<<< Updated upstream
 		//dd(env('APP_URL'));die();
 		$soy_administrador = false;
 		$soy_autoridad = false;
 		$soy_productor =false;
 		$grafico_donut = []; 
 		$temp = '';
+=======
+		//dd(Auth::user()->id_provincia);die();
+		$soy_administrador = false;
+		$soy_autoridad = false;
+		$soy_productor =false;
+>>>>>>> Stashed changes
 		if(Auth::user()->hasRole('Administrador'))
 		{
 			$soy_administrador = true;
@@ -665,6 +672,7 @@ class FormAltaProductorController extends Controller
 			//soy autoridad minera, entonces traigo todo de mi prov
 			$soy_autoridad = true;
 			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->get();
+<<<<<<< Updated upstream
 			//calculo valores para los productores
 			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=','aprobado')->get();
 			$grafico_donut["aprobados"] = count($temp);
@@ -676,11 +684,14 @@ class FormAltaProductorController extends Controller
 			$grafico_donut["revision"] = count($temp);
 			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=','con observacion')->get();
 			$grafico_donut["observacion"] = count($temp);
+=======
+>>>>>>> Stashed changes
 		}
 		else{
 			//soy productor, entonces traigo solo mis borradores
 			$soy_productor =true;
 			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->get();
+<<<<<<< Updated upstream
 			//calculo valores para los productores
 			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->where('estado', '=','aprobado')->get();
 			$grafico_donut["aprobados"] = count($temp);
@@ -699,6 +710,13 @@ class FormAltaProductorController extends Controller
 		//var_dump($borradores);die();
 		//var_dump($formularios);die();
 		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador, 'soy_productor' => $soy_productor, 'datos_donut' => $grafico_donut]);
+=======
+		}
+		
+		//var_dump($borradores);die();
+		//var_dump($formularios);die();
+		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador, 'soy_productor' => $soy_productor]);
+>>>>>>> Stashed changes
 	}
 
 	/**
@@ -7955,8 +7973,11 @@ class FormAltaProductorController extends Controller
 		$formulario_provisorio = FormAltaProductor::select(
 			'id',
 			'estado',
+<<<<<<< Updated upstream
 			'razon_social',
 			'email',
+=======
+>>>>>>> Stashed changes
 			'updated_by',
 			'updated_at'
 			)
@@ -7970,6 +7991,7 @@ class FormAltaProductorController extends Controller
 			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 			$formulario_provisorio->updated_by = Auth::user()->id;
 			$formulario_provisorio->save();
+<<<<<<< Updated upstream
 			//return response()->json("todo bien");
 			return response()->json([
 				'status' => 'ok',
@@ -8109,6 +8131,13 @@ class FormAltaProductorController extends Controller
 			));
 
 			//tengo que crear todos los campos de la base de datos
+=======
+			return response()->json("todo bien");
+		}
+		else{//soy productor
+			return response()->json("error");
+		}
+>>>>>>> Stashed changes
 	}
 		
 

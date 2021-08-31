@@ -1249,8 +1249,13 @@ export default {
 			AvisoAprueba: false,
 			modal_tittle_apro: '',
 			modal_body_apro: '',
+<<<<<<< Updated upstream
 			evaluacion_global: this.$props.soy_autoridad_minera,
 			testing_global: this.$props.soy_administrador,
+=======
+			evaluacion_global: false,
+			testing_global: false,
+>>>>>>> Stashed changes
 			mostrar_modal_datos_ya_guardados:false,
 
 
@@ -1738,6 +1743,7 @@ export default {
             data.append('id', this.$props.productor.id);
             data.append('estado', self.form.estado);
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+<<<<<<< Updated upstream
             axios.post($inertia.page.props.appName+"/formularios/presentar_borrador", data)
             .then(function (response) {
                 console.log(response.data);
@@ -1760,6 +1766,18 @@ export default {
 							self.mostrar_modal_datos_ya_guardados = true;
 						}
                         
+=======
+            axios.post("http://localhost:8000/formularios/presentar_borrador", data)
+            .then(function (response) {
+                console.log(response.data);
+                if(response.data === "todo bien")
+                    {
+                        console.log('todo bien');
+                        self.modal_tittle = 'Se actualizo estado';
+                        self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
+						self.closeModalAprobar = false;
+                        self.mostrar_modal_datos_ya_guardados = true;
+>>>>>>> Stashed changes
                     }
                     
                     if(response.data === "formulario no encontrado")
