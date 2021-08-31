@@ -3376,7 +3376,7 @@ class FormAltaProductorController extends Controller
 				"razon_social" => false,
 				"razon_social_correccion" => false,
 				"email" => false,
-				"email_correccion" => false,
+				"email_correccion" => false,/home/diego/Documents/rpmapp/resources/js/Pages/Productors/List.vue
 				"cuit" => false,
 				"cuit_correccion" => false,
 				"num_prod" => false,
@@ -7973,11 +7973,8 @@ class FormAltaProductorController extends Controller
 		$formulario_provisorio = FormAltaProductor::select(
 			'id',
 			'estado',
-<<<<<<< Updated upstream
 			'razon_social',
 			'email',
-=======
->>>>>>> Stashed changes
 			'updated_by',
 			'updated_at'
 			)
