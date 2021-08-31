@@ -13,7 +13,7 @@
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
             <a href="#section_catamarca">
-                <img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/catamarca.png" width="50%">
+                <img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/formulario_alta/imagenes/catamarca.png'" width="50%">
             </a>
             <div v-if="$props.testing">
                 <label class="flex items-center relative w-max cursor-pointer select-none">
@@ -97,7 +97,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Nombre y Apellido del Gestor:'"
-                        v-bind:icon="'http://localhost:8000/svg/state.svg'"
+                        v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
                         v-bind:desactivar_input="$props.desactivar_nombre_gestor"
                         v-bind:mostrar_correccion="$props.mostrar_nombre_gestor_correccion"
                         v-bind:desactivar_correccion="$props.desactivar_nombre_gestor_correccion"
@@ -122,7 +122,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'DNI del Gestor:'"
-                        v-bind:icon="'http://localhost:8000/svg/state.svg'"
+                        v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
                         v-bind:desactivar_input="$props.desactivar_dni_gestor"
                         v-bind:mostrar_correccion="$props.mostrar_dni_gestor_correccion"
                         v-bind:desactivar_correccion="$props.desactivar_dni_gestor_correccion"
@@ -156,7 +156,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Profesión del Gestor:'"
-                    v-bind:icon="'http://localhost:8000/svg/state.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
                     v-bind:desactivar_input="$props.desactivar_profesion_gestor"
                     v-bind:mostrar_correccion="$props.mostrar_profesion_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_profesion_gestor_correccion"
@@ -187,7 +187,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Telefono del Gestor:'"
-                    v-bind:icon="'http://localhost:8000/svg/state.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
                     v-bind:desactivar_input="$props.desactivar_telefono_gestor"
                     v-bind:mostrar_correccion="$props.mostrar_telefono_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_telefono_gestor_correccion"
@@ -220,7 +220,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Email del Gestor:'"
-                    v-bind:icon="'http://localhost:8000/svg/state.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
                     v-bind:desactivar_input="$props.desactivar_email_gestor"
                     v-bind:mostrar_correccion="$props.mostrar_email_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_email_gestor_correccion"
@@ -269,7 +269,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Notificar al Gestor:'"
-                    v-bind:icon="'http://localhost:8000/svg/state.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
                     v-bind:desactivar_input="$props.desactivar_notificacion_gestor"
                     v-bind:mostrar_correccion="$props.mostrar_notificacion_gestor_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_notificacion_gestor_correccion"

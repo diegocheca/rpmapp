@@ -4,7 +4,10 @@ npm-debug.log
 yarn-error.log
 
 /public/js/app.js
+public/js/app.js
 
+/public/css/app.css
+public/css/app.css
 
 # Laravel 4 specific
 bootstrap/compiled.php
