@@ -1738,7 +1738,7 @@ export default {
             data.append('id', this.$props.productor.id);
             data.append('estado', self.form.estado);
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-            axios.post("http://localhost:8000/formularios/presentar_borrador", data)
+            axios.post($inertia.page.props.appName+"/formularios/presentar_borrador", data)
             .then(function (response) {
                 console.log(response.data);
                 if(response.data.msg === 'Datos actualizados correctamente.')

@@ -43,9 +43,9 @@
             </div>
         </div>
             <div class="w-full md:w-1/2 px-3">
-                <object data="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf" type="application/pdf" width="100%" height="500px"> 
+                <object :data="$inertia.page.props.appName+'/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'" type="application/pdf" width="100%" height="500px"> 
                 <p>It appears you don't have a PDF plugin for this browser.
-                    No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
+                    No biggie... you can <a :href="$inertia.page.props.appName+'/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'">click here to
                 download the PDF file.</a></p>  
             </object>
         </div>
