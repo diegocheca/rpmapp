@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\EmailsAConfirmar;
-use Auth;
-use Inertia\Inertia;
+// use Auth;
 class HomeController extends Controller
 {
     /**
