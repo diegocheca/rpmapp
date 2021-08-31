@@ -2,7 +2,7 @@
 <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
             <a href="#section_mina_uno">
-                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/tipo_caracter_card.svg">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/formulario_alta/imagenes/tipo_caracter_card.svg'">
             </a>
             <div v-if="$props.testing">
                 <label class="flex items-center relative w-max cursor-pointer select-none">
@@ -81,7 +81,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Numero de Expediente'"
-                        v-bind:icon="'http://localhost:8000/svg/telstreet.svg'"
+                        v-bind:icon="$inertia.page.props.appName+'/svg/telstreet.svg'"
                         v-bind:name_correcto="'num_exp_correcto'"
                         v-bind:desactivar_input="$props.desactivar_num_exp"
                         v-bind:mostrar_correccion="$props.mostrar_num_exp_correccion"
@@ -155,7 +155,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Distrito Minero'"
-                        v-bind:icon="'http://localhost:8000/svg/numdistrito.svg'"
+                        v-bind:icon="$inertia.page.props.appName+'/svg/numdistrito.svg'"
                         v-bind:name_correcto="'distrito_correcto'"
                         v-bind:desactivar_input="$props.desactivar_distrito"
                         v-bind:mostrar_correccion="$props.mostrar_distrito_correccion"
@@ -210,7 +210,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Categoria de Manifestacion'"
-                        v-bind:icon="'http://localhost:8000/svg/minetest.svg'"
+                        v-bind:icon="$inertia.page.props.appName+'/svg/minetest.svg'"
                         v-bind:name_correccion="'categoria_correccion'"
                         v-bind:desactivar_input="$props.desactivar_categoria"
                         v-bind:mostrar_correccion="$props.mostrar_categoria_correccion"
@@ -272,7 +272,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Nombre de Mina'"
-                        v-bind:icon="'http://localhost:8000/svg/nommina.svg'"
+                        v-bind:icon="$inertia.page.props.appName+'/svg/nommina.svg'"
                         v-bind:name_correcto="'nombre_mina_correcto'"
                         v-bind:desactivar_input="$props.desactivar_nombre_mina"
                         v-bind:mostrar_correccion="$props.mostrar_nombre_mina_correccion"
@@ -323,7 +323,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Descripcion de la Mina'"
-                        v-bind:icon="'http://localhost:8000/svg/description.svg'"
+                        v-bind:icon="$inertia.page.props.appName+'/svg/description.svg'"
                         v-bind:name_correcto="'descripcion_mina_correcto'"
                          v-bind:desactivar_input="$props.desactivar_descripcion_mina"
                         v-bind:mostrar_correccion="$props.mostrar_descripcion_mina_correccion"
@@ -394,26 +394,6 @@
                         v-on:cambioarchivo="cambio_el_archivo_resolucion($event)"
                     >
                     </SubirArchivo>
-
-                    <!-- <InputFileGenerico v-if="form_pagina.categoria !== 'tercera'"
-                        v-bind:valor_input_props="$props.resolucion_concesion_minera"
-                        v-bind:valor_input_validacion="$props.resolucion_concesion_minera_validacion"
-                        v-bind:evualacion_correcto="$props.resolucion_concesion_minera_correcto"
-                        v-bind:valor_obs="$props.obs_resolucion_concesion_minera"
-                        v-bind:valor_valido_obs="$props.obs_resolucion_concesion_minera_valido"
-                        v-bind:evaluacion="autoridad_minera"
-                        v-bind:testing = "mostrar_testing"
-                        v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
-                        v-bind:icon="'http://localhost:8000/svg/pdf.svg'"
-                        v-bind:name_coreccion="'resolucion_correcto'"
-                        v-on:changevalido="update_resol_conce_valido($event)"
-                        v-on:changecorrecto="update_resol_conce_correcto($event)"
-                        v-on:changeobs="update_obs_resol_conce($event)"
-                        v-on:changeobsvalido="update_obs_resol_conce_valido($event)"
-                        v-on:changevalor="update_valor_resol_conce($event)"
-
-                    >
-                    </InputFileGenerico> -->
                     <div v-show="ayuda_local" >
                             <br>
                             <div  class="

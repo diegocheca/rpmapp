@@ -40,7 +40,17 @@ class HomeController extends Controller
             $mi_rol = 'admin';
         if(Auth::user()->hasRole('Productor'))
             $mi_rol = 'productor';
-        return Inertia::render('Dashboard', ['userType' => $mi_rol]);
+
+        $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
+        $dataChart = new \stdClass();
+        $axis = new \stdClass();
+        $axis->x = 'departamentos';
+        $axis->y = 'cantidad';
+        $dataChart->axis = $axis;
+        $dataChart->data = $departments;
+        $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
+
+        return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
     }
 
 

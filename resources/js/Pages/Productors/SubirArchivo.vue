@@ -94,8 +94,8 @@
         <div class="w-full md:w-1/2 px-3" v-else>
             <object :data=valor_input type="application/pdf" width="100%" height="500px">
                 <p>It appears you don't have a PDF plugin for this browser.
-                    No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
-                download the PDF file.</a></p>
+                    No biggie... you can <a :href="$inertia.page.props.appName+'/storage/files_formularios/'">Haciendo clik aquí</a>
+                </p>
             </object>
             <div class="flex items-center justify-center w-full">
                 <label class="flex flex-col rounded-lg border-4 border-dashed w-full h-60 p-10 group text-center">

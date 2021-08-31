@@ -234,52 +234,7 @@ export default {
         valor_evaluacion_correcto_local: this.$props.evualacion_correcto,
 
         obs_valida: this.$props.obs_valido_props,
-        /*minerales: [
-            {
-                id_mineral: '1',
-                id_varieadad: '1',
-                segunda_cat_mineral_explotado: '',
-                lugar_donde_se_enccuentra: '',
-                mostrar_lugar_segunda_cat: false,
-                mostrar_otro_mineral_segunda_cat: false,
-                otro_mineral_segunda_cat: '',
-                observacion:'esta es la obs 1',
-                clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-                clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
-                texto_validacion_text_area_presentacion: 'Forma de Presentacion Ccorrecta',
-                presentacion_valida:true,
-                evaluacion_correcto: true,
-                observacion_autoridad: '',
-                clase_text_area: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-                clase_text_evaluacion_de_text_area: 'text-red-500 text-xs italic',
-                texto_validacion_text_area : 'Observacion Correcta',
-                obs_valida: true,
-                lista_de_minerales_array:[],
-                thumb: 'http://localhost:8000/minerales/thumbs/3.png'
-            },
-            {
-                id_mineral: '2',
-                id_varieadad: '2',
-                segunda_cat_mineral_explotado: '',
-                lugar_donde_se_enccuentra: '',
-                mostrar_lugar_segunda_cat: false,
-                mostrar_otro_mineral_segunda_cat: false,
-                otro_mineral_segunda_cat: '',
-                observacion:'esta es la obs 2',
-                clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-                clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
-                texto_validacion_text_area_presentacion: 'Forma de Presentacion Ccorrecta',
-                presentacion_valida:true,
-                evaluacion_correcto: true,
-                observacion_autoridad: '',
-                clase_text_area:'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-                clase_text_evaluacion_de_text_area: 'text-red-500 text-xs italic',
-                texto_validacion_text_area : 'Observacion Correcta',
-                obs_valida: true,
-                lista_de_minerales_array:[],
-                thumb: 'http://localhost:8000/minerales/thumbs/3.png'
-            }
-        ],*/
+        
         minerales: this.$props.lista_de_minerales_pre_cargados,
         opcionesmineral : this.$props.lista_de_minerales,
         opcionesmineraluno : [],
@@ -415,7 +370,7 @@ export default {
                 texto_validacion_text_area : 'Observacion Correcta',
                 obs_valida: true,
                 lista_de_minerales_array:[],
-                thumb: 'http://localhost:8000/minerales/thumbs/3.png'
+                thumb: $inertia.page.props.appName+'/minerales/thumbs/3.png'
             };
         this.minerales.push( mineral_aux);
         this.actualizar_valores_padre();

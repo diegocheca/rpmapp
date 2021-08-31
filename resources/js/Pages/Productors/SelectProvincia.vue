@@ -6,11 +6,11 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img src="http://localhost:8000/svg/state.svg">
+                <img :src="$inertia.page.props.appName+'/svg/state.svg'">
                 </span>
             </div>
             <select 
-                class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
+                class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0  border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
                 id="leal_provincia"
                 name="leal_provincia"
                 v-model="leal_provincia"

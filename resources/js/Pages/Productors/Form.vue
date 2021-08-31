@@ -11,7 +11,9 @@
 					@click="mostrar_explicacion"
 				>
 					Necesita Ayuda?
+					
 				</button>
+				{{$inertia.page.props.appName}}
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
