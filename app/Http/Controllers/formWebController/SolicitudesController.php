@@ -20,16 +20,19 @@ use App\Models\formWebModels\formTipoSolicitud;
 
 class SolicitudesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('can:formweb.solicitudes.index')->only('index');
+        $this->middleware('can:formweb.solicitudes.edit')->only('edit', 'update');
+        $this->middleware('can:formweb.solicitudes.create')->only('create', 'store');
+        $this->middleware('can:formweb.solicitudes.destroy')->only('destroy');
+    }
+
     public function menu()
     {
         return view("formWeb.prueba");
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         // $solicitudes = formTipoSolicitud::with(['solicitud'])->get();
@@ -70,7 +73,7 @@ class SolicitudesController extends Controller
     }
     public function prueba()
     {
-       return Inertia::render('formWeb/formPrueba');
+        return Inertia::render('formWeb/formPrueba');
     }
 
     /**

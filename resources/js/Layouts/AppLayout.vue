@@ -29,6 +29,7 @@
                   Borradores
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="false"
                   :href="route('pagos.index')"
                   :active="route().current('pagos.index')"
                 >
@@ -41,18 +42,21 @@
                   Reinscripciones
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="false"
                   :href="route('productos.index')"
                   :active="route().current('productos.index')"
                 >
                   Producto
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="false"
                   :href="route('iiadias.index')"
                   :active="route().current('iiadias.index')"
                 >
                   IIASyDIAS
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="false"
                   :href="route('productores_minas.index')"
                   :active="route().current('productores_minas.index')"
                 >
@@ -65,8 +69,9 @@
                   Productores
                 </jet-nav-link>
                 <jet-nav-link
-                  :href="route('solicitudes.index')"
-                  :active="route().current('solicitudes.index')"
+                  v-if="false"
+                  :href="route('formweb.solicitudes.index')"
+                  :active="route().current('formweb.solicitudes.index')"
                 >
                   Formularios WEB
                 </jet-nav-link>
@@ -254,13 +259,13 @@
                     </span>
                   </template>
                   <template #content>
-                    <!-- Account Management -->
+                    <!-- Administración de cuentas -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                      Manage Account
+                      Administrar cuenta
                     </div>
 
                     <jet-dropdown-link :href="route('profile.show')">
-                      Profile
+                      Perfil de Usuario
                     </jet-dropdown-link>
                     <jet-dropdown-link :href="route('admin.users.index')">
                       Configuración
@@ -430,6 +435,7 @@
                 <span>Borradores</span>
               </a>
               <a
+                v-if="false"
                 :href="route('pagos.index')"
                 :active="route().current('pagos.index')"
                 class="
@@ -504,6 +510,7 @@
                 <span>Reinscripciones</span>
               </a>
               <a
+                v-if="false"
                 :href="route('productos.index')"
                 :active="route().current('productos.index')"
                 class="
@@ -541,6 +548,7 @@
                 <span>Producto</span>
               </a>
               <a
+                v-if="false"
                 :href="route('iiadias.index')"
                 :active="route().current('iiadias.index')"
                 class="
@@ -578,6 +586,7 @@
                 <span>IIASyDIAS</span>
               </a>
               <a
+                v-if="false"
                 :href="route('productores_minas.index')"
                 :active="route().current('productores_minas.index')"
                 class="
@@ -648,8 +657,9 @@
                 <span>Productores</span>
               </a>
               <a
-                :href="route('solicitudes.index')"
-                :active="route().current('solicitudes.index')"
+                v-if="false"
+                :href="route('formweb.solicitudes.index')"
+                :active="route().current('formweb.solicitudes.index')"
                 class="
                   relative
                   flex flex-row
@@ -852,24 +862,34 @@
               </a> -->
             </nav>
             <div class="flex-shrink-0 p-4">
-              <button class="flex items-center space-x-2">
-                <svg
-                  aria-hidden="true"
-                  class="w-6 h-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                  />
-                </svg>
-                <span>Logout</span>
-              </button>
+              <!-- Authentication -->
+              <form @submit.prevent="logout">
+                <!-- <jet-dropdown-link -->
+                <!-- as="button" -->
+                <!-- class="flex items-center space-x-2" -->
+                <!-- > -->
+
+                <!-- <span>Salir</span> -->
+                <!-- </jet-dropdown-link> -->
+                <button class="flex items-center space-x-2">
+                  <svg
+                    aria-hidden="true"
+                    class="w-6 h-6"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                  </svg>
+                  <span>Salir</span>
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -927,14 +947,12 @@ export default {
     JetResponsiveNavLink,
     JetAuthenticationCardLogo,
   },
-
   data() {
     return {
       isSidebarOpen: false,
       showingNavigationDropdown: false,
     };
   },
-
   methods: {
     // switchToTeam(team) {
     //     this.$inertia.put(
@@ -947,7 +965,6 @@ export default {
     //         }
     //     );
     // },
-
     logout() {
       this.$inertia.post(route("logout"));
     },

@@ -1,324 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="Bootstrap, Landing page, Template, Business, Service">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Grayrids">
-    <title>RPM - SJ</title>
-    <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="{{url('slick/img/2.png')}}" type="image/png">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{url('slick/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url('slick/css/animate.css')}}">
-    <link rel="stylesheet" href="{{url('slick/css/LineIcons.css')}}">
-    <link rel="stylesheet" href="{{url('slick/css/owl.carousel.css')}}">
-    <link rel="stylesheet" href="{{url('slick/css/owl.theme.css')}}">
-    <link rel="stylesheet" href="{{url('slick/css/magnific-popup.css')}}">
-    <link rel="stylesheet" href="{{url('slick/css/nivo-lightbox.css')}}">
-    <link rel="stylesheet" href="{{url('slick/css/main.css')}}">
-    <link rel="stylesheet" href="{{url('slick/css/responsive.css')}}">
 
-  </head>
-  
-  <body>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="keywords" content="Bootstrap, Landing page, Template, Business, Service">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="author" content="Grayrids">
+  <title>RPM - SJ</title>
+  <!--====== Favicon Icon ======-->
+  <link rel="shortcut icon" href="{{url('slick/img/2.png')}}" type="image/png">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{{url('slick/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url('slick/css/animate.css')}}">
+  <link rel="stylesheet" href="{{url('slick/css/LineIcons.css')}}">
+  <link rel="stylesheet" href="{{url('slick/css/owl.carousel.css')}}">
+  <link rel="stylesheet" href="{{url('slick/css/owl.theme.css')}}">
+  <link rel="stylesheet" href="{{url('slick/css/magnific-popup.css')}}">
+  <link rel="stylesheet" href="{{url('slick/css/nivo-lightbox.css')}}">
+  <link rel="stylesheet" href="{{url('slick/css/main.css')}}">
+  <link rel="stylesheet" href="{{url('slick/css/responsive.css')}}">
 
-    <!-- Header Section Start -->
-    <header id="home" class="hero-area">    
-      <div class="overlay">
-        <span></span>
-        <span></span>
-      </div>
-      <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
-        <div class="container">
-          <a href="index.html" class="navbar-brand"><img src="{{url('slick/img/logo.png')}}" alt="" width="65%"></a>       
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="lni-menu"></i>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto w-100 justify-content-end">
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#home">Incio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#services">Datos</a>
-              </li>  
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#features">Funciones</a>
-              </li>                            
-              <!-- <li class="nav-item">
+</head>
+
+<body>
+  <!-- Header Section Start -->
+  <header id="home" class="hero-area">
+    <div class="overlay">
+      <span></span>
+      <span></span>
+    </div>
+    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+      <div class="container">
+        <a href="index.html" class="navbar-brand"><img src="{{url('slick/img/logo.png')}}" alt="" width="65%"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="lni-menu"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto w-100 justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#home">Incio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#services">Datos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#features">Funciones</a>
+            </li>
+            <!-- <li class="nav-item">
                 <a class="nav-link page-scroll" href="#showcase">Showcase</a>
               </li>        -->
-             <!--  <li class="nav-item">
+            <!--  <li class="nav-item">
                 <a class="nav-link page-scroll" href="#pricing">Pricing</a>
-              </li>   -->   
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#team">Oficinas</a>
-              </li> 
-              <li class="nav-item">
+              </li>   -->
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#team">Oficinas</a>
+            </li>
+            <!-- <li class="nav-item">
                 <a class="nav-link page-scroll" href="#blog">Blog</a>
-              </li>  
-              <li class="nav-item">
-                <a class="nav-link page-scroll" href="#contact">Contacto</a>
-              </li> 
-              <li class="nav-item">
-                <a class="btn btn-singin" href="{{url('admin')}}">Ingresar</a>
-              </li>
-            </ul>
+              </li>   -->
+            <li class="nav-item">
+              <a class="nav-link page-scroll" href="#contact">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-singin" href="{{url('login')}}">Ingresar</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row space-100">
+        <div class="col-lg-6 col-md-12 col-xs-12">
+          <div class="contents">
+            <h2 class="head-title">Registro de Productores Mineros ( RPM )</h2>
+            <p>Registro de productores Mineros ante el Ministerio de Mineria de la Provincia de San Juan , Argentina.</p>
+            <div class="header-button">
+              <a href="{{url('login')}}" class="btn btn-border-filled">Entrar</a>
+              <a href="#contact" class="btn btn-border page-scroll">Contactanos</a>
+            </div>
           </div>
         </div>
-      </nav>  
-      <div class="container">      
-        <div class="row space-100">
-          <div class="col-lg-6 col-md-12 col-xs-12">
-            <div class="contents">
-              <h2 class="head-title">Registro de Productores Mineros ( RPM )</h2>
-              <p>Registro de productores Mineros ante el Ministerio de Mineria de la Provincia de San Juan , Argentina.</p>
-              <div class="header-button">
-                <a href="{{url('admin')}}" class="btn btn-border-filled">Entrar</a>
-                <a href="#contact" class="btn btn-border page-scroll">Contactanos</a>
+        <div class="col-lg-6 col-md-12 col-xs-12 p-0">
+          <div class="intro-img">
+            <img src="{{url('slick/img/intro.png')}}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Header Section End -->
+
+
+  <!-- Services Section Start -->
+  <section id="services" class="section">
+    <div class="container">
+
+      <div class="row">
+        <!-- Start Col -->
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="services-item text-center">
+            <img src="{{url('slick/img/home/gobierno.svg')}}" class="img-fluid" alt="" width="35%" height="50%">
+            <h4>Gestionado por Minería</h4>
+            <p>El sistema es avaldo por el ministario de Minería de San Juan.</p>
+          </div>
+        </div>
+        <!-- End Col -->
+        <!-- Start Col -->
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="services-item text-center">
+            <img src="{{url('slick/img/home/update.svg')}}" class="img-fluid" alt="" width="35%" height="55%">
+            <h4>Información Actualizada</h4>
+            <p>Siempre se modifica algún dato, este se ve reflejado automáticamente en todos usuarios de forma inmediata.</p>
+          </div>
+        </div>
+        <!-- End Col -->
+        <!-- Start Col -->
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="services-item text-center">
+            <img src="{{url('slick/img/home/candado.svg')}}" class="img-fluid" alt="" width="30%" height="50%">
+
+            <h4>Seguro</h4>
+            <p>El sistema para la administración de productores mineros ha sido diseñado respetando los estándares de seguridad más exigentes.</p>
+          </div>
+        </div>
+        <!-- End Col -->
+
+      </div>
+    </div>
+  </section>
+  <!-- Services Section End -->
+  <!-- Business Plan Section Start -->
+  <section id="business-plan">
+    <div class="container">
+
+      <div class="row">
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-12 pl-0 pt-70 pr-5">
+          <div class="business-item-img">
+            <img src="{{url('slick/img/business/carrito_tirando.jpg')}}" class="img-fluid" alt="">
+          </div>
+        </div>
+        <!-- End Col -->
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-12 pl-4">
+          <div class="business-item-info">
+            <h3>Mayor control de Recursos</h3>
+            <p>El sistema de RPM tiene por objetivo brindar beneficios a la ayuda a detener la mineria clandestina, a la vez que se disponen datos de manera abierta para ser accedida por todos.</p>
+
+            <!-- <a class="btn btn-common" href="#">download</a> -->
+          </div>
+        </div>
+        <!-- End Col -->
+
+      </div>
+    </div>
+  </section>
+  <!-- Business Plan Section End -->
+
+  <!-- Business Plan Section Start -->
+  <section id="business-plan">
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-12 pl-4">
+          <div class="business-item-info">
+            <h3>Cuidado del Medio Ambiente</h3>
+            <p>El sistema de RPM ayuda a detener la minería clandestina, mientras que ayuda a la comunidad evitando contaminaciónes y residuos nosivos para las personas y animales.</p>
+
+            <!-- <a class="btn btn-common" href="#">download</a> -->
+          </div>
+        </div>
+        <!-- End Col -->
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-12 pl-0 pt-70 pr-5">
+          <div class="business-item-img">
+            <img src="{{url('slick/img/business/business-img.png')}}" class="img-fluid" alt="">
+          </div>
+        </div>
+        <!-- End Col -->
+
+
+      </div>
+    </div>
+  </section>
+  <!-- Business Plan Section End -->
+
+
+
+  <!-- Cool Fetatures Section Start -->
+  <section id="features" class="section">
+    <div class="container">
+      <!-- Start Row -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="features-text section-header text-center">
+            <div>
+              <h2 class="section-title">Funciones de RPM</h2>
+              <div class="desc-text">
+                <p>Entre las caracteristicas del sistema de Registro de Productores Mineros, se encuentran: .</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-6 col-md-12 col-xs-12 p-0">
-            <div class="intro-img">
-              <img src="{{url('slick/img/intro.png')}}" alt="">
-            </div>            
-          </div>
-        </div> 
-      </div>             
-    </header>
-    <!-- Header Section End --> 
-
-
-    <!-- Services Section Start -->
-    <section id="services" class="section">
-      <div class="container">
-
-        <div class="row">
-          <!-- Start Col -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="services-item text-center">
-              <img src="{{url('slick/img/home/gobierno.svg')}}" class="img-fluid" alt="" width="35%" height="50%"> 
-              <h4>Gestionado por Minería</h4>
-              <p>El sistema es avaldo por el ministario de Minería de San Juan.</p>
-            </div>
-          </div>
-          <!-- End Col -->
-          <!-- Start Col -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="services-item text-center">
-              <img src="{{url('slick/img/home/update.svg')}}" class="img-fluid" alt="" width="35%" height="55%"> 
-              <h4>Información Actualizada</h4>
-              <p>Siempre se modifica algún dato, este se ve reflejado automáticamente en todos usuarios de forma inmediata.</p>
-            </div>
-          </div>
-          <!-- End Col -->
-          <!-- Start Col -->
-          <div class="col-lg-4 col-md-6 col-xs-12">
-            <div class="services-item text-center">
-              <img src="{{url('slick/img/home/candado.svg')}}" class="img-fluid" alt="" width="30%" height="50%"> 
-              
-              <h4>Seguro</h4>
-              <p>El sistema para la administración de productores mineros ha sido diseñado respetando los estándares de seguridad más exigentes.</p>
-            </div>
-          </div>
-          <!-- End Col -->
-
         </div>
+
       </div>
-    </section>
-    <!-- Services Section End -->
-
-
-
-    <!-- Business Plan Section Start -->
-    <section id="business-plan">
-      <div class="container">
-
-        <div class="row">
-          <!-- Start Col -->
-          <div class="col-lg-6 col-md-12 pl-0 pt-70 pr-5">
-            <div class="business-item-img">
-              <img src="{{url('slick/img/business/carrito_tirando.jpg')}}" class="img-fluid" alt="">
+      <!-- End Row -->
+      <!-- Start Row -->
+      <div class="row featured-bg">
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+          <!-- Start Fetatures -->
+          <div class="feature-item featured-border1">
+            <div class="feature-icon float-left">
+              <img src="{{url('slick/img/features/oro-minero.svg')}}" class="img-fluid" alt="">
+            </div>
+            <div class="feature-info float-left">
+              <h4>Registro de Minerales</h4>
+              <p>Todos los productores, sin importar, cual <br> sea el tipo de mineral que trabaje se debe,<br> inscribir en el sistema.</p>
             </div>
           </div>
-          <!-- End Col -->
-          <!-- Start Col -->
-          <div class="col-lg-6 col-md-12 pl-4">
-            <div class="business-item-info">
-              <h3>Mayor control de Recursos</h3>
-              <p>El sistema de RPM tiene por objetivo brindar beneficios a la ayuda a detener la mineria clandestina, a la vez que se disponen datos de manera abierta para ser accedida por todos.</p>
-
-              <!-- <a class="btn btn-common" href="#">download</a> -->
-            </div>
-          </div>
-          <!-- End Col -->
-
+          <!-- End Fetatures -->
         </div>
+        <!-- End Col -->
+
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+          <!-- Start Fetatures -->
+          <div class="feature-item featured-border2">
+            <div class="feature-icon float-left">
+              <img src="{{url('slick/img/features/carrito-minero.svg')}}" class="img-fluid" alt="">
+            </div>
+            <div class="feature-info float-left">
+              <h4>Gestión de datos</h4>
+              <p>El sistema aporta facilidad para la administración <br> de los productores locales, disponiendo los datos <br> de contacto, y ubicación de sus oficinas.</p>
+            </div>
+          </div>
+          <!-- End Fetatures -->
+        </div>
+        <!-- End Col -->
+
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+          <!-- Start Fetatures -->
+          <div class="feature-item featured-border1">
+            <div class="feature-icon float-left">
+              <img src="{{url('slick/img/features/plano-minero.svg')}}" class="img-fluid" alt="">
+            </div>
+            <div class="feature-info float-left">
+              <h4>Mapa Online</h4>
+              <p>RPM cuenta con una visualizacion de datos en <br> un mapa virtual que garantiza la fácil comprensión. <br>Además los datos son públicos.</p>
+            </div>
+          </div>
+          <!-- End Fetatures -->
+        </div>
+        <!-- End Col -->
+
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+          <!-- Start Fetatures -->
+          <div class="feature-item featured-border2">
+            <div class="feature-icon float-left">
+              <img src="{{url('slick/img/features/mineral-minero.svg')}}" class="img-fluid" alt="">
+            </div>
+            <div class="feature-info float-left">
+              <h4>Trasnparencia</h4>
+              <p>El sistema contribuye a sumar transparancia en <br> el manejo de la extracción de minerales <br>y sus cantidades, cuidando el medio ambiente.</p>
+            </div>
+          </div>
+          <!-- End Fetatures -->
+        </div>
+        <!-- End Col -->
+
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+          <!-- Start Fetatures -->
+          <div class="feature-item featured-border3">
+            <div class="feature-icon float-left">
+              <img src="{{url('slick/img/features/casco-minero.svg')}}" class="img-fluid" alt="">
+            </div>
+            <div class="feature-info float-left">
+              <h4>Inclusión de Productores</h4>
+              <p>El sistema esta pensado para <br> incluir a todos los productores mineros.</p>
+            </div>
+          </div>
+          <!-- End Fetatures -->
+        </div>
+        <!-- End Col -->
+
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-6 col-xs-12 p-0">
+          <!-- Start Fetatures -->
+          <div class="feature-item">
+            <div class="feature-icon float-left">
+              <img src="{{url('slick/img/features/tratamiento-minero.svg')}}" class="img-fluid" alt="">
+            </div>
+            <div class="feature-info float-left">
+              <h4>Mayor Control</h4>
+              <p>Se espera poder contar con un minucioso control<br> del proceso de extracción de los minerales.</p>
+            </div>
+          </div>
+          <!-- End Fetatures -->
+        </div>
+        <!-- End Col -->
+
+
       </div>
-    </section>
-    <!-- Business Plan Section End -->
-
-    <!-- Business Plan Section Start -->
-    <section id="business-plan">
-      <div class="container">
-
-        <div class="row">
-          
-          <!-- Start Col -->
-          <div class="col-lg-6 col-md-12 pl-4">
-            <div class="business-item-info">
-              <h3>Cuidado del Medio Ambiente</h3>
-              <p>El sistema de RPM ayuda a detener la minería clandestina, mientras que ayuda a la comunidad evitando contaminaciónes y residuos nosivos para las personas y animales.</p>
-
-              <!-- <a class="btn btn-common" href="#">download</a> -->
-            </div>
-          </div>
-          <!-- End Col -->
-          <!-- Start Col -->
-          <div class="col-lg-6 col-md-12 pl-0 pt-70 pr-5">
-            <div class="business-item-img">
-              <img src="{{url('slick/img/business/business-img.png')}}" class="img-fluid" alt="">
-            </div>
-          </div>
-          <!-- End Col -->
+      <!-- End Row -->
+    </div>
+  </section>
+  <!-- Cool Fetatures Section End -->
 
 
-        </div>
-      </div>
-    </section>
-    <!-- Business Plan Section End -->
-
-
-
-    <!-- Cool Fetatures Section Start -->
-    <section id="features" class="section">
-      <div class="container">
-        <!-- Start Row -->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="features-text section-header text-center">  
-              <div>   
-                <h2 class="section-title">Funciones de RPM</h2>
-                <div class="desc-text">
-                  <p>Entre las caracteristicas del sistema de Registro de Productores Mineros, se encuentran: .</p>
-                </div>
-              </div> 
-            </div>
-          </div>
-
-        </div>
-        <!-- End Row -->
-        <!-- Start Row -->
-        <div class="row featured-bg">
-         <!-- Start Col -->
-          <div class="col-lg-6 col-md-6 col-xs-12 p-0">
-             <!-- Start Fetatures -->
-            <div class="feature-item featured-border1">
-               <div class="feature-icon float-left">
-                  <img src="{{url('slick/img/features/oro-minero.svg')}}" class="img-fluid" alt="">
-               </div>
-               <div class="feature-info float-left">
-                 <h4>Registro de Minerales</h4>
-                 <p>Todos los productores, sin importar, cual  <br> sea el tipo de mineral que trabaje se debe,<br> inscribir en el sistema.</p>
-               </div>
-            </div>
-            <!-- End Fetatures -->
-          </div>
-           <!-- End Col -->
-          
-         <!-- Start Col -->
-          <div class="col-lg-6 col-md-6 col-xs-12 p-0">
-             <!-- Start Fetatures -->
-            <div class="feature-item featured-border2">
-               <div class="feature-icon float-left">
-                <img src="{{url('slick/img/features/carrito-minero.svg')}}" class="img-fluid" alt="">
-               </div>
-               <div class="feature-info float-left">
-                 <h4>Gestión de datos</h4>
-                 <p>El sistema aporta facilidad para la administración <br> de los productores locales, disponiendo los datos <br> de contacto, y ubicación de sus oficinas.</p>
-               </div>
-            </div>
-            <!-- End Fetatures -->
-          </div>
-           <!-- End Col -->
-          
-         <!-- Start Col -->
-          <div class="col-lg-6 col-md-6 col-xs-12 p-0">
-             <!-- Start Fetatures -->
-            <div class="feature-item featured-border1">
-               <div class="feature-icon float-left">
-                <img src="{{url('slick/img/features/plano-minero.svg')}}" class="img-fluid" alt="">
-               </div>
-               <div class="feature-info float-left">
-                 <h4>Mapa Online</h4>
-                 <p>RPM cuenta con una visualizacion de datos en <br> un mapa  virtual que garantiza la fácil comprensión. <br>Además los datos son públicos.</p>
-               </div>
-            </div>
-            <!-- End Fetatures -->
-          </div>
-           <!-- End Col -->
-          
-         <!-- Start Col -->
-          <div class="col-lg-6 col-md-6 col-xs-12 p-0">
-             <!-- Start Fetatures -->
-            <div class="feature-item featured-border2">
-               <div class="feature-icon float-left">
-                <img src="{{url('slick/img/features/mineral-minero.svg')}}" class="img-fluid" alt="">
-               </div>
-               <div class="feature-info float-left">
-                 <h4>Trasnparencia</h4>
-                 <p>El sistema contribuye a sumar transparancia en <br> el manejo de la extracción de minerales <br>y sus cantidades, cuidando el medio ambiente.</p>
-               </div>
-            </div>
-            <!-- End Fetatures -->
-          </div>
-           <!-- End Col -->
-          
-         <!-- Start Col -->
-          <div class="col-lg-6 col-md-6 col-xs-12 p-0">
-             <!-- Start Fetatures -->
-            <div class="feature-item featured-border3">
-               <div class="feature-icon float-left">
-                <img src="{{url('slick/img/features/casco-minero.svg')}}" class="img-fluid" alt="">
-               </div>
-               <div class="feature-info float-left">
-                 <h4>Inclusión de Productores</h4>
-                 <p>El sistema esta pensado para  <br> incluir a todos los productores mineros.</p>
-               </div>
-            </div>
-            <!-- End Fetatures -->
-          </div>
-           <!-- End Col -->
-          
-         <!-- Start Col -->
-          <div class="col-lg-6 col-md-6 col-xs-12 p-0">
-             <!-- Start Fetatures -->
-            <div class="feature-item">
-               <div class="feature-icon float-left">
-                <img src="{{url('slick/img/features/tratamiento-minero.svg')}}" class="img-fluid" alt="">
-               </div>
-               <div class="feature-info float-left">
-                 <h4>Mayor Control</h4>
-                 <p>Se espera poder contar con un minucioso control<br> del proceso de extracción de los minerales.</p>
-               </div>
-            </div>
-            <!-- End Fetatures -->
-          </div>
-           <!-- End Col -->
-          
-
-        </div>
-        <!-- End Row -->
-      </div>
-    </section>
-    <!-- Cool Fetatures Section End --> 
-
-
-    <!-- Recent Showcase Section Start ->
+  <!-- Recent Showcase Section Start ->
     <section id="showcase">
       <div class="container-fluid right-position">
         <!-- Start Row ->
@@ -734,9 +731,9 @@
         <!-- End Row ->
       </div>
     </section>
-    <!-- Recent Showcase Section End --> 
+    <!-- Recent Showcase Section End -->
 
-    <!-- Our Pricing Plan Section Start ->
+  <!-- Our Pricing Plan Section Start ->
     <section id="pricing" class="section">
       <div class="container">
         <!-- Start Row ->
@@ -825,9 +822,9 @@
         <!-- End Row ->
       </div>
     </section>
-    <!-- Our Pricing Plan Section End --> 
+    <!-- Our Pricing Plan Section End -->
 
-    <!-- Client Testimoninals Section Start ->
+  <!-- Client Testimoninals Section Start ->
     <section id="testimonial" class="section">
       <div class="container right-position">
         <!-- Start Row ->
@@ -932,320 +929,227 @@
         <!-- End Row ->
       </div>
     </section>
-    <!-- Client Testimoninals Section End --> 
+    <!-- Client Testimoninals Section End -->
 
 
-    <!-- Team section Start -->
-    <section id="team" class="section">
-      <div class="container">
-        <!-- Start Row -->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="team-text section-header text-center">  
-              <div>   
-                <h2 class="section-title">Departamentos</h2>
-                <div class="desc-text">
-                  <p>Estos son los departamento y direccion que componen el ministrerio de Minería</p>  
-                </div>
-              </div> 
+  <!-- Team section Start -->
+  <section id="team" class="section">
+    <div class="container">
+      <!-- Start Row -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="team-text section-header text-center">
+            <div>
+              <h2 class="section-title">Departamentos</h2>
+              <div class="desc-text">
+                <p>Estos son los departamento y direccion que componen el ministrerio de Minería</p>
+              </div>
             </div>
           </div>
-
         </div>
-        <!-- End Row -->
-        <!-- Start Row -->
-        <div class="row">
-          <!-- Start Col -->
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <div class="team-thumb">
-                <img src="{{url('slick/img/team/oficina1.svg')}}" class="img-fluid" alt="" width="263" height="310">
-              </div>
 
-              <div class="team-details">
-              <div class="team-social-icons">
-                  <ul class="social-list">
-                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                    <li><a href="#"><i class="lni-google-plus"></i></a></li>
-                  </ul>
-                </div> 
-                <div class="team-inner text-center">
-                  <h5 class="team-title">Oficina de Mesa de Entrada</h5>
-                  <p>Tel: 4302525</p>
-                  <p>email: mesaentrada@sanjuan.gov.ar</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Start Col -->
- 
-          <!-- Start Col -->
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <div class="team-thumb">
-                <img src="{{url('slick/img/team/oficina2.svg')}}" class="img-fluid" alt="" width="263" height="310">
-              </div>
-
-              <div class="team-details">
-              <div class="team-social-icons">
-                  <ul class="social-list">
-                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                    <li><a href="#"><i class="lni-google-plus"></i></a></li>
-                  </ul>
-                </div>
-                <div class="team-inner text-center">
-                  <h5 class="team-title">Oficina Contable</h5>
-                  <p>Tel: 4302525</p>
-                  <p>email: contable@sanjuan.gov.ar</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Start Col -->
- 
-          <!-- Start Col -->
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <div class="team-thumb">
-                <img src="{{url('slick/img/team/oficina3.svg')}}" class="img-fluid" alt="" width="263" height="310">
-              </div>
-
-              <div class="team-details">
-              <div class="team-social-icons">
-                  <ul class="social-list">
-                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                    <li><a href="#"><i class="lni-google-plus"></i></a></li>
-                  </ul>
-                </div>
-                <div class="team-inner text-center">
-                  <h5 class="team-title">Oficina Director</h5>
-                  <p>Tel: 4302525</p>
-                  <p>email: directordgr@sanjuan.gov.ar</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Start Col -->
- 
-          <!-- Start Col -->
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="single-team">
-              <div class="team-thumb">
-                <img src="{{url('slick/img/team/oficina4.svg')}}" class="img-fluid" alt="" width="263" height="310">
-              </div>
-
-              <div class="team-details">
-                <div class="team-social-icons">
-                  <ul class="social-list">
-                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                    <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
-                    <li><a href="#"><i class="lni-google-plus"></i></a></li>
-                  </ul>
-                </div>
-                <div class="team-inner text-center">
-                  <h5 class="team-title">Oficina Letrada</h5>
-                  <p>Tel: 4302525</p>
-                  <p>email: letrada@sanjuan.gov.ar</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Start Col -->
- 
-
-        </div>
-        <!-- End Row -->
       </div>
-    </section>
-    <!-- Team section End -->
+      <!-- End Row -->
+      <!-- Start Row -->
+      <div class="row">
+        <!-- Start Col -->
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="single-team">
+            <div class="team-thumb">
+              <img src="{{url('slick/img/team/oficina1.svg')}}" class="img-fluid" alt="" width="263" height="310">
+            </div>
 
-
-    <!-- Blog Section -->
-    <section id="blog" class="section">
-      <!-- Container Starts -->
-      <div class="container">
-        <!-- Start Row -->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="blog-text section-header text-center">  
-              <div>   
-                <h2 class="section-title">Información y Posts</h2>
-                <div class="desc-text">
-                  <p>En esta sección se muestran links a documentacion con información de utilidad. Por ejemplo: manueal de usuario del sisitema, guia de tramites, codigo de mineria, etc.</p>
-                </div>
-              </div> 
+            <div class="team-details">
+              <div class="team-social-icons">
+                <ul class="social-list">
+                  <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-google-plus"></i></a></li>
+                </ul>
+              </div>
+              <div class="team-inner text-center">
+                <h5 class="team-title">Oficina de Mesa de Entrada</h5>
+                <p>Tel: 4302525</p>
+                <p>email: mesaentrada@sanjuan.gov.ar</p>
+              </div>
             </div>
           </div>
-
         </div>
-        <!-- End Row -->
-        <!-- Start Row -->
-        <div class="row">
-          <!-- Start Col -->
-          <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="{{url('slick/img/blog/01.svg')}}" class="img-fluid" width="200px" height="140px" alt="">
-                </a>             
-              </div>
-              <div class="blog-item-text"> 
-                <h3><a href="single-post.html">Código Minero de la Prov.<br>de San Juan</a></h3>
-                <p>Este es un documento de acceso público. Aquí podrás conocer información relevante para presentar una solicitud de alta de productor minero.</p>
-                <a href="" class="read-more">15 Min de lectura</a>
-              </div>
-              <div class="author">
-                <span class="name"><i class="lni-user"></i><a href="#">Subido por P.N.U.D.</a></span>
-                <span class="date float-right"><i class="lni-calendar"></i><a href="#">10 de abril del 2021</a></span>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
-          <!-- End Col -->
-          <!-- Start Col -->
-          <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="{{url('slick/img/blog/02.png')}}" class="img-fluid" alt="">
-                </a>             
-              </div>
-              <div class="blog-item-text"> 
-                <h3><a href="single-post.html">Manual de usuario </a></h3>
-                <p>En este documento se encuentran los pasos y sus explicaciones para presentar el formulario de alta de productores mineros.</p>
-                <a href="" class="read-more">5 Min de lectura</a>
-              </div>
-              <div class="author">
-                <span class="name"><i class="lni-user"></i><a href="#">Subido por P.N.U.D.</a></span>
-                <span class="date float-right"><i class="lni-calendar"></i><a href="#">10 de abril del 2021</a></span>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
-          <!-- End Col -->
-          <!-- Start Col -->
-          <div class="col-lg-4 col-md-6 col-xs-12 blog-item">
-            <!-- Blog Item Starts -->
-            <div class="blog-item-wrapper">
-              <div class="blog-item-img">
-                <a href="single-post.html">
-                  <img src="{{url('slick/img/blog/03.svg')}}" class="img-fluid" alt="">
-                </a>             
-              </div>
-              <div class="blog-item-text"> 
-                <h3><a href="single-post.html">Declaración de <br>Impacto Ambiental</a></h3>
-                <p>En este árticulo se hace refernecia a los aspectos más importantes de la Declaración de Impacto Ambiental (D.I.A.).</p>
-                <a href="" class="read-more">5 Min de lectura</a>
-              </div>
-              <div class="author">
-                <span class="name"><i class="lni-user"></i><a href="#">Subido por P.U.N.D.</a></span>
-                <span class="date float-right"><i class="lni-calendar"></i><a href="#">10 de april del 2021</a></span>
-              </div>
-            </div>
-            <!-- Blog Item Wrapper Ends-->
-          </div>
-          <!-- End Col -->
+        <!-- Start Col -->
 
+        <!-- Start Col -->
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="single-team">
+            <div class="team-thumb">
+              <img src="{{url('slick/img/team/oficina2.svg')}}" class="img-fluid" alt="" width="263" height="310">
+            </div>
+
+            <div class="team-details">
+              <div class="team-social-icons">
+                <ul class="social-list">
+                  <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-google-plus"></i></a></li>
+                </ul>
+              </div>
+              <div class="team-inner text-center">
+                <h5 class="team-title">Oficina Contable</h5>
+                <p>Tel: 4302525</p>
+                <p>email: contable@sanjuan.gov.ar</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- End Row -->
+        <!-- Start Col -->
+
+        <!-- Start Col -->
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="single-team">
+            <div class="team-thumb">
+              <img src="{{url('slick/img/team/oficina3.svg')}}" class="img-fluid" alt="" width="263" height="310">
+            </div>
+
+            <div class="team-details">
+              <div class="team-social-icons">
+                <ul class="social-list">
+                  <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-google-plus"></i></a></li>
+                </ul>
+              </div>
+              <div class="team-inner text-center">
+                <h5 class="team-title">Oficina Director</h5>
+                <p>Tel: 4302525</p>
+                <p>email: directordgr@sanjuan.gov.ar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Start Col -->
+
+        <!-- Start Col -->
+        <div class="col-lg-3 col-md-6 col-xs-12">
+          <div class="single-team">
+            <div class="team-thumb">
+              <img src="{{url('slick/img/team/oficina4.svg')}}" class="img-fluid" alt="" width="263" height="310">
+            </div>
+
+            <div class="team-details">
+              <div class="team-social-icons">
+                <ul class="social-list">
+                  <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-twitter-filled"></i></a></li>
+                  <li><a href="#"><i class="lni-google-plus"></i></a></li>
+                </ul>
+              </div>
+              <div class="team-inner text-center">
+                <h5 class="team-title">Oficina Letrada</h5>
+                <p>Tel: 4302525</p>
+                <p>email: letrada@sanjuan.gov.ar</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Start Col -->
+
+
       </div>
-    </section>
-    <!-- blog Section End -->
+      <!-- End Row -->
+    </div>
+  </section>
+  <!-- Team section End -->
 
-    <!-- Contact Us Section -->
-    <section id="contact" class="section">
-      <!-- Container Starts -->
-      <div class="container">
-        <!-- Start Row -->
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="contact-text section-header text-center">  
-              <div>   
-                <h2 class="section-title">Contacto</h2>
-                <div class="desc-text">
-                  <p>Por favor, realizanos cualquier pregunta , inquietud o sugerencia</p>  
-                  <p>A la brevedad te responderemos.</p>
-                </div>
-              </div> 
+
+
+  <!-- Contact Us Section -->
+  <section id="contact" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+      <!-- Start Row -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="contact-text section-header text-center">
+            <div>
+              <h2 class="section-title">Contacto</h2>
+              <div class="desc-text">
+                <p>Por favor, realizanos cualquier pregunta , inquietud o sugerencia</p>
+                <p>A la brevedad te responderemos.</p>
+              </div>
             </div>
           </div>
-
         </div>
-        <!-- End Row -->
-        <!-- Start Row -->
+
+      </div>
+      <!-- End Row -->
+      <!-- Start Row -->
 
 
-          
 
 
 
 
-        <div class="row">
-          <!-- Start Col -->
-          <div class="col-lg-6 col-md-12">
-            @if(Session::has('success'))
-            <div class="alert alert-success">
-              {{ Session::get('success') }}
-            </div>
+
+      <div class="row">
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-12">
+          @if(Session::has('success'))
+          <div class="alert alert-success">
+            {{ Session::get('success') }}
+          </div>
           @endif
           {!! Form::open(['route'=>'contact.store']) !!}
           <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-              {!! Form::label('Name:') !!}
-              {!! Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
-          <span class="text-danger">{{ $errors->first('name') }}</span>
+            {!! Form::label('Name:') !!}
+            {!! Form::text('name', old('name'), ['class'=>'form-control', 'placeholder'=>'Nombre']) !!}
+            <span class="text-danger">{{ $errors->first('name') }}</span>
           </div>
           <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-              {!! Form::label('Email:') !!}
-              {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Email']) !!}
-          <span class="text-danger">{{ $errors->first('email') }}</span>
+            {!! Form::label('Email:') !!}
+            {!! Form::text('email', old('email'), ['class'=>'form-control', 'placeholder'=>'Email']) !!}
+            <span class="text-danger">{{ $errors->first('email') }}</span>
           </div>
           <div class="form-group {{ $errors->has('message') ? 'has-error' : '' }}">
-              {!! Form::label('Message:') !!}
-              {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'placeholder'=>'Mensaje']) !!}
-          <span class="text-danger">{{ $errors->first('message') }}</span>
+            {!! Form::label('Message:') !!}
+            {!! Form::textarea('message', old('message'), ['class'=>'form-control', 'placeholder'=>'Mensaje']) !!}
+            <span class="text-danger">{{ $errors->first('message') }}</span>
           </div>
           {{-- <div class="form-group">
             <button class="btn btn-success">Enviar</button>
           </div> --}}
           <div class="submit-button">
             <button class="btn btn-common" style="width:100%" id="submit" type="submit">Enviar</button>
-            <div id="msgSubmit" class="h3 hidden"></div> 
-            <div class="clearfix"></div> 
+            <div id="msgSubmit" class="h3 hidden"></div>
+            <div class="clearfix"></div>
           </div>
         </div>
 
-          {!! Form::close() !!}
+        {!! Form::close() !!}
         <!-- End Row -->
-          <!-- End Col -->
-          <!-- Start Col -->
-          <!-- End Col -->
-          <!-- Start Col -->
-          <div class="col-lg-6 col-md-12">
-            <div class="contact-img">
-              <img src="{{url('slick/img/contact/contact-us-rpm.svg')}}" width="100%" height="80%" class="img-fluid" alt="">
-            </div>
+        <!-- End Col -->
+        <!-- Start Col -->
+        <!-- End Col -->
+        <!-- Start Col -->
+        <div class="col-lg-6 col-md-12">
+          <div class="contact-img">
+            <img src="{{url('slick/img/contact/contact-us-rpm.svg')}}" width="100%" height="80%" class="img-fluid" alt="">
           </div>
-          <!-- End Col -->
-          <!-- Start Col -->
-          <!-- End Col -->
-
         </div>
-        <!-- End Row -->
+        <!-- End Col -->
+        <!-- Start Col -->
+        <!-- End Col -->
+
       </div>
-    </section>
-    <!-- Contact Us Section End -->
+      <!-- End Row -->
+    </div>
+  </section>
+  <!-- Contact Us Section End -->
 
-   
-    <!-- Footer Section Start -->
-    <footer>
-      <!-- Footer Area Start -->
-      <section id="footer-Content" style="padding-top:0px">
-        <!--<div class="container">
+
+  <!-- Footer Section Start -->
+  <footer>
+    <!-- Footer Area Start -->
+    <section id="footer-Content" style="padding-top:0px">
+      <!--<div class="container">
           <!-- Start Row ->
           <div class="row">
 
@@ -1315,70 +1219,71 @@
         </div>
         <!-- Copyright Start  -->
 
-        <div class="copyright">
-          <div class="container">
-            <!-- Star Row -->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="site-info text-center">
-                  <p>P.N.U.D. y Secretaría de Miniría Nacional</p>
-                </div>              
-                
+      <div class="copyright">
+        <div class="container">
+          <!-- Star Row -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="site-info text-center">
+                <p>P.N.U.D. y Secretaría de Miniría Nacional</p>
               </div>
-              <!-- End Col -->
+
             </div>
-            <!-- End Row -->
+            <!-- End Col -->
           </div>
+          <!-- End Row -->
         </div>
+      </div>
       <!-- Copyright End -->
-      </section>
-      <!-- Footer area End -->
-      
-    </footer>
-    <!-- Footer Section End --> 
+    </section>
+    <!-- Footer area End -->
+
+  </footer>
+  <!-- Footer Section End -->
 
 
 
-    <!-- Go To Top Link -->
-    <a href="#" class="back-to-top">
-      <i class="lni-chevron-up"></i>
-    </a> 
+  <!-- Go To Top Link -->
+  <a href="#" class="back-to-top">
+    <i class="lni-chevron-up"></i>
+  </a>
 
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="loader" id="loader-1"></div>
-    </div>
-    <!-- End Preloader -->
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader" id="loader-1"></div>
+  </div>
+  <!-- End Preloader -->
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="{{url('slick/js/jquery-min.js')}}"></script>
-    <script src="{{url('slick/js/popper.min.js')}}"></script>
-    <script src="{{url('slick/js/bootstrap.min.js')}}"></script>
-    <script src="{{url('slick/js/owl.carousel.js')}}"></script>
-    <script src="{{url('slick/js/jquery.nav.js')}}"></script>
-    <script src="{{url('slick/js/scrolling-nav.js')}}"></script>
-    <script src="{{url('slick/js/jquery.easing.min.js')}}"></script>
-    <script src="{{url('slick/js/nivo-lightbox.js')}}"></script>
-    <script src="{{url('slick/js/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{url('slick/js/main.js')}}"></script>
+  <!-- jQuery first, then Tether, then Bootstrap JS. -->
+  <script src="{{url('slick/js/jquery-min.js')}}"></script>
+  <script src="{{url('slick/js/popper.min.js')}}"></script>
+  <script src="{{url('slick/js/bootstrap.min.js')}}"></script>
+  <script src="{{url('slick/js/owl.carousel.js')}}"></script>
+  <script src="{{url('slick/js/jquery.nav.js')}}"></script>
+  <script src="{{url('slick/js/scrolling-nav.js')}}"></script>
+  <script src="{{url('slick/js/jquery.easing.min.js')}}"></script>
+  <script src="{{url('slick/js/nivo-lightbox.js')}}"></script>
+  <script src="{{url('slick/js/jquery.magnific-popup.min.js')}}"></script>
+  <script src="{{url('slick/js/main.js')}}"></script>
 
-    <script> 
+  <script>
     //mis funciones 
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
-    
-    
-    $('document').ready(function () {
+
+
+    $('document').ready(function() {
       //para expedientes
       //fin expedientes
 
       //Init datepicker for date fields if data-datepicker attribute defined
       //or if browser does not handle date inputs
-      });
-</script>
+    });
+  </script>
 
-  </body>
+</body>
+
 </html>

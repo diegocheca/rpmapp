@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\EmailsAConfirmar;
-use Auth;
-use Inertia\Inertia;
 class HomeController extends Controller
 {
     /**
@@ -15,10 +15,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
-        return view("pagina.index");
+
+        // if (Auth::check()) {
+            return view("pagina.index");
+            // return Inertia::render('Auth/Login');
+        // } else {
+            // return Inertia::render('Auth/Login');
+            // return view("pagina.index");
+        // }
     }
-    
     public function thanks()
     {
         //
@@ -51,17 +56,17 @@ class HomeController extends Controller
     {
         //
         //dd($codigo);
-        $email_a_validar = EmailsAConfirmar::select('*')->where('codigo', '=',$codigo )->first();
+        $email_a_validar = EmailsAConfirmar::select('*')->where('codigo', '=', $codigo)->first();
         //dd($email_a_validar);
         $email_a_validar->codigo = null;
         $email_a_validar->confirmed_at = date("Y-m-d H:i:s");
         $email_a_validar->save();
-        
+
         return view("confirmation.index");
     }
 
 
-    
+
 
 
     /**
@@ -73,8 +78,8 @@ class HomeController extends Controller
     {
         //
     }
-    
-    
+
+
 
     /**
      * Store a newly created resource in storage.

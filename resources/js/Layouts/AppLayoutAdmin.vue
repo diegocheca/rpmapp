@@ -51,7 +51,7 @@
           </div>
           <div class="flex items-center justify-center">
             <div class="flex items-center">
-              <svg
+              <!-- <svg
                 class="h-12 w-12"
                 viewBox="0 0 512 512"
                 fill="none"
@@ -69,7 +69,7 @@
                   d="M201.694 387.105C231.686 417.098 280.312 417.098 310.305 387.105C325.301 372.109 332.8 352.456 332.8 332.8C332.8 313.144 325.301 293.491 310.305 278.495C295.309 263.498 288 256 275.2 230.4C256 243.2 243.201 320 243.201 345.6C201.694 345.6 179.2 332.8 179.2 332.8C179.2 352.456 186.698 372.109 201.694 387.105Z"
                   fill="white"
                 ></path>
-              </svg>
+              </svg> -->
               <span class="text-white text-2xl mx-2 font-semibold"
                 >Configuración</span
               >
@@ -86,9 +86,16 @@
                 text-gray-500
                 hover:bg-gray-700 hover:bg-opacity-25
                 hover:text-gray-100
+                border-l-4 border-transparent
+                hover:border-indigo-500
               "
               :href="route('dashboard')"
-              :active="route().current('dashboard')"
+              v-on:click="activetab = 'Home'"
+              v-bind:class="[
+                activetab === 'Home'
+                  ? 'active border-indigo-500 text-gray-100 bg-gray-700 bg-opacity-25 font-black'
+                  : '',
+              ]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -127,8 +134,16 @@
                 text-gray-500
                 hover:bg-gray-700 hover:bg-opacity-25
                 hover:text-gray-100
+                border-l-4 border-transparent
+                hover:border-indigo-500
               "
               :href="route('admin.users.index')"
+              v-on:click="activetab = 'Usuarios'"
+              v-bind:class="[
+                activetab === 'Usuarios'
+                  ? 'active border-indigo-500 text-gray-100 bg-gray-700 bg-opacity-25 font-black'
+                  : '',
+              ]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -157,8 +172,16 @@
                 text-gray-500
                 hover:bg-gray-700 hover:bg-opacity-25
                 hover:text-gray-100
+                border-l-4 border-transparent
+                hover:border-indigo-500
               "
               :href="route('admin.roles.index')"
+              v-on:click="activetab = 'Roles'"
+              v-bind:class="[
+                activetab === 'Roles'
+                  ? 'active border-indigo-500 text-gray-100 bg-gray-700 bg-opacity-25 font-black'
+                  : '',
+              ]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -187,8 +210,16 @@
                 text-gray-500
                 hover:bg-gray-700 hover:bg-opacity-25
                 hover:text-gray-100
+                border-l-4 border-transparent
+                hover:border-indigo-500
               "
               :href="route('admin.permisos.index')"
+              v-on:click="activetab = 'Permisos'"
+              v-bind:class="[
+                activetab === 'Permisos'
+                  ? 'active border-indigo-500 text-gray-100 bg-gray-700 bg-opacity-25 font-black'
+                  : '',
+              ]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -217,8 +248,16 @@
                 text-gray-500
                 hover:bg-gray-700 hover:bg-opacity-25
                 hover:text-gray-100
+                border-l-4 border-transparent
+                hover:border-indigo-500
               "
               :href="route('admin.categorias.index')"
+              v-on:click="activetab = 'Categorias'"
+              v-bind:class="[
+                activetab === 'Categorias'
+                  ? 'active border-indigo-500 text-gray-100 bg-gray-700 bg-opacity-25 font-black'
+                  : '',
+              ]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -423,6 +462,7 @@ export default {
     return {
       isSidebarOpen: false,
       showingNavigationDropdown: false,
+      activetab: '',
     };
   },
 

@@ -4,6 +4,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
+// use Illuminate\Support\Facades\Auth;
+// use Auth;
 //use Illuminate\Auth as Auth;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\HomeController;
@@ -31,7 +33,8 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [HomeController::class, "index"])->name('pagina-web');
+Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -90,6 +93,18 @@ Route::resource('productores_minas', ProductorMinaController::class)
 Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     // admin
+//     // productor
+//     $mi_rol = '';
+//     if (Auth::user()->hasRole('Autoridad'))
+//         $mi_rol = 'admin';
+//     if (Auth::user()->hasRole('Administrador'))
+//         $mi_rol = 'admin';
+//     if (Auth::user()->hasRole('Productor'))
+//         $mi_rol = 'productor';
+//     return Inertia::render('Dashboard', ['userType' => $mi_rol]);
+// })->name('dashboard');
 
 
 Route::get('dashboard', [HomeController::class, "dashboard"])
@@ -164,7 +179,6 @@ Route::post('/formularios/preg_email_validado/', [FormAltaProductorController::c
 
 Route::get('/formularios/comprobar_email_productor/{codigo}', [FormAltaProductorController::class, "confirmando_email_productor"])->name('confirmando-email-productor');
 
-Route::get('/home', [HomeController::class, "index"])->name('pagina-web');
 Route::get('contact', [ContactController::class, "contact"]);
 Route::post('contact', [ContactController::class, "contactPost"])->name('contact.store');
 
@@ -203,4 +217,3 @@ Route::group(['prefix' => 'paises'], function () {
     Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
         ->middleware(['auth:sanctum', 'verified']);
 });
-
