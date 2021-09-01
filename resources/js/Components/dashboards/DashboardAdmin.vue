@@ -47,7 +47,7 @@
                                 class="font-bold text-lg"
                                 ref="counter1"
                                 :startAmount="0"
-                                :endAmount="33"
+                                :endAmount="nuevas_reinscripciones"
                                 :duration="3"
                                 prefix=""
                                 suffix=""
@@ -279,12 +279,30 @@
         data() {
             return {
                 chartShow: false,
+                nuevas_reinscripciones:'',
             }
         },
         methods: {
             toggle() {
                 this.chartShow = !this.chartShow
+            },
+            buscar_nuevas_reincripciones(){
+                let self = this;
+                axios.get('/numero_reinscripciones_nuevas')
+                .then(function (response) {
+                    if(response.data.status === "ok")
+                        self.nuevas_reinscripciones = response.data.nuevas_inscripciones;
+                    else self.nuevas_reinscripciones = 0;
+                    console.log(response.data.msg);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
             }
         },
+        mounted() {
+            this.buscar_nuevas_reincripciones();
+        }
     }
 </script>
