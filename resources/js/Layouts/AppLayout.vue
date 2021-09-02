@@ -63,6 +63,7 @@
                   ProdMina
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="false"
                   :href="route('productores.index')"
                   :active="route().current('productores.index')"
                 >
@@ -267,7 +268,7 @@
                     <jet-dropdown-link :href="route('profile.show')">
                       Perfil de Usuario
                     </jet-dropdown-link>
-                    <jet-dropdown-link :href="route('admin.users.index')">
+                    <jet-dropdown-link v-if="hasAnyPermission(['roles.create'])" :href="route('admin.users.index')">
                       Configuración
                     </jet-dropdown-link>
 

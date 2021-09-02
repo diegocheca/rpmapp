@@ -12,7 +12,6 @@
                 <div class="min-w-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
                     <div class="w-full lg:w-5/6">
                         <div class="bg-white shadow-md rounded my-6">
-                            <!-- El rol es: {{$inertia.page.props.user.roles[0].name}} -->
                             <table class="min-w-max w-full table-auto">
                                 <thead>
                                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
