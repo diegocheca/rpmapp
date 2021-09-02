@@ -1,5 +1,10 @@
 <template>
-    <AppProductorLayout class="bg-gray-100 dark:bg-gray-800">
+    <AppLayout>
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Dashboard
+            </h2>
+        </template>
 
         <main class=" mx-auto p-4 md:w-3/4 px-4 py-4">
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 ">
@@ -109,7 +114,7 @@
                                         </svg>Aprobado
                                     </li>
                                     <li class="text-red-500 inline-flex">
-                                         <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="mx-3" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="mx-3" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                                         </svg>Rechazado
                                     </li>
@@ -197,7 +202,7 @@
                                         </svg> Aprobado
                                     </li>
                                     <li class="text-red-500 inline-flex">
-                                         <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="mx-4" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" class="mx-4" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                                         </svg> Rechazado
                                     </li>
@@ -264,11 +269,12 @@
             </div>
         </main>
 
-    </AppProductorLayout>
+    </AppLayout>
 </template>
 <script>
     import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
     import AppProductorLayout from '@/Layouts/AppProductorLayout'
+    import AppLayout from '@/Layouts/AppLayout'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     import Vue3autocounter from "vue3-autocounter";
 
@@ -285,7 +291,8 @@
             Carousel,
             Slide,
             Pagination,
-            Navigation
+            Navigation,
+            AppLayout
         },
         data() {
             return {

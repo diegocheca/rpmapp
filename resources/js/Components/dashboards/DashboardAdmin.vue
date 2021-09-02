@@ -8,7 +8,7 @@
 
         <main class="p-4 md:p-14 bg-gray-100 dark:bg-gray-800 md:space-x-4 space-y-4">
             <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
-                 <div class="grid grid-cols-12 gap-2">
+                <div class="grid grid-cols-12 gap-2">
                     <div class="col-span-12 sm:col-span-6 md:col-span-3">
                         <div class="flex flex-row bg-white shadow-sm rounded p-4">
                             <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-blue-100 text-blue-500">
