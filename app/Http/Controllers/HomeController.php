@@ -9,21 +9,17 @@ use App\Models\EmailsAConfirmar;
 // use Auth;
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware(function ($request, $next) {
+    //         $this->user = Auth::user();
+    //         return $next($request);
+    //     });
+    // }
     public function index()
     {
-
-        // if (Auth::check()) {
-            return view("pagina.index");
-            // return Inertia::render('Auth/Login');
-        // } else {
-            // return Inertia::render('Auth/Login');
-            // return view("pagina.index");
-        // }
+        return view("pagina.index");
     }
     public function thanks()
     {
@@ -33,11 +29,11 @@ class HomeController extends Controller
     public function dashboard()
     {
         $mi_rol = '';
-        if(Auth::user()->hasRole('Autoridad'))
+        if (Auth::user()->hasRole('Autoridad'))
             $mi_rol = 'admin';
-        if(Auth::user()->hasRole('Administrador'))
+        if (Auth::user()->hasRole('Administrador'))
             $mi_rol = 'admin';
-        if(Auth::user()->hasRole('Productor'))
+        if (Auth::user()->hasRole('Productor'))
             $mi_rol = 'productor';
 
         $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
@@ -49,7 +45,7 @@ class HomeController extends Controller
         $dataChart->data = $departments;
         $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
-        return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
+        return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart]);
     }
 
 

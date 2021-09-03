@@ -33,6 +33,7 @@ use App\Http\Controllers\UsersController;
 |
 */
 
+
 Route::get('/', [HomeController::class, "index"])->name('pagina-web');
 Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
