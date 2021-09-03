@@ -466,5 +466,24 @@ class ReinscripcionController extends Controller
 
         return response()->json($filePaths);
     }
+    public function numero_reinsripiones_nuevas(){
+        if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad'))
+        {
+            if(Auth::user()->id == 1) // para sudo
+                $nuevas_inscripciones = Reinscripciones::select('id')->where('estado', '=', 'en proceso')->get();
+            else $nuevas_inscripciones = Reinscripciones::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=', 'en proceso')->get();
+            $nuevas_inscripciones = count($nuevas_inscripciones);
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'Consulta exitosa.',
+                'nuevas_inscripciones' =>$nuevas_inscripciones,
+            ],201);
+        }
+        else return response()->json([
+            'status' => 'no',
+            'msg' => 'Consulta fallida.',
+            'nuevas_inscripciones' =>0,
+        ],201);;
+    }
 
 }

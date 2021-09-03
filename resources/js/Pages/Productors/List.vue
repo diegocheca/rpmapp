@@ -6,8 +6,8 @@
             Borradores Ya cargados
         </h2>
         <a :href="route('formulario-alta.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Borrador</button></a>
-        App name: {{ $inertia.page.props.appName }}
         <body class="flex flex-col">
+           
             <div class="overflow-x-auto">
                 <div class="min-w-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
                     <div class="w-full lg:w-5/6">

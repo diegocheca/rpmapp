@@ -223,12 +223,18 @@ export default {
 
                     }
                     
-                    if(response.data === "se actualizaron los datos correctamente")
+                    if(response.data.msg === "Datos actualizados correctamente..")
                     {
                         console.log('todo bien');
-                        self.modal_tittle = 'Datos guardados correctamente como Autoridad';
+                        self.modal_tittle = 'Datos guardados correctamente como Productor';
                         self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, siendo Autoridad, gracias por usar este servcio, por favor continue llenando el formulario';
                         self.mostrar_modal_datos_ya_guardados = true;
+                        console.log(response.data.path_inscripcion);
+                        console.log(response.data.path_constaciasociedad);
+                        if(response.data.path_inscripcion !== '')
+                            self.actualizar_inscripcion_nueva(response.data.path_inscripcion);
+                        if(response.data.path_constaciasociedad !== '')
+                            self.actualizar_cosntancia_nueva(response.data.path_constaciasociedad);
                     }
                     
                     if(response.data === "se actualizaron los datos correctamente, siendo un productor")

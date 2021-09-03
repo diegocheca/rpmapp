@@ -3,7 +3,7 @@
 		<div class="flex items-center  w-full bg-teal-lighter">
 			<div class="w-full bg-white rounded shadow-lg p-8 m-4">
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
-					Dandose de Alta como nuevo Productor Minero, id {{form.id}}
+					Dandose de Alta como nuevo Productor Minero en la Provincia de {{$props.nombre_provincia}}, id {{form.id}}
 				</h1>
 				<button
 					type="button"
@@ -13,7 +13,6 @@
 					Necesita Ayuda?
 					
 				</button>
-				{{$inertia.page.props.appName}}
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
@@ -1215,6 +1214,7 @@ export default {
 		"disables",
 		"mostrar",
 		"productor_particular",
+		"nombre_provincia"
 		],
 	data() {
     console.log("ffffeeeeqqeeeel valor es:");

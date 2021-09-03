@@ -63,6 +63,7 @@
                   ProdMina
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="false"
                   :href="route('productores.index')"
                   :active="route().current('productores.index')"
                 >

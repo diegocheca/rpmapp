@@ -64,11 +64,103 @@
             <br>
             <br>
             <div class="flex">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputNumeroProductor
+                        v-if="$props.mostrar_num_prod"
+                        v-bind:numeroproductor="form_pagina.numeroproductor"
+                        v-bind:numeroproductor_valido="form_pagina.numeroproductor_valido"
+                        v-bind:numeroproductor_correcto="form_pagina.numeroproductor_correcto"
+                        v-bind:obs_numeroproductor="form_pagina.obs_numeroproductor"
+                        v-bind:obs_numeroproductor_valido="form_pagina.obs_numeroproductor_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Numero de Productor'"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:num_prod_disable="$props.desactivar_num_prod"
+                        v-bind:num_prod_correccion_mostrar="$props.mostrar_num_prod_correccion"
+                        v-bind:num_prod_correccion_desactivar="$props.desactivar_num_prod_correccion"
+
+
+                        v-on:changenumprodvalido="update_num_prod_valido($event)"
+                        v-on:changenumprodcorrecto="update_num_prod_correcto($event)"
+                        v-on:changeobsnumprod="update_obs_num_prod($event)"
+                        v-on:changenumprod="update_num_prod($event)"
+                        
+                    >
+                    </InputNumeroProductor>
+                    <div v-show="mostrar_ayuda" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Este es el número único con el que se identifican los productores, si usted no lo posee, el sistema le asignara uno.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div class="flex" v-if="mostrar_testing">
+                        -- numero productor valida deel padre{{form_pagina.numeroproductor_valido}}
+                        -- numero productor correcto deel padre{{form_pagina.numeroproductor_correcto}}
+                        -- numero productor observacion deel padre{{form_pagina.obs_numeroproductor}}
+                    </div>
+
+                </div>
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputCuit
+                        v-if="$props.mostrar_cuit"
+                        v-bind:cuit="form_pagina.cuit"
+                        v-bind:cuit_valido="form_pagina.cuit_valido"
+                        v-bind:cuit_correcto="form_pagina.cuit_correcto"
+                        v-bind:obs_cuit="form_pagina.obs_cuit"
+                        v-bind:obs_cuit_valido="form_pagina.obs_cuit_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Cuit'"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:cuit_disable="$props.desactivar_cuit"
+                        v-bind:cuit_correccion_mostrar="$props.mostrar_cuit_correccion"
+                        v-bind:cuit_correccion_desactivar="$props.desactivar_cuit_correccion"
+
+                        v-on:changecuitvalido="update_cuit_valido($event)"
+                        v-on:changecuitcorrecto="update_cuit_correcto($event)"
+                        v-on:changeobscuit="update_obs_cuit($event)"
+                        v-on:changecuit="update_cuit($event)"
+                    >
+                    </InputCuit>
+                    <div v-show="mostrar_ayuda" >
+                        <br>
+                        <div class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                Es el número de CUIT asignado por la AFIP. Formato: XX-XXXXXXXXXX-X.
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div class="flex" v-if="mostrar_testing">
+                        -- cuit valida deel padre{{form_pagina.cuit_valido}}
+                        -- cuit correcto deel padre{{form_pagina.cuit_correcto}}
+                        -- cuit observacion deel padre{{form_pagina.obs_cuit}}
+                    </div>
+                </div>
+                
+            </div>
+            <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            {{$props.mostrar_razon_social}}
-            {{$props.desactivar_razon_social}}
-            {{$props.mostrar_razon_social_correccion}}
-            {{$props.desactivar_razon_social_correccion}}
                 <InputRazonSocial 
                     v-if="$props.mostrar_razon_social"
                     v-bind:razon_social="form_pagina.razon_social" 
@@ -166,101 +258,6 @@
         </div>
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputCuit
-                    v-if="$props.mostrar_cuit"
-                    v-bind:cuit="form_pagina.cuit"
-                    v-bind:cuit_valido="form_pagina.cuit_valido"
-                    v-bind:cuit_correcto="form_pagina.cuit_correcto"
-                    v-bind:obs_cuit="form_pagina.obs_cuit"
-                    v-bind:obs_cuit_valido="form_pagina.obs_cuit_valido"
-                    v-bind:evaluacion="autoridad_minera"
-                    v-bind:label="'Cuit'"
-                    v-bind:testing="mostrar_testing"
-                    v-bind:cuit_disable="$props.desactivar_cuit"
-                    v-bind:cuit_correccion_mostrar="$props.mostrar_cuit_correccion"
-                    v-bind:cuit_correccion_desactivar="$props.desactivar_cuit_correccion"
-
-                    v-on:changecuitvalido="update_cuit_valido($event)"
-                    v-on:changecuitcorrecto="update_cuit_correcto($event)"
-                    v-on:changeobscuit="update_obs_cuit($event)"
-                    v-on:changecuit="update_cuit($event)"
-                >
-                </InputCuit>
-                <div v-show="mostrar_ayuda" >
-                    <br>
-                    <div class="
-                        bg-blue-50
-                        text-gray-800
-                        bg-opacity-20
-                        text-opacity-80
-                        ring
-                        ring-4
-                        ring-blue-100">
-                    
-                        <p class="p-3">
-                            Es el número de CUIT asignado por la AFIP. Formato: XX-XXXXXXXXXX-X.
-                        </p>
-                        
-                    </div>
-                    <br>
-                </div>
-                <div class="flex" v-if="mostrar_testing">
-                    -- cuit valida deel padre{{form_pagina.cuit_valido}}
-                    -- cuit correcto deel padre{{form_pagina.cuit_correcto}}
-                    -- cuit observacion deel padre{{form_pagina.obs_cuit}}
-                </div>
-            </div>
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputNumeroProductor
-                    v-if="$props.mostrar_num_prod"
-                    v-bind:numeroproductor="form_pagina.numeroproductor"
-                    v-bind:numeroproductor_valido="form_pagina.numeroproductor_valido"
-                    v-bind:numeroproductor_correcto="form_pagina.numeroproductor_correcto"
-                    v-bind:obs_numeroproductor="form_pagina.obs_numeroproductor"
-                    v-bind:obs_numeroproductor_valido="form_pagina.obs_numeroproductor_valido"
-                    v-bind:evaluacion="autoridad_minera"
-                    v-bind:label="'Numero de Productor'"
-                    v-bind:testing="mostrar_testing"
-                    v-bind:num_prod_disable="$props.desactivar_num_prod"
-                    v-bind:num_prod_correccion_mostrar="$props.mostrar_num_prod_correccion"
-                    v-bind:num_prod_correccion_desactivar="$props.desactivar_num_prod_correccion"
-
-
-                    v-on:changenumprodvalido="update_num_prod_valido($event)"
-                    v-on:changenumprodcorrecto="update_num_prod_correcto($event)"
-                    v-on:changeobsnumprod="update_obs_num_prod($event)"
-                    v-on:changenumprod="update_num_prod($event)"
-                    
-                >
-                </InputNumeroProductor>
-                <div v-show="mostrar_ayuda" >
-                    <br>
-                    <div  class="
-                        bg-blue-50
-                        text-gray-800
-                        bg-opacity-20
-                        text-opacity-80
-                        ring
-                        ring-4
-                        ring-blue-100">
-                    
-                        <p class="p-3">
-                            Este es el número único con el que se identifican los productores, si usted no lo posee, el sistema le asignara uno.
-                        </p>
-                        
-                    </div>
-                    <br>
-                </div>
-                <div class="flex" v-if="mostrar_testing">
-                    -- numero productor valida deel padre{{form_pagina.numeroproductor_valido}}
-                    -- numero productor correcto deel padre{{form_pagina.numeroproductor_correcto}}
-                    -- numero productor observacion deel padre{{form_pagina.obs_numeroproductor}}
-                </div>
-
-            </div>
-        </div>
-        <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <InputTipoSociedad
                     v-if="$props.mostrar_tipo_sociedad"
                     v-bind:tiposociedad="form_pagina.tiposociedad"
@@ -307,6 +304,7 @@
             </div>
         </div>
         <br>
+        <hr>
         <br>
         <div class="flex">
             <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
@@ -357,10 +355,11 @@
                     -- inscripcion dgr observacion deel padre{{form_pagina.obs_inscripciondgr}}
                 </div>
             </div>
-         </div>
-         <br>
-         <br>
-         <div class="flex">
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR
                     v-if="$props.mostrar_constancia_sociedad"

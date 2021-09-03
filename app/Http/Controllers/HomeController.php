@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\EmailsAConfirmar;
-// use Auth;
+use App\Models\Reinscripciones;
 class HomeController extends Controller
 {
     // public function __construct()
@@ -44,8 +44,7 @@ class HomeController extends Controller
         $dataChart->axis = $axis;
         $dataChart->data = $departments;
         $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
-
-        return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart]);
+        return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
     }
 
 

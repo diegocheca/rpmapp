@@ -697,7 +697,7 @@ class FormAltaProductorController extends Controller
 		
 		
 		//var_dump($borradores);die();
-		//var_dump($formularios);die();
+		//var_dump($borradores);die();
 		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador, 'soy_productor' => $soy_productor, 'datos_donut' => $grafico_donut]);
 	}
 
@@ -977,28 +977,28 @@ class FormAltaProductorController extends Controller
 			$objeto->fecha_vencimiento_dia = date("Y-m-d", strtotime($objeto->fecha_vencimiento_dia));
 
 		if($objeto->constancia_pago_canon != null)
-			$objeto->constancia_pago_canon = env('APP_URL').str_replace("public","storage",$objeto->constancia_pago_canon);
+			$objeto->constancia_pago_canon = env('APP_URL').'/'.str_replace("public","storage",$objeto->constancia_pago_canon);
 		if($objeto->iia != null)
-			$objeto->iia = env('APP_URL').str_replace("public","storage",$objeto->iia);
+			$objeto->iia = env('APP_URL').'/'.str_replace("public","storage",$objeto->iia);
 		if($objeto->dia != null)
-			$objeto->dia = env('APP_URL').str_replace("public","storage",$objeto->dia);
+			$objeto->dia = env('APP_URL').'/'.str_replace("public","storage",$objeto->dia);
 		
 		if($objeto->inscripciondgr != null)
-			$objeto->inscripciondgr = env('APP_URL').str_replace("public","storage",$objeto->inscripciondgr);
+			$objeto->inscripciondgr = env('APP_URL').'/'.str_replace("public","storage",$objeto->inscripciondgr);
 			
 			
 		if($objeto->constaciasociedad != null)
-			$objeto->constaciasociedad = env('APP_URL').str_replace("public","storage",$objeto->constaciasociedad);
+			$objeto->constaciasociedad = env('APP_URL').'/'.str_replace("public","storage",$objeto->constaciasociedad);
 			if($objeto->resolucion_concesion_minera != null)
-			$objeto->resolucion_concesion_minera = env('APP_URL').str_replace("public","storage",$objeto->resolucion_concesion_minera);
+			$objeto->resolucion_concesion_minera = env('APP_URL').'/'.str_replace("public","storage",$objeto->resolucion_concesion_minera);
 		
 				
 		if($objeto->titulo_contrato_posecion != null)
-		$objeto->titulo_contrato_posecion = env('APP_URL').str_replace("public","storage",$objeto->titulo_contrato_posecion);
+		$objeto->titulo_contrato_posecion = env('APP_URL').'/'.str_replace("public","storage",$objeto->titulo_contrato_posecion);
 	
 
 		if($objeto->plano_inmueble != null)
-		$objeto->plano_inmueble = env('APP_URL').str_replace("public","storage",$objeto->plano_inmueble);
+		$objeto->plano_inmueble = env('APP_URL').'/'.str_replace("public","storage",$objeto->plano_inmueble);
 	
 		return $objeto;
 	}
@@ -1006,9 +1006,10 @@ class FormAltaProductorController extends Controller
 	{
 		//ajusto los permisos
 		//dd(Auth::user()->hasRole('Administrador'));
-
+		$nombre_provincia = "";
 		if(Auth::user()->id_provincia  == 70)
 		{
+			$nombre_provincia = "San Juan";
 			if(Auth::user()->hasRole('Productor'))
 			{
 				$disables = [
@@ -1951,6 +1952,7 @@ class FormAltaProductorController extends Controller
 		}
 		elseif(Auth::user()->id_provincia  == 10)
 		{
+			$nombre_provincia = "Catamarca";
 			if(Auth::user()->hasRole('Productor'))
 			{
 				$disables = [
@@ -2913,7 +2915,8 @@ class FormAltaProductorController extends Controller
 		"soy_productor" => $soy_productor,
 		"disables" => $disables,
 		"mostrar" => $mostrar,
-		"productor_particular" => $productor_particular 
+		"productor_particular" => $productor_particular ,
+		"nombre_provincia" => $nombre_provincia
 	]);
 
 	}
@@ -3326,7 +3329,7 @@ class FormAltaProductorController extends Controller
 				$borradores->susteancias_de_aprovechamiento_comun_correcto = true;
 			else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
 
-			//dd($borradores);
+			//dd($borradores->inscripciondgr);
 
 			return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador,
 			"soy_administrador" => false,
@@ -3358,7 +3361,7 @@ class FormAltaProductorController extends Controller
 				"razon_social" => false,
 				"razon_social_correccion" => false,
 				"email" => false,
-				"email_correccion" => false,
+				"email_correccion" => false,/home/diego/Documents/rpmapp/resources/js/Pages/Productors/List.vue
 				"cuit" => false,
 				"cuit_correccion" => false,
 				"num_prod" => false,
@@ -6168,7 +6171,6 @@ class FormAltaProductorController extends Controller
 				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor
-				var_dump(is_object($request->constaciasociedad));die();
 
 				$formulario_provisorio->razonsocial = $request->razon_social;
 				$formulario_provisorio->email = $request->email;
@@ -6211,7 +6213,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->save();
 				return response()->json([
 					'status' => 'ok',
-					'msg' => 'Datos actualizados correctamente.',
+					'msg' => 'Datos actualizados correctamente..',
 					'path_inscripcion' =>$formulario_provisorio->inscripciondgr,
 					'path_constaciasociedad' =>$formulario_provisorio->constaciasociedad,
 				],201);

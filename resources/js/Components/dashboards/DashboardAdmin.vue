@@ -8,7 +8,7 @@
 
         <main class="p-4 md:p-14 bg-gray-100 dark:bg-gray-800 md:space-x-4 space-y-4">
             <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
-                 <div class="grid grid-cols-12 gap-2">
+                <div class="grid grid-cols-12 gap-2">
                     <div class="col-span-12 sm:col-span-6 md:col-span-3">
                         <div class="flex flex-row bg-white shadow-sm rounded p-4">
                             <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-blue-100 text-blue-500">
@@ -47,7 +47,7 @@
                                 class="font-bold text-lg"
                                 ref="counter1"
                                 :startAmount="0"
-                                :endAmount="33"
+                                :endAmount="nuevas_reinscripciones"
                                 :duration="3"
                                 prefix=""
                                 suffix=""
@@ -279,12 +279,30 @@
         data() {
             return {
                 chartShow: false,
+                nuevas_reinscripciones:'',
             }
         },
         methods: {
             toggle() {
                 this.chartShow = !this.chartShow
+            },
+            buscar_nuevas_reincripciones(){
+                let self = this;
+                axios.get('/numero_reinscripciones_nuevas')
+                .then(function (response) {
+                    if(response.data.status === "ok")
+                        self.nuevas_reinscripciones = response.data.nuevas_inscripciones;
+                    else self.nuevas_reinscripciones = 0;
+                    console.log(response.data.msg);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
             }
         },
+        mounted() {
+            this.buscar_nuevas_reincripciones();
+        }
     }
 </script>
