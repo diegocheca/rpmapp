@@ -200,7 +200,7 @@
                         </a>
                     </div>
                 </div>
-                {{$inertia.page.props.user.roles[0].name}}
+                
                 <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
                     <ChartPie :dataChart="dataChart" />
                 </div>
