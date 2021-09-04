@@ -2,7 +2,7 @@
 	<div :class="clase_sup">
 		<div :class="clase_inf">
 			<a href="#section_datos_mina_dos">
-				<img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName.'/slick/img/features/mina-parte-dos.svg'">
+				<img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/mina-parte-dos.svg'">
 			</a>
 			<div class="mt-8">
 				<p class="text-xl font-semibold my-2">Datos de la Mina o Cantera dos</p>
