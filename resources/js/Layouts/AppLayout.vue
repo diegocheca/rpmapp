@@ -268,7 +268,7 @@
                     <jet-dropdown-link :href="route('profile.show')">
                       Perfil de Usuario
                     </jet-dropdown-link>
-                    <jet-dropdown-link v-if="hasAnyPermission(['roles.create'])" :href="route('admin.users.index')">
+                    <jet-dropdown-link  v-if="$inertia.page.props.user.roles[0].name === 'Administrador'" :href="route('admin.users.index')">
                       Configuración
                     </jet-dropdown-link>
 
