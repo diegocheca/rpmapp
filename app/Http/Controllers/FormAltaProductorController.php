@@ -2895,29 +2895,35 @@ class FormAltaProductorController extends Controller
 		}
 		
 
-
-		$productor = $this->dame_un_productor_vacio();
-		$productor_particular = null;
-		$productor_particular = $this->dame_un_productor_catamarca_vacio();
-		//var_dump($productor->owner);
-		$productor = $this->prasar_num_a_boolean($productor);
-		//var_dump($productor->owner);die();
-		//$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
-		$minerales_asociados = Minerales_Borradores::all();
-		$datos_creador = null;
-		$soy_productor = true;
-        //var_dump($minerales_asociados);die();
-		return Inertia::render('Productors/Form',['productor' => $productor,
-		'lista_minerales_cargados' => $minerales_asociados, 
-		'creado' => $datos_creador,
-		'soy_administrador' => false,
-		'soy_autoridad_minera' => false,
-		"soy_productor" => $soy_productor,
-		"disables" => $disables,
-		"mostrar" => $mostrar,
-		"productor_particular" => $productor_particular ,
-		"nombre_provincia" => $nombre_provincia
-	]);
+		if($nombre_provincia != "")
+		{
+			$productor = $this->dame_un_productor_vacio();
+			$productor_particular = null;
+			$productor_particular = $this->dame_un_productor_catamarca_vacio();
+			//var_dump($productor->owner);
+			$productor = $this->prasar_num_a_boolean($productor);
+			//var_dump($productor->owner);die();
+			//$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
+			$minerales_asociados = Minerales_Borradores::all();
+			$datos_creador = null;
+			$soy_productor = true;
+			//var_dump($minerales_asociados);die();
+			return Inertia::render('Productors/Form',['productor' => $productor,
+				'lista_minerales_cargados' => $minerales_asociados, 
+				'creado' => $datos_creador,
+				'soy_administrador' => false,
+				'soy_autoridad_minera' => false,
+				"soy_productor" => $soy_productor,
+				"disables" => $disables,
+				"mostrar" => $mostrar,
+				"productor_particular" => $productor_particular ,
+				"nombre_provincia" => $nombre_provincia
+			]);
+		}
+		else{
+			return Inertia::render('Common/SinProvincia',['mensaje' => 'Su provincia aun no ha sido implemntada',
+			]);
+		}
 
 	}
 
@@ -4739,7 +4745,7 @@ class FormAltaProductorController extends Controller
 	public function destroy($id)
 	{
 		//
-		dd($id);
+		//dd($id);
 		$formAltaProductor = FormAltaProductor::find($id)->delete();
 		return Redirect::route('formulario-alta.index');
 		// $borradores = FormAltaProductor::all();
