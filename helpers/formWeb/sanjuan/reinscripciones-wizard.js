@@ -37,9 +37,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.apellidos, //nombre_razon_social,
                                     type: inputsTypes.TEXT,
                                     name: "nombre",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "nombre",
@@ -52,9 +52,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.apellidos, //nombre_razon_social,
                                     type: inputsTypes.TEXT,
                                     name: "apellido",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "apellido",
@@ -82,10 +82,10 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         },                                       
                                         
                                     ],
-                                    validations: yup.object().when('sexoSelect', {
-                                             is: value => _.isEmpty(value),
-                                             then: yup.object().required('Debes elegir un elemento')
-                                        }),                                    
+                                    // validations: yup.object().when('sexoSelect', {
+                                    //          is: value => _.isEmpty(value),
+                                    //          then: yup.object().required('Debes elegir un elemento')
+                                    //     }),                                    
                                     observation: new Observations({
                                         schema,
                                         name: "sexo",
@@ -107,10 +107,10 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                      searchable: false,
                                      placeholder: 'Selecciona una opción',
                             
-                                    validations: yup.object().when('tipo_documentoSelect', {
-                                    is: value => _.isEmpty(value) || !value,
-                                    then: yup.object().required('Debes elegir un elemento').nullable()
-                                    }),
+                                    // validations: yup.object().when('tipo_documentoSelect', {
+                                    // is: value => _.isEmpty(value) || !value,
+                                    // then: yup.object().required('Debes elegir un elemento').nullable()
+                                    // }),
                                     observation: new Observations({schema, name: 'tipo_documento', evaluate}).observations                                   
                                     
                                  },                               
@@ -121,9 +121,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.dni, 
                                     type: inputsTypes.NUMBER,
                                     name: "dni",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "dni",
@@ -136,9 +136,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.fecha_nacimiento,
                                     type: inputsTypes.DATE,
                                     name: "fecha_nacimiento",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "fecha_nacimiento",
@@ -151,9 +151,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.Nacionalidad,
                                     type: inputsTypes.TEXT,
                                     name: "Nacionalidad",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "Nacionalidad",
@@ -166,9 +166,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.Profesion,
                                     type: inputsTypes.TEXT,
                                     name: "profesion",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "profesion",
@@ -197,10 +197,10 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         
                                         
                                     ],
-                                    validations: yup.object().when('estado_civilSelect', {
-                                             is: value => _.isEmpty(value),
-                                             then: yup.object().required('Debes elegir un elemento')
-                                        }),                                    
+                                    // validations: yup.object().when('estado_civilSelect', {
+                                    //          is: value => _.isEmpty(value),
+                                    //          then: yup.object().required('Debes elegir un elemento')
+                                    //     }),                                    
                                     observation: new Observations({
                                         schema,
                                         name: "estado_civil",
@@ -233,9 +233,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.domicilio,
                                     type: inputsTypes.TEXT,
                                     name: "domicilioLegal",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "domicilioLegal",
@@ -281,18 +281,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("provinciaLegalSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("provinciaLegalSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "provinciaLegal",
@@ -318,18 +318,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("departamentoLegalSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("departamentoLegalSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "departamentoLegal",
@@ -351,18 +351,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("localidadLegalSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("localidadLegalSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "localidadLegal",
@@ -394,9 +394,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.domicilio,
                                     type: inputsTypes.TEXT,
                                     name: "domicilio",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "domicilio",
@@ -442,18 +442,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("provinciaSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("provinciaSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "provincia",
@@ -479,18 +479,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("departamentoSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("departamentoSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "departamento",
@@ -512,18 +512,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("localidadSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("localidadSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "localidad",

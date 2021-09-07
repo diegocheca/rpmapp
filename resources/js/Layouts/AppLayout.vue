@@ -17,60 +17,63 @@
               <!-- Navigation Links -->
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <jet-nav-link
+                  v-if="hasAnyPermission(['rpm.dashboard.show'])"
                   :href="route('dashboard')"
                   :active="route().current('dashboard')"
                 >
                   Dashboard
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="hasAnyPermission(['rpm.borradores.show'])"
                   :href="route('formulario-alta.index')"
                   :active="route().current('formulario-alta.index')"
                 >
                   Borradores
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="hasAnyPermission(['rpm.pagos.show'])"
                   :href="route('pagos.index')"
                   :active="route().current('pagos.index')"
                 >
                   Pagos
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="hasAnyPermission(['rpm.reinscripciones.show'])"
                   :href="route('reinscripciones.index')"
                   :active="route().current('reinscripciones.index')"
                 >
                   Reinscripciones
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="hasAnyPermission(['rpm.producto.show'])"
                   :href="route('productos.index')"
                   :active="route().current('productos.index')"
                 >
                   Producto
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="hasAnyPermission(['rpm.iiasydias.show'])"
                   :href="route('iiadias.index')"
                   :active="route().current('iiadias.index')"
                 >
                   IIASyDIAS
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="hasAnyPermission(['rpm.prodmina.show'])"
                   :href="route('productores_minas.index')"
                   :active="route().current('productores_minas.index')"
                 >
                   ProdMina
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="false"
+                  v-if="hasAnyPermission(['rpm.productores.show'])"
                   :href="route('productores.index')"
                   :active="route().current('productores.index')"
                 >
                   Productores
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                  v-if="hasAnyPermission(['formweb.formulariosweb.show'])"
                   :href="route('formweb.solicitudes.index')"
                   :active="route().current('formweb.solicitudes.index')"
                 >
@@ -371,6 +374,7 @@
             </div>
             <nav class="flex flex-col flex-1 w-64 p-4 mt-4">
               <a
+                v-if="hasAnyPermission(['rpm.dashboard.show'])"
                 :href="route('dashboard')"
                 :active="route().current('dashboard')"
                 class="
@@ -405,6 +409,7 @@
                 <span>Inicio (Dashboard)</span>
               </a>
               <a
+                v-if="hasAnyPermission(['rpm.borradores.show'])"
                 :href="route('formulario-alta.index')"
                 :active="route().current('formulario-alta.index')"
                 class="
@@ -439,7 +444,7 @@
                 <span>Borradores</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="hasAnyPermission(['rpm.pagos.show'])"
                 :href="route('pagos.index')"
                 :active="route().current('pagos.index')"
                 class="
@@ -480,6 +485,7 @@
                 <span>Pagos</span>
               </a>
               <a
+                v-if="hasAnyPermission(['rpm.reinscripciones.show'])"
                 :href="route('reinscripciones.index')"
                 :active="route().current('reinscripciones.index')"
                 class="
@@ -514,7 +520,7 @@
                 <span>Reinscripciones</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="hasAnyPermission(['rpm.producto.show'])"
                 :href="route('productos.index')"
                 :active="route().current('productos.index')"
                 class="
@@ -552,7 +558,7 @@
                 <span>Producto</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="hasAnyPermission(['rpm.iiasydias.show'])"
                 :href="route('iiadias.index')"
                 :active="route().current('iiadias.index')"
                 class="
@@ -590,7 +596,7 @@
                 <span>IIASyDIAS</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="hasAnyPermission(['rpm.prodmina.show'])"
                 :href="route('productores_minas.index')"
                 :active="route().current('productores_minas.index')"
                 class="
@@ -625,6 +631,7 @@
                 <span>ProdMina</span>
               </a>
               <a
+                v-if="hasAnyPermission(['rpm.productores.show'])"
                 :href="route('productores.index')"
                 :active="route().current('productores.index')"
                 class="
@@ -661,7 +668,7 @@
                 <span>Productores</span>
               </a>
               <a
-                v-if="hasAnyPermission(['formweb.solicitudes.index'])"
+                v-if="hasAnyPermission(['formweb.formulariosweb.show'])"
                 :href="route('formweb.solicitudes.index')"
                 :active="route().current('formweb.solicitudes.index')"
                 class="
