@@ -265,7 +265,7 @@
                   <template #content>
                     <!-- Administración de cuentas -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                      Administrar cuenta
+                      Administrar Cuenta
                     </div>
 
                     <jet-dropdown-link :href="route('profile.show')">
