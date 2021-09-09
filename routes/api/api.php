@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticarController;
 use App\Http\Controllers\FormAltaProductorController;
+use App\Http\Controllers\ReinscripcionController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -36,7 +37,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('registro', [AutenticarController::class, 'registro']);
 Route::post('acceso', [AutenticarController::class, 'acceso']);
+
 Route::group(['middleware' => ['auth:sanctum']], function(){
 	Route::post('cerrarsesion', [AutenticarController::class, 'cerrarSesion']);
+	
 	Route::get('/lista_productores/', [FormAltaProductorController::class, "lista_productores_api"])->name('lista-productores');
+
+	Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->name('numero-reinsripiones-nuevas');
 });
