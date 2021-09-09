@@ -75,6 +75,12 @@
                                                         </svg>
                                                     </a>
                                                 </div>
+                                                <div v-if="mostrar_imprimir_comprobante(productor.estado)" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                    <a :href="route('comprobante-presentacion-pdf', productor.id)" target="_blank">
+                                                        <img :src="$inertia.page.props.appName+'/images/ticket.svg'">
+                                                    </a>
+                                                </div>
+
                                                 <div v-if="mostrar_imprimir(productor.estado)" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                     <a :href="route('formulario-alta-pdf', productor.id)" target="_blank">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 28 28" stroke="currentColor">
@@ -556,6 +562,25 @@ export default {
                     return false;
                 if(estado=== 'reprobado')
                     return false;
+            /*}
+            else return true;*/
+        },
+        
+        mostrar_imprimir_comprobante(estado){
+            /*if(this.$props.soy_productor === true || this.$props.soy_productor === 'true')
+            {*/
+                if(estado=== 'en proceso')
+                    return true;
+                if(estado=== 'borrador')
+                    return false;
+                if(estado=== 'con observacion')
+                    return true;
+                if(estado=== 'aprobado')
+                    return true;
+                if(estado=== 'en revision')
+                    return true;
+                if(estado=== 'reprobado')
+                    return true;
             /*}
             else return true;*/
         },

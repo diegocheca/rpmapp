@@ -5,6 +5,55 @@
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
 					Editar Productor
 				</h1>
+				<div class="flex">
+					<div v-if="form.estado === 'en revision'" class="w-full w-2/2 px-3 mb-6 md:mb-0">
+						<div class="alert flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
+							<div class="alert-icon flex items-center bg-yellow-100 border-2 border-yellow-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+								<span class="text-yellow-500">
+									<svg fill="currentColor"
+										viewBox="0 0 20 20"
+										class="h-6 w-6">
+										<path fill-rule="evenodd"
+											d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+											clip-rule="evenodd"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="alert-content ml-4">
+								<div class="alert-title font-semibold text-lg text-yellow-800">
+									Atención
+								</div>
+								<div class="alert-description text-sm text-yellow-600">
+									Usted no puede editar este formulario. Se encuentra siendo analizado por la Autoridad Minera, pronto recibirá una respuesta.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div v-if="form.estado === 'borrador'" class="w-full w-2/2 px-3 mb-6 md:mb-0">
+						<div class="alert flex flex-row  w-1/1 items-center bg-green-200 p-5 rounded border-b-2 border-green-300">
+							<div  class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+								<span class="text-green-500">
+									<svg fill="currentColor"
+										viewBox="0 0 20 20"
+										class="h-6 w-6">
+										<path fill-rule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clip-rule="evenodd"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="alert-content ml-4">
+								<div class="alert-title font-semibold text-lg text-green-800">
+									Puede Actualizar El Formulario
+								</div>
+								<div class="alert-description text-sm text-green-600">
+									Usted puede editar el contenido de este formulario porque esta en estado de borrador.
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
@@ -842,7 +891,7 @@
 				:actividad_a_desarrollar_correcto="form.actividad_a_desarrollar_correcto"
 				:obs_actividad_a_desarrollar="form.obs_actividad_a_desarrollar"
 				:obs_actividad_a_desarrollar_valido="form.obs_actividad_a_desarrollar_valido"
-				:mostrar_actividad="$props.mostrar.actividad"
+				:mostrar_actividad="$props.mostrar.actividades"
 				:desactivar_actividad="$props.disables.actividad"
 				:mostrar_actividad_correccion="$props.mostrar.actividad_correccion"
 				:desactivar_actividad_correccion="$props.disables.actividad_correccion"
@@ -1078,7 +1127,7 @@
 						:disabled="$props.disables.estado"
 						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 						<option value="borrador">Borrador</option>
-						<option value="presentado">Presentar</option>
+						<option value="en revision">Presentar</option>
 						
 					</select>
 				</div>
@@ -1252,6 +1301,9 @@ export default {
 			evaluacion_global: this.$props.soy_autoridad_minera,
 			testing_global: this.$props.soy_administrador,
 			mostrar_modal_datos_ya_guardados:false,
+
+			puedo_enviar_form:false,
+			cerrar_modal_datos_uno:false,
 
 
 			lista_provincias: [],
@@ -1699,10 +1751,21 @@ export default {
 	},
 	methods: {
 		submit() {
-			this.$inertia.put(
-				route("productors.update", this.$props.productors.id),
-				this.form
-			);
+			let self  = this;
+			console.log("el id es:",this.form.id);
+			
+			if( typeof this.form.id !== 'undefined' && self.form.id != null && self.puedo_enviar_form)
+			{
+				console.log("Entre al if xq:"+self.form.id);
+				this.$inertia.put(
+					route("productors.update", this.$props.productors.id),
+					this.form
+				);
+			}
+			else{
+				console.log("No puedo enviar el form");
+			}
+
 		},
 		closeModal() {
 				this.confirmingUserDeletion = false
@@ -1738,40 +1801,39 @@ export default {
             data.append('id', this.$props.productor.id);
             data.append('estado', self.form.estado);
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-            axios.post($inertia.page.props.appName+"/formularios/presentar_borrador", data)
+            axios.post(this.$inertia.page.props.appName+"/formularios/presentar_borrador", data)
             .then(function (response) {
                 console.log(response.data);
                 if(response.data.msg === 'Datos actualizados correctamente.')
-                    {
-						if(self.form.estado === 'aprobado') // lo aprobe en el back, siendo autoridad
-						{
-							console.log('todo bien');
-							self.modal_tittle = 'Se aprobó la solicitud';
-							self.modal_body = 'Se ha guardado el estado de la solicitud como aprobado. Esta acción implica que la persona que presentó este formulario será considerado como productor.';
-							self.closeModalAprobar = false;
-							self.mostrar_modal_datos_ya_guardados = true;
-						}
-						if(self.form.estado === 'presentado') // lo presente como productor
-						{
-							console.log('todo bien');
-							self.modal_tittle = 'Se actualizo estado';
-							self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
-							self.closeModalAprobar = false;
-							self.mostrar_modal_datos_ya_guardados = true;
-						}
-                        
-                    }
-                    
-                    if(response.data === "formulario no encontrado")
-                    {
-                        console.log('todo mal, no se encontro');
-                        self.modal_tittle = 'Paso 1 Guardado Fallido';
-                        self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
-                        self.mostrar_modal_datos_ya_guardados = true;
-                    }
-                    else{
-                        console.log('NO todo bien');	
-                    }
+				{
+					if(self.form.estado === 'aprobado') // lo aprobe en el back, siendo autoridad
+					{
+						console.log('todo bien');
+						self.modal_tittle = 'Se aprobó la solicitud';
+						self.modal_body = 'Se ha guardado el estado de la solicitud como aprobado. Esta acción implica que la persona que presentó este formulario será considerado como productor.';
+						self.closeModalAprobar = false;
+						self.mostrar_modal_datos_ya_guardados = true;
+					}
+					if(self.form.estado === 'en revision') // lo presente como productor
+					{
+						console.log('todo bien');
+						self.modal_tittle = 'Se actualizo estado';
+						self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
+						self.closeModalAprobar = false;
+						self.mostrar_modal_datos_ya_guardados = true;
+					}
+					
+				}
+				if(response.data === "formulario no encontrado")
+				{
+					console.log('todo mal, no se encontro');
+					self.modal_tittle = 'Paso 1 Guardado Fallido';
+					self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+					self.mostrar_modal_datos_ya_guardados = true;
+				}
+				else{
+					console.log('NO todo bien');	
+				}
                 
             })
 
@@ -3990,6 +4052,11 @@ export default {
                 console.log(error);
             });
         });
+		console.log("Mi dpto ya elegido es:",this.$props.productor.leal_departamento);
+		if(!isNaN(parseInt(this.$props.productor.leal_departamento)))
+		{
+			self.form.leal_departamento = this.$props.productor.leal_departamento;
+		}
 	}
 	else{self.lista_dptos_legal=[];}
 	if(!isNaN(parseInt(this.$props.productor.administracion_provincia))) {

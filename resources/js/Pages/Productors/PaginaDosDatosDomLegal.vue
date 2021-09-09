@@ -70,8 +70,8 @@
             </div>
             <br>
             <br>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputNombreCalle 
                         v-if="$props.mostrar_calle_legal"
                         v-bind:leal_calle="$props.leal_calle"
@@ -130,7 +130,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
                                 -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
                                 -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3">
                 <InputNumeroCalle
                         v-if="$props.mostrar_legal_calle_num"
                         v-bind:leal_numero="$props.leal_numero"
@@ -203,7 +203,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans"  v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex">
+                            <div class="flex flex-col">
                                 -- numero de calle  deel padre{{form_pagina.leal_numero}}
                                 -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
                                 -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
@@ -217,8 +217,8 @@
                     
                 </div>
             </div>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                 
 
 
@@ -283,7 +283,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- telefono de calle  deel padre{{form_pagina.leal_telefono}}
                                 -- telefono de calle valida deel padre{{form_pagina.leal_telefono_valido}}
                                 -- telefono de calle correcto deel padre{{form_pagina.leal_telefono_correcto}}
@@ -295,7 +295,7 @@
                     
                     
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
 
                 
 
@@ -389,7 +389,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- provincia de calle  deel padre{{form_pagina.leal_provincia}}
                                 -- provincia de calle valida deel padre{{form_pagina.leal_provincia_valido}}
                                 -- provincia de calle correcto deel padre{{form_pagina.leal_provincia_correcto}}
@@ -400,12 +400,10 @@
                     </div>
                 </div>
             </div>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                
-
-
-
+            
+            
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <SelectDepartamento
                     v-if="$props.mostrar_legal_dpto"
                         v-bind:leal_departamento="$props.leal_departamento"
@@ -416,7 +414,8 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Departamento de Domicilio Legal'"
-                        v-bind:lista_departamentos= "lista_departamentos"
+                        v-bind:lista_departamentos="lista_departamentos"
+                        v-bind:lista_departamentos_dos="$props.lista_dptos"
                         v-bind:desactivar_legal_dpto="$props.desactivar_legal_dpto"
                         v-bind:mostrar_legal_dpto_correccion="$props.mostrar_legal_dpto_correccion"
                         v-bind:desactivar_legal_dpto_correccion="$props.desactivar_legal_dpto_correccion"
@@ -466,7 +465,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- dpto de calle  deel padre{{form_pagina.leal_departamento}}
                                 -- dpto de calle valida deel padre{{form_pagina.leal_departamento_valido}}
                                 -- dpto de calle correcto deel padre{{form_pagina.leal_departamento_correcto}}
@@ -476,7 +475,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                 
 
 
@@ -541,7 +540,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- localidad de calle  deel padre{{form_pagina.leal_localidad}}
                                 -- localidad de calle valida deel padre{{form_pagina.leal_localidad_valido}}
                                 -- localidad de calle correcto deel padre{{form_pagina.leal_localidad_correcto}}
@@ -552,8 +551,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                 
 
 
@@ -618,7 +617,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- cod postal de calle  deel padre{{form_pagina.leal_cp}}
                                 -- cod postal de calle valida deel padre{{form_pagina.leal_cp_valido}}
                                 -- cod postal de calle correcto deel padre{{form_pagina.leal_cp_correcto}}
@@ -628,7 +627,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputOtro
 
                     
@@ -695,7 +694,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- otro de calle  deel padre{{form_pagina.leal_otro}}
                                 -- otro de calle valida deel padre{{form_pagina.leal_otro_valido}}
                                 -- otro de calle correcto deel padre{{form_pagina.leal_otro_correcto}}
@@ -994,9 +993,15 @@ export default {
         lista_localidades:[],
     };
   },
-  methods:{
-      cerrar_modal_datos_uno() {
-            this.mostrar_modal_datos_ya_guardados = false
+    methods:{
+        cargar_dptos() {
+            let self = this;
+            //console.log("mis deptos de legal padre es:",self.$props.lista_dptos);
+            self.lista_departamentos = self.$props.lista_dptos;
+            //console.log("mis deptos de legal hijo es:",self.lista_departamentos);
+		},
+        cerrar_modal_datos_uno() {
+            this.mostrar_modal_datos_ya_guardados = false;
 		},
         //FUNCIONES DE NOMBRE DE CALLE
         update_nombre_calle_valido(newValue){
@@ -1098,8 +1103,6 @@ export default {
                 .then(function (response) {
                     //console.log("las deptos son:\n");
                     self.lista_departamentos = response.data;
-                    //console.log(self.lista_departamentos[0]);
-
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -1242,6 +1245,9 @@ export default {
         update_valor_ayuda_local_admi(newValor){
             this.ayuda_administrativo = newValor;
         },
-    }
+    },
+    mounted() {
+            this.cargar_dptos();
+        }
 };
 </script>
