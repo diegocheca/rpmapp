@@ -85,7 +85,7 @@
                     tracking-wider
                   "
                 >
-                  Email
+                  Provincia
                 </th>
                 <th
                   scope="col"
@@ -166,7 +166,7 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="text-sm">
-                    {{ usuario.email }}
+                    {{ usuario.provincia?.nombre }}
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">

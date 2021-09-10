@@ -287,8 +287,8 @@ export default {
    // this.$emit('changeobs',this.$props.valor_obs)
     },
     actaulizar_contenido_forma_presentacion(value, index){
-        console.log("el value es:"+value.length);
-        console.log("el index es:"+index);
+        // console.log("el value es:"+value.length);
+        // console.log("el index es:"+index);
         
         if(value.length <= 2)
         {
@@ -360,10 +360,10 @@ export default {
                 mostrar_otro_mineral_segunda_cat: false,
                 otro_mineral_segunda_cat: '',
                 lugar_donde_se_enccuentra:'',
-                observacion:'esta es la obs 44',
+                observacion:'observacion (44)',
                 clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
                 clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
-                texto_validacion_text_area_presentacion: 'Forma de Presentacion Ccorrecta',
+                texto_validacion_text_area_presentacion: 'Forma de Presentacion Correcta',
                 presentacion_valida:true,
                 evaluacion_correcto: true,
                 observacion_autoridad: '',
@@ -378,15 +378,15 @@ export default {
         this.actualizar_valores_padre();
     },
     cambio_mineral_explotado(index){
-        console.log("cambio el select");
+        // console.log("cambio el select");
         
     },
     cambio_select_mineral_segunda_cat(event, index){
         if(this.$props.tipo_yacimiento === 'segunda')
         {
-            console.log("el index es: "+index);
-            console.log("acabo de elegir: "+ this.minerales[index].id_mineral);
-            //console.log(this.minerales[0].lugar_donde_se_enccuentra);
+            // console.log("el index es: "+index);
+            // console.log("acabo de elegir: "+ this.minerales[index].id_mineral);
+            // console.log(this.minerales[0].lugar_donde_se_enccuentra);
             //console.log("lugar donde se encuentra: "+ this.minerales[index].lugar_donde_se_enccuentra);
             if(
             (this.minerales[index].id_mineral === 1031)
@@ -395,7 +395,7 @@ export default {
             )
             {
                 //en estos casos debo mostrar la seleccion de lugares
-                console.log("entre aca");
+                // console.log("entre aca");
                 this.minerales[index].lugar_donde_se_enccuentra='';
                 //this.model.mina_cantera = 'mina';
                 this.minerales[index].mostrar_lugar_segunda_cat = true;
@@ -448,8 +448,8 @@ export default {
         this.actualizar_valores_padre();
     },
     cambio_select_tipo_mineral_explotado_segunda_cat: function(event, index){
-        console.log("el index es: "+index);
-        console.log("acabo de elegir: "+ this.minerales[index].segunda_cat_mineral_explotado);
+        // console.log("el index es: "+index);
+        // console.log("acabo de elegir: "+ this.minerales[index].segunda_cat_mineral_explotado);
         if(this.minerales[index].segunda_cat_mineral_explotado === 'aprovechamiento_comun'){
             this.minerales[index].lista_de_minerales_array = [
             {
