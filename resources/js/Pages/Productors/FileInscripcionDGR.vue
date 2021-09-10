@@ -140,8 +140,8 @@ export default {
     ],
     
     data() {
-        console.log("La contancia es valor es:");
-        console.log(this.$props.fileinput_valor);
+        // console.log("La contancia es valor es:");
+        // console.log(this.$props.fileinput_valor);
         return {
             valor_input: this.$props.fileinput_valor,
             fileinput_correcto_local: this.$props.inscripciondgr_correcto,
@@ -156,7 +156,7 @@ export default {
     methods:{
         actaulizar_variable_fileinput(valor) {
             this.fileinput_correcto_local = valor;
-            console.log(this.fileinput_correcto_local);
+            // console.log(this.fileinput_correcto_local);
             this.$emit('changeinscripciondgrcorrecto',this.fileinput_correcto_local);
         },
         actaulizar_contenido_text_area_inscripciondgr(value) {

@@ -288,9 +288,14 @@
             },
             buscar_nuevas_reincripciones(){
                 let self = this;
-                axios.get('/numero_reinscripciones_nuevas')
+                // axios.get('/numero_reinscripciones_nuevas')
+                axios.get('/api/numero_reinscripciones_nuevas',{
+                    headers:{
+                        'Authorization':'bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzMTMxMjY1OSwibmJmIjoxNjMxMzEyNjU5LCJqdGkiOiJpNDJxN2tqaDAyV3ZNbW5DIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.TTPwndoaERUxzz-NCQLAOHPrtc00THbFZHk5_q7kbYQ'
+                    }
+                })
                 .then(function (response) {
-                    if(response.data.status === "ok")
+                    if(response.data.status === true)
                         self.nuevas_reinscripciones = response.data.nuevas_inscripciones;
                     else self.nuevas_reinscripciones = 0;
                     console.log(response.data.msg);

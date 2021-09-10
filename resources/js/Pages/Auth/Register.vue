@@ -208,7 +208,8 @@ export default {
         password: "",
         password_confirmation: "",
         terms: false,
-        id_provincia: "",
+        // id_provincia: 70, // San Juan
+        id_provincia: "Seleccione Provincia...",
       }),
     };
   },
@@ -225,7 +226,12 @@ export default {
     //voy a buscar las provincias
     this.$nextTick(() => {
       axios
-        .get("/datos/traer_provincias")
+        .get("/api/datos/traer_provincias", {
+          headers: {
+            Authorization:
+              "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzMTMxMjY1OSwibmJmIjoxNjMxMzEyNjU5LCJqdGkiOiJpNDJxN2tqaDAyV3ZNbW5DIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.TTPwndoaERUxzz-NCQLAOHPrtc00THbFZHk5_q7kbYQ",
+          },
+        })
         .then(function (response) {
           // console.log("las provincias son:\n");
           self.lista_provincias = response.data;

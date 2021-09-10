@@ -8115,7 +8115,7 @@ class FormAltaProductorController extends Controller
 		
 
 	public function traer_provincias_json(){
-		$lista_de_provincias = Provincias::select('id', 'nombre')->get();
+		$lista_de_provincias = Provincias::select('id', 'nombre')->orderBy('nombre')->get();
 		return response()->json($lista_de_provincias);
 	}
 	public function traer_departamentos_json(Request $request){
@@ -8132,7 +8132,7 @@ class FormAltaProductorController extends Controller
 	}
 	
 	public function traer_minerales_json(Request $request){
-		//dd($request->id_manifestacion);
+		// dd($request->id_manifestacion);
 		$minerales = Minerales::select('id', 'name', 'categoria')->where('categoria','=', $request->categoria_buscando)->get();
 		return response()->json($minerales);
 

@@ -461,19 +461,20 @@ class ReinscripcionController extends Controller
     }
     public function numero_reinsripiones_nuevas()
     {
+        // dd(Auth::user());
         if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad')) {
             // if (Auth::user()->id == 1) // para sudo **** funciona solamente para el usuario de cheka
-            if (Auth::user()->hasRole('Administrador')) // funciona para todo usuario con srol Administrador
+            if (Auth::user()->hasRole('Administrador')) // funciona para todo usuario con rol Administrador
                 $nuevas_inscripciones = Reinscripciones::select('id')->where('estado', '=', 'en proceso')->get();
             else $nuevas_inscripciones = Reinscripciones::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=', 'en proceso')->get();
             $nuevas_inscripciones = count($nuevas_inscripciones);
             return response()->json([
-                'status' => 'ok',// true
+                'status' => true, // true
                 'msg' => 'Consulta exitosa.',
                 'nuevas_inscripciones' => $nuevas_inscripciones,
-            ], 201);
+            ], 200);
         } else return response()->json([
-            'status' => 'no',//false
+            'status' => false, //false
             'msg' => 'Consulta fallida.',
             'nuevas_inscripciones' => 0,
         ], 400);

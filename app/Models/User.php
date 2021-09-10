@@ -13,9 +13,9 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 //nuevo
-//use Tymon\JWTAuth\Contracts\JWTSubject;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens;
     use HasFactory;
@@ -58,7 +58,6 @@ class User extends Authenticatable
         });
     }
 
-    //nuevo para jwt
     public function getJWTIdentifier()
     {
         return $this->getKey();
