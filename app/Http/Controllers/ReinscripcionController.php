@@ -469,7 +469,7 @@ class ReinscripcionController extends Controller
     public function numero_reinsripiones_nuevas(){
         if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad'))
         {
-            if(Auth::user()->id == 1) // para sudo
+            if(Auth::user()->hasRole('Administrador')) // para sudo
                 $nuevas_inscripciones = Reinscripciones::select('id')->where('estado', '=', 'en proceso')->get();
             else $nuevas_inscripciones = Reinscripciones::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=', 'en proceso')->get();
             $nuevas_inscripciones = count($nuevas_inscripciones);

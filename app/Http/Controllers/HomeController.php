@@ -49,7 +49,6 @@ class HomeController extends Controller
         $dataChart->data = $departments;
         $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
-        
 
         return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
     }

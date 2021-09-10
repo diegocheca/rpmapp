@@ -70,8 +70,9 @@ export default {
         chart.scrollbarX = new am4core.Scrollbar();
         chart.data = this.dataChart.data.map( (element) => {
             let item = {}
+            console.log(element.value);
             item[`${this.dataChart.axis.x}`] = element.label
-            item[`${this.dataChart.axis.y}`] = Math.floor(Math.random() * (100 - 3)) + 3
+            item[`${this.dataChart.axis.y}`] = !element.value? Math.floor(Math.random() * (100 - 3)) + 3 : element.value
             element[this.dataChart.axis.x]
             return item
         });
@@ -119,6 +120,38 @@ export default {
 
         // Cursor
         chart.cursor = new am4charts.XYCursor();
+
+        // Enable export
+        chart.exporting.menu = new am4core.ExportMenu();
+        chart.exporting.menu.align = "right";
+        chart.exporting.menu.verticalAlign = "bottom";
+        chart.exporting.menu.items = [{
+            "label": "...",
+            "menu": [
+                {
+                    "label": "Imagenes",
+                    "menu": [
+                        { "type": "png", "label": "PNG" },
+                        { "type": "jpg", "label": "JPG" },
+                        { "type": "svg", "label": "SVG" },
+                        { "type": "pdf", "label": "PDF" }
+                    ]
+                },
+                {
+                    "label": "Exportar",
+                    "menu": [
+                        { "type": "json", "label": "JSON" },
+                        { "type": "csv", "label": "CSV" },
+                        { "type": "xlsx", "label": "XLSX" },
+                        { "type": "html", "label": "HTML" },
+                        { "type": "pdfdata", "label": "PDF" }
+                    ]
+                },
+                {
+                    "label": "Imprimir", "type": "print"
+                }
+            ]
+        }];
 
         this.chart = chart;
     },

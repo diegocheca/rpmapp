@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ReportsController;
 
 
 /*
@@ -120,6 +121,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
         'users' => User::all()
     ]);
 })->name('users.index');
+
+Route::get('reportes', [ReportsController::class, "reportes"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reportes');
 
 
 Route::resource('formulario-alta', FormAltaProductorController::class)
