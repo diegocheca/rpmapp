@@ -5,6 +5,7 @@
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
 					Dandose de Alta como nuevo Productor Minero en la Provincia de {{$props.nombre_provincia}}, id {{form.id}}
 				</h1>
+				
 				<button
 					type="button"
 					class="animate-pulse text-white text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
@@ -13,6 +14,7 @@
 					Necesita Ayuda?
 					
 				</button>
+				
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
@@ -22,19 +24,20 @@
 					
 					<br>
 					<!-- Delete Account Confirmation Modal -->
-					<jet-dialog-modal :show="confirmingUserDeletion" @close="closeModal">
+					<jet-dialog-modal class="w-full" :show="confirmingUserDeletion" @close="closeModal">
 						<template #title>
 								{{modal_tittle}}
 						</template>
 						<template #content>
 								{{modal_body}}
-								
+								<br>
+								<br>
+								<Pasos />
 						</template>
 						<template #footer>
-								<button @click="closeModal">
-										Comenzemos
-								</button>
-								
+							<button @click="closeModal" class="py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block">
+								Comencemos
+							</button>
 						</template>
 					</jet-dialog-modal>
 					
@@ -1037,8 +1040,8 @@
 			</PaginaCatamarca>
 			<br>
 			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+			<div class="flex flex-wrap">
+				<div class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3  px-3 mb-6 md:mb-0">
 					<label
 						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 						for="name"
@@ -1051,7 +1054,7 @@
 						class="border py-2 px-3 text-grey-darkest"
 					/>
 				</div>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+				<div class="w-full sm:w-2/2  md:w-1/2 xl:w-1/3  px-3 mb-6 md:mb-0">
 					<label
 						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 						for="estado"
@@ -1064,7 +1067,7 @@
 						<span v-if="form.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
 						<span v-if="form.estado === 'sin guardar'" class="animate-bounce bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Sin Guardar</span>
 				</div>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0" v-if="$props.mostrar.estado">
+				<div class="w-full sm:w-2/2  md:w-1/2 xl:w-1/3  px-3 mb-6 md:mb-0" v-if="$props.mostrar.estado">
 					<label
 						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
 						for="estado"
@@ -1084,8 +1087,8 @@
 			</div>
 			<br>
 			<br>
-			<div class="flex">
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+			<div class="flex flex-col">
+				<div class="w-full sm:w-2/2  md:w-1/2 px-3 mb-6 md:mb-0">
 					<inertia-link
 						:href="route('formulario-alta.index')"
 						class="px-4 py-2 mb-4 text-sm font-medium rounded-full border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
@@ -1093,7 +1096,7 @@
 						Volver
 					</inertia-link>
 				</div>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+				<div class="w-full sm:w-2/2  md:w-1/2 px-3 mb-6 md:mb-0">
 					<button
 							v-if="!evaluacion_global"
 							@click="mostrar_modal_presentar"
@@ -1104,45 +1107,41 @@
 						</button>
 				</div>
 			</div>
-			<jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
-					<template #title>
-							{{modal_tittle_apro}}
-					</template>
-					<template #content>
-							{{modal_body_apro}}
-							
-					</template>
-					<template #footer>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-								<button  @click="closeModalAprobar" class="animate-pulse py-3 px-6 text-white rounded-lg bg-yellow-400 shadow-lg block md:inline-block">
-									Vuelvo a revisar
-
-								</button>
-							</div>
-							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-								<button
-									v-show="mostrar_boton_aprobar"
-									@click="closeModalAprobar"
-									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
-								>
-									Actualizar
-								</button>
-							</div>
-
-							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-								<button
-									v-show="mostrar_boton_aprobar_de_todos_modos"
-									@click="presentar_de_todos_modos"
-									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
-								>
-									Actualizar de todos Modos
-								</button>
-							</div>
+			<jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar" class="flex flex-col">
+				<template #title>
+					{{modal_tittle_apro}}
+				</template>
+				<template #content>
+					{{modal_body_apro}}
+				</template>
+				<template #footer>
+					<div class="flex flex-col">
+						<div class="w-full sm:w-3/3  md:w-1/3 px-3 mb-6 md:mb-0">
+							<button  @click="closeModalAprobar" class="animate-pulse py-3 px-6 text-white rounded-lg bg-yellow-400 shadow-lg block md:inline-block">
+								Vuelvo a revisar
+							</button>
 						</div>
-					</template>
+						<div class="w-full sm:w-3/3  md:w-1/3 px-3 mb-6 md:mb-0">
+							<button
+								v-show="mostrar_boton_aprobar"
+								@click="closeModalAprobar"
+								class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
+							>
+								Actualizar
+							</button>
+						</div>
+						<div class="w-full sm:w-3/3  md:w-1/3 px-3 mb-6 md:mb-0">
+							<button
+								v-show="mostrar_boton_aprobar_de_todos_modos"
+								@click="presentar_de_todos_modos"
+								class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
+							>
+								Actualizar de todos Modos
+							</button>
+						</div>
+					</div>
+				</template>
 			</jet-dialog-modal>
-
 		</form>
 	</div>
 	</div>
@@ -1177,6 +1176,8 @@ import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbic
 
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 
+import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
+
 
 import ValidationErrors from '../../Jetstream/ValidationErrors.vue';
  
@@ -1203,6 +1204,7 @@ export default {
 		PaginaSeisDatosUbicacionMina,
 		PaginaCatamarca,
 		ValidationErrors,
+		Pasos
 	},
 	props: [
 		"productor",
@@ -1832,6 +1834,7 @@ export default {
 	methods: {
 		submit() {
 			let self  = this;
+			//console.log("el id es:",this.form.id);
 			if( typeof this.form.id !== 'undefined' && self.form.id != null)
 			{
 				/*this.$inertia.put(
@@ -1881,6 +1884,7 @@ export default {
 		},
 		evaluacion_de_evaluaciones(){
 			let sin_problemas='';
+			//poner los requeried or not 
 			if(this.form.razon_social_correcto === false)
 				sin_problemas += "\n La Razon Social ha sido Reprobada ";
 			if(this.form.razon_social_correcto === 'nada')

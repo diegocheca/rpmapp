@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-center w-full">
+    <div class="flex flex-col items-center justify-center w-full">
         <jet-dialog-modal :show="mostrar_modal_datos_ya_guardados" @close="cerrar_modal_datos_uno">
             <template #title>
                     {{modal_tittle}}
@@ -13,15 +13,15 @@
                 </button>
             </template>
         </jet-dialog-modal>
-        <div class="flex w-full">
-            <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
+        <div class="flex flex-col w-full">
+            <div class="w-full sd:w-5/5 md:w-1/5 px-3 mb-6 md:mb-0">
                 <a :href="link_volver">
                     <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
                         {{titulo_boton_volver}}
                     </button>
                 </a>
             </div>
-            <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
+            <div class="w-full sm:w-5/5 md:w-4/5 px-3 mb-6 md:mb-0">
                 <button
                     type="button"
                     :disabled="$props.desactivar_boton_guardar_uno"

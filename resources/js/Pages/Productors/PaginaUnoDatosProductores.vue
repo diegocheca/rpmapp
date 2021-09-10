@@ -12,7 +12,7 @@
 <template>
 
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-        <div class="flex justify-center md:justify-end -mt-16  sticky top-0">
+        <div class="flex flex-col justify-center sm:w-full md:justify-end -mt-16  sticky top-0">
             <a href="#section_productor">
                 <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/casco-minero.svg'" width="50%">
             </a>
@@ -46,7 +46,7 @@
         <div>
             <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
             <br><br>
-            <div class="flex items-center justify-center">
+            <div class="flex flex-col items-center justify-center">
                 <CardProductor  
                     :progreso="50"
                     :aprobado="25"
@@ -63,8 +63,8 @@
             </div>
             <br>
             <br>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2  px-3 mb-6 md:mb-0">
                     <InputNumeroProductor
                         v-if="$props.mostrar_num_prod"
                         v-bind:numeroproductor="form_pagina.numeroproductor"
@@ -112,7 +112,7 @@
                     </div>
 
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2  px-3 mb-6 md:mb-0">
                     <InputCuit
                         v-if="$props.mostrar_cuit"
                         v-bind:cuit="form_pagina.cuit"
@@ -159,206 +159,206 @@
                 </div>
                 
             </div>
-            <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputRazonSocial 
-                    v-if="$props.mostrar_razon_social"
-                    v-bind:razon_social="form_pagina.razon_social" 
-                    v-bind:razon_social_valido="form_pagina.razon_social_valido"
-                    v-bind:razon_social_correcto="form_pagina.razon_social_correcto"
-                    v-bind:obs_razon_social="form_pagina.obs_razon_social"
-                    v-bind:obs_razon_social_valido="form_pagina.obs_razon_social_valido"
-                    v-bind:evaluacion="autoridad_minera"
-                    v-bind:label="'Razon social'"
-                    v-bind:testing="mostrar_testing"
-                    v-bind:razonsocial_disable="$props.desactivar_razon_social"
-                    v-bind:razonsocial_correccion_mostrar="$props.mostrar_razon_social_correccion"
-                    v-bind:razonsocial_correccion_desactivar="$props.desactivar_razon_social_correccion"
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 px-3 mb-6 md:mb-0">
+                    <InputRazonSocial 
+                        v-if="$props.mostrar_razon_social"
+                        v-bind:razon_social="form_pagina.razon_social" 
+                        v-bind:razon_social_valido="form_pagina.razon_social_valido"
+                        v-bind:razon_social_correcto="form_pagina.razon_social_correcto"
+                        v-bind:obs_razon_social="form_pagina.obs_razon_social"
+                        v-bind:obs_razon_social_valido="form_pagina.obs_razon_social_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Razon social'"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:razonsocial_disable="$props.desactivar_razon_social"
+                        v-bind:razonsocial_correccion_mostrar="$props.mostrar_razon_social_correccion"
+                        v-bind:razonsocial_correccion_desactivar="$props.desactivar_razon_social_correccion"
 
-                    v-on:changerazonsocialvalido="update_razon_social_valido($event)"
-                    v-on:changerazonsocialcorrecto="update_razon_social_correcto($event)"
-                    v-on:changeobsrazonsocial="update_obs_razon_social($event)"
-                    v-on:changeobsrazonsocialvalido="updateobs_razon_social_valido($event)"
-                    v-on:changerazonsocial="update_razon_social($event)"
-                ></InputRazonSocial>
-                <div v-show="mostrar_ayuda">
-                    <br>
-                    <div   class="
-                        bg-blue-50
-                        text-gray-800
-                        bg-opacity-20
-                        text-opacity-80
-                        ring
-                        ring-4
-                        ring-blue-100">
-                    
-                        <p class="p-3">
-                            En caso de ser una persona física, debe completar este campo con su nombre y apellido. En caso de ser una empresa debe completar este campo con el nombre con el que se identifica ante la AFIP.
-                        </p>
+                        v-on:changerazonsocialvalido="update_razon_social_valido($event)"
+                        v-on:changerazonsocialcorrecto="update_razon_social_correcto($event)"
+                        v-on:changeobsrazonsocial="update_obs_razon_social($event)"
+                        v-on:changeobsrazonsocialvalido="updateobs_razon_social_valido($event)"
+                        v-on:changerazonsocial="update_razon_social($event)"
+                    ></InputRazonSocial>
+                    <div v-show="mostrar_ayuda">
+                        <br>
+                        <div   class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
                         
+                            <p class="p-3">
+                                En caso de ser una persona física, debe completar este campo con su nombre y apellido. En caso de ser una empresa debe completar este campo con el nombre con el que se identifica ante la AFIP.
+                            </p>
+                            
+                        </div>
+                        <br>
                     </div>
-                    <br>
+                    <div class="flex" v-if="mostrar_testing">
+                        - Razon Social valor input del padre{{form_pagina.razon_social}}
+                        - Razon Social input valido del padre{{form_pagina.razon_social_valido}}
+                        - Razon Social rta prod correcta del padre{{form_pagina.razon_social_correcto}}
+                        - Razon Social observacion autoridad del padre{{form_pagina.obs_razon_social}}
+                        - Razon Social observacion autoridad valida del padre{{form_pagina.obs_razon_social_valido}}
+                    </div>
                 </div>
-                <div class="flex" v-if="mostrar_testing">
-                    - Razon Social valor input del padre{{form_pagina.razon_social}}
-                    - Razon Social input valido del padre{{form_pagina.razon_social_valido}}
-                    - Razon Social rta prod correcta del padre{{form_pagina.razon_social_correcto}}
-                    - Razon Social observacion autoridad del padre{{form_pagina.obs_razon_social}}
-                    - Razon Social observacion autoridad valida del padre{{form_pagina.obs_razon_social_valido}}
+                <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2   px-3">
+                    <InputEmail
+                        v-if="$props.mostrar_email"
+                        v-bind:email="form_pagina.email"
+                        v-bind:email_valido="form_pagina.email_valido"
+                        v-bind:email_correcto="form_pagina.email_correcto"
+                        v-bind:obs_email="form_pagina.obs_email"
+                        v-bind:obs_email_valido="form_pagina.obs_email_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Email'"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:email_disable="$props.desactivar_email"
+                        v-bind:email_correccion_mostrar="$props.mostrar_email_correccion"
+                        v-bind:email_correccion_desactivar="$props.desactivar_email_correccion"
+
+                        v-on:changeemailvalido="update_email_valido($event)"
+                        v-on:changeemailcorrecto="update_email_correcto($event)"
+                        v-on:changeobsemail="update_obs_email($event)"
+                        v-on:changeobsemailvalido="update_obs_email_valido($event)"
+                        v-on:changeemail="update_email($event)"
+                    >
+                    </InputEmail>
+                    <div v-show="mostrar_ayuda" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
+                        
+                            <p class="p-3">
+                                En este email usted recibirá notificaciones y será constituido como domicilio electrónico. Pudiendo ser o no el mismo que el del usuario. Ejemplo: nombre@ejemplo.com
+                            </p>
+                            
+                        </div>
+                        <br>
+                    </div>
+                    <div class="flex" v-if="mostrar_testing">
+                        -- Emai  deel padre{{form_pagina.email}}
+                        -- Emai valida deel padre{{form_pagina.email_valido}}
+                        -- Emai correcto deel padre{{form_pagina.email_correcto}}
+                        -- Emai observacion deel padre{{form_pagina.obs_email}}
+                        -- Emai observacion valida deel padre{{form_pagina.obs_email_valido}}
+                    </div>
                 </div>
             </div>
-            <div class="w-full md:w-1/2 px-3">
-                <InputEmail
-                    v-if="$props.mostrar_email"
-                    v-bind:email="form_pagina.email"
-                    v-bind:email_valido="form_pagina.email_valido"
-                    v-bind:email_correcto="form_pagina.email_correcto"
-                    v-bind:obs_email="form_pagina.obs_email"
-                    v-bind:obs_email_valido="form_pagina.obs_email_valido"
-                    v-bind:evaluacion="autoridad_minera"
-                    v-bind:label="'Email'"
-                    v-bind:testing="mostrar_testing"
-                    v-bind:email_disable="$props.desactivar_email"
-                    v-bind:email_correccion_mostrar="$props.mostrar_email_correccion"
-                    v-bind:email_correccion_desactivar="$props.desactivar_email_correccion"
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2   px-3 mb-6 md:mb-0">
+                    <InputTipoSociedad
+                        v-if="$props.mostrar_tipo_sociedad"
+                        v-bind:tiposociedad="form_pagina.tiposociedad"
+                        v-bind:tiposociedad_valido="form_pagina.tiposociedad_valido"
+                        v-bind:tiposociedad_correcto="form_pagina.tiposociedad_correcto"
+                        v-bind:obs_tiposociedad="form_pagina.obs_tiposociedad"
+                        v-bind:obs_tiposociedad_valido="form_pagina.obs_tiposociedad_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Tipo de Sociedad'"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:tipo_sociedad_disable="$props.desactivar_tipo_sociedad"
+                        v-bind:tipo_sociedad_correccion_mostrar="$props.mostrar_tipo_sociedad_correccion"
+                        v-bind:tipo_sociedad_correccion_desactivar="$props.desactivar_tipo_sociedad_correccion"
 
-                    v-on:changeemailvalido="update_email_valido($event)"
-                    v-on:changeemailcorrecto="update_email_correcto($event)"
-                    v-on:changeobsemail="update_obs_email($event)"
-                    v-on:changeobsemailvalido="update_obs_email_valido($event)"
-                    v-on:changeemail="update_email($event)"
-                >
-                </InputEmail>
-                <div v-show="mostrar_ayuda" >
-                    <br>
-                    <div  class="
-                        bg-blue-50
-                        text-gray-800
-                        bg-opacity-20
-                        text-opacity-80
-                        ring
-                        ring-4
-                        ring-blue-100">
-                    
-                        <p class="p-3">
-                            En este email usted recibirá notificaciones y será constituido como domicilio electrónico. Pudiendo ser o no el mismo que el del usuario. Ejemplo: nombre@ejemplo.com
-                        </p>
+                        v-on:changetiposociedadvalido="update_tipo_sociedad_valido($event)"
+                        v-on:changetiposociedadcorrecto="update_tipo_sociedad_correcto($event)"
+                        v-on:changeobstiposociedad="update_obs_tipo_sociedad($event)"
+                        v-on:changetiposociedad="update_tipo_sociedad($event)"
+                    >
+                    </InputTipoSociedad>
+                    <div v-show="mostrar_ayuda" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
                         
+                            <p class="p-3">
+                                Es el tipo de sociedad conformada.
+                            </p>
+                            
+                        </div>
+                        <br>
                     </div>
-                    <br>
-                </div>
-                <div class="flex" v-if="mostrar_testing">
-                    -- Emai  deel padre{{form_pagina.email}}
-                    -- Emai valida deel padre{{form_pagina.email_valido}}
-                    -- Emai correcto deel padre{{form_pagina.email_correcto}}
-                    -- Emai observacion deel padre{{form_pagina.obs_email}}
-                    -- Emai observacion valida deel padre{{form_pagina.obs_email_valido}}
+                    <div class="flex" v-if="mostrar_testing">
+                        -- tipo de sociedad valida deel padre{{form_pagina.tiposociedad_valido}}
+                        -- tipo de sociedad correcto deel padre{{form_pagina.tiposociedad_correcto}}
+                        -- tipo de sociedad observacion deel padre{{form_pagina.obs_tiposociedad}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <InputTipoSociedad
-                    v-if="$props.mostrar_tipo_sociedad"
-                    v-bind:tiposociedad="form_pagina.tiposociedad"
-                    v-bind:tiposociedad_valido="form_pagina.tiposociedad_valido"
-                    v-bind:tiposociedad_correcto="form_pagina.tiposociedad_correcto"
-                    v-bind:obs_tiposociedad="form_pagina.obs_tiposociedad"
-                    v-bind:obs_tiposociedad_valido="form_pagina.obs_tiposociedad_valido"
-                    v-bind:evaluacion="autoridad_minera"
-                    v-bind:label="'Tipo de Sociedad'"
-                    v-bind:testing="mostrar_testing"
-                    v-bind:tipo_sociedad_disable="$props.desactivar_tipo_sociedad"
-                    v-bind:tipo_sociedad_correccion_mostrar="$props.mostrar_tipo_sociedad_correccion"
-                    v-bind:tipo_sociedad_correccion_desactivar="$props.desactivar_tipo_sociedad_correccion"
+            <br>
+            <hr>
+            <br>
+            <div class="flex flex-wrap">
+                <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
+                <div class="w-full sd:w-2/2 md:w-2/2 px-3 mb-6 md:mb-0">
+                    <FileInscripcionDGR
+                        v-if="$props.mostrar_inscripcion_dgr"
+                        v-bind:fileinput_valor="form_pagina.inscripciondgr"
+                        v-bind:fileinput_valor_valido="form_pagina.inscripciondgr_valido"
+                        v-bind:inscripciondgr_correcto="form_pagina.inscripciondgr_correcto"
+                        v-bind:obs_fileinput="form_pagina.obs_inscripciondgr"
+                        v-bind:obs_inscripciondgr_valido="form_pagina.obs_inscripciondgr_valido"
+                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:label="'Inscripción DGR'"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:name_correcto="'inscripcion_correcto'"
+                        v-bind:inscripcion_disable="$props.desactivar_inscripcion_dgr"
+                        v-bind:inscripcion_correccion_mostrar="$props.mostrar_inscripcion_dgr_correccion"
+                        v-bind:inscripcion_correccion_desactivar="$props.desactivar_inscripcion_dgr_correccion"
 
-                    v-on:changetiposociedadvalido="update_tipo_sociedad_valido($event)"
-                    v-on:changetiposociedadcorrecto="update_tipo_sociedad_correcto($event)"
-                    v-on:changeobstiposociedad="update_obs_tipo_sociedad($event)"
-                    v-on:changetiposociedad="update_tipo_sociedad($event)"
-                >
-                </InputTipoSociedad>
-                <div v-show="mostrar_ayuda" >
-                    <br>
-                    <div  class="
-                        bg-blue-50
-                        text-gray-800
-                        bg-opacity-20
-                        text-opacity-80
-                        ring
-                        ring-4
-                        ring-blue-100">
-                    
-                        <p class="p-3">
-                            Es el tipo de sociedad conformada.
-                        </p>
+                        v-on:changeinscripciondgrcorrecto="update_inscripcion_dgr_correcto($event)"
+                        v-on:changeobsinscripciondgr="update_obs_inscripcion_dgr($event)"
+                        v-on:cambioarchivo="update_archivo_dgr($event)"
+                    >
+                    </FileInscripcionDGR>
+                    <div v-show="mostrar_ayuda" >
+                        <br>
+                        <div  class="
+                            bg-blue-50
+                            text-gray-800
+                            bg-opacity-20
+                            text-opacity-80
+                            ring
+                            ring-4
+                            ring-blue-100">
                         
+                            <p class="p-3">
+                                Esta constancia puede ser descargada desde la página de la AFIP. Debe ser un archivo del tipo PDF.
+                            </p>
+                            
+                        </div>
+                        <br>
                     </div>
                     <br>
-                </div>
-                <div class="flex" v-if="mostrar_testing">
-                    -- tipo de sociedad valida deel padre{{form_pagina.tiposociedad_valido}}
-                    -- tipo de sociedad correcto deel padre{{form_pagina.tiposociedad_correcto}}
-                    -- tipo de sociedad observacion deel padre{{form_pagina.obs_tiposociedad}}
-                </div>
-            </div>
-        </div>
-        <br>
-        <hr>
-        <br>
-        <div class="flex">
-            <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
-            <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
-                <FileInscripcionDGR
-                    v-if="$props.mostrar_inscripcion_dgr"
-                    v-bind:fileinput_valor="form_pagina.inscripciondgr"
-                    v-bind:fileinput_valor_valido="form_pagina.inscripciondgr_valido"
-                    v-bind:inscripciondgr_correcto="form_pagina.inscripciondgr_correcto"
-                    v-bind:obs_fileinput="form_pagina.obs_inscripciondgr"
-                    v-bind:obs_inscripciondgr_valido="form_pagina.obs_inscripciondgr_valido"
-                    v-bind:evaluacion="autoridad_minera"
-                    v-bind:label="'Inscripción DGR'"
-                    v-bind:testing="mostrar_testing"
-                    v-bind:name_correcto="'inscripcion_correcto'"
-                    v-bind:inscripcion_disable="$props.desactivar_inscripcion_dgr"
-                    v-bind:inscripcion_correccion_mostrar="$props.mostrar_inscripcion_dgr_correccion"
-                    v-bind:inscripcion_correccion_desactivar="$props.desactivar_inscripcion_dgr_correccion"
-
-                    v-on:changeinscripciondgrcorrecto="update_inscripcion_dgr_correcto($event)"
-                    v-on:changeobsinscripciondgr="update_obs_inscripcion_dgr($event)"
-                    v-on:cambioarchivo="update_archivo_dgr($event)"
-                >
-                </FileInscripcionDGR>
-                <div v-show="mostrar_ayuda" >
-                    <br>
-                    <div  class="
-                        bg-blue-50
-                        text-gray-800
-                        bg-opacity-20
-                        text-opacity-80
-                        ring
-                        ring-4
-                        ring-blue-100">
-                    
-                        <p class="p-3">
-                            Esta constancia puede ser descargada desde la página de la AFIP. Debe ser un archivo del tipo PDF.
-                        </p>
-                        
+                    <div class="flex" v-if="mostrar_testing">
+                        -- valor inscripcion dgr:{{form_pagina.inscripciondgr}}*
+                        -- inscripcion dgr valida deel padre{{form_pagina.inscripciondgr_valido}}
+                        -- inscripcion dgr correcto deel padre{{form_pagina.inscripciondgr_correcto}}
+                        -- inscripcion dgr observacion deel padre{{form_pagina.obs_inscripciondgr}}
                     </div>
-                    <br>
-                </div>
-                <br>
-                <div class="flex" v-if="mostrar_testing">
-                    -- valor inscripcion dgr:{{form_pagina.inscripciondgr}}*
-                    -- inscripcion dgr valida deel padre{{form_pagina.inscripciondgr_valido}}
-                    -- inscripcion dgr correcto deel padre{{form_pagina.inscripciondgr_correcto}}
-                    -- inscripcion dgr observacion deel padre{{form_pagina.obs_inscripciondgr}}
                 </div>
             </div>
-        </div>
-        <br>
-        <hr>
-        <br>
+            <br>
+            <hr>
+            <br>
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <FileInscripcionDGR

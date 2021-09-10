@@ -10,7 +10,7 @@
 	<div :class="clase_sup">
 		<div :class="clase_inf">
 			<a href="#section_catamarca">
-				<img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/catamarca.png" width="50%">
+				<img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/formulario_alta/imagenes/catamarca.png'" width="50%">
 			</a>
 			<div class="mt-8">
 				<p class="text-xl font-semibold my-2">Datos de Catamarca</p>
