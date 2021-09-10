@@ -34,7 +34,7 @@
                 default: false
             },
             maxWidth: {
-                default: '2xl'
+                default: 'full'
             },
             closeable: {
                 default: true

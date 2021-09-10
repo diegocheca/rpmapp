@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Validación de Email- RPM</title>
+<title>Presentación de Formulario Productor - RPM</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 <style>
@@ -69,12 +69,13 @@
         <div class="info"><b>Aviso de presentación de Formulario de Alta de Productor Minero.</b></div>
 
         <p>Saludos <strong>Productor Minero: {{$razonsocial}}</strong>, esperamos tenga un excelente día.</p>
-        <p> Nos comunicamos desde el Registro de Productores Mineros, a fin de comunicarle que su formulario de altaha sido calificado como "formulario a ser evaluado". 
+        <p> Nos comunicamos desde el Registro de Productores Mineros, a fin de comunicarle que su formulario de alta de productor minero <br>
+        ha presentado correctamente de manera virtual. 
           <p>Un agente del Ministerio de Minería de San Juan se encargará de evaluar su solicitud.</p>
           <p>Le estaremos enviando novedades por este medio.</p>
         <p>Usted puede descargar su comprobante desde el siguiente botón:</p>
         <div class="form-group">
-            <a href="{{url('/validar_email_productor/'.$codigo) }}" ><button class="button">Confrimar Casilla</button></a>
+            <a href="{{url('/comprobante-presentacion-pdf/'.'/'.$id) }}" ><button class="button">Descargar Comprobante</button></a>
         </div>
 
         <p>Si usted no ha cargado ningún email, por favor, le pedimos destime este email.</p>
