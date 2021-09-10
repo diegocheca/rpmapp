@@ -6,30 +6,7 @@
 					Editar Productor
 				</h1>
 				<div class="flex">
-					<div v-if="form.estado === 'en revision'" class="w-full w-2/2 px-3 mb-6 md:mb-0">
-						<div class="alert flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
-							<div class="alert-icon flex items-center bg-yellow-100 border-2 border-yellow-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
-								<span class="text-yellow-500">
-									<svg fill="currentColor"
-										viewBox="0 0 20 20"
-										class="h-6 w-6">
-										<path fill-rule="evenodd"
-											d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-											clip-rule="evenodd"></path>
-									</svg>
-								</span>
-							</div>
-							<div class="alert-content ml-4">
-								<div class="alert-title font-semibold text-lg text-yellow-800">
-									Atención
-								</div>
-								<div class="alert-description text-sm text-yellow-600">
-									Usted no puede editar este formulario. Se encuentra siendo analizado por la Autoridad Minera, pronto recibirá una respuesta.
-								</div>
-							</div>
-						</div>
-					</div>
-					<div v-if="form.estado === 'borrador'" class="w-full w-2/2 px-3 mb-6 md:mb-0">
+					<div v-if="$props.mostrar.alerta_puede_editar" class="w-full w-2/2 px-3 mb-6 md:mb-0">
 						<div class="alert flex flex-row  w-1/1 items-center bg-green-200 p-5 rounded border-b-2 border-green-300">
 							<div  class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
 								<span class="text-green-500">
@@ -52,8 +29,37 @@
 							</div>
 						</div>
 					</div>
-					
+					<div v-else class="w-full w-2/2 px-3 mb-6 md:mb-0">
+						<div class="alert flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
+							<div class="alert-icon flex items-center bg-yellow-100 border-2 border-yellow-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+								<span class="text-yellow-500">
+									<svg fill="currentColor"
+										viewBox="0 0 20 20"
+										class="h-6 w-6">
+										<path fill-rule="evenodd"
+											d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+											clip-rule="evenodd"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="alert-content ml-4">
+								<div class="alert-title font-semibold text-lg text-yellow-800">
+									Atención
+								</div>
+								<div class="alert-description text-sm text-yellow-600">
+									Usted no puede editar este formulario. Se encuentra siendo analizado por la Autoridad Minera, pronto recibirá una respuesta.
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
+
+	
+    
+
+
+				
+				
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
@@ -222,13 +228,6 @@
 						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
 					</div>-->
 					
-					<h2>hola </h2>
-					auto:{{evaluacion_global}}
-					mostrar.email: {{$props.mostrar.email}}
-					disables.email: {{$props.disables.email}}
-					mostrar.email_correccion: {{$props.mostrar.email_correccion}}
-					disables.email_correccion: {{$props.disables.email_correccion}}
-
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					v-if="$props.mostrar.paso_uno"

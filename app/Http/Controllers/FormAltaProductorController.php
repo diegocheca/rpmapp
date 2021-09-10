@@ -6220,7 +6220,6 @@ class FormAltaProductorController extends Controller
 			"boton_guardar_dos" => true,
 			"paso_dos" => true,
 
-
 			"administracion_calle" => true,
 			"administracion_correccion" => true,
 			"administracion_calle_num" => true,
@@ -6239,8 +6238,6 @@ class FormAltaProductorController extends Controller
 			"administracion_otro_correccion" => true,
 			"boton_guardar_tres" => true,
 			"paso_tres" => true,
-
-
 
 			"num_exp" => true,
 			"num_exp_correccion" => true,
@@ -6262,8 +6259,6 @@ class FormAltaProductorController extends Controller
 			"titulo_correccion" => true,
 			"boton_guardar_cuatro" => true,
 			"paso_cuatro" => true,
-
-
 
 			"owner" => true,
 			"owner_correccion" => true,
@@ -6493,6 +6488,8 @@ class FormAltaProductorController extends Controller
 			"estado" => true,
 
 			"boton_actualizar" => false,
+
+			"alerta_puede_editar" => false,
 		];
 
 		if($pagina == 'editar')
@@ -6654,6 +6651,8 @@ class FormAltaProductorController extends Controller
 
 					$mostrar["boton_actualizar"] = true;
 
+					$mostrar["alerta_puede_editar"] = true;
+
 
 					if(Auth::user()->id_provincia == 10) // es de catamarca
 					{
@@ -6791,6 +6790,9 @@ class FormAltaProductorController extends Controller
 					$mostrar["boton_guardar_cinco"] = false;
 					$mostrar["boton_guardar_seis"] = false;
 					$mostrar["boton_actualizar"] = false;
+
+					$mostrar["alerta_puede_editar"] = false;
+
 
 					if(Auth::user()->id_provincia == 10) // es de catamarca
 					{
@@ -6962,6 +6964,8 @@ class FormAltaProductorController extends Controller
 						$mostrar["boton_guardar_seis"] = true;
 						$mostrar["boton_actualizar"] = true;
 
+						$mostrar["alerta_puede_editar"] = true;
+
 
 						if(Auth::user()->id_provincia == 10) // es de catamarca
 						{
@@ -7016,6 +7020,7 @@ class FormAltaProductorController extends Controller
 			}
 			elseif(Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Administrador'))
 			{
+				
 				if($estado_formulario == 'borrador')
 				{
 					//CASO: Autoridad - Edicion - Borrador
@@ -7125,13 +7130,15 @@ class FormAltaProductorController extends Controller
 					$disables["estado"] = false;
 					$disables["boton_actualizar"] = false;
 			
-					$mostrar["boton_guardar_uno"] = false;
-					$mostrar["boton_guardar_dos"] = false;
-					$mostrar["boton_guardar_tres"] = false;
-					$mostrar["boton_guardar_cuatro"] = false;
-					$mostrar["boton_guardar_cinco"] = false;
-					$mostrar["boton_guardar_seis"] = false;
-					$mostrar["boton_actualizar"] = false;
+					$mostrar["boton_guardar_uno"] = true;
+					$mostrar["boton_guardar_dos"] = true;
+					$mostrar["boton_guardar_tres"] = true;
+					$mostrar["boton_guardar_cuatro"] = true;
+					$mostrar["boton_guardar_cinco"] = true;
+					$mostrar["boton_guardar_seis"] = true;
+					$mostrar["boton_actualizar"] = true;
+
+					$mostrar["alerta_puede_editar"] = true;
 
 					if(Auth::user()->id_provincia == 10) // es de catamarca
 					{
@@ -7148,8 +7155,8 @@ class FormAltaProductorController extends Controller
 						$disables["paso_catamarca"]= false;
 						$disables["boton_catamarca"]= false;
 						
-						$mostrar["paso_catamarca"] = false;
-						$mostrar["boton_catamarca"] = false;
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
 					}
 				}
 				elseif($estado_formulario == 'aprobado')
@@ -7463,9 +7470,14 @@ class FormAltaProductorController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
 		//dd($id);
 		$formAltaProductor = FormAltaProductor::find($id)->delete();
+		return response()->json([
+			'status' => 'ok',
+			'msg' => 'se elimino correctamente',
+			'id_eliminado' => $id
+		],201);
+
 		return Redirect::route('formulario-alta.index');
 		// $borradores = FormAltaProductor::all();
 		// return Inertia::render('Productors/List', ['borradores' => $borradores]);
@@ -10698,6 +10710,16 @@ class FormAltaProductorController extends Controller
 			$formulario_provisorio->updated_by = Auth::user()->id;
 			$formulario_provisorio->save();
 			//return response()->json("todo bien");
+			//$email_a_mandar = $formulario_provisorio->email; para prod
+			$email_a_mandar = 'diegochecarelli@gmail.com';
+			if($formulario_provisorio->estado  == "en revision")
+			{
+				Mail::to($email_a_mandar)->send(new AvisoFormularioPresentadoEmail(
+					$request->id,
+					$formulario_provisorio->razon_social,
+					date("Y-m-d H:i:s")
+				));
+			}
 			return response()->json([
 				'status' => 'ok',
 				'msg' => 'Datos actualizados correctamente.'
@@ -10868,7 +10890,7 @@ class FormAltaProductorController extends Controller
 	}
 	
 	public function comprobante_tramite_pdf($id){
-    	date_default_timezone_set('America/Argentina/Buenos_Aires');
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$puedo_imprimir = false;
 		if(Auth::user()->id == 1)
 			$borrador = FormAltaProductor::find($id);
@@ -10880,14 +10902,14 @@ class FormAltaProductorController extends Controller
 		if($borrador != null){
 			$data = [
 				'title' => 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94',
-	            'date_generado' => date('d/m/Y'),
+				'date_generado' => date('d/m/Y'),
 	            //1
 				'id' => $borrador->id,
-	            'razon_social' =>  $borrador->razonsocial,
+				'razon_social' =>  $borrador->razonsocial,
 				'ciut' =>  $borrador->cuit,
-	            'numeroproductor' => $borrador->numeroproductor,
-	            'tiposociedad' => $borrador->tiposociedad,
-	            'email' => $borrador->email,
+				'numeroproductor' => $borrador->numeroproductor,
+				'tiposociedad' => $borrador->tiposociedad,
+				'email' => $borrador->email,
 				'inscripciondgr' => $borrador->inscripciondgr ,
 				'constaciasociedad' => $borrador->constaciasociedad ,
 

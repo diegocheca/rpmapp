@@ -164,6 +164,9 @@ Route::get('/gracias_confirmacion/{codigo}', [FormAltaProductorController::class
 
 
 Route::get('/formularios/prueba_aprobado/{id}', [FormAltaProductorController::class, "test_aprobado_email"])->name('test-aprobado-email');
+
+Route::delete('formularios/eliminar_formulario/{id}', [FormAltaProductorController::class, "destroy"])->name('eliminar-formulario');
+
 //evaluacion de formularios presentados
 
 
