@@ -12,7 +12,7 @@ use App\Http\Controllers\ReinscripcionController;
 |--------------------------------------------------------------------------
 | JWT de usuario Administrador - email: admin@admin.com - password: password
 |--------------------------------------------------------------------------
-	bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzMTMxMjY1OSwibmJmIjoxNjMxMzEyNjU5LCJqdGkiOiJpNDJxN2tqaDAyV3ZNbW5DIiwic3ViIjoyLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.TTPwndoaERUxzz-NCQLAOHPrtc00THbFZHk5_q7kbYQ
+	bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzMTU3MTM5OCwiZXhwIjoxNjMxNTc0OTk4LCJuYmYiOjE2MzE1NzEzOTgsImp0aSI6InlMRm9pd2V3WUY4SElnNWsiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.nPMQGBBEijaNI90X6GI_G3fWYF6eUWaUUqP0pRsNLZc
 |--------------------------------------------------------------------------
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which

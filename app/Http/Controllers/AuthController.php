@@ -87,6 +87,7 @@ class AuthController extends Controller
     public function authenticate(Request $request)
     {
         $credential = request(['email', 'password']);
+        // dd($credential['email']);
         $validator = Validator::make($credential, [
             'email' => 'required',
             'password' => 'required'
@@ -99,13 +100,22 @@ class AuthController extends Controller
             } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
                 return response()->json(['status' => false, 'error' => $e->getMessage(), 'message' => 'Invalid credentials'], 401);
             }
-            return response()->json([
-                'status' => true,
-                'token_type' => 'bearer',
-                'token' => $token,
-                'expires_in' => JWTAuth::factory()->getTTL() * 60,
-                'message' => 'Credencial Válida'
-            ], 200);
+            if ($credential['email'] == 'administrador@gmail.com') {
+                return response()->json([
+                    'status' => true,
+                    'token_type' => 'bearer',
+                    'token' => $token,
+                    'message' => 'Credencial Válida'
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => true,
+                    'token_type' => 'bearer',
+                    'token' => $token,
+                    'expires_in' => JWTAuth::factory()->getTTL() * 60,
+                    'message' => 'Credencial Válida'
+                ], 200);
+            }
         } else {
             return response()->json([
                 'status' => false,
