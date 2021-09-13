@@ -203,8 +203,8 @@ class FormAltaProductor extends Model
 		'paso_6_aprobado',
 		'paso_6_reprobado',
 		'updated_paso_seis',
-        'sustancias_de_aprovechamiento_comun_aclaracion'
-
+        'sustancias_de_aprovechamiento_comun_aclaracion',
+        'provincia'
     ];
     
     

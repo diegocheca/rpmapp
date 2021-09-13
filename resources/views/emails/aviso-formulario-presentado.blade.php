@@ -75,7 +75,7 @@
           <p>Le estaremos enviando novedades por este medio.</p>
         <p>Usted puede descargar su comprobante desde el siguiente botón:</p>
         <div class="form-group">
-            <a href="{{url('/comprobante-presentacion-pdf/'.'/'.$id) }}" ><button class="button">Descargar Comprobante</button></a>
+            <a href="{{url('/comprobante-presentacion-pdf/'.'/') }}" ><button class="button">Descargar Comprobante</button></a>
         </div>
 
         <p>Si usted no ha cargado ningún email, por favor, le pedimos destime este email.</p>
