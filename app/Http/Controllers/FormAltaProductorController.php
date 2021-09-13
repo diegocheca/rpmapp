@@ -8905,7 +8905,13 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
-				return response()->json("se actualizaron los datos correctamente");
+				//return response()->json("se actualizaron los datos correctamente");
+				return response()->json([
+					'status' => 'ok',
+					'msg' => 'Datos de evaluacion ha sido actualizados correctamente.',
+					'path_inscripcion' =>$formulario_provisorio->inscripciondgr,
+					'path_constaciasociedad' =>$formulario_provisorio->constaciasociedad,
+				],201);
 			}
 			else{//soy productor
 
@@ -9194,6 +9200,9 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
+
+				var_dump($formulario_provisorio);
+				die();
 				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor

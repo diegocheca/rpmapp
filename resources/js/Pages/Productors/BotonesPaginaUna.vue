@@ -237,11 +237,10 @@ export default {
                             self.actualizar_cosntancia_nueva(response.data.path_constaciasociedad);
                     }
                     
-                    if(response.data === "se actualizaron los datos correctamente, siendo un productor")
+                    if(response.data.msg === "Datos de evaluacion ha sido actualizados correctamente.")
                     {
-                        console.log('todo mal, no se encontro');
-                        self.modal_tittle = 'Paso 1 Guardado Correctamente como Prod';
-                        self.modal_body = 'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+                        self.modal_tittle = 'Datos de de evaluación Productor guardados correctamente.';
+                        self.modal_body = 'Recien hemos guardados los datos de la evaluacin que ha cargado usted como autoridad minera.';
                         self.mostrar_modal_datos_ya_guardados = true;
                     }
                     if(response.data.msg === "se creo el borrador")
