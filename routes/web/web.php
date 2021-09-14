@@ -34,6 +34,7 @@ use App\Http\Controllers\ChartsController;
 |
 */
 
+
 Route::get('/', [HomeController::class, "index"])->name('pagina-web');
 Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
@@ -141,7 +142,7 @@ Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formula
 
 Route::get('/validar_email_productor/{codigo}', [HomeController::class, "valdiar_email_de_productor"])->name('valdiar-email-de-productor');
 
-Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->name('numero-reinsripiones-nuevas');
+// Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->name('numero-reinsripiones-nuevas');
 
 Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->name('traer-provincias');
 Route::post('/datos/traer_departamentos', [FormAltaProductorController::class, "traer_departamentos_json"])->name('traer-departamentos');
@@ -202,6 +203,8 @@ Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pd
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
 Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
 Route::get('/comprobante-presentacion-pdf/{id}', [FormAltaProductorController::class, "comprobante_tramite_pdf"])->name('comprobante-presentacion-pdf');
+
+Route::get('/probando_super_guardado/{id}', [FormAltaProductorController::class, "probando_super_guardado"])->name('probando-super-guardado');
 
 
 

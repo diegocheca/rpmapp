@@ -403,13 +403,13 @@
                   </span>
                 </template>
                 <template #content>
-                  <!-- Account Management -->
+                  <!-- Administración de cuentas -->
                   <div class="block px-4 py-2 text-xs text-gray-400">
-                    Manage Account
+                    Administrar Cuenta
                   </div>
 
                   <jet-dropdown-link :href="route('profile.show')">
-                    Profile
+                    Perfil de Usuario
                   </jet-dropdown-link>
                   <jet-dropdown-link :href="route('admin.users.index')">
                     Configuración

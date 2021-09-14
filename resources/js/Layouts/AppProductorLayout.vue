@@ -1,76 +1,130 @@
 <template>
-    <div>
-        <!-- <jet-banner /> -->
+  <div>
+    <!-- <jet-banner /> -->
 
-        <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
-                 <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex justify-end h-16 ">
-                        <!-- <div class="sm:flex sm:items-end sm:ml-6"> -->
+    <div class="min-h-screen bg-gray-100">
+      <nav class="bg-white border-b border-gray-100">
+        <!-- Primary Navigation Menu -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-end h-16">
+            <!-- <div class="sm:flex sm:items-end sm:ml-6"> -->
 
-                            <!-- Settings Dropdown -->
-                            <div class="ml-3 relative">
-                                <jet-dropdown align="right" width="48">
-                                    <template #trigger>
-                                        <button v-if="$page.props.jetstream.managesProfilePhotos" class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                            <img class="h-8 w-8 rounded-full object-cover" :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name" />
-                                        </button>
+            <!-- Settings Dropdown -->
+            <div class="ml-3 relative">
+              <jet-dropdown align="right" width="48">
+                <template #trigger>
+                  <button
+                    v-if="$page.props.jetstream.managesProfilePhotos"
+                    class="
+                      flex
+                      text-sm
+                      border-2 border-transparent
+                      rounded-full
+                      focus:outline-none
+                      focus:border-gray-300
+                      transition
+                    "
+                  >
+                    <img
+                      class="h-8 w-8 rounded-full object-cover"
+                      :src="$page.props.user.profile_photo_url"
+                      :alt="$page.props.user.name"
+                    />
+                  </button>
 
-                                        <span v-else class="inline-flex rounded-md">
-                                            <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
-                                                {{ $page.props.user.name }}
+                  <span v-else class="inline-flex rounded-md">
+                    <button
+                      type="button"
+                      class="
+                        inline-flex
+                        items-center
+                        px-3
+                        py-2
+                        border border-transparent
+                        text-sm
+                        leading-4
+                        font-medium
+                        rounded-md
+                        text-gray-500
+                        bg-white
+                        hover:text-gray-700
+                        focus:outline-none
+                        transition
+                      "
+                    >
+                      {{ $page.props.user.name }}
 
-                                                <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </template>
+                      <svg
+                        class="ml-2 -mr-0.5 h-4 w-4"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                  </span>
+                </template>
 
-                                    <template #content>
-                                        <!-- Account Management -->
-                                        <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Manage Account
-                                        </div>
+                <template #content>
+                  <!-- Administración de cuentas -->
+                  <div class="block px-4 py-2 text-xs text-gray-400">
+                    Administrar Cuenta
+                  </div>
 
-                                        <jet-dropdown-link :href="route('profile.show')">
-                                            Profile
-                                        </jet-dropdown-link>
+                  <jet-dropdown-link :href="route('profile.show')">
+                    Perfil de Usuario
+                  </jet-dropdown-link>
+                  <jet-dropdown-link
+                    v-if="hasAnyPermission(['admin.users.index'])"
+                    :href="route('admin.users.index')"
+                  >
+                    Configuración
+                  </jet-dropdown-link>
+                  <jet-dropdown-link
+                    :href="route('api-tokens.index')"
+                    v-if="$page.props.jetstream.hasApiFeatures"
+                  >
+                    API Tokens
+                  </jet-dropdown-link>
 
-                                        <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
-                                            API Tokens
-                                        </jet-dropdown-link>
+                  <div class="border-t border-gray-100"></div>
 
-                                        <div class="border-t border-gray-100"></div>
+                  <!-- Authentication -->
+                  <form @submit.prevent="logout">
+                    <jet-dropdown-link as="button"> Salir </jet-dropdown-link>
+                  </form>
+                </template>
+              </jet-dropdown>
+            </div>
+            <!-- </div> -->
+          </div>
+        </div>
+      </nav>
 
-                                        <!-- Authentication -->
-                                        <form @submit.prevent="logout">
-                                            <jet-dropdown-link as="button">
-                                                Salir
-                                            </jet-dropdown-link>
-                                        </form>
-                                    </template>
-                                </jet-dropdown>
-                            </div>
-                        <!-- </div> -->
-                    </div>
-                </div>
-            </nav>
-
-
-            <!-- Page Heading -->
-            <!-- <header class="bg-white shadow" v-if="$slots.header">
+      <!-- Page Heading -->
+      <!-- <header class="bg-white shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header"></slot>
                 </div>
             </header> -->
 
-            <!-- Page Content -->
-            <main>
-
-                <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-50 text-gray-800" >
-                    <!-- <div class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r" :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}">
+      <!-- Page Content -->
+      <main>
+        <div
+          class="
+            min-h-screen
+            flex flex-col flex-auto flex-shrink-0
+            antialiased
+            bg-gray-50
+            text-gray-800
+          "
+        >
+          <!-- <div class="fixed flex flex-col top-0 left-0 w-64 bg-white h-full border-r" :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}">
                         <div class="flex items-center justify-center h-14 border-b">
                         <div><a @click="showingNavigationDropdown = ! showingNavigationDropdown"> Ocultar Menu</a></div>
                         </div>
@@ -312,60 +366,59 @@
                         </ul>
                         </div>
                     </div> -->
-                    <slot></slot>
-                </div>
-
-            </main>
+          <slot></slot>
         </div>
+      </main>
     </div>
+  </div>
 </template>
 
 <script>
-    import JetApplicationMark from '@/Jetstream/ApplicationMark'
-    import JetBanner from '@/Jetstream/Banner'
-    import JetDropdown from '@/Jetstream/Dropdown'
-    import JetDropdownLink from '@/Jetstream/DropdownLink'
-    import JetNavLink from '@/Jetstream/NavLink'
-    import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+import JetApplicationMark from "@/Jetstream/ApplicationMark";
+import JetBanner from "@/Jetstream/Banner";
+import JetDropdown from "@/Jetstream/Dropdown";
+import JetDropdownLink from "@/Jetstream/DropdownLink";
+import JetNavLink from "@/Jetstream/NavLink";
+import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
 
-    export default {
-        components: {
-            JetApplicationMark,
-            JetBanner,
-            JetDropdown,
-            JetDropdownLink,
-            JetNavLink,
-            JetResponsiveNavLink,
-        },
+export default {
+  components: {
+    JetApplicationMark,
+    JetBanner,
+    JetDropdown,
+    JetDropdownLink,
+    JetNavLink,
+    JetResponsiveNavLink,
+  },
 
-        data() {
-            return {
-                isSidebarOpen: false,
-                showingNavigationDropdown: false,
-            }
-        },
+  data() {
+    return {
+      isSidebarOpen: false,
+      showingNavigationDropdown: false,
+    };
+  },
 
-        methods: {
-            // switchToTeam(team) {
-            //     this.$inertia.put(route('current-team.update'), {
-            //         'team_id': team.id
-            //     }, {
-            //         preserveState: false
-            //     })
-            // },
+  methods: {
+    // switchToTeam(team) {
+    //     this.$inertia.put(route('current-team.update'), {
+    //         'team_id': team.id
+    //     }, {
+    //         preserveState: false
+    //     })
+    // },
 
-            logout() {
-                this.$inertia.post(route('logout'));
-            },
-        }
-    }
+    logout() {
+      this.$inertia.post(route("logout"));
+    },
+  },
+};
 </script>
 <style scoped>
 .slide-fade-enter-active {
-  transition: all .8s ease;
+  transition: all 0.8s ease;
 }
 .slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {

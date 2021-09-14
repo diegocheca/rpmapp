@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ValidarEmailProductorPrimeraVez;
 use App\Mail\AvisoFormularioPresentadoEmail;
 use App\Mail\AvisoFormularioAprobadoEmail;
+use App\Mail\AvisoFormularioConObservaciones;
 
 
 use Illuminate\Support\Str;
@@ -6607,6 +6608,7 @@ class FormAltaProductorController extends Controller
 					$mostrar["administracion_localidad_correccion"] = false;
 					$mostrar["administracion_cod_pos_correccion"] = false;
 					$mostrar["administracion_otro_correccion"] = false;
+					$mostrar["boton_guardar_tres"] = true;
 					$mostrar["paso_tres"] = true;
 
 					$mostrar["num_exp_correccion"] = false;
@@ -7341,7 +7343,7 @@ class FormAltaProductorController extends Controller
 			$datos_creador = User::find($borradores->created_by);
 
 			$datos_disables_mostrar = $this->dame_los_permisos_de_los_inputs('editar',$borradores->estado);
-			//dd($datos_disables_mostrar);
+			//dd($datos_creador);
 			//var_dump($borradores->created_by);die();
 
 			if(is_null($borradores->razon_social_correcto)) 
@@ -7381,11 +7383,14 @@ class FormAltaProductorController extends Controller
 				$borradores->inscripciondgr_correcto = true;
 			else $borradores->inscripciondgr_correcto = false;
 
-			if(is_null($borradores->constanciasociedad_correcto)) 
-				$borradores->constanciasociedad_correcto = 'nada';
-			elseif(intval($borradores->constanciasociedad_correcto) == 1) 
-				$borradores->constanciasociedad_correcto = true;
-			else $borradores->constanciasociedad_correcto = false;
+			
+
+			if(is_null($borradores->constaciasociedad_correcto)) 
+				$borradores->constaciasociedad_correcto = 'nada';
+			elseif(intval($borradores->constaciasociedad_correcto) == 1) 
+				$borradores->constaciasociedad_correcto = true;
+			else $borradores->constaciasociedad_correcto = false;
+			$borradores->constanciasociedad_correcto = $borradores->constaciasociedad_correcto;
 
 			if(is_null($borradores->leal_departamento_correcto)) 
 				$borradores->leal_departamento_correcto = 'nada';
@@ -7423,10 +7428,114 @@ class FormAltaProductorController extends Controller
 				$borradores->susteancias_de_aprovechamiento_comun_correcto = true;
 			else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
 
+			if(is_null($borradores->administracion_telefono_correcto)) 
+				$borradores->administracion_telefono_correcto = 'nada';
+			elseif(intval($borradores->administracion_telefono_correcto) == 1) 
+				$borradores->administracion_telefono_correcto = true;
+			elseif (intval($borradores->administracion_telefono_correcto) == 0) 
+				$borradores->administracion_telefono_correcto = false;
+
+			if(is_null($borradores->resolucion_concesion_minera_correcto)) 
+				$borradores->resolucion_concesion_minera_correcto = 'nada';
+			elseif(intval($borradores->resolucion_concesion_minera_correcto) == 1) 
+				$borradores->resolucion_concesion_minera_correcto = true;
+			elseif (intval($borradores->resolucion_concesion_minera_correcto) == 0) 
+				$borradores->resolucion_concesion_minera_correcto = false;
 			
+			
+			if(is_null($borradores->plano_inmueble_correcto)) 
+				$borradores->plano_inmueble_correcto = 'nada';
+			elseif(intval($borradores->plano_inmueble_correcto) == 1) 
+				$borradores->plano_inmueble_correcto = true;
+			elseif (intval($borradores->plano_inmueble_correcto) == 0) 
+				$borradores->plano_inmueble_correcto = false;
 
+			if(is_null($borradores->titulo_contrato_posecion_correcto)) 
+				$borradores->titulo_contrato_posecion_correcto = 'nada';
+			elseif(intval($borradores->titulo_contrato_posecion_correcto) == 1) 
+				$borradores->titulo_contrato_posecion_correcto = true;
+			elseif (intval($borradores->titulo_contrato_posecion_correcto) == 0) 
+				$borradores->titulo_contrato_posecion_correcto = false;
+			//dd($borradores->resolucion_concesion_minera_correcto);
+			
+			if(is_null($borradores->owner_correcto)) 
+				$borradores->owner_correcto = 'nada';
+			elseif(intval($borradores->owner_correcto) == 1) 
+				$borradores->owner_correcto = true;
+			elseif (intval($borradores->owner_correcto) == 0) 
+				$borradores->owner_correcto = false;
+			
+			if(is_null($borradores->arrendatario_correcto)) 
+				$borradores->arrendatario_correcto = 'nada';
+			elseif(intval($borradores->arrendatario_correcto) == 1) 
+				$borradores->arrendatario_correcto = true;
+			elseif (intval($borradores->arrendatario_correcto) == 0) 
+				$borradores->concesionario_correcto = false;
+			
+			if(is_null($borradores->concesionario_correcto)) 
+				$borradores->concesionario_correcto = 'nada';
+			elseif(intval($borradores->concesionario_correcto) == 1) 
+				$borradores->concesionario_correcto = true;
+			elseif (intval($borradores->concesionario_correcto) == 0) 
+				$borradores->concesionario_correcto = false;
 
-			//dd($borradores->categoria);
+			if(is_null($borradores->otros_correcto)) 
+				$borradores->otros_correcto = 'nada';
+			elseif(intval($borradores->otros_correcto) == 1) 
+				$borradores->otros_correcto = true;
+			elseif (intval($borradores->otros_correcto) == 0) 
+				$borradores->otros_correcto = false;
+
+			if(is_null($borradores->sustancias_correcto)) 
+				$borradores->sustancias_correcto = 'nada';
+			elseif(intval($borradores->sustancias_correcto) == 1) 
+				$borradores->sustancias_correcto = true;
+			elseif (intval($borradores->sustancias_correcto) == 0) 
+				$borradores->sustancias_correcto = false;
+
+			//dd($borradores->dia_correcto,$borradores->iia_correcto );
+
+			if(is_null($borradores->iia_correcto)) 
+				$borradores->iia_correcto = 'nada';
+			elseif(intval($borradores->iia_correcto) == 1) 
+				$borradores->iia_correcto = true;
+			elseif (intval($borradores->iia_correcto) == 0) 
+				$borradores->iia_correcto = false;
+
+			if(is_null($borradores->dia_correcto)) 
+				$borradores->dia_correcto = 'nada';
+			elseif(intval($borradores->dia_correcto) == 1) 
+				$borradores->dia_correcto = true;
+			elseif (intval($borradores->dia_correcto) == 0) 
+				$borradores->dia_correcto = false;
+			
+			if(is_null($borradores->acciones_a_desarrollar_correcto)) 
+				$borradores->acciones_a_desarrollar_correcto = 'nada';
+			elseif(intval($borradores->acciones_a_desarrollar_correcto) == 1) 
+				$borradores->acciones_a_desarrollar_correcto = true;
+			elseif (intval($borradores->acciones_a_desarrollar_correcto) == 0) 
+				$borradores->acciones_a_desarrollar_correcto = false;
+				
+			if(is_null($borradores->actividad_correcto)) 
+				$borradores->actividad_correcto = 'nada';
+			elseif(intval($borradores->actividad_correcto) == 1) 
+				$borradores->actividad_correcto = true;
+			elseif (intval($borradores->actividad_correcto) == 0) 
+				$borradores->actividad_correcto = false;
+
+			if(is_null($borradores->fecha_alta_dia_correcto)) 
+				$borradores->fecha_alta_dia_correcto = 'nada';
+			elseif(intval($borradores->fecha_alta_dia_correcto) == 1) 
+				$borradores->fecha_alta_dia_correcto = true;
+			elseif (intval($borradores->fecha_alta_dia_correcto) == 0) 
+				$borradores->fecha_alta_dia_correcto = false;
+				
+			if(is_null($borradores->fecha_vencimiento_dia_correcto)) 
+				$borradores->fecha_vencimiento_dia_correcto = 'nada';
+			elseif(intval($borradores->fecha_vencimiento_dia_correcto) == 1) 
+				$borradores->fecha_vencimiento_dia_correcto = true;
+			elseif (intval($borradores->fecha_vencimiento_dia_correcto) == 0) 
+				$borradores->fecha_vencimiento_dia_correcto = false;
 
 			return Inertia::render('Productors/EditForm', [
 				'productor' => $borradores,
@@ -8820,57 +8929,28 @@ class FormAltaProductorController extends Controller
 				
 				//var_dump($request->razon_social_correcto);die();
 				
-				if(strlen($request->tiposociedad_correcto)  == strlen("true"))
+				if($request->tiposociedad_correcto  === 'true')
 					$request->tiposociedad_correcto = 1;
 				elseif($request->tiposociedad_correcto === 'false')
 					$request->tiposociedad_correcto = 0;
 				elseif($request->tiposociedad_correcto === 'nada')
 					$request->tiposociedad_correcto = null;
 
-
-				$aux1 = $request->inscripciondgr_correcto;
-				$aux2 = "true" ;
-
-				if($aux1 ==$aux2)
-				{
-					$request->tiposociedad_correcto = 1;
-				}
-				else
-				{
-					if(strlen($request->tiposociedad_correcto) == strlen("false"))
-						$request->tiposociedad_correcto = 0;
-					else
-						$request->tiposociedad_correcto = null;
-				}
-				
-
-					$aux1 = $request->inscripciondgr_correcto;
-					$aux2 = "true" ;
-				if($aux1 == $aux2)
-				{
+				if($request->inscripciondgr_correcto  === 'true')
 					$request->inscripciondgr_correcto = 1;
-				}
-				else
-				{
-					if(strlen($request->inscripciondgr_correcto) == strlen("false"))
-						$request->inscripciondgr_correcto = 0;
-					else
-						$request->inscripciondgr_correcto = null;
-				}
+				elseif($request->inscripciondgr_correcto === 'false')
+					$request->inscripciondgr_correcto = 0;
+				elseif($request->inscripciondgr_correcto === 'nada')
+					$request->inscripciondgr_correcto = null;
 
-				$aux1 = $request->constaciasociedad_correcto;
-				$aux2 = "true" ;
-				if($aux1 == $aux2)
-				{
+				if($request->constaciasociedad_correcto  === 'true')
 					$request->constaciasociedad_correcto = 1;
-				}
-				else 
-				{
-					if(strlen($request->constaciasociedad_correcto) == strlen("false"))
-						$request->constaciasociedad_correcto = 0;
-					else
-						$request->constaciasociedad_correcto = null;
-				}
+				elseif($request->constaciasociedad_correcto === 'false')
+					$request->constaciasociedad_correcto = 0;
+				elseif($request->constaciasociedad_correcto === 'nada')
+					$request->constaciasociedad_correcto = null;
+				//dd($request->constaciasociedad_correcto);
+
 
 				//var_dump("voy a meter:");
 				//var_dump($request->email_correcto);die();
@@ -8905,7 +8985,13 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
-				return response()->json("se actualizaron los datos correctamente");
+				//return response()->json("se actualizaron los datos correctamente");
+				return response()->json([
+					'status' => 'ok',
+					'msg' => 'Datos de evaluacion ha sido actualizados correctamente.',
+					'path_inscripcion' =>$formulario_provisorio->inscripciondgr,
+					'path_constaciasociedad' =>$formulario_provisorio->constaciasociedad,
+				],201);
 			}
 			else{//soy productor
 
@@ -8940,7 +9026,9 @@ class FormAltaProductorController extends Controller
 				}
 				//else $formulario_provisorio->inscripciondgr = null;
 
-				$formulario_provisorio->estado = "borrador";
+				//$formulario_provisorio->estado = "borrador";
+				//if()
+				//$formulario_provisorio->estado = "borrador";
 
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
@@ -9031,51 +9119,6 @@ class FormAltaProductorController extends Controller
 
 	public function correccion_guardar_paso_dos(Request $request)
 	{
-		/*var_dump(
-			$request->leal_calle, 
-			$request->nombre_calle_legal_valido, 
-			$request->nombre_calle_legal_correcto, 
-			$request->obs_nombre_calle_legal, 
-			$request->obs_nombre_calle_legal_valido, 
-
-			$request->leal_numero, 
-			$request->leal_numero_valido, 
-			$request->leal_numero_correcto, 
-			$request->obs_leal_numero, 
-			$request->obs_leal_numero_valido, 
-
-			$request->leal_telefono, 
-			$request->leal_telefono_valido, 
-			$request->leal_telefono_correcto, 
-			$request->obs_leal_telefono, 
-			$request->obs_leal_telefono_valido, 
-
-			$request->leal_provincia, 
-			$request->leal_provincia_valido, 
-			$request->leal_provincia_correcto, 
-			$request->obs_leal_provincia, 
-			$request->obs_leal_provincia_valido, 
-
-			$request->leal_departamento, 
-			$request->leal_departamento_valido, 
-			$request->leal_departamento_correcto, 
-			$request->obs_leal_departamento, 
-			$request->obs_leal_departamento_valido,
-
-
-			$request->valor_de_progreso, 
-			$request->valor_de_aprobado, 
-			$request->valor_de_reprobado, 
-
-		);
-		//return response()->json("todo bien");
-		die();*/
-		// var_dump(
-		// 	$request->leal_numero_correcto, 
-		// );
-		// die();
-		//var_dump($request->leal_otro_correcto);die();
-
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select(
 			'id',
@@ -9119,46 +9162,29 @@ class FormAltaProductorController extends Controller
 
 			'updated_at')
 		->where('id', '=',$request->id)->first();
-		//var_dump($request->id);die();
-		
 		if($formulario_provisorio != null)
 		{
 			if($request->es_evaluacion){ // soy autoridad minera
 
-				if( (!is_bool($request->leal_calle_correcto)) && ($request->leal_calle_correcto == 'nada'))
-					$request->leal_calle_correcto = null;
-
+				
+				if( (!is_bool($request->nombre_calle_legal_correcto)) && ($request->nombre_calle_legal_correcto == 'nada'))
+					$request->nombre_calle_legal_correcto = null;
 				if( (!is_bool($request->leal_numero_correcto)) && ($request->leal_numero_correcto == 'nada'))
 					$request->leal_numero_correcto = null;
-
 				if( (!is_bool($request->numeroproductor_correcto)) && ($request->numeroproductor_correcto == 'nada'))
 					$request->numeroproductor_correcto = null;
-
 				if( (!is_bool($request->leal_telefono_correcto)) && ($request->leal_telefono_correcto == 'nada'))
 					$request->leal_telefono_correcto = null;
-
 				if( (!is_bool($request->leal_provincia_correcto)) && ($request->leal_provincia_correcto == 'nada'))
 					$request->leal_provincia_correcto = null;
-				//var_dump($request->leal_departamento_correcto);
 				if( (!is_bool($request->leal_departamento_correcto)) && ($request->leal_departamento_correcto == 'nada'))
 					$request->leal_departamento_correcto = null;
-				//var_dump($request->leal_departamento_correcto);die();
 				if( (!is_bool($request->leal_localidad_correcto)) && ($request->leal_localidad_correcto == 'nada'))
 					$request->leal_localidad_correcto = null;
-
 				if( (!is_bool($request->leal_cp_correcto)) && ($request->leal_cp_correcto == 'nada'))
 					$request->leal_cp_correcto = null;
-					
-				//var_dump($request->leal_otro_correcto);
 				if( (!is_bool($request->leal_otro_correcto)) && ($request->leal_otro_correcto == 'nada'))
-				{
 					$request->leal_otro_correcto = null;
-				//	echo("entre");
-
-				}
-				//var_dump($request->leal_otro_correcto);die();
-					
-
 				//lo encontre y actualizo
 				$formulario_provisorio->leal_calle_correcto = $request->nombre_calle_legal_correcto;
 				$formulario_provisorio->obs_leal_calle = $request->obs_nombre_calle_legal;
@@ -9194,6 +9220,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
+
 				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor
@@ -9601,20 +9628,35 @@ class FormAltaProductorController extends Controller
 				else
 					$request->mina_cantera_correcto = null;
 
+
+
+			
+
+
+		if( (!is_bool($request->constancia_pago_canon_correcto)) && ($request->constancia_pago_canon_correcto == 'nada'))
+			$request->constancia_pago_canon_correcto = null;
+		elseif($request->constancia_pago_canon_correcto == 'false')
+			$request->constancia_pago_canon_correcto = false;
+		elseif($request->constancia_pago_canon_correcto == 'true')
+			$request->constancia_pago_canon_correcto = true;
+
+
+
 				if($request->plano_inmueble_correcto == 'false')
 					$request->plano_inmueble_correcto = false;
 				elseif($request->plano_inmueble_correcto == 'true')
 					$request->plano_inmueble_correcto = true;
 				else
 					$request->plano_inmueble_correcto = null;
-
+				
 				if($request->resolucion_concesion_minera_correcto == 'false')
 					$request->resolucion_concesion_minera_correcto = false;
 				elseif($request->resolucion_concesion_minera_correcto == 'true')
 					$request->resolucion_concesion_minera_correcto = true;
 				else
 					$request->resolucion_concesion_minera_correcto = null;
-
+					
+					//var_dump($request->resolucion_concesion_minera_correcto);die();
 				if($request->titulo_contrato_posecion_correcto == 'false')
 					$request->titulo_contrato_posecion_correcto = false;
 				elseif($request->titulo_contrato_posecion_correcto == 'true')
@@ -10000,6 +10042,8 @@ class FormAltaProductorController extends Controller
 		);
 		die();*/
 		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
+
+		
 		if($request->fecha_alta_dia == 'null')
 			$request->fecha_alta_dia = null;
 		if($request->fecha_vencimiento_dia == 'null')
@@ -10007,7 +10051,6 @@ class FormAltaProductorController extends Controller
 
 		if($request->acciones_a_desarrollar == 'null')
 			$request->acciones_a_desarrollar = null;
-
 
 		if($request->owner == 'null')
 			$request->owner = null;
@@ -10141,8 +10184,9 @@ class FormAltaProductorController extends Controller
 			//pregunto si soy autoridad minera o si soy productor
 			if($request->es_evaluacion){ // soy autoridad minera
 
-				//PARA LOS INPUT DE TRUE O FALSE
-				if($request->owner != null)
+				//dd("PARA LOS INPUT DE TRUE O FALSE");
+				
+			/* if($request->owner != null)
 				$request->owner = $request->owner === 'true'? 1: 0;
 				
 			if($request->arrendatario != null)
@@ -10156,70 +10200,51 @@ class FormAltaProductorController extends Controller
 
 			if($request->sustancias!= null)
 				$request->sustancias = $request->sustancias === 'true'? 1: 0;
-
+ */
 			//PARA LA EVALUACION
 			if( (!is_bool($request->owner_correcto)) && ($request->owner_correcto == 'nada'))
-				$request->owner_correcto = null;
+				$owner_correcto = null;
 			elseif($request->owner_correcto == 'false')
-				$request->owner_correcto = false;
+				$owner_correcto = false;
 			elseif($request->owner_correcto == 'true')
-				$request->owner_correcto = true;
-
-
-
+				$owner_correcto = true;
+				
+				
 			if( (!is_bool($request->arrendatario_correcto)) && ($request->arrendatario_correcto == 'nada'))
-				$request->arrendatario_correcto = null;
-			elseif($request->arrendatario_correcto == 'false')
-				$request->arrendatario_correcto = false;
-			elseif($request->arrendatario_correcto == 'true')
-				$request->arrendatario_correcto = true;
-
-
-	
-
+				$arrendatario_correcto = null;
+				elseif($request->arrendatario_correcto == 'false')
+				$arrendatario_correcto = false;
+				elseif($request->arrendatario_correcto == 'true')
+				$arrendatario_correcto = true;
+				
+				
+				
+				
 			if( (!is_bool($request->concesionario_correcto)) && ($request->concesionario_correcto == 'nada'))
-				$request->concesionario_correcto = null;
-			elseif($request->concesionario_correcto == 'false')
-				$request->concesionario_correcto = false;
-			elseif($request->concesionario_correcto == 'true')
-				$request->concesionario_correcto = true;
-
-
-
+				$concesionario_correcto = null;
+				elseif($request->concesionario_correcto == 'false')
+				$concesionario_correcto = false;
+				elseif($request->concesionario_correcto == 'true')
+				$concesionario_correcto = true;
+				
+				
+				
 			if( (!is_bool($request->otros_correcto)) && ($request->otros_correcto == 'nada'))
 				$request->otros_correcto = null;
-			elseif($request->otros_correcto == 'false')
+				elseif($request->otros_correcto == 'false')
 				$request->otros_correcto = false;
-			elseif($request->otros_correcto == 'true')
+				elseif($request->otros_correcto == 'true')
 				$request->otros_correcto = true;
 
-		
-
 			if( (!is_bool($request->sustancias_correcto)) && ($request->sustancias_correcto == 'nada'))
-				$request->sustancias_correcto = null;
+				$sustancias_correcto = null;
 			elseif($request->sustancias_correcto == 'false')
-				$request->sustancias_correcto = false;
+				$sustancias_correcto = false;
 			elseif($request->sustancias_correcto == 'true')
-				$request->sustancias_correcto = true;
+				$sustancias_correcto = true;
+				
 
-
-
-			if( (!is_bool($request->resolucion_concesion_minera_correcto)) && ($request->resolucion_concesion_minera_correcto == 'nada'))
-				$request->resolucion_concesion_minera_correcto = null;
-			elseif($request->resolucion_concesion_minera_correcto == 'false')
-				$request->resolucion_concesion_minera_correcto = false;
-			elseif($request->resolucion_concesion_minera_correcto == 'true')
-				$request->resolucion_concesion_minera_correcto = true;
-
-
-			if( (!is_bool($request->constancia_pago_canon_correcto)) && ($request->constancia_pago_canon_correcto == 'nada'))
-				$request->constancia_pago_canon_correcto = null;
-			elseif($request->constancia_pago_canon_correcto == 'false')
-				$request->constancia_pago_canon_correcto = false;
-			elseif($request->constancia_pago_canon_correcto == 'true')
-				$request->constancia_pago_canon_correcto = true;
-
-
+			//dd($sustancias_correcto);
 
 			if( (!is_bool($request->iia_correcto)) && ($request->iia_correcto == 'nada'))
 				$request->iia_correcto = null;
@@ -10240,7 +10265,7 @@ class FormAltaProductorController extends Controller
 				$request->dia_correcto = true;
 
 
-
+//dd($request->dia_correcto,$request->iia_correcto );
 			
 				
 
@@ -10258,6 +10283,8 @@ class FormAltaProductorController extends Controller
 			elseif($request->actividad_a_desarrollar_correcto == 'true')
 				$request->actividad_a_desarrollar_correcto = true;
 
+				//dd($request->actividad_a_desarrollar_correcto);
+
 			if( (!is_bool($request->fecha_alta_dia_correcto)) && ($request->fecha_alta_dia_correcto == 'nada'))
 				$request->fecha_alta_dia_correcto = null;
 			elseif($request->fecha_alta_dia_correcto == 'false')
@@ -10273,22 +10300,21 @@ class FormAltaProductorController extends Controller
 				$request->fecha_vencimiento_dia_correcto = true;
 
 
-				$formulario_provisorio->owner_correcto = $request->owner_correcto;
+				$formulario_provisorio->owner_correcto = $owner_correcto;
 				$formulario_provisorio->obs_owner = $request->obs_owner;
 	
-				$formulario_provisorio->arrendatario_correcto = $request->arrendatario_correcto;
+				$formulario_provisorio->arrendatario_correcto = $arrendatario_correcto;
 				$formulario_provisorio->obs_arrendatario = $request->obs_arrendatario;
 
-				$formulario_provisorio->concesionario_correcto = $request->concesionario_correcto;
+				$formulario_provisorio->concesionario_correcto = $concesionario_correcto;
 				$formulario_provisorio->obs_concesionario = $request->obs_concesionario;
 	
 				$formulario_provisorio->otros_correcto = $request->otros_correcto;
 				$formulario_provisorio->obs_otros = $request->obs_otros;
 	
-				$formulario_provisorio->sustancias_de_aprovechamiento_comun_correcto = $request->sustancias_correcto;
+				$formulario_provisorio->sustancias_de_aprovechamiento_comun_correcto = $sustancias_correcto;
 				$formulario_provisorio->obs_sustancias_de_aprovechamiento_comun_correcto = $request->obs_sustancias;
 	
-
 				
 				$formulario_provisorio->constancia_pago_canon_correcto = $request->constancia_pago_canon_correcto;
 				$formulario_provisorio->obs_constancia_pago_canon = $request->obs_constancia_pago_canon;
@@ -10688,21 +10714,14 @@ class FormAltaProductorController extends Controller
 
 	public function presentar_borrador(Request $request)
 	{
-		//dd($request->id);
+		//dd($request->estado);
 		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
-		$formulario_provisorio = FormAltaProductor::select(
-			'id',
-			'estado',
-			'razonsocial',
-			'email',
-			'updated_by',
-			'updated_at'
-			)
+		$formulario_provisorio = FormAltaProductor::select('*')
 		->where('id', '=',$request->id)->first();
 		if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')){ // soy autoridad minera
 
-			if($request->estado == 'borrador' )
+			if($request->estado == 'presentar' )
 				$formulario_provisorio->estado = "en revision";
 			else
 				$formulario_provisorio->estado = $request->estado;
@@ -10715,10 +10734,32 @@ class FormAltaProductorController extends Controller
 			if($formulario_provisorio->estado  == "en revision")
 			{
 				Mail::to($email_a_mandar)->send(new AvisoFormularioPresentadoEmail(
-					$request->id,
+					$formulario_provisorio->id,
 					$formulario_provisorio->razon_social,
 					date("Y-m-d H:i:s")
 				));
+			}
+			if($formulario_provisorio->estado  == "con observacion")
+			{
+				Mail::to($email_a_mandar)->send(new AvisoFormularioConObservaciones(
+					$formulario_provisorio->razon_social,
+					date("Y-m-d H:i:s"),
+					$formulario_provisorio->id
+				));
+			}
+			if($formulario_provisorio->estado  == "aprobado")
+			{
+				Mail::to($email_a_mandar)->send(new AvisoFormularioAprobadoEmail(
+					$formulario_provisorio->id,
+					$formulario_provisorio->razon_social,
+					date("Y-m-d H:i:s")
+				));
+
+				$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+				$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+				$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+				$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+				$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
 			}
 			return response()->json([
 				'status' => 'ok',
@@ -10740,106 +10781,256 @@ class FormAltaProductorController extends Controller
 				date("Y-m-d H:i:s")
 			));
 			//tengo que crear todos los campos de la base de datos
-			//voy a crear el nuevo productor con los datos del formulario
-			$nuevo_productor = Productores::new();
-			$nuevo_productor->cuit = $formulario_provisorio->cuit;
-			$nuevo_productor->razonsocial = $formulario_provisorio->razonsocial;
-			$nuevo_productor->numeroproductor = $formulario_provisorio->numeroproductor;
-			$nuevo_productor->email = $formulario_provisorio->email;
-			$nuevo_productor->domicilio_prod = $formulario_provisorio->domicilio_prod;
-			$nuevo_productor->tiposociedad = $formulario_provisorio->tiposociedad;
-			$nuevo_productor->inscripciondgr = $formulario_provisorio->inscripciondgr;
-			$nuevo_productor->constaciasociedad = $formulario_provisorio->constaciasociedad;
-			$nuevo_productor->leal_calle = $formulario_provisorio->leal_calle;
-			$nuevo_productor->leal_numero = $formulario_provisorio->leal_numero;
-			$nuevo_productor->leal_telefono = $formulario_provisorio->leal_telefono;
-			$nuevo_productor->leal_pais = $formulario_provisorio->leal_pais;
-			$nuevo_productor->leal_provincia = $formulario_provisorio->leal_provincia;
-			$nuevo_productor->leal_departamento = $formulario_provisorio->leal_departamento;
-			$nuevo_productor->leal_localidad = $formulario_provisorio->leal_localidad;
-			$nuevo_productor->leal_cp = $formulario_provisorio->leal_cp;
-			$nuevo_productor->leal_otro = $formulario_provisorio->leal_otro;
-			$nuevo_productor->administracion_calle = $formulario_provisorio->administracion_calle;
-			$nuevo_productor->administracion_numero = $formulario_provisorio->administracion_numero;
-			$nuevo_productor->administracion_telefono = $formulario_provisorio->administracion_telefono;
-			$nuevo_productor->administracion_pais = $formulario_provisorio->administracion_pais;
-			$nuevo_productor->administracion_provincia = $formulario_provisorio->administracion_provincia;
-			$nuevo_productor->administracion_departamento = $formulario_provisorio->administracion_departamento;
-			$nuevo_productor->administracion_localidad = $formulario_provisorio->administracion_localidad;
-			$nuevo_productor->administracion_cp = $formulario_provisorio->administracion_cp;
-			$nuevo_productor->administracion_otro = $formulario_provisorio->administracion_otro;
-			$nuevo_productor->numero_expdiente = $formulario_provisorio->numero_expdiente;
-			$nuevo_productor->created_by = Auth::user()->id;
-			$nuevo_productor->estado = "aprobado";
-			$nuevo_productor->save();
-
-			//creo la mina a partir de los datos del formulario
-			$nueva_mina = MinaCantera::new();
-
-			$nueva_mina->tipo = $formulario_provisorio->tipo;
-			$nueva_mina->localidad_mina_pais = "Argentina";
-			$nueva_mina->localidad_mina_provincia = $formulario_provisorio->localidad_mina_provincia;
-			$nueva_mina->localidad_mina_departamento = $formulario_provisorio->localidad_mina_departamento;
-			$nueva_mina->localidad_mina_localidad = $formulario_provisorio->localidad_mina_localidad;
-			$nueva_mina->nombre = $formulario_provisorio->nombre;
-			$nueva_mina->descripcion = $formulario_provisorio->descripcion;
-			$nueva_mina->categoria = $formulario_provisorio->categoria;
-			$nueva_mina->distrito_minero = $formulario_provisorio->distrito_minero;
-			$nueva_mina->tipo_sistema = $formulario_provisorio->tipo_sistema;
-			$nueva_mina->longitud= $formulario_provisorio->longitud;
-			$nueva_mina->latitud= $formulario_provisorio->latitud;
-			$nueva_mina->labores= $formulario_provisorio->labores;
-			$nueva_mina->id_producido= $formulario_provisorio->id_producido;
-			$nueva_mina->plano_inmueble= $formulario_provisorio->plano_inmueble;
-			$nueva_mina->created_by = Auth::user()->id;
-			$nueva_mina->estado = 'aprobado';
-			$nueva_mina->save();
 			
 
-			//creo el pago de canon
-			$nuevo_pago = Pagocanonmina::new();
-			$nuevo_pago->pagado = $formulario_provisorio->pagado;
-			$nuevo_pago->fecha_pago = $formulario_provisorio->fecha_pago;
-			$nuevo_pago->monto = $formulario_provisorio->monto;
-			$nuevo_pago->fecha_desde = $formulario_provisorio->fecha_desde;
-			$nuevo_pago->fecha_hasta = $formulario_provisorio->fecha_hasta;
-			$nuevo_pago->created_by =  Auth::user()->id;
-			$nuevo_pago->estado = "aprobado";
-			$nuevo_pago->save();
+			
 
-			$nuevo_dia = iia_dia::new();
-			$nuevo_dia->actividades= $formulario_provisorio->actividades;
-			$nuevo_dia->acciones_a_desarrollar= $formulario_provisorio->acciones_a_desarrollar;
-			$nuevo_dia->archivo_dia= $formulario_provisorio->archivo_dia;
-			$nuevo_dia->constancia_inscripcion_ia= $formulario_provisorio->constancia_inscripcion_ia;
-			$nuevo_dia->created_by=  Auth::user()->id;
-			$nuevo_dia->estado= "aprobado";
+			
+			
 
-			$nuevo_mina_prod = ProductorMina::new();
-			$nuevo_mina_prod->id_mina = $formulario_provisorio->id_mina;
-			$nuevo_mina_prod->id_productor = $formulario_provisorio->id_productor;
-			$nuevo_mina_prod->id_destino = $formulario_provisorio->id_destino;
-			$nuevo_mina_prod->id_dia = $formulario_provisorio->id_dia;
-			$nuevo_mina_prod->id_personal = $formulario_provisorio->id_personal;
-			$nueva_mina_prod->mercado_provincia= $formulario_provisorio->mercado_provincia;
-			$nueva_mina_prod->mercado_provincias= $formulario_provisorio->mercado_provincias;
-			$nueva_mina_prod->mercado_exportacion= $formulario_provisorio->mercado_exportacion;
-			$nueva_mina_prod->num_expediente_SIGETRAMI= $formulario_provisorio->num_expediente_SIGETRAMI;
-			$nueva_mina_prod->constancia_otros= $formulario_provisorio->constancia_otros;
-			$nueva_mina_prod->resol_concecion_minera = $formulario_provisorio->resol_concecion_minera;
-			$nueva_mina_prod->fecha_preinscripcion = $formulario_provisorio->fecha_preinscripcion;
-			$nueva_mina_prod->fecha_renovacion = $formulario_provisorio->fecha_renovacion;
-			$nueva_mina_prod->primera_inscripcion = $formulario_provisorio->primera_inscripcion;
-			$nueva_mina_prod->caracter = $formulario_provisorio->caracter;
-			$nueva_mina_prod->constancia_posecion = $formulario_provisorio->constancia_posecion;
-			$nueva_mina_prod->id_producido = $formulario_provisorio->id_producido;
-				}
+			}
 			
 		else{//soy productor
 			return response()->json("error");
 		}
 		*/
 	}
+
+	public function probando_super_guardado($id_formulario){
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$formulario_provisorio = FormAltaProductor::select('*')
+		->where('id', '=',$id_formulario)->first();
+		
+		$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+		$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+		$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+		$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+		$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+
+		var_dump($id_productor_nuevo,$id_mina_nueva,$id_dia_iia_nueva,$id_pago_canon_nuevo,$id_mina_productor);
+	
+	}
+
+
+	public function crear_registro_productor($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				$productor = new Productores();
+				$productor->cuit = $formulario_provisorio->cuit;
+				$productor->razonsocial = $formulario_provisorio->razonsocial;
+				$productor->numeroproductor = $formulario_provisorio->numeroproductor;
+				$productor->email = $formulario_provisorio->email;
+				$productor->domicilio_prod = "cambiar esto";
+				$productor->tiposociedad = $formulario_provisorio->tiposociedad;
+				$productor->inscripciondgr = $formulario_provisorio->inscripciondgr;
+				$productor->constaciasociedad = $formulario_provisorio->constaciasociedad;
+				$productor->leal_calle = $formulario_provisorio->leal_calle;
+				$productor->leal_numero = $formulario_provisorio->leal_numero;
+				$productor->leal_telefono = $formulario_provisorio->leal_telefono;
+				$productor->leal_pais = $formulario_provisorio->leal_pais;
+				$productor->leal_provincia = $formulario_provisorio->leal_provincia;
+				$productor->leal_departamento = $formulario_provisorio->leal_departamento;
+				$productor->leal_localidad = $formulario_provisorio->leal_localidad;
+				$productor->leal_cp = $formulario_provisorio->leal_cp;
+				$productor->leal_otro = $formulario_provisorio->leal_otro;
+				$productor->administracion_calle = $formulario_provisorio->administracion_calle;
+				$productor->administracion_numero = $formulario_provisorio->administracion_numero;
+				$productor->administracion_telefono = $formulario_provisorio->administracion_telefono;
+				$productor->administracion_pais = $formulario_provisorio->administracion_pais;
+				$productor->administracion_provincia = $formulario_provisorio->administracion_provincia;
+				$productor->administracion_departamento = $formulario_provisorio->administracion_departamento;
+				$productor->administracion_localidad = $formulario_provisorio->administracion_localidad;
+				$productor->administracion_cp = $formulario_provisorio->administracion_cp;
+				$productor->administracion_otro = $formulario_provisorio->administracion_otro;
+				$productor->numero_expdiente = 0; // no se q va aca
+				$productor->created_by = Auth::user()->id;
+				$productor->estado = "aprobado";
+				$productor->id_formulario = $id_formulario;
+				$productor->usuario_creador = $formulario_provisorio->created_by;
+				$productor->save();
+				return $productor->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	
+	public function crear_registro_mina_cantera($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				$mina_cantera = new MinaCantera();
+				$mina_cantera->numero_expediente=$formulario_provisorio->numero_expediente;
+				$mina_cantera->distrito_minero=$formulario_provisorio->distrito_minero;
+				$mina_cantera->categoria=$formulario_provisorio->categoria;
+				$mina_cantera->nombre=$formulario_provisorio->nombre_mina;
+				$mina_cantera->descripcion=$formulario_provisorio->descripcion_mina;
+				if($formulario_provisorio->categoria === 'tercera')
+					$mina_cantera->tipo="cantera";
+				else 	$mina_cantera->tipo="mina";
+				$mina_cantera->plano_inmueble=$formulario_provisorio->plano_inmueble;
+				$mina_cantera->titulo_contrato_posecion=$formulario_provisorio->titulo_contrato_posecion;
+				$mina_cantera->resolucion_concesion_minera=$formulario_provisorio->resolucion_concesion_minera;
+				//minerales
+				//pagina mina segunda
+				$mina_cantera->owner=$formulario_provisorio->owner;
+				$mina_cantera->arrendatario=$formulario_provisorio->arrendatario;
+				$mina_cantera->concesionario=$formulario_provisorio->concesionario;
+				$mina_cantera->otros=$formulario_provisorio->otros;
+				$mina_cantera->acciones_a_desarrollar=$formulario_provisorio->acciones_a_desarrollar;
+				$mina_cantera->actividad=$formulario_provisorio->actividad;
+				$mina_cantera->sustancias_de_aprovechamiento_comun=$formulario_provisorio->sustancias_de_aprovechamiento_comun;
+				$mina_cantera->otro_caracter_acalaracion=$formulario_provisorio->otro_caracter_acalaracion;
+				$mina_cantera->sustancias_de_aprovechamiento_comun_aclaracion=$formulario_provisorio->sustancias_de_aprovechamiento_comun_aclaracion;
+
+				//ubicacion de la mina
+				$mina_cantera->localidad_mina_pais="Argentina";
+				$mina_cantera->localidad_mina_provincia=$formulario_provisorio->localidad_mina_provincia;
+				$mina_cantera->localidad_mina_departamento=$formulario_provisorio->localidad_mina_departamento;
+				$mina_cantera->localidad_mina_localidad=$formulario_provisorio->localidad_mina_localidad;
+				$mina_cantera->tipo_sistema=$formulario_provisorio->tipo_sistema;
+				$mina_cantera->longitud=$formulario_provisorio->longitud;
+				$mina_cantera->latitud=$formulario_provisorio->latitud;
+				$mina_cantera->labores=null;
+				$mina_cantera->id_producido=null;
+				$mina_cantera->created_by=Auth::user()->id;
+				$mina_cantera->estado="aprobado";
+				$mina_cantera->id_formulario=$id_formulario;
+				
+				$mina_cantera->save();
+				return $mina_cantera->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	public function crear_registro_dia_iia($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				$nuevo_dia = new iia_dia;
+				$nuevo_dia->actividades= "dasdasdsa";
+				$nuevo_dia->acciones_a_desarrollar= $formulario_provisorio->acciones_a_desarrollar;
+				$nuevo_dia->dia= $formulario_provisorio->dia;
+				$nuevo_dia->iia= $formulario_provisorio->iia;
+				$nuevo_dia->fecha_alta_dia= $formulario_provisorio->fecha_alta_dia;
+				$nuevo_dia->fecha_vencimiento= $formulario_provisorio->fecha_vencimiento_dia;
+				$nuevo_dia->created_by=  Auth::user()->id;
+				$nuevo_dia->estado= "aprobado";
+				$nuevo_dia->id_formulario= $id_formulario;
+				$nuevo_dia->save();
+				return $nuevo_dia->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	public function crear_registro_pago_canon($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				//creo el pago de canon
+				$nuevo_pago = new Pagocanonmina;
+				//$nuevo_pago->pagado = $formulario_provisorio->pagado;
+				$nuevo_pago->pagado = true;
+				//$nuevo_pago->fecha_pago = $formulario_provisorio->fecha_pago;
+				$nuevo_pago->fecha_pago = null;
+				//$nuevo_pago->monto = $formulario_provisorio->monto;
+				$nuevo_pago->monto = 0.00;
+				//$nuevo_pago->fecha_desde = $formulario_provisorio->fecha_desde;
+				$nuevo_pago->fecha_desde =  null;
+				//$nuevo_pago->fecha_hasta = $formulario_provisorio->fecha_hasta;
+				$nuevo_pago->fecha_hasta =null;
+				$nuevo_pago->created_by =  Auth::user()->id;
+				$nuevo_pago->estado = "aprobado";
+				$nuevo_pago->id_formulario = $id_formulario;
+				
+				$nuevo_pago->save();
+
+				return $nuevo_pago->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	public function crear_mina_productor($id_formulario,$id_mina, $id_productor, $id_dia){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				//dd($id_formulario,$id_mina, $id_productor, $id_dia);
+				//creo la relacion mina productor
+				$nuevo_mina_prod = new ProductorMina;
+				$nuevo_mina_prod->id_mina = $id_mina;
+				$nuevo_mina_prod->id_productor = $id_productor;
+				$nuevo_mina_prod->id_formulario = $id_formulario;
+				$nuevo_mina_prod->id_dia = $id_dia;
+				$nuevo_mina_prod->id_personal = null;
+				$nuevo_mina_prod->num_expediente_SIGETRAMI= 0;
+				$nuevo_mina_prod->constancia_otros= null;
+				$nuevo_mina_prod->resol_concecion_minera = null;
+				$nuevo_mina_prod->fecha_preinscripcion = null;
+				$nuevo_mina_prod->fecha_renovacion = null;
+				$nuevo_mina_prod->primera_inscripcion = null;
+				$nuevo_mina_prod->caracter = null;
+				$nuevo_mina_prod->constancia_posecion = null;
+				$nuevo_mina_prod->id_formulario = $id_formulario;
+				$nuevo_mina_prod->save();
+				return $nuevo_mina_prod->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	
+	
+
+
 	public function test_aprobado_email($id)
 	{
 		$formulario_provisorio = FormAltaProductor::select(
@@ -10866,7 +11057,7 @@ class FormAltaProductorController extends Controller
 		
 
 	public function traer_provincias_json(){
-		$lista_de_provincias = Provincias::select('id', 'nombre')->get();
+		$lista_de_provincias = Provincias::select('id', 'nombre')->orderBy('nombre')->get();
 		return response()->json($lista_de_provincias);
 	}
 	public function traer_departamentos_json(Request $request){
@@ -10883,7 +11074,7 @@ class FormAltaProductorController extends Controller
 	}
 	
 	public function traer_minerales_json(Request $request){
-		//dd($request->id_manifestacion);
+		// dd($request->id_manifestacion);
 		$minerales = Minerales::select('id', 'name', 'categoria')->where('categoria','=', $request->categoria_buscando)->get();
 		return response()->json($minerales);
 

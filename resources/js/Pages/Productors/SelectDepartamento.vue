@@ -29,15 +29,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-green-600" name="accountType_depto" v-model="leal_departamento_correcto" value="true" v-on:change="cactaulizar_variable_legalcalledpto(true)">
+                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_departamento_correcto" value="true" v-on:change="cactaulizar_variable_legalcalledpto(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-red-600" name="accountType_depto" v-model="leal_departamento_correcto" value="false" v-on:change="cactaulizar_variable_legalcalledpto(false)">
+                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_departamento_correcto" value="false" v-on:change="cactaulizar_variable_legalcalledpto(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-indigo-600" name="accountType_depto" v-model="leal_departamento_correcto" value="nada" v-on:change="cactaulizar_variable_legalcalledpto('nada')">
+                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_departamento_correcto" value="nada" v-on:change="cactaulizar_variable_legalcalledpto('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -104,6 +104,7 @@ export default {
         'obs_leal_departamento_valido',
         'evaluacion',
         'testing',
+        'name_correcto',
         'label',
         'lista_departamentos',
         'lista_departamentos_dos',

@@ -35,16 +35,29 @@ class PermisosController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        $cat = Category::find($request->category_id);
-        $cat = strtolower($cat->name);
+        $cateReq = $request->category_id;
         $fun = strtolower($request->M_name);
         $nom = '';
-        if ($fun === 'ninguno') {
-            $nom = $cat . '.' . $request->name;
-            // dd($cat . '.' . $request->name);
+        if ($cateReq == 2) {
+            if ($fun === 'ninguno') {
+                $nom = $request->name;
+                // dd($cat . '.' . $request->name);
+            } else {
+                $nom = $request->name . '.' . $fun;
+                // dd($cat . '.' . $request->name . '.' . $fun);
+            }
         } else {
-            $nom = $cat . '.' . $request->name . '.' . $fun;
-            // dd($cat . '.' . $request->name . '.' . $fun);
+            $cat = Category::find($request->category_id);
+            $cat = strtolower($cat->name);
+            // $fun = strtolower($request->M_name);
+            // $nom = '';
+            if ($fun === 'ninguno') {
+                $nom = $cat . '.' . $request->name;
+                // dd($cat . '.' . $request->name);
+            } else {
+                $nom = $cat . '.' . $request->name . '.' . $fun;
+                // dd($cat . '.' . $request->name . '.' . $fun);
+            }
         }
         // dd($nom);
         $request->validate([
@@ -65,21 +78,30 @@ class PermisosController extends Controller
     {
         $metodos = array('ninguno', 'index', 'create', 'store', 'show', 'edit', 'update', 'destroy');
         // var_export($metodos);
+        $cat_id = $permiso->category_id;
+        // dd($cat_id);
+
         $nom = explode('.', $permiso->name);
-        if (sizeof($nom) == 3) {
-            $nombre = $nom[1];
-            $met = $nom[2];
-            $categories = Category::all('id', 'name');
-            $cat = Category::where('name', $nom[0])->get();
-            $cat = $cat[0]->id;
-            // echo $nom[1];
-            // echo $nom[2];
-        } else {
+        if ($cat_id == 2) {
             $nombre = $nom[0];
-            $categories = Category::all('id', 'name');
-            $cat = Category::where('name', $nom[0])->get();
-            $cat = $cat[0]->id;
             $met = $nom[1];
+            $cat = $cat_id;
+        } else {
+            if (sizeof($nom) == 3) {
+                $nombre = $nom[1];
+                $met = $nom[2];
+                $categories = Category::all('id', 'name');
+                $cat = Category::where('name', $nom[0])->get();
+                $cat = $cat[0]->id;
+                // echo $nom[1];
+                // echo $nom[2];
+            } else {
+                $nombre = $nom[0];
+                $categories = Category::all('id', 'name');
+                $cat = Category::where('name', $nom[0])->get();
+                $cat = $cat[0]->id;
+                $met = $nom[1];
+            }
         }
         if (!in_array($met, $metodos, true)) {
             $nombre = $nombre . '.' . $met;

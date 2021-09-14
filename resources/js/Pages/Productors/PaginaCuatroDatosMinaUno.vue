@@ -380,6 +380,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_resolucion_concesion_minera_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_concesion'"
                         v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
                         v-bind:desactivar_input="$props.desactivar_resolucion_concesion"
                         v-bind:mostrar_correccion="$props.mostrar_resolucion_concesion_correccion"
@@ -434,6 +435,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_plano_inmueble_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_plano_inmueble'"
                         v-bind:label="'Plano Inmueble (3° categoria) (*)'"
                         v-bind:desactivar_input="$props.desactivar_plano_mina"
                         v-bind:mostrar_correccion="$props.mostrar_plano_mina_correccion"
@@ -496,6 +498,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_titulo_contrato_posecion_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_titulo'"
                         v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
                         v-bind:desactivar_input="$props.desactivar_titulo"
                         v-bind:mostrar_correccion="$props.mostrar_titulo_correccion"
@@ -551,7 +554,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Lista de minerales'"
-                        v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
+                        v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas)'"
                         v-bind:tipo_yacimiento="form_pagina.categoria"
                         v-bind:lista_de_minerales="lista_de_minerales"
                         v-bind:lista_de_minerales_pre_cargados="$props.lista_minerales_desde_back"
@@ -821,7 +824,7 @@ export default {
    
   data() {
     return {
-        saludos: 'Saludame qweqweqwe',
+        saludos: 'Saludos',
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
@@ -1023,7 +1026,7 @@ export default {
         update_valor_cat(newValue){
             let self  =this;
             //alert("cambie la categoria de:"+newValue);
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.categoria = newValue;
             //alert("cambie la categoria de:"+newValue);
             if(newValue === 'primera')
@@ -1174,14 +1177,13 @@ export default {
   mounted(){
       //cargo la lista de mienrales por primera vez
     let self = this;
-    console.log("voy a buscar la categproa:");
-    console.log(this.$props.categoria);
-	if( this.$props.categoria !== '') {
+    console.log('* Categoria: ',this.$props.categoria);
+	if( this.$props.categoria !== null && this.$props.categoria !== '') {
 		//signafica que tengo la lsita de minerales para esta categoria
 		this.$nextTick(() => {
         axios.post('/datos/traer_minerales',{categoria_buscando:this.$props.categoria})
             .then(function (response) {
-                console.log("los minerales son:\n");
+                console.log("Los minerales son:\n");
                 self.lista_de_minerales = response.data;
                 console.log(self.lista_de_minerales);
             })
@@ -1190,7 +1192,7 @@ export default {
             });
         });
 	}
-	else{self.lista_de_minerales=[];}
+	else{self.lista_de_minerales=[{'id':0, 'name':'vacio', 'categoria':'null'}];}
   }
   
 };

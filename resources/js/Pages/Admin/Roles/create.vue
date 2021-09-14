@@ -83,6 +83,7 @@
                           text-gray-500
                           focus:outline-none
                           border-b-2
+                          border-blue-500	
                           hover:text-white
                           hover:border-b-2
                           hover:font-medium
@@ -125,7 +126,7 @@
                           </div>
                         </div>
                         <br />
-                        <span>Permisos ID: {{ form.checkedpermisos }}</span>
+                        <span v-if="hasAnyPermission(['dev.dev.show'])">Permisos ID: {{ form.checkedpermisos }}</span>
                       </div>
                     </div>
                   </div>
