@@ -1,5 +1,5 @@
 <template>
-    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">Productores por departamento</div>
+    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">{{dataChart.title}}</div>
     <div class="chart-bar" ref="chartdiv" />
 </template>
 
@@ -17,53 +17,7 @@ export default {
             required: true
         }
     },
-    // data() {
-    //     return {
-    //         bars: [{
-    //             "province": "San Jaun",
-    //             "productors": 2025
-    //             }, {
-    //             "province": "Catamarca",
-    //             "productors": 1882
-    //             }, {
-    //             "province": "La Rioja",
-    //             "productors": 1809
-    //             }, {
-    //             "province": "Jujuy",
-    //             "productors": 1322
-    //             }, {
-    //             "province": "Chaco",
-    //             "productors": 1122
-    //             }, {
-    //             "province": "Santiago del Estero",
-    //             "productors": 1114
-    //             }, {
-    //             "province": "Cordoba",
-    //             "productors": 984
-    //             }, {
-    //             "province": "Rio Negro",
-    //             "productors": 711
-    //             }, {
-    //             "province": "Formosa",
-    //             "productors": 665
-    //             }, {
-    //             "province": "Salta",
-    //             "productors": 580
-    //             }, {
-    //             "province": "Mendoza",
-    //             "productors": 443
-    //             }, {
-    //             "province": "San Luis",
-    //             "productors": 441
-    //             }, {
-    //             "province": "Buenos Aires",
-    //             "productors": 395
-    //             }, {
-    //             "province": "La Pampa",
-    //             "productors": 395
-    //         }]
-    //     }
-    // },
+
     mounted() {
         let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
 

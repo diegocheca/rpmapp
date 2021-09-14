@@ -267,6 +267,24 @@
                     </div>
                 </div>
             </div>
+
+            <ButtonFixed :buttons="buttonsFixed" @showModal="handleClick" />
+
+            <jet-dialog-modal :show="showModalPasos" class="w-10/12"  @close="closeModal" >
+                <template #title>
+                        {{buttonsFixed.modal[0].title}}
+                </template>
+                <template #content>
+                        {{buttonsFixed.modal[0].body}}
+                        <Pasos class="mt-10"/>
+                </template>
+                <template #footer>
+                    <jet-button class="ml-2" @click="closeModal">
+                        Entendido
+                    </jet-button>
+                </template>
+            </jet-dialog-modal>
+
         </main>
 
     </AppLayout>
@@ -277,6 +295,11 @@
     import AppLayout from '@/Layouts/AppLayout'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     import Vue3autocounter from "vue3-autocounter";
+    import ButtonFixed from '@/Components/ButtonFixed'
+    import Pasos from "@/Pages/Common/PasosParaInscribirseProd"
+    import JetDialogModal from '@/Jetstream/DialogModal';
+    import JetButton from '@/Jetstream/Button'
+
 
     import 'vue3-carousel/dist/carousel.css';
     import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
@@ -287,7 +310,10 @@
             AppProductorLayout,
             JetAuthenticationCardLogo,
             Vue3autocounter,
-
+            ButtonFixed,
+            JetDialogModal,
+            JetButton,
+            Pasos,
             Carousel,
             Slide,
             Pagination,
@@ -426,12 +452,41 @@
                         snapAlign: 'center',
                     },
                 },
+                buttonsFixed: {
+                    links: [
+                        {
+                            label: "Nuevo Borrador",
+                            url: "formulario-alta.create"
+                        },
+                        {
+                            label: "Nueva Reinscripción",
+                            url: "reinscripciones.create"
+                        },
+                    ],
+                    modal: [
+                        {
+                            label: "Ayuda Borradores",
+                            show: false,
+			                title: "Explicación de alta de Productores Mineros",
+                            body: "En este formulario usted puede presentar la solicitud de alta de productor minero. Con esta acción usted demuestra interes en inscribirse como tal, pervio a una evaluación de su solicitud (el presente formulario)."
+                        }
+
+                    ]
+                },
+                showModalPasos: false
             }
         },
         methods: {
             toggle() {
                 this.chartShow = !this.chartShow
-            }
+            },
+            handleClick(data) {
+                this.showModalPasos = data.show
+            },
+            closeModal() {
+                this.showModalPasos = false
+
+            },
         },
     }
 </script>

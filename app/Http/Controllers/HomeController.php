@@ -6,7 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\EmailsAConfirmar;
-use App\Models\Reinscripciones;
+use App\Http\Controllers\ChartsController;
+
 class HomeController extends Controller
 {
     /**
@@ -33,24 +34,24 @@ class HomeController extends Controller
     public function dashboard()
     {
         $mi_rol = '';
-        if(Auth::user()->hasRole('Autoridad'))
+        if(Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Administrador')){
             $mi_rol = 'admin';
-        if(Auth::user()->hasRole('Administrador'))
-            $mi_rol = 'admin';
-        if(Auth::user()->hasRole('Productor'))
+
+            $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
+            $dataChart = new ChartsController();
+            $dataChart->axis->x = 'departamentos';
+            $dataChart->axis->y = 'cantidad';
+            $dataChart->data = $departments;
+            $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
+
+            return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
+
+        } else if(Auth::user()->hasRole('Productor')){
             $mi_rol = 'productor';
 
-        $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
-        $dataChart = new \stdClass();
-        $axis = new \stdClass();
-        $axis->x = 'departamentos';
-        $axis->y = 'cantidad';
-        $dataChart->axis = $axis;
-        $dataChart->data = $departments;
-        $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
+            return Inertia::render('Dashboard', ['userType' => $mi_rol ]);
+        }
 
-
-        return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
     }
 
 

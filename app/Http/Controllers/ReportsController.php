@@ -36,7 +36,7 @@ class ReportsController extends Controller
         $dataChart->axis->y = 'cantidad';
         $dataChart->data = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
         $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
-dd($dataChart);
+        dd($dataChart);
         return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
     }
 }
