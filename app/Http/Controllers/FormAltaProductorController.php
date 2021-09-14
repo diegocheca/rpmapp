@@ -6608,6 +6608,7 @@ class FormAltaProductorController extends Controller
 					$mostrar["administracion_localidad_correccion"] = false;
 					$mostrar["administracion_cod_pos_correccion"] = false;
 					$mostrar["administracion_otro_correccion"] = false;
+					$mostrar["boton_guardar_tres"] = true;
 					$mostrar["paso_tres"] = true;
 
 					$mostrar["num_exp_correccion"] = false;
@@ -7342,7 +7343,7 @@ class FormAltaProductorController extends Controller
 			$datos_creador = User::find($borradores->created_by);
 
 			$datos_disables_mostrar = $this->dame_los_permisos_de_los_inputs('editar',$borradores->estado);
-			//dd($datos_disables_mostrar);
+			//dd($datos_creador);
 			//var_dump($borradores->created_by);die();
 
 			if(is_null($borradores->razon_social_correcto)) 
@@ -10754,14 +10755,77 @@ class FormAltaProductorController extends Controller
 					date("Y-m-d H:i:s")
 				));
 
-				//creo todo los registros en las bases de datos
-				//creo el registro de productor
+				$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+				$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+				$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+				$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+				$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+			}
+			return response()->json([
+				'status' => 'ok',
+				'msg' => 'Datos actualizados correctamente.'
+			],201);
+		}
+		else return response()->json([
+				'status' => 'ok',
+				'msg' => 'Sin permisos.'
+			],201);
+			/*
+
+			//tengo que enviar email
+			//$email_a_mandar = $formulario_provisorio->email; para prod
+			$email_a_mandar = 'diegochecarelli@gmail.com';
+			Mail::to($formulario_provisorio->email)->send(new AvisoFormularioAprobadoEmail(
+				$request->id,
+				$request->razon_social,
+				date("Y-m-d H:i:s")
+			));
+			//tengo que crear todos los campos de la base de datos
+			
+
+			
+
+			
+			
+
+			}
+			
+		else{//soy productor
+			return response()->json("error");
+		}
+		*/
+	}
+
+	public function probando_super_guardado($id_formulario){
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$formulario_provisorio = FormAltaProductor::select('*')
+		->where('id', '=',$id_formulario)->first();
+		
+		$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+		$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+		$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+		$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+		$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+
+		var_dump($id_productor_nuevo,$id_mina_nueva,$id_dia_iia_nueva,$id_pago_canon_nuevo,$id_mina_productor);
+	
+	}
+
+
+	public function crear_registro_productor($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
 				$productor = new Productores();
 				$productor->cuit = $formulario_provisorio->cuit;
 				$productor->razonsocial = $formulario_provisorio->razonsocial;
 				$productor->numeroproductor = $formulario_provisorio->numeroproductor;
 				$productor->email = $formulario_provisorio->email;
-				$productor->domicilio_prod = $formulario_provisorio->domicilio_prod;
+				$productor->domicilio_prod = "cambiar esto";
 				$productor->tiposociedad = $formulario_provisorio->tiposociedad;
 				$productor->inscripciondgr = $formulario_provisorio->inscripciondgr;
 				$productor->constaciasociedad = $formulario_provisorio->constaciasociedad;
@@ -10786,15 +10850,38 @@ class FormAltaProductorController extends Controller
 				$productor->numero_expdiente = 0; // no se q va aca
 				$productor->created_by = Auth::user()->id;
 				$productor->estado = "aprobado";
+				$productor->id_formulario = $id_formulario;
+				$productor->usuario_creador = $formulario_provisorio->created_by;
 				$productor->save();
-				//creo el registro de mina
-				$mina_cantera = MinaCantera();
+				return $productor->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	
+	public function crear_registro_mina_cantera($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				$mina_cantera = new MinaCantera();
 				$mina_cantera->numero_expediente=$formulario_provisorio->numero_expediente;
 				$mina_cantera->distrito_minero=$formulario_provisorio->distrito_minero;
 				$mina_cantera->categoria=$formulario_provisorio->categoria;
 				$mina_cantera->nombre=$formulario_provisorio->nombre_mina;
 				$mina_cantera->descripcion=$formulario_provisorio->descripcion_mina;
-				$mina_cantera->tipo=$formulario_provisorio->mina_cantera;
+				if($formulario_provisorio->categoria === 'tercera')
+					$mina_cantera->tipo="cantera";
+				else 	$mina_cantera->tipo="mina";
 				$mina_cantera->plano_inmueble=$formulario_provisorio->plano_inmueble;
 				$mina_cantera->titulo_contrato_posecion=$formulario_provisorio->titulo_contrato_posecion;
 				$mina_cantera->resolucion_concesion_minera=$formulario_provisorio->resolucion_concesion_minera;
@@ -10822,132 +10909,128 @@ class FormAltaProductorController extends Controller
 				$mina_cantera->id_producido=null;
 				$mina_cantera->created_by=Auth::user()->id;
 				$mina_cantera->estado="aprobado";
-
-				//creo la relacion entre productor y la mina
+				$mina_cantera->id_formulario=$id_formulario;
 				
-				
-
+				$mina_cantera->save();
+				return $mina_cantera->id;
 			}
-			return response()->json([
-				'status' => 'ok',
-				'msg' => 'Datos actualizados correctamente.'
-			],201);
+			else
+			{
+				return "el formulario no existe";
+			}
+
 		}
-		else return response()->json([
-				'status' => 'ok',
-				'msg' => 'Sin permisos.'
-			],201);
-			/*
+		else return "id menor a 1";
 
-			//tengo que enviar email
-			//$email_a_mandar = $formulario_provisorio->email; para prod
-			$email_a_mandar = 'diegochecarelli@gmail.com';
-			Mail::to($formulario_provisorio->email)->send(new AvisoFormularioAprobadoEmail(
-				$request->id,
-				$request->razon_social,
-				date("Y-m-d H:i:s")
-			));
-			//tengo que crear todos los campos de la base de datos
-			//voy a crear el nuevo productor con los datos del formulario
-			$nuevo_productor = Productores::new();
-			$nuevo_productor->cuit = $formulario_provisorio->cuit;
-			$nuevo_productor->razonsocial = $formulario_provisorio->razonsocial;
-			$nuevo_productor->numeroproductor = $formulario_provisorio->numeroproductor;
-			$nuevo_productor->email = $formulario_provisorio->email;
-			$nuevo_productor->domicilio_prod = $formulario_provisorio->domicilio_prod;
-			$nuevo_productor->tiposociedad = $formulario_provisorio->tiposociedad;
-			$nuevo_productor->inscripciondgr = $formulario_provisorio->inscripciondgr;
-			$nuevo_productor->constaciasociedad = $formulario_provisorio->constaciasociedad;
-			$nuevo_productor->leal_calle = $formulario_provisorio->leal_calle;
-			$nuevo_productor->leal_numero = $formulario_provisorio->leal_numero;
-			$nuevo_productor->leal_telefono = $formulario_provisorio->leal_telefono;
-			$nuevo_productor->leal_pais = $formulario_provisorio->leal_pais;
-			$nuevo_productor->leal_provincia = $formulario_provisorio->leal_provincia;
-			$nuevo_productor->leal_departamento = $formulario_provisorio->leal_departamento;
-			$nuevo_productor->leal_localidad = $formulario_provisorio->leal_localidad;
-			$nuevo_productor->leal_cp = $formulario_provisorio->leal_cp;
-			$nuevo_productor->leal_otro = $formulario_provisorio->leal_otro;
-			$nuevo_productor->administracion_calle = $formulario_provisorio->administracion_calle;
-			$nuevo_productor->administracion_numero = $formulario_provisorio->administracion_numero;
-			$nuevo_productor->administracion_telefono = $formulario_provisorio->administracion_telefono;
-			$nuevo_productor->administracion_pais = $formulario_provisorio->administracion_pais;
-			$nuevo_productor->administracion_provincia = $formulario_provisorio->administracion_provincia;
-			$nuevo_productor->administracion_departamento = $formulario_provisorio->administracion_departamento;
-			$nuevo_productor->administracion_localidad = $formulario_provisorio->administracion_localidad;
-			$nuevo_productor->administracion_cp = $formulario_provisorio->administracion_cp;
-			$nuevo_productor->administracion_otro = $formulario_provisorio->administracion_otro;
-			$nuevo_productor->numero_expdiente = $formulario_provisorio->numero_expdiente;
-			$nuevo_productor->created_by = Auth::user()->id;
-			$nuevo_productor->estado = "aprobado";
-			$nuevo_productor->save();
-
-			//creo la mina a partir de los datos del formulario
-			$nueva_mina = MinaCantera::new();
-
-			$nueva_mina->tipo = $formulario_provisorio->tipo;
-			$nueva_mina->localidad_mina_pais = "Argentina";
-			$nueva_mina->localidad_mina_provincia = $formulario_provisorio->localidad_mina_provincia;
-			$nueva_mina->localidad_mina_departamento = $formulario_provisorio->localidad_mina_departamento;
-			$nueva_mina->localidad_mina_localidad = $formulario_provisorio->localidad_mina_localidad;
-			$nueva_mina->nombre = $formulario_provisorio->nombre;
-			$nueva_mina->descripcion = $formulario_provisorio->descripcion;
-			$nueva_mina->categoria = $formulario_provisorio->categoria;
-			$nueva_mina->distrito_minero = $formulario_provisorio->distrito_minero;
-			$nueva_mina->tipo_sistema = $formulario_provisorio->tipo_sistema;
-			$nueva_mina->longitud= $formulario_provisorio->longitud;
-			$nueva_mina->latitud= $formulario_provisorio->latitud;
-			$nueva_mina->labores= $formulario_provisorio->labores;
-			$nueva_mina->id_producido= $formulario_provisorio->id_producido;
-			$nueva_mina->plano_inmueble= $formulario_provisorio->plano_inmueble;
-			$nueva_mina->created_by = Auth::user()->id;
-			$nueva_mina->estado = 'aprobado';
-			$nueva_mina->save();
-			
-
-			//creo el pago de canon
-			$nuevo_pago = Pagocanonmina::new();
-			$nuevo_pago->pagado = $formulario_provisorio->pagado;
-			$nuevo_pago->fecha_pago = $formulario_provisorio->fecha_pago;
-			$nuevo_pago->monto = $formulario_provisorio->monto;
-			$nuevo_pago->fecha_desde = $formulario_provisorio->fecha_desde;
-			$nuevo_pago->fecha_hasta = $formulario_provisorio->fecha_hasta;
-			$nuevo_pago->created_by =  Auth::user()->id;
-			$nuevo_pago->estado = "aprobado";
-			$nuevo_pago->save();
-
-			$nuevo_dia = iia_dia::new();
-			$nuevo_dia->actividades= $formulario_provisorio->actividades;
-			$nuevo_dia->acciones_a_desarrollar= $formulario_provisorio->acciones_a_desarrollar;
-			$nuevo_dia->archivo_dia= $formulario_provisorio->archivo_dia;
-			$nuevo_dia->constancia_inscripcion_ia= $formulario_provisorio->constancia_inscripcion_ia;
-			$nuevo_dia->created_by=  Auth::user()->id;
-			$nuevo_dia->estado= "aprobado";
-
-			$nuevo_mina_prod = ProductorMina::new();
-			$nuevo_mina_prod->id_mina = $formulario_provisorio->id_mina;
-			$nuevo_mina_prod->id_productor = $formulario_provisorio->id_productor;
-			$nuevo_mina_prod->id_destino = $formulario_provisorio->id_destino;
-			$nuevo_mina_prod->id_dia = $formulario_provisorio->id_dia;
-			$nuevo_mina_prod->id_personal = $formulario_provisorio->id_personal;
-			$nueva_mina_prod->mercado_provincia= $formulario_provisorio->mercado_provincia;
-			$nueva_mina_prod->mercado_provincias= $formulario_provisorio->mercado_provincias;
-			$nueva_mina_prod->mercado_exportacion= $formulario_provisorio->mercado_exportacion;
-			$nueva_mina_prod->num_expediente_SIGETRAMI= $formulario_provisorio->num_expediente_SIGETRAMI;
-			$nueva_mina_prod->constancia_otros= $formulario_provisorio->constancia_otros;
-			$nueva_mina_prod->resol_concecion_minera = $formulario_provisorio->resol_concecion_minera;
-			$nueva_mina_prod->fecha_preinscripcion = $formulario_provisorio->fecha_preinscripcion;
-			$nueva_mina_prod->fecha_renovacion = $formulario_provisorio->fecha_renovacion;
-			$nueva_mina_prod->primera_inscripcion = $formulario_provisorio->primera_inscripcion;
-			$nueva_mina_prod->caracter = $formulario_provisorio->caracter;
-			$nueva_mina_prod->constancia_posecion = $formulario_provisorio->constancia_posecion;
-			$nueva_mina_prod->id_producido = $formulario_provisorio->id_producido;
-				}
-			
-		else{//soy productor
-			return response()->json("error");
-		}
-		*/
 	}
+	public function crear_registro_dia_iia($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				$nuevo_dia = new iia_dia;
+				$nuevo_dia->actividades= "dasdasdsa";
+				$nuevo_dia->acciones_a_desarrollar= $formulario_provisorio->acciones_a_desarrollar;
+				$nuevo_dia->dia= $formulario_provisorio->dia;
+				$nuevo_dia->iia= $formulario_provisorio->iia;
+				$nuevo_dia->fecha_alta_dia= $formulario_provisorio->fecha_alta_dia;
+				$nuevo_dia->fecha_vencimiento= $formulario_provisorio->fecha_vencimiento_dia;
+				$nuevo_dia->created_by=  Auth::user()->id;
+				$nuevo_dia->estado= "aprobado";
+				$nuevo_dia->id_formulario= $id_formulario;
+				$nuevo_dia->save();
+				return $nuevo_dia->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	public function crear_registro_pago_canon($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				//creo el pago de canon
+				$nuevo_pago = new Pagocanonmina;
+				//$nuevo_pago->pagado = $formulario_provisorio->pagado;
+				$nuevo_pago->pagado = true;
+				//$nuevo_pago->fecha_pago = $formulario_provisorio->fecha_pago;
+				$nuevo_pago->fecha_pago = null;
+				//$nuevo_pago->monto = $formulario_provisorio->monto;
+				$nuevo_pago->monto = 0.00;
+				//$nuevo_pago->fecha_desde = $formulario_provisorio->fecha_desde;
+				$nuevo_pago->fecha_desde =  null;
+				//$nuevo_pago->fecha_hasta = $formulario_provisorio->fecha_hasta;
+				$nuevo_pago->fecha_hasta =null;
+				$nuevo_pago->created_by =  Auth::user()->id;
+				$nuevo_pago->estado = "aprobado";
+				$nuevo_pago->id_formulario = $id_formulario;
+				
+				$nuevo_pago->save();
+
+				return $nuevo_pago->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	public function crear_mina_productor($id_formulario,$id_mina, $id_productor, $id_dia){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				//dd($id_formulario,$id_mina, $id_productor, $id_dia);
+				//creo la relacion mina productor
+				$nuevo_mina_prod = new ProductorMina;
+				$nuevo_mina_prod->id_mina = $id_mina;
+				$nuevo_mina_prod->id_productor = $id_productor;
+				$nuevo_mina_prod->id_formulario = $id_formulario;
+				$nuevo_mina_prod->id_dia = $id_dia;
+				$nuevo_mina_prod->id_personal = null;
+				$nuevo_mina_prod->num_expediente_SIGETRAMI= 0;
+				$nuevo_mina_prod->constancia_otros= null;
+				$nuevo_mina_prod->resol_concecion_minera = null;
+				$nuevo_mina_prod->fecha_preinscripcion = null;
+				$nuevo_mina_prod->fecha_renovacion = null;
+				$nuevo_mina_prod->primera_inscripcion = null;
+				$nuevo_mina_prod->caracter = null;
+				$nuevo_mina_prod->constancia_posecion = null;
+				$nuevo_mina_prod->id_formulario = $id_formulario;
+				$nuevo_mina_prod->save();
+				return $nuevo_mina_prod->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	
+	
+
+
 	public function test_aprobado_email($id)
 	{
 		$formulario_provisorio = FormAltaProductor::select(

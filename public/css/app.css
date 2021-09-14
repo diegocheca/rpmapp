@@ -1185,12 +1185,6 @@ select {
 .right-7 {
 	right: 1.75rem;
 }
-.left-4 {
-	left: 1rem;
-}
-.-top-6 {
-	top: -1.5rem;
-}
 .top-10 {
 	top: 2.5rem;
 }
@@ -2425,16 +2419,16 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(110, 231, 183, var(--tw-bg-opacity));
 }
+.bg-green-200 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(167, 243, 208, var(--tw-bg-opacity));
+}
 .bg-transparent {
 	background-color: transparent;
 }
 .bg-indigo-200 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(199, 210, 254, var(--tw-bg-opacity));
-}
-.bg-green-200 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(167, 243, 208, var(--tw-bg-opacity));
 }
 .bg-purple-200 {
 	--tw-bg-opacity: 1;
