@@ -16,34 +16,27 @@ class formSolicitud extends Model
         'programa_trabajo',
         'periodo_trabajo', 
         'nro_expediente',
-       
+        'des_directo',
+        'muestra',       
     ];
 
-    public function tipo_solicitud()
-    {
-        return $this->belongsTo(formTipoSolicitud::class, 'tiposolicitud_id');
-    }
-    
+        
     public function persona()
     {
         return $this->belongsToMany(formPersona::class);
     }
-
-    public function razonsocial()
-    {
-        return $this->belongsToMany(formRazonsocial::class);
-    }
+    
     
     public function terreno()
     {
         return $this->hasOne(formTerreno::class);
     }
 
-    // public function mina()
-    // {
-    //     return $this->hasOne(formMina::class, 'mina_id');
-    // }
-
-    
+    //Relacion de mucho a muchos con estado solicitud
+    public function estados()
+    {
+        return $this->belongsToMany(formEstadoSolicitud::class); 
+    }
+     
 
 }

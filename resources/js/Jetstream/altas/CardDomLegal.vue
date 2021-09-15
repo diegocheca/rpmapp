@@ -2,11 +2,9 @@
 	<div :class="clase_sup">
 		<div :class="clase_inf">
 			<a href="#section_domicilio_legal">
-				<div class="text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-green-500 left-4 -top-6">
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-						<path d="M18.121,9.88l-7.832-7.836c-0.155-0.158-0.428-0.155-0.584,0L1.842,9.913c-0.262,0.263-0.073,0.705,0.292,0.705h2.069v7.042c0,0.227,0.187,0.414,0.414,0.414h3.725c0.228,0,0.414-0.188,0.414-0.414v-3.313h2.483v3.313c0,0.227,0.187,0.414,0.413,0.414h3.726c0.229,0,0.414-0.188,0.414-0.414v-7.042h2.068h0.004C18.331,10.617,18.389,10.146,18.121,9.88 M14.963,17.245h-2.896v-3.313c0-0.229-0.186-0.415-0.414-0.415H8.342c-0.228,0-0.414,0.187-0.414,0.415v3.313H5.032v-6.628h9.931V17.245z M3.133,9.79l6.864-6.868l6.867,6.868H3.133z"></path>
-					</svg>
-				</div>
+				<a href="#section_domicilio_legal">
+					<img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/formulario_alta/imagenes/domicilio-cards.png">
+				</a>
 			</a>
 			<div class="mt-8">
 				<p class="text-xl font-semibold my-2">Datos del Domicilio Legal en la Provincia</p>
@@ -26,26 +24,42 @@
 				</div>
 				<div class="border-t-2"></div>
 
-				<div class="flex justify-between">
+				<div class="flex justify-between"  v-if="$props.evaluacion">
 						<div class="my-4">
-						<p class="font-semibold text-base mb-2">Progreso</p>
+						<p class="font-semibold text-base mb-2">Prog</p>
 						<div class="text-base text-gray-400 font-semibold">
 								<p>{{progreso}} %</p>
 						</div>
 					</div>
 					<div class="my-4">
-						<p class="font-semibold text-base text-green-500 mb-2">Aprobado</p>
+						<p class="font-semibold text-base text-green-500 mb-2">Apro</p>
 						<div class="text-base text-green-500 font-semibold">
 								<p>{{aprobado}} %</p>
 						</div>
 					</div>
 					<div class="my-4">
-						<p class="font-semibold text-base text-red-400 mb-2">Reprobado</p>
+						<p class="font-semibold text-base text-red-400 mb-2">Repr</p>
 						<div class="text-base text-red-400 font-semibold">
 								<p>{{reprobado}} %</p>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="mt-4" v-if="mostrarayuda">
+				<label class="flex items-center relative w-max cursor-pointer select-none">
+					Necesita ayuda?
+					<br>
+					<br>
+					<input 
+					type="checkbox" 
+					class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-red-500" 
+					v-model="valor_ayuda_local"
+					@change="cambio_de_ayuda"
+					/>
+					<span class="absolute font-medium text-xs uppercase right-1 text-white"> No </span>
+					<span class="absolute font-medium text-xs uppercase right-8 text-white"> Si </span>
+					<span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
+				</label>
 			</div>
 		</div>
 	</div>
@@ -59,9 +73,24 @@
 				'reprobado', 
 				'lugar', 
 				'updated_at',
+				'mostrarayuda',
+				'evaluacion',
 				'clase_sup',
 				'clase_inf',
+				'ayuda',
 				],
+
+				data(){
+					return {
+						valor_ayuda_local: this.$props.ayuda,
+					}
+				},
+				methods:{
+					cambio_de_ayuda(){
+						this.$emit('changevalorayuda',this.valor_ayuda_local);
+					}
+
+				}
 
 		}
 </script>

@@ -24,6 +24,7 @@ use App\Http\Controllers\formWebController\SolicitudesController;
 use App\Http\Controllers\formWebController\TipoDocumentoController;
 use App\Http\Controllers\formWebController\EstadoTerrenoController;
 use App\Http\Controllers\formWebController\MineralController;
+use App\Http\Controllers\formWebController\EstadoSolicitudController;
 
 
 /*
@@ -53,6 +54,9 @@ Route::get('mineral', [MineralController::class, "getMineral"])
         ->middleware(['auth:sanctum', 'verified']);
 
 Route::get('estado_terreno', [EstadoTerrenoController::class, "getEstadoTerreno"])
+        ->middleware(['auth:sanctum', 'verified']);
+
+Route::get('estado_solicitud', [EstadoSolicitudController::class, "getEstadoSolicitud"])
         ->middleware(['auth:sanctum', 'verified']);
 
 Route::middleware(['auth:sanctum', 'verified'])

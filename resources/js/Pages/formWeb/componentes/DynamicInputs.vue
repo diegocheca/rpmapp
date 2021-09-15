@@ -4,14 +4,14 @@
         <div
             v-for="(row, indexRow) in formSchema"
             :key="indexRow"
-            class="flex flex-col"
+            class="w-1/2 md:w-full  "
             :class="row.widthResponsive"
         >
             <!-- column -->
             <div
                 v-for="(col, indexCol) in row.body"
                 :key="indexCol"
-                class="bg-white rounded shadow-lg p-8 m-4"
+                class="bg-white rounded shadow-lg w-full p-2 m-2"
                 :class="col.width"
             >
                 <div class="font-bold text-lg">{{ col.title }}</div>
@@ -178,7 +178,7 @@
                                 :value="item.value"
                                 :name="item.name"
                                 :as="item.type"
-                                class="rounded-md py-2 px-3 text-grey-darkest"
+                                class="rounded-md py-2 px-3 "
                             />
 
                             <!-- select/multiple -->
@@ -186,6 +186,7 @@
                                 v-if="item.type == inputsTypes.SELECT"
                                 v-slot="{ field }"
                                 :name="item.name"
+                                
                             >
                                 <VueMultiselect
                                     v-bind="field"
@@ -207,6 +208,7 @@
                                     deselectLabel="Presiona para quitarlo"
                                     :disabled="evaluate ? true : false"
                                     @select="getAsyncOptionsSelect"
+                                    class="border-green-400 border-2 rounded-md "
                                 />
                             </Field>
 
@@ -216,6 +218,7 @@
                                 v-slot="{ field }"
                                 :type="item.type"
                                 :name="item.name"
+                               
                             >
                                 <div v-if="!evaluate" class="w-full h-full">
                                     <DragAndDropFile

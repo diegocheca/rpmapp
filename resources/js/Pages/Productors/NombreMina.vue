@@ -18,25 +18,25 @@
             name="input_componente"
             v-model="valor_input"
             v-bind:class=clase_border_de_input
-            :disabled="evaluacion"
+            :disabled="evaluacion || desactivar_input"
             @input="cambio_input($event.target.value)" 
             />
         </div>
         <p v-bind:class=clase_cartel_validacion_input>{{texto_validacion_input}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || mostrar_correccion">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
+                        <input type="radio" :disabled="desactivar_correccion" class="form-radio  h-5 w-5 text-green-600" :name="name_correcto" v-model="evualacion_correcto" value="true" v-on:change="actaulizar_variable_correccion(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
+                        <input type="radio" :disabled="desactivar_correccion" class="form-radio  h-5 w-5 text-red-600" :name="name_correcto" v-model="evualacion_correcto" value="false" v-on:change="actaulizar_variable_correccion(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio" name="accountType" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
+                        <input type="radio" :disabled="desactivar_correccion" class="form-radio  h-5 w-5 text-indigo-600" :name="name_correcto" v-model="evualacion_correcto" value="nada" v-on:change="actaulizar_variable_correccion('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -52,6 +52,7 @@
                     name="observaciones"
                     v-model="valor_obs"
                     v-bind:class=clase_text_area
+                    :disabled="desactivar_correccion"
                     @input="actaulizar_contenido_text_area($event.target.value)" 
                     >
                 </textarea>
@@ -102,7 +103,12 @@ export default {
         'evaluacion',
         'testing',
         'label',
-        'icon'
+        'icon',
+        'name_correcto',
+        'desactivar_input',
+        'mostrar_correccion',
+        'desactivar_correccion',
+
     ],
   data() {
     return {

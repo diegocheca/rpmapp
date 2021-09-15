@@ -11,31 +11,30 @@
             </div>
             <input 
             type="text" 
-            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="@"
+            placeholder="Ingrese el nombre de la calle"
             id="leal_calle"
             name="leal_calle"
             v-model="leal_calle"
             v-bind:class=clase_de_input_calle_legal
-            :disabled="evaluacion"
+            :disabled="evaluacion || $props.desactivar_calle_legal"
             @input="cambio_input_calle_legal($event.target.value)" 
             >
         </div>
         <p v-bind:class=clase_cartel_nota_legalcalle>{{cartel_nota_legalcalle}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || mostrar_calle_legal_correccion">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="nombre_calle_legal_correcto" value="true" v-on:change="actaulizar_variable_legalcalle(true)">
+                        <input type="radio" :disabled="$props.desactivar_calle_legal_correccion" class="form-radio h-5 w-5 text-green-600" name="accountTypecallenom" v-model="nombre_calle_legal_correcto" value="true" v-on:change="actaulizar_variable_legalcalle(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="nombre_calle_legal_correcto" value="false" v-on:change="actaulizar_variable_legalcalle(false)">
+                        <input type="radio" :disabled="$props.desactivar_calle_legal_correccion" class="form-radio h-5 w-5 text-red-600" name="accountTypecallenom" v-model="nombre_calle_legal_correcto" value="false" v-on:change="actaulizar_variable_legalcalle(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="nombre_calle_legal_correcto" value="nada" v-on:change="actaulizar_variable_legalcalle('nada')">
+                        <input type="radio" :disabled="$props.desactivar_calle_legal_correccion" class="form-radio h-5 w-5 text-indigo-600" name="accountTypecallenom" v-model="nombre_calle_legal_correcto" value="nada" v-on:change="actaulizar_variable_legalcalle('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -51,6 +50,7 @@
                     name="obs_nombre_calle_legal"
                     v-model="obs_nombre_calle_legal"
                     v-bind:class=clase_text_area_calle_legal
+                    :disabled="$props.desactivar_calle_legal_correccion"
                     @input="actaulizar_contenido_text_area_calle_legal($event.target.value)" 
                     >
                 </textarea>
@@ -101,6 +101,9 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'desactivar_calle_legal',
+        'mostrar_calle_legal_correccion',
+        'desactivar_calle_legal_correccion',
     ],
   data() {
     return {

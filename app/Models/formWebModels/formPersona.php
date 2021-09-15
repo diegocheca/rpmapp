@@ -18,7 +18,7 @@ class formPersona extends Model
         'apellido',
         'fecha_nacimiento',
         'nacionalidad',
-        'profefsion',
+        'profesion',
         'estado_civil',
         
 

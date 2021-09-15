@@ -12,15 +12,16 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
             icon: "M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z",
             bgColorIcon: "bg-blue-500",
             bgColorProgress: "bg-blue-300",
-            titleStep: "Datos Solicitud",
+            titleStep: "Datos Solicitud ",
             bodyStep: [
+                //row Solicitud
                 {
                     widthResponsive: "lg:flex-row", //flex
                     // columns
                     body: [
-                        //  col 1
+                        //  Solicitud de Exploracion
                         {
-                            title: "Solicitud",
+                            title: "Datos Solicitud",
                             width: "lg:w-full", //flex
                             columns: "grid-cols-3", //grid
                             columnsResponsive: "lg:grid-cols-2", //inside card
@@ -138,7 +139,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
             icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
             bgColorIcon: "bg-blue-500",
             bgColorProgress: "bg-blue-300",
-            titleStep: "Solicitante",
+            titleStep: "Datos Solicitante",
             bodyStep: [
                 //row elija si es persona o razon social
                 {
@@ -197,7 +198,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             title: "Datos de Solicitante",
                             width: "lg:w-full", //flex
                             columns: "grid-cols-1", //grid
-                            columnsResponsive: "lg:grid-cols-3", //inside card
+                            columnsResponsive: "lg:grid-cols-2", //inside card
                             img: "/images/laborales.png",
                             inputs: [
                                 //NOMBRE
@@ -259,6 +260,10 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         {
                                             label: "Masculino",
                                             value: "Masculino",
+                                        },
+                                        {
+                                            label: "Otros",
+                                            value: "Otros",
                                         },
                                         {
                                             label: "Sin Sexo",
@@ -383,8 +388,8 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     name: "estado_civil",
                                     options: [
                                         {
-                                            label: "Sin Estado",
-                                            value: "Sin Estado",
+                                            label: "Soltero",
+                                            value: "Soltero",
                                         },
                                         {
                                             label: "Casado",
@@ -395,8 +400,8 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                             value: "Divorsiado",
                                         },
                                         {
-                                            label: "Soltero",
-                                            value: "Soltero",
+                                            label: "Sin Estado",
+                                            value: "Sin Estado",
                                         },
                                     ],
                                     // validations: yup
@@ -463,7 +468,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             title: "Domicilio Legal Solicitante",
                             width: "lg:w-full", //flex
                             columns: "grid-cols-1", //grid
-                            columnsResponsive: "lg:grid-cols-3", //inside card
+                            columnsResponsive: "lg:grid-cols-1", //inside card
                             img: "/images/laborales.png",
                             inputs: [
                                 //PROVINCIA
@@ -622,7 +627,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             title: "Domicilio Real Solicitante",
                             width: "lg:w-full", //flex
                             columns: "grid-cols-1", //grid
-                            columnsResponsive: "lg:grid-cols-3", //inside card
+                            columnsResponsive: "lg:grid-cols-2", //inside card
                             img: "/images/laborales.png",
                             inputs: [
                                 //PROVINCIA
@@ -639,7 +644,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         "localidad",
                                     ],
                                     // isLoading: false,
-                                    //
+
                                     options: dataForm.provincia,
                                     name: "provincia",
                                     multiple: false,
@@ -746,7 +751,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
             icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
             bgColorIcon: "bg-blue-500",
             bgColorProgress: "bg-blue-300",
-            titleStep: "Representante Legal",
+            titleStep: "Datos Representante Legal",
             bodyStep: [
                 // row 2 Agregar Una persona Repr.Legal
                 {
@@ -755,7 +760,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                     body: [
                         //  col 1
                         {
-                            title: "Representante Legal",
+                            title: "Datos Representante Legal",
                             width: "lg:w-full", //flex
                             columns: "grid-cols-1", //grid
                             columnsResponsive: "lg:grid-cols-2", //inside card
@@ -875,6 +880,10 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                             label: "Otros",
                                             value: "Otros",
                                         },
+                                        {
+                                            label: "Sin Sexo",
+                                            value: "Sin Sexo",
+                                        },
                                     ],
                                     validations: yup
                                         .object()
@@ -899,92 +908,25 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
             ],
         },
 
-        // Coordenadass GaussKruger / Categoria Mineral
+        // Datos Terreno / Coordenadass Gauss-Krüger / Matricula Catastral
         {
             icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z",
             bgColorIcon: "bg-blue-500",
             bgColorProgress: "bg-blue-300",
-            titleStep: "Coordenadass GaussKruger Y Matricula Catastral",
+            titleStep: "Coordenadas Gauss-Krüger Y Matricula Catastral",
             bodyStep: [
-                //row categoria y mineral
+                //row Datos terreno
                 {
                     widthResponsive: "flex-row", //flex
                     body: [
                         //  col 1
                         {
-                            title: "Categoria Mineral",
+                            title: "Datos Terreno",
                             width: "", //flex
                             columns: "grid-cols-2", //grid
-                            columnsResponsive: "", //inside card
+                            columnsResponsive: "lg:grid-cols-2", //inside card
                             img: "/images/laborales.png",
                             inputs: [
-                                //CATEGORIA
-                                {
-                                    label: "CATEGORIA",
-                                    value: {},
-                                    type: inputsTypes.SELECT,
-                                    name: "categoria",
-                                    options: [
-                                        {
-                                            label: "Primera",
-                                            value: "Primera",
-                                        },
-                                        {
-                                            label: "Segunda",
-                                            value: "Segunda",
-                                        },
-                                    ],
-                                    validations: yup
-                                        .object()
-                                        .when("categoriaSelect", {
-                                            is: (value) => _.isEmpty(value),
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                ),
-                                        }),
-                                    observation: new Observations({
-                                        schema,
-                                        name: "categoria",
-                                        evaluate,
-                                    }).observations,
-                                },
-                                //MINERAL
-
-                                {
-                                    label: "Mineral",
-                                    value: {},
-                                    type: inputsTypes.SELECT,
-                                    async: true,
-
-                                    isLoading: false,
-                                    options: dataForm.mineral,
-                                    name: "mineral",
-                                    multiple: false,
-                                    closeOnSelect: true,
-                                    searchable: false,
-                                    placeholder: "Selecciona una opción",
-
-                                    validations: yup
-                                        .object()
-                                        .when("mineralSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
-                                    observation: new Observations({
-                                        schema,
-                                        name: "mineral",
-                                        evaluate,
-                                    }).observations,
-                                },
-
                                 // ESTADO TERRENO
                                 {
                                     label: "ESTADO TERRENO",
@@ -1033,6 +975,130 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                         evaluate,
                                     }).observations,
                                 },
+
+                                //PROVINCIA
+                                {
+                                    label: "Provincia ",
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    asyncUrl: "/paises/departamentos",
+                                    inputDepends: ["dpto_explo"],
+                                    inputClearDepends: [
+                                        "dpto_explo",
+                                        "loc_explo",
+                                    ],
+                                    // isLoading: false,
+                                    options: dataForm.provincia,
+                                    name: "prov_explo",
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: "Selecciona una opción",
+                                    validations: yup
+                                        .object()
+                                        .when("prov_exploSelect", {
+                                            is: (value) =>
+                                                _.isEmpty(value) || !value,
+                                            then: yup
+                                                .object()
+                                                .required(
+                                                    "Debes elegir un elemento"
+                                                )
+                                                .nullable(),
+                                        }),
+                                    observation: new Observations({
+                                        schema,
+                                        name: "prov_explo",
+                                        evaluate,
+                                    }).observations,
+                                },
+
+                                //DEPARTAMENTO
+                                {
+                                    label: "Departamento",
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    asyncUrl: "/paises/localidades",
+                                    inputDepends: ["loc_explo"],
+                                    inputClearDepends: ["loc_explo"],
+                                    isLoading: false,
+                                    //
+                                    options: [],
+                                    name: "dpto_explo",
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: "Selecciona una opción",
+                                    validations: yup
+                                        .object()
+                                        .when("dpto_exploSelect", {
+                                            is: (value) =>
+                                                _.isEmpty(value) || !value,
+                                            then: yup
+                                                .object()
+                                                .required(
+                                                    "Debes elegir un elemento"
+                                                )
+                                                .nullable(),
+                                        }),
+                                    observation: new Observations({
+                                        schema,
+                                        name: "dpto_explo",
+                                        evaluate,
+                                    }).observations,
+                                },
+                                //LOCALIDAD
+                                {
+                                    label: "Localidad",
+                                    value: {},
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    isLoading: false,
+                                    //
+                                    options: [],
+                                    name: "loc_explo",
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: "Selecciona una opción",
+                                    validations: yup
+                                        .object()
+                                        .when("loc_exploSelect", {
+                                            is: (value) =>
+                                                _.isEmpty(value) || !value,
+                                            then: yup
+                                                .object()
+                                                .required(
+                                                    "Debes elegir un elemento"
+                                                )
+                                                .nullable(),
+                                        }),
+                                    observation: new Observations({
+                                        schema,
+                                        name: "loc_explo",
+                                        evaluate,
+                                    }).observations,
+                                },
+                                //PARAJE
+                                {
+                                    label: "PARAJE",
+                                    value: schema.num_expediente,
+                                    type: inputsTypes.TEXT,
+                                    name: "paraje1",
+                                    validations: yup
+                                        .string()
+                                        .required("Debes completar este campo"),
+                                    observation: new Observations({
+                                        schema,
+                                        name: "paraje1",
+                                        evaluate,
+                                    }).observations,
+                                },
                             ],
                         },
                     ],
@@ -1044,10 +1110,10 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                     body: [
                         //  col 1
                         {
-                            title: "Matricula Catastral",
+                            title: "Datos Matricula Catastral",
                             width: "", //flex
                             columns: "grid-cols-2", //grid
-                            columnsResponsive: "", //inside card
+                            columnsResponsive: "lg:grid-cols-2", //inside card
                             img: "/images/laborales.png",
                             inputs: [
                                 //NE_X
@@ -1117,13 +1183,13 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                     ],
                 },
 
-                //row Coordenadas GaussKruger
+                //row Coordenadas Gauss-Krüger
                 {
                     widthResponsive: "flex-row", //flex
                     body: [
                         //  col 1
                         {
-                            title: "Coordenadass GaussKruger",
+                            title: "Datos Coordenadass Gauss-Krüger",
                             width: "", //flex
                             columns: "grid-cols-1", //grid
                             columnsResponsive: "", //inside card
@@ -1264,7 +1330,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                     body: [
                         //  col 1
                         {
-                            title: "Propietario",
+                            title: "Datos Propietario",
                             width: "lg:w-full", //flex
                             columns: "grid-cols-3", //grid
                             columnsResponsive: "lg:grid-cols-2", //inside card
@@ -1360,11 +1426,11 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     // get axios
                                     async: true,
                                     asyncUrl: "/paises/departamentos",
-                                    inputDepends: ["departamento"],
-                                    inputClearDepends: [
-                                        "departamento",
-                                        "localidad",
-                                    ],
+                                    // inputDepends: ["departamento"],
+                                    // inputClearDepends: [
+                                    //     "departamento",
+                                    //     "localidad",
+                                    // ],
                                     // isLoading: false,
                                     //
                                     options: dataForm.provincia,
@@ -1419,7 +1485,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
             icon: "M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z",
             bgColorIcon: "bg-blue-500",
             bgColorProgress: "bg-blue-300",
-            titleStep: "Declaracion Jurada y Informe Registro Catastral",
+            titleStep: "Declaración Jurada y Informe Registro Catastral",
             bodyStep: [
                 // row 1 carga de codumentacion
                 {

@@ -15,7 +15,7 @@ class formCoordenadasPoligonal extends Model
         'Y', 
         'terreno_id',
     ];
-
+    //Relacion inversa de 1 a muchos con Terreno
     public function terreno_cor()
      {
         return $this->belongsTo(formTerreno::class);

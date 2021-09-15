@@ -13,30 +13,30 @@
             type="text" 
             maxlength="30"
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Núumero de calle"
+            placeholder="Número de calle"
             id="leal_numero"
             name="leal_numero"
             v-model="leal_numero"
             v-bind:class=clase_de_input_calle_num_legal
-            :disabled="evaluacion"
+            :disabled="evaluacion || $props.desactivar_legal_calle_num"
             @input="cambio_input_calle_num_legal($event.target.value)" 
             >
         </div>
         <p v-bind:class=clase_cartel_nota_legalcallenum>{{cartel_nota_legalcallenum}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || mostrar_legal_calle_num_correccion">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio  h-5 w-5 text-green-600" name="accountType" v-model="leal_numero_correcto" value="true" v-on:change="actaulizar_variable_legalcallenum(true)">
+                        <input type="radio" :disabled="$props.desactivar_legal_calle_num_correccion" class="form-radio  h-5 w-5 text-green-600" name="accountTypenum_calle" v-model="leal_numero_correcto" value="true" v-on:change="actaulizar_variable_legalcallenum(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio  h-5 w-5 text-red-600" name="accountType" v-model="leal_numero_correcto" value="false" v-on:change="actaulizar_variable_legalcallenum(false)">
+                        <input type="radio" :disabled="$props.desactivar_legal_calle_num_correccion" class="form-radio  h-5 w-5 text-red-600" name="accountTypenum_calle" v-model="leal_numero_correcto" value="false" v-on:change="actaulizar_variable_legalcallenum(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio  h-5 w-5 text-indigo-600" name="accountType" v-model="leal_numero_correcto" value="nada" v-on:change="actaulizar_variable_legalcallenum('nada')">
+                        <input type="radio" :disabled="$props.desactivar_legal_calle_num_correccion" class="form-radio  h-5 w-5 text-indigo-600" name="accountTypenum_calle" v-model="leal_numero_correcto" value="nada" v-on:change="actaulizar_variable_legalcallenum('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -52,6 +52,7 @@
                     name="obs_leal_numero"
                     v-model="obs_leal_numero"
                     v-bind:class=clase_text_area_calle_legal_num
+                    :disabled="$props.desactivar_legal_calle_num_correccion"
                     @input="actaulizar_contenido_text_area_calle_legal_num($event.target.value)" 
                     >
                 </textarea>
@@ -76,7 +77,7 @@
             </div>
             <div class="flex">
                 <div v-show="testing_hijo">
-                   -- nombre calle:{{leal_numero}}--
+                    -- nombre calle:{{leal_numero}}--
                     --nombre calle Valido:{{leal_numero_valido}}--
                     --nombre calle Valido local:{{calle_num_legal_valido_local}}--
                     
@@ -102,6 +103,9 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'desactivar_legal_calle_num',
+        'mostrar_legal_calle_num_correccion',
+        'desactivar_legal_calle_num_correccion',
     ],
   data() {
     return {
@@ -121,7 +125,7 @@ export default {
   methods:{
     actaulizar_variable_legalcallenum(valor) {
         this.legal_calle_num_correcto_local = valor;
-        this.$emit('changenumlegalcorrecto',this.legal_calle_num_correcto_local);
+        this.$emit('changenumlegalcorrecto',valor);
     },
      
       actaulizar_contenido_text_area_calle_legal_num(value) {

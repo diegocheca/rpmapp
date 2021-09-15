@@ -1,3 +1,4 @@
+"use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["helpers_formWeb_sanjuan_s_descubrimiento_wizard_js"],{
 
 /***/ "./helpers/enums/fileAccept.js":
@@ -6,7 +7,6 @@
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -42,7 +42,6 @@ __webpack_require__.r(__webpack_exports__);
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Observaciones)
@@ -116,7 +115,6 @@ var Observaciones = /*#__PURE__*/function () {
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getFormSchema": () => (/* binding */ getFormSchema)
@@ -127,9 +125,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../enums/fileAccept */ "./helpers/enums/fileAccept.js");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
- // import Observations from './observaciones';
-// import inputsTypes from '../../enums/inputsTypes';
-// import fileAccept from '../../enums/fileAccept';
 
 
 
@@ -149,9 +144,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
       widthResponsive: "lg:flex-row",
       //flex
       // columns
-      body: [//  col 1
+      body: [//  Solicitud Descubrimiento
       {
-        title: "Solicitud Descubrimiento",
+        title: "Datos Solicitud",
         width: "lg:w-full",
         //flex
         columns: "grid-cols-3",
@@ -171,7 +166,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
             name: "num_expediente",
             evaluate: evaluate
           }).observations
-        }, //PROGRAMA MINIMO DE TRABAJO
+        }, //DESCUBRIMIENTO DIRECTO
         {
           label: "DESCUBRIMIENTO DIRECTO",
           value: {},
@@ -195,6 +190,30 @@ function getFormSchema(_ref, evaluate, dataForm) {
             name: "descubrimiento_directo",
             evaluate: evaluate
           }).observations
+        }, //ACOMPAÑA MUESTRA
+        {
+          label: "MUESTRA",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          name: "muestra",
+          options: [{
+            label: "Si",
+            value: "Si"
+          }, {
+            label: "No",
+            value: "No"
+          }],
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("muestraSelect", {
+            is: function is(value) {
+              return _.isEmpty(value);
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento")
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "muestra",
+            evaluate: evaluate
+          }).observations
         }]
       }]
     }]
@@ -203,7 +222,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
     icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
     bgColorIcon: "bg-blue-500",
     bgColorProgress: "bg-blue-300",
-    titleStep: "Solicitante",
+    titleStep: "Datos Solicitante",
     bodyStep: [//row elija si es persona o razon social
     {
       widthResponsive: "lg:flex-row",
@@ -221,7 +240,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           label: "¿Es una Persona o Razon Social?",
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
-          name: "opcion",
+          name: "opcion2",
           options: [{
             label: "Solicitante (Persona)",
             value: "Solicitante (Persona)"
@@ -229,7 +248,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
             label: "Razon Social",
             value: "Razon Social"
           }],
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("opcionSelect", {
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("opcion2Select", {
             is: function is(value) {
               return _.isEmpty(value);
             },
@@ -237,7 +256,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: "opcion",
+            name: "opcion2",
             evaluate: evaluate
           }).observations
         }]
@@ -254,13 +273,13 @@ function getFormSchema(_ref, evaluate, dataForm) {
         //flex
         columns: "grid-cols-1",
         //grid
-        columnsResponsive: "lg:grid-cols-3",
+        columnsResponsive: "lg:grid-cols-2",
         //inside card
         img: "/images/laborales.png",
         inputs: [//NOMBRE
         {
           label: "Nombre",
-          value: schema.nombre,
+          value: schema.nombre_soli,
           //nombre_razon_social,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "nombre_soli" // validations: yup
@@ -275,7 +294,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, //APELLIDO
         {
           label: "Apellido",
-          value: schema.apellido,
+          value: schema.apellido_soli,
           //nombre_razon_social,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "apellido_soli" // validations: yup
@@ -290,7 +309,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, //RAZON SOCIAL
         {
           label: "Razon Social",
-          value: schema.nombrers,
+          value: schema.nombrers_soli,
           //nombre_razon_social,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "nombrers_soli" // validations: yup
@@ -314,6 +333,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }, {
             label: "Masculino",
             value: "Masculino"
+          }, {
+            label: "Otros",
+            value: "Otros"
           }, {
             label: "Sin Sexo",
             value: "Sin Sexo"
@@ -361,7 +383,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, //DNI
         {
           label: "DNI",
-          value: schema.dni,
+          value: schema.dni_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
           name: "dni_soli",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
@@ -373,7 +395,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, //FECHA DE NACIMIENTO
         {
           label: "Fecha de Nacimiento",
-          value: schema.fecha_nacimiento,
+          value: schema.fecha_nacimiento_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.DATE,
           name: "fecha_nacimiento_soli" // validations: yup
           //     .string()
@@ -387,7 +409,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, //NACIONALIDAD
         {
           label: "Nacionalidad",
-          value: schema.nacionalidad,
+          value: schema.nacionalidad_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "nacionalidad_soli" // validations: yup
           //     .string()
@@ -401,7 +423,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, //PROFESION
         {
           label: "Profesión",
-          value: schema.profesion,
+          value: schema.profesion_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "profesion_soli" // validations: yup
           //     .string()
@@ -419,8 +441,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           name: "estado_civil_soli",
           options: [{
-            label: "Sin Estado",
-            value: "Sin Estado"
+            label: "Soltero",
+            value: "Soltero"
           }, {
             label: "Casado",
             value: "Casado"
@@ -428,8 +450,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
             label: "Divorsiado",
             value: "Divorsiado"
           }, {
-            label: "Soltero",
-            value: "Soltero"
+            label: "Sin Estado",
+            value: "Sin Estado"
           }] // validations: yup
           //     .object()
           //     .when("estado_civilSelect", {
@@ -466,7 +488,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         inputs: [//DOMICILIO LEGAL
         {
           label: "Domicilio",
-          value: schema.domicilio,
+          value: schema.domicilioLegal_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "domicilioLegal_soli",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
@@ -595,7 +617,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         inputs: [//DOMICILIO LEGAL
         {
           label: "Domicilio",
-          value: schema.domicilio,
+          value: schema.domicilio_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "domicilio_soli",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
@@ -713,7 +735,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
     icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
     bgColorIcon: "bg-blue-500",
     bgColorProgress: "bg-blue-300",
-    titleStep: "Representante Legal",
+    titleStep: "Datos Representante Legal",
     bodyStep: [// row 2 Agregar Una persona Repr.Legal
     {
       widthResponsive: "lg:flex-row",
@@ -721,7 +743,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
       // columns
       body: [//  col 1
       {
-        title: "Representante Legal",
+        title: "Datos Representante Legal",
         width: "lg:w-full",
         //flex
         columns: "grid-cols-1",
@@ -732,7 +754,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         inputs: [//NOMBRE REPRESENTANTE LEGAL
         {
           label: "Nombre",
-          value: schema.nombre,
+          value: schema.nombre_rl_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "nombre_rl_soli",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
@@ -744,7 +766,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, //APELLIDO REPRESENTANTE LEGAL
         {
           label: "Apellido",
-          value: schema.apellido,
+          value: schema.apellido_rl_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "apellido_rl_soli",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
@@ -762,12 +784,12 @@ function getFormSchema(_ref, evaluate, dataForm) {
           //asyncUrl: "/tipo_documento",
           isLoading: false,
           options: dataForm.tipo_documento,
-          name: "tipo_documento_rl_soli",
+          name: "tipo_doc_rl_soli",
           multiple: false,
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("tipo_documento_rl_soliSelect", {
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("tipo_doc_rl_soliSelect", {
             is: function is(value) {
               return _.isEmpty(value) || !value;
             },
@@ -775,13 +797,13 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
-            name: "tipo_documento_rl_soli",
+            name: "tipo_doc_rl_soli",
             evaluate: evaluate
           }).observations
         }, // DNI
         {
           label: "DNI",
-          value: schema.dni,
+          value: schema.dni_rl_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
           name: "dni_rl_soli",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
@@ -793,7 +815,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, //DOMICILIO
         {
           label: "Domicilio",
-          value: schema.domicilio,
+          value: schema.domi_rl_soli,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "domi_rl_soli",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
@@ -817,6 +839,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }, {
             label: "Otros",
             value: "Otros"
+          }, {
+            label: "Sin Sexo",
+            value: "Sin Sexo"
           }],
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("sexoRL_soliSelect", {
             is: function is(value) {
@@ -832,7 +857,716 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }]
       }]
     }]
-  }];
+  }, // Coordenadass Gauss-Krüger / Categoria Mineral
+  {
+    icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z",
+    bgColorIcon: "bg-blue-500",
+    bgColorProgress: "bg-blue-300",
+    titleStep: "Coordenadas Gauss-Krüger,Matricula Catastral, Mineral",
+    bodyStep: [//Row Matricula Catastral Provisoria
+    {
+      widthResponsive: "flex-row",
+      //flex
+      body: [//  col 1
+      {
+        title: "Matricula Catastral Provisoria",
+        width: "",
+        //flex
+        columns: "grid-cols-2",
+        //grid
+        columnsResponsive: "lg:grid-cols-2",
+        //inside card
+        img: "/images/laborales.png",
+        inputs: [//NE_X
+        {
+          label: "X",
+          value: schema.x2_provi,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "x2_provi",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "x2_provi",
+            evaluate: evaluate
+          }).observations
+        }, //NE_Y
+        {
+          label: "Y",
+          value: schema.y2_provi,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "y2_provi",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "y2_provi",
+            evaluate: evaluate
+          }).observations
+        }]
+      }]
+    }, //row Mina / categoria / mineral
+    {
+      widthResponsive: "flex-row",
+      //flex
+      body: [//  col 1
+      {
+        title: "Mina-Mineral",
+        width: "",
+        //flex
+        columns: "grid-cols-2",
+        //grid
+        columnsResponsive: "lg:grid-cols-2",
+        //inside card
+        img: "/images/laborales.png",
+        inputs: [//NOMBRE DE LA MINA
+        {
+          label: "NOMBRE DE LA MINA",
+          value: schema.nom_mina,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "nom_mina",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "nom_mina",
+            evaluate: evaluate
+          }).observations
+        }, //CATEGORIA
+        {
+          label: "CATEGORIA",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          name: "cat_mineral",
+          options: [{
+            label: "Primera",
+            value: "Primera"
+          }, {
+            label: "Segunda",
+            value: "Segunda"
+          }],
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("cat_mineralSelect", {
+            is: function is(value) {
+              return _.isEmpty(value);
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento")
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "cat_mineral",
+            evaluate: evaluate
+          }).observations
+        }, //MINERAL
+        {
+          label: "Mineral Descubierto",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          async: true,
+          isLoading: false,
+          options: dataForm.mineral,
+          name: "mineral",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("mineralSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "mineral",
+            evaluate: evaluate
+          }).observations
+        }, // ESTADO TERRENO
+        {
+          label: "ESTADO TERRENO",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          async: true,
+          isLoading: false,
+          options: dataForm.estado_terreno,
+          name: "estado_terr",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("eestado_terrSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "estado_terr",
+            evaluate: evaluate
+          }).observations
+        }, //SUPERFICIE HECTARIAS
+        {
+          label: "SUP. HECTARIAS",
+          value: schema.sup_hect,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "sup_hect",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "sup_hect",
+            evaluate: evaluate
+          }).observations
+        }, //PROVINCIA
+        {
+          label: "Provincia ",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          // get axios
+          async: true,
+          asyncUrl: "/paises/departamentos",
+          inputDepends: ["dpto_manifiesto"],
+          inputClearDepends: ["dpto_manifiesto", "loc_manifiesto"],
+          // isLoading: false,
+          options: dataForm.provincia,
+          name: "prov_manifiesto",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("prov_manifiestoSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "prov_manifiesto",
+            evaluate: evaluate
+          }).observations
+        }, //DEPARTAMENTO
+        {
+          label: "Departamento",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          // get axios
+          async: true,
+          asyncUrl: "/paises/localidades",
+          inputDepends: ["loc_manifiesto"],
+          inputClearDepends: ["loc_manifiesto"],
+          isLoading: false,
+          //
+          options: [],
+          name: "dpto_manifiesto",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("dpto_manifiestoSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "dpto_manifiesto",
+            evaluate: evaluate
+          }).observations
+        }, //LOCALIDAD
+        {
+          label: "Localidad",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          // get axios
+          async: true,
+          isLoading: false,
+          //
+          options: [],
+          name: "loc_manifiesto",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("loc_manifiestoSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "loc_manifiesto",
+            evaluate: evaluate
+          }).observations
+        }, //PARAJE
+        {
+          label: "PARAJE",
+          value: schema.num_expediente,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "paraje",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "paraje",
+            evaluate: evaluate
+          }).observations
+        }]
+      }]
+    }, //row Mina Colindante
+    {
+      widthResponsive: "flex-row",
+      //flex
+      body: [//  col 1
+      {
+        title: "Mina Colindante",
+        width: "",
+        //flex
+        columns: "grid-cols-2",
+        //grid
+        columnsResponsive: "lg:grid-cols-2",
+        //inside card
+        img: "/images/laborales.png",
+        inputs: [//NOMBRE DE LA MINA
+        {
+          label: "NOMBRE DE LA MINA",
+          value: schema.nom_mina,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "nom_mina",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "nom_mina",
+            evaluate: evaluate
+          }).observations
+        }, //MINERAL
+        {
+          label: "Mineral Descubierto",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          async: true,
+          isLoading: false,
+          options: dataForm.mineral,
+          name: "mineral",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("mineralSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "mineral",
+            evaluate: evaluate
+          }).observations
+        }, //NOMBRE PROPIETARIO
+        {
+          label: "NOMBRE PROPIETARIO",
+          value: schema.nombre,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "nombre",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "nombre",
+            evaluate: evaluate
+          }).observations
+        }]
+      }]
+    }, //Row Matricula Catastral
+    {
+      widthResponsive: "flex-row",
+      //flex
+      body: [//  col 1
+      {
+        title: "Matricula Catastral",
+        width: "",
+        //flex
+        columns: "grid-cols-2",
+        //grid
+        columnsResponsive: "lg:grid-cols-2",
+        //inside card
+        img: "/images/laborales.png",
+        inputs: [//NE_X
+        {
+          label: "NE_X",
+          value: schema.ne_x,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "ne_x2",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "ne_x2",
+            evaluate: evaluate
+          }).observations
+        }, //NE_Y
+        {
+          label: "NE_Y",
+          value: schema.ne_y,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "ne_y2",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "ne_y2",
+            evaluate: evaluate
+          }).observations
+        }, //SO_X
+        {
+          label: "SO_X",
+          value: schema.so_x,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "so_x2",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "so_x2",
+            evaluate: evaluate
+          }).observations
+        }, //SO_Y
+        {
+          label: "SO_Y",
+          value: schema.so_y,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "so_y2",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "so_y2",
+            evaluate: evaluate
+          }).observations
+        }]
+      }]
+    }, //row Coordenadas Gauss-Krüger
+    {
+      widthResponsive: "flex-row",
+      //flex
+      body: [//  col 1
+      {
+        title: "Coordenadass Gauss-Krüger",
+        width: "",
+        //flex
+        columns: "grid-cols-1",
+        //grid
+        columnsResponsive: "",
+        //inside card
+        img: "/images/laborales.png",
+        inputs: [{
+          label: "",
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.LIST,
+          name: "List",
+          // columns: 'grid-cols-1',
+          // colSpans + 1
+          // columnsResponsive: 'lg:w-2/5',
+          childrens: [// default value,
+          [{
+            name: "x2",
+            value: null
+          }, {
+            name: "y2",
+            value: null
+          }]],
+          elements: [[//LABEL X
+          {
+            label: "X",
+            value: schema.y,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+            colSpan: "lg:w-2/5",
+            name: "x2",
+            multiple: false,
+            closeOnSelect: true,
+            searchable: false,
+            validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+            observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+              schema: schema,
+              name: "x2",
+              evaluate: evaluate
+            }).observations // validations: yup.object().when('sustanceSelect', {
+            //     is: value => _.isEmpty(value),
+            //     then: yup.object().required('Debes elegir un elemento')
+            // }),
+            //placeholder: 'Selecciona una opción',
+
+          }, //LABEL Y
+          {
+            label: "Y",
+            value: schema.y,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+            colSpan: "lg:w-2/5",
+            name: "y2",
+            multiple: false,
+            closeOnSelect: true,
+            searchable: false,
+            validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+            observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+              schema: schema,
+              name: "y2",
+              evaluate: evaluate
+            }).observations // validations: yup.object().when('mineralSelect', {
+            //     is: value => _.isEmpty(value),
+            //     then: yup.object().required('Debes elegir un elemento')
+            // }),
+            // placeholder: 'Selecciona una opción',
+
+          }, {
+            colSpan: "lg:w-5/5",
+            observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+              schema: schema,
+              name: "row-",
+              evaluate: evaluate
+            }).observations
+          }]],
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().of(yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
+            // sustanceSelect: yup.object().when('sustance', {
+            //     is: value => _.isEmpty(value),
+            //     then: yup.object().required('Debes elegir un elemento').nullable()
+            // }),
+            // mineralSelect: yup.object().when('mineral', {
+            //     is: value => _.isEmpty(value),
+            //     then: yup.object().required('Debes elegir un elemento').nullable()
+            // }),
+            x: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes ingresar una coordenada"),
+            y: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes ingresaruna coordenada")
+          })).strict()
+        }]
+      }]
+    }]
+  }, //Datos Propietario
+  {
+    icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z",
+    bgColorIcon: "bg-blue-500",
+    bgColorProgress: "bg-blue-300",
+    titleStep: "Datos Propietario",
+    bodyStep: [{
+      widthResponsive: "lg:flex-row",
+      //flex
+      // columns
+      body: [//  col 1
+      {
+        title: "Datos Propietario",
+        width: "lg:w-full",
+        //flex
+        columns: "grid-cols-3",
+        //grid
+        columnsResponsive: "lg:grid-cols-2",
+        //inside card
+        img: "/images/laborales.png",
+        inputs: [//NOMBRE
+        {
+          label: "Nombre",
+          value: schema.nombre,
+          //nombre_razon_social,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "nombre_prop",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "nombre_prop",
+            evaluate: evaluate
+          }).observations
+        }, //APELLIDO
+        {
+          label: "Apellido",
+          value: schema.apellido_prop,
+          //nombre_razon_social,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "apellido_prop",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "apellido_prop",
+            evaluate: evaluate
+          }).observations
+        }, //TIPO DOCUMENTO
+        {
+          label: "Tipo de Documento",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          async: true,
+          //asyncUrl: "/tipo_documento",
+          isLoading: false,
+          options: dataForm.tipo_documento,
+          name: "tipo_documento",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("tipo_documentoSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "tipo_documento",
+            evaluate: evaluate
+          }).observations
+        }, //DNI
+        {
+          label: "DNI",
+          value: schema.dni_prop,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          name: "dni_prop",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "dni_prop",
+            evaluate: evaluate
+          }).observations
+        }, //PROVINCIA
+        {
+          label: "Provincia",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          // get axios
+          async: true,
+          asyncUrl: "/paises/departamentos",
+          inputDepends: ["departamento"],
+          inputClearDepends: ["departamento", "localidad"],
+          // isLoading: false,
+          //
+          options: dataForm.provincia,
+          name: "prov_prop",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("prov_propSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "prov_prop",
+            evaluate: evaluate
+          }).observations
+        }, //DOMICILIO
+        {
+          label: "Domicilio",
+          value: schema.domi_prop,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "domi_prop",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "domi_prop",
+            evaluate: evaluate
+          }).observations
+        }]
+      }]
+    }]
+  } //Declaracion Jurada y Informe Registro Catastral
+  // {
+  //     icon: "M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z",
+  //     bgColorIcon: "bg-blue-500",
+  //     bgColorProgress: "bg-blue-300",
+  //     titleStep: "Declaracion Jurada y Informe Registro Catastral",
+  //     bodyStep: [
+  //         // row 1 carga de codumentacion
+  //         {
+  //             widthResponsive: "lg:flex-row", //flex
+  //             // columns
+  //             body: [
+  //                 //  col 1
+  //                 {
+  //                     title: "CARGA DE DOCUMENTACIÓN",
+  //                     width: "lg:w-full", //flex
+  //                     columns: "grid-cols-1", //grid
+  //                     columnsResponsive: "lg:grid-cols-2", //inside card
+  //                     img: "/images/laborales.png",
+  //                     inputs: [
+  //                         // DECLARACIÓN JURADA
+  //                         {
+  //                             label: "DECLARACIÓN JURADA",
+  //                             value: schema.declaracion,
+  //                             type: inputsTypes.FILE,
+  //                             name: "declaracion",
+  //                             accept: [fileAccept.PDF.value],
+  //                             acceptLabel: `Archivos admitidos: ${[
+  //                                 fileAccept.PDF.label,
+  //                             ].join()}`,
+  //                             maxSize: "Tamaño maximo por archivo: 10MB",
+  //                             multiple: false,
+  //                             validations: yup
+  //                                 .array()
+  //                                 .min(
+  //                                     1,
+  //                                     "Debes adjuntar al menos un elemento"
+  //                                 )
+  //                                 .default([])
+  //                                 .max(
+  //                                     1,
+  //                                     "Solo puedes adjuntar hasta 1 archivo"
+  //                                 )
+  //                                 .test({
+  //                                     name: "CUIT_SIZE",
+  //                                     exclusive: true,
+  //                                     message:
+  //                                         "Recuerda que cada archivo no debe superar los 10MB",
+  //                                     test: (value) => {
+  //                                         if (!value) return true;
+  //                                         let validation = true;
+  //                                         for (
+  //                                             let index = 0;
+  //                                             index < value.length;
+  //                                             index++
+  //                                         ) {
+  //                                             const element =
+  //                                                 value[index];
+  //                                             validation =
+  //                                                 validation &&
+  //                                                 element.size <=
+  //                                                     10000000; // 10MB
+  //                                         }
+  //                                         return validation;
+  //                                         // !value || (value && value.size <= 10)
+  //                                     },
+  //                                 })
+  //                                 .test({
+  //                                     name: "CUIT_FILE_FORMAT",
+  //                                     exclusive: true,
+  //                                     message:
+  //                                         "Hay archivos con extensiones no válidas",
+  //                                     test: (value) => {
+  //                                         if (!value) return true;
+  //                                         let validation = true;
+  //                                         for (
+  //                                             let index = 0;
+  //                                             index < value.length;
+  //                                             index++
+  //                                         ) {
+  //                                             const element =
+  //                                                 value[index];
+  //                                             validation =
+  //                                                 validation &&
+  //                                                 [
+  //                                                     ...fileAccept.PDF
+  //                                                         .value,
+  //                                                 ].includes(
+  //                                                     element.type
+  //                                                 );
+  //                                         }
+  //                                         return validation;
+  //                                         // return !value || (value && [fileAccept.PDF.value].includes(value.type))
+  //                                     },
+  //                                 }),
+  //                             observation: new Observations({
+  //                                 schema,
+  //                                 name: "declaracion",
+  //                                 evaluate,
+  //                             }).observations,
+  //                         },
+  //                     ],
+  //                 },
+  //             ],
+  //         },
+  //     ],
+  // },
+  ];
 }
 
 /***/ })

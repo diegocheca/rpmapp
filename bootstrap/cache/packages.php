@@ -1,16 +1,4 @@
 <?php return array (
-  'arrilot/laravel-widgets' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Arrilot\\Widgets\\ServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Widget' => 'Arrilot\\Widgets\\Facade',
-      'AsyncWidget' => 'Arrilot\\Widgets\\AsyncFacade',
-    ),
-  ),
   'barryvdh/laravel-dompdf' => 
   array (
     'providers' => 
@@ -54,17 +42,6 @@
       0 => 'Inertia\\ServiceProvider',
     ),
   ),
-  'intervention/image' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Intervention\\Image\\ImageServiceProvider',
-    ),
-    'aliases' => 
-    array (
-      'Image' => 'Intervention\\Image\\Facades\\Image',
-    ),
-  ),
   'jenssegers/agent' => 
   array (
     'providers' => 
@@ -74,20 +51,6 @@
     'aliases' => 
     array (
       'Agent' => 'Jenssegers\\Agent\\Facades\\Agent',
-    ),
-  ),
-  'larapack/doctrine-support' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Larapack\\DoctrineSupport\\DoctrineSupportServiceProvider',
-    ),
-  ),
-  'larapack/voyager-hooks' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Larapack\\VoyagerHooks\\VoyagerHooksServiceProvider',
     ),
   ),
   'laravel/fortify' => 
@@ -125,13 +88,6 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'laravel/ui' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Ui\\UiServiceProvider',
-    ),
-  ),
   'laravelcollective/html' => 
   array (
     'providers' => 
@@ -158,12 +114,11 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
-  'tcg/voyager' => 
+  'spatie/laravel-permission' => 
   array (
     'providers' => 
     array (
-      0 => 'TCG\\Voyager\\VoyagerServiceProvider',
-      1 => 'TCG\\Voyager\\Providers\\VoyagerDummyServiceProvider',
+      0 => 'Spatie\\Permission\\PermissionServiceProvider',
     ),
   ),
   'tightenco/ziggy' => 

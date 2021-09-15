@@ -8,6 +8,7 @@
         <div>
           <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-200 mb-5 text-center">Bienvenido</h1>
           <section class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
             <!-- CARD 1 -->
             <div class="bg-gray-900 shadow-lg rounded p-3 ">
               <div class="group relative">
@@ -17,6 +18,7 @@
                 </div>
               </div>           
             </div>
+            
             <!-- END OF CARD 1 -->
 
             <!-- CARD 2 -->
