@@ -30,7 +30,6 @@ class HomeController extends Controller
     public function dashboard()
     {
         $mi_rol = '';
-<<<<<<< HEAD
         if(Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Administrador')){
             $mi_rol = 'admin';
 
@@ -49,24 +48,6 @@ class HomeController extends Controller
             return Inertia::render('Dashboard', ['userType' => $mi_rol ]);
         }
 
-=======
-        if (Auth::user()->hasRole('Autoridad'))
-            $mi_rol = 'admin';
-        if (Auth::user()->hasRole('Administrador'))
-            $mi_rol = 'admin';
-        if (Auth::user()->hasRole('Productor'))
-            $mi_rol = 'productor';
-
-        $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
-        $dataChart = new \stdClass();
-        $axis = new \stdClass();
-        $axis->x = 'departamentos';
-        $axis->y = 'cantidad';
-        $dataChart->axis = $axis;
-        $dataChart->data = $departments;
-        $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
-        return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
->>>>>>> 28c8c6d4091fc30ce0f8d4b7ca32bad93a66df93
     }
 
     public function valdiar_email_de_productor($codigo)

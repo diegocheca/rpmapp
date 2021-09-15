@@ -62,6 +62,8 @@ Route::resource('reinscripciones', ReinscripcionController::class)
     ->middleware(['auth:sanctum', 'verified']);
 Route::post('reinscripciones/upload', [ReinscripcionController::class, "upload"])
     ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.upload');
+Route::delete('reinscripciones/destroy/{id}', [ReinscripcionController::class, "destroy"])
+    ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.destroy');
 //     Route::get('provincias', 'ReinscripcionController@getCountries')
 //         ->middleware(['auth:sanctum', 'verified']);
 

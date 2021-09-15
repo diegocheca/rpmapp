@@ -341,12 +341,9 @@ class ReinscripcionController extends Controller
      * @param  \App\Models\Reinscripciones  $reinscripcion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reinscripciones $reinscripcion)
+    public function destroy($id)
     {
-        //
-        // var_dump($reinscripcion);die();
-
-        $resultado = $reinscripcion->delete();
+        Reinscripciones::find($id)->delete();
         return Redirect::route('reinscripciones.index');
     }
 
@@ -459,19 +456,12 @@ class ReinscripcionController extends Controller
 
         return response()->json($filePaths);
     }
-<<<<<<< HEAD
-    public function numero_reinsripiones_nuevas(){
-        if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad'))
-        {
-            if(Auth::user()->hasRole('Administrador')) // para sudo
-=======
     public function numero_reinsripiones_nuevas()
     {
         // dd(Auth::user());
         if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad')) {
             // if (Auth::user()->id == 1) // para sudo **** funciona solamente para el usuario de cheka
             if (Auth::user()->hasRole('Administrador')) // funciona para todo usuario con rol Administrador
->>>>>>> 28c8c6d4091fc30ce0f8d4b7ca32bad93a66df93
                 $nuevas_inscripciones = Reinscripciones::select('id')->where('estado', '=', 'en proceso')->get();
             else $nuevas_inscripciones = Reinscripciones::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=', 'en proceso')->get();
             $nuevas_inscripciones = count($nuevas_inscripciones);
