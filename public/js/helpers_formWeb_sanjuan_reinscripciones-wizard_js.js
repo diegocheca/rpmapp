@@ -177,7 +177,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           //nombre_razon_social,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "nombre",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "nombre",
@@ -190,7 +192,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           //nombre_razon_social,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "apellido",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "apellido",
@@ -212,12 +216,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
             label: 'Otros',
             value: 'Otros'
           }],
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('sexoSelect', {
-            is: function is(value) {
-              return _.isEmpty(value);
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento')
-          }),
+          // validations: yup.object().when('sexoSelect', {
+          //          is: value => _.isEmpty(value),
+          //          then: yup.object().required('Debes elegir un elemento')
+          //     }),                                    
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "sexo",
@@ -237,12 +239,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('tipo_documentoSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
+          // validations: yup.object().when('tipo_documentoSelect', {
+          // is: value => _.isEmpty(value) || !value,
+          // then: yup.object().required('Debes elegir un elemento').nullable()
+          // }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'tipo_documento',
@@ -254,7 +254,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           value: schema.dni,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
           name: "dni",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "dni",
@@ -266,7 +268,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           value: schema.fecha_nacimiento,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.DATE,
           name: "fecha_nacimiento",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "fecha_nacimiento",
@@ -278,7 +282,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           value: schema.Nacionalidad,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "Nacionalidad",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "Nacionalidad",
@@ -290,7 +296,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           value: schema.Profesion,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "profesion",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "profesion",
@@ -312,12 +320,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
             label: 'Soltero',
             value: 'Soltero'
           }],
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('estado_civilSelect', {
-            is: function is(value) {
-              return _.isEmpty(value);
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento')
-          }),
+          // validations: yup.object().when('estado_civilSelect', {
+          //          is: value => _.isEmpty(value),
+          //          then: yup.object().required('Debes elegir un elemento')
+          //     }),                                    
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "estado_civil",
@@ -346,7 +352,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           value: schema.domicilio,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "domicilioLegal",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "domicilioLegal",
@@ -387,12 +395,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("provinciaLegalSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("provinciaLegalSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "provinciaLegal",
@@ -416,12 +430,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("departamentoLegalSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("departamentoLegalSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "departamentoLegal",
@@ -442,12 +462,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("localidadLegalSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("localidadLegalSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "localidadLegal",
@@ -476,7 +502,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           value: schema.domicilio,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "domicilio",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "domicilio",
@@ -517,12 +545,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("provinciaSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("provinciaSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "provincia",
@@ -546,12 +580,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("departamentoSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("departamentoSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "departamento",
@@ -572,12 +612,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("localidadSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("localidadSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "localidad",

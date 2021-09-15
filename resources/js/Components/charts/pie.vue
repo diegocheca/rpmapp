@@ -1,5 +1,5 @@
 <template>
-    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">Título</div>
+    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">{{dataChart.title}}</div>
     <div class="chart-pie" ref="chartdiv" />
 </template>
 
@@ -17,53 +17,7 @@ export default {
             required: true
         }
     },
-    // data() {
-    //     return {
-    //         pie: [{
-    //             "province": "provincia 1",
-    //             "productors": 2025
-    //             }, {
-    //             "province": "provincia 2",
-    //             "productors": 1882
-    //             }, {
-    //             "province": "provincia 3",
-    //             "productors": 1809
-    //             }, {
-    //             "province": "provincia 4",
-    //             "productors": 1322
-    //             }, {
-    //             "province": "provincia 5",
-    //             "productors": 1122
-    //             }, {
-    //             "province": "provincia 6",
-    //             "productors": 1114
-    //             }, {
-    //             "province": "provincia 7",
-    //             "productors": 984
-    //             }, {
-    //             "province": "provincia 8",
-    //             "productors": 711
-    //             }, {
-    //             "province": "provincia 9",
-    //             "productors": 665
-    //             }, {
-    //             "province": "provincia 10",
-    //             "productors": 580
-    //             }, {
-    //             "province": "provincia 11",
-    //             "productors": 443
-    //             }, {
-    //             "province": "provincia 12",
-    //             "productors": 441
-    //             }, {
-    //             "province": "provincia 13",
-    //             "productors": 395
-    //             }, {
-    //             "province": "provincia 14",
-    //             "productors": 395
-    //         }]
-    //     }
-    // },
+
     mounted() {
         let chart = am4core.create(this.$refs.chartdiv, am4charts.PieChart);
 
@@ -90,6 +44,39 @@ export default {
         var hs = pieSeries.slices.template.states.getKey("hover");
         hs.properties.scale = 1;
         hs.properties.fillOpacity = 0.5;
+
+                // Enable export
+        chart.exporting.menu = new am4core.ExportMenu();
+        chart.exporting.menu.align = "right";
+        chart.exporting.menu.verticalAlign = "bottom";
+        chart.exporting.menu.items = [{
+            "label": "...",
+            "menu": [
+                {
+                    "label": "Imagenes",
+                    "menu": [
+                        { "type": "png", "label": "PNG" },
+                        { "type": "jpg", "label": "JPG" },
+                        { "type": "svg", "label": "SVG" },
+                        { "type": "pdf", "label": "PDF" }
+                    ]
+                },
+                {
+                    "label": "Exportar",
+                    "menu": [
+                        { "type": "json", "label": "JSON" },
+                        { "type": "csv", "label": "CSV" },
+                        { "type": "xlsx", "label": "XLSX" },
+                        { "type": "html", "label": "HTML" },
+                        { "type": "pdfdata", "label": "PDF" }
+                    ]
+                },
+                {
+                    "label": "Imprimir", "type": "print"
+                }
+            ]
+        }];
+
         // Cursor
         // chart.cursor = new am4charts.XYCursor();
 

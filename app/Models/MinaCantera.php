@@ -33,6 +33,20 @@ class MinaCantera extends Model
         'id_producido',
         'plano_inmueble',
         'created_by',
-        'estado'
+        'estado',
+
+        'titulo_contrato_posecion',
+		'resolucion_concesion_minera',
+        'owner',
+        'arrendatario',
+        'concesionario',
+        'otros',
+        'acciones_a_desarrollar',
+        'actividad',
+        'sustancias_de_aprovechamiento_comun',
+        'otro_caracter_acalaracion',
+        'sustancias_de_aprovechamiento_comun_aclaracion',
+        'id_formulario'
+
     ];
 }

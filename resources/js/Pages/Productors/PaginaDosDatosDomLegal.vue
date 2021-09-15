@@ -70,8 +70,9 @@
             </div>
             <br>
             <br>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                corerccion_ {{$props.nombre_calle_legal_correcto}}
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputNombreCalle 
                         v-if="$props.mostrar_calle_legal"
                         v-bind:leal_calle="$props.leal_calle"
@@ -82,6 +83,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Nombre de Calle Domicilio'"
                         v-bind:testing="mostrar_testing"
+                        v-bind:name_correcto="this.nombrePagina+'razon_social'"
                         v-bind:desactivar_calle_legal="$props.desactivar_calle_legal"
                         v-bind:mostrar_calle_legal_correccion="$props.mostrar_calle_legal_correccion"
                         v-bind:desactivar_calle_legal_correccion="$props.desactivar_calle_legal_correccion"
@@ -130,7 +132,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- Nombre de calle valor input deel padre{{form_pagina.leal_calle}}
                                 -- Nombre de calle input valido deel padre{{form_pagina.nombre_calle_legal_valido}}
                                 -- Nombre de calle rta prod correcta deel padre{{form_pagina.nombre_calle_legal_correcto}}
@@ -140,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3">
                 <InputNumeroCalle
                         v-if="$props.mostrar_legal_calle_num"
                         v-bind:leal_numero="$props.leal_numero"
@@ -151,6 +153,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Número de Calle Domicilio'"
                         v-bind:testing="mostrar_testing"
+                        v-bind:name_correcto="this.nombrePagina+'num_calle'"
                         v-bind:desactivar_legal_calle_num="$props.desactivar_legal_calle_num"
                         v-bind:mostrar_legal_calle_num_correccion="$props.mostrar_legal_calle_num_correccion"
                         v-bind:desactivar_legal_calle_num_correccion="$props.desactivar_legal_calle_num_correccion"
@@ -203,7 +206,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans"  v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex">
+                            <div class="flex flex-col">
                                 -- numero de calle  deel padre{{form_pagina.leal_numero}}
                                 -- numero de calle valida deel padre{{form_pagina.leal_numero_valido}}
                                 -- numero de calle correcto deel padre{{form_pagina.leal_numero_correcto}}
@@ -217,15 +220,11 @@
                     
                 </div>
             </div>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                
-
-
-
-
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputTelefono
                         v-if="$props.mostrar_legal_telefono"
+                        v-bind:titulo="titulo_boton_guardar"
                         v-bind:leal_telefono="$props.leal_telefono"
                         v-bind:leal_telefono_valido="$props.leal_telefono_valido"
                         v-bind:leal_telefono_correcto="$props.leal_telefono_correcto"
@@ -234,6 +233,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:label="'Telefono de Domicilio'"
                         v-bind:testing="mostrar_testing"
+                        v-bind:name_correcto="this.nombrePagina+'tel'"
                         v-bind:desactivar_legal_telefono="$props.desactivar_legal_telefono"
                         v-bind:mostrar_legal_telefono_correccion="$props.mostrar_legal_telefono_correccion"
                         v-bind:desactivar_legal_telefono_correccion="$props.desactivar_legal_telefono_correccion"
@@ -283,7 +283,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- telefono de calle  deel padre{{form_pagina.leal_telefono}}
                                 -- telefono de calle valida deel padre{{form_pagina.leal_telefono_valido}}
                                 -- telefono de calle correcto deel padre{{form_pagina.leal_telefono_correcto}}
@@ -295,14 +295,13 @@
                     
                     
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
 
                 
 
 
 
                     <SelectProvincia 
-                    v-if=" titulo_boton_guardar ===  'Guardar Datos del Domicilio Legal' && $props.mostrar_legal_prov"
                         v-bind:leal_provincia="$props.leal_provincia"
                         v-bind:leal_provincia_valido="$props.leal_provincia_valido"
                         v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
@@ -312,7 +311,7 @@
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Provincia de Domicilio Legal'"
                         v-bind:lista_provincias="$props.lista_provincias"
-                        v-bind:name_correcto="'prov_legal_correcto'"
+                        v-bind:name_correcto="this.nombrePagina+'prov'"
                         v-bind:desactivar_legal_prov="$props.desactivar_legal_prov"
                         v-bind:mostrar_legal_prov_correccion="$props.mostrar_legal_prov_correccion"
                         v-bind:desactivar_legal_prov_correccion="$props.desactivar_legal_prov_correccion"
@@ -327,30 +326,7 @@
 
                     >
                     </SelectProvincia>
-                    <SelectProvincia 
-                    v-if=" titulo_boton_guardar !==  'Guardar Datos del Domicilio Legal' && $props.mostrar_legal_prov"
-                        v-bind:leal_provincia="$props.leal_provincia"
-                        v-bind:leal_provincia_valido="$props.leal_provincia_valido"
-                        v-bind:leal_provincia_correcto="$props.leal_provincia_correcto"
-                        v-bind:obs_leal_provincia="$props.obs_leal_provincia"
-                        v-bind:obs_leal_provincia_valido="$props.obs_leal_provincia_valido"
-                        v-bind:evaluacion="autoridad_minera"
-                        v-bind:testing="mostrar_testing"
-                        v-bind:label="'Provincia de Domicilio Legal'"
-                        v-bind:lista_provincias="$props.lista_provincias"
-                        v-bind:name_correcto="'prov_admin_correcto'"
-                        v-bind:desactivar_legal_prov="$props.desactivar_legal_prov"
-                        v-bind:mostrar_legal_prov_correccion="$props.mostrar_legal_prov_correccion"
-                        v-bind:desactivar_legal_prov_correccion="$props.desactivar_legal_prov_correccion"
-
-                        v-on:changeprovlegalvalido="update_provincia_valido($event)"
-                        v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
-                        v-on:changeobsrpovlegal="update_obs_provincia_legal($event)"
-                        v-on:changeobsprovlegalvalido="update_obs_provincia_legal_valido($event)"
-                        v-on:changevalorprovlegal="update_valor_provincia_legal_num_legal($event)"
-
-                    >
-                    </SelectProvincia>
+                    
                     <div v-show="ayuda_legal">
                         <br>
                         <div   class="
@@ -389,7 +365,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- provincia de calle  deel padre{{form_pagina.leal_provincia}}
                                 -- provincia de calle valida deel padre{{form_pagina.leal_provincia_valido}}
                                 -- provincia de calle correcto deel padre{{form_pagina.leal_provincia_correcto}}
@@ -400,12 +376,10 @@
                     </div>
                 </div>
             </div>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                
-
-
-
+            
+            
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <SelectDepartamento
                     v-if="$props.mostrar_legal_dpto"
                         v-bind:leal_departamento="$props.leal_departamento"
@@ -415,8 +389,10 @@
                         v-bind:obs_leal_departamento_valido="$props.obs_leal_departamento_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
+                        v-bind:name_correcto="this.nombrePagina+'dpto'"
                         v-bind:label="'Departamento de Domicilio Legal'"
-                        v-bind:lista_departamentos= "lista_departamentos"
+                        v-bind:lista_departamentos="lista_departamentos"
+                        v-bind:lista_departamentos_dos="$props.lista_dptos"
                         v-bind:desactivar_legal_dpto="$props.desactivar_legal_dpto"
                         v-bind:mostrar_legal_dpto_correccion="$props.mostrar_legal_dpto_correccion"
                         v-bind:desactivar_legal_dpto_correccion="$props.desactivar_legal_dpto_correccion"
@@ -466,7 +442,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- dpto de calle  deel padre{{form_pagina.leal_departamento}}
                                 -- dpto de calle valida deel padre{{form_pagina.leal_departamento_valido}}
                                 -- dpto de calle correcto deel padre{{form_pagina.leal_departamento_correcto}}
@@ -476,7 +452,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                 
 
 
@@ -491,6 +467,7 @@
                         v-bind:obs_leal_localidad_valido="$props.obs_leal_localidad_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
+                        v-bind:name_correcto="this.nombrePagina+'localidad'"
                         v-bind:label="'Localidad del Domicilio Legal'"
                         v-bind:desactivar_legal_localidad="$props.desactivar_legal_localidad"
                         v-bind:mostrar_legal_localidad_correccion="$props.mostrar_legal_localidad_correccion"
@@ -541,7 +518,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- localidad de calle  deel padre{{form_pagina.leal_localidad}}
                                 -- localidad de calle valida deel padre{{form_pagina.leal_localidad_valido}}
                                 -- localidad de calle correcto deel padre{{form_pagina.leal_localidad_correcto}}
@@ -552,8 +529,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                 
 
 
@@ -567,6 +544,7 @@
                         v-bind:obs_leal_cp_valido="$props.obs_leal_cp_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
+                        v-bind:name_correcto="this.nombrePagina+'cp'"
                         v-bind:label="'Codigo Postal'"
                         v-bind:desactivar_legal_cod_pos="$props.desactivar_legal_cod_pos"
                         v-bind:mostrar_legal_cod_pos_correccion="$props.mostrar_legal_cod_pos_correccion"
@@ -618,7 +596,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- cod postal de calle  deel padre{{form_pagina.leal_cp}}
                                 -- cod postal de calle valida deel padre{{form_pagina.leal_cp_valido}}
                                 -- cod postal de calle correcto deel padre{{form_pagina.leal_cp_correcto}}
@@ -628,14 +606,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <InputOtro
-
-                    
-
-
-
-
                     v-if="$props.mostrar_legal_otro"
                         v-bind:leal_otro="$props.leal_otro"
                         v-bind:leal_otro_valido="$props.leal_otro_valido"
@@ -644,6 +616,7 @@
                         v-bind:obs_leal_otro_valido="$props.obs_leal_otro_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
+                        v-bind:name_correcto="this.nombrePagina+'otro'"
                         v-bind:label="'Otro Dato Imporante'"
                         v-bind:desactivar_legal_otro="$props.desactivar_legal_otro"
                         v-bind:mostrar_legal_otro_correccion="$props.mostrar_legal_otro_correccion"
@@ -695,7 +668,7 @@
                     </div>
                     <div class="flex items-center justify-center bg-teal-lightest font-sans" v-if="mostrar_testing">
                         <div class="w-full  bg-white rounded shadow p-6 m-8">
-                            <div class="flex" >
+                            <div class="flex flex-col" >
                                 -- otro de calle  deel padre{{form_pagina.leal_otro}}
                                 -- otro de calle valida deel padre{{form_pagina.leal_otro_valido}}
                                 -- otro de calle correcto deel padre{{form_pagina.leal_otro_correcto}}
@@ -922,7 +895,7 @@ export default {
    
   data() {
     return {
-        saludos: 'Saludame qweqweqwe',
+        nombrePagina: '',
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
@@ -994,9 +967,15 @@ export default {
         lista_localidades:[],
     };
   },
-  methods:{
-      cerrar_modal_datos_uno() {
-            this.mostrar_modal_datos_ya_guardados = false
+    methods:{
+        cargar_dptos() {
+            let self = this;
+            //console.log("mis deptos de legal padre es:",self.$props.lista_dptos);
+            self.lista_departamentos = self.$props.lista_dptos;
+            //console.log("mis deptos de legal hijo es:",self.lista_departamentos);
+		},
+        cerrar_modal_datos_uno() {
+            this.mostrar_modal_datos_ya_guardados = false;
 		},
         //FUNCIONES DE NOMBRE DE CALLE
         update_nombre_calle_valido(newValue){
@@ -1098,8 +1077,6 @@ export default {
                 .then(function (response) {
                     //console.log("las deptos son:\n");
                     self.lista_departamentos = response.data;
-                    //console.log(self.lista_departamentos[0]);
-
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -1242,6 +1219,16 @@ export default {
         update_valor_ayuda_local_admi(newValor){
             this.ayuda_administrativo = newValor;
         },
-    }
+        nombreComponente(){
+            if(this.$props.titulo_boton_guardar === 'Guardar Datos del Domicilio Legal')
+                this.nombrePagina= 'legal_';
+            else this.nombrePagina= 'adm_';
+
+        }
+    },
+    mounted() {
+            this.cargar_dptos();
+            this.nombreComponente();
+        }
 };
 </script>

@@ -17,60 +17,63 @@
               <!-- Navigation Links -->
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <jet-nav-link
+                  v-if="hasAnyPermission(['rpm.dashboard.show'])"
                   :href="route('dashboard')"
                   :active="route().current('dashboard')"
                 >
                   Dashboard
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="hasAnyPermission(['rpm.borradores.show'])"
                   :href="route('formulario-alta.index')"
                   :active="route().current('formulario-alta.index')"
                 >
                   Borradores
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="false"
+                  v-if="hasAnyPermission(['rpm.pagos.show'])"
                   :href="route('pagos.index')"
                   :active="route().current('pagos.index')"
                 >
                   Pagos
                 </jet-nav-link>
                 <jet-nav-link
+                  v-if="hasAnyPermission(['rpm.reinscripciones.show'])"
                   :href="route('reinscripciones.index')"
                   :active="route().current('reinscripciones.index')"
                 >
                   Reinscripciones
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="false"
+                  v-if="hasAnyPermission(['rpm.producto.show'])"
                   :href="route('productos.index')"
                   :active="route().current('productos.index')"
                 >
                   Producto
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="false"
+                  v-if="hasAnyPermission(['rpm.iiasydias.show'])"
                   :href="route('iiadias.index')"
                   :active="route().current('iiadias.index')"
                 >
                   IIASyDIAS
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="false"
+                  v-if="hasAnyPermission(['rpm.prodmina.show'])"
                   :href="route('productores_minas.index')"
                   :active="route().current('productores_minas.index')"
                 >
                   ProdMina
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="false"
+                  v-if="hasAnyPermission(['rpm.productores.show'])"
                   :href="route('productores.index')"
                   :active="route().current('productores.index')"
                 >
                   Productores
                 </jet-nav-link>
                 <jet-nav-link
-                  v-if="false"
+                  v-if="hasAnyPermission(['formweb.formulariosweb.show'])"
                   :href="route('formweb.solicitudes.index')"
                   :active="route().current('formweb.solicitudes.index')"
                 >
@@ -262,13 +265,16 @@
                   <template #content>
                     <!-- Administración de cuentas -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                      Administrar cuenta
+                      Administrar Cuenta
                     </div>
 
                     <jet-dropdown-link :href="route('profile.show')">
                       Perfil de Usuario
                     </jet-dropdown-link>
-                    <jet-dropdown-link v-if="hasAnyPermission(['roles.create'])" :href="route('admin.users.index')">
+                    <jet-dropdown-link
+                      v-if="hasAnyPermission(['admin.users.index'])"
+                      :href="route('admin.users.index')"
+                    >
                       Configuración
                     </jet-dropdown-link>
 
@@ -309,7 +315,7 @@
     </div>
   </div>
   <!-- menu curvo-->
-  <div class="flex h-screen bg-gray-200">
+  <div class="flex bg-gray-200">
     <div
       class="
         flex
@@ -368,6 +374,7 @@
             </div>
             <nav class="flex flex-col flex-1 w-64 p-4 mt-4">
               <a
+                v-if="hasAnyPermission(['rpm.dashboard.show'])"
                 :href="route('dashboard')"
                 :active="route().current('dashboard')"
                 class="
@@ -402,6 +409,7 @@
                 <span>Inicio (Dashboard)</span>
               </a>
               <a
+                v-if="hasAnyPermission(['rpm.borradores.show'])"
                 :href="route('formulario-alta.index')"
                 :active="route().current('formulario-alta.index')"
                 class="
@@ -436,7 +444,7 @@
                 <span>Borradores</span>
               </a>
               <a
-                v-if="false"
+                v-if="hasAnyPermission(['rpm.pagos.show'])"
                 :href="route('pagos.index')"
                 :active="route().current('pagos.index')"
                 class="
@@ -477,6 +485,7 @@
                 <span>Pagos</span>
               </a>
               <a
+                v-if="hasAnyPermission(['rpm.reinscripciones.show'])"
                 :href="route('reinscripciones.index')"
                 :active="route().current('reinscripciones.index')"
                 class="
@@ -511,7 +520,7 @@
                 <span>Reinscripciones</span>
               </a>
               <a
-                v-if="false"
+                v-if="hasAnyPermission(['rpm.producto.show'])"
                 :href="route('productos.index')"
                 :active="route().current('productos.index')"
                 class="
@@ -549,7 +558,7 @@
                 <span>Producto</span>
               </a>
               <a
-                v-if="false"
+                v-if="hasAnyPermission(['rpm.iiasydias.show'])"
                 :href="route('iiadias.index')"
                 :active="route().current('iiadias.index')"
                 class="
@@ -587,7 +596,7 @@
                 <span>IIASyDIAS</span>
               </a>
               <a
-                v-if="false"
+                v-if="hasAnyPermission(['rpm.prodmina.show'])"
                 :href="route('productores_minas.index')"
                 :active="route().current('productores_minas.index')"
                 class="
@@ -622,6 +631,7 @@
                 <span>ProdMina</span>
               </a>
               <a
+                v-if="hasAnyPermission(['rpm.productores.show'])"
                 :href="route('productores.index')"
                 :active="route().current('productores.index')"
                 class="
@@ -658,7 +668,7 @@
                 <span>Productores</span>
               </a>
               <a
-                v-if="false"
+                v-if="hasAnyPermission(['formweb.formulariosweb.show'])"
                 :href="route('formweb.solicitudes.index')"
                 :active="route().current('formweb.solicitudes.index')"
                 class="
@@ -693,185 +703,40 @@
                 </svg>
                 <span>Formularios WEB</span>
               </a>
-              <!-- <a
-                :href="route('users.index')"
-                class="
-                  relative
-                  flex flex-row
-                  items-center
-                  h-11
-                  focus:outline-none
-                  hover:bg-gray-50
-                  text-gray-600
-                  hover:text-gray-800
-                  border-l-4 border-transparent
-                  hover:border-indigo-500
-                  pr-6
-                "
-              >
-                <svg
-                  class="w-6 h-6"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"
-                  />
-                </svg>
-                <span>Comerciantes</span>
-              </a>
-              <a
-                :href="route('pagos.index')"
-                class="
-                  relative
-                  flex flex-row
-                  items-center
-                  h-11
-                  focus:outline-none
-                  hover:bg-gray-50
-                  text-gray-600
-                  hover:text-gray-800
-                  border-l-4 border-transparent
-                  hover:border-indigo-500
-                  pr-6
-                "
-              >
-                <svg
-                  class="w-6 h-6"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"
-                  />
-                </svg>
-                <span>Pago Canon</span>
-              </a>
-              <a
-                :href="route('users.index')"
-                class="
-                  relative
-                  flex flex-row
-                  items-center
-                  h-11
-                  focus:outline-none
-                  hover:bg-gray-50
-                  text-gray-600
-                  hover:text-gray-800
-                  border-l-4 border-transparent
-                  hover:border-indigo-500
-                  pr-6
-                "
-              >
-                <svg
-                  class="w-6 h-6"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    d="M7.5 3.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"
-                  />
-                  <path
-                    d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"
-                  />
-                  <path
-                    d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"
-                  />
-                </svg>
-                <span>IIA/DIA</span>
-              </a>
-              <a
-                :href="route('users.index')"
-                class="
-                  relative
-                  flex flex-row
-                  items-center
-                  h-11
-                  focus:outline-none
-                  hover:bg-gray-50
-                  text-gray-600
-                  hover:text-gray-800
-                  border-l-4 border-transparent
-                  hover:border-indigo-500
-                  pr-6
-                "
-              >
-                <svg
-                  class="w-6 h-6"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z"
-                  />
-                </svg>
-                <span>Minerales</span>
-              </a>
-              <a
-                :href="route('users.index')"
-                class="
-                  relative
-                  flex flex-row
-                  items-center
-                  h-11
-                  focus:outline-none
-                  hover:bg-gray-50
-                  text-gray-600
-                  hover:text-gray-800
-                  border-l-4 border-transparent
-                  hover:border-indigo-500
-                  pr-6
-                "
-              >
-                <svg
-                  class="w-6 h-6"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9.302 1.256a1.5 1.5 0 0 0-2.604 0l-1.704 2.98a.5.5 0 0 0 .869.497l1.703-2.981a.5.5 0 0 1 .868 0l2.54 4.444-1.256-.337a.5.5 0 1 0-.26.966l2.415.647a.5.5 0 0 0 .613-.353l.647-2.415a.5.5 0 1 0-.966-.259l-.333 1.242-2.532-4.431zM2.973 7.773l-1.255.337a.5.5 0 1 1-.26-.966l2.416-.647a.5.5 0 0 1 .612.353l.647 2.415a.5.5 0 0 1-.966.259l-.333-1.242-2.545 4.454a.5.5 0 0 0 .434.748H5a.5.5 0 0 1 0 1H1.723A1.5 1.5 0 0 1 .421 12.24l2.552-4.467zm10.89 1.463a.5.5 0 1 0-.868.496l1.716 3.004a.5.5 0 0 1-.434.748h-5.57l.647-.646a.5.5 0 1 0-.708-.707l-1.5 1.5a.498.498 0 0 0 0 .707l1.5 1.5a.5.5 0 1 0 .708-.707l-.647-.647h5.57a1.5 1.5 0 0 0 1.302-2.244l-1.716-3.004z"
-                  />
-                </svg>
-                <span>Reinscripciones</span>
-              </a> -->
             </nav>
             <div class="flex-shrink-0 p-4">
+              <a
+                v-if="hasAnyPermission(['admin.users.index'])"
+                :href="route('admin.users.index')"
+                class="
+                  relative
+                  flex flex-row
+                  items-center
+                  h-11
+                  focus:outline-none
+                  text-gray-600
+                  hover:text-gray-800
+                  pr-6
+                "
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+                  />
+                </svg>
+                <span>Configuración</span>
+              </a>
               <!-- Authentication -->
               <form @submit.prevent="logout">
-                <!-- <jet-dropdown-link -->
-                <!-- as="button" -->
-                <!-- class="flex items-center space-x-2" -->
-                <!-- > -->
-
-                <!-- <span>Salir</span> -->
-                <!-- </jet-dropdown-link> -->
                 <button class="flex items-center space-x-2">
                   <svg
                     aria-hidden="true"

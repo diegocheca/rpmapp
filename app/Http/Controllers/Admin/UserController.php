@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Gate;
-
+use App\Http\Controllers\CountriesController;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 
@@ -22,59 +22,32 @@ class UserController extends Controller
     function __construct()
     {
         $this->middleware('can:admin.users.index')->only('index');
-        $this->middleware('can:admin.users.edit')->only('edit','update');
-        $this->middleware('can:admin.users.create')->only('create','store');
+        $this->middleware('can:admin.users.edit')->only('edit', 'update');
+        $this->middleware('can:admin.users.create')->only('create', 'store');
         $this->middleware('can:admin.users.destroy')->only('destroy');
     }
     public function index()
-    {   
-        $users = User::with('roles')->orderBy('id')->get();
-        // $all_roles_in_database = Role::all()->pluck('id','name');
-        // $all_users_with_all_their_roles = User::with('roles')->get('id');
-        // echo $all_users_with_all_their_roles;
-        // $value = $users->get('name');
-        // echo $value;
+    {
+        $users = User::with(['roles','provincia'])->orderBy('id')->get();
+        //  echo $users;
         return  Inertia::render('Users/listarUsers', ['usuarios' => $users]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(User $user)
     {
 

@@ -1,24 +1,60 @@
 <template>
-  <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-    <!-- <jet-button
-                class="ml-4"
-                :class="{ 'opacity-25': form.processing }"
-                :disabled="form.processing"
-            >
-                Registrarte
-            </jet-button> -->
+  <div class="fixed top-0 right-0 px-6 py-4  grid grid-cols-2">
     <a
       href="/"
-      class="ml-4 text-sm text-gray-700 underline"
+      class="
+        relative
+        flex flex-row
+        items-center
+        h-11
+        focus:outline-none
+        text-gray-600
+        hover:text-blue-800
+        pr-6
+      "
     >
-      Home
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+        />
+      </svg>
+      <span class="ml-1">Home</span>
     </a>
-    <inertia-link
+    <a
       :href="route('register')"
-      class="ml-4 text-sm text-gray-700 underline"
+      class="
+        relative
+        flex flex-row
+        items-center
+        h-11
+        focus:outline-none
+        text-gray-600
+        hover:text-blue-800
+        pr-6
+      "
     >
-      Registrarte
-    </inertia-link>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+      >
+        <path
+          d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+        />
+        <path
+          fill-rule="evenodd"
+          d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+          clip-rule="evenodd"
+        />
+      </svg>
+      <span class="ml-1">Registrarte</span>
+    </a>
   </div>
   <jet-authentication-card>
     <template #logo>

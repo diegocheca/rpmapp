@@ -50,8 +50,8 @@
             </div>
             <br>
             <br>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <!-- <NumeroExpedienteMina 
                         v-bind:numero_expdiente="$props.numero_expdiente"
                         v-bind:numero_expdiente_valido="$props.numero_expdiente_valido"
@@ -114,7 +114,7 @@
                         <br>
                     </div>
 
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         <br> num exp de Mina valor padre: {{form_pagina.numero_expdiente}}
                         <br> num exp de Mina  valido del padre: {{form_pagina.numero_expdiente_valido}}
                         <br> num exp de Mina  correcto deel padre: {{form_pagina.numero_expdiente_correcto}}
@@ -123,7 +123,7 @@
                     </div>
 
                 </div>
-                <div class="w-full md:w-1/2 px-3">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3">
                     <!-- <DistritoMinero
                         v-bind:distrito_minero="$props.distrito_minero"
                         v-bind:distrito_minero_validacion="$props.distrito_minero_validacion"
@@ -187,7 +187,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         <br> distrito minero de Mina valor padre: {{form_pagina.distrito_minero}}
                         <br> distrito minero de Mina  valido del padre: {{form_pagina.distrito_minero_validacion}}
                         <br> distrito minero de Mina  correcto deel padre: {{form_pagina.distrito_minero_correcto}}
@@ -197,8 +197,8 @@
                     
                 </div>
             </div>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <SelectGenerico
                         v-if="mostrar_categoria"
 
@@ -241,7 +241,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         <br> Categoria de Mina valor padre: {{$props.categoria}}
                         <br> Categoria de Mina valor padre: {{form_pagina.categoria}}
                         <br> Categoria de Mina  valido del padre: {{form_pagina.categoria_validacion}}
@@ -251,7 +251,7 @@
 
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <div v-if="form_pagina.categoria === 'primera' || $props.categoria === 'primera' " class="w-40 h-40 m-4 bg-gradient-to-r from-blue-600 to-blue-300 rounded-2xl items-center justify-center text-center text-white py-16">Mina de Primera Categoria </div>
                     <div v-if="form_pagina.categoria === 'segunda' || $props.categoria === 'segunda'" class="w-40 h-40 m-4 bg-gradient-to-r from-purple-600 to-purple-300 rounded-2xl items-center justify-center text-center text-white py-16">Mina de Segunda Categoria</div>
                     <div v-if="form_pagina.categoria === 'tercera' || $props.categoria === 'tercera'" class="w-40 h-40 m-4 bg-gradient-to-r from-green-600 to-green-300 rounded-2xl items-center justify-center text-center text-white py-16">Cantera de Tercer Categoria</div>
@@ -259,8 +259,8 @@
                 </div>
                 
             </div>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
                     v-if="$props.mostrar_nombre_mina"
 
@@ -303,7 +303,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         <br> Nombre de Mina valor padre: {{form_pagina.nombre_mina}}
                         <br> Nombre de Mina  valido del padre: {{form_pagina.nombre_mina_validacion}}
                         <br> Nombre de Mina  correcto deel padre: {{form_pagina.nombre_mina_correcto}}
@@ -311,7 +311,7 @@
                         <br> Nombre de Mina  observacion valida deel padre: {{form_pagina.obs_nombre_mina_valido}}
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
                     v-if="$props.mostrar_descripcion_mina"
 
@@ -354,7 +354,7 @@
                             </div>
                             <br>
                         </div>
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         <br> Nombre de Mina valor padre: {{form_pagina.descripcion_mina}}
                         <br> Nombre de Mina  valido del padre: {{form_pagina.descripcion_mina_validacion}}
                         <br> Nombre de Mina  correcto deel padre: {{form_pagina.descripcion_mina_correcto}}
@@ -364,7 +364,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
 
@@ -380,6 +380,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_resolucion_concesion_minera_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_concesion'"
                         v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
                         v-bind:desactivar_input="$props.desactivar_resolucion_concesion"
                         v-bind:mostrar_correccion="$props.mostrar_resolucion_concesion_correccion"
@@ -413,7 +414,7 @@
                             </div>
                             <br>
                     </div>
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         <br> concesion resolucion minera de Mina valor padre: {{form_pagina.resolucion_concesion_minera}}
                         <br> concesion resolucion minera de Mina  valido del padre: {{form_pagina.resolucion_concesion_minera_validacion}}
                         <br> concesion resolucion minera de Mina  correcto deel padre: {{form_pagina.resolucion_concesion_minera_correcto}}
@@ -422,7 +423,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
                         v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_plano_mina"
@@ -434,6 +435,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_plano_inmueble_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_plano_inmueble'"
                         v-bind:label="'Plano Inmueble (3° categoria) (*)'"
                         v-bind:desactivar_input="$props.desactivar_plano_mina"
                         v-bind:mostrar_correccion="$props.mostrar_plano_mina_correccion"
@@ -472,7 +474,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         -- plano_inmueble minera del padre{{form_pagina.plano_inmueble}}
                         -- plano_inmueble_validacion minera valida deel padre{{form_pagina.plano_inmueble_validacion}}
                         -- plano_inmueble_correcto minera correcto deel padre{{form_pagina.plano_inmueble_correcto}}
@@ -484,7 +486,7 @@
             </div>
             <br>
             <br>
-            <div class="flex">
+            <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
                     v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_titulo"
@@ -496,6 +498,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_titulo_contrato_posecion_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_titulo'"
                         v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
                         v-bind:desactivar_input="$props.desactivar_titulo"
                         v-bind:mostrar_correccion="$props.mostrar_titulo_correccion"
@@ -529,7 +532,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
                         -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
                         -- titulo_contrato_posecion_correcto correcto deel padre{{form_pagina.titulo_contrato_posecion_correcto}}
@@ -538,7 +541,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <ListadeMinerales
 
@@ -551,7 +554,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
                         v-bind:label="'Lista de minerales'"
-                        v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas):'"
+                        v-bind:label_text_area="'Forma de presentación natural del mineral (no usar abreviaturas)'"
                         v-bind:tipo_yacimiento="form_pagina.categoria"
                         v-bind:lista_de_minerales="lista_de_minerales"
                         v-bind:lista_de_minerales_pre_cargados="$props.lista_minerales_desde_back"
@@ -585,7 +588,7 @@
                         </div>
                         <br>
                     </div>
-                    <div class="flex" v-if="mostrar_testing">
+                    <div class="flex flex-col" v-if="mostrar_testing">
                         <h3>Testing de lista de minerales</h3>
                         -- titulo_contrato_posecion  deel padre{{form_pagina.titulo_contrato_posecion}}
                         -- titulo_contrato_posecion_validacion valida deel padre{{form_pagina.titulo_contrato_posecion_validacion}}
@@ -821,7 +824,7 @@ export default {
    
   data() {
     return {
-        saludos: 'Saludame qweqweqwe',
+        saludos: 'Saludos',
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
@@ -1023,7 +1026,7 @@ export default {
         update_valor_cat(newValue){
             let self  =this;
             //alert("cambie la categoria de:"+newValue);
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.categoria = newValue;
             //alert("cambie la categoria de:"+newValue);
             if(newValue === 'primera')
@@ -1162,7 +1165,7 @@ export default {
         //minerales_locales
         
         update_valor_minerales(newValue){
-            console.log("traje un"+newValue);
+            console.log("traje un en pagina cuatro"+newValue);
             this.minerales_locales = newValue;
             //tengo que enviarsela al padre
         },
@@ -1174,14 +1177,13 @@ export default {
   mounted(){
       //cargo la lista de mienrales por primera vez
     let self = this;
-    console.log("voy a buscar la categproa:");
-    console.log(this.$props.categoria);
-	if( this.$props.categoria !== '') {
+    console.log('* Categoria: ',this.$props.categoria);
+	if( this.$props.categoria !== null && this.$props.categoria !== '') {
 		//signafica que tengo la lsita de minerales para esta categoria
 		this.$nextTick(() => {
         axios.post('/datos/traer_minerales',{categoria_buscando:this.$props.categoria})
             .then(function (response) {
-                console.log("los minerales son:\n");
+                console.log("Los minerales son:\n");
                 self.lista_de_minerales = response.data;
                 console.log(self.lista_de_minerales);
             })
@@ -1190,7 +1192,7 @@ export default {
             });
         });
 	}
-	else{self.lista_de_minerales=[];}
+	else{self.lista_de_minerales=[{'id':0, 'name':'vacio', 'categoria':'null'}];}
   }
   
 };

@@ -207,7 +207,7 @@
                                     </li>
                                 </ul> -->
                                 <br />
-                                <span>Roles ID: {{ form.checkedroles }}</span>
+                                <span v-if="hasAnyPermission(['dev.dev.show'])">Roles ID: {{ form.checkedroles }}</span>
                             </div>
                         </div>
                         <div

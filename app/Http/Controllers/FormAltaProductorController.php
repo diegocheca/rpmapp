@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ValidarEmailProductorPrimeraVez;
 use App\Mail\AvisoFormularioPresentadoEmail;
 use App\Mail\AvisoFormularioAprobadoEmail;
+use App\Mail\AvisoFormularioConObservaciones;
 
 
 use Illuminate\Support\Str;
@@ -2893,31 +2894,2866 @@ class FormAltaProductorController extends Controller
 				];
 			}
 		}
+		elseif(Auth::user()->id_provincia  == 50)
+		{
+			$nombre_provincia = "Mendoza";
+			if(Auth::user()->hasRole('Productor'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => false,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+			elseif(Auth::user()->hasRole('Autoridad'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+			elseif(Auth::user()->hasRole('Administrador'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => false,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+		}
+		elseif(Auth::user()->id_provincia  == 74)
+		{
+			$nombre_provincia = "San Luis";
+			if(Auth::user()->hasRole('Productor'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => false,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+			elseif(Auth::user()->hasRole('Autoridad'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+			elseif(Auth::user()->hasRole('Administrador'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => false,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+		}
+		elseif(Auth::user()->id_provincia  == 66)
+		{
+			$nombre_provincia = "Salta";
+			if(Auth::user()->hasRole('Productor'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => false,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+			elseif(Auth::user()->hasRole('Autoridad'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+			elseif(Auth::user()->hasRole('Administrador'))
+			{
+				$disables = [
+					"razon_social" => false,
+					"razon_social_correccion" => false,
+					"email" => false,
+					"email_correccion" => false,
+					"cuit" => false,
+					"cuit_correccion" => false,
+					"num_prod" => false,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => false,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => false,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => false,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => false,
+					"paso_uno" => false,
+		
+					"legal_calle" => false,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => false,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => false,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => false,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => false,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => false,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => false,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => false,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => false,
+					"paso_dos" => false,
+		
+		
+					"administracion_calle" => false,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => false,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => false,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => false,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => false,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => false,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => false,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => false,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => false,
+					"paso_tres" => false,
+		
+		
+		
+					"num_exp" => false,
+					"num_exp_correccion" => false,
+					"distrito" => false,
+					"distrito_correccion" => false,
+					"categoria" => false,
+					"categoria_correccion" => false,
+					"nombre_mina" => false,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => false,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => false,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => false,
+					"plano_mina_correccion" => false,
+					"minerales" => false,
+					"minerales_correccion" => false,
+					"titulo" => false,
+					"titulo_correccion" => false,
+					"boton_guardar_cuatro" => false,
+					"paso_cuatro" => false,
+		
+		
+		
+					"owner" => false,
+					"owner_correccion" => false,
+					"arrendatario" => false,
+					"arrendatario_correccion" => false,
+					"concesionario" => false,
+					"concesionario_correccion" => false,
+					"sustancias" => false,
+					"sustancias_correccion" => false,
+					"otros" => false,
+					"otros_correccion" => false,
+					
+					"concesion" => false,
+					"concesion_correccion" => false,
+					"contancias_canon" => false,
+					"constancias_canon_correccion" => false,
+					"dia" => false,
+					"dia_correccion" => false,
+					"iia" => false,
+					"iia_correccion" => false,
+					"acciones" => false,
+					"acciones_correccion" => false,
+					"actividades" => false,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => false,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => false,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => false,
+					"paso_cinco" => false,
+		
+		
+					"ubicacion_prov" => false,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => false,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => false,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => false,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => false,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => false,
+					"ubicacion_long_correccion" => false,
+					"ubicacion_estado" => false,
+					"ubicacion_estado_correccion" => false,
+					"ubicacion_estado_observacion" => false,
+					"boton_guardar_seis" => false,
+					"paso_seis" => false,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+					"estado" => false,
+					"boton_actualizar" => false,
+		
+				];
+				$mostrar = [
+					"razon_social" => true,
+					"razon_social_correccion" => false,
+					"email" => true,
+					"email_correccion" => false,
+					"cuit" => true,
+					"cuit_correccion" => false,
+					"num_prod" => true,
+					"num_prod_correccion" => false,
+					"tipo_sociedad" => true,
+					"tipo_sociedad_correccion" => false,
+					"inscripcion_dgr" => true,
+					"inscripcion_dgr_correccion" => false,
+					"constancia_sociedad" => true,
+					"cosntancia_sociedad_correccion" => false,
+					"boton_guardar_uno" => true,
+					"paso_uno" => true,
+		
+					"legal_calle" => true,
+					"legal_calle_correccion" => false,
+					"legal_calle_num" => true,
+					"legal_calle_num_correccion" => false,
+					"legal_telefono" => true,
+					"legal_telefono_correccion" => false,
+					"legal_prov" => true,
+					"legal_prov_correccion" => false,
+					"legal_dpto" => true,
+					"legal_dpto_correccion" => false,
+					"legal_localidad" => true,
+					"legal_localidad_correccion" => false,
+					"legal_cod_pos" => true,
+					"legal_cod_pos_correccion" => false,
+					"legal_otro" => true,
+					"legal_otro_correccion" => false,
+					"boton_guardar_dos" => true,
+					"paso_dos" => true,
+		
+					"administracion_calle" => true,
+					"administracion_correccion" => false,
+					"administracion_calle_num" => true,
+					"administracion_calle_num_correccion" => false,
+					"administracion_telefono" => true,
+					"administracion_telefono_correccion" => false,
+					"administracion_prov" => true,
+					"administracion_prov_correccion" => false,
+					"administracion_dpto" => true,
+					"administracion_dpto_correccion" => false,
+					"administracion_localidad" => true,
+					"administracion_localidad_correccion" => false,
+					"administracion_cod_pos" => true,
+					"administracion_cod_pos_correccion" => false,
+					"administracion_otro" => true,
+					"administracion_otro_correccion" => false,
+					"boton_guardar_tres" => true,
+					"paso_tres" => true,
+		
+					"num_exp" => true,
+					"num_exp_correccion" => false,
+					"distrito" => true,
+					"distrito_correccion" => false,
+					"categoria" => true,
+					"categoria_correccion" => false,
+					"nombre_mina" => true,
+					"nombre_mina_correccion" => false,
+					"descripcion_mina" => true,
+					"descripcion_correccion" => false,
+					"resolucion_concesion" => true,
+					"resolucion_concesion_correccion" => false,
+					"plano_mina" => true,
+					"plano_mina_correccion" => false,
+					"minerales" => true,
+					"minerales_correccion" => false,
+					"titulo" => true,
+					"titulo_correccion" => true,
+					"boton_guardar_cuatro" => true,
+					"paso_cuatro" => true,
+		
+					"owner" => true,
+					"owner_correccion" => false,
+					"arrendatario" => true,
+					"arrendatario_correccion" => false,
+					"concesionario" => true,
+					"concesionario_correccion" => false,
+					"sustancias" => true,
+					"sustancias_correccion" => false,
+					"otros" => true,
+					"otros_correccion" => false,
+					
+					"concesion" => true,
+					"concesion_correccion" => false,
+					"contancias_canon" => true,
+					"constancias_canon_correccion" => false,
+					"dia" => true,
+					"dia_correccion" => false,
+					"iia" => true,
+					"iia_correccion" => false,
+					"acciones" => true,
+					"acciones_correccion" => false,
+					"actividades" => true,
+					"actividades_correccion" => false,
+					"fecha_alta_dia" => true,
+					"fecha_alta_dia_correccion" => false,
+					"fecha_vencimiento_dia" => true,
+					"fecha_vencimiento_dia_correccion" => false,
+					"boton_guardar_cinco" => true,
+					"paso_cinco" => true,
+		
+					"ubicacion_prov" => true,
+					"ubicacion_prov_correccion" => false,
+					"ubicacion_dpto" => true,
+					"ubicacion_dpto_correccion" => false,
+					"ubicacion_localidad" => true,
+					"ubicacion_localidad_correccion" => false,
+					"ubicacion_sistema" => true,
+					"ubicacion_sistema_correccion" => false,
+					"ubicacion_latitud" => true,
+					"ubicacion_latitud_correccion" => false,
+					"ubicacion_long" => true,
+					"ubicacion_long_correccion" => false,
+					"boton_guardar_seis" => true,
+					"paso_seis" => true,
+		
+		
+					"nombre_gestor" => false,
+					"nombre_gestor_correccion" => false,
+					"dni_gestor" => false,
+					"dni_gestor_correccion" => false,
+					"profesion_gestor" => false,
+					"profesion_gestor_correccion" => false,
+					"telefono_gestor" => false,
+					"telefono_gestor_correccion" => false,
+					"notificacion_gestor" => false,
+					"notificacion_gestor_correccion" => false,
+					"email_gestor" => false,
+					"email_gestor_correccion" => false,
+					"dni_productor" => false,
+					"dni_productor_correccion" => false,
+					"foto_productor" => false,
+					"foto_productor_correccion" => false,
+					"constancia_afip" => false,
+					"constancia_afip_correccion" => false,
+					"autorizacion_gestor" => false,
+					"autorizacion_gestor_correccion" => false,
+					"paso_catamarca"=> false,
+					"boton_catamarca"=> false,
+		
+		
+					"estado" => true,
+		
+					"boton_actualizar" => true,
+				];
+			}
+		}
 		
 
-
-		$productor = $this->dame_un_productor_vacio();
-		$productor_particular = null;
-		$productor_particular = $this->dame_un_productor_catamarca_vacio();
-		//var_dump($productor->owner);
-		$productor = $this->prasar_num_a_boolean($productor);
-		//var_dump($productor->owner);die();
-		//$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
-		$minerales_asociados = Minerales_Borradores::all();
-		$datos_creador = null;
-		$soy_productor = true;
-        //var_dump($minerales_asociados);die();
-		return Inertia::render('Productors/Form',['productor' => $productor,
-		'lista_minerales_cargados' => $minerales_asociados, 
-		'creado' => $datos_creador,
-		'soy_administrador' => false,
-		'soy_autoridad_minera' => false,
-		"soy_productor" => $soy_productor,
-		"disables" => $disables,
-		"mostrar" => $mostrar,
-		"productor_particular" => $productor_particular ,
-		"nombre_provincia" => $nombre_provincia
-	]);
+		if($nombre_provincia != "")
+		{
+			$productor = $this->dame_un_productor_vacio();
+			$productor_particular = null;
+			$productor_particular = $this->dame_un_productor_catamarca_vacio();
+			//var_dump($productor->owner);
+			$productor = $this->prasar_num_a_boolean($productor);
+			//var_dump($productor->owner);die();
+			//$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
+			$minerales_asociados = Minerales_Borradores::all();
+			$datos_creador = null;
+			$soy_productor = true;
+			//var_dump($minerales_asociados);die();
+			return Inertia::render('Productors/Form',['productor' => $productor,
+				'lista_minerales_cargados' => $minerales_asociados, 
+				'creado' => $datos_creador,
+				'soy_administrador' => false,
+				'soy_autoridad_minera' => false,
+				"soy_productor" => $soy_productor,
+				"disables" => $disables,
+				"mostrar" => $mostrar,
+				"productor_particular" => $productor_particular ,
+				"nombre_provincia" => $nombre_provincia
+			]);
+		}
+		else{
+			return Inertia::render('Common/SinProvincia',['mensaje' => 'Su provincia aun no ha sido implemntada',
+			]);
+		}
 
 	}
 
@@ -3346,6 +6182,1115 @@ class FormAltaProductorController extends Controller
 		}
 	}
 
+	public function dame_los_permisos_de_los_inputs($pagina, $estado_formulario){
+		//pongo los permisos basicos, q son los de lectura
+		$disables = [
+			"razon_social" => true,
+			"razon_social_correccion" => true,
+			"email" => true,
+			"email_correccion" => true,
+			"cuit" => true,
+			"cuit_correccion" => true,
+			"num_prod" => true,
+			"num_prod_correccion" => true,
+			"tipo_sociedad" => true,
+			"tipo_sociedad_correccion" => true,
+			"inscripcion_dgr" => true,
+			"inscripcion_dgr_correccion" => true,
+			"constancia_sociedad" => true,
+			"cosntancia_sociedad_correccion" => true,
+			"boton_guardar_uno" => true,
+			"paso_uno" => true,
+
+			"legal_calle" => true,
+			"legal_calle_correccion" => true,
+			"legal_calle_num" => true,
+			"legal_calle_num_correccion" => true,
+			"legal_telefono" => true,
+			"legal_telefono_correccion" => true,
+			"legal_prov" => true,
+			"legal_prov_correccion" => true,
+			"legal_dpto" => true,
+			"legal_dpto_correccion" => true,
+			"legal_localidad" => true,
+			"legal_localidad_correccion" => true,
+			"legal_cod_pos" => true,
+			"legal_cod_pos_correccion" => true,
+			"legal_otro" => true,
+			"legal_otro_correccion" => true,
+			"boton_guardar_dos" => true,
+			"paso_dos" => true,
+
+			"administracion_calle" => true,
+			"administracion_correccion" => true,
+			"administracion_calle_num" => true,
+			"administracion_calle_num_correccion" => true,
+			"administracion_telefono" => true,
+			"administracion_telefono_correccion" => true,
+			"administracion_prov" => true,
+			"administracion_prov_correccion" => true,
+			"administracion_dpto" => true,
+			"administracion_dpto_correccion" => true,
+			"administracion_localidad" => true,
+			"administracion_localidad_correccion" => true,
+			"administracion_cod_pos" => true,
+			"administracion_cod_pos_correccion" => true,
+			"administracion_otro" => true,
+			"administracion_otro_correccion" => true,
+			"boton_guardar_tres" => true,
+			"paso_tres" => true,
+
+			"num_exp" => true,
+			"num_exp_correccion" => true,
+			"distrito" => true,
+			"distrito_correccion" => true,
+			"categoria" => true,
+			"categoria_correccion" => true,
+			"nombre_mina" => true,
+			"nombre_mina_correccion" => true,
+			"descripcion_mina" => true,
+			"descripcion_correccion" => true,
+			"resolucion_concesion" => true,
+			"resolucion_concesion_correccion" => true,
+			"plano_mina" => true,
+			"plano_mina_correccion" => true,
+			"minerales" => true,
+			"minerales_correccion" => true,
+			"titulo" => true,
+			"titulo_correccion" => true,
+			"boton_guardar_cuatro" => true,
+			"paso_cuatro" => true,
+
+			"owner" => true,
+			"owner_correccion" => true,
+			"arrendatario" => true,
+			"arrendatario_correccion" => true,
+			"concesionario" => true,
+			"concesionario_correccion" => true,
+			"sustancias" => true,
+			"sustancias_correccion" => true,
+			"otros" => true,
+			"otros_correccion" => true,
+			
+			"concesion" => true,
+			"concesion_correccion" => true,
+			"contancias_canon" => true,
+			"constancias_canon_correccion" => true,
+			"dia" => true,
+			"dia_correccion" => true,
+			"iia" => true,
+			"iia_correccion" => true,
+			"acciones" => true,
+			"acciones_correccion" => true,
+			"actividades" => true,
+			"actividades_correccion" => true,
+			"fecha_alta_dia" => true,
+			"fecha_alta_dia_correccion" => true,
+			"fecha_vencimiento_dia" => true,
+			"fecha_vencimiento_dia_correccion" => true,
+			"boton_guardar_cinco" => true,
+			"paso_cinco" => true,
+
+			"ubicacion_prov" => true,
+			"ubicacion_prov_correccion" => true,
+			"ubicacion_dpto" => true,
+			"ubicacion_dpto_correccion" => true,
+			"ubicacion_localidad" => true,
+			"ubicacion_localidad_correccion" => true,
+			"ubicacion_sistema" => true,
+			"ubicacion_sistema_correccion" => true,
+			"ubicacion_latitud" => true,
+			"ubicacion_latitud_correccion" => true,
+			"ubicacion_long" => true,
+			"ubicacion_long_correccion" => true,
+			"ubicacion_estado" => true,
+			"ubicacion_estado_correccion" => true,
+			"boton_guardar_seis" => true,
+			"paso_seis" => true,
+
+			"nombre_gestor" => true,
+			"nombre_gestor_correccion" => true,
+			"dni_gestor" => true,
+			"dni_gestor_correccion" => true,
+			"profesion_gestor" => true,
+			"profesion_gestor_correccion" => true,
+			"telefono_gestor" => true,
+			"telefono_gestor_correccion" => true,
+			"notificacion_gestor" => true,
+			"notificacion_gestor_correccion" => true,
+			"email_gestor" => true,
+			"email_gestor_correccion" => true,
+			"dni_productor" => true,
+			"dni_productor_correccion" => true,
+			"foto_productor" => true,
+			"foto_productor_correccion" => true,
+			"constancia_afip" => true,
+			"constancia_afip_correccion" => true,
+			"autorizacion_gestor" => true,
+			"autorizacion_gestor_correccion" => true,
+			"paso_catamarca"=> true,
+			"boton_catamarca"=> true,
+
+			"estado" => true,
+			"boton_actualizar" => true,
+
+		];
+		$mostrar = [
+			"razon_social" => true,
+			"razon_social_correccion" => true,
+			"email" => true,
+			"email_correccion" => true,
+			"cuit" => true,
+			"cuit_correccion" => true,
+			"num_prod" => true,
+			"num_prod_correccion" => true,
+			"tipo_sociedad" => true,
+			"tipo_sociedad_correccion" => true,
+			"tipo_sociedad_observaciono" => true,
+			"inscripcion_dgr" => true,
+			"inscripcion_dgr_correccion" => true,
+			"constancia_sociedad" => true,
+			"cosntancia_sociedad_correccion" => true,
+			"boton_guardar_uno" => false,
+			"paso_uno" => true,
+
+			
+			"legal_calle" => true,
+			"legal_calle_correccion" => true,
+			"legal_calle_num" => true,
+			"legal_calle_num_correccion" => true,
+			"legal_telefono" => true,
+			"legal_telefono_correccion" => true,
+			"legal_prov" => true,
+			"legal_prov_correccion" => true,
+			"legal_dpto" => true,
+			"legal_dpto_correccion" => true,
+			"legal_localidad" => true,
+			"legal_localidad_correccion" => true,
+			"legal_cod_pos" => true,
+			"legal_cod_pos_correccion" => true,
+			"legal_otro" => true,
+			"legal_otro_correccion" => true,
+			"boton_guardar_dos" => false,
+			"paso_dos" => true,
+
+
+
+			"administracion_calle" => true,
+			"administracion_correccion" => true,
+			"administracion_calle_num" => true,
+			"administracion_calle_num_correccion" => true,
+			"administracion_telefono" => true,
+			"administracion_telefono_correccion" => true,
+			"administracion_prov" => true,
+			"administracion_prov_correccion" => true,
+			"administracion_dpto" => true,
+			"administracion_dpto_correccion" => true,
+			"administracion_localidad" => true,
+			"administracion_localidad_correccion" => true,
+			"administracion_cod_pos" => true,
+			"administracion_cod_pos_correccion" => true,
+			"administracion_otro" => true,
+			"administracion_otro_correccion" => true,
+			"boton_guardar_tres" => false,
+			"paso_tres" => true,
+
+			"num_exp" => true,
+			"num_exp_correccion" => true,
+			"distrito" => true,
+			"distrito_correccion" => true,
+			"categoria" => true,
+			"categoria_correccion" => true,
+			"nombre_mina" => true,
+			"nombre_mina_correccion" => true,
+			"descripcion_mina" => true,
+			"descripcion_correccion" => true,
+			"resolucion_concesion" => true,
+			"resolucion_concesion_correccion" => true,
+			"plano_mina" => true,
+			"plano_mina_correccion" => true,
+			"minerales" => true,
+			"minerales_correccion" => true,
+			"titulo" => true,
+			"titulo_correccion" => true,
+			"boton_guardar_cuatro" => false,
+			"paso_cuatro" => true,
+
+			"owner" => true,
+			"owner_correccion" => true,
+			"arrendatario" => true,
+			"arrendatario_correccion" => true,
+			"concesionario" => true,
+			"concesionario_correccion" => true,
+			"sustancias" => true,
+			"sustancias_correccion" => true,
+			"otros" => true,
+			"otros_correccion" => true,
+			
+			"concesion" => true,
+			"concesion_correccion" => false,
+			"contancias_canon" => true,
+			"constancias_canon_correccion" => true,
+			"dia" => true,
+			"dia_correccion" => true,
+			"iia" => true,
+			"iia_correccion" => true,
+			"acciones" => true,
+			"acciones_correccion" => true,
+			"actividades" => true,
+			"actividades_correccion" => true,
+			"fecha_alta_dia" => true,
+			"fecha_alta_dia_correccion" => true,
+			"fecha_vencimiento_dia" => true,
+			"fecha_vencimiento_dia_correccion" => true,
+			"boton_guardar_cinco" => false,
+			"paso_cinco" => true,
+
+
+			"ubicacion_prov" => true,
+			"ubicacion_prov_correccion" => true,
+			"ubicacion_dpto" => true,
+			"ubicacion_dpto_correccion" => true,
+			"ubicacion_localidad" => true,
+			"ubicacion_localidad_correccion" => true,
+			"ubicacion_sistema" => true,
+			"ubicacion_sistema_correccion" => true,
+			"ubicacion_latitud" => true,
+			"ubicacion_latitud_correccion" => true,
+			"ubicacion_long" => true,
+			"ubicacion_long_correccion" => true,
+			"boton_guardar_seis" => false,
+			"paso_seis" => true,
+
+			"nombre_gestor" => false,
+			"nombre_gestor_correccion" => false,
+			"dni_gestor" => false,
+			"dni_gestor_correccion" => false,
+			"profesion_gestor" => false,
+			"profesion_gestor_correccion" => false,
+			"telefono_gestor" => false,
+			"telefono_gestor_correccion" => false,
+			"notificacion_gestor" => false,
+			"notificacion_gestor_correccion" => false,
+			"email_gestor" => false,
+			"email_gestor_correccion" => false,
+			"dni_productor" => false,
+			"dni_productor_correccion" => false,
+			"foto_productor" => false,
+			"foto_productor_correccion" => false,
+			"constancia_afip" => false,
+			"constancia_afip_correccion" => false,
+			"autorizacion_gestor" => false,
+			"autorizacion_gestor_correccion" => false,
+			"paso_catamarca"=> false,
+			"boton_catamarca"=> false,
+
+
+			"estado" => true,
+
+			"boton_actualizar" => false,
+
+			"alerta_puede_editar" => false,
+		];
+
+		if($pagina == 'editar')
+		{
+			if(Auth::user()->hasRole('Productor'))
+			{
+				if($estado_formulario == 'borrador')
+				{
+					//CASO: Productor - Edicion - Borrador
+					//habilito todo lo q hacen los productores
+					//deshabilito todo lo q hacen las autoridades mineras
+					$disables["razon_social"] = false;
+					$disables["email"] = false;
+					$disables["cuit"] = false;
+					$disables["num_prod"] = false;
+					$disables["tipo_sociedad"] = false;
+					$disables["inscripcion_dgr"] = false;
+					$disables["constancia_sociedad"] = false;
+					$disables["boton_guardar_uno"] = false;
+					$disables["paso_uno"] = false;
+
+					$disables["legal_calle"] = false;
+					$disables["legal_calle_num"] = false;
+					$disables["legal_telefono"] = false;
+					$disables["legal_prov"] = false;
+					$disables["legal_dpto"] = false;
+					$disables["legal_localidad"] = false;
+					$disables["legal_cod_pos"] = false;
+					$disables["legal_otro"] = false;
+					$disables["boton_guardar_dos"] = false;
+					$disables["paso_dos"] = false;
+
+					$disables["administracion_calle"] = false;
+					$disables["administracion_calle_num"] = false;
+					$disables["administracion_telefono"] = false;
+					$disables["administracion_prov"] = false;
+					$disables["administracion_dpto"] = false;
+					$disables["administracion_localidad"] = false;
+					$disables["administracion_cod_pos"] = false;
+					$disables["administracion_otro"] = false;
+					$disables["boton_guardar_tres"] = false;
+					$disables["paso_tres"] = false;
+
+					$disables["num_exp"] = false;
+					$disables["distrito"] = false;
+					$disables["categoria"] = false;
+					$disables["nombre_mina"] = false;
+					$disables["descripcion_mina"] = false;
+					$disables["resolucion_concesion"] = false;
+					$disables["plano_mina"] = false;
+					$disables["minerales"] = false;
+					$disables["titulo"] = false;
+					$disables["titulo_correccion"] = false;
+					$disables["boton_guardar_cuatro"] = false;
+					$disables["paso_cuatro"] = false;
+
+					$disables["owner"] = false;
+					$disables["arrendatario"] = false;
+					$disables["concesionario"] = false;
+					$disables["sustancias"] = false;
+					$disables["otros"] = false;
+					$disables["otros_correccion"] = true;
+					
+					$disables["concesion"] = false;
+					$disables["contancias_canon"] = false;
+					$disables["dia"] = false;
+					$disables["iia"] = false;
+					$disables["acciones"] = false;
+					$disables["actividades"] = false;
+					$disables["fecha_alta_dia"] = false;
+					$disables["fecha_vencimiento_dia"] = false;
+					$disables["boton_guardar_cinco"] = false;
+					$disables["paso_cinco"] = false;
+
+					$disables["ubicacion_prov"] = false;
+					$disables["ubicacion_dpto"] = false;
+					$disables["ubicacion_localidad"] = false;
+					$disables["ubicacion_sistema"] = false;
+					$disables["ubicacion_latitud"] = false;
+					$disables["ubicacion_long"] = false;
+					$disables["ubicacion_estado"] = false;
+					$disables["boton_guardar_seis"] = false;
+					$disables["paso_seis"] = false;
+
+					$disables["estado"] = false;
+					$disables["boton_actualizar"] = false;
+
+					$mostrar["razon_social_correccion"] = false;
+					$mostrar["email_correccion"] = false;
+					$mostrar["cuit_correccion"] = false;
+					$mostrar["num_prod_correccion"] = false;
+					$mostrar["tipo_sociedad_correccion"] = false;
+					$mostrar["inscripcion_dgr_correccion"] = false;
+					$mostrar["cosntancia_sociedad_correccion"] = false;
+					$mostrar["boton_guardar_uno"] = true;
+					$mostrar["paso_uno"] = true;
+
+						
+					$mostrar["legal_calle_correccion"] = false;
+					$mostrar["legal_calle_num_correccion"] = false;
+					$mostrar["legal_telefono_correccion"] = false;
+					$mostrar["legal_prov_correccion"] = false;
+					$mostrar["legal_dpto_correccion"] = false;
+					$mostrar["legal_localidad_correccion"] = false;
+					$mostrar["legal_cod_pos_correccion"] = false;
+					$mostrar["legal_otro_correccion"] = false;
+					$mostrar["boton_guardar_dos"] = true;
+					$mostrar["paso_dos"] = true;
+
+					$mostrar["administracion_correccion"] = false;
+					$mostrar["administracion_calle_num_correccion"] = false;
+					$mostrar["administracion_telefono_correccion"] = false;
+					$mostrar["administracion_prov_correccion"] = false;
+					$mostrar["administracion_dpto_correccion"] = false;
+					$mostrar["administracion_localidad_correccion"] = false;
+					$mostrar["administracion_cod_pos_correccion"] = false;
+					$mostrar["administracion_otro_correccion"] = false;
+					$mostrar["boton_guardar_tres"] = true;
+					$mostrar["paso_tres"] = true;
+
+					$mostrar["num_exp_correccion"] = false;
+					$mostrar["distrito_correccion"] = false;
+					$mostrar["categoria_correccion"] = false;
+					$mostrar["nombre_mina_correccion"] = false;
+					$mostrar["descripcion_correccion"] = false;
+					$mostrar["resolucion_concesion_correccion"] = false;
+					$mostrar["plano_mina_correccion"] = false;
+					$mostrar["minerales_correccion"] = false;
+					$mostrar["titulo_correccion"] = false;
+					$mostrar["boton_guardar_cuatro"] = true;
+					$mostrar["paso_cuatro"] = true;
+
+
+					$mostrar["owner_correccion"] = false;
+					$mostrar["arrendatario_correccion"] = false;
+					$mostrar["concesionario_correccion"] = false;
+					$mostrar["sustancias_correccion"] = false;
+					$mostrar["otros_correccion"] = false;
+					$mostrar["concesion_correccion"] = false;
+					$mostrar["constancias_canon_correccion"] = false;
+					$mostrar["dia_correccion"] = false;
+					$mostrar["iia_correccion"] = false;
+					$mostrar["acciones_correccion"] = false;
+					$mostrar["actividades_correccion"] = false;
+					$mostrar["fecha_alta_dia_correccion"] = false;
+					$mostrar["fecha_vencimiento_dia_correccion"] = false;
+					$mostrar["boton_guardar_cinco"] = true;
+					$mostrar["paso_cinco"] = true;
+
+					$mostrar["ubicacion_prov_correccion"] = false;
+					$mostrar["ubicacion_dpto_correccion"] = false;
+					$mostrar["ubicacion_localidad_correccion"] = false;
+					$mostrar["ubicacion_sistema_correccion"] = false;
+					$mostrar["ubicacion_latitud_correccion"] = false;
+					$mostrar["ubicacion_long_correccion"] = false;
+					$mostrar["boton_guardar_seis"] = true;
+					$mostrar["paso_seis"] = true;
+
+					$mostrar["estado"] = true;
+
+					$mostrar["boton_actualizar"] = true;
+
+					$mostrar["alerta_puede_editar"] = true;
+
+
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$disables["nombre_gestor"] = false;
+						$disables["nombre_gestor_correccion"] = true;
+						$disables["dni_gestor"] = false;
+						$disables["dni_gestor_correccion"] = true;
+						$disables["profesion_gestor"] = false;
+						$disables["profesion_gestor_correccion"] = true;
+						$disables["telefono_gestor"] = false;
+						$disables["telefono_gestor_correccion"] = true;
+						$disables["notificacion_gestor"] = false;
+						$disables["notificacion_gestor_correccion"] = true;
+						$disables["email_gestor"] = false;
+						$disables["email_gestor_correccion"] = true;
+						$disables["dni_productor"] = false;
+						$disables["dni_productor_correccion"] = true;
+						$disables["foto_productor"] = false;
+						$disables["foto_productor_correccion"] = true;
+						$disables["constancia_afip"] = false;
+						$disables["constancia_afip_correccion"] =  true;
+						$disables["autorizacion_gestor"] =  false;
+						$disables["autorizacion_gestor_correccion"] =  true;
+						$disables["paso_catamarca"] = false;
+						$disables["boton_catamarca"] = false;
+
+						$mostrar["nombre_gestor"] = true;
+						$mostrar["nombre_gestor_correccion"] = false;
+						$mostrar["dni_gestor"] = true;
+						$mostrar["dni_gestor_correccion"] = false;
+						$mostrar["profesion_gestor"] = true;
+						$mostrar["profesion_gestor_correccion"] = false;
+						$mostrar["telefono_gestor"] = true;
+						$mostrar["telefono_gestor_correccion"] = false;
+						$mostrar["notificacion_gestor"] = true;
+						$mostrar["notificacion_gestor_correccion"] = false;
+						$mostrar["email_gestor"] = true;
+						$mostrar["email_gestor_correccion"] = false;
+						$mostrar["dni_productor"] = true;
+						$mostrar["dni_productor_correccion"] = false;
+						$mostrar["foto_productor"] = true;
+						$mostrar["foto_productor_correccion"] = false;
+						$mostrar["constancia_afip"] = true;
+						$mostrar["constancia_afip_correccion"] =  false;
+						$mostrar["autorizacion_gestor"] =  true;
+						$mostrar["autorizacion_gestor_correccion"] =  false;
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
+
+
+					}
+				}
+				elseif($estado_formulario == 'en revision' || $estado_formulario == 'en proceso')
+				{
+					//CASO: Productor - Edicion - En revision
+					//ed lo tiene la auotirdad minera y solo puede ver
+					//le dejo los permisos de lectura no mas
+					$disables["razon_social_correccion"] = false;
+					$disables["email_correccion"] = false;
+					$disables["cuit_correccion"] = false;
+					$disables["num_prod_correccion"] = false;
+					$disables["tipo_sociedad_correccion"] = false;
+					$disables["inscripcion_dgr_correccion"] = false;
+					$disables["cosntancia_sociedad_correccion"] = false;
+					$disables["boton_guardar_uno"] = false;
+					$disables["paso_uno"] = false;
+		
+					$disables["legal_calle_correccion"] = false;
+					$disables["legal_calle_num_correccion"] = false;
+					$disables["legal_telefono_correccion"] = false;
+					$disables["legal_prov_correccion"] = false;
+					$disables["legal_dpto_correccion"] = false;
+					$disables["legal_localidad_correccion"] = false;
+					$disables["legal_cod_pos_correccion"] = false;
+					$disables["legal_otro_correccion"] = false;
+					$disables["boton_guardar_dos"] = false;
+					$disables["paso_dos"] = false;
+		
+					$disables["administracion_correccion"] = false;
+					$disables["administracion_calle_num_correccion"] = false;
+					$disables["administracion_telefono_correccion"] = false;
+					$disables["administracion_prov_correccion"] = false;
+					$disables["administracion_dpto_correccion"] = false;
+					$disables["administracion_localidad_correccion"] = false;
+					$disables["administracion_cod_pos_correccion"] = false;
+					$disables["administracion_otro_correccion"] = false;
+					$disables["boton_guardar_tres"] = false;
+					$disables["paso_tres"] = false;
+		
+					$disables["num_exp_correccion"] = false;
+					$disables["distrito_correccion"] = false;
+					$disables["categoria_correccion"] = false;
+					$disables["nombre_mina_correccion"] = false;
+					$disables["descripcion_correccion"] = false;
+					$disables["resolucion_concesion_correccion"] = false;
+					$disables["plano_mina_correccion"] = false;
+					$disables["minerales_correccion"] = false;
+					$disables["titulo_correccion"] = false;
+					$disables["boton_guardar_cuatro"] = false;
+					$disables["paso_cuatro"] = false;
+		
+					$disables["owner_correccion"] = false;
+					$disables["arrendatario_correccion"] = false;
+					$disables["concesionario_correccion"] = false;
+					$disables["sustancias_correccion"] = false;
+					$disables["otros_correccion"] = false;
+					$disables["concesion_correccion"] = false;
+					$disables["constancias_canon_correccion"] = false;
+					$disables["dia_correccion"] = false;
+					$disables["iia_correccion"] = false;
+					$disables["acciones_correccion"] = false;
+					$disables["actividades_correccion"] = false;
+					$disables["fecha_alta_dia_correccion"] = false;
+					$disables["fecha_vencimiento_dia_correccion"] = false;
+					$disables["boton_guardar_cinco"] = false;
+					$disables["paso_cinco"] = false;
+		
+					$disables["ubicacion_prov_correccion"] = false;
+					$disables["ubicacion_dpto_correccion"] = false;
+					$disables["ubicacion_localidad_correccion"] = false;
+					$disables["ubicacion_sistema_correccion"] = false;
+					$disables["ubicacion_latitud_correccion"] = false;
+					$disables["ubicacion_long_correccion"] = false;
+					$disables["ubicacion_estado_correccion"] = false;
+					$disables["boton_guardar_seis"] = false;
+					$disables["paso_seis"] = false;
+		
+					$disables["estado"] = false;
+					$disables["boton_actualizar"] = false;
+			
+					$mostrar["boton_guardar_uno"] = false;
+					$mostrar["boton_guardar_dos"] = false;
+					$mostrar["boton_guardar_tres"] = false;
+					$mostrar["boton_guardar_cuatro"] = false;
+					$mostrar["boton_guardar_cinco"] = false;
+					$mostrar["boton_guardar_seis"] = false;
+					$mostrar["boton_actualizar"] = false;
+
+					$mostrar["alerta_puede_editar"] = false;
+
+
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$disables["nombre_gestor_correccion"] = false;
+						$disables["dni_gestor_correccion"] = false;
+						$disables["profesion_gestor_correccion"] = false;
+						$disables["telefono_gestor_correccion"] = false;
+						$disables["notificacion_gestor_correccion"] = false;
+						$disables["email_gestor_correccion"] = false;
+						$disables["dni_productor_correccion"] = false;
+						$disables["foto_productor_correccion"] = false;
+						$disables["constancia_afip_correccion"] = false;
+						$disables["autorizacion_gestor_correccion"] = false;
+						$disables["paso_catamarca"]= false;
+						$disables["boton_catamarca"]= false;
+						
+						$mostrar["paso_catamarca"] = false;
+						$mostrar["boton_catamarca"] = false;
+					}
+				}
+				elseif($estado_formulario == 'aprobado')
+				{
+					//CASO: Productor - Edicion - Aprobado
+					//e.d. lo tiene la auotirdad minera y el productor
+					//le dejo los permisos de lectura no mas
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$mostrar["nombre_gestor"] = true;
+						$mostrar["nombre_gestor_correccion"] = true;
+						$mostrar["dni_gestor"] = true;
+						$mostrar["dni_gestor_correccion"] = true;
+						$mostrar["profesion_gestor"] = true;
+						$mostrar["profesion_gestor_correccion"] = true;
+						$mostrar["telefono_gestor"] = true;
+						$mostrar["telefono_gestor_correccion"] = true;
+						$mostrar["notificacion_gestor"] = true;
+						$mostrar["notificacion_gestor_correccion"] = true;
+						$mostrar["email_gestor"] = true;
+						$mostrar["email_gestor_correccion"] = true;
+						$mostrar["dni_productor"] = true;
+						$mostrar["dni_productor_correccion"] = true;
+						$mostrar["foto_productor"] = true;
+						$mostrar["foto_productor_correccion"] = true;
+						$mostrar["constancia_afip"] = true;
+						$mostrar["constancia_afip_correccion"] =  true;
+						$mostrar["autorizacion_gestor"] =  true;
+						$mostrar["autorizacion_gestor_correccion"] =  true;
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
+					}
+				}
+				elseif($estado_formulario == 'reprobado')
+				{
+					//CASO: Productor - Edicion - Reprobado
+					//e.d. lo la auotirdad lo rechazo
+					//le dejo los permisos de lectura no mas
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$mostrar["nombre_gestor"] = true;
+						$mostrar["nombre_gestor_correccion"] = true;
+						$mostrar["dni_gestor"] = true;
+						$mostrar["dni_gestor_correccion"] = true;
+						$mostrar["profesion_gestor"] = true;
+						$mostrar["profesion_gestor_correccion"] = true;
+						$mostrar["telefono_gestor"] = true;
+						$mostrar["telefono_gestor_correccion"] = true;
+						$mostrar["notificacion_gestor"] = true;
+						$mostrar["notificacion_gestor_correccion"] = true;
+						$mostrar["email_gestor"] = true;
+						$mostrar["email_gestor_correccion"] = true;
+						$mostrar["dni_productor"] = true;
+						$mostrar["dni_productor_correccion"] = true;
+						$mostrar["foto_productor"] = true;
+						$mostrar["foto_productor_correccion"] = true;
+						$mostrar["constancia_afip"] = true;
+						$mostrar["constancia_afip_correccion"] =  true;
+						$mostrar["autorizacion_gestor"] =  true;
+						$mostrar["autorizacion_gestor_correccion"] =  true;
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
+					}
+				}
+				elseif($estado_formulario == 'con observacion')
+				{
+					//CASO: Productor - Edicion - Con Observacion
+					//e.d. la autoridad minera lo evaluo y el productor tiene q arreglarlo
+					// puede hacer lo de productor y ver lo de autoridad minera
+					
+						$disables["razon_social"] = false;
+						$disables["email"] = false;
+						$disables["cuit"] = false;
+						$disables["num_prod"] = false;
+						$disables["tipo_sociedad"] = false;
+						$disables["inscripcion_dgr"] = false;
+						$disables["constancia_sociedad"] = false;
+						$disables["boton_guardar_uno"] = false;
+						$disables["paso_uno"] = false;
+
+						$disables["legal_calle"] = false;
+						$disables["legal_calle_num"] = false;
+						$disables["legal_telefono"] = false;
+						$disables["legal_prov"] = false;
+						$disables["legal_dpto"] = false;
+						$disables["legal_localidad"] = false;
+						$disables["legal_cod_pos"] = false;
+						$disables["legal_otro"] = false;
+						$disables["boton_guardar_dos"] = false;
+						$disables["paso_dos"] = false;
+
+						$disables["administracion_calle"] = false;
+						$disables["administracion_calle_num"] = false;
+						$disables["administracion_telefono"] = false;
+						$disables["administracion_prov"] = false;
+						$disables["administracion_dpto"] = false;
+						$disables["administracion_localidad"] = false;
+						$disables["administracion_cod_pos"] = false;
+						$disables["administracion_otro"] = false;
+						$disables["boton_guardar_tres"] = false;
+						$disables["paso_tres"] = false;
+
+						$disables["num_exp"] = false;
+						$disables["distrito"] = false;
+						$disables["categoria"] = false;
+						$disables["nombre_mina"] = false;
+						$disables["descripcion_mina"] = false;
+						$disables["resolucion_concesion"] = false;
+						$disables["plano_mina"] = false;
+						$disables["minerales"] = false;
+						$disables["titulo"] = false;
+						$disables["titulo_correccion"] = false;
+						$disables["boton_guardar_cuatro"] = false;
+						$disables["paso_cuatro"] = false;
+
+						$disables["owner"] = false;
+						$disables["arrendatario"] = false;
+						$disables["concesionario"] = false;
+						$disables["sustancias"] = false;
+						$disables["otros"] = false;
+						
+						$disables["concesion"] = false;
+						$disables["contancias_canon"] = false;
+						$disables["dia"] = false;
+						$disables["iia"] = false;
+						$disables["acciones"] = false;
+						$disables["actividades"] = false;
+						$disables["fecha_alta_dia"] = false;
+						$disables["fecha_vencimiento_dia"] = false;
+						$disables["boton_guardar_cinco"] = false;
+						$disables["paso_cinco"] = false;
+
+						$disables["ubicacion_prov"] = false;
+						$disables["ubicacion_dpto"] = false;
+						$disables["ubicacion_localidad"] = false;
+						$disables["ubicacion_sistema"] = false;
+						$disables["ubicacion_latitud"] = false;
+						$disables["ubicacion_long"] = false;
+						$disables["ubicacion_estado"] = false;
+						$disables["boton_guardar_seis"] = false;
+						$disables["paso_seis"] = false;
+
+						$disables["estado"] = false;
+						$disables["boton_actualizar"] = false;
+					
+						$mostrar["boton_guardar_uno"] = true;
+						$mostrar["boton_guardar_dos"] = true;
+						$mostrar["boton_guardar_tres"] = true;
+						$mostrar["boton_guardar_cuatro"] = true;
+						$mostrar["boton_guardar_cinco"] = true;
+						$mostrar["boton_guardar_seis"] = true;
+						$mostrar["boton_actualizar"] = true;
+
+						$mostrar["alerta_puede_editar"] = true;
+
+
+						if(Auth::user()->id_provincia == 10) // es de catamarca
+						{
+							$mostrar["nombre_gestor"] = true;
+							$mostrar["nombre_gestor_correccion"] = true;
+							$mostrar["dni_gestor"] = true;
+							$mostrar["dni_gestor_correccion"] = true;
+							$mostrar["profesion_gestor"] = true;
+							$mostrar["profesion_gestor_correccion"] = true;
+							$mostrar["telefono_gestor"] = true;
+							$mostrar["telefono_gestor_correccion"] = true;
+							$mostrar["notificacion_gestor"] = true;
+							$mostrar["notificacion_gestor_correccion"] = true;
+							$mostrar["email_gestor"] = true;
+							$mostrar["email_gestor_correccion"] = true;
+							$mostrar["dni_productor"] = true;
+							$mostrar["dni_productor_correccion"] = true;
+							$mostrar["foto_productor"] = true;
+							$mostrar["foto_productor_correccion"] = true;
+							$mostrar["constancia_afip"] = true;
+							$mostrar["constancia_afip_correccion"] =  true;
+							$mostrar["autorizacion_gestor"] =  true;
+							$mostrar["autorizacion_gestor_correccion"] =  true;
+							$mostrar["paso_catamarca"] = true;
+							$mostrar["boton_catamarca"] = true;
+
+							$disables["nombre_gestor"] = false;
+							$disables["nombre_gestor_correccion"] = true;
+							$disables["dni_gestor"] = false;
+							$disables["dni_gestor_correccion"] = true;
+							$disables["profesion_gestor"] = false;
+							$disables["profesion_gestor_correccion"] = true;
+							$disables["telefono_gestor"] = false;
+							$disables["telefono_gestor_correccion"] = true;
+							$disables["notificacion_gestor"] = false;
+							$disables["notificacion_gestor_correccion"] = true;
+							$disables["email_gestor"] = false;
+							$disables["email_gestor_correccion"] = true;
+							$disables["dni_productor"] = false;
+							$disables["dni_productor_correccion"] = true;
+							$disables["foto_productor"] = false;
+							$disables["foto_productor_correccion"] = true;
+							$disables["constancia_afip"] = false;
+							$disables["constancia_afip_correccion"] =  true;
+							$disables["autorizacion_gestor"] =  false;
+							$disables["autorizacion_gestor_correccion"] =  true;
+							$disables["paso_catamarca"] = false;
+							$disables["boton_catamarca"] = false;
+
+						}
+				}
+			}
+			elseif(Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Administrador'))
+			{
+				
+				if($estado_formulario == 'borrador')
+				{
+					//CASO: Autoridad - Edicion - Borrador
+					//deshabilito todo lo q hacen los productores
+					//deshabilito todo lo q hacen las autoridades mineras
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$mostrar["nombre_gestor"] = true;
+						$mostrar["nombre_gestor_correccion"] = false;
+						$mostrar["dni_gestor"] = true;
+						$mostrar["dni_gestor_correccion"] = false;
+						$mostrar["profesion_gestor"] = true;
+						$mostrar["profesion_gestor_correccion"] = false;
+						$mostrar["telefono_gestor"] = true;
+						$mostrar["telefono_gestor_correccion"] = false;
+						$mostrar["notificacion_gestor"] = true;
+						$mostrar["notificacion_gestor_correccion"] = false;
+						$mostrar["email_gestor"] = true;
+						$mostrar["email_gestor_correccion"] = false;
+						$mostrar["dni_productor"] = true;
+						$mostrar["dni_productor_correccion"] = false;
+						$mostrar["foto_productor"] = true;
+						$mostrar["foto_productor_correccion"] = false;
+						$mostrar["constancia_afip"] = true;
+						$mostrar["constancia_afip_correccion"] =  false;
+						$mostrar["autorizacion_gestor"] =  true;
+						$mostrar["autorizacion_gestor_correccion"] =  false;
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
+					}
+				}
+				elseif($estado_formulario == 'en revision'  || $estado_formulario == 'en proceso')
+				{
+					//CASO: Autoridad - Edicion - En revision
+					//ed lo tiene la auotirdad minera y solo el la puede editar
+					//habilito todo correcio, deshabilito todo inputs de prod
+					$disables["razon_social_correccion"] = false;
+					$disables["email_correccion"] = false;
+					$disables["cuit_correccion"] = false;
+					$disables["num_prod_correccion"] = false;
+					$disables["tipo_sociedad_correccion"] = false;
+					$disables["inscripcion_dgr_correccion"] = false;
+					$disables["cosntancia_sociedad_correccion"] = false;
+					$disables["boton_guardar_uno"] = false;
+					$disables["paso_uno"] = false;
+		
+					$disables["legal_calle_correccion"] = false;
+					$disables["legal_calle_num_correccion"] = false;
+					$disables["legal_telefono_correccion"] = false;
+					$disables["legal_prov_correccion"] = false;
+					$disables["legal_dpto_correccion"] = false;
+					$disables["legal_localidad_correccion"] = false;
+					$disables["legal_cod_pos_correccion"] = false;
+					$disables["legal_otro_correccion"] = false;
+					$disables["boton_guardar_dos"] = false;
+					$disables["paso_dos"] = false;
+		
+					$disables["administracion_correccion"] = false;
+					$disables["administracion_calle_num_correccion"] = false;
+					$disables["administracion_telefono_correccion"] = false;
+					$disables["administracion_prov_correccion"] = false;
+					$disables["administracion_dpto_correccion"] = false;
+					$disables["administracion_localidad_correccion"] = false;
+					$disables["administracion_cod_pos_correccion"] = false;
+					$disables["administracion_otro_correccion"] = false;
+					$disables["boton_guardar_tres"] = false;
+					$disables["paso_tres"] = false;
+		
+					$disables["num_exp_correccion"] = false;
+					$disables["distrito_correccion"] = false;
+					$disables["categoria_correccion"] = false;
+					$disables["nombre_mina_correccion"] = false;
+					$disables["descripcion_correccion"] = false;
+					$disables["resolucion_concesion_correccion"] = false;
+					$disables["plano_mina_correccion"] = false;
+					$disables["minerales_correccion"] = false;
+					$disables["titulo_correccion"] = false;
+					$disables["boton_guardar_cuatro"] = false;
+					$disables["paso_cuatro"] = false;
+		
+					$disables["owner_correccion"] = false;
+					$disables["arrendatario_correccion"] = false;
+					$disables["concesionario_correccion"] = false;
+					$disables["sustancias_correccion"] = false;
+					$disables["otros_correccion"] = false;
+					$disables["concesion_correccion"] = false;
+					$disables["constancias_canon_correccion"] = false;
+					$disables["dia_correccion"] = false;
+					$disables["iia_correccion"] = false;
+					$disables["acciones_correccion"] = false;
+					$disables["actividades_correccion"] = false;
+					$disables["fecha_alta_dia_correccion"] = false;
+					$disables["fecha_vencimiento_dia_correccion"] = false;
+					$disables["boton_guardar_cinco"] = false;
+					$disables["paso_cinco"] = false;
+		
+					$disables["ubicacion_prov_correccion"] = false;
+					$disables["ubicacion_dpto_correccion"] = false;
+					$disables["ubicacion_localidad_correccion"] = false;
+					$disables["ubicacion_sistema_correccion"] = false;
+					$disables["ubicacion_latitud_correccion"] = false;
+					$disables["ubicacion_long_correccion"] = false;
+					$disables["ubicacion_estado_correccion"] = false;
+					$disables["boton_guardar_seis"] = false;
+					$disables["paso_seis"] = false;
+		
+					$disables["estado"] = false;
+					$disables["boton_actualizar"] = false;
+			
+					$mostrar["boton_guardar_uno"] = true;
+					$mostrar["boton_guardar_dos"] = true;
+					$mostrar["boton_guardar_tres"] = true;
+					$mostrar["boton_guardar_cuatro"] = true;
+					$mostrar["boton_guardar_cinco"] = true;
+					$mostrar["boton_guardar_seis"] = true;
+					$mostrar["boton_actualizar"] = true;
+
+					$mostrar["alerta_puede_editar"] = true;
+
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$disables["nombre_gestor_correccion"] = false;
+						$disables["dni_gestor_correccion"] = false;
+						$disables["profesion_gestor_correccion"] = false;
+						$disables["telefono_gestor_correccion"] = false;
+						$disables["notificacion_gestor_correccion"] = false;
+						$disables["email_gestor_correccion"] = false;
+						$disables["dni_productor_correccion"] = false;
+						$disables["foto_productor_correccion"] = false;
+						$disables["constancia_afip_correccion"] = false;
+						$disables["autorizacion_gestor_correccion"] = false;
+						$disables["paso_catamarca"]= false;
+						$disables["boton_catamarca"]= false;
+						
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
+					}
+				}
+				elseif($estado_formulario == 'aprobado')
+				{
+					//CASO: Autoridad - Edicion - Aprobado
+					//e.d. lo tiene la auotirdad minera y el productor
+					//le dejo los permisos de lectura no mas
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$mostrar["nombre_gestor"] = true;
+						$mostrar["nombre_gestor_correccion"] = true;
+						$mostrar["dni_gestor"] = true;
+						$mostrar["dni_gestor_correccion"] = true;
+						$mostrar["profesion_gestor"] = true;
+						$mostrar["profesion_gestor_correccion"] = true;
+						$mostrar["telefono_gestor"] = true;
+						$mostrar["telefono_gestor_correccion"] = true;
+						$mostrar["notificacion_gestor"] = true;
+						$mostrar["notificacion_gestor_correccion"] = true;
+						$mostrar["email_gestor"] = true;
+						$mostrar["email_gestor_correccion"] = true;
+						$mostrar["dni_productor"] = true;
+						$mostrar["dni_productor_correccion"] = true;
+						$mostrar["foto_productor"] = true;
+						$mostrar["foto_productor_correccion"] = true;
+						$mostrar["constancia_afip"] = true;
+						$mostrar["constancia_afip_correccion"] =  true;
+						$mostrar["autorizacion_gestor"] =  true;
+						$mostrar["autorizacion_gestor_correccion"] =  true;
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
+					}
+				}
+				elseif($estado_formulario == 'reprobado')
+				{
+					//CASO: Autoridad - Edicion - Reprobado
+					//e.d. lo la auotirdad lo rechazo
+					//le dejo los permisos de lectura no mas
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$mostrar["nombre_gestor"] = true;
+						$mostrar["nombre_gestor_correccion"] = true;
+						$mostrar["dni_gestor"] = true;
+						$mostrar["dni_gestor_correccion"] = true;
+						$mostrar["profesion_gestor"] = true;
+						$mostrar["profesion_gestor_correccion"] = true;
+						$mostrar["telefono_gestor"] = true;
+						$mostrar["telefono_gestor_correccion"] = true;
+						$mostrar["notificacion_gestor"] = true;
+						$mostrar["notificacion_gestor_correccion"] = true;
+						$mostrar["email_gestor"] = true;
+						$mostrar["email_gestor_correccion"] = true;
+						$mostrar["dni_productor"] = true;
+						$mostrar["dni_productor_correccion"] = true;
+						$mostrar["foto_productor"] = true;
+						$mostrar["foto_productor_correccion"] = true;
+						$mostrar["constancia_afip"] = true;
+						$mostrar["constancia_afip_correccion"] =  true;
+						$mostrar["autorizacion_gestor"] =  true;
+						$mostrar["autorizacion_gestor_correccion"] =  true;
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
+					}
+				}
+				elseif($estado_formulario == 'con observacion')
+				{
+					//CASO: Autoridad - Edicion - Con Observacion
+					//e.d. la autoridad minera lo evaluo y el productor tiene q arreglarlo
+					// dejo los permisos de lectura no mas
+					if(Auth::user()->id_provincia == 10) // es de catamarca
+					{
+						$mostrar["nombre_gestor"] = true;
+						$mostrar["nombre_gestor_correccion"] = true;
+						$mostrar["dni_gestor"] = true;
+						$mostrar["dni_gestor_correccion"] = true;
+						$mostrar["profesion_gestor"] = true;
+						$mostrar["profesion_gestor_correccion"] = true;
+						$mostrar["telefono_gestor"] = true;
+						$mostrar["telefono_gestor_correccion"] = true;
+						$mostrar["notificacion_gestor"] = true;
+						$mostrar["notificacion_gestor_correccion"] = true;
+						$mostrar["email_gestor"] = true;
+						$mostrar["email_gestor_correccion"] = true;
+						$mostrar["dni_productor"] = true;
+						$mostrar["dni_productor_correccion"] = true;
+						$mostrar["foto_productor"] = true;
+						$mostrar["foto_productor_correccion"] = true;
+						$mostrar["constancia_afip"] = true;
+						$mostrar["constancia_afip_correccion"] =  true;
+						$mostrar["autorizacion_gestor"] =  true;
+						$mostrar["autorizacion_gestor_correccion"] =  true;
+						$mostrar["paso_catamarca"] = true;
+						$mostrar["boton_catamarca"] = true;
+
+						$disables["nombre_gestor"] = false;
+						$disables["nombre_gestor_correccion"] = true;
+						$disables["dni_gestor"] = false;
+						$disables["dni_gestor_correccion"] = true;
+						$disables["profesion_gestor"] = false;
+						$disables["profesion_gestor_correccion"] = true;
+						$disables["telefono_gestor"] = false;
+						$disables["telefono_gestor_correccion"] = true;
+						$disables["notificacion_gestor"] = false;
+						$disables["notificacion_gestor_correccion"] = true;
+						$disables["email_gestor"] = false;
+						$disables["email_gestor_correccion"] = true;
+						$disables["dni_productor"] = false;
+						$disables["dni_productor_correccion"] = true;
+						$disables["foto_productor"] = false;
+						$disables["foto_productor_correccion"] = true;
+						$disables["constancia_afip"] = false;
+						$disables["constancia_afip_correccion"] =  true;
+						$disables["autorizacion_gestor"] =  false;
+						$disables["autorizacion_gestor_correccion"] =  true;
+						$disables["paso_catamarca"] = false;
+						$disables["boton_catamarca"] = false;
+
+					}
+				}
+			}
+		}
+		elseif($pagina == 'nuevo')
+		{
+			dd("nuevo");
+		}
+		$a_devolver = [];
+		$a_devolver['disables'] = $disables;
+		$a_devolver['mostrar'] = $mostrar;
+		return $a_devolver;
+	}
+
+
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -3355,1185 +7300,6 @@ class FormAltaProductorController extends Controller
 	public function edit($id)
 	{
 		
-		if(Auth::user()->hasRole('Productor'))
-		{
-			/*$disables = [
-				"razon_social" => false,
-				"razon_social_correccion" => false,
-				"email" => false,
-				"email_correccion" => false,/home/diego/Documents/rpmapp/resources/js/Pages/Productors/List.vue
-				"cuit" => false,
-				"cuit_correccion" => false,
-				"num_prod" => false,
-				"num_prod_correccion" => false,
-				"tipo_sociedad" => false,
-				"tipo_sociedad_correccion" => false,
-				"inscripcion_dgr" => false,
-				"inscripcion_dgr_correccion" => false,
-				"constancia_sociedad" => false,
-				"cosntancia_sociedad_correccion" => false,
-				"boton_guardar_uno" => false,
-				"paso_uno" => false,
-	
-				"legal_calle" => false,
-				"legal_calle_correccion" => false,
-				"legal_calle_num" => false,
-				"legal_calle_num_correccion" => false,
-				"legal_telefono" => false,
-				"legal_telefono_correccion" => false,
-				"legal_prov" => false,
-				"legal_prov_correccion" => false,
-				"legal_dpto" => false,
-				"legal_dpto_correccion" => false,
-				"legal_localidad" => false,
-				"legal_localidad_correccion" => false,
-				"legal_cod_pos" => false,
-				"legal_cod_pos_correccion" => false,
-				"legal_otro" => false,
-				"legal_otro_correccion" => false,
-				"boton_guardar_dos" => false,
-				"paso_dos" => false,
-	
-	
-				"administracion_calle" => false,
-				"administracion_correccion" => false,
-				"administracion_calle_num" => false,
-				"administracion_calle_num_correccion" => false,
-				"administracion_telefono" => false,
-				"administracion_telefono_correccion" => false,
-				"administracion_prov" => false,
-				"administracion_prov_correccion" => false,
-				"administracion_dpto" => false,
-				"administracion_dpto_correccion" => false,
-				"administracion_localidad" => false,
-				"administracion_localidad_correccion" => false,
-				"administracion_cod_pos" => false,
-				"administracion_cod_pos_correccion" => false,
-				"administracion_otro" => false,
-				"administracion_otro_correccion" => false,
-				"boton_guardar_tres" => false,
-				"paso_tres" => false,
-	
-	
-	
-				"num_exp" => false,
-				"num_exp_correccion" => false,
-				"distrito" => false,
-				"distrito_correccion" => false,
-				"categoria" => false,
-				"categoria_correccion" => false,
-				"nombre_mina" => false,
-				"nombre_mina_correccion" => false,
-				"descripcion_mina" => false,
-				"descripcion_correccion" => false,
-				"resolucion_concesion" => false,
-				"resolucion_concesion_correccion" => false,
-				"plano_mina" => false,
-				"plano_mina_correccion" => false,
-				"minerales" => false,
-				"minerales_correccion" => false,
-				"titulo" => false,
-				"titulo_correccion" => false,
-				"boton_guardar_cuatro" => false,
-				"paso_cuatro" => false,
-	
-	
-	
-				"owner" => false,
-				"owner_correccion" => false,
-				"arrendatario" => false,
-				"arrendatario_correccion" => false,
-				"concesionario" => false,
-				"concesionario_correccion" => false,
-				"sustancias" => false,
-				"sustancias_correccion" => false,
-				"otros" => false,
-				"otros_correccion" => false,
-				
-				"concesion" => false,
-				"concesion_correccion" => false,
-				"contancias_canon" => false,
-				"constancias_canon_correccion" => false,
-				"dia" => false,
-				"dia_correccion" => false,
-				"iia" => false,
-				"iia_correccion" => false,
-				"acciones" => false,
-				"acciones_correccion" => false,
-				"actividades" => false,
-				"actividades_correccion" => false,
-				"fecha_alta_dia" => false,
-				"fecha_alta_dia_correccion" => false,
-				"fecha_vencimiento_dia" => false,
-				"fecha_vencimiento_dia_correccion" => false,
-				"boton_guardar_cinco" => false,
-				"paso_cinco" => false,
-	
-	
-				"ubicacion_prov" => false,
-				"ubicacion_prov_correccion" => false,
-				"ubicacion_dpto" => false,
-				"ubicacion_dpto_correccion" => false,
-				"ubicacion_localidad" => false,
-				"ubicacion_localidad_correccion" => false,
-				"ubicacion_sistema" => false,
-				"ubicacion_sistema_correccion" => false,
-				"ubicacion_latitud" => false,
-				"ubicacion_latitud_correccion" => false,
-				"ubicacion_long" => false,
-				"ubicacion_long_correccion" => false,
-				"ubicacion_estado" => false,
-				"ubicacion_estado_correccion" => false,
-				"ubicacion_estado_observacion" => false,
-				"boton_guardar_seis" => false,
-				"paso_seis" => false,
-	
-	
-				"nombre_gestor" => false,
-				"nombre_gestor_correccion" => false,
-				"dni_gestor" => false,
-				"dni_gestor_correccion" => false,
-				"profesion_gestor" => false,
-				"profesion_gestor_correccion" => false,
-				"telefono_gestor" => false,
-				"telefono_gestor_correccion" => false,
-				"notificacion_gestor" => false,
-				"notificacion_gestor_correccion" => false,
-				"email_gestor" => false,
-				"email_gestor_correccion" => false,
-				"dni_productor" => false,
-				"dni_productor_correccion" => false,
-				"foto_productor" => false,
-				"foto_productor_correccion" => false,
-				"constancia_afip" => false,
-				"constancia_afip_correccion" => false,
-				"autorizacion_gestor" => false,
-				"autorizacion_gestor_correccion" => false,
-				"paso_catamarca"=> false,
-				"boton_catamarca"=> false,
-	
-				"estado" => false,
-				"boton_actualizar" => false,
-	
-			];
-			$mostrar = [
-				"razon_social" => true,
-				"razon_social_correccion" => false,
-				"email" => true,
-				"email_correccion" => false,
-				"cuit" => true,
-				"cuit_correccion" => false,
-				"num_prod" => true,
-				"num_prod_correccion" => false,
-				"tipo_sociedad" => true,
-				"tipo_sociedad_correccion" => false,
-				"inscripcion_dgr" => true,
-				"inscripcion_dgr_correccion" => false,
-				"constancia_sociedad" => true,
-				"cosntancia_sociedad_correccion" => false,
-				"boton_guardar_uno" => true,
-				"paso_uno" => true,
-	
-				"legal_calle" => true,
-				"legal_calle_correccion" => false,
-				"legal_calle_num" => true,
-				"legal_calle_num_correccion" => false,
-				"legal_telefono" => true,
-				"legal_telefono_correccion" => false,
-				"legal_prov" => true,
-				"legal_prov_correccion" => false,
-				"legal_dpto" => true,
-				"legal_dpto_correccion" => false,
-				"legal_localidad" => true,
-				"legal_localidad_correccion" => false,
-				"legal_cod_pos" => true,
-				"legal_cod_pos_correccion" => false,
-				"legal_otro" => true,
-				"legal_otro_correccion" => false,
-				"boton_guardar_dos" => true,
-				"paso_dos" => true,
-	
-				"administracion_calle" => true,
-				"administracion_correccion" => false,
-				"administracion_calle_num" => true,
-				"administracion_calle_num_correccion" => false,
-				"administracion_telefono" => true,
-				"administracion_telefono_correccion" => false,
-				"administracion_prov" => true,
-				"administracion_prov_correccion" => false,
-				"administracion_dpto" => true,
-				"administracion_dpto_correccion" => false,
-				"administracion_localidad" => true,
-				"administracion_localidad_correccion" => false,
-				"administracion_cod_pos" => true,
-				"administracion_cod_pos_correccion" => false,
-				"administracion_otro" => true,
-				"administracion_otro_correccion" => false,
-				"boton_guardar_tres" => false,
-				"paso_tres" => true,
-	
-				"num_exp" => true,
-				"num_exp_correccion" => false,
-				"distrito" => true,
-				"distrito_correccion" => false,
-				"categoria" => true,
-				"categoria_correccion" => false,
-				"nombre_mina" => true,
-				"nombre_mina_correccion" => false,
-				"descripcion_mina" => true,
-				"descripcion_correccion" => false,
-				"resolucion_concesion" => true,
-				"resolucion_concesion_correccion" => false,
-				"plano_mina" => true,
-				"plano_mina_correccion" => false,
-				"minerales" => true,
-				"minerales_correccion" => false,
-				"titulo" => true,
-				"titulo_correccion" => true,
-				"boton_guardar_cuatro" => true,
-				"paso_cuatro" => true,
-	
-				"owner" => true,
-				"owner_correccion" => false,
-				"arrendatario" => true,
-				"arrendatario_correccion" => false,
-				"concesionario" => true,
-				"concesionario_correccion" => false,
-				"sustancias" => true,
-				"sustancias_correccion" => false,
-				"otros" => true,
-				"otros_correccion" => false,
-				
-				"concesion" => true,
-				"concesion_correccion" => false,
-				"contancias_canon" => true,
-				"constancias_canon_correccion" => false,
-				"dia" => true,
-				"dia_correccion" => false,
-				"iia" => true,
-				"iia_correccion" => false,
-				"acciones" => true,
-				"acciones_correccion" => false,
-				"actividades" => true,
-				"actividades_correccion" => false,
-				"fecha_alta_dia" => true,
-				"fecha_alta_dia_correccion" => false,
-				"fecha_vencimiento_dia" => true,
-				"fecha_vencimiento_dia_correccion" => false,
-				"boton_guardar_cinco" => true,
-				"paso_cinco" => true,
-	
-				"ubicacion_prov" => true,
-				"ubicacion_prov_correccion" => false,
-				"ubicacion_dpto" => true,
-				"ubicacion_dpto_correccion" => false,
-				"ubicacion_localidad" => true,
-				"ubicacion_localidad_correccion" => false,
-				"ubicacion_sistema" => true,
-				"ubicacion_sistema_correccion" => false,
-				"ubicacion_latitud" => true,
-				"ubicacion_latitud_correccion" => false,
-				"ubicacion_long" => true,
-				"ubicacion_long_correccion" => false,
-				"boton_guardar_seis" => true,
-				"paso_seis" => true,
-	
-	
-				"nombre_gestor" => false,
-				"nombre_gestor_correccion" => false,
-				"dni_gestor" => false,
-				"dni_gestor_correccion" => false,
-				"profesion_gestor" => false,
-				"profesion_gestor_correccion" => false,
-				"telefono_gestor" => false,
-				"telefono_gestor_correccion" => false,
-				"notificacion_gestor" => false,
-				"notificacion_gestor_correccion" => false,
-				"email_gestor" => false,
-				"email_gestor_correccion" => false,
-				"dni_productor" => false,
-				"dni_productor_correccion" => false,
-				"foto_productor" => false,
-				"foto_productor_correccion" => false,
-				"constancia_afip" => false,
-				"constancia_afip_correccion" => false,
-				"autorizacion_gestor" => false,
-				"autorizacion_gestor_correccion" => false,
-				"paso_catamarca"=> false,
-				"boton_catamarca"=> false,
-	
-	
-				"estado" => true,
-	
-				"boton_actualizar" => true,
-			];*/
-			//seteo que puedo editar y que no
-			$disables = [
-				"razon_social" => true,
-				"razon_social_correccion" => false,
-				"email" => true,
-				"email_correccion" => false,
-				"cuit" => true,
-				"cuit_correccion" => false,
-				"num_prod" => true,
-				"num_prod_correccion" => false,
-				"tipo_sociedad" => true,
-				"tipo_sociedad_correccion" => false,
-				"inscripcion_dgr" => true,
-				"inscripcion_dgr_correccion" => false,
-				"constancia_sociedad" => true,
-				"cosntancia_sociedad_correccion" => false,
-				"boton_guardar_uno" => false,
-				"paso_uno" => false,
-
-				"legal_calle" => true,
-				"legal_calle_correccion" => false,
-				"legal_calle_num" => true,
-				"legal_calle_num_correccion" => false,
-				"legal_telefono" => true,
-				"legal_telefono_correccion" => false,
-				"legal_prov" => true,
-				"legal_prov_correccion" => false,
-				"legal_dpto" => true,
-				"legal_dpto_correccion" => false,
-				"legal_localidad" => true,
-				"legal_localidad_correccion" => false,
-				"legal_cod_pos" => true,
-				"legal_cod_pos_correccion" => false,
-				"legal_otro" => true,
-				"legal_otro_correccion" => false,
-				"boton_guardar_dos" => false,
-				"paso_dos" => false,
-
-
-				"administracion_calle" => true,
-				"administracion_correccion" => false,
-				"administracion_calle_num" => true,
-				"administracion_calle_num_correccion" => false,
-				"administracion_telefono" => true,
-				"administracion_telefono_correccion" => false,
-				"administracion_prov" => true,
-				"administracion_prov_correccion" => false,
-				"administracion_dpto" => true,
-				"administracion_dpto_correccion" => false,
-				"administracion_localidad" => true,
-				"administracion_localidad_correccion" => false,
-				"administracion_cod_pos" => true,
-				"administracion_cod_pos_correccion" => false,
-				"administracion_otro" => true,
-				"administracion_otro_correccion" => false,
-				"boton_guardar_tres" => false,
-				"paso_tres" => false,
-
-
-
-				"num_exp" => true,
-				"num_exp_correccion" => false,
-				"distrito" => true,
-				"distrito_correccion" => false,
-				"categoria" => true,
-				"categoria_correccion" => false,
-				"nombre_mina" => true,
-				"nombre_mina_correccion" => false,
-				"descripcion_mina" => true,
-				"descripcion_correccion" => false,
-				"resolucion_concesion" => true,
-				"resolucion_concesion_correccion" => false,
-				"plano_mina" => true,
-				"plano_mina_correccion" => false,
-				"minerales" => true,
-				"minerales_correccion" => false,
-				"titulo" => true,
-				"titulo_correccion" => false,
-				"boton_guardar_cuatro" => false,
-				"paso_cuatro" => false,
-
-
-
-				"owner" => true,
-				"owner_correccion" => false,
-				"arrendatario" => true,
-				"arrendatario_correccion" => false,
-				"concesionario" => true,
-				"concesionario_correccion" => false,
-				"sustancias" => true,
-				"sustancias_correccion" => false,
-				"otros" => true,
-				"otros_correccion" => false,
-				
-				"concesion" => true,
-				"concesion_correccion" => false,
-				"contancias_canon" => true,
-				"constancias_canon_correccion" => false,
-				"dia" => true,
-				"dia_correccion" => false,
-				"iia" => true,
-				"iia_correccion" => false,
-				"acciones" => true,
-				"acciones_correccion" => false,
-				"actividades" => true,
-				"actividades_correccion" => false,
-				"fecha_alta_dia" => true,
-				"fecha_alta_dia_correccion" => false,
-				"fecha_vencimiento_dia" => true,
-				"fecha_vencimiento_dia_correccion" => false,
-				"boton_guardar_cinco" => false,
-				"paso_cinco" => false,
-
-
-				"ubicacion_prov" => true,
-				"ubicacion_prov_correccion" => false,
-				"ubicacion_dpto" => true,
-				"ubicacion_dpto_correccion" => false,
-				"ubicacion_localidad" => true,
-				"ubicacion_localidad_correccion" => false,
-				"ubicacion_sistema" => true,
-				"ubicacion_sistema_correccion" => false,
-				"ubicacion_latitud" => true,
-				"ubicacion_latitud_correccion" => false,
-				"ubicacion_long" => true,
-				"ubicacion_long_correccion" => false,
-				"ubicacion_estado" => true,
-				"ubicacion_estado_correccion" => false,
-				"boton_guardar_seis" => false,
-				"paso_seis" => false,
-
-				"estado" => false,
-				"boton_actualizar" => false,
-
-			];
-			$mostrar = [
-				"razon_social" => true,
-				"razon_social_correccion" => true,
-				"email" => true,
-				"email_correccion" => true,
-				"cuit" => true,
-				"cuit_correccion" => true,
-				"num_prod" => true,
-				"num_prod_correccion" => true,
-				"tipo_sociedad" => true,
-				"tipo_sociedad_correccion" => true,
-				"tipo_sociedad_observaciono" => true,
-				"inscripcion_dgr" => true,
-				"inscripcion_dgr_correccion" => true,
-				"constancia_sociedad" => true,
-				"cosntancia_sociedad_correccion" => true,
-				"boton_guardar_uno" => true,
-				"paso_uno" => true,
-
-				
-				"legal_calle" => true,
-				"legal_calle_correccion" => true,
-				"legal_calle_num" => true,
-				"legal_calle_num_correccion" => true,
-				"legal_telefono" => true,
-				"legal_telefono_correccion" => true,
-				"legal_prov" => true,
-				"legal_prov_correccion" => true,
-				"legal_dpto" => true,
-				"legal_dpto_correccion" => true,
-				"legal_localidad" => true,
-				"legal_localidad_correccion" => true,
-				"legal_cod_pos" => true,
-				"legal_cod_pos_correccion" => true,
-				"legal_otro" => true,
-				"legal_otro_correccion" => true,
-				"boton_guardar_dos" => true,
-				"paso_dos" => true,
-
-
-
-				"administracion_calle" => true,
-				"administracion_correccion" => true,
-				"administracion_calle_num" => true,
-				"administracion_calle_num_correccion" => true,
-				"administracion_telefono" => true,
-				"administracion_telefono_correccion" => true,
-				"administracion_prov" => true,
-				"administracion_prov_correccion" => true,
-				"administracion_dpto" => true,
-				"administracion_dpto_correccion" => true,
-				"administracion_localidad" => true,
-				"administracion_localidad_correccion" => true,
-				"administracion_cod_pos" => true,
-				"administracion_cod_pos_correccion" => true,
-				"administracion_otro" => true,
-				"administracion_otro_correccion" => true,
-				"boton_guardar_tres" => true,
-				"paso_tres" => true,
-
-
-
-				"num_exp" => true,
-				"num_exp_correccion" => true,
-				"distrito" => true,
-				"distrito_correccion" => true,
-				"categoria" => true,
-				"categoria_correccion" => true,
-				"nombre_mina" => true,
-				"nombre_mina_correccion" => true,
-				"descripcion_mina" => true,
-				"descripcion_correccion" => true,
-				"resolucion_concesion" => true,
-				"resolucion_concesion_correccion" => true,
-				"plano_mina" => true,
-				"plano_mina_correccion" => true,
-				"minerales" => true,
-				"minerales_correccion" => true,
-				"titulo" => true,
-				"titulo_correccion" => true,
-				"boton_guardar_cuatro" => true,
-				"paso_cuatro" => true,
-
-
-
-				"owner" => true,
-				"owner_correccion" => true,
-				"arrendatario" => true,
-				"arrendatario_correccion" => true,
-				"concesionario" => true,
-				"concesionario_correccion" => true,
-				"sustancias" => true,
-				"sustancias_correccion" => true,
-				"otros" => true,
-				"otros_correccion" => true,
-				
-				"concesion" => true,
-				"concesion_correccion" => false,
-				"contancias_canon" => true,
-				"constancias_canon_correccion" => true,
-				"dia" => true,
-				"dia_correccion" => true,
-				"iia" => true,
-				"iia_correccion" => true,
-				"acciones" => true,
-				"acciones_correccion" => true,
-				"actividades" => true,
-				"actividades_correccion" => true,
-				"fecha_alta_dia" => true,
-				"fecha_alta_dia_correccion" => true,
-				"fecha_vencimiento_dia" => true,
-				"fecha_vencimiento_dia_correccion" => true,
-				"boton_guardar_cinco" => true,
-				"paso_cinco" => true,
-
-
-				"ubicacion_prov" => true,
-				"ubicacion_prov_correccion" => true,
-				"ubicacion_dpto" => true,
-				"ubicacion_dpto_correccion" => true,
-				"ubicacion_localidad" => true,
-				"ubicacion_localidad_correccion" => true,
-				"ubicacion_sistema" => true,
-				"ubicacion_sistema_correccion" => true,
-				"ubicacion_latitud" => true,
-				"ubicacion_latitud_correccion" => true,
-				"ubicacion_long" => true,
-				"ubicacion_long_correccion" => true,
-				"boton_guardar_seis" => true,
-				"paso_seis" => true,
-
-
-				"estado" => true,
-
-				"boton_actualizar" => true,
-			];
-		}
-		elseif(Auth::user()->hasRole('Autoridad'))
-		{
-			//dd("entrre");
-			$disables = [
-				"razon_social" => true,
-				"razon_social_correccion" => false,
-				"email" => true,
-				"email_correccion" => false,
-				"cuit" => true,
-				"cuit_correccion" => false,
-				"num_prod" => true,
-				"num_prod_correccion" => false,
-				"tipo_sociedad" => true,
-				"tipo_sociedad_correccion" => false,
-				"inscripcion_dgr" => true,
-				"inscripcion_dgr_correccion" => false,
-				"constancia_sociedad" => true,
-				"cosntancia_sociedad_correccion" => false,
-				"boton_guardar_uno" => false,
-				"paso_uno" => false,
-	
-				"legal_calle" => true,
-				"legal_calle_correccion" => false,
-				"legal_calle_num" => true,
-				"legal_calle_num_correccion" => false,
-				"legal_telefono" => true,
-				"legal_telefono_correccion" => false,
-				"legal_prov" => true,
-				"legal_prov_correccion" => false,
-				"legal_dpto" => true,
-				"legal_dpto_correccion" => false,
-				"legal_localidad" => true,
-				"legal_localidad_correccion" => false,
-				"legal_cod_pos" => true,
-				"legal_cod_pos_correccion" => false,
-				"legal_otro" => true,
-				"legal_otro_correccion" => false,
-				"boton_guardar_dos" => false,
-				"paso_dos" => false,
-	
-	
-				"administracion_calle" => true,
-				"administracion_correccion" => false,
-				"administracion_calle_num" => true,
-				"administracion_calle_num_correccion" => false,
-				"administracion_telefono" => true,
-				"administracion_telefono_correccion" => false,
-				"administracion_prov" => true,
-				"administracion_prov_correccion" => false,
-				"administracion_dpto" => true,
-				"administracion_dpto_correccion" => false,
-				"administracion_localidad" => true,
-				"administracion_localidad_correccion" => false,
-				"administracion_cod_pos" => true,
-				"administracion_cod_pos_correccion" => false,
-				"administracion_otro" => true,
-				"administracion_otro_correccion" => false,
-				"boton_guardar_tres" => false,
-				"paso_tres" => false,
-	
-	
-	
-				"num_exp" => true,
-				"num_exp_correccion" => false,
-				"distrito" => true,
-				"distrito_correccion" => false,
-				"categoria" => true,
-				"categoria_correccion" => false,
-				"nombre_mina" => true,
-				"nombre_mina_correccion" => false,
-				"descripcion_mina" => true,
-				"descripcion_correccion" => false,
-				"resolucion_concesion" => true,
-				"resolucion_concesion_correccion" => false,
-				"plano_mina" => true,
-				"plano_mina_correccion" => false,
-				"minerales" => true,
-				"minerales_correccion" => false,
-				"titulo" => true,
-				"titulo_correccion" => false,
-				"boton_guardar_cuatro" => false,
-				"paso_cuatro" => false,
-	
-	
-	
-				"owner" => true,
-				"owner_correccion" => false,
-				"arrendatario" => true,
-				"arrendatario_correccion" => false,
-				"concesionario" => true,
-				"concesionario_correccion" => false,
-				"sustancias" => true,
-				"sustancias_correccion" => false,
-				"otros" => true,
-				"otros_correccion" => false,
-				
-				"concesion" => true,
-				"concesion_correccion" => false,
-				"contancias_canon" => true,
-				"constancias_canon_correccion" => false,
-				"dia" => true,
-				"dia_correccion" => false,
-				"iia" => true,
-				"iia_correccion" => false,
-				"acciones" => true,
-				"acciones_correccion" => false,
-				"actividades" => true,
-				"actividades_correccion" => false,
-				"fecha_alta_dia" => true,
-				"fecha_alta_dia_correccion" => false,
-				"fecha_vencimiento_dia" => true,
-				"fecha_vencimiento_dia_correccion" => false,
-				"boton_guardar_cinco" => false,
-				"paso_cinco" => false,
-	
-	
-				"ubicacion_prov" => true,
-				"ubicacion_prov_correccion" => false,
-				"ubicacion_dpto" => true,
-				"ubicacion_dpto_correccion" => false,
-				"ubicacion_localidad" => true,
-				"ubicacion_localidad_correccion" => false,
-				"ubicacion_sistema" => true,
-				"ubicacion_sistema_correccion" => false,
-				"ubicacion_latitud" => true,
-				"ubicacion_latitud_correccion" => false,
-				"ubicacion_long" => true,
-				"ubicacion_long_correccion" => false,
-				"ubicacion_estado" => true,
-				"ubicacion_estado_correccion" => false,
-				"boton_guardar_seis" => false,
-				"paso_seis" => false,
-	
-				"estado" => false,
-				"boton_actualizar" => false,
-	
-			];
-			$mostrar = [
-				"razon_social" => true,
-				"razon_social_correccion" => true,
-				"email" => true,
-				"email_correccion" => true,
-				"cuit" => true,
-				"cuit_correccion" => true,
-				"num_prod" => true,
-				"num_prod_correccion" => true,
-				"tipo_sociedad" => true,
-				"tipo_sociedad_correccion" => true,
-				"tipo_sociedad_observaciono" => true,
-				"inscripcion_dgr" => true,
-				"inscripcion_dgr_correccion" => true,
-				"constancia_sociedad" => true,
-				"cosntancia_sociedad_correccion" => true,
-				"boton_guardar_uno" => true,
-				"paso_uno" => true,
-	
-				
-				"legal_calle" => true,
-				"legal_calle_correccion" => true,
-				"legal_calle_num" => true,
-				"legal_calle_num_correccion" => true,
-				"legal_telefono" => true,
-				"legal_telefono_correccion" => true,
-				"legal_prov" => true,
-				"legal_prov_correccion" => true,
-				"legal_dpto" => true,
-				"legal_dpto_correccion" => true,
-				"legal_localidad" => true,
-				"legal_localidad_correccion" => true,
-				"legal_cod_pos" => true,
-				"legal_cod_pos_correccion" => true,
-				"legal_otro" => true,
-				"legal_otro_correccion" => true,
-				"boton_guardar_dos" => true,
-				"paso_dos" => true,
-	
-	
-	
-				"administracion_calle" => true,
-				"administracion_correccion" => true,
-				"administracion_calle_num" => true,
-				"administracion_calle_num_correccion" => true,
-				"administracion_telefono" => true,
-				"administracion_telefono_correccion" => true,
-				"administracion_prov" => true,
-				"administracion_prov_correccion" => true,
-				"administracion_dpto" => true,
-				"administracion_dpto_correccion" => true,
-				"administracion_localidad" => true,
-				"administracion_localidad_correccion" => true,
-				"administracion_cod_pos" => true,
-				"administracion_cod_pos_correccion" => true,
-				"administracion_otro" => true,
-				"administracion_otro_correccion" => true,
-				"boton_guardar_tres" => true,
-				"paso_tres" => true,
-	
-	
-	
-				"num_exp" => true,
-				"num_exp_correccion" => true,
-				"distrito" => true,
-				"distrito_correccion" => true,
-				"categoria" => true,
-				"categoria_correccion" => true,
-				"nombre_mina" => true,
-				"nombre_mina_correccion" => true,
-				"descripcion_mina" => true,
-				"descripcion_correccion" => true,
-				"resolucion_concesion" => true,
-				"resolucion_concesion_correccion" => true,
-				"plano_mina" => true,
-				"plano_mina_correccion" => true,
-				"minerales" => true,
-				"minerales_correccion" => true,
-				"titulo" => true,
-				"titulo_correccion" => true,
-				"boton_guardar_cuatro" => true,
-				"paso_cuatro" => true,
-	
-	
-	
-				"owner" => true,
-				"owner_correccion" => true,
-				"arrendatario" => true,
-				"arrendatario_correccion" => true,
-				"concesionario" => true,
-				"concesionario_correccion" => true,
-				"sustancias" => true,
-				"sustancias_correccion" => true,
-				"otros" => true,
-				"otros_correccion" => true,
-				
-				"concesion" => true,
-				"concesion_correccion" => false,
-				"contancias_canon" => true,
-				"constancias_canon_correccion" => true,
-				"dia" => true,
-				"dia_correccion" => true,
-				"iia" => true,
-				"iia_correccion" => true,
-				"acciones" => true,
-				"acciones_correccion" => true,
-				"actividades" => true,
-				"actividades_correccion" => true,
-				"fecha_alta_dia" => true,
-				"fecha_alta_dia_correccion" => true,
-				"fecha_vencimiento_dia" => true,
-				"fecha_vencimiento_dia_correccion" => true,
-				"boton_guardar_cinco" => true,
-				"paso_cinco" => true,
-	
-	
-				"ubicacion_prov" => true,
-				"ubicacion_prov_correccion" => true,
-				"ubicacion_dpto" => true,
-				"ubicacion_dpto_correccion" => true,
-				"ubicacion_localidad" => true,
-				"ubicacion_localidad_correccion" => true,
-				"ubicacion_sistema" => true,
-				"ubicacion_sistema_correccion" => true,
-				"ubicacion_latitud" => true,
-				"ubicacion_latitud_correccion" => true,
-				"ubicacion_long" => true,
-				"ubicacion_long_correccion" => true,
-				"boton_guardar_seis" => true,
-				"paso_seis" => true,
-	
-	
-				"estado" => true,
-	
-				"boton_actualizar" => true,
-			];
-		}
-		elseif(Auth::user()->hasRole('Administrador'))
-		{
-			//dd("aca");
-			$disables = [
-				"razon_social" => false,
-				"razon_social_correccion" => false,
-				"email" => false,
-				"email_correccion" => false,
-				"cuit" => false,
-				"cuit_correccion" => false,
-				"num_prod" => false,
-				"num_prod_correccion" => false,
-				"tipo_sociedad" => false,
-				"tipo_sociedad_correccion" => false,
-				"inscripcion_dgr" => false,
-				"inscripcion_dgr_correccion" => false,
-				"constancia_sociedad" => false,
-				"cosntancia_sociedad_correccion" => false,
-				"boton_guardar_uno" => false,
-				"paso_uno" => false,
-	
-				"legal_calle" => false,
-				"legal_calle_correccion" => false,
-				"legal_calle_num" => false,
-				"legal_calle_num_correccion" => false,
-				"legal_telefono" => false,
-				"legal_telefono_correccion" => false,
-				"legal_prov" => false,
-				"legal_prov_correccion" => false,
-				"legal_dpto" => false,
-				"legal_dpto_correccion" => false,
-				"legal_localidad" => false,
-				"legal_localidad_correccion" => false,
-				"legal_cod_pos" => false,
-				"legal_cod_pos_correccion" => false,
-				"legal_otro" => false,
-				"legal_otro_correccion" => false,
-				"boton_guardar_dos" => false,
-				"paso_dos" => false,
-	
-	
-				"administracion_calle" => false,
-				"administracion_correccion" => false,
-				"administracion_calle_num" => false,
-				"administracion_calle_num_correccion" => false,
-				"administracion_telefono" => false,
-				"administracion_telefono_correccion" => false,
-				"administracion_prov" => false,
-				"administracion_prov_correccion" => false,
-				"administracion_dpto" => false,
-				"administracion_dpto_correccion" => false,
-				"administracion_localidad" => false,
-				"administracion_localidad_correccion" => false,
-				"administracion_cod_pos" => false,
-				"administracion_cod_pos_correccion" => false,
-				"administracion_otro" => false,
-				"administracion_otro_correccion" => false,
-				"boton_guardar_tres" => false,
-				"paso_tres" => false,
-	
-	
-	
-				"num_exp" => false,
-				"num_exp_correccion" => false,
-				"distrito" => false,
-				"distrito_correccion" => false,
-				"categoria" => false,
-				"categoria_correccion" => false,
-				"nombre_mina" => false,
-				"nombre_mina_correccion" => false,
-				"descripcion_mina" => false,
-				"descripcion_correccion" => false,
-				"resolucion_concesion" => false,
-				"resolucion_concesion_correccion" => false,
-				"plano_mina" => false,
-				"plano_mina_correccion" => false,
-				"minerales" => false,
-				"minerales_correccion" => false,
-				"titulo" => false,
-				"titulo_correccion" => false,
-				"boton_guardar_cuatro" => false,
-				"paso_cuatro" => false,
-	
-	
-	
-				"owner" => false,
-				"owner_correccion" => false,
-				"arrendatario" => false,
-				"arrendatario_correccion" => false,
-				"concesionario" => false,
-				"concesionario_correccion" => false,
-				"sustancias" => false,
-				"sustancias_correccion" => false,
-				"otros" => false,
-				"otros_correccion" => false,
-				
-				"concesion" => false,
-				"concesion_correccion" => false,
-				"contancias_canon" => false,
-				"constancias_canon_correccion" => false,
-				"dia" => false,
-				"dia_correccion" => false,
-				"iia" => false,
-				"iia_correccion" => false,
-				"acciones" => false,
-				"acciones_correccion" => false,
-				"actividades" => false,
-				"actividades_correccion" => false,
-				"fecha_alta_dia" => false,
-				"fecha_alta_dia_correccion" => false,
-				"fecha_vencimiento_dia" => false,
-				"fecha_vencimiento_dia_correccion" => false,
-				"boton_guardar_cinco" => false,
-				"paso_cinco" => false,
-	
-	
-				"ubicacion_prov" => false,
-				"ubicacion_prov_correccion" => false,
-				"ubicacion_dpto" => false,
-				"ubicacion_dpto_correccion" => false,
-				"ubicacion_localidad" => false,
-				"ubicacion_localidad_correccion" => false,
-				"ubicacion_sistema" => false,
-				"ubicacion_sistema_correccion" => false,
-				"ubicacion_latitud" => false,
-				"ubicacion_latitud_correccion" => false,
-				"ubicacion_long" => false,
-				"ubicacion_long_correccion" => false,
-				"ubicacion_estado" => false,
-				"ubicacion_estado_correccion" => false,
-				"ubicacion_estado_observacion" => false,
-				"boton_guardar_seis" => false,
-				"paso_seis" => false,
-	
-	
-				"nombre_gestor" => false,
-				"nombre_gestor_correccion" => false,
-				"dni_gestor" => false,
-				"dni_gestor_correccion" => false,
-				"profesion_gestor" => false,
-				"profesion_gestor_correccion" => false,
-				"telefono_gestor" => false,
-				"telefono_gestor_correccion" => false,
-				"notificacion_gestor" => false,
-				"notificacion_gestor_correccion" => false,
-				"email_gestor" => false,
-				"email_gestor_correccion" => false,
-				"dni_productor" => false,
-				"dni_productor_correccion" => false,
-				"foto_productor" => false,
-				"foto_productor_correccion" => false,
-				"constancia_afip" => false,
-				"constancia_afip_correccion" => false,
-				"autorizacion_gestor" => false,
-				"autorizacion_gestor_correccion" => false,
-				"paso_catamarca"=> false,
-				"boton_catamarca"=> false,
-	
-				"estado" => false,
-				"boton_actualizar" => false,
-	
-			];
-			$mostrar = [
-				"razon_social" => true,
-				"razon_social_correccion" => false,
-				"email" => true,
-				"email_correccion" => false,
-				"cuit" => true,
-				"cuit_correccion" => false,
-				"num_prod" => true,
-				"num_prod_correccion" => false,
-				"tipo_sociedad" => true,
-				"tipo_sociedad_correccion" => false,
-				"inscripcion_dgr" => true,
-				"inscripcion_dgr_correccion" => false,
-				"constancia_sociedad" => true,
-				"cosntancia_sociedad_correccion" => false,
-				"boton_guardar_uno" => true,
-				"paso_uno" => true,
-	
-				"legal_calle" => true,
-				"legal_calle_correccion" => false,
-				"legal_calle_num" => true,
-				"legal_calle_num_correccion" => false,
-				"legal_telefono" => true,
-				"legal_telefono_correccion" => false,
-				"legal_prov" => true,
-				"legal_prov_correccion" => false,
-				"legal_dpto" => true,
-				"legal_dpto_correccion" => false,
-				"legal_localidad" => true,
-				"legal_localidad_correccion" => false,
-				"legal_cod_pos" => true,
-				"legal_cod_pos_correccion" => false,
-				"legal_otro" => true,
-				"legal_otro_correccion" => false,
-				"boton_guardar_dos" => true,
-				"paso_dos" => true,
-	
-				"administracion_calle" => true,
-				"administracion_correccion" => false,
-				"administracion_calle_num" => true,
-				"administracion_calle_num_correccion" => false,
-				"administracion_telefono" => true,
-				"administracion_telefono_correccion" => false,
-				"administracion_prov" => true,
-				"administracion_prov_correccion" => false,
-				"administracion_dpto" => true,
-				"administracion_dpto_correccion" => false,
-				"administracion_localidad" => true,
-				"administracion_localidad_correccion" => false,
-				"administracion_cod_pos" => true,
-				"administracion_cod_pos_correccion" => false,
-				"administracion_otro" => true,
-				"administracion_otro_correccion" => false,
-				"boton_guardar_tres" => true,
-				"paso_tres" => true,
-	
-				"num_exp" => true,
-				"num_exp_correccion" => false,
-				"distrito" => true,
-				"distrito_correccion" => false,
-				"categoria" => true,
-				"categoria_correccion" => false,
-				"nombre_mina" => true,
-				"nombre_mina_correccion" => false,
-				"descripcion_mina" => true,
-				"descripcion_correccion" => false,
-				"resolucion_concesion" => true,
-				"resolucion_concesion_correccion" => false,
-				"plano_mina" => true,
-				"plano_mina_correccion" => false,
-				"minerales" => true,
-				"minerales_correccion" => false,
-				"titulo" => true,
-				"titulo_correccion" => true,
-				"boton_guardar_cuatro" => true,
-				"paso_cuatro" => true,
-	
-				"owner" => true,
-				"owner_correccion" => false,
-				"arrendatario" => true,
-				"arrendatario_correccion" => false,
-				"concesionario" => true,
-				"concesionario_correccion" => false,
-				"sustancias" => true,
-				"sustancias_correccion" => false,
-				"otros" => true,
-				"otros_correccion" => false,
-				
-				"concesion" => true,
-				"concesion_correccion" => false,
-				"contancias_canon" => true,
-				"constancias_canon_correccion" => false,
-				"dia" => true,
-				"dia_correccion" => false,
-				"iia" => true,
-				"iia_correccion" => false,
-				"acciones" => true,
-				"acciones_correccion" => false,
-				"actividades" => true,
-				"actividades_correccion" => false,
-				"fecha_alta_dia" => true,
-				"fecha_alta_dia_correccion" => false,
-				"fecha_vencimiento_dia" => true,
-				"fecha_vencimiento_dia_correccion" => false,
-				"boton_guardar_cinco" => true,
-				"paso_cinco" => true,
-	
-				"ubicacion_prov" => true,
-				"ubicacion_prov_correccion" => false,
-				"ubicacion_dpto" => true,
-				"ubicacion_dpto_correccion" => false,
-				"ubicacion_localidad" => true,
-				"ubicacion_localidad_correccion" => false,
-				"ubicacion_sistema" => true,
-				"ubicacion_sistema_correccion" => false,
-				"ubicacion_latitud" => true,
-				"ubicacion_latitud_correccion" => false,
-				"ubicacion_long" => true,
-				"ubicacion_long_correccion" => false,
-				"boton_guardar_seis" => true,
-				"paso_seis" => true,
-	
-	
-				"nombre_gestor" => false,
-				"nombre_gestor_correccion" => false,
-				"dni_gestor" => false,
-				"dni_gestor_correccion" => false,
-				"profesion_gestor" => false,
-				"profesion_gestor_correccion" => false,
-				"telefono_gestor" => false,
-				"telefono_gestor_correccion" => false,
-				"notificacion_gestor" => false,
-				"notificacion_gestor_correccion" => false,
-				"email_gestor" => false,
-				"email_gestor_correccion" => false,
-				"dni_productor" => false,
-				"dni_productor_correccion" => false,
-				"foto_productor" => false,
-				"foto_productor_correccion" => false,
-				"constancia_afip" => false,
-				"constancia_afip_correccion" => false,
-				"autorizacion_gestor" => false,
-				"autorizacion_gestor_correccion" => false,
-				"paso_catamarca"=> false,
-				"boton_catamarca"=> false,
-	
-	
-				"estado" => true,
-	
-				"boton_actualizar" => true,
-			];
-		}
-
-		
-
-		// dd(Auth::user());
-		//dd(Auth::user()->hasRole('Administrador'));
-		//dd(Auth::user()->hasRole('Administrador'));
-
 		//empiezo sin poder entrar
 		$entro = false;
 		$soy_administrador = false;
@@ -4565,41 +7331,20 @@ class FormAltaProductorController extends Controller
 			$soy_autoridad_minera = false;
 			$soy_productor = true;
 		}
-
 		
-		/*$soy_autoridad_minera = true;
-		if(Auth::user()->id == 1)
-			$entro = true;
-		elseif($soy_autoridad_minera)
-			$entro = true;
-		else{
-			$borradores = FormAltaProductor::select('created_by')->where("id", "=", $id)->first();
-			//dd($borradores->created_by);
-			if($borradores->created_by == Auth::user()->id ){
-				$entro = true;
-			}
-			else{
-				$entro = false;
-			}
-		}
-		$entro= true;*/
-		//dd($soy_administrador,$soy_autoridad_minera);
 		if($entro)
 		{
-			
-		
 			$borradores = FormAltaProductor::find($id);
-
 			//var_dump($borradores->owner);
 			$borradores = $this->prasar_num_a_boolean($borradores);
 			//var_dump($borradores->constancia_pago_canon);die();
 			$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
 
 			$datos_creador = User::find($borradores->created_by);
-			
 
+			$datos_disables_mostrar = $this->dame_los_permisos_de_los_inputs('editar',$borradores->estado);
+			//dd($datos_creador);
 			//var_dump($borradores->created_by);die();
-
 
 			if(is_null($borradores->razon_social_correcto)) 
 				$borradores->razon_social_correcto = 'nada';
@@ -4608,15 +7353,11 @@ class FormAltaProductorController extends Controller
 			else $borradores->razon_social_correcto = false;
 
 			//ar_dump($borradores->razon_social_correcto);die();
-
-
-
 			if(is_null($borradores->email_correcto)) 
 				$borradores->email_correcto = 'nada';
 			elseif(intval($borradores->email_correcto) == 1) 
 				$borradores->email_correcto = true;
 			else $borradores->email_correcto = false;
-
 
 			if(is_null($borradores->cuit_correcto)) 
 				$borradores->cuit_correcto = 'nada';
@@ -4624,13 +7365,11 @@ class FormAltaProductorController extends Controller
 				$borradores->cuit_correcto = true;
 			else $borradores->cuit_correcto = false;
 
-
 			if(is_null($borradores->numeroproductor_correcto)) 
 				$borradores->numeroproductor_correcto = 'nada';
 			elseif(intval($borradores->numeroproductor_correcto) == 1) 
 				$borradores->numeroproductor_correcto = true;
 			else $borradores->numeroproductor_correcto = false;
-
 
 			if(is_null($borradores->tiposociedad_correcto)) 
 				$borradores->tiposociedad_correcto = 'nada';
@@ -4638,31 +7377,26 @@ class FormAltaProductorController extends Controller
 				$borradores->tiposociedad_correcto = true;
 			else $borradores->tiposociedad_correcto = false;
 
-
 			if(is_null($borradores->inscripciondgr_correcto)) 
 				$borradores->inscripciondgr_correcto = 'nada';
 			elseif(intval($borradores->inscripciondgr_correcto) == 1) 
 				$borradores->inscripciondgr_correcto = true;
 			else $borradores->inscripciondgr_correcto = false;
 
+			
 
-			if(is_null($borradores->constanciasociedad_correcto)) 
-				$borradores->constanciasociedad_correcto = 'nada';
-			elseif(intval($borradores->constanciasociedad_correcto) == 1) 
-				$borradores->constanciasociedad_correcto = true;
-			else $borradores->constanciasociedad_correcto = false;
-
-
-
+			if(is_null($borradores->constaciasociedad_correcto)) 
+				$borradores->constaciasociedad_correcto = 'nada';
+			elseif(intval($borradores->constaciasociedad_correcto) == 1) 
+				$borradores->constaciasociedad_correcto = true;
+			else $borradores->constaciasociedad_correcto = false;
+			$borradores->constanciasociedad_correcto = $borradores->constaciasociedad_correcto;
 
 			if(is_null($borradores->leal_departamento_correcto)) 
 				$borradores->leal_departamento_correcto = 'nada';
 			elseif(intval($borradores->leal_departamento_correcto) == 1) 
 				$borradores->leal_departamento_correcto = true;
 			else $borradores->leal_departamento_correcto = false;
-
-
-
 
 			if(is_null($borradores->owner_correcto)) 
 				$borradores->owner_correcto = 'nada';
@@ -4694,17 +7428,124 @@ class FormAltaProductorController extends Controller
 				$borradores->susteancias_de_aprovechamiento_comun_correcto = true;
 			else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
 
+			if(is_null($borradores->administracion_telefono_correcto)) 
+				$borradores->administracion_telefono_correcto = 'nada';
+			elseif(intval($borradores->administracion_telefono_correcto) == 1) 
+				$borradores->administracion_telefono_correcto = true;
+			elseif (intval($borradores->administracion_telefono_correcto) == 0) 
+				$borradores->administracion_telefono_correcto = false;
+
+			if(is_null($borradores->resolucion_concesion_minera_correcto)) 
+				$borradores->resolucion_concesion_minera_correcto = 'nada';
+			elseif(intval($borradores->resolucion_concesion_minera_correcto) == 1) 
+				$borradores->resolucion_concesion_minera_correcto = true;
+			elseif (intval($borradores->resolucion_concesion_minera_correcto) == 0) 
+				$borradores->resolucion_concesion_minera_correcto = false;
 			
+			
+			if(is_null($borradores->plano_inmueble_correcto)) 
+				$borradores->plano_inmueble_correcto = 'nada';
+			elseif(intval($borradores->plano_inmueble_correcto) == 1) 
+				$borradores->plano_inmueble_correcto = true;
+			elseif (intval($borradores->plano_inmueble_correcto) == 0) 
+				$borradores->plano_inmueble_correcto = false;
 
+			if(is_null($borradores->titulo_contrato_posecion_correcto)) 
+				$borradores->titulo_contrato_posecion_correcto = 'nada';
+			elseif(intval($borradores->titulo_contrato_posecion_correcto) == 1) 
+				$borradores->titulo_contrato_posecion_correcto = true;
+			elseif (intval($borradores->titulo_contrato_posecion_correcto) == 0) 
+				$borradores->titulo_contrato_posecion_correcto = false;
+			//dd($borradores->resolucion_concesion_minera_correcto);
+			
+			if(is_null($borradores->owner_correcto)) 
+				$borradores->owner_correcto = 'nada';
+			elseif(intval($borradores->owner_correcto) == 1) 
+				$borradores->owner_correcto = true;
+			elseif (intval($borradores->owner_correcto) == 0) 
+				$borradores->owner_correcto = false;
+			
+			if(is_null($borradores->arrendatario_correcto)) 
+				$borradores->arrendatario_correcto = 'nada';
+			elseif(intval($borradores->arrendatario_correcto) == 1) 
+				$borradores->arrendatario_correcto = true;
+			elseif (intval($borradores->arrendatario_correcto) == 0) 
+				$borradores->concesionario_correcto = false;
+			
+			if(is_null($borradores->concesionario_correcto)) 
+				$borradores->concesionario_correcto = 'nada';
+			elseif(intval($borradores->concesionario_correcto) == 1) 
+				$borradores->concesionario_correcto = true;
+			elseif (intval($borradores->concesionario_correcto) == 0) 
+				$borradores->concesionario_correcto = false;
 
-			//dd($borradores->categoria);
+			if(is_null($borradores->otros_correcto)) 
+				$borradores->otros_correcto = 'nada';
+			elseif(intval($borradores->otros_correcto) == 1) 
+				$borradores->otros_correcto = true;
+			elseif (intval($borradores->otros_correcto) == 0) 
+				$borradores->otros_correcto = false;
 
-			return Inertia::render('Productors/EditForm', ['productor' => $borradores, 'lista_minerales_cargados' => $minerales_asociados, 'creado' => $datos_creador,
-			"soy_administrador" => $soy_administrador,
-			"soy_autoridad_minera" => $soy_autoridad_minera,
-			"soy_productor" => $soy_productor,
-			"disables" => $disables,
-			"mostrar" => $mostrar,
+			if(is_null($borradores->sustancias_correcto)) 
+				$borradores->sustancias_correcto = 'nada';
+			elseif(intval($borradores->sustancias_correcto) == 1) 
+				$borradores->sustancias_correcto = true;
+			elseif (intval($borradores->sustancias_correcto) == 0) 
+				$borradores->sustancias_correcto = false;
+
+			//dd($borradores->dia_correcto,$borradores->iia_correcto );
+
+			if(is_null($borradores->iia_correcto)) 
+				$borradores->iia_correcto = 'nada';
+			elseif(intval($borradores->iia_correcto) == 1) 
+				$borradores->iia_correcto = true;
+			elseif (intval($borradores->iia_correcto) == 0) 
+				$borradores->iia_correcto = false;
+
+			if(is_null($borradores->dia_correcto)) 
+				$borradores->dia_correcto = 'nada';
+			elseif(intval($borradores->dia_correcto) == 1) 
+				$borradores->dia_correcto = true;
+			elseif (intval($borradores->dia_correcto) == 0) 
+				$borradores->dia_correcto = false;
+			
+			if(is_null($borradores->acciones_a_desarrollar_correcto)) 
+				$borradores->acciones_a_desarrollar_correcto = 'nada';
+			elseif(intval($borradores->acciones_a_desarrollar_correcto) == 1) 
+				$borradores->acciones_a_desarrollar_correcto = true;
+			elseif (intval($borradores->acciones_a_desarrollar_correcto) == 0) 
+				$borradores->acciones_a_desarrollar_correcto = false;
+				
+			if(is_null($borradores->actividad_correcto)) 
+				$borradores->actividad_correcto = 'nada';
+			elseif(intval($borradores->actividad_correcto) == 1) 
+				$borradores->actividad_correcto = true;
+			elseif (intval($borradores->actividad_correcto) == 0) 
+				$borradores->actividad_correcto = false;
+
+			if(is_null($borradores->fecha_alta_dia_correcto)) 
+				$borradores->fecha_alta_dia_correcto = 'nada';
+			elseif(intval($borradores->fecha_alta_dia_correcto) == 1) 
+				$borradores->fecha_alta_dia_correcto = true;
+			elseif (intval($borradores->fecha_alta_dia_correcto) == 0) 
+				$borradores->fecha_alta_dia_correcto = false;
+				
+			if(is_null($borradores->fecha_vencimiento_dia_correcto)) 
+				$borradores->fecha_vencimiento_dia_correcto = 'nada';
+			elseif(intval($borradores->fecha_vencimiento_dia_correcto) == 1) 
+				$borradores->fecha_vencimiento_dia_correcto = true;
+			elseif (intval($borradores->fecha_vencimiento_dia_correcto) == 0) 
+				$borradores->fecha_vencimiento_dia_correcto = false;
+
+			return Inertia::render('Productors/EditForm', [
+				'productor' => $borradores,
+				'lista_minerales_cargados' => $minerales_asociados,
+				'creado' => $datos_creador,
+				"soy_administrador" => $soy_administrador,
+				"soy_autoridad_minera" => $soy_autoridad_minera,
+				"soy_productor" => $soy_productor,
+				"disables" => $datos_disables_mostrar["disables"],
+				"mostrar" => $datos_disables_mostrar["mostrar"],
 		]);
 		}
 		else{
@@ -4738,9 +7579,14 @@ class FormAltaProductorController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
-		dd($id);
+		//dd($id);
 		$formAltaProductor = FormAltaProductor::find($id)->delete();
+		return response()->json([
+			'status' => 'ok',
+			'msg' => 'se elimino correctamente',
+			'id_eliminado' => $id
+		],201);
+
 		return Redirect::route('formulario-alta.index');
 		// $borradores = FormAltaProductor::all();
 		// return Inertia::render('Productors/List', ['borradores' => $borradores]);
@@ -6083,57 +8929,28 @@ class FormAltaProductorController extends Controller
 				
 				//var_dump($request->razon_social_correcto);die();
 				
-				if(strlen($request->tiposociedad_correcto)  == strlen("true"))
+				if($request->tiposociedad_correcto  === 'true')
 					$request->tiposociedad_correcto = 1;
 				elseif($request->tiposociedad_correcto === 'false')
 					$request->tiposociedad_correcto = 0;
 				elseif($request->tiposociedad_correcto === 'nada')
 					$request->tiposociedad_correcto = null;
 
-
-				$aux1 = $request->inscripciondgr_correcto;
-				$aux2 = "true" ;
-
-				if($aux1 ==$aux2)
-				{
-					$request->tiposociedad_correcto = 1;
-				}
-				else
-				{
-					if(strlen($request->tiposociedad_correcto) == strlen("false"))
-						$request->tiposociedad_correcto = 0;
-					else
-						$request->tiposociedad_correcto = null;
-				}
-				
-
-					$aux1 = $request->inscripciondgr_correcto;
-					$aux2 = "true" ;
-				if($aux1 == $aux2)
-				{
+				if($request->inscripciondgr_correcto  === 'true')
 					$request->inscripciondgr_correcto = 1;
-				}
-				else
-				{
-					if(strlen($request->inscripciondgr_correcto) == strlen("false"))
-						$request->inscripciondgr_correcto = 0;
-					else
-						$request->inscripciondgr_correcto = null;
-				}
+				elseif($request->inscripciondgr_correcto === 'false')
+					$request->inscripciondgr_correcto = 0;
+				elseif($request->inscripciondgr_correcto === 'nada')
+					$request->inscripciondgr_correcto = null;
 
-				$aux1 = $request->constaciasociedad_correcto;
-				$aux2 = "true" ;
-				if($aux1 == $aux2)
-				{
+				if($request->constaciasociedad_correcto  === 'true')
 					$request->constaciasociedad_correcto = 1;
-				}
-				else 
-				{
-					if(strlen($request->constaciasociedad_correcto) == strlen("false"))
-						$request->constaciasociedad_correcto = 0;
-					else
-						$request->constaciasociedad_correcto = null;
-				}
+				elseif($request->constaciasociedad_correcto === 'false')
+					$request->constaciasociedad_correcto = 0;
+				elseif($request->constaciasociedad_correcto === 'nada')
+					$request->constaciasociedad_correcto = null;
+				//dd($request->constaciasociedad_correcto);
+
 
 				//var_dump("voy a meter:");
 				//var_dump($request->email_correcto);die();
@@ -6168,7 +8985,13 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
-				return response()->json("se actualizaron los datos correctamente");
+				//return response()->json("se actualizaron los datos correctamente");
+				return response()->json([
+					'status' => 'ok',
+					'msg' => 'Datos de evaluacion ha sido actualizados correctamente.',
+					'path_inscripcion' =>$formulario_provisorio->inscripciondgr,
+					'path_constaciasociedad' =>$formulario_provisorio->constaciasociedad,
+				],201);
 			}
 			else{//soy productor
 
@@ -6203,7 +9026,9 @@ class FormAltaProductorController extends Controller
 				}
 				//else $formulario_provisorio->inscripciondgr = null;
 
-				$formulario_provisorio->estado = "borrador";
+				//$formulario_provisorio->estado = "borrador";
+				//if()
+				//$formulario_provisorio->estado = "borrador";
 
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
@@ -6294,51 +9119,6 @@ class FormAltaProductorController extends Controller
 
 	public function correccion_guardar_paso_dos(Request $request)
 	{
-		/*var_dump(
-			$request->leal_calle, 
-			$request->nombre_calle_legal_valido, 
-			$request->nombre_calle_legal_correcto, 
-			$request->obs_nombre_calle_legal, 
-			$request->obs_nombre_calle_legal_valido, 
-
-			$request->leal_numero, 
-			$request->leal_numero_valido, 
-			$request->leal_numero_correcto, 
-			$request->obs_leal_numero, 
-			$request->obs_leal_numero_valido, 
-
-			$request->leal_telefono, 
-			$request->leal_telefono_valido, 
-			$request->leal_telefono_correcto, 
-			$request->obs_leal_telefono, 
-			$request->obs_leal_telefono_valido, 
-
-			$request->leal_provincia, 
-			$request->leal_provincia_valido, 
-			$request->leal_provincia_correcto, 
-			$request->obs_leal_provincia, 
-			$request->obs_leal_provincia_valido, 
-
-			$request->leal_departamento, 
-			$request->leal_departamento_valido, 
-			$request->leal_departamento_correcto, 
-			$request->obs_leal_departamento, 
-			$request->obs_leal_departamento_valido,
-
-
-			$request->valor_de_progreso, 
-			$request->valor_de_aprobado, 
-			$request->valor_de_reprobado, 
-
-		);
-		//return response()->json("todo bien");
-		die();*/
-		// var_dump(
-		// 	$request->leal_numero_correcto, 
-		// );
-		// die();
-		//var_dump($request->leal_otro_correcto);die();
-
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select(
 			'id',
@@ -6382,46 +9162,29 @@ class FormAltaProductorController extends Controller
 
 			'updated_at')
 		->where('id', '=',$request->id)->first();
-		//var_dump($request->id);die();
-		
 		if($formulario_provisorio != null)
 		{
 			if($request->es_evaluacion){ // soy autoridad minera
 
-				if( (!is_bool($request->leal_calle_correcto)) && ($request->leal_calle_correcto == 'nada'))
-					$request->leal_calle_correcto = null;
-
+				
+				if( (!is_bool($request->nombre_calle_legal_correcto)) && ($request->nombre_calle_legal_correcto == 'nada'))
+					$request->nombre_calle_legal_correcto = null;
 				if( (!is_bool($request->leal_numero_correcto)) && ($request->leal_numero_correcto == 'nada'))
 					$request->leal_numero_correcto = null;
-
 				if( (!is_bool($request->numeroproductor_correcto)) && ($request->numeroproductor_correcto == 'nada'))
 					$request->numeroproductor_correcto = null;
-
 				if( (!is_bool($request->leal_telefono_correcto)) && ($request->leal_telefono_correcto == 'nada'))
 					$request->leal_telefono_correcto = null;
-
 				if( (!is_bool($request->leal_provincia_correcto)) && ($request->leal_provincia_correcto == 'nada'))
 					$request->leal_provincia_correcto = null;
-				//var_dump($request->leal_departamento_correcto);
 				if( (!is_bool($request->leal_departamento_correcto)) && ($request->leal_departamento_correcto == 'nada'))
 					$request->leal_departamento_correcto = null;
-				//var_dump($request->leal_departamento_correcto);die();
 				if( (!is_bool($request->leal_localidad_correcto)) && ($request->leal_localidad_correcto == 'nada'))
 					$request->leal_localidad_correcto = null;
-
 				if( (!is_bool($request->leal_cp_correcto)) && ($request->leal_cp_correcto == 'nada'))
 					$request->leal_cp_correcto = null;
-					
-				//var_dump($request->leal_otro_correcto);
 				if( (!is_bool($request->leal_otro_correcto)) && ($request->leal_otro_correcto == 'nada'))
-				{
 					$request->leal_otro_correcto = null;
-				//	echo("entre");
-
-				}
-				//var_dump($request->leal_otro_correcto);die();
-					
-
 				//lo encontre y actualizo
 				$formulario_provisorio->leal_calle_correcto = $request->nombre_calle_legal_correcto;
 				$formulario_provisorio->obs_leal_calle = $request->obs_nombre_calle_legal;
@@ -6457,6 +9220,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->save();
+
 				return response()->json("se actualizaron los datos correctamente");
 			}
 			else{//soy productor
@@ -6864,20 +9628,35 @@ class FormAltaProductorController extends Controller
 				else
 					$request->mina_cantera_correcto = null;
 
+
+
+			
+
+
+		if( (!is_bool($request->constancia_pago_canon_correcto)) && ($request->constancia_pago_canon_correcto == 'nada'))
+			$request->constancia_pago_canon_correcto = null;
+		elseif($request->constancia_pago_canon_correcto == 'false')
+			$request->constancia_pago_canon_correcto = false;
+		elseif($request->constancia_pago_canon_correcto == 'true')
+			$request->constancia_pago_canon_correcto = true;
+
+
+
 				if($request->plano_inmueble_correcto == 'false')
 					$request->plano_inmueble_correcto = false;
 				elseif($request->plano_inmueble_correcto == 'true')
 					$request->plano_inmueble_correcto = true;
 				else
 					$request->plano_inmueble_correcto = null;
-
+				
 				if($request->resolucion_concesion_minera_correcto == 'false')
 					$request->resolucion_concesion_minera_correcto = false;
 				elseif($request->resolucion_concesion_minera_correcto == 'true')
 					$request->resolucion_concesion_minera_correcto = true;
 				else
 					$request->resolucion_concesion_minera_correcto = null;
-
+					
+					//var_dump($request->resolucion_concesion_minera_correcto);die();
 				if($request->titulo_contrato_posecion_correcto == 'false')
 					$request->titulo_contrato_posecion_correcto = false;
 				elseif($request->titulo_contrato_posecion_correcto == 'true')
@@ -7263,6 +10042,8 @@ class FormAltaProductorController extends Controller
 		);
 		die();*/
 		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
+
+		
 		if($request->fecha_alta_dia == 'null')
 			$request->fecha_alta_dia = null;
 		if($request->fecha_vencimiento_dia == 'null')
@@ -7270,7 +10051,6 @@ class FormAltaProductorController extends Controller
 
 		if($request->acciones_a_desarrollar == 'null')
 			$request->acciones_a_desarrollar = null;
-
 
 		if($request->owner == 'null')
 			$request->owner = null;
@@ -7404,8 +10184,9 @@ class FormAltaProductorController extends Controller
 			//pregunto si soy autoridad minera o si soy productor
 			if($request->es_evaluacion){ // soy autoridad minera
 
-				//PARA LOS INPUT DE TRUE O FALSE
-				if($request->owner != null)
+				//dd("PARA LOS INPUT DE TRUE O FALSE");
+				
+			/* if($request->owner != null)
 				$request->owner = $request->owner === 'true'? 1: 0;
 				
 			if($request->arrendatario != null)
@@ -7419,70 +10200,51 @@ class FormAltaProductorController extends Controller
 
 			if($request->sustancias!= null)
 				$request->sustancias = $request->sustancias === 'true'? 1: 0;
-
+ */
 			//PARA LA EVALUACION
 			if( (!is_bool($request->owner_correcto)) && ($request->owner_correcto == 'nada'))
-				$request->owner_correcto = null;
+				$owner_correcto = null;
 			elseif($request->owner_correcto == 'false')
-				$request->owner_correcto = false;
+				$owner_correcto = false;
 			elseif($request->owner_correcto == 'true')
-				$request->owner_correcto = true;
-
-
-
+				$owner_correcto = true;
+				
+				
 			if( (!is_bool($request->arrendatario_correcto)) && ($request->arrendatario_correcto == 'nada'))
-				$request->arrendatario_correcto = null;
-			elseif($request->arrendatario_correcto == 'false')
-				$request->arrendatario_correcto = false;
-			elseif($request->arrendatario_correcto == 'true')
-				$request->arrendatario_correcto = true;
-
-
-	
-
+				$arrendatario_correcto = null;
+				elseif($request->arrendatario_correcto == 'false')
+				$arrendatario_correcto = false;
+				elseif($request->arrendatario_correcto == 'true')
+				$arrendatario_correcto = true;
+				
+				
+				
+				
 			if( (!is_bool($request->concesionario_correcto)) && ($request->concesionario_correcto == 'nada'))
-				$request->concesionario_correcto = null;
-			elseif($request->concesionario_correcto == 'false')
-				$request->concesionario_correcto = false;
-			elseif($request->concesionario_correcto == 'true')
-				$request->concesionario_correcto = true;
-
-
-
+				$concesionario_correcto = null;
+				elseif($request->concesionario_correcto == 'false')
+				$concesionario_correcto = false;
+				elseif($request->concesionario_correcto == 'true')
+				$concesionario_correcto = true;
+				
+				
+				
 			if( (!is_bool($request->otros_correcto)) && ($request->otros_correcto == 'nada'))
 				$request->otros_correcto = null;
-			elseif($request->otros_correcto == 'false')
+				elseif($request->otros_correcto == 'false')
 				$request->otros_correcto = false;
-			elseif($request->otros_correcto == 'true')
+				elseif($request->otros_correcto == 'true')
 				$request->otros_correcto = true;
 
-		
-
 			if( (!is_bool($request->sustancias_correcto)) && ($request->sustancias_correcto == 'nada'))
-				$request->sustancias_correcto = null;
+				$sustancias_correcto = null;
 			elseif($request->sustancias_correcto == 'false')
-				$request->sustancias_correcto = false;
+				$sustancias_correcto = false;
 			elseif($request->sustancias_correcto == 'true')
-				$request->sustancias_correcto = true;
+				$sustancias_correcto = true;
+				
 
-
-
-			if( (!is_bool($request->resolucion_concesion_minera_correcto)) && ($request->resolucion_concesion_minera_correcto == 'nada'))
-				$request->resolucion_concesion_minera_correcto = null;
-			elseif($request->resolucion_concesion_minera_correcto == 'false')
-				$request->resolucion_concesion_minera_correcto = false;
-			elseif($request->resolucion_concesion_minera_correcto == 'true')
-				$request->resolucion_concesion_minera_correcto = true;
-
-
-			if( (!is_bool($request->constancia_pago_canon_correcto)) && ($request->constancia_pago_canon_correcto == 'nada'))
-				$request->constancia_pago_canon_correcto = null;
-			elseif($request->constancia_pago_canon_correcto == 'false')
-				$request->constancia_pago_canon_correcto = false;
-			elseif($request->constancia_pago_canon_correcto == 'true')
-				$request->constancia_pago_canon_correcto = true;
-
-
+			//dd($sustancias_correcto);
 
 			if( (!is_bool($request->iia_correcto)) && ($request->iia_correcto == 'nada'))
 				$request->iia_correcto = null;
@@ -7503,7 +10265,7 @@ class FormAltaProductorController extends Controller
 				$request->dia_correcto = true;
 
 
-
+//dd($request->dia_correcto,$request->iia_correcto );
 			
 				
 
@@ -7521,6 +10283,8 @@ class FormAltaProductorController extends Controller
 			elseif($request->actividad_a_desarrollar_correcto == 'true')
 				$request->actividad_a_desarrollar_correcto = true;
 
+				//dd($request->actividad_a_desarrollar_correcto);
+
 			if( (!is_bool($request->fecha_alta_dia_correcto)) && ($request->fecha_alta_dia_correcto == 'nada'))
 				$request->fecha_alta_dia_correcto = null;
 			elseif($request->fecha_alta_dia_correcto == 'false')
@@ -7536,22 +10300,21 @@ class FormAltaProductorController extends Controller
 				$request->fecha_vencimiento_dia_correcto = true;
 
 
-				$formulario_provisorio->owner_correcto = $request->owner_correcto;
+				$formulario_provisorio->owner_correcto = $owner_correcto;
 				$formulario_provisorio->obs_owner = $request->obs_owner;
 	
-				$formulario_provisorio->arrendatario_correcto = $request->arrendatario_correcto;
+				$formulario_provisorio->arrendatario_correcto = $arrendatario_correcto;
 				$formulario_provisorio->obs_arrendatario = $request->obs_arrendatario;
 
-				$formulario_provisorio->concesionario_correcto = $request->concesionario_correcto;
+				$formulario_provisorio->concesionario_correcto = $concesionario_correcto;
 				$formulario_provisorio->obs_concesionario = $request->obs_concesionario;
 	
 				$formulario_provisorio->otros_correcto = $request->otros_correcto;
 				$formulario_provisorio->obs_otros = $request->obs_otros;
 	
-				$formulario_provisorio->sustancias_de_aprovechamiento_comun_correcto = $request->sustancias_correcto;
+				$formulario_provisorio->sustancias_de_aprovechamiento_comun_correcto = $sustancias_correcto;
 				$formulario_provisorio->obs_sustancias_de_aprovechamiento_comun_correcto = $request->obs_sustancias;
 	
-
 				
 				$formulario_provisorio->constancia_pago_canon_correcto = $request->constancia_pago_canon_correcto;
 				$formulario_provisorio->obs_constancia_pago_canon = $request->obs_constancia_pago_canon;
@@ -7951,33 +10714,62 @@ class FormAltaProductorController extends Controller
 
 	public function presentar_borrador(Request $request)
 	{
-		//dd($request->id);
+		//dd($request->estado);
 		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
-		$formulario_provisorio = FormAltaProductor::select(
-			'id',
-			'estado',
-			'razon_social',
-			'email',
-			'updated_by',
-			'updated_at'
-			)
+		$formulario_provisorio = FormAltaProductor::select('*')
 		->where('id', '=',$request->id)->first();
 		if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')){ // soy autoridad minera
 
-			if($request->estado == 'presentado' )
-				$formulario_provisorio->estado = "en proceso";
+			if($request->estado == 'presentar' )
+				$formulario_provisorio->estado = "en revision";
 			else
 				$formulario_provisorio->estado = $request->estado;
 			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 			$formulario_provisorio->updated_by = Auth::user()->id;
 			$formulario_provisorio->save();
 			//return response()->json("todo bien");
+			//$email_a_mandar = $formulario_provisorio->email; para prod
+			$email_a_mandar = 'diegochecarelli@gmail.com';
+			if($formulario_provisorio->estado  == "en revision")
+			{
+				Mail::to($email_a_mandar)->send(new AvisoFormularioPresentadoEmail(
+					$formulario_provisorio->id,
+					$formulario_provisorio->razon_social,
+					date("Y-m-d H:i:s")
+				));
+			}
+			if($formulario_provisorio->estado  == "con observacion")
+			{
+				Mail::to($email_a_mandar)->send(new AvisoFormularioConObservaciones(
+					$formulario_provisorio->razon_social,
+					date("Y-m-d H:i:s"),
+					$formulario_provisorio->id
+				));
+			}
+			if($formulario_provisorio->estado  == "aprobado")
+			{
+				Mail::to($email_a_mandar)->send(new AvisoFormularioAprobadoEmail(
+					$formulario_provisorio->id,
+					$formulario_provisorio->razon_social,
+					date("Y-m-d H:i:s")
+				));
+
+				$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+				$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+				$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+				$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+				$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+			}
 			return response()->json([
 				'status' => 'ok',
 				'msg' => 'Datos actualizados correctamente.'
 			],201);
 		}
+		else return response()->json([
+				'status' => 'ok',
+				'msg' => 'Sin permisos.'
+			],201);
 			/*
 
 			//tengo que enviar email
@@ -7989,106 +10781,256 @@ class FormAltaProductorController extends Controller
 				date("Y-m-d H:i:s")
 			));
 			//tengo que crear todos los campos de la base de datos
-			//voy a crear el nuevo productor con los datos del formulario
-			$nuevo_productor = Productores::new();
-			$nuevo_productor->cuit = $formulario_provisorio->cuit;
-			$nuevo_productor->razonsocial = $formulario_provisorio->razonsocial;
-			$nuevo_productor->numeroproductor = $formulario_provisorio->numeroproductor;
-			$nuevo_productor->email = $formulario_provisorio->email;
-			$nuevo_productor->domicilio_prod = $formulario_provisorio->domicilio_prod;
-			$nuevo_productor->tiposociedad = $formulario_provisorio->tiposociedad;
-			$nuevo_productor->inscripciondgr = $formulario_provisorio->inscripciondgr;
-			$nuevo_productor->constaciasociedad = $formulario_provisorio->constaciasociedad;
-			$nuevo_productor->leal_calle = $formulario_provisorio->leal_calle;
-			$nuevo_productor->leal_numero = $formulario_provisorio->leal_numero;
-			$nuevo_productor->leal_telefono = $formulario_provisorio->leal_telefono;
-			$nuevo_productor->leal_pais = $formulario_provisorio->leal_pais;
-			$nuevo_productor->leal_provincia = $formulario_provisorio->leal_provincia;
-			$nuevo_productor->leal_departamento = $formulario_provisorio->leal_departamento;
-			$nuevo_productor->leal_localidad = $formulario_provisorio->leal_localidad;
-			$nuevo_productor->leal_cp = $formulario_provisorio->leal_cp;
-			$nuevo_productor->leal_otro = $formulario_provisorio->leal_otro;
-			$nuevo_productor->administracion_calle = $formulario_provisorio->administracion_calle;
-			$nuevo_productor->administracion_numero = $formulario_provisorio->administracion_numero;
-			$nuevo_productor->administracion_telefono = $formulario_provisorio->administracion_telefono;
-			$nuevo_productor->administracion_pais = $formulario_provisorio->administracion_pais;
-			$nuevo_productor->administracion_provincia = $formulario_provisorio->administracion_provincia;
-			$nuevo_productor->administracion_departamento = $formulario_provisorio->administracion_departamento;
-			$nuevo_productor->administracion_localidad = $formulario_provisorio->administracion_localidad;
-			$nuevo_productor->administracion_cp = $formulario_provisorio->administracion_cp;
-			$nuevo_productor->administracion_otro = $formulario_provisorio->administracion_otro;
-			$nuevo_productor->numero_expdiente = $formulario_provisorio->numero_expdiente;
-			$nuevo_productor->created_by = Auth::user()->id;
-			$nuevo_productor->estado = "aprobado";
-			$nuevo_productor->save();
-
-			//creo la mina a partir de los datos del formulario
-			$nueva_mina = MinaCantera::new();
-
-			$nueva_mina->tipo = $formulario_provisorio->tipo;
-			$nueva_mina->localidad_mina_pais = "Argentina";
-			$nueva_mina->localidad_mina_provincia = $formulario_provisorio->localidad_mina_provincia;
-			$nueva_mina->localidad_mina_departamento = $formulario_provisorio->localidad_mina_departamento;
-			$nueva_mina->localidad_mina_localidad = $formulario_provisorio->localidad_mina_localidad;
-			$nueva_mina->nombre = $formulario_provisorio->nombre;
-			$nueva_mina->descripcion = $formulario_provisorio->descripcion;
-			$nueva_mina->categoria = $formulario_provisorio->categoria;
-			$nueva_mina->distrito_minero = $formulario_provisorio->distrito_minero;
-			$nueva_mina->tipo_sistema = $formulario_provisorio->tipo_sistema;
-			$nueva_mina->longitud= $formulario_provisorio->longitud;
-			$nueva_mina->latitud= $formulario_provisorio->latitud;
-			$nueva_mina->labores= $formulario_provisorio->labores;
-			$nueva_mina->id_producido= $formulario_provisorio->id_producido;
-			$nueva_mina->plano_inmueble= $formulario_provisorio->plano_inmueble;
-			$nueva_mina->created_by = Auth::user()->id;
-			$nueva_mina->estado = 'aprobado';
-			$nueva_mina->save();
 			
 
-			//creo el pago de canon
-			$nuevo_pago = Pagocanonmina::new();
-			$nuevo_pago->pagado = $formulario_provisorio->pagado;
-			$nuevo_pago->fecha_pago = $formulario_provisorio->fecha_pago;
-			$nuevo_pago->monto = $formulario_provisorio->monto;
-			$nuevo_pago->fecha_desde = $formulario_provisorio->fecha_desde;
-			$nuevo_pago->fecha_hasta = $formulario_provisorio->fecha_hasta;
-			$nuevo_pago->created_by =  Auth::user()->id;
-			$nuevo_pago->estado = "aprobado";
-			$nuevo_pago->save();
+			
 
-			$nuevo_dia = iia_dia::new();
-			$nuevo_dia->actividades= $formulario_provisorio->actividades;
-			$nuevo_dia->acciones_a_desarrollar= $formulario_provisorio->acciones_a_desarrollar;
-			$nuevo_dia->archivo_dia= $formulario_provisorio->archivo_dia;
-			$nuevo_dia->constancia_inscripcion_ia= $formulario_provisorio->constancia_inscripcion_ia;
-			$nuevo_dia->created_by=  Auth::user()->id;
-			$nuevo_dia->estado= "aprobado";
+			
+			
 
-			$nuevo_mina_prod = ProductorMina::new();
-			$nuevo_mina_prod->id_mina = $formulario_provisorio->id_mina;
-			$nuevo_mina_prod->id_productor = $formulario_provisorio->id_productor;
-			$nuevo_mina_prod->id_destino = $formulario_provisorio->id_destino;
-			$nuevo_mina_prod->id_dia = $formulario_provisorio->id_dia;
-			$nuevo_mina_prod->id_personal = $formulario_provisorio->id_personal;
-			$nueva_mina_prod->mercado_provincia= $formulario_provisorio->mercado_provincia;
-			$nueva_mina_prod->mercado_provincias= $formulario_provisorio->mercado_provincias;
-			$nueva_mina_prod->mercado_exportacion= $formulario_provisorio->mercado_exportacion;
-			$nueva_mina_prod->num_expediente_SIGETRAMI= $formulario_provisorio->num_expediente_SIGETRAMI;
-			$nueva_mina_prod->constancia_otros= $formulario_provisorio->constancia_otros;
-			$nueva_mina_prod->resol_concecion_minera = $formulario_provisorio->resol_concecion_minera;
-			$nueva_mina_prod->fecha_preinscripcion = $formulario_provisorio->fecha_preinscripcion;
-			$nueva_mina_prod->fecha_renovacion = $formulario_provisorio->fecha_renovacion;
-			$nueva_mina_prod->primera_inscripcion = $formulario_provisorio->primera_inscripcion;
-			$nueva_mina_prod->caracter = $formulario_provisorio->caracter;
-			$nueva_mina_prod->constancia_posecion = $formulario_provisorio->constancia_posecion;
-			$nueva_mina_prod->id_producido = $formulario_provisorio->id_producido;
-				}
+			}
 			
 		else{//soy productor
 			return response()->json("error");
 		}
 		*/
 	}
+
+	public function probando_super_guardado($id_formulario){
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$formulario_provisorio = FormAltaProductor::select('*')
+		->where('id', '=',$id_formulario)->first();
+		
+		$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+		$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+		$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+		$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+		$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+
+		var_dump($id_productor_nuevo,$id_mina_nueva,$id_dia_iia_nueva,$id_pago_canon_nuevo,$id_mina_productor);
+	
+	}
+
+
+	public function crear_registro_productor($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				$productor = new Productores();
+				$productor->cuit = $formulario_provisorio->cuit;
+				$productor->razonsocial = $formulario_provisorio->razonsocial;
+				$productor->numeroproductor = $formulario_provisorio->numeroproductor;
+				$productor->email = $formulario_provisorio->email;
+				$productor->domicilio_prod = "cambiar esto";
+				$productor->tiposociedad = $formulario_provisorio->tiposociedad;
+				$productor->inscripciondgr = $formulario_provisorio->inscripciondgr;
+				$productor->constaciasociedad = $formulario_provisorio->constaciasociedad;
+				$productor->leal_calle = $formulario_provisorio->leal_calle;
+				$productor->leal_numero = $formulario_provisorio->leal_numero;
+				$productor->leal_telefono = $formulario_provisorio->leal_telefono;
+				$productor->leal_pais = $formulario_provisorio->leal_pais;
+				$productor->leal_provincia = $formulario_provisorio->leal_provincia;
+				$productor->leal_departamento = $formulario_provisorio->leal_departamento;
+				$productor->leal_localidad = $formulario_provisorio->leal_localidad;
+				$productor->leal_cp = $formulario_provisorio->leal_cp;
+				$productor->leal_otro = $formulario_provisorio->leal_otro;
+				$productor->administracion_calle = $formulario_provisorio->administracion_calle;
+				$productor->administracion_numero = $formulario_provisorio->administracion_numero;
+				$productor->administracion_telefono = $formulario_provisorio->administracion_telefono;
+				$productor->administracion_pais = $formulario_provisorio->administracion_pais;
+				$productor->administracion_provincia = $formulario_provisorio->administracion_provincia;
+				$productor->administracion_departamento = $formulario_provisorio->administracion_departamento;
+				$productor->administracion_localidad = $formulario_provisorio->administracion_localidad;
+				$productor->administracion_cp = $formulario_provisorio->administracion_cp;
+				$productor->administracion_otro = $formulario_provisorio->administracion_otro;
+				$productor->numero_expdiente = 0; // no se q va aca
+				$productor->created_by = Auth::user()->id;
+				$productor->estado = "aprobado";
+				$productor->id_formulario = $id_formulario;
+				$productor->usuario_creador = $formulario_provisorio->created_by;
+				$productor->save();
+				return $productor->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	
+	public function crear_registro_mina_cantera($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				$mina_cantera = new MinaCantera();
+				$mina_cantera->numero_expediente=$formulario_provisorio->numero_expediente;
+				$mina_cantera->distrito_minero=$formulario_provisorio->distrito_minero;
+				$mina_cantera->categoria=$formulario_provisorio->categoria;
+				$mina_cantera->nombre=$formulario_provisorio->nombre_mina;
+				$mina_cantera->descripcion=$formulario_provisorio->descripcion_mina;
+				if($formulario_provisorio->categoria === 'tercera')
+					$mina_cantera->tipo="cantera";
+				else 	$mina_cantera->tipo="mina";
+				$mina_cantera->plano_inmueble=$formulario_provisorio->plano_inmueble;
+				$mina_cantera->titulo_contrato_posecion=$formulario_provisorio->titulo_contrato_posecion;
+				$mina_cantera->resolucion_concesion_minera=$formulario_provisorio->resolucion_concesion_minera;
+				//minerales
+				//pagina mina segunda
+				$mina_cantera->owner=$formulario_provisorio->owner;
+				$mina_cantera->arrendatario=$formulario_provisorio->arrendatario;
+				$mina_cantera->concesionario=$formulario_provisorio->concesionario;
+				$mina_cantera->otros=$formulario_provisorio->otros;
+				$mina_cantera->acciones_a_desarrollar=$formulario_provisorio->acciones_a_desarrollar;
+				$mina_cantera->actividad=$formulario_provisorio->actividad;
+				$mina_cantera->sustancias_de_aprovechamiento_comun=$formulario_provisorio->sustancias_de_aprovechamiento_comun;
+				$mina_cantera->otro_caracter_acalaracion=$formulario_provisorio->otro_caracter_acalaracion;
+				$mina_cantera->sustancias_de_aprovechamiento_comun_aclaracion=$formulario_provisorio->sustancias_de_aprovechamiento_comun_aclaracion;
+
+				//ubicacion de la mina
+				$mina_cantera->localidad_mina_pais="Argentina";
+				$mina_cantera->localidad_mina_provincia=$formulario_provisorio->localidad_mina_provincia;
+				$mina_cantera->localidad_mina_departamento=$formulario_provisorio->localidad_mina_departamento;
+				$mina_cantera->localidad_mina_localidad=$formulario_provisorio->localidad_mina_localidad;
+				$mina_cantera->tipo_sistema=$formulario_provisorio->tipo_sistema;
+				$mina_cantera->longitud=$formulario_provisorio->longitud;
+				$mina_cantera->latitud=$formulario_provisorio->latitud;
+				$mina_cantera->labores=null;
+				$mina_cantera->id_producido=null;
+				$mina_cantera->created_by=Auth::user()->id;
+				$mina_cantera->estado="aprobado";
+				$mina_cantera->id_formulario=$id_formulario;
+				
+				$mina_cantera->save();
+				return $mina_cantera->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	public function crear_registro_dia_iia($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				$nuevo_dia = new iia_dia;
+				$nuevo_dia->actividades= "dasdasdsa";
+				$nuevo_dia->acciones_a_desarrollar= $formulario_provisorio->acciones_a_desarrollar;
+				$nuevo_dia->dia= $formulario_provisorio->dia;
+				$nuevo_dia->iia= $formulario_provisorio->iia;
+				$nuevo_dia->fecha_alta_dia= $formulario_provisorio->fecha_alta_dia;
+				$nuevo_dia->fecha_vencimiento= $formulario_provisorio->fecha_vencimiento_dia;
+				$nuevo_dia->created_by=  Auth::user()->id;
+				$nuevo_dia->estado= "aprobado";
+				$nuevo_dia->id_formulario= $id_formulario;
+				$nuevo_dia->save();
+				return $nuevo_dia->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	public function crear_registro_pago_canon($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				//creo el pago de canon
+				$nuevo_pago = new Pagocanonmina;
+				//$nuevo_pago->pagado = $formulario_provisorio->pagado;
+				$nuevo_pago->pagado = true;
+				//$nuevo_pago->fecha_pago = $formulario_provisorio->fecha_pago;
+				$nuevo_pago->fecha_pago = null;
+				//$nuevo_pago->monto = $formulario_provisorio->monto;
+				$nuevo_pago->monto = 0.00;
+				//$nuevo_pago->fecha_desde = $formulario_provisorio->fecha_desde;
+				$nuevo_pago->fecha_desde =  null;
+				//$nuevo_pago->fecha_hasta = $formulario_provisorio->fecha_hasta;
+				$nuevo_pago->fecha_hasta =null;
+				$nuevo_pago->created_by =  Auth::user()->id;
+				$nuevo_pago->estado = "aprobado";
+				$nuevo_pago->id_formulario = $id_formulario;
+				
+				$nuevo_pago->save();
+
+				return $nuevo_pago->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	public function crear_mina_productor($id_formulario,$id_mina, $id_productor, $id_dia){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				//dd($id_formulario,$id_mina, $id_productor, $id_dia);
+				//creo la relacion mina productor
+				$nuevo_mina_prod = new ProductorMina;
+				$nuevo_mina_prod->id_mina = $id_mina;
+				$nuevo_mina_prod->id_productor = $id_productor;
+				$nuevo_mina_prod->id_formulario = $id_formulario;
+				$nuevo_mina_prod->id_dia = $id_dia;
+				$nuevo_mina_prod->id_personal = null;
+				$nuevo_mina_prod->num_expediente_SIGETRAMI= 0;
+				$nuevo_mina_prod->constancia_otros= null;
+				$nuevo_mina_prod->resol_concecion_minera = null;
+				$nuevo_mina_prod->fecha_preinscripcion = null;
+				$nuevo_mina_prod->fecha_renovacion = null;
+				$nuevo_mina_prod->primera_inscripcion = null;
+				$nuevo_mina_prod->caracter = null;
+				$nuevo_mina_prod->constancia_posecion = null;
+				$nuevo_mina_prod->id_formulario = $id_formulario;
+				$nuevo_mina_prod->save();
+				return $nuevo_mina_prod->id;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
+	
+	
+
+
 	public function test_aprobado_email($id)
 	{
 		$formulario_provisorio = FormAltaProductor::select(
@@ -8115,7 +11057,7 @@ class FormAltaProductorController extends Controller
 		
 
 	public function traer_provincias_json(){
-		$lista_de_provincias = Provincias::select('id', 'nombre')->get();
+		$lista_de_provincias = Provincias::select('id', 'nombre')->orderBy('nombre')->get();
 		return response()->json($lista_de_provincias);
 	}
 	public function traer_departamentos_json(Request $request){
@@ -8132,11 +11074,99 @@ class FormAltaProductorController extends Controller
 	}
 	
 	public function traer_minerales_json(Request $request){
-		//dd($request->id_manifestacion);
+		// dd($request->id_manifestacion);
 		$minerales = Minerales::select('id', 'name', 'categoria')->where('categoria','=', $request->categoria_buscando)->get();
 		return response()->json($minerales);
 
 	}
+	
+	public function comprobante_tramite_pdf($id){
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		$puedo_imprimir = false;
+		if(Auth::user()->id == 1)
+			$borrador = FormAltaProductor::find($id);
+		if(Auth::user()->hasRole('Autoridad'))
+			$borrador = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->where('id', '=', $id)->first();
+		if(Auth::user()->hasRole('Productor'))
+			$borrador = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->where('id', '=', $id)->where('created_by', '=',Auth::user()->id )->first();
+		//dd( $borrador->razonsocial);
+		if($borrador != null){
+			$data = [
+				'title' => 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94',
+				'date_generado' => date('d/m/Y'),
+	            //1
+				'id' => $borrador->id,
+				'razon_social' =>  $borrador->razonsocial,
+				'ciut' =>  $borrador->cuit,
+				'numeroproductor' => $borrador->numeroproductor,
+				'tiposociedad' => $borrador->tiposociedad,
+				'email' => $borrador->email,
+				'inscripciondgr' => $borrador->inscripciondgr ,
+				'constaciasociedad' => $borrador->constaciasociedad ,
+
+				//2
+				'leal_calle' => $borrador->leal_calle ,
+				'leal_numero' => $borrador->leal_numero ,
+				'leal_telefono' => $borrador->leal_telefono ,
+				'leal_pais' => $borrador->leal_pais ,
+				'leal_provincia' => $borrador->leal_provincia ,
+				'leal_departamento' => $borrador->leal_departamento ,
+				'leal_localidad' => $borrador->leal_localidad ,
+				'leal_cp' => $borrador->leal_cp ,
+				'leal_otro' => $borrador->leal_otro ,
+
+				//3
+				'administracion_calle' => $borrador->administracion_calle,
+				'administracion_numero' => $borrador->administracion_numero,
+				'administracion_telefono' => $borrador->administracion_telefono,
+				'administracion_pais' => $borrador->administracion_pais,
+				'administracion_provincia' => $borrador->administracion_provincia,
+				'administracion_departamento' => $borrador->administracion_departamento,
+				'administracion_localidad' => $borrador->administracion_localidad,
+				'administracion_cp' => $borrador->administracion_cp,
+				'administracion_otro' => $borrador->administracion_otro,
+
+				//4
+				'mina_cantera' =>$borrador->mina_cantera,
+				'numero_expdiente' =>$borrador->numero_expdiente,
+				'distrito_minero' =>$borrador->distrito_minero,
+				'descripcion_mina' =>$borrador->descripcion_mina,
+				'nombre_mina' =>$borrador->nombre_mina,
+				'categoria' =>$borrador->categoria,
+				'minerales_variedad' =>$borrador->minerales_variedad,
+
+				//5
+				'owner' =>$borrador->owner,
+				'arrendatario' =>$borrador->arrendatario,
+				'concesionario' =>$borrador->concesionario,
+				'otros' =>$borrador->otros,
+				'acciones_a_desarrollar' =>$borrador->acciones_a_desarrollar,
+				'actividad' =>$borrador->actividad,
+				'fecha_alta_dia' =>$borrador->fecha_alta_dia,
+				'fecha_vencimiento_dia' =>$borrador->fecha_vencimiento_dia,
+
+				//6
+
+				'localidad_mina_pais' => $borrador->localidad_mina_pais,
+				'localidad_mina_provincia' => $borrador->localidad_mina_provincia,
+				'localidad_mina_departamento' => $borrador->localidad_mina_departamento,
+				'localidad_mina_localidad' => $borrador->localidad_mina_localidad,
+				'tipo_sistema' => $borrador->tipo_sistema,
+				'latitud' => $borrador->latitud,
+				'longitud' => $borrador->longitud,
+
+				//7
+				'updated_at' => $borrador->updated_at,
+			];
+			  
+			$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite', $data);
+			return $pdf->stream('Comprobante_de_inscripcion.pdf');
+
+		}
+		else 
+			return "error";
+
+    }
 
 
 	public function pdf_para_comerciantes(){
@@ -8196,6 +11226,7 @@ class FormAltaProductorController extends Controller
 //        }
         //else response()->json("error en el email");
     }
+
 
 	public function pdf_para_industrial(){
     	$email  = "ochamplin@gmail.com";

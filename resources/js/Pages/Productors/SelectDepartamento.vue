@@ -9,15 +9,17 @@
                 <img :src="$inertia.page.props.appName+'/svg/state.svg'">
                 </span>
             </div>
+            
             <select 
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            id="leal_departamento"
-            name="leal_departamento"
+            id="leal_departamento_dos"
+            name="leal_departamento_dos"
             v-model="leal_departamento"
             v-bind:class=clase_de_input_calle_dpto_legal
             :disabled="evaluacion || desactivar_legal_dpto"
             @input="cambio_input_calle_dpto_legal($event.target.value)" 
             >
+            <option v-for="dpto in $props.lista_departamentos_dos" v-bind:key="dpto.id" :value="dpto.id">{{dpto.nombre}}</option>
             <option v-for="dpto in $props.lista_departamentos" v-bind:key="dpto.id" :value="dpto.id">{{dpto.nombre}}</option>
             </select>
         </div>
@@ -27,15 +29,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-green-600" name="accountType_depto" v-model="leal_departamento_correcto" value="true" v-on:change="cactaulizar_variable_legalcalledpto(true)">
+                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_departamento_correcto" value="true" v-on:change="cactaulizar_variable_legalcalledpto(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-red-600" name="accountType_depto" v-model="leal_departamento_correcto" value="false" v-on:change="cactaulizar_variable_legalcalledpto(false)">
+                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_departamento_correcto" value="false" v-on:change="cactaulizar_variable_legalcalledpto(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-indigo-600" name="accountType_depto" v-model="leal_departamento_correcto" value="nada" v-on:change="cactaulizar_variable_legalcalledpto('nada')">
+                        <input type="radio" :disabled="desactivar_legal_dpto_correccion" class="form-radio  h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_departamento_correcto" value="nada" v-on:change="cactaulizar_variable_legalcalledpto('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -102,8 +104,10 @@ export default {
         'obs_leal_departamento_valido',
         'evaluacion',
         'testing',
+        'name_correcto',
         'label',
         'lista_departamentos',
+        'lista_departamentos_dos',
         'desactivar_legal_dpto',
         'mostrar_legal_dpto_correccion',
         'desactivar_legal_dpto_correccion',
@@ -120,10 +124,21 @@ export default {
         legal_calle_dpto_correcto_local: this.$props.leal_departamento_correcto,
         obs_calle_dpto_legal_valido_local: this.$props.obs_leal_departamento_valido,
         testing_hijo:false,
+        nueva_lista_dptos: this.$props.lista_departamentos_dos,
         //border-green-500
     }; 
   },
   methods:{
+    cargar_dptos() {
+        let self = this;
+        console.log("la lista dos:");
+        console.log(self.$props.lista_departamentos_dos);
+        /* if(this.$props.lista_departamentos_dos.length === 0)
+            this.nueva_lista_dptos = this.$props.lista_departamentos;
+        else  */  this.nueva_lista_dptos = this.$props.lista_departamentos_dos;
+        console.log("la lista quedo en");
+        console.log(this.nueva_lista_dptos);
+    },
     cactaulizar_variable_legalcalledpto(valor) {
         this.legal_calle_dpto_correcto_local = valor;
         this.$emit('changedptolegalcorrecto',this.legal_calle_dpto_correcto_local);
@@ -185,5 +200,8 @@ export default {
         this.$emit('changevalordptolegal',value);
      }
   },
+    mounted() {
+            this.cargar_dptos();
+        }
 };
 </script>
