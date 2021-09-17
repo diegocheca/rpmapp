@@ -31,6 +31,25 @@
                 </div>
             </div>
 
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                    <ChartSimplePie />
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                    <Line />
+                </div>
+            </div>
+
+
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                    <ChartMapMorphingPie />
+                </div>
+            </div>
+
         </main>
 
     </AppLayout>
@@ -42,6 +61,9 @@
     import ChartPie from '@/Components/charts/pie'
     import ChartBar from '@/Components/charts/bar'
     import ChartMap from '@/Components/charts/map'
+    import Line from '@/Components/charts/line'
+    import ChartSimplePie from '@/Components/charts/simplePie'
+    import ChartMapMorphingPie from '@/Components/charts/mapMorphingPie'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     import Vue3autocounter from "vue3-autocounter";
 
@@ -55,6 +77,9 @@
             ChartMap,
             JetAuthenticationCardLogo,
             Vue3autocounter,
+            ChartSimplePie,
+            Line,
+            ChartMapMorphingPie
         },
         props: {
             soldIn: {

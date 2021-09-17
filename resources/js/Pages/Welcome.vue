@@ -126,7 +126,7 @@ import JetApplicationLogo from "@/Jetstream/ApplicationLogo";
 import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 import ChartBar from "@/Components/charts/bar";
 import ChartPie from "@/Components/charts/pie";
-import TimeLine from "@/Components/charts/timeline";
+import TimeLine from "@/Components/charts/line";
 import LineChart from "../Components/charts/linechart.vue";
 export default {
     components: {

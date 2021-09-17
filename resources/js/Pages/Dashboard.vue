@@ -2,7 +2,7 @@
   <div>
     <DashboardAdmin v-if="userType == 'admin'" :dataChart="dataChart" />
     <DashboardProductor v-if="userType == 'productor'" />
-
+<!--
     <div
       v-if="userType != 'admin' || userType != 'productor' || !userType"
       class="p-8 h-screen items-center"
@@ -40,28 +40,8 @@
             px-9
             py-3"> Salir </jet-dropdown-link>
                     </form>
-
-        <!-- <button
-          type="button"
-          as="button"
-          class="
-            absolute
-            bottom-20
-            flex
-            justify-center
-            bg-blue-500
-            hover:bg-blue-800
-            rounded
-            text-white
-            px-9
-            py-3
-          "
-          @click="logout()"
-        >
-          Salir
-        </button> -->
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
