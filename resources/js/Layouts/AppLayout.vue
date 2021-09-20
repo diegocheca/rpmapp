@@ -81,7 +81,6 @@
                 </jet-nav-link>
               </div>
             </div>
-
             <div class="hidden sm:flex sm:items-center sm:ml-6">
               <div
                 class="ml-3 relative"
@@ -201,7 +200,6 @@
                   </template>
                 </jet-dropdown>
               </div>
-
               <!-- Settings Dropdown -->
               <div class="ml-3 relative">
                 <jet-dropdown align="right" width="48">
@@ -224,7 +222,6 @@
                         :alt="$page.props.user.name"
                       />
                     </button>
-
                     <span v-else class="inline-flex rounded-md">
                       <button
                         type="button"
@@ -348,7 +345,8 @@
               class="flex items-center justify-between flex-shrink-0 w-64 p-4"
             >
               <!-- Logo -->
-              <jet-authentication-card-logo />
+              <!-- <jet-authentication-card-logo /> -->
+              <!-- <img src="{!! asset('images/logo_v2.png') !!}"> -->
               <!-- Close btn -->
               <button
                 @click="isSidebarOpen = false"
