@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\HomeControllerM;
 use Illuminate\Support\Facades\Storage;
 
 use Carbon\Carbon;
@@ -38,14 +39,15 @@ class ReinscripcionController extends Controller
     {
         // dd(CountriesController::getProvinces());
         $provinces = CountriesController::getProvinces();
-        // dd($provinces);
+        $user = HomeController::userData();
+        // dd($user);
         //
         // return Inertia::render('Reinscripciones/Form');
         return Inertia::render('Reinscripciones/Form', [
             'action' => "create",
             'saveUrl' => "reinscripciones.store",
             'saveFileUrl' => "/reinscripciones/upload",
-            'province' => env('PROVINCE', 'EntreRios') . "/reinscripciones-wizard",
+            'province' => $user->province->label ."/reinscripciones-wizard",
             'folder' => 'reinscripciones',
             'reinscripcion' => [],
             'titleForm' => 'Crear reinscripción',

@@ -50,6 +50,13 @@ class HomeController extends Controller
 
     }
 
+    static function userData()
+    {
+        $user = Auth::user();
+        $user->province = CountriesController::getProvince(Auth::user()->id_provincia);
+        return $user;
+    }
+
     public function valdiar_email_de_productor($codigo)
     {
         //
