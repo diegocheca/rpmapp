@@ -13,8 +13,6 @@
                     consectetur adipiscing elit
                 </p>
             </div>
-
-
             <!-- RIGHT PART -->
             <div class="pt-8 md:pt-0 justify-center lg:ml-auto z-10">
                 <!-- Contribuer -->
@@ -38,25 +36,16 @@
                     </span>
                 </a>
             </div>
-
             <!-- ATTENTION -->
             <p class="pt-8 text-xs block md:hidden z-10 text-white">
                     consectetur adipiscing elit
             </p>
-
             <!-- DÉCORATION -->
             <div class="absolute bg-red-400 opacity-60 w-96 h-96 -top-10 -right-16 md:w-[800px] md:h-[800px] md:left-[45%] md:top-[-150%] rounded-full shadow-2xl z-0"></div>
         </div>
     </div>
 </template>
 <script>
-
 export default {
-    props: {
-        productores: Array,
-    },
-    components: {
-        AppLayout,
-},
 };
 </script>
