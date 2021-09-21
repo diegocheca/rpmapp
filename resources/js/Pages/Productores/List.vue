@@ -11,7 +11,42 @@
                 <div class="overflow-x-auto">
                     <div class="min-w-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
                         <div class="w-full lg:w-5/6">
-                            <alertDeleted />
+                            <alertDeleted 
+                            v-if="$props.alertType==='success'"
+                            
+                            :bigLabel="'Productor Creado'"
+                            :mediumLabel="'El productor ha sido creado correctamente en la base de datos'"
+                            :type="$props.alertType"
+                            />
+
+                            <alertDeleted 
+                            v-if="$props.alertType==='error'"
+                            
+                            :bigLabel="'Productor Eliminado'"
+                            :mediumLabel="'El productor ha sido eliminado de la base de datos'"
+                            :type="$props.alertType"
+                            />
+                            <jet-dialog-modal :show="showDeleteConfirmationModal" @close="closeModal">
+                                <template #title>
+                                        {{modal_tittle}}
+                                </template>
+                                <template #content>
+                                        {{modal_body}}
+                                        
+                                </template>
+                                <template #footer>
+                                    <button class="px-4 py-2 rounded-md text-sm font-medium border shadow focus:outline-none focus:ring transition text-gray-600 bg-gray-50 border-gray-200 hover:bg-gray-100 active:bg-gray-200 focus:ring-gray-300" @click="closeModal">
+                                            Cancelar
+                                    </button>
+                                    <button 
+                                    class="px-4 py-2 rounded-md text-sm font-medium border shadow focus:outline-none focus:ring transition text-red-600 bg-red-50 border-red-200 hover:bg-red-100 active:bg-red-200 focus:ring-red-300"
+                                    @click="deleteButtonAction">
+                                            Eliminar
+                                    </button>
+                                </template>
+                            </jet-dialog-modal>
+
+
 
                             <div class="bg-white shadow-md rounded my-6">
                                 <table class="min-w-max w-full table-auto">
@@ -25,7 +60,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-gray-600 text-sm font-light">
-                                        <tr v-for="productor in productores" :key="productor.id">
+                                        <tr v-for="(productor, index) in productores" :key="productor.id">
                                             <td class="py-3 px-6 text-left">
                                                 <div class="flex items-center">
                                                     <div class="mr-2">
@@ -71,12 +106,13 @@
                                                             </svg>
                                                         </a>
                                                     </div>
-                                                    <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                                        <a :href="route('productores.destroy', productor.id)">
+                                                    <div v-if="mostrarBotonEliminar()" class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                        <a  v-on:click.prevent="showDeleteConfirmation($event,productor, index)" href="#" >
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                             </svg>
                                                         </a>
+                                                        
                                                     </div>
                                                 </div>
                                             </td>
@@ -96,13 +132,50 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import alertDeleted from '@/Components/alertDeleted';
+import JetDialogModal from '@/Jetstream/DialogModal';
 export default {
-  props: {
-    productores: Array,
-  },
-  components: {
-    AppLayout,
-    alertDeleted
-  },
+    props: {
+        productores: Array,
+        alertType: String
+    },
+    components: {
+        AppLayout,
+        alertDeleted,
+		JetDialogModal
+    },
+    data(){
+        return {
+            showDeleteConfirmationModal: false,
+            modal_tittle: '',
+            modal_body: '',
+            productor: {
+                'id' : 0,
+                'index' : 0,
+                'nombre' : '',
+                'email' : '',
+                'estado' : '',
+            },
+        }
+    },
+    methods:{
+        mostrarBotonEliminar(){
+            if(this.$inertia.page.props.user.roles[0].name === "Administrador")
+                return true;
+            else
+                return false;
+        },
+        showDeleteConfirmation(event,productorAEliminar, index){
+            this.showDeleteConfirmationModal = true;
+            this.modal_tittle = "Confirmar";
+            this.modal_body = "Realmente desea eliminar al productor "+productorAEliminar.razonsocial +"?";
+        },
+        closeModal(){
+            this.showDeleteConfirmationModal = false;
+        },
+        deleteButtonAction(){
+            alert("estoy por eliminar el productor");
+            //:href="route('productores.destroy', productor.id)"
+        }
+    }
 };
 </script>
