@@ -19,7 +19,7 @@ class ProductoresController extends Controller
     public function index()
     {
         $productores = Productores::all();
-        return Inertia::render('Productores/List', ['productores' => $productores]);
+        return Inertia::render('Productores/List', ['productores' => $productores, 'alertType'=>'success']);
     }
 
     /**
