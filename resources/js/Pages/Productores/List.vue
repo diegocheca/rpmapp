@@ -49,6 +49,25 @@
 
 
                             <div class="bg-white shadow-md rounded my-6">
+                                <div class="flex items-center w-full lg:w-5/6 p-6 space-x-6 bg-white rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-500">
+                                    <div class="flex bg-gray-100 p-4 w-72 space-x-4 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 opacity-30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                        </svg>
+                                        <input class="bg-gray-100 outline-none" type="text" placeholder="Filtar ..."
+                                        v-model="term" @keyup="search" />
+                                    </div>
+                                    <div class="flex py-3 px-4 rounded-lg text-gray-500 font-semibold cursor-pointer">
+                                        <span>Cualquier estado</span>
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+                                    <div class="bg-green-400 py-3 px-5 text-white font-semibold rounded-lg hover:shadow-lg transition duration-3000 cursor-pointer">
+                                        <span>Buscar</span>
+                                    </div>
+                                    </div>
                                 <table class="min-w-max w-full table-auto">
                                     <thead>
                                         <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -60,7 +79,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="text-gray-600 text-sm font-light">
-                                        <tr v-for="(productor, index) in productores" :key="productor.id">
+                                        <tr v-for="(productor, index) in productores.data" :key="productor.id" :class="{'bg-gray-300': index%2 === 0}">
                                             <td class="py-3 px-6 text-left">
                                                 <div class="flex items-center">
                                                     <div class="mr-2">
@@ -135,7 +154,7 @@ import alertDeleted from '@/Components/alertDeleted';
 import JetDialogModal from '@/Jetstream/DialogModal';
 export default {
     props: {
-        productores: Array,
+        productores: Object,
         alertType: String
     },
     components: {
@@ -155,6 +174,7 @@ export default {
                 'email' : '',
                 'estado' : '',
             },
+            term:'',
         }
     },
     methods:{
@@ -175,6 +195,9 @@ export default {
         deleteButtonAction(){
             alert("estoy por eliminar el productor");
             //:href="route('productores.destroy', productor.id)"
+        },
+        search(){
+            this.$inertia.replace(route('productores.index', {term: this.term}));
         }
     }
 };

@@ -16,10 +16,14 @@ class ProductoresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productores = Productores::all();
-        return Inertia::render('Productores/List', ['productores' => $productores, 'alertType'=>'success']);
+        //$productores = Productores::all();
+        return Inertia::render('Productores/List', ['productores' => 
+        Productores::when($request-> term , function($query , $term){
+            $query->where('razonsocial', 'LIKE', '%'.$term.'%');
+        })->paginate(5),
+         'alertType'=>'success']);
     }
 
     /**
