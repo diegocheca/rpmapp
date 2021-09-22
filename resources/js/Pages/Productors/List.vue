@@ -5,11 +5,11 @@
         >
             Borradores Ya cargados
         </h2>
-        <a :href="route('formulario-alta.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Borrador</button></a>
         <body class="flex flex-col">
             <div class="overflow-x-auto">
                 <div class="min-w-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
                     <div class="w-full lg:w-5/6">
+                        <a :href="route('formulario-alta.create')"> <button class="animate-pulse  px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Borrador</button></a>
                         <div class="bg-white shadow-md rounded my-6">
                             <div v-if="mostrar_alert_eliminar" class="alert flex flex-row items-center bg-red-200 p-5 rounded border-b-2 border-red-300">
                                 <div class="alert-icon flex items-center bg-red-100 border-2 border-red-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
@@ -45,12 +45,12 @@
                                     </tr>
                                 </thead>
                                 <tbody class="text-gray-600 text-sm font-light">
-                                    <tr v-for="productor in borradores" :key="productor.id">
+                                    <tr v-for="(productor, index) in borradores.data" :key="productor.id" :class="{'bg-gray-100': index%2 === 0}">
                                         <td class="py-3 px-6 text-left">
                                             <div class="flex items-center">
-                                                <div class="mr-2">
+                                                <!-- <div class="mr-2">
                                                     <img class="w-6 h-6" src="https://img.icons8.com/color/100/000000/vue-js.png"/>
-                                                </div>
+                                                </div> -->
                                                 <span class="font-medium">{{ productor.id }}</span>
                                             </div>
                                         </td>
@@ -124,6 +124,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <pagination class="mt-6" :links="borradores.links" />
                             <jet-dialog-modal :show="mostrarModal" @close="closeModal">
                                 <template #title>
                                         {{modal_tittle}}
@@ -168,10 +169,11 @@
 import AppLayout from "@/Layouts/AppLayout";
 import ChartPieB from '@/Components/charts/pieBorradores'
 import JetDialogModal from '@/Jetstream/DialogModal';
+import Pagination from '@/Components/Pagination'
 
 export default {
     props: {
-        borradores: Array,
+        borradores: Object,
         lista_minerales_cargados: Array,
         soy_autoridad: Boolean,
         soy_administrador: Boolean,
@@ -182,6 +184,7 @@ export default {
         AppLayout,
         ChartPieB,
         JetDialogModal,
+        Pagination
     },
     data() {
 		return {
