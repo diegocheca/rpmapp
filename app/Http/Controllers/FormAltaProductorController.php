@@ -659,6 +659,14 @@ class FormAltaProductorController extends Controller
 			$grafico_donut["revision"] = count($temp);
 			$temp = FormAltaProductor::select('id')->where('estado', '=','con observacion')->get();
 			$grafico_donut["observacion"]  = count($temp);
+			return Inertia::render('Productors/List', [
+				'borradores' => FormAltaProductor::paginate(7),
+				'lista_minerales_cargados' => null,
+				'soy_autoridad' => $soy_autoridad ,
+				'soy_administrador' => $soy_administrador, 
+				'soy_productor' => $soy_productor, 
+				'datos_donut' => $grafico_donut
+			]);
 
 		}
 		elseif(Auth::user()->hasRole('Autoridad'))
@@ -677,6 +685,16 @@ class FormAltaProductorController extends Controller
 			$grafico_donut["revision"] = count($temp);
 			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('estado', '=','con observacion')->get();
 			$grafico_donut["observacion"] = count($temp);
+			return Inertia::render('Productors/List', [
+				'borradores' => FormAltaProductor::select('*')
+				->where('provincia', '=', Auth::user()->id_provincia)
+				->paginate(5),
+				'lista_minerales_cargados' => null,
+				'soy_autoridad' => $soy_autoridad ,
+				'soy_administrador' => $soy_administrador, 
+				'soy_productor' => $soy_productor, 
+				'datos_donut' => $grafico_donut
+			]);
 		}
 		else{
 			//soy productor, entonces traigo solo mis borradores
@@ -693,13 +711,24 @@ class FormAltaProductorController extends Controller
 			$grafico_donut["revision"] = count($temp);
 			$temp = FormAltaProductor::select('id')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=',Auth::user()->id)->where('estado', '=','con observacion')->get();
 			$grafico_donut["observacion"] = count($temp);
+			return Inertia::render('Productors/List', [
+				'borradores' => FormAltaProductor::select('*')
+				->where('provincia', '=', Auth::user()->id_provincia)
+				->where('created_by', '=',Auth::user()->id)
+				->paginate(5),
+				'lista_minerales_cargados' => null,
+				'soy_autoridad' => $soy_autoridad ,
+				'soy_administrador' => $soy_administrador, 
+				'soy_productor' => $soy_productor, 
+				'datos_donut' => $grafico_donut
+			]);
 		}
 
 		
 		
 		//var_dump($borradores);die();
 		//var_dump($borradores);die();
-		return Inertia::render('Productors/List', ['borradores' => $borradores, 'lista_minerales_cargados' => null,  'soy_autoridad' => $soy_autoridad , 'soy_administrador' => $soy_administrador, 'soy_productor' => $soy_productor, 'datos_donut' => $grafico_donut]);
+		
 	}
 
 	/**
@@ -5788,12 +5817,7 @@ class FormAltaProductorController extends Controller
 		//reviso permisos
 		$entro = false;
 		$formulario = FormAltaProductor::find($id);
-		if( $formulario == null )
-		{
-			//el formulario no existe
-			$entro = false;
-		}
-		elseif(Auth::user()->id==1 )
+		if(Auth::user()->id==1 )
 		{
 			//soy root
 			$entro = true;
@@ -5806,6 +5830,11 @@ class FormAltaProductorController extends Controller
 		}
 		else 
 			$entro = false;
+		if( $formulario == null )
+		{
+			//el formulario no existe
+			$entro = false;
+		}
 
 		//seteo que puedo editar y que no
 		$disables = [
