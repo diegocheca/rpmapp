@@ -11014,7 +11014,6 @@ class FormAltaProductorController extends Controller
 				$nuevo_mina_prod->primera_inscripcion = null;
 				$nuevo_mina_prod->caracter = null;
 				$nuevo_mina_prod->constancia_posecion = null;
-				$nuevo_mina_prod->id_formulario = $id_formulario;
 				$nuevo_mina_prod->save();
 				return $nuevo_mina_prod->id;
 			}
