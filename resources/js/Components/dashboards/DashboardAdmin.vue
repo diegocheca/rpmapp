@@ -263,7 +263,7 @@
     import ChartMap from '@/Components/charts/map'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
     import Vue3autocounter from "vue3-autocounter";
-    import TimeLine from "@/Components/charts/timeline";
+    import TimeLine from "@/Components/charts/line";
 
     export default {
         components: {
