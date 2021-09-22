@@ -5,6 +5,61 @@
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
 					Editar Productor
 				</h1>
+				<div class="flex">
+					<div v-if="$props.mostrar.alerta_puede_editar" class="w-full w-2/2 px-3 mb-6 md:mb-0">
+						<div class="alert flex flex-row  w-1/1 items-center bg-green-200 p-5 rounded border-b-2 border-green-300">
+							<div  class="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+								<span class="text-green-500">
+									<svg fill="currentColor"
+										viewBox="0 0 20 20"
+										class="h-6 w-6">
+										<path fill-rule="evenodd"
+											d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+											clip-rule="evenodd"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="alert-content ml-4">
+								<div class="alert-title font-semibold text-lg text-green-800">
+									Puede Actualizar El Formulario
+								</div>
+								<div class="alert-description text-sm text-green-600">
+									Usted puede editar el contenido de este formulario porque esta en estado de borrador.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div v-else class="w-full w-2/2 px-3 mb-6 md:mb-0">
+						<div class="alert flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
+							<div class="alert-icon flex items-center bg-yellow-100 border-2 border-yellow-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+								<span class="text-yellow-500">
+									<svg fill="currentColor"
+										viewBox="0 0 20 20"
+										class="h-6 w-6">
+										<path fill-rule="evenodd"
+											d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+											clip-rule="evenodd"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="alert-content ml-4">
+								<div class="alert-title font-semibold text-lg text-yellow-800">
+									Atención
+								</div>
+								<div class="alert-description text-sm text-yellow-600">
+									Usted no puede editar este formulario. Se encuentra siendo analizado por la Autoridad Minera, pronto recibirá una respuesta.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+	
+    
+
+
+				
+				
 				<form @submit.prevent="submit" class="mb-8">
 					<div class="row">
 						<banner></banner>
@@ -28,7 +83,6 @@
 									
 							</template>
 					</jet-dialog-modal>
-					<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
 					<div id="inicio"></div>
 					<div class="flex items-center justify-center">
 						<div class="grid grid-cols-1 gap-6 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7">
@@ -173,13 +227,6 @@
 						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
 					</div>-->
 					
-					<h2>hola </h2>
-					auto:{{evaluacion_global}}
-					mostrar.email: {{$props.mostrar.email}}
-					disables.email: {{$props.disables.email}}
-					mostrar.email_correccion: {{$props.mostrar.email_correccion}}
-					disables.email_correccion: {{$props.disables.email_correccion}}
-
 				<div id="section_productor"></div>
 				<PaginaUnoDatosProductores
 					v-if="$props.mostrar.paso_uno"
@@ -428,6 +475,7 @@
 				></CardDomAdmin> -->
 			</div>
 			<div id="section_domicilio_administrativo"></div>
+
 			<PaginaDosDatosDomLegal
 
 				v-if="$props.mostrar.paso_tres"
@@ -711,6 +759,7 @@
 			<br>
 			<br>
 			<div id="section_datos_mina_dos"></div>
+			--> {{$props.productor.owner_correcto}}
 			<PaginaCincoDatosMinaDos
 				v-if="$props.mostrar.paso_cinco"
 				:link_volver="route('formulario-alta.index')"
@@ -842,7 +891,7 @@
 				:actividad_a_desarrollar_correcto="form.actividad_a_desarrollar_correcto"
 				:obs_actividad_a_desarrollar="form.obs_actividad_a_desarrollar"
 				:obs_actividad_a_desarrollar_valido="form.obs_actividad_a_desarrollar_valido"
-				:mostrar_actividad="$props.mostrar.actividad"
+				:mostrar_actividad="$props.mostrar.actividades"
 				:desactivar_actividad="$props.disables.actividad"
 				:mostrar_actividad_correccion="$props.mostrar.actividad_correccion"
 				:desactivar_actividad_correccion="$props.disables.actividad_correccion"
@@ -1023,6 +1072,21 @@
 						>Nuevo Estado:</label
 					><br>
 					<select
+						v-if="$props.productor.estado === 'en revision'"
+						id="estado"
+						name="estado"
+						v-model="form.estado"
+						:disabled="$props.disables.estado"
+						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+						<option value="borrador">Borrador</option>
+						<option value="en revision" disabled>En revision</option>
+						<option value="aprobado">Aprobado</option>
+						<option value="reprobado">Reprobado</option>
+						<option value="con observacion">Con Observacion</option>
+						
+					</select>
+					<select
+						v-else
 						id="estado"
 						name="estado"
 						v-model="form.estado"
@@ -1072,14 +1136,26 @@
 						>Nuevo Estado:</label
 					><br>
 					<select
+						v-if="$props.productor.estado === 'borrador'"
 						id="estado"
 						name="estado"
 						v-model="form.estado"
 						:disabled="$props.disables.estado"
 						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 						<option value="borrador">Borrador</option>
-						<option value="presentado">Presentar</option>
+						<option value="en revision">Presentar</option>
 						
+					</select>
+					<select
+						v-if="$props.productor.estado === 'con observacion'"
+						id="estado"
+						name="estado"
+						v-model="form.estado"
+						:disabled="$props.disables.estado"
+						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+						<option value="borrador" disabled>Borrador</option>
+						<option value="con observacion" disabled>Con Observacion</option>
+						<option value="en revision">Presentar</option>
 					</select>
 				</div>
 			</div>
@@ -1161,15 +1237,13 @@
                     {{modal_body}}
             </template>
             <template #footer>
-				<inertia-link
+				
+                <inertia-link
 							:href="route('formulario-alta.index')"
-							class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+							class="px-4 py-2  text-sm font-medium rounded-full  border-b border-green-300 bg-green-200 hover:bg-green-300 text-green-900"
 						>
-							Volver
+							Ok, volver a lista de borradores
 						</inertia-link>
-                <button @click="cerrar_modal_datos_uno">
-                        Ok
-                </button>
             </template>
         </jet-dialog-modal>
 
@@ -1254,6 +1328,9 @@ export default {
 			evaluacion_global: this.$props.soy_autoridad_minera,
 			testing_global: this.$props.soy_administrador,
 			mostrar_modal_datos_ya_guardados:false,
+
+			puedo_enviar_form:false,
+			cerrar_modal_datos_uno:false,
 
 
 			lista_provincias: [],
@@ -1521,8 +1598,8 @@ export default {
 
 				minerales_variedad: this.$props.productor.minerales_variedad,
 				minerales_variedad_validacion:  true,
-				minerales_variedad_correcto: 'nada',
-				obs_minerales_variedad: '',
+				minerales_variedad_correcto: this.$props.productor.plano_inmueble_correcto,
+				obs_minerales_variedad: this.$props.productor.plano_inmueble_correcto,
 				obs_minerales_variedad_valido: false,
 
 
@@ -1572,65 +1649,65 @@ export default {
 
 				titulo_contrato_posecion: this.$props.productor.titulo_contrato_posecion,
 				titulo_contrato_posecion_validacion:  true,
-				titulo_contrato_posecion_correcto: 'nada',
-				obs_titulo_contrato_posecion: '',
+				titulo_contrato_posecion_correcto: this.$props.productor.titulo_contrato_posecion_correcto,
+				obs_titulo_contrato_posecion:  this.$props.productor.obs_titulo_contrato_posecion,
 				obs_titulo_contrato_posecion_valido: false,
 
 
 				resolucion_concesion_minera: this.$props.productor.resolucion_concesion_minera,
 				resolucion_concesion_minera_validacion:  true,
-				resolucion_concesion_minera_correcto: 'nada',
-				obs_resolucion_concesion_minera: '',
+				resolucion_concesion_minera_correcto:  this.$props.productor.resolucion_concesion_minera_correcto,
+				obs_resolucion_concesion_minera:  this.$props.productor.obs_resolucion_concesion_minera,
 				obs_resolucion_concesion_minera_valido: false,
 
 
 				constancia_pago_canon: this.$props.productor.constancia_pago_canon,
 				constancia_pago_canon_validacion:  true,
-				constancia_pago_canon_correcto: 'nada',
-				obs_constancia_pago_canon: '',
+				constancia_pago_canon_correcto: this.$props.productor.constancia_pago_canon_correcto,
+				obs_constancia_pago_canon: this.$props.productor.obs_constancia_pago_canon,
 				obs_constancia_pago_canon_valido: false,
 
 
 
 				iia: this.$props.productor.iia,
 				iia_canon_validacion:  true,
-				iia_correcto: 'nada',
-				obs_iia_canon: '',
+				iia_correcto: this.$props.productor.iia_correcto,
+				obs_iia_canon: this.$props.productor.obs_iia,
 				obs_iia_canon_valido: false,
 
 
 				dia: this.$props.productor.dia,
 				dia_canon_validacion:  true,
-				dia_correcto: 'nada',
-				obs_dia_canon: '',
+				dia_correcto: this.$props.productor.dia_correcto,
+				obs_dia_canon:  this.$props.productor.obs_dia,
 				obs_dia_canon_valido: false,
 
 
 
 				acciones_a_desarrollar: this.$props.productor.acciones_a_desarrollar,
 				acciones_a_desarrollar_validacion:  true,
-				acciones_a_desarrollar_correcto: 'nada',
-				obs_acciones_a_desarrollar: '',
+				acciones_a_desarrollar_correcto: this.$props.productor.acciones_a_desarrollar_correcto,
+				obs_acciones_a_desarrollar: this.$props.productor.obs_acciones_a_desarrollar,
 				obs_acciones_a_desarrollar_valido: this.$props.productor.concesion_minera_aclaracion,
 
 
 
 				actividad: this.$props.productor.actividad,
 				actividad_a_desarrollar_validacion:  true,
-				actividad_a_desarrollar_correcto: 'nada',
-				obs_actividad_a_desarrollar: '',
+				actividad_a_desarrollar_correcto: this.$props.productor.actividad_correcto,
+				obs_actividad_a_desarrollar: this.$props.productor.obs_actividad,
 				obs_actividad_a_desarrollar_valido: false,
 
 				fecha_alta_dia: this.$props.productor.fecha_alta_dia,
 				fecha_alta_dia_validacion:  true,
-				fecha_alta_dia_correcto: 'nada',
-				obs_fecha_alta_dia: '',
+				fecha_alta_dia_correcto: this.$props.productor.fecha_alta_dia_correcto,
+				obs_fecha_alta_dia: this.$props.productor.obs_fecha_alta_dia,
 				obs_fecha_alta_dia_valido: false,
 
 				fecha_vencimiento_dia: this.$props.productor.fecha_vencimiento_dia,
 				fecha_vencimiento_dia_validacion:  true,
-				fecha_vencimiento_dia_correcto: 'nada',
-				obs_fecha_vencimiento_dia: '',
+				fecha_vencimiento_dia_correcto: this.$props.productor.fecha_vencimiento_dia_correcto,
+				obs_fecha_vencimiento_dia: this.$props.productor.obs_fecha_vencimiento_dia,
 				obs_fecha_vencimiento_dia_valido: false,
 
 
@@ -1701,10 +1778,21 @@ export default {
 	},
 	methods: {
 		submit() {
-			this.$inertia.put(
-				route("productors.update", this.$props.productors.id),
-				this.form
-			);
+			let self  = this;
+			console.log("el id es:",this.form.id);
+			
+			if( typeof this.form.id !== 'undefined' && self.form.id != null && self.puedo_enviar_form)
+			{
+				console.log("Entre al if xq:"+self.form.id);
+				this.$inertia.put(
+					route("productors.update", this.$props.productors.id),
+					this.form
+				);
+			}
+			else{
+				console.log("No puedo enviar el form");
+			}
+
 		},
 		closeModal() {
 				this.confirmingUserDeletion = false
@@ -1740,28 +1828,47 @@ export default {
             data.append('id', this.$props.productor.id);
             data.append('estado', self.form.estado);
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-            axios.post("http://localhost:8000/formularios/presentar_borrador", data)
+            axios.post(this.$inertia.page.props.appName+"/formularios/presentar_borrador", data)
             .then(function (response) {
                 console.log(response.data);
-                if(response.data === "todo bien")
-                    {
-                        console.log('todo bien');
-                        self.modal_tittle = 'Se actualizo estado';
-                        self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
+                if(response.data.msg === 'Datos actualizados correctamente.')
+				{
+					if(self.form.estado === 'aprobado') // lo aprobe en el back, siendo autoridad
+					{
+						console.log('todo bien');
+						self.modal_tittle = 'Se aprobó la solicitud';
+						self.modal_body = 'Se ha guardado el estado de la solicitud como aprobado. Esta acción implica que la persona que presentó este formulario será considerado como productor.';
 						self.closeModalAprobar = false;
-                        self.mostrar_modal_datos_ya_guardados = true;
-                    }
-                    
-                    if(response.data === "formulario no encontrado")
-                    {
-                        console.log('todo mal, no se encontro');
-                        self.modal_tittle = 'Paso 1 Guardado Fallido';
-                        self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
-                        self.mostrar_modal_datos_ya_guardados = true;
-                    }
-                    else{
-                        console.log('NO todo bien');	
-                    }
+						self.mostrar_modal_datos_ya_guardados = true;
+					}
+					if(self.form.estado === 'en revision') // lo presente como productor
+					{
+						console.log('todo bien');
+						self.modal_tittle = 'Se actualizo estado';
+						self.modal_body = 'Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera';
+						self.closeModalAprobar = false;
+						self.mostrar_modal_datos_ya_guardados = true;
+					}
+					if(self.form.estado === 'con observacion') // lo aprobe en el back, siendo autoridad
+					{
+						console.log('todo bien');
+						self.modal_tittle = 'Se cambio el estado del Formulario';
+						self.modal_body = 'Se ha guardado el estado del como Formulario con Observaciones. Esta acción implica que la persona que presentó este formulario será notificado y deberá relaizar los cambios necesarios.';
+						self.closeModalAprobar = false;
+						self.mostrar_modal_datos_ya_guardados = true;
+					}
+					
+				}
+				if(response.data.msg === "formulario no encontrado")
+				{
+					console.log('todo mal, no se encontro');
+					self.modal_tittle = 'Paso 1 Guardado Fallido';
+					self.modal_body = 'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+					self.mostrar_modal_datos_ya_guardados = true;
+				}
+				else{
+					console.log('NO todo bien');	
+				}
                 
             })
 
@@ -3980,6 +4087,11 @@ export default {
                 console.log(error);
             });
         });
+		console.log("Mi dpto ya elegido es:",this.$props.productor.leal_departamento);
+		if(!isNaN(parseInt(this.$props.productor.leal_departamento)))
+		{
+			self.form.leal_departamento = this.$props.productor.leal_departamento;
+		}
 	}
 	else{self.lista_dptos_legal=[];}
 	if(!isNaN(parseInt(this.$props.productor.administracion_provincia))) {

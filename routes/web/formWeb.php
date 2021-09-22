@@ -1,8 +1,4 @@
 <?php
-/*
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +23,6 @@ use App\Http\Controllers\formWebController\MineralController;
 use App\Http\Controllers\formWebController\EstadoSolicitudController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::resource('solicitudes', SolicitudesController::class)
         ->middleware(['auth:sanctum', 'verified']);
@@ -72,3 +58,23 @@ Route::post('solicitudesProcesa', [SolicitudesController::class, "procesa"]) //p
 
 Route::post('solicitudes/solicitudesProcesa', [SolicitudesController::class, 'postSolicitudes']) //procesa datos solicitud descubrimiento
         ->middleware(['auth:sanctum', 'verified']);
+
+
+
+//FORMULARIOS WEB
+Route::group(['middleware' => ['auth'], 'prefix' => 'formweb', 'as' => 'formweb.'], function () {
+
+    Route::resource('solicitudes', SolicitudesController::class)
+        ->middleware(['auth:sanctum', 'verified'])
+        ->names('solicitudes');
+
+    Route::post('solicitudes/solicitudesDatos', [SolicitudesController::class, 'postSolicitudes'])
+        ->middleware(['auth:sanctum', 'verified']);
+
+    Route::get('/prueba', [SolicitudesController::class, "prueba"])->name('prueba');
+
+    Route::get('/menu', [SolicitudesController::class, "menu"])->name('menu');
+    
+});
+Route::get('tipo_documento', [TipoDocumentoController::class, "getTipoDocumento"])
+    ->middleware(['auth:sanctum', 'verified']);

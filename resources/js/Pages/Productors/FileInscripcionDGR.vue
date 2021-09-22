@@ -89,7 +89,7 @@
         <div class="w-full md:w-1/2 px-3" v-else>
             <object :data=valor_input type="application/pdf" width="100%" height="500px"> 
                     <p>It appears you don't have a PDF plugin for this browser.
-                        No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
+                        No biggie... you can <a :href="$inertia.page.props.appName+'/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'">click here to
                     download the PDF file.</a></p>  
             </object>
             <!-- <button
@@ -140,8 +140,8 @@ export default {
     ],
     
     data() {
-        console.log("La contancia es valor es:");
-        console.log(this.$props.fileinput_valor);
+        // console.log("La contancia es valor es:");
+        // console.log(this.$props.fileinput_valor);
         return {
             valor_input: this.$props.fileinput_valor,
             fileinput_correcto_local: this.$props.inscripciondgr_correcto,
@@ -156,7 +156,7 @@ export default {
     methods:{
         actaulizar_variable_fileinput(valor) {
             this.fileinput_correcto_local = valor;
-            console.log(this.fileinput_correcto_local);
+            // console.log(this.fileinput_correcto_local);
             this.$emit('changeinscripciondgrcorrecto',this.fileinput_correcto_local);
         },
         actaulizar_contenido_text_area_inscripciondgr(value) {

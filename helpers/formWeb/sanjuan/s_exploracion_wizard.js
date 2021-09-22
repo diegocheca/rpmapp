@@ -473,7 +473,7 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                             inputs: [
                                 //PROVINCIA
                                 {
-                                    label: "Provincia ",
+                                    label: "Provincia Legal",
                                     value: {},
                                     type: inputsTypes.SELECT,
                                     // get axios
@@ -603,9 +603,9 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     value: schema.domicilio,
                                     type: inputsTypes.TEXT,
                                     name: "domicilio",
-                                    validations: yup
-                                        .string()
-                                        .required("Debes completar este campo"),
+                                    // validations: yup
+                                    //     .string()
+                                    //     .required("Debes completar este campo"),
                                     observation: new Observations({
                                         schema,
                                         name: "domicilio",
@@ -651,18 +651,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("provinciaSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("provinciaSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "provincia",
@@ -688,18 +688,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("departamentoSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("departamentoSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "departamento",
@@ -721,18 +721,18 @@ export function getFormSchema({ ...schema }, evaluate, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: "Selecciona una opción",
-                                    validations: yup
-                                        .object()
-                                        .when("localidadSelect", {
-                                            is: (value) =>
-                                                _.isEmpty(value) || !value,
-                                            then: yup
-                                                .object()
-                                                .required(
-                                                    "Debes elegir un elemento"
-                                                )
-                                                .nullable(),
-                                        }),
+                                    // validations: yup
+                                    //     .object()
+                                    //     .when("localidadSelect", {
+                                    //         is: (value) =>
+                                    //             _.isEmpty(value) || !value,
+                                    //         then: yup
+                                    //             .object()
+                                    //             .required(
+                                    //                 "Debes elegir un elemento"
+                                    //             )
+                                    //             .nullable(),
+                                    //     }),
                                     observation: new Observations({
                                         schema,
                                         name: "localidad",

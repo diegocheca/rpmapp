@@ -1,10 +1,32 @@
 <template>
-    <div>
-        <div class="block w-full text-center text-grey-darkest text-2xl p-10">
-            {{ titleForm }}
-        </div>
+  <div>
+    <div class="block w-full text-center text-grey-darkest text-2xl p-10">
+      {{ titleForm }}
+    </div>
 
-        <div class="flex">
+    <div class="flex justify-center">
+      <div
+        v-for="(item, index) in formSchema"
+        :key="index"
+        :class="`w-1/${formSchema.length}`"
+      >
+        <div class="relative mb-2">
+          <div
+            v-if="index >= 1"
+            class="
+              absolute
+              flex
+              align-center
+              items-center
+              align-middle
+              content-center
+            "
+            style="
+              width: calc(100% - 2.5rem - 1rem);
+              top: 50%;
+              transform: translate(-50%, -50%);
+            "
+          >
             <div
                 v-for="(item, index) in formSchema"
                 :key="index"
@@ -85,6 +107,31 @@
                     {{ item.titleStep }}
                 </div>
             </div>
+          </div>
+          <div
+            class="
+              w-10
+              h-10
+              mx-auto
+              rounded-full
+              text-lg text-white
+              flex
+              items-center
+            "
+            :class="[currentStep >= index ? item.bgColorIcon : 'bg-gray-300']"
+          >
+            <span class="text-center text-white w-full">
+              <svg
+                class="w-full fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+              >
+                <path class="heroicon-ui" :d="item.icon" />
+              </svg>
+            </span>
+          </div>
         </div>
         
         <Form
@@ -169,42 +216,42 @@
                 </button> -->
             </div>
 
-            <!-- <inertia-link :href="route('reinscripciones.index')" class="w-20 text-center py-2 mb-4 text-sm font-medium rounded-full block border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
+      <!-- <inertia-link :href="route('reinscripciones.index')" class="w-20 text-center py-2 mb-4 text-sm font-medium rounded-full block border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
             Volver
         </inertia-link> -->
 
-            <template v-if="dev">
-                <div
-                    class="
-                        mt-6
-                        bg-clip-border
-                        p-6
-                        bg-indigo-600
-                        border-4 border-indigo-300 border-dashed
-                        text-white
-                    "
-                >
-                    <h3>ERRORS:</h3>
-                    <pre>
+      <template v-if="dev">
+        <div
+          class="
+            mt-6
+            bg-clip-border
+            p-6
+            bg-indigo-600
+            border-4 border-indigo-300 border-dashed
+            text-white
+          "
+        >
+          <h3>ERRORS:</h3>
+          <pre>
                     {{ errors }}
                 </pre
-                    >
-                </div>
-            </template>
+          >
+        </div>
+      </template>
 
-            <template v-if="dev">
-                <div
-                    class="
-                        mt-6
-                        bg-clip-border
-                        p-6
-                        bg-indigo-600
-                        border-4 border-indigo-300 border-dashed
-                        text-white
-                    "
-                >
-                    <h3>VALUES:</h3>
-                    <pre>
+      <template v-if="dev">
+        <div
+          class="
+            mt-6
+            bg-clip-border
+            p-6
+            bg-indigo-600
+            border-4 border-indigo-300 border-dashed
+            text-white
+          "
+        >
+          <h3>VALUES:</h3>
+          <pre>
                     {{ values }}
                 </pre
                 
@@ -227,14 +274,30 @@ import VueMultiselect from "vue-multiselect";
 import * as yup from "yup";
 // import {FormBuilder} from '../../../../helpers/formularios/sanjuan/reinscripciones';
 export default {
-    components: {
-        AppLayout,
-        Form,
-        Field,
-        ErrorMessage,
-        VueMultiselect,
-        DragAndDropFile,
-        DynamicInputs,
+  components: {
+    AppLayout,
+    Form,
+    Field,
+    ErrorMessage,
+    VueMultiselect,
+    DragAndDropFile,
+    DynamicInputs,
+  },
+  props: {
+    builder: {
+      require: true,
+    },
+    province: {
+      require: true,
+      type: String,
+    },
+    tipo_documento: {
+      require: true,
+      type: String,
+    },
+    titleForm: {
+      require: true,
+      type: String,
     },
     props: {
         builder: {
@@ -284,21 +347,54 @@ export default {
             type: Array,
         },        
     },
-    emits: ["valuesForm"],
+    dev: {
+      require: false,
+      type: Boolean,
+      default: false,
+    },
+    buttomLabel: {
+      require: false,
+      type: String,
+      default: "Guardar",
+    },
+    dataForm: {
+      require: false,
+      type: Array,
+    },
+  },
+  emits: ["valuesForm"],
 
-    data() {
-        const currentStep = 0;
-        const formValues = {};
+  data() {
+    const currentStep = 0;
+    const formValues = {};
 
-        return {
-            title: this.$props.titleForm,
-            inputsTypes: inputsTypes,
-            formSchema: [],
-            yepSchemas: [],
-            currentStep,
-            formValues,
-            disableSave: false,
-        };
+    return {
+      title: this.$props.titleForm,
+      inputsTypes: inputsTypes,
+      formSchema: [],
+      yepSchemas: [],
+      currentStep,
+      formValues,
+      disableSave: false,
+    };
+  },
+  methods: {
+    async onSubmit(values) {
+      // accumlate the form values with the values from previous steps
+      localStorage.setItem("dniV", values.dni);
+      Object.assign(this.formValues, values);
+      if (this.currentStep === this.formSchema.length - 1) {
+        console.log("Done: ", JSON.stringify(this.formValues, null, 2));
+        this.disableSave = true;
+        return;
+      }
+      await axios.post("solicitudesDatos", {
+        step: this.currentStep + 1,
+        datos: this.formValues,
+      });
+      // console.log(JSON.stringify(this.formValues, null, 2));
+      // console.log("Current values: ");
+      this.currentStep++;
     },
     methods: {
         async onSubmit(values) {
@@ -321,74 +417,74 @@ export default {
             this.currentStep++;
         },
 
-        prevStep() {
-            var txt = localStorage.getItem("dniV");
-            console.log("DNI: ", txt);
-            if (this.currentStep <= 0) {
-                return;
-            }
-            this.disableSave = false;
-            this.currentStep--;
-        },
-        prueba() {
-            console.log("estoy dentro");
-        },
+    prevStep() {
+      var txt = localStorage.getItem("dniV");
+      console.log("DNI: ", txt);
+      if (this.currentStep <= 0) {
+        return;
+      }
+      this.disableSave = false;
+      this.currentStep--;
     },
-    computed: {
-        currentSchema() {
-            return this.yepSchemas
-                ? yup.object().shape(this.yepSchemas[this.currentStep])
-                : {};
-        },
-        progressCurrentStep() {},
+    prueba() {
+      console.log("estoy dentro");
     },
-    // watch: {
-    //     formValues(newQuestion, oldQuestion) {
-    //         alert()
-    //     }
-    // },
-    async mounted() {
-        // const module = await import(`../../../../helpers/formularios/${this.$props.province}`)
-        const module = await import(
-            `../../../../../helpers/formWeb/${this.$props.province}`
-        );
-        
-        this.formSchema = module.getFormSchema(
-            this.$props.builder,
-            this.$props.evaluate,
-            this.$props.dataForm
-        );
-        for (let index = 0; index < this.formSchema.length; index++) {
-            this.yepSchemas.push(
-                [this.formSchema[index]].reduce(
-                    createYupStepSchema,
-                    {},
-                    this.$props.evaluate
-                )
-            );
-        }
-
-        //console.log(this.formSchema.map(e => e.bodyStep.map(e1 => e1.body.inputs)));
-        // this.formSchema = subFormSchema.map(e => e.bodyStep);
-
-        // this.yepSchema = this.formSchema.reduce(createYupStepSchema, {}, this.$props.evaluate);
-
-        // this.validateSchema = yup.object().shape(this.yepSchema);
+  },
+  computed: {
+    currentSchema() {
+      return this.yepSchemas
+        ? yup.object().shape(this.yepSchemas[this.currentStep])
+        : {};
     },
+    progressCurrentStep() {},
+  },
+  // watch: {
+  //     formValues(newQuestion, oldQuestion) {
+  //         alert()
+  //     }
+  // },
+  async mounted() {
+    // const module = await import(`../../../../helpers/formularios/${this.$props.province}`)
+    const module = await import(
+      `../../../../../helpers/formWeb/${this.$props.province}`
+    );
+
+    this.formSchema = module.getFormSchema(
+      this.$props.builder,
+      this.$props.evaluate,
+      this.$props.dataForm
+    );
+    for (let index = 0; index < this.formSchema.length; index++) {
+      this.yepSchemas.push(
+        [this.formSchema[index]].reduce(
+          createYupStepSchema,
+          {},
+          this.$props.evaluate
+        )
+      );
+    }
+
+    //console.log(this.formSchema.map(e => e.bodyStep.map(e1 => e1.body.inputs)));
+    // this.formSchema = subFormSchema.map(e => e.bodyStep);
+
+    // this.yepSchema = this.formSchema.reduce(createYupStepSchema, {}, this.$props.evaluate);
+
+    // this.validateSchema = yup.object().shape(this.yepSchema);
+  },
 };
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.css" scoped></style>
 <style scoped>
 input:checked ~ .dot {
-    transform: translateX(100%);
-    background-color: #48bb78;
+  transform: translateX(100%);
+  background-color: #48bb78;
 }
 
 .btn-close-row {
-    position: absolute;
-    right: 36px;
-    z-index: 100;
-    cursor: pointer;
+  position: absolute;
+  right: 36px;
+  z-index: 100;
+  cursor: pointer;
 }
 </style>
