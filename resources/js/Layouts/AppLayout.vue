@@ -315,7 +315,7 @@
     </div>
   </div>
   <!-- menu curvo-->
-  <div class="flex h-screen bg-gray-200">
+  <div class="flex bg-gray-200">
     <div
       class="
         flex
