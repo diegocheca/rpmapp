@@ -23,8 +23,20 @@ class ProductoresController extends Controller
         Productores::when($request-> term , function($query , $term){
             $query->where('razonsocial', 'LIKE', '%'.$term.'%');
         })->paginate(5),
-         'alertType'=>'success']);
+         'alertType'=>'']);
     }
+
+    
+    public function mostrar_datos($id)
+    {
+        $productores = Productores::find($id);
+        return response()->json([
+			'productor' => $productores,
+			'msg' => 'se encontro correctamente',
+			'id' => $id
+		],201);
+    }
+
 
     /**
      * Show the form for creating a new resource.

@@ -7,6 +7,27 @@
         </template>
 
         <main class=" mx-auto p-4 md:w-3/4 px-4 py-4">
+            <div class="flex flex-wrap">
+                <div class="w-full sm:w-1/3 md:w-1/4 l:w-1/4 xl:w-1/4 px-3 mb-6 md:mb-0">
+                    <button class="inline-block relative p-4 px-4  py-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                        </svg>
+                        <span class="animate-ping absolute top-1 right-0.5 block h-1 w-1 rounded-full ring-2 ring-green-400 bg-green-600"></span>
+                        Crear Solicitud
+                    </button>
+                </div>
+                <div class="w-full sm:w-1/3 md:w-1/4 l:w-1/4 xl:w-1/4 px-3 mb-6 md:mb-0">
+                    <button class="inline-block relative p-4 px-4  py-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                        <span class="animate-ping absolute top-1 right-0.5 block h-1 w-1 rounded-full ring-2 ring-purple-400 bg-purple-600"></span>
+                        Crear Reinscripcion
+                    </button>
+                </div>
+            </div>
+                    
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 ">
                 <div class="flex justify-center w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-2 " :class="[ porcentajeInscripcion == 100? 'border-green-400' : 'border-indigo-400' ]">
                     <!-- sin inscripciones -->
@@ -420,15 +441,15 @@
                     },
                 ],
                 slideMinerals: [
-                    "http://localhost:8000/minerales/thumbs/1171.png",
-                    "http://localhost:8000/minerales/thumbs/1132.png",
-                    "http://localhost:8000/minerales/thumbs/1104.png",
-                    "http://localhost:8000/minerales/thumbs/1171.png",
-                    "http://localhost:8000/minerales/thumbs/1132.png",
-                    "http://localhost:8000/minerales/thumbs/1104.png",
-                    "http://localhost:8000/minerales/thumbs/1171.png",
-                    "http://localhost:8000/minerales/thumbs/1132.png",
-                    "http://localhost:8000/minerales/thumbs/1104.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1171.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1132.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1104.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1171.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1132.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1104.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1171.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1132.png",
+                    this.$inertia.page.props.appName+"/minerales/thumbs/1104.png",
                 ],
                 breakpoints: {
                     // 360 and up

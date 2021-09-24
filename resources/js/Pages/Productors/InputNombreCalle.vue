@@ -20,7 +20,6 @@
             @input="cambio_input_calle_legal($event.target.value)" 
             >
         </div>
-        valor {{nombre_calle_legal_correcto}} name_ {{name_correcto}}
         <p v-bind:class=clase_cartel_nota_legalcalle>{{cartel_nota_legalcalle}}.</p>
         <div class="flex" v-if="evaluacion || mostrar_calle_legal_correccion">
             <div class="w-full md:w-1/3 px-3">

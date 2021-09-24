@@ -832,7 +832,12 @@ export default {
     //     );
     // },
     logout() {
-      this.$inertia.post(route("logout"));
+      //this.$inertia.post(route("logout"))
+      axios.post(route("logout")).then(function (response) {
+        window.location.replace("http://localhost:8000/");
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
   },
 };

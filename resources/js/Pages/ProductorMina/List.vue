@@ -12,10 +12,13 @@
           <div
             class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
           >
-          <a :href="route('productores_minas.create')"> <button class="px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">Nuevo Productor y Mina</button></a>
-
+          <a :href="route('productores_minas.create')"> 
+            <button class="animate-pulse px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">
+              Nuevo Productor y Mina
+            </button>
+            </a>
             <table class="min-w-full divide-y divide-gray-200">
-              <thead class="bg-gray-50">
+              <thead class="bg-gray-100">
                 <tr>
                   
                   <th
@@ -47,6 +50,12 @@
                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     caracter
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Accion
                   </th>
                   
 
@@ -86,11 +95,6 @@
                     >
                       Editar
                     </inertia-link>
-                  </td>
-
-                  <td
-                    class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-                  >
                     <inertia-link
                       method="delete"
                       :href="route('productores_minas.destroy', productor_mina.id)"
