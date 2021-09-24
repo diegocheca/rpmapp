@@ -38,25 +38,25 @@ use App\Models\formWebModels\formEstadoSolicitud;
 use App\Models\formWebModels\form_estado_solicitud_form_solicitud;
 use App\Models\formWebModels\formMinaColindante;
 use App\Models\formWebModels\form_mina_form_mina_colindante;
-use App\Models\formWebModels\formTipoSolicitud;
 
 class SolicitudesController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('can:formweb.solicitudes.index')->only('index');
-        $this->middleware('can:formweb.solicitudes.edit')->only('edit', 'update');
-        $this->middleware('can:formweb.solicitudes.create')->only('create', 'store');
-        $this->middleware('can:formweb.solicitudes.destroy')->only('destroy');
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('can:formweb.solicitudes.index')->only('index');
+    //     $this->middleware('can:formweb.solicitudes.edit')->only('edit', 'update');
+    //     $this->middleware('can:formweb.solicitudes.create')->only('create', 'store');
+    //     $this->middleware('can:formweb.solicitudes.destroy')->only('destroy');
+    // }
 
-    public function menu()
-    {
-        return view("formWeb.prueba");
-    }
+    // public function menu()
+    // {
+    //     return view("formWeb.prueba");
+    // }
 
     public function index(Request $request)
     {
+
         return  Inertia::render('formWeb/mostrar'); // muestra las dos op de solicitud q hay
     }
 
@@ -824,49 +824,49 @@ class SolicitudesController extends Controller
     {
         //  formSolicitud::create($request->all()); //content
         // return Redirect::route('solicitudes.index');
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function lista_Solicitud($id)
+    {
+
+        $solicitudes = \DB::table('formSolicitud')->select('formSolicitud.*')->get();
+        $idS = $solicitudes->id;
+        $estados = \DB::table('formEstadoSolicitud');
+        $idE = $estados->id;
+        $nom_E = $estado->nom_estado_solicitud;
+
+        foreach ($solicitudes as $solicitud) {
+            foreach ($estados as $estado) {
+                if (($idS == $idE) && ($nom_E == "Datos Propietario")) {
+                    $estadoSol = "Finalizado";
+                } else {
+                    $estadoSol = "Borrador";
+                }
+            }
+        }
+        // dd($estadoSol);
+
+
+
+
+        return Inertia::render('formWeb/lista_solicitud')->with('solicitudes', $solicitudes, $var);
+    }
+
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

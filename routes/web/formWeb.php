@@ -22,16 +22,40 @@ use App\Http\Controllers\formWebController\EstadoTerrenoController;
 use App\Http\Controllers\formWebController\MineralController;
 use App\Http\Controllers\formWebController\EstadoSolicitudController;
 
+//FORMULARIOS WEB
+Route::group(['middleware' => ['auth:sanctum', 'verified'], 'prefix' => 'formweb', 'as' => 'formweb.'], function () {
+
+        Route::resource('solicitudes', SolicitudesController::class)
+                // ->middleware(['auth:sanctum', 'verified'])
+                ->names('solicitudes');
+
+        Route::post('solicitudes/solicitudesDatos', [SolicitudesController::class, 'postSolicitudes']) //procesa datos solicitud exploracion
+                // ->middleware(['auth:sanctum', 'verified'])
+                ->name('solicitudes-Datos');
+
+        Route::get('estado_solicitud', [EstadoSolicitudController::class, "getEstadoSolicitud"])
+                // ->middleware(['auth:sanctum', 'verified'])
+                ->name('estado-solicitud');
+
+        Route::get('/descubrimiento', [SolicitudesController::class, "create2"])//create para solicitud descubrimiento
+                // ->middleware(['auth:sanctum', 'verified']) 
+                ->name('descubrimiento');
+
+        Route::post('/solicitudesProcesa', [SolicitudesController::class, 'procesa']) //procesa datos solicitud descubrimiento
+                // ->middleware(['auth:sanctum', 'verified'])
+                ->name('solicitudes-Procesa');
 
 
-Route::resource('solicitudes', SolicitudesController::class)
-        ->middleware(['auth:sanctum', 'verified']);
+        // Route::post('solicitudes/create', [SolicitudesController::class,'postSolicitudes']) //va a postSolicitudes
+        //       ->middleware(['auth:sanctum', 'verified']);
 
-// Route::post('solicitudes/create', [SolicitudesController::class,'postSolicitudes']) //va a postSolicitudes
-//       ->middleware(['auth:sanctum', 'verified']);
+        //     Route::get('/prueba', [SolicitudesController::class, "prueba"])->name('prueba');
 
-Route::post('solicitudes/solicitudesDatos', [SolicitudesController::class, 'postSolicitudes']) //procesa datos solicitud exploracion
-        ->middleware(['auth:sanctum', 'verified']);
+        //     Route::get('/menu', [SolicitudesController::class, "menu"])->name('menu');
+
+        // Route::get('tipo_documento', [TipoDocumentoController::class, "getTipoDocumento"])
+        //         ->middleware(['auth:sanctum', 'verified']);
+});
 
 Route::get('tipo_documento', [TipoDocumentoController::class, "getTipoDocumento"])
         ->middleware(['auth:sanctum', 'verified']);
@@ -41,40 +65,3 @@ Route::get('mineral', [MineralController::class, "getMineral"])
 
 Route::get('estado_terreno', [EstadoTerrenoController::class, "getEstadoTerreno"])
         ->middleware(['auth:sanctum', 'verified']);
-
-Route::get('estado_solicitud', [EstadoSolicitudController::class, "getEstadoSolicitud"])
-        ->middleware(['auth:sanctum', 'verified']);
-
-Route::middleware(['auth:sanctum', 'verified'])
-        ->get('/solicitudes.descubrimiento', [SolicitudesController::class, "create2"]) //create para solicitud descubrimiento
-        ->name('descubrimiento');
-
-Route::middleware(['auth:sanctum', 'verified'])
-        ->get('/solicitudes.descubrimiento', [SolicitudesController::class, "crear_descu"]) //create para solicitud descubrimiento
-        ->name('descubrimiento');
-
-Route::post('solicitudesProcesa', [SolicitudesController::class, "procesa"]) //procesa datos solicitud descubrimiento
-        ->middleware(['auth:sanctum', 'verified']);
-
-Route::post('solicitudes/solicitudesProcesa', [SolicitudesController::class, 'postSolicitudes']) //procesa datos solicitud descubrimiento
-        ->middleware(['auth:sanctum', 'verified']);
-
-
-
-//FORMULARIOS WEB
-Route::group(['middleware' => ['auth'], 'prefix' => 'formweb', 'as' => 'formweb.'], function () {
-
-    Route::resource('solicitudes', SolicitudesController::class)
-        ->middleware(['auth:sanctum', 'verified'])
-        ->names('solicitudes');
-
-    Route::post('solicitudes/solicitudesDatos', [SolicitudesController::class, 'postSolicitudes'])
-        ->middleware(['auth:sanctum', 'verified']);
-
-    Route::get('/prueba', [SolicitudesController::class, "prueba"])->name('prueba');
-
-    Route::get('/menu', [SolicitudesController::class, "menu"])->name('menu');
-    
-});
-Route::get('tipo_documento', [TipoDocumentoController::class, "getTipoDocumento"])
-    ->middleware(['auth:sanctum', 'verified']);

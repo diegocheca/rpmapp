@@ -13,7 +13,6 @@
                   <jet-application-mark class="block h-9 w-auto" />
                 </inertia-link>
               </div> -->
-
               <!-- Navigation Links -->
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <jet-nav-link
@@ -81,7 +80,6 @@
                 </jet-nav-link>
               </div>
             </div>
-
             <div class="hidden sm:flex sm:items-center sm:ml-6">
               <div
                 class="ml-3 relative"
@@ -118,7 +116,6 @@
                         "
                       >
                         {{ $page.props.user.current_team.name }}
-
                         <svg
                           class="ml-2 -mr-0.5 h-4 w-4"
                           xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +131,6 @@
                       </button>
                     </span>
                   </template>
-
                   <template #content>
                     <div class="w-60">
                       <!-- Team Management -->
@@ -142,7 +138,6 @@
                         <div class="block px-4 py-2 text-xs text-gray-400">
                           Manage Team
                         </div>
-
                         <!-- Team Settings -->
                         <jet-dropdown-link
                           :href="
@@ -151,21 +146,17 @@
                         >
                           Team Settings
                         </jet-dropdown-link>
-
                         <jet-dropdown-link
                           :href="route('teams.create')"
                           v-if="$page.props.jetstream.canCreateTeams"
                         >
                           Create New Team
                         </jet-dropdown-link>
-
                         <div class="border-t border-gray-100"></div>
-
                         <!-- Team Switcher -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
                           Switch Teams
                         </div>
-
                         <template
                           v-for="team in $page.props.user.all_teams"
                           :key="team.id"
@@ -201,7 +192,6 @@
                   </template>
                 </jet-dropdown>
               </div>
-
               <!-- Settings Dropdown -->
               <div class="ml-3 relative">
                 <jet-dropdown align="right" width="48">
@@ -224,7 +214,6 @@
                         :alt="$page.props.user.name"
                       />
                     </button>
-
                     <span v-else class="inline-flex rounded-md">
                       <button
                         type="button"
@@ -246,7 +235,6 @@
                         "
                       >
                         {{ $page.props.user.name }}
-
                         <svg
                           class="ml-2 -mr-0.5 h-4 w-4"
                           xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +255,6 @@
                     <div class="block px-4 py-2 text-xs text-gray-400">
                       Administrar Cuenta
                     </div>
-
                     <jet-dropdown-link :href="route('profile.show')">
                       Perfil de Usuario
                     </jet-dropdown-link>
@@ -277,16 +264,13 @@
                     >
                       Configuración
                     </jet-dropdown-link>
-
                     <jet-dropdown-link
                       :href="route('api-tokens.index')"
                       v-if="$page.props.jetstream.hasApiFeatures"
                     >
                       API Tokens
                     </jet-dropdown-link>
-
                     <div class="border-t border-gray-100"></div>
-
                     <!-- Authentication -->
                     <form @submit.prevent="logout">
                       <jet-dropdown-link as="button"> Salir </jet-dropdown-link>
@@ -832,7 +816,12 @@ export default {
     //     );
     // },
     logout() {
-      this.$inertia.post(route("logout"));
+      //this.$inertia.post(route("logout"))
+      axios.post(route("logout")).then(function (response) {
+        window.location.replace("/");
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
   },
 };
