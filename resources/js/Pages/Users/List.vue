@@ -38,7 +38,7 @@
                                                     <td class="px-6 py-4 whitespace-nowrap">
                                                     <div class="flex items-center">
                                                         <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full" :src="'http://localhost:8000/storage/'+usuario.profile_photo_path" alt="" />
+                                                        <img class="h-10 w-10 rounded-full" :src="$inertia.page.props.appName+'/storage/'+usuario.profile_photo_path" alt="" />
                                                         </div>
                                                         <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">

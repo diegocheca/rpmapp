@@ -10410,7 +10410,7 @@ class FormAltaProductorController extends Controller
 				}
 
 				//este es un archivo
-				if($request->constancia_pago_canon != null && $request->constancia_pago_canon != '' && $formulario_provisorio->constancia_pago_canon != null)
+				if($request->constancia_pago_canon != null && $request->constancia_pago_canon != '' && $request->constancia_pago_canon != 'null'  )
 				{//no es un archivo vacio
 					if(substr($request->constancia_pago_canon,0, strlen(env('APP_URL').'/storage/files_formularios')) != env('APP_URL').'/storage/files_formularios' )
 					{
@@ -10422,7 +10422,7 @@ class FormAltaProductorController extends Controller
 				// ya esta en null - else $formulario_provisorio->constancia_pago_canon =null;
 				
 				//este es un archivo
-				if($request->iia != null && $request->iia != '' && $formulario_provisorio->iia != null)
+				if($request->iia != null && $request->iia != '' && $request->iia != 'null')
 				{//no es un archivo vacio
 					if(substr($request->iia,0, strlen(env('APP_URL').'/storage/files_formularios')) != env('APP_URL').'/storage/files_formularios' )
 					{
@@ -10431,7 +10431,7 @@ class FormAltaProductorController extends Controller
 					}
 				}
 				//este es un archivo
-				if($request->dia != null && $request->dia != '' && $formulario_provisorio->dia != null)
+				if($request->dia != null && $request->dia != '' && $request->dia != "null" )
 				{//no es un archivo vacio
 					if(substr($request->dia,0, strlen(env('APP_URL').'/storage/files_formularios')) != env('APP_URL').'/storage/files_formularios' )
 					{
