@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ChartsController;
 
 
 /*
@@ -61,6 +62,8 @@ Route::resource('reinscripciones', ReinscripcionController::class)
     ->middleware(['auth:sanctum', 'verified']);
 Route::post('reinscripciones/upload', [ReinscripcionController::class, "upload"])
     ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.upload');
+Route::delete('reinscripciones/destroy/{id}', [ReinscripcionController::class, "destroy"])
+    ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.destroy');
 //     Route::get('provincias', 'ReinscripcionController@getCountries')
 //         ->middleware(['auth:sanctum', 'verified']);
 
@@ -122,6 +125,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
     ]);
 })->name('users.index');
 
+Route::get('reportes', [ChartsController::class, "reportes"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reportes');
+
 
 Route::resource('formulario-alta', FormAltaProductorController::class)
     ->middleware(['auth:sanctum', 'verified']);
@@ -167,6 +173,7 @@ Route::get('/gracias_confirmacion/{codigo}', [FormAltaProductorController::class
 Route::get('/formularios/prueba_aprobado/{id}', [FormAltaProductorController::class, "test_aprobado_email"])->name('test-aprobado-email');
 
 Route::delete('formularios/eliminar_formulario/{id}', [FormAltaProductorController::class, "destroy"])->name('eliminar-formulario');
+Route::get('productores/mostrar_datos/{id}', [ProductoresController::class, "mostrar_datos"])->name('datos-productor');
 
 //evaluacion de formularios presentados
 

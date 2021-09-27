@@ -63,7 +63,6 @@
         <br>
         <div class="flex items-center justify-center bg-teal-lightest font-sans">
             <div class="w-full  bg-white rounded shadow p-6 m-8">
-                valor {{form_pagina.owner_correcto}}
                 <CaracterQueInvoca 
 
 

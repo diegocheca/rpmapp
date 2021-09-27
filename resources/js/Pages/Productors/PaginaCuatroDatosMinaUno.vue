@@ -426,7 +426,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
-                        v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_plano_mina"
+                        v-if="form_pagina.categoria !== 'tercera' && $props.mostrar_plano_mina"
 
                         v-bind:valor_input_props="form_pagina.plano_inmueble"
                         v-bind:valor_input_validacion="form_pagina.plano_inmueble_validacion"
@@ -489,7 +489,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
-                    v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_titulo"
+                    v-if="form_pagina.categoria !== 'tercera' && $props.mostrar_titulo"
 
                         v-bind:valor_input_props="form_pagina.titulo_contrato_posecion"
                         v-bind:valor_input_validacion="form_pagina.titulo_contrato_posecion_validacion"

@@ -3,7 +3,7 @@
         <!-- row -->
         <div v-for="(row, indexRow) in formSchema" :key="indexRow" class="flex flex-col justify-center" :class="row.widthResponsive">
             <!-- column -->
-            <div v-for="(col, indexCol) in row.body" :key="indexCol" class="bg-white rounded shadow-lg p-8 m-4" :class="col.width">
+            <div v-for="(col, indexCol) in row.body" :key="indexCol" class="bg-white rounded shadow-lg p-8 my-4 mx-auto" :class="col.width">
                 <div class="font-bold text-lg">{{col.title}}</div>
                 <hr v-if="col.title" class="my-5">
                 <div class="grid gap-4 " :class="[col.columns, col.columnsResponsive]">
