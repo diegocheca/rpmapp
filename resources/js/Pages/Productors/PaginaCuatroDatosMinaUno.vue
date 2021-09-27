@@ -380,6 +380,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_resolucion_concesion_minera_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_concesion'"
                         v-bind:label="'Resolucion Concesion Minera (para 1° y 2° categoria)'"
                         v-bind:desactivar_input="$props.desactivar_resolucion_concesion"
                         v-bind:mostrar_correccion="$props.mostrar_resolucion_concesion_correccion"
@@ -425,7 +426,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
-                        v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_plano_mina"
+                        v-if="form_pagina.categoria !== 'tercera' && $props.mostrar_plano_mina"
 
                         v-bind:valor_input_props="form_pagina.plano_inmueble"
                         v-bind:valor_input_validacion="form_pagina.plano_inmueble_validacion"
@@ -434,6 +435,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_plano_inmueble_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_plano_inmueble'"
                         v-bind:label="'Plano Inmueble (3° categoria) (*)'"
                         v-bind:desactivar_input="$props.desactivar_plano_mina"
                         v-bind:mostrar_correccion="$props.mostrar_plano_mina_correccion"
@@ -487,7 +489,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
-                    v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_titulo"
+                    v-if="form_pagina.categoria !== 'tercera' && $props.mostrar_titulo"
 
                         v-bind:valor_input_props="form_pagina.titulo_contrato_posecion"
                         v-bind:valor_input_validacion="form_pagina.titulo_contrato_posecion_validacion"
@@ -496,6 +498,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_titulo_contrato_posecion_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
+                        v-bind:name_correcion="'correcion_titulo'"
                         v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
                         v-bind:desactivar_input="$props.desactivar_titulo"
                         v-bind:mostrar_correccion="$props.mostrar_titulo_correccion"

@@ -19,12 +19,9 @@ class ProductorMina extends Model
     protected $fillable = [
     'id_mina',
 	'id_productor',
-	'id_destino',
+	'id_formulario',
 	'id_dia',
 	'id_personal',
-	'mercado_provincia',
-	'mercado_provincias',
-	'mercado_exportacion',
 	'num_expediente_SIGETRAMI',
 	'constancia_otros',
 	'resol_concecion_minera',
@@ -33,6 +30,6 @@ class ProductorMina extends Model
 	'primera_inscripcion',
 	'caracter',
 	'constancia_posecion',
-	'id_producido'
+	'periodo'
     ];
 }

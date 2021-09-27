@@ -13,7 +13,10 @@
                     <div class="font-base tracking-tight text-gray-600">Lista de minerales seleccionales.</div>
                 </div>
                 <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2   px-3 mb-6 md:mb-0">
-                    <button :disabled="$props.evaluacion || $props.desactivar_input" class="px-6 py-2.5 mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900" @click="agregar_mineral()"> + Agregar Mineral</button>
+                    <button :disabled="$props.evaluacion || $props.desactivar_input" 
+                    class="px-6 py-2.5 mb-4  text-base font-semibold rounded-full block  border-b border-purple-300 bg-green-200 hover:bg-green-300 text-green-900" 
+                    @click="agregar_mineral()">
+                         + Agregar Mineral</button>
                 </div>
             </div>
             <div class="flex flex-wrap">
@@ -374,7 +377,9 @@ export default {
                 lista_de_minerales_array:[],
                 thumb: this.$inertia.page.props.appName+'/minerales/thumbs/3.png'
             };
-        this.minerales.push( mineral_aux);
+            if(this.minerales === '' || this.minerales === null)
+                this.minerales = [];
+        this.minerales.push(mineral_aux);
         this.actualizar_valores_padre();
     },
     cambio_mineral_explotado(index){

@@ -141,16 +141,7 @@
 
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
-                    <!-- <div class="flex-shrink-0 h-10 w-10">
-                                            <img
-                                                class="h-10 w-10 rounded-full"
-                                                :src="
-                                                    'http://localhost:8005/storage/' +
-                                                    usuario.profile_photo_path
-                                                "
-                                                alt=""
-                                            />
-                                        </div> -->
+                    
                     <div class="ml-4">
                       <div class="uppercase text-sm font-medium text-white-900">
                         {{ usuario.name }}

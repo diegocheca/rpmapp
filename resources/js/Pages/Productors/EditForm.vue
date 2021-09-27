@@ -83,7 +83,6 @@
 									
 							</template>
 					</jet-dialog-modal>
-					<button @click="confirmingUserDeletion=!confirmingUserDeletion" >modal</button>
 					<div id="inicio"></div>
 					<div class="flex items-center justify-center">
 						<div class="grid grid-cols-1 gap-6 sm:grid-cols-4 md:grid-cols-7 lg:grid-cols-7 xl:grid-cols-7">
@@ -476,6 +475,7 @@
 				></CardDomAdmin> -->
 			</div>
 			<div id="section_domicilio_administrativo"></div>
+
 			<PaginaDosDatosDomLegal
 
 				v-if="$props.mostrar.paso_tres"
@@ -759,6 +759,7 @@
 			<br>
 			<br>
 			<div id="section_datos_mina_dos"></div>
+			--> {{$props.productor.owner_correcto}}
 			<PaginaCincoDatosMinaDos
 				v-if="$props.mostrar.paso_cinco"
 				:link_volver="route('formulario-alta.index')"
@@ -1071,6 +1072,21 @@
 						>Nuevo Estado:</label
 					><br>
 					<select
+						v-if="$props.productor.estado === 'en revision'"
+						id="estado"
+						name="estado"
+						v-model="form.estado"
+						:disabled="$props.disables.estado"
+						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+						<option value="borrador">Borrador</option>
+						<option value="en revision" disabled>En revision</option>
+						<option value="aprobado">Aprobado</option>
+						<option value="reprobado">Reprobado</option>
+						<option value="con observacion">Con Observacion</option>
+						
+					</select>
+					<select
+						v-else
 						id="estado"
 						name="estado"
 						v-model="form.estado"
@@ -1120,6 +1136,7 @@
 						>Nuevo Estado:</label
 					><br>
 					<select
+						v-if="$props.productor.estado === 'borrador'"
 						id="estado"
 						name="estado"
 						v-model="form.estado"
@@ -1128,6 +1145,17 @@
 						<option value="borrador">Borrador</option>
 						<option value="en revision">Presentar</option>
 						
+					</select>
+					<select
+						v-if="$props.productor.estado === 'con observacion'"
+						id="estado"
+						name="estado"
+						v-model="form.estado"
+						:disabled="$props.disables.estado"
+						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+						<option value="borrador" disabled>Borrador</option>
+						<option value="con observacion" disabled>Con Observacion</option>
+						<option value="en revision">Presentar</option>
 					</select>
 				</div>
 			</div>
@@ -1570,8 +1598,8 @@ export default {
 
 				minerales_variedad: this.$props.productor.minerales_variedad,
 				minerales_variedad_validacion:  true,
-				minerales_variedad_correcto: 'nada',
-				obs_minerales_variedad: '',
+				minerales_variedad_correcto: this.$props.productor.plano_inmueble_correcto,
+				obs_minerales_variedad: this.$props.productor.plano_inmueble_correcto,
 				obs_minerales_variedad_valido: false,
 
 
@@ -1621,65 +1649,65 @@ export default {
 
 				titulo_contrato_posecion: this.$props.productor.titulo_contrato_posecion,
 				titulo_contrato_posecion_validacion:  true,
-				titulo_contrato_posecion_correcto: 'nada',
-				obs_titulo_contrato_posecion: '',
+				titulo_contrato_posecion_correcto: this.$props.productor.titulo_contrato_posecion_correcto,
+				obs_titulo_contrato_posecion:  this.$props.productor.obs_titulo_contrato_posecion,
 				obs_titulo_contrato_posecion_valido: false,
 
 
 				resolucion_concesion_minera: this.$props.productor.resolucion_concesion_minera,
 				resolucion_concesion_minera_validacion:  true,
-				resolucion_concesion_minera_correcto: 'nada',
-				obs_resolucion_concesion_minera: '',
+				resolucion_concesion_minera_correcto:  this.$props.productor.resolucion_concesion_minera_correcto,
+				obs_resolucion_concesion_minera:  this.$props.productor.obs_resolucion_concesion_minera,
 				obs_resolucion_concesion_minera_valido: false,
 
 
 				constancia_pago_canon: this.$props.productor.constancia_pago_canon,
 				constancia_pago_canon_validacion:  true,
-				constancia_pago_canon_correcto: 'nada',
-				obs_constancia_pago_canon: '',
+				constancia_pago_canon_correcto: this.$props.productor.constancia_pago_canon_correcto,
+				obs_constancia_pago_canon: this.$props.productor.obs_constancia_pago_canon,
 				obs_constancia_pago_canon_valido: false,
 
 
 
 				iia: this.$props.productor.iia,
 				iia_canon_validacion:  true,
-				iia_correcto: 'nada',
-				obs_iia_canon: '',
+				iia_correcto: this.$props.productor.iia_correcto,
+				obs_iia_canon: this.$props.productor.obs_iia,
 				obs_iia_canon_valido: false,
 
 
 				dia: this.$props.productor.dia,
 				dia_canon_validacion:  true,
-				dia_correcto: 'nada',
-				obs_dia_canon: '',
+				dia_correcto: this.$props.productor.dia_correcto,
+				obs_dia_canon:  this.$props.productor.obs_dia,
 				obs_dia_canon_valido: false,
 
 
 
 				acciones_a_desarrollar: this.$props.productor.acciones_a_desarrollar,
 				acciones_a_desarrollar_validacion:  true,
-				acciones_a_desarrollar_correcto: 'nada',
-				obs_acciones_a_desarrollar: '',
+				acciones_a_desarrollar_correcto: this.$props.productor.acciones_a_desarrollar_correcto,
+				obs_acciones_a_desarrollar: this.$props.productor.obs_acciones_a_desarrollar,
 				obs_acciones_a_desarrollar_valido: this.$props.productor.concesion_minera_aclaracion,
 
 
 
 				actividad: this.$props.productor.actividad,
 				actividad_a_desarrollar_validacion:  true,
-				actividad_a_desarrollar_correcto: 'nada',
-				obs_actividad_a_desarrollar: '',
+				actividad_a_desarrollar_correcto: this.$props.productor.actividad_correcto,
+				obs_actividad_a_desarrollar: this.$props.productor.obs_actividad,
 				obs_actividad_a_desarrollar_valido: false,
 
 				fecha_alta_dia: this.$props.productor.fecha_alta_dia,
 				fecha_alta_dia_validacion:  true,
-				fecha_alta_dia_correcto: 'nada',
-				obs_fecha_alta_dia: '',
+				fecha_alta_dia_correcto: this.$props.productor.fecha_alta_dia_correcto,
+				obs_fecha_alta_dia: this.$props.productor.obs_fecha_alta_dia,
 				obs_fecha_alta_dia_valido: false,
 
 				fecha_vencimiento_dia: this.$props.productor.fecha_vencimiento_dia,
 				fecha_vencimiento_dia_validacion:  true,
-				fecha_vencimiento_dia_correcto: 'nada',
-				obs_fecha_vencimiento_dia: '',
+				fecha_vencimiento_dia_correcto: this.$props.productor.fecha_vencimiento_dia_correcto,
+				obs_fecha_vencimiento_dia: this.$props.productor.obs_fecha_vencimiento_dia,
 				obs_fecha_vencimiento_dia_valido: false,
 
 
@@ -1821,9 +1849,17 @@ export default {
 						self.closeModalAprobar = false;
 						self.mostrar_modal_datos_ya_guardados = true;
 					}
+					if(self.form.estado === 'con observacion') // lo aprobe en el back, siendo autoridad
+					{
+						console.log('todo bien');
+						self.modal_tittle = 'Se cambio el estado del Formulario';
+						self.modal_body = 'Se ha guardado el estado del como Formulario con Observaciones. Esta acción implica que la persona que presentó este formulario será notificado y deberá relaizar los cambios necesarios.';
+						self.closeModalAprobar = false;
+						self.mostrar_modal_datos_ya_guardados = true;
+					}
 					
 				}
-				if(response.data === "formulario no encontrado")
+				if(response.data.msg === "formulario no encontrado")
 				{
 					console.log('todo mal, no se encontro');
 					self.modal_tittle = 'Paso 1 Guardado Fallido';

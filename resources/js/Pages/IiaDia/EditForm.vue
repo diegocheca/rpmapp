@@ -157,7 +157,7 @@ export default {
 			data.append('nombre_archivo', 'archivo_DIA');
 			data.append('id', this.form.id);
 			axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-			axios.post('http://localhost:8000/guardando_dia_iia',  data)
+			axios.post(tihs.$inertia.page.props.appName+'/guardando_dia_iia',  data)
 				.then(function (response) {
 					console.log(response.data);
 					if(response.data === 'sin id')
@@ -182,7 +182,7 @@ export default {
 			data.append('nombre_archivo', 'archivo_iia');
 			data.append('id', this.form.id);
 			axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-			axios.post('http://localhost:8000/guardando_dia_iia',  data)
+			axios.post(tihs.$inertia.page.props.appName+'/guardando_dia_iia',  data)
 				.then(function (response) {
 					console.log(response.data);
 					if(response.data === 'sin id')

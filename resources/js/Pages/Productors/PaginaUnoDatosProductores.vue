@@ -63,6 +63,7 @@
             </div>
             <br>
             <br>
+            
             <div class="flex flex-wrap">
                 <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2  px-3 mb-6 md:mb-0">
                     <InputNumeroProductor
@@ -405,6 +406,7 @@
          </div>
          <br><br>
          <div class="flex items-center justify-center">
+             
             <BotonesPaginaUna 
                 v-if="$props.mostrar_boton_guardar_uno"
 

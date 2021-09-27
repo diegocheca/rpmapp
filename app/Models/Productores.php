@@ -46,6 +46,8 @@ class Productores extends Model
         'estado',
         'created_at',
         'deleted_at',
-        'updated_at' ,
+        'updated_at',
+        'id_formulario',
+        'usuario_creador'
     ];
 }

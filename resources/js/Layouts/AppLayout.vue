@@ -312,7 +312,7 @@
     </div>
   </div>
   <!-- menu curvo-->
-  <div class="flex h-screen bg-gray-200">
+  <div class="flex bg-gray-200">
     <div
       class="
         flex
@@ -830,7 +830,12 @@ export default {
     //     );
     // },
     logout() {
-      this.$inertia.post(route("logout"));
+      //this.$inertia.post(route("logout"))
+      axios.post(route("logout")).then(function (response) {
+        window.location.replace("http://localhost:8000/");
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
   },
 };

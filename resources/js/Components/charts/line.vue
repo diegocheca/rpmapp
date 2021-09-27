@@ -1,7 +1,6 @@
 <template>
-    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">Título</div>
-    <div class="hello" ref="chartdiv">
-    </div>
+      <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">{{data.title}}</div>
+    <div class="chart-pie" ref="chartdiv" />
 </template>
 
 <script>
@@ -9,23 +8,47 @@
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import ChartClass from "../../../../helpers/clases/chartClass"
 
 am4core.useTheme(am4themes_animated);
 export default {
-  name: 'HelloWorld',
+  props: {
+    dataChart: {
+      required: false
+    }
+  },
+  data() {
+    return {
+      data: new ChartClass(),
+      chart: null
+    }
+  },
   mounted() {
     let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart);
 
-    chart.paddingRight = 20;
-
-    let data = [];
-    let visits = 10;
-    for (let i = 1; i < 366; i++) {
-      visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-      data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
+    if(!this.dataChart) {
+      this.data.dataDefault();
+    } else {
+      this.data = this.dataChart
     }
 
-    chart.data = data;
+    chart.paddingRight = 20;
+
+    // let data = [];
+    // let visits = 10;
+    // for (let i = 1; i < 366; i++) {
+    //   visits += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
+    //   data.push({ date: new Date(2018, 0, i), name: "name" + i, value: visits });
+    // }
+
+    // chart.data = data;
+
+    chart.data = this.data.data.map( (element, index) => {
+      let item = {}
+      item[`date`] = new Date(2021, 0, index)
+      item[`value`] = Math.floor(Math.random() * (100 - 3)) + 3
+      return item
+    });
 
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.renderer.grid.template.location = 0;

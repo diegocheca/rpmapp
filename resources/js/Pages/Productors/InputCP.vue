@@ -28,15 +28,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="leal_cp_correcto" value="true" v-on:change="actaulizar_variable_legal_cp(true)">
+                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_cp_correcto" value="true" v-on:change="actaulizar_variable_legal_cp(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="leal_cp_correcto" value="false" v-on:change="actaulizar_variable_legal_cp(false)">
+                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_cp_correcto" value="false" v-on:change="actaulizar_variable_legal_cp(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="leal_cp_correcto" value="nada" v-on:change="actaulizar_variable_legal_cp('nada')">
+                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_cp_correcto" value="nada" v-on:change="actaulizar_variable_legal_cp('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -103,6 +103,7 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'name_correcto',
         'desactivar_legal_cod_pos',
         'mostrar_legal_cod_pos_correccion',
         'desactivar_legal_cod_pos_correccion',

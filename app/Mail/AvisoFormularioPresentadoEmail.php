@@ -35,7 +35,7 @@ class AvisoFormularioPresentadoEmail extends Mailable
         return $this->from("gismineronacional@gmail.com")->view('emails.aviso-formulario-presentado')->with([
             'email' => $this->email,
             'razonsocial' => $this->razonsocial,
-            'fecha' => $this->fecha,
+            'fecha' => $this->fecha
         ]);
     }
 }

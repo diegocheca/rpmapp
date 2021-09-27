@@ -14,12 +14,38 @@ use Exception;
 
 class ProductoresController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
     {
-        $productores = Productores::all();
-        return Inertia::render('Productores/List', ['productores' => $productores]);
+        //$productores = Productores::all();
+        return Inertia::render('Productores/List', ['productores' => 
+        Productores::when($request-> term , function($query , $term){
+            $query->where('razonsocial', 'LIKE', '%'.$term.'%');
+        })->paginate(5),
+         'alertType'=>'']);
     }
 
+    
+    public function mostrar_datos($id)
+    {
+        $productores = Productores::find($id);
+        return response()->json([
+			'productor' => $productores,
+			'msg' => 'se encontro correctamente',
+			'id' => $id
+		],201);
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return Inertia::render('Productores/Form');

@@ -19,26 +19,32 @@
 					<p>{{updated_at}}</p> 
 				</div>
 				<div class="border-t-2"></div>
-				<div class="flex justify-between"  v-if="$props.evaluacion">
-					<div class="my-4">
-						<p class="font-semibold text-base mb-2">Progreso</p>
-						<div class="text-base text-gray-400 font-semibold">
-							<p>{{progreso}} %</p>
-						</div>
-					</div>
-					<div class="my-4">
-						<p class="font-semibold text-base text-green-500 mb-2">Aprobado</p>
-						<div class="text-base text-green-500 font-semibold">
-							<p>{{aprobado}} %</p>
-						</div>
-					</div>
-					<div class="my-4">
-						<p class="font-semibold text-base text-red-400 mb-2">Reprobado</p>
-						<div class="text-base text-red-400 font-semibold">
-							<p>{{reprobado}} %</p>
+				<div class="flex items-center">
+						<span class="mr-2"><p>{{aprobado}}%</p></span>
+						<div class="relative w-full">
+						<div class="overflow-hidden h-2 text-xs flex rounded bg-green-200">
+							<div :style="'width: '+aprobado+'%'" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
 						</div>
 					</div>
 				</div>
+				<div class="flex items-center">
+					<span class="mr-2"><p>{{reprobado}}%</p></span>
+					<div class="relative w-full">
+						<div class="overflow-hidden h-2 text-xs flex rounded bg-pink-200">
+							<div style="width: 45%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
+						</div>
+					</div>
+				</div>
+				<div class="flex items-center">
+						<span class="mr-2"><p>{{progreso}}%</p></span>
+						<div class="relative w-full">
+						<div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
+							<div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
+						</div>
+					</div>
+				</div>
+
+				
 			</div>
 			<div class="mt-4" v-if="mostrarayuda">
 				<label class="flex items-center relative w-max cursor-pointer select-none">
