@@ -1274,7 +1274,7 @@ class FormAltaProductorController extends Controller
 					"minerales" => true,
 					"minerales_correccion" => false,
 					"titulo" => true,
-					"titulo_correccion" => true,
+					"titulo_correccion" => false,
 					"boton_guardar_cuatro" => true,
 					"paso_cuatro" => true,
 		
@@ -5763,7 +5763,7 @@ class FormAltaProductorController extends Controller
 			$productor = $this->prasar_num_a_boolean($productor);
 			//var_dump($productor->owner);die();
 			//$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
-			$minerales_asociados = Minerales_Borradores::all();
+			$minerales_asociados = Minerales_Borradores::find(1);
 			$datos_creador = null;
 			$soy_productor = true;
 			//var_dump($minerales_asociados);die();
