@@ -19,8 +19,12 @@
             left-0
             w-64
             transform
-            bg-gray-900
+            bg-gradient-to-t
+            from-gray-900
+            via-blue-900
+            to-gray-900
             overflow-y-auto
+            shadow-xl
             lg:static
             lg:inset-0
             ease-in
@@ -64,11 +68,15 @@
                 mt-4
                 py-2
                 px-6
-                text-gray-500
-                hover:bg-gray-700 hover:bg-opacity-25
-                hover:text-gray-100
+                text-gray-200
+                hover:text-white
+                hover:bg-gradient-to-t
+                hover:from-blue-900
+                hover:via-gray-900
+                hover:to-blue-800
+                hover:bg-opacity-25
                 border-l-4 border-transparent
-                hover:border-indigo-500
+                hover:border-indigo-900
               "
               :href="route('dashboard')"
               v-on:click="activetab = 'Home'"
@@ -102,11 +110,15 @@
                 mt-4
                 py-2
                 px-6
-                text-gray-500
-                hover:bg-gray-700 hover:bg-opacity-25
-                hover:text-gray-100
+                text-gray-200
+                hover:text-white
+                hover:bg-gradient-to-t 
+                hover:from-gray-900
+                hover:via-blue-900
+                hover:to-blue-700
+                hover:bg-opacity-25
                 border-l-4 border-transparent
-                hover:border-indigo-500
+                hover:border-indigo-900
               "
               :href="route('formweb.solicitudes.index')"
               v-on:click="activetab = 'Nueva Solicitud'"
@@ -140,11 +152,15 @@
                 mt-4
                 py-2
                 px-6
-                text-gray-500
-                hover:bg-gray-700 hover:bg-opacity-25
-                hover:text-gray-100
+                text-gray-200
+                hover:text-white
+                hover:bg-gradient-to-l
+                hover:from-blue-800
+                hover:via-gray-900
+                hover:to-blue-800
+                hover:bg-opacity-25
                 border-l-4 border-transparent
-                hover:border-indigo-500
+                hover:border-indigo-900
               "
               :href="route('formweb.solicitudes.index')"
               v-on:click="activetab = 'Lista de Solicitudes'"
@@ -182,8 +198,10 @@
           items-center
           py-2
           px-6
-          bg-gray-900
-          border-b-4 border-gray-900
+          bg-gradient-to-l
+          from-gray-900
+          via-blue-900
+          to-gray-900
         "
       >
         <div class="flex items-center">
@@ -357,7 +375,7 @@ export default {
     return {
       isSidebarOpen: false,
       showingNavigationDropdown: false,
-      activetab: '',
+      activetab: "",
     };
   },
 
@@ -376,11 +394,14 @@ export default {
 
     logout() {
       //this.$inertia.post(route("logout"))
-      axios.post(route("logout")).then(function (response) {
-        window.location.replace("/");
-      }).catch(function (error) {
-        console.log(error);
-      });
+      axios
+        .post(route("logout"))
+        .then(function (response) {
+          window.location.replace("/");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
   },
 };

@@ -1,38 +1,30 @@
 <template>
   <app-layout>
-    <!-- <main
+    <h1
       class="
-        grid
-        place-items-center
-        min-h-screen
-        bg-gradient-to-t
-        from-blue-200
-        to-indigo-900
-        p-5
+        text-center text-2xl
+        font-bold
+        leading-7
+        text-gray-300
+        sm:text-3xl
+        sm:truncate
+        py-1
+        bg-gradient-to-l
+        from-indigo-500
+        to-indigo-800
       "
-    > -->
+    >
+      Nueva Solicitud
+    </h1>
     <div
       class="
         grid
         place-items-center
         min-h-screen
-        bg-gradient-to-t
-        from-blue-200
-        to-indigo-900
+        bg-indigo-100
         p-5
       "
     >
-      <h1
-        class="
-          text-5xl
-          font-bold
-          text-gray-200
-          mb-5
-          text-center
-        "
-      >
-        Nueva Solicitud
-      </h1>
       <!-- <section class="grid grid-cols-1 sm:grid-cols-2 gap-4"> -->
       <!-- CARD 1 -->
       <!-- <inertia-link
@@ -557,7 +549,9 @@
               </div>
             </div>
             <div class="p-4">
-              <p class="text-white text-xl text-center	 font-semibold">Solicitud Exploración</p>
+              <p class="text-white text-xl text-center font-semibold">
+                Solicitud Exploración
+              </p>
               <!-- <div class="flex justify-between mt-2">
                 <p class="text-gray-200">200 Files</p>
                 <p class="text-white">20 MB</p>
@@ -812,7 +806,9 @@
               </div>
             </div>
             <div class="p-4">
-              <p class="text-white text-xl text-center font-semibold">Solicitud Descubrimiento</p>
+              <p class="text-white text-xl text-center font-semibold">
+                Solicitud Descubrimiento
+              </p>
               <!-- <div class="flex justify-between mt-2">
                 <p class="text-gray-200">200 Files</p>
                 <p class="text-white">650 MB</p>
