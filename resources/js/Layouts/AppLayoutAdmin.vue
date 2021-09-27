@@ -517,7 +517,12 @@ export default {
     // },
 
     logout() {
-      this.$inertia.post(route("logout"));
+      //this.$inertia.post(route("logout"))
+      axios.post(route("logout")).then(function (response) {
+        window.location.replace("/");
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
   },
 };

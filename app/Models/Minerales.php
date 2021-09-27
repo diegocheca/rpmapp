@@ -11,6 +11,7 @@ class Minerales extends Model
     protected $table = 'mineral';
 
     protected $fillable = [
+        'id',
         'name',
         'categoria',
         'active',
@@ -19,5 +20,17 @@ class Minerales extends Model
         'write_uid',
         'write_date',
     ];
+
+    //Relacion de Muchos a Muchos con Mina 
+    public function mina()
+    {
+        return $this->belongsToMany(formMina::class);
+    }
+
+    //Relacion de Muchos a Muchos con Terreno 
+    public function terreno()
+    {
+        return $this->belongsToMany('App\Models\formWebModels\formTerreno');
+    }
 
 }

@@ -46,6 +46,5 @@ Route::group([
 	Route::post('register', 'App\Http\Controllers\AuthController@register');
 });
 
-Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->middleware(['jwt.verify'])->name('numero-reinsripiones-nuevas');
+// Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->middleware(['jwt.verify'])->name('numero-reinsripiones-nuevas');
 Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->middleware(['jwt.verify'])->name('traer-provincias');
-
