@@ -332,7 +332,8 @@
               class="flex items-center justify-between flex-shrink-0 w-64 p-4"
             >
               <!-- Logo -->
-              <jet-authentication-card-logo />
+              <!-- <jet-authentication-card-logo /> -->
+              <!-- <img src="{!! asset('images/logo_v2.png') !!}"> -->
               <!-- Close btn -->
               <button
                 @click="isSidebarOpen = false"

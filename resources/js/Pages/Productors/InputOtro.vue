@@ -13,7 +13,7 @@
             type="text" 
             maxlength="40"
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Teléfono de domicilio"
+            placeholder="Otro Dato del domicilio"
             id="leal_otro"
             name="leal_otro"
             v-model="leal_otro"
