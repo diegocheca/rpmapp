@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed top-0 right-0 px-6 py-4  grid grid-cols-2">
+  <div class="fixed top-0 right-0 px-6 py-4 grid grid-cols-2">
     <a
       href="/"
       class="

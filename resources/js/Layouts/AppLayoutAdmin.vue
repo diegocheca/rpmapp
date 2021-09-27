@@ -275,6 +275,43 @@
               </svg>
               <span class="mx-3">Categorias</span>
             </a>
+            <a
+              class="
+                flex
+                items-center
+                mt-4
+                py-2
+                px-6
+                text-gray-500
+                hover:bg-gray-700 hover:bg-opacity-25
+                hover:text-gray-100
+                border-l-4 border-transparent
+                hover:border-indigo-500
+              "
+              :href="route('admin.vistaImport')"
+              v-on:click="activetab = 'Importar'"
+              v-bind:class="[
+                activetab === 'Importar'
+                  ? 'active border-indigo-500 text-gray-100 bg-gray-700 bg-opacity-25 font-black'
+                  : '',
+              ]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
+                />
+              </svg>
+              <span class="mx-3">Importar</span>
+            </a>
           </nav>
         </div>
       </div>
@@ -364,7 +401,6 @@
                       :alt="$page.props.user.name"
                     />
                   </button>
-
                   <span v-else class="inline-flex rounded-md">
                     <button
                       type="button"
@@ -447,7 +483,7 @@ import JetDropdown from "@/Jetstream/Dropdown";
 import JetDropdownLink from "@/Jetstream/DropdownLink";
 import JetNavLink from "@/Jetstream/NavLink";
 import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
-
+import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 export default {
   components: {
     JetApplicationMark,
@@ -456,13 +492,14 @@ export default {
     JetDropdownLink,
     JetNavLink,
     JetResponsiveNavLink,
+    JetAuthenticationCardLogo,
   },
 
   data() {
     return {
       isSidebarOpen: false,
       showingNavigationDropdown: false,
-      activetab: '',
+      activetab: "",
     };
   },
 

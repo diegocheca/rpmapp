@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermisosController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\ProductoresController;
+
 // EDITAR ROLES Y PERMISOS
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
@@ -26,4 +28,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('categorias', CategoryController::class)
         ->middleware(['auth:sanctum', 'verified'])
         ->names('categorias');
+        
+    Route::get('/excel_productores', [ProductoresController::class, 'importView'])->middleware(['auth:sanctum', 'verified'])->name('vistaImport');
+
+    Route::post('/import-excel', [ProductoresController::class, 'import'])->middleware(['auth:sanctum', 'verified'])->name('import');
 });
