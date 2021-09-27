@@ -1,5 +1,5 @@
 <template>
-  <file-selector v-model="files" v-slot="{ openDialog }" :accept="accept" :multiple="multiple">
+  <file-selector v-model="files" v-slot="{ openDialog }" :accept="accept" :multiple="multiple" >
     <dropzone v-slot="{ hovered }">
         <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md" :class="{ 'border-blue-200': hovered }">
             <div class="space-y-1 text-center">

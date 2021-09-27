@@ -13,7 +13,7 @@
             type="text" 
             maxlength="30"
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Núumero de calle"
+            placeholder="Localidad del Domicilio"
             id="leal_localidad"
             name="leal_localidad"
             v-model="leal_localidad"

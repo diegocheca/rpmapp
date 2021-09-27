@@ -1,5 +1,8 @@
 <template>
     <div>
+        {{$props.email_disable}}
+        {{$props.email_correccion_mostrar}}
+        {{$props.email_correccion_desactivar}}
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">{{label}}</label>
             <div class="flex items-stretch w-full mb-4 relative">
                 <div class="flex">
