@@ -25,6 +25,8 @@ use App\Http\Controllers\formWebController\TipoDocumentoController;
 use App\Http\Controllers\formWebController\EstadoTerrenoController;
 use App\Http\Controllers\formWebController\MineralController;
 use App\Http\Controllers\formWebController\EstadoSolicitudController;
+use App\Http\Controllers\formWebController\ListadoController;
+
 
 
 /*
@@ -38,11 +40,7 @@ use App\Http\Controllers\formWebController\EstadoSolicitudController;
 |
 */
 
-Route::resource('solicitudes', SolicitudesController::class) 
-    ->middleware(['auth:sanctum', 'verified']);
-
-//  Route::post('solicitudes/create', [SolicitudesController::class,'postSolicitudes']) //va a postSolicitudes
-//        ->middleware(['auth:sanctum', 'verified']);
+Route::get('solicitudes/solicitudesLista', [SolicitudesController::class,'show']); 
 
 Route::post('solicitudes/solicitudesDatos', [SolicitudesController::class,'postSolicitudes']) //procesa datos solicitud exploracion
   ->middleware(['auth:sanctum', 'verified']);
@@ -59,10 +57,13 @@ Route::get('estado_terreno', [EstadoTerrenoController::class, "getEstadoTerreno"
 Route::get('estado_solicitud', [EstadoSolicitudController::class, "getEstadoSolicitud"])
         ->middleware(['auth:sanctum', 'verified']);
 
+
 Route::middleware(['auth:sanctum', 'verified'])
-        ->get('/solicitudes.descubrimiento',[SolicitudesController::class,"crear_descu"])//create para solicitud descubrimiento
+        ->get('/solicitudes.descubrimiento',[SolicitudesController::class,"create2"])//create para solicitud descubrimiento
         ->name('descubrimiento'); 
 
-Route::post('solicitudes/solicitudesProcesa', [SolicitudesController::class,'postSolicitudes'])//procesa datos solicitud descubrimiento
-        ->middleware(['auth:sanctum', 'verified']);
+Route::post('solicitudes/solicitudesProcesa', [SolicitudesController::class,'procesa'])//procesa datos solicitud descubrimiento
+        ->middleware(['auth:sanctum', 'verified']);  
 
+Route::resource('solicitudes', SolicitudesController::class) 
+        ->middleware(['auth:sanctum', 'verified']);
