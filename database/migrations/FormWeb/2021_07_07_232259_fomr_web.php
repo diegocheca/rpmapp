@@ -23,7 +23,10 @@ class FomrWeb extends Migration
             $table->string('nro_expediente', 100)->nullable();
             $table->string('des_directo', 2)->nullable(); 
             $table->string('muestra', 2)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         }); 
 
         Schema::create('formEstadoSolicitud', function(Blueprint $table){

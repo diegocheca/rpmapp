@@ -39,22 +39,12 @@ use App\Models\formWebModels\formMinaColindante;
 use App\Models\formWebModels\form_mina_form_mina_colindante;
 class SolicitudesController extends Controller
 {
-      /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+    
+public function index(Request $request)
     {       
        
         return  Inertia::render('formWeb/mostrar');// muestra las dos op de solicitud q hay
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */ 
+    }   
 
      //solicitud_exploracion
 public function create()
@@ -80,7 +70,7 @@ public function create()
         ]);    
    }  
 
-//solicitud_descubrimiento
+    //solicitud_descubrimiento
 public function create2()
     { 
         $provincia = CountriesController::getProvinces();         
@@ -103,15 +93,7 @@ public function create2()
         ]);
 
     }
-
-   
-/**
- * Store a newly created resource in storage.
- *
- * @param  \Illuminate\Http\Request  $request
- * @return \Illuminate\Http\Response
- */
-         
+        
 //procesa datos de solicitud_exploracion
 public function postSolicitudes(Request $request)
     {        
@@ -260,15 +242,14 @@ public function postSolicitudes(Request $request)
                         } 
                     } 
 
-                    $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud
-                    //recupero id de la solicitud que se acaba de crear                    
-                    $nom_estado= "Datos Solicitante";
-                    $array=[                
-                        'nom_estado_solicitud'=> $nom_estado,
-                        'solicitud_id' => $solicitud_id,
-                    ];
-                    formEstadoSolicitud::create($array);
-                 break;
+                     $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud                                        
+                     $nom_estado= "Datos Solicitante";
+                     $array=[                
+                         'nom_estado_solicitud'=> $nom_estado,                         
+                     ];
+                     $estado = formEstadoSolicitud::where('solicitud_id', '=', $solicitud_id)->update(array('nom_estado_solicitud' => $nom_estado));
+                     
+                     break;
                
             case 3: //DATOS REPRESENTANTE LEGAL               
                
@@ -310,14 +291,12 @@ public function postSolicitudes(Request $request)
                             $id_rep_legal1->solicitud()->attach($solicitud_id,["rol" => $rol]);
 
                          }                           
-                            $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud
-                            //recupero id de la solicitud que se acaba de crear                    
-                            $nom_estado= "Datos Representante Legal";
-                            $array=[                
-                                'nom_estado_solicitud'=> $nom_estado,
-                                'solicitud_id' => $solicitud_id,
-                            ];
-                            formEstadoSolicitud::create($array);                         
+                         $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud                                        
+                         $nom_estado= "Datos Representante Legal";
+                         $array=[                
+                             'nom_estado_solicitud'=> $nom_estado,                         
+                         ];
+                         $estado = formEstadoSolicitud::where('solicitud_id', '=', $solicitud_id)->update(array('nom_estado_solicitud' => $nom_estado));                        
                       
                 break;
                 
@@ -383,14 +362,12 @@ public function postSolicitudes(Request $request)
                  }
                } 
 
-                $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud
-                //recupero id de la solicitud que se acaba de crear                    
-                $nom_estado= "Datos Terreno-MC-Cordenadas";
-                $array=[                
-                'nom_estado_solicitud'=> $nom_estado,
-                'solicitud_id' => $solicitud_id,
-                ];
-                formEstadoSolicitud::create($array);
+                     $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud                                        
+                     $nom_estado= "Datos Terreno-MC-Cordenadas";
+                     $array=[                
+                         'nom_estado_solicitud'=> $nom_estado,                         
+                     ];
+                     $estado = formEstadoSolicitud::where('solicitud_id', '=', $solicitud_id)->update(array('nom_estado_solicitud' => $nom_estado));
              
                 break;
            
@@ -438,14 +415,12 @@ public function postSolicitudes(Request $request)
                                $id_propietario->solicitud()->attach($solicitud_id,["rol" => $rol]);
                         }   
                       }
-                      $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud
-                    //recupero id de la solicitud que se acaba de crear                    
-                    $nom_estado= "Datos Propietario";
-                    $array=[                
-                    'nom_estado_solicitud'=> $nom_estado,
-                    'solicitud_id' => $solicitud_id,
-                    ];
-                    formEstadoSolicitud::create($array);
+                      $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud                                        
+                     $nom_estado= "Datos Propietario";
+                     $array=[                
+                         'nom_estado_solicitud'=> $nom_estado,                         
+                     ];
+                     $estado = formEstadoSolicitud::where('solicitud_id', '=', $solicitud_id)->update(array('nom_estado_solicitud' => $nom_estado));
                   break;
             
             
@@ -618,14 +593,12 @@ public function procesa (Request $request)
                         } 
                     }
 
-                    $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud
-                    //recupero id de la solicitud que se acaba de crear                    
+                    $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud                                        
                     $nom_estado= "Datos Solicitante";
                     $array=[                
-                        'nom_estado_solicitud'=> $nom_estado,
-                        'solicitud_id' => $solicitud_id,
+                        'nom_estado_solicitud'=> $nom_estado,                         
                     ];
-                    formEstadoSolicitud::create($array);
+                    $estado = formEstadoSolicitud::where('solicitud_id', '=', $solicitud_id)->update(array('nom_estado_solicitud' => $nom_estado));
 
                 break; 
                        
@@ -669,14 +642,12 @@ public function procesa (Request $request)
                             $id_rep_legal->solicitud()->attach($solicitud_id,["rol" => $rol]);
                         }
 
-                           $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud
-                            //recupero id de la solicitud que se acaba de crear                    
-                            $nom_estado= "Datos Representante Legal";
-                            $array=[                
-                                'nom_estado_solicitud'=> $nom_estado,
-                                'solicitud_id' => $solicitud_id,
-                            ];
-                            formEstadoSolicitud::create($array); 
+                        $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud                                        
+                        $nom_estado= "Datos Representante Legal";
+                        $array=[                
+                            'nom_estado_solicitud'=> $nom_estado,                         
+                        ];
+                        $estado = formEstadoSolicitud::where('solicitud_id', '=', $solicitud_id)->update(array('nom_estado_solicitud' => $nom_estado));  
                                         
                 break;
 
@@ -783,14 +754,12 @@ public function procesa (Request $request)
                             }
                         }
                         
-                        $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud
-                        //recupero id de la solicitud que se acaba de crear                    
+                        $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud                                        
                         $nom_estado= "Datos Terreno-MC-Cordenadas";
                         $array=[                
-                        'nom_estado_solicitud'=> $nom_estado,
-                        'solicitud_id' => $solicitud_id,
+                            'nom_estado_solicitud'=> $nom_estado,                         
                         ];
-                        formEstadoSolicitud::create($array);
+                        $estado = formEstadoSolicitud::where('solicitud_id', '=', $solicitud_id)->update(array('nom_estado_solicitud' => $nom_estado));
                 break;
 
                 case 5: //DATOS PROPIETARIO
@@ -838,14 +807,12 @@ public function procesa (Request $request)
                         }   
                       } 
 
-                      $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud
-                      //recupero id de la solicitud que se acaba de crear                    
-                      $nom_estado= "Datos Propietario";
-                      $array=[                
-                      'nom_estado_solicitud'=> $nom_estado,
-                      'solicitud_id' => $solicitud_id,
-                      ];
-                      formEstadoSolicitud::create($array);
+                      $solicitud_id= formSolicitud::all()->last()->id; //busco el id de solicitud                                        
+                     $nom_estado= "Datos Propietario";
+                     $array=[                
+                         'nom_estado_solicitud'=> $nom_estado,                         
+                     ];
+                     $estado = formEstadoSolicitud::where('solicitud_id', '=', $solicitud_id)->update(array('nom_estado_solicitud' => $nom_estado));
                 break;
 
                 // case 6: //RESUMEN DE SOLICITUD
@@ -855,56 +822,33 @@ public function procesa (Request $request)
              return response()->json('ok');  
     
     }
-    
+
+//listado de solicitudes
+public function show ($id)
+    {
+       
+        $solicitudes = \DB::table('formSolicitud')->select('formSolicitud.*')->get();
+        $datos = \DB::table('formEstadoSolicitud')->select('formEstadoSolicitud.*')->get();
+        return Inertia::render('formWeb/lista_solicitud')->with('solicitudes',$solicitudes)->with('datos',$datos);
+     }
 
 public function store(Request $request)
     {        
         //  formSolicitud::create($request->all()); //content
         // return Redirect::route('solicitudes.index');
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 public function edit($id)
     {
         //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    }   
+    
+public function update(Request $request, $id)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+   
+public function destroy($id)
     {
         //
     }
