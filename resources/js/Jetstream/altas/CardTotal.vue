@@ -1,12 +1,9 @@
 <template>
 	<div :class="clase_sup">
 		<div :class="clase_inf">
-			<div class="animate-bounce text-white flex items-center absolute rounded-full py-4 px-4 shadow-xl bg-yellow-500 left-4 -top-6">
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-				</svg>
-			</div>
+			<a href="#section_productor">
+				<img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/total.svg'" width="50%">
+			</a>
 			<div class="mt-8">
 				<p class="text-xl font-semibold my-2">Datos de Totales</p>
 				<div class="flex space-x-2 text-gray-400 text-sm">
@@ -22,23 +19,27 @@
 					<p>{{updated_at}}</p> 
 				</div>
 				<div class="border-t-2"></div>
-				<div class="flex justify-between">
-					 <div class="my-4">
-						<p class="font-semibold text-base mb-2">Progreso</p>
-						<div class="text-base text-gray-400 font-semibold">
-							<p>{{progreso}} %</p>
+				<div class="flex items-center">
+						<span class="mr-2"><p>{{aprobado}}%</p></span>
+						<div class="relative w-full">
+						<div class="overflow-hidden h-2 text-xs flex rounded bg-green-200">
+							<div :style="'width: '+aprobado+'%'" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500"></div>
 						</div>
 					</div>
-					<div class="my-4">
-						<p class="font-semibold text-base text-green-500 mb-2">Aprobado</p>
-						<div class="text-base text-green-500 font-semibold">
-							<p>{{aprobado}} %</p>
+				</div>
+				<div class="flex items-center">
+					<span class="mr-2"><p>{{reprobado}}%</p></span>
+					<div class="relative w-full">
+						<div class="overflow-hidden h-2 text-xs flex rounded bg-pink-200">
+							<div style="width: 45%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500"></div>
 						</div>
 					</div>
-					<div class="my-4">
-						<p class="font-semibold text-base text-red-400 mb-2">Reprobado</p>
-						<div class="text-base text-red-400 font-semibold">
-							<p>{{reprobado}} %</p>
+				</div>
+				<div class="flex items-center">
+						<span class="mr-2"><p>{{progreso}}%</p></span>
+						<div class="relative w-full">
+						<div class="overflow-hidden h-2 text-xs flex rounded bg-blue-200">
+							<div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
 						</div>
 					</div>
 				</div>

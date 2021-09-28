@@ -13,7 +13,7 @@
 <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
     <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
         <a href="#section_datos_mina_dos">
-            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/mina-parte-dos.svg">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/mina-parte-dos.svg'">
         </a>
         <div v-if="$props.testing">
             <label class="flex items-center relative w-max cursor-pointer select-none">
@@ -529,7 +529,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing="mostrar_testing"
                     v-bind:label="'Actividades a Desarrollar la Mina'"
-                    v-bind:icon="'http://localhost:8000/svg/description.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/description.svg'"
                     v-bind:name_correcto="'actividades_correcto'"
                     v-bind:desactivar_input="$props.desactivar_actividad"
                     v-bind:mostrar_correccion="$props.mostrar_actividad_correccion"
@@ -582,7 +582,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Acciones a Desarrollar la Mina'"
-                    v-bind:icon="'http://localhost:8000/svg/description.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/description.svg'"
                     v-bind:name_correcto="'acciones_correcto'"
                     v-bind:desactivar_input="$props.desactivar_acciones"
                     v-bind:mostrar_correccion="$props.mostrar_acciones_correccion"
@@ -639,7 +639,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Fecha de Notificacion de DIA'"
-                    v-bind:icon="'http://localhost:8000/svg/calendar.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/calendar.svg'"
                     v-bind:desactivar_input="$props.desactivar_fecha_alta_dia"
                     v-bind:mostrar_correccion="$props.mostrar_fecha_alta_dia_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_fecha_alta_dia_correccion"
@@ -691,7 +691,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Fecha de Vencimiento de DIA'"
-                    v-bind:icon="'http://localhost:8000/svg/calendar.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/calendar.svg'"
                     v-bind:desactivar_input="$props.desactivar_fecha_vencimiento_dia"
                     v-bind:mostrar_correccion="$props.mostrar_fecha_vencimiento_dia_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_fecha_vencimiento_dia_correccion"
@@ -1425,7 +1425,7 @@ export default {
             const data = new FormData();
             data.append('archivo', this.constancia_de_prueba);
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-            axios.post("http://localhost:8000/formularios/auto_guardado_cinco", data)
+            axios.post($inertia.page.props.appName+"/formularios/auto_guardado_cinco", data)
             .then(function (response) {
                 console.log(response.data);
                 

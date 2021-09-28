@@ -6,7 +6,7 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img src="http://localhost:8000/svg/telstreet.svg">
+                <img :src="$inertia.page.props.appName+'/svg/telstreet.svg'">
                 </span>
             </div>
             <input 
@@ -28,15 +28,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-green-600" name="accountType_tel" v-model="leal_telefono_correcto" value="true" v-on:change="actaulizar_variable_legalcalletel(true)">
+                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-green-600" :name="name_correcto"  v-model="legal_calle_tel_correcto_local" value="true" v-on:change="actaulizar_variable_legalcalletel(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-red-600" name="accountType_tel" v-model="leal_telefono_correcto" value="false" v-on:change="actaulizar_variable_legalcalletel(false)">
+                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="legal_calle_tel_correcto_local" value="false" v-on:change="actaulizar_variable_legalcalletel(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-indigo-600" name="accountType_tel" v-model="leal_telefono_correcto" value="nada" v-on:change="actaulizar_variable_legalcalletel('nada')">
+                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto"  v-model="legal_calle_tel_correcto_local" value="nada" v-on:change="actaulizar_variable_legalcalletel('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -104,6 +104,7 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'name_correcto',
         'desactivar_legal_telefono',
         'mostrar_legal_telefono_correccion',
         'desactivar_legal_telefono_correccion',
@@ -125,8 +126,8 @@ export default {
   },
   methods:{
     actaulizar_variable_legalcalletel(valor) {
-        this.leal_telefono_correcto = valor;
-        this.$emit('changetellegalcorrecto',this.leal_telefono_correcto);
+        this.legal_calle_tel_correcto_local = valor;
+        this.$emit('changetellegalcorrecto',this.legal_calle_tel_correcto_local);
     },
      
       actaulizar_contenido_text_area_calle_legal_tel(value) {

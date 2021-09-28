@@ -253,7 +253,7 @@ export default {
             data.append('valor_de_aprobado',20);
             data.append('valor_de_reprobado', 20);
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-            axios.post("http://localhost:8000/formularios/evaluacion_auto_guardado_cinco", data)
+            axios.post(this.$inertia.page.props.appName+"/formularios/evaluacion_auto_guardado_cinco", data)
             .then(function (response) {
                 console.log(response.data);
                 if(response.data === "se actualizaron los datos correctamente")

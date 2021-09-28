@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center justify-center w-full">
+    <div class="flex flex-col items-center justify-center w-full">
         <jet-dialog-modal :show="mostrar_modal_datos_ya_guardados" @close="cerrar_modal_datos_uno">
             <template #title>
                     {{modal_tittle}}
@@ -13,15 +13,15 @@
                 </button>
             </template>
         </jet-dialog-modal>
-        <div class="flex w-full">
-            <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
+        <div class="flex flex-col w-full">
+            <div class="w-full sd:w-5/5 md:w-1/5 px-3 mb-6 md:mb-0">
                 <a :href="link_volver">
                     <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
                         {{titulo_boton_volver}}
                     </button>
                 </a>
             </div>
-            <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
+            <div class="w-full sm:w-5/5 md:w-4/5 px-3 mb-6 md:mb-0">
                 <button
                     type="button"
                     :disabled="$props.desactivar_boton_guardar_uno"
@@ -223,19 +223,24 @@ export default {
 
                     }
                     
-                    if(response.data === "se actualizaron los datos correctamente")
+                    if(response.data.msg === "Datos actualizados correctamente..")
                     {
                         console.log('todo bien');
-                        self.modal_tittle = 'Datos guardados correctamente como Autoridad';
+                        self.modal_tittle = 'Datos guardados correctamente como Productor';
                         self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, siendo Autoridad, gracias por usar este servcio, por favor continue llenando el formulario';
                         self.mostrar_modal_datos_ya_guardados = true;
+                        console.log(response.data.path_inscripcion);
+                        console.log(response.data.path_constaciasociedad);
+                        if(response.data.path_inscripcion !== '')
+                            self.actualizar_inscripcion_nueva(response.data.path_inscripcion);
+                        if(response.data.path_constaciasociedad !== '')
+                            self.actualizar_cosntancia_nueva(response.data.path_constaciasociedad);
                     }
                     
-                    if(response.data === "se actualizaron los datos correctamente, siendo un productor")
+                    if(response.data.msg === "Datos de evaluacion ha sido actualizados correctamente.")
                     {
-                        console.log('todo mal, no se encontro');
-                        self.modal_tittle = 'Paso 1 Guardado Correctamente como Prod';
-                        self.modal_body = 'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias';
+                        self.modal_tittle = 'Datos de de evaluación Productor guardados correctamente.';
+                        self.modal_body = 'Recien hemos guardados los datos de la evaluacin que ha cargado usted como autoridad minera.';
                         self.mostrar_modal_datos_ya_guardados = true;
                     }
                     if(response.data.msg === "se creo el borrador")

@@ -4,6 +4,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
+// use Illuminate\Support\Facades\Auth;
+// use Auth;
+//use Illuminate\Auth as Auth;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -17,6 +20,7 @@ use App\Http\Controllers\ProductorMinaController;
 use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ChartsController;
 
 
 /*
@@ -30,7 +34,9 @@ use App\Http\Controllers\UsersController;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/', [HomeController::class, "index"])->name('pagina-web');
+Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -56,6 +62,8 @@ Route::resource('reinscripciones', ReinscripcionController::class)
     ->middleware(['auth:sanctum', 'verified']);
 Route::post('reinscripciones/upload', [ReinscripcionController::class, "upload"])
     ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.upload');
+Route::delete('reinscripciones/destroy/{id}', [ReinscripcionController::class, "destroy"])
+    ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.destroy');
 //     Route::get('provincias', 'ReinscripcionController@getCountries')
 //         ->middleware(['auth:sanctum', 'verified']);
 
@@ -89,15 +97,37 @@ Route::resource('productores_minas', ProductorMinaController::class)
 Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     // admin
+//     // productor
+//     $mi_rol = '';
+//     if (Auth::user()->hasRole('Autoridad'))
+//         $mi_rol = 'admin';
+//     if (Auth::user()->hasRole('Administrador'))
+//         $mi_rol = 'admin';
+//     if (Auth::user()->hasRole('Productor'))
+//         $mi_rol = 'productor';
+//     return Inertia::render('Dashboard', ['userType' => $mi_rol]);
+// })->name('dashboard');
+
+
+Route::get('dashboard', [HomeController::class, "dashboard"])
+        ->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard1', function () {
+    return Inertia::render('Dashboard1');
+})->name('dashboard1');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
     return Inertia::render('Users/Index', [
         'users' => User::all()
     ]);
 })->name('users.index');
+
+Route::get('reportes', [ChartsController::class, "reportes"])
+        ->middleware(['auth:sanctum', 'verified'])->name('reportes');
+
 
 Route::resource('formulario-alta', FormAltaProductorController::class)
     ->middleware(['auth:sanctum', 'verified']);
@@ -113,6 +143,8 @@ Route::get('/formularios', [FormAltaProductorController::class, "mostrar_formula
 //direcciones de formularios
 
 Route::get('/validar_email_productor/{codigo}', [HomeController::class, "valdiar_email_de_productor"])->name('valdiar-email-de-productor');
+
+Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->name('numero-reinsripiones-nuevas');
 
 Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->name('traer-provincias');
 Route::post('/datos/traer_departamentos', [FormAltaProductorController::class, "traer_departamentos_json"])->name('traer-departamentos');
@@ -137,7 +169,14 @@ Route::post('/formularios/validar_mina_para_prod', [FormAltaProductorController:
 
 Route::get('/gracias_confirmacion/{codigo}', [FormAltaProductorController::class, "validar_email_desde_email"])->name('validar-email-desde-email');
 
+
+Route::get('/formularios/prueba_aprobado/{id}', [FormAltaProductorController::class, "test_aprobado_email"])->name('test-aprobado-email');
+
+Route::delete('formularios/eliminar_formulario/{id}', [FormAltaProductorController::class, "destroy"])->name('eliminar-formulario');
+Route::get('productores/mostrar_datos/{id}', [ProductoresController::class, "mostrar_datos"])->name('datos-productor');
+
 //evaluacion de formularios presentados
+
 
 Route::post('/formularios/evaluacion_auto_guardado_uno', [FormAltaProductorController::class, "correccion_guardar_paso_uno"])->name('correccion_guardar-paso-uno');
 Route::post('/formularios/evaluacion_auto_guardado_dos', [FormAltaProductorController::class, "correccion_guardar_paso_dos"])->name('correccion_guardar-paso-dos');
@@ -153,7 +192,6 @@ Route::post('/formularios/preg_email_validado/', [FormAltaProductorController::c
 
 Route::get('/formularios/comprobar_email_productor/{codigo}', [FormAltaProductorController::class, "confirmando_email_productor"])->name('confirmando-email-productor');
 
-Route::get('/home', [HomeController::class, "index"])->name('pagina-web');
 Route::get('contact', [ContactController::class, "contact"]);
 Route::post('contact', [ContactController::class, "contactPost"])->name('contact.store');
 
@@ -167,6 +205,10 @@ Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_p
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
 Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
+Route::get('/comprobante-presentacion-pdf/{id}', [FormAltaProductorController::class, "comprobante_tramite_pdf"])->name('comprobante-presentacion-pdf');
+
+Route::get('/probando_super_guardado/{id}', [FormAltaProductorController::class, "probando_super_guardado"])->name('probando-super-guardado');
+
 
 
 //COMERCIANTE
@@ -192,4 +234,3 @@ Route::group(['prefix' => 'paises'], function () {
     Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
         ->middleware(['auth:sanctum', 'verified']);
 });
-

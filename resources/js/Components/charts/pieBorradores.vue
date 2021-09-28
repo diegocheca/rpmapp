@@ -12,23 +12,31 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 am4core.useTheme(am4themes_animated);
 
 export default {
+    props: {
+        aprobados: Number,
+        reprobados: Number,
+        borrador_cant: Number,
+        revision: Number,
+        observacion: Number,
+    },
+    
     data() {
         return {
-            pie: [{
-                "estado": "En proceso	",
-                "cantidad": 25
-                }, {
+            pie: [ {
                 "estado": "En revision",
-                "cantidad": 10
+                "cantidad": this.$props.revision,
                 }, {
                 "estado": "Borrador",
-                "cantidad": 18
+                "cantidad": this.$props.borrador_cant,
                 }, {
                 "estado": "Aprobado",
-                "cantidad": 2
+                "cantidad": this.$props.aprobados,
                 }, {
                 "estado": "Reprobado",
-                "cantidad": 3
+                "cantidad": this.$props.reprobados,
+                }, {
+                "estado": "Con Observacion",
+                "cantidad": this.$props.observacion,
                 }
             ],
         }

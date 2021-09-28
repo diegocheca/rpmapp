@@ -169,7 +169,7 @@ export default {
 
             if (this.currentStep === this.formSchema.length - 1) {
                 this.saveForm();
-                console.log("Done: ", JSON.stringify(this.formValues, null, 2));
+                // console.log("Done: ", JSON.stringify(this.formValues, null, 2));
                 //this.disableSave = true;
                 return;
             }
@@ -269,7 +269,7 @@ export default {
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style src="vue-multiselect/dist/vue-multiselect.css" scoped></style>
 <style scoped>
 input:checked ~ .dot {
   transform: translateX(100%);

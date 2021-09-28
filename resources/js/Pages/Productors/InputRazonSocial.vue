@@ -25,15 +25,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="razon_social_correcto_local" value="true" v-on:change="actaulizar_variable_razonsocial(true)">
+                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-green-600" name="name_razon_social" v-model="razon_social_correcto_local" value="true" v-on:change="actaulizar_variable_razonsocial(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="razon_social_correcto_local" value="false" v-on:change="actaulizar_variable_razonsocial(false)">
+                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-red-600" name="name_razon_social" v-model="razon_social_correcto_local"  value="false" v-on:change="actaulizar_variable_razonsocial(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="razon_social_correcto_local" value="nada" v-on:change="actaulizar_variable_razonsocial('nada')">
+                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-indigo-600" name="name_razon_social" v-model="razon_social_correcto_local"  value="nada" v-on:change="actaulizar_variable_razonsocial('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>

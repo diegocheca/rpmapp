@@ -6,14 +6,14 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img src="http://localhost:8000/svg/otherstreet.svg">
+                <img :src="$inertia.page.props.appName+'/svg/otherstreet.svg'">
                 </span>
             </div>
             <input 
             type="text" 
             maxlength="40"
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Teléfono de domicilio"
+            placeholder="Otro Dato del domicilio"
             id="leal_otro"
             name="leal_otro"
             v-model="leal_otro"
@@ -28,15 +28,15 @@
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-green-600" name="accountType_otro" v-model="leal_otro_correcto" value="true" v-on:change="actaulizar_variable_legalcalle_otro(true)">
+                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_otro_correcto" value="true" v-on:change="actaulizar_variable_legalcalle_otro(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-red-600" name="accountType_otro" v-model="leal_otro_correcto" value="false" v-on:change="actaulizar_variable_legalcalle_otro(false)">
+                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_otro_correcto" value="false" v-on:change="actaulizar_variable_legalcalle_otro(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-indigo-600" name="accountType_otro" v-model="leal_otro_correcto" value="nada" v-on:change="actaulizar_variable_legalcalle_otro('nada')">
+                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_otro_correcto" value="nada" v-on:change="actaulizar_variable_legalcalle_otro('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -105,6 +105,7 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'name_correcto',
         'desactivar_legal_otro',
         'mostrar_legal_otro_correccion',
         'desactivar_legal_otro_correccion',

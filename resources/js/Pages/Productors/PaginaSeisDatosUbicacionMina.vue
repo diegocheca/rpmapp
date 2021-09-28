@@ -13,7 +13,7 @@
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
         <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
             <a href="#section_datos_mina_ubicacion">
-                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" src="http://localhost:8000/slick/img/features/plano-minero.svg">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/plano-minero.svg'">
             </a>
             <div v-if="$props.testing">
                 <label class="flex items-center relative w-max cursor-pointer select-none">
@@ -179,7 +179,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Localidad Donde se encuentra la Mina:'"
-                    v-bind:icon="'http://localhost:8000/svg/state.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
                     v-bind:desactivar_input="$props.desactivar_ubicacion_localidad"
                     v-bind:mostrar_correccion="$props.mostrar_ubicacion_localidad_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_ubicacion_localidad_correccion"
@@ -278,7 +278,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing = "mostrar_testing"
                     v-bind:label="'Latitud de las Coordenadas:'"
-                    v-bind:icon="'http://localhost:8000/svg/pinmap.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/pinmap.svg'"
                     v-bind:desactivar_input="$props.desactivar_ubicacion_latitud"
                     v-bind:mostrar_correccion="$props.mostrar_ubicacion_latitud_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_ubicacion_latitud_correccion"
@@ -330,7 +330,7 @@
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing = "mostrar_testing"
                     v-bind:label="'Longitud de las Coordenadas:'"
-                    v-bind:icon="'http://localhost:8000/svg/pinmap.svg'"
+                    v-bind:icon="$inertia.page.props.appName+'/svg/pinmap.svg'"
                     v-bind:desactivar_input="$props.desactivar_ubicacion_long"
                     v-bind:mostrar_correccion="$props.mostrar_ubicacion_long_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_ubicacion_long_correccion"
