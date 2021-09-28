@@ -93,29 +93,26 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         if (!$validator->fails()) {
+            if ($credential['email'] == 'administrador@gmail.com') {
+                $token = JWTAuth::attempt($credential);
+            } else {
+                JWTAuth::factory()->setTTL(60);
+                $token = JWTAuth::attempt($credential);
+            }
             try {
-                if (!$token = JWTAuth::attempt($credential)) {
+                if (!$token) {
                     return response()->json(['status' => false, 'message' => 'Invalid credentials'], 401);
                 }
             } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
                 return response()->json(['status' => false, 'error' => $e->getMessage(), 'message' => 'Invalid credentials'], 401);
             }
-            if ($credential['email'] == 'administrador@gmail.com') {
-                return response()->json([
-                    'status' => true,
-                    'token_type' => 'bearer',
-                    'token' => $token,
-                    'message' => 'Credencial Válida'
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => true,
-                    'token_type' => 'bearer',
-                    'token' => $token,
-                    'expires_in' => JWTAuth::factory()->getTTL() * 60,
-                    'message' => 'Credencial Válida'
-                ], 200);
-            }
+            return response()->json([
+                'status' => true,
+                'token_type' => 'bearer',
+                'token' => $token,
+                'expires_in' => JWTAuth::factory()->getTTL() * 60,
+                'message' => 'Credencial Válida'
+            ], 200);
         } else {
             return response()->json([
                 'status' => false,

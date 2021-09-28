@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\formWebModels\formTipoDocumento;
-use App\Models\Minerales;
+
 
 class TipoDocumentoController extends Controller
 {
@@ -21,7 +21,7 @@ class TipoDocumentoController extends Controller
     public static function getTipoDocumento()
     {
         $lista_tipo_documento = formTipoDocumento::all('id as value', 'nombre as label');
-        // echo $lista_tipo_documento;
+        //echo $lista_tipo_documento;
         return $lista_tipo_documento;
     }
 
