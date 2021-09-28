@@ -1763,16 +1763,34 @@ export default {
 		//let self  = this;
 		//voy a buscar las provincias
 		this.$nextTick(() => {
-			axios.get('/datos/traer_provincias')
-				.then(function (response) {
-					console.log("las provincias son:\n");
-					self.lista_provincias = response.data;
-					console.log(self.lista_provincias);
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
+			console.log(this.$inertia.page.props.user.id_provincia);
+				if(this.$inertia.page.props.user.id_provincia === 70 )
+				{
+					console.log("harcodeo las prov");
+					//rta---> id: 70, nombre: 'San Juan'
+					self.lista_provincias = [
+						{
+							'id': 70,
+							'nombre': 'San Juan'
+						}];
+				}
+				else
+				{
+					axios.get('/datos/traer_provincias')
+					.then(function (response) {
+						console.log("las provincias so22n:\n");
+						self.lista_provincias = response.data;
+						console.log(self.lista_provincias);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}
 			});
+
+
+				
+
 
 			// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
 			// console.log("si");
@@ -2009,16 +2027,31 @@ export default {
 		},
 		buscar_provincias(){
 			//voy a buscar las provincias
+				console.log("PROVVVVV");
 			this.$nextTick(() => {
-			axios.get('/datos/traer_provincias')
-				.then(function (response) {
-					console.log("las provincias son:\n");
-					self.lista_provincias = response.data;
-					console.log(self.lista_provincias);
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
+				console.log(this.$inertia.page.props.user.id_provincia);
+				if(this.$inertia.page.props.user.id_provincia === 70 )
+				{
+					console.log("harcodeo las prov");
+					//rta---> id: 70, nombre: 'San Juan'
+					self.lista_provincias = [
+						{
+							'id': 70,
+							'nombre': 'San Juan'
+						}];
+				}
+				else
+				{
+					axios.get('/datos/traer_provincias')
+					.then(function (response) {
+						console.log("las provincias so22n:\n");
+						self.lista_provincias = response.data;
+						console.log(self.lista_provincias);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}
 			});
 			//voy a buscar los dptos
 			if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
