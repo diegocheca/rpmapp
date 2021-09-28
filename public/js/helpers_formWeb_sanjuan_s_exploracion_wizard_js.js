@@ -320,6 +320,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           // }).observations,
 
         }, //APELLIDO
+<<<<<<< HEAD
         {
           label: "Apellido",
           value: schema.apellido,
@@ -440,6 +441,298 @@ function getFormSchema(_ref, evaluate, dataForm) {
           value: schema.nacionalidad,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "nacionalidad" // validations: yup
+=======
+        {
+          label: "Apellido",
+          value: schema.apellido,
+          //nombre_razon_social,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "apellido" // validations: yup
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
+          //     .string()
+          //     .required("Debes completar este campo"),
+          // observation: new Observations({
+          //     schema,
+<<<<<<< HEAD
+          //     name: "nacionalidad",
+          //     evaluate,
+          // }).observations,
+
+        }, //PROFESION
+        {
+          label: "Profesión",
+          value: schema.profesion,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "profesion" // validations: yup
+=======
+          //     name: "apellido",
+          //     evaluate,
+          // }).observations,
+
+        }, //RAZON SOCIAL
+        {
+          label: "Razon Social",
+          value: schema.nombrers,
+          //nombre_razon_social,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "nombrers" // validations: yup
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
+          //     .string()
+          //     .required("Debes completar este campo"),
+          // observation: new Observations({
+          //     schema,
+<<<<<<< HEAD
+          //     name: "profesion",
+          //     evaluate,
+          // }).observations,
+
+        }, //ESTADO CIVIL
+        {
+          label: "Estado Civil",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          name: "estado_civil",
+          options: [{
+            label: "Soltero",
+            value: "Soltero"
+          }, {
+            label: "Casado",
+            value: "Casado"
+          }, {
+            label: "Divorsiado",
+            value: "Divorsiado"
+          }, {
+            label: "Sin Estado",
+            value: "Sin Estado"
+          }] // validations: yup
+          //     .object()
+          //     .when("estado_civilSelect", {
+=======
+          //     name: "nombrers",
+          //     evaluate,
+          // }).observations,
+
+        }, //SEXO
+        {
+          label: "Sexo",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          name: "sexo",
+          options: [{
+            label: "Femenino",
+            value: "Femenino"
+          }, {
+            label: "Masculino",
+            value: "Masculino"
+          }, {
+            label: "Otros",
+            value: "Otros"
+          }, {
+            label: "Sin Sexo",
+            value: "Sin Sexo"
+          }] // validations: yup
+          //     .object()
+          //     .when("sexoSelect", {
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
+          //         is: (value) => _.isEmpty(value),
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             ),
+          //     }),
+          // observation: new Observations({
+          //     schema,
+<<<<<<< HEAD
+          //     name: "estado_civil",
+          //     evaluate,
+          // }).observations,
+
+        }]
+      }]
+    }, //row 2 Domicilio legal Solicitante
+    {
+      widthResponsive: "lg:flex-row",
+      //flex
+      // columns
+      body: [//  col 1
+      {
+        title: "Domicilio Legal Solicitante",
+        width: "lg:w-full",
+        //flex
+        columns: "grid-cols-1",
+        //grid
+        columnsResponsive: "lg:grid-cols-1",
+        //inside card
+        img: "/images/laborales.png",
+        inputs: [//DOMICILIO LEGAL
+        {
+          label: "Domicilio",
+          value: schema.domicilio,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "domicilioLegal",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "domicilioLegal",
+            evaluate: evaluate
+          }).observations
+        }]
+      }]
+    }, // row 3 Domicilio legal provincia/dpto/localidad
+    {
+      widthResponsive: "lg:flex-row",
+      //flex
+      // columns
+      body: [//  col 1
+      {
+        title: "Domicilio Legal Solicitante",
+        width: "lg:w-full",
+        //flex
+        columns: "grid-cols-1",
+        //grid
+        columnsResponsive: "lg:grid-cols-1",
+        //inside card
+        img: "/images/laborales.png",
+        inputs: [//PROVINCIA
+=======
+          //     name: "sexo",
+          //     evaluate,
+          // }).observations,
+
+        }, //TIPO DOCUMENTO
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
+        {
+          label: "Provincia ",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          // get axios
+          async: true,
+          asyncUrl: "/paises/departamentos",
+          inputDepends: ["departamentoLegal"],
+          inputClearDepends: ["departamentoLegal", "localidadLegal"],
+          // isLoading: false,
+          options: dataForm.provincia,
+          name: "provinciaLegal",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("provinciaLegalSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "provinciaLegal",
+            evaluate: evaluate
+          }).observations
+        }, //DEPARTAMENTO
+        {
+          label: "Departamento",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          // get axios
+          async: true,
+          asyncUrl: "/paises/localidades",
+          inputDepends: ["localidadLegal"],
+          inputClearDepends: ["localidadLegal"],
+          isLoading: false,
+<<<<<<< HEAD
+          //
+          options: [],
+          name: "departamentoLegal",
+=======
+          options: dataForm.tipo_documento,
+          name: "tipo_documento",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+<<<<<<< HEAD
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("departamentoLegalSelect", {
+=======
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("tipo_documentoSelect", {
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+<<<<<<< HEAD
+            name: "departamentoLegal",
+            evaluate: evaluate
+          }).observations
+        }, //LOCALIDAD
+        {
+          label: "Localidad",
+          value: {},
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+          // get axios
+          async: true,
+          isLoading: false,
+          //
+          options: [],
+          name: "localidadLegal",
+          multiple: false,
+          closeOnSelect: true,
+          searchable: false,
+          placeholder: "Selecciona una opción",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("localidadLegalSelect", {
+            is: function is(value) {
+              return _.isEmpty(value) || !value;
+            },
+            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
+          }),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "localidadLegal",
+            evaluate: evaluate
+          }).observations
+        }]
+      }]
+    }, // row 4 Domicilio Real Solicitante
+=======
+            name: "tipo_documento",
+            evaluate: evaluate
+          }).observations
+        }, //DNI
+        {
+          label: "DNI",
+          value: schema.dni,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          name: "dni",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "dni",
+            evaluate: evaluate
+          }).observations
+        }, //FECHA DE NACIMIENTO
+        {
+          label: "Fecha de Nacimiento",
+          value: schema.fecha_nacimiento,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.DATE,
+          name: "fecha_nacimiento" // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
+          // observation: new Observations({
+          //     schema,
+          //     name: "fecha_nacimiento",
+          //     evaluate,
+          // }).observations,
+
+        }, //NACIONALIDAD
+        {
+          label: "Nacionalidad",
+          value: schema.nacionalidad,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          name: "nacionalidad" // validations: yup
           //     .string()
           //     .required("Debes completar este campo"),
           // observation: new Observations({
@@ -499,13 +792,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }]
       }]
     }, //row 2 Domicilio legal Solicitante
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
     {
       widthResponsive: "lg:flex-row",
       //flex
       // columns
       body: [//  col 1
       {
+<<<<<<< HEAD
+        title: "Domicilio Real Solicitante",
+=======
         title: "Domicilio Legal Solicitante",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
         width: "lg:w-full",
         //flex
         columns: "grid-cols-1",
@@ -518,48 +816,84 @@ function getFormSchema(_ref, evaluate, dataForm) {
           label: "Domicilio",
           value: schema.domicilio,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+<<<<<<< HEAD
+          name: "domicilio",
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+            schema: schema,
+            name: "domicilio",
+=======
           name: "domicilioLegal",
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "domicilioLegal",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
             evaluate: evaluate
           }).observations
         }]
       }]
+<<<<<<< HEAD
+    }, //row 5 Domicilio real provincia/dpto/localidad
+=======
     }, // row 3 Domicilio legal provincia/dpto/localidad
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
     {
       widthResponsive: "lg:flex-row",
       //flex
       // columns
       body: [//  col 1
       {
+<<<<<<< HEAD
+        title: "Domicilio Real Solicitante",
+=======
         title: "Domicilio Legal Solicitante",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
         width: "lg:w-full",
         //flex
         columns: "grid-cols-1",
         //grid
+<<<<<<< HEAD
+        columnsResponsive: "lg:grid-cols-2",
+=======
         columnsResponsive: "lg:grid-cols-1",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
         //inside card
         img: "/images/laborales.png",
         inputs: [//PROVINCIA
         {
+<<<<<<< HEAD
           label: "Provincia ",
+=======
+          label: "Provincia Legal",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
           value: {},
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           // get axios
           async: true,
           asyncUrl: "/paises/departamentos",
+<<<<<<< HEAD
+          inputDepends: ["departamento"],
+          inputClearDepends: ["departamento", "localidad"],
+          // isLoading: false,
+          options: dataForm.provincia,
+          name: "provincia",
+=======
           inputDepends: ["departamentoLegal"],
           inputClearDepends: ["departamentoLegal", "localidadLegal"],
           // isLoading: false,
           options: dataForm.provincia,
           name: "provinciaLegal",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
           multiple: false,
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
+<<<<<<< HEAD
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("provinciaSelect", {
+=======
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("provinciaLegalSelect", {
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
             is: function is(value) {
               return _.isEmpty(value) || !value;
             },
@@ -567,7 +901,11 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
+<<<<<<< HEAD
+            name: "provincia",
+=======
             name: "provinciaLegal",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
             evaluate: evaluate
           }).observations
         }, //DEPARTAMENTO
@@ -578,17 +916,30 @@ function getFormSchema(_ref, evaluate, dataForm) {
           // get axios
           async: true,
           asyncUrl: "/paises/localidades",
+<<<<<<< HEAD
+          inputDepends: ["localidad"],
+          inputClearDepends: ["localidad"],
+          isLoading: false,
+          //
+          options: [],
+          name: "departamento",
+=======
           inputDepends: ["localidadLegal"],
           inputClearDepends: ["localidadLegal"],
           isLoading: false,
           //
           options: [],
           name: "departamentoLegal",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
           multiple: false,
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
+<<<<<<< HEAD
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("departamentoSelect", {
+=======
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("departamentoLegalSelect", {
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
             is: function is(value) {
               return _.isEmpty(value) || !value;
             },
@@ -596,7 +947,11 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
+<<<<<<< HEAD
+            name: "departamento",
+=======
             name: "departamentoLegal",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
             evaluate: evaluate
           }).observations
         }, //LOCALIDAD
@@ -609,12 +964,20 @@ function getFormSchema(_ref, evaluate, dataForm) {
           isLoading: false,
           //
           options: [],
+<<<<<<< HEAD
+          name: "localidad",
+=======
           name: "localidadLegal",
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
           multiple: false,
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
+<<<<<<< HEAD
+          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("localidadSelect", {
+=======
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("localidadLegalSelect", {
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
             is: function is(value) {
               return _.isEmpty(value) || !value;
             },
@@ -622,6 +985,8 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
+<<<<<<< HEAD
+=======
             name: "localidadLegal",
             evaluate: evaluate
           }).observations
@@ -648,7 +1013,9 @@ function getFormSchema(_ref, evaluate, dataForm) {
           value: schema.domicilio,
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: "domicilio",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required("Debes completar este campo"),
+          // validations: yup
+          //     .string()
+          //     .required("Debes completar este campo"),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "domicilio",
@@ -688,12 +1055,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("provinciaSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("provinciaSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "provincia",
@@ -717,12 +1090,18 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("departamentoSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("departamentoSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: "departamento",
@@ -743,14 +1122,21 @@ function getFormSchema(_ref, evaluate, dataForm) {
           closeOnSelect: true,
           searchable: false,
           placeholder: "Selecciona una opción",
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when("localidadSelect", {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required("Debes elegir un elemento").nullable()
-          }),
+          // validations: yup
+          //     .object()
+          //     .when("localidadSelect", {
+          //         is: (value) =>
+          //             _.isEmpty(value) || !value,
+          //         then: yup
+          //             .object()
+          //             .required(
+          //                 "Debes elegir un elemento"
+          //             )
+          //             .nullable(),
+          //     }),
           observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
+>>>>>>> 81543ab1ec285620fea1b5f829ac773675bcbcca
             name: "localidad",
             evaluate: evaluate
           }).observations

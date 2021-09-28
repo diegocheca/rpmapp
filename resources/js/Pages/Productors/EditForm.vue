@@ -3,7 +3,7 @@
 		<div class="flex items-center  w-full bg-teal-lighter">
 			<div class="w-full bg-white rounded shadow-lg p-8 m-4">
 				<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
-					Editar Productor
+					Editar Productor 
 				</h1>
 				<div class="flex">
 					<div v-if="$props.mostrar.alerta_puede_editar" class="w-full w-2/2 px-3 mb-6 md:mb-0">
@@ -4056,7 +4056,21 @@ export default {
     let self  = this;
 	//voy a buscar las provincias
     this.$nextTick(() => {
-        axios.get('/datos/traer_provincias')
+		console.log("PROVVVVV");
+		console.log(this.$inertia.page.props.user.id_provincia);
+		if(this.$inertia.page.props.user.id_provincia === 70 )
+        {
+			console.log("harcodeo las prov");
+			//rta---> id: 70, nombre: 'San Juan'
+			self.lista_provincias = [
+				{
+					'id': 70,
+					'nombre': 'San Juan'
+				}];
+		}
+		else
+		{
+			axios.get('/datos/traer_provincias')
             .then(function (response) {
                 console.log("las provincias son:\n");
                 self.lista_provincias = response.data;
@@ -4065,6 +4079,7 @@ export default {
             .catch(function (error) {
                 console.log(error);
             });
+		}
         });
 
 		// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
