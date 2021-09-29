@@ -39,7 +39,7 @@ export default {
 
     // var data = [];
     for (var i = 0; i < chart.geodata.features.length; i++) {
-        chart.geodata.features[i].properties.value = !element.value? Math.floor(Math.random() * (100 - 3)) + 3 : element.value
+        chart.geodata.features[i].properties.value = Math.floor(Math.random() * (100 - 3)) + 3
     }
 
     // Set projection

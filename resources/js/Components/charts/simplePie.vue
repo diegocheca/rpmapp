@@ -28,7 +28,7 @@ export default {
         let chart = am4core.create(this.$refs.chartdiv, am4charts.PieChart);
 
         if(!this.dataChart) {
-            this.dataDefault();
+            this.data.dataDefault();
         } else {
             this.data = this.dataChart
         }
@@ -99,45 +99,7 @@ export default {
         this.chart.dispose();
         }
     },
-    methods: {
-        dataDefault() {
 
-        this.data.title = 'Título de ejemplo'
-        this.data.axis.x = 'country'
-        this.data.axis.y = 'litres'
-        this.data.data =
-            [
-                {
-                "label": "Lithuania",
-                "value": 501.9
-                }, {
-                "label": "Czechia",
-                "value": 301.9
-                }, {
-                "label": "Ireland",
-                "value": 201.1
-                }, {
-                "label": "Germany",
-                "value": 165.8
-                }, {
-                "label": "Australia",
-                "value": 139.9
-                }, {
-                "label": "Austria",
-                "value": 128.3
-                }, {
-                "label": "UK",
-                "value": 99
-                }, {
-                "label": "Belgium",
-                "value": 60
-                }, {
-                "label": "The Netherlands",
-                "value": 50
-                }
-            ]
-        }
-    },
 };
 </script>
 <style>
