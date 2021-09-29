@@ -6,13 +6,13 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img :src="$inertia.page.props.appName+'/svg/state.svg'">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
                 </span>
             </div>
             <input 
             type="text" 
-            maxlength="30"
-            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
             placeholder="Localidad del Domicilio"
             id="leal_localidad"
             name="leal_localidad"
@@ -23,6 +23,7 @@
             >
         <p v-bind:class=clase_cartel_nota_legalcallelocalidad>{{cartel_nota_legalcallelocal}}.</p>
     </div>
+     <p v-bind:class=clase_cartel_nota_legalcallelocalidad>{{cartel_nota_legalcallelocal}}.</p>
     <div class="flex" v-if="evaluacion || mostrar_legal_localidad_correccion">
         <div class="w-full md:w-1/3 px-3">
             <span class="text-gray-700">Es correcto?</span>
