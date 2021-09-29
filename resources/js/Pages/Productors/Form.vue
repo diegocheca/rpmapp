@@ -633,6 +633,9 @@
 				:evaluacion ="evaluacion_global"
 				:id="form.id"
 				:testing="testing_global"
+
+				
+				v-on:changevalorcategoria="update_categoria($event)"
 			>
 			</PaginaCuatroDatosMinaUno>
 			
@@ -769,7 +772,7 @@
 				:actividad_a_desarrollar_correcto="form.actividad_a_desarrollar_correcto"
 				:obs_actividad_a_desarrollar="form.obs_actividad_a_desarrollar"
 				:obs_actividad_a_desarrollar_valido="form.obs_actividad_a_desarrollar_valido"
-				:mostrar_actividad="$props.mostrar.actividad"
+				:mostrar_actividad="$props.mostrar.actividades"
 				:desactivar_actividad="$props.disables.actividad"
 				:mostrar_actividad_correccion="$props.mostrar.actividad_correccion"
 				:desactivar_actividad_correccion="$props.disables.actividad_correccion"
@@ -802,6 +805,7 @@
 				:evaluacion ="evaluacion_global"
 				:id="form.id"
 				:testing="testing_global"
+				:categoria = "form.categoria"
 			>
 			</PaginaCincoDatosMinaDos>
 			<div id="section_datos_mina_ubicacion"></div>
@@ -1756,30 +1760,31 @@ export default {
 		};
 	},
 	mounted(){
-		console.log("corriendo ene l mounted");
 		let self  = this;
-		//self.pasar_los_num_a_boolean();
-		//self.buscar_provincias();
-		//let self  = this;
-		//voy a buscar las provincias
 		this.$nextTick(() => {
-			axios.get('/datos/traer_provincias')
-				.then(function (response) {
-					console.log("las provincias son:\n");
-					self.lista_provincias = response.data;
-					console.log(self.lista_provincias);
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
+			console.log(this.$inertia.page.props.user.id_provincia);
+				if(this.$inertia.page.props.user.id_provincia === 70 )
+				{
+					console.log("harcodeo las prov");
+					self.lista_provincias = [
+					{
+						'id': 70,
+						'nombre': 'San Juan'
+					}];
+				}
+				else
+				{
+					axios.get('/datos/traer_provincias')
+					.then(function (response) {
+						console.log("las provincias so2n:\n");
+						self.lista_provincias = response.data;
+						console.log(self.lista_provincias);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}
 			});
-
-			// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
-			// console.log("si");
-			// else console.log("no");
-			// console.log(isNaN(parseInt(this.$props.productor.leal_provincia)));
-
-
 		//voy a buscar los dptos
 		if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
 			//signafica que tengo una provincia ya elegida asiq traifgo sus dptos
@@ -1845,14 +1850,20 @@ export default {
 			}
 			else{
 				// aun no tiene el id definido asiq no puedo enviar las cosas
-				this.AvisoAprueba = true;
+				/* this.AvisoAprueba = true;
 				this.modal_tittle_apro = "Formulario aun no guardado";
 				this.modal_body_apro = "Usted debe guardar el paso 1 antes de presentar el formulario";
 				this.mostrar_boton_aprobar = false;
 				this.mostrar_boton_aprobar_de_todos_modos = false;
+ */
+				console.log("No puedo enviar el form");
 
 
 			}
+		},
+
+		update_categoria(value){
+			this.form.categoria = value;
 		},
 		closeModal() {
 				this.confirmingUserDeletion = false
@@ -2009,16 +2020,31 @@ export default {
 		},
 		buscar_provincias(){
 			//voy a buscar las provincias
+				console.log("PROVVVVV");
 			this.$nextTick(() => {
-			axios.get('/datos/traer_provincias')
-				.then(function (response) {
-					console.log("las provincias son:\n");
-					self.lista_provincias = response.data;
-					console.log(self.lista_provincias);
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
+				console.log(this.$inertia.page.props.user.id_provincia);
+				if(this.$inertia.page.props.user.id_provincia === 70 )
+				{
+					console.log("harcodeo las prov");
+					//rta---> id: 70, nombre: 'San Juan'
+					self.lista_provincias = [
+						{
+							'id': 70,
+							'nombre': 'San Juan'
+						}];
+				}
+				else
+				{
+					axios.get('/datos/traer_provincias')
+					.then(function (response) {
+						console.log("las provincias so22n:\n");
+						self.lista_provincias = response.data;
+						console.log(self.lista_provincias);
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}
 			});
 			//voy a buscar los dptos
 			if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {

@@ -192,10 +192,6 @@
                             ring
                             ring-4
                             ring-blue-100">
-                        v-bind:desactivar_legal_calle_num="$props.desactivar_legal_calle_num"
-                        v-bind:mostrar_legal_calle_num_correccion="$props.mostrar_legal_calle_num_correccion"
-                        v-bind:desactivar_legal_calle_num_correccion="$props.desactivar_legal_calle_num_correccion"
-
                             <p class="p-3">
                                 Es la numeración del domicilio que se esta declarando. Este es un valor númerico.
                             </p>
