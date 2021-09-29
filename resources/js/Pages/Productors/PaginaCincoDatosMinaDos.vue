@@ -102,8 +102,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Hace referencia a si usted es el propietario de la manifestación que se esta declarando.
                             </p>
                             
                         </div>
@@ -156,8 +155,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Hace referencia a si usted es arendatario de la manifestación que se esta declarando.
                             </p>
                             
                         </div>
@@ -211,8 +209,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Hace referencia a si usted posee la conecesión de la manifestación que se esta declarando
                             </p>
                             
                         </div>
@@ -268,8 +265,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Hace referencia a si existen o sustancias de aprovechamiento común en la minifestación que esta declarando.
                             </p>
                             
                         </div>
@@ -326,8 +322,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Este campo debe ser completado si usted cree que queda algún otro dato importante para declarar
                             </p>
                             
                         </div>
@@ -350,7 +345,7 @@
         <div class="flex">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo
-                        v-if="$props.mostrar_contancias_canon"
+                        v-if="$props.mostrar_contancias_canon && $props.categoria !== 'Cantera'"
                         v-bind:valor_input_props="form_pagina.constancia_pago_canon"
                         v-bind:valor_input_validacion="form_pagina.constancia_pago_canon_validacion"
                         v-bind:evualacion_correcto="form_pagina.constancia_pago_canon_correcto"
@@ -358,7 +353,7 @@
                         v-bind:valor_valido_obs="form_pagina.obs_constancia_pago_canon_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
-                        v-bind:label="'Constancia de Pago de Canon'"
+                        v-bind:label="'Recibo de último semestre'"
                         v-bind:desactivar_input="$props.desactivar_contancias_canon"
                         v-bind:mostrar_correccion="$props.mostrar_contancias_canon_correccion"
                         v-bind:desactivar_correccion="$props.desactivar_contancias_canon_correccion"
@@ -384,8 +379,7 @@
                             ring-blue-100">
                         
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Aquí debe colocar un archivo donde quede constancia del pago del canon minero asociado a la manifestación que esta declarando.
                             </p>
                             
                         </div>
@@ -415,7 +409,7 @@
                     v-bind:valor_valido_obs="form_pagina.obs_iia_canon_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing="mostrar_testing"
-                    v-bind:label="'IIA de Actividad Minera'"
+                    v-bind:label="'IIA de Actividad Minera (o constancia de inicio)'"
                     v-bind:desactivar_input="$props.desactivar_iia"
                     v-bind:mostrar_correccion="$props.mostrar_iia_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_iia_correccion"
@@ -472,7 +466,7 @@
                     v-bind:valor_valido_obs="form_pagina.obs_dia_canon_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing="mostrar_testing"
-                    v-bind:label="'DIA de Actividad Minera'"
+                    v-bind:label="'DIA de Actividad Minera (o constancia de inicio)'"
                     v-bind:desactivar_input="$props.desactivar_dia"
                     v-bind:mostrar_correccion="$props.mostrar_dia_correccion"
                     v-bind:desactivar_correccion="$props.desactivar_dia_correccion"
@@ -497,8 +491,7 @@
                         ring-blue-100">
                     
                         <p class="p-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                            m quisquam doloremque placeat op.
+                            Presentacón de DIA o constancia de inicio del trámite de DIA.
                         </p>
                         
                     </div>
@@ -997,7 +990,8 @@ export default {
 
         'evaluacion',
         'id',
-        'testing'
+        'testing',
+        'categoria'
     ],
  
     components: {

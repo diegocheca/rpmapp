@@ -247,300 +247,298 @@ export default {
         
         //border-green-500
     }; 
-  },
-  methods:{
-    actualizar_valores_padre(){
-        this.$emit('changevalor_lista_minerales',this.minerales);
     },
-    actaulizar_variable_correccion(valor, index) {
-        //this.valor_evaluacion_correcto_local = valor;
-        this.minerales[index].evaluacion_correcto = valor;
-        this.actualizar_valores_padre();
-        //this.$emit('changecorrecto',this.minerales[index].evaluacion_correcto);
-    },
-     
-      actaulizar_contenido_text_area(value, index) {
-        if(this.minerales[index].observacion_autoridad.length <= 2)
-        {
-            this.minerales[index].clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.minerales[index].texto_validacion_text_area=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
-            this.minerales[index].clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
-            this.minerales[index].obs_valida = false;
-            //this.$emit('changeobsvalido',false);
-            
-        }
-        if(this.minerales[index].observacion_autoridad.length >= 50)
-        {
-            this.minerales[index].clase_text_area =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.minerales[index].texto_validacion_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
-            this.minerales[index].clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
-            this.minerales[index].obs_valida = false;
-            //this.$emit('changeobsvalido',false);
-        }
-        if( this.minerales[index].observacion_autoridad !== '' && this.minerales[index].observacion_autoridad.length <= 30 && this.minerales[index].observacion_autoridad.length >= 3)
-        {
-            this.minerales[index].clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.minerales[index].texto_validacion_text_area=  'Observacion Correcta';
-            this.minerales[index].clase_text_evaluacion_de_text_area=  'text-green-500 text-xs italic';
-            this.minerales[index].obs_valida = false;
-            //this.$emit('changeobsvalido',true);
-            
-        }
-        this.actualizar_valores_padre();
-   // this.$emit('changeobs',this.$props.valor_obs)
-    },
-    actaulizar_contenido_forma_presentacion(value, index){
-        // console.log("el value es:"+value.length);
-        // console.log("el index es:"+index);
-        
-        if(value.length <= 2)
-        {
-            this.minerales[index].clase_text_area_presentacion=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Incorrecta - debe ser mayor a 2 carcteres';
-            this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-red-500 text-xs italic';
-            this.minerales[index].presentacion_valida = false;
-            //this.$emit('changeobsvalido',false);
-            
-        }
-        if(value.length >= 50)
-        {
-            this.minerales[index].clase_text_area_presentacion =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Incorrecta - debe tener menos de 50 caracteres';
-            this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-red-500 text-xs italic';
-            this.minerales[index].presentacion_valida = false;
-            //this.$emit('changeobsvalido',false);
-        }
-        if( value !== '' && value.length <= 30 && value.length >= 3)
-        {
-            this.minerales[index].clase_text_area_presentacion=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Correcta';
-            this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-green-500 text-xs italic';
-            this.minerales[index].presentacion_valida = false;
-            //this.$emit('changeobsvalido',true);
-            
-        }
-        //this.$emit('changeobs',this.$props.valor_obs)
-        this.actualizar_valores_padre();
-        
-    },
-    cambio_input(){
-        if(this.valor_input.length <= 4)
-        {
-            this.clase_border_de_input= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_input= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
-            this.clase_cartel_validacion_input= 'text-red-500 text-xs italic';
-            this.validacion_input_local = false;
-        }
-        if(this.valor_input.length >= 40)
-        {
-            this.clase_border_de_input =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_input=  'Valor Incorrecta - debe tener menos de 30 caracteres';
-            this.clase_cartel_validacion_input=  'text-red-500 text-xs italic';
-            this.validacion_input_local = false;
-        }
-        if( this.valor_input !== '' && this.valor_input.length <= 30 && this.valor_input.length >= 3)
-        {
-            this.clase_border_de_input=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.texto_validacion_input =  'Valor Correcto';
-            this.clase_cartel_validacion_input =  'text-green-500 text-xs italic';
-            this.validacion_input_local = true;
-        }
-        /*this.$emit('changevalido',this.validacion_input_local);
-        this.$emit('changevalor',this.valor_input);*/
-        this.actualizar_valores_padre();
-    },
-    eliminar_mineral: function(indice){
-        this.minerales.splice(indice, 1);
-        this.actualizar_valores_padre();
-    },
-    agregar_mineral: function(){
-        var mineral_aux = {
-                id_mineral: '6',
-                id_varieadad: '6',
-                segunda_cat_mineral_explotado: '',
-                lugar_donde_se_enccuentra: '',
-                mostrar_lugar_segunda_cat: false,
-                mostrar_otro_mineral_segunda_cat: false,
-                otro_mineral_segunda_cat: '',
-                lugar_donde_se_enccuentra:'',
-                observacion:'observacion (44)',
-                clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-                clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
-                texto_validacion_text_area_presentacion: 'Forma de Presentacion Correcta',
-                presentacion_valida:true,
-                evaluacion_correcto: true,
-                observacion_autoridad: '',
-                clase_text_area:'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-                clase_text_evaluacion_de_text_area: 'text-red-500 text-xs italic',
-                texto_validacion_text_area : 'Observacion Correcta',
-                obs_valida: true,
-                lista_de_minerales_array:[],
-                thumb: this.$inertia.page.props.appName+'/minerales/thumbs/3.png'
-            };
-            if(this.minerales === '' || this.minerales === null)
-                this.minerales = [];
-        this.minerales.push(mineral_aux);
-        this.actualizar_valores_padre();
-    },
-    cambio_mineral_explotado(index){
-        // console.log("cambio el select");
-        
-    },
-    cambio_select_mineral_segunda_cat(event, index){
-        if(this.$props.tipo_yacimiento === 'segunda')
-        {
-            // console.log("el index es: "+index);
-            // console.log("acabo de elegir: "+ this.minerales[index].id_mineral);
-            // console.log(this.minerales[0].lugar_donde_se_enccuentra);
-            //console.log("lugar donde se encuentra: "+ this.minerales[index].lugar_donde_se_enccuentra);
-            if(
-            (this.minerales[index].id_mineral === 1031)
-            || 
-            (this.minerales[index].id_mineral === 1032)
-            )
+    methods:{
+        actualizar_valores_padre(){
+            this.$emit('changevalor_lista_minerales',this.minerales);
+        },
+        actaulizar_variable_correccion(valor, index) {
+            //this.valor_evaluacion_correcto_local = valor;
+            this.minerales[index].evaluacion_correcto = valor;
+            this.actualizar_valores_padre();
+            //this.$emit('changecorrecto',this.minerales[index].evaluacion_correcto);
+        },
+        actaulizar_contenido_text_area(value, index) {
+            if(this.minerales[index].observacion_autoridad.length <= 2)
             {
-                //en estos casos debo mostrar la seleccion de lugares
-                // console.log("entre aca");
-                this.minerales[index].lugar_donde_se_enccuentra='';
-                //this.model.mina_cantera = 'mina';
-                this.minerales[index].mostrar_lugar_segunda_cat = true;
-                this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
-                this.minerales[index].otro_mineral_segunda_cat= '';
+                this.minerales[index].clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.minerales[index].texto_validacion_text_area=  'Observacion Incorrecta - debe ser mayor a 2 carcteres';
+                this.minerales[index].clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
+                this.minerales[index].obs_valida = false;
+                //this.$emit('changeobsvalido',false);
+                
             }
-            else{
-
+            if(this.minerales[index].observacion_autoridad.length >= 50)
+            {
+                this.minerales[index].clase_text_area =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.minerales[index].texto_validacion_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
+                this.minerales[index].clase_text_evaluacion_de_text_area=  'text-red-500 text-xs italic';
+                this.minerales[index].obs_valida = false;
+                //this.$emit('changeobsvalido',false);
+            }
+            if( this.minerales[index].observacion_autoridad !== '' && this.minerales[index].observacion_autoridad.length <= 30 && this.minerales[index].observacion_autoridad.length >= 3)
+            {
+                this.minerales[index].clase_text_area=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.minerales[index].texto_validacion_text_area=  'Observacion Correcta';
+                this.minerales[index].clase_text_evaluacion_de_text_area=  'text-green-500 text-xs italic';
+                this.minerales[index].obs_valida = false;
+                //this.$emit('changeobsvalido',true);
+                
+            }
+            this.actualizar_valores_padre();
+    // this.$emit('changeobs',this.$props.valor_obs)
+        },
+        actaulizar_contenido_forma_presentacion(value, index){
+            // console.log("el value es:"+value.length);
+            // console.log("el index es:"+index);
+            
+            if(value.length <= 2)
+            {
+                this.minerales[index].clase_text_area_presentacion=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Incorrecta - debe ser mayor a 2 carcteres';
+                this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-red-500 text-xs italic';
+                this.minerales[index].presentacion_valida = false;
+                //this.$emit('changeobsvalido',false);
+                
+            }
+            if(value.length >= 50)
+            {
+                this.minerales[index].clase_text_area_presentacion =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Incorrecta - debe tener menos de 50 caracteres';
+                this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-red-500 text-xs italic';
+                this.minerales[index].presentacion_valida = false;
+                //this.$emit('changeobsvalido',false);
+            }
+            if( value !== '' && value.length <= 30 && value.length >= 3)
+            {
+                this.minerales[index].clase_text_area_presentacion=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.minerales[index].texto_validacion_text_area_presentacion=  'Forma de Presentacion Correcta';
+                this.minerales[index].clase_text_evaluacion_de_text_area_presentacion=  'text-green-500 text-xs italic';
+                this.minerales[index].presentacion_valida = false;
+                //this.$emit('changeobsvalido',true);
+                
+            }
+            //this.$emit('changeobs',this.$props.valor_obs)
+            this.actualizar_valores_padre();
+            
+        },
+        cambio_input(){
+            if(this.valor_input.length <= 4)
+            {
+                this.clase_border_de_input= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_input= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
+                this.clase_cartel_validacion_input= 'text-red-500 text-xs italic';
+                this.validacion_input_local = false;
+            }
+            if(this.valor_input.length >= 40)
+            {
+                this.clase_border_de_input =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_input=  'Valor Incorrecta - debe tener menos de 30 caracteres';
+                this.clase_cartel_validacion_input=  'text-red-500 text-xs italic';
+                this.validacion_input_local = false;
+            }
+            if( this.valor_input !== '' && this.valor_input.length <= 30 && this.valor_input.length >= 3)
+            {
+                this.clase_border_de_input=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+                this.texto_validacion_input =  'Valor Correcto';
+                this.clase_cartel_validacion_input =  'text-green-500 text-xs italic';
+                this.validacion_input_local = true;
+            }
+            /*this.$emit('changevalido',this.validacion_input_local);
+            this.$emit('changevalor',this.valor_input);*/
+            this.actualizar_valores_padre();
+        },
+        eliminar_mineral: function(indice){
+            this.minerales.splice(indice, 1);
+            this.actualizar_valores_padre();
+        },
+        agregar_mineral: function(){
+            var mineral_aux = {
+                    id_mineral: '6',
+                    id_varieadad: '6',
+                    segunda_cat_mineral_explotado: '',
+                    lugar_donde_se_enccuentra: '',
+                    mostrar_lugar_segunda_cat: false,
+                    mostrar_otro_mineral_segunda_cat: false,
+                    otro_mineral_segunda_cat: '',
+                    lugar_donde_se_enccuentra:'',
+                    observacion:'observacion (44)',
+                    clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                    clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
+                    texto_validacion_text_area_presentacion: 'Forma de Presentacion Correcta',
+                    presentacion_valida:true,
+                    evaluacion_correcto: true,
+                    observacion_autoridad: '',
+                    clase_text_area:'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                    clase_text_evaluacion_de_text_area: 'text-red-500 text-xs italic',
+                    texto_validacion_text_area : 'Observacion Correcta',
+                    obs_valida: true,
+                    lista_de_minerales_array:[],
+                    thumb: this.$inertia.page.props.appName+'/minerales/thumbs/3.png'
+                };
+                if(this.minerales === '' || this.minerales === null)
+                    this.minerales = [];
+            this.minerales.push(mineral_aux);
+            this.actualizar_valores_padre();
+        },
+        cambio_mineral_explotado(index){
+            // console.log("cambio el select");
+            
+        },
+        cambio_select_mineral_segunda_cat(event, index){
+            if(this.$props.tipo_yacimiento === 'segunda')
+            {
+                // console.log("el index es: "+index);
+                // console.log("acabo de elegir: "+ this.minerales[index].id_mineral);
+                // console.log(this.minerales[0].lugar_donde_se_enccuentra);
+                //console.log("lugar donde se encuentra: "+ this.minerales[index].lugar_donde_se_enccuentra);
                 if(
-                (this.minerales[index].id_mineral === 1035) // desmontes
+                (this.minerales[index].id_mineral === 1031)
                 || 
-                (this.minerales[index].id_mineral === 1181) // relaves
-                || 
-                (this.minerales[index].id_mineral === 1182) // escoreales
+                (this.minerales[index].id_mineral === 1032)
                 )
                 {
-                    //en estos casos de elegir alguna sustancias de aprovechamiento comun pero no se necesita el lugar
+                    //en estos casos debo mostrar la seleccion de lugares
+                    // console.log("entre aca");
                     this.minerales[index].lugar_donde_se_enccuentra='';
                     //this.model.mina_cantera = 'mina';
-                    this.minerales[index].mostrar_lugar_segunda_cat = false;
+                    this.minerales[index].mostrar_lugar_segunda_cat = true;
                     this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
                     this.minerales[index].otro_mineral_segunda_cat= '';
                 }
-                else {
-                    if( this.minerales[index].id_mineral === 1039)
-                    {
-                        //en caso de ser sustenacias concedidas al dueño
-                        this.minerales[index].mostrar_otro_mineral_segunda_cat = true;
-                        this.minerales[index].otro_mineral_segunda_cat= '';
+                else{
 
-                    }
-                    else
+                    if(
+                    (this.minerales[index].id_mineral === 1035) // desmontes
+                    || 
+                    (this.minerales[index].id_mineral === 1181) // relaves
+                    || 
+                    (this.minerales[index].id_mineral === 1182) // escoreales
+                    )
                     {
-                        //este es cualqueir otro caso
+                        //en estos casos de elegir alguna sustancias de aprovechamiento comun pero no se necesita el lugar
                         this.minerales[index].lugar_donde_se_enccuentra='';
                         //this.model.mina_cantera = 'mina';
                         this.minerales[index].mostrar_lugar_segunda_cat = false;
                         this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
                         this.minerales[index].otro_mineral_segunda_cat= '';
-
                     }
-                    //en estos casos debo mostrar la seleccion de lugares
-                    
+                    else {
+                        if( this.minerales[index].id_mineral === 1039)
+                        {
+                            //en caso de ser sustenacias concedidas al dueño
+                            this.minerales[index].mostrar_otro_mineral_segunda_cat = true;
+                            this.minerales[index].otro_mineral_segunda_cat= '';
+
+                        }
+                        else
+                        {
+                            //este es cualqueir otro caso
+                            this.minerales[index].lugar_donde_se_enccuentra='';
+                            //this.model.mina_cantera = 'mina';
+                            this.minerales[index].mostrar_lugar_segunda_cat = false;
+                            this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
+                            this.minerales[index].otro_mineral_segunda_cat= '';
+
+                        }
+                        //en estos casos debo mostrar la seleccion de lugares
+                        
+                    }
                 }
             }
-        }
+            else{
+                
+            }
+            this.actualizar_valores_padre();
+        },
+        cambio_select_tipo_mineral_explotado_segunda_cat: function(event, index){
+            // console.log("el index es: "+index);
+            // console.log("acabo de elegir: "+ this.minerales[index].segunda_cat_mineral_explotado);
+            if(this.minerales[index].segunda_cat_mineral_explotado === 'aprovechamiento_comun'){
+                this.minerales[index].lista_de_minerales_array = [
+                {
+                    id:1031 , name: 'Arenas Metalíferas',
+                },
+                {
+                    id:1032 , name: 'Piedras Preciosas',
+                },
+                {
+                    id:1035 , name: 'Desmontes',
+                },
+                {
+                    id:1181 , name: 'Relaves',
+                },
+                {
+                    id:1182 , name: 'Escoriales',
+                },
+                ];
+            }
         else{
+                if(this.minerales[index].segunda_cat_mineral_explotado === 'conceden_preferentemente')
+                {
+                    this.minerales[index].lista_de_minerales_array = [
+                        {
+                            id:1036 , name:'Salitres'
+                        },
+                        {
+                            id:1037 , name:'Salinas'
+                        },
+                        {
+                            id:1038 , name:'Turberas'
+                        },
+                        {
+                            id:1039 , name:'Metales no comprendidos en 1° Categ.'
+                        },
+                        {
+                            id:1040 , name:'Tierras Piritosas y Aluminosas'
+                        },
+                        {
+                            id:1041 , name:'Abrasivos'
+                        },
+                        {
+                            id:1042 , name:'Ocres'
+                        },
+                        {
+                            id:1043 , name:'Resinas'
+                        },
+                        {
+                            id:1044 , name:'Esteatitas'
+                        },
+                        {
+                            id:1045 , name:'Baritina'
+                        },
+                        {
+                            id:1046 , name:'Caparrosas'
+                        },
+                        {
+                            id:1047 , name:'Grafito'
+                        },
+                        {
+                            id:1048 , name:'Caolí­n'
+                        },
+                        {
+                            id:1049 , name:'Sales Alcalinas o Alcalino Terrosas'
+                        },
+                        {
+                            id:1050 , name:'Amianto'
+                        },
+                        {
+                            id:1051 , name:'Bentonita'
+                        },
+                        {
+                            id:1052 , name:'Zeolitas o Minerales Permutantes o Permutíticos'
+                        },
+                    ];
+                }
+                else {
+                    this.minerales[index].lista_de_minerales_array = [
+                    ];
+                }
+            }
+            this.actualizar_valores_padre();
             
-        }
-        this.actualizar_valores_padre();
+            
+        },
     },
-    cambio_select_tipo_mineral_explotado_segunda_cat: function(event, index){
-        // console.log("el index es: "+index);
-        // console.log("acabo de elegir: "+ this.minerales[index].segunda_cat_mineral_explotado);
-        if(this.minerales[index].segunda_cat_mineral_explotado === 'aprovechamiento_comun'){
-            this.minerales[index].lista_de_minerales_array = [
-            {
-                id:1031 , name: 'Arenas Metalíferas',
-            },
-            {
-                id:1032 , name: 'Piedras Preciosas',
-            },
-            {
-                id:1035 , name: 'Desmontes',
-            },
-            {
-                id:1181 , name: 'Relaves',
-            },
-            {
-                id:1182 , name: 'Escoriales',
-            },
-            ];
-        }
-       else{
-            if(this.minerales[index].segunda_cat_mineral_explotado === 'conceden_preferentemente')
-            {
-                this.minerales[index].lista_de_minerales_array = [
-                    {
-                         id:1036 , name:'Salitres'
-                    },
-                    {
-                         id:1037 , name:'Salinas'
-                    },
-                    {
-                         id:1038 , name:'Turberas'
-                    },
-                    {
-                         id:1039 , name:'Metales no comprendidos en 1° Categ.'
-                    },
-                    {
-                         id:1040 , name:'Tierras Piritosas y Aluminosas'
-                    },
-                    {
-                         id:1041 , name:'Abrasivos'
-                    },
-                    {
-                         id:1042 , name:'Ocres'
-                    },
-                    {
-                         id:1043 , name:'Resinas'
-                    },
-                    {
-                         id:1044 , name:'Esteatitas'
-                    },
-                    {
-                         id:1045 , name:'Baritina'
-                    },
-                    {
-                         id:1046 , name:'Caparrosas'
-                    },
-                    {
-                         id:1047 , name:'Grafito'
-                    },
-                    {
-                         id:1048 , name:'Caolí­n'
-                    },
-                    {
-                         id:1049 , name:'Sales Alcalinas o Alcalino Terrosas'
-                    },
-                    {
-                         id:1050 , name:'Amianto'
-                    },
-                    {
-                         id:1051 , name:'Bentonita'
-                    },
-                    {
-                         id:1052 , name:'Zeolitas o Minerales Permutantes o Permutíticos'
-                    },
-                ];
-            }
-            else {
-                this.minerales[index].lista_de_minerales_array = [
-                ];
-            }
-        }
-        this.actualizar_valores_padre();
-        
-        
-    },
-    
-  },
 };
 </script>
