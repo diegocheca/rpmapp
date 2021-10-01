@@ -3,13 +3,15 @@
        
         <h1 class="text-center text-2xl font-bold leading-7 text-gray-300 sm:text-3xl sm:truncate py-4 bg-gradient-to-l from-indigo-500 to-indigo-800 ">LISTADO DE SOLICITUDES</h1>
       
-         <table class="rounded-t-lg mt-5 min-w-full mx-auto bg-gray-800 text-gray-100">
+        
+         <table class="rounded-t-lg mt-5 w-48 mx-auto bg-gray-800 text-gray-100">
+             
             <thead>
                 <tr class="text-left border-b border-gray-300">
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">ID</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">Tipo de Solicitud</th>
-                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">Estado Solicitud</th>
-                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-100 uppercase tracking-wider">Acciones</th>
+                    <th scope="col" class="px-11 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">ID</th>
+                    <th scope="col" class="px-12 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">Tipo de Solicitud</th>
+                    <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">Estado Solicitud</th>
+                    <th scope="col" class="px-1 py-3 text-center text-xs font-medium text-gray-100 uppercase tracking-wider">Acciones</th>
                 </tr>
             </thead>
 
@@ -35,26 +37,30 @@
                                             
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
-                            <div class="ml-4" v-for="dato in datos" :key="dato.id">
-                                 <div class="text-sm font-medium" v-if="dato.solicitud_id == solicitud.id">{{dato.nom_estado_solicitud}}</div> 
+                            <div class="ml-7">
+                                 <div class="text-sm font-medium" >{{solicitud.estado}}</div> 
                             </div> 
                             
                         </div>
                     </td> 
 
-                    <td class="flex m-2">
+                    
+                    <td class="py-4 whitespace-nowrap flex items-right" >  
 
-                        <inertia-link 
-                                :href="route('productos.edit', solicitud.id)"
-                                class="flex-shrink-0 bg-purple-600 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-purple-200" type="button">
-                                Editar
-                        </inertia-link>
-                        
-                        <inertia-link
-                                method="delete"
-                                :href="route('productos.destroy', solicitud.id)"
-                                class="flex-shrink-0 bg-pink-500 text-white text-base font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 focus:ring-offset-pink-200" type="button">
-                                Borrar
+                        <inertia-link v-if="solicitud.estado != 'Enviada' && solicitud.estado != 'Aprobada' && solicitud.estado != 'Rechazada'"
+                                :href="route('formweb.editar', solicitud.id)"                               
+                                 type="button" >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                </svg>
+                        </inertia-link>  
+
+                        <inertia-link v-if="solicitud.estado != 'Borrador' && solicitud.estado != 'Aprobada' && solicitud.estado != 'Rechazada'" 
+                                :href="route('formweb.editar', solicitud.id)"  
+                                type="button" > 
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg> 
                         </inertia-link>
                     </td>
                 </tr>   
@@ -64,21 +70,36 @@
     </app-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
-import Label from '../../Jetstream/Label.vue';
-import { string } from '@amcharts/amcharts4/core';
-import { boolean } from 'yup/lib/locale';
+import AppLayout from "@/Layouts/AppLayoutFormWeb";
+import Label from "../../Jetstream/Label.vue";
+import Button from '../../Jetstream/Button.vue';
 export default {
-    props: {
-        solicitudes: Array,
-       datos:Array,
-    },
-    components: {
-        AppLayout
-        
-    },
-
+  props: {
+    solicitudes: Array,
+  },
+  components: {
+    AppLayout  
     
+  },
+  
+// computed:{
+
+//     btnGuardarIsDisabled(){
+//                 let isDisabled = true;
+//                 if (
+//                     this.propuesta.titulo != null &&
+//                     this.propuesta.descripcion != null
+//                 ) {
+//                     isDisabled = false;
+//                 }
+//                 else{
+//                     isDisabled = true;
+//                 }
+
+//                 return isDisabled;
+//             }
+// }
+ 
+   
 };
 </script>
-

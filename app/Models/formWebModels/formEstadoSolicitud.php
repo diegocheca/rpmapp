@@ -16,8 +16,8 @@ class formEstadoSolicitud extends Model
     ];
 
     //Relacion de mucho a muchos con solicitud
-     public function solicitudes()
-     {
-         return $this->belongsToMany(formSolicitud::class); 
-     }
+    //  public function solicitudes()
+    //  {
+    //      return $this->belongsToMany(formSolicitud::class); 
+    //  }
 }

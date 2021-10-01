@@ -17,7 +17,12 @@ class formSolicitud extends Model
         'periodo_trabajo', 
         'nro_expediente',
         'des_directo',
-        'muestra',       
+        'muestra', 
+        'sub_estado',
+        'estado',
+        'fecha_estado',
+        'user_id',
+        'user_name',      
     ];
 
         
@@ -33,10 +38,10 @@ class formSolicitud extends Model
     }
 
     //Relacion de mucho a muchos con estado solicitud
-    public function estados()
-    {
-        return $this->belongsToMany(formEstadoSolicitud::class); 
-    }
+    // public function estados()
+    // {
+    //     return $this->belongsToMany(formEstadoSolicitud::class); 
+    // }
      
 
 }

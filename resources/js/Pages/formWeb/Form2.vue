@@ -98,52 +98,17 @@ export default {
             dataForm,
         }
     },
-    methods: {
-        async submit(form) {
-            console.log('Finalizado');
-            // let response;
-            // let formData = new FormData();
-
-            // for ( var key in form ) {
-            //     formData.append(key, form[key]);
-            // }
-
-            // try {
-            //     if(this.$props.action == "create") {
-            //         response = await axios.post(this.$props.saveFileUrl, formData);
-
-
-
-            //         this.$inertia.post(route(this.$props.saveUrl), formData);
-            //     } else if(this.$props.action == "update") {
-            //         response = await axios.put(this.$props.saveUrl, {
-            //             params: {
-            //                 id: this.$props.reinscripcion.id
-            //                 }
-            //             }
-            //         )
-            //     }
-            // } catch (error) {
-
-            // }
-
-
-            // if(this.$props.action == "create") {
-            //     // this.$inertia.post(
-            //     //     route("reinscripciones.update", this.id),
-            //     //     form
-            //     // );
-
-            // } else if(this.$props.action == "update") {
-            //     // this.$inertia.put(
-            //     //     route("reinscripciones.update", this.id),
-            //     //     form
-            //     // );
-
-            // }
-
+   methods: {
+            async submit(form) {
+        //  console.log(form);
+        // funcion que pega a una una ruta de la api
+        // la cual envia los datos a sigetrami.
+        var status = 200;
+        if (status == 200) {
+            estado = "enviado"; //pendiente de aprobación
+        } else [(estado = "pendiente")];
         },
-    },
-
-}
+        // function enviosigetrami (form){ axion ......}
+        },
+    };
 </script>

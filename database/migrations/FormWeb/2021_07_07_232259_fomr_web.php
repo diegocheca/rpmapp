@@ -23,19 +23,20 @@ class FomrWeb extends Migration
             $table->string('nro_expediente', 100)->nullable();
             $table->string('des_directo', 2)->nullable(); 
             $table->string('muestra', 2)->nullable();
+            $table->string('user_nom')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         }); 
 
-        Schema::create('formEstadoSolicitud', function(Blueprint $table){
+        // Schema::create('formEstadoSolicitud', function(Blueprint $table){
             
-            $table->bigIncrements('id');
-            $table->string('nom_estado_solicitud')->nullable(); 
-            $table->unsignedBigInteger('solicitud_id')->nullable();
-            $table->foreign('solicitud_id')->references('id')->on('formSolicitud');
-        });
+        //     $table->bigIncrements('id');
+        //     $table->string('nom_estado_solicitud')->nullable(); 
+        //     $table->unsignedBigInteger('solicitud_id')->nullable();
+        //     $table->foreign('solicitud_id')->references('id')->on('formSolicitud');
+        // });
         
         Schema::create('formTipoDocumento', function (Blueprint $table) {
             $table->bigIncrements('id');

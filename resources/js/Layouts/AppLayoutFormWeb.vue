@@ -53,6 +53,7 @@
               </svg>
             </button>
           </div>
+
           <div class="flex items-center justify-center">
             <div class="flex items-center">
               <span class="text-white text-2xl mx-2 font-semibold"
@@ -60,6 +61,7 @@
               >
             </div>
           </div>
+
           <nav class="mt-10">
             <a
               class="
@@ -102,6 +104,7 @@
               </svg>
               <span class="mx-3">Home</span>
             </a>
+
             <a
               v-if="hasAnyPermission(['formweb.solicitudes.index'])"
               class="
@@ -144,6 +147,7 @@
               </svg>
               <span class="mx-3">Nueva Solicitud</span>
             </a>
+            
             <a
               v-if="hasAnyPermission(['formweb.solicitudes.index'])"
               class="
@@ -162,7 +166,7 @@
                 border-l-4 border-transparent
                 hover:border-indigo-900
               "
-              :href="route('formweb.solicitudes.index')"
+              :href="route('formweb.lista')"
               v-on:click="activetab = 'Lista de Solicitudes'"
               v-bind:class="[
                 activetab === 'Lista de Solicitudes'
@@ -186,6 +190,7 @@
               </svg>
               <span class="mx-3">Lista de Solicitudes</span>
             </a>
+            
           </nav>
         </div>
       </div>

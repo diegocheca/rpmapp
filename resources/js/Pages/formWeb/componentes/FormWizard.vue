@@ -256,10 +256,10 @@ export default {
            require: true,
             type: String,  
         },
-        estado_solicitud: {
-            require: true,
-            type: String,
-        },
+        // estado_solicitud: {
+        //     require: true,
+        //     type: String,
+        // },
         
         titleForm: {
             require: true,
