@@ -131,13 +131,13 @@ export default {
   methods:{
     cargar_dptos() {
         let self = this;
-        console.log("la lista dos:");
-        console.log(self.$props.lista_departamentos_dos);
+        // console.log("la lista dos:");
+        // console.log(self.$props.lista_departamentos_dos);
         /* if(this.$props.lista_departamentos_dos.length === 0)
             this.nueva_lista_dptos = this.$props.lista_departamentos;
         else  */  this.nueva_lista_dptos = this.$props.lista_departamentos_dos;
-        console.log("la lista quedo en");
-        console.log(this.nueva_lista_dptos);
+        // console.log("la lista quedo en");
+        // console.log(this.nueva_lista_dptos);
     },
     cactaulizar_variable_legalcalledpto(valor) {
         this.legal_calle_dpto_correcto_local = valor;

@@ -591,10 +591,10 @@ export default {
 	},
    
   data() {
-      console.log("eeeel valor es:");
-      console.log(this.$props.inscripciondgr);
+    //   console.log("eeeel valor es:");
+    //   console.log(this.$props.inscripciondgr);
     return {
-        saludos: 'Saludame qweqweqwe',
+        saludos: 'Saludos',
         mostrar_modal_datos_ya_guardados:false,
         modal_tittle:'',
         modal_body:'',
@@ -669,12 +669,12 @@ export default {
         },
         updateobs_razon_social_valido(newValue){
       
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_razon_social_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_razon_social(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.razon_social = newValue;
             //tengo que enviarsela al padre
         },
@@ -789,7 +789,7 @@ export default {
         },
 
         update_inscripcion(value){
-            console.log("actualizando la inscripcion desde la pagina");
+            // console.log("actualizando la inscripcion desde la pagina");
             this.form_pagina.inscripciondgr = value;
             //this.$emit('ActualizarPathInscripcionAAbuelo',value);
         },

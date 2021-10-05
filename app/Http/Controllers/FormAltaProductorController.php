@@ -731,11 +731,6 @@ class FormAltaProductorController extends Controller
 		
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function dame_un_productor_vacio(){
 		$productor_a_devolver = new FormAltaProductor();
 		$productor_a_devolver->id = null;
@@ -5773,8 +5768,8 @@ class FormAltaProductorController extends Controller
 				'soy_administrador' => false,
 				'soy_autoridad_minera' => false,
 				"soy_productor" => $soy_productor,
-				"disables" => $disables,
-				"mostrar" => $mostrar,
+				// "disables" => $disables,
+				// "mostrar" => $mostrar,
 				"productor_particular" => $productor_particular ,
 				"nombre_provincia" => $nombre_provincia
 			]);

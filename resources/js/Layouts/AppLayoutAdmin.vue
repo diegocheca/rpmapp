@@ -477,22 +477,22 @@
   </div>
 </template>
 <script>
-import JetApplicationMark from "@/Jetstream/ApplicationMark";
-import JetBanner from "@/Jetstream/Banner";
-import JetDropdown from "@/Jetstream/Dropdown";
-import JetDropdownLink from "@/Jetstream/DropdownLink";
-import JetNavLink from "@/Jetstream/NavLink";
-import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
-import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
+// import JetApplicationMark from "@/Jetstream/ApplicationMark";
+// import JetBanner from "@/Jetstream/Banner";
+// import JetDropdown from "@/Jetstream/Dropdown";
+// import JetDropdownLink from "@/Jetstream/DropdownLink";
+// import JetNavLink from "@/Jetstream/NavLink";
+// import JetResponsiveNavLink from "@/Jetstream/ResponsiveNavLink";
+// import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 export default {
   components: {
-    JetApplicationMark,
-    JetBanner,
-    JetDropdown,
-    JetDropdownLink,
-    JetNavLink,
-    JetResponsiveNavLink,
-    JetAuthenticationCardLogo,
+    // JetApplicationMark,
+    // JetBanner,
+    // JetDropdown,
+    // JetDropdownLink,
+    // JetNavLink,
+    // JetResponsiveNavLink,
+    // JetAuthenticationCardLogo,
   },
 
   data() {

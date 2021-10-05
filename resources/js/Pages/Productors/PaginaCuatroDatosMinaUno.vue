@@ -923,12 +923,12 @@ export default {
             //tengo que enviarsela al padre
         },
         updateobs_num_exp_valido(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_numero_expdiente_valido = newValue;
             //tengo que enviarsela al padre
         },
         updatevalor_num_exp(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.numero_expdiente = newValue;
             //tengo que enviarsela al padre
         },
@@ -947,12 +947,12 @@ export default {
             //tengo que enviarsela al padre
         },
         update_distrito_minero_valido_obs(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_distrito_minero_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_distrito_minero(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.distrito_minero = newValue;
             //tengo que enviarsela al padre
         },
@@ -971,12 +971,12 @@ export default {
             //tengo que enviarsela al padre
         },
         update_obs_nom_mina_valida(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_nombre_mina_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_valor_nom_mina_(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.nombre_mina = newValue;
             //tengo que enviarsela al padre
         },
@@ -994,12 +994,12 @@ export default {
             //tengo que enviarsela al padre
         },
         update_obs_descripcion_valida(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_descripcion_mina_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_valor_descripcion(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.descripcion_mina = newValue;
             //tengo que enviarsela al padre
         },
@@ -1019,7 +1019,7 @@ export default {
             //tengo que enviarsela al padre
         },
         update_obs_cat_valida(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_categoria_valido = newValue;
             //tengo que enviarsela al padre
         },
@@ -1038,9 +1038,9 @@ export default {
 
            axios.post('/datos/traer_minerales/',{categoria_buscando:newValue})
                 .then(function (response) {
-                    console.log("las manifestaciones son:\n");
+                    // console.log("las manifestaciones son:\n");
                     self.lista_de_minerales = response.data;
-                    console.log(self.lista_de_minerales);
+                    // console.log(self.lista_de_minerales);
 
                 })
                 .catch(function (error) {
@@ -1085,12 +1085,12 @@ export default {
             //tengo que enviarsela al padre
         },
         update_obs_resol_conce_valido(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_resolucion_concesion_minera_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_valor_resol_conce(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.resolucion_concesion_minera = newValue;
             //tengo que enviarsela al padre
         },
@@ -1111,12 +1111,12 @@ export default {
             //tengo que enviarsela al padre
         },
         update_obs_plano_inmueble_valido(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_plano_inmueble_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_valor_plano_inmueble(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.plano_inmueble = newValue;
             //tengo que enviarsela al padre
         },
@@ -1139,12 +1139,12 @@ export default {
             //tengo que enviarsela al padre
         },
         update_obs_titulo_contrato_valido(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.obs_titulo_contrato_posecion_valido = newValue;
             //tengo que enviarsela al padre
         },
         update_valor_titulo_contrato(newValue){
-            console.log("traje un"+newValue);
+            // console.log("traje un"+newValue);
             this.form_pagina.titulo_contrato_posecion = newValue;
             //tengo que enviarsela al padre
         },
@@ -1165,7 +1165,7 @@ export default {
         //minerales_locales
         
         update_valor_minerales(newValue){
-            console.log("traje un en pagina cuatro"+newValue);
+            // console.log("traje un en pagina cuatro"+newValue);
             this.minerales_locales = newValue;
             //tengo que enviarsela al padre
         },
@@ -1177,15 +1177,15 @@ export default {
   mounted(){
       //cargo la lista de mienrales por primera vez
     let self = this;
-    console.log('* Categoria: ',this.$props.categoria);
+    // console.log('* Categoria: ',this.$props.categoria);
 	if( this.$props.categoria !== null && this.$props.categoria !== '') {
 		//signafica que tengo la lsita de minerales para esta categoria
 		this.$nextTick(() => {
         axios.post('/datos/traer_minerales',{categoria_buscando:this.$props.categoria})
             .then(function (response) {
-                console.log("Los minerales son:\n");
+                // console.log("Los minerales son:\n");
                 self.lista_de_minerales = response.data;
-                console.log(self.lista_de_minerales);
+                // console.log(self.lista_de_minerales);
             })
             .catch(function (error) {
                 console.log(error);
