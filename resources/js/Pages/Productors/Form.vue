@@ -8,7 +8,7 @@
 				
 				<button
 					type="button"
-					class="animate-pulse text-white text-lg mx-auto py-6 px-20 rounded-full block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
+					class="text-white text-lg mx-auto py-6 px-20 rounded block  border-b border-blue-300 bg-blue-200 hover:bg-blue-300 text-blue-700"
 					@click="mostrar_explicacion"
 				>
 					Necesita Ayuda?
@@ -163,7 +163,7 @@
 					<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
 						<a href="#inicio">
 							<div class="flex items-center absolute shadow-xl left-8 top-10">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="animate-bounce bi bi-arrow-up" viewBox="0 0 16 16">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="  bi bi-arrow-up" viewBox="0 0 16 16">
 									<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
 								</svg>
 							</div>
@@ -1069,7 +1069,7 @@
 						<span v-if="form.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
 						<span v-if="form.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
 						<span v-if="form.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
-						<span v-if="form.estado === 'sin guardar'" class="animate-bounce bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Sin Guardar</span>
+						<span v-if="form.estado === 'sin guardar'" class="  bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Sin Guardar</span>
 				</div>
 				<div class="w-full sm:w-2/2  md:w-1/2 xl:w-1/3  px-3 mb-6 md:mb-0" v-if="$props.mostrar.estado">
 					<label

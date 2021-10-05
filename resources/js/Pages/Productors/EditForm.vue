@@ -193,7 +193,7 @@
 					<div class="flex justify-center md:justify-end -mt-16 sticky top-10">
 						<a href="#inicio">
 							<div class="flex items-center absolute shadow-xl left-8 top-10">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="animate-bounce bi bi-arrow-up" viewBox="0 0 16 16">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="  bi bi-arrow-up" viewBox="0 0 16 16">
 									<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
 								</svg>
 							</div>
@@ -224,7 +224,7 @@
 						<button class="animate-pulse inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
 
 						<!- bounce ->
-						<button class="animate-bounce inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
+						<button class="  inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
 					</div>-->
 					
 				<div id="section_productor"></div>

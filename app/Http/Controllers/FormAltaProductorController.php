@@ -5768,8 +5768,8 @@ class FormAltaProductorController extends Controller
 				'soy_administrador' => false,
 				'soy_autoridad_minera' => false,
 				"soy_productor" => $soy_productor,
-				// "disables" => $disables,
-				// "mostrar" => $mostrar,
+				"disables" => $disables,
+				"mostrar" => $mostrar,
 				"productor_particular" => $productor_particular ,
 				"nombre_provincia" => $nombre_provincia
 			]);

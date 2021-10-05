@@ -2,7 +2,7 @@
 	<div :class="clase_sup">
 		<div :class="clase_inf">
 			<a href="#section_datos_mina_ubicacion">
-                <img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/plano-minero.svg'">
+                <img class="  w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/plano-minero.svg'">
             </a>
 			<div class="mt-8">
 				<p class="text-xl font-semibold my-2">Datos de la Ubicacion de Mina</p>
