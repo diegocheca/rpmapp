@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\HomeControllerM;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+
 
 use Carbon\Carbon;
 use Auth;
@@ -26,7 +28,15 @@ class ReinscripcionController extends Controller
      */
     public function index()
     {
-        $reinscripciones = Reinscripciones::all();
+        $user = HomeController::userData();
+        $reinscripciones = DB::table('reinscripciones')
+        ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
+        ->join('mina_cantera', 'reinscripciones.id_mina', '=', 'mina_cantera.id')
+        ->where('productores.leal_provincia', $user->province->label)
+        ->select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
+        ->get();
+        // dd($reinscripciones);
+        // $reinscripciones = Reinscripciones::all();
         return Inertia::render('Reinscripciones/List', ['reinscripciones' => $reinscripciones]);
     }
 

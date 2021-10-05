@@ -82,7 +82,7 @@
                         <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
                         </div>
                         <p class="pointer-none text-gray-500 ">
-                            <span class="text-sm">Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
+                            <span class="text-sm">Arrastrar y soltar</span> los archivo(s) <br /> o desde su dispotivo</p>
                     </div>
                     <input :disabled="desactivar_input" type="file" class="hidden" @change="cambio_el_archivo">
                 </label>

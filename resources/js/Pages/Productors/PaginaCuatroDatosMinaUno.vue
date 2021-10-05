@@ -209,7 +209,7 @@
                         v-bind:valor_valido_obs="$props.obs_categoria_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing = "mostrar_testing"
-                        v-bind:label="'Categoria de Manifestacion'"
+                        v-bind:label="'Categoria del Mineral'"
                         v-bind:icon="$inertia.page.props.appName+'/svg/minetest.svg'"
                         v-bind:name_correccion="'categoria_correccion'"
                         v-bind:desactivar_input="$props.desactivar_categoria"
@@ -372,7 +372,7 @@
 
 
 
-                    v-if="form_pagina.categoria !== 'tercera' || $props.mostrar_resolucion_concesion"
+                    v-if="form_pagina.categoria !== 'tercera' && $props.mostrar_resolucion_concesion"
                         v-bind:valor_input_props="form_pagina.resolucion_concesion_minera"
                         v-bind:valor_input_validacion="form_pagina.resolucion_concesion_minera_validacion"
                         v-bind:evualacion_correcto="form_pagina.resolucion_concesion_minera_correcto"
@@ -426,7 +426,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
-                        v-if="form_pagina.categoria !== 'tercera' && $props.mostrar_plano_mina"
+                        v-if="form_pagina.categoria === 'tercera' && $props.mostrar_plano_mina"
 
                         v-bind:valor_input_props="form_pagina.plano_inmueble"
                         v-bind:valor_input_validacion="form_pagina.plano_inmueble_validacion"
@@ -489,7 +489,7 @@
             <div class="flex flex-wrap">
                 <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                     <SubirArchivo 
-                    v-if="form_pagina.categoria !== 'tercera' && $props.mostrar_titulo"
+                    v-if="form_pagina.categoria === 'tercera' && $props.mostrar_titulo"
 
                         v-bind:valor_input_props="form_pagina.titulo_contrato_posecion"
                         v-bind:valor_input_validacion="form_pagina.titulo_contrato_posecion_validacion"
@@ -499,7 +499,7 @@
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:name_correcion="'correcion_titulo'"
-                        v-bind:label="'Titulo - Contrato - Pocesión Ventiañal (solo para tercer categoria) (*)'"
+                        v-bind:label="'Titulo Escritura - Contrato de Arrendamiento - Pocesión Ventiañal (3° categoria) (*)'"
                         v-bind:desactivar_input="$props.desactivar_titulo"
                         v-bind:mostrar_correccion="$props.mostrar_titulo_correccion"
                         v-bind:desactivar_correccion="$props.desactivar_titulo_correccion"
@@ -1046,6 +1046,9 @@ export default {
                 .catch(function (error) {
                     console.log(error);
                 });
+            //le paso el valor al padre
+            this.$emit('changevalorcategoria',self.form_pagina.mina_cantera);
+
         },
 
 
@@ -1162,19 +1165,48 @@ export default {
 
 
         //FUNCIONES DE MINERALES
-        //minerales_locales
-        
         update_valor_minerales(newValue){
             // console.log("traje un en pagina cuatro"+newValue);
-            this.minerales_locales = newValue;
-            //tengo que enviarsela al padre
-        },
-        // mounted(){
-        //     this.lista_de_minerales = this.$props.lista_minerales_precargados;
-        // }
+            /* this.
+            newValue.map(function(mineral){
+                console.log("vuelta e id:");
+                console.log(mineral.id_mineral);
+            });
+            var mineral_aux = {
+                    id_mineral: '6',
+                    id_varieadad: '6',
+                    segunda_cat_mineral_explotado: '',
+                    lugar_donde_se_enccuentra: '',
+                    mostrar_lugar_segunda_cat: false,
+                    mostrar_otro_mineral_segunda_cat: false,
+                    otro_mineral_segunda_cat: '',
+                    lugar_donde_se_enccuentra:'',
+                    observacion:'observacion (44)',
+                    clase_text_area_presentacion: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                    clase_text_evaluacion_de_text_area_presentacion:   'text-red-500 text-xs italic',
+                    texto_validacion_text_area_presentacion: 'Forma de Presentacion Correcta',
+                    presentacion_valida:true,
+                    evaluacion_correcto: true,
+                    observacion_autoridad: '',
+                    clase_text_area:'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+                    clase_text_evaluacion_de_text_area: 'text-red-500 text-xs italic',
+                    texto_validacion_text_area : 'Observacion Correcta',
+                    obs_valida: true,
+                    lista_de_minerales_array:[],
+                    thumb: this.$inertia.page.props.appName+'/minerales/thumbs/3.png'
+                };
+                if(this.minerales === '' || this.minerales === null)
+                    this.minerales = [];
+            this.minerales.push(mineral_aux); */
 
-  },
-  mounted(){
+            //console.log("traje un en pagina cuatro");
+            //console.log(newValue[0].clase_text_area);
+            this.minerales_locales = newValue;
+            //console.log("mis minerales son");
+            //console.log(this.minerales_locales); */
+        },
+    },
+    mounted(){
       //cargo la lista de mienrales por primera vez
     let self = this;
     // console.log('* Categoria: ',this.$props.categoria);

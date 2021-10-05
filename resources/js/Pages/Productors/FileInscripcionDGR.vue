@@ -77,7 +77,7 @@
                         <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
                         <img class="has-mask h-36 object-center" src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg" alt="freepik image">
                         </div>
-                        <p class="pointer-none text-gray-500 "><span class="text-sm">Arrastrar y soltar</span> los archivo(s) <br /> o <a href="" id="" class="text-blue-600 hover:underline">seleccionar un archivo</a> desde su dispotivo</p>
+                        <p class="pointer-none text-gray-500 "><span class="text-sm">Haga click aca para</span> subir los archivo(s) <br />  desde su dispotivo</p>
                     </div>
                     <input :disabled="$props.inscripcion_disable" type="file" class="hidden" @change="cambio_el_archivo">
                 </label>

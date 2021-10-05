@@ -34,17 +34,17 @@
                             <tr v-for="reinscripcion in reinscripciones" :key="reinscripcion.id">
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
-                                        <span class="font-medium">{{ reinscripcion.id_mina }}</span>
+                                        <span class="font-medium">{{ reinscripcion.mina }}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-left">
                                     <div class="flex items-center">
-                                        <span>{{ reinscripcion.id_productor }}</span>
+                                        <span>{{ reinscripcion.razonsocial }}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
                                     <div class="flex items-center justify-center">
-                                        {{ reinscripcion.nombre }}
+                                        {{ reinscripcion.encargado }}
                                     </div>
                                 </td>
                                 <td class="py-3 px-6 text-center">
@@ -96,7 +96,7 @@
         <ChartBarM v-if="hasAnyPermission(['reinscripciones.revision'])" />
     </div>
 
-    <jet-dialog-modal :show="modalConfirmDelete" :maxWidth="'md'"  @close="closeModal" >
+    <jet-dialog-modal v-if="hasAnyPermission(['reinscripciones.revision'])" :show="modalConfirmDelete" :maxWidth="'md'"  @close="closeModal" >
         <template #title>
                 ¿Deseas eliminar el elemento?
         </template>
