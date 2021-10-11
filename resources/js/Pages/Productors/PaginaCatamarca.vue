@@ -1,13 +1,11 @@
 <style>
-  
+    input:checked {
+        background-color: #22c55e; /* bg-green-500 */
+    }
 
-  input:checked {
-    background-color: #22c55e; /* bg-green-500 */
-  }
-
-  input:checked ~ span:last-child {
-    --tw-translate-x: 1.75rem; /* translate-x-7 */
-  }
+    input:checked ~ span:last-child {
+        --tw-translate-x: 1.75rem; /* translate-x-7 */
+    }
 </style>
 <template>
     <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
@@ -85,6 +83,8 @@
             <br>
         <div>
             <br>
+            {{form_pagina.gestor_nombre_apellido}}--
+            {{$props.gestor_nombre_apellido}}
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
@@ -258,29 +258,31 @@
                 </div>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <NombreMina
+                <CaracterQueInvoca 
                     v-if="$props.mostrar_notificacion_gestor"
 
                     v-bind:valor_input_props="form_pagina.gestor_notificacion"
-                    v-bind:valor_input_validacion="form_pagina.gestor_notificacion_valido"
                     v-bind:evualacion_correcto="form_pagina.gestor_notificacion_correcto"
                     v-bind:valor_obs="form_pagina.obs_gestor_notificacion"
                     v-bind:valor_valido_obs="form_pagina.obs_gestor_notificacion_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
-                    v-bind:label="'Notificar al Gestor:'"
-                    v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
-                    v-bind:desactivar_input="$props.desactivar_notificacion_gestor"
-                    v-bind:mostrar_correccion="$props.mostrar_notificacion_gestor_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_notificacion_gestor_correccion"
+                    v-bind:label="'Notificar al Gestor'"
+                    v-bind:label_true="'Si'"
+                    v-bind:label_false="'No'"
+                    v-bind:otro_label="false"
+                    v-bind:otro_input="false"
+                    v-bind:name_correcion="'correcion_gestor'"
+                    v-bind:name_checkbox="'check_gestor'"
 
-                    v-on:changevalido="update_gestor_noti_valido($event)"
+                    v-bind:desactivar_owner="$props.desactivar_notificacion_gestor"
+                    v-bind:mostrar_owner_correccion="$props.mostrar_notificacion_gestor_correccion"
+                    v-bind:desactivar_owner_correccion="$props.desactivar_notificacion_gestor_correccion"
                     v-on:changecorrecto="update_gestor_noti_correcto($event)"
                     v-on:changeobs="update_obs_gestor_noti($event)"
                     v-on:changeobsvalido="update_obs_gestor_noti_valida($event)"
                     v-on:changevalor="update_valor_gestor_noti($event)"
-                >
-                </NombreMina>
+                ></CaracterQueInvoca>
                 <div v-show="ayuda_local" >
                         <br>
                         <div  class="
@@ -291,19 +293,19 @@
                             ring
                             ring-4
                             ring-blue-100">
+                        
                             <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na
-                                m quisquam doloremque placeat op.
+                                Cuando se selecciona la opcion "Si" el gestor será notificado de los eventos relacionados a este formulario.
                             </p>
+                            
                         </div>
                         <br>
                     </div>
                 <div class="flex" v-if="mostrar_testing">
-                    -- localidad_mina_provincia  deel padre
-                    -- localidad_mina_provincia_validacion valida deel padre{
-                    -- localidad_mina_provincia_correcto correcto deel padre
-                    -- obs_localidad_mina_provincia observacion deel padre
-                    -- obs_localidad_mina_provincia_valido observacion valida deel padre
+                    <br> notificacion de gestor valor padre: {{form_pagina.gestor_notificacion}}
+                    <br> notificacion de gestor  correcto deel padre: {{form_pagina.gestor_notificacion_correcto}}
+                    <br> notificacion de gestor  observacion deel padre: {{form_pagina.obs_gestor_notificacion}}
+                    <br> notificacion de gestor  observacion valida deel padre: {{form_pagina.obs_gestor_notificacion_valido}}
                 </div>
             </div>
         </div>
@@ -351,26 +353,18 @@
                         <br>
                 </div>
                 <div class="flex" v-if="mostrar_testing">
-                    <br> concesion resolucion minera de Mina valor padre: {{}}
-                    <br> concesion resolucion minera de Mina  valido del padre: {{}}
-                    <br> concesion resolucion minera de Mina  correcto deel padre: {{}}
-                    <br> concesion resolucion minera de Mina  observacion deel padre: {{}}
-                    <br> concesion resolucion minera de Mina  observacion valida deel padre: {{}}
+                    <br> foto 4x4 valor padre: {{}}
+                    <br> foto 4x4  valido del padre: {{}}
+                    <br> foto 4x4  correcto deel padre: {{}}
+                    <br> foto 4x4  observacion deel padre: {{}}
+                    <br> foto 4x4  observacion valida deel padre: {{}}
                 </div>
             </div>
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex">
-        <!--'mostrar_dni_productor',
-        'desactivar_dni_productor',
-        'mostrar_dni_productor_correccion',
-        'desactivar_dni_productor_correccion',
-
-
-        '',
-        '',
-        '',
-        '',
-        '',-->
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo 
                 v-if="$props.mostrar_dni_productor"
@@ -395,6 +389,9 @@
                     v-on:cambioarchivo="cambio_el_archivo_resolucion($event)"
                 >
                 </SubirArchivo>
+                <br>
+                <hr>
+                <br>
                 <SubirArchivo 
                 v-if="$props.mostrar_dni_productor"
 
@@ -443,8 +440,14 @@
                     <br> concesion resolucion minera de Mina  observacion deel padre: {{}}
                     <br> concesion resolucion minera de Mina  observacion valida deel padre: {{}}
                 </div>
+                <br>
+                <hr>
+                <br>
             </div>
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo 
@@ -497,6 +500,9 @@
                 </div>
             </div>
         </div>
+        <br>
+        <hr>
+        <br>
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo 
@@ -549,126 +555,19 @@
                 </div>
             </div>
         </div>
-
-
-        
+        <br>
+        <br>
+id: {{$props.id}}
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
-        <!--<BotonesPaginaCatamarca
-        v-if="$props.mostrar_boton_guardar_cuatro"
+        <BotonesPaginaCatamarca
+            v-if="$props.mostrar_boton_catamarca"
 
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de la Mina'"
-
-
-            form.gestor_nombre_apellido
-form.gestor_nombre_apellido_valido
-form.gestor_nombre_apellido_correcto
-form.obs_gestor_nombre_apellido
-form.obs_gestor_nombre_valido
-
-
-form.gestor_dni
-form.gestor_dni_valido
-form.gestor_dni_correcto
-form.obs_gestor_dni
-form.obs_gestor_dni_valido
-
-
-form.gestor_profesion
-form.gestor_profesion_valido
-form.gestor_profesion_correcto
-form.obs_gestor_profesion
-form.obs_gestor_profesion_valido
-
-form.gestor_telefono
-form.gestor_telefono_valido
-form.gestor_telefono_correcto
-form.obs_gestor_telefono
-form.obs_gestor_telefono_valido
-
-
-form.gestor_email
-form.gestor_email_valido
-form.gestor_email_correcto
-form.obs_gestor_email
-form.obs_gestor_email_valido
-
-
-form.gestor_notificacion
-form.gestor_notificacion_valido
-form.gestor_notificacion_correcto
-form.obs_gestor_notificacion
-form.obs_gestor_notificacion_valido
-
-
-form.foto_4x4
-form.foto_4x4_valido
-form.foto_4x4_correcto
-form.obs_foto_4x4
-form.obs_foto_4x4_valido
-
-form.autorizacion_gestor
-form.autorizacion_gestor_valido
-form.autorizacion_gestor_correcto
-form.obs_autorizacion_gestor
-form.obs_autorizacion_gestor_valido
-
-
-            :numero_expdiente="form_pagina.numero_expdiente"
-            :numero_expdiente_valido="form_pagina.numero_expdiente_valido"
-            :numero_expdiente_correcto="form_pagina.numero_expdiente_correcto"
-            :obs_numero_expdiente="form_pagina.obs_numero_expdiente"
-            :obs_numero_expdiente_valido="form_pagina.obs_numero_expdiente_valido"
-            :categoria="form_pagina.categoria"
-            :categoria_validacion="form_pagina.categoria_validacion"
-            :categoria_correcto="form_pagina.categoria_correcto"
-            :obs_categoria="form_pagina.obs_categoria"
-            :obs_categoria_valido="form_pagina.obs_categoria_valido"
-            :nombre_mina="form_pagina.nombre_mina"
-            :nombre_mina_validacion="form_pagina.nombre_mina_validacion"
-            :nombre_mina_correcto="form_pagina.nombre_mina_correcto"
-            :obs_nombre_mina="form_pagina.obs_nombre_mina"
-            :obs_nombre_mina_valido="form_pagina.obs_nombre_mina_valido"
-            :descripcion_mina="form_pagina.descripcion_mina"
-            :descripcion_mina_validacion="form_pagina.descripcion_mina_validacion"
-            :descripcion_mina_correcto="form_pagina.descripcion_mina_correcto"
-            :obs_descripcion_mina="form_pagina.obs_descripcion_mina"
-            :obs_descripcion_mina_valido="form_pagina.obs_descripcion_mina_valido"
-            :distrito_minero="form_pagina.distrito_minero"
-            :distrito_minero_validacion="form_pagina.distrito_minero_validacion"
-            :distrito_minero_correcto="form_pagina.distrito_minero_correcto"
-            :obs_distrito_minero="form_pagina.obs_distrito_minero"
-            :obs_distrito_minero_valido="form_pagina.obs_distrito_minero_valido"
-            :mina_cantera="form_pagina.mina_cantera"
-            :mina_cantera_validacion="form_pagina.mina_cantera_validacion"
-            :mina_cantera_correcto="form_pagina.mina_cantera_correcto"
-            :obs_mina_cantera="form_pagina.obs_mina_cantera"
-            :obs_mina_cantera_valido="form_pagina.obs_mina_cantera_valido"
-            :plano_inmueble="form_pagina.plano_inmueble"
-            :plano_inmueble_validacion="form_pagina.plano_inmueble_validacion"
-            :plano_inmueble_correcto="form_pagina.plano_inmueble_correcto"
-            :obs_plano_inmueble="form_pagina.obs_plano_inmueble"
-            :obs_plano_inmueble_valido="form_pagina.obs_plano_inmueble_valido"
-            :minerales_variedad="form_pagina.minerales_variedad"
-            :minerales_variedad_validacion="form_pagina.minerales_variedad_validacion"
-            :minerales_variedad_correcto="form_pagina.minerales_variedad_correcto"
-            :obs_minerales_variedad="form_pagina.obs_minerales_variedad"
-            :obs_minerales_variedad_valido="form_pagina.obs_minerales_variedad_valido"
-            :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
-            :resolucion_concesion_minera_validacion="form_pagina.resolucion_concesion_minera_validacion"
-            :resolucion_concesion_minera_correcto="form_pagina.resolucion_concesion_minera_correcto"
-            :obs_resolucion_concesion_minera="form_pagina.obs_resolucion_concesion_minera"
-            :obs_resolucion_concesion_minera_valido="form_pagina.obs_resolucion_concesion_minera_valido"
-            :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
-            :titulo_contrato_posecion_validacion="form_pagina.titulo_contrato_posecion_validacion"
-            :titulo_contrato_posecion_correcto="form_pagina.titulo_contrato_posecion_correcto"
-            :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
-            :obs_titulo_contrato_posecion_valido="form_pagina.obs_titulo_contrato_posecion_valido"
-
-            :minerales="minerales_locales"
+            :formulario = "form_pagina"
 
             :donde_guardar="$props.donde_estoy"
 
@@ -677,7 +576,7 @@ form.obs_autorizacion_gestor_valido
             :id="$props.id"
         >
 
-        </BotonesPaginaCatamarca>-->
+        </BotonesPaginaCatamarca>
         
     </div>
 </template>
@@ -689,8 +588,9 @@ import SelectProvincia from "@/Pages/Productors/SelectProvincia";
 import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 import NombreMina from "@/Pages/Productors/NombreMina";
 import TipoDeSistemaGeo from "@/Pages/Productors/TipoDeSistemaGeo";
-import BotonesPaginaSeis from "@/Pages/Productors/BotonesPaginaSeis";
+import BotonesPaginaCatamarca from "@/Pages/Productors/BotonesPaginaCatamarca";
 import SubirArchivo from "@/Pages/Productors/SubirArchivo";
+import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
 //import BotonesPaginaCatamarca from "@/Pages/Productors/BotonesPaginaCatamarca";
 
 import Label from '../../Jetstream/Label.vue';
@@ -811,8 +711,8 @@ export default {
         'desactivar_autorizacion_gestor_correccion',
 
 
-        'mostrar_boton_guardar_cinco',
-        'desactivar_boton_guardar_cinco',
+        'mostrar_boton_catamarca',
+        'desactivar_boton_catamarca',
         'evaluacion',
         'id',
         'testing',
@@ -825,8 +725,9 @@ export default {
         SelectDepartamento,
         NombreMina,
         TipoDeSistemaGeo,
-        BotonesPaginaSeis,
+        BotonesPaginaCatamarca,
         SubirArchivo,
+        CaracterQueInvoca,
         //BotonesPaginaCatamarca,
 	},
     data() {

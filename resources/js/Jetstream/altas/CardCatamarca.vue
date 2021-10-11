@@ -30,7 +30,7 @@
 						<p>{{updated_at}}</p> 
 				</div>
 				<div class="border-t-2"></div>
-				<div class="flex items-center">
+				<!-- <div class="flex items-center">
 						<span class="mr-2"><p>{{aprobado}}%</p></span>
 						<div class="relative w-full">
 						<div class="overflow-hidden h-2 text-xs flex rounded bg-green-200">
@@ -53,7 +53,7 @@
 							<div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- <div class="flex justify-between" v-if="$props.evaluacion">
 						<div class="my-4">
 						<p class="font-semibold text-base mb-2">Prog</p>

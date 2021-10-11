@@ -904,8 +904,6 @@
 			<br>
 			<br>
 			<div id="section_catamarca" v-if="$props.mostrar.paso_catamarca"></div>
-
-			<h1>El id es: {{form_particular.id}}</h1>
 			<PaginaCatamarca
 			v-if="$props.mostrar.paso_catamarca"
 			:link_volver="route('formulario-alta.index')"
@@ -1033,8 +1031,8 @@
 				:desactivar_autorizacion_gestor_correccion="$props.disables.autorizacion_gestor_correccion"
 
 
-				:mostrar_boton_guardar_cinco="$props.mostrar.boton_guardar_cinco"
-				:desactivar_boton_guardar_cinco="$props.disables.boton_guardar_cinco"
+				:mostrar_boton_catamarca="$props.mostrar.boton_catamarca"
+				:desactivar_boton_catamarca="$props.disables.boton_catamarca"
 
 				
 				:evaluacion ="evaluacion_global"

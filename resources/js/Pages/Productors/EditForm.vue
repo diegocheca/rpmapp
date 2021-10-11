@@ -173,7 +173,19 @@
 								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
 							></CardMinaUbicacion>
 							
-						
+							<CardCatamarca
+							v-if="$props.mostrar.paso_catamarca" 
+								:progreso="form.valor_de_progreso_seis"
+								:aprobado="form.valor_de_aprobado_seis"
+								:reprobado="form.valor_de_reprobado_seis" 
+								:lugar="'Argentina, San Juan'"
+								:updated_at="'hace 10 minutos'"
+								:evaluacion ="evaluacion_global"
+								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
+								:clase_inf = "'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
+							></CardCatamarca>
+
+							
 
 							<!-- 4 card -->
 							<CardTotal  
@@ -1038,6 +1050,175 @@
 			
 			<hr>
 			<br>
+
+
+
+
+
+
+
+
+
+
+
+
+id
+
+{{form.id}}
+**
+{{$props.productor.id}}
+
+{{form_catamarca.gestor_nombre_apellido}}
+
+			<div id="section_catamarca" v-if="$props.mostrar.paso_catamarca"></div>
+			<PaginaCatamarca
+			v-if="$props.mostrar.paso_catamarca"
+				:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos Form Catamarca'"
+				:titulo_pagina="'Pagina De Catamarca'"
+
+				:gestor_nombre_apellido="form_catamarca.gestor_nombre_apellido"
+				:gestor_nombre_apellido_valido="form_catamarca.gestor_nombre_apellido_valido"
+				:gestor_nombre_apellido_correcto="form_catamarca.gestor_nombre_apellido_correcto"
+				:obs_gestor_nombre_apellido="form_catamarca.obs_gestor_nombre_apellido"
+				:obs_gestor_nombre_valido="form_catamarca.obs_gestor_nombre_valido"
+				:mostrar_nombre_gestor="$props.mostrar.nombre_gestor"
+				:desactivar_nombre_gestor="$props.disables.nombre_gestor"
+				:mostrar_nombre_gestor_correccion="$props.mostrar.nombre_gestor_correccion"
+				:desactivar_nombre_gestor_correccion="$props.disables.nombre_gestor_correccion"
+
+
+				:gestor_dni="form_catamarca.gestor_dni"
+				:gestor_dni_valido="form_catamarca.gestor_dni_valido"
+				:gestor_dni_correcto="form_catamarca.gestor_dni_correcto"
+				:obs_gestor_dni="form_catamarca.obs_gestor_dni"
+				:obs_gestor_dni_valido="form_catamarca.obs_gestor_dni_valido"
+				:mostrar_dni_gestor="$props.mostrar.dni_gestor"
+				:desactivar_dni_gestor="$props.disables.dni_gestor"
+				:mostrar_dni_gestor_correccion="$props.mostrar.dni_gestor_correccion"
+				:desactivar_dni_gestor_correccion="$props.disables.dni_gestor_correccion"
+
+
+				:gestor_profesion="form_catamarca.gestor_profesion"
+				:gestor_profesion_valido="form_catamarca.gestor_profesion_valido"
+				:gestor_profesion_correcto="form_catamarca.gestor_profesion_correcto"
+				:obs_gestor_profesion="form_catamarca.obs_gestor_profesion"
+				:obs_gestor_profesion_valido="form_catamarca.obs_gestor_profesion_valido"
+				:mostrar_profesion_gestor="$props.mostrar.profesion_gestor"
+				:desactivar_profesion_gestor="$props.disables.profesion_gestor"
+				:mostrar_profesion_gestor_correccion="$props.mostrar.profesion_gestor_correccion"
+				:desactivar_profesion_gestor_correccion="$props.disables.profesion_gestor_correccion"
+
+
+				:gestor_telefono="form_catamarca.gestor_telefono"
+				:gestor_telefono_valido="form_catamarca.gestor_telefono_valido"
+				:gestor_telefono_correcto="form_catamarca.gestor_telefono_correcto"
+				:obs_gestor_telefono="form_catamarca.obs_gestor_telefono"
+				:obs_gestor_telefono_valido="form_catamarca.obs_gestor_telefono_valido"
+				
+				:mostrar_telefono_gestor="$props.mostrar.telefono_gestor"
+				:desactivar_telefono_gestor="$props.disables.telefono_gestor"
+				:mostrar_telefono_gestor_correccion="$props.mostrar.telefono_gestor_correccion"
+				:desactivar_telefono_gestor_correccion="$props.disables.telefono_gestor_correccion"
+
+
+				:gestor_notificacion="form_catamarca.gestor_notificacion"
+				:gestor_notificacion_valido="form_catamarca.gestor_notificacion_valido"
+				:gestor_notificacion_correcto="form_catamarca.gestor_notificacion_correcto"
+				:obs_gestor_notificacion="form_catamarca.obs_gestor_notificacion"
+				:obs_gestor_notificacion_valido="form_catamarca.obs_gestor_notificacion_valido"
+				:mostrar_notificacion_gestor="$props.mostrar.notificacion_gestor"
+				:desactivar_notificacion_gestor="$props.disables.notificacion_gestor"
+				:mostrar_notificacion_gestor_correccion="$props.mostrar.notificacion_gestor_correccion"
+				:desactivar_notificacion_gestor_correccion="$props.disables.notificacion_gestor_correccion"
+
+
+				:gestor_email="form_catamarca.gestor_email"
+				:gestor_email_valido="form_catamarca.gestor_email_valido"
+				:gestor_email_correcto="form_catamarca.gestor_email_correcto"
+				:obs_gestor_email="form_catamarca.obs_gestor_email"
+				:obs_gestor_email_valido="form_catamarca.obs_gestor_email_valido"
+				:mostrar_email_gestor="$props.mostrar.email_gestor"
+				:desactivar_email_gestor="$props.disables.email_gestor"
+				:mostrar_email_gestor_correccion="$props.mostrar.email_gestor_correccion"
+				:desactivar_email_gestor_correccion="$props.disables.email_gestor_correccion"
+
+
+				:primer_hoja_dni="form_catamarca.primer_hoja_dni"
+				:hoja_dni_valido="form_catamarca.hoja_dni_valido"
+				:hoja_dni_correcto="form_catamarca.hoja_dni_correcto"
+				:obs_hoja_dni="form_catamarca.obs_hoja_dni"
+				:obs_hoja_dni_valido="form_catamarca.obs_hoja_dni_valido"
+				
+				:mostrar_dni_productor="$props.mostrar.dni_productor"
+				:desactivar_dni_productor="$props.disables.dni_productor"
+				:mostrar_dni_productor_correccion="$props.mostrar.dni_productor_correccion"
+				:desactivar_dni_productor_correccion="$props.disables.dni_productor_correccion"
+
+
+				:segunda_hoja_dni="form_catamarca.segunda_hoja_dni"
+				:segunda_hoja_dni_valido="form_catamarca.segunda_hoja_dni_valido"
+				:segunda_hoja_dni_correcto="form_catamarca.segunda_hoja_dni_correcto"
+				:obs_segunda_hoja_dni="form_catamarca.obs_segunda_hoja_dni"
+				:obs_segunda_hoja_dni_valido="form_catamarca.obs_segunda_hoja_dni_valido"
+
+
+				:foto_4x4="form_catamarca.foto_4x4"
+				:foto_4x4_valido="form_catamarca.foto_4x4_valido"
+				:foto_4x4_correcto="form_catamarca.foto_4x4_correcto"
+				:obs_foto_4x4="form_catamarca.obs_foto_4x4"
+				:obs_foto_4x4_valido="form_catamarca.obs_foto_4x4_valido"
+				:mostrar_foto_productor="$props.mostrar.foto_productor"
+				:desactivar_foto_productor="$props.disables.foto_productor"
+				:mostrar_foto_productor_correccion="$props.mostrar.foto_productor_correccion"
+				:desactivar_foto_productor_correccion="$props.disables.foto_productor_correccion"
+
+
+				:constancia_afip="form_catamarca.constancia_afip"
+				:constancia_afip_valido="form_catamarca.constancia_afip_valido"
+				:constancia_afip_correcto="form_catamarca.constancia_afip_correcto"
+				:obs_constancia_afip="form_catamarca.obs_constancia_afip"
+				:obs_constancia_afip_valido="form_catamarca.obs_constancia_afip_valido"
+				:mostrar_constancia_afip="$props.mostrar.constancia_afip"
+				:desactivar_constancia_afip="$props.disables.constancia_afip"
+				:mostrar_constancia_afip_correccion="$props.mostrar.constancia_afip_correccion"
+				:desactivar_constancia_afip_correccion="$props.disables.constancia_afip_correccion"
+
+
+				:autorizacion_gestor="form_catamarca.autorizacion_gestor"
+				:autorizacion_gestor_valido="form_catamarca.autorizacion_gestor_valido"
+				:autorizacion_gestor_correcto="form_catamarca.autorizacion_gestor_correcto"
+				:obs_autorizacion_gestor="form_catamarca.obs_autorizacion_gestor"
+				:obs_autorizacion_gestor_valido="form_catamarca.obs_autorizacion_gestor_valido"
+				
+				:mostrar_autorizacion_gestor="$props.mostrar.autorizacion_gestor"
+				:desactivar_autorizacion_gestor="$props.disables.autorizacion_gestor"
+				:mostrar_autorizacion_gestor_correccion="$props.mostrar.autorizacion_gestor_correccion"
+				:desactivar_autorizacion_gestor_correccion="$props.disables.autorizacion_gestor_correccion"
+
+
+				:mostrar_boton_catamarca="$props.mostrar.boton_catamarca"
+				:desactivar_boton_catamarca="$props.disables.boton_catamarca"
+
+				
+				:evaluacion ="evaluacion_global"
+				:testing="testing_global"
+				:id="$props.productor.id"
+			>
+			</PaginaCatamarca>
+			<br>
+			<br>
+{{form_catamarca}}
+
+
+
+
+
+
+
+
+			
 			<div class="flex" v-if="evaluacion_global">
 				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 					<label
@@ -1265,6 +1446,7 @@ import CardDomLegal from '@/Jetstream/altas/CardDomLegal';
 import CardDomAdmin from '@/Jetstream/altas/CardDomAdmin';
 import CardMinaUno from '@/Jetstream/altas/CardMinaUno';
 import CardMinaDos from '@/Jetstream/altas/CardMinaDos';
+import CardCatamarca from '@/Jetstream/altas/CardCatamarca';
 import CardMinaUbicacion from '@/Jetstream/altas/CardMinaUbicacion';
 import CardTotal from '@/Jetstream/altas/CardTotal';
 import PasoUnoEdit from '@/Pages/Productors/PasoUnoEdit';
@@ -1281,7 +1463,7 @@ import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos"
 
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 
-
+import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 import ValidationErrors from '../../Jetstream/ValidationErrors.vue';
  
 export default {
@@ -1305,6 +1487,8 @@ export default {
 		PaginaCincoDatosMinaDos,
 		PaginaSeisDatosUbicacionMina,
 		ValidationErrors,
+		CardCatamarca,
+		PaginaCatamarca,
 	},
 	props: [
 		"productor",
@@ -1315,6 +1499,7 @@ export default {
 		"soy_productor",
 		"disables",
 		"mostrar",
+		
 
 		],
 	data() {
@@ -1770,8 +1955,201 @@ export default {
 				created_by: this.$props.creado.name,
 				estado: this.$props.productor.estado,
 
+
+
+
+
+
+
+
+				//paso catamarca:
+				gestor_nombre_apellido: this.$props.productor.gestor_nombre_apellido,
+				gestor_nombre_apellido_valido:true,
+				gestor_nombre_apellido_correcto:this.$props.productor.gestor_nombre_apellido_correcto,
+				obs_gestor_nombre_apellido:this.$props.productor.obs_gestor_nombre_apellido,
+				obs_gestor_nombre_valido:true,
+
+				gestor_dni:this.$props.productor.gestor_dni,
+				gestor_dni_valido:true,
+				gestor_dni_correcto:this.$props.productor.gestor_dni_correcto,
+				obs_gestor_dni:this.$props.productor.obs_gestor_dni,
+				obs_gestor_dni_valido:true,
+
+				gestor_profesion:this.$props.productor.gestor_profesion,
+				gestor_profesion_valido:true,
+				gestor_profesion_correcto:this.$props.productor.gestor_profesion_correcto,
+				obs_gestor_profesion:this.$props.productor.obs_gestor_profesion,
+				obs_gestor_profesion_valido:true,
+
+				gestor_telefono:this.$props.productor.gestor_telefono,
+				gestor_telefono_valido:true,
+				gestor_telefono_correcto:this.$props.productor.gestor_telefono_correcto,
+				obs_gestor_telefono:this.$props.productor.obs_gestor_telefono,
+				obs_gestor_telefono_valido:true,
+				
+				gestor_notificacion:this.$props.productor.gestor_notificacion,
+				gestor_notificacion_valido:true,
+				gestor_notificacion_correcto:this.$props.productor.gestor_notificacion_correcto,
+				obs_gestor_notificacion:this.$props.productor.obs_gestor_notificacion,
+				obs_gestor_notificacion_valido:true,
+
+				gestor_email:this.$props.productor.gestor_email,
+				gestor_email_valido:true,
+				gestor_email_correcto:this.$props.productor.gestor_email_correcto,
+				obs_gestor_email:this.$props.productor.obs_gestor_email,
+				obs_gestor_email_valido:true,
+
+				primer_hoja_dni:this.$props.productor.primer_hoja_dni,
+				hoja_dni_valido:true,
+				hoja_dni_correcto:this.$props.productor.hoja_dni_correcto,
+				obs_hoja_dni:this.$props.productor.obs_hoja_dni,
+				obs_hoja_dni_valido:true,
+				
+				segunda_hoja_dni:this.$props.productor.segunda_hoja_dni,
+				segunda_hoja_dni_valido:true,
+				segunda_hoja_dni_correcto:this.$props.productor.segunda_hoja_dni_correcto,
+				obs_segunda_hoja_dni:this.$props.productor.obs_segunda_hoja_dni,
+				obs_segunda_hoja_dni_valido:true,
+
+				foto_4x4:this.$props.productor.foto_4x4,
+				foto_4x4_valido:true,
+				foto_4x4_correcto:this.$props.productor.foto_4x4_correcto,
+				obs_foto_4x4:this.$props.productor.obs_foto_4x4,
+				obs_foto_4x4_valido:true,
+
+				constancia_afip:this.$props.productor.constancia_afip,
+				constancia_afip_valido:true,
+				constancia_afip_correcto:this.$props.productor.constancia_afip_correcto,
+				obs_constancia_afip:this.$props.productor.obs_constancia_afip,
+				obs_constancia_afip_valido:true,
+
+				autorizacion_gestor:this.$props.productor.autorizacion_gestor,
+				autorizacion_gestor_valido:true,
+				autorizacion_gestor_correcto:this.$props.productor.autorizacion_gestor_correcto,
+				obs_autorizacion_gestor:this.$props.productor.obs_autorizacion_gestor,
+				obs_autorizacion_gestor_valido:true,
 				
 				
+			},
+			form_catamarca: {
+				gestor_nombre_apellido:'',
+				gestor_nombre_apellido_valido:'',
+				gestor_nombre_apellido_correcto:'',
+				obs_gestor_nombre_apellido:'',
+				obs_gestor_nombre_valido:'',
+				mostrar_nombre_gestor:'',
+				desactivar_nombre_gestor:'',
+				mostrar_nombre_gestor_correccion:'',
+				desactivar_nombre_gestor_correccion:'',
+
+
+				gestor_dni: '',
+				gestor_dni_valido: '',
+				gestor_dni_correcto: '',
+				obs_gestor_dni: '',
+				obs_gestor_dni_valido: '',
+				mostrar_dni_gestor: '',
+				desactivar_dni_gestor: '',
+				mostrar_dni_gestor_correccion: '',
+				desactivar_dni_gestor_correccion: '',
+
+
+				gestor_profesion: '',
+				gestor_profesion_valido: '',
+				gestor_profesion_correcto: '',
+				obs_gestor_profesion: '',
+				obs_gestor_profesion_valido: '',
+				mostrar_profesion_gestor: '',
+				desactivar_profesion_gestor: '',
+				mostrar_profesion_gestor_correccion: '',
+				desactivar_profesion_gestor_correccion: '',
+
+
+				gestor_telefono: '',
+				gestor_telefono_valido: '',
+				gestor_telefono_correcto: '',
+				obs_gestor_telefono: '',
+				obs_gestor_telefono_valido: '',
+				mostrar_telefono_gestor:'',
+				desactivar_telefono_gestor:'',
+				mostrar_telefono_gestor_correccion:'',
+				desactivar_telefono_gestor_correccion:'',
+
+
+				gestor_notificacion:'',
+				gestor_notificacion_valido:'',
+				gestor_notificacion_correcto:'',
+				obs_gestor_notificacion:'',
+				obs_gestor_notificacion_valido:'',
+				mostrar_notificacion_gestor:'',
+				desactivar_notificacion_gestor:'',
+				mostrar_notificacion_gestor_correccion:'',
+				desactivar_notificacion_gestor_correccion:'',
+
+
+				gestor_email:'',
+				gestor_email_valido:'',
+				gestor_email_correcto:'',
+				obs_gestor_email:'',
+				obs_gestor_email_valido:'',
+				mostrar_email_gestor:'',
+				desactivar_email_gestor:'',
+				mostrar_email_gestor_correccion:'',
+				desactivar_email_gestor_correccion:'',
+
+
+				primer_hoja_dni:'',
+				hoja_dni_valido:'',
+				hoja_dni_correcto:'',
+				obs_hoja_dni:'',
+				obs_hoja_dni_valido:'',
+				mostrar_dni_productor:'',
+				desactivar_dni_productor:'',
+				mostrar_dni_productor_correccion:'',
+				desactivar_dni_productor_correccion:'',
+
+
+				segunda_hoja_dni:'',
+				segunda_hoja_dni_valido:'',
+				segunda_hoja_dni_correcto:'',
+				obs_segunda_hoja_dni:'',
+				obs_segunda_hoja_dni_valido:'',
+
+
+				foto_4x4:'',
+				foto_4x4_valido:'',
+				foto_4x4_correcto:'',
+				obs_foto_4x4:'',
+				obs_foto_4x4_valido:'',
+				mostrar_foto_productor:'',
+				desactivar_foto_productor:'',
+				mostrar_foto_productor_correccion:'',
+				desactivar_foto_productor_correccion:'',
+
+
+				constancia_afip:'',
+				constancia_afip_valido:'',
+				constancia_afip_correcto:'',
+				obs_constancia_afip:'',
+				obs_constancia_afip_valido:'',
+				mostrar_constancia_afip:'',
+				desactivar_constancia_afip:'',
+				mostrar_constancia_afip_correccion:'',
+				desactivar_constancia_afip_correccion:'',
+
+
+				autorizacion_gestor:'',
+				autorizacion_gestor_valido:'',
+				autorizacion_gestor_correcto:'',
+				obs_autorizacion_gestor:'',
+				obs_autorizacion_gestor_valido:'',
+				mostrar_autorizacion_gestor:'',
+				desactivar_autorizacion_gestor:'',
+				mostrar_autorizacion_gestor_correccion:'',
+				desactivar_autorizacion_gestor_correccion:'',
+
+
+
 			},
 			nuevo: this.$props.productor,
 		};
@@ -3486,541 +3864,7 @@ export default {
 			this.form.valor_de_reprobado_seis = this.form.valor_de_reprobado_seis.toFixed(2);
 
 		},
-		guardar_avances_uno: function(){
-						let self = this
-						// Make a request for a user with a given ID
-						axios.post('/formularios/evaluacion_auto_guardado_uno', {
-								id: this.$props.productor.id,
-								razon_social:this.$props.productor.razonsocial,
-								razon_social_valido: this.form.razon_social_valido,
-								razon_social_correcto: this.form.razon_social_correcto,
-								obs_razon_social: this.form.obs_razon_social,
-								obs_razon_social_valido: this.form.obs_razon_social_valido,
-
-								email: this.$props.productor.email,
-								email_valido: this.form.email_valido,
-								email_correcto:  this.form.email_correcto,
-								obs_email: this.form.obs_email,
-								obs_email_valido: this.form.obs_email_valido,
-
-								cuit: this.$props.productor.cuit,
-								cuit_valido: this.form.cuit_valido,
-								cuit_correcto:  this.form.cuit_correcto,
-								obs_cuit: this.form.obs_cuit,
-								obs_cuit_valido: this.form.obs_cuit_valido,
-
-								numeroproductor: this.$props.productor.numeroproductor,
-								numeroproductor_valido: this.form.numeroproductor_valido,
-								numeroproductor_correcto: this.form.numeroproductor_correcto,
-								obs_numeroproductor: this.form.obs_numeroproductor,
-								obs_numeroproductor_valido: this.form.obs_numeroproductor_valido,
-
-								tiposociedad: this.$props.productor.tiposociedad,
-								tiposociedad_valido: this.form.tiposociedad_valido, 
-								tiposociedad_correcto: this.form.tiposociedad_correcto, 
-								obs_tiposociedad: this.form.obs_tiposociedad, 
-								obs_tiposociedad_valido: this.form.obs_tiposociedad_valido, 
-
-
-								inscripciondgr: this.$props.productor.inscripciondgr,
-								inscripciondgr_valido:  this.form.inscripciondgr_valido,
-								inscripciondgr_correcto:  this.form.inscripciondgr_correcto,
-								obs_inscripciondgr: this.form.obs_inscripciondgr,
-								obs_inscripciondgr_valido:  this.form.obs_inscripciondgr_valido,
-
-								constaciasociedad: this.$props.productor.constaciasociedad,
-								constaciasociedad_valido: this.form.constaciasociedad_valido,
-								constaciasociedad_correcto: this.form.constaciasociedad_correcto,
-								obs_constaciasociedad: this.form.obs_constaciasociedad,
-								obs_constaciasociedad_valido: this.form.obs_constaciasociedad_valido,
-
-								valor_de_progreso: this.form.valor_de_progreso,
-								valor_de_aprobado: this.form.valor_de_aprobado,
-								valor_de_reprobado: this.form.valor_de_reprobado,
-
-							})
-							.then(function (response) {
-								console.log(response.data);
-								if(response.data === "se actualizaron los datos correctamente")
-								{
-									console.log('todo bien');
-									self.modal_tittle = 'Paso 1 Guardado Exitosamente';
-									self.modal_body =  'Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias'
-									self.confirmingUserDeletion = true;
-								}
-								
-								if(response.data === "formulario no encontrado")
-								{
-									console.log('todo mal, no se encontro');
-									self.modal_tittle = 'Paso 1 Guardado Fallido';
-									self.modal_body =  'NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias'
-									self.confirmingUserDeletion = true;
-								}
-								else{
-									console.log('NO todo bien');	
-								}
-								
-							})
-							.catch(function (error) {
-								// handle error
-								console.log(error);
-							})
-		},
-		guardar_avances_dos: function(){
-						let self = this
-						// Make a request for a user with a given ID
-						axios.post('/formularios/evaluacion_auto_guardado_dos', {
-								id: this.$props.productor.id,
-								leal_calle:this.$props.productor.leal_calle,
-
-								nombre_calle_legal_valido: this.form.nombre_calle_legal_valido,
-								nombre_calle_legal_correcto: this.form.nombre_calle_legal_correcto,
-								obs_nombre_calle_legal: this.form.obs_nombre_calle_legal,
-								obs_nombre_calle_legal_valido: this.form.obs_nombre_calle_legal_valido,
-
-								leal_numero: this.$props.productor.leal_numero,
-								leal_numero_valido: this.form.leal_numero_valido,
-								leal_numero_correcto:  this.form.leal_numero_correcto,
-								obs_leal_numero: this.form.obs_leal_numero,
-								obs_leal_numero_valido: this.form.obs_leal_numero_valido,
-
-								leal_telefono: this.$props.productor.leal_telefono,
-								leal_telefono_valido: this.form.leal_telefono_valido,
-								leal_telefono_correcto:  this.form.leal_telefono_correcto,
-								obs_leal_telefono: this.form.obs_leal_telefono,
-								obs_leal_telefono_valido: this.form.obs_leal_telefono_valido,
-
-								leal_pais: this.$props.productor.leal_pais,
-								leal_pais_valido: this.form.leal_pais_valido,
-								leal_pais_correcto: this.form.leal_pais_correcto,
-								obs_leal_pais: this.form.obs_leal_pais,
-								obs_leal_pais_valido: this.form.obs_leal_pais_valido,
-
-								leal_provincia: this.$props.productor.leal_provincia,
-								leal_provincia_valido:  this.form.leal_provincia_valido,
-								leal_provincia_correcto:  this.form.leal_provincia_correcto,
-								obs_leal_provincia: this.form.obs_leal_provincia,
-								obs_leal_provincia_valido:  this.form.obs_leal_provincia_valido,
-
-								leal_departamento: this.$props.productor.leal_departamento,
-								leal_departamento_valido: this.form.leal_departamento_valido,
-								leal_departamento_correcto: this.form.leal_departamento_correcto,
-								obs_leal_departamento: this.form.obs_leal_departamento,
-								obs_leal_departamento_valido: this.form.obs_leal_departamento_valido,
-
-
-								leal_localidad: this.$props.productor.leal_localidad,
-								leal_localidad_valido: this.form.leal_localidad_valido,
-								leal_localidad_correcto: this.form.leal_localidad_correcto,
-								obs_leal_localidad: this.form.obs_leal_localidad,
-								obs_leal_localidad_valido: this.form.obs_leal_localidad_valido,
-
-
-
-								leal_cp: this.$props.productor.leal_cp,
-								leal_cp_valido: this.form.leal_cp_valido,
-								leal_cp_correcto: this.form.leal_cp_correcto,
-								obs_leal_cp: this.form.obs_leal_cp,
-								obs_leal_cp_valido: this.form.obs_leal_cp_valido,
-
-
-
-								leal_otro: this.$props.productor.leal_otro,
-								leal_otro_valido: this.form.leal_otro_valido,
-								leal_otro_correcto: this.form.leal_otro_correcto,
-								obs_leal_otro: this.form.obs_leal_otro,
-								obs_leal_otro_valido: this.form.obs_leal_otro_valido,
-
-
-								valor_de_progreso: this.form.valor_de_progreso_dos,
-								valor_de_aprobado: this.form.valor_de_aprobado_dos,
-								valor_de_reprobado: this.form.valor_de_reprobado_dos,
-
-							})
-							.then(function (response) {
-								console.log(response.data);
-								if(response.data === "todo bien")
-								{
-									console.log('todo bien');
-									self.modal_tittle = 'Paso 2 Guardado Exitosamente';
-									self.modal_body =  'Se ha guardado correctamente la información referida al paso 2: Datos del Domicilio Legal en la Provincia. Gracias'
-									self.confirmingUserDeletion = true;
-								}
-								else{
-									console.log('NO todo bien');	
-								}
-								
-							})
-							.catch(function (error) {
-								// handle error
-								console.log(error);
-							})
-		},
-
-		guardar_avances_tres: function(){
-						let self = this
-						// Make a request for a user with a given ID
-						axios.post('/formularios/evaluacion_auto_guardado_tres', {
-								id: this.$props.productor.id,
-
-								administracion_calle:this.$props.productor.administracion_calle,
-								administracion_calle_valido: this.form.administracion_calle_valido,
-								administracion_calle_correcto: this.form.administracion_calle_correcto,
-								obs_administracion_calle_nombre: this.form.obs_administracion_calle_nombre,
-								obs_administracion_calle_nombre_valido: this.form.obs_administracion_calle_nombre_valido,
-
-								administracion_numero: this.$props.productor.administracion_numero,
-								administracion_numero_valido: this.form.administracion_numero_valido,
-								administracion_numero_correcto:  this.form.administracion_numero_correcto,
-								obs_administracion_numero_nombre: this.form.obs_administracion_numero_nombre,
-								obs_administracion_numero_nombre_valido: this.form.obs_administracion_numero_nombre_valido,
-
-								administracion_telefono: this.$props.productor.administracion_telefono,
-								administracion_telefono_valido: this.form.administracion_telefono_valido,
-								administracion_telefono_correcto:  this.form.administracion_telefono_correcto,
-								obs_administracion_telefono_nombre: this.form.obs_administracion_telefono_nombre,
-								obs_administracion_telefono_nombre_valido: this.form.obs_administracion_telefono_nombre_valido,
-
-								administracion_pais: this.$props.productor.administracion_pais,
-								administracion_pais_valido: this.form.administracion_pais_valido,
-								administracion_pais_correcto: this.form.administracion_pais_correcto,
-								obs_administracion_pais: this.form.obs_administracion_pais,
-								obs_administracion_pais_valido: this.form.obs_administracion_pais_valido,
-
-								administracion_provincia: this.$props.productor.administracion_provincia,
-								administracion_provincia_valido:  this.form.administracion_provincia_valido,
-								administracion_provincia_correcto:  this.form.administracion_provincia_correcto,
-								obs_administracion_provincia: this.form.obs_administracion_provincia,
-								obs_administracion_provincia_valido:  this.form.obs_administracion_provincia_valido,
-
-								administracion_departamento: this.$props.productor.administracion_departamento,
-								administracion_departamento_valido: this.form.administracion_departamento_valido,
-								administracion_departamento_correcto: this.form.administracion_departamento_correcto,
-								obs_administracion_departamento: this.form.obs_administracion_departamento,
-								obs_administracion_departamento_valido: this.form.obs_administracion_departamento_valido,
-
-
-
-								administracion_localidad: this.$props.productor.administracion_localidad,
-								administracion_localidad_valido: this.form.administracion_localidad_valido,
-								administracion_localidad_correcto: this.form.administracion_localidad_correcto,
-								obs_administracion_localidad: this.form.obs_administracion_localidad,
-								obs_administracion_localidad_valido: this.form.obs_administracion_localidad_valido,
-
-
-								administracion_cp: this.$props.productor.administracion_cp,
-								administracion_cp_valido: this.form.administracion_cp_valido,
-								administracion_cp_correcto: this.form.administracion_cp_correcto,
-								obs_administracion_cp: this.form.obs_administracion_cp,
-								obs_administracion_cp_valido: this.form.obs_administracion_cp_valido,
-
-
-								administracion_otro: this.$props.productor.administracion_otro,
-								administracion_otro_valido: this.form.administracion_otro_valido,
-								administracion_otro_correcto: this.form.administracion_otro_correcto,
-								obs_administracion_otro: this.form.obs_administracion_otro,
-								obs_administracion_otro_valido: this.form.obs_administracion_otro_valido,
-
-
-								valor_de_progreso: this.form.valor_de_progreso_tres,
-								valor_de_aprobado: this.form.valor_de_aprobado_tres,
-								valor_de_reprobado: this.form.valor_de_reprobado_tres,
-
-							})
-							.then(function (response) {
-								console.log(response.data);
-								if(response.data === "todo bien")
-								{
-									console.log('todo bien');
-									self.modal_tittle = 'Paso 3 Guardado Exitosamente';
-									self.modal_body =  'Se ha guardado correctamente la información referida al paso 3: Datos del Domicilio de la Administracion Central. Gracias'
-									self.confirmingUserDeletion = true;
-								}
-								else{
-									console.log('NO todo bien');	
-								}
-								
-							})
-							.catch(function (error) {
-								// handle error
-								console.log(error);
-							})
-		},
-
-		guardar_avances_cuatro: function(){
-						let self = this
-						// Make a request for a user with a given ID
-						axios.post('/formularios/evaluacion_auto_guardado_cuatro', {
-								id: this.$props.productor.id,
-
-								numero_expdiente:this.$props.productor.numero_expdiente,
-								numero_expdiente_valido: this.form.numero_expdiente_valido,
-								numero_expdiente_correcto: this.form.numero_expdiente_correcto,
-								obs_numero_expdiente: this.form.obs_numero_expdiente,
-								obs_numero_expdiente_valido: this.form.obs_numero_expdiente_valido,
-
-								categoria: this.$props.productor.categoria,
-								categoria_validacion: this.form.categoria_validacion,
-								categoria_correcto:  this.form.categoria_correcto,
-								obs_categoria: this.form.obs_categoria,
-								obs_categoria_valido: this.form.obs_categoria_valido,
-
-								nombre_mina: this.$props.productor.nombre_mina,
-								nombre_mina_validacion: this.form.nombre_mina_validacion,
-								nombre_mina_correcto:  this.form.nombre_mina_correcto,
-								obs_nombre_mina: this.form.obs_nombre_mina,
-								obs_nombre_mina_valido: this.form.obs_nombre_mina_valido,
-
-								descripcion_mina: this.$props.productor.descripcion_mina,
-								descripcion_mina_validacion: this.form.descripcion_mina_validacion,
-								descripcion_mina_correcto: this.form.descripcion_mina_correcto,
-								obs_descripcion_mina: this.form.obs_descripcion_mina,
-								obs_descripcion_mina_valido: this.form.obs_descripcion_mina_valido,
-
-								distrito_minero: this.$props.productor.distrito_minero,
-								distrito_minero_validacion:  this.form.distrito_minero_validacion,
-								distrito_minero_correcto:  this.form.distrito_minero_correcto,
-								obs_distrito_minero: this.form.obs_distrito_minero,
-								obs_distrito_minero_valido:  this.form.obs_distrito_minero_valido,
-
-								mina_cantera: this.$props.productor.mina_cantera,
-								mina_cantera_validacion: this.form.mina_cantera_validacion,
-								mina_cantera_correcto: this.form.mina_cantera_correcto,
-								obs_mina_cantera: this.form.obs_mina_cantera,
-								obs_mina_cantera_valido: this.form.obs_mina_cantera_valido,
-
-								plano_inmueble: this.$props.productor.plano_inmueble,
-								plano_inmueble_validacion: this.form.plano_inmueble_validacion,
-								plano_inmueble_correcto: this.form.plano_inmueble_correcto,
-								obs_plano_inmueble: this.form.obs_plano_inmueble,
-								obs_plano_inmueble_valido: this.form.obs_plano_inmueble_valido,
-
-								minerales_variedad: this.$props.productor.minerales_variedad,
-								minerales_variedad_validacion: this.form.minerales_variedad_validacion,
-								minerales_variedad_correcto: this.form.minerales_variedad_correcto,
-								obs_minerales_variedad: this.form.obs_minerales_variedad,
-								obs_minerales_variedad_valido: this.form.obs_minerales_variedad_valido,
-
-								valor_de_progreso: this.form.valor_de_progreso_cuatro,
-								valor_de_aprobado: this.form.valor_de_aprobado_cuatro,
-								valor_de_reprobado: this.form.valor_de_reprobado_cuatro,
-
-							})
-							.then(function (response) {
-								console.log(response.data);
-								if(response.data === "todo bien")
-								{
-									console.log('todo bien');
-									self.modal_tittle = 'Paso 4 Guardado Exitosamente';
-									self.modal_body =  'Se ha guardado correctamente la información referida al paso 4: Datos de la mina. Gracias'
-									self.confirmingUserDeletion = true;
-								}
-								else{
-									console.log('NO todo bien');	
-								}
-								
-							})
-							.catch(function (error) {
-								// handle error
-								console.log(error);
-							})
-		},
 		
-		guardar_avances_cinco: function(){
-						let self = this
-						// Make a request for a user with a given ID
-						axios.post('/formularios/evaluacion_auto_guardado_cinco', {
-								id: this.$props.productor.id,
-
-								owner:this.$props.productor.owner,
-								owner_correcto: this.form.owner_correcto,
-								obs_owner: this.form.obs_owner,
-								obs_owner_valido: this.form.obs_owner_valido,
-
-								arrendatario: this.$props.productor.arrendatario,
-								arrendatario_correcto: this.form.arrendatario_correcto,
-								obs_arrendatario:  this.form.obs_arrendatario,
-								obs_arrendatario_valido: this.form.obs_arrendatario_valido,
-
-								concesionario: this.$props.productor.concesionario,
-								concesionario_correcto: this.form.concesionario_correcto,
-								obs_concesionario:  this.form.obs_concesionario,
-								obs_concesionario_valido: this.form.obs_concesionario_valido,
-
-								otros: this.$props.productor.otros,
-								otros_correcto: this.form.otros_correcto,
-								obs_otros: this.form.obs_otros,
-								obs_otros_valido: this.form.obs_otros_valido,
-
-								titulo_contrato_posecion: this.$props.productor.titulo_contrato_posecion,
-								titulo_contrato_posecion_validacion:  this.form.titulo_contrato_posecion_validacion,
-								titulo_contrato_posecion_correcto:  this.form.titulo_contrato_posecion_correcto,
-								obs_titulo_contrato_posecion: this.form.obs_titulo_contrato_posecion,
-								obs_titulo_contrato_posecion_valido:  this.form.obs_titulo_contrato_posecion_valido,
-
-								resolucion_concesion_minera: this.$props.productor.resolucion_concesion_minera,
-								resolucion_concesion_minera_validacion: this.form.resolucion_concesion_minera_validacion,
-								resolucion_concesion_minera_correcto: this.form.resolucion_concesion_minera_correcto,
-								obs_resolucion_concesion_minera: this.form.obs_resolucion_concesion_minera,
-								obs_resolucion_concesion_minera_valido: this.form.obs_resolucion_concesion_minera_valido,
-
-								constancia_pago_canon: this.$props.productor.constancia_pago_canon,
-								constancia_pago_canon_validacion: this.form.constancia_pago_canon_validacion,
-								constancia_pago_canon_correcto: this.form.constancia_pago_canon_correcto,
-								obs_constancia_pago_canon: this.form.obs_constancia_pago_canon,
-								obs_constancia_pago_canon_valido: this.form.obs_constancia_pago_canon_valido,
-
-
-
-								iia: this.$props.productor.iia,
-								iia_canon_validacion: this.form.iia_canon_validacion,
-								iia_correcto: this.form.iia_correcto,
-								obs_iia_canon: this.form.obs_iia_canon,
-								obs_iia_canon_valido: this.form.obs_iia_canon_valido,
-
-
-								dia: this.$props.productor.dia,
-								dia_canon_validacion: this.form.dia_canon_validacion,
-								dia_correcto: this.form.dia_correcto,
-								obs_dia_canon: this.form.obs_dia_canon,
-								obs_dia_canon_valido: this.form.obs_dia_canon_valido,
-
-
-								acciones_a_desarrollar: this.$props.productor.acciones_a_desarrollar,
-								acciones_a_desarrollar_validacion: this.form.acciones_a_desarrollar_validacion,
-								acciones_a_desarrollar_correcto: this.form.acciones_a_desarrollar_correcto,
-								obs_acciones_a_desarrollar: this.form.obs_acciones_a_desarrollar,
-								obs_acciones_a_desarrollar_valido: this.form.obs_acciones_a_desarrollar_valido,
-
-
-
-								actividad: this.$props.productor.actividad,
-								actividad_a_desarrollar_validacion: this.form.actividad_a_desarrollar_validacion,
-								actividad_a_desarrollar_correcto: this.form.actividad_a_desarrollar_correcto,
-								obs_actividad_a_desarrollar: this.form.obs_actividad_a_desarrollar,
-								obs_actividad_a_desarrollar_valido: this.form.obs_actividad_a_desarrollar_valido,
-
-
-
-								fecha_alta_dia: this.$props.productor.fecha_alta_dia,
-								fecha_alta_dia_validacion: this.form.fecha_alta_dia_validacion,
-								fecha_alta_dia_correcto: this.form.fecha_alta_dia_correcto,
-								obs_fecha_alta_dia: this.form.obs_fecha_alta_dia,
-								obs_fecha_alta_dia_valido: this.form.obs_fecha_alta_dia_valido,
-
-
-
-								fecha_vencimiento_dia: this.$props.productor.fecha_vencimiento_dia,
-								fecha_vencimiento_dia_validacion: this.form.fecha_vencimiento_dia_validacion,
-								fecha_vencimiento_dia_correcto: this.form.fecha_vencimiento_dia_correcto,
-								obs_fecha_vencimiento_dia: this.form.obs_fecha_vencimiento_dia,
-								obs_fecha_vencimiento_dia_valido: this.form.obs_fecha_vencimiento_dia_valido,
-
-
-
-								valor_de_progreso: this.form.valor_de_progreso_cinco,
-								valor_de_aprobado: this.form.valor_de_aprobado_cinco,
-								valor_de_reprobado: this.form.valor_de_reprobado_cinco,
-
-							})
-							.then(function (response) {
-								console.log(response.data);
-								if(response.data === "todo bien")
-								{
-									console.log('todo bien');
-									self.modal_tittle = 'Paso 5 Guardado Exitosamente';
-									self.modal_body =  'Se ha guardado correctamente la información referida al paso 5: Datos de la mina. Gracias'
-									self.confirmingUserDeletion = true;
-								}
-								else{
-									console.log('NO todo bien');	
-								}
-								
-							})
-							.catch(function (error) {
-								// handle error
-								console.log(error);
-							})
-		},
-		
-		guardar_avances_seis: function(){
-						let self = this
-						// Make a request for a user with a given ID
-						axios.post('/formularios/evaluacion_auto_guardado_seis', {
-							id: this.$props.productor.id,
-
-							localidad_mina_pais: this.$props.productor.localidad_mina_pais,
-							localidad_mina_pais_validacion:  this.form.localidad_mina_pais_validacion,
-							localidad_mina_pais_correcto:  this.form.localidad_mina_pais_correcto,
-							obs_localidad_mina_pais: this.form.obs_localidad_mina_pais,
-							obs_localidad_mina_pais_valido:  this.form.obs_localidad_mina_pais_valido,
-
-							localidad_mina_provincia: this.$props.productor.localidad_mina_provincia,
-							localidad_mina_provincia_validacion: this.form.localidad_mina_provincia_validacion,
-							localidad_mina_provincia_correcto: this.form.localidad_mina_provincia_correcto,
-							obs_localidad_mina_provincia: this.form.obs_localidad_mina_provincia,
-							obs_localidad_mina_provincia_valido: this.form.obs_localidad_mina_provincia_valido,
-
-							localidad_mina_departamento: this.$props.productor.localidad_mina_departamento,
-							localidad_mina_departamento_validacion: this.form.localidad_mina_departamento_validacion,
-							localidad_mina_departamento_correcto: this.form.localidad_mina_departamento_correcto,
-							obs_localidad_mina_departamento: this.form.obs_localidad_mina_departamento,
-							obs_localidad_mina_departamento_valido: this.form.obs_localidad_mina_departamento_valido,
-
-
-
-							localidad_mina_localidad: this.$props.productor.localidad_mina_localidad,
-							localidad_mina_localidad_validacion: this.form.localidad_mina_localidad_validacion,
-							localidad_mina_localidad_correcto: this.form.localidad_mina_localidad_correcto,
-							obs_localidad_mina_localidad: this.form.obs_localidad_mina_localidad,
-							obs_localidad_mina_localidad_valido: this.form.obs_localidad_mina_localidad_valido,
-
-
-							tipo_sistema: this.$props.productor.tipo_sistema,
-							tipo_sistema_validacion: this.form.tipo_sistema_validacion,
-							tipo_sistema_correcto: this.form.tipo_sistema_correcto,
-							obs_tipo_sistema: this.form.obs_tipo_sistema,
-							obs_tipo_sistema_valido: this.form.obs_tipo_sistema_valido,
-
-
-							latitud: this.$props.productor.latitud,
-							latitud_validacion: this.form.latitud_validacion,
-							latitud_correcto: this.form.latitud_correcto,
-							obs_latitud: this.form.obs_latitud,
-							obs_latitud_valido: this.form.obs_latitud_valido,
-
-
-
-							longitud: this.$props.productor.longitud,
-							longitud_validacion: this.form.longitud_validacion,
-							longitud_correcto: this.form.longitud_correcto,
-							obs_longitud: this.form.obs_longitud,
-							obs_longitud_valido: this.form.obs_longitud_valido,
-
-							valor_de_progreso: this.form.valor_de_progreso_seis,
-							valor_de_aprobado: this.form.valor_de_aprobado_seis,
-							valor_de_reprobado: this.form.valor_de_reprobado_seis,
-
-						})
-						.then(function (response) {
-							console.log(response.data);
-							if(response.data === "todo bien")
-							{
-								console.log('todo bien');
-								self.modal_tittle = 'Paso 6 Guardado Exitosamente';
-								self.modal_body =  'Se ha guardado correctamente la información referida al paso 6: Datos de la ubicacion de la mina. Gracias'
-								self.confirmingUserDeletion = true;
-							}
-							else{
-								console.log('NO todo bien');	
-							}
-							
-						})
-						.catch(function (error) {
-							// handle error
-							console.log(error);
-						})
-		},
 
 		guardar_avances_todo: function(){
 						let self = this;
@@ -4056,7 +3900,6 @@ export default {
     let self  = this;
 	//voy a buscar las provincias
     this.$nextTick(() => {
-		console.log("PROVVVVV");
 		console.log(this.$inertia.page.props.user.id_provincia);
 		if(this.$inertia.page.props.user.id_provincia === 70 )
         {
@@ -4081,6 +3924,121 @@ export default {
             });
 		}
         });
+
+	this.$nextTick(() => {
+		console.log("por buscar los datos de catamarca");
+		if(this.$inertia.page.props.user.id_provincia === 10 )
+        {
+			console.log("harcodeo las prov");
+			axios.get('/formularios/traer_datos_pagina_catamarca'+'/'+parseInt(this.$props.productor.id))
+            .then(function (response) {
+                console.log("los datos de la pagina de catamarca son:\n");
+                
+                console.log(response.data.datos);
+				self.form_catamarca.gestor_nombre_apellido= response.data.datos.gestor_nombre_apellido;
+				self.form_catamarca.gestor_nombre_apellido_valido= response.data.datos.gestor_nombre_apellido_valido;
+				self.form_catamarca.gestor_nombre_apellido_correcto= response.data.datos.gestor_nombre_apellido_correcto;
+				self.form_catamarca.obs_gestor_nombre_apellido= response.data.datos.obs_gestor_nombre_apellido;
+				self.form_catamarca.obs_gestor_nombre_valido= response.data.datos.obs_gestor_nombre_valido;
+				self.form_catamarca.mostrar_nombre_gestor= response.data.datos.mostrar_nombre_gestor;
+				self.form_catamarca.desactivar_nombre_gestor= response.data.datos.desactivar_nombre_gestor;
+				self.form_catamarca.mostrar_nombre_gestor_correccion= response.data.datos.mostrar_nombre_gestor_correccion;
+				self.form_catamarca.desactivar_nombre_gestor_correccion= response.data.datos.desactivar_nombre_gestor_correccion;
+				self.form_catamarca.gestor_dni= response.data.datos.gestor_dni;
+				self.form_catamarca.gestor_dni_valido= response.data.datos.gestor_dni_valido;
+				self.form_catamarca.gestor_dni_correcto= response.data.datos.gestor_dni_correcto;
+				self.form_catamarca.obs_gestor_dni= response.data.datos.obs_gestor_dni;
+				self.form_catamarca.obs_gestor_dni_valido= response.data.datos.obs_gestor_dni_valido;
+				self.form_catamarca.mostrar_dni_gestor= response.data.datos.mostrar_dni_gestor;
+				self.form_catamarca.desactivar_dni_gestor= response.data.datos.desactivar_dni_gestor;
+				self.form_catamarca.mostrar_dni_gestor_correccion= response.data.datos.mostrar_dni_gestor_correccion;
+				self.form_catamarca.desactivar_dni_gestor_correccion= response.data.datos.desactivar_dni_gestor_correccion;
+				self.form_catamarca.gestor_profesion= response.data.datos.gestor_profesion;
+				self.form_catamarca.gestor_profesion_valido= response.data.datos.gestor_profesion_valido;
+				self.form_catamarca.gestor_profesion_correcto= response.data.datos.gestor_profesion_correcto;
+				self.form_catamarca.obs_gestor_profesion= response.data.datos.obs_gestor_profesion;
+				self.form_catamarca.obs_gestor_profesion_valido= response.data.datos.obs_gestor_profesion_valido;
+				self.form_catamarca.mostrar_profesion_gestor= response.data.datos.mostrar_profesion_gestor;
+				self.form_catamarca.desactivar_profesion_gestor= response.data.datos.desactivar_profesion_gestor;
+				self.form_catamarca.mostrar_profesion_gestor_correccion= response.data.datos.mostrar_profesion_gestor_correccion;
+				self.form_catamarca.desactivar_profesion_gestor_correccion= response.data.datos.desactivar_profesion_gestor_correccion;
+				self.form_catamarca.gestor_telefono= response.data.datos.gestor_telefono;
+				self.form_catamarca.gestor_telefono_valido= response.data.datos.gestor_telefono_valido;
+				self.form_catamarca.gestor_telefono_correcto= response.data.datos.gestor_telefono_correcto;
+				self.form_catamarca.obs_gestor_telefono= response.data.datos.obs_gestor_telefono;
+				self.form_catamarca.obs_gestor_telefono_valido= response.data.datos.obs_gestor_telefono_valido;
+				self.form_catamarca.mostrar_telefono_gestor= response.data.datos.mostrar_telefono_gestor;
+				self.form_catamarca.desactivar_telefono_gestor= response.data.datos.desactivar_telefono_gestor;
+				self.form_catamarca.mostrar_telefono_gestor_correccion= response.data.datos.mostrar_telefono_gestor_correccion;
+				self.form_catamarca.desactivar_telefono_gestor_correccion= response.data.datos.desactivar_telefono_gestor_correccion;
+				self.form_catamarca.gestor_notificacion= response.data.datos.gestor_notificacion;
+				self.form_catamarca.gestor_notificacion_valido= response.data.datos.gestor_notificacion_valido;
+				self.form_catamarca.gestor_notificacion_correcto= response.data.datos.gestor_notificacion_correcto;
+				self.form_catamarca.obs_gestor_notificacion= response.data.datos.obs_gestor_notificacion;
+				self.form_catamarca.obs_gestor_notificacion_valido= response.data.datos.obs_gestor_notificacion_valido;
+				self.form_catamarca.mostrar_notificacion_gestor= response.data.datos.mostrar_notificacion_gestor;
+				self.form_catamarca.desactivar_notificacion_gestor= response.data.datos.desactivar_notificacion_gestor;
+				self.form_catamarca.mostrar_notificacion_gestor_correccion= response.data.datos.mostrar_notificacion_gestor_correccion;
+				self.form_catamarca.desactivar_notificacion_gestor_correccion= response.data.datos.desactivar_notificacion_gestor_correccion;
+				self.form_catamarca.gestor_email= response.data.datos.gestor_email;
+				self.form_catamarca.gestor_email_valido= response.data.datos.gestor_email_valido;
+				self.form_catamarca.gestor_email_correcto= response.data.datos.gestor_email_correcto;
+				self.form_catamarca.obs_gestor_email= response.data.datos.obs_gestor_email;
+				self.form_catamarca.obs_gestor_email_valido= response.data.datos.obs_gestor_email_valido;
+				self.form_catamarca.mostrar_email_gestor= response.data.datos.mostrar_email_gestor;
+				self.form_catamarca.desactivar_email_gestor= response.data.datos.desactivar_email_gestor;
+				self.form_catamarca.mostrar_email_gestor_correccion= response.data.datos.mostrar_email_gestor_correccion;
+				self.form_catamarca.desactivar_email_gestor_correccion= response.data.datos.desactivar_email_gestor_correccion;
+				self.form_catamarca.primer_hoja_dni= response.data.datos.primer_hoja_dni;
+				self.form_catamarca.hoja_dni_valido= response.data.datos.hoja_dni_valido;
+				self.form_catamarca.hoja_dni_correcto= response.data.datos.hoja_dni_correcto;
+				self.form_catamarca.obs_hoja_dni= response.data.datos.obs_hoja_dni;
+				self.form_catamarca.obs_hoja_dni_valido= response.data.datos.obs_hoja_dni_valido;
+				self.form_catamarca.mostrar_dni_productor= response.data.datos.mostrar_dni_productor;
+				self.form_catamarca.desactivar_dni_productor= response.data.datos.desactivar_dni_productor;
+				self.form_catamarca.mostrar_dni_productor_correccion= response.data.datos.mostrar_dni_productor_correccion;
+				self.form_catamarca.desactivar_dni_productor_correccion= response.data.datos.desactivar_dni_productor_correccion;
+				self.form_catamarca.segunda_hoja_dni= response.data.datos.segunda_hoja_dni;
+				self.form_catamarca.segunda_hoja_dni_valido= response.data.datos.segunda_hoja_dni_valido;
+				self.form_catamarca.segunda_hoja_dni_correcto= response.data.datos.segunda_hoja_dni_correcto;
+				self.form_catamarca.obs_segunda_hoja_dni= response.data.datos.obs_segunda_hoja_dni;
+				self.form_catamarca.obs_segunda_hoja_dni_valido= response.data.datos.obs_segunda_hoja_dni_valido;
+				self.form_catamarca.foto_4x4= response.data.datos.foto_4x4;
+				self.form_catamarca.foto_4x4_valido= response.data.datos.foto_4x4_valido;
+				self.form_catamarca.foto_4x4_correcto= response.data.datos.foto_4x4_correcto;
+				self.form_catamarca.obs_foto_4x4= response.data.datos.obs_foto_4x4;
+				self.form_catamarca.obs_foto_4x4_valido= response.data.datos.obs_foto_4x4_valido;
+				self.form_catamarca.mostrar_foto_productor= response.data.datos.mostrar_foto_productor;
+				self.form_catamarca.desactivar_foto_productor= response.data.datos.desactivar_foto_productor;
+				self.form_catamarca.mostrar_foto_productor_correccion= response.data.datos.mostrar_foto_productor_correccion;
+				self.form_catamarca.desactivar_foto_productor_correccion= response.data.datos.desactivar_foto_productor_correccion;
+				self.form_catamarca.constancia_afip= response.data.datos.constancia_afip;
+				self.form_catamarca.constancia_afip_valido= response.data.datos.constancia_afip_valido;
+				self.form_catamarca.constancia_afip_correcto= response.data.datos.constancia_afip_correcto;
+				self.form_catamarca.obs_constancia_afip= response.data.datos.obs_constancia_afip;
+				self.form_catamarca.obs_constancia_afip_valido= response.data.datos.obs_constancia_afip_valido;
+				self.form_catamarca.mostrar_constancia_afip= response.data.datos.mostrar_constancia_afip;
+				self.form_catamarca.desactivar_constancia_afip= response.data.datos.desactivar_constancia_afip;
+				self.form_catamarca.mostrar_constancia_afip_correccion= response.data.datos.mostrar_constancia_afip_correccion;
+				self.form_catamarca.desactivar_constancia_afip_correccion= response.data.datos.desactivar_constancia_afip_correccion;
+				self.form_catamarca.autorizacion_gestor= response.data.datos.autorizacion_gestor;
+				self.form_catamarca.autorizacion_gestor_valido= response.data.datos.autorizacion_gestor_valido;
+				self.form_catamarca.autorizacion_gestor_correcto= response.data.datos.autorizacion_gestor_correcto;
+				self.form_catamarca.obs_autorizacion_gestor= response.data.datos.obs_autorizacion_gestor;
+				self.form_catamarca.obs_autorizacion_gestor_valido= response.data.datos.obs_autorizacion_gestor_valido;
+				self.form_catamarca.mostrar_autorizacion_gestor= response.data.datos.mostrar_autorizacion_gestor;
+				self.form_catamarca.desactivar_autorizacion_gestor= response.data.datos.desactivar_autorizacion_gestor;
+				self.form_catamarca.mostrar_autorizacion_gestor_correccion= response.data.datos.mostrar_autorizacion_gestor_correccion;
+				self.form_catamarca.desactivar_autorizacion_gestor_correccion= response.data.datos.desactivar_autorizacion_gestor_correccion;
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+		}
+		});
+
+		
 
 		// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
 		// console.log("si");
