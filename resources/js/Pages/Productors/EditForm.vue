@@ -221,7 +221,7 @@
 						<button class="animate-ping inline-block py-4 px-8 bg-blue-500 text-blue-100 rounded-lg">Ping</button>
 
 						<!- pulse ->
-						<button class="animate-pulse inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
+						<button class="  inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
 
 						<!- bounce ->
 						<button class="  inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
@@ -1201,7 +1201,7 @@
 					<template #footer>
 						<div class="flex">
 							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-								<button  @click="closeModalAprobar" class="animate-pulse py-3 px-6 text-white rounded-lg bg-yellow-400 shadow-lg block md:inline-block">
+								<button  @click="closeModalAprobar" class="  py-3 px-6 text-white rounded-lg bg-yellow-400 shadow-lg block md:inline-block">
 									Vuelvo a revisar
 
 								</button>
@@ -1210,7 +1210,7 @@
 								<button
 									v-show="mostrar_boton_aprobar"
 									@click="closeModalAprobar"
-									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
+									class="  py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
 								>
 									Actualizar
 								</button>
@@ -1220,7 +1220,7 @@
 								<button
 									v-show="mostrar_boton_aprobar_de_todos_modos"
 									@click="presentar_de_todos_modos"
-									class="animate-pulse py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
+									class="  py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
 								>
 									Actualizar de todos Modos
 								</button>

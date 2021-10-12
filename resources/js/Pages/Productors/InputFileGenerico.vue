@@ -71,6 +71,7 @@
             <br>{{texto_validacion_text_area}}
         </div>
         <div class="w-full md:w-1/2 px-3">
+        GENERICO
                 <object :data="$inertia.page.props.appName+'/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'" type="application/pdf" width="100%" height="500px"> 
                 <p>It appears you don't have a PDF plugin for this browser.
                     No biggie... you can <a :href="$inertia.page.props.appName+'/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'">click here to

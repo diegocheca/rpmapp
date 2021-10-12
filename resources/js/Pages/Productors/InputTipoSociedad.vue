@@ -13,7 +13,7 @@
             <input 
             type="text" 
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Tipo Sociedad"
+            placeholder="Tipo de Sociedad"
             v-model="tiposociedad"
             v-bind:class=clase_de_input_tiposociedad
             :disabled="evaluacion || $props.tipo_sociedad_disable"

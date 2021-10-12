@@ -930,7 +930,7 @@
             <button
               @click="isSidebarOpen = true"
               class="
-                animate-pulse
+                 
                 fixed
                 p-2
                 text-white
