@@ -10,10 +10,10 @@
   }
 </style>
 <template>
-<div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-    <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
+<div class="border border-gray-300 w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+    <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
         <a href="#section_datos_mina_dos">
-            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/mina-parte-dos.svg'">
+            <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500 bg-white" :src="$inertia.page.props.appName+'/slick/img/features/mina-parte-dos.svg'">
         </a>
         <div v-if="$props.testing">
             <label class="flex items-center relative w-max cursor-pointer select-none">
@@ -337,7 +337,7 @@
                 </div>
             </div>
         </div>
-        <!-- <button class="animate-pulse px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
+        <!-- <button class="  px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
          @click="enviar_constancia"
          >
             Subir archivo
@@ -737,7 +737,7 @@
     <div class="flex justify-end mt-4">
         <BotonesPaginaCinco
         v-if="$props.mostrar_boton_guardar_cinco"
-            :link_volver="route('formulario-alta.index')"
+            :link_volver="'#'"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de la Mina'"
 
@@ -817,7 +817,7 @@
         >
 
         </BotonesPaginaCinco>
-        <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
+        <!-- <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a> -->
     </div>
 </div>
 </template>

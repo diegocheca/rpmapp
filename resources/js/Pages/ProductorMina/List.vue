@@ -13,7 +13,7 @@
             class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg"
           >
           <a :href="route('productores_minas.create')"> 
-            <button class="animate-pulse px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">
+            <button class="  px-9 py-4   mb-4  text-base   font-semibold rounded-full block  border-b border-purple-300 bg-purple-200 hover:bg-purple-300 text-purple-700">
               Nuevo Productor y Mina
             </button>
             </a>

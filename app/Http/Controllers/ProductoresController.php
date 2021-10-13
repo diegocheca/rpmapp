@@ -93,6 +93,7 @@ class ProductoresController extends Controller
     public function import(Request $request)
     {
         // dd($request->file('import_file')->getClientOriginalName());
+        // dd($request->file('import_file'));
         try {
             // var_dump($rows);
             $import = new ProductoresImport();

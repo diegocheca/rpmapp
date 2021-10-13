@@ -731,11 +731,6 @@ class FormAltaProductorController extends Controller
 		
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function dame_un_productor_vacio(){
 		$productor_a_devolver = new FormAltaProductor();
 		$productor_a_devolver->id = null;

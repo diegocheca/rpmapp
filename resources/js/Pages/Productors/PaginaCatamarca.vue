@@ -1,84 +1,213 @@
 <style>
-    input:checked {
-        background-color: #22c55e; /* bg-green-500 */
-    }
+input:checked {
+  background-color: #22c55e; /* bg-green-500 */
+}
 
-    input:checked ~ span:last-child {
-        --tw-translate-x: 1.75rem; /* translate-x-7 */
-    }
+input:checked ~ span:last-child {
+  --tw-translate-x: 1.75rem; /* translate-x-7 */
+}
 </style>
 <template>
-    <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-        <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
-            <a href="#section_catamarca">
-                <img class="animate-bounce w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/formulario_alta/imagenes/catamarca.png'" width="50%">
-            </a>
-            <div v-if="$props.testing">
-                <label class="flex items-center relative w-max cursor-pointer select-none">
-                    <br>
-                    <br>
-                    <input 
-                    type="checkbox" 
-                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-blue-500 bg-red-500" 
-                    v-model="mostrar_testing"
-                    />
-                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Sin </span>
-                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Con </span>
-                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-                </label>
-                <label class="flex items-center relative w-max cursor-pointer select-none">
-                    <br>
-                    <br>
-                    <input 
-                    type="checkbox" 
-                    class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-purple-500" 
-                    v-model="autoridad_minera"
-                    />
-                    <span class="absolute font-medium text-xs uppercase right-1 text-white"> Pro </span>
-                    <span class="absolute font-medium text-xs uppercase right-8 text-white"> Aut </span>
-                    <span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-                </label>
-            </div>
+  <div class="border border-gray-300 w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+    <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
+      <a href="#section_catamarca">
+        <img
+          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500 bg-white"
+          :src="
+            $inertia.page.props.appName +
+            '/formulario_alta/imagenes/catamarca.png'
+          "
+          width="50%"
+        />
+      </a>
+      <div v-if="$props.testing">
+        <label
+          class="flex items-center relative w-max cursor-pointer select-none"
+        >
+          <br />
+          <br />
+          <input
+            type="checkbox"
+            class="
+              appearance-none
+              transition-colors
+              cursor-pointer
+              w-14
+              h-7
+              rounded-full
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-offset-black
+              focus:ring-blue-500
+              bg-red-500
+            "
+            v-model="mostrar_testing"
+          />
+          <span
+            class="absolute font-medium text-xs uppercase right-1 text-white"
+          >
+            Sin
+          </span>
+          <span
+            class="absolute font-medium text-xs uppercase right-8 text-white"
+          >
+            Con
+          </span>
+          <span
+            class="
+              w-7
+              h-7
+              right-7
+              absolute
+              rounded-full
+              transform
+              transition-transform
+              bg-gray-200
+            "
+          />
+        </label>
+        <label
+          class="flex items-center relative w-max cursor-pointer select-none"
+        >
+          <br />
+          <br />
+          <input
+            type="checkbox"
+            class="
+              appearance-none
+              transition-colors
+              cursor-pointer
+              w-14
+              h-7
+              rounded-full
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-offset-black
+              focus:ring-green-500
+              bg-purple-500
+            "
+            v-model="autoridad_minera"
+          />
+          <span
+            class="absolute font-medium text-xs uppercase right-1 text-white"
+          >
+            Pro
+          </span>
+          <span
+            class="absolute font-medium text-xs uppercase right-8 text-white"
+          >
+            Aut
+          </span>
+          <span
+            class="
+              w-7
+              h-7
+              right-7
+              absolute
+              rounded-full
+              transform
+              transition-transform
+              bg-gray-200
+            "
+          />
+        </label>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
+      <br /><br />
+      <div class="flex items-center justify-center"></div>
+      <br />
+      <br />
+      <div class="flex">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <span>Pagina de catamarca</span>
         </div>
-        <div>
-            <h2 class="text-gray-800 text-3xl font-semibold">{{titulo_pagina}}</h2>
-            <br><br>
-            <div class="flex items-center justify-center">
-                
+      </div>
+    </div>
+    <div class="flex">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            alert
+            flex flex-row
+            items-center
+            bg-yellow-200
+            p-5
+            rounded
+            border-b-2 border-yellow-300
+          "
+        >
+          <div
+            class="
+              alert-icon
+              flex
+              items-center
+              bg-yellow-100
+              border-2 border-yellow-500
+              justify-center
+              h-10
+              w-10
+              flex-shrink-0
+              rounded-full
+            "
+          >
+            <span class="text-yellow-500">
+              <svg fill="currentColor" viewBox="0 0 20 20" class="h-6 w-6">
+                <path
+                  fill-rule="evenodd"
+                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </span>
+          </div>
+          <div class="alert-content ml-4">
+            <div class="alert-title font-semibold text-lg text-yellow-800">
+              Atención
             </div>
-            <br>
-            <br>
-            <div class="flex">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <span>Pagina de catamarca</span>
-                </div>
+            <div class="alert-description text-sm text-yellow-600">
+              La legislación de la provincia de Catamarca especifica: El
+              Certificado de Productor Minero tendrá validez por seis (6) meses.
             </div>
+          </div>
         </div>
-        <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <div class="alert flex flex-row items-center bg-yellow-200 p-5 rounded border-b-2 border-yellow-300">
-                    <div class="alert-icon flex items-center bg-yellow-100 border-2 border-yellow-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
-                        <span class="text-yellow-500">
-                            <svg fill="currentColor"
-                                viewBox="0 0 20 20"
-                                class="h-6 w-6">
-                                <path fill-rule="evenodd"
-                                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="alert-content ml-4">
-                        <div class="alert-title font-semibold text-lg text-yellow-800">
-                            Atención
-                        </div>
-                        <div class="alert-description text-sm text-yellow-600">
-                            La legislación de la provincia de Catamarca especifica: El Certificado de Productor Minero tendrá validez por seis (6) meses.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+      </div>
+    </div>
+    <br />
+    <div>
+      <br />
+      <div class="flex">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <NombreMina
+            v-if="$props.mostrar_nombre_gestor"
+            v-bind:valor_input_props="form_pagina.gestor_nombre_apellido"
+            v-bind:valor_input_validacion="
+              form_pagina.gestor_nombre_apellido_valido
+            "
+            v-bind:evualacion_correcto="
+              form_pagina.gestor_nombre_apellido_correcto
+            "
+            v-bind:valor_obs="form_pagina.obs_gestor_nombre_apellido"
+            v-bind:valor_valido_obs="form_pagina.obs_gestor_nombre_valido"
+            v-bind:evaluacion="autoridad_minera"
+            v-bind:testing="mostrar_testing"
+            v-bind:label="'Nombre y Apellido del Gestor:'"
+            v-bind:icon="$inertia.page.props.appName + '/svg/state.svg'"
+            v-bind:desactivar_input="$props.desactivar_nombre_gestor"
+            v-bind:mostrar_correccion="$props.mostrar_nombre_gestor_correccion"
+            v-bind:desactivar_correccion="
+              $props.desactivar_nombre_gestor_correccion
+            "
+            v-on:changevalido="update_nombre_gestor_valido($event)"
+            v-on:changecorrecto="update_nombre_gestor_correcto($event)"
+            v-on:changeobs="update_obs_nombre_gestor($event)"
+            v-on:changeobsvalido="update_obs_nombre_gestor_valida($event)"
+            v-on:changevalor="update_valor_nombre_gestor($event)"
+          >
+          </NombreMina>
         </div>
             <br>
         <div>
@@ -561,8 +690,8 @@
 </template>
 
 <script>
-import JetDialogModal from '@/Jetstream/DialogModal';
-import CardMinaUbicacion from '@/Jetstream/altas/CardMinaUbicacion';
+import JetDialogModal from "@/Jetstream/DialogModal";
+import CardMinaUbicacion from "@/Jetstream/altas/CardMinaUbicacion";
 import SelectProvincia from "@/Pages/Productors/SelectProvincia";
 import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 import NombreMina from "@/Pages/Productors/NombreMina";
@@ -572,7 +701,7 @@ import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
 //import BotonesPaginaCatamarca from "@/Pages/Productors/BotonesPaginaCatamarca";
 
-import Label from '../../Jetstream/Label.vue';
+import Label from "../../Jetstream/Label.vue";
 export default {
      props: [
         'link_volver',
@@ -615,190 +744,171 @@ export default {
             lista_localidades:[],
         };
     },
-    methods:{
-        cerrar_modal_datos_uno() {
-            this.mostrar_modal_datos_ya_guardados = false
-		},
 
+    //FUNCIONES DE NOMBRE DE GESTOR
+    update_nombre_gestor_valido(newValue) {
+      this.form_pagina.gestor_nombre_apellido_valido = newValue;
+    },
+    update_nombre_gestor_correcto(newValue) {
+      this.form_pagina.gestor_nombre_apellido_correcto = newValue;
+    },
+    update_obs_nombre_gestor(newValue) {
+      this.form_pagina.obs_gestor_nombre_apellido = newValue;
+    },
+    update_obs_nombre_gestor_valida(newValue) {
+      this.form_pagina.obs_gestor_nombre_valido = newValue;
+    },
+    update_valor_nombre_gestor(newValue) {
+      this.form_pagina.gestor_nombre_apellido = newValue;
+    },
 
+    //FUNCIONES DE DNI DE GESTOR
+    update_gestor_dni_valido(newValue) {
+      this.form_pagina.gestor_dni_valido = newValue;
+    },
+    update_gestor_dni_correcto(newValue) {
+      this.form_pagina.gestor_dni_correcto = newValue;
+    },
+    update_obs_gestor_dni(newValue) {
+      this.form_pagina.obs_gestor_dni = newValue;
+    },
+    update_obs_gestor_dni_valida(newValue) {
+      this.form_pagina.obs_gestor_dni_valido = newValue;
+    },
+    update_valor_gestor_dni(newValue) {
+      this.form_pagina.gestor_dni = newValue;
+    },
 
+    //FUNCIONES DE PROFESION DE GESTOR
+    update_gestor_profesion_valido(newValue) {
+      this.form_pagina.gestor_profesion_valido = newValue;
+    },
+    update_gestor_profesion_correcto(newValue) {
+      this.form_pagina.gestor_profesion_correcto = newValue;
+    },
+    update_obs_gestor_profesion(newValue) {
+      this.form_pagina.obs_gestor_profesion = newValue;
+    },
+    update_obs_gestor_profesion_valida(newValue) {
+      this.form_pagina.obs_gestor_profesion_valido = newValue;
+    },
+    update_valor_gestor_profesion(newValue) {
+      this.form_pagina.gestor_profesion = newValue;
+    },
 
-        //FUNCIONES DE NOMBRE DE GESTOR
-        update_nombre_gestor_valido(newValue){
-            this.form_pagina.gestor_nombre_apellido_valido = newValue;
-        },
-        update_nombre_gestor_correcto(newValue){
-            this.form_pagina.gestor_nombre_apellido_correcto = newValue;
-        },
-        update_obs_nombre_gestor(newValue){
-            this.form_pagina.obs_gestor_nombre_apellido = newValue;
-        },
-        update_obs_nombre_gestor_valida(newValue){
-            this.form_pagina.obs_gestor_nombre_valido = newValue;
-        },
-        update_valor_nombre_gestor(newValue){
-            this.form_pagina.gestor_nombre_apellido = newValue;
-        },
+    //FUNCIONES DE Telefono DE GESTOR
+    update_gestor_telefono_valido(newValue) {
+      this.form_pagina.gestor_telefono_valido = newValue;
+    },
+    update_gestor_telefono_correcto(newValue) {
+      this.form_pagina.gestor_telefono_correcto = newValue;
+    },
+    update_obs_gestor_telefono(newValue) {
+      this.form_pagina.obs_gestor_telefono = newValue;
+    },
+    update_obs_gestor_telefono_valida(newValue) {
+      this.form_pagina.obs_gestor_telefono_valido = newValue;
+    },
+    update_valor_gestor_telefono(newValue) {
+      this.form_pagina.gestor_telefono = newValue;
+    },
 
-        //FUNCIONES DE DNI DE GESTOR
-        update_gestor_dni_valido(newValue){
-            this.form_pagina.gestor_dni_valido = newValue;
-        },
-        update_gestor_dni_correcto(newValue){
-            this.form_pagina.gestor_dni_correcto = newValue;
-        },
-        update_obs_gestor_dni(newValue){
-            this.form_pagina.obs_gestor_dni = newValue;
-        },
-        update_obs_gestor_dni_valida(newValue){
-            this.form_pagina.obs_gestor_dni_valido = newValue;
-        },
-        update_valor_gestor_dni(newValue){
-            this.form_pagina.gestor_dni = newValue;
-        },
+    //FUNCIONES DE N OTIFICACION DE GESTOR
+    update_gestor_noti_valido(newValue) {
+      this.form_pagina.gestor_notificacion_valido = newValue;
+    },
+    update_gestor_noti_correcto(newValue) {
+      this.form_pagina.gestor_notificacion_correcto = newValue;
+    },
+    update_obs_gestor_noti(newValue) {
+      this.form_pagina.obs_gestor_notificacion = newValue;
+    },
+    update_obs_gestor_noti_valida(newValue) {
+      this.form_pagina.obs_gestor_notificacion_valido = newValue;
+    },
+    update_valor_gestor_noti(newValue) {
+      this.form_pagina.gestor_notificacion = newValue;
+    },
 
-        //FUNCIONES DE PROFESION DE GESTOR
-        update_gestor_profesion_valido(newValue){
-            this.form_pagina.gestor_profesion_valido = newValue;
-        },
-        update_gestor_profesion_correcto(newValue){
-            this.form_pagina.gestor_profesion_correcto= newValue;
-        },
-        update_obs_gestor_profesion(newValue){
-            this.form_pagina.obs_gestor_profesion = newValue;
-        },
-        update_obs_gestor_profesion_valida(newValue){
-            this.form_pagina.obs_gestor_profesion_valido = newValue;
-        },
-        update_valor_gestor_profesion(newValue){
-            this.form_pagina.gestor_profesion = newValue;
-        },
+    //FUNCIONES DE PROFESION DE GESTOR
+    update_gestor_email_valido(newValue) {
+      this.form_pagina.gestor_email_valido = newValue;
+    },
+    update_gestor_email_correcto(newValue) {
+      this.form_pagina.gestor_email_correcto = newValue;
+    },
+    update_obs_gestor_email(newValue) {
+      this.form_pagina.obs_gestor_email = newValue;
+    },
+    update_obs_gestor_email_valida(newValue) {
+      this.form_pagina.obs_gestor_email_valido = newValue;
+    },
+    update_valor_gestor_email(newValue) {
+      this.form_pagina.gestor_email = newValue;
+    },
 
-        //FUNCIONES DE Telefono DE GESTOR
-        update_gestor_telefono_valido(newValue){
-            this.form_pagina.gestor_telefono_valido = newValue;
-        },
-        update_gestor_telefono_correcto(newValue){
-            this.form_pagina.gestor_telefono_correcto= newValue;
-        },
-        update_obs_gestor_telefono(newValue){
-            this.form_pagina.obs_gestor_telefono = newValue;
-        },
-        update_obs_gestor_telefono_valida(newValue){
-            this.form_pagina.obs_gestor_telefono_valido = newValue;
-        },
-        update_valor_gestor_telefono(newValue){
-            this.form_pagina.gestor_telefono = newValue;
-        },
+    update_gestor_autorizacion_valido(newValue) {
+      this.form_pagina.autorizacion_gestor_valido = newValue;
+      //tengo que enviarsela al padre
+    },
+    update_gestor_autorizacion_correcto(newValue) {
+      this.form_pagina.autorizacion_gestor_correcto = newValue;
+      //tengo que enviarsela al padre
+    },
+    update_obs_gestor_autorizacion(newValue) {
+      this.form_pagina.obs_autorizacion_gestor = newValue;
+      //tengo que enviarsela al padre
+    },
+    update_obs_gestor_autorizacion_valido(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.obs_autorizacion_gestor_valido = newValue;
+      //tengo que enviarsela al padre
+    },
+    cambio_el_archivo_gestor_autorizacion(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.autorizacion_gestor = newValue;
+      //tengo que enviarsela al padre
+    },
 
-        //FUNCIONES DE N OTIFICACION DE GESTOR
-        update_gestor_noti_valido(newValue){
-            this.form_pagina.gestor_notificacion_valido = newValue;
-        },
-        update_gestor_noti_correcto(newValue){
-            this.form_pagina.gestor_notificacion_correcto= newValue;
-        },
-        update_obs_gestor_noti(newValue){
-            this.form_pagina.obs_gestor_notificacion = newValue;
-        },
-        update_obs_gestor_noti_valida(newValue){
-            this.form_pagina.obs_gestor_notificacion_valido = newValue;
-        },
-        update_valor_gestor_noti(newValue){
-            this.form_pagina.gestor_notificacion = newValue;
-        },
+    update_constancia_afip_valido(newValue) {
+      this.form_pagina.constancia_afip_valido = newValue;
+      //tengo que enviarsela al padre
+    },
+    update_constancia_afip_correcto(newValue) {
+      this.form_pagina.constancia_afip_correcto = newValue;
+      //tengo que enviarsela al padre
+    },
+    update_obs_constancia_afip(newValue) {
+      this.form_pagina.obs_constancia_afip = newValue;
+      //tengo que enviarsela al padre
+    },
+    update_obs_constancia_afip_valido(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.obs_constancia_afip_valido = newValue;
+      //tengo que enviarsela al padre
+    },
+    cambio_el_archivo_constancia_afip(newValue) {
+      console.log("traje un" + newValue);
+      this.form_pagina.constancia_afip = newValue;
+      //tengo que enviarsela al padre
+    },
 
-        //FUNCIONES DE PROFESION DE GESTOR
-        update_gestor_email_valido(newValue){
-            this.form_pagina.gestor_email_valido = newValue;
-        },
-        update_gestor_email_correcto(newValue){
-            this.form_pagina.gestor_email_correcto= newValue;
-        },
-        update_obs_gestor_email(newValue){
-            this.form_pagina.obs_gestor_email = newValue;
-        },
-        update_obs_gestor_email_valida(newValue){
-            this.form_pagina.obs_gestor_email_valido = newValue;
-        },
-        update_valor_gestor_email(newValue){
-            this.form_pagina.gestor_email = newValue;
-        },
+    update_foto_valido(newValue) {
+      this.form_pagina.foto_4x4_valido = newValue;
+    },
+    update_foto_correcto(newValue) {
+      this.form_pagina.foto_4x4_correcto = newValue;
+    },
+    update_obs_foto(newValue) {
+      this.form_pagina.obs_foto_4x4 = newValue;
+    },
+    update_obs_foto_valido(newValue) {
+      this.form_pagina.obs_foto_4x4_valido = newValue;
+    },
+    cambio_el_archivo_foto(newValue) {
+      this.form_pagina.foto_4x4 = newValue;
+    },
 
-        update_gestor_autorizacion_valido(newValue){
-            this.form_pagina.autorizacion_gestor_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_gestor_autorizacion_correcto(newValue){
-            this.form_pagina.autorizacion_gestor_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_gestor_autorizacion(newValue){
-            this.form_pagina.obs_autorizacion_gestor = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_gestor_autorizacion_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_autorizacion_gestor_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        cambio_el_archivo_gestor_autorizacion(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.autorizacion_gestor = newValue;
-            //tengo que enviarsela al padre
-        },
-
-
-        update_constancia_afip_valido(newValue){
-            this.form_pagina.constancia_afip_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_constancia_afip_correcto(newValue){
-            this.form_pagina.constancia_afip_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_constancia_afip(newValue){
-            this.form_pagina.obs_constancia_afip = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_constancia_afip_valido(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.obs_constancia_afip_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        cambio_el_archivo_constancia_afip(newValue){
-            console.log("traje un"+newValue);
-            this.form_pagina.constancia_afip = newValue;
-            //tengo que enviarsela al padre
-        },
-
-        update_foto_valido(newValue){
-            this.form_pagina.foto_4x4_valido = newValue;
-        },
-        update_foto_correcto(newValue){
-            this.form_pagina.foto_4x4_correcto = newValue;
-        },
-        update_obs_foto(newValue){
-            this.form_pagina.obs_foto_4x4 = newValue;
-        },
-        update_obs_foto_valido(newValue){
-            this.form_pagina.obs_foto_4x4_valido = newValue;
-        },
-        cambio_el_archivo_foto(newValue){
-            this.form_pagina.foto_4x4 = newValue;
-        },
-
-
-
-
-
-        //mostrar ayuda
-        update_valor_ayuda_local(newValor){
-            this.ayuda_local = newValor;
-        },
-
-
-  },
   mounted(){
       let self  = this;
       this.$nextTick(() => {

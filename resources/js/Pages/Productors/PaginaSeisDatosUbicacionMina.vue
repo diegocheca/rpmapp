@@ -10,10 +10,10 @@
   }
 </style>
 <template>
-    <div class="w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-        <div class="flex justify-center md:justify-end -mt-16 sticky top-0">
+    <div class="border border-gray-300 w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
+        <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
             <a href="#section_datos_mina_ubicacion">
-                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500" :src="$inertia.page.props.appName+'/slick/img/features/plano-minero.svg'">
+                <img class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500 bg-white" :src="$inertia.page.props.appName+'/slick/img/features/plano-minero.svg'">
             </a>
             <div v-if="$props.testing">
                 <label class="flex items-center relative w-max cursor-pointer select-none">
@@ -52,6 +52,7 @@
                     :reprobado="50" 
                     :lugar="'Argentina, San Juan'"
                     :updated_at="'hace 10 minutos'"
+                    :mostrarayuda= true
                     :clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                     :clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
                     :ayuda="ayuda_local"
@@ -372,12 +373,12 @@
             </div>
         </div>
         
-        <div class="flex justify-end mt-4">
+        <!-- <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
-        </div>
+        </div> -->
         <BotonesPaginaSeis
         v-if="$props.mostrar_boton_guardar_seis"
-            :link_volver="route('formulario-alta.index')"
+            :link_volver="'#'"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
 
