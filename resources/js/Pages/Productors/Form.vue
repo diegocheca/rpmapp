@@ -947,6 +947,8 @@
             :testing="testing_global"
             :categoria="form.categoria"
           >
+            <!-- :mostrar_boton_catamarca="$props.mostrar.boton_catamarca" -->
+            <!-- :desactivar_boton_catamarca="$props.disables.boton_catamarca" -->
           </PaginaCincoDatosMinaDos>
           <div id="section_datos_mina_ubicacion"></div>
           <PaginaSeisDatosUbicacionMina

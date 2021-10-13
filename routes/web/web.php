@@ -8,6 +8,8 @@ use App\Models\User;
 // use Auth;
 //use Illuminate\Auth as Auth;
 use App\Http\Controllers\FormAltaProductorController;
+use App\Http\Controllers\FormAltaProductorCatamarcaController;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
@@ -184,6 +186,11 @@ Route::post('/formularios/evaluacion_auto_guardado_tres', [FormAltaProductorCont
 Route::post('/formularios/evaluacion_auto_guardado_cuatro', [FormAltaProductorController::class, "correccion_guardar_paso_cuatro"])->name('correccion_guardar-paso-cuatro');
 Route::post('/formularios/evaluacion_auto_guardado_cinco', [FormAltaProductorController::class, "correccion_guardar_paso_cinco"])->name('correccion_guardar-paso-cinco');
 Route::post('/formularios/evaluacion_auto_guardado_seis', [FormAltaProductorController::class, "correccion_guardar_paso_seis"])->name('correccion_guardar-paso-seis');
+Route::post('/formularios/evaluacion_auto_guardado_catamarcas', [FormAltaProductorController::class, "correccion_guardar_paso_catamarca"])->name('correccion_guardar-paso-catamarca');
+
+Route::get('/formularios/traer_datos_pagina_catamarca/{id}', [FormAltaProductorCatamarcaController::class, "traer_datos_pagina_catamarca"])->name('traer-datos-pagina-catamarca');
+Route::get('/formularios/traer_permisos_pagina_catamarca/{id}/{accion}', [FormAltaProductorCatamarcaController::class, "traer_permisos_pagina_catamarca"])->name('traer-permisos-pagina-catamarca');
+
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
 Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');
 
