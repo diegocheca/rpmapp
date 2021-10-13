@@ -83,24 +83,22 @@
             <br>
         <div>
             <br>
-            {{form_pagina.gestor_nombre_apellido}}--
-            {{$props.gestor_nombre_apellido}}
             <div class="flex">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
-                        v-if="$props.mostrar_nombre_gestor"
-                        v-bind:valor_input_props="form_pagina.gestor_nombre_apellido"
-                        v-bind:valor_input_validacion="form_pagina.gestor_nombre_apellido_valido"
-                        v-bind:evualacion_correcto="form_pagina.gestor_nombre_apellido_correcto"
-                        v-bind:valor_obs="form_pagina.obs_gestor_nombre_apellido"
-                        v-bind:valor_valido_obs="form_pagina.obs_gestor_nombre_valido"
+                        v-if="permisos_mostrar.nombre_gestor"
+                        v-bind:valor_input_props="form_catamarca_test.gestor_nombre_apellido"
+                        v-bind:valor_input_validacion="form_catamarca_test.gestor_nombre_apellido_valido"
+                        v-bind:evualacion_correcto="form_catamarca_test.gestor_nombre_apellido_correcto"
+                        v-bind:valor_obs="form_catamarca_test.obs_gestor_nombre_apellido"
+                        v-bind:valor_valido_obs="form_catamarca_test.obs_gestor_nombre_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'Nombre y Apellido del Gestor:'"
                         v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
-                        v-bind:desactivar_input="$props.desactivar_nombre_gestor"
-                        v-bind:mostrar_correccion="$props.mostrar_nombre_gestor_correccion"
-                        v-bind:desactivar_correccion="$props.desactivar_nombre_gestor_correccion"
+                        v-bind:desactivar_input="permisos_disables.nombre_gestor"
+                        v-bind:mostrar_correccion="permisos_mostrar.nombre_gestor_correccion"
+                        v-bind:desactivar_correccion="permisos_disables.desactivar_nombre_gestor_correccion"
 
                         v-on:changevalido="update_nombre_gestor_valido($event)"
                         v-on:changecorrecto="update_nombre_gestor_correcto($event)"
@@ -112,20 +110,20 @@
                 </div>
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
-                        v-if="$props.mostrar_dni_gestor"
+                        v-if="permisos_mostrar.dni_gestor"
 
-                        v-bind:valor_input_props="form_pagina.gestor_dni"
-                        v-bind:valor_input_validacion="form_pagina.gestor_dni_valido"
-                        v-bind:evualacion_correcto="form_pagina.gestor_dni_correcto"
-                        v-bind:valor_obs="form_pagina.obs_gestor_dni"
-                        v-bind:valor_valido_obs="form_pagina.obs_gestor_dni_valido"
+                        v-bind:valor_input_props="form_catamarca_test.gestor_dni"
+                        v-bind:valor_input_validacion="form_catamarca_test.gestor_dni_valido"
+                        v-bind:evualacion_correcto="form_catamarca_test.gestor_dni_correcto"
+                        v-bind:valor_obs="form_catamarca_test.obs_gestor_dni"
+                        v-bind:valor_valido_obs="form_catamarca_test.obs_gestor_dni_valido"
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing ="mostrar_testing"
                         v-bind:label="'DNI del Gestor:'"
                         v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
-                        v-bind:desactivar_input="$props.desactivar_dni_gestor"
-                        v-bind:mostrar_correccion="$props.mostrar_dni_gestor_correccion"
-                        v-bind:desactivar_correccion="$props.desactivar_dni_gestor_correccion"
+                        v-bind:desactivar_input="permisos_disables.dni_gestor"
+                        v-bind:mostrar_correccion="permisos_mostrar.dni_gestor_correccion"
+                        v-bind:desactivar_correccion="permisos_disables.dni_gestor_correccion"
 
                         v-on:changevalido="update_gestor_dni_valido($event)"
                         v-on:changecorrecto="update_gestor_dni_correcto($event)"
@@ -140,26 +138,20 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
-                    v-if="$props.mostrar_profesion_gestor"
+                    v-if="permisos_mostrar.profesion_gestor"
 
-
-
-
-
-
-
-                    v-bind:valor_input_props="form_pagina.gestor_profesion"
-                    v-bind:valor_input_validacion="form_pagina.gestor_profesion_valido"
-                    v-bind:evualacion_correcto="form_pagina.gestor_profesion_correcto"
-                    v-bind:valor_obs="form_pagina.obs_gestor_profesion"
-                    v-bind:valor_valido_obs="form_pagina.obs_gestor_profesion_valido"
+                    v-bind:valor_input_props="form_catamarca_test.gestor_profesion"
+                    v-bind:valor_input_validacion="form_catamarca_test.gestor_profesion_valido"
+                    v-bind:evualacion_correcto="form_catamarca_test.gestor_profesion_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_gestor_profesion"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_gestor_profesion_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Profesión del Gestor:'"
                     v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
-                    v-bind:desactivar_input="$props.desactivar_profesion_gestor"
-                    v-bind:mostrar_correccion="$props.mostrar_profesion_gestor_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_profesion_gestor_correccion"
+                    v-bind:desactivar_input="permisos_disables.profesion_gestor"
+                    v-bind:mostrar_correccion="permisos_mostrar.profesion_gestor_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.profesion_gestor_correccion"
 
                     v-on:changevalido="update_gestor_profesion_valido($event)"
                     v-on:changecorrecto="update_gestor_profesion_correcto($event)"
@@ -171,26 +163,20 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
-                    v-if="$props.mostrar_telefono_gestor"
+                    v-if="permisos_mostrar.telefono_gestor"
 
-
-
-
-
-
-
-                    v-bind:valor_input_props="form_pagina.gestor_telefono"
-                    v-bind:valor_input_validacion="form_pagina.gestor_telefono_valido"
-                    v-bind:evualacion_correcto="form_pagina.gestor_telefono_correcto"
-                    v-bind:valor_obs="form_pagina.obs_gestor_telefono"
-                    v-bind:valor_valido_obs="form_pagina.obs_gestor_telefono_valido"
+                    v-bind:valor_input_props="form_catamarca_test.gestor_telefono"
+                    v-bind:valor_input_validacion="form_catamarca_test.gestor_telefono_valido"
+                    v-bind:evualacion_correcto="form_catamarca_test.gestor_telefono_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_gestor_telefono"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_gestor_telefono_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Telefono del Gestor:'"
                     v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
-                    v-bind:desactivar_input="$props.desactivar_telefono_gestor"
-                    v-bind:mostrar_correccion="$props.mostrar_telefono_gestor_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_telefono_gestor_correccion"
+                    v-bind:desactivar_input="permisos_disables.telefono_gestor"
+                    v-bind:mostrar_correccion="permisos_mostrar.telefono_gestor_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.telefono_gestor_correccion"
 
                     v-on:changevalido="update_gestor_telefono_valido($event)"
                     v-on:changecorrecto="update_gestor_telefono_correcto($event)"
@@ -204,26 +190,20 @@
         <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
-                    v-if="$props.mostrar_email_gestor"
+                    v-if="permisos_mostrar.email_gestor"
 
-
-
-
-
-
-
-                    v-bind:valor_input_props="form_pagina.gestor_email"
-                    v-bind:valor_input_validacion="form_pagina.gestor_email_valido"
-                    v-bind:evualacion_correcto="form_pagina.gestor_email_correcto"
-                    v-bind:valor_obs="form_pagina.obs_gestor_email"
-                    v-bind:valor_valido_obs="form_pagina.obs_gestor_email_valido"
+                    v-bind:valor_input_props="form_catamarca_test.gestor_email"
+                    v-bind:valor_input_validacion="form_catamarca_test.gestor_email_valido"
+                    v-bind:evualacion_correcto="form_catamarca_test.gestor_email_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_gestor_email"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_gestor_email_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Email del Gestor:'"
                     v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
-                    v-bind:desactivar_input="$props.desactivar_email_gestor"
-                    v-bind:mostrar_correccion="$props.mostrar_email_gestor_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_email_gestor_correccion"
+                    v-bind:desactivar_input="permisos_disables.email_gestor"
+                    v-bind:mostrar_correccion="permisos_mostrar.email_gestor_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.email_gestor_correccion"
 
                     v-on:changevalido="update_gestor_email_valido($event)"
                     v-on:changecorrecto="update_gestor_email_correcto($event)"
@@ -259,12 +239,12 @@
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <CaracterQueInvoca 
-                    v-if="$props.mostrar_notificacion_gestor"
+                    v-if="permisos_mostrar.notificacion_gestor"
 
-                    v-bind:valor_input_props="form_pagina.gestor_notificacion"
-                    v-bind:evualacion_correcto="form_pagina.gestor_notificacion_correcto"
-                    v-bind:valor_obs="form_pagina.obs_gestor_notificacion"
-                    v-bind:valor_valido_obs="form_pagina.obs_gestor_notificacion_valido"
+                    v-bind:valor_input_props="form_catamarca_test.gestor_notificacion"
+                    v-bind:evualacion_correcto="form_catamarca_test.gestor_notificacion_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_gestor_notificacion"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_gestor_notificacion_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Notificar al Gestor'"
@@ -275,9 +255,9 @@
                     v-bind:name_correcion="'correcion_gestor'"
                     v-bind:name_checkbox="'check_gestor'"
 
-                    v-bind:desactivar_owner="$props.desactivar_notificacion_gestor"
-                    v-bind:mostrar_owner_correccion="$props.mostrar_notificacion_gestor_correccion"
-                    v-bind:desactivar_owner_correccion="$props.desactivar_notificacion_gestor_correccion"
+                    v-bind:desactivar_owner="permisos_disables.notificacion_gestor"
+                    v-bind:mostrar_owner_correccion="permisos_mostrar.notificacion_gestor_correccion"
+                    v-bind:desactivar_owner_correccion="permisos_disables.notificacion_gestor_correccion"
                     v-on:changecorrecto="update_gestor_noti_correcto($event)"
                     v-on:changeobs="update_obs_gestor_noti($event)"
                     v-on:changeobsvalido="update_obs_gestor_noti_valida($event)"
@@ -302,29 +282,29 @@
                         <br>
                     </div>
                 <div class="flex" v-if="mostrar_testing">
-                    <br> notificacion de gestor valor padre: {{form_pagina.gestor_notificacion}}
-                    <br> notificacion de gestor  correcto deel padre: {{form_pagina.gestor_notificacion_correcto}}
-                    <br> notificacion de gestor  observacion deel padre: {{form_pagina.obs_gestor_notificacion}}
-                    <br> notificacion de gestor  observacion valida deel padre: {{form_pagina.obs_gestor_notificacion_valido}}
+                    <br> notificacion de gestor valor padre: {{form_catamarca_test.gestor_notificacion}}
+                    <br> notificacion de gestor  correcto deel padre: {{form_catamarca_test.gestor_notificacion_correcto}}
+                    <br> notificacion de gestor  observacion deel padre: {{form_catamarca_test.obs_gestor_notificacion}}
+                    <br> notificacion de gestor  observacion valida deel padre: {{form_catamarca_test.obs_gestor_notificacion_valido}}
                 </div>
             </div>
         </div>
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo 
-                v-if="$props.mostrar_foto_productor"
+                v-if="permisos_mostrar.foto_productor"
 
-                    v-bind:valor_input_props="form_pagina.foto_4x4"
-                    v-bind:valor_input_validacion="form_pagina.foto_4x4_valido"
-                    v-bind:evualacion_correcto="form_pagina.foto_4x4_correcto"
-                    v-bind:valor_obs="form_pagina.obs_foto_4x4"
-                    v-bind:valor_valido_obs="form_pagina.obs_foto_4x4_valido"
+                    v-bind:valor_input_props="form_catamarca_test.foto_4x4"
+                    v-bind:valor_input_validacion="form_catamarca_test.foto_4x4_valido"
+                    v-bind:evualacion_correcto="form_catamarca_test.foto_4x4_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_foto_4x4"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_foto_4x4_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Foto 4x4'"
-                    v-bind:desactivar_input="$props.desactivar_foto_productor"
-                    v-bind:mostrar_correccion="$props.mostrar_foto_productor_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_foto_productor_correccion"
+                    v-bind:desactivar_input="permisos_disables.foto_productor"
+                    v-bind:mostrar_correccion="permisos_mostrar.foto_productor_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.foto_productor_correccion"
 
                     v-on:changevalido="update_foto_valido($event)"
                     v-on:changecorrecto="update_foto_correcto($event)"
@@ -367,19 +347,19 @@
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo 
-                v-if="$props.mostrar_dni_productor"
+                v-if="permisos_mostrar.dni_productor"
 
-                    v-bind:valor_input_props="form_pagina.primer_hoja_dni"
-                    v-bind:valor_input_validacion="form_pagina.hoja_dni_valido"
-                    v-bind:evualacion_correcto="form_pagina.hoja_dni_correcto"
-                    v-bind:valor_obs="form_pagina.obs_hoja_dni"
-                    v-bind:valor_valido_obs="form_pagina.obs_hoja_dni_valido"
+                    v-bind:valor_input_props="form_catamarca_test.primer_hoja_dni"
+                    v-bind:valor_input_validacion="form_catamarca_test.hoja_dni_valido"
+                    v-bind:evualacion_correcto="form_catamarca_test.hoja_dni_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_hoja_dni"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_hoja_dni_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Copia de 1° hoja de D.N.I.'"
-                    v-bind:desactivar_input="$props.desactivar_dni_productor"
-                    v-bind:mostrar_correccion="$props.mostrar_dni_productor_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_dni_productor_correccion"
+                    v-bind:desactivar_input="permisos_disables.dni_productor"
+                    v-bind:mostrar_correccion="permisos_mostrar.dni_productor_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.dni_productor_correccion"
 
                     v-on:changevalido="update_resol_conce_valido($event)"
                     v-on:changecorrecto="update_resol_conce_correcto($event)"
@@ -393,19 +373,19 @@
                 <hr>
                 <br>
                 <SubirArchivo 
-                v-if="$props.mostrar_dni_productor"
+                v-if="permisos_mostrar.dni_productor"
 
-                    v-bind:valor_input_props="form_pagina.segunda_hoja_dni"
-                    v-bind:valor_input_validacion="form_pagina.segunda_hoja_dni_valido"
-                    v-bind:evualacion_correcto="form_pagina.segunda_hoja_dni_correcto"
-                    v-bind:valor_obs="form_pagina.obs_segunda_hoja_dni"
-                    v-bind:valor_valido_obs="form_pagina.obs_segunda_hoja_dni_valido"
+                    v-bind:valor_input_props="form_catamarca_test.segunda_hoja_dni"
+                    v-bind:valor_input_validacion="form_catamarca_test.segunda_hoja_dni_valido"
+                    v-bind:evualacion_correcto="form_catamarca_test.segunda_hoja_dni_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_segunda_hoja_dni"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_segunda_hoja_dni_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Copia de 2° hoja de D.N.I.'"
-                    v-bind:desactivar_input="$props.desactivar_dni_productor"
-                    v-bind:mostrar_correccion="$props.mostrar_dni_productor_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_dni_productor_correccion"
+                    v-bind:desactivar_input="permisos_disables.desactivar_dni_productor"
+                    v-bind:mostrar_correccion="permisos_mostrar.dni_productor_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.dni_productor_correccion"
                     
                     v-on:changevalido="update_resol_conce_valido($event)"
                     v-on:changecorrecto="update_resol_conce_correcto($event)"
@@ -451,19 +431,19 @@
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo 
-                v-if="$props.mostrar_autorizacion_gestor"
+                v-if="permisos_mostrar.autorizacion_gestor"
 
-                    v-bind:valor_input_props="form_pagina.autorizacion_gestor"
-                    v-bind:valor_input_validacion="form_pagina.autorizacion_gestor_valido"
-                    v-bind:evualacion_correcto="form_pagina.autorizacion_gestor_correcto"
-                    v-bind:valor_obs="form_pagina.obs_autorizacion_gestor"
-                    v-bind:valor_valido_obs="form_pagina.obs_autorizacion_gestor_valido"
+                    v-bind:valor_input_props="form_catamarca_test.autorizacion_gestor"
+                    v-bind:valor_input_validacion="form_catamarca_test.autorizacion_gestor_valido"
+                    v-bind:evualacion_correcto="form_catamarca_test.autorizacion_gestor_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_autorizacion_gestor"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_autorizacion_gestor_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Autorizacion de que el Gestor Representa la Empresa'"
-                    v-bind:desactivar_input="$props.desactivar_autorizacion_gestor"
-                    v-bind:mostrar_correccion="$props.mostrar_autorizacion_gestor_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_autorizacion_gestor_correccion"
+                    v-bind:desactivar_input="permisos_disables.autorizacion_gestor"
+                    v-bind:mostrar_correccion="permisos_mostrar.autorizacion_gestor_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.autorizacion_gestor_correccion"
 
                     v-on:changevalido="update_gestor_autorizacion_valido($event)"
                     v-on:changecorrecto="update_gestor_autorizacion_correcto($event)"
@@ -506,19 +486,19 @@
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
                 <SubirArchivo 
-                    v-if="$props.mostrar_constancia_afip"
+                    v-if="permisos_mostrar.constancia_afip"
 
-                    v-bind:valor_input_props="form_pagina.constancia_afip"
-                    v-bind:valor_input_validacion="form_pagina.constancia_afip_valido"
-                    v-bind:evualacion_correcto="form_pagina.constancia_afip_correcto"
-                    v-bind:valor_obs="form_pagina.obs_constancia_afip"
-                    v-bind:valor_valido_obs="form_pagina.obs_constancia_afip_valido"
+                    v-bind:valor_input_props="form_catamarca_test.constancia_afip"
+                    v-bind:valor_input_validacion="form_catamarca_test.constancia_afip_valido"
+                    v-bind:evualacion_correcto="form_catamarca_test.constancia_afip_correcto"
+                    v-bind:valor_obs="form_catamarca_test.obs_constancia_afip"
+                    v-bind:valor_valido_obs="form_catamarca_test.obs_constancia_afip_valido"
                     v-bind:evaluacion="autoridad_minera"
                     v-bind:testing ="mostrar_testing"
                     v-bind:label="'Constancia de AFIP'"
-                    v-bind:desactivar_input="$props.desactivar_constancia_afip"
-                    v-bind:mostrar_correccion="$props.mostrar_constancia_afip_correccion"
-                    v-bind:desactivar_correccion="$props.desactivar_constancia_afip_correccion"
+                    v-bind:desactivar_input="permisos_disables.constancia_afip"
+                    v-bind:mostrar_correccion="permisos_mostrar.constancia_afip_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.constancia_afip_correccion"
 
                     v-on:changevalido="update_constancia_afip_valido($event)"
                     v-on:changecorrecto="update_constancia_afip_correcto($event)"
@@ -557,7 +537,6 @@
         </div>
         <br>
         <br>
-id: {{$props.id}}
         <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div>
@@ -567,7 +546,7 @@ id: {{$props.id}}
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de la Mina'"
-            :formulario = "form_pagina"
+            :formulario = "form_catamarca_test"
 
             :donde_guardar="$props.donde_estoy"
 
@@ -601,123 +580,13 @@ export default {
         'titulo_boton_guardar',
         'titulo_pagina',
 
-        'gestor_nombre_apellido',
-        'gestor_nombre_apellido_valido',
-        'gestor_nombre_apellido_correcto',
-        'obs_gestor_nombre_apellido',
-        'obs_gestor_nombre_valido',
-        'mostrar_nombre_gestor',
-        'desactivar_nombre_gestor',
-        'mostrar_nombre_gestor_correccion',
-        'desactivar_nombre_gestor_correccion',
-
-        'gestor_dni',
-        'gestor_dni_valido',
-        'gestor_dni_correcto',
-        'obs_gestor_dni',
-        'obs_gestor_dni_valido',
-        'mostrar_dni_gestor',
-        'desactivar_dni_gestor',
-        'mostrar_dni_gestor_correccion',
-        'desactivar_dni_gestor_correccion',
-
-        'gestor_profesion',
-        'gestor_profesion_valido',
-        'gestor_profesion_correcto',
-        'obs_gestor_profesion',
-        'obs_gestor_profesion_valido',
-        'mostrar_profesion_gestor',
-        'desactivar_profesion_gestor',
-        'mostrar_profesion_gestor_correccion',
-        'desactivar_profesion_gestor_correccion',
-
-        'gestor_telefono',
-        'gestor_telefono_valido',
-        'gestor_telefono_correcto',
-        'obs_gestor_telefono',
-        'obs_gestor_telefono_valido',
-        'mostrar_telefono_gestor',
-        'desactivar_telefono_gestor',
-        'mostrar_telefono_gestor_correccion',
-        'desactivar_telefono_gestor_correccion',
-
-        'gestor_notificacion',
-        'gestor_notificacion_valido',
-        'gestor_notificacion_correcto',
-        'obs_gestor_notificacion',
-        'obs_gestor_notificacion_valido',
-        'mostrar_notificacion_gestor',
-        'desactivar_notificacion_gestor',
-        'mostrar_notificacion_gestor_correccion',
-        'desactivar_notificacion_gestor_correccion',
-
-        'gestor_email',
-        'gestor_email_valido',
-        'gestor_email_correcto',
-        'obs_gestor_email',
-        'obs_gestor_email_valido',
-        'mostrar_email_gestor',
-        'desactivar_email_gestor',
-        'mostrar_email_gestor_correccion',
-        'desactivar_email_gestor_correccion',
-
-        'primer_hoja_dni',
-        'hoja_dni_valido',
-        'hoja_dni_correcto',
-        'obs_hoja_dni',
-        'obs_hoja_dni_valido',
-        'mostrar_dni_productor',
-        'desactivar_dni_productor',
-        'mostrar_dni_productor_correccion',
-        'desactivar_dni_productor_correccion',
-
-
-        'segunda_hoja_dni',
-        'segunda_hoja_dni_valido',
-        'segunda_hoja_dni_correcto',
-        'obs_segunda_hoja_dni',
-        'obs_segunda_hoja_dni_valido',
-
-
-
-        'foto_4x4',
-        'foto_4x4_valido',
-        'foto_4x4_correcto',
-        'obs_foto_4x4',
-        'obs_foto_4x4_valido',
-        'mostrar_foto_productor',
-        'desactivar_foto_productor',
-        'mostrar_foto_productor_correccion',
-        'desactivar_foto_productor_correccion',
-
-        'constancia_afip',
-        'constancia_afip_valido',
-        'constancia_afip_correcto',
-        'obs_constancia_afip',
-        'obs_constancia_afip_valido',
-        'mostrar_constancia_afip',
-        'desactivar_constancia_afip',
-        'mostrar_constancia_afip_correccion',
-        'desactivar_constancia_afip_correccion',
-
-        'autorizacion_gestor',
-        'autorizacion_gestor_valido',
-        'autorizacion_gestor_correcto',
-        'obs_autorizacion_gestor',
-        'obs_autorizacion_gestor_valido',
-        'mostrar_autorizacion_gestor',
-        'desactivar_autorizacion_gestor',
-        'mostrar_autorizacion_gestor_correccion',
-        'desactivar_autorizacion_gestor_correccion',
-
-
         'mostrar_boton_catamarca',
         'desactivar_boton_catamarca',
+
         'evaluacion',
         'id',
         'testing',
     ],
- 
     components: {
 		JetDialogModal,
         CardMinaUbicacion,
@@ -739,78 +608,9 @@ export default {
             mostrar_testing:false,
             autoridad_minera:this.$props.evaluacion,
             ayuda_local: false,
-            form_pagina: {
-                gestor_nombre_apellido:this.$props.gestor_nombre_apellido,
-                gestor_nombre_apellido_valido: this.$props.gestor_nombre_apellido_valido,
-                gestor_nombre_apellido_correcto: this.$props.gestor_nombre_apellido_correcto,
-                obs_gestor_nombre_apellido: this.$props.obs_gestor_nombre_apellido,
-                obs_gestor_nombre_valido: this.$props.obs_gestor_nombre_valido,
-
-                gestor_dni:this.$props.gestor_dni,
-                gestor_dni_valido: this.$props.gestor_dni_valido,
-                gestor_dni_correcto: this.$props.gestor_dni_correcto,
-                obs_gestor_dni: this.$props.obs_gestor_dni,
-                obs_gestor_dni_valido: this.$props.obs_gestor_dni_valido,
-
-                gestor_profesion:this.$props.gestor_profesion,
-                gestor_profesion_valido: this.$props.gestor_profesion_valido,
-                gestor_profesion_correcto: this.$props.gestor_profesion_correcto,
-                obs_gestor_profesion: this.$props.obs_gestor_profesion,
-                obs_gestor_profesion_valido: this.$props.obs_gestor_profesion_valido,
-
-                gestor_telefono:this.$props.gestor_telefono,
-                gestor_telefono_valido: this.$props.gestor_telefono_valido,
-                gestor_telefono_correcto: this.$props.gestor_telefono_correcto,
-                obs_gestor_telefono: this.$props.obs_gestor_telefono,
-                obs_gestor_telefono_valido: this.$props.obs_gestor_telefono_valido,
-
-                gestor_notificacion:this.$props.gestor_notificacion,
-                gestor_notificacion_valido: this.$props.gestor_notificacion_valido,
-                gestor_notificacion_correcto: this.$props.gestor_notificacion_correcto,
-                obs_gestor_notificacion: this.$props.obs_gestor_notificacion,
-                obs_gestor_notificacion_valido: this.$props.obs_gestor_notificacion_valido,
-
-                gestor_email:this.$props.gestor_email,
-                gestor_email_valido: this.$props.gestor_email_valido,
-                gestor_email_correcto: this.$props.gestor_email_correcto,
-                obs_gestor_email: this.$props.obs_gestor_email,
-                obs_gestor_email_valido: this.$props.obs_gestor_email_valido,
-
-                primer_hoja_dni:this.$props.primer_hoja_dni,
-                hoja_dni_valido: this.$props.hoja_dni_valido,
-                hoja_dni_correcto: this.$props.hoja_dni_correcto,
-                obs_hoja_dni: this.$props.obs_hoja_dni,
-                obs_hoja_dni_valido: this.$props.obs_hoja_dni_valido,
-
-                segunda_hoja_dni:this.$props.segunda_hoja_dni,
-                segunda_hoja_dni_valido: this.$props.segunda_hoja_dni_valido,
-                segunda_hoja_dni_correcto: this.$props.segunda_hoja_dni_correcto,
-                obs_segunda_hoja_dni: this.$props.obs_segunda_hoja_dni,
-                obs_segunda_hoja_dni_valido: this.$props.obs_segunda_hoja_dni_valido,
-
-                foto_4x4:this.$props.foto_4x4,
-                foto_4x4_valido: this.$props.foto_4x4_valido,
-                foto_4x4_correcto: this.$props.foto_4x4_correcto,
-                obs_foto_4x4: this.$props.obs_foto_4x4,
-                obs_foto_4x4_valido: this.$props.obs_foto_4x4_valido,
-
-                constancia_afip:this.$props.constancia_afip,
-                constancia_afip_valido: this.$props.constancia_afip_valido,
-                constancia_afip_correcto: this.$props.constancia_afip_correcto,
-                obs_constancia_afip: this.$props.obs_constancia_afip,
-                obs_constancia_afip_valido: this.$props.obs_constancia_afip_valido,
-
-
-                autorizacion_gestor:this.$props.autorizacion_gestor,
-                autorizacion_gestor_valido: this.$props.autorizacion_gestor_valido,
-                autorizacion_gestor_correcto: this.$props.autorizacion_gestor_correcto,
-                obs_autorizacion_gestor: this.$props.obs_autorizacion_gestor,
-                obs_autorizacion_gestor_valido: this.$props.obs_autorizacion_gestor_valido,
-
-                valor_de_progreso:  100,
-                valor_de_aprobado:  100,
-                valor_de_reprobado:  100,
-            },
+            permisos_mostrar:[],
+            permisos_disables:[],
+            form_catamarca_test:{},
             lista_departamentos:[],
             lista_localidades:[],
         };
@@ -998,7 +798,40 @@ export default {
         },
 
 
-  }
-  
+  },
+  mounted(){
+      let self  = this;
+      this.$nextTick(() => {
+		console.log("por buscar los datos de catamarca desde el hijo \n\n\n");
+		if(this.$inertia.page.props.user.id_provincia === 10 )
+        {
+            //voy a BUSCAR LOS DATOS DEL FORMULARIO
+			axios.get('/formularios/traer_datos_pagina_catamarca'+'/'+parseInt(this.$props.id))
+            .then(function (response) {
+                if(response.data.status === 'ok')
+                {
+                self.form_catamarca_test = response.data.datos;
+                }
+                else console.log("error al buscar datos: "+response.data.msg);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            //voy a buscar los permisos
+            axios.get('/formularios/traer_permisos_pagina_catamarca'+'/'+parseInt(this.$props.id)+'/crear')
+            .then(function (response) {
+                if(response.data.status === 'ok')
+                {
+                    self.permisos_mostrar = response.data.mostrar;
+                    self.permisos_disables = response.data.disables;
+                }
+                else console.log("error al buscar permisos: "+response.data.msg);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+		}
+		});
+    }
 };
 </script>

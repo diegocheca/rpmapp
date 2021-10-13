@@ -189,6 +189,7 @@ Route::post('/formularios/evaluacion_auto_guardado_seis', [FormAltaProductorCont
 Route::post('/formularios/evaluacion_auto_guardado_catamarcas', [FormAltaProductorController::class, "correccion_guardar_paso_catamarca"])->name('correccion_guardar-paso-catamarca');
 
 Route::get('/formularios/traer_datos_pagina_catamarca/{id}', [FormAltaProductorCatamarcaController::class, "traer_datos_pagina_catamarca"])->name('traer-datos-pagina-catamarca');
+Route::get('/formularios/traer_permisos_pagina_catamarca/{id}/{accion}', [FormAltaProductorCatamarcaController::class, "traer_permisos_pagina_catamarca"])->name('traer-permisos-pagina-catamarca');
 
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
 Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');

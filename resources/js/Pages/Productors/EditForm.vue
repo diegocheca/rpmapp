@@ -1068,10 +1068,9 @@ id
 **
 {{$props.productor.id}}
 
-{{form_catamarca.gestor_nombre_apellido}}
 
 			<div id="section_catamarca" v-if="$props.mostrar.paso_catamarca"></div>
-			<PaginaCatamarca
+			<!-- <PaginaCatamarca
 			v-if="$props.mostrar.paso_catamarca"
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -1202,6 +1201,18 @@ id
 				:desactivar_boton_catamarca="$props.disables.boton_catamarca"
 
 				
+				:evaluacion ="evaluacion_global"
+				:testing="testing_global"
+				:id="$props.productor.id"
+			>
+			</PaginaCatamarca> -->
+			<PaginaCatamarca
+			v-if="$props.mostrar.paso_catamarca"
+				:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos Form Catamarca'"
+				:titulo_pagina="'Pagina De Catamarca'"
+
 				:evaluacion ="evaluacion_global"
 				:testing="testing_global"
 				:id="$props.productor.id"
@@ -2031,7 +2042,7 @@ export default {
 				
 				
 			},
-			form_catamarca: {
+			/* form_catamarca: {
 				gestor_nombre_apellido:'',
 				gestor_nombre_apellido_valido:'',
 				gestor_nombre_apellido_correcto:'',
@@ -2150,7 +2161,7 @@ export default {
 
 
 
-			},
+			}, */
 			nuevo: this.$props.productor,
 		};
 	},
@@ -3925,7 +3936,7 @@ export default {
 		}
         });
 
-	this.$nextTick(() => {
+	/* this.$nextTick(() => {
 		console.log("por buscar los datos de catamarca");
 		if(this.$inertia.page.props.user.id_provincia === 10 )
         {
@@ -4037,7 +4048,7 @@ export default {
             });
 		}
 		});
-
+ */
 		
 
 		// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
