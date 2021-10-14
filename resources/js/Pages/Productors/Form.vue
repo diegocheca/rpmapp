@@ -1255,7 +1255,7 @@
                     hover:bg-gray-600
                   "
                 >
-                  Volver
+                  Volver Atras
                 </inertia-link>
               </div>
             </div>

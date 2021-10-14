@@ -1,11 +1,11 @@
 <style>
-input:checked {
-  background-color: #22c55e; /* bg-green-500 */
-}
+    input:checked {
+        background-color: #22c55e; /* bg-green-500 */
+    }
 
-input:checked ~ span:last-child {
-  --tw-translate-x: 1.75rem; /* translate-x-7 */
-}
+    input:checked ~ span:last-child {
+        --tw-translate-x: 1.75rem; /* translate-x-7 */
+    }
 </style>
 <template>
     <div>
@@ -683,8 +683,8 @@ input:checked ~ span:last-child {
 </template>
 
 <script>
-import JetDialogModal from "@/Jetstream/DialogModal";
-import CardMinaUbicacion from "@/Jetstream/altas/CardMinaUbicacion";
+import JetDialogModal from '@/Jetstream/DialogModal';
+import CardMinaUbicacion from '@/Jetstream/altas/CardMinaUbicacion';
 import SelectProvincia from "@/Pages/Productors/SelectProvincia";
 import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 import NombreMina from "@/Pages/Productors/NombreMina";
@@ -694,7 +694,7 @@ import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
 //import BotonesPaginaCatamarca from "@/Pages/Productors/BotonesPaginaCatamarca";
 
-import Label from "../../Jetstream/Label.vue";
+import Label from '../../Jetstream/Label.vue';
 export default {
      props: [
         'link_volver',
@@ -734,171 +734,190 @@ export default {
             lista_localidades:[],
         };
     },
+    methods:{
+        cerrar_modal_datos_uno() {
+            this.mostrar_modal_datos_ya_guardados = false
+		},
 
-    //FUNCIONES DE NOMBRE DE GESTOR
-    update_nombre_gestor_valido(newValue) {
-      this.form_pagina.gestor_nombre_apellido_valido = newValue;
-    },
-    update_nombre_gestor_correcto(newValue) {
-      this.form_pagina.gestor_nombre_apellido_correcto = newValue;
-    },
-    update_obs_nombre_gestor(newValue) {
-      this.form_pagina.obs_gestor_nombre_apellido = newValue;
-    },
-    update_obs_nombre_gestor_valida(newValue) {
-      this.form_pagina.obs_gestor_nombre_valido = newValue;
-    },
-    update_valor_nombre_gestor(newValue) {
-      this.form_pagina.gestor_nombre_apellido = newValue;
-    },
 
-    //FUNCIONES DE DNI DE GESTOR
-    update_gestor_dni_valido(newValue) {
-      this.form_pagina.gestor_dni_valido = newValue;
-    },
-    update_gestor_dni_correcto(newValue) {
-      this.form_pagina.gestor_dni_correcto = newValue;
-    },
-    update_obs_gestor_dni(newValue) {
-      this.form_pagina.obs_gestor_dni = newValue;
-    },
-    update_obs_gestor_dni_valida(newValue) {
-      this.form_pagina.obs_gestor_dni_valido = newValue;
-    },
-    update_valor_gestor_dni(newValue) {
-      this.form_pagina.gestor_dni = newValue;
-    },
 
-    //FUNCIONES DE PROFESION DE GESTOR
-    update_gestor_profesion_valido(newValue) {
-      this.form_pagina.gestor_profesion_valido = newValue;
-    },
-    update_gestor_profesion_correcto(newValue) {
-      this.form_pagina.gestor_profesion_correcto = newValue;
-    },
-    update_obs_gestor_profesion(newValue) {
-      this.form_pagina.obs_gestor_profesion = newValue;
-    },
-    update_obs_gestor_profesion_valida(newValue) {
-      this.form_pagina.obs_gestor_profesion_valido = newValue;
-    },
-    update_valor_gestor_profesion(newValue) {
-      this.form_pagina.gestor_profesion = newValue;
-    },
 
-    //FUNCIONES DE Telefono DE GESTOR
-    update_gestor_telefono_valido(newValue) {
-      this.form_pagina.gestor_telefono_valido = newValue;
-    },
-    update_gestor_telefono_correcto(newValue) {
-      this.form_pagina.gestor_telefono_correcto = newValue;
-    },
-    update_obs_gestor_telefono(newValue) {
-      this.form_pagina.obs_gestor_telefono = newValue;
-    },
-    update_obs_gestor_telefono_valida(newValue) {
-      this.form_pagina.obs_gestor_telefono_valido = newValue;
-    },
-    update_valor_gestor_telefono(newValue) {
-      this.form_pagina.gestor_telefono = newValue;
-    },
+        //FUNCIONES DE NOMBRE DE GESTOR
+        update_nombre_gestor_valido(newValue){
+            this.form_pagina.gestor_nombre_apellido_valido = newValue;
+        },
+        update_nombre_gestor_correcto(newValue){
+            this.form_pagina.gestor_nombre_apellido_correcto = newValue;
+        },
+        update_obs_nombre_gestor(newValue){
+            this.form_pagina.obs_gestor_nombre_apellido = newValue;
+        },
+        update_obs_nombre_gestor_valida(newValue){
+            this.form_pagina.obs_gestor_nombre_valido = newValue;
+        },
+        update_valor_nombre_gestor(newValue){
+            this.form_pagina.gestor_nombre_apellido = newValue;
+        },
 
-    //FUNCIONES DE N OTIFICACION DE GESTOR
-    update_gestor_noti_valido(newValue) {
-      this.form_pagina.gestor_notificacion_valido = newValue;
-    },
-    update_gestor_noti_correcto(newValue) {
-      this.form_pagina.gestor_notificacion_correcto = newValue;
-    },
-    update_obs_gestor_noti(newValue) {
-      this.form_pagina.obs_gestor_notificacion = newValue;
-    },
-    update_obs_gestor_noti_valida(newValue) {
-      this.form_pagina.obs_gestor_notificacion_valido = newValue;
-    },
-    update_valor_gestor_noti(newValue) {
-      this.form_pagina.gestor_notificacion = newValue;
-    },
+        //FUNCIONES DE DNI DE GESTOR
+        update_gestor_dni_valido(newValue){
+            this.form_pagina.gestor_dni_valido = newValue;
+        },
+        update_gestor_dni_correcto(newValue){
+            this.form_pagina.gestor_dni_correcto = newValue;
+        },
+        update_obs_gestor_dni(newValue){
+            this.form_pagina.obs_gestor_dni = newValue;
+        },
+        update_obs_gestor_dni_valida(newValue){
+            this.form_pagina.obs_gestor_dni_valido = newValue;
+        },
+        update_valor_gestor_dni(newValue){
+            this.form_pagina.gestor_dni = newValue;
+        },
 
-    //FUNCIONES DE PROFESION DE GESTOR
-    update_gestor_email_valido(newValue) {
-      this.form_pagina.gestor_email_valido = newValue;
-    },
-    update_gestor_email_correcto(newValue) {
-      this.form_pagina.gestor_email_correcto = newValue;
-    },
-    update_obs_gestor_email(newValue) {
-      this.form_pagina.obs_gestor_email = newValue;
-    },
-    update_obs_gestor_email_valida(newValue) {
-      this.form_pagina.obs_gestor_email_valido = newValue;
-    },
-    update_valor_gestor_email(newValue) {
-      this.form_pagina.gestor_email = newValue;
-    },
+        //FUNCIONES DE PROFESION DE GESTOR
+        update_gestor_profesion_valido(newValue){
+            this.form_pagina.gestor_profesion_valido = newValue;
+        },
+        update_gestor_profesion_correcto(newValue){
+            this.form_pagina.gestor_profesion_correcto= newValue;
+        },
+        update_obs_gestor_profesion(newValue){
+            this.form_pagina.obs_gestor_profesion = newValue;
+        },
+        update_obs_gestor_profesion_valida(newValue){
+            this.form_pagina.obs_gestor_profesion_valido = newValue;
+        },
+        update_valor_gestor_profesion(newValue){
+            this.form_pagina.gestor_profesion = newValue;
+        },
 
-    update_gestor_autorizacion_valido(newValue) {
-      this.form_pagina.autorizacion_gestor_valido = newValue;
-      //tengo que enviarsela al padre
-    },
-    update_gestor_autorizacion_correcto(newValue) {
-      this.form_pagina.autorizacion_gestor_correcto = newValue;
-      //tengo que enviarsela al padre
-    },
-    update_obs_gestor_autorizacion(newValue) {
-      this.form_pagina.obs_autorizacion_gestor = newValue;
-      //tengo que enviarsela al padre
-    },
-    update_obs_gestor_autorizacion_valido(newValue) {
-      console.log("traje un" + newValue);
-      this.form_pagina.obs_autorizacion_gestor_valido = newValue;
-      //tengo que enviarsela al padre
-    },
-    cambio_el_archivo_gestor_autorizacion(newValue) {
-      console.log("traje un" + newValue);
-      this.form_pagina.autorizacion_gestor = newValue;
-      //tengo que enviarsela al padre
-    },
+        //FUNCIONES DE Telefono DE GESTOR
+        update_gestor_telefono_valido(newValue){
+            this.form_pagina.gestor_telefono_valido = newValue;
+        },
+        update_gestor_telefono_correcto(newValue){
+            this.form_pagina.gestor_telefono_correcto= newValue;
+        },
+        update_obs_gestor_telefono(newValue){
+            this.form_pagina.obs_gestor_telefono = newValue;
+        },
+        update_obs_gestor_telefono_valida(newValue){
+            this.form_pagina.obs_gestor_telefono_valido = newValue;
+        },
+        update_valor_gestor_telefono(newValue){
+            this.form_pagina.gestor_telefono = newValue;
+        },
 
-    update_constancia_afip_valido(newValue) {
-      this.form_pagina.constancia_afip_valido = newValue;
-      //tengo que enviarsela al padre
-    },
-    update_constancia_afip_correcto(newValue) {
-      this.form_pagina.constancia_afip_correcto = newValue;
-      //tengo que enviarsela al padre
-    },
-    update_obs_constancia_afip(newValue) {
-      this.form_pagina.obs_constancia_afip = newValue;
-      //tengo que enviarsela al padre
-    },
-    update_obs_constancia_afip_valido(newValue) {
-      console.log("traje un" + newValue);
-      this.form_pagina.obs_constancia_afip_valido = newValue;
-      //tengo que enviarsela al padre
-    },
-    cambio_el_archivo_constancia_afip(newValue) {
-      console.log("traje un" + newValue);
-      this.form_pagina.constancia_afip = newValue;
-      //tengo que enviarsela al padre
-    },
+        //FUNCIONES DE N OTIFICACION DE GESTOR
+        update_gestor_noti_valido(newValue){
+            this.form_pagina.gestor_notificacion_valido = newValue;
+        },
+        update_gestor_noti_correcto(newValue){
+            this.form_pagina.gestor_notificacion_correcto= newValue;
+        },
+        update_obs_gestor_noti(newValue){
+            this.form_pagina.obs_gestor_notificacion = newValue;
+        },
+        update_obs_gestor_noti_valida(newValue){
+            this.form_pagina.obs_gestor_notificacion_valido = newValue;
+        },
+        update_valor_gestor_noti(newValue){
+            this.form_pagina.gestor_notificacion = newValue;
+        },
 
-    update_foto_valido(newValue) {
-      this.form_pagina.foto_4x4_valido = newValue;
-    },
-    update_foto_correcto(newValue) {
-      this.form_pagina.foto_4x4_correcto = newValue;
-    },
-    update_obs_foto(newValue) {
-      this.form_pagina.obs_foto_4x4 = newValue;
-    },
-    update_obs_foto_valido(newValue) {
-      this.form_pagina.obs_foto_4x4_valido = newValue;
-    },
-    cambio_el_archivo_foto(newValue) {
-      this.form_pagina.foto_4x4 = newValue;
-    },
+        //FUNCIONES DE PROFESION DE GESTOR
+        update_gestor_email_valido(newValue){
+            this.form_pagina.gestor_email_valido = newValue;
+        },
+        update_gestor_email_correcto(newValue){
+            this.form_pagina.gestor_email_correcto= newValue;
+        },
+        update_obs_gestor_email(newValue){
+            this.form_pagina.obs_gestor_email = newValue;
+        },
+        update_obs_gestor_email_valida(newValue){
+            this.form_pagina.obs_gestor_email_valido = newValue;
+        },
+        update_valor_gestor_email(newValue){
+            this.form_pagina.gestor_email = newValue;
+        },
 
+        update_gestor_autorizacion_valido(newValue){
+            this.form_pagina.autorizacion_gestor_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_gestor_autorizacion_correcto(newValue){
+            this.form_pagina.autorizacion_gestor_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_gestor_autorizacion(newValue){
+            this.form_pagina.obs_autorizacion_gestor = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_gestor_autorizacion_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_autorizacion_gestor_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        cambio_el_archivo_gestor_autorizacion(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.autorizacion_gestor = newValue;
+            //tengo que enviarsela al padre
+        },
+
+
+        update_constancia_afip_valido(newValue){
+            this.form_pagina.constancia_afip_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_constancia_afip_correcto(newValue){
+            this.form_pagina.constancia_afip_correcto = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_constancia_afip(newValue){
+            this.form_pagina.obs_constancia_afip = newValue;
+            //tengo que enviarsela al padre
+        },
+        update_obs_constancia_afip_valido(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.obs_constancia_afip_valido = newValue;
+            //tengo que enviarsela al padre
+        },
+        cambio_el_archivo_constancia_afip(newValue){
+            console.log("traje un"+newValue);
+            this.form_pagina.constancia_afip = newValue;
+            //tengo que enviarsela al padre
+        },
+
+        update_foto_valido(newValue){
+            this.form_pagina.foto_4x4_valido = newValue;
+        },
+        update_foto_correcto(newValue){
+            this.form_pagina.foto_4x4_correcto = newValue;
+        },
+        update_obs_foto(newValue){
+            this.form_pagina.obs_foto_4x4 = newValue;
+        },
+        update_obs_foto_valido(newValue){
+            this.form_pagina.obs_foto_4x4_valido = newValue;
+        },
+        cambio_el_archivo_foto(newValue){
+            this.form_pagina.foto_4x4 = newValue;
+        },
+
+
+
+
+
+        //mostrar ayuda
+        update_valor_ayuda_local(newValor){
+            this.ayuda_local = newValor;
+        },
+
+
+  },
   mounted(){
       let self  = this;
       this.$nextTick(() => {
