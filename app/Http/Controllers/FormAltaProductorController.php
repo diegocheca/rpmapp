@@ -10034,6 +10034,7 @@ class FormAltaProductorController extends Controller
 				//voy a eliminar todo y vuelvo a cargarlos
 				$resultado = Minerales_Borradores::where('id_formulario', '=', $request->id)->delete();
 				//ahora los cargo
+				//dd($request->lista_minerales);
 				foreach ($request->lista_minerales as $mineral) {
 					$nuevo_min = new Minerales_Borradores();
 					$nuevo_min->id_formulario = $request->id;
@@ -10065,7 +10066,6 @@ class FormAltaProductorController extends Controller
 					$nuevo_min->updated_at = null;//date("Y-m-d H:i:s");
 		
 					$resultado = $nuevo_min->save();
-					var_dump($resultado);die();
 				}
 				return response()->json("se actualizaron los datos correctamente");
 			}

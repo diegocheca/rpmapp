@@ -40,21 +40,21 @@ var Observaciones = /*#__PURE__*/function () {
         options: [{
           label: 'Si',
           value: 'aprobado',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
         }, {
           label: 'No',
           value: 'rechazado',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
         }, {
           label: 'Sin evaluar',
           value: 'sin evaluar',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
         }],
         validations: data.action == 'evaluate' ? yup__WEBPACK_IMPORTED_MODULE_1__.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').required('Debes seleccionar una opción').nullable() : null,
         comment: {
           label: 'OBSERVACIÓN',
           value: data.schema["".concat(data.name, "_comentario")],
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].TEXTAREA,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.TEXTAREA,
           name: "".concat(data.name, "_comentario"),
           validationType: "string",
           validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("observacion_".concat(data.name), {
