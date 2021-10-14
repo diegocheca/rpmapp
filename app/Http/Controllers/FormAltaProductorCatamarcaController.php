@@ -159,14 +159,24 @@ class FormAltaProductorCatamarcaController extends Controller
     }
 
     public function traer_permisos_pagina_catamarca($id, $accion){
-        $estado = FormAltaProductor::find($id);
-        if($estado == null)
-            return response()->json([
-                'status' => 'mal',
-                'msg' => 'no se encontro formulario',
-                'disables' => false,
-                'mostrar' => false,
-            ],201);
+        $estado = 0;
+        if(intval($id)  === 0)
+        {
+            $accion = 'crear';
+            $estado = 'borrador';
+        }
+        elseif( intval($id)  > 1)
+        {
+            $estado = FormAltaProductor::find($id);
+            if($estado == null)
+                return response()->json([
+                    'status' => 'mal',
+                    'msg' => 'no se encontro formulario',
+                    'disables' => false,
+                    'mostrar' => false,
+                ],201);
+            else $estado = $estado->estado;
+        }
         if( 
             !(
                 ($accion == 'crear') || ($accion == 'editar') || ($accion == 'ver') 
@@ -193,6 +203,7 @@ class FormAltaProductorCatamarcaController extends Controller
                 'mostrar' => false,
             ],201);
 
+       
         $disables [10]['Productor']['crear']
         ['borrador']['altaProdMinero'] = [
             "nombre_gestor" => false,
@@ -739,12 +750,13 @@ class FormAltaProductorCatamarcaController extends Controller
         ];
         
         //dd($disables[10][$rol]['crear'][$estado->estado]['altaProdMinero']);
+       // dd($rol,$accion, $estado);
 
         return response()->json([
             'status' => 'ok',
             'msg' => 'se encontro correctamente',
-            'disables' => $disables[10][$rol]['crear'][$estado->estado]['altaProdMinero'],
-            'mostrar' => $mostrar[10][$rol]['crear'][$estado->estado]['altaProdMinero']
+            'disables' => $disables[10][$rol][$accion][$estado]['altaProdMinero'],
+            'mostrar' => $mostrar[10][$rol][$accion][$estado]['altaProdMinero']
         ],201);
     }
 }

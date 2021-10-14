@@ -361,7 +361,7 @@ function getSelectorSpecificity(selector) {
 
   var _findSelectorMatch = findSelectorMatch(currentSelector, attributeRegex);
 
-  var _findSelectorMatch2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_findSelectorMatch, 2);
+  var _findSelectorMatch2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_findSelectorMatch, 2);
 
   currentSelector = _findSelectorMatch2[0];
   delta = _findSelectorMatch2[1];
@@ -369,7 +369,7 @@ function getSelectorSpecificity(selector) {
 
   var _findSelectorMatch3 = findSelectorMatch(currentSelector, idRegex);
 
-  var _findSelectorMatch4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_findSelectorMatch3, 2);
+  var _findSelectorMatch4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_findSelectorMatch3, 2);
 
   currentSelector = _findSelectorMatch4[0];
   delta = _findSelectorMatch4[1];
@@ -377,7 +377,7 @@ function getSelectorSpecificity(selector) {
 
   var _findSelectorMatch5 = findSelectorMatch(currentSelector, classRegex);
 
-  var _findSelectorMatch6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_findSelectorMatch5, 2);
+  var _findSelectorMatch6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_findSelectorMatch5, 2);
 
   currentSelector = _findSelectorMatch6[0];
   delta = _findSelectorMatch6[1];
@@ -385,7 +385,7 @@ function getSelectorSpecificity(selector) {
 
   var _findSelectorMatch7 = findSelectorMatch(currentSelector, pseudoElementRegex);
 
-  var _findSelectorMatch8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_findSelectorMatch7, 2);
+  var _findSelectorMatch8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_findSelectorMatch7, 2);
 
   currentSelector = _findSelectorMatch8[0];
   delta = _findSelectorMatch8[1];
@@ -393,7 +393,7 @@ function getSelectorSpecificity(selector) {
 
   var _findSelectorMatch9 = findSelectorMatch(currentSelector, pseudoClassWithBracketsRegex);
 
-  var _findSelectorMatch10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_findSelectorMatch9, 2);
+  var _findSelectorMatch10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_findSelectorMatch9, 2);
 
   currentSelector = _findSelectorMatch10[0];
   delta = _findSelectorMatch10[1];
@@ -401,7 +401,7 @@ function getSelectorSpecificity(selector) {
 
   var _findSelectorMatch11 = findSelectorMatch(currentSelector, pseudoClassRegex);
 
-  var _findSelectorMatch12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_findSelectorMatch11, 2);
+  var _findSelectorMatch12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_findSelectorMatch11, 2);
 
   currentSelector = _findSelectorMatch12[0];
   delta = _findSelectorMatch12[1];
@@ -410,7 +410,7 @@ function getSelectorSpecificity(selector) {
 
   var _findSelectorMatch13 = findSelectorMatch(currentSelector, elementRegex);
 
-  var _findSelectorMatch14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_findSelectorMatch13, 2);
+  var _findSelectorMatch14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_findSelectorMatch13, 2);
 
   currentSelector = _findSelectorMatch14[0];
   delta = _findSelectorMatch14[1];
@@ -1177,7 +1177,7 @@ var runtime_1 = createCommonjsModule(function (module) {
 
 var Property = /*#__PURE__*/function () {
   function Property(document, name, value) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Property);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Property);
 
     this.document = document;
     this.name = name;
@@ -1185,7 +1185,7 @@ var Property = /*#__PURE__*/function () {
     this.isNormalizedColor = false;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Property, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Property, [{
     key: "hasValue",
     value: function hasValue() {
       var value = this.value;
@@ -1314,7 +1314,7 @@ var Property = /*#__PURE__*/function () {
       }
 
       var _ref = typeof axisOrIsFontSize === 'boolean' ? [undefined, axisOrIsFontSize] : [axisOrIsFontSize],
-          _ref2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_ref, 2),
+          _ref2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_ref, 2),
           axis = _ref2[0],
           isFontSize = _ref2[1];
 
@@ -1520,12 +1520,12 @@ Property.textBaselineMapping = {
 
 var ViewPort = /*#__PURE__*/function () {
   function ViewPort() {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, ViewPort);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, ViewPort);
 
     this.viewPorts = [];
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(ViewPort, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(ViewPort, [{
     key: "clear",
     value: function clear() {
       this.viewPorts = [];
@@ -1583,13 +1583,13 @@ var ViewPort = /*#__PURE__*/function () {
 
 var Point = /*#__PURE__*/function () {
   function Point(x, y) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Point);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Point);
 
     this.x = x;
     this.y = y;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Point, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Point, [{
     key: "angleTo",
     value: function angleTo(point) {
       return Math.atan2(point.y - this.y, point.x - this.x);
@@ -1610,7 +1610,7 @@ var Point = /*#__PURE__*/function () {
       var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
       var _toNumbers = toNumbers(point),
-          _toNumbers2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_toNumbers, 2),
+          _toNumbers2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_toNumbers, 2),
           _toNumbers2$ = _toNumbers2[0],
           x = _toNumbers2$ === void 0 ? defaultValue : _toNumbers2$,
           _toNumbers2$2 = _toNumbers2[1],
@@ -1624,7 +1624,7 @@ var Point = /*#__PURE__*/function () {
       var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
       var _toNumbers3 = toNumbers(scale),
-          _toNumbers4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_toNumbers3, 2),
+          _toNumbers4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_toNumbers3, 2),
           _toNumbers4$ = _toNumbers4[0],
           x = _toNumbers4$ === void 0 ? defaultValue : _toNumbers4$,
           _toNumbers4$2 = _toNumbers4[1],
@@ -1652,7 +1652,7 @@ var Point = /*#__PURE__*/function () {
 
 var Mouse = /*#__PURE__*/function () {
   function Mouse(screen) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Mouse);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Mouse);
 
     this.screen = screen;
     this.working = false;
@@ -1662,7 +1662,7 @@ var Mouse = /*#__PURE__*/function () {
     this.onMouseMove = this.onMouseMove.bind(this);
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Mouse, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Mouse, [{
     key: "isWorking",
     value: function isWorking() {
       return this.working;
@@ -1842,7 +1842,7 @@ var Screen = /*#__PURE__*/function () {
         _ref$window = _ref.window,
         window = _ref$window === void 0 ? defaultWindow : _ref$window;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Screen);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Screen);
 
     this.ctx = ctx;
     this.FRAMERATE = 30;
@@ -1861,7 +1861,7 @@ var Screen = /*#__PURE__*/function () {
     this.fetch = fetch;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Screen, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Screen, [{
     key: "wait",
     value: function wait(checker) {
       this.waits.push(checker);
@@ -1932,7 +1932,7 @@ var Screen = /*#__PURE__*/function () {
       var cleanAspectRatio = compressSpaces(aspectRatio).replace(/^defer\s/, ''); // ignore defer
 
       var _cleanAspectRatio$spl = cleanAspectRatio.split(' '),
-          _cleanAspectRatio$spl2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_cleanAspectRatio$spl, 2),
+          _cleanAspectRatio$spl2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_cleanAspectRatio$spl, 2),
           aspectRatioAlign = _cleanAspectRatio$spl2[0],
           aspectRatioMeetOrSlice = _cleanAspectRatio$spl2[1];
 
@@ -2248,16 +2248,16 @@ var Parser = /*#__PURE__*/function () {
         _ref$DOMParser = _ref.DOMParser,
         DOMParser = _ref$DOMParser === void 0 ? DefaultDOMParser : _ref$DOMParser;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Parser);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Parser);
 
     this.fetch = fetch;
     this.DOMParser = DOMParser;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Parser, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Parser, [{
     key: "parse",
     value: function () {
-      var _parse = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee(resource) {
+      var _parse = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee(resource) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2311,7 +2311,7 @@ var Parser = /*#__PURE__*/function () {
   }, {
     key: "load",
     value: function () {
-      var _load = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee2(url) {
+      var _load = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee2(url) {
         var response, xml;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().wrap(function _callee2$(_context2) {
           while (1) {
@@ -2350,14 +2350,14 @@ var Parser = /*#__PURE__*/function () {
 
 var Translate = /*#__PURE__*/function () {
   function Translate(_, point) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Translate);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Translate);
 
     this.type = 'translate';
     this.point = null;
     this.point = Point.parse(point);
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Translate, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Translate, [{
     key: "apply",
     value: function apply(ctx) {
       var _this$point = this.point,
@@ -2390,7 +2390,7 @@ var Rotate = /*#__PURE__*/function () {
   function Rotate(document, rotate) {
     var transformOrigin = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Rotate);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Rotate);
 
     this.type = 'rotate';
     this.angle = null;
@@ -2402,7 +2402,7 @@ var Rotate = /*#__PURE__*/function () {
     this.cy = (numbers[2] || 0) + (transformOrigin[1] || 0);
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Rotate, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Rotate, [{
     key: "apply",
     value: function apply(ctx) {
       var cx = this.cx,
@@ -2442,7 +2442,7 @@ var Rotate = /*#__PURE__*/function () {
 
 var Scale = /*#__PURE__*/function () {
   function Scale(_, scale) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Scale);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Scale);
 
     this.type = 'scale';
     this.scale = null;
@@ -2456,7 +2456,7 @@ var Scale = /*#__PURE__*/function () {
     this.scale = scaleSize;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Scale, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Scale, [{
     key: "apply",
     value: function apply(ctx) {
       var _this$scale = this.scale,
@@ -2487,14 +2487,14 @@ var Scale = /*#__PURE__*/function () {
 
 var Matrix = /*#__PURE__*/function () {
   function Matrix(_, matrix) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Matrix);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Matrix);
 
     this.type = 'matrix';
     this.matrix = [];
     this.matrix = toNumbers(matrix);
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Matrix, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Matrix, [{
     key: "apply",
     value: function apply(ctx) {
       var matrix = this.matrix;
@@ -2526,19 +2526,19 @@ var Matrix = /*#__PURE__*/function () {
   return Matrix;
 }();
 
-function _createSuper(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var Skew = /*#__PURE__*/function (_Matrix) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(Skew, _Matrix);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(Skew, _Matrix);
 
   var _super = _createSuper(Skew);
 
   function Skew(document, skew) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Skew);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Skew);
 
     _this = _super.call(this, document, skew);
     _this.type = 'skew';
@@ -2550,19 +2550,19 @@ var Skew = /*#__PURE__*/function (_Matrix) {
   return Skew;
 }(Matrix);
 
-function _createSuper$1(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$1()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$1(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$1()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$1() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var SkewX = /*#__PURE__*/function (_Skew) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(SkewX, _Skew);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(SkewX, _Skew);
 
   var _super = _createSuper$1(SkewX);
 
   function SkewX(document, skew) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, SkewX);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, SkewX);
 
     _this = _super.call(this, document, skew);
     _this.type = 'skewX';
@@ -2573,19 +2573,19 @@ var SkewX = /*#__PURE__*/function (_Skew) {
   return SkewX;
 }(Skew);
 
-function _createSuper$2(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$2()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$2(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$2()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$2() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var SkewY = /*#__PURE__*/function (_Skew) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(SkewY, _Skew);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(SkewY, _Skew);
 
   var _super = _createSuper$2(SkewY);
 
   function SkewY(document, skew) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, SkewY);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, SkewY);
 
     _this = _super.call(this, document, skew);
     _this.type = 'skewY';
@@ -2602,7 +2602,7 @@ function parseTransforms(transform) {
 
 function parseTransform(transform) {
   var _transform$split = transform.split('('),
-      _transform$split2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_transform$split, 2),
+      _transform$split2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_transform$split, 2),
       type = _transform$split2[0],
       value = _transform$split2[1];
 
@@ -2613,7 +2613,7 @@ var Transform = /*#__PURE__*/function () {
   function Transform(document, transform, transformOrigin) {
     var _this = this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Transform);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Transform);
 
     this.document = document;
     this.transforms = [];
@@ -2625,7 +2625,7 @@ var Transform = /*#__PURE__*/function () {
       }
 
       var _parseTransform = parseTransform(transform),
-          _parseTransform2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_parseTransform, 2),
+          _parseTransform2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_parseTransform, 2),
           type = _parseTransform2[0],
           value = _parseTransform2[1];
 
@@ -2637,7 +2637,7 @@ var Transform = /*#__PURE__*/function () {
     });
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Transform, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Transform, [{
     key: "apply",
     value: function apply(ctx) {
       var transforms = this.transforms;
@@ -2699,7 +2699,7 @@ var Element = /*#__PURE__*/function () {
 
     var captureTextNodes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Element);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Element);
 
     this.document = document;
     this.node = node;
@@ -2736,7 +2736,7 @@ var Element = /*#__PURE__*/function () {
         var _style$split$map = style.split(':').map(function (_) {
           return _.trim();
         }),
-            _style$split$map2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_style$split$map, 2),
+            _style$split$map2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_style$split$map, 2),
             name = _style$split$map2[0],
             value = _style$split$map2[1];
 
@@ -2768,7 +2768,7 @@ var Element = /*#__PURE__*/function () {
     });
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Element, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Element, [{
     key: "getAttribute",
     value: function getAttribute(name) {
       var createIfNotExists = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -2975,7 +2975,7 @@ var Element = /*#__PURE__*/function () {
 
         var value = styleProp.getString();
         styleProp.setValue('');
-        return [].concat((0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_39__["default"])(toRestore), [[name, value]]);
+        return [].concat((0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_39__.default)(toRestore), [[name, value]]);
       }, []);
       return toRestore;
     }
@@ -2983,7 +2983,7 @@ var Element = /*#__PURE__*/function () {
     key: "restoreStyles",
     value: function restoreStyles(element, styles) {
       styles.forEach(function (_ref) {
-        var _ref2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_ref, 2),
+        var _ref2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_ref, 2),
             name = _ref2[0],
             value = _ref2[1];
 
@@ -2996,19 +2996,19 @@ var Element = /*#__PURE__*/function () {
 }();
 Element.ignoreChildTypes = ['title'];
 
-function _createSuper$3(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$3()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$3(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$3()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$3() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var UnknownElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(UnknownElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(UnknownElement, _Element);
 
   var _super = _createSuper$3(UnknownElement);
 
   function UnknownElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, UnknownElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, UnknownElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
 
@@ -3088,7 +3088,7 @@ function prepareFontWeight(fontWeight) {
 
 var Font = /*#__PURE__*/function () {
   function Font(fontStyle, fontVariant, fontWeight, fontSize, fontFamily, inherit) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Font);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Font);
 
     var inheritFont = inherit ? typeof inherit === 'string' ? Font.parse(inherit) : inherit : {};
     this.fontFamily = fontFamily || inheritFont.fontFamily;
@@ -3098,7 +3098,7 @@ var Font = /*#__PURE__*/function () {
     this.fontVariant = fontVariant || inheritFont.fontVariant;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Font, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Font, [{
     key: "toString",
     value: function toString() {
       return [prepareFontStyle(this.fontStyle), this.fontVariant, prepareFontWeight(this.fontWeight), this.fontSize, // Wrap fontFamily only on nodejs and only for canvas.ctx
@@ -3154,7 +3154,7 @@ var Font = /*#__PURE__*/function () {
             if (part !== 'inherit') {
               var _part$split = part.split('/');
 
-              var _part$split2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_part$split, 1);
+              var _part$split2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_part$split, 1);
 
               fontSize = _part$split2[0];
             }
@@ -3189,7 +3189,7 @@ var BoundingBox = /*#__PURE__*/function () {
     var x2 = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Number.NaN;
     var y2 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : Number.NaN;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, BoundingBox);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, BoundingBox);
 
     this.x1 = x1;
     this.y1 = y1;
@@ -3199,7 +3199,7 @@ var BoundingBox = /*#__PURE__*/function () {
     this.addPoint(x2, y2);
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(BoundingBox, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(BoundingBox, [{
     key: "addPoint",
     value: function addPoint(x, y) {
       if (typeof x !== 'undefined') {
@@ -3368,26 +3368,26 @@ var BoundingBox = /*#__PURE__*/function () {
   return BoundingBox;
 }();
 
-function _createSuper$4(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$4()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$4(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$4()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$4() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var RenderedElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(RenderedElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(RenderedElement, _Element);
 
   var _super = _createSuper$4(RenderedElement);
 
   function RenderedElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, RenderedElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, RenderedElement);
 
     _this = _super.apply(this, arguments);
     _this.modifiedEmSizeStack = false;
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(RenderedElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(RenderedElement, [{
     key: "calculateOpacity",
     value: function calculateOpacity() {
       var opacity = 1.0; // tslint:disable-next-line: no-this-assignment
@@ -3557,7 +3557,7 @@ var RenderedElement = /*#__PURE__*/function (_Element) {
   }, {
     key: "clearContext",
     value: function clearContext(ctx) {
-      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__["default"])((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(RenderedElement.prototype), "clearContext", this).call(this, ctx);
+      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__.default)((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(RenderedElement.prototype), "clearContext", this).call(this, ctx);
 
       if (this.modifiedEmSizeStack) {
         this.document.popEmSize();
@@ -3568,19 +3568,19 @@ var RenderedElement = /*#__PURE__*/function (_Element) {
   return RenderedElement;
 }(Element);
 
-function _createSuper$5(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$5()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$5(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$5()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$5() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var TextElement = /*#__PURE__*/function (_RenderedElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(TextElement, _RenderedElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(TextElement, _RenderedElement);
 
   var _super = _createSuper$5(TextElement);
 
   function TextElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, TextElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, TextElement);
 
     _this = _super.call(this, document, node, (this instanceof TextElement ? this.constructor : void 0) === TextElement ? true : captureTextNodes);
     _this.type = 'text';
@@ -3590,12 +3590,12 @@ var TextElement = /*#__PURE__*/function (_RenderedElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(TextElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(TextElement, [{
     key: "setContext",
     value: function setContext(ctx) {
       var fromMeasure = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__["default"])((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(TextElement.prototype), "setContext", this).call(this, ctx, fromMeasure);
+      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__.default)((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(TextElement.prototype), "setContext", this).call(this, ctx, fromMeasure);
 
       var textBaseline = this.getStyle('dominant-baseline').getTextBaseline() || this.getStyle('alignment-baseline').getTextBaseline();
 
@@ -4014,19 +4014,19 @@ var TextElement = /*#__PURE__*/function (_RenderedElement) {
   return TextElement;
 }(RenderedElement);
 
-function _createSuper$6(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$6()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$6(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$6()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$6() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var TSpanElement = /*#__PURE__*/function (_TextElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(TSpanElement, _TextElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(TSpanElement, _TextElement);
 
   var _super = _createSuper$6(TSpanElement);
 
   function TSpanElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, TSpanElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, TSpanElement);
 
     _this = _super.call(this, document, node, (this instanceof TSpanElement ? this.constructor : void 0) === TSpanElement ? true : captureTextNodes);
     _this.type = 'tspan'; // if this node has children, then they own the text
@@ -4035,7 +4035,7 @@ var TSpanElement = /*#__PURE__*/function (_TextElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(TSpanElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(TSpanElement, [{
     key: "getText",
     value: function getText() {
       return this.text;
@@ -4045,19 +4045,19 @@ var TSpanElement = /*#__PURE__*/function (_TextElement) {
   return TSpanElement;
 }(TextElement);
 
-function _createSuper$7(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$7()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$7(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$7()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$7() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var TextNode = /*#__PURE__*/function (_TSpanElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(TextNode, _TSpanElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(TextNode, _TSpanElement);
 
   var _super = _createSuper$7(TextNode);
 
   function TextNode() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, TextNode);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, TextNode);
 
     _this = _super.apply(this, arguments);
     _this.type = 'textNode';
@@ -4084,7 +4084,7 @@ function preparePath(path) {
 
 var PathParser = /*#__PURE__*/function () {
   function PathParser(path) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, PathParser);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, PathParser);
 
     this.control = null;
     this.start = null;
@@ -4098,7 +4098,7 @@ var PathParser = /*#__PURE__*/function () {
     this.tokens = preparePath(path).split(' ');
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(PathParser, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(PathParser, [{
     key: "reset",
     value: function reset() {
       this.i = -1;
@@ -4264,19 +4264,19 @@ var PathParser = /*#__PURE__*/function () {
   return PathParser;
 }();
 
-function _createSuper$8(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$8()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$8(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$8()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$8() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var PathElement = /*#__PURE__*/function (_RenderedElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(PathElement, _RenderedElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(PathElement, _RenderedElement);
 
   var _super = _createSuper$8(PathElement);
 
   function PathElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, PathElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, PathElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'path';
@@ -4285,7 +4285,7 @@ var PathElement = /*#__PURE__*/function (_RenderedElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(PathElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(PathElement, [{
     key: "path",
     value: function path(ctx) {
       var pathParser = this.pathParser;
@@ -4400,7 +4400,7 @@ var PathElement = /*#__PURE__*/function (_RenderedElement) {
         if (markerStartStyleProp.isUrlDefinition()) {
           var marker = markerStartStyleProp.getDefinition();
 
-          var _markers$ = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(markers[0], 2),
+          var _markers$ = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(markers[0], 2),
               point = _markers$[0],
               angle = _markers$[1];
 
@@ -4411,7 +4411,7 @@ var PathElement = /*#__PURE__*/function (_RenderedElement) {
           var _marker = markerMidStyleProp.getDefinition();
 
           for (var i = 1; i < markersLastIndex; i++) {
-            var _markers$i = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(markers[i], 2),
+            var _markers$i = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(markers[i], 2),
                 _point = _markers$i[0],
                 _angle = _markers$i[1];
 
@@ -4422,7 +4422,7 @@ var PathElement = /*#__PURE__*/function (_RenderedElement) {
         if (markerEndStyleProp.isUrlDefinition()) {
           var _marker2 = markerEndStyleProp.getDefinition();
 
-          var _markers$markersLastI = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(markers[markersLastIndex], 2),
+          var _markers$markersLastI = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(markers[markersLastIndex], 2),
               _point2 = _markers$markersLastI[0],
               _angle2 = _markers$markersLastI[1];
 
@@ -4673,19 +4673,19 @@ var PathElement = /*#__PURE__*/function (_RenderedElement) {
   return PathElement;
 }(RenderedElement);
 
-function _createSuper$9(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$9()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$9(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$9()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$9() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var SVGElement = /*#__PURE__*/function (_RenderedElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(SVGElement, _RenderedElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(SVGElement, _RenderedElement);
 
   var _super = _createSuper$9(SVGElement);
 
   function SVGElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, SVGElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, SVGElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'svg';
@@ -4693,10 +4693,10 @@ var SVGElement = /*#__PURE__*/function (_RenderedElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(SVGElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(SVGElement, [{
     key: "clearContext",
     value: function clearContext(ctx) {
-      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__["default"])((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(SVGElement.prototype), "clearContext", this).call(this, ctx);
+      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__.default)((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(SVGElement.prototype), "clearContext", this).call(this, ctx);
 
       this.document.screen.viewPort.removeCurrent();
     }
@@ -4719,7 +4719,7 @@ var SVGElement = /*#__PURE__*/function (_RenderedElement) {
         }
       }
 
-      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__["default"])((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(SVGElement.prototype), "setContext", this).call(this, ctx); // create new view port
+      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__.default)((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(SVGElement.prototype), "setContext", this).call(this, ctx); // create new view port
 
 
       if (!this.getAttribute('x').hasValue()) {
@@ -4858,26 +4858,26 @@ var SVGElement = /*#__PURE__*/function (_RenderedElement) {
   return SVGElement;
 }(RenderedElement);
 
-function _createSuper$a(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$a()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$a(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$a()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$a() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var RectElement = /*#__PURE__*/function (_PathElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(RectElement, _PathElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(RectElement, _PathElement);
 
   var _super = _createSuper$a(RectElement);
 
   function RectElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, RectElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, RectElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'rect';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(RectElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(RectElement, [{
     key: "path",
     value: function path(ctx) {
       var x = this.getAttribute('x').getPixels('x');
@@ -4930,26 +4930,26 @@ var RectElement = /*#__PURE__*/function (_PathElement) {
   return RectElement;
 }(PathElement);
 
-function _createSuper$b(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$b()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$b(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$b()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$b() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var CircleElement = /*#__PURE__*/function (_PathElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(CircleElement, _PathElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(CircleElement, _PathElement);
 
   var _super = _createSuper$b(CircleElement);
 
   function CircleElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, CircleElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, CircleElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'circle';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(CircleElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(CircleElement, [{
     key: "path",
     value: function path(ctx) {
       var cx = this.getAttribute('cx').getPixels('x');
@@ -4974,26 +4974,26 @@ var CircleElement = /*#__PURE__*/function (_PathElement) {
   return CircleElement;
 }(PathElement);
 
-function _createSuper$c(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$c()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$c(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$c()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$c() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var EllipseElement = /*#__PURE__*/function (_PathElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(EllipseElement, _PathElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(EllipseElement, _PathElement);
 
   var _super = _createSuper$c(EllipseElement);
 
   function EllipseElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, EllipseElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, EllipseElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'ellipse';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(EllipseElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(EllipseElement, [{
     key: "path",
     value: function path(ctx) {
       var KAPPA = 4 * ((Math.sqrt(2) - 1) / 3);
@@ -5024,26 +5024,26 @@ var EllipseElement = /*#__PURE__*/function (_PathElement) {
   return EllipseElement;
 }(PathElement);
 
-function _createSuper$d(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$d()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$d(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$d()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$d() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var LineElement = /*#__PURE__*/function (_PathElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(LineElement, _PathElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(LineElement, _PathElement);
 
   var _super = _createSuper$d(LineElement);
 
   function LineElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, LineElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, LineElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'line';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(LineElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(LineElement, [{
     key: "getPoints",
     value: function getPoints() {
       return [new Point(this.getAttribute('x1').getPixels('x'), this.getAttribute('y1').getPixels('y')), new Point(this.getAttribute('x2').getPixels('x'), this.getAttribute('y2').getPixels('y'))];
@@ -5052,7 +5052,7 @@ var LineElement = /*#__PURE__*/function (_PathElement) {
     key: "path",
     value: function path(ctx) {
       var _this$getPoints = this.getPoints(),
-          _this$getPoints2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_this$getPoints, 2),
+          _this$getPoints2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_this$getPoints, 2),
           _this$getPoints2$ = _this$getPoints2[0],
           x0 = _this$getPoints2$.x,
           y0 = _this$getPoints2$.y,
@@ -5072,7 +5072,7 @@ var LineElement = /*#__PURE__*/function (_PathElement) {
     key: "getMarkers",
     value: function getMarkers() {
       var _this$getPoints3 = this.getPoints(),
-          _this$getPoints4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(_this$getPoints3, 2),
+          _this$getPoints4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(_this$getPoints3, 2),
           p0 = _this$getPoints4[0],
           p1 = _this$getPoints4[1];
 
@@ -5084,19 +5084,19 @@ var LineElement = /*#__PURE__*/function (_PathElement) {
   return LineElement;
 }(PathElement);
 
-function _createSuper$e(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$e()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$e(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$e()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$e() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var PolylineElement = /*#__PURE__*/function (_PathElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(PolylineElement, _PathElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(PolylineElement, _PathElement);
 
   var _super = _createSuper$e(PolylineElement);
 
   function PolylineElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, PolylineElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, PolylineElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'polyline';
@@ -5105,12 +5105,12 @@ var PolylineElement = /*#__PURE__*/function (_PathElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(PolylineElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(PolylineElement, [{
     key: "path",
     value: function path(ctx) {
       var points = this.points;
 
-      var _points = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(points, 1),
+      var _points = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(points, 1),
           _points$ = _points[0],
           x0 = _points$.x,
           y0 = _points$.y;
@@ -5158,31 +5158,31 @@ var PolylineElement = /*#__PURE__*/function (_PathElement) {
   return PolylineElement;
 }(PathElement);
 
-function _createSuper$f(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$f()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$f(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$f()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$f() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var PolygonElement = /*#__PURE__*/function (_PolylineElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(PolygonElement, _PolylineElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(PolygonElement, _PolylineElement);
 
   var _super = _createSuper$f(PolygonElement);
 
   function PolygonElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, PolygonElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, PolygonElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'polygon';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(PolygonElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(PolygonElement, [{
     key: "path",
     value: function path(ctx) {
-      var boundingBox = (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__["default"])((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(PolygonElement.prototype), "path", this).call(this, ctx);
+      var boundingBox = (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__.default)((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(PolygonElement.prototype), "path", this).call(this, ctx);
 
-      var _this$points = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(this.points, 1),
+      var _this$points = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(this.points, 1),
           _this$points$ = _this$points[0],
           x = _this$points$.x,
           y = _this$points$.y;
@@ -5199,26 +5199,26 @@ var PolygonElement = /*#__PURE__*/function (_PolylineElement) {
   return PolygonElement;
 }(PolylineElement);
 
-function _createSuper$g(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$g()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$g(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$g()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$g() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var PatternElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(PatternElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(PatternElement, _Element);
 
   var _super = _createSuper$g(PatternElement);
 
   function PatternElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, PatternElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, PatternElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'pattern';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(PatternElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(PatternElement, [{
     key: "createPattern",
     value: function createPattern(ctx, _, parentOpacityProp) {
       var width = this.getStyle('width').getPixels('x', true);
@@ -5264,26 +5264,26 @@ var PatternElement = /*#__PURE__*/function (_Element) {
   return PatternElement;
 }(Element);
 
-function _createSuper$h(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$h()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$h(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$h()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$h() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var MarkerElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(MarkerElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(MarkerElement, _Element);
 
   var _super = _createSuper$h(MarkerElement);
 
   function MarkerElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, MarkerElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, MarkerElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'marker';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(MarkerElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(MarkerElement, [{
     key: "render",
     value: function render(ctx, point, angle) {
       if (!point) {
@@ -5335,26 +5335,26 @@ var MarkerElement = /*#__PURE__*/function (_Element) {
   return MarkerElement;
 }(Element);
 
-function _createSuper$i(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$i()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$i(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$i()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$i() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var DefsElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(DefsElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(DefsElement, _Element);
 
   var _super = _createSuper$i(DefsElement);
 
   function DefsElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, DefsElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, DefsElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'defs';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(DefsElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(DefsElement, [{
     key: "render",
     value: function render() {// NOOP
     }
@@ -5363,26 +5363,26 @@ var DefsElement = /*#__PURE__*/function (_Element) {
   return DefsElement;
 }(Element);
 
-function _createSuper$j(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$j()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$j(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$j()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$j() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var GElement = /*#__PURE__*/function (_RenderedElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(GElement, _RenderedElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(GElement, _RenderedElement);
 
   var _super = _createSuper$j(GElement);
 
   function GElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, GElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, GElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'g';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(GElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(GElement, [{
     key: "getBoundingBox",
     value: function getBoundingBox(ctx) {
       var boundingBox = new BoundingBox();
@@ -5396,25 +5396,25 @@ var GElement = /*#__PURE__*/function (_RenderedElement) {
   return GElement;
 }(RenderedElement);
 
-function _createSuper$k(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$k()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$k(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$k()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$k() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var GradientElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(GradientElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(GradientElement, _Element);
 
   var _super = _createSuper$k(GradientElement);
 
   function GradientElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, GradientElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, GradientElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.attributesToInherit = ['gradientUnits'];
     _this.stops = [];
 
-    var _assertThisInitialize = (0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__["default"])(_this),
+    var _assertThisInitialize = (0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__.default)(_this),
         stops = _assertThisInitialize.stops,
         children = _assertThisInitialize.children;
 
@@ -5426,7 +5426,7 @@ var GradientElement = /*#__PURE__*/function (_Element) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(GradientElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(GradientElement, [{
     key: "getGradientUnits",
     value: function getGradientUnits() {
       return this.getAttribute('gradientUnits').getString('objectBoundingBox');
@@ -5463,7 +5463,7 @@ var GradientElement = /*#__PURE__*/function (_Element) {
             MAX_VIRTUAL_PIXELS = _document$screen.MAX_VIRTUAL_PIXELS,
             viewPort = _document$screen.viewPort;
 
-        var _viewPort$viewPorts = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__["default"])(viewPort.viewPorts, 1),
+        var _viewPort$viewPorts = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_6__.default)(viewPort.viewPorts, 1),
             rootView = _viewPort$viewPorts[0];
 
         var rect = new RectElement(document, null);
@@ -5515,19 +5515,19 @@ var GradientElement = /*#__PURE__*/function (_Element) {
   return GradientElement;
 }(Element);
 
-function _createSuper$l(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$l()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$l(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$l()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$l() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var LinearGradientElement = /*#__PURE__*/function (_GradientElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(LinearGradientElement, _GradientElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(LinearGradientElement, _GradientElement);
 
   var _super = _createSuper$l(LinearGradientElement);
 
   function LinearGradientElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, LinearGradientElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, LinearGradientElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'linearGradient';
@@ -5537,7 +5537,7 @@ var LinearGradientElement = /*#__PURE__*/function (_GradientElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(LinearGradientElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(LinearGradientElement, [{
     key: "getGradient",
     value: function getGradient(ctx, element) {
       var isBoundingBoxUnits = this.getGradientUnits() === 'objectBoundingBox';
@@ -5570,19 +5570,19 @@ var LinearGradientElement = /*#__PURE__*/function (_GradientElement) {
   return LinearGradientElement;
 }(GradientElement);
 
-function _createSuper$m(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$m()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$m(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$m()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$m() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var RadialGradientElement = /*#__PURE__*/function (_GradientElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(RadialGradientElement, _GradientElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(RadialGradientElement, _GradientElement);
 
   var _super = _createSuper$m(RadialGradientElement);
 
   function RadialGradientElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, RadialGradientElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, RadialGradientElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'radialGradient';
@@ -5592,7 +5592,7 @@ var RadialGradientElement = /*#__PURE__*/function (_GradientElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(RadialGradientElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(RadialGradientElement, [{
     key: "getGradient",
     value: function getGradient(ctx, element) {
       var isBoundingBoxUnits = this.getGradientUnits() === 'objectBoundingBox';
@@ -5636,19 +5636,19 @@ var RadialGradientElement = /*#__PURE__*/function (_GradientElement) {
   return RadialGradientElement;
 }(GradientElement);
 
-function _createSuper$n(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$n()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$n(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$n()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$n() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var StopElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(StopElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(StopElement, _Element);
 
   var _super = _createSuper$n(StopElement);
 
   function StopElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, StopElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, StopElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'stop';
@@ -5674,19 +5674,19 @@ var StopElement = /*#__PURE__*/function (_Element) {
   return StopElement;
 }(Element);
 
-function _createSuper$o(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$o()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$o(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$o()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$o() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var AnimateElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(AnimateElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(AnimateElement, _Element);
 
   var _super = _createSuper$o(AnimateElement);
 
   function AnimateElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, AnimateElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, AnimateElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'animate';
@@ -5695,7 +5695,7 @@ var AnimateElement = /*#__PURE__*/function (_Element) {
     _this.initialUnits = '';
     _this.removed = false;
     _this.frozen = false;
-    document.screen.animations.push((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__["default"])(_this));
+    document.screen.animations.push((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__.default)(_this));
     _this.begin = _this.getAttribute('begin').getMilliseconds();
     _this.maxDuration = _this.begin + _this.getAttribute('dur').getMilliseconds();
     _this.from = _this.getAttribute('from');
@@ -5709,7 +5709,7 @@ var AnimateElement = /*#__PURE__*/function (_Element) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(AnimateElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(AnimateElement, [{
     key: "getProperty",
     value: function getProperty() {
       var attributeType = this.getAttribute('attributeType').getString();
@@ -5819,26 +5819,26 @@ var AnimateElement = /*#__PURE__*/function (_Element) {
   return AnimateElement;
 }(Element);
 
-function _createSuper$p(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$p()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$p(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$p()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$p() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var AnimateColorElement = /*#__PURE__*/function (_AnimateElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(AnimateColorElement, _AnimateElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(AnimateColorElement, _AnimateElement);
 
   var _super = _createSuper$p(AnimateColorElement);
 
   function AnimateColorElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, AnimateColorElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, AnimateColorElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'animateColor';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(AnimateColorElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(AnimateColorElement, [{
     key: "calcValue",
     value: function calcValue() {
       var _this$getProgress = this.getProgress(),
@@ -5865,26 +5865,26 @@ var AnimateColorElement = /*#__PURE__*/function (_AnimateElement) {
   return AnimateColorElement;
 }(AnimateElement);
 
-function _createSuper$q(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$q()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$q(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$q()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$q() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var AnimateTransformElement = /*#__PURE__*/function (_AnimateElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(AnimateTransformElement, _AnimateElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(AnimateTransformElement, _AnimateElement);
 
   var _super = _createSuper$q(AnimateTransformElement);
 
   function AnimateTransformElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, AnimateTransformElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, AnimateTransformElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'animateTransform';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(AnimateTransformElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(AnimateTransformElement, [{
     key: "calcValue",
     value: function calcValue() {
       var _this$getProgress = this.getProgress(),
@@ -5912,19 +5912,19 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _createSuper$r(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$r()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$r(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$r()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$r() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var FontElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(FontElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(FontElement, _Element);
 
   var _super = _createSuper$r(FontElement);
 
   function FontElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, FontElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, FontElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'font';
@@ -5932,7 +5932,7 @@ var FontElement = /*#__PURE__*/function (_Element) {
     _this.horizAdvX = _this.getAttribute('horiz-adv-x').getNumber();
     var definitions = document.definitions;
 
-    var _assertThisInitialize = (0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__["default"])(_this),
+    var _assertThisInitialize = (0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__.default)(_this),
         children = _assertThisInitialize.children;
 
     var _iterator = _createForOfIteratorHelper(children),
@@ -5949,7 +5949,7 @@ var FontElement = /*#__PURE__*/function (_Element) {
               var fontFamilyStyle = child.getStyle('font-family');
 
               if (fontFamilyStyle.hasValue()) {
-                definitions[fontFamilyStyle.getString()] = (0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__["default"])(_this);
+                definitions[fontFamilyStyle.getString()] = (0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__.default)(_this);
               }
 
               break;
@@ -5991,7 +5991,7 @@ var FontElement = /*#__PURE__*/function (_Element) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(FontElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(FontElement, [{
     key: "render",
     value: function render() {// NO RENDER
     }
@@ -6000,19 +6000,19 @@ var FontElement = /*#__PURE__*/function (_Element) {
   return FontElement;
 }(Element);
 
-function _createSuper$s(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$s()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$s(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$s()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$s() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var FontFaceElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(FontFaceElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(FontFaceElement, _Element);
 
   var _super = _createSuper$s(FontFaceElement);
 
   function FontFaceElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, FontFaceElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, FontFaceElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'font-face';
@@ -6025,19 +6025,19 @@ var FontFaceElement = /*#__PURE__*/function (_Element) {
   return FontFaceElement;
 }(Element);
 
-function _createSuper$t(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$t()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$t(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$t()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$t() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var MissingGlyphElement = /*#__PURE__*/function (_PathElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(MissingGlyphElement, _PathElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(MissingGlyphElement, _PathElement);
 
   var _super = _createSuper$t(MissingGlyphElement);
 
   function MissingGlyphElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, MissingGlyphElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, MissingGlyphElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'missing-glyph';
@@ -6048,19 +6048,19 @@ var MissingGlyphElement = /*#__PURE__*/function (_PathElement) {
   return MissingGlyphElement;
 }(PathElement);
 
-function _createSuper$u(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$u()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$u(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$u()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$u() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var GlyphElement = /*#__PURE__*/function (_PathElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(GlyphElement, _PathElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(GlyphElement, _PathElement);
 
   var _super = _createSuper$u(GlyphElement);
 
   function GlyphElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, GlyphElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, GlyphElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'glyph';
@@ -6073,26 +6073,26 @@ var GlyphElement = /*#__PURE__*/function (_PathElement) {
   return GlyphElement;
 }(PathElement);
 
-function _createSuper$v(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$v()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$v(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$v()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$v() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var TRefElement = /*#__PURE__*/function (_TextElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(TRefElement, _TextElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(TRefElement, _TextElement);
 
   var _super = _createSuper$v(TRefElement);
 
   function TRefElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, TRefElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, TRefElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'tref';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(TRefElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(TRefElement, [{
     key: "getText",
     value: function getText() {
       var element = this.getHrefAttribute().getDefinition();
@@ -6112,19 +6112,19 @@ var TRefElement = /*#__PURE__*/function (_TextElement) {
   return TRefElement;
 }(TextElement);
 
-function _createSuper$w(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$w()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$w(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$w()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$w() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var AElement = /*#__PURE__*/function (_TextElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(AElement, _TextElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(AElement, _TextElement);
 
   var _super = _createSuper$w(AElement);
 
   function AElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, AElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, AElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'a';
@@ -6138,7 +6138,7 @@ var AElement = /*#__PURE__*/function (_TextElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(AElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(AElement, [{
     key: "getText",
     value: function getText() {
       return this.text;
@@ -6148,7 +6148,7 @@ var AElement = /*#__PURE__*/function (_TextElement) {
     value: function renderChildren(ctx) {
       if (this.hasText) {
         // render as text element
-        (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__["default"])((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(AElement.prototype), "renderChildren", this).call(this, ctx);
+        (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__.default)((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(AElement.prototype), "renderChildren", this).call(this, ctx);
 
         var document = this.document,
             x = this.x,
@@ -6193,19 +6193,19 @@ function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o
 
 function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _createSuper$x(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$x()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$x(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$x()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$x() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var TextPathElement = /*#__PURE__*/function (_TextElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(TextPathElement, _TextElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(TextPathElement, _TextElement);
 
   var _super = _createSuper$x(TextPathElement);
 
   function TextPathElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, TextPathElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, TextPathElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'textPath';
@@ -6223,7 +6223,7 @@ var TextPathElement = /*#__PURE__*/function (_TextElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(TextPathElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(TextPathElement, [{
     key: "getText",
     value: function getText() {
       return this.text;
@@ -7081,19 +7081,19 @@ var TextPathElement = /*#__PURE__*/function (_TextElement) {
   return TextPathElement;
 }(TextElement);
 
-function _createSuper$y(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$y()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$y(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$y()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$y() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var ImageElement = /*#__PURE__*/function (_RenderedElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(ImageElement, _RenderedElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(ImageElement, _RenderedElement);
 
   var _super = _createSuper$y(ImageElement);
 
   function ImageElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, ImageElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, ImageElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'image';
@@ -7102,11 +7102,11 @@ var ImageElement = /*#__PURE__*/function (_RenderedElement) {
     var href = _this.getHrefAttribute().getString();
 
     if (!href) {
-      return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(_this);
+      return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(_this);
     }
 
     var isSvg = /\.svg$/.test(href);
-    document.images.push((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__["default"])(_this));
+    document.images.push((0,_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_46__.default)(_this));
 
     if (!isSvg) {
       _this.loadImage(href);
@@ -7118,10 +7118,10 @@ var ImageElement = /*#__PURE__*/function (_RenderedElement) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(ImageElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(ImageElement, [{
     key: "loadImage",
     value: function () {
-      var _loadImage = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee(href) {
+      var _loadImage = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee(href) {
         var image;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().wrap(function _callee$(_context) {
           while (1) {
@@ -7163,7 +7163,7 @@ var ImageElement = /*#__PURE__*/function (_RenderedElement) {
   }, {
     key: "loadSvg",
     value: function () {
-      var _loadSvg = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee2(href) {
+      var _loadSvg = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee2(href) {
         var response, svg;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().wrap(function _callee2$(_context2) {
           while (1) {
@@ -7270,26 +7270,26 @@ var ImageElement = /*#__PURE__*/function (_RenderedElement) {
   return ImageElement;
 }(RenderedElement);
 
-function _createSuper$z(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$z()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$z(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$z()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$z() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var SymbolElement = /*#__PURE__*/function (_RenderedElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(SymbolElement, _RenderedElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(SymbolElement, _RenderedElement);
 
   var _super = _createSuper$z(SymbolElement);
 
   function SymbolElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, SymbolElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, SymbolElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'symbol';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(SymbolElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(SymbolElement, [{
     key: "render",
     value: function render(_) {// NO RENDER
     }
@@ -7300,17 +7300,17 @@ var SymbolElement = /*#__PURE__*/function (_RenderedElement) {
 
 var SVGFontLoader = /*#__PURE__*/function () {
   function SVGFontLoader(document) {
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, SVGFontLoader);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, SVGFontLoader);
 
     this.document = document;
     this.loaded = false;
     document.fonts.push(this);
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(SVGFontLoader, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(SVGFontLoader, [{
     key: "load",
     value: function () {
-      var _load = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee(fontFamily, url) {
+      var _load = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee(fontFamily, url) {
         var document, svgDocument, fonts;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().wrap(function _callee$(_context) {
           while (1) {
@@ -7359,19 +7359,19 @@ var SVGFontLoader = /*#__PURE__*/function () {
   return SVGFontLoader;
 }();
 
-function _createSuper$A(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$A()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$A(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$A()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$A() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var StyleElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(StyleElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(StyleElement, _Element);
 
   var _super = _createSuper$A(StyleElement);
 
   function StyleElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, StyleElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, StyleElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'style';
@@ -7434,29 +7434,29 @@ var StyleElement = /*#__PURE__*/function (_Element) {
 }(Element);
 StyleElement.parseExternalUrl = parseExternalUrl;
 
-function _createSuper$B(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$B()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$B(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$B()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$B() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var UseElement = /*#__PURE__*/function (_RenderedElement) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(UseElement, _RenderedElement);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(UseElement, _RenderedElement);
 
   var _super = _createSuper$B(UseElement);
 
   function UseElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, UseElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, UseElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'use';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(UseElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(UseElement, [{
     key: "setContext",
     value: function setContext(ctx) {
-      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__["default"])((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(UseElement.prototype), "setContext", this).call(this, ctx);
+      (0,_babel_runtime_helpers_get__WEBPACK_IMPORTED_MODULE_42__.default)((0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(UseElement.prototype), "setContext", this).call(this, ctx);
 
       var xAttr = this.getAttribute('x');
       var yAttr = this.getAttribute('y');
@@ -7547,7 +7547,7 @@ var UseElement = /*#__PURE__*/function (_RenderedElement) {
   return UseElement;
 }(RenderedElement);
 
-function _createSuper$C(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$C()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$C(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$C()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$C() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
@@ -7569,14 +7569,14 @@ function c(a, m1, m2, m3) {
 }
 
 var FeColorMatrixElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(FeColorMatrixElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(FeColorMatrixElement, _Element);
 
   var _super = _createSuper$C(FeColorMatrixElement);
 
   function FeColorMatrixElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, FeColorMatrixElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, FeColorMatrixElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'feColorMatrix';
@@ -7608,7 +7608,7 @@ var FeColorMatrixElement = /*#__PURE__*/function (_Element) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(FeColorMatrixElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(FeColorMatrixElement, [{
     key: "apply",
     value: function apply(ctx, _, __, width, height) {
       // assuming x==0 && y==0 for now
@@ -7647,26 +7647,26 @@ var FeColorMatrixElement = /*#__PURE__*/function (_Element) {
   return FeColorMatrixElement;
 }(Element);
 
-function _createSuper$D(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$D()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$D(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$D()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$D() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var MaskElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(MaskElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(MaskElement, _Element);
 
   var _super = _createSuper$D(MaskElement);
 
   function MaskElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, MaskElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, MaskElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'mask';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(MaskElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(MaskElement, [{
     key: "apply",
     value: function apply(ctx, element) {
       var document = this.document; // render as temp svg
@@ -7727,28 +7727,28 @@ var MaskElement = /*#__PURE__*/function (_Element) {
 }(Element);
 MaskElement.ignoreStyles = ['mask', 'transform', 'clip-path'];
 
-function _createSuper$E(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$E()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$E(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$E()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$E() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var noop = function noop() {};
 
 var ClipPathElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(ClipPathElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(ClipPathElement, _Element);
 
   var _super = _createSuper$E(ClipPathElement);
 
   function ClipPathElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, ClipPathElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, ClipPathElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'clipPath';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(ClipPathElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(ClipPathElement, [{
     key: "apply",
     value: function apply(ctx) {
       var document = this.document;
@@ -7804,26 +7804,26 @@ var ClipPathElement = /*#__PURE__*/function (_Element) {
   return ClipPathElement;
 }(Element);
 
-function _createSuper$F(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$F()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$F(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$F()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$F() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var FilterElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(FilterElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(FilterElement, _Element);
 
   var _super = _createSuper$F(FilterElement);
 
   function FilterElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, FilterElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, FilterElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'filter';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(FilterElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(FilterElement, [{
     key: "apply",
     value: function apply(ctx, element) {
       // render as temp svg
@@ -7879,19 +7879,19 @@ var FilterElement = /*#__PURE__*/function (_Element) {
 }(Element);
 FilterElement.ignoreStyles = ['filter', 'transform', 'clip-path'];
 
-function _createSuper$G(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$G()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$G(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$G()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$G() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var FeDropShadowElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(FeDropShadowElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(FeDropShadowElement, _Element);
 
   var _super = _createSuper$G(FeDropShadowElement);
 
   function FeDropShadowElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, FeDropShadowElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, FeDropShadowElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'feDropShadow';
@@ -7901,7 +7901,7 @@ var FeDropShadowElement = /*#__PURE__*/function (_Element) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(FeDropShadowElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(FeDropShadowElement, [{
     key: "apply",
     value: function apply(_, __, ___, ____, _____) {// TODO: implement
     }
@@ -7910,26 +7910,26 @@ var FeDropShadowElement = /*#__PURE__*/function (_Element) {
   return FeDropShadowElement;
 }(Element);
 
-function _createSuper$H(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$H()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$H(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$H()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$H() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var FeMorphologyElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(FeMorphologyElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(FeMorphologyElement, _Element);
 
   var _super = _createSuper$H(FeMorphologyElement);
 
   function FeMorphologyElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, FeMorphologyElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, FeMorphologyElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'feMorphology';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(FeMorphologyElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(FeMorphologyElement, [{
     key: "apply",
     value: function apply(_, __, ___, ____, _____) {// TODO: implement
     }
@@ -7938,26 +7938,26 @@ var FeMorphologyElement = /*#__PURE__*/function (_Element) {
   return FeMorphologyElement;
 }(Element);
 
-function _createSuper$I(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$I()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$I(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$I()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$I() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var FeCompositeElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(FeCompositeElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(FeCompositeElement, _Element);
 
   var _super = _createSuper$I(FeCompositeElement);
 
   function FeCompositeElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, FeCompositeElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, FeCompositeElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'feComposite';
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(FeCompositeElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(FeCompositeElement, [{
     key: "apply",
     value: function apply(_, __, ___, ____, _____) {// TODO: implement
     }
@@ -7966,19 +7966,19 @@ var FeCompositeElement = /*#__PURE__*/function (_Element) {
   return FeCompositeElement;
 }(Element);
 
-function _createSuper$J(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$J()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$J(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$J()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$J() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var FeGaussianBlurElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(FeGaussianBlurElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(FeGaussianBlurElement, _Element);
 
   var _super = _createSuper$J(FeGaussianBlurElement);
 
   function FeGaussianBlurElement(document, node, captureTextNodes) {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, FeGaussianBlurElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, FeGaussianBlurElement);
 
     _this = _super.call(this, document, node, captureTextNodes);
     _this.type = 'feGaussianBlur';
@@ -7987,7 +7987,7 @@ var FeGaussianBlurElement = /*#__PURE__*/function (_Element) {
     return _this;
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(FeGaussianBlurElement, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(FeGaussianBlurElement, [{
     key: "apply",
     value: function apply(ctx, x, y, width, height) {
       var document = this.document,
@@ -8013,19 +8013,19 @@ var FeGaussianBlurElement = /*#__PURE__*/function (_Element) {
   return FeGaussianBlurElement;
 }(Element);
 
-function _createSuper$K(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$K()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$K(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$K()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$K() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var TitleElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(TitleElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(TitleElement, _Element);
 
   var _super = _createSuper$K(TitleElement);
 
   function TitleElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, TitleElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, TitleElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'title';
@@ -8035,19 +8035,19 @@ var TitleElement = /*#__PURE__*/function (_Element) {
   return TitleElement;
 }(Element);
 
-function _createSuper$L(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(Derived), result; if (_isNativeReflectConstruct$L()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__["default"])(this, result); }; }
+function _createSuper$L(Derived) { return function () { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(Derived), result; if (_isNativeReflectConstruct$L()) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_31__.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_30__.default)(this, result); }; }
 
 function _isNativeReflectConstruct$L() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 var DescElement = /*#__PURE__*/function (_Element) {
-  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__["default"])(DescElement, _Element);
+  (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_32__.default)(DescElement, _Element);
 
   var _super = _createSuper$L(DescElement);
 
   function DescElement() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, DescElement);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, DescElement);
 
     _this = _super.apply(this, arguments);
     _this.type = 'desc';
@@ -8103,7 +8103,7 @@ var elementTypes = {
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_16__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_16__.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function createCanvas(width, height) {
   var canvas = document.createElement('canvas');
@@ -8117,7 +8117,7 @@ function createImage(_x) {
 }
 
 function _createImage() {
-  _createImage = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee(src) {
+  _createImage = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee(src) {
     var anonymousCrossOrigin,
         image,
         _args = arguments;
@@ -8167,7 +8167,7 @@ var Document = /*#__PURE__*/function () {
         createImage = _ref$createImage === void 0 ? Document.createImage : _ref$createImage,
         anonymousCrossOrigin = _ref.anonymousCrossOrigin;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Document);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Document);
 
     this.canvg = canvg;
     this.definitions = {};
@@ -8186,7 +8186,7 @@ var Document = /*#__PURE__*/function () {
     this.screen.wait(this.isFontsLoaded.bind(this));
   }
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Document, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Document, [{
     key: "bindCreateImage",
     value: function bindCreateImage(createImage, anonymousCrossOrigin) {
       if (typeof anonymousCrossOrigin === 'boolean') {
@@ -8290,7 +8290,7 @@ Document.elementTypes = elementTypes;
 
 function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_16__["default"])(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys$1(Object(source), true).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_16__.default)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 /**
  * SVG renderer on canvas.
  */
@@ -8305,7 +8305,7 @@ var Canvg = /*#__PURE__*/function () {
   function Canvg(ctx, svg) {
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__["default"])(this, Canvg);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_17__.default)(this, Canvg);
 
     this.parser = new Parser(options);
     this.screen = new Screen(ctx, options);
@@ -8323,7 +8323,7 @@ var Canvg = /*#__PURE__*/function () {
    */
 
 
-  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__["default"])(Canvg, [{
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_18__.default)(Canvg, [{
     key: "fork",
 
     /**
@@ -8375,7 +8375,7 @@ var Canvg = /*#__PURE__*/function () {
   }, {
     key: "render",
     value: function () {
-      var _render = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee() {
+      var _render = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee() {
         var options,
             _args = arguments;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().wrap(function _callee$(_context) {
@@ -8450,7 +8450,7 @@ var Canvg = /*#__PURE__*/function () {
   }], [{
     key: "from",
     value: function () {
-      var _from = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee2(ctx, svg) {
+      var _from = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee2(ctx, svg) {
         var options,
             parser,
             svgDocument,
@@ -8520,7 +8520,7 @@ function offscreen() {
       return new OffscreenCanvas(width, height);
     },
     createImage: function createImage(url) {
-      return (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee() {
+      return (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_15__.default)( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().mark(function _callee() {
         var response, blob, img;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_14___default().wrap(function _callee$(_context) {
           while (1) {
@@ -8597,37 +8597,16 @@ var index = /*#__PURE__*/Object.freeze({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/a-callable.js":
+/***/ "./node_modules/core-js/internals/a-function.js":
 /*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/a-callable.js ***!
+  !*** ./node_modules/core-js/internals/a-function.js ***!
   \******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module) => {
 
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
-var tryToString = __webpack_require__(/*! ../internals/try-to-string */ "./node_modules/core-js/internals/try-to-string.js");
-
-// `Assert: IsCallable(argument) is true`
-module.exports = function (argument) {
-  if (isCallable(argument)) return argument;
-  throw TypeError(tryToString(argument) + ' is not a function');
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/a-constructor.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/a-constructor.js ***!
-  \*********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/core-js/internals/is-constructor.js");
-var tryToString = __webpack_require__(/*! ../internals/try-to-string */ "./node_modules/core-js/internals/try-to-string.js");
-
-// `Assert: IsConstructor(argument) is true`
-module.exports = function (argument) {
-  if (isConstructor(argument)) return argument;
-  throw TypeError(tryToString(argument) + ' is not a constructor');
+module.exports = function (it) {
+  if (typeof it != 'function') {
+    throw TypeError(String(it) + ' is not a function');
+  } return it;
 };
 
 
@@ -8639,11 +8618,12 @@ module.exports = function (argument) {
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
-module.exports = function (argument) {
-  if (typeof argument === 'object' || isCallable(argument)) return argument;
-  throw TypeError("Can't set " + String(argument) + ' as a prototype');
+module.exports = function (it) {
+  if (!isObject(it) && it !== null) {
+    throw TypeError("Can't set " + String(it) + ' as a prototype');
+  } return it;
 };
 
 
@@ -8705,8 +8685,9 @@ module.exports = function (S, index, unicode) {
 /***/ ((module) => {
 
 module.exports = function (it, Constructor, name) {
-  if (it instanceof Constructor) return it;
-  throw TypeError('Incorrect ' + (name ? name + ' ' : '') + 'invocation');
+  if (!(it instanceof Constructor)) {
+    throw TypeError('Incorrect ' + (name ? name + ' ' : '') + 'invocation');
+  } return it;
 };
 
 
@@ -8720,10 +8701,10 @@ module.exports = function (it, Constructor, name) {
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
-// `Assert: Type(argument) is Object`
-module.exports = function (argument) {
-  if (isObject(argument)) return argument;
-  throw TypeError(String(argument) + ' is not an object');
+module.exports = function (it) {
+  if (!isObject(it)) {
+    throw TypeError(String(it) + ' is not an object');
+  } return it;
 };
 
 
@@ -8792,36 +8773,34 @@ var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node
 var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
 var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "./node_modules/core-js/internals/call-with-safe-iteration-closing.js");
 var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
-var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/core-js/internals/is-constructor.js");
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
 var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
-var getIterator = __webpack_require__(/*! ../internals/get-iterator */ "./node_modules/core-js/internals/get-iterator.js");
 var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
 
 // `Array.from` method implementation
 // https://tc39.es/ecma262/#sec-array.from
 module.exports = function from(arrayLike /* , mapfn = undefined, thisArg = undefined */) {
   var O = toObject(arrayLike);
-  var IS_CONSTRUCTOR = isConstructor(this);
+  var C = typeof this == 'function' ? this : Array;
   var argumentsLength = arguments.length;
   var mapfn = argumentsLength > 1 ? arguments[1] : undefined;
   var mapping = mapfn !== undefined;
-  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
   var iteratorMethod = getIteratorMethod(O);
   var index = 0;
   var length, result, step, iterator, next, value;
+  if (mapping) mapfn = bind(mapfn, argumentsLength > 2 ? arguments[2] : undefined, 2);
   // if the target is not iterable or it's an array with the default iterator - use a simple case
-  if (iteratorMethod && !(this == Array && isArrayIteratorMethod(iteratorMethod))) {
-    iterator = getIterator(O, iteratorMethod);
+  if (iteratorMethod != undefined && !(C == Array && isArrayIteratorMethod(iteratorMethod))) {
+    iterator = iteratorMethod.call(O);
     next = iterator.next;
-    result = IS_CONSTRUCTOR ? new this() : [];
+    result = new C();
     for (;!(step = next.call(iterator)).done; index++) {
       value = mapping ? callWithSafeIterationClosing(iterator, mapfn, [step.value, index], true) : step.value;
       createProperty(result, index, value);
     }
   } else {
     length = toLength(O.length);
-    result = IS_CONSTRUCTOR ? new this(length) : Array(length);
+    result = new C(length);
     for (;length > index; index++) {
       value = mapping ? mapfn(O[index], index) : O[index];
       createProperty(result, index, value);
@@ -8890,14 +8869,14 @@ var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-crea
 
 var push = [].push;
 
-// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex, filterReject }` methods implementation
+// `Array.prototype.{ forEach, map, filter, some, every, find, findIndex, filterOut }` methods implementation
 var createMethod = function (TYPE) {
   var IS_MAP = TYPE == 1;
   var IS_FILTER = TYPE == 2;
   var IS_SOME = TYPE == 3;
   var IS_EVERY = TYPE == 4;
   var IS_FIND_INDEX = TYPE == 6;
-  var IS_FILTER_REJECT = TYPE == 7;
+  var IS_FILTER_OUT = TYPE == 7;
   var NO_HOLES = TYPE == 5 || IS_FIND_INDEX;
   return function ($this, callbackfn, that, specificCreate) {
     var O = toObject($this);
@@ -8906,7 +8885,7 @@ var createMethod = function (TYPE) {
     var length = toLength(self.length);
     var index = 0;
     var create = specificCreate || arraySpeciesCreate;
-    var target = IS_MAP ? create($this, length) : IS_FILTER || IS_FILTER_REJECT ? create($this, 0) : undefined;
+    var target = IS_MAP ? create($this, length) : IS_FILTER || IS_FILTER_OUT ? create($this, 0) : undefined;
     var value, result;
     for (;length > index; index++) if (NO_HOLES || index in self) {
       value = self[index];
@@ -8920,7 +8899,7 @@ var createMethod = function (TYPE) {
           case 2: push.call(target, value); // filter
         } else switch (TYPE) {
           case 4: return false;             // every
-          case 7: push.call(target, value); // filterReject
+          case 7: push.call(target, value); // filterOut
         }
       }
     }
@@ -8950,9 +8929,9 @@ module.exports = {
   // `Array.prototype.findIndex` method
   // https://tc39.es/ecma262/#sec-array.prototype.findIndex
   findIndex: createMethod(6),
-  // `Array.prototype.filterReject` method
+  // `Array.prototype.filterOut` method
   // https://github.com/tc39/proposal-array-filtering
-  filterReject: createMethod(7)
+  filterOut: createMethod(7)
 };
 
 
@@ -9014,7 +8993,7 @@ module.exports = function (METHOD_NAME, argument) {
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
 var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
@@ -9022,7 +9001,7 @@ var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules
 // `Array.prototype.{ reduce, reduceRight }` methods implementation
 var createMethod = function (IS_RIGHT) {
   return function (that, callbackfn, argumentsLength, memo) {
-    aCallable(callbackfn);
+    aFunction(callbackfn);
     var O = toObject(that);
     var self = IndexedObject(O);
     var length = toLength(O.length);
@@ -9058,49 +9037,31 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/array-species-constructor.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/core-js/internals/array-species-constructor.js ***!
-  \*********************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
-var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/core-js/internals/is-constructor.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
-
-var SPECIES = wellKnownSymbol('species');
-
-// a part of `ArraySpeciesCreate` abstract operation
-// https://tc39.es/ecma262/#sec-arrayspeciescreate
-module.exports = function (originalArray) {
-  var C;
-  if (isArray(originalArray)) {
-    C = originalArray.constructor;
-    // cross-realm fallback
-    if (isConstructor(C) && (C === Array || isArray(C.prototype))) C = undefined;
-    else if (isObject(C)) {
-      C = C[SPECIES];
-      if (C === null) C = undefined;
-    }
-  } return C === undefined ? Array : C;
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/internals/array-species-create.js":
 /*!****************************************************************!*\
   !*** ./node_modules/core-js/internals/array-species-create.js ***!
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var arraySpeciesConstructor = __webpack_require__(/*! ../internals/array-species-constructor */ "./node_modules/core-js/internals/array-species-constructor.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+
+var SPECIES = wellKnownSymbol('species');
 
 // `ArraySpeciesCreate` abstract operation
 // https://tc39.es/ecma262/#sec-arrayspeciescreate
 module.exports = function (originalArray, length) {
-  return new (arraySpeciesConstructor(originalArray))(length === 0 ? 0 : length);
+  var C;
+  if (isArray(originalArray)) {
+    C = originalArray.constructor;
+    // cross-realm fallback
+    if (typeof C == 'function' && (C === Array || isArray(C.prototype))) C = undefined;
+    else if (isObject(C)) {
+      C = C[SPECIES];
+      if (C === null) C = undefined;
+    }
+  } return new (C === undefined ? Array : C)(length === 0 ? 0 : length);
 };
 
 
@@ -9120,7 +9081,8 @@ module.exports = function (iterator, fn, value, ENTRIES) {
   try {
     return ENTRIES ? fn(anObject(value)[0], value[1]) : fn(value);
   } catch (error) {
-    iteratorClose(iterator, 'throw', error);
+    iteratorClose(iterator);
+    throw error;
   }
 };
 
@@ -9197,7 +9159,6 @@ module.exports = function (it) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
@@ -9221,7 +9182,7 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
     // builtinTag case
     : CORRECT_ARGUMENTS ? classofRaw(O)
     // ES3 arguments fallback
-    : (result = classofRaw(O)) == 'Object' && isCallable(O.callee) ? 'Arguments' : result;
+    : (result = classofRaw(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : result;
 };
 
 
@@ -9455,7 +9416,6 @@ var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/
 var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "./node_modules/core-js/internals/internal-metadata.js");
 var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
 var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/core-js/internals/an-instance.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "./node_modules/core-js/internals/check-correctness-of-iteration.js");
@@ -9492,7 +9452,7 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
 
   var REPLACE = isForced(
     CONSTRUCTOR_NAME,
-    !isCallable(NativeConstructor) || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
+    typeof NativeConstructor != 'function' || !(IS_WEAK || NativePrototype.forEach && !fails(function () {
       new NativeConstructor().entries().next();
     }))
   );
@@ -9500,7 +9460,7 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
   if (REPLACE) {
     // create collection constructor
     Constructor = common.getConstructor(wrapper, CONSTRUCTOR_NAME, IS_MAP, ADDER);
-    InternalMetadataModule.enable();
+    InternalMetadataModule.REQUIRED = true;
   } else if (isForced(CONSTRUCTOR_NAME, true)) {
     var instance = new Constructor();
     // early implementations not supports chaining
@@ -9695,12 +9655,12 @@ module.exports = function (bitmap, value) {
 
 "use strict";
 
-var toPropertyKey = __webpack_require__(/*! ../internals/to-property-key */ "./node_modules/core-js/internals/to-property-key.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
 var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
 var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
 
 module.exports = function (object, key, value) {
-  var propertyKey = toPropertyKey(key);
+  var propertyKey = toPrimitive(key);
   if (propertyKey in object) definePropertyModule.f(object, propertyKey, createPropertyDescriptor(0, value));
   else object[propertyKey] = value;
 };
@@ -9717,9 +9677,6 @@ module.exports = function (object, key, value) {
 "use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
-var FunctionName = __webpack_require__(/*! ../internals/function-name */ "./node_modules/core-js/internals/function-name.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "./node_modules/core-js/internals/create-iterator-constructor.js");
 var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
 var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
@@ -9727,11 +9684,10 @@ var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "
 var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
 var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
 var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js");
 
-var PROPER_FUNCTION_NAME = FunctionName.PROPER;
-var CONFIGURABLE_FUNCTION_NAME = FunctionName.CONFIGURABLE;
 var IteratorPrototype = IteratorsCore.IteratorPrototype;
 var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
 var ITERATOR = wellKnownSymbol('iterator');
@@ -9767,12 +9723,12 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
   // fix native
   if (anyNativeIterator) {
     CurrentIteratorPrototype = getPrototypeOf(anyNativeIterator.call(new Iterable()));
-    if (CurrentIteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
+    if (IteratorPrototype !== Object.prototype && CurrentIteratorPrototype.next) {
       if (!IS_PURE && getPrototypeOf(CurrentIteratorPrototype) !== IteratorPrototype) {
         if (setPrototypeOf) {
           setPrototypeOf(CurrentIteratorPrototype, IteratorPrototype);
-        } else if (!isCallable(CurrentIteratorPrototype[ITERATOR])) {
-          redefine(CurrentIteratorPrototype, ITERATOR, returnThis);
+        } else if (typeof CurrentIteratorPrototype[ITERATOR] != 'function') {
+          createNonEnumerableProperty(CurrentIteratorPrototype, ITERATOR, returnThis);
         }
       }
       // Set @@toStringTag to native iterators
@@ -9782,14 +9738,16 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
   }
 
   // fix Array.prototype.{ values, @@iterator }.name in V8 / FF
-  if (PROPER_FUNCTION_NAME && DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
-    if (!IS_PURE && CONFIGURABLE_FUNCTION_NAME) {
-      createNonEnumerableProperty(IterablePrototype, 'name', VALUES);
-    } else {
-      INCORRECT_VALUES_NAME = true;
-      defaultIterator = function values() { return nativeIterator.call(this); };
-    }
+  if (DEFAULT == VALUES && nativeIterator && nativeIterator.name !== VALUES) {
+    INCORRECT_VALUES_NAME = true;
+    defaultIterator = function values() { return nativeIterator.call(this); };
   }
+
+  // define iterator
+  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
+    createNonEnumerableProperty(IterablePrototype, ITERATOR, defaultIterator);
+  }
+  Iterators[NAME] = defaultIterator;
 
   // export additional methods
   if (DEFAULT) {
@@ -9804,12 +9762,6 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
       }
     } else $({ target: NAME, proto: true, forced: BUGGY_SAFARI_ITERATORS || INCORRECT_VALUES_NAME }, methods);
   }
-
-  // define iterator
-  if ((!IS_PURE || FORCED) && IterablePrototype[ITERATOR] !== defaultIterator) {
-    redefine(IterablePrototype, ITERATOR, defaultIterator, { name: DEFAULT });
-  }
-  Iterators[NAME] = defaultIterator;
 
   return methods;
 };
@@ -9920,23 +9872,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/dom-token-list-prototype.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/dom-token-list-prototype.js ***!
-  \********************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-// in old WebKit versions, `element.classList` is not an instance of global `DOMTokenList`
-var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
-
-var classList = documentCreateElement('span').classList;
-var DOMTokenListPrototype = classList && classList.constructor && classList.constructor.prototype;
-
-module.exports = DOMTokenListPrototype === Object.prototype ? undefined : DOMTokenListPrototype;
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/internals/engine-is-browser.js":
 /*!*************************************************************!*\
   !*** ./node_modules/core-js/internals/engine-is-browser.js ***!
@@ -9944,20 +9879,6 @@ module.exports = DOMTokenListPrototype === Object.prototype ? undefined : DOMTok
 /***/ ((module) => {
 
 module.exports = typeof window == 'object';
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/engine-is-ios-pebble.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/engine-is-ios-pebble.js ***!
-  \****************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-
-module.exports = /ipad|iphone|ipod/i.test(userAgent) && global.Pebble !== undefined;
 
 
 /***/ }),
@@ -9970,7 +9891,7 @@ module.exports = /ipad|iphone|ipod/i.test(userAgent) && global.Pebble !== undefi
 
 var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
 
-module.exports = /(?:ipad|iphone|ipod).*applewebkit/i.test(userAgent);
+module.exports = /(?:iphone|ipod|ipad).*applewebkit/i.test(userAgent);
 
 
 /***/ }),
@@ -10025,8 +9946,7 @@ var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core
 var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
 
 var process = global.process;
-var Deno = global.Deno;
-var versions = process && process.versions || Deno && Deno.version;
+var versions = process && process.versions;
 var v8 = versions && versions.v8;
 var match, version;
 
@@ -10093,7 +10013,6 @@ var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules
   options.sham        - add a flag to not completely full polyfills
   options.enumerable  - export as enumerable property
   options.noTargetGet - prevent calling a getter on target
-  options.name        - the .name of the function if it does not match the key
 */
 module.exports = function (options, source) {
   var TARGET = options.target;
@@ -10253,11 +10172,11 @@ module.exports = !fails(function () {
   \*****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 
 // optional / simple context binding
 module.exports = function (fn, that, length) {
-  aCallable(fn);
+  aFunction(fn);
   if (that === undefined) return fn;
   switch (length) {
     case 0: return function () {
@@ -10289,7 +10208,7 @@ module.exports = function (fn, that, length) {
 
 "use strict";
 
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 
 var slice = [].slice;
@@ -10306,7 +10225,7 @@ var construct = function (C, argsLength, args) {
 // `Function.prototype.bind` method implementation
 // https://tc39.es/ecma262/#sec-function.prototype.bind
 module.exports = Function.bind || function bind(that /* , ...args */) {
-  var fn = aCallable(this);
+  var fn = aFunction(this);
   var partArgs = slice.call(arguments, 1);
   var boundFunction = function bound(/* args... */) {
     var args = partArgs.concat(slice.call(arguments));
@@ -10319,48 +10238,22 @@ module.exports = Function.bind || function bind(that /* , ...args */) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/function-name.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/function-name.js ***!
-  \*********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-
-var FunctionPrototype = Function.prototype;
-// eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
-var getDescriptor = DESCRIPTORS && Object.getOwnPropertyDescriptor;
-
-var EXISTS = has(FunctionPrototype, 'name');
-// additional protection from minified / mangled / dropped function names
-var PROPER = EXISTS && (function something() { /* empty */ }).name === 'something';
-var CONFIGURABLE = EXISTS && (!DESCRIPTORS || (DESCRIPTORS && getDescriptor(FunctionPrototype, 'name').configurable));
-
-module.exports = {
-  EXISTS: EXISTS,
-  PROPER: PROPER,
-  CONFIGURABLE: CONFIGURABLE
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/internals/get-built-in.js":
 /*!********************************************************!*\
   !*** ./node_modules/core-js/internals/get-built-in.js ***!
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
+var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 
-var aFunction = function (argument) {
-  return isCallable(argument) ? argument : undefined;
+var aFunction = function (variable) {
+  return typeof variable == 'function' ? variable : undefined;
 };
 
 module.exports = function (namespace, method) {
-  return arguments.length < 2 ? aFunction(global[namespace]) : global[namespace] && global[namespace][method];
+  return arguments.length < 2 ? aFunction(path[namespace]) || aFunction(global[namespace])
+    : path[namespace] && path[namespace][method] || global[namespace] && global[namespace][method];
 };
 
 
@@ -10373,53 +10266,15 @@ module.exports = function (namespace, method) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
-var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/core-js/internals/get-method.js");
 var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 
 module.exports = function (it) {
-  if (it != undefined) return getMethod(it, ITERATOR)
-    || getMethod(it, '@@iterator')
+  if (it != undefined) return it[ITERATOR]
+    || it['@@iterator']
     || Iterators[classof(it)];
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/get-iterator.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/get-iterator.js ***!
-  \********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
-
-module.exports = function (argument, usingIterator) {
-  var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
-  if (aCallable(iteratorMethod)) return anObject(iteratorMethod.call(argument));
-  throw TypeError(String(argument) + ' is not iterable');
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/get-method.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/get-method.js ***!
-  \******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
-
-// `GetMethod` abstract operation
-// https://tc39.es/ecma262/#sec-getmethod
-module.exports = function (V, P) {
-  var func = V[P];
-  return func == null ? undefined : aCallable(func);
 };
 
 
@@ -10609,7 +10464,6 @@ module.exports = fails(function () {
   \***************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
 
@@ -10620,7 +10474,7 @@ module.exports = function ($this, dummy, Wrapper) {
     // it can work only with native `setPrototypeOf`
     setPrototypeOf &&
     // we haven't completely correct pre-ES6 way for getting `new.target`, so use this
-    isCallable(NewTarget = dummy.constructor) &&
+    typeof (NewTarget = dummy.constructor) == 'function' &&
     NewTarget !== Wrapper &&
     isObject(NewTargetPrototype = NewTarget.prototype) &&
     NewTargetPrototype !== Wrapper.prototype
@@ -10637,13 +10491,12 @@ module.exports = function ($this, dummy, Wrapper) {
   \**********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
 
 var functionToString = Function.toString;
 
 // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
-if (!isCallable(store.inspectSource)) {
+if (typeof store.inspectSource != 'function') {
   store.inspectSource = function (it) {
     return functionToString.call(it);
   };
@@ -10660,17 +10513,13 @@ module.exports = store.inspectSource;
   \*************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
-var getOwnPropertyNamesExternalModule = __webpack_require__(/*! ../internals/object-get-own-property-names-external */ "./node_modules/core-js/internals/object-get-own-property-names-external.js");
 var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
 var FREEZING = __webpack_require__(/*! ../internals/freezing */ "./node_modules/core-js/internals/freezing.js");
 
-var REQUIRED = false;
 var METADATA = uid('meta');
 var id = 0;
 
@@ -10714,38 +10563,12 @@ var getWeakData = function (it, create) {
 
 // add metadata on freeze-family methods calling
 var onFreeze = function (it) {
-  if (FREEZING && REQUIRED && isExtensible(it) && !has(it, METADATA)) setMetadata(it);
+  if (FREEZING && meta.REQUIRED && isExtensible(it) && !has(it, METADATA)) setMetadata(it);
   return it;
 };
 
-var enable = function () {
-  meta.enable = function () { /* empty */ };
-  REQUIRED = true;
-  var getOwnPropertyNames = getOwnPropertyNamesModule.f;
-  var splice = [].splice;
-  var test = {};
-  test[METADATA] = 1;
-
-  // prevent exposing of metadata key
-  if (getOwnPropertyNames(test).length) {
-    getOwnPropertyNamesModule.f = function (it) {
-      var result = getOwnPropertyNames(it);
-      for (var i = 0, length = result.length; i < length; i++) {
-        if (result[i] === METADATA) {
-          splice.call(result, i, 1);
-          break;
-        }
-      } return result;
-    };
-
-    $({ target: 'Object', stat: true, forced: true }, {
-      getOwnPropertyNames: getOwnPropertyNamesExternalModule.f
-    });
-  }
-};
-
 var meta = module.exports = {
-  enable: enable,
+  REQUIRED: false,
   fastKey: fastKey,
   getWeakData: getWeakData,
   onFreeze: onFreeze
@@ -10864,75 +10687,9 @@ var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_module
 // `IsArray` abstract operation
 // https://tc39.es/ecma262/#sec-isarray
 // eslint-disable-next-line es/no-array-isarray -- safe
-module.exports = Array.isArray || function isArray(argument) {
-  return classof(argument) == 'Array';
+module.exports = Array.isArray || function isArray(arg) {
+  return classof(arg) == 'Array';
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/is-callable.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/is-callable.js ***!
-  \*******************************************************/
-/***/ ((module) => {
-
-// `isCallable` abstract operation
-// https://tc39.es/ecma262/#sec-iscallable
-module.exports = function (argument) {
-  return typeof argument === 'function';
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/is-constructor.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/is-constructor.js ***!
-  \**********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
-
-var empty = [];
-var construct = getBuiltIn('Reflect', 'construct');
-var constructorRegExp = /^\s*(?:class|function)\b/;
-var exec = constructorRegExp.exec;
-var INCORRECT_TO_STRING = !constructorRegExp.exec(function () { /* empty */ });
-
-var isConstructorModern = function (argument) {
-  if (!isCallable(argument)) return false;
-  try {
-    construct(Object, empty, argument);
-    return true;
-  } catch (error) {
-    return false;
-  }
-};
-
-var isConstructorLegacy = function (argument) {
-  if (!isCallable(argument)) return false;
-  switch (classof(argument)) {
-    case 'AsyncFunction':
-    case 'GeneratorFunction':
-    case 'AsyncGeneratorFunction': return false;
-    // we can't check .prototype since constructors produced by .bind haven't it
-  } return INCORRECT_TO_STRING || !!exec.call(constructorRegExp, inspectSource(argument));
-};
-
-// `IsConstructor` abstract operation
-// https://tc39.es/ecma262/#sec-isconstructor
-module.exports = !construct || fails(function () {
-  var called;
-  return isConstructorModern(isConstructorModern.call)
-    || !isConstructorModern(Object)
-    || !isConstructorModern(function () { called = true; })
-    || called;
-}) ? isConstructorLegacy : isConstructorModern;
 
 
 /***/ }),
@@ -10944,7 +10701,6 @@ module.exports = !construct || fails(function () {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 
 var replacement = /#|\.prototype\./;
 
@@ -10952,7 +10708,7 @@ var isForced = function (feature, detection) {
   var value = data[normalize(feature)];
   return value == POLYFILL ? true
     : value == NATIVE ? false
-    : isCallable(detection) ? fails(detection)
+    : typeof detection == 'function' ? fails(detection)
     : !!detection;
 };
 
@@ -10973,12 +10729,10 @@ module.exports = isForced;
 /*!*****************************************************!*\
   !*** ./node_modules/core-js/internals/is-object.js ***!
   \*****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
+/***/ ((module) => {
 
 module.exports = function (it) {
-  return typeof it === 'object' ? it !== null : isCallable(it);
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
 };
 
 
@@ -11017,26 +10771,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/is-symbol.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-symbol.js ***!
-  \*****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
-var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/core-js/internals/use-symbol-as-uid.js");
-
-module.exports = USE_SYMBOL_AS_UID ? function (it) {
-  return typeof it == 'symbol';
-} : function (it) {
-  var $Symbol = getBuiltIn('Symbol');
-  return isCallable($Symbol) && Object(it) instanceof $Symbol;
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/internals/iterate.js":
 /*!***************************************************!*\
   !*** ./node_modules/core-js/internals/iterate.js ***!
@@ -11047,7 +10781,6 @@ var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules
 var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
 var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
-var getIterator = __webpack_require__(/*! ../internals/get-iterator */ "./node_modules/core-js/internals/get-iterator.js");
 var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
 var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "./node_modules/core-js/internals/iterator-close.js");
 
@@ -11065,7 +10798,7 @@ module.exports = function (iterable, unboundFunction, options) {
   var iterator, iterFn, index, length, result, next, step;
 
   var stop = function (condition) {
-    if (iterator) iteratorClose(iterator, 'normal', condition);
+    if (iterator) iteratorClose(iterator);
     return new Result(true, condition);
   };
 
@@ -11080,7 +10813,7 @@ module.exports = function (iterable, unboundFunction, options) {
     iterator = iterable;
   } else {
     iterFn = getIteratorMethod(iterable);
-    if (!iterFn) throw TypeError(String(iterable) + ' is not iterable');
+    if (typeof iterFn != 'function') throw TypeError('Target is not iterable');
     // optimisation for array iterators
     if (isArrayIteratorMethod(iterFn)) {
       for (index = 0, length = toLength(iterable.length); length > index; index++) {
@@ -11088,7 +10821,7 @@ module.exports = function (iterable, unboundFunction, options) {
         if (result && result instanceof Result) return result;
       } return new Result(false);
     }
-    iterator = getIterator(iterable, iterFn);
+    iterator = iterFn.call(iterable);
   }
 
   next = iterator.next;
@@ -11096,7 +10829,8 @@ module.exports = function (iterable, unboundFunction, options) {
     try {
       result = callFn(step.value);
     } catch (error) {
-      iteratorClose(iterator, 'throw', error);
+      iteratorClose(iterator);
+      throw error;
     }
     if (typeof result == 'object' && result && result instanceof Result) return result;
   } return new Result(false);
@@ -11112,26 +10846,12 @@ module.exports = function (iterable, unboundFunction, options) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/core-js/internals/get-method.js");
 
-module.exports = function (iterator, kind, value) {
-  var innerResult, innerError;
-  anObject(iterator);
-  try {
-    innerResult = getMethod(iterator, 'return');
-    if (!innerResult) {
-      if (kind === 'throw') throw value;
-      return value;
-    }
-    innerResult = innerResult.call(iterator);
-  } catch (error) {
-    innerError = true;
-    innerResult = error;
+module.exports = function (iterator) {
+  var returnMethod = iterator['return'];
+  if (returnMethod !== undefined) {
+    return anObject(returnMethod.call(iterator)).value;
   }
-  if (kind === 'throw') throw value;
-  if (innerError) throw innerResult;
-  anObject(innerResult);
-  return value;
 };
 
 
@@ -11146,15 +10866,16 @@ module.exports = function (iterator, kind, value) {
 "use strict";
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
 var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var BUGGY_SAFARI_ITERATORS = false;
+
+var returnThis = function () { return this; };
 
 // `%IteratorPrototype%` object
 // https://tc39.es/ecma262/#sec-%iteratorprototype%-object
@@ -11178,14 +10899,11 @@ var NEW_ITERATOR_PROTOTYPE = IteratorPrototype == undefined || fails(function ()
 });
 
 if (NEW_ITERATOR_PROTOTYPE) IteratorPrototype = {};
-else if (IS_PURE) IteratorPrototype = create(IteratorPrototype);
 
 // `%IteratorPrototype%[@@iterator]()` method
 // https://tc39.es/ecma262/#sec-%iteratorprototype%-@@iterator
-if (!isCallable(IteratorPrototype[ITERATOR])) {
-  redefine(IteratorPrototype, ITERATOR, function () {
-    return this;
-  });
+if ((!IS_PURE || NEW_ITERATOR_PROTOTYPE) && !has(IteratorPrototype, ITERATOR)) {
+  createNonEnumerableProperty(IteratorPrototype, ITERATOR, returnThis);
 }
 
 module.exports = {
@@ -11217,7 +10935,6 @@ var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core
 var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
 var macrotask = __webpack_require__(/*! ../internals/task */ "./node_modules/core-js/internals/task.js").set;
 var IS_IOS = __webpack_require__(/*! ../internals/engine-is-ios */ "./node_modules/core-js/internals/engine-is-ios.js");
-var IS_IOS_PEBBLE = __webpack_require__(/*! ../internals/engine-is-ios-pebble */ "./node_modules/core-js/internals/engine-is-ios-pebble.js");
 var IS_WEBOS_WEBKIT = __webpack_require__(/*! ../internals/engine-is-webos-webkit */ "./node_modules/core-js/internals/engine-is-webos-webkit.js");
 var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "./node_modules/core-js/internals/engine-is-node.js");
 
@@ -11260,7 +10977,7 @@ if (!queueMicrotask) {
       node.data = toggle = !toggle;
     };
   // environments with maybe non-completely correct, but existent Promise
-  } else if (!IS_IOS_PEBBLE && Promise && Promise.resolve) {
+  } else if (Promise && Promise.resolve) {
     // Promise.resolve without an argument throws an error in LG WebOS 2
     promise = Promise.resolve(undefined);
     // workaround of WebKit ~ iOS Safari 10.1 bug
@@ -11343,12 +11060,11 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
 
 var WeakMap = global.WeakMap;
 
-module.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap));
+module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSource(WeakMap));
 
 
 /***/ }),
@@ -11361,7 +11077,7 @@ module.exports = isCallable(WeakMap) && /native code/.test(inspectSource(WeakMap
 
 "use strict";
 
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 
 var PromiseCapability = function (C) {
   var resolve, reject;
@@ -11370,8 +11086,8 @@ var PromiseCapability = function (C) {
     resolve = $$resolve;
     reject = $$reject;
   });
-  this.resolve = aCallable(resolve);
-  this.reject = aCallable(reject);
+  this.resolve = aFunction(resolve);
+  this.reject = aFunction(reject);
 };
 
 // `NewPromiseCapability` abstract operation
@@ -11406,7 +11122,6 @@ module.exports = function (it) {
   \*********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-/* global ActiveXObject -- old IE, WSH */
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "./node_modules/core-js/internals/object-define-properties.js");
 var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
@@ -11461,13 +11176,10 @@ var NullProtoObjectViaIFrame = function () {
 var activeXDocument;
 var NullProtoObject = function () {
   try {
-    activeXDocument = new ActiveXObject('htmlfile');
+    /* global ActiveXObject -- old IE */
+    activeXDocument = document.domain && new ActiveXObject('htmlfile');
   } catch (error) { /* ignore */ }
-  NullProtoObject = typeof document != 'undefined'
-    ? document.domain && activeXDocument
-      ? NullProtoObjectViaActiveX(activeXDocument) // old IE
-      : NullProtoObjectViaIFrame()
-    : NullProtoObjectViaActiveX(activeXDocument); // WSH
+  NullProtoObject = activeXDocument ? NullProtoObjectViaActiveX(activeXDocument) : NullProtoObjectViaIFrame();
   var length = enumBugKeys.length;
   while (length--) delete NullProtoObject[PROTOTYPE][enumBugKeys[length]];
   return NullProtoObject();
@@ -11528,7 +11240,7 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var toPropertyKey = __webpack_require__(/*! ../internals/to-property-key */ "./node_modules/core-js/internals/to-property-key.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
 
 // eslint-disable-next-line es/no-object-defineproperty -- safe
 var $defineProperty = Object.defineProperty;
@@ -11537,7 +11249,7 @@ var $defineProperty = Object.defineProperty;
 // https://tc39.es/ecma262/#sec-object.defineproperty
 exports.f = DESCRIPTORS ? $defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
-  P = toPropertyKey(P);
+  P = toPrimitive(P, true);
   anObject(Attributes);
   if (IE8_DOM_DEFINE) try {
     return $defineProperty(O, P, Attributes);
@@ -11560,7 +11272,7 @@ var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_mo
 var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
 var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
-var toPropertyKey = __webpack_require__(/*! ../internals/to-property-key */ "./node_modules/core-js/internals/to-property-key.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
 
@@ -11571,7 +11283,7 @@ var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 // https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
 exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDescriptor(O, P) {
   O = toIndexedObject(O);
-  P = toPropertyKey(P);
+  P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
     return $getOwnPropertyDescriptor(O, P);
   } catch (error) { /* empty */ }
@@ -11654,7 +11366,6 @@ exports.f = Object.getOwnPropertySymbols;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
 var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
 var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/core-js/internals/correct-prototype-getter.js");
@@ -11666,12 +11377,11 @@ var ObjectPrototype = Object.prototype;
 // https://tc39.es/ecma262/#sec-object.getprototypeof
 // eslint-disable-next-line es/no-object-getprototypeof -- safe
 module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O) {
-  var object = toObject(O);
-  if (has(object, IE_PROTO)) return object[IE_PROTO];
-  var constructor = object.constructor;
-  if (isCallable(constructor) && object instanceof constructor) {
-    return constructor.prototype;
-  } return object instanceof Object ? ObjectPrototype : null;
+  O = toObject(O);
+  if (has(O, IE_PROTO)) return O[IE_PROTO];
+  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
+    return O.constructor.prototype;
+  } return O instanceof Object ? ObjectPrototype : null;
 };
 
 
@@ -11804,28 +11514,6 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/ordinary-to-primitive.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/core-js/internals/ordinary-to-primitive.js ***!
-  \*****************************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-
-// `OrdinaryToPrimitive` abstract operation
-// https://tc39.es/ecma262/#sec-ordinarytoprimitive
-module.exports = function (input, pref) {
-  var fn, val;
-  if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = fn.call(input))) return val;
-  if (isCallable(fn = input.valueOf) && !isObject(val = fn.call(input))) return val;
-  if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = fn.call(input))) return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/internals/own-keys.js":
 /*!****************************************************!*\
   !*** ./node_modules/core-js/internals/own-keys.js ***!
@@ -11922,13 +11610,11 @@ module.exports = function (target, src, options) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
 var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
 var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
-var CONFIGURABLE_FUNCTION_NAME = __webpack_require__(/*! ../internals/function-name */ "./node_modules/core-js/internals/function-name.js").CONFIGURABLE;
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -11938,18 +11624,14 @@ var TEMPLATE = String(String).split('String');
   var unsafe = options ? !!options.unsafe : false;
   var simple = options ? !!options.enumerable : false;
   var noTargetGet = options ? !!options.noTargetGet : false;
-  var name = options && options.name !== undefined ? options.name : key;
   var state;
-  if (isCallable(value)) {
-    if (String(name).slice(0, 7) === 'Symbol(') {
-      name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
-    }
-    if (!has(value, 'name') || (CONFIGURABLE_FUNCTION_NAME && value.name !== name)) {
-      createNonEnumerableProperty(value, 'name', name);
+  if (typeof value == 'function') {
+    if (typeof key == 'string' && !has(value, 'name')) {
+      createNonEnumerableProperty(value, 'name', key);
     }
     state = enforceInternalState(value);
     if (!state.source) {
-      state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
+      state.source = TEMPLATE.join(typeof key == 'string' ? key : '');
     }
   }
   if (O === global) {
@@ -11965,7 +11647,7 @@ var TEMPLATE = String(String).split('String');
   else createNonEnumerableProperty(O, key, value);
 // add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
 })(Function.prototype, 'toString', function toString() {
-  return isCallable(this) && getInternalState(this).source || inspectSource(this);
+  return typeof this == 'function' && getInternalState(this).source || inspectSource(this);
 });
 
 
@@ -11977,23 +11659,28 @@ var TEMPLATE = String(String).split('String');
   \****************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
-var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+var classof = __webpack_require__(/*! ./classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var regexpExec = __webpack_require__(/*! ./regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
 
 // `RegExpExec` abstract operation
 // https://tc39.es/ecma262/#sec-regexpexec
 module.exports = function (R, S) {
   var exec = R.exec;
-  if (isCallable(exec)) {
+  if (typeof exec === 'function') {
     var result = exec.call(R, S);
-    if (result !== null) anObject(result);
+    if (typeof result !== 'object') {
+      throw TypeError('RegExp exec method returned something other than an Object or null');
+    }
     return result;
   }
-  if (classof(R) === 'RegExp') return regexpExec.call(R, S);
-  throw TypeError('RegExp#exec called on incompatible receiver');
+
+  if (classof(R) !== 'RegExp') {
+    throw TypeError('RegExp#exec called on incompatible receiver');
+  }
+
+  return regexpExec.call(R, S);
 };
+
 
 
 /***/ }),
@@ -12006,9 +11693,8 @@ module.exports = function (R, S) {
 
 "use strict";
 
-/* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
+/* eslint-disable regexp/no-assertion-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
 /* eslint-disable regexp/no-useless-quantifier -- testing */
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
 var regexpFlags = __webpack_require__(/*! ../internals/regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
 var stickyHelpers = __webpack_require__(/*! ../internals/regexp-sticky-helpers */ "./node_modules/core-js/internals/regexp-sticky-helpers.js");
 var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
@@ -12039,10 +11725,9 @@ var PATCH = UPDATES_LAST_INDEX_WRONG || NPCG_INCLUDED || UNSUPPORTED_Y || UNSUPP
 
 if (PATCH) {
   // eslint-disable-next-line max-statements -- TODO
-  patchedExec = function exec(string) {
+  patchedExec = function exec(str) {
     var re = this;
     var state = getInternalState(re);
-    var str = toString(string);
     var raw = state.raw;
     var result, reCopy, lastIndex, match, i, object, group;
 
@@ -12066,9 +11751,9 @@ if (PATCH) {
         flags += 'g';
       }
 
-      strCopy = str.slice(re.lastIndex);
+      strCopy = String(str).slice(re.lastIndex);
       // Support anchored sticky behavior.
-      if (re.lastIndex > 0 && (!re.multiline || re.multiline && str.charAt(re.lastIndex - 1) !== '\n')) {
+      if (re.lastIndex > 0 && (!re.multiline || re.multiline && str[re.lastIndex - 1] !== '\n')) {
         source = '(?: ' + source + ')';
         strCopy = ' ' + strCopy;
         charsAdded++;
@@ -12156,20 +11841,21 @@ module.exports = function () {
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 
-// babel-minify and Closure Compiler transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError
-var $RegExp = global.RegExp;
+// babel-minify transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError,
+var RE = function (s, f) {
+  return RegExp(s, f);
+};
 
 exports.UNSUPPORTED_Y = fails(function () {
-  var re = $RegExp('a', 'y');
+  var re = RE('a', 'y');
   re.lastIndex = 2;
   return re.exec('abcd') != null;
 });
 
 exports.BROKEN_CARET = fails(function () {
   // https://bugzilla.mozilla.org/show_bug.cgi?id=773687
-  var re = $RegExp('^r', 'gy');
+  var re = RE('^r', 'gy');
   re.lastIndex = 2;
   return re.exec('str') != null;
 });
@@ -12183,14 +11869,11 @@ exports.BROKEN_CARET = fails(function () {
   \**********************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-
-// babel-minify and Closure Compiler transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
-var $RegExp = global.RegExp;
+var fails = __webpack_require__(/*! ./fails */ "./node_modules/core-js/internals/fails.js");
 
 module.exports = fails(function () {
-  var re = $RegExp('.', 's');
+  // babel-minify transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
+  var re = RegExp('.', (typeof '').charAt(0));
   return !(re.dotAll && re.exec('\n') && re.flags === 's');
 });
 
@@ -12203,14 +11886,11 @@ module.exports = fails(function () {
   \******************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-
-// babel-minify and Closure Compiler transpiles RegExp('(?<a>b)', 'g') -> /(?<a>b)/g and it causes SyntaxError
-var $RegExp = global.RegExp;
+var fails = __webpack_require__(/*! ./fails */ "./node_modules/core-js/internals/fails.js");
 
 module.exports = fails(function () {
-  var re = $RegExp('(?<a>b)', 'g');
+  // babel-minify transpiles RegExp('.', 'g') -> /./g and it causes SyntaxError
+  var re = RegExp('(?<a>b)', (typeof '').charAt(5));
   return re.exec('b').groups.a !== 'b' ||
     'b'.replace(re, '$<a>c') !== 'bc';
 });
@@ -12241,11 +11921,11 @@ module.exports = function (it) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 
 module.exports = function (key, value) {
   try {
-    // eslint-disable-next-line es/no-object-defineproperty -- safe
-    Object.defineProperty(global, key, { value: value, configurable: true, writable: true });
+    createNonEnumerableProperty(global, key, value);
   } catch (error) {
     global[key] = value;
   } return value;
@@ -12352,7 +12032,7 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.18.0',
+  version: '3.15.2',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2021 Denis Pushkarev (zloirock.ru)'
 });
@@ -12367,7 +12047,7 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var aConstructor = __webpack_require__(/*! ../internals/a-constructor */ "./node_modules/core-js/internals/a-constructor.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
 
 var SPECIES = wellKnownSymbol('species');
@@ -12377,7 +12057,7 @@ var SPECIES = wellKnownSymbol('species');
 module.exports = function (O, defaultConstructor) {
   var C = anObject(O).constructor;
   var S;
-  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? defaultConstructor : aConstructor(S);
+  return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? defaultConstructor : aFunction(S);
 };
 
 
@@ -12390,13 +12070,12 @@ module.exports = function (O, defaultConstructor) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
 
-// `String.prototype.codePointAt` methods implementation
+// `String.prototype.{ codePointAt, at }` methods implementation
 var createMethod = function (CONVERT_TO_STRING) {
   return function ($this, pos) {
-    var S = toString(requireObjectCoercible($this));
+    var S = String(requireObjectCoercible($this));
     var position = toInteger(pos);
     var size = S.length;
     var first, second;
@@ -12427,7 +12106,6 @@ module.exports = {
   \**************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var PROPER_FUNCTION_NAME = __webpack_require__(/*! ../internals/function-name */ "./node_modules/core-js/internals/function-name.js").PROPER;
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/core-js/internals/whitespaces.js");
 
@@ -12437,9 +12115,7 @@ var non = '\u200B\u0085\u180E';
 // of whitespaces and has a correct name
 module.exports = function (METHOD_NAME) {
   return fails(function () {
-    return !!whitespaces[METHOD_NAME]()
-      || non[METHOD_NAME]() !== non
-      || (PROPER_FUNCTION_NAME && whitespaces[METHOD_NAME].name !== METHOD_NAME);
+    return !!whitespaces[METHOD_NAME]() || non[METHOD_NAME]() != non || whitespaces[METHOD_NAME].name !== METHOD_NAME;
   });
 };
 
@@ -12453,7 +12129,6 @@ module.exports = function (METHOD_NAME) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
 var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/core-js/internals/whitespaces.js");
 
 var whitespace = '[' + whitespaces + ']';
@@ -12463,7 +12138,7 @@ var rtrim = RegExp(whitespace + whitespace + '*$');
 // `String.prototype.{ trim, trimStart, trimEnd, trimLeft, trimRight }` methods implementation
 var createMethod = function (TYPE) {
   return function ($this) {
-    var string = toString(requireObjectCoercible($this));
+    var string = String(requireObjectCoercible($this));
     if (TYPE & 1) string = string.replace(ltrim, '');
     if (TYPE & 2) string = string.replace(rtrim, '');
     return string;
@@ -12492,7 +12167,6 @@ module.exports = {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
 var html = __webpack_require__(/*! ../internals/html */ "./node_modules/core-js/internals/html.js");
@@ -12500,6 +12174,7 @@ var createElement = __webpack_require__(/*! ../internals/document-create-element
 var IS_IOS = __webpack_require__(/*! ../internals/engine-is-ios */ "./node_modules/core-js/internals/engine-is-ios.js");
 var IS_NODE = __webpack_require__(/*! ../internals/engine-is-node */ "./node_modules/core-js/internals/engine-is-node.js");
 
+var location = global.location;
 var set = global.setImmediate;
 var clear = global.clearImmediate;
 var process = global.process;
@@ -12508,12 +12183,7 @@ var Dispatch = global.Dispatch;
 var counter = 0;
 var queue = {};
 var ONREADYSTATECHANGE = 'onreadystatechange';
-var location, defer, channel, port;
-
-try {
-  // Deno throws a ReferenceError on `location` access without `--location` flag
-  location = global.location;
-} catch (error) { /* empty */ }
+var defer, channel, port;
 
 var run = function (id) {
   // eslint-disable-next-line no-prototype-builtins -- safe
@@ -12536,19 +12206,18 @@ var listener = function (event) {
 
 var post = function (id) {
   // old engines have not location.origin
-  global.postMessage(String(id), location.protocol + '//' + location.host);
+  global.postMessage(id + '', location.protocol + '//' + location.host);
 };
 
 // Node.js 0.9+ & IE10+ has setImmediate, otherwise:
 if (!set || !clear) {
   set = function setImmediate(fn) {
     var args = [];
-    var argumentsLength = arguments.length;
     var i = 1;
-    while (argumentsLength > i) args.push(arguments[i++]);
+    while (arguments.length > i) args.push(arguments[i++]);
     queue[++counter] = function () {
       // eslint-disable-next-line no-new-func -- spec requirement
-      (isCallable(fn) ? fn : Function(fn)).apply(undefined, args);
+      (typeof fn == 'function' ? fn : Function(fn)).apply(undefined, args);
     };
     defer(counter);
     return counter;
@@ -12577,7 +12246,7 @@ if (!set || !clear) {
   // IE8 has postMessage, but it's sync & typeof its postMessage is 'object'
   } else if (
     global.addEventListener &&
-    isCallable(global.postMessage) &&
+    typeof postMessage == 'function' &&
     !global.importScripts &&
     location && location.protocol !== 'file:' &&
     !fails(post)
@@ -12708,46 +12377,18 @@ module.exports = function (argument) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var isSymbol = __webpack_require__(/*! ../internals/is-symbol */ "./node_modules/core-js/internals/is-symbol.js");
-var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/core-js/internals/get-method.js");
-var ordinaryToPrimitive = __webpack_require__(/*! ../internals/ordinary-to-primitive */ "./node_modules/core-js/internals/ordinary-to-primitive.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
-
-var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
 
 // `ToPrimitive` abstract operation
 // https://tc39.es/ecma262/#sec-toprimitive
-module.exports = function (input, pref) {
-  if (!isObject(input) || isSymbol(input)) return input;
-  var exoticToPrim = getMethod(input, TO_PRIMITIVE);
-  var result;
-  if (exoticToPrim) {
-    if (pref === undefined) pref = 'default';
-    result = exoticToPrim.call(input, pref);
-    if (!isObject(result) || isSymbol(result)) return result;
-    throw TypeError("Can't convert object to primitive value");
-  }
-  if (pref === undefined) pref = 'number';
-  return ordinaryToPrimitive(input, pref);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/to-property-key.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/to-property-key.js ***!
-  \***********************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
-var isSymbol = __webpack_require__(/*! ../internals/is-symbol */ "./node_modules/core-js/internals/is-symbol.js");
-
-// `ToPropertyKey` abstract operation
-// https://tc39.es/ecma262/#sec-topropertykey
-module.exports = function (argument) {
-  var key = toPrimitive(argument, 'string');
-  return isSymbol(key) ? key : String(key);
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (input, PREFERRED_STRING) {
+  if (!isObject(input)) return input;
+  var fn, val;
+  if (PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (typeof (fn = input.valueOf) == 'function' && !isObject(val = fn.call(input))) return val;
+  if (!PREFERRED_STRING && typeof (fn = input.toString) == 'function' && !isObject(val = fn.call(input))) return val;
+  throw TypeError("Can't convert object to primitive value");
 };
 
 
@@ -12767,39 +12408,6 @@ var test = {};
 test[TO_STRING_TAG] = 'z';
 
 module.exports = String(test) === '[object z]';
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/to-string.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/to-string.js ***!
-  \*****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
-
-module.exports = function (argument) {
-  if (classof(argument) === 'Symbol') throw TypeError('Cannot convert a Symbol value to a string');
-  return String(argument);
-};
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/internals/try-to-string.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/try-to-string.js ***!
-  \*********************************************************/
-/***/ ((module) => {
-
-module.exports = function (argument) {
-  try {
-    return String(argument);
-  } catch (error) {
-    return 'Object';
-  }
-};
 
 
 /***/ }),
@@ -13327,9 +12935,8 @@ $({ target: 'Array', proto: true, forced: String(test) === String(test.reverse()
 "use strict";
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
-var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/core-js/internals/is-constructor.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
 var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
@@ -13357,7 +12964,7 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
     if (isArray(O)) {
       Constructor = O.constructor;
       // cross-realm fallback
-      if (isConstructor(Constructor) && (Constructor === Array || isArray(Constructor.prototype))) {
+      if (typeof Constructor == 'function' && (Constructor === Array || isArray(Constructor.prototype))) {
         Constructor = undefined;
       } else if (isObject(Constructor)) {
         Constructor = Constructor[SPECIES];
@@ -13409,7 +13016,6 @@ $({ target: 'Array', proto: true, forced: !STRICT_METHOD }, {
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
-var FUNCTION_NAME_EXISTS = __webpack_require__(/*! ../internals/function-name */ "./node_modules/core-js/internals/function-name.js").EXISTS;
 var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
 
 var FunctionPrototype = Function.prototype;
@@ -13419,7 +13025,7 @@ var NAME = 'name';
 
 // Function instances `.name` property
 // https://tc39.es/ecma262/#sec-function-instances-name
-if (DESCRIPTORS && !FUNCTION_NAME_EXISTS) {
+if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
   defineProperty(FunctionPrototype, NAME, {
     configurable: true,
     get: function () {
@@ -13470,7 +13076,6 @@ var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
 var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/core-js/internals/inherit-if-required.js");
-var isSymbol = __webpack_require__(/*! ../internals/is-symbol */ "./node_modules/core-js/internals/is-symbol.js");
 var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
@@ -13489,8 +13094,7 @@ var BROKEN_CLASSOF = classof(create(NumberPrototype)) == NUMBER;
 // `ToNumber` abstract operation
 // https://tc39.es/ecma262/#sec-tonumber
 var toNumber = function (argument) {
-  if (isSymbol(argument)) throw TypeError('Cannot convert a Symbol value to a number');
-  var it = toPrimitive(argument, 'number');
+  var it = toPrimitive(argument, false);
   var first, third, radix, maxCode, digits, length, index, code;
   if (typeof it == 'string' && it.length > 2) {
     it = trim(it);
@@ -13669,9 +13273,8 @@ var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "./node_m
 var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
 var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
 var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/core-js/internals/set-species.js");
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 var anInstance = __webpack_require__(/*! ../internals/an-instance */ "./node_modules/core-js/internals/an-instance.js");
 var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
 var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
@@ -13704,7 +13307,7 @@ var process = global.process;
 var newPromiseCapability = newPromiseCapabilityModule.f;
 var newGenericPromiseCapability = newPromiseCapability;
 var DISPATCH_EVENT = !!(document && document.createEvent && global.dispatchEvent);
-var NATIVE_REJECTION_EVENT = isCallable(global.PromiseRejectionEvent);
+var NATIVE_REJECTION_EVENT = typeof PromiseRejectionEvent == 'function';
 var UNHANDLED_REJECTION = 'unhandledrejection';
 var REJECTION_HANDLED = 'rejectionhandled';
 var PENDING = 0;
@@ -13748,7 +13351,7 @@ var INCORRECT_ITERATION = FORCED || !checkCorrectnessOfIteration(function (itera
 // helpers
 var isThenable = function (it) {
   var then;
-  return isObject(it) && isCallable(then = it.then) ? then : false;
+  return isObject(it) && typeof (then = it.then) == 'function' ? then : false;
 };
 
 var notify = function (state, isReject) {
@@ -13893,7 +13496,7 @@ if (FORCED) {
   // 25.4.3.1 Promise(executor)
   PromiseConstructor = function Promise(executor) {
     anInstance(this, PromiseConstructor, PROMISE);
-    aCallable(executor);
+    aFunction(executor);
     Internal.call(this);
     var state = getInternalState(this);
     try {
@@ -13922,8 +13525,8 @@ if (FORCED) {
     then: function then(onFulfilled, onRejected) {
       var state = getInternalPromiseState(this);
       var reaction = newPromiseCapability(speciesConstructor(this, PromiseConstructor));
-      reaction.ok = isCallable(onFulfilled) ? onFulfilled : true;
-      reaction.fail = isCallable(onRejected) && onRejected;
+      reaction.ok = typeof onFulfilled == 'function' ? onFulfilled : true;
+      reaction.fail = typeof onRejected == 'function' && onRejected;
       reaction.domain = IS_NODE ? process.domain : undefined;
       state.parent = true;
       state.reactions.push(reaction);
@@ -13949,7 +13552,7 @@ if (FORCED) {
       : newGenericPromiseCapability(C);
   };
 
-  if (!IS_PURE && isCallable(NativePromise) && NativePromisePrototype !== Object.prototype) {
+  if (!IS_PURE && typeof NativePromise == 'function' && NativePromisePrototype !== Object.prototype) {
     nativeThen = NativePromisePrototype.then;
 
     if (!SUBCLASSING) {
@@ -14015,7 +13618,7 @@ $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
     var resolve = capability.resolve;
     var reject = capability.reject;
     var result = perform(function () {
-      var $promiseResolve = aCallable(C.resolve);
+      var $promiseResolve = aFunction(C.resolve);
       var values = [];
       var counter = 0;
       var remaining = 1;
@@ -14043,7 +13646,7 @@ $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
     var capability = newPromiseCapability(C);
     var reject = capability.reject;
     var result = perform(function () {
-      var $promiseResolve = aCallable(C.resolve);
+      var $promiseResolve = aFunction(C.resolve);
       iterate(iterable, function (promise) {
         $promiseResolve.call(C, promise).then(capability.resolve, reject);
       });
@@ -14064,7 +13667,7 @@ $({ target: PROMISE, stat: true, forced: INCORRECT_ITERATION }, {
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/core-js/internals/a-callable.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 
@@ -14080,7 +13683,7 @@ var OPTIONAL_ARGUMENTS_LIST = !fails(function () {
 // https://tc39.es/ecma262/#sec-reflect.apply
 $({ target: 'Reflect', stat: true, forced: OPTIONAL_ARGUMENTS_LIST }, {
   apply: function apply(target, thisArgument, argumentsList) {
-    aCallable(target);
+    aFunction(target);
     anObject(argumentsList);
     return nativeApply
       ? nativeApply(target, thisArgument, argumentsList)
@@ -14099,7 +13702,7 @@ $({ target: 'Reflect', stat: true, forced: OPTIONAL_ARGUMENTS_LIST }, {
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
-var aConstructor = __webpack_require__(/*! ../internals/a-constructor */ "./node_modules/core-js/internals/a-constructor.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
@@ -14123,9 +13726,9 @@ var FORCED = NEW_TARGET_BUG || ARGS_BUG;
 
 $({ target: 'Reflect', stat: true, forced: FORCED, sham: FORCED }, {
   construct: function construct(Target, args /* , newTarget */) {
-    aConstructor(Target);
+    aFunction(Target);
     anObject(args);
-    var newTarget = arguments.length < 3 ? Target : aConstructor(arguments[2]);
+    var newTarget = arguments.length < 3 ? Target : aFunction(arguments[2]);
     if (ARGS_BUG && !NEW_TARGET_BUG) return nativeConstruct(Target, args, newTarget);
     if (Target == newTarget) {
       // w/o altered newTarget, optimization for 0-4 arguments
@@ -14224,10 +13827,8 @@ $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
 
 "use strict";
 
-var PROPER_FUNCTION_NAME = __webpack_require__(/*! ../internals/function-name */ "./node_modules/core-js/internals/function-name.js").PROPER;
 var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var $toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var flags = __webpack_require__(/*! ../internals/regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
 
@@ -14237,16 +13838,16 @@ var nativeToString = RegExpPrototype[TO_STRING];
 
 var NOT_GENERIC = fails(function () { return nativeToString.call({ source: 'a', flags: 'b' }) != '/a/b'; });
 // FF44- RegExp#toString has a wrong name
-var INCORRECT_NAME = PROPER_FUNCTION_NAME && nativeToString.name != TO_STRING;
+var INCORRECT_NAME = nativeToString.name != TO_STRING;
 
 // `RegExp.prototype.toString` method
 // https://tc39.es/ecma262/#sec-regexp.prototype.tostring
 if (NOT_GENERIC || INCORRECT_NAME) {
   redefine(RegExp.prototype, TO_STRING, function toString() {
     var R = anObject(this);
-    var p = $toString(R.source);
+    var p = String(R.source);
     var rf = R.flags;
-    var f = $toString(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? flags.call(R) : rf);
+    var f = String(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? flags.call(R) : rf);
     return '/' + p + '/' + f;
   }, { unsafe: true });
 }
@@ -14265,15 +13866,14 @@ if (NOT_GENERIC || INCORRECT_NAME) {
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var notARegExp = __webpack_require__(/*! ../internals/not-a-regexp */ "./node_modules/core-js/internals/not-a-regexp.js");
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
 var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "./node_modules/core-js/internals/correct-is-regexp-logic.js");
 
 // `String.prototype.includes` method
 // https://tc39.es/ecma262/#sec-string.prototype.includes
 $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, {
   includes: function includes(searchString /* , position = 0 */) {
-    return !!~toString(requireObjectCoercible(this))
-      .indexOf(toString(notARegExp(searchString)), arguments.length > 1 ? arguments[1] : undefined);
+    return !!~String(requireObjectCoercible(this))
+      .indexOf(notARegExp(searchString), arguments.length > 1 ? arguments[1] : undefined);
   }
 });
 
@@ -14289,7 +13889,6 @@ $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, 
 "use strict";
 
 var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/core-js/internals/string-multibyte.js").charAt;
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
 var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
 var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/core-js/internals/define-iterator.js");
 
@@ -14302,7 +13901,7 @@ var getInternalState = InternalStateModule.getterFor(STRING_ITERATOR);
 defineIterator(String, 'String', function (iterated) {
   setInternalState(this, {
     type: STRING_ITERATOR,
-    string: toString(iterated),
+    string: String(iterated),
     index: 0
   });
 // `%StringIteratorPrototype%.next` method
@@ -14332,9 +13931,7 @@ defineIterator(String, 'String', function (iterated) {
 var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
-var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/core-js/internals/get-method.js");
 var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
 var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
 
@@ -14345,17 +13942,17 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
     // https://tc39.es/ecma262/#sec-string.prototype.match
     function match(regexp) {
       var O = requireObjectCoercible(this);
-      var matcher = regexp == undefined ? undefined : getMethod(regexp, MATCH);
-      return matcher ? matcher.call(regexp, O) : new RegExp(regexp)[MATCH](toString(O));
+      var matcher = regexp == undefined ? undefined : regexp[MATCH];
+      return matcher !== undefined ? matcher.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
     },
     // `RegExp.prototype[@@match]` method
     // https://tc39.es/ecma262/#sec-regexp.prototype-@@match
     function (string) {
-      var rx = anObject(this);
-      var S = toString(string);
-      var res = maybeCallNative(nativeMatch, rx, S);
-
+      var res = maybeCallNative(nativeMatch, this, string);
       if (res.done) return res.value;
+
+      var rx = anObject(this);
+      var S = String(string);
 
       if (!rx.global) return regExpExec(rx, S);
 
@@ -14365,7 +13962,7 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
       var n = 0;
       var result;
       while ((result = regExpExec(rx, S)) !== null) {
-        var matchStr = toString(result[0]);
+        var matchStr = String(result[0]);
         A[n] = matchStr;
         if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
         n++;
@@ -14389,13 +13986,10 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
 var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
 var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
-var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/core-js/internals/get-method.js");
 var getSubstitution = __webpack_require__(/*! ../internals/get-substitution */ "./node_modules/core-js/internals/get-substitution.js");
 var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
@@ -14430,7 +14024,6 @@ var REPLACE_SUPPORTS_NAMED_GROUPS = !fails(function () {
     result.groups = { a: '7' };
     return result;
   };
-  // eslint-disable-next-line regexp/no-useless-dollar-replacements -- false positive
   return ''.replace(re, '$<a>') !== '7';
 });
 
@@ -14443,28 +14036,28 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
     // https://tc39.es/ecma262/#sec-string.prototype.replace
     function replace(searchValue, replaceValue) {
       var O = requireObjectCoercible(this);
-      var replacer = searchValue == undefined ? undefined : getMethod(searchValue, REPLACE);
-      return replacer
+      var replacer = searchValue == undefined ? undefined : searchValue[REPLACE];
+      return replacer !== undefined
         ? replacer.call(searchValue, O, replaceValue)
-        : nativeReplace.call(toString(O), searchValue, replaceValue);
+        : nativeReplace.call(String(O), searchValue, replaceValue);
     },
     // `RegExp.prototype[@@replace]` method
     // https://tc39.es/ecma262/#sec-regexp.prototype-@@replace
     function (string, replaceValue) {
-      var rx = anObject(this);
-      var S = toString(string);
-
       if (
         typeof replaceValue === 'string' &&
         replaceValue.indexOf(UNSAFE_SUBSTITUTE) === -1 &&
         replaceValue.indexOf('$<') === -1
       ) {
-        var res = maybeCallNative(nativeReplace, rx, S, replaceValue);
+        var res = maybeCallNative(nativeReplace, this, string, replaceValue);
         if (res.done) return res.value;
       }
 
-      var functionalReplace = isCallable(replaceValue);
-      if (!functionalReplace) replaceValue = toString(replaceValue);
+      var rx = anObject(this);
+      var S = String(string);
+
+      var functionalReplace = typeof replaceValue === 'function';
+      if (!functionalReplace) replaceValue = String(replaceValue);
 
       var global = rx.global;
       if (global) {
@@ -14479,7 +14072,7 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
         results.push(result);
         if (!global) break;
 
-        var matchStr = toString(result[0]);
+        var matchStr = String(result[0]);
         if (matchStr === '') rx.lastIndex = advanceStringIndex(S, toLength(rx.lastIndex), fullUnicode);
       }
 
@@ -14488,7 +14081,7 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
       for (var i = 0; i < results.length; i++) {
         result = results[i];
 
-        var matched = toString(result[0]);
+        var matched = String(result[0]);
         var position = max(min(toInteger(result.index), S.length), 0);
         var captures = [];
         // NOTE: This is equivalent to
@@ -14501,7 +14094,7 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
         if (functionalReplace) {
           var replacerArgs = [matched].concat(captures, position, S);
           if (namedCaptures !== undefined) replacerArgs.push(namedCaptures);
-          var replacement = toString(replaceValue.apply(undefined, replacerArgs));
+          var replacement = String(replaceValue.apply(undefined, replacerArgs));
         } else {
           replacement = getSubstitution(matched, S, position, captures, namedCaptures, replaceValue);
         }
@@ -14533,8 +14126,6 @@ var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object
 var speciesConstructor = __webpack_require__(/*! ../internals/species-constructor */ "./node_modules/core-js/internals/species-constructor.js");
 var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
-var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/core-js/internals/get-method.js");
 var callRegExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
 var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
 var stickyHelpers = __webpack_require__(/*! ../internals/regexp-sticky-helpers */ "./node_modules/core-js/internals/regexp-sticky-helpers.js");
@@ -14565,13 +14156,13 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
     'test'.split(/(?:)/, -1).length != 4 ||
     'ab'.split(/(?:ab)*/).length != 2 ||
     '.'.split(/(.?)(.?)/).length != 4 ||
-    // eslint-disable-next-line regexp/no-empty-capturing-group, regexp/no-empty-group -- required for testing
+    // eslint-disable-next-line regexp/no-assertion-capturing-group, regexp/no-empty-group -- required for testing
     '.'.split(/()()/).length > 1 ||
     ''.split(/.?/).length
   ) {
     // based on es5-shim implementation, need to rework it
     internalSplit = function (separator, limit) {
-      var string = toString(requireObjectCoercible(this));
+      var string = String(requireObjectCoercible(this));
       var lim = limit === undefined ? MAX_UINT32 : limit >>> 0;
       if (lim === 0) return [];
       if (separator === undefined) return [string];
@@ -14616,10 +14207,10 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
     // https://tc39.es/ecma262/#sec-string.prototype.split
     function split(separator, limit) {
       var O = requireObjectCoercible(this);
-      var splitter = separator == undefined ? undefined : getMethod(separator, SPLIT);
-      return splitter
+      var splitter = separator == undefined ? undefined : separator[SPLIT];
+      return splitter !== undefined
         ? splitter.call(separator, O, limit)
-        : internalSplit.call(toString(O), separator, limit);
+        : internalSplit.call(String(O), separator, limit);
     },
     // `RegExp.prototype[@@split]` method
     // https://tc39.es/ecma262/#sec-regexp.prototype-@@split
@@ -14627,12 +14218,11 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
     // NOTE: This cannot be properly polyfilled in engines that don't support
     // the 'y' flag.
     function (string, limit) {
-      var rx = anObject(this);
-      var S = toString(string);
-      var res = maybeCallNative(internalSplit, rx, S, limit, internalSplit !== nativeSplit);
-
+      var res = maybeCallNative(internalSplit, this, string, limit, internalSplit !== nativeSplit);
       if (res.done) return res.value;
 
+      var rx = anObject(this);
+      var S = String(string);
       var C = speciesConstructor(rx, RegExp);
 
       var unicodeMatching = rx.unicode;
@@ -14689,7 +14279,6 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
 var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
-var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
 var notARegExp = __webpack_require__(/*! ../internals/not-a-regexp */ "./node_modules/core-js/internals/not-a-regexp.js");
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
 var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "./node_modules/core-js/internals/correct-is-regexp-logic.js");
@@ -14710,10 +14299,10 @@ var MDN_POLYFILL_BUG = !IS_PURE && !CORRECT_IS_REGEXP_LOGIC && !!function () {
 // https://tc39.es/ecma262/#sec-string.prototype.startswith
 $({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGEXP_LOGIC }, {
   startsWith: function startsWith(searchString /* , position = 0 */) {
-    var that = toString(requireObjectCoercible(this));
+    var that = String(requireObjectCoercible(this));
     notARegExp(searchString);
     var index = toLength(min(arguments.length > 1 ? arguments[1] : undefined, that.length));
-    var search = toString(searchString);
+    var search = String(searchString);
     return $startsWith
       ? $startsWith.call(that, search, index)
       : that.slice(index, index + search.length) === search;
@@ -14760,14 +14349,13 @@ var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/i
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
 var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
 var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/core-js/internals/copy-constructor-properties.js");
 
 var NativeSymbol = global.Symbol;
 
-if (DESCRIPTORS && isCallable(NativeSymbol) && (!('description' in NativeSymbol.prototype) ||
+if (DESCRIPTORS && typeof NativeSymbol == 'function' && (!('description' in NativeSymbol.prototype) ||
   // Safari 12 bug
   NativeSymbol().description !== undefined
 )) {
@@ -14787,7 +14375,7 @@ if (DESCRIPTORS && isCallable(NativeSymbol) && (!('description' in NativeSymbol.
   symbolPrototype.constructor = SymbolWrapper;
 
   var symbolToString = symbolPrototype.toString;
-  var nativeSymbol = String(NativeSymbol('test')) == 'Symbol(test)';
+  var native = String(NativeSymbol('test')) == 'Symbol(test)';
   var regexp = /^Symbol\((.*)\)[^)]+$/;
   defineProperty(symbolPrototype, 'description', {
     configurable: true,
@@ -14795,7 +14383,7 @@ if (DESCRIPTORS && isCallable(NativeSymbol) && (!('description' in NativeSymbol.
       var symbol = isObject(this) ? this.valueOf() : this;
       var string = symbolToString.call(symbol);
       if (has(EmptyStringDescriptionStore, symbol)) return '';
-      var desc = nativeSymbol ? string.slice(7, -1) : string.replace(regexp, '$1');
+      var desc = native ? string.slice(7, -1) : string.replace(regexp, '$1');
       return desc === '' ? undefined : desc;
     }
   });
@@ -14837,17 +14425,15 @@ var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_mo
 var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
 var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
+var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/core-js/internals/use-symbol-as-uid.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
 var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
 var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
-var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/core-js/internals/is-callable.js");
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
-var isSymbol = __webpack_require__(/*! ../internals/is-symbol */ "./node_modules/core-js/internals/is-symbol.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
 var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
-var toPropertyKey = __webpack_require__(/*! ../internals/to-property-key */ "./node_modules/core-js/internals/to-property-key.js");
-var $toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js/internals/to-string.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
 var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
 var nativeObjectCreate = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
 var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
@@ -14857,6 +14443,7 @@ var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-ge
 var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
 var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
 var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
 var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
 var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
@@ -14916,10 +14503,16 @@ var wrap = function (tag, description) {
   return symbol;
 };
 
+var isSymbol = USE_SYMBOL_AS_UID ? function (it) {
+  return typeof it == 'symbol';
+} : function (it) {
+  return Object(it) instanceof $Symbol;
+};
+
 var $defineProperty = function defineProperty(O, P, Attributes) {
   if (O === ObjectPrototype) $defineProperty(ObjectPrototypeSymbols, P, Attributes);
   anObject(O);
-  var key = toPropertyKey(P);
+  var key = toPrimitive(P, true);
   anObject(Attributes);
   if (has(AllSymbols, key)) {
     if (!Attributes.enumerable) {
@@ -14947,7 +14540,7 @@ var $create = function create(O, Properties) {
 };
 
 var $propertyIsEnumerable = function propertyIsEnumerable(V) {
-  var P = toPropertyKey(V);
+  var P = toPrimitive(V, true);
   var enumerable = nativePropertyIsEnumerable.call(this, P);
   if (this === ObjectPrototype && has(AllSymbols, P) && !has(ObjectPrototypeSymbols, P)) return false;
   return enumerable || !has(this, P) || !has(AllSymbols, P) || has(this, HIDDEN) && this[HIDDEN][P] ? enumerable : true;
@@ -14955,7 +14548,7 @@ var $propertyIsEnumerable = function propertyIsEnumerable(V) {
 
 var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(O, P) {
   var it = toIndexedObject(O);
-  var key = toPropertyKey(P);
+  var key = toPrimitive(P, true);
   if (it === ObjectPrototype && has(AllSymbols, key) && !has(ObjectPrototypeSymbols, key)) return;
   var descriptor = nativeGetOwnPropertyDescriptor(it, key);
   if (descriptor && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key])) {
@@ -14990,7 +14583,7 @@ var $getOwnPropertySymbols = function getOwnPropertySymbols(O) {
 if (!NATIVE_SYMBOL) {
   $Symbol = function Symbol() {
     if (this instanceof $Symbol) throw TypeError('Symbol is not a constructor');
-    var description = !arguments.length || arguments[0] === undefined ? undefined : $toString(arguments[0]);
+    var description = !arguments.length || arguments[0] === undefined ? undefined : String(arguments[0]);
     var tag = uid(description);
     var setter = function (value) {
       if (this === ObjectPrototype) setter.call(ObjectPrototypeSymbols, value);
@@ -15045,7 +14638,7 @@ $({ target: SYMBOL, stat: true, forced: !NATIVE_SYMBOL }, {
   // `Symbol.for` method
   // https://tc39.es/ecma262/#sec-symbol.for
   'for': function (key) {
-    var string = $toString(key);
+    var string = String(key);
     if (has(StringToSymbolRegistry, string)) return StringToSymbolRegistry[string];
     var symbol = $Symbol(string);
     StringToSymbolRegistry[string] = symbol;
@@ -15117,7 +14710,7 @@ if ($stringify) {
       $replacer = replacer;
       if (!isObject(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
       if (!isArray(replacer)) replacer = function (key, value) {
-        if (isCallable($replacer)) value = $replacer.call(this, key, value);
+        if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
         if (!isSymbol(value)) return value;
       };
       args[1] = replacer;
@@ -15129,10 +14722,7 @@ if ($stringify) {
 // `Symbol.prototype[@@toPrimitive]` method
 // https://tc39.es/ecma262/#sec-symbol.prototype-@@toprimitive
 if (!$Symbol[PROTOTYPE][TO_PRIMITIVE]) {
-  var valueOf = $Symbol[PROTOTYPE].valueOf;
-  redefine($Symbol[PROTOTYPE], TO_PRIMITIVE, function () {
-    return valueOf.apply(this, arguments);
-  });
+  createNonEnumerableProperty($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 }
 // `Symbol.prototype[@@toStringTag]` property
 // https://tc39.es/ecma262/#sec-symbol.prototype-@@tostringtag
@@ -15151,24 +14741,19 @@ hiddenKeys[HIDDEN] = true;
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/core-js/internals/dom-iterables.js");
-var DOMTokenListPrototype = __webpack_require__(/*! ../internals/dom-token-list-prototype */ "./node_modules/core-js/internals/dom-token-list-prototype.js");
 var forEach = __webpack_require__(/*! ../internals/array-for-each */ "./node_modules/core-js/internals/array-for-each.js");
 var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 
-var handlePrototype = function (CollectionPrototype) {
+for (var COLLECTION_NAME in DOMIterables) {
+  var Collection = global[COLLECTION_NAME];
+  var CollectionPrototype = Collection && Collection.prototype;
   // some Chrome versions have non-configurable methods on DOMTokenList
   if (CollectionPrototype && CollectionPrototype.forEach !== forEach) try {
     createNonEnumerableProperty(CollectionPrototype, 'forEach', forEach);
   } catch (error) {
     CollectionPrototype.forEach = forEach;
   }
-};
-
-for (var COLLECTION_NAME in DOMIterables) {
-  handlePrototype(global[COLLECTION_NAME] && global[COLLECTION_NAME].prototype);
 }
-
-handlePrototype(DOMTokenListPrototype);
 
 
 /***/ }),
@@ -15181,7 +14766,6 @@ handlePrototype(DOMTokenListPrototype);
 
 var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
 var DOMIterables = __webpack_require__(/*! ../internals/dom-iterables */ "./node_modules/core-js/internals/dom-iterables.js");
-var DOMTokenListPrototype = __webpack_require__(/*! ../internals/dom-token-list-prototype */ "./node_modules/core-js/internals/dom-token-list-prototype.js");
 var ArrayIteratorMethods = __webpack_require__(/*! ../modules/es.array.iterator */ "./node_modules/core-js/modules/es.array.iterator.js");
 var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
@@ -15190,7 +14774,9 @@ var ITERATOR = wellKnownSymbol('iterator');
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 var ArrayValues = ArrayIteratorMethods.values;
 
-var handlePrototype = function (CollectionPrototype, COLLECTION_NAME) {
+for (var COLLECTION_NAME in DOMIterables) {
+  var Collection = global[COLLECTION_NAME];
+  var CollectionPrototype = Collection && Collection.prototype;
   if (CollectionPrototype) {
     // some Chrome versions have non-configurable methods on DOMTokenList
     if (CollectionPrototype[ITERATOR] !== ArrayValues) try {
@@ -15210,13 +14796,7 @@ var handlePrototype = function (CollectionPrototype, COLLECTION_NAME) {
       }
     }
   }
-};
-
-for (var COLLECTION_NAME in DOMIterables) {
-  handlePrototype(global[COLLECTION_NAME] && global[COLLECTION_NAME].prototype, COLLECTION_NAME);
 }
-
-handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
 
 
 /***/ }),
@@ -16373,7 +15953,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayLikeToArray.js */ "./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js");
 
 function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__["default"])(arr);
+  if (Array.isArray(arr)) return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__.default)(arr);
 }
 
 /***/ }),
@@ -16542,7 +16122,7 @@ function _get(target, property, receiver) {
     _get = Reflect.get;
   } else {
     _get = function _get(target, property, receiver) {
-      var base = (0,_superPropBase_js__WEBPACK_IMPORTED_MODULE_0__["default"])(target, property);
+      var base = (0,_superPropBase_js__WEBPACK_IMPORTED_MODULE_0__.default)(target, property);
       if (!base) return;
       var desc = Object.getOwnPropertyDescriptor(base, property);
 
@@ -16604,7 +16184,7 @@ function _inherits(subClass, superClass) {
       configurable: true
     }
   });
-  if (superClass) (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
+  if (superClass) (0,_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__.default)(subClass, superClass);
 }
 
 /***/ }),
@@ -16719,11 +16299,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _possibleConstructorReturn(self, call) {
-  if (call && ((0,_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__["default"])(call) === "object" || typeof call === "function")) {
+  if (call && ((0,_babel_runtime_helpers_typeof__WEBPACK_IMPORTED_MODULE_0__.default)(call) === "object" || typeof call === "function")) {
     return call;
   }
 
-  return (0,_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_1__["default"])(self);
+  return (0,_assertThisInitialized_js__WEBPACK_IMPORTED_MODULE_1__.default)(self);
 }
 
 /***/ }),
@@ -16770,7 +16350,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _slicedToArray(arr, i) {
-  return (0,_arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__["default"])(arr) || (0,_iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__["default"])(arr, i) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(arr, i) || (0,_nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  return (0,_arrayWithHoles_js__WEBPACK_IMPORTED_MODULE_0__.default)(arr) || (0,_iterableToArrayLimit_js__WEBPACK_IMPORTED_MODULE_1__.default)(arr, i) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__.default)(arr, i) || (0,_nonIterableRest_js__WEBPACK_IMPORTED_MODULE_3__.default)();
 }
 
 /***/ }),
@@ -16790,7 +16370,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function _superPropBase(object, property) {
   while (!Object.prototype.hasOwnProperty.call(object, property)) {
-    object = (0,_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(object);
+    object = (0,_getPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__.default)(object);
     if (object === null) break;
   }
 
@@ -16819,7 +16399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _toConsumableArray(arr) {
-  return (0,_arrayWithoutHoles_js__WEBPACK_IMPORTED_MODULE_0__["default"])(arr) || (0,_iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__["default"])(arr) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__["default"])(arr) || (0,_nonIterableSpread_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  return (0,_arrayWithoutHoles_js__WEBPACK_IMPORTED_MODULE_0__.default)(arr) || (0,_iterableToArray_js__WEBPACK_IMPORTED_MODULE_1__.default)(arr) || (0,_unsupportedIterableToArray_js__WEBPACK_IMPORTED_MODULE_2__.default)(arr) || (0,_nonIterableSpread_js__WEBPACK_IMPORTED_MODULE_3__.default)();
 }
 
 /***/ }),
@@ -16868,11 +16448,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
-  if (typeof o === "string") return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__["default"])(o, minLen);
+  if (typeof o === "string") return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__.default)(o, minLen);
   var n = Object.prototype.toString.call(o).slice(8, -1);
   if (n === "Object" && o.constructor) n = o.constructor.name;
   if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__["default"])(o, minLen);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return (0,_arrayLikeToArray_js__WEBPACK_IMPORTED_MODULE_0__.default)(o, minLen);
 }
 
 /***/ })

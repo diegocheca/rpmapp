@@ -1079,8 +1079,7 @@
             id="section_catamarca"
             v-if="$props.mostrar.paso_catamarca"
           ></div>
-          <!-- <h1>El id es: {{ form_particular.id }}</h1> -->
-			<PaginaCatamarca
+          <PaginaCatamarca
 			v-if="$props.mostrar.paso_catamarca"
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"
@@ -1089,7 +1088,7 @@
 
 				:evaluacion ="evaluacion_global"
 				:testing="testing_global"
-				:id="$props.productor.id"
+				:id="form.id"
 			>
 			</PaginaCatamarca>
           <div class="border border-gray-300 w-full py-4 px-8 bg-white shadow-lg rounded-lg">

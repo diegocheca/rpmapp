@@ -72,24 +72,24 @@ var Observaciones = /*#__PURE__*/function () {
         options: [{
           label: 'Si',
           value: 'aprobado',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO,
           name: "observacion_".concat(data.name),
           validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().oneOf(["aprobado", "rechazado", "sin evaluar"]).required('Debes seleccionar una opción')
         }, {
           label: 'No',
           value: 'rechazado',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO,
           name: "observacion_".concat(data.name)
         }, {
           label: 'Sin evaluar',
           value: 'sin evaluar',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO,
           name: "observacion_".concat(data.name)
         }],
         comment: {
           label: 'OBSERVACIÓN',
           value: '',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].TEXTAREA,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.TEXTAREA,
           name: "observacion_comentario_".concat(data.name),
           validationType: "string",
           validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("observacion_".concat(data.name), {
@@ -168,10 +168,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
         inputs: [{
           label: 'Email',
           value: schema.email,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].EMAIL,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.EMAIL,
           name: 'email',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').email('El formato ingresado no es válido'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'email',
             evaluate: evaluate
@@ -179,10 +179,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, {
           label: 'Contraseña',
           value: schema.password,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].PASSWORD,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.PASSWORD,
           name: 'password',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').min(8, 'Debes ingresar al menos 8 caracteres'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'password',
             evaluate: evaluate
@@ -190,10 +190,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, {
           label: 'Confirmar contraseña',
           value: schema.repeatPassword,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].PASSWORD,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.PASSWORD,
           name: 'repeatPassword',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').oneOf([yup__WEBPACK_IMPORTED_MODULE_0__.ref("password")], "Las contraseñas deben ser iguales"),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'repeatPassword',
             evaluate: evaluate
@@ -201,10 +201,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, {
           label: 'Nombre o razón social',
           value: schema.nombre_razon_social,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: 'nombre_razon_social',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'nombre_razon_social',
             evaluate: evaluate
@@ -212,10 +212,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, {
           label: 'Domicilio',
           value: schema.domicilio,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: 'domicilio',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'domicilio',
             evaluate: evaluate
@@ -223,10 +223,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, {
           label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
           value: schema.nombre_mina,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
           name: 'nombre_mina',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'nombre_mina',
             evaluate: evaluate
@@ -237,10 +237,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
           // inputColsSpan: 'lg:col-span-2',
           label: 'Certificado de inscripción en AFIP (CUIT)',
           value: schema.cuit,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].FILE,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.FILE,
           name: 'cuit',
-          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.value],
-          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.label].join()),
+          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value],
+          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label].join()),
           maxSize: 'Tamaño maximo por archivo: 10MB',
           multiple: false,
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
@@ -268,13 +268,13 @@ function getFormSchema(_ref, evaluate, dataForm) {
 
               for (var index = 0; index < value.length; index++) {
                 var element = value[index];
-                validation = validation && _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.value).includes(element.type);
+                validation = validation && _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value).includes(element.type);
               }
 
               return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
             }
           }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'cuit',
             evaluate: evaluate
@@ -284,10 +284,10 @@ function getFormSchema(_ref, evaluate, dataForm) {
           label: 'Copia escritura del inmueble',
           helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
           value: schema.escritura,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].FILE,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.FILE,
           name: 'escritura',
-          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.value, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].IMAGE.value],
-          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.label, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].IMAGE.label].join()),
+          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.value],
+          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.label, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.label].join()),
           maxSize: 'Tamaño maximo por archivo: 10MB',
           multiple: true,
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
@@ -315,13 +315,13 @@ function getFormSchema(_ref, evaluate, dataForm) {
 
               for (var index = 0; index < value.length; index++) {
                 var element = value[index];
-                validation = validation && [].concat(_toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.value), _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].IMAGE.value)).includes(element.type);
+                validation = validation && [].concat(_toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.PDF.value), _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__.default.IMAGE.value)).includes(element.type);
               }
 
               return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
             }
           }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'escritura',
             evaluate: evaluate
@@ -350,7 +350,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         img: '/images/laborales.png',
         inputs: [{
           label: 'List',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].LIST,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.LIST,
           name: 'List',
           // columns: 'grid-cols-1',
           // colSpans + 1
@@ -369,7 +369,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           elements: [[{
             label: 'Sustancia',
             value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
             colSpan: 'lg:w-2/5',
             options: [{
               label: 'Sustancias de aprovechamiento común',
@@ -458,7 +458,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }, {
             label: 'Mineral Explotado',
             value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
             colSpan: 'lg:w-2/5',
             options: [],
             name: 'mineralSelect',
@@ -474,13 +474,13 @@ function getFormSchema(_ref, evaluate, dataForm) {
           }, {
             label: 'DNI',
             value: schema.dni,
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
             colSpan: 'lg:w-1/5',
             name: 'dni2' // validations: yup.string().required('Debes ingresar un dni'),
 
           }, {
             colSpan: 'lg:w-5/5',
-            observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+            observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
               schema: schema,
               name: 'row-',
               evaluate: evaluate
@@ -526,7 +526,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         inputs: [{
           label: 'Provincia',
           value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           // get axios
           async: true,
           asyncUrl: '/paises/departamentos',
@@ -546,7 +546,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
             },
             then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'provincia',
             evaluate: evaluate
@@ -554,7 +554,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, {
           label: 'Departamento',
           value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           // get axios
           async: true,
           asyncUrl: '/paises/localidades',
@@ -574,7 +574,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
             },
             then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'departamento',
             evaluate: evaluate
@@ -582,7 +582,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
         }, {
           label: 'Localidad',
           value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
           // get axios
           async: true,
           isLoading: false,
@@ -599,7 +599,7 @@ function getFormSchema(_ref, evaluate, dataForm) {
             },
             then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
           }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
             schema: schema,
             name: 'localidad',
             evaluate: evaluate
