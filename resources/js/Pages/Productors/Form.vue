@@ -1080,190 +1080,18 @@
             v-if="$props.mostrar.paso_catamarca"
           ></div>
           <!-- <h1>El id es: {{ form_particular.id }}</h1> -->
-          <PaginaCatamarca
-            v-if="$props.mostrar.paso_catamarca"
-            :link_volver="route('formulario-alta.index')"
-            :titulo_boton_volver="'Volver'"
-            :titulo_boton_guardar="'Guardar Datos Form Catamarca'"
-            :titulo_pagina="'Pagina De Catamarca'"
-            :gestor_nombre_apellido="form_particular.gestor_nombre_apellido"
-            :gestor_nombre_apellido_valido="
-              form_particular.gestor_nombre_apellido_valido
-            "
-            :gestor_nombre_apellido_correcto="
-              form_particular.gestor_nombre_apellido_correcto
-            "
-            :obs_gestor_nombre_apellido="
-              form_particular.obs_gestor_nombre_apellido
-            "
-            :obs_gestor_nombre_valido="form_particular.obs_gestor_nombre_valido"
-            :mostrar_nombre_gestor="$props.mostrar.nombre_gestor"
-            :desactivar_nombre_gestor="$props.disables.nombre_gestor"
-            :mostrar_nombre_gestor_correccion="
-              $props.mostrar.nombre_gestor_correccion
-            "
-            :desactivar_nombre_gestor_correccion="
-              $props.disables.nombre_gestor_correccion
-            "
-            :gestor_dni="form_particular.gestor_dni"
-            :gestor_dni_valido="form_particular.gestor_dni_valido"
-            :gestor_dni_correcto="form_particular.gestor_dni_correcto"
-            :obs_gestor_dni="form_particular.obs_gestor_dni"
-            :obs_gestor_dni_valido="form_particular.obs_gestor_dni_valido"
-            :mostrar_dni_gestor="$props.mostrar.dni_gestor"
-            :desactivar_dni_gestor="$props.disables.dni_gestor"
-            :mostrar_dni_gestor_correccion="
-              $props.mostrar.dni_gestor_correccion
-            "
-            :desactivar_dni_gestor_correccion="
-              $props.disables.dni_gestor_correccion
-            "
-            :gestor_profesion="form_particular.gestor_profesion"
-            :gestor_profesion_valido="form_particular.gestor_profesion_valido"
-            :gestor_profesion_correcto="
-              form_particular.gestor_profesion_correcto
-            "
-            :obs_gestor_profesion="form_particular.obs_gestor_profesion"
-            :obs_gestor_profesion_valido="
-              form_particular.obs_gestor_profesion_valido
-            "
-            :mostrar_profesion_gestor="$props.mostrar.profesion_gestor"
-            :desactivar_profesion_gestor="$props.disables.profesion_gestor"
-            :mostrar_profesion_gestor_correccion="
-              $props.mostrar.profesion_gestor_correccion
-            "
-            :desactivar_profesion_gestor_correccion="
-              $props.disables.profesion_gestor_correccion
-            "
-            :gestor_telefono="form_particular.gestor_telefono"
-            :gestor_telefono_valido="form_particular.gestor_telefono_valido"
-            :gestor_telefono_correcto="form_particular.gestor_telefono_correcto"
-            :obs_gestor_telefono="form_particular.obs_gestor_telefono"
-            :obs_gestor_telefono_valido="
-              form_particular.obs_gestor_telefono_valido
-            "
-            :mostrar_telefono_gestor="$props.mostrar.telefono_gestor"
-            :desactivar_telefono_gestor="$props.disables.telefono_gestor"
-            :mostrar_telefono_gestor_correccion="
-              $props.mostrar.telefono_gestor_correccion
-            "
-            :desactivar_telefono_gestor_correccion="
-              $props.disables.telefono_gestor_correccion
-            "
-            :gestor_notificacion="form_particular.gestor_notificacion"
-            :gestor_notificacion_valido="
-              form_particular.gestor_notificacion_valido
-            "
-            :gestor_notificacion_correcto="
-              form_particular.gestor_notificacion_correcto
-            "
-            :obs_gestor_notificacion="form_particular.obs_gestor_notificacion"
-            :obs_gestor_notificacion_valido="
-              form_particular.obs_gestor_notificacion_valido
-            "
-            :mostrar_notificacion_gestor="$props.mostrar.notificacion_gestor"
-            :desactivar_notificacion_gestor="
-              $props.disables.notificacion_gestor
-            "
-            :mostrar_notificacion_gestor_correccion="
-              $props.mostrar.notificacion_gestor_correccion
-            "
-            :desactivar_notificacion_gestor_correccion="
-              $props.disables.notificacion_gestor_correccion
-            "
-            :gestor_email="form_particular.gestor_email"
-            :gestor_email_valido="form_particular.gestor_email_valido"
-            :gestor_email_correcto="form_particular.gestor_email_correcto"
-            :obs_gestor_email="form_particular.obs_gestor_email"
-            :obs_gestor_email_valido="form_particular.obs_gestor_email_valido"
-            :mostrar_email_gestor="$props.mostrar.email_gestor"
-            :desactivar_email_gestor="$props.disables.email_gestor"
-            :mostrar_email_gestor_correccion="
-              $props.mostrar.email_gestor_correccion
-            "
-            :desactivar_email_gestor_correccion="
-              $props.disables.email_gestor_correccion
-            "
-            :primer_hoja_dni="form_particular.primer_hoja_dni"
-            :hoja_dni_valido="form_particular.hoja_dni_valido"
-            :hoja_dni_correcto="form_particular.hoja_dni_correcto"
-            :obs_hoja_dni="form_particular.obs_hoja_dni"
-            :obs_hoja_dni_valido="form_particular.obs_hoja_dni_valido"
-            :mostrar_dni_productor="$props.mostrar.dni_productor"
-            :desactivar_dni_productor="$props.disables.dni_productor"
-            :mostrar_dni_productor_correccion="
-              $props.mostrar.dni_productor_correccion
-            "
-            :desactivar_dni_productor_correccion="
-              $props.disables.dni_productor_correccion
-            "
-            :segunda_hoja_dni="form_particular.segunda_hoja_dni"
-            :segunda_hoja_dni_valido="form_particular.segunda_hoja_dni_valido"
-            :segunda_hoja_dni_correcto="
-              form_particular.segunda_hoja_dni_correcto
-            "
-            :obs_segunda_hoja_dni="form_particular.obs_segunda_hoja_dni"
-            :obs_segunda_hoja_dni_valido="
-              form_particular.obs_segunda_hoja_dni_valido
-            "
-            :foto_4x4="form_particular.foto_4x4"
-            :foto_4x4_valido="form_particular.foto_4x4_valido"
-            :foto_4x4_correcto="form_particular.foto_4x4_correcto"
-            :obs_foto_4x4="form_particular.obs_foto_4x4"
-            :obs_foto_4x4_valido="form_particular.obs_foto_4x4_valido"
-            :mostrar_foto_productor="$props.mostrar.foto_productor"
-            :desactivar_foto_productor="$props.disables.foto_productor"
-            :mostrar_foto_productor_correccion="
-              $props.mostrar.foto_productor_correccion
-            "
-            :desactivar_foto_productor_correccion="
-              $props.disables.foto_productor_correccion
-            "
-            :constancia_afip="form_particular.constancia_afip"
-            :constancia_afip_valido="form_particular.constancia_afip_valido"
-            :constancia_afip_correcto="form_particular.constancia_afip_correcto"
-            :obs_constancia_afip="form_particular.obs_constancia_afip"
-            :obs_constancia_afip_valido="
-              form_particular.obs_constancia_afip_valido
-            "
-            :mostrar_constancia_afip="$props.mostrar.constancia_afip"
-            :desactivar_constancia_afip="$props.disables.constancia_afip"
-            :mostrar_constancia_afip_correccion="
-              $props.mostrar.constancia_afip_correccion
-            "
-            :desactivar_constancia_afip_correccion="
-              $props.disables.constancia_afip_correccion
-            "
-            :autorizacion_gestor="form_particular.autorizacion_gestor"
-            :autorizacion_gestor_valido="
-              form_particular.autorizacion_gestor_valido
-            "
-            :autorizacion_gestor_correcto="
-              form_particular.autorizacion_gestor_correcto
-            "
-            :obs_autorizacion_gestor="form_particular.obs_autorizacion_gestor"
-            :obs_autorizacion_gestor_valido="
-              form_particular.obs_autorizacion_gestor_valido
-            "
-            :mostrar_autorizacion_gestor="$props.mostrar.autorizacion_gestor"
-            :desactivar_autorizacion_gestor="
-              $props.disables.autorizacion_gestor
-            "
-            :mostrar_autorizacion_gestor_correccion="
-              $props.mostrar.autorizacion_gestor_correccion
-            "
-            :desactivar_autorizacion_gestor_correccion="
-              $props.disables.autorizacion_gestor_correccion
-            "
-            :mostrar_boton_guardar_cinco="$props.mostrar.boton_guardar_cinco"
-            :desactivar_boton_guardar_cinco="
-              $props.disables.boton_guardar_cinco
-            "
-            :evaluacion="evaluacion_global"
-            :id="form.id"
-            :testing="testing_global"
-          >
-          </PaginaCatamarca>
+			<PaginaCatamarca
+			v-if="$props.mostrar.paso_catamarca"
+				:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos Form Catamarca'"
+				:titulo_pagina="'Pagina De Catamarca'"
+
+				:evaluacion ="evaluacion_global"
+				:testing="testing_global"
+				:id="$props.productor.id"
+			>
+			</PaginaCatamarca>
           <div class="border border-gray-300 w-full py-4 px-8 bg-white shadow-lg rounded-lg">
             <div class="flex flex-wrap">
               <div class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0">
@@ -1428,7 +1256,7 @@
                     hover:bg-gray-600
                   "
                 >
-                  Volver
+                  Volver Atras
                 </inertia-link>
               </div>
             </div>
