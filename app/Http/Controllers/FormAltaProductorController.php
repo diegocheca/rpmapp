@@ -11155,6 +11155,12 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 						$formulario_provisorio->id,
 						date("d/m/Y H:i:s")
 					));
+					Mail::to('ltorres.godoy77@gmail.com')->send(new AvisoFormularioPresentadoEmail(
+						$email_a_mandar,
+						$formulario_provisorio->razon_social,
+						$formulario_provisorio->id,
+						date("d/m/Y H:i:s")
+					));
 				}
 				if($formulario_provisorio->estado  == "con observacion")
 				{
