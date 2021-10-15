@@ -7762,6 +7762,7 @@ class FormAltaProductorController extends Controller
 			Mail::to($formulario_provisorio->email)->send(new AvisoFormularioPresentadoEmail(
 				$request->email,
 				$formulario_provisorio->razonsocial,
+				$formulario_provisorio->id,
 				date("d/m/Y H:i:s")
 			));
 			return response()->json('todo bien');
@@ -11149,9 +11150,10 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				if($formulario_provisorio->estado  == "en revision")
 				{
 					Mail::to($email_a_mandar)->send(new AvisoFormularioPresentadoEmail(
-						$formulario_provisorio->id,
+						$email_a_mandar,
 						$formulario_provisorio->razon_social,
-						date("Y-m-d H:i:s")
+						$formulario_provisorio->id,
+						date("d/m/Y H:i:s")
 					));
 				}
 				if($formulario_provisorio->estado  == "con observacion")
