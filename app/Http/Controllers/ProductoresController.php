@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Productores;
+use App\Models\MinaCantera;
+use App\Models\ProductorMina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
@@ -11,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Imports\ProductoresImport;
 use Maatwebsite\Excel\Facades\Excel;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class ProductoresController extends Controller
 {
@@ -29,7 +32,7 @@ class ProductoresController extends Controller
          'alertType'=>'']);
     }
 
-    
+
     public function mostrar_datos($id)
     {
         $productores = Productores::find($id);
@@ -40,6 +43,25 @@ class ProductoresController extends Controller
 		],201);
     }
 
+    public static function productoresUsuario()
+    {
+        $productores = Productores::where('usuario_creador', Auth::user()->id)->get();
+        return [
+            'productores' => $productores
+        ];
+    }
+
+    public static function getProductorMina($id){
+		//dd($id);
+		$productorMina =		$productorMina = DB::table('productor_mina')
+        ->join('mina_cantera', 'productor_mina.id_mina', '=', 'mina_cantera.id')
+        ->where('productor_mina.id_productor', $id)
+        ->select('mina_cantera.id as value', 'mina_cantera.nombre as label')
+        // ->orderBy('mina_cantera.nombre')
+        ->get();
+		return response()->json($productorMina);
+
+	}
 
     /**
      * Show the form for creating a new resource.

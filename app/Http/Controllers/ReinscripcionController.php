@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use App\Http\Controllers\CountriesController;
+use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\HomeControllerM;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -32,7 +33,7 @@ class ReinscripcionController extends Controller
         $reinscripciones = DB::table('reinscripciones')
         ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
         ->join('mina_cantera', 'reinscripciones.id_mina', '=', 'mina_cantera.id')
-        ->where('productores.leal_provincia', $user->province->label)
+        ->where('productores.leal_provincia', $user->province->value)
         ->select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
         ->get();
         // dd($reinscripciones);
@@ -47,10 +48,14 @@ class ReinscripcionController extends Controller
      */
     public function create()
     {
-        // dd(CountriesController::getProvinces());
+        $productors = ProductoresController::productoresUsuario();
         $provinces = CountriesController::getProvinces();
         $user = HomeController::userData();
-        // dd($user);
+
+        $productorsList = [];
+        for ($i=0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
+        }
         //
         // return Inertia::render('Reinscripciones/Form');
         return Inertia::render('Reinscripciones/Form', [
@@ -63,7 +68,8 @@ class ReinscripcionController extends Controller
             'titleForm' => 'Crear reinscripción',
             'titleBtnSave' => 'Guardar',
             'evaluate' => false,
-            'provincia' => $provinces
+            'provincia' => $provinces,
+            'productores' => $productorsList
         ]);
     }
 
@@ -75,8 +81,8 @@ class ReinscripcionController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $reinscripcion = $request->all();
+        // dd($reinscripcion["productor"]["value"]);
         $saveData = [];
         $newProducts = [];
         foreach ($reinscripcion as $key => $data) {
@@ -110,13 +116,18 @@ class ReinscripcionController extends Controller
                 continue;
             }
 
+            if ($key == "id_mina" || $key == "id_productor") {
+                $saveData[$key] = $reinscripcion[$key]["value"];
+                var_dump( $saveData[$key]);
+                continue;
+            }
+
             $saveData[$key] = $data;
         }
 
 
         // VER ESOS CAMPOS!!!
-        $saveData['id_mina'] = 1;
-        $saveData['id_productor'] = 6;
+
         $saveData['fecha_vto'] = '2022-06-08';
         $saveData['estado'] = 'en proceso';
 
@@ -488,4 +499,6 @@ class ReinscripcionController extends Controller
             'nuevas_inscripciones' => 0,
         ], 400);
     }
+
+
 }
