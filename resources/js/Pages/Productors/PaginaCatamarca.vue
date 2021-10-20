@@ -178,7 +178,7 @@
         <br />
         <br />
         <div class="flex">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <!-- <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
                     v-if="$props.mostrar_nombre_gestor"
                     v-bind:valor_input_props="form_pagina.gestor_nombre_apellido"
@@ -206,7 +206,7 @@
                     v-on:changevalor="update_valor_nombre_gestor($event)"
                 >
                 </NombreMina>
-            </div>
+            </div> -->
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
                     v-if="permisos_mostrar.nombre_gestor"
@@ -231,8 +231,6 @@
                 >
                 </NombreMina>
             </div>
-        </div>
-        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
                     v-if="permisos_mostrar.dni_gestor"
@@ -258,6 +256,9 @@
                 >
                 </NombreMina>
             </div>
+        </div>
+        <div class="flex">
+            
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <NombreMina
                         v-if="permisos_mostrar.profesion_gestor"
@@ -283,8 +284,6 @@
                     >
                     </NombreMina>
             </div>
-        </div>
-        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
                     v-if="permisos_mostrar.telefono_gestor"
@@ -310,6 +309,9 @@
                 >
                 </NombreMina>
             </div>
+        </div>
+        <div class="flex">
+            
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
                     v-if="permisos_mostrar.email_gestor"
@@ -359,8 +361,6 @@
                     -- obs_localidad_mina_provincia_valido observacion valida deel padre
                 </div>
             </div>
-        </div>
-        <div class="flex">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <CaracterQueInvoca 
                     v-if="permisos_mostrar.notificacion_gestor"
@@ -412,6 +412,9 @@
                     <br> notificacion de gestor  observacion valida deel padre: {{form_catamarca_test.obs_gestor_notificacion_valido}}
                 </div>
             </div>
+        </div>
+        <div class="flex">
+            
         </div>
         <div class="flex">
             <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
