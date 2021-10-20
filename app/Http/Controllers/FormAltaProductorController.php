@@ -667,7 +667,6 @@ class FormAltaProductorController extends Controller
 				'soy_productor' => $soy_productor, 
 				'datos_donut' => $grafico_donut
 			]);
-
 		}
 		elseif(Auth::user()->hasRole('Autoridad'))
 		{
