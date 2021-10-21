@@ -4,8 +4,9 @@ import inputsTypes from '../../enums/inputsTypes';
 import fileAccept from '../../enums/fileAccept';
 
 export async function getFormSchema({ ...schema }, action, dataForm, productors) {
-    const productor = productors.find( e=> schema.id_productor === e.value );
-    const minas = await axios.get(`/productores/getProductorMina/${productor.value}`);
+
+    const productor = !schema.id_productor? productors : productors.find( e=> schema.id_productor === e.value );
+    const minas = !schema.id_productor? undefined : await axios.get(`/productores/getProductorMina/${productor.value}`);
 
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
@@ -59,7 +60,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Productor',
-                                    value: productor,
+                                    value: schema.id_productor? productor : undefined,
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
