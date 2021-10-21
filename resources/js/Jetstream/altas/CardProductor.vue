@@ -10,7 +10,7 @@ input:checked ~ span:last-child {
   <div :class="clase_sup">
     <a href="#section_productor">
       <div :class="clase_inf">
-        <div class="flex justify-center">
+        <!-- <div class="flex justify-center grid md:grid-cols-1">
           <img
             class="
               w-20
@@ -25,11 +25,14 @@ input:checked ~ span:last-child {
             "
             width="50%"
           />
-        </div>
-        <div class="mt-8">
-          <p class="text-xl font-semibold my-2 text-center">
-            Datos del Producto
-          </p>
+        </div> -->
+        <div class="grid md:grid-cols-1">
+          <!-- <p class="text-xl font-semibold my-2 text-center">
+            {{ titulo }}
+          </p> -->
+          <h3 class="text-gray-800 text-3xl font-semibold">
+            {{ titulo }}
+          </h3>
           <!-- <div class="flex space-x-2 text-gray-400 text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +99,7 @@ input:checked ~ span:last-child {
 					</div>
 				</div> -->
         </div>
-        <div class="mt-4" v-if="$props.mostrarayuda">
+        <div class="grid md:grid-cols-1" v-if="$props.mostrarayuda">
           <label
             class="flex items-center relative w-max cursor-pointer select-none"
           >
@@ -164,6 +167,7 @@ export default {
     "clase_sup",
     "clase_inf",
     "ayuda",
+    "titulo",
   ],
 
   data() {

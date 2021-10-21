@@ -2,11 +2,31 @@
   <app-layout>
     <div class="flex items-center w-full bg-teal-lighter">
       <div class="w-full bg-white rounded shadow-lg p-8 m-4">
-        <h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
+        <div id="inicio"></div>
+        <h1
+          class="
+            border-2
+            shadow-lg
+            rounded-2xl
+            text-center text-2xl
+            font-bold
+            leading-7
+            text-gray-700
+            dark:bg-gray-700
+            sm:text-3xl
+            sm:truncate
+            py-1
+          "
+          :class="[
+            porcentajeInscripcion == 100
+              ? 'border-green-400'
+              : 'border-indigo-400',
+          ]"
+        >
           Dandose de Alta como nuevo Productor Minero en la Provincia de
-          {{ $props.nombre_provincia }}, id {{ form.id }}
+          {{ $props.nombre_provincia }}, Id {{ form.id }}
         </h1>
-        <button
+        <!-- <button
           type="button"
           class="
             text-white text-lg
@@ -23,15 +43,15 @@
           @click="mostrar_explicacion"
         >
           Necesita Ayuda?
-        </button>
+        </button> -->
         <form @submit.prevent="submit" class="mb-8">
           <div class="row">
             <banner></banner>
           </div>
-          <br />
+          <!-- <br />
           <hr />
 
-          <br />
+          <br /> -->
           <!-- Delete Account Confirmation Modal -->
           <jet-dialog-modal
             class="w-full"
@@ -65,8 +85,7 @@
               </button>
             </template>
           </jet-dialog-modal>
-          <div id="inicio"></div>
-          <div class="flex items-center justify-center">
+          <!-- <div class="flex items-center justify-center">
             <div
               class="
                 grid grid-cols-1
@@ -76,9 +95,9 @@
                 lg:grid-cols-7
                 xl:grid-cols-7
               "
-            >
-              <!-- 1 card -->
-              <CardProductor
+            > -->
+          <!-- 1 card -->
+          <!-- <CardProductor
                 v-if="$props.mostrar.paso_uno"
                 :progreso="form.valor_de_progreso"
                 :aprobado="form.valor_de_aprobado"
@@ -89,10 +108,10 @@
                 :evaluacion="evaluacion_global"
                 :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf="'relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl hover:bg-gray-200 h-full border-l-8 border-gray-200'"
-              ></CardProductor>
+              ></CardProductor> -->
 
-              <!-- 2 card -->
-              <CardDomLegal
+          <!-- 2 card -->
+          <!-- <CardDomLegal
                 v-if="$props.mostrar.paso_dos"
                 :progreso="form.valor_de_progreso_dos"
                 :aprobado="form.valor_de_aprobado_dos"
@@ -103,11 +122,11 @@
                 :evaluacion="evaluacion_global"
                 :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf="'relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl hover:bg-gray-200 h-full border-l-8 border-gray-200'"
-              ></CardDomLegal>
+              ></CardDomLegal> -->
 
-              <!-- 3 card -->
+          <!-- 3 card -->
 
-              <CardDomAdmin
+          <!-- <CardDomAdmin
                 v-if="$props.mostrar.paso_tres"
                 :progreso="form.valor_de_progreso_tres"
                 :aprobado="form.valor_de_aprobado_tres"
@@ -118,10 +137,10 @@
                 :evaluacion="evaluacion_global"
                 :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf="'relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl hover:bg-gray-200 h-full border-l-8 border-gray-200'"
-              ></CardDomAdmin>
+              ></CardDomAdmin> -->
 
-              <!-- 4 card -->
-              <CardMinaUno
+          <!-- 4 card -->
+          <!-- <CardMinaUno
                 v-if="$props.mostrar.paso_cuatro"
                 :progreso="form.valor_de_progreso_cuatro"
                 :aprobado="form.valor_de_aprobado_cuatro"
@@ -132,10 +151,10 @@
                 :evaluacion="evaluacion_global"
                 :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf="'relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl hover:bg-gray-200 h-full border-l-8 border-gray-200'"
-              ></CardMinaUno>
+              ></CardMinaUno> -->
 
-              <!-- 5 card -->
-              <CardMinaDos
+          <!-- 5 card -->
+          <!-- <CardMinaDos
                 v-if="$props.mostrar.paso_cinco"
                 :progreso="form.valor_de_progreso_cinco"
                 :aprobado="form.valor_de_aprobado_cinco"
@@ -146,9 +165,9 @@
                 :evaluacion="evaluacion_global"
                 :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf="'relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl hover:bg-gray-200 h-full border-l-8 border-gray-200'"
-              ></CardMinaDos>
+              ></CardMinaDos> -->
 
-              <CardMinaUbicacion
+          <!-- <CardMinaUbicacion
                 v-if="$props.mostrar.paso_seis"
                 :progreso="form.valor_de_progreso_seis"
                 :aprobado="form.valor_de_aprobado_seis"
@@ -158,9 +177,9 @@
                 :evaluacion="evaluacion_global"
                 :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf="'relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl hover:bg-gray-200 h-full border-l-8 border-gray-200'"
-              ></CardMinaUbicacion>
+              ></CardMinaUbicacion> -->
 
-              <CardCatamarca
+          <!-- <CardCatamarca
                 v-if="$props.mostrar.paso_catamarca"
                 :progreso="form.valor_de_progreso_seis"
                 :aprobado="form.valor_de_aprobado_seis"
@@ -170,10 +189,10 @@
                 :evaluacion="evaluacion_global"
                 :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf="'relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl hover:bg-gray-200 h-full border-l-8 border-gray-200'"
-              ></CardCatamarca>
+              ></CardCatamarca> -->
 
-              <!-- 4 card -->
-              <CardTotal
+          <!-- 4 card -->
+          <!-- <CardTotal
                 v-if="evaluacion_global"
                 :progreso="form.valor_de_progreso_seis"
                 :aprobado="form.valor_de_aprobado_seis"
@@ -182,9 +201,9 @@
                 :updated_at="'hace 10 minutos'"
                 :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
                 :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl hover:bg-gray-200 h-full border-l-8 border-gray-200'"
-              ></CardTotal>
-            </div>
-          </div>
+              ></CardTotal> -->
+          <!-- </div>
+          </div> -->
           <br />
           <!-- <div class="flex justify-center md:justify-end sticky top-10">
             <a href="#inicio">
@@ -1080,18 +1099,27 @@
             v-if="$props.mostrar.paso_catamarca"
           ></div>
           <PaginaCatamarca
-			v-if="$props.mostrar.paso_catamarca"
-				:link_volver="route('formulario-alta.index')"
-				:titulo_boton_volver="'volver'"
-				:titulo_boton_guardar="'Guardar Datos Form Catamarca'"
-				:titulo_pagina="'Pagina De Catamarca'"
-
-				:evaluacion ="evaluacion_global"
-				:testing="testing_global"
-				:id="form.id"
-			>
-			</PaginaCatamarca>
-          <div class="border border-gray-300 w-full py-4 px-8 bg-white shadow-lg rounded-lg">
+            v-if="$props.mostrar.paso_catamarca"
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos Form Catamarca'"
+            :titulo_pagina="'Pagina De Catamarca'"
+            :evaluacion="evaluacion_global"
+            :testing="testing_global"
+            :id="form.id"
+          >
+          </PaginaCatamarca>
+          <div
+            class="
+              border border-gray-300
+              w-full
+              py-4
+              px-8
+              bg-white
+              shadow-lg
+              rounded-lg
+            "
+          >
             <div class="flex flex-wrap">
               <div class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0">
                 <label
@@ -1277,7 +1305,6 @@
                   <button
                     @click="closeModalAprobar"
                     class="
-                       
                       py-3
                       px-6
                       text-white
@@ -1296,7 +1323,6 @@
                     v-show="mostrar_boton_aprobar"
                     @click="closeModalAprobar"
                     class="
-                       
                       py-3
                       px-6
                       text-white
@@ -1315,7 +1341,6 @@
                     v-show="mostrar_boton_aprobar_de_todos_modos"
                     @click="presentar_de_todos_modos"
                     class="
-                       
                       py-3
                       px-6
                       text-white
@@ -1335,9 +1360,31 @@
         </form>
       </div>
     </div>
+    <!-- <main class="mx-auto p-4 md:w-3/4 px-4 py-4"> -->
+    <ButtonFixed :buttons="buttonsFixed" @showModal="handleClick" />
+    <jet-dialog-modal
+      :show="showModalPasos"
+      class="w-10/12"
+      @close="closeModalBtn"
+    >
+      <template #title>
+        {{ buttonsFixed.modal[0].title }}
+      </template>
+      <template #content>
+        {{ buttonsFixed.modal[0].body }}
+        <Pasos class="mt-10" />
+      </template>
+      <template #footer>
+        <jet-button class="ml-2" @click="closeModalBtn"> Entendido </jet-button>
+      </template>
+    </jet-dialog-modal>
+    <!-- </main> -->
   </app-layout>
 </template>
 <script>
+import ButtonFixed from "@/Components/ButtonFixed";
+import JetButton from "@/Jetstream/Button";
+
 import AppLayout from "@/Layouts/AppLayout";
 import Banner from "@/Jetstream/Banner";
 import Modal from "@/Jetstream/Modal";
@@ -1365,6 +1412,9 @@ import provincias from "../../../../helpers/enums/provincias";
 
 export default {
   components: {
+    ButtonFixed,
+    JetButton,
+
     AppLayout,
     Banner,
     Modal,
@@ -1888,6 +1938,44 @@ export default {
         valor_de_reprobado: 100,
       },
       nuevo: this.$props.productor,
+      buttonsFixed: {
+        links: [
+          {
+            label: "Principio",
+            url: "#inicio",
+            color: "bg-yellow-500 hover:bg-yellow-800",
+          },
+          {
+            label: "Datos del Productor",
+            url: "#section_productor",
+            color: "bg-indigo-500 hover:bg-indigo-800",
+          },
+          {
+            label: "Domicilio Legal",
+            url: "#section_domicilio_legal",
+            color: "bg-indigo-500 hover:bg-indigo-800",
+          },
+          {
+            label: "Domicilio de Administración",
+            url: "#section_domicilio_administrativo",
+            color: "bg-indigo-500 hover:bg-indigo-800",
+          },
+          {
+            label: "Datos de la Mina",
+            url: "#section_mina_uno",
+            color: "bg-indigo-500 hover:bg-indigo-800",
+          },
+        ],
+        modal: [
+          {
+            label: "Ayuda Borradores",
+            show: false,
+            title: "Explicación de alta de Productores Mineros",
+            body: "En este formulario usted puede presentar la solicitud de alta de productor minero. Con esta acción usted demuestra interes en inscribirse como tal, pervio a una evaluación de su solicitud (el presente formulario).",
+          },
+        ],
+      },
+      showModalPasos: false,
     };
   },
   mounted() {
@@ -1975,6 +2063,13 @@ export default {
     }
   },
   methods: {
+    handleClick(data) {
+      this.showModalPasos = data.show;
+    },
+    closeModalBtn() {
+      this.showModalPasos = false;
+    },
+
     submit() {
       let self = this;
       //console.log("el id es:",this.form.id);

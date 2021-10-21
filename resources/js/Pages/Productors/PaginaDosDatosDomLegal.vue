@@ -1,15 +1,9 @@
 <template>
   <div
-    class="
-      border border-gray-300 border border-gray-300
-      w-full
-      py-4
-      px-8
-      bg-white
-      shadow-lg
-      rounded-lg
-      my-20
-    "
+     class="border-2 shadow-lg rounded-2xl w-full py-4 px-8 bg-white shadow-lg my-20"
+    :class="[
+      porcentajeInscripcion == 100 ? 'border-green-400' : 'border-indigo-400',
+    ]"
   >
     <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
       <a
