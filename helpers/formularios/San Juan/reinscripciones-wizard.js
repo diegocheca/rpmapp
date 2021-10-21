@@ -4,6 +4,7 @@ import inputsTypes from '../../enums/inputsTypes';
 import fileAccept from '../../enums/fileAccept';
 
 export async function getFormSchema({ ...schema }, action, dataForm, productors) {
+
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
     return [
@@ -56,7 +57,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Productor',
-                                    value: {},
+                                    value: productors.find( e=> schema.id_productor === e.value ),
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
@@ -79,7 +80,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Mina',
-                                    value: {},
+                                    value: undefined,
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     // async: true,
@@ -582,5 +583,8 @@ function getChildrens(data, observation) {
     return newChildrens;
 }
 
+function setValue(value, name, schema) {
+   return schema[name] = value;
+}
 
 

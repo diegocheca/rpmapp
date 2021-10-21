@@ -161,22 +161,30 @@ class ReinscripcionController extends Controller
      */
     public function edit($id)
     {
+        $productors = ProductoresController::productoresUsuario();
         $reinscripcion = Reinscripciones::find($id);
         // dd($reinscripcion->productos);
         $reinscripcion->productos = Reinscripciones::find($id)->productos;
         $provinces = CountriesController::getProvinces();
+        $user = HomeController::userData();
+
+        $productorsList = [];
+        for ($i=0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
+        }
 
         return Inertia::render('Reinscripciones/Form', [
             'action' => "update",
             'saveUrl' => "reinscripciones.update",
             // 'saveFileUrl' => "/reinscripciones/upload",
-            'province' => env('PROVINCE', 'EntreRios') . "/reinscripciones-wizard",
+            'province' => $user->province->label ."/reinscripciones-wizard",
             // 'folder' => 'reinscripciones',
             'reinscripcion' => $reinscripcion,
             'titleForm' => 'Editar reinscripciones',
             'titleBtnSave' => 'Editar',
             'evaluate' => false,
             'provincia' => $provinces,
+            'productores' => $productorsList
         ]);
     }
 
