@@ -23,7 +23,7 @@ use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
-
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -217,6 +217,8 @@ Route::get('/comprobante-presentacion-pdf/{id}', [FormAltaProductorController::c
 Route::get('/probando_super_guardado/{id}', [FormAltaProductorController::class, "probando_super_guardado"])->name('probando-super-guardado');
 
 
+//
+
 
 //COMERCIANTE
 Route::get('/probando_form_comerciante/', [FormAltaProductorController::class, "pdf_para_comerciantes"])->name('pdf-para-comerciantes');
@@ -241,3 +243,10 @@ Route::group(['prefix' => 'paises'], function () {
     Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
         ->middleware(['auth:sanctum', 'verified']);
 });
+
+
+
+
+//DASHBOARD
+
+Route::get('/dashboard/numproductores', [DashboardController::class, "numProductores"])->name('numProductores');

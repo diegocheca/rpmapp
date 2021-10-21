@@ -221,7 +221,7 @@
                     v-bind:icon="$inertia.page.props.appName+'/svg/state.svg'"
                     v-bind:desactivar_input="permisos_disables.nombre_gestor"
                     v-bind:mostrar_correccion="permisos_mostrar.nombre_gestor_correccion"
-                    v-bind:desactivar_correccion="permisos_disables.desactivar_nombre_gestor_correccion"
+                    v-bind:desactivar_correccion="permisos_disables.nombre_gestor_correccion"
 
                     v-on:changevalido="update_nombre_gestor_valido($event)"
                     v-on:changecorrecto="update_nombre_gestor_correcto($event)"
@@ -1067,7 +1067,7 @@ export default {
                     console.log(error);
                 });
                 //voy a buscar los permisos
-                axios.get('/formularios/traer_permisos_pagina_catamarca'+'/'+parseInt(this.$props.id)+'/crear')
+                axios.get('/formularios/traer_permisos_pagina_catamarca'+'/'+parseInt(this.$props.id)+'/editar')
                 .then(function (response) {
                     if(response.data.status === 'ok')
                     {
