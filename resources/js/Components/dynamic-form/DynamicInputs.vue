@@ -75,8 +75,7 @@
 
                             <!-- select/multiple -->
                             <Field v-if="item.type == inputsTypes.SELECT" v-slot="{ field }" :name="item.name" :value="item.value">
-                                {{item.value}}
-                                <VueMultiselect v-bind="field" v-model="item.value" :id="item" :value="item.value" :options="item.options" :ref="item.name" :multiple="item.multiple" :loading="item.isLoading? item.isLoading : false" :close-on-select="item.closeOnSelect" :searchable="item.searchable" :placeholder="item.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" @select="getAsyncOptionsSelect" />
+                                <VueMultiselect v-bind="field" v-model="item.value" :id="item" :value="item.value" :options="item.options" :ref="item.name" :multiple="item.multiple" :loading="item.isLoading? item.isLoading : false" :close-on-select="item.closeOnSelect" :searchable="item.searchable" :placeholder="item.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" @select="getAsyncOptionsSelect" @input="getAsyncOptionsSelect" />
                             </Field>
 
                             <!-- file -->
@@ -415,6 +414,7 @@ export default {
             }
         };
     },
+
     methods: {
         async getOptions(value, element) {
             if(!item.async) {

@@ -4,6 +4,8 @@ import inputsTypes from '../../enums/inputsTypes';
 import fileAccept from '../../enums/fileAccept';
 
 export async function getFormSchema({ ...schema }, action, dataForm, productors) {
+    const productor = productors.find( e=> schema.id_productor === e.value );
+    const minas = await axios.get(`/productores/getProductorMina/${productor.value}`);
 
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
@@ -57,7 +59,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Productor',
-                                    value: productors.find( e=> schema.id_productor === e.value ),
+                                    value: productor,
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
@@ -80,7 +82,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Mina',
-                                    value: undefined,
+                                    value: !minas? undefined : minas.data.find( e=> schema.id_mina === e.value ),
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     // async: true,
@@ -89,7 +91,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     // inputClearDepends: [''],
                                     isLoading: false,
                                     //
-                                    options: [],
+                                    options: !minas? [] : minas.data,
                                     name: 'id_mina',
                                     multiple: false,
                                     closeOnSelect: true,
