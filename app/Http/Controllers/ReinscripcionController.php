@@ -118,7 +118,6 @@ class ReinscripcionController extends Controller
 
             if ($key == "id_mina" || $key == "id_productor") {
                 $saveData[$key] = $reinscripcion[$key]["value"];
-                var_dump( $saveData[$key]);
                 continue;
             }
 
@@ -323,6 +322,11 @@ class ReinscripcionController extends Controller
                         array_push($newProducts, $product);
                     }
 
+                    continue;
+                }
+
+                if ($key == "id_mina" || $key == "id_productor") {
+                    $saveData[$key] = $dataReinscripcion[$key]["value"];
                     continue;
                 }
 
