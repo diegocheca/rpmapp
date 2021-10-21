@@ -168,7 +168,7 @@ class FomrWeb extends Migration
             $table->string('categoria')->nullable();
 
             $table->foreign('form_mina_id')->references('id')->on('formMina');
-            $table->foreign('minerales_id')->references('id')->on('Minerales');
+            $table->foreign('minerales_id')->references('id')->on('minerales');
            
             $table->timestamps();
         });
@@ -263,7 +263,7 @@ class FomrWeb extends Migration
         Schema::dropIfExists('form_persona_form_solicitud');
         Schema::dropIfExists('formTerreno');
         Schema::dropIfExists('form_estado_terreno_form_terreno');
-        Schema::dropIfExists(' form_terreno_minerales');
+        Schema::dropIfExists('form_terreno_minerales');
         Schema::dropIfExists('formMatriculaCatastral');
         Schema::dropIfExists('formCoordenadassPoligonal');
         Schema::dropIfExists('formMina');

@@ -132,8 +132,8 @@
                                 class="text-4xl count-number"
                                 ref="counter1"
                                 :startAmount="0"
-                                :endAmount="17"
-                                :duration="3"
+                                :endAmount="cantidad_productores"
+                                :duration="4"
                                 prefix=""
                                 suffix=""
                                 separator=""
@@ -286,6 +286,7 @@
             return {
                 chartShow: false,
                 nuevas_reinscripciones:'',
+                cantidad_productores: 0,
             }
         },
         methods: {
@@ -305,7 +306,22 @@
                     // handle error
                     console.log(error);
                 })
-            }
+            },
+            buscar_nuevas_reincripciones(){
+                let self = this;
+                axios.get('/dashboard/numproductores')
+                .then(function (response) {
+                    if(response.data.status === 'ok')
+                        self.cantidad_productores = response.data.cantidad;
+                    else self.cantidad = 0;
+                    // console.log(response.data.msg);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+            },
+            
         },
         mounted() {
             this.buscar_nuevas_reincripciones();
