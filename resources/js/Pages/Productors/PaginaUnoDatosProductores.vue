@@ -9,12 +9,19 @@ input:checked ~ span:last-child {
 </style>
 <template>
   <div
-    class="border-2 shadow-lg rounded-2xl w-full py-4 px-8 bg-white shadow-lg"
-    :class="[
-      porcentajeInscripcion == 100 ? 'border-green-400' : 'border-indigo-400',
-    ]"
+    class="
+      border-2
+      shadow-lg
+      rounded-2xl
+      w-full
+      py-4
+      px-8
+      bg-white
+      shadow-lg
+      border-indigo-400
+    "
   >
-    <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
+    <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_productor">
         <img
           class="
@@ -130,7 +137,7 @@ input:checked ~ span:last-child {
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br /> -->
 
-      <div class="items-center justify-center">
+      <div class="items-center justify-left">
         <CardProductor
           :progreso="50"
           :aprobado="25"
@@ -141,7 +148,7 @@ input:checked ~ span:last-child {
           :mostrarayuda="true"
           :evaluacion="autoridad_minera"
           :clase_sup="'gap-65'"
-          :clase_inf="'relative bg-white px-4 rounded-2xl w-128 shadow-xl grid  sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3'"
+          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="mostrar_ayuda"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
         ></CardProductor>

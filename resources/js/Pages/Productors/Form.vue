@@ -230,7 +230,7 @@
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Productor'"
-            :titulo_pagina="'Página Datos de Productor'"
+            :titulo_pagina="'Datos del Productor'"
             :razon_social="form.razon_social"
             :razon_social_valido="form.razon_social_valido"
             :razon_social_correcto="form.razon_social_correcto"
