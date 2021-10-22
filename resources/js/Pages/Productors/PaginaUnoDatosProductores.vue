@@ -1,20 +1,28 @@
-<style>
-input:checked {
-  background-color: #22c55e; /* bg-green-500 */
-}
-
-input:checked ~ span:last-child {
-  --tw-translate-x: 1.75rem; /* translate-x-7 */
-}
-</style>
 <template>
-  <div class="border border-gray-300 w-full py-4 px-8 bg-white shadow-lg rounded-lg my-20">
-    <div
-      class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10"
-    >
+  <div
+    class="
+      border-2
+      shadow-lg
+      rounded-2xl
+      w-full
+      py-4
+      px-8
+      bg-white
+      shadow-lg
+      border-indigo-400
+    "
+  >
+    <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_productor">
         <img
-          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500 bg-white"
+          class="
+            w-20
+            h-20
+            object-cover
+            rounded-full
+            border-2 border-indigo-500
+            bg-white
+          "
           :src="
             $inertia.page.props.appName + '/slick/img/features/casco-minero.svg'
           "
@@ -117,19 +125,20 @@ input:checked ~ span:last-child {
       </div>
     </div>
     <div>
-      <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
-      <br /><br />
-      <div class="flex flex-col items-center justify-center">
+      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
+      <br /><br /> -->
+      <div class="items-center justify-left">
         <CardProductor
           :progreso="50"
           :aprobado="25"
           :reprobado="25"
           :lugar="'Argentina, San Juan'"
+          :titulo="titulo_pagina"
           :updated_at="'hace 10 minutos'"
           :mostrarayuda="true"
           :evaluacion="autoridad_minera"
-          :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-          :clase_inf="'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+          :clase_sup="'gap-6'"
+          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="mostrar_ayuda"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
         ></CardProductor>
@@ -671,7 +680,7 @@ input:checked ~ span:last-child {
           "
           >Volver Arriba</a
         > -->
-        <!-- <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a> -->
+      <!-- <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a> -->
       <!-- </div> -->
     </div>
   </div>
