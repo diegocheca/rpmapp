@@ -25,7 +25,7 @@
       </svg>
       <span class="ml-1">Home</span>
     </a>
-    <a
+    <inertia-link
       :href="route('register')"
       class="
         relative
@@ -54,7 +54,7 @@
         />
       </svg>
       <span class="ml-1">Registrarte</span>
-    </a>
+    </inertia-link>
   </div>
   <jet-authentication-card>
     <template #logo>

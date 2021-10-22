@@ -1,11 +1,3 @@
-<style>
-input:checked {
-  background-color: #22c55e; /* bg-green-500 */
-}
-input:checked ~ span:last-child {
-  --tw-translate-x: 1.75rem; /* translate-x-7 */
-}
-</style>
 <template>
   <div :class="clase_sup">
     <div :class="clase_inf">
@@ -18,15 +10,8 @@ input:checked ~ span:last-child {
           width="50%"
         />
       </div>
-      <div class="col-span-3 mt-1">
-        <!-- <p class="text-xl font-semibold my-2 text-center">
-            {{ titulo }}
-          </p> -->
-        <!-- <h3 class="text-gray-800 text-2xl font-semibold">
-          {{ titulo }}
-        </h3> -->
+      <div class="col-span-8 mt-1">
         <span class="text-gray-800 text-2xl font-bold">{{ titulo }}</span>
-
         <!-- <div class="flex space-x-2 text-gray-400 text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -93,8 +78,8 @@ input:checked ~ span:last-child {
 					</div>
 				</div> -->
       </div>
-      <div class="col-span-2" v-if="$props.mostrarayuda">
-        <label
+      <div class="col-span-2 mt-2" v-if="$props.mostrarayuda">
+        <!-- <label
           class="
             flex
             items-center
@@ -104,9 +89,15 @@ input:checked ~ span:last-child {
             select-none
             mt-2
           "
-        >
+        > -->
           <span class="text-lg font-semibold mr-3">Necesita ayuda?</span>
-          <input
+          <Toggle
+            v-model="valor_ayuda_local"
+            @change="cambio_de_ayuda"
+            on-label="SI"
+            off-label="NO"
+          />
+          <!-- <input
             type="checkbox"
             class="
               ml-2
@@ -147,15 +138,19 @@ input:checked ~ span:last-child {
               transition-transform
               bg-gray-200
             "
-          />
-        </label>
+          /> -->
+        <!-- </label> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Toggle from "@vueform/toggle";
 export default {
+  components: {
+    Toggle,
+  },
   props: [
     "progreso",
     "aprobado",
@@ -182,3 +177,4 @@ export default {
   },
 };
 </script>
+<style src="@vueform/toggle/themes/default.css"></style>

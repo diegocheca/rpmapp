@@ -1,12 +1,3 @@
-<style>
-input:checked {
-  background-color: #22c55e; /* bg-green-500 */
-}
-
-input:checked ~ span:last-child {
-  --tw-translate-x: 1.75rem; /* translate-x-7 */
-}
-</style>
 <template>
   <div
     class="
@@ -136,18 +127,17 @@ input:checked ~ span:last-child {
     <div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br /> -->
-
       <div class="items-center justify-left">
         <CardProductor
           :progreso="50"
           :aprobado="25"
           :reprobado="25"
-          :lugar="titulo_pagina"
+          :lugar="'Argentina, San Juan'"
           :titulo="titulo_pagina"
           :updated_at="'hace 10 minutos'"
           :mostrarayuda="true"
           :evaluacion="autoridad_minera"
-          :clase_sup="'gap-65'"
+          :clase_sup="'gap-6'"
           :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="mostrar_ayuda"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"

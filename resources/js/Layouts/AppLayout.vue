@@ -357,7 +357,7 @@
                 </button>
               </div>
               <nav class="flex flex-col flex-1 w-64 p-4 mt-4">
-                <a
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.dashboard.show'])"
                   :href="route('dashboard')"
                   :active="route().current('dashboard')"
@@ -391,8 +391,8 @@
                     />
                   </svg>
                   <span>Inicio (Dashboard)</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.borradores.show'])"
                   :href="route('formulario-alta.index')"
                   :active="route().current('formulario-alta.index')"
@@ -426,8 +426,8 @@
                     />
                   </svg>
                   <span>Borradores</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.pagos.show'])"
                   :href="route('pagos.index')"
                   :active="route().current('pagos.index')"
@@ -467,8 +467,8 @@
                     ></path>
                   </svg>
                   <span>Pagos</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.reinscripciones.show'])"
                   :href="route('reinscripciones.index')"
                   :active="route().current('reinscripciones.index')"
@@ -502,8 +502,8 @@
                     />
                   </svg>
                   <span>Reinscripciones</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.producto.show'])"
                   :href="route('productos.index')"
                   :active="route().current('productos.index')"
@@ -540,8 +540,8 @@
                     />
                   </svg>
                   <span>Producto</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.iiasydias.show'])"
                   :href="route('iiadias.index')"
                   :active="route().current('iiadias.index')"
@@ -578,8 +578,8 @@
                     />
                   </svg>
                   <span>IIASyDIAS</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.prodmina.show'])"
                   :href="route('productores_minas.index')"
                   :active="route().current('productores_minas.index')"
@@ -613,8 +613,8 @@
                     />
                   </svg>
                   <span>ProdMina</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.productores.show'])"
                   :href="route('productores.index')"
                   :active="route().current('productores.index')"
@@ -650,8 +650,8 @@
                     />
                   </svg>
                   <span>Productores</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['formweb.formulariosweb.show'])"
                   :href="route('formweb.solicitudes.index')"
                   :active="route().current('formweb.solicitudes.index')"
@@ -686,10 +686,10 @@
                     />
                   </svg>
                   <span>Formularios WEB</span>
-                </a>
+                </inertia-link>
               </nav>
               <div class="flex-shrink-0 p-4">
-                <a
+                <inertia-link
                   v-if="hasAnyPermission(['admin.users.index'])"
                   :href="route('admin.users.index')"
                   class="
@@ -718,7 +718,7 @@
                     />
                   </svg>
                   <span>Configuración</span>
-                </a>
+                </inertia-link>
                 <!-- Authentication -->
                 <form @submit.prevent="logout">
                   <button class="flex items-center space-x-2">

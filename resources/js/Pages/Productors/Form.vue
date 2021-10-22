@@ -345,7 +345,7 @@
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
-            :titulo_pagina="'Pagina datos de Domicilio Legal'"
+            :titulo_pagina="'Domicilio Legal'"
             :leal_calle="form.leal_calle"
             :nombre_calle_legal_valido="form.nombre_calle_legal_valido"
             :nombre_calle_legal_correcto="form.nombre_calle_legal_correcto"
@@ -471,7 +471,7 @@
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Domicilio Administrativo'"
-            :titulo_pagina="'Pagina datos de Domicilio Administrativo'"
+            :titulo_pagina="'Domicilio Administrativo'"
             :leal_calle="form.administracion_calle"
             :nombre_calle_legal_valido="form.administracion_calle_valido"
             :nombre_calle_legal_correcto="form.administracion_calle_correcto"
@@ -609,14 +609,14 @@
             :id="form.id"
           >
           </PaginaDosDatosDomLegal>
-          <div class="flex items-center justify-center"></div>
+          <!-- <div class="flex items-center justify-center"></div> -->
           <div id="section_mina_uno"></div>
           <PaginaCuatroDatosMinaUno
             v-if="$props.mostrar.paso_cuatro"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de Mina Primer Parte'"
-            :titulo_pagina="'Pagina datos de Mina Primera Parte'"
+            :titulo_pagina="'Datos de Mina Primera Parte'"
             :numero_expdiente="form.numero_expdiente"
             :numero_expdiente_valido="form.numero_expdiente_valido"
             :numero_expdiente_correcto="form.numero_expdiente_correcto"
@@ -752,14 +752,14 @@
             v-on:changevalorcategoria="update_categoria($event)"
           >
           </PaginaCuatroDatosMinaUno>
-          <div class="flex items-center justify-center"></div>
+          <!-- <div class="flex items-center justify-center"></div> -->
           <div id="section_datos_mina_dos"></div>
           <PaginaCincoDatosMinaDos
             v-if="$props.mostrar.paso_cinco"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
-            :titulo_pagina="'Pagina datos de Mina Segunda Parte'"
+            :titulo_pagina="'Datos de Mina Segunda Parte'"
             :owner="form.owner"
             :owner_correcto="form.owner_correcto"
             :obs_owner="form.obs_owner"
@@ -1111,13 +1111,16 @@
           </PaginaCatamarca>
           <div
             class="
-              border border-gray-300
+              border-2
+              shadow-lg
+              rounded-2xl
               w-full
               py-4
               px-8
               bg-white
               shadow-lg
-              rounded-lg
+              my-20
+              border-indigo-400
             "
           >
             <div class="flex flex-wrap">
@@ -1227,10 +1230,19 @@
             </div>
             <br />
             <br />
-            <div class="flex items-stretch w-full justify-items-stretch">
+            <div
+              class="
+                grid
+                sm:grid-cols-1
+                md:grid-cols-2
+                xl:grid-cols-2
+                w-full
+              "
+            >
               <div
                 class="
-                  justify-self-auto
+                  grid
+                  justify-start
                   mb-6
                   md:mb-0
                   px-3
@@ -1263,7 +1275,16 @@
                 </button>
               </div>
               <div
-                class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5"
+                class="
+                  grid
+                  justify-end
+                  mb-6
+                  md:mb-0
+                  px-3
+                  sm:w-5/5
+                  self-center
+                  w-full
+                "
               >
                 <inertia-link
                   :href="route('formulario-alta.index')"
