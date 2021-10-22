@@ -23,7 +23,7 @@ use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
-
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +66,12 @@ Route::post('reinscripciones/upload', [ReinscripcionController::class, "upload"]
     ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.upload');
 Route::delete('reinscripciones/destroy/{id}', [ReinscripcionController::class, "destroy"])
     ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.destroy');
-//     Route::get('provincias', 'ReinscripcionController@getCountries')
+Route::get('reinscripciones/productores', [ReinscripcionController::class, "productores"])
+    ->middleware(['auth:sanctum', 'verified'])->name('reinscripciones.productores');
+
+Route::get('productores/getProductorMina/{id}', [ProductoresController::class, "getProductorMina"])
+    ->middleware(['auth:sanctum', 'verified'])->name('productores.getProductorMina');
+    //     Route::get('provincias', 'ReinscripcionController@getCountries')
 //         ->middleware(['auth:sanctum', 'verified']);
 
 // });
@@ -177,6 +182,7 @@ Route::get('/formularios/prueba_aprobado/{id}', [FormAltaProductorController::cl
 Route::delete('formularios/eliminar_formulario/{id}', [FormAltaProductorController::class, "destroy"])->name('eliminar-formulario');
 Route::get('productores/mostrar_datos/{id}', [ProductoresController::class, "mostrar_datos"])->name('datos-productor');
 
+
 //evaluacion de formularios presentados
 
 
@@ -217,6 +223,8 @@ Route::get('/comprobante-presentacion-pdf/{id}', [FormAltaProductorController::c
 Route::get('/probando_super_guardado/{id}', [FormAltaProductorController::class, "probando_super_guardado"])->name('probando-super-guardado');
 
 
+//
+
 
 //COMERCIANTE
 Route::get('/probando_form_comerciante/', [FormAltaProductorController::class, "pdf_para_comerciantes"])->name('pdf-para-comerciantes');
@@ -241,3 +249,10 @@ Route::group(['prefix' => 'paises'], function () {
     Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
         ->middleware(['auth:sanctum', 'verified']);
 });
+
+
+
+
+//DASHBOARD
+
+Route::get('/dashboard/numproductores', [DashboardController::class, "numProductores"])->name('numProductores');

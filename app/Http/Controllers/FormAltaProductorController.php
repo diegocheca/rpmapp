@@ -667,7 +667,6 @@ class FormAltaProductorController extends Controller
 				'soy_productor' => $soy_productor, 
 				'datos_donut' => $grafico_donut
 			]);
-
 		}
 		elseif(Auth::user()->hasRole('Autoridad'))
 		{
@@ -11153,13 +11152,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 						$email_a_mandar,
 						$formulario_provisorio->razon_social,
 						$formulario_provisorio->id,
-						date("d/m/Y H:i:s")
-					));
-					Mail::to('ltorres.godoy77@gmail.com')->send(new AvisoFormularioPresentadoEmail(
-						$email_a_mandar,
-						$formulario_provisorio->razon_social,
-						$formulario_provisorio->id,
-						date("d/m/Y H:i:s")
+						date("Y-m-d H:i:s")
 					));
 				}
 				if($formulario_provisorio->estado  == "con observacion")
@@ -11195,6 +11188,13 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				],201);
 
 		}
+		else
+		{
+			return response()->json([
+				'status' => 'mal',
+				'msg' => 'Error en el ID pasado.'
+			],201);
+		}
 			/*
 			//tengo que enviar email
 			//$email_a_mandar = $formulario_provisorio->email; para prod
@@ -11217,13 +11217,33 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select('*')
 		->where('id', '=',$id_formulario)->first();
-		
-		$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
-		$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
-		$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
-		$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
-		$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
 
+		//revisar si son todos registros nuevos, o si tengo q traerlos de algun lugar
+
+		$crear_productor=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_productor)
+			$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+		$crear_mina=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_mina)
+			$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+		$crear_dia=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_dia)
+			$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+		$crear_pago=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_pago)
+			$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+		$crear_mina_productor=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_mina_productor)
+			$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+		$crear_los_minerales_de_la_mina=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_los_minerales_de_la_mina)
+			$resultado_actualizar_minerales = $this->actualizar_registros_minerales_en_mina($formulario_provisorio->id);
+		//actualizar form_provisorio
+		//$formulario_provisorio->estado = 
+
+		//actualizar casos especiales de provincias
+		//Catamarca 
+		//if()
 		var_dump($id_productor_nuevo,$id_mina_nueva,$id_dia_iia_nueva,$id_pago_canon_nuevo,$id_mina_productor);
 	
 	}
@@ -11281,7 +11301,6 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		else return "id menor a 1";
 
 	}
-	
 	public function crear_registro_mina_cantera($id_formulario){
 		if($id_formulario > 1)
 		{
@@ -11443,7 +11462,32 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		else return "id menor a 1";
 
 	}
-	
+	public function actualizar_registros_minerales_en_mina($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				//debo actualizar todos los registros que tengan el id del formulario y pasarlos de
+				//borrador a aprobados
+				$resultado = Minerales_Borradores::select('*')->where('id_formulario' , '=', $id_formulario)->get();
+				foreach($resultado as $mineral){
+					$mineral->estado = 'aprobado';
+					$mineral->save();
+				}
+				return true;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
 	
 
 

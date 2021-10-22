@@ -9,6 +9,7 @@ const SELECT = "select";
 const FILE = "file";
 const LIST = "list";
 const DATE = "date";
+const TABLE = "table";
 
 const INPUTS_DEFAULT = [TEXT, NUMBER, PASSWORD, RADIO, EMAIL, DATE];
 
@@ -25,4 +26,5 @@ export default {
     LIST,
     INPUTS_DEFAULT,
     DATE,
+    TABLE
 };
