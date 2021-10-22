@@ -1673,6 +1673,9 @@ select {
 .w-7 {
 	width: 1.75rem;
 }
+.w-1\/6 {
+	width: 16.666667%;
+}
 .w-max {
 	width: -webkit-max-content;
 	width: -moz-max-content;
@@ -1687,9 +1690,6 @@ select {
 .w-11\/12 {
 	width: 91.666667%;
 }
-.w-1\/5 {
-	width: 20%;
-}
 .w-72 {
 	width: 18rem;
 }
@@ -1698,6 +1698,9 @@ select {
 }
 .w-2\/5 {
 	width: 40%;
+}
+.w-1\/5 {
+	width: 20%;
 }
 .w-52 {
 	width: 13rem;
@@ -1758,6 +1761,9 @@ select {
 .table-auto {
 	table-layout: auto;
 }
+.table-fixed {
+	table-layout: fixed;
+}
 .border-separate {
 	border-collapse: separate;
 }
@@ -1810,6 +1816,22 @@ select {
 }
 .transform {
 	transform: var(--tw-transform);
+}
+@-webkit-keyframes pulse {
+
+	50% {
+		opacity: .5;
+	}
+}
+@keyframes pulse {
+
+	50% {
+		opacity: .5;
+	}
+}
+.animate-pulse {
+	-webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 @-webkit-keyframes ping {
 
@@ -1876,22 +1898,6 @@ select {
 .animate-bounce {
 	-webkit-animation: bounce 1s infinite;
 	        animation: bounce 1s infinite;
-}
-@-webkit-keyframes pulse {
-
-	50% {
-		opacity: .5;
-	}
-}
-@keyframes pulse {
-
-	50% {
-		opacity: .5;
-	}
-}
-.animate-pulse {
-	-webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-	        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 .cursor-default {
 	cursor: default;
@@ -2068,6 +2074,10 @@ select {
 .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
 	--tw-divide-opacity: 1;
 	border-color: rgba(229, 231, 235, var(--tw-divide-opacity));
+}
+.divide-gray-300 > :not([hidden]) ~ :not([hidden]) {
+	--tw-divide-opacity: 1;
+	border-color: rgba(209, 213, 219, var(--tw-divide-opacity));
 }
 .self-center {
 	align-self: center;
@@ -2503,12 +2513,12 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(236, 72, 153, var(--tw-bg-opacity));
 }
+.bg-transparent {
+	background-color: transparent;
+}
 .bg-green-200 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(167, 243, 208, var(--tw-bg-opacity));
-}
-.bg-transparent {
-	background-color: transparent;
 }
 .bg-indigo-200 {
 	--tw-bg-opacity: 1;
@@ -3140,10 +3150,6 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(49, 46, 129, var(--tw-text-opacity));
 }
-.text-red-800 {
-	--tw-text-opacity: 1;
-	color: rgba(153, 27, 27, var(--tw-text-opacity));
-}
 .text-purple-600 {
 	--tw-text-opacity: 1;
 	color: rgba(124, 58, 237, var(--tw-text-opacity));
@@ -3183,6 +3189,10 @@ select {
 .text-blue-600 {
 	--tw-text-opacity: 1;
 	color: rgba(37, 99, 235, var(--tw-text-opacity));
+}
+.text-red-800 {
+	--tw-text-opacity: 1;
+	color: rgba(153, 27, 27, var(--tw-text-opacity));
 }
 .text-opacity-80 {
 	--tw-text-opacity: 0.8;
@@ -3395,11 +3405,6 @@ select {
 .focus-within\:ring-offset-2:focus-within {
 	--tw-ring-offset-width: 2px;
 }
-.hover\:scale-110:hover {
-	--tw-scale-x: 1.1;
-	--tw-scale-y: 1.1;
-	transform: var(--tw-transform);
-}
 .hover\:scale-105:hover {
 	--tw-scale-x: 1.05;
 	--tw-scale-y: 1.05;
@@ -3408,6 +3413,11 @@ select {
 .hover\:scale-125:hover {
 	--tw-scale-x: 1.25;
 	--tw-scale-y: 1.25;
+	transform: var(--tw-transform);
+}
+.hover\:scale-110:hover {
+	--tw-scale-x: 1.1;
+	--tw-scale-y: 1.1;
 	transform: var(--tw-transform);
 }
 .hover\:border-b-2:hover {
@@ -3513,17 +3523,9 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(147, 197, 253, var(--tw-bg-opacity));
 }
-.hover\:bg-gray-600:hover {
-	--tw-bg-opacity: 1;
-	background-color: rgba(75, 85, 99, var(--tw-bg-opacity));
-}
 .hover\:bg-pink-300:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(249, 168, 212, var(--tw-bg-opacity));
-}
-.hover\:bg-gray-200:hover {
-	--tw-bg-opacity: 1;
-	background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
 .hover\:bg-pink-700:hover {
 	--tw-bg-opacity: 1;
@@ -3532,6 +3534,14 @@ select {
 .hover\:bg-blue-700:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
+}
+.hover\:bg-gray-600:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(75, 85, 99, var(--tw-bg-opacity));
+}
+.hover\:bg-gray-200:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
 .hover\:bg-opacity-25:hover {
 	--tw-bg-opacity: 0.25;
@@ -3648,6 +3658,9 @@ select {
 }
 .focus\:border-4:focus {
 	border-width: 4px;
+}
+.focus\:border-t-0:focus {
+	border-top-width: 0px;
 }
 .focus\:border-blue-300:focus {
 	--tw-border-opacity: 1;

@@ -3,7 +3,11 @@ import Observations from './observaciones';
 import inputsTypes from '../../enums/inputsTypes';
 import fileAccept from '../../enums/fileAccept';
 
-export function getFormSchema({ ...schema }, action, dataForm) {
+export async function getFormSchema({ ...schema }, action, dataForm, productors) {
+
+    const productor = !schema.id_productor? productors : productors.find( e=> schema.id_productor === e.value );
+    const minas = !schema.id_productor? undefined : await axios.get(`/productores/getProductorMina/${productor.value}`);
+
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
     return [
@@ -53,6 +57,52 @@ export function getFormSchema({ ...schema }, action, dataForm) {
                                     validations: yup.string().required('Debes completar este campo'),
                                     observation: new Observations({schema, name: 'cargo', action}).observations
 
+                                },
+                                {
+                                    label: 'Productor',
+                                    value: schema.id_productor? productor : undefined,
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    async: true,
+                                    asyncUrl: '/productores/getProductorMina',
+                                    inputDepends: ['id_mina'],
+                                    inputClearDepends: ['id_mina'],
+                                    isLoading: false,
+                                    //
+                                    options: productors,
+                                    name: 'id_productor',
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: 'Selecciona una opción',
+                                    validations: yup.object().when('productorSelect', {
+                                        is: value => _.isEmpty(value) || !value,
+                                        then: yup.object().required('Debes elegir un elemento').nullable()
+                                    }),
+                                    observation: new Observations({schema, name: 'id_productor', action}).observations
+                                },
+                                {
+                                    label: 'Mina',
+                                    value: !minas? undefined : minas.data.find( e=> schema.id_mina === e.value ),
+                                    type: inputsTypes.SELECT,
+                                    // get axios
+                                    // async: true,
+                                    // asyncUrl: '/paises/localidades',
+                                    // inputDepends: [''],
+                                    // inputClearDepends: [''],
+                                    isLoading: false,
+                                    //
+                                    options: !minas? [] : minas.data,
+                                    name: 'id_mina',
+                                    multiple: false,
+                                    closeOnSelect: true,
+                                    searchable: false,
+                                    placeholder: 'Selecciona una opción',
+                                    validations: yup.object().when('minaSelect', {
+                                        is: value => _.isEmpty(value) || !value,
+                                        then: yup.object().required('Debes elegir un elemento').nullable()
+                                    }),
+                                    observation: new Observations({schema, name: 'id_mina', action}).observations
                                 },
                             ]
                         },
@@ -536,5 +586,8 @@ function getChildrens(data, observation) {
     return newChildrens;
 }
 
+function setValue(value, name, schema) {
+   return schema[name] = value;
+}
 
 

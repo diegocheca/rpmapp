@@ -11,13 +11,14 @@
         :titleForm="titleForm"
         :evaluate="evaluate"
         :province="province"
+        :productors="productores"
         :buttomLabel="titleBtnSave"
         :dataForm="dataForm"
         :action="action"
         :saveUrl="saveUrl"
         :saveFileUrl="saveFileUrl"
         @valuesForm="submit($event)"
-        :dev="false"
+        :dev="true"
     />
 
     <!-- <dynamic-form
@@ -88,9 +89,13 @@ export default {
             require: true,
             type: Array,
         },
+        productores: {
+            require: true,
+            type: Array,
+        },
     },
     data() {
-        // console.log(this.$props.reinscripcion);
+        // console.log(this.$props.productores);
         const dataForm = {
             provincia: this.$props.provincia,
         }
