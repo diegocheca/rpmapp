@@ -975,7 +975,7 @@
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
-            :titulo_pagina="'Pagina datos de Mina Segunda Parte'"
+            :titulo_pagina="'Ubicación de Mina'"
             :localidad_mina_pais="form.localidad_mina_pais"
             :localidad_mina_pais_validacion="
               form.localidad_mina_pais_validacion
@@ -1109,6 +1109,7 @@
             :id="form.id"
           >
           </PaginaCatamarca>
+          <div id="finalizar"></div>
           <div
             class="
               border-2
@@ -1231,13 +1232,7 @@
             <br />
             <br />
             <div
-              class="
-                grid
-                sm:grid-cols-1
-                md:grid-cols-2
-                xl:grid-cols-2
-                w-full
-              "
+              class="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-2 w-full"
             >
               <div
                 class="
@@ -1308,21 +1303,21 @@
                 </inertia-link>
               </div>
             </div>
-		</div>
-		<jet-dialog-modal :show="modalFormularioPresentado" @close="closeModalPresentado">
-			<template #title>
-					{{modal_tittle}}
-			</template>
-			<template #content>
-					{{modal_body}}
-					
-			</template>
-			<template #footer>
-				 <a  :href="route('formulario-alta.index')">OK</a>
-			</template>
-		</jet-dialog-modal>
-
-
+          </div>
+          <jet-dialog-modal
+            :show="modalFormularioPresentado"
+            @close="closeModalPresentado"
+          >
+            <template #title>
+              {{ modal_tittle }}
+            </template>
+            <template #content>
+              {{ modal_body }}
+            </template>
+            <template #footer>
+              <a :href="route('formulario-alta.index')">OK</a>
+            </template>
+          </jet-dialog-modal>
           <jet-dialog-modal
             :show="AvisoAprueba"
             @close="closeModalAprobar"
@@ -1351,25 +1346,31 @@
                     "
                   >
                     Vuelvo a revisar
-					</button>
+                  </button>
                 </div>
-					<div class="w-full sm:w-3/3 md:w-1/3 px-3 mb-6 md:mb-0">
-						<button
-						v-show="mostrar_boton_aprobar"
-						@click="guardar_avances_todo"
-						class=" py-3px-6text-whiterounded-lgbg-green-400shadow-lgblockmd:inline-block">
-						Actualizar Formulario
-						</button>
-					</div>
-					<div class="w-full sm:w-3/3 md:w-1/3 px-3 mb-6 md:mb-0">
-						<button
-							v-show="mostrar_boton_aprobar_de_todos_modos"
-							@click="presentar_de_todos_modos"
-							class=" py-3px-6text-whiterounded-lgbg-green-400shadow-lgblockmd:inline-block">
-							Actualizar de todos Modos
-						</button>
-					</div>
-            	</div>
+                <div class="w-full sm:w-3/3 md:w-1/3 px-3 mb-6 md:mb-0">
+                  <button
+                    v-show="mostrar_boton_aprobar"
+                    @click="guardar_avances_todo"
+                    class="
+                      py-3px-6text-whiterounded-lgbg-green-400shadow-lgblockmd:inline-block
+                    "
+                  >
+                    Actualizar Formulario
+                  </button>
+                </div>
+                <div class="w-full sm:w-3/3 md:w-1/3 px-3 mb-6 md:mb-0">
+                  <button
+                    v-show="mostrar_boton_aprobar_de_todos_modos"
+                    @click="presentar_de_todos_modos"
+                    class="
+                      py-3px-6text-whiterounded-lgbg-green-400shadow-lgblockmd:inline-block
+                    "
+                  >
+                    Actualizar de todos Modos
+                  </button>
+                </div>
+              </div>
             </template>
           </jet-dialog-modal>
         </form>
@@ -1473,7 +1474,7 @@ export default {
       modal_tittle: "",
       modal_body: "",
       AvisoAprueba: false,
-	  modalFormularioPresentado:false,
+      modalFormularioPresentado: false,
       modal_tittle_apro: "",
       modal_body_apro: "",
       evaluacion_global: this.$props.soy_autoridad_minera,
@@ -1981,6 +1982,21 @@ export default {
             url: "#section_mina_uno",
             color: "bg-indigo-500 hover:bg-indigo-800",
           },
+          {
+            label: "Datos de Mina Segunda Parte",
+            url: "#section_datos_mina_dos",
+            color: "bg-indigo-500 hover:bg-indigo-800",
+          },
+          {
+            label: "Ubicación de Mina",
+            url: "#section_datos_mina_ubicacion",
+            color: "bg-indigo-500 hover:bg-indigo-800",
+          },
+          {
+            label: "Finalizar Proceso",
+            url: "#finalizar",
+            color: "bg-red-500 hover:bg-red-800",
+          },
         ],
         modal: [
           {
@@ -2114,30 +2130,34 @@ export default {
       this.confirmingUserDeletion = false;
       //this.form.reset()
     },
-	 closeModalPresentado() {
-	  this.modalFormularioPresentado=false;
-	  this.$inertia.get(route("productors.update", this.form.id));
+    closeModalPresentado() {
+      this.modalFormularioPresentado = false;
+      this.$inertia.get(route("productors.update", this.form.id));
       //this.form.reset()
     },
     closeModalAprobar() {
-		this.AvisoAprueba = false;
+      this.AvisoAprueba = false;
     },
-	abrirModalPresentar(){
-		let form_evaluacion_valida = "";
-		this.AvisoAprueba = true;
-		this.modal_tittle_apro ="Advertencia: esta por presentar esta solicitud de Productor.";
-		form_evaluacion_valida = this.evaluacion_de_evaluaciones();
-		if (form_evaluacion_valida === "") {
+    abrirModalPresentar() {
+      let form_evaluacion_valida = "";
+      this.AvisoAprueba = true;
+      this.modal_tittle_apro =
+        "Advertencia: esta por presentar esta solicitud de Productor.";
+      form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+      if (form_evaluacion_valida === "") {
         //el formulario esta bien hecho y no tiene observaciones
-        this.modal_body_apro =" \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+        this.modal_body_apro =
+          " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
         this.mostrar_boton_aprobar = true;
         this.mostrar_boton_aprobar_de_todos_modos = false;
-		} else {
-        this.modal_body_apro =" \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +form_evaluacion_valida;
+      } else {
+        this.modal_body_apro =
+          " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +
+          form_evaluacion_valida;
         this.mostrar_boton_aprobar = false;
         this.mostrar_boton_aprobar_de_todos_modos = true;
-		}
-	},
+      }
+    },
     evaluacion_de_evaluaciones() {
       let sin_problemas = "";
       //poner los requeried or not
@@ -2174,37 +2194,38 @@ export default {
     },
 
     guardar_avances_todo: function () {
-		if(this.form.estado === 'presentar')
-		{
-			let self = this;
-			// Make a request for a user with a given ID
-			axios
-			.post("/formularios/presentar_borrador", {
-				id: self.form.id,
-				estado: self.form.estado,
-				es_evaluacion: self.evaluacion_global,
-			})
-			.then(function (response) {
-				// console.log(response.data);
-				if (response.data.status === "ok") {
-					self.confirmingUserDeletion = false;
-					self.AvisoAprueba = false;
-					self.modalFormularioPresentado = true;
-					self.modal_tittle = response.data.msg;
-					self.modal_body = "Se ha guardado correctamente la información . se GUARDO TODO. Gracias";
-				} else {
-					self.AvisoAprueba = false;
-					self.confirmingUserDeletion = false;
-					self.modalFormularioPresentado = true;
-					self.modal_tittle = response.data.msg;
-					self.modal_body = "Error, por favor comuniquese con el administrador";
-				}
-			})
-			.catch(function (error) {
-				// handle error
-				console.log(error);
-			});
-		}
+      if (this.form.estado === "presentar") {
+        let self = this;
+        // Make a request for a user with a given ID
+        axios
+          .post("/formularios/presentar_borrador", {
+            id: self.form.id,
+            estado: self.form.estado,
+            es_evaluacion: self.evaluacion_global,
+          })
+          .then(function (response) {
+            // console.log(response.data);
+            if (response.data.status === "ok") {
+              self.confirmingUserDeletion = false;
+              self.AvisoAprueba = false;
+              self.modalFormularioPresentado = true;
+              self.modal_tittle = response.data.msg;
+              self.modal_body =
+                "Se ha guardado correctamente la información . se GUARDO TODO. Gracias";
+            } else {
+              self.AvisoAprueba = false;
+              self.confirmingUserDeletion = false;
+              self.modalFormularioPresentado = true;
+              self.modal_tittle = response.data.msg;
+              self.modal_body =
+                "Error, por favor comuniquese con el administrador";
+            }
+          })
+          .catch(function (error) {
+            // handle error
+            console.log(error);
+          });
+      }
     },
 
     update_id_recien_creado_en_abuelo(id_nuevo) {

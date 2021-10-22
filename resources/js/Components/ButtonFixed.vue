@@ -5,17 +5,17 @@
         </svg>
     </div>
     <div v-show="show"
-        class="fixed flex flex-col flex-wrap space-y-4 bottom-0 right-0 mr-12 mb-36 md:mb-32 z-10">
+        class="fixed flex flex-col flex-wrap space-y-2 bottom-0 right-0 mr-12 mb-36 md:mb-32 z-10">
         <button
             v-for="(item, index) in buttons.modal" :key="index"
             @click="handleClick({item, index})"
-            class="text-center bg-green-500 hover:bg-green-800 rounded-full text-white px-3 py-3"
+            class="text-center bg-green-500 hover:bg-green-800 rounded-full text-white px-3 py-2"
         >
             {{ item.label }}
         </button>
         <inertia-link
             v-for="(item, index) in buttons.links" :key="index"
-            class="text-center rounded-full text-white px-3 py-3"
+            class="text-center rounded-full text-white px-3 py-2"
             :class="item.color"
             :href="item.url"
         >
