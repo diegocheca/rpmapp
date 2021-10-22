@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class ProductorMinaController extends Controller
 {
@@ -20,8 +21,94 @@ class ProductorMinaController extends Controller
     public function index()
     {
         //
-        $productorminas = ProductorMina::all();
-        return Inertia::render('ProductorMina/List', ['productores_y_minas' => $productorminas]);
+        $soy_administrador = false;
+		$soy_autoridad = false;
+		$soy_productor =false;
+		$grafico_donut = []; 
+        if(Auth::user()->hasRole('Administrador'))
+		{
+			$soy_administrador = true;
+			$productorminas = 
+            
+            /* ProductorMina::select('*')
+            ->paginate(5); */
+            DB::table('productor_mina')
+            ->join('form_alta_productores', 'form_alta_productores.id', '=', 'productor_mina.id_formulario')
+            ->select('productor_mina.*')
+            ->orderBy('productor_mina.id', 'desc')
+            ->paginate(5);
+
+           /*  ProductorMina::select('id')
+            ->join('form_alta_productores', 'form_alta_productores.id', '=', 'productor_mina.id_formulario')
+            ->paginate(5);
+
+            DB::table('productor_mina')
+            ->join('form_alta_productores', 'form_alta_productores.id', '=', 'productor_mina.id_formulario')
+            ->select('productor_mina.*')
+            ->get(); */
+
+
+            //var_dump($productorminas);die();
+			//calculo valores para los productores
+			//$temp = ProductorMina::select('id')->where('estado', '=','aprobado')->get();
+			$grafico_donut["aprobados"] = 10;
+			//$temp= ProductorMina::select('id')->where('estado', '=','reprobado')->get();
+			$grafico_donut["reprobados"]  = 21;
+			//$temp = ProductorMina::select('id')->where('estado', '=','borrador')->get();
+			$grafico_donut["borrador_cant"] = 4;
+			//$temp = ProductorMina::select('id')->where('estado', '=','en revision')->get();
+			$grafico_donut["revision"] = 10;
+			//$temp = ProductorMina::select('id')->where('estado', '=','con observacion')->get();
+			$grafico_donut["observacion"]  = 8;
+            return Inertia::render('ProductorMina/List', [
+                'borradores' => $productorminas,
+                'soy_autoridad' => $soy_autoridad ,
+				'soy_administrador' => $soy_administrador, 
+				'soy_productor' => $soy_productor, 
+				'datos_donut' => $grafico_donut
+            ]);
+		}
+		elseif(Auth::user()->hasRole('Autoridad'))
+		{
+			$soy_administrador = true;
+			$productorminas = ProductorMina::select('*')
+            ->join('form_alta_productores', 'form_alta_productores.id', '=', 'productor_mina.id_formulario')
+            ->where('form_alta_productores.provincia', '=', Auth::user()->id_provincia)
+            ->paginate(5);
+			//calculo valores para los productores
+			//$temp = ProductorMina::select('id')->where('estado', '=','aprobado')->get();
+			$grafico_donut["aprobados"] = 10;
+			//$temp= ProductorMina::select('id')->where('estado', '=','reprobado')->get();
+			$grafico_donut["reprobados"]  = 21;
+			//$temp = ProductorMina::select('id')->where('estado', '=','borrador')->get();
+			$grafico_donut["borrador_cant"] = 4;
+			//$temp = ProductorMina::select('id')->where('estado', '=','en revision')->get();
+			$grafico_donut["revision"] = 10;
+			//$temp = ProductorMina::select('id')->where('estado', '=','con observacion')->get();
+			$grafico_donut["observacion"]  = 8;
+            return Inertia::render('ProductorMina/List', [
+                'borradores' => $productorminas,
+                'soy_autoridad' => $soy_autoridad ,
+				'soy_administrador' => $soy_administrador, 
+				'soy_productor' => $soy_productor, 
+				'datos_donut' => $grafico_donut
+            ]);
+			return Inertia::render('Productors/List', [
+				'borradores' => FormAltaProductor::select('*')
+				->where('provincia', '=', Auth::user()->id_provincia)
+				->paginate(5),
+				'lista_minerales_cargados' => null,
+				'soy_autoridad' => $soy_autoridad ,
+				'soy_administrador' => $soy_administrador, 
+				'soy_productor' => $soy_productor, 
+				'datos_donut' => $grafico_donut
+			]);
+		}
+		else{
+			echo"hola";
+		}
+
+        
     }
 
     /**

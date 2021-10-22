@@ -74,8 +74,8 @@
 
 
                             <!-- select/multiple -->
-                            <Field v-if="item.type == inputsTypes.SELECT" v-slot="{ field }" :name="item.name">
-                                <VueMultiselect v-bind="field" v-model="item.value" :id="item" :value="item.value" :options="item.options" :ref="item.name" :multiple="item.multiple" :loading="item.isLoading? item.isLoading : false" :close-on-select="item.closeOnSelect" :searchable="item.searchable" :placeholder="item.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" @select="getAsyncOptionsSelect" />
+                            <Field v-if="item.type == inputsTypes.SELECT" v-slot="{ field }" :name="item.name" :value="item.value">
+                                <VueMultiselect v-bind="field" v-model="item.value" :id="item" :value="item.value" :options="item.options" :ref="item.name" :multiple="item.multiple" :loading="item.isLoading? item.isLoading : false" :close-on-select="item.closeOnSelect" :searchable="item.searchable" :placeholder="item.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" @select="getAsyncOptionsSelect" @input="getAsyncOptionsSelect" />
                             </Field>
 
                             <!-- file -->
@@ -106,11 +106,11 @@
                             <template v-if="item.type == inputsTypes.LIST">
                                 <fieldset class="px-5 my-3 bg-blue-100 rounded-lg" v-for="(element, indexElement) in item.childrens" :key="indexElement">
                                     <div v-if="!evaluate" class="btn-close-row">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="#EF4444" @click="removeRowDynamic(item, indexElement)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="#EF4444" @click="removeRowDynamic(item, indexElement,col.inputs)">
                                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
-                                    <div v-for="(a, id) in item.elements" :key="id" class="grid gap-4" :class="[item.columns, item.columnsResponsive]">
+                                    <div v-for="(a, id) in item.elements" :key="id" class="flex" :class="[item.columns, item.columnsResponsive]">
                                         <!-- <pre>{{element}}</pre> -->
 
                                         <div v-bind="field" v-for="(ele, indexElement2) in a" :key="indexElement2" class="p-4 flex flex-col" :class="[ele.colSpan]">
@@ -232,13 +232,92 @@
                                 </fieldset>
 
                                 <div v-if="evaluate? false: true" class="flex justify-center pt-9">
-                                    <button type="button" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-2 py-1" @click="addNewRow(item)">+ Agregar registro</button>
+                                    <button type="button" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-2 py-1" @click="addNewRow(item, col.inputs)">+ Agregar registro</button>
                                 </div>
                             </template>
 
 
+                            <!-- EDIT TABLE -->
+                            <template v-if="item.type == inputsTypes.TABLE">
+                               <!-- <DTable :table="item" :ref="item.name" /> -->
+                                <div class="container flex justify-center mx-auto ">
+                                    <div class="flex flex-col">
+                                        <div class="w-full">
+                                            <div class="border-b border-gray-200 shadow">
 
 
+                                                <div class="flex flex-col">
+  <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+                <th v-if="item.verticalTitle" scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                </th>
+                <th v-for="(title, index) in item.horizontalTitle" :key="index" scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                    {{ title }}
+                </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200" v-for="(nameTitle, index2) in item.verticalTitle" :key="index2">
+            <tr v-for="(element, indexElement) in item.element" :key="indexElement" >
+                <td v-if="item.verticalTitle" class="px-6 py-4 whitespace-nowrap border-r border-gray-200 shadow">
+                    <div class="flex items-center">
+                        {{ nameTitle }}
+                    </div>
+                </td>
+                 <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="px-6 py-4 whitespace-nowrap">
+                    <div v-bind="field" class="flex items-center">
+                        <Field v-if="ele.type !== inputsTypes.SELECT" :value="ele.value" :name="`${ele.name}[${index2}][${indexElement}].${ele.name}`" :type="ele.type" class="inp" :disabled="action != 'create' && (evaluate) ? true: false" />
+                        <!-- <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${ele.name}[${index2}][${indexElement}].${ele.name}`" :value="ele.value">
+                            <VueMultiselect  v-bind="field" :name="`${eele.name}[${index2}][${indexElement}].${ele.name}`" :ref="`${ele.name}[${index2}][${indexElement}].${ele.name}`" :id="{ ele, id: `${indexElementTable2}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" @select="getSelectOptions" @remove="removeOptions" :disabled="evaluate? true: false" v-model="element[indexElement2].value" >
+                            </VueMultiselect>
+                        </Field> -->
+                        <ErrorMessage class="text-red-500" :name="ele.name" />
+                    </div>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+                                                <!-- <table class="divide-y divide-gray-300 table-fixed">
+                                                    <thead class="bg-gray-50">
+                                                        <tr>
+                                                            <th v-if="item.verticalTitle" class="px-6 py-2 text-xs text-gray-500"></th>
+                                                            <th v-for="(title, index) in item.horizontalTitle" :key="index" class="px-6 py-2 text-xs text-gray-500 w-1/6">
+                                                                {{ title }}
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="bg-white divide-y divide-gray-300">
+                                                        <fieldset >
+                                                            <tr class="whitespace-nowrap" v-for="(nameTitle, index2) in item.verticalTitle" :key="index2">
+                                                                <td v-if="item.verticalTitle" class="border-r border-gray-200 shadow px-4">{{ nameTitle }}</td>
+                                                                <td class="px-6 py-4" v-for="(td, indexHorizontalTitle) in item.horizontalTitle" :key="indexHorizontalTitle">
+                                                                    <div class="text-sm" v-for="(element, indexElementTable1) in item.element" :key="indexElementTable1">
+                                                                        <div v-bind="field" v-for="(ele, indexElementTable2) in element" :key="indexElementTable2">
+                                                                            <Field :value="ele.value" :name="`${ele.name}[${index2}][${indexHorizontalTitle}].${ele.name}`" :type="ele.type" class="inp" :disabled="action != 'create' && (evaluate) ? true: false" />
+                                                                            <ErrorMessage class="text-red-500" :name="ele.name" />
+                                                                        </div>
+
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </fieldset>
+                                                    </tbody>
+                                                </table> -->
+                                                <!-- Display error to evaluate -->
+                                                <!-- <span role="alert" class="text-red-500" v-if="item.type != inputsTypes.LIST && action != 'create' && !evaluate && item.observation.value == 'rechazado' "> OBSERVACIÓN: {{item.observation.comment.value}}</span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
 
                             <!-- review -->
                             <div class="grid grid-rows-2 grid-flow-col p-4 mt-5 rounded-lg" v-if="evaluate &&  item.observation && item.type != inputsTypes.LIST" :class="[action != 'create' && valuesForm[item.observation.name] != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]">
@@ -278,7 +357,10 @@ import AppLayout from "@/Layouts/AppLayout";
 import DragAndDropFile from "./DragAndDropFile.vue";
 import { Form, Field, ErrorMessage } from 'vee-validate';
 import inputsTypes from '../../../../helpers/enums/inputsTypes';
-import VueMultiselect from 'vue-multiselect'
+import VueMultiselect from 'vue-multiselect';
+import DTable from './DynamicTable.vue';
+
+import { provide } from 'vue'
 
 export default {
     components: {
@@ -288,6 +370,7 @@ export default {
         ErrorMessage,
         VueMultiselect,
         DragAndDropFile,
+        DTable
     },
     props: {
         formSchema: {
@@ -311,6 +394,11 @@ export default {
         //     type: Array
         // }
     },
+    provide() {
+        return {
+            columnsTable: this.columnsTable
+        };
+    },
     data() {
         const statusColors = {
             'aprobado': 'border-green-500 pl-14',
@@ -320,9 +408,13 @@ export default {
 
         return {
             inputsTypes: inputsTypes,
-            statusColors
+            statusColors,
+            columnsTable: {
+                value: []
+            }
         };
     },
+
     methods: {
         async getOptions(value, element) {
             if(!item.async) {
@@ -367,23 +459,48 @@ export default {
             }
 
         },
-        removeRowDynamic(item, indexDelete) {
+        removeRowDynamic(item, indexDelete, inputs) {
             if(item.childrens.length == 1) {
                 return
                 // this.addNewRow(item);
             }
             item.childrens.splice(indexDelete, 1);
+
+
+            if(!item.componentDepends) return
+
+            const depend = inputs.find( e => e.name == item.componentDepends[0].component);
+
+            depend[item.componentDepends[0].element].splice(indexDelete, 1);
+
             // alert(JSON.stringify(item.childrens, null, 2));
         },
-        addNewRow(item) {
+        addNewRow(item, inputs) {
+            const indexChildrens = item.childrens.length - 1;
+
+            const values = this.valuesForm[item.name][indexChildrens];
             const row = JSON.parse(JSON.stringify(item.childrens[0]));
             for (let index = 0; index < row.length; index++) {
                 row[index].value = null;
             }
             row[0].id = null;
             item.childrens = [...item.childrens, row ];
-        },
 
+            if(item.componentDepends?.length > 0) {
+                this.addColumnsTable({ componentDepends: item.componentDepends, row, inputs, values})
+                // this.columnsTable.value.push(item.childrens[0]);
+            }
+        },
+        addColumnsTable({componentDepends, row, inputs, values}) {
+            if(!componentDepends) return
+
+            componentDepends.forEach( comp => {
+                const depend = inputs.find( e => e.name == comp.component);
+                const variableTitleCell = row.find( e => e.name == comp.titleCell);
+                depend[comp.element].push(values[variableTitleCell.name].label);
+            })
+            // this.columnsTable.value.push(rows[0]);
+        },
         async getAsyncOptionsSelect(value, element){
             // console.log(element);
             if(!element || !element.inputDepends || element.inputDepends.length == 0) return;
@@ -429,10 +546,7 @@ export default {
             const element = elementArray.find(e => e.value == value);
             return element? element : {}
         },
-        algo(asd) {
-            if(!asd) return;
-            console.log(asd[0]);
-        }
+
     },
 };
 </script>
@@ -484,4 +598,18 @@ input[type="checkbox"]:checked {
     cursor: pointer;
 
 }
+
+.inp {
+    border:none;
+    border-bottom: 1px solid #1890ff;
+    padding: 5px 10px;
+    outline: none;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease;
+    text-indent: -100%;
+    opacity: 1;
+}
+
 </style>

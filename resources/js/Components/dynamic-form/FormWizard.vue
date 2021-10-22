@@ -6,7 +6,7 @@
 
     <div class="flex">
 
-        <div v-for="(item, index) in formSchema" :key="index" :class="`w-1/${formSchema.length}`">
+        <div v-for="(item, index) in formSchema" :key="index" :class="`w-1/${formSchema.length > 5? 5 : formSchema.length}`">
 
             <div class="relative mb-2">
                 <div v-if="index >= 1" class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
@@ -138,7 +138,11 @@ export default {
         dataForm: {
             require: false,
             type: Array
-        }
+        },
+        productors: {
+            require: false,
+            type: Array
+        },
     },
     emits: [
         'valuesForm'
@@ -252,7 +256,7 @@ export default {
     // },
     async mounted() {
         const module = await import(`../../../../helpers/formularios/${this.$props.province}`)
-        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.action, this.$props.dataForm);
+        this.formSchema = await module.getFormSchema(this.$props.builder, this.$props.action, this.$props.dataForm, this.$props.productors);
 
         for (let index = 0; index < this.formSchema.length; index++) {
             this.yepSchemas.push([this.formSchema[index]].reduce(createYupStepSchema, {},this.$props.evaluate));
@@ -269,7 +273,7 @@ export default {
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css" scoped></style>
+<style src="vue-multiselect/dist/vue-multiselect.css" ></style>
 <style scoped>
 input:checked ~ .dot {
   transform: translateX(100%);
