@@ -1,10 +1,10 @@
 <style>
-  input:checked {
-    background-color: #22c55e; /* bg-green-500 */
-  }
-  input:checked ~ span:last-child {
-    --tw-translate-x: 1.75rem; /* translate-x-7 */
-  }
+input:checked {
+  background-color: #22c55e; /* bg-green-500 */
+}
+input:checked ~ span:last-child {
+  --tw-translate-x: 1.75rem; /* translate-x-7 */
+}
 </style>
 <template>
 	<div :class="clase_sup">
@@ -30,7 +30,7 @@
 						<p>{{updated_at}}</p> 
 				</div>
 				<div class="border-t-2"></div>
-				<div class="flex items-center">
+				<!-- <div class="flex items-center">
 						<span class="mr-2"><p>{{aprobado}}%</p></span>
 						<div class="relative w-full">
 						<div class="overflow-hidden h-2 text-xs flex rounded bg-green-200">
@@ -53,7 +53,7 @@
 							<div style="width: 40%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- <div class="flex justify-between" v-if="$props.evaluacion">
 						<div class="my-4">
 						<p class="font-semibold text-base mb-2">Prog</p>
@@ -74,53 +74,85 @@
 						</div>
 					</div>
 				</div> -->
-			</div>
-			<div class="mt-4" v-if="$props.mostrarayuda">
-				<label class="flex items-center relative w-max cursor-pointer select-none">
-					Necesita ayuda?
-					<br>
-					<br>
-					<input 
-					type="checkbox" 
-					class="appearance-none transition-colors cursor-pointer w-14 h-7 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-green-500 bg-red-500" 
-					v-model="valor_ayuda_local"
-					@change="cambio_de_ayuda"
-					/>
-					<span class="absolute font-medium text-xs uppercase right-1 text-white"> No </span>
-					<span class="absolute font-medium text-xs uppercase right-8 text-white"> Si </span>
-					<span class="w-7 h-7 right-7 absolute rounded-full transform transition-transform bg-gray-200" />
-				</label>
-			</div>
-		</div>
-	</div>
+        </div>
+        <div class="mt-4" v-if="$props.mostrarayuda">
+          <label
+            class="flex items-center relative w-max cursor-pointer select-none"
+          >
+            Necesita ayuda?
+            <br />
+            <br />
+            <input
+              type="checkbox"
+              class="
+                appearance-none
+                transition-colors
+                cursor-pointer
+                w-14
+                h-7
+                rounded-full
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-offset-black
+                focus:ring-green-500
+                bg-red-500
+              "
+              v-model="valor_ayuda_local"
+              @change="cambio_de_ayuda"
+            />
+            <span
+              class="absolute font-medium text-xs uppercase right-1 text-white"
+            >
+              No
+            </span>
+            <span
+              class="absolute font-medium text-xs uppercase right-8 text-white"
+            >
+              Si
+            </span>
+            <span
+              class="
+                w-7
+                h-7
+                right-7
+                absolute
+                rounded-full
+                transform
+                transition-transform
+                bg-gray-200
+              "
+            />
+          </label>
+        </div>
+      </div>
+  </div>
 </template>
 
 <script>
-		export default {
-				props: [
-				'progreso', 
-				'aprobado', 
-				'reprobado', 
-				'lugar', 
-				'updated_at',
-				'mostrarayuda',
-				'evaluacion',
-				'clase_sup',
-				'clase_inf',
-				'ayuda'
-				],
+export default {
+  props: [
+    "progreso",
+    "aprobado",
+    "reprobado",
+    "lugar",
+    "updated_at",
+    "mostrarayuda",
+    "evaluacion",
+    "clase_sup",
+    "clase_inf",
+    "ayuda",
+  ],
 
-				data(){
-					return {
-						valor_ayuda_local: this.$props.ayuda,
-					}
-				},
-				methods:{
-					cambio_de_ayuda(){
-						this.$emit('changevalorayuda',this.valor_ayuda_local);
-					}
-
-				}
-
-		}
+  data() {
+    return {
+      valor_ayuda_local: this.$props.ayuda,
+    };
+  },
+  methods: {
+    cambio_de_ayuda() {
+      this.$emit("changevalorayuda", this.valor_ayuda_local);
+    },
+  },
+};
 </script>

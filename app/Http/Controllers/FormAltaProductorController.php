@@ -667,7 +667,6 @@ class FormAltaProductorController extends Controller
 				'soy_productor' => $soy_productor, 
 				'datos_donut' => $grafico_donut
 			]);
-
 		}
 		elseif(Auth::user()->hasRole('Autoridad'))
 		{
@@ -731,11 +730,6 @@ class FormAltaProductorController extends Controller
 		
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
 	public function dame_un_productor_vacio(){
 		$productor_a_devolver = new FormAltaProductor();
 		$productor_a_devolver->id = null;
@@ -1029,7 +1023,25 @@ class FormAltaProductorController extends Controller
 
 		if($objeto->plano_inmueble != null)
 		$objeto->plano_inmueble = env('APP_URL').'/'.str_replace("public","storage",$objeto->plano_inmueble);
+
+
+
+		//catamarca
+		if(isset($objeto->foto_4x4 ) && ($objeto->foto_4x4 != null))
+			$objeto->foto_4x4 = env('APP_URL').'/'.str_replace("public","storage",$objeto->foto_4x4);
+
+		if(isset($objeto->autorizacion_gestor ) && ($objeto->autorizacion_gestor != null))
+			$objeto->autorizacion_gestor = env('APP_URL').'/'.str_replace("public","storage",$objeto->autorizacion_gestor);
+
+		if(isset($objeto->primer_hoja_dni ) && ($objeto->primer_hoja_dni != null))
+			$objeto->primer_hoja_dni = env('APP_URL').'/'.str_replace("public","storage",$objeto->primer_hoja_dni);
 	
+		if(isset($objeto->segunda_hoja_dni ) && ($objeto->segunda_hoja_dni != null))
+			$objeto->segunda_hoja_dni = env('APP_URL').'/'.str_replace("public","storage",$objeto->segunda_hoja_dni);
+	
+		if(isset($objeto->constancia_afip ) && ($objeto->constancia_afip != null))
+			$objeto->constancia_afip = env('APP_URL').'/'.str_replace("public","storage",$objeto->constancia_afip);
+		
 		return $objeto;
 	}
 	public function create()
@@ -5766,7 +5778,7 @@ class FormAltaProductorController extends Controller
 			$minerales_asociados = Minerales_Borradores::find(1);
 			$datos_creador = null;
 			$soy_productor = true;
-			//var_dump($minerales_asociados);die();
+			//var_dump($disables["boton_catamarca"]);die();
 			return Inertia::render('Productors/Form',['productor' => $productor,
 				'lista_minerales_cargados' => $minerales_asociados, 
 				'creado' => $datos_creador,
@@ -7363,16 +7375,27 @@ class FormAltaProductorController extends Controller
 		
 		if($entro)
 		{
+			/* if(Auth::user()->id_provincia == 10)
+			{
+				$borradores = FormAltaProductor::select('*')
+				->where("form_alta_productores.id", "=", $id)
+				->join('form_alta_productoresCatamarca', 'form_alta_productores.id', '=', 'form_alta_productoresCatamarca.id_formulario_alta')
+				->first();
+			}
+			elseif(Auth::user()->id_provincia == 70)
+			{
+				$borradores = FormAltaProductor::find($id);
+			} */
 			$borradores = FormAltaProductor::find($id);
-			//var_dump($borradores->owner);
 			$borradores = $this->prasar_num_a_boolean($borradores);
+			//var_dump($borradores->gestor_nombre_apellido);
 			//var_dump($borradores->constancia_pago_canon);die();
 			$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=',$id)->get();
 
 			$datos_creador = User::find($borradores->created_by);
 
 			$datos_disables_mostrar = $this->dame_los_permisos_de_los_inputs('editar',$borradores->estado);
-			//dd($datos_creador);
+			//dd($datos_disables_mostrar["mostrar"]["boton_catamarca"]);
 			//var_dump($borradores->created_by);die();
 
 			if(is_null($borradores->razon_social_correcto)) 
@@ -7566,6 +7589,7 @@ class FormAltaProductorController extends Controller
 			elseif (intval($borradores->fecha_vencimiento_dia_correcto) == 0) 
 				$borradores->fecha_vencimiento_dia_correcto = false;
 
+			//var_dump($borradores->gestor_nombre_apellido);die();
 			return Inertia::render('Productors/EditForm', [
 				'productor' => $borradores,
 				'lista_minerales_cargados' => $minerales_asociados,
@@ -7737,6 +7761,7 @@ class FormAltaProductorController extends Controller
 			Mail::to($formulario_provisorio->email)->send(new AvisoFormularioPresentadoEmail(
 				$request->email,
 				$formulario_provisorio->razonsocial,
+				$formulario_provisorio->id,
 				date("d/m/Y H:i:s")
 			));
 			return response()->json('todo bien');
@@ -10009,6 +10034,7 @@ class FormAltaProductorController extends Controller
 				//voy a eliminar todo y vuelvo a cargarlos
 				$resultado = Minerales_Borradores::where('id_formulario', '=', $request->id)->delete();
 				//ahora los cargo
+				//dd($request->lista_minerales);
 				foreach ($request->lista_minerales as $mineral) {
 					$nuevo_min = new Minerales_Borradores();
 					$nuevo_min->id_formulario = $request->id;
@@ -10040,7 +10066,6 @@ class FormAltaProductorController extends Controller
 					$nuevo_min->updated_at = null;//date("Y-m-d H:i:s");
 		
 					$resultado = $nuevo_min->save();
-					var_dump($resultado);die();
 				}
 				return response()->json("se actualizaron los datos correctamente");
 			}
@@ -10534,6 +10559,363 @@ class FormAltaProductorController extends Controller
 		// 	}
 		//}
 	}
+	
+	public function correccion_guardar_paso_catamarca(Request $request)
+	{
+		if($request->id == 'null') $request->id = null;
+		if($request->es_evaluacion == 'false')
+			$request->es_evaluacion =false;
+		else $request->es_evaluacion =true;
+
+		$request->es_evaluacion =false;
+		$request->id = (int)$request->id;
+		var_dump($request->id);die();
+		date_default_timezone_set('America/Argentina/Buenos_Aires');
+		if($request->id != null && $request->id > 0 && is_int($request->id ) ){
+			//voy a editar un registro
+			$formularioCatamarca = FormAltaProductorCatamarca::where('id_formulario_alta', '=', $request->id)->first();
+			if($formularioCatamarca != null) // no se encontro el registor, lo debo crear
+			{
+				if($request->es_evaluacion == false)
+				{
+					//Voy a editar un registro
+					//soy productor
+					$formularioCatamarca->gestor_nombre_apellido = $request->gestor_nombre_apellido;
+					$formularioCatamarca->gestor_dni = $request->gestor_dni;
+					$formularioCatamarca->gestor_profesion = $request->gestor_profesion;
+					$formularioCatamarca->gestor_telefono = $request->gestor_telefono;
+					$formularioCatamarca->gestor_notificacion = $request->gestor_notificacion;
+					$formularioCatamarca->gestor_email = $request->gestor_email;
+
+
+					
+					if(
+						($request->primer_hoja_dni != null)
+						&&
+						($request->primer_hoja_dni != '')
+						&&
+						(is_object($request->primer_hoja_dni)) 
+					)
+					{
+						$contents = file_get_contents($request->primer_hoja_dni->path());
+						$formularioCatamarca->primer_hoja_dni =  Storage::put('public/files_formularios'.'/'.$request->id, $request->primer_hoja_dni);
+					}
+
+					if(
+						($request->segunda_hoja_dni != null)
+						&&
+						($request->segunda_hoja_dni != '')
+						&&
+						(is_object($request->segunda_hoja_dni)) 
+					)
+					{
+						$contents = file_get_contents($request->segunda_hoja_dni->path());
+						$formularioCatamarca->segunda_hoja_dni =  Storage::put('public/files_formularios'.'/'.$request->id, $request->segunda_hoja_dni);
+					}
+
+
+
+					if(
+						($request->foto_4x4 != null)
+						&&
+						($request->foto_4x4 != '')
+						&&
+						(is_object($request->foto_4x4)) 
+					)
+					{
+						$contents = file_get_contents($request->foto_4x4->path());
+						$formularioCatamarca->foto_4x4 =  Storage::put('public/files_formularios'.'/'.$request->id, $request->foto_4x4);
+					}
+
+					if(
+						($request->constancia_afip != null)
+						&&
+						($request->constancia_afip != '')
+						&&
+						(is_object($request->constancia_afip)) 
+					)
+					{
+						$contents = file_get_contents($request->constancia_afip->path());
+						$formularioCatamarca->constancia_afip =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constancia_afip);
+					}
+
+
+					if(
+						($request->autorizacion_gestor != null)
+						&&
+						($request->autorizacion_gestor != '')
+						&&
+						(is_object($request->autorizacion_gestor)) 
+					)
+					{
+						$contents = file_get_contents($request->autorizacion_gestor->path());
+						$formularioCatamarca->autorizacion_gestor =  Storage::put('public/files_formularios'.'/'.$request->id, $request->autorizacion_gestor);
+					}
+
+					$formularioCatamarca->updated_by = Auth::user()->id;
+					
+					$formularioCatamarca->save();
+					
+					return response()->json([
+						'status' => 'ok',
+						'msg' => 'se actualizo el paso de catamarca correctamente',
+						'id_creado' => $formularioCatamarca->id
+					],201);
+
+				}
+				else{
+					//voy a editar como autoridad
+					//soy autoridad
+				}
+
+			}
+			else{
+				//voy a crear un nuevo registro
+				if($request->es_evaluacion == false)
+				{
+					//soy productor y voy a crear el registro
+					//con los valores que cargo como productor sin evaluacion
+					$formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
+					$formularioNuevoCatamarca->gestor_nombre_apellido = $request->gestor_nombre_apellido;
+					$formularioNuevoCatamarca->gestor_dni = $request->gestor_dni;
+					$formularioNuevoCatamarca->gestor_profesion = $request->gestor_profesion;
+					$formularioNuevoCatamarca->gestor_telefono = $request->gestor_telefono;
+					$formularioNuevoCatamarca->gestor_notificacion = $request->gestor_notificacion;
+					$formularioNuevoCatamarca->gestor_email = $request->gestor_email;
+
+
+					
+					if(
+						($request->primer_hoja_dni != null)
+						&&
+						($request->primer_hoja_dni != '')
+						&&
+						(is_object($request->primer_hoja_dni)) 
+					)
+					{
+						$contents = file_get_contents($request->primer_hoja_dni->path());
+						$formularioNuevoCatamarca->primer_hoja_dni =  Storage::put('public/files_formularios'.'/'.$request->id, $request->primer_hoja_dni);
+					}
+
+					if(
+						($request->segunda_hoja_dni != null)
+						&&
+						($request->segunda_hoja_dni != '')
+						&&
+						(is_object($request->segunda_hoja_dni)) 
+					)
+					{
+						$contents = file_get_contents($request->segunda_hoja_dni->path());
+						$formularioNuevoCatamarca->segunda_hoja_dni =  Storage::put('public/files_formularios'.'/'.$request->id, $request->segunda_hoja_dni);
+					}
+
+
+
+					if(
+						($request->foto_4x4 != null)
+						&&
+						($request->foto_4x4 != '')
+						&&
+						(is_object($request->foto_4x4)) 
+					)
+					{
+						$contents = file_get_contents($request->foto_4x4->path());
+						$formularioNuevoCatamarca->foto_4x4 =  Storage::put('public/files_formularios'.'/'.$request->id, $request->foto_4x4);
+					}
+
+					if(
+						($request->constancia_afip != null)
+						&&
+						($request->constancia_afip != '')
+						&&
+						(is_object($request->constancia_afip)) 
+					)
+					{
+						$contents = file_get_contents($request->constancia_afip->path());
+						$formularioNuevoCatamarca->constancia_afip =  Storage::put('public/files_formularios'.'/'.$request->id, $request->constancia_afip);
+					}
+
+
+					if(
+						($request->autorizacion_gestor != null)
+						&&
+						($request->autorizacion_gestor != '')
+						&&
+						(is_object($request->autorizacion_gestor)) 
+					)
+					{
+						$contents = file_get_contents($request->autorizacion_gestor->path());
+						$formularioNuevoCatamarca->autorizacion_gestor =  Storage::put('public/files_formularios'.'/'.$request->id, $request->autorizacion_gestor);
+					}
+
+					$formularioNuevoCatamarca->paso_aprobado = null;
+					$formularioNuevoCatamarca->paso_reprobado = null;
+					$formularioNuevoCatamarca->paso_progreso = null;
+					$formularioNuevoCatamarca->created_by = Auth::user()->id;
+					$formularioNuevoCatamarca->updated_by = Auth::user()->id;
+					$formularioNuevoCatamarca->id_formulario_alta = $request->id;
+					
+					$formularioNuevoCatamarca->save();
+					
+					return response()->json([
+						'status' => 'ok',
+						'msg' => 'se creo el paso de catamarca correctamente',
+						'id_creado' => $formularioNuevoCatamarca->id
+					],201);
+				}
+				else{
+					//soy autoridad y tengo que cargar los datos de productor y evaluacion juntos
+					
+					if( (!is_bool($request->gestor_nombre_apellido_correcto)) && ($request->owner_correcto == 'nada'))
+					$owner_correcto = null;
+					elseif($request->owner_correcto == 'false')
+						$owner_correcto = false;
+					elseif($request->owner_correcto == 'true')
+						$owner_correcto = true;
+					
+					
+						if( (!is_bool($request->arrendatario_correcto)) && ($request->arrendatario_correcto == 'nada'))
+							$arrendatario_correcto = null;
+							elseif($request->arrendatario_correcto == 'false')
+							$arrendatario_correcto = false;
+							elseif($request->arrendatario_correcto == 'true')
+							$arrendatario_correcto = true;
+							
+							
+						if( (!is_bool($request->concesionario_correcto)) && ($request->concesionario_correcto == 'nada'))
+							$concesionario_correcto = null;
+							elseif($request->concesionario_correcto == 'false')
+							$concesionario_correcto = false;
+							elseif($request->concesionario_correcto == 'true')
+							$concesionario_correcto = true;
+							
+							
+							
+						if( (!is_bool($request->otros_correcto)) && ($request->otros_correcto == 'nada'))
+							$request->otros_correcto = null;
+							elseif($request->otros_correcto == 'false')
+							$request->otros_correcto = false;
+							elseif($request->otros_correcto == 'true')
+							$request->otros_correcto = true;
+
+						if( (!is_bool($request->sustancias_correcto)) && ($request->sustancias_correcto == 'nada'))
+							$sustancias_correcto = null;
+						elseif($request->sustancias_correcto == 'false')
+							$sustancias_correcto = false;
+						elseif($request->sustancias_correcto == 'true')
+							$sustancias_correcto = true;
+							
+
+						//dd($sustancias_correcto);
+
+						if( (!is_bool($request->iia_correcto)) && ($request->iia_correcto == 'nada'))
+							$request->iia_correcto = null;
+						elseif($request->iia_correcto == 'false')
+							$request->iia_correcto = false;
+						elseif($request->iia_correcto == 'true')
+							$request->iia_correcto = true;
+
+
+
+
+
+						if( (!is_bool($request->dia_correcto)) && ($request->dia_correcto == 'nada'))
+							$request->dia_correcto = null;
+						elseif($request->dia_correcto == 'false')
+							$request->dia_correcto = false;
+						elseif($request->dia_correcto == 'true')
+							$request->dia_correcto = true;
+
+
+						
+							
+
+						if( (!is_bool($request->acciones_a_desarrollar_correcto)) && ($request->acciones_a_desarrollar_correcto == 'nada'))
+							$request->acciones_a_desarrollar_correcto = null;
+						elseif($request->acciones_a_desarrollar_correcto == 'false')
+							$request->acciones_a_desarrollar_correcto = false;
+						elseif($request->acciones_a_desarrollar_correcto == 'true')
+							$request->acciones_a_desarrollar_correcto = true;
+
+						if( (!is_bool($request->actividad_a_desarrollar_correcto)) && ($request->actividad_a_desarrollar_correcto == 'nada'))
+							$request->actividad_a_desarrollar_correcto = null;
+						elseif($request->actividad_a_desarrollar_correcto == 'false')
+							$request->actividad_a_desarrollar_correcto = false;
+						elseif($request->actividad_a_desarrollar_correcto == 'true')
+							$request->actividad_a_desarrollar_correcto = true;
+
+							//dd($request->actividad_a_desarrollar_correcto);
+
+						if( (!is_bool($request->fecha_alta_dia_correcto)) && ($request->fecha_alta_dia_correcto == 'nada'))
+							$request->fecha_alta_dia_correcto = null;
+						elseif($request->fecha_alta_dia_correcto == 'false')
+							$request->fecha_alta_dia_correcto = false;
+						elseif($request->fecha_alta_dia_correcto == 'true')
+							$request->fecha_alta_dia_correcto = true;
+
+						if( (!is_bool($request->fecha_vencimiento_dia_correcto)) && ($request->fecha_vencimiento_dia_correcto == 'nada'))
+							$request->fecha_vencimiento_dia_correcto = null;
+						elseif($request->fecha_vencimiento_dia_correcto == 'false')
+							$request->fecha_vencimiento_dia_correcto = false;
+						elseif($request->fecha_vencimiento_dia_correcto == 'true')
+							$request->fecha_vencimiento_dia_correcto = true;
+
+					return response()->json("se actualizaron los datos correctamente");
+				}
+					
+			}
+		}
+		else { echo "mal el id";die();}
+/* 		
+
+$formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
+				$formularioNuevoCatamarca->gestor_nombre_apellido = $request->gestor_nombre_apellido;
+				$formularioNuevoCatamarca->gestor_dni = $request->gestor_dni;
+				$formularioNuevoCatamarca->gestor_profesion = $request->gestor_profesion;
+				$formularioNuevoCatamarca->gestor_telefono = $request->gestor_telefono;
+				$formularioNuevoCatamarca->gestor_notificacion = $request->gestor_notificacion;
+				$formularioNuevoCatamarca->gestor_email = $request->gestor_email;
+				$formularioNuevoCatamarca->primer_hoja_dni = $request->primer_hoja_dni;
+				$formularioNuevoCatamarca->segunda_hoja_dni = $request->segunda_hoja_dni;
+				$formularioNuevoCatamarca->foto_4x4 = $request->foto_4x4;
+				$formularioNuevoCatamarca->constancia_afip = $request->constancia_afip;
+				
+				$formularioNuevoCatamarca->gestor_nombre_apellido_correcto = $request->gestor_nombre_apellido_correcto;
+				$formularioNuevoCatamarca->obs_gestor_nombre_apellido = $request->obs_gestor_nombre_apellido;
+				$formularioNuevoCatamarca->gestor_dni_correcto = $request->gestor_dni_correcto;
+				$formularioNuevoCatamarca->obs_gestor_dni = $request->obs_gestor_dni;
+				$formularioNuevoCatamarca->gestor_profesion_correcto = $request->gestor_profesion_correcto;
+				$formularioNuevoCatamarca->obs_gestor_profesion = $request->obs_gestor_profesion;
+				$formularioNuevoCatamarca->gestor_telefono_correcto = $request->gestor_telefono_correcto;
+				$formularioNuevoCatamarca->obs_gestor_telefono = $request->obs_gestor_telefono;
+				$formularioNuevoCatamarca->gestor_notificacion_correcto = $request->gestor_notificacion_correcto;
+				$formularioNuevoCatamarca->obs_gestor_notificacion = $request->obs_gestor_notificacion;
+				$formularioNuevoCatamarca->gestor_email_correcto = $request->gestor_email_correcto;
+				$formularioNuevoCatamarca->obs_gestor_email = $request->obs_gestor_email;
+				$formularioNuevoCatamarca->hoja_dni_correcto = $request->hoja_dni_correcto;
+				$formularioNuevoCatamarca->obs_hoja_dni = $request->obs_hoja_dni;
+				$formularioNuevoCatamarca->foto_4x4_correcto = $request->foto_4x4_correcto;
+				$formularioNuevoCatamarca->obs_foto_4x4 = $request->obs_foto_4x4;
+				$formularioNuevoCatamarca->constancia_afip_correcto = $request->constancia_afip_correcto;
+				$formularioNuevoCatamarca->obs_constancia_afip = $request->obs_constancia_afip;
+				$formularioNuevoCatamarca->paso_aprobado = $request->paso_aprobado;
+				$formularioNuevoCatamarca->paso_reprobado = $request->paso_reprobado;
+				$formularioNuevoCatamarca->paso_progreso = $request->paso_progreso;
+				$formularioNuevoCatamarca->created_by = $request->created_by;
+				$formularioNuevoCatamarca->updated_by = $request->updated_by;
+				$formularioNuevoCatamarca->id_formulario_alta = $request->id_formulario_alta;
+				$formularioNuevoCatamarca->created_at = $request->created_at;
+				$formularioNuevoCatamarca->updated_at = $request->updated_at;
+				$formularioNuevoCatamarca->deleted_at = $request->deleted_at;
+				$formularioNuevoCatamarca->autorizacion_gestor = $request->autorizacion_gestor;
+				$formularioNuevoCatamarca->autorizacion_gestor_correcto = $request->autorizacion_gestor_correcto;
+				$formularioNuevoCatamarca->obs_autorizacion_gestor = $request->obs_autorizacion_gestor;
+				
+					o',
+
+
+        'obs_autorizacion_gestor', */
+	}
 
 
 	public function correccion_guardar_paso_seis(Request $request)
@@ -10621,8 +11003,8 @@ class FormAltaProductorController extends Controller
 			'updated_at'
 			)
 		->where('id', '=',$request->id)->first();
-	// var_dump($formulario_provisorio->id);
-	// 	die();
+		// var_dump($formulario_provisorio->id);
+		// 	die();
 		
 		//PARA LA EVALUACION
 		//var_dump($request->localidad_mina_provincia_correcto);
@@ -10720,6 +11102,7 @@ class FormAltaProductorController extends Controller
 
 	public function correccion_guardar_paso_todo(Request $request)
 	{
+		//dd($request->es_evaluacion);
 		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select(
@@ -10745,62 +11128,74 @@ class FormAltaProductorController extends Controller
 	{
 		//dd($request->estado);
 		$request->es_evaluacion = $request->es_evaluacion === 'true'? true: false;
-		date_default_timezone_set('America/Argentina/Buenos_Aires');
-		$formulario_provisorio = FormAltaProductor::select('*')
-		->where('id', '=',$request->id)->first();
-		if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')){ // soy autoridad minera
+		$request->id = intval($request->id);
+		if($request->id > 0)
+		{
+			date_default_timezone_set('America/Argentina/Buenos_Aires');
+			$formulario_provisorio = FormAltaProductor::select('*')
+			->where('id', '=',$request->id)->first();
+			if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')){ // soy autoridad minera
+	
+				if($request->estado == 'presentar' )
+					$formulario_provisorio->estado = "en revision";
+				else
+					$formulario_provisorio->estado = $request->estado;
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
+				//return response()->json("todo bien");
+				//$email_a_mandar = $formulario_provisorio->email; para prod
+				$email_a_mandar = 'diegochecarelli@gmail.com';
+				if($formulario_provisorio->estado  == "en revision")
+				{
+					Mail::to($email_a_mandar)->send(new AvisoFormularioPresentadoEmail(
+						$email_a_mandar,
+						$formulario_provisorio->razon_social,
+						$formulario_provisorio->id,
+						date("Y-m-d H:i:s")
+					));
+				}
+				if($formulario_provisorio->estado  == "con observacion")
+				{
+					Mail::to($email_a_mandar)->send(new AvisoFormularioConObservaciones(
+						$formulario_provisorio->razon_social,
+						date("Y-m-d H:i:s"),
+						$formulario_provisorio->id
+					));
+				}
+				if($formulario_provisorio->estado  == "aprobado")
+				{
+					Mail::to($email_a_mandar)->send(new AvisoFormularioAprobadoEmail(
+						$formulario_provisorio->id,
+						$formulario_provisorio->razon_social,
+						date("Y-m-d H:i:s")
+					));
+	
+					$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+					$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+					$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+					$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+					$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+				}
+				return response()->json([
+					'status' => 'ok',
+					'msg' => 'Formulario Actualizado Correctamente.'
+				],201);
+			}
+			else return response()->json([
+					'status' => 'ok',
+					'msg' => 'Sin permisos.'
+				],201);
 
-			if($request->estado == 'presentar' )
-				$formulario_provisorio->estado = "en revision";
-			else
-				$formulario_provisorio->estado = $request->estado;
-			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-			$formulario_provisorio->updated_by = Auth::user()->id;
-			$formulario_provisorio->save();
-			//return response()->json("todo bien");
-			//$email_a_mandar = $formulario_provisorio->email; para prod
-			$email_a_mandar = 'diegochecarelli@gmail.com';
-			if($formulario_provisorio->estado  == "en revision")
-			{
-				Mail::to($email_a_mandar)->send(new AvisoFormularioPresentadoEmail(
-					$formulario_provisorio->id,
-					$formulario_provisorio->razon_social,
-					date("Y-m-d H:i:s")
-				));
-			}
-			if($formulario_provisorio->estado  == "con observacion")
-			{
-				Mail::to($email_a_mandar)->send(new AvisoFormularioConObservaciones(
-					$formulario_provisorio->razon_social,
-					date("Y-m-d H:i:s"),
-					$formulario_provisorio->id
-				));
-			}
-			if($formulario_provisorio->estado  == "aprobado")
-			{
-				Mail::to($email_a_mandar)->send(new AvisoFormularioAprobadoEmail(
-					$formulario_provisorio->id,
-					$formulario_provisorio->razon_social,
-					date("Y-m-d H:i:s")
-				));
-
-				$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
-				$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
-				$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
-				$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
-				$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
-			}
+		}
+		else
+		{
 			return response()->json([
-				'status' => 'ok',
-				'msg' => 'Datos actualizados correctamente.'
+				'status' => 'mal',
+				'msg' => 'Error en el ID pasado.'
 			],201);
 		}
-		else return response()->json([
-				'status' => 'ok',
-				'msg' => 'Sin permisos.'
-			],201);
 			/*
-
 			//tengo que enviar email
 			//$email_a_mandar = $formulario_provisorio->email; para prod
 			$email_a_mandar = 'diegochecarelli@gmail.com';
@@ -10810,13 +11205,6 @@ class FormAltaProductorController extends Controller
 				date("Y-m-d H:i:s")
 			));
 			//tengo que crear todos los campos de la base de datos
-			
-
-			
-
-			
-			
-
 			}
 			
 		else{//soy productor
@@ -10829,13 +11217,33 @@ class FormAltaProductorController extends Controller
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$formulario_provisorio = FormAltaProductor::select('*')
 		->where('id', '=',$id_formulario)->first();
-		
-		$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
-		$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
-		$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
-		$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
-		$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
 
+		//revisar si son todos registros nuevos, o si tengo q traerlos de algun lugar
+
+		$crear_productor=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_productor)
+			$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+		$crear_mina=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_mina)
+			$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+		$crear_dia=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_dia)
+			$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+		$crear_pago=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_pago)
+			$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+		$crear_mina_productor=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_mina_productor)
+			$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+		$crear_los_minerales_de_la_mina=true; // esto debo comprobarlo antes de crearlo o buscarlo
+		if($crear_los_minerales_de_la_mina)
+			$resultado_actualizar_minerales = $this->actualizar_registros_minerales_en_mina($formulario_provisorio->id);
+		//actualizar form_provisorio
+		//$formulario_provisorio->estado = 
+
+		//actualizar casos especiales de provincias
+		//Catamarca 
+		//if()
 		var_dump($id_productor_nuevo,$id_mina_nueva,$id_dia_iia_nueva,$id_pago_canon_nuevo,$id_mina_productor);
 	
 	}
@@ -10893,7 +11301,6 @@ class FormAltaProductorController extends Controller
 		else return "id menor a 1";
 
 	}
-	
 	public function crear_registro_mina_cantera($id_formulario){
 		if($id_formulario > 1)
 		{
@@ -11055,7 +11462,32 @@ class FormAltaProductorController extends Controller
 		else return "id menor a 1";
 
 	}
-	
+	public function actualizar_registros_minerales_en_mina($id_formulario){
+		if($id_formulario > 1)
+		{
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if($formulario_provisorio != null)
+			{
+				//debo actualizar todos los registros que tengan el id del formulario y pasarlos de
+				//borrador a aprobados
+				$resultado = Minerales_Borradores::select('*')->where('id_formulario' , '=', $id_formulario)->get();
+				foreach($resultado as $mineral){
+					$mineral->estado = 'aprobado';
+					$mineral->save();
+				}
+				return true;
+			}
+			else
+			{
+				return "el formulario no existe";
+			}
+
+		}
+		else return "id menor a 1";
+
+	}
 	
 
 
