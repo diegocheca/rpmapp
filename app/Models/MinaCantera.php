@@ -14,7 +14,7 @@ class MinaCantera extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'mina_cantera';
-
+    protected $guarded = [];
     protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
         'tipo',
@@ -34,7 +34,6 @@ class MinaCantera extends Model
         'plano_inmueble',
         'created_by',
         'estado',
-
         'titulo_contrato_posecion',
 		'resolucion_concesion_minera',
         'owner',

@@ -8,7 +8,6 @@ use Spatie\Permission\Models\Permission;
 use App\Models\Admin\Category;
 use Illuminate\Support\Facades\DB;
 
-
 class RoleSeeder extends Seeder
 {
     public function run()

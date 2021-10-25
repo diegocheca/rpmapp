@@ -1,6 +1,6 @@
 <template>
   <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-    <a
+    <inertia-link
       :href="route('login')"
       class="
         relative
@@ -28,7 +28,7 @@
         />
       </svg>
       <span class="ml-1">Ingresar</span>
-    </a>
+    </inertia-link>
   </div>
   <jet-authentication-card>
     <template #logo>

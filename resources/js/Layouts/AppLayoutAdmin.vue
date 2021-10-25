@@ -76,7 +76,7 @@
             </div>
           </div>
           <nav class="mt-10">
-            <a
+            <inertia-link
               class="
                 flex
                 items-center
@@ -122,8 +122,8 @@
                             />
                         </svg> -->
               <span class="mx-3">Home</span>
-            </a>
-            <a
+            </inertia-link>
+            <inertia-link
               v-if="hasAnyPermission(['admin.users.index'])"
               class="
                 flex
@@ -160,8 +160,8 @@
                 />
               </svg>
               <span class="mx-3">Usuarios</span>
-            </a>
-            <a
+            </inertia-link>
+            <inertia-link
               v-if="hasAnyPermission(['admin.roles.index'])"
               class="
                 flex
@@ -198,8 +198,8 @@
                 />
               </svg>
               <span class="mx-3">Roles</span>
-            </a>
-            <a
+            </inertia-link>
+            <inertia-link
               v-if="hasAnyPermission(['admin.permisos.index'])"
               class="
                 flex
@@ -236,8 +236,8 @@
                 />
               </svg>
               <span class="mx-3">Permisos</span>
-            </a>
-            <a
+            </inertia-link>
+            <inertia-link
               v-if="hasAnyPermission(['admin.categorias.index'])"
               class="
                 flex
@@ -274,8 +274,8 @@
                 />
               </svg>
               <span class="mx-3">Categorias</span>
-            </a>
-            <a
+            </inertia-link>
+            <inertia-link
               class="
                 flex
                 items-center
@@ -311,7 +311,7 @@
                 />
               </svg>
               <span class="mx-3">Importar</span>
-            </a>
+            </inertia-link>
           </nav>
         </div>
       </div>

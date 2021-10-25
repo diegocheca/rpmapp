@@ -215,7 +215,7 @@ export default {
         this.$emit('changevalor',value);
      },
      mostrar_otro_input(){
-            console.log(this.valor_input);
+            // console.log(this.valor_input);
         if(this.$props.otro_label != false && this.valor_input)
             return true;
         else return false;

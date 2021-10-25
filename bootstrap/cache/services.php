@@ -49,6 +49,7 @@
     45 => 'App\\Providers\\JetstreamServiceProvider',
     46 => 'Barryvdh\\DomPDF\\ServiceProvider',
     47 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
+    48 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
   ),
   'eager' => 
   array (
@@ -85,6 +86,7 @@
     30 => 'App\\Providers\\JetstreamServiceProvider',
     31 => 'Barryvdh\\DomPDF\\ServiceProvider',
     32 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
+    33 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
   ),
   'deferred' => 
   array (
