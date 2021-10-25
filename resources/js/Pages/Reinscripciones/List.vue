@@ -9,7 +9,7 @@
 
     <div class="overflow-x-auto">
         <div class="w-11/12 flex flex-row-reverse mt-3">
-            <a :href="route('reinscripciones.create')" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3">Nueva Reinscripcion</a>
+            <inertia-link :href="route('reinscripciones.create')" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3">Nueva Reinscripcion</inertia-link>
         </div>
         <div class="min-w-screen flex items-center justify-center font-sans overflow-hidden">
             <div v-if="reinscripciones.length == 0" class="w-full flex flex-col items-center mt-14 text-gray-400">

@@ -16,12 +16,8 @@
             sm:text-3xl
             sm:truncate
             py-1
+            border-indigo-400
           "
-          :class="[
-            porcentajeInscripcion == 100
-              ? 'border-green-400'
-              : 'border-indigo-400',
-          ]"
         >
           Dandose de Alta como nuevo Productor Minero en la Provincia de
           {{ $props.nombre_provincia }}, Id {{ form.id }}
@@ -1103,7 +1099,7 @@
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos Form Catamarca'"
-            :titulo_pagina="'Pagina De Catamarca'"
+            :titulo_pagina="'Catamarca'"
             :evaluacion="evaluacion_global"
             :testing="testing_global"
             :id="form.id"

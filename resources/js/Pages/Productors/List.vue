@@ -8,11 +8,10 @@
         text-gray-300
         sm:text-3xl
         sm:truncate
-        py-4
         bg-gray-800
       "
     >
-      Borradores Ya cargados
+      Lista de Borradores Cargados
     </h2>
     <body class="flex flex-col">
       <div class="overflow-x-auto">
@@ -29,26 +28,21 @@
           "
         >
           <div class="w-full lg:w-5/6">
-            <a :href="route('formulario-alta.create')">
-              <button
+            <div class="flex flex-row-reverse mt-3">
+              <inertia-link
+                :href="route('formulario-alta.create')"
                 class="
-                   
+                  bg-blue-500
+                  hover:bg-blue-800
+                  rounded
+                  text-white
                   px-9
-                  py-4
-                  mb-4
-                  text-base
-                  font-semibold
-                  rounded-full
-                  block
-                  border-b border-purple-300
-                  bg-purple-200
-                  hover:bg-purple-300
-                  text-purple-700
+                  py-3
                 "
               >
                 Nuevo Borrador
-              </button></a
-            >
+              </inertia-link>
+            </div>
             <div class="bg-white shadow-md rounded my-6">
               <div
                 v-if="mostrar_alert_eliminar"
@@ -239,7 +233,7 @@
                             hover:scale-110
                           "
                         >
-                          <a
+                          <inertia-link
                             :href="route('formulario-alta.show', productor.id)"
                           >
                             <svg
@@ -261,7 +255,7 @@
                                 d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                               />
                             </svg>
-                          </a>
+                          </inertia-link>
                         </div>
 
                         <div
@@ -273,7 +267,7 @@
                             hover:scale-110
                           "
                         >
-                          <a
+                          <inertia-link
                             v-if="mostrar_editar(productor.estado)"
                             :href="route('formulario-alta.edit', productor.id)"
                           >
@@ -290,7 +284,7 @@
                                 d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                               />
                             </svg>
-                          </a>
+                          </inertia-link>
                         </div>
                         <div
                           v-if="mostrar_imprimir_comprobante(productor.estado)"
@@ -302,7 +296,7 @@
                             hover:scale-110
                           "
                         >
-                          <a
+                          <inertia-link
                             :href="
                               route(
                                 'comprobante-presentacion-pdf',
@@ -325,7 +319,7 @@
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                               />
                             </svg>
-                          </a>
+                          </inertia-link>
                         </div>
 
                         <div
@@ -338,7 +332,7 @@
                             hover:scale-110
                           "
                         >
-                          <a
+                          <inertia-link
                             :href="route('formulario-alta-pdf', productor.id)"
                             target="_blank"
                           >
@@ -356,7 +350,7 @@
                                 d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
                               />
                             </svg>
-                          </a>
+                          </inertia-link>
                         </div>
                         <div
                           v-if="mostrar_borrar(productor.estado)"
@@ -368,7 +362,7 @@
                             hover:scale-110
                           "
                         >
-                          <a href="#" @click="confirmationDelete(productor.id)">
+                          <inertia-link href="#" @click="confirmationDelete(productor.id)">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               class="h-6 w-6"
@@ -383,7 +377,7 @@
                                 d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                               />
                             </svg>
-                          </a>
+                          </inertia-link>
                         </div>
                       </div>
                     </td>
