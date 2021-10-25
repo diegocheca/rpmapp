@@ -61,7 +61,7 @@
             </div>
           </div>
           <nav class="mt-10">
-            <a
+            <inertia-link
               class="
                 flex
                 items-center
@@ -101,8 +101,8 @@
                 />
               </svg>
               <span class="mx-3">Home</span>
-            </a>
-            <a
+            </inertia-link>
+            <inertia-link
               v-if="hasAnyPermission(['formweb.solicitudes.index'])"
               class="
                 flex
@@ -143,8 +143,8 @@
                 />
               </svg>
               <span class="mx-3">Nueva Solicitud</span>
-            </a>
-            <a
+            </inertia-link>
+            <inertia-link
               v-if="hasAnyPermission(['formweb.solicitudes.index'])"
               class="
                 flex
@@ -185,7 +185,7 @@
                 />
               </svg>
               <span class="mx-3">Lista de Solicitudes</span>
-            </a>
+            </inertia-link>
           </nav>
         </div>
       </div>

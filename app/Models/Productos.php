@@ -12,7 +12,7 @@ class Productos extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'productos';
-
+    protected $guarded = [];
     protected $date = ['created_at', 'deleted_at', 'updated_at' ];
     protected $fillable = [
         'id_reinscripcion',

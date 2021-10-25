@@ -28,3 +28,5 @@ bootstrap/
 public/css/*.css
 public/js/*.js
 public/mix-manifest.json
+npm.bat
+Servidor.bat

@@ -182,10 +182,10 @@ export default {
             this.clase_cartel_nota_campo= 'text-red-500 text-xs italic';
             this.razon_social_valido_local = false;
         }
-        if(this.razon_social.length >= 40)
+        if(this.razon_social.length >= 50)
         {
             this.clase_de_input_razon_social =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.cartel_nota_campo=  'Valor Incorrecta - debe tener menos de 30 caracteres';
+            this.cartel_nota_campo=  'Valor Incorrecta - debe tener menos de 50 caracteres';
             this.clase_cartel_nota_campo=  'text-red-500 text-xs italic';
             this.razon_social_valido_local = false;
         }

@@ -14,8 +14,8 @@ class ProductorMina extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'productor_mina';
-
-    protected $date = ['created_at', 'deleted_at', 'updated_at','fecha_preinscripcion','fecha_renovacion'];
+	protected $guarded = [];
+	protected $date = ['created_at', 'deleted_at', 'updated_at','fecha_preinscripcion','fecha_renovacion'];
     protected $fillable = [
     'id_mina',
 	'id_productor',
