@@ -23,6 +23,8 @@ use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
+use App\Http\Controllers\formWebController\MineralesController;
+
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -71,6 +73,8 @@ Route::get('reinscripciones/productores', [ReinscripcionController::class, "prod
 
 Route::get('productores/getProductorMina/{id}', [ProductoresController::class, "getProductorMina"])
     ->middleware(['auth:sanctum', 'verified'])->name('productores.getProductorMina');
+Route::get('minerales/getMinerals', [MineralesController::class, "getMinerals"])
+    ->middleware(['auth:sanctum', 'verified'])->name('minerales.getMinerals');
     //     Route::get('provincias', 'ReinscripcionController@getCountries')
 //         ->middleware(['auth:sanctum', 'verified']);
 

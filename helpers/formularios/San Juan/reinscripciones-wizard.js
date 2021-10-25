@@ -7,6 +7,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
 
     const productor = !schema.id_productor? productors : productors.find( e=> schema.id_productor === e.value );
     const minas = !schema.id_productor? undefined : await axios.get(`/productores/getProductorMina/${productor.value}`);
+    const minerales = await axios.get(`/minerales/getMinerals`);
 
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
@@ -330,44 +331,11 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                                 value: {},
                                                 type: inputsTypes.SELECT,
                                                 colSpan: '',
-                                                options: [
-                                                    {
-                                                        label: 'Oro',
-                                                        value: 'Oro',
-                                                    },
-                                                    {
-                                                        label: 'Plata',
-                                                        value: 'Plata',
-                                                    },
-                                                    {
-                                                        label: 'Cobre',
-                                                        value: 'Cobre',
-                                                    },
-                                                    {
-                                                        label: 'Hierro',
-                                                        value: 'Hierro',
-                                                    },
-                                                    {
-                                                        label: 'Cal',
-                                                        value: 'Cal',
-                                                    },
-                                                    {
-                                                        label: 'Ripio',
-                                                        value: 'Ripio',
-                                                    },
-                                                    {
-                                                        label: 'Platino',
-                                                        value: 'Platino',
-                                                    },
-                                                    {
-                                                        label: 'Diamante',
-                                                        value: 'Diamante',
-                                                    }
-                                                ],
+                                                options: minerales.data,
                                                 name: 'nombre_mineral',
                                                 multiple: false,
                                                 closeOnSelect: true,
-                                                searchable: false,
+                                                searchable: true,
                                                 placeholder: 'Selecciona una opción',
                                                 // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
                                             },

@@ -267,7 +267,7 @@
                         {{ nameTitle }}
                     </div>
                 </td>
-                 <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="px-6 py-4 whitespace-nowrap">
+                <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="px-6 py-4 whitespace-nowrap">
                     <div v-bind="field" class="flex items-center">
                         <Field v-if="ele.type !== inputsTypes.SELECT" :value="ele.value" :name="`${ele.name}[${index2}][${indexElement}].${ele.name}`" :type="ele.type" class="inp" :disabled="action != 'create' && (evaluate) ? true: false" />
                         <!-- <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${ele.name}[${index2}][${indexElement}].${ele.name}`" :value="ele.value">
@@ -425,21 +425,41 @@ export default {
         },
         getSelectOptions(value, element) {
 
-            if(!element.ele.inputDepends) return;
+            if(element.ele.inputDepends){
+                const elementChange = element.ele.inputDepends;
+                for (let index = 0; index < elementChange.length; index++) {
+                    const elementDepends = elementChange[index];
 
-            const elementChange = element.ele.inputDepends;
-            for (let index = 0; index < elementChange.length; index++) {
-                const elementDepends = elementChange[index];
+                    const options = element.ele.optionsDepends[value.value];
 
-                const options = element.ele.optionsDepends[value.value];
+                    this.$refs[`${element.id}-${elementDepends}`].options.splice(0,this.$refs[`${element.id}-${elementDepends}`].options.length);
+                    this.$refs[`${element.id}-${elementDepends}`].select({})
 
-                this.$refs[`${element.id}-${elementDepends}`].options.splice(0,this.$refs[`${element.id}-${elementDepends}`].options.length);
-                this.$refs[`${element.id}-${elementDepends}`].select({})
+                    for (let index = 0; index < options.length; index++) {
+                        const opt = options[index];
+                        this.$refs[`${element.id}-${elementDepends}`].options.push(opt);
+                    }
 
-                for (let index = 0; index < options.length; index++) {
-                    const opt = options[index];
-                    this.$refs[`${element.id}-${elementDepends}`].options.push(opt);
                 }
+
+            }
+
+
+        this.handleChange(element, value);
+
+        },
+        handleChange(item, value) {
+            // if(!item.componentDepends) return;
+            const inputs = this.formSchema[0].body[0].inputs
+            const [row] = inputs.find( e => !!e.componentDepends)?.elements;
+
+
+            if(item.ele.componentDepends?.length > 0) {
+
+                item.ele.componentDepends.forEach( comp => {
+                    const depend = inputs.find( e => e.name == comp.component);
+                    depend[comp.element][item.id] = value.label;
+                });
 
             }
         },
@@ -486,10 +506,10 @@ export default {
             row[0].id = null;
             item.childrens = [...item.childrens, row ];
 
-            if(item.componentDepends?.length > 0) {
-                this.addColumnsTable({ componentDepends: item.componentDepends, row, inputs, values})
-                // this.columnsTable.value.push(item.childrens[0]);
-            }
+            // if(item.componentDepends?.length > 0) {
+            //     this.addColumnsTable({ componentDepends: item.componentDepends, row, inputs, values})
+            //     // this.columnsTable.value.push(item.childrens[0]);
+            // }
         },
         addColumnsTable({componentDepends, row, inputs, values}) {
             if(!componentDepends) return
