@@ -98,6 +98,7 @@ let schema;
 
 export async function getFormSchema({ ...schema }, action, dataForm) {
     const departamentos = await axios.get(`/paises/departamentos/74`);
+    const minerales = await axios.get(`/minerales/getMinerals`);
 
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
@@ -124,7 +125,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                             inputs: [
                                 {
                                     label: 'Departamento',
-                                    value: {},
+                                    value: undefined,
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
@@ -147,7 +148,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                 },
                                 {
                                     label: 'Partido',
-                                    value: {},
+                                    value: undefined,
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
@@ -290,45 +291,24 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                                 value: {},
                                                 type: inputsTypes.SELECT,
                                                 colSpan: '',
-                                                options: [
-                                                    {
-                                                        label: 'Oro',
-                                                        value: 'Oro',
-                                                    },
-                                                    {
-                                                        label: 'Plata',
-                                                        value: 'Plata',
-                                                    },
-                                                    {
-                                                        label: 'Cobre',
-                                                        value: 'Cobre',
-                                                    },
-                                                    {
-                                                        label: 'Hierro',
-                                                        value: 'Hierro',
-                                                    },
-                                                    {
-                                                        label: 'Cal',
-                                                        value: 'Cal',
-                                                    },
-                                                    {
-                                                        label: 'Ripio',
-                                                        value: 'Ripio',
-                                                    },
-                                                    {
-                                                        label: 'Platino',
-                                                        value: 'Platino',
-                                                    },
-                                                    {
-                                                        label: 'Diamante',
-                                                        value: 'Diamante',
-                                                    }
-                                                ],
+                                                options: minerales.data,
                                                 name: 'nombre_mineral',
                                                 multiple: false,
                                                 closeOnSelect: true,
                                                 searchable: false,
                                                 placeholder: 'Selecciona una opción',
+                                                componentDepends: [
+                                                    {
+                                                        component:'produccion_anual',
+                                                        element: 'horizontalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    },
+                                                    {
+                                                        component:'comercializacion',
+                                                        element: 'verticalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    }
+                                                ],
                                                 // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
                                             },
                                             {
@@ -404,12 +384,14 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                     ],
                                     horizontalTitle: [],
                                     element: [
-                                        [{
-                                            label: '',
-                                            value: '',
-                                            type: inputsTypes.NUMBER,
-                                            name: 'production',
-                                        }]
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'production',
+                                            }
+                                        ]
                                     ],
                                     observation: new Observations({schema, name: 'production', action}).observations,
                                     validations: yup
