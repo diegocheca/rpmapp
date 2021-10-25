@@ -1206,7 +1206,8 @@ id
 				:id="$props.productor.id"
 			>
 			</PaginaCatamarca> -->
-			<PaginaCatamarca
+			<h3>antes de catamarca</h3>
+				<PaginaCatamarca
 			v-if="$props.mostrar.paso_catamarca"
 				:link_volver="route('formulario-alta.index')"
 				:titulo_boton_volver="'volver'"

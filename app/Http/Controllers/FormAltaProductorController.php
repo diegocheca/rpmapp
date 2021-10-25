@@ -10563,21 +10563,23 @@ class FormAltaProductorController extends Controller
 	public function correccion_guardar_paso_catamarca(Request $request)
 	{
 		if($request->id == 'null') $request->id = null;
-		if($request->es_evaluacion == 'false')
-			$request->es_evaluacion =false;
-		else $request->es_evaluacion =true;
-
+		if($request->evaluacion == 'false')
 		$request->es_evaluacion =false;
+		else $request->es_evaluacion =true;
+		
+		//$request->es_evaluacion =false;
+		//var_dump($request->es_evaluacion);die();
 		$request->id = (int)$request->id;
-		var_dump($request->id);die();
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		if($request->id != null && $request->id > 0 && is_int($request->id ) ){
 			//voy a editar un registro
 			$formularioCatamarca = FormAltaProductorCatamarca::where('id_formulario_alta', '=', $request->id)->first();
 			if($formularioCatamarca != null) // no se encontro el registor, lo debo crear
 			{
+				//echo "estoy aqui";die();
 				if($request->es_evaluacion == false)
 				{
+					//echo "estoy a3333qui";die();
 					//Voy a editar un registro
 					//soy productor
 					$formularioCatamarca->gestor_nombre_apellido = $request->gestor_nombre_apellido;
@@ -10588,7 +10590,7 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->gestor_email = $request->gestor_email;
 
 
-					
+					//echo "por entrar";
 					if(
 						($request->primer_hoja_dni != null)
 						&&
@@ -10597,6 +10599,8 @@ class FormAltaProductorController extends Controller
 						(is_object($request->primer_hoja_dni)) 
 					)
 					{
+						//echo "entre";
+						//var_dump($request->primer_hoja_dni->path());die();
 						$contents = file_get_contents($request->primer_hoja_dni->path());
 						$formularioCatamarca->primer_hoja_dni =  Storage::put('public/files_formularios'.'/'.$request->id, $request->primer_hoja_dni);
 					}
@@ -10626,7 +10630,6 @@ class FormAltaProductorController extends Controller
 						$contents = file_get_contents($request->foto_4x4->path());
 						$formularioCatamarca->foto_4x4 =  Storage::put('public/files_formularios'.'/'.$request->id, $request->foto_4x4);
 					}
-
 					if(
 						($request->constancia_afip != null)
 						&&
@@ -10653,12 +10656,14 @@ class FormAltaProductorController extends Controller
 					}
 
 					$formularioCatamarca->updated_by = Auth::user()->id;
-					
+					$formularioCatamarca->updated_by = Auth::user()->id;
+					$formularioCatamarca->id_formulario_alta = $request->id;
+					//var_dump($formularioCatamarca);die();
 					$formularioCatamarca->save();
 					
 					return response()->json([
 						'status' => 'ok',
-						'msg' => 'se actualizo el paso de catamarca correctamente',
+						'msg' => 'se actualizo correctamente el paso de catamarca',
 						'id_creado' => $formularioCatamarca->id
 					],201);
 
@@ -10666,6 +10671,135 @@ class FormAltaProductorController extends Controller
 				else{
 					//voy a editar como autoridad
 					//soy autoridad
+
+					/*var_dump($request->gestor_nombre_apellido_correcto,
+					$request->obs_gestor_nombre_apellido, 
+					$request->gestor_dni_correcto, $request->obs_gestor_dni);die();
+*/
+
+					if($request->gestor_nombre_apellido_correcto == 'false')
+						$request->gestor_nombre_apellido_correcto = false;
+					elseif($request->gestor_nombre_apellido_correcto == 'true')
+						$request->gestor_nombre_apellido_correcto = true;
+					else
+						$request->gestor_nombre_apellido_correcto = null;
+
+					$formularioCatamarca->gestor_nombre_apellido_correcto = $request->gestor_nombre_apellido_correcto;
+					$formularioCatamarca->obs_gestor_nombre_apellido = $request->obs_gestor_nombre_apellido;
+
+
+					if($request->gestor_dni_correcto == 'false')
+						$request->gestor_dni_correcto = false;
+					elseif($request->gestor_dni_correcto == 'true')
+						$request->gestor_dni_correcto = true;
+					else
+						$request->gestor_dni_correcto = null;
+
+					$formularioCatamarca->gestor_dni_correcto = $request->gestor_dni_correcto;
+					$formularioCatamarca->obs_gestor_dni = $request->obs_gestor_dni;
+
+
+					if($request->gestor_profesion_correcto == 'false')
+						$request->gestor_profesion_correcto = false;
+					elseif($request->gestor_profesion_correcto == 'true')
+						$request->gestor_profesion_correcto = true;
+					else
+						$request->gestor_profesion_correcto = null;
+
+					$formularioCatamarca->gestor_profesion_correcto = $request->gestor_profesion_correcto;
+					$formularioCatamarca->obs_gestor_profesion = $request->obs_gestor_profesion;
+
+					if($request->gestor_telefono_correcto == 'false')
+						$request->gestor_telefono_correcto = false;
+					elseif($request->gestor_telefono_correcto == 'true')
+						$request->gestor_telefono_correcto = true;
+					else
+						$request->gestor_telefono_correcto = null;
+
+					$formularioCatamarca->gestor_telefono_correcto = $request->gestor_telefono_correcto;
+					$formularioCatamarca->obs_gestor_telefono = $request->obs_gestor_telefono;
+
+
+					if($request->gestor_email_correcto == 'false')
+						$request->gestor_email_correcto = false;
+					elseif($request->gestor_email_correcto == 'true')
+						$request->gestor_email_correcto = true;
+					else
+						$request->gestor_email_correcto = null;
+
+					$formularioCatamarca->obs_gestor_email = $request->gestor_email_correcto;
+					$formularioCatamarca->gestor_email_correcto = $request->obs_gestor_email;
+
+
+					if($request->gestor_notificacion_correcto == 'false')
+						$request->gestor_notificacion_correcto = false;
+					elseif($request->gestor_notificacion_correcto == 'true')
+						$request->gestor_notificacion_correcto = true;
+					else
+						$request->gestor_notificacion_correcto = null;
+
+					$formularioCatamarca->gestor_notificacion_correcto = $request->gestor_notificacion_correcto;
+					$formularioCatamarca->obs_gestor_notificacion = $request->obs_gestor_notificacion;
+
+
+					if($request->autorizacion_gestor_correcto == 'false')
+						$request->autorizacion_gestor_correcto = false;
+					elseif($request->autorizacion_gestor_correcto == 'true')
+						$request->autorizacion_gestor_correcto = true;
+					else
+						$request->autorizacion_gestor_correcto = null;
+
+					$formularioCatamarca->autorizacion_gestor_correcto = $request->autorizacion_gestor_correcto;
+					$formularioCatamarca->obs_autorizacion_gestor = $request->obs_autorizacion_gestor;
+
+
+
+
+					if($request->foto_4x4_correcto == 'false')
+						$request->foto_4x4_correcto = false;
+					elseif($request->foto_4x4_correcto == 'true')
+						$request->foto_4x4_correcto = true;
+					else
+						$request->foto_4x4_correcto = null;
+
+					$formularioCatamarca->foto_4x4_correcto = $request->foto_4x4_correcto;
+					$formularioCatamarca->obs_foto_4x4 = $request->obs_foto_4x4;
+
+
+
+					if($request->constancia_afip_correcto == 'false')
+						$request->constancia_afip_correcto = false;
+					elseif($request->constancia_afip_correcto == 'true')
+						$request->constancia_afip_correcto = true;
+					else
+						$request->constancia_afip_correcto = null;
+
+					$formularioCatamarca->constancia_afip_correcto = $request->constancia_afip_correcto;
+					$formularioCatamarca->obs_constancia_afip = $request->obs_constancia_afip;
+
+
+					if($request->hoja_dni_correcto == 'false')
+						$request->hoja_dni_correcto = false;
+					elseif($request->hoja_dni_correcto == 'true')
+						$request->hoja_dni_correcto = true;
+					else
+						$request->hoja_dni_correcto = null;
+					
+					$formularioCatamarca->hoja_dni_correcto = $request->hoja_dni_correcto;
+					$formularioCatamarca->obs_hoja_dni = $request->obs_hoja_dni;
+
+
+					$formularioCatamarca->updated_by = Auth::user()->id;
+					$formularioCatamarca->id_formulario_alta = $request->id;
+					//var_dump($formularioCatamarca);die();
+					$formularioCatamarca->save();
+					
+					return response()->json([
+						'status' => 'ok',
+						'msg' => 'se actualizo el paso de catamarca correctamente',
+						'id_creado' => $formularioCatamarca->id
+					],201);
+					
 				}
 
 			}
@@ -10673,6 +10807,7 @@ class FormAltaProductorController extends Controller
 				//voy a crear un nuevo registro
 				if($request->es_evaluacion == false)
 				{
+					echo "aca";die();
 					//soy productor y voy a crear el registro
 					//con los valores que cargo como productor sin evaluacion
 					$formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
