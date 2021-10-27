@@ -17,11 +17,7 @@
             sm:truncate
             py-1
           "
-          :class="[
-            porcentajeInscripcion == 100
-              ? 'border-green-400'
-              : 'border-indigo-400',
-          ]"
+          
         >
           Dandose de Alta como nuevo Productor Minero en la Provincia de
           {{ $props.nombre_provincia }}, Id {{ form.id }}
@@ -339,6 +335,8 @@
             "
           >
           </PaginaUnoDatosProductores>
+
+          la calle es:{{form.leal_calle}}
           <div id="section_domicilio_legal"></div>
           <PaginaDosDatosDomLegal
             v-if="$props.mostrar.paso_dos"
@@ -463,9 +461,23 @@
             :evaluacion="evaluacion_global"
             :testing="testing_global"
             :id="form.id"
+
+            v-on:updateValorPadreNombreCalle="UpdateCalleNombre($event)"
+            v-on:updateValorPadreNumCalle="UpdateCalleNum($event)"
+            v-on:updateValorPadreTel="UpdateTel($event)"
+            v-on:updateValorPadreProv="UpdateProv($event)"
+            v-on:updateValorPadreDepto="UpdateDpto($event)"
+            v-on:updateValorPadreLocalidad="UpdateLocalidad($event)"
+            v-on:updateValorPadreCP="UpdateCP($event)"
+            v-on:updateValorPadreOtro="UpdateOtro($event)"
+            
+            
+            
+            
           >
           </PaginaDosDatosDomLegal>
           <div id="section_domicilio_administrativo"></div>
+          
           <PaginaDosDatosDomLegal
             v-if="$props.mostrar.paso_tres"
             :link_volver="route('formulario-alta.index')"
@@ -607,6 +619,16 @@
             :evaluacion="evaluacion_global"
             :testing="testing_global"
             :id="form.id"
+            v-on:updateValorPadreNombreCalle="UpdateCalleNombre($event)"
+            v-on:updateValorPadreNumCalle="UpdateCalleNum($event)"
+            v-on:updateValorPadreTel="UpdateTel($event)"
+            v-on:updateValorPadreProv="UpdateProv($event)"
+            v-on:updateValorPadreDepto="UpdateDpto($event)"
+            v-on:updateValorPadreLocalidad="UpdateLocalidad($event)"
+            v-on:updateValorPadreCP="UpdateCP($event)"
+            v-on:updateValorPadreOtro="UpdateOtro($event)"
+            
+            v-on:copiarDatosDomicilioLegal="mandarDomicilioAlHijo($event)"
           >
           </PaginaDosDatosDomLegal>
           <!-- <div class="flex items-center justify-center"></div> -->
@@ -2392,6 +2414,69 @@ export default {
     update_id_adicional_nuevo(valorEvaluacion) {
       this.form_particular.id = valorEvaluacion;
     },
+
+    mandarDomicilioAlHijo($value){
+      this.form.administracion_calle = this.form.leal_calle;
+      this.form.administracion_numero =this.form.leal_numero;
+      this.form.administracion_telefono = this.form.leal_telefono;
+      this.form.administracion_provincia = this.form.leal_provincia;
+      this.form.administracion_departamento = this.form.leal_departamento;
+      this.form.administracion_localidad = this.form.leal_localidad;
+      this.form.administracion_cp = this.form.leal_cp;
+      this.form.administracion_otro = this.form.leal_otro;
+      console.log("ya copie todo");
+
+      console.log(this.form.administracion_calle,this.form.administracion_numero,this.form.administracion_telefono,this.form.administracion_provincia,this.form.administracion_departamento,this.form.administracion_localidad,this.form.administracion_cp,this.form.administracion_otro);
+    },
+    UpdateCalleNombre($value){
+      if($value.lugar === 'legal')
+        this.form.leal_calle = $value.nombre;
+      else
+        this.form.administracion_calle = $value.nombre;
+    },
+    UpdateCalleNum($value){
+      if($value.lugar === 'legal')
+        this.form.leal_numero = $value.nombre;
+      else
+        this.form.administracion_numero = $value.nombre;
+    },
+    UpdateTel($value){
+      if($value.lugar === 'legal')
+        this.form.leal_telefono = $value.nombre;
+      else
+        this.form.administracion_telefono = $value.nombre;
+    },
+    UpdateProv($value){
+      if($value.lugar === 'legal')
+        this.form.leal_provincia = $value.nombre;
+      else
+        this.form.administracion_provincia = $value.nombre;
+    },
+    UpdateDpto($value){
+      if($value.lugar === 'legal')
+        this.form.leal_departamento = $value.nombre;
+      else
+        this.form.administracion_departamento = $value.nombre;
+    },
+    UpdateLocalidad($value){
+      if($value.lugar === 'legal')
+        this.form.leal_localidad = $value.nombre;
+      else
+        this.form.administracion_localidad = $value.nombre;
+    },
+    UpdateCP($value){
+      if($value.lugar === 'legal')
+        this.form.leal_cp = $value.nombre;
+      else
+        this.form.administracion_cp = $value.nombre;
+    },
+    UpdateOtro($value){
+      if($value.lugar === 'legal')
+        this.form.leal_otro = $value.nombre;
+      else
+        this.form.administracion_otro = $value.nombre;
+    },
+    
   },
 };
 </script>
