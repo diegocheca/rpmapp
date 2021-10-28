@@ -82,15 +82,18 @@ class ReinscripcionController extends Controller
     public function store(Request $request)
     {
         $reinscripcion = $request->all();
-        // dd($reinscripcion["productor"]["value"]);
+
+        // dd($reinscripcion);
         $saveData = [];
         $newProducts = [];
         foreach ($reinscripcion as $key => $data) {
-            if ($data == "on") {
-                $saveData[$key] = 1;
-                continue;
-            }
-            if ($key == "Productos") {
+
+            // if ($data == "on" || $data == true) {
+            //     $saveData[$key] = 1;
+            //     continue;
+            // }
+
+            if ($key == "Productos" && $reinscripcion['productionCheckbox'] != false) {
                 $saveData["cantidad_productos"] = count($data);
 
                 for ($i = 0; $i < count($data); $i++) {
@@ -114,17 +117,20 @@ class ReinscripcionController extends Controller
                 }
 
                 continue;
+            } else {
+                $saveData["cantidad_productos"] = 0;
             }
 
+
             if ($key == "id_mina" || $key == "id_productor") {
+
                 $saveData[$key] = $reinscripcion[$key]["value"];
                 continue;
             }
 
             $saveData[$key] = $data;
         }
-
-
+      //  dd($reinscripcion,$saveData);
         // VER ESOS CAMPOS!!!
 
         $saveData['fecha_vto'] = '2022-06-08';
@@ -133,9 +139,11 @@ class ReinscripcionController extends Controller
 
         $newReinscription = Reinscripciones::create($saveData);
 
-        for ($i = 0; $i < count($newProducts); $i++) {
-            $newProducts[$i]["id_reinscripcion"] = $newReinscription["id"];
-            Productos::create($newProducts[$i]);
+        if($reinscripcion['productionCheckbox']) {
+            for ($i = 0; $i < count($newProducts); $i++) {
+                // $newProducts[$i]["id_reinscripcion"] = $newReinscription["id"];
+                Productos::create($newProducts[$i]);
+            }
         }
 
         return Redirect::route('reinscripciones.index');
@@ -162,7 +170,7 @@ class ReinscripcionController extends Controller
     {
         $productors = ProductoresController::productoresUsuario();
         $reinscripcion = Reinscripciones::find($id);
-        // dd($reinscripcion->productos);
+        // dd($reinscripcion);
         $reinscripcion->productos = Reinscripciones::find($id)->productos;
         $provinces = CountriesController::getProvinces();
         $user = HomeController::userData();

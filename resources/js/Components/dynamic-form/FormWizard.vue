@@ -149,7 +149,7 @@ export default {
     ],
 
     data() {
-        const currentStep = 2;
+        const currentStep = 0;
         const formValues = {};
 
         return {

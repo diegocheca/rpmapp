@@ -18,7 +18,7 @@
         :saveUrl="saveUrl"
         :saveFileUrl="saveFileUrl"
         @valuesForm="submit($event)"
-        :dev="true"
+        :dev="false"
     />
 
     <!-- <dynamic-form
