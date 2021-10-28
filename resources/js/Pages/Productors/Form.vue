@@ -1131,6 +1131,24 @@
             :id="form.id"
           >
           </PaginaCatamarca>
+<p>Mostrando lla pagina de mendoza.:{{$props.mostrar.paso_mendoza }}</p>
+           <div
+            id="section_mendoza"
+            v-if="$props.mostrar.paso_mendoza"
+          ></div>
+          <PaginaMendoza
+            v-if="$props.mostrar.paso_mendoza"
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos Form Mendoza'"
+            :titulo_pagina="'Pagina De Mendoza'"
+            :evaluacion="evaluacion_global"
+            :testing="testing_global"
+            :id="form.id"
+          >
+          </PaginaMendoza>
+
+
           <div id="finalizar"></div>
           <div
             class="
@@ -1443,6 +1461,8 @@ import PaginaCuatroDatosMinaUno from "@/Pages/Productors/PaginaCuatroDatosMinaUn
 import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos";
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
+import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
+
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
 
@@ -1473,6 +1493,7 @@ export default {
     PaginaCincoDatosMinaDos,
     PaginaSeisDatosUbicacionMina,
     PaginaCatamarca,
+    PaginaMendoza,
     ValidationErrors,
     Pasos,
   },
@@ -1976,6 +1997,7 @@ export default {
         valor_de_aprobado: 100,
         valor_de_reprobado: 100,
       },
+      form_mendoza:{},
       nuevo: this.$props.productor,
       buttonsFixed: {
         links: [

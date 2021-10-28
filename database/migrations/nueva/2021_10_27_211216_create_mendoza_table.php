@@ -18,7 +18,7 @@ class CreateMendozaTable extends Migration
             $table->bigInteger('id_formulario_alta');
             $table->string('decreto3737', 100)->default(null)->nullable();
             $table->boolean('decreto3737_correcto')->default(null)->nullable();
-            $table->string('obs_gestor_nombre_apellido', 200)->default(null)->nullable();
+            $table->string('obs_decreto3737', 200)->default(null)->nullable();
             
             $table->string('situacion_mina', 100)->default(null)->nullable();
             $table->boolean('situacion_mina_correcto')->default(null)->nullable();
@@ -31,6 +31,11 @@ class CreateMendozaTable extends Migration
             $table->string('concesion_minera_reg_cant', 100)->default(null)->nullable();
             $table->string('concesion_minera_reg_men', 100)->default(null)->nullable();
             $table->string('concesion_minera_reg_d_y_c', 100)->default(null)->nullable();
+            $table->string('obs_datos_minas', 200)->default(null)->nullable();
+
+            $table->float('paso_mend_progreso', 3,2)->default(0)->nullable();
+            $table->float('paso_mend_aprobado', 3,2)->default(0)->nullable();
+            $table->float('paso_mend_reprobado', 3,2)->default(0)->nullable();
             
             $table->integer('created_by')->default(null)->nullable();
             $table->integer('updated_by')->default(null)->nullable();

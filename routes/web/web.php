@@ -9,6 +9,7 @@ use App\Models\User;
 //use Illuminate\Auth as Auth;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\FormAltaProductorCatamarcaController;
+use App\Http\Controllers\FormAltaProductorMendozaController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -200,6 +201,10 @@ Route::post('/formularios/evaluacion_auto_guardado_catamarcas', [FormAltaProduct
 
 Route::get('/formularios/traer_datos_pagina_catamarca/{id}', [FormAltaProductorCatamarcaController::class, "traer_datos_pagina_catamarca"])->name('traer-datos-pagina-catamarca');
 Route::get('/formularios/traer_permisos_pagina_catamarca/{id}/{accion}', [FormAltaProductorCatamarcaController::class, "traer_permisos_pagina_catamarca"])->name('traer-permisos-pagina-catamarca');
+
+Route::get('/formularios/traer_datos_pagina_mendoza/{id}', [FormAltaProductorMendozaController::class, "traer_datos_pagina_mendoza"])->name('traer-datos-pagina-mendoza');
+Route::get('/formularios/traer_permisos_pagina_mendoza/{id}/{accion}', [FormAltaProductorMendozaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-mendoza');
+
 
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
 Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');
