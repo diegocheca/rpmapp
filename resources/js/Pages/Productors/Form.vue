@@ -336,7 +336,6 @@
           >
           </PaginaUnoDatosProductores>
 
-          la calle es:{{form.leal_calle}}
           <div id="section_domicilio_legal"></div>
           <PaginaDosDatosDomLegal
             v-if="$props.mostrar.paso_dos"
@@ -1131,7 +1130,8 @@
             :id="form.id"
           >
           </PaginaCatamarca>
-<p>Mostrando lla pagina de mendoza.:{{$props.mostrar.paso_mendoza }}</p>
+
+          
            <div
             id="section_mendoza"
             v-if="$props.mostrar.paso_mendoza"
@@ -1147,7 +1147,6 @@
             :id="form.id"
           >
           </PaginaMendoza>
-
 
           <div id="finalizar"></div>
           <div
@@ -1462,9 +1461,9 @@ import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos"
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
-
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
+
 
 import provincias from "../../../../helpers/enums/provincias";
 
@@ -1493,7 +1492,7 @@ export default {
     PaginaCincoDatosMinaDos,
     PaginaSeisDatosUbicacionMina,
     PaginaCatamarca,
-    PaginaMendoza,
+        PaginaMendoza,
     ValidationErrors,
     Pasos,
   },
@@ -1997,7 +1996,6 @@ export default {
         valor_de_aprobado: 100,
         valor_de_reprobado: 100,
       },
-      form_mendoza:{},
       nuevo: this.$props.productor,
       buttonsFixed: {
         links: [
