@@ -11712,10 +11712,15 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				//7
 				'updated_at' => $borrador->updated_at,
 			];
-			  
-			$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite', $data);
-			return $pdf->stream('Comprobante_de_inscripcion.pdf');
+			
+			if($borrador->provincia == 70)
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite', $data);
+			elseif($borrador->provincia == 10) // catamarca
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_cata', $data);
+			elseif($borrador->provincia == 50) // mendoza
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_mendoza', $data);
 
+			return $pdf->stream('Comprobante_de_inscripcion.pdf');
 		}
 		else 
 			return "error";

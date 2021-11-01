@@ -242,8 +242,8 @@
                         v-bind:desactivar_input="permisos_disables.concesion_minera_asiento_n"
                         v-bind:mostrar_correccion="false"
                         v-bind:desactivar_correccion="true"
-                        v-on:changevalido="update_gestor_profesion_valido($event)"
-                        v-on:changevalor="update_valor_gestor_profesion($event)"
+                        v-on:changevalido="update_concesion_minera_asiento_n_valido($event)"
+                        v-on:changevalor="update_valor_concesion_minera_asiento_n($event)"
                     >
                     </NombreMina>
                 </div>
@@ -673,20 +673,15 @@ export default {
             this.form_mendoza.situacion_mina = newValue;
         },
 
+
+
+
+
         //FUNCIONES DE PROFESION DE GESTOR
-        update_gestor_profesion_valido(newValue) {
+        update_concesion_minera_asiento_n_valido(newValue) {
             this.form_mendoza.gestor_profesion_valido = newValue;
         },
-        update_gestor_profesion_correcto(newValue) {
-            this.form_mendoza.gestor_profesion_correcto = newValue;
-        },
-        update_obs_gestor_profesion(newValue) {
-            this.form_mendoza.obs_gestor_profesion = newValue;
-        },
-        update_obs_gestor_profesion_valida(newValue) {
-            this.form_mendoza.obs_gestor_profesion_valido = newValue;
-        },
-        update_valor_gestor_profesion(newValue) {
+        update_valor_concesion_minera_asiento_n(newValue) {
             this.form_mendoza.gestor_profesion = newValue;
         },
 
