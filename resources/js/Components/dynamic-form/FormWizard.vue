@@ -1,5 +1,6 @@
 <template>
-<div>
+<loading v-if="loading" />
+<div  v-else>
     <div class="block w-full text-center text-grey-darkest text-2xl p-10">
         {{ titleForm }}
     </div>
@@ -77,6 +78,7 @@ import AppLayout from "@/Layouts/AppLayout";
 import { createYupStepSchema } from '../../../../helpers/formularios/default/yupSchemaCreator';
 import DragAndDropFile from "./DragAndDropFile.vue";
 import DynamicInputs from "./DynamicInputs.vue";
+import Loading from '../Loading.vue'
 import { Form, Field, ErrorMessage, useForm  } from 'vee-validate';
 import inputsTypes from '../../../../helpers/enums/inputsTypes';
 import VueMultiselect from 'vue-multiselect'
@@ -92,7 +94,8 @@ export default {
         ErrorMessage,
         VueMultiselect,
         DragAndDropFile,
-        DynamicInputs
+        DynamicInputs,
+        Loading
     },
     props: {
         action: {
@@ -151,6 +154,7 @@ export default {
     data() {
         const currentStep = 0;
         const formValues = {};
+        const loading = true;
 
         return {
             progressUpload: 0,
@@ -163,7 +167,8 @@ export default {
             yepSchemas: [],
             currentStep,
             formValues,
-            disableSave: false
+            disableSave: false,
+            loading
         };
     },
     methods: {
@@ -263,6 +268,7 @@ export default {
 
         }
 
+        this.loading = false;
         //console.log(this.formSchema.map(e => e.bodyStep.map(e1 => e1.body.inputs)));
         // this.formSchema = subFormSchema.map(e => e.bodyStep);
 
