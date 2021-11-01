@@ -1130,8 +1130,9 @@
             :id="form.id"
           >
           </PaginaCatamarca>
+<p>Mostrando lla pagina de mendoza.:{{$props.mostrar.paso_mendoza }}</p>
 
-          
+
            <div
             id="section_mendoza"
             v-if="$props.mostrar.paso_mendoza"
