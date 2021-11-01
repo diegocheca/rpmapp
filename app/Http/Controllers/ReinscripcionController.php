@@ -29,15 +29,28 @@ class ReinscripcionController extends Controller
      */
     public function index()
     {
+
         $user = HomeController::userData();
-        $reinscripciones = DB::table('reinscripciones')
-        ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
-        ->join('mina_cantera', 'reinscripciones.id_mina', '=', 'mina_cantera.id')
-        ->where('productores.leal_provincia', $user->province->value)
-        ->select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
-        ->get();
-        // dd($reinscripciones);
-        // $reinscripciones = Reinscripciones::all();
+        if(Auth::user()->hasRole('Productor'))
+        {
+            $reinscripciones = DB::table('reinscripciones')
+            ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
+            ->join('mina_cantera', 'reinscripciones.id_mina', '=', 'mina_cantera.id')
+            ->where('usuario_creador', '=', Auth::user()->id)
+            ->select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
+            ->get();
+        }
+        elseif(Auth::user()->hasRole('Autoridad')) {
+            $reinscripciones = DB::table('reinscripciones')
+            ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
+            ->join('mina_cantera', 'reinscripciones.id_mina', '=', 'mina_cantera.id')
+            ->where('productores.leal_provincia', $user->province->value)
+            ->select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
+            ->get();
+        }
+        else //administrador
+            $reinscripciones = Reinscripciones::select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')->get();
+        //dd($user->province->value,Auth::user()->hasRole('Autoridad') );
         return Inertia::render('Reinscripciones/List', ['reinscripciones' => $reinscripciones]);
     }
 
@@ -179,6 +192,7 @@ class ReinscripcionController extends Controller
         for ($i=0; $i < count($productors['productores']); $i++) {
             array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
         }
+        //dd($productorsList);
 
         return Inertia::render('Reinscripciones/Form', [
             'action' => "update",
