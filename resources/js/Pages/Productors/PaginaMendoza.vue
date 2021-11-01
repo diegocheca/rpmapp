@@ -262,8 +262,8 @@
                         v-bind:desactivar_input="permisos_disables.concesion_minera_fojas"
                         v-bind:mostrar_correccion="false"
                         v-bind:desactivar_correccion="false"
-                        v-on:changevalido="update_gestor_telefono_valido($event)"
-                        v-on:changevalor="update_valor_gestor_telefono($event)"
+                        v-on:changevalido="update_concesion_minera_fojas_valido($event)"
+                        v-on:changevalor="update_valor_concesion_minera_fojas($event)"
                     >
                     </NombreMina>
                 </div>
@@ -273,7 +273,7 @@
                     <NombreMina
                         v-if="permisos_mostrar.concesion_minera_tomo_n"
                         v-bind:valor_input_props="form_mendoza.concesion_minera_tomo_n"
-                        v-bind:valor_input_validacion="false"
+                        v-bind:valor_input_validacion="form_mendoza.concesion_minera_tomo_n_validacion"
                         v-bind:evualacion_correcto="false"
                         v-bind:valor_obs="false"
                         v-bind:valor_valido_obs="false"
@@ -284,11 +284,8 @@
                         v-bind:desactivar_input="permisos_disables.concesion_minera_tomo_n"
                         v-bind:mostrar_correccion="false"
                         v-bind:desactivar_correccion="false"
-                        v-on:changevalido="update_gestor_email_valido($event)"
-                        v-on:changecorrecto="update_gestor_email_correcto($event)"
-                        v-on:changeobs="update_obs_gestor_email($event)"
-                        v-on:changeobsvalido="update_obs_gestor_email_valida($event)"
-                        v-on:changevalor="update_valor_gestor_email($event)"
+                        v-on:changevalido="update_concesion_minera_tomo_n_valido($event)"
+                        v-on:changevalor="update_valor_concesion_minera_tomo_n($event)"
                     >
                     </NombreMina>
                     <div v-show="ayuda_local">
@@ -336,10 +333,8 @@
                         v-bind:desactivar_input="permisos_disables.concesion_minera_reg_m_y_d"
                         v-bind:mostrar_correccion="false"
                         v-bind:desactivar_correccion="false"
-                        v-on:changeobsvalido="
-                            update_obs_gestor_email_valida($event)
-                        "
-                        v-on:changevalor="update_valor_gestor_email($event)"
+                        v-on:changeobsvalido="update_concesion_minera_reg_m_y_d_valida($event)"
+                        v-on:changevalor="update_valor_concesion_minera_reg_m_y_d($event)"
                     >
                     </NombreMina>
                     <div v-show="ayuda_local">
@@ -387,10 +382,8 @@
                         v-bind:desactivar_input="permisos_disables.concesion_minera_reg_cant"
                         v-bind:mostrar_correccion="false"
                         v-bind:desactivar_correccion="false"
-                        v-on:changeobsvalido="
-                            update_obs_gestor_email_valida($event)
-                        "
-                        v-on:changevalor="update_valor_gestor_email($event)"
+                        v-on:changeobsvalido="update_concesion_minera_reg_cant_valida($event)"
+                        v-on:changevalor="update_valor_concesion_minera_reg_cant($event)"
                     >
                     </NombreMina>
                     <div v-show="ayuda_local">
@@ -445,11 +438,8 @@
                         v-bind:desactivar_input="permisos_disables.concesion_minera_reg_men"
                         v-bind:mostrar_correccion="false"
                         v-bind:desactivar_correccion="false"
-                        v-on:changevalido="update_gestor_email_valido($event)"
-                        v-on:changecorrecto="update_gestor_email_correcto($event)"
-                        v-on:changeobs="update_obs_gestor_email($event)"
-                        v-on:changeobsvalido="update_obs_gestor_email_valida($event)"
-                        v-on:changevalor="update_valor_gestor_email($event)"
+                        v-on:changevalido="update_concesion_minera_reg_men_valido($event)"
+                        v-on:changevalor="update_valor_concesion_minera_reg_men($event)"
                     >
                     </NombreMina>
                     <div v-show="ayuda_local">
@@ -502,15 +492,15 @@
                         "
                         v-bind:desactivar_correccion="permisos_disables.concesion_minera_reg_d_y_c_correccion
                         "
-                        v-on:changevalido="update_gestor_email_valido($event)"
+                        v-on:changevalido="update_concesion_minera_reg_d_y_c_valido($event)"
                         v-on:changecorrecto="
-                            update_gestor_email_correcto($event)
+                            update_concesion_minera_reg_d_y_c_correcto($event)
                         "
-                        v-on:changeobs="update_obs_gestor_email($event)"
+                        v-on:changeobs="update_obs_concesion_minera_reg_d_y_c($event)"
                         v-on:changeobsvalido="
-                            update_obs_gestor_email_valida($event)
+                            update_obs_concesion_minera_reg_d_y_c_valida($event)
                         "
-                        v-on:changevalor="update_valor_gestor_email($event)"
+                        v-on:changevalor="update_valor_concesion_minera_reg_d_y_c($event)"
                     >
                     </NombreMina>
                     <div v-show="ayuda_local">
@@ -546,7 +536,7 @@
         </div>
 
         <div class="flex items-stretch w-full justify-items-stretch">
-            <BotonesPaginaCatamarca
+            <BotonesPaginaMendoza
                 v-bind:link_volver="titulo_boton_volver"
                 v-bind:titulo_boton_volver="titulo_boton_volver"
                 v-bind:titulo_boton_guardar="titulo_boton_guardar"
@@ -559,7 +549,7 @@
                 v-bind:testing="$props.testing"
                 v-bind:id="$props.id"
             >
-            </BotonesPaginaCatamarca>
+            </BotonesPaginaMendoza>
         </div>
     </div>
 </template>
@@ -571,7 +561,7 @@ import SelectProvincia from "@/Pages/Productors/SelectProvincia";
 import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 import NombreMina from "@/Pages/Productors/NombreMina";
 import TipoDeSistemaGeo from "@/Pages/Productors/TipoDeSistemaGeo";
-import BotonesPaginaCatamarca from "@/Pages/Productors/BotonesPaginaCatamarca";
+import BotonesPaginaMendoza from "@/Pages/Productors/BotonesPaginaMendoza";
 import SubirArchivo from "@/Pages/Productors/SubirArchivo";
 import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
 //import BotonesPaginaCatamarca from "@/Pages/Productors/BotonesPaginaCatamarca";
@@ -595,7 +585,7 @@ export default {
         SelectDepartamento,
         NombreMina,
         TipoDeSistemaGeo,
-        BotonesPaginaCatamarca,
+        BotonesPaginaMendoza,
         SubirArchivo,
         CaracterQueInvoca,
         //BotonesPaginaCatamarca,
@@ -620,7 +610,9 @@ export default {
             this.mostrar_modal_datos_ya_guardados = false;
         },
 
-        //FUNCIONES DE NOMBRE DE GESTOR
+
+
+        //FUNCIONES DE decreto3737
         update_decreto3737_valido(newValue) {
             this.form_mendoza.decreto3737_valido = newValue;
         },
@@ -656,7 +648,7 @@ export default {
 
 
 
-        //FUNCIONES DE DNI DE GESTOR
+        //FUNCIONES DE situacion_min
         update_situacion_mina_valido(newValue) {
             this.form_mendoza.situacion_mina_valido = newValue;
         },
@@ -677,160 +669,153 @@ export default {
 
 
 
-        //FUNCIONES DE PROFESION DE GESTOR
+
+
+
+
+
+
+
+
+
+
+
+
+        //FUNCIONES DE concesion_minera_asiento_n
         update_concesion_minera_asiento_n_valido(newValue) {
-            this.form_mendoza.gestor_profesion_valido = newValue;
+            this.form_mendoza.concesion_minera_asiento_n_valido = newValue;
         },
         update_valor_concesion_minera_asiento_n(newValue) {
-            this.form_mendoza.gestor_profesion = newValue;
+            this.form_mendoza.concesion_minera_asiento_n = newValue;
         },
 
-        //FUNCIONES DE Telefono DE GESTOR
-        update_gestor_telefono_valido(newValue) {
-            this.form_mendoza.gestor_telefono_valido = newValue;
+
+
+
+
+
+        //FUNCIONES DE concesion_minera_fojas
+        update_concesion_minera_fojas_valido(newValue) {
+            this.form_mendoza.concesion_minera_fojas_valido = newValue;
         },
-        update_gestor_telefono_correcto(newValue) {
-            this.form_mendoza.gestor_telefono_correcto = newValue;
+        update_valor_concesion_minera_fojas(newValue) {
+            this.form_mendoza.concesion_minera_fojas = newValue;
         },
-        update_obs_gestor_telefono(newValue) {
-            this.form_mendoza.obs_gestor_telefono = newValue;
-        },
-        update_obs_gestor_telefono_valida(newValue) {
-            this.form_mendoza.obs_gestor_telefono_valido = newValue;
-        },
-        update_valor_gestor_telefono(newValue) {
-            this.form_mendoza.gestor_telefono = newValue;
-        },
+
+
+
+
+
+
+
+
+
+
 
         //FUNCIONES DE N OTIFICACION DE GESTOR
-        update_gestor_noti_valido(newValue) {
-            this.form_mendoza.gestor_notificacion_valido = newValue;
+        update_concesion_minera_tomo_n_valido(newValue) {
+            this.form_mendoza.concesion_minera_tomo_n_validacion = newValue;
         },
-        update_gestor_noti_correcto(newValue) {
-            this.form_mendoza.gestor_notificacion_correcto = newValue;
+        update_valor_concesion_minera_tomo_n(newValue) {
+            this.form_mendoza.concesion_minera_tomo_n = newValue;
         },
-        update_obs_gestor_noti(newValue) {
-            this.form_mendoza.obs_gestor_notificacion = newValue;
-        },
-        update_obs_gestor_noti_valida(newValue) {
-            this.form_mendoza.obs_gestor_notificacion_valido = newValue;
-        },
-        update_valor_gestor_noti(newValue) {
-            this.form_mendoza.gestor_notificacion = newValue;
-        },
+
+
+
+        
+
 
         //FUNCIONES DE PROFESION DE GESTOR
-        update_gestor_email_valido(newValue) {
-            this.form_mendoza.gestor_email_valido = newValue;
+        update_concesion_minera_reg_m_y_d_valida(newValue) {
+            this.form_mendoza.concesion_minera_reg_m_y_d_valido = newValue;
         },
-        update_gestor_email_correcto(newValue) {
-            this.form_mendoza.gestor_email_correcto = newValue;
-        },
-        update_obs_gestor_email(newValue) {
-            this.form_mendoza.obs_gestor_email = newValue;
-        },
-        update_obs_gestor_email_valida(newValue) {
-            this.form_mendoza.obs_gestor_email_valido = newValue;
-        },
-        update_valor_gestor_email(newValue) {
-            this.form_mendoza.gestor_email = newValue;
+        update_valor_concesion_minera_reg_m_y_d(newValue) {
+            this.form_mendoza.concesion_minera_reg_m_y_d = newValue;
         },
 
-        update_gestor_autorizacion_valido(newValue) {
-            this.form_mendoza.autorizacion_gestor_valido = newValue;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        update_concesion_minera_reg_cant_valida(newValue) {
+            this.form_mendoza.concesion_minera_reg_cant_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_gestor_autorizacion_correcto(newValue) {
-            this.form_mendoza.autorizacion_gestor_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_gestor_autorizacion(newValue) {
-            this.form_mendoza.obs_autorizacion_gestor = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_gestor_autorizacion_valido(newValue) {
-            console.log("traje un" + newValue);
-            this.form_mendoza.obs_autorizacion_gestor_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        cambio_el_archivo_gestor_autorizacion(newValue) {
-            console.log("traje un" + newValue);
-            this.form_mendoza.autorizacion_gestor = newValue;
+        update_valor_concesion_minera_reg_cant(newValue) {
+            this.form_mendoza.concesion_minera_reg_cant = newValue;
             //tengo que enviarsela al padre
         },
 
-        update_constancia_afip_valido(newValue) {
-            this.form_mendoza.constancia_afip_valido = newValue;
+
+
+
+
+
+
+
+        
+
+
+
+        update_concesion_minera_reg_men_valido(newValue) {
+            this.form_mendoza.concesion_minera_reg_men_valido = newValue;
             //tengo que enviarsela al padre
         },
-        update_constancia_afip_correcto(newValue) {
-            this.form_mendoza.constancia_afip_correcto = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_constancia_afip(newValue) {
-            this.form_mendoza.obs_constancia_afip = newValue;
-            //tengo que enviarsela al padre
-        },
-        update_obs_constancia_afip_valido(newValue) {
-            console.log("traje un" + newValue);
-            this.form_mendoza.obs_constancia_afip_valido = newValue;
-            //tengo que enviarsela al padre
-        },
-        cambio_el_archivo_constancia_afip(newValue) {
-            console.log("traje un" + newValue);
-            this.form_mendoza.constancia_afip = newValue;
+        update_valor_concesion_minera_reg_men(newValue) {
+            this.form_mendoza.concesion_minera_reg_men = newValue;
             //tengo que enviarsela al padre
         },
 
-        update_foto_valido(newValue) {
-            this.form_mendoza.foto_4x4_valido = newValue;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //FUNCIONES DE update_valor_concesion_minera_reg_d_y_c
+        update_concesion_minera_reg_d_y_c_valido(newValue) {
+            this.form_mendoza.concesion_minera_reg_d_y_c_valido = newValue;
         },
-        update_foto_correcto(newValue) {
-            this.form_mendoza.foto_4x4_correcto = newValue;
+        update_concesion_minera_reg_d_y_c_correcto(newValue) {
+            this.form_mendoza.concesion_minera_reg_d_y_c_correcto = newValue;
         },
-        update_obs_foto(newValue) {
-            this.form_mendoza.obs_foto_4x4 = newValue;
+        update_obs_concesion_minera_reg_d_y_c(newValue) {
+            this.form_mendoza.obs_concesion_minera_reg_d_y_c = newValue;
         },
-        update_obs_foto_valido(newValue) {
-            this.form_mendoza.obs_foto_4x4_valido = newValue;
+        update_obs_concesion_minera_reg_d_y_c_valida(newValue) {
+            this.form_mendoza.obs_concesion_minera_reg_d_y_c_valido = newValue;
         },
-        cambio_el_archivo_foto(newValue) {
-            this.form_mendoza.foto_4x4 = newValue;
+        update_valor_concesion_minera_reg_d_y_c(newValue) {
+            this.form_mendoza.concesion_minera_reg_d_y_c = newValue;
         },
 
-        //FUNCIONES PARA DORSO DE DNI
-        update_foto_dni_1_valido(newValue) {
-            this.form_mendoza.hoja_dni_valido = newValue;
-        },
-        update_foto_dni_1_correcto(newValue) {
-            this.form_mendoza.hoja_dni_correcto = newValue;
-        },
-        update_obs_foto_dni_1(newValue) {
-            this.form_mendoza.obs_hoja_dni = newValue;
-        },
-        update_obs_foto_dni_1_valido(newValue) {
-            this.form_mendoza.obs_hoja_dni_valido = newValue;
-        },
-        cambio_el_archivo_foto_dni_1(newValue) {
-            this.form_mendoza.primer_hoja_dni = newValue;
-        },
 
-        //FUNCIONES PARA REVERSO DE DNI
-        update_foto_dni_2_valido(newValue) {
-            this.form_mendoza.segunda_hoja_dni_valido = newValue;
-        },
-        update_foto_dni_2_correcto(newValue) {
-            this.form_mendoza.segunda_hoja_dni_correcto = newValue;
-        },
-        update_obs_foto_dni_2(newValue) {
-            this.form_mendoza.obs_segunda_hoja_dni = newValue;
-        },
-        update_obs_foto_dni_2_valido(newValue) {
-            this.form_mendoza.obs_segunda_hoja_dni_valido = newValue;
-        },
-        cambio_el_archivo_foto_dni_2(newValue) {
-            this.form_mendoza.segunda_hoja_dni = newValue;
-        },
+
+
+
+
 
         //mostrar ayuda
         update_valor_ayuda_local(newValor) {
@@ -862,13 +847,27 @@ export default {
                     self.form_mendoza.obs_situacion_mina_valido = "";
 
                     self.form_mendoza.concesion_minera_asiento_n = "";
+                    self.form_mendoza.concesion_minera_asiento_n_valido = "";
+                    
                     self.form_mendoza.concesion_minera_fojas = "";
+                    self.form_mendoza.concesion_minera_fojas_valido = "";
+                    
                     self.form_mendoza.concesion_minera_tomo_n = "";
+                    self.form_mendoza.concesion_minera_tomo_n_valido = "";
                     self.form_mendoza.concesion_minera_reg_m_y_d = "";
+                    self.form_mendoza.concesion_minera_reg_m_y_d_valido = "";
                     self.form_mendoza.concesion_minera_reg_cant = "";
+                    self.form_mendoza.concesion_minera_reg_cant_valido = "";
                     self.form_mendoza.concesion_minera_reg_men = "";
+                    self.form_mendoza.concesion_minera_reg_men_valido = "";
+
+
+
                     self.form_mendoza.concesion_minera_reg_d_y_c = "";
+                    self.form_mendoza.concesion_minera_reg_d_y_c_valido = "";
                     self.form_mendoza.obs_concesion_minera_reg_d_y_c = "";
+                    self.form_mendoza.obs_concesion_minera_reg_d_y_c_valido = "";
+
 
                     self.form_mendoza.paso_mend_progreso = "";
                     self.form_mendoza.paso_mend_aprobado = "";
