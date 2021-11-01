@@ -11404,7 +11404,9 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				$productor->leal_calle = $formulario_provisorio->leal_calle;
 				$productor->leal_numero = $formulario_provisorio->leal_numero;
 				$productor->leal_telefono = $formulario_provisorio->leal_telefono;
-				$productor->leal_pais = $formulario_provisorio->leal_pais;
+				// $productor->leal_pais = $formulario_provisorio->leal_pais;
+				$productor->leal_pais = "Argentina";
+
 				$productor->leal_provincia = $formulario_provisorio->leal_provincia;
 				$productor->leal_departamento = $formulario_provisorio->leal_departamento;
 				$productor->leal_localidad = $formulario_provisorio->leal_localidad;

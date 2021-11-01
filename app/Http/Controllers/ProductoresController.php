@@ -53,7 +53,7 @@ class ProductoresController extends Controller
 
     public static function getProductorMina($id){
 		//dd($id);
-		$productorMina =		$productorMina = DB::table('productor_mina')
+		$productorMina = DB::table('productor_mina')
         ->join('mina_cantera', 'productor_mina.id_mina', '=', 'mina_cantera.id')
         ->where('productor_mina.id_productor', $id)
         ->select('mina_cantera.id as value', 'mina_cantera.nombre as label')
