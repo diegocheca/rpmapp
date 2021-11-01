@@ -445,7 +445,6 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                         .array()
                                         .of(
                                             yup.object().shape({
-                                                productionCheckbox: yup.boolean().required(),
                                                 variedad: yup.string().nullable().required('Debes completar este campo'),
                                                 nombre_mineral: yup.object().when('mineral', {
                                                     is: value => _.isEmpty(value),
@@ -457,6 +456,9 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                                         then: yup.object().nullable().required('Debes elegir un elemento')
                                                 }),
                                                 precio_venta: yup.string().nullable().required('Debes completar este campo'),
+                                                // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                                // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                                // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
                                                 row_evaluacion: action == 'evaluate'? yup.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').nullable().required('Debes seleccionar una opción') : {},
                                                 row_comentario: action == 'evaluate'? yup.string().when('observacion_row', { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación') }).nullable() : {}
                                             })
