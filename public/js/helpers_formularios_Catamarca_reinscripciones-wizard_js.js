@@ -118,496 +118,675 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getFormSchema": () => (/* binding */ getFormSchema)
 /* harmony export */ });
-/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
-/* harmony import */ var _observaciones__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./observaciones */ "./helpers/formularios/Catamarca/observaciones.js");
-/* harmony import */ var _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../enums/inputsTypes */ "./helpers/enums/inputsTypes.js");
-/* harmony import */ var _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../enums/fileAccept */ "./helpers/enums/fileAccept.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
+/* harmony import */ var _observaciones__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./observaciones */ "./helpers/formularios/Catamarca/observaciones.js");
+/* harmony import */ var _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../enums/inputsTypes */ "./helpers/enums/inputsTypes.js");
+/* harmony import */ var _enums_fileAccept__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../enums/fileAccept */ "./helpers/enums/fileAccept.js");
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
 
 
-function getFormSchema(_ref, evaluate, dataForm) {
-  var schema = _extends({}, _ref);
 
-  // name => unique
-  // icons => https://heroicons.com/ => svg d=""
-  return [{
-    icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
-    bgColorIcon: 'bg-blue-500',
-    bgColorProgress: 'bg-blue-300',
-    titleStep: 'Datos',
-    bodyStep: [// row 1
-    {
-      widthResponsive: 'lg:flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Info',
-        width: 'lg:w-full',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: 'lg:grid-cols-2',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'Email',
-          value: schema.email,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].EMAIL,
-          name: 'email',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').email('El formato ingresado no es válido'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'email',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Contraseña',
-          value: schema.password,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].PASSWORD,
-          name: 'password',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').min(8, 'Debes ingresar al menos 8 caracteres'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'password',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Confirmar contraseña',
-          value: schema.repeatPassword,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].PASSWORD,
-          name: 'repeatPassword',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').oneOf([yup__WEBPACK_IMPORTED_MODULE_0__.ref("password")], "Las contraseñas deben ser iguales"),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'repeatPassword',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Nombre o razón social',
-          value: schema.nombre_razon_social,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
-          name: 'nombre_razon_social',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'nombre_razon_social',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Domicilio',
-          value: schema.domicilio,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
-          name: 'domicilio',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'domicilio',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Nombre de la mina, cantera, explotación y/o establecimiento',
-          value: schema.nombre_mina,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
-          name: 'nombre_mina',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'nombre_mina',
-            evaluate: evaluate
-          }).observations
-        }, // {
-        // },
-        {
-          // inputColsSpan: 'lg:col-span-2',
-          label: 'Certificado de inscripción en AFIP (CUIT)',
-          value: schema.cuit,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].FILE,
-          name: 'cuit',
-          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.value],
-          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.label].join()),
-          maxSize: 'Tamaño maximo por archivo: 10MB',
-          multiple: false,
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
-            name: 'CUIT_SIZE',
-            exclusive: true,
-            message: 'Recuerda que cada archivo no debe superar los 10MB',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
+function getFormSchema(_x, _x2, _x3, _x4) {
+  return _getFormSchema.apply(this, arguments);
+}
 
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && element.size <= 10000000; // 10MB
-              }
+function _getFormSchema() {
+  _getFormSchema = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(_ref, action, dataForm, productors) {
+    var schema, productor, minas, minerales;
+    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            schema = _extends({}, _ref);
+            productor = !schema.id_productor ? productors : productors.find(function (e) {
+              return schema.id_productor === e.value;
+            });
 
-              return validation; // !value || (value && value.size <= 10)
+            if (schema.id_productor) {
+              _context.next = 6;
+              break;
             }
-          }).test({
-            name: 'CUIT_FILE_FORMAT',
-            exclusive: true,
-            message: 'Hay archivos con extensiones no válidas',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
 
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.value).includes(element.type);
-              }
+            _context.t0 = undefined;
+            _context.next = 9;
+            break;
 
-              return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-            }
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'cuit',
-            evaluate: evaluate
-          }).observations
-        }, {
-          // inputColsSpan: 'lg:col-span-2',
-          label: 'Copia escritura del inmueble',
-          helpInfo: 'Si la posesión es veinteñal se debe acompañar con el certificado correspondiente',
-          value: schema.escritura,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].FILE,
-          name: 'escritura',
-          accept: [_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.value, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].IMAGE.value],
-          acceptLabel: "Archivos admitidos: ".concat([_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.label, _enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].IMAGE.label].join()),
-          maxSize: 'Tamaño maximo por archivo: 10MB',
-          multiple: true,
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().min(1, 'Debes adjuntar al menos un elemento')["default"]([]).max(1, 'Solo puedes adjuntar hasta 1 archivo').test({
-            name: 'ESCRITURA_FILE_SIZE',
-            exclusive: true,
-            message: 'Recuerda que cada archivo no debe superar los 10MB',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
+          case 6:
+            _context.next = 8;
+            return axios.get("/productores/getProductorMina/".concat(productor.value));
 
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && element.size <= 10000000; // 10MB
-              }
+          case 8:
+            _context.t0 = _context.sent;
 
-              return validation; // !value || (value && value.size <= 10)
-            }
-          }).test({
-            name: 'ESCRITURA_FILE_FORMAT',
-            exclusive: true,
-            message: 'Hay archivos con extensiones no válidas',
-            test: function test(value) {
-              if (!value) return true;
-              var validation = true;
+          case 9:
+            minas = _context.t0;
+            _context.next = 12;
+            return axios.get("/minerales/getMinerals");
 
-              for (var index = 0; index < value.length; index++) {
-                var element = value[index];
-                validation = validation && [].concat(_toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].PDF.value), _toConsumableArray(_enums_fileAccept__WEBPACK_IMPORTED_MODULE_3__["default"].IMAGE.value)).includes(element.type);
-              }
-
-              return validation; // return !value || (value && [fileAccept.PDF.value].includes(value.type))
-            }
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'escritura',
-            evaluate: evaluate
-          }).observations
-        }]
-      }]
-    }]
-  }, {
-    icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
-    bgColorIcon: 'bg-blue-500',
-    bgColorProgress: 'bg-blue-300',
-    titleStep: 'Datos',
-    bodyStep: [{
-      widthResponsive: 'flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Sustancias minerales que insuatralizan',
-        width: '',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: '',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'List',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].LIST,
-          name: 'List',
-          // columns: 'grid-cols-1',
-          // colSpans + 1
-          // columnsResponsive: 'lg:w-2/5',
-          childrens: [// default value,
-          [{
-            name: 'sustanceSelect',
-            value: null
-          }, {
-            name: 'mineralSelect',
-            value: null
-          }, {
-            name: 'dni',
-            value: null
-          }]],
-          elements: [[{
-            label: 'Sustancia',
-            value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
-            colSpan: 'lg:w-2/5',
-            options: [{
-              label: 'Sustancias de aprovechamiento común',
-              value: 'aprovechamiento_comun'
-            }, {
-              label: 'Sustancias que se conceden preferentemente al dueño del suelo',
-              value: 'conceden_preferentemente'
-            }],
-            name: 'sustanceSelect',
-            multiple: false,
-            closeOnSelect: true,
-            searchable: false,
-            inputDepends: ['mineralSelect'],
-            optionsDepends: {
-              aprovechamiento_comun: [{
-                label: 'Arenas Metalíferas',
-                value: 'Arenas Metalíferas'
-              }, {
-                label: 'Piedras Preciosas',
-                value: 'Piedras Preciosas'
-              }, {
-                label: 'Desmontes',
-                value: 'Desmontes'
-              }, {
-                label: 'Relaves',
-                value: 'Relaves'
-              }, {
-                label: 'Escoriales',
-                value: 'Escoriales'
-              }],
-              conceden_preferentemente: [{
-                label: 'Salitres',
-                value: 'Salitres'
-              }, {
-                label: 'Salinas',
-                value: 'Salinas'
-              }, {
-                label: 'Turberas',
-                value: 'Turberas'
-              }, {
-                label: 'Metales no comprendidos en 1° Categ.',
-                value: 'Metales no comprendidos en 1° Categ.'
-              }, {
-                label: 'Abrasivos',
-                value: 'Abrasivos'
-              }, {
-                label: 'Ocres',
-                value: 'Ocres'
-              }, {
-                label: 'Resinas',
-                value: 'Resinas'
-              }, {
-                label: 'Esteatitas',
-                value: 'Esteatitas'
-              }, {
-                label: 'Baritina',
-                value: 'Baritina'
-              }, {
-                label: 'Caparrosas',
-                value: 'Caparrosas'
-              }, {
-                label: 'Grafito',
-                value: 'Grafito'
-              }, {
-                label: 'Caolí­n',
-                value: 'Caolí­n'
-              }, {
-                label: 'Sales Alcalinas o Alcalino Terrosas',
-                value: 'Sales Alcalinas o Alcalino Terrosas'
-              }, {
-                label: 'Amianto',
-                value: 'Amianto'
-              }, {
-                label: 'Bentonita',
-                value: 'Bentonita'
-              }, {
-                label: 'Zeolitas o Minerales Permutantes o Permutíticos',
-                value: 'Zeolitas o Minerales Permutantes o Permutíticos'
+          case 12:
+            minerales = _context.sent;
+            return _context.abrupt("return", [{
+              icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+              bgColorIcon: 'bg-blue-500',
+              bgColorProgress: 'bg-blue-300',
+              titleStep: 'Datos',
+              bodyStep: [// row 1
+              {
+                widthResponsive: 'lg:flex-row',
+                //flex
+                // columns
+                body: [//  col 1
+                {
+                  title: 'Datos de quien completa este formulario',
+                  width: 'lg:w-2/4',
+                  //flex
+                  columns: 'grid-cols-1',
+                  //grid
+                  columnsResponsive: 'lg:grid-cols-1',
+                  //inside card
+                  // infoCard: ''
+                  // img: '/images/laborales.png',
+                  inputs: [{
+                    label: 'Nombre y apellido',
+                    value: schema.nombre,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].TEXT,
+                    name: 'nombre',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes completar este campo').nullable(),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'nombre',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'DNI',
+                    value: schema.dni,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'dni',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes completar este campo'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'dni',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Cargo en la empresa',
+                    value: schema.cargo,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].TEXT,
+                    name: 'cargo',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes completar este campo'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'cargo',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Productor',
+                    value: schema.id_productor ? productor : undefined,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].SELECT,
+                    // get axios
+                    async: true,
+                    asyncUrl: '/productores/getProductorMina',
+                    inputDepends: ['id_mina'],
+                    inputClearDepends: ['id_mina'],
+                    isLoading: false,
+                    //
+                    options: productors,
+                    name: 'id_productor',
+                    multiple: false,
+                    closeOnSelect: true,
+                    searchable: false,
+                    placeholder: 'Selecciona una opción',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.object().when('productorSelect', {
+                      is: function is(value) {
+                        return _.isEmpty(value) || !value;
+                      },
+                      then: yup__WEBPACK_IMPORTED_MODULE_1__.object().required('Debes elegir un elemento').nullable()
+                    }),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'id_productor',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Mina',
+                    value: !minas ? undefined : minas.data.find(function (e) {
+                      return schema.id_mina === e.value;
+                    }),
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].SELECT,
+                    // get axios
+                    // async: true,
+                    // asyncUrl: '/paises/localidades',
+                    // inputDepends: [''],
+                    // inputClearDepends: [''],
+                    isLoading: false,
+                    //
+                    options: !minas ? [] : minas.data,
+                    name: 'id_mina',
+                    multiple: false,
+                    closeOnSelect: true,
+                    searchable: false,
+                    placeholder: 'Selecciona una opción',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.object().when('minaSelect', {
+                      is: function is(value) {
+                        return _.isEmpty(value) || !value;
+                      },
+                      then: yup__WEBPACK_IMPORTED_MODULE_1__.object().required('Debes elegir un elemento').nullable()
+                    }),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'id_mina',
+                      action: action
+                    }).observations
+                  }]
+                }]
               }]
-            },
-            // validations: yup.object().when('sustanceSelect', {
-            //     is: value => _.isEmpty(value),
-            //     then: yup.object().required('Debes elegir un elemento')
-            // }),
-            placeholder: 'Selecciona una opción'
-          }, {
-            label: 'Mineral Explotado',
-            value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
-            colSpan: 'lg:w-2/5',
-            options: [],
-            name: 'mineralSelect',
-            inputDepends: [],
-            multiple: false,
-            closeOnSelect: true,
-            searchable: false,
-            // validations: yup.object().when('mineralSelect', {
-            //     is: value => _.isEmpty(value),
-            //     then: yup.object().required('Debes elegir un elemento')
-            // }),
-            placeholder: 'Selecciona una opción'
-          }, {
-            label: 'DNI',
-            value: schema.dni,
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
-            colSpan: 'lg:w-1/5',
-            name: 'dni2' // validations: yup.string().required('Debes ingresar un dni'),
+            }, {
+              icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+              bgColorIcon: 'bg-blue-500',
+              bgColorProgress: 'bg-blue-300',
+              titleStep: 'Mercado',
+              bodyStep: [{
+                widthResponsive: 'lg:flex-row',
+                //flex
+                // columns
+                body: [//  col 1
+                {
+                  title: 'Mercado (indicar en que mercados vende su producción)',
+                  width: 'lg:w-2/4',
+                  //flex
+                  columns: 'grid-cols-1',
+                  //grid
+                  columnsResponsive: '',
+                  //inside card
+                  // infoCard: ''
+                  // img: '/images/laborales.png',
+                  inputs: [{
+                    label: 'Porcentaje vendido a Provincia',
+                    value: schema.porcentaje_venta_provincia,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'porcentaje_venta_provincia',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes completar este campo'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'porcentaje_venta_provincia',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Porcentaje vendido a otras Provincias',
+                    value: schema.porcentaje_venta_otras_provincias,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'porcentaje_venta_otras_provincias',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes completar este campo'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'porcentaje_venta_otras_provincias',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Porcentaje Exportado',
+                    value: schema.porcentaje_exportado,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'porcentaje_exportado',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes completar este campo'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'porcentaje_exportado',
+                      action: action
+                    }).observations
+                  }]
+                }, {
+                  title: 'Mercado (indicar en que mercados vende su producción)',
+                  width: 'lg:w-2/4',
+                  //flex
+                  columns: 'grid-cols-1',
+                  //grid
+                  columnsResponsive: '',
+                  //inside card
+                  // infoCard: ''
+                  // img: '/images/laborales.png',
+                  inputs: [{
+                    label: 'Prospección',
+                    value: schema.prospeccion ? true : false,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].CHECKBOX,
+                    labelOn: "SI",
+                    labelOff: "NO",
+                    name: 'prospeccion',
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'prospeccion',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Explotación',
+                    value: schema.explotacion ? true : false,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].CHECKBOX,
+                    labelOn: "SI",
+                    labelOff: "NO",
+                    name: 'explotacion',
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'explotacion',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Desarrollo',
+                    value: schema.desarrollo ? true : false,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].CHECKBOX,
+                    labelOn: "SI",
+                    labelOff: "NO",
+                    name: 'desarrollo',
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'desarrollo',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Exploración',
+                    value: schema.explotacion ? true : false,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].CHECKBOX,
+                    labelOn: "SI",
+                    labelOff: "NO",
+                    name: 'exploracion',
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'exploracion',
+                      action: action
+                    }).observations
+                  }]
+                }]
+              }]
+            }, {
+              icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
+              bgColorIcon: 'bg-blue-500',
+              bgColorProgress: 'bg-blue-300',
+              titleStep: 'Personal',
+              bodyStep: [{
+                widthResponsive: 'lg:flex-row',
+                //flex
+                // columns
+                body: [//  col 1
+                {
+                  title: 'Personal ocupado',
+                  width: 'lg:w-2/4',
+                  columns: 'grid-cols-1',
+                  columnsResponsive: 'lg:grid-cols-2',
+                  // lg:grid-cols-3
+                  img: '/images/laborales.png',
+                  inputs: [{
+                    label: 'Profesional Técnico Permanente',
+                    value: schema.personal_perm_profesional,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'personal_perm_profesional',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes ingresar una cantidad.'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'personal_perm_profesional',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Operarios y Obreros Permanente',
+                    value: schema.personal_perm_operarios,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'personal_perm_operarios',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes ingresar una cantidad.'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'personal_perm_operarios',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Administrativo Permanente',
+                    value: schema.personal_perm_administrativos,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'personal_perm_administrativos',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes ingresar una cantidad.'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'personal_perm_administrativos',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Otros Permanente',
+                    value: schema.personal_perm_otros,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'personal_perm_otros',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes ingresar una cantidad.'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'personal_perm_otros',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Profesional Transitorio',
+                    value: schema.personal_trans_profesional,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'personal_trans_profesional',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes ingresar una cantidad.'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'personal_trans_profesional',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Operarios y Obreros Transitorio',
+                    value: schema.personal_trans_operarios,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'personal_trans_operarios',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes ingresar una cantidad.'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'personal_trans_operarios',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Administrativo Transitorio',
+                    value: schema.personal_trans_administrativos,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'personal_trans_administrativos',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes ingresar una cantidad.'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'personal_trans_administrativos',
+                      action: action
+                    }).observations
+                  }, {
+                    label: 'Otros Transitorio',
+                    value: schema.personal_trans_otros,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                    name: 'personal_trans_otros',
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().required('Debes ingresar una cantidad.'),
+                    observation: new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'personal_trans_otros',
+                      action: action
+                    }).observations
+                  }]
+                }]
+              }]
+            }, {
+              icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
+              bgColorIcon: 'bg-blue-500',
+              bgColorProgress: 'bg-blue-300',
+              titleStep: 'Producción',
+              bodyStep: [{
+                widthResponsive: 'lg:flex-row',
+                //flex
+                // columns
+                body: [//  col 1
+                {
+                  title: 'Datos y destino de la producción',
+                  width: 'w-3/4',
+                  //flex
+                  // columns: '', //grid
+                  // columnsResponsive: '', //inside card
+                  img: '/images/laborales.png',
+                  inputs: [{
+                    label: 'Si no se produjo ningún mineral, debe seleccionar "NO"',
+                    // value: schema.prospeccion? true : false,
+                    value: !schema.cantidad_productos ? false : true,
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].CHECKBOX,
+                    labelOn: "SI",
+                    labelOff: "NO",
+                    name: 'productionCheckbox',
+                    hiddenComponent: [{
+                      component: "Productos",
+                      value: false
+                    }] // observation: new Observations({schema, name: 'prospeccion', action}).observations
+                    // validations: yup.boolean().required(),
 
-          }, {
-            colSpan: 'lg:w-5/5',
-            observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-              schema: schema,
-              name: 'row-',
-              evaluate: evaluate
-            }).observations
-          }]],
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.array().of(yup__WEBPACK_IMPORTED_MODULE_0__.object().shape({
-            sustanceSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('sustance', {
-              is: function is(value) {
-                return _.isEmpty(value);
-              },
-              then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-            }),
-            mineralSelect: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('mineral', {
-              is: function is(value) {
-                return _.isEmpty(value);
-              },
-              then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-            }),
-            dni2: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar un dni')
-          })).strict()
-        }]
-      }]
-    }]
+                  }, {
+                    label: '',
+                    type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].LIST,
+                    name: 'Productos',
+                    columns: 'grid-cols-1',
+                    hidden: !schema.cantidad_productos ? true : false,
+                    // colSpans + 1
+                    columnsResponsive: 'lg:grid-cols-3',
+                    childrens: getChildrens(schema.productos),
+                    elements: [[{
+                      label: 'Producto Extraído',
+                      value: {},
+                      type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].SELECT,
+                      colSpan: '',
+                      options: minerales.data,
+                      name: 'nombre_mineral',
+                      multiple: false,
+                      closeOnSelect: true,
+                      searchable: true,
+                      placeholder: 'Selecciona una opción' // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
+
+                    }, {
+                      label: 'Variedad de',
+                      value: '',
+                      type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].TEXT,
+                      name: 'variedad',
+                      colSpan: ''
+                    }, {
+                      label: 'Producción',
+                      value: '',
+                      type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                      name: 'produccion',
+                      colSpan: ''
+                    }, {
+                      label: 'Unidades',
+                      value: {},
+                      type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].SELECT,
+                      colSpan: '',
+                      options: [{
+                        label: 'toneladas',
+                        value: 'toneladas'
+                      }, {
+                        label: 'mts 3',
+                        value: 'mts 3'
+                      }, {
+                        label: 'otros',
+                        value: 'otros'
+                      }],
+                      name: 'unidades',
+                      multiple: false,
+                      closeOnSelect: true,
+                      searchable: false,
+                      placeholder: 'Selecciona una opción'
+                    }, {
+                      label: 'Precio de Venta (en $)',
+                      value: '',
+                      type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].NUMBER,
+                      name: 'precio_venta',
+                      colSpan: ''
+                    }, // {
+                    //     label: 'Empresa compradora',
+                    //     value: '',
+                    //     type: inputsTypes.TEXT,
+                    //     name: 'empresa_compradora',
+                    //     colSpan: '',
+                    // },
+                    // {
+                    //     label: 'Dirección empresa campradora',
+                    //     value: '',
+                    //     type: inputsTypes.TEXT,
+                    //     name: 'direccion_empresa_compradora',
+                    //     colSpan: '',
+                    // },
+                    // {
+                    //     label: 'Actividad empresa campradora',
+                    //     value: '',
+                    //     type: inputsTypes.TEXT,
+                    //     name: 'actividad_empresa_compradora',
+                    //     colSpan: '',
+                    // },
+                    _objectSpread({
+                      colSpan: 'lg:w-5/5',
+                      type: 'observation'
+                    }, new _observaciones__WEBPACK_IMPORTED_MODULE_2__["default"]({
+                      schema: schema,
+                      name: 'row',
+                      action: action
+                    }).observations)]],
+                    validations: yup__WEBPACK_IMPORTED_MODULE_1__.array().of(yup__WEBPACK_IMPORTED_MODULE_1__.object().shape({
+                      variedad: yup__WEBPACK_IMPORTED_MODULE_1__.string().nullable().required('Debes completar este campo'),
+                      nombre_mineral: yup__WEBPACK_IMPORTED_MODULE_1__.object().when('mineral', {
+                        is: function is(value) {
+                          return _.isEmpty(value);
+                        },
+                        then: yup__WEBPACK_IMPORTED_MODULE_1__.object().nullable().required('Debes elegir un elemento')
+                      }),
+                      produccion: yup__WEBPACK_IMPORTED_MODULE_1__.string().nullable().required('Debes completar este campo'),
+                      unidades: yup__WEBPACK_IMPORTED_MODULE_1__.object().when('unidadesSelect', {
+                        is: function is(value) {
+                          return _.isEmpty(value);
+                        },
+                        then: yup__WEBPACK_IMPORTED_MODULE_1__.object().nullable().required('Debes elegir un elemento')
+                      }),
+                      precio_venta: yup__WEBPACK_IMPORTED_MODULE_1__.string().nullable().required('Debes completar este campo'),
+                      // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                      // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                      // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                      row_evaluacion: action == 'evaluate' ? yup__WEBPACK_IMPORTED_MODULE_1__.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').nullable().required('Debes seleccionar una opción') : {},
+                      row_comentario: action == 'evaluate' ? yup__WEBPACK_IMPORTED_MODULE_1__.string().when('observacion_row', {
+                        is: "rechazado",
+                        then: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación')
+                      }).nullable() : {}
+                    })).strict()
+                  }]
+                }]
+              }]
+            }]);
+
+          case 14:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _getFormSchema.apply(this, arguments);
+}
+
+function getChildrens(data, observation) {
+  // los objetos deben tener el mismo orden que en el arreglo de los elementoss
+  var child = [// default value,
+  {
+    // id elemento, solo agregar al primer objeto
+    id: null,
+    name: 'nombre_mineral',
+    value: null,
+    // solo necesario para los selects que el valor se ha guardado como un json
+    select: true
   }, {
-    icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
-    bgColorIcon: 'bg-blue-500',
-    bgColorProgress: 'bg-blue-300',
-    titleStep: 'Datos',
-    bodyStep: [{
-      widthResponsive: 'lg:flex-row',
-      //flex
-      // columns
-      body: [//  col 1
-      {
-        title: 'Ubicación',
-        width: 'lg:w-full',
-        //flex
-        columns: 'grid-cols-1',
-        //grid
-        columnsResponsive: 'lg:grid-cols-2',
-        //inside card
-        img: '/images/laborales.png',
-        inputs: [{
-          label: 'Provincia',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
-          // get axios
-          async: true,
-          asyncUrl: '/paises/departamentos',
-          inputDepends: ['departamento'],
-          inputClearDepends: ['departamento', 'localidad'],
-          // isLoading: false,
-          //
-          options: dataForm.provincia,
-          name: 'provincia',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: false,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('provinciaSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'provincia',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Departamento',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
-          // get axios
-          async: true,
-          asyncUrl: '/paises/localidades',
-          inputDepends: ['localidad'],
-          inputClearDepends: ['localidad'],
-          isLoading: false,
-          //
-          options: [],
-          name: 'departamento',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: false,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('departamentoSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'departamento',
-            evaluate: evaluate
-          }).observations
-        }, {
-          label: 'Localidad',
-          value: {},
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
-          // get axios
-          async: true,
-          isLoading: false,
-          //
-          options: [],
-          name: 'localidad',
-          multiple: false,
-          closeOnSelect: true,
-          searchable: false,
-          placeholder: 'Selecciona una opción',
-          validations: yup__WEBPACK_IMPORTED_MODULE_0__.object().when('localidadSelect', {
-            is: function is(value) {
-              return _.isEmpty(value) || !value;
-            },
-            then: yup__WEBPACK_IMPORTED_MODULE_0__.object().required('Debes elegir un elemento').nullable()
-          }),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
-            schema: schema,
-            name: 'localidad',
-            evaluate: evaluate
-          }).observations
-        }]
-      }]
-    }]
+    name: 'variedad',
+    value: null
+  }, {
+    name: 'produccion',
+    value: null
+  }, {
+    name: 'unidades',
+    value: null,
+    select: true
+  }, {
+    name: 'precio_venta',
+    value: null
+  }, // {
+  //     name: 'empresa_compradora',
+  //     value: null,
+  // },
+  // {
+  //     name: 'direccion_empresa_compradora',
+  //     value: null,
+  // },
+  // {
+  //     name: 'actividad_empresa_compradora',
+  //     value: null,
+  // },
+  // si existen evaluaciones, se debe mantener este elemento sin modificar
+  {
+    name: 'row_evaluacion',
+    value: null,
+    comment: null
   }];
+
+  if (!data || data.length == 0) {
+    return [child];
+  }
+
+  var newChildrens = [];
+
+  for (var index = 0; index < data.length; index++) {
+    var object = data[index];
+    var clone = JSON.parse(JSON.stringify(child));
+
+    var _loop = function _loop(property) {
+      var i = clone.findIndex(function (e) {
+        return e.name == property;
+      });
+      if (i == -1) return "continue";
+
+      if (clone[i].select) {
+        clone[i].value = JSON.parse(object[property]);
+      } else {
+        clone[i].value = object[property];
+      }
+
+      if (typeof clone[i].id !== 'undefined') {
+        clone[i].id = object["id"];
+      }
+    };
+
+    for (var property in object) {
+      var _ret = _loop(property);
+
+      if (_ret === "continue") continue;
+    } // set result observation
+
+
+    var obsIndex = clone.findIndex(function (e) {
+      return e.name == 'row_evaluacion';
+    });
+
+    if (obsIndex > -1) {
+      clone[obsIndex].value = object["value"];
+      clone[obsIndex].comment = object["comment"];
+    } // let obs = clone.find(e => e.name == 'row_evaluacion');
+    // if (obs) {
+    //     const obsSave = observation.find(e => e.id == clone[0].id);
+    //     if (obsSave) {
+    //         obs.value = obsSave.row_evaluacion;
+    //         obs.comment = obsSave.row_comentario
+    //     }
+    // }
+    // if (clone[0].row_evaluacion) {
+    //     observation[obs]
+    // }
+    // console.log(clone);
+
+
+    newChildrens.push(clone);
+  } // newChildrens.push({
+  //     name: 'observacion_row',
+  //     value: null,
+  // });
+
+
+  return newChildrens;
+}
+
+function setValue(value, name, schema) {
+  return schema[name] = value;
 }
 
 /***/ })

@@ -45,7 +45,17 @@ class ProductoresController extends Controller
 
     public static function productoresUsuario()
     {
-        $productores = Productores::where('usuario_creador', Auth::user()->id)->get();
+        $user = HomeController::userData();
+        if(Auth::user()->hasRole('Productor'))
+        {
+            $productores = Productores::where('usuario_creador', Auth::user()->id)->get();
+        }
+        elseif(Auth::user()->hasRole('Autoridad')) {
+            $productores = Productores::select('*')->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
+        }
+        else //administrador
+            $productores = Productores::all();
+        
         return [
             'productores' => $productores
         ];
