@@ -151,103 +151,29 @@ export default {
             data.append('obs_situacion_mina', this.$props.formulario.obs_situacion_mina);
             
 
+            data.append('concesion_minera_asiento_n', this.$props.formulario.concesion_minera_asiento_n);
 
+            data.append('concesion_minera_fojas', this.$props.formulario.concesion_minera_fojas);
 
-//me quede aca el lunes
+            data.append('concesion_minera_tomo_n', this.$props.formulario.concesion_minera_tomo_n);
 
+            data.append('concesion_minera_reg_m_y_d', this.$props.formulario.concesion_minera_reg_m_y_d);
 
-            data.append('gestor_profesion', this.$props.formulario.gestor_profesion);
-            data.append('gestor_profesion_valido', this.$props.formulario.gestor_profesion_valido);
-            data.append('gestor_profesion_correcto', this.$props.formulario.gestor_profesion_correcto);
-            data.append('obs_gestor_profesion', this.$props.formulario.obs_gestor_profesion);
-            data.append('obs_gestor_profesion_valido', this.$props.formulario.obs_gestor_profesion_valido);
+            data.append('concesion_minera_reg_cant', this.$props.formulario.concesion_minera_reg_cant);
+
+            data.append('concesion_minera_reg_men', this.$props.formulario.concesion_minera_reg_men);
+
+            data.append('concesion_minera_reg_d_y_c', this.$props.formulario.concesion_minera_reg_d_y_c);
+            data.append('concesion_minera_reg_d_y_c_correcto', this.$props.formulario.concesion_minera_reg_d_y_c_correcto);
+            data.append('obs_concesion_minera_reg_d_y_c', this.$props.formulario.obs_concesion_minera_reg_d_y_c);
             
-
-
-            data.append('gestor_telefono', this.$props.formulario.gestor_telefono);
-            data.append('gestor_telefono_valido', this.$props.formulario.gestor_telefono_valido);
-            data.append('gestor_telefono_correcto', this.$props.formulario.gestor_telefono_correcto);
-            data.append('obs_gestor_telefono', this.$props.formulario.obs_gestor_telefono);
-            data.append('obs_gestor_telefono_valido', this.$props.formulario.obs_gestor_telefono_valido);
-            
-
-
-            data.append('gestor_email', this.$props.formulario.gestor_email);
-            data.append('gestor_email_valido', this.$props.formulario.gestor_email_valido);
-            data.append('gestor_email_correcto', this.$props.formulario.gestor_email_correcto);
-            data.append('obs_gestor_email', this.$props.formulario.obs_gestor_email);
-            data.append('obs_gestor_email_valido', this.$props.formulario.obs_gestor_email_valido);
-            
-
-
-            data.append('gestor_notificacion', this.$props.formulario.gestor_notificacion);
-            data.append('gestor_notificacion_valido', this.$props.formulario.gestor_notificacion_valido);
-            data.append('gestor_notificacion_correcto', this.$props.formulario.gestor_notificacion_correcto);
-            data.append('obs_gestor_notificacion', this.$props.formulario.obs_gestor_notificacion);
-            data.append('obs_gestor_notificacion_valido', this.$props.formulario.obs_gestor_notificacion_valido);
-            
-
-
-            data.append('foto_4x4', this.$props.formulario.foto_4x4);
-            data.append('foto_4x4_valido', this.$props.formulario.foto_4x4_valido);
-            data.append('foto_4x4_correcto', this.$props.formulario.foto_4x4_correcto);
-            data.append('obs_foto_4x4', this.$props.formulario.obs_foto_4x4);
-            data.append('obs_foto_4x4_valido', this.$props.formulario.obs_foto_4x4_valido);
-            
-
-
-
-            data.append('autorizacion_gestor', this.$props.formulario.autorizacion_gestor);
-            data.append('autorizacion_gestor_valido', this.$props.formulario.autorizacion_gestor_valido);
-            data.append('autorizacion_gestor_correcto', this.$props.formulario.autorizacion_gestor_correcto);
-            data.append('obs_autorizacion_gestor', this.$props.formulario.obs_autorizacion_gestor);
-            data.append('obs_autorizacion_gestor_valido', this.$props.formulario.obs_autorizacion_gestor_valido);
-            
-
-            data.append('primer_hoja_dni', this.$props.formulario.primer_hoja_dni);
-            data.append('hoja_dni_valido', this.$props.formulario.hoja_dni_valido);
-            data.append('hoja_dni_correcto', this.$props.formulario.hoja_dni_correcto);
-            data.append('obs_hoja_dni', this.$props.formulario.obs_hoja_dni);
-            data.append('obs_hoja_dni_valido', this.$props.formulario.obs_hoja_dni_valido);
-            
-
-            data.append('segunda_hoja_dni', this.$props.formulario.segunda_hoja_dni);
-            data.append('segunda_hoja_dni_valido', this.$props.formulario.segunda_hoja_dni_valido);
-            data.append('segunda_hoja_dni_correcto', this.$props.formulario.segunda_hoja_dni_correcto);
-            data.append('obs_segunda_hoja_dni', this.$props.formulario.obs_segunda_hoja_dni);
-            data.append('obs_segunda_hoja_dni_valido', this.$props.formulario.obs_segunda_hoja_dni_valido);
-            
-
-            data.append('constancia_afip', this.$props.formulario.constancia_afip);
-            data.append('constancia_afip_valido', this.$props.formulario.constancia_afip_valido);
-            data.append('constancia_afip_correcto', this.$props.formulario.constancia_afip_correcto);
-            data.append('obs_constancia_afip', this.$props.formulario.obs_constancia_afip);
-            data.append('obs_constancia_afip_valido', this.$props.formulario.obs_constancia_afip_valido);
-
-
             axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
-            axios.post(this.$inertia.page.props.appName+"/formularios/evaluacion_auto_guardado_catamarcas", data)
+            axios.post(this.$inertia.page.props.appName+"/formularios/evaluacion_auto_guardado_mendoza", data)
             .then(function (response) {
-                console.log(response.data);
-                if(response.data.msg === "se creo el paso de catamarca correctamente")
-                {
-                    console.log('todo bien, se creo');
-                    self.modal_tittle = 'Datos del paso de Catamarca han sido guardados correctamente';
-                    self.modal_body = 'Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
-                    self.mostrar_modal_datos_ya_guardados = true;
-                }
-                    
-                if(response.data.msg === "se actualizo el paso de catamarca correctamente")
-                {
-                    console.log('todo bien, se actualizo');
-                    self.modal_tittle = 'Datos del paso de Catamarca han sido guardados correctamente';
-                    self.modal_body = 'Recien hemos actualizado los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario';
-                    self.mostrar_modal_datos_ya_guardados = true;
-                }
-                else{
-                    console.log('NO todo bien');	
-                }
-                
+                console.log('todo bien, se creo');
+                self.modal_tittle = 'Datos del paso de Catamarca han sido guardados correctamente';
+                self.modal_body = response.data.msg;
+                self.mostrar_modal_datos_ya_guardados = true;
             })
         },
         cerrar_modal_datos_uno() {

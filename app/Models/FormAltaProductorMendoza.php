@@ -12,7 +12,7 @@ class FormAltaProductorMendoza extends Model
     use SoftDeletes;
     
     protected $table = 'form_alta_productoresMendoza';
-    protected $date = ['created_at', 'deleted_at', 'updated_at'];
+    protected $date = ['created_by','created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
         'id_formulario_alta',
         'decreto3737',
@@ -28,12 +28,13 @@ class FormAltaProductorMendoza extends Model
         'concesion_minera_reg_cant',
         'concesion_minera_reg_men',
         'concesion_minera_reg_d_y_c',
+        'obs_concesion_minera_reg_d_y_c',
+        'concesion_minera_reg_d_y_c_correcto',
+        
 		'paso_mend_progreso',
 		'paso_mend_aprobado',
 		'paso_mend_reprobado',
-		'updated_paso_seis',
-        'sustancias_de_aprovechamiento_comun_aclaracion',
-        'provincia'
+        'created_by',
     ];
     
 
