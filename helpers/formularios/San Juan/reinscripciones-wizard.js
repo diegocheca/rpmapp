@@ -331,7 +331,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     type: inputsTypes.CHECKBOX,
                                     labelOn: "SI",
                                     labelOff: "NO",
-                                    name: 'productionCheckbox',
+                                    name: 'production_checkbox',
                                     hiddenComponent: [
                                         {
                                             component:   "Productos",

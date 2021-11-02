@@ -331,14 +331,14 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     type: inputsTypes.CHECKBOX,
                                     labelOn: "SI",
                                     labelOff: "NO",
-                                    name: 'productionCheckbox',
+                                    name: 'production_checkbox',
                                     hiddenComponent: [
                                         {
                                             component:   "Productos",
                                             value: false
                                         }
                                     ],
-                                    // observation: new Observations({schema, name: 'prospeccion', action}).observations
+                                    observation: new Observations({schema, name: 'production_checkbox', action}).observations
                                     // validations: yup.boolean().required(),
                                 },
                                 {

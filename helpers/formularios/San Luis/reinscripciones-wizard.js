@@ -389,7 +389,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                             }
                                         ]
                                     ],
-                                    observation: new Observations({schema, name: 'production', action}).observations,
+                                    observation: new Observations({schema, name: 'produccion_anual', action}).observations,
                                     validations:
                                         yup
                                         .array()
@@ -437,7 +437,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                             },
                                         ]
                                     ],
-                                    // observation: new Observations({schema, name: 'production', action}).observations,
+                                    observation: new Observations({schema, name: 'comercializacion', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(
@@ -521,7 +521,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                             },
                                         ]
                                     ],
-                                    // observation: new Observations({schema, name: 'production', action}).observations,
+                                    observation: new Observations({schema, name: 'uso_explosivos', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(
@@ -722,7 +722,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                             },
                                         ]
                                     ],
-                                    // observation: new Observations({schema, name: 'production', action}).observations,
+                                    observation: new Observations({schema, name: 'production', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(

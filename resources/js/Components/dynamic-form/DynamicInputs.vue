@@ -30,6 +30,7 @@
                                             :name="item.name"
                                             :on-label="item.labelOn"
                                             :off-label="item.labelOff"
+                                            :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado') ? true: false"
                                             @change="handleHiddenComponent(item, col.inputs)"
                                         />
                                         <!-- <input type="checkbox"  v-model="item.value"

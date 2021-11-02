@@ -106,7 +106,7 @@ class ReinscripcionController extends Controller
             //     continue;
             // }
 
-            if ($key == "Productos" && $reinscripcion['productionCheckbox'] != false) {
+            if ($key == "Productos" && $reinscripcion['production_checkbox'] != false) {
                 $saveData["cantidad_productos"] = count($data);
 
                 for ($i = 0; $i < count($data); $i++) {
@@ -152,7 +152,7 @@ class ReinscripcionController extends Controller
 
         $newReinscription = Reinscripciones::create($saveData);
 
-        if($reinscripcion['productionCheckbox']) {
+        if($reinscripcion['production_checkbox']) {
             for ($i = 0; $i < count($newProducts); $i++) {
                 // $newProducts[$i]["id_reinscripcion"] = $newReinscription["id"];
                 Productos::create($newProducts[$i]);
@@ -220,18 +220,26 @@ class ReinscripcionController extends Controller
         $reinscripcion = Reinscripciones::find($id);
         $reinscripcion->productos = Reinscripciones::find($id)->productos;
         $provinces = CountriesController::getProvinces();
+        $user = HomeController::userData();
+        $productors = ProductoresController::productoresUsuario();
+
+        $productorsList = [];
+        for ($i=0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
+        }
 
         return Inertia::render('Reinscripciones/Form', [
             'action' => "evaluate",
             'saveUrl' => "reinscripciones.updateRevision",
             // 'saveFileUrl' => "/reinscripciones/upload",
             // 'folder' => 'reinscripciones',
-            'province' => env('PROVINCE', 'EntreRios') . "/reinscripciones-wizard",
+            'province' => $user->province->label ."/reinscripciones-wizard",
             'reinscripcion' => $reinscripcion,
             'titleForm' => 'Evaluar reinscripciones',
             'titleBtnSave' => 'Guardar Revisión',
             'evaluate' => true,
-            'provincia' => $provinces
+            'provincia' => $provinces,
+            'productores' => $productorsList
         ]);
     }
 
@@ -252,9 +260,11 @@ class ReinscripcionController extends Controller
 
         $this->getReinscripcionFilter($dataReinscripcion, $dataReinscripcionFilter, $allStatus);
 
-        for ($t = 0; $t < count($dataReinscripcion["Productos"]); $t++) {
-            $dataReinscripcionProductsFilter[$t]["id"] = $dataReinscripcion["Productos"][$t]["id"];
-            $this->getReinscripcionFilter($dataReinscripcion["Productos"][$t], $dataReinscripcionProductsFilter[$t], $allStatus);
+        if(isset($dataReinscripcion['production_checkbox']) && $dataReinscripcion['production_checkbox']) {
+            for ($t = 0; $t < count($dataReinscripcion["Productos"]); $t++) {
+                $dataReinscripcionProductsFilter[$t]["id"] = $dataReinscripcion["Productos"][$t]["id"];
+                $this->getReinscripcionFilter($dataReinscripcion["Productos"][$t], $dataReinscripcionProductsFilter[$t], $allStatus);
+            }
         }
 
 
@@ -271,15 +281,18 @@ class ReinscripcionController extends Controller
         }
 
         $dataReinscripcionFilter['estado'] = $newStatus;
+
         Reinscripciones::where('id', $id)->update($dataReinscripcionFilter);
 
-        $toUpdate = Reinscripciones::find($id);
-        for ($i = 0; $i < count($toUpdate->productos); $i++) {
-            Productos::where('id', $dataReinscripcionProductsFilter[$i]['id'])->update([
-                'comment' => $dataReinscripcionProductsFilter[$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcionProductsFilter[$i]['row_comentario'] : null,
-                'value' =>  $dataReinscripcionProductsFilter[$i]['row_evaluacion'],
-                'estado' => $newStatus
-            ]);
+        if(isset($dataReinscripcion['production_checkbox']) && $dataReinscripcion['production_checkbox']) {
+            $toUpdate = Reinscripciones::find($id);
+            for ($i = 0; $i < count($toUpdate->productos); $i++) {
+                Productos::where('id', $dataReinscripcionProductsFilter[$i]['id'])->update([
+                    'comment' => $dataReinscripcionProductsFilter[$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcionProductsFilter[$i]['row_comentario'] : null,
+                    'value' =>  $dataReinscripcionProductsFilter[$i]['row_evaluacion'],
+                    'estado' => $newStatus
+                ]);
+            }
         }
 
         return Redirect::route('reinscripciones.index');
