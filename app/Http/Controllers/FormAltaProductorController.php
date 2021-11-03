@@ -6706,6 +6706,40 @@ class FormAltaProductorController extends Controller
 
 
 					}
+
+					if(Auth::user()->id_provincia == 50) // es de mendoza
+					{
+
+						$disables["decreto3737"] =  false;
+						$disables["decreto3737_correccion"] =  true;
+						$disables["situacion_mina"] =  false;
+						$disables["situacion_mina_correccion"] =  true;
+						$disables["concesion_minera_asiento_n"] =  false;
+						$disables["concesion_minera_fojas"] =  false;
+						$disables["concesion_minera_tomo_n"] =  false;
+						$disables["concesion_minera_reg_m_y_d"] =  false;
+						$disables["concesion_minera_reg_cant"] =  false;
+						$disables["concesion_minera_reg_men"] =  false;
+						$disables["concesion_minera_reg_d_y_c"] =  false;
+						$disables["obs_datos_minas"] =  true;
+						$disables["paso_mendoza"]=  false;
+						$disables["boton_mendoza"]=  false;
+
+						$mostrar["decreto3737"] = true;
+						$mostrar["decreto3737_correccion"] = false;
+						$mostrar["situacion_mina"] = true;
+						$mostrar["situacion_mina_correccion"] = false;
+						$mostrar["concesion_minera_asiento_n"] = true;
+						$mostrar["concesion_minera_fojas"] = true;
+						$mostrar["concesion_minera_tomo_n"] = true;
+						$mostrar["concesion_minera_reg_m_y_d"] = true;
+						$mostrar["concesion_minera_reg_cant"] = true;
+						$mostrar["concesion_minera_reg_men"] = true;
+						$mostrar["concesion_minera_reg_d_y_c"] = true;
+						$mostrar["obs_datos_minas"] = false;
+						$mostrar["paso_mendoza"] = true;
+						$mostrar["boton_mendoza"] = true;
+					}
 				}
 				elseif($estado_formulario == 'en revision' || $estado_formulario == 'en proceso')
 				{

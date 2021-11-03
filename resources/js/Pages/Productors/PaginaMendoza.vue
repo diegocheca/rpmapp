@@ -551,6 +551,7 @@
             >
             </BotonesPaginaMendoza>
         </div>
+        {{form_mendoza}}
     </div>
 </template>
 
@@ -628,22 +629,6 @@ export default {
         update_valor_decreto3737(newValue) {
             this.form_mendoza.decreto3737 = newValue;
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -888,6 +873,7 @@ export default {
                             console.log(error);
                         });
                 } else {
+                    console.log("estoy editando");
                     //estoy por editar
                     //voy a BUSCAR LOS DATOS DEL FORMULARIO
                     axios
@@ -897,6 +883,7 @@ export default {
                                 parseInt(this.$props.id)
                         )
                         .then(function (response) {
+                            console.log(response.datos);
                             if (response.data.status === "ok") {
                                 self.form_mendoza = response.data.datos;
                             } else console.log("error al buscar datos: " + response.data.msg);
@@ -904,6 +891,7 @@ export default {
                         .catch(function (error) {
                             console.log(error);
                         });
+                        console.log("voy por los permisos");
                     //voy a buscar los permisos
                     axios
                         .get(
@@ -913,6 +901,10 @@ export default {
                                 "/editar"
                         )
                         .then(function (response) {
+                            console.log("los disables son:");
+                            console.log(response.data.disables);
+                            console.log("los mostrar son:");
+                            console.log(response.data.mostrar);
                             if (response.data.status === "ok") {
                                 self.permisos_mostrar = response.data.mostrar;
                                 self.permisos_disables = response.data.disables;

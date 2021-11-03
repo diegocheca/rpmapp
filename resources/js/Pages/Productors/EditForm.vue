@@ -1206,7 +1206,6 @@ id
 				:id="$props.productor.id"
 			>
 			</PaginaCatamarca> -->
-			<h3>antes de catamarca</h3>
 				<PaginaCatamarca
 			v-if="$props.mostrar.paso_catamarca"
 				:link_volver="route('formulario-alta.index')"
@@ -1221,12 +1220,25 @@ id
 			</PaginaCatamarca>
 			<br>
 			<br>
-{{form_catamarca}}
 
 
 
+<h3>antes de mendoza</h3>
+				<PaginaMendoza
+			v-if="$props.mostrar.paso_mendoza"
+				:link_volver="route('formulario-alta.index')"
+				:titulo_boton_volver="'volver'"
+				:titulo_boton_guardar="'Guardar Datos Form Mendoza'"
+				:titulo_pagina="'Pagina De Mendoza'"
 
-
+				:evaluacion ="evaluacion_global"
+				:testing="testing_global"
+				:id="$props.productor.id"
+			>
+			</PaginaMendoza>
+			<br>
+			<br>
+{{form_mendoza}}
 
 
 
@@ -1476,6 +1488,8 @@ import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos"
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
+import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
+
 import ValidationErrors from '../../Jetstream/ValidationErrors.vue';
  
 export default {
@@ -1501,6 +1515,7 @@ export default {
 		ValidationErrors,
 		CardCatamarca,
 		PaginaCatamarca,
+		PaginaMendoza,
 	},
 	props: [
 		"productor",
@@ -2043,6 +2058,7 @@ export default {
 				
 				
 			},
+			form_mendoza: {},
 			/* form_catamarca: {
 				gestor_nombre_apellido:'',
 				gestor_nombre_apellido_valido:'',
@@ -3936,128 +3952,6 @@ export default {
             });
 		}
         });
-
-	/* this.$nextTick(() => {
-		console.log("por buscar los datos de catamarca");
-		if(this.$inertia.page.props.user.id_provincia === 10 )
-        {
-			console.log("harcodeo las prov");
-			axios.get('/formularios/traer_datos_pagina_catamarca'+'/'+parseInt(this.$props.productor.id))
-            .then(function (response) {
-                console.log("los datos de la pagina de catamarca son:\n");
-                
-                console.log(response.data.datos);
-				self.form_catamarca.gestor_nombre_apellido= response.data.datos.gestor_nombre_apellido;
-				self.form_catamarca.gestor_nombre_apellido_valido= response.data.datos.gestor_nombre_apellido_valido;
-				self.form_catamarca.gestor_nombre_apellido_correcto= response.data.datos.gestor_nombre_apellido_correcto;
-				self.form_catamarca.obs_gestor_nombre_apellido= response.data.datos.obs_gestor_nombre_apellido;
-				self.form_catamarca.obs_gestor_nombre_valido= response.data.datos.obs_gestor_nombre_valido;
-				self.form_catamarca.mostrar_nombre_gestor= response.data.datos.mostrar_nombre_gestor;
-				self.form_catamarca.desactivar_nombre_gestor= response.data.datos.desactivar_nombre_gestor;
-				self.form_catamarca.mostrar_nombre_gestor_correccion= response.data.datos.mostrar_nombre_gestor_correccion;
-				self.form_catamarca.desactivar_nombre_gestor_correccion= response.data.datos.desactivar_nombre_gestor_correccion;
-				self.form_catamarca.gestor_dni= response.data.datos.gestor_dni;
-				self.form_catamarca.gestor_dni_valido= response.data.datos.gestor_dni_valido;
-				self.form_catamarca.gestor_dni_correcto= response.data.datos.gestor_dni_correcto;
-				self.form_catamarca.obs_gestor_dni= response.data.datos.obs_gestor_dni;
-				self.form_catamarca.obs_gestor_dni_valido= response.data.datos.obs_gestor_dni_valido;
-				self.form_catamarca.mostrar_dni_gestor= response.data.datos.mostrar_dni_gestor;
-				self.form_catamarca.desactivar_dni_gestor= response.data.datos.desactivar_dni_gestor;
-				self.form_catamarca.mostrar_dni_gestor_correccion= response.data.datos.mostrar_dni_gestor_correccion;
-				self.form_catamarca.desactivar_dni_gestor_correccion= response.data.datos.desactivar_dni_gestor_correccion;
-				self.form_catamarca.gestor_profesion= response.data.datos.gestor_profesion;
-				self.form_catamarca.gestor_profesion_valido= response.data.datos.gestor_profesion_valido;
-				self.form_catamarca.gestor_profesion_correcto= response.data.datos.gestor_profesion_correcto;
-				self.form_catamarca.obs_gestor_profesion= response.data.datos.obs_gestor_profesion;
-				self.form_catamarca.obs_gestor_profesion_valido= response.data.datos.obs_gestor_profesion_valido;
-				self.form_catamarca.mostrar_profesion_gestor= response.data.datos.mostrar_profesion_gestor;
-				self.form_catamarca.desactivar_profesion_gestor= response.data.datos.desactivar_profesion_gestor;
-				self.form_catamarca.mostrar_profesion_gestor_correccion= response.data.datos.mostrar_profesion_gestor_correccion;
-				self.form_catamarca.desactivar_profesion_gestor_correccion= response.data.datos.desactivar_profesion_gestor_correccion;
-				self.form_catamarca.gestor_telefono= response.data.datos.gestor_telefono;
-				self.form_catamarca.gestor_telefono_valido= response.data.datos.gestor_telefono_valido;
-				self.form_catamarca.gestor_telefono_correcto= response.data.datos.gestor_telefono_correcto;
-				self.form_catamarca.obs_gestor_telefono= response.data.datos.obs_gestor_telefono;
-				self.form_catamarca.obs_gestor_telefono_valido= response.data.datos.obs_gestor_telefono_valido;
-				self.form_catamarca.mostrar_telefono_gestor= response.data.datos.mostrar_telefono_gestor;
-				self.form_catamarca.desactivar_telefono_gestor= response.data.datos.desactivar_telefono_gestor;
-				self.form_catamarca.mostrar_telefono_gestor_correccion= response.data.datos.mostrar_telefono_gestor_correccion;
-				self.form_catamarca.desactivar_telefono_gestor_correccion= response.data.datos.desactivar_telefono_gestor_correccion;
-				self.form_catamarca.gestor_notificacion= response.data.datos.gestor_notificacion;
-				self.form_catamarca.gestor_notificacion_valido= response.data.datos.gestor_notificacion_valido;
-				self.form_catamarca.gestor_notificacion_correcto= response.data.datos.gestor_notificacion_correcto;
-				self.form_catamarca.obs_gestor_notificacion= response.data.datos.obs_gestor_notificacion;
-				self.form_catamarca.obs_gestor_notificacion_valido= response.data.datos.obs_gestor_notificacion_valido;
-				self.form_catamarca.mostrar_notificacion_gestor= response.data.datos.mostrar_notificacion_gestor;
-				self.form_catamarca.desactivar_notificacion_gestor= response.data.datos.desactivar_notificacion_gestor;
-				self.form_catamarca.mostrar_notificacion_gestor_correccion= response.data.datos.mostrar_notificacion_gestor_correccion;
-				self.form_catamarca.desactivar_notificacion_gestor_correccion= response.data.datos.desactivar_notificacion_gestor_correccion;
-				self.form_catamarca.gestor_email= response.data.datos.gestor_email;
-				self.form_catamarca.gestor_email_valido= response.data.datos.gestor_email_valido;
-				self.form_catamarca.gestor_email_correcto= response.data.datos.gestor_email_correcto;
-				self.form_catamarca.obs_gestor_email= response.data.datos.obs_gestor_email;
-				self.form_catamarca.obs_gestor_email_valido= response.data.datos.obs_gestor_email_valido;
-				self.form_catamarca.mostrar_email_gestor= response.data.datos.mostrar_email_gestor;
-				self.form_catamarca.desactivar_email_gestor= response.data.datos.desactivar_email_gestor;
-				self.form_catamarca.mostrar_email_gestor_correccion= response.data.datos.mostrar_email_gestor_correccion;
-				self.form_catamarca.desactivar_email_gestor_correccion= response.data.datos.desactivar_email_gestor_correccion;
-				self.form_catamarca.primer_hoja_dni= response.data.datos.primer_hoja_dni;
-				self.form_catamarca.hoja_dni_valido= response.data.datos.hoja_dni_valido;
-				self.form_catamarca.hoja_dni_correcto= response.data.datos.hoja_dni_correcto;
-				self.form_catamarca.obs_hoja_dni= response.data.datos.obs_hoja_dni;
-				self.form_catamarca.obs_hoja_dni_valido= response.data.datos.obs_hoja_dni_valido;
-				self.form_catamarca.mostrar_dni_productor= response.data.datos.mostrar_dni_productor;
-				self.form_catamarca.desactivar_dni_productor= response.data.datos.desactivar_dni_productor;
-				self.form_catamarca.mostrar_dni_productor_correccion= response.data.datos.mostrar_dni_productor_correccion;
-				self.form_catamarca.desactivar_dni_productor_correccion= response.data.datos.desactivar_dni_productor_correccion;
-				self.form_catamarca.segunda_hoja_dni= response.data.datos.segunda_hoja_dni;
-				self.form_catamarca.segunda_hoja_dni_valido= response.data.datos.segunda_hoja_dni_valido;
-				self.form_catamarca.segunda_hoja_dni_correcto= response.data.datos.segunda_hoja_dni_correcto;
-				self.form_catamarca.obs_segunda_hoja_dni= response.data.datos.obs_segunda_hoja_dni;
-				self.form_catamarca.obs_segunda_hoja_dni_valido= response.data.datos.obs_segunda_hoja_dni_valido;
-				self.form_catamarca.foto_4x4= response.data.datos.foto_4x4;
-				self.form_catamarca.foto_4x4_valido= response.data.datos.foto_4x4_valido;
-				self.form_catamarca.foto_4x4_correcto= response.data.datos.foto_4x4_correcto;
-				self.form_catamarca.obs_foto_4x4= response.data.datos.obs_foto_4x4;
-				self.form_catamarca.obs_foto_4x4_valido= response.data.datos.obs_foto_4x4_valido;
-				self.form_catamarca.mostrar_foto_productor= response.data.datos.mostrar_foto_productor;
-				self.form_catamarca.desactivar_foto_productor= response.data.datos.desactivar_foto_productor;
-				self.form_catamarca.mostrar_foto_productor_correccion= response.data.datos.mostrar_foto_productor_correccion;
-				self.form_catamarca.desactivar_foto_productor_correccion= response.data.datos.desactivar_foto_productor_correccion;
-				self.form_catamarca.constancia_afip= response.data.datos.constancia_afip;
-				self.form_catamarca.constancia_afip_valido= response.data.datos.constancia_afip_valido;
-				self.form_catamarca.constancia_afip_correcto= response.data.datos.constancia_afip_correcto;
-				self.form_catamarca.obs_constancia_afip= response.data.datos.obs_constancia_afip;
-				self.form_catamarca.obs_constancia_afip_valido= response.data.datos.obs_constancia_afip_valido;
-				self.form_catamarca.mostrar_constancia_afip= response.data.datos.mostrar_constancia_afip;
-				self.form_catamarca.desactivar_constancia_afip= response.data.datos.desactivar_constancia_afip;
-				self.form_catamarca.mostrar_constancia_afip_correccion= response.data.datos.mostrar_constancia_afip_correccion;
-				self.form_catamarca.desactivar_constancia_afip_correccion= response.data.datos.desactivar_constancia_afip_correccion;
-				self.form_catamarca.autorizacion_gestor= response.data.datos.autorizacion_gestor;
-				self.form_catamarca.autorizacion_gestor_valido= response.data.datos.autorizacion_gestor_valido;
-				self.form_catamarca.autorizacion_gestor_correcto= response.data.datos.autorizacion_gestor_correcto;
-				self.form_catamarca.obs_autorizacion_gestor= response.data.datos.obs_autorizacion_gestor;
-				self.form_catamarca.obs_autorizacion_gestor_valido= response.data.datos.obs_autorizacion_gestor_valido;
-				self.form_catamarca.mostrar_autorizacion_gestor= response.data.datos.mostrar_autorizacion_gestor;
-				self.form_catamarca.desactivar_autorizacion_gestor= response.data.datos.desactivar_autorizacion_gestor;
-				self.form_catamarca.mostrar_autorizacion_gestor_correccion= response.data.datos.mostrar_autorizacion_gestor_correccion;
-				self.form_catamarca.desactivar_autorizacion_gestor_correccion= response.data.datos.desactivar_autorizacion_gestor_correccion;
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-		}
-		});
- */
-		
-
-		// if(!isNaN(parseInt(this.$props.productor.leal_provincia))) 
-		// console.log("si");
-		// else console.log("no");
-		// console.log(isNaN(parseInt(this.$props.productor.leal_provincia)));
-
-
 	//voy a buscar los dptos
 	if(!isNaN(parseInt(this.$props.productor.leal_provincia))) {
 		//signafica que tengo una provincia ya elegida asiq traifgo sus dptos

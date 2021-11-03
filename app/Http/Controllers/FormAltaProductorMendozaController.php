@@ -266,31 +266,21 @@ class FormAltaProductorMendozaController extends Controller
         //editar
         $disables [10]['Productor']['editar']
         ['borrador']['altaProdMinero'] = [
-            "nombre_gestor" => false,
-            "nombre_gestor_correccion" => false,
-            "dni_gestor" => false,
-            "dni_gestor_correccion" => false,
-            "profesion_gestor" => false,
-            "profesion_gestor_correccion" => false,
-            "telefono_gestor" => false,
-            "telefono_gestor_correccion" => false,
-            "notificacion_gestor" => false,
-            "notificacion_gestor_correccion" => false,
-            "email_gestor" => false,
-            "email_gestor_correccion" => false,
-            "dni_productor" => false,
-            "dni_productor_correccion" => false,
-            "foto_productor" => false,
-            "foto_productor_correccion" => false,
-            "constancia_afip" => false,
-            "constancia_afip_correccion" => false,
-            "autorizacion_gestor" => false,
-            "autorizacion_gestor_correccion" => false,
-            "paso_catamarca"=> false,
-            "boton_catamarca"=> false,
-
-            "estado" => false,
-            "boton_actualizar" => false,
+            "decreto3737" => false,
+            "decreto3737_correccion" => true,
+            "situacion_mina" => false,
+            "situacion_mina_correccion" => true,
+            "concesion_minera_asiento_n" => false,
+            "concesion_minera_fojas" => false,
+            "concesion_minera_tomo_n" => false,
+            "concesion_minera_reg_m_y_d" => false,
+            "concesion_minera_reg_cant" => false,
+            "concesion_minera_reg_men" => false,
+            "concesion_minera_reg_d_y_c" => false,
+            "obs_datos_minas" => true,
+					
+            "paso_mendoza"=> false,
+            "boton_mendoza"=> false,
 
         ];
         $disables [10]['Autoridad']['editar']
@@ -354,33 +344,21 @@ class FormAltaProductorMendozaController extends Controller
 
         $mostrar [10]['Productor']['editar']
         ['borrador']['altaProdMinero'] = [
-            "nombre_gestor" => true,
-            "nombre_gestor_correccion" => false,
-            "dni_gestor" => true,
-            "dni_gestor_correccion" => false,
-            "profesion_gestor" => true,
-            "profesion_gestor_correccion" => false,
-            "telefono_gestor" => true,
-            "telefono_gestor_correccion" => false,
-            "notificacion_gestor" => true,
-            "notificacion_gestor_correccion" => false,
-            "email_gestor" => true,
-            "email_gestor_correccion" => false,
-            "dni_productor" => true,
-            "dni_productor_correccion" => false,
-            "foto_productor" => true,
-            "foto_productor_correccion" => false,
-            "constancia_afip" => true,
-            "constancia_afip_correccion" => false,
-            "autorizacion_gestor" => true,
-            "autorizacion_gestor_correccion" => false,
-            "paso_catamarca"=> true,
-            "boton_catamarca"=> true,
-
-
-            "estado" => true,
-
-            "boton_actualizar" => true,
+            "decreto3737" => true,
+            "decreto3737_correccion" => false,
+            "situacion_mina" => true,
+            "situacion_mina_correccion" => false,
+            "concesion_minera_asiento_n" => true,
+            "concesion_minera_fojas" => true,
+            "concesion_minera_tomo_n" => true,
+            "concesion_minera_reg_m_y_d" => true,
+            "concesion_minera_reg_cant" => true,
+            "concesion_minera_reg_men" => true,
+            "concesion_minera_reg_d_y_c" => true,
+            "obs_datos_minas" => false,
+					
+            "paso_mendoza"=> true,
+            "boton_mendoza"=> true,
         ];
         $mostrar [10]['Autoridad']['editar']
         ['borrador']['altaProdMinero'] = [
