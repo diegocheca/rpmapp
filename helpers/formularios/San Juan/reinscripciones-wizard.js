@@ -172,6 +172,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     label: 'Prospección',
                                     value: schema.prospeccion? true : false,
                                     type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
                                     name: 'prospeccion',
                                     observation: new Observations({schema, name: 'prospeccion', action}).observations
 
@@ -180,6 +182,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     label: 'Explotación',
                                     value: schema.explotacion? true : false,
                                     type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
                                     name: 'explotacion',
                                     observation: new Observations({schema, name: 'explotacion', action}).observations
 
@@ -188,6 +192,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     label: 'Desarrollo',
                                     value: schema.desarrollo? true : false,
                                     type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
                                     name: 'desarrollo',
                                     observation: new Observations({schema, name: 'desarrollo', action}).observations
 
@@ -196,6 +202,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     label: 'Exploración',
                                     value: schema.explotacion? true : false,
                                     type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
                                     name: 'exploracion',
                                     observation: new Observations({schema, name: 'exploracion', action}).observations
 
@@ -317,10 +325,28 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                             img: '/images/laborales.png',
                             inputs: [
                                 {
+                                    label: 'Si no se produjo ningún mineral, debe seleccionar "NO"',
+                                    // value: schema.prospeccion? true : false,
+                                    value: !schema.cantidad_productos? false : true,
+                                    type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
+                                    name: 'production_checkbox',
+                                    hiddenComponent: [
+                                        {
+                                            component:   "Productos",
+                                            value: false
+                                        }
+                                    ],
+                                    // observation: new Observations({schema, name: 'prospeccion', action}).observations
+                                    // validations: yup.boolean().required(),
+                                },
+                                {
                                     label: '',
                                     type: inputsTypes.LIST,
                                     name: 'Productos',
                                     columns: 'grid-cols-1',
+                                    hidden: !schema.cantidad_productos? true : false,
                                     // colSpans + 1
                                     columnsResponsive: 'lg:grid-cols-3',
                                     childrens: getChildrens(schema.productos),

@@ -6,11 +6,16 @@
       Reinscripciones
     </h2>
 
-
     <div class="overflow-x-auto">
         <div class="w-11/12 flex flex-row-reverse mt-3">
-            <a :href="route('reinscripciones.create')" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3">Nueva Reinscripcion</a>
+            <inertia-link
+                class="bg-blue-500 hover:bg-blue-800 rounded text-white px-9 py-3"
+                :href="route('reinscripciones.create')"
+            >
+                Nueva Reinscripcion
+            </inertia-link>
         </div>
+
         <div class="min-w-screen flex items-center justify-center font-sans overflow-hidden">
             <div v-if="reinscripciones.length == 0" class="w-full flex flex-col items-center mt-14 text-gray-400">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
