@@ -3021,7 +3021,6 @@ class FormAltaProductorController extends Controller
 					"paso_cuatro" => false,
 		
 		
-		
 					"owner" => false,
 					"owner_correccion" => false,
 					"arrendatario" => false,
@@ -3052,7 +3051,6 @@ class FormAltaProductorController extends Controller
 					"boton_guardar_cinco" => false,
 					"paso_cinco" => false,
 		
-		
 					"ubicacion_prov" => false,
 					"ubicacion_prov_correccion" => false,
 					"ubicacion_dpto" => false,
@@ -3072,28 +3070,21 @@ class FormAltaProductorController extends Controller
 					"paso_seis" => false,
 		
 		
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca"=> false,
-					"boton_catamarca"=> false,
+					"decreto3737" => false,
+					"decreto3737_correccion" => true,
+					"situacion_mina" => false,
+					"situacion_mina_correccion" => true,
+					"concesion_minera_asiento_n" => false,
+					"concesion_minera_fojas" => false,
+					"concesion_minera_tomo_n" => false,
+					"concesion_minera_reg_m_y_d" => false,
+					"concesion_minera_reg_cant" => false,
+					"concesion_minera_reg_men" => false,
+					"concesion_minera_reg_d_y_c" => false,
+					"obs_datos_minas" => true,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
 		
 					"estado" => false,
 					"boton_actualizar" => false,
@@ -3222,29 +3213,21 @@ class FormAltaProductorController extends Controller
 					"paso_seis" => true,
 		
 		
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca"=> false,
-					"boton_catamarca"=> false,
-		
+					"decreto3737" => true,
+					"decreto3737_correccion" => false,
+					"situacion_mina" => true,
+					"situacion_mina_correccion" => false,
+					"concesion_minera_asiento_n" => true,
+					"concesion_minera_fojas" => true,
+					"concesion_minera_tomo_n" => true,
+					"concesion_minera_reg_m_y_d" => true,
+					"concesion_minera_reg_cant" => true,
+					"concesion_minera_reg_men" => true,
+					"concesion_minera_reg_d_y_c" => true,
+					"obs_datos_minas" => false,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
 		
 					"estado" => true,
 		
@@ -3385,28 +3368,22 @@ class FormAltaProductorController extends Controller
 					"paso_seis" => false,
 		
 		
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca"=> false,
-					"boton_catamarca"=> false,
+					"decreto3737" => true,
+					"decreto3737_correccion" => false,
+					"situacion_mina" => true,
+					"situacion_mina_correccion" => false,
+					"concesion_minera_asiento_n" => true,
+					"concesion_minera_fojas" => true,
+					"concesion_minera_tomo_n" => true,
+					"concesion_minera_reg_m_y_d" => true,
+					"concesion_minera_reg_cant" => true,
+					"concesion_minera_reg_men" => true,
+					"concesion_minera_reg_d_y_c" => true,
+					"obs_datos_minas" => false,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
+		
 		
 					"estado" => false,
 					"boton_actualizar" => false,
@@ -3535,28 +3512,22 @@ class FormAltaProductorController extends Controller
 					"paso_seis" => true,
 		
 		
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca"=> false,
-					"boton_catamarca"=> false,
+					
+					"decreto3737" => true,
+					"decreto3737_correccion" => true,
+					"situacion_mina" => true,
+					"situacion_mina_correccion" => true,
+					"concesion_minera_asiento_n" => true,
+					"concesion_minera_fojas" => true,
+					"concesion_minera_tomo_n" => true,
+					"concesion_minera_reg_m_y_d" => true,
+					"concesion_minera_reg_cant" => true,
+					"concesion_minera_reg_men" => true,
+					"concesion_minera_reg_d_y_c" => true,
+					"obs_datos_minas" => true,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
 		
 		
 					"estado" => true,
@@ -3698,28 +3669,22 @@ class FormAltaProductorController extends Controller
 					"paso_seis" => false,
 		
 		
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca"=> false,
-					"boton_catamarca"=> false,
+					"decreto3737" => false,
+					"decreto3737_correccion" => false,
+					"situacion_mina" => false,
+					"situacion_mina_correccion" => false,
+					"concesion_minera_asiento_n" => false,
+					"concesion_minera_fojas" => false,
+					"concesion_minera_tomo_n" => false,
+					"concesion_minera_reg_m_y_d" => false,
+					"concesion_minera_reg_cant" => false,
+					"concesion_minera_reg_men" => false,
+					"concesion_minera_reg_d_y_c" => false,
+					"obs_datos_minas" => false,
+					
+					"paso_mendoza"=> false,
+					"boton_mendoza"=> false,
+		
 		
 					"estado" => false,
 					"boton_actualizar" => false,
@@ -3848,28 +3813,22 @@ class FormAltaProductorController extends Controller
 					"paso_seis" => true,
 		
 		
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca"=> false,
-					"boton_catamarca"=> false,
+					"decreto3737" => true,
+					"decreto3737_correccion" => true,
+					"situacion_mina" => true,
+					"situacion_mina_correccion" => true,
+					"concesion_minera_asiento_n" => true,
+					"concesion_minera_fojas" => true,
+					"concesion_minera_tomo_n" => true,
+					"concesion_minera_reg_m_y_d" => true,
+					"concesion_minera_reg_cant" => true,
+					"concesion_minera_reg_men" => true,
+					"concesion_minera_reg_d_y_c" => true,
+					"concesion_minera_reg_d_y_c_correccion" => true,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
+		
 		
 		
 					"estado" => true,
@@ -11755,10 +11714,15 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				//7
 				'updated_at' => $borrador->updated_at,
 			];
-			  
-			$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite', $data);
-			return $pdf->stream('Comprobante_de_inscripcion.pdf');
+			
+			if($borrador->provincia == 70)
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite', $data);
+			elseif($borrador->provincia == 10) // catamarca
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_cata', $data);
+			elseif($borrador->provincia == 50) // mendoza
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_mendoza', $data);
 
+			return $pdf->stream('Comprobante_de_inscripcion.pdf');
 		}
 		else 
 			return "error";

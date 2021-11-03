@@ -147,6 +147,8 @@
     <div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2> -->
       <!-- <br /><br /> -->
+      
+
       <div class="items-center justify-left">
         <CardDomLegal
           v-if="titulo_boton_guardar === 'Guardar Datos del Domicilio Legal'"
@@ -185,6 +187,16 @@
       </div>
       <br />
       <br />
+      <div v-if="titulo_boton_guardar !== 'Guardar Datos del Domicilio Legal'" class="items-center justify-left">
+        <span class="text-lg font-semibold mr-3">Mismos Datos que Domicilio Legal?</span>
+          <Toggle
+            v-model="copiar_datos"
+            @change="buscar_domicilio_en_padre"
+            on-label="SI"
+            off-label="NO"
+          />
+      </div>
+
       <div class="flex flex-wrap">
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
           <InputNombreCalle
@@ -988,6 +1000,8 @@ import InputCP from "@/Pages/Productors/InputCP";
 import InputOtro from "@/Pages/Productors/InputOtro";
 import BotonesPaginaDos from "@/Pages/Productors/BotonesPaginaDos";
 
+import Toggle from "@vueform/toggle";
+
 export default {
   watch: {},
   props: [
@@ -1107,6 +1121,7 @@ export default {
     InputLocalidad,
     InputOtro,
     BotonesPaginaDos,
+    Toggle,
   },
 
   data() {
@@ -1119,6 +1134,7 @@ export default {
       autoridad_minera: this.$props.evaluacion,
       ayuda_legal: false,
       ayuda_administrativo: false,
+      copiar_datos: false,
       form_pagina: {
         leal_calle: this.$props.leal_calle,
         nombre_calle_legal_valido: this.$props.nombre_calle_legal_valido,
@@ -1202,9 +1218,11 @@ export default {
       //tengo que enviarsela al padre
     },
     update_valor_nombre_calle(newValue) {
-      console.log("traje un" + newValue);
       this.form_pagina.leal_calle = newValue;
-      //tengo que enviarsela al padre
+      this.$emit('updateValorPadreNombreCalle', {
+        nombre: this.form_pagina.leal_calle,
+        lugar: this.$props.donde_estoy
+        });
     },
     //FUNCIONES DE Numero de calle
     update_num_legal_valido(newValue) {
@@ -1226,9 +1244,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_valor_num_legal(newValue) {
-      console.log("traje dddddddddddddun" + newValue);
       this.form_pagina.leal_numero = newValue;
-      //tengo que enviarsela al padre
+      this.$emit('updateValorPadreNumCalle', 
+      {
+        nombre: this.form_pagina.leal_numero,
+        lugar: this.$props.donde_estoy
+      });
     },
     //FUNCIONES DE TELEFONO
     update_tel_legal_valido(newValue) {
@@ -1251,7 +1272,11 @@ export default {
     update_valor_tel_legal(newValue) {
       console.log("traje un" + newValue);
       this.form_pagina.leal_telefono = newValue;
-      //tengo que enviarsela al padre
+      this.$emit('updateValorPadreTel', 
+      {
+        nombre: this.form_pagina.leal_telefono,
+        lugar: this.$props.donde_estoy
+      });
     },
     // FUNCIONES  DE PROVINCIA
     update_provincia_valido(newValue) {
@@ -1277,6 +1302,11 @@ export default {
 
       //this.form_pagina.localidad_mina_provincia = newValue;
       this.form_pagina.leal_provincia = newValue;
+      this.$emit('updateValorPadreProv', 
+      {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy
+      });
 
       //debo actualizar la lista de departamento que tengo disponibles para elegir
       axios
@@ -1311,7 +1341,11 @@ export default {
     update_valor_dpto_legal_num_legal(newValue) {
       console.log("traje un" + newValue);
       this.form_pagina.leal_departamento = newValue;
-      //tengo que enviarsela al padre
+      this.$emit('updateValorPadreDepto', 
+      {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy
+      });
     },
 
     update_localidad_valido(newValue) {
@@ -1334,7 +1368,11 @@ export default {
     update_valor_localidad_legal_num_legal(newValue) {
       console.log("traje un" + newValue);
       this.form_pagina.leal_localidad = newValue;
-      //tengo que enviarsela al padre
+      this.$emit('updateValorPadreLocalidad', 
+      {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy
+      });
     },
 
     update_cp_valido(newValue) {
@@ -1357,7 +1395,11 @@ export default {
     update_valor_cp(newValue) {
       console.log("traje un" + newValue);
       this.form_pagina.leal_cp = newValue;
-      //tengo que enviarsela al padre
+      this.$emit('updateValorPadreCP', 
+      {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy
+      });
     },
 
     update_otro_valido(newValue) {
@@ -1382,7 +1424,11 @@ export default {
     update_valor_otro(newValue) {
       console.log("traje un" + newValue);
       this.form_pagina.leal_otro = newValue;
-      //tengo que enviarsela al padre
+      this.$emit('updateValorPadreOtro', 
+      {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy
+      });
     },
 
     //mostrar ayuda
@@ -1399,6 +1445,11 @@ export default {
       )
         this.nombrePagina = "legal_";
       else this.nombrePagina = "adm_";
+    },
+    buscar_domicilio_en_padre(){
+      //busco los datos en el padre
+      if(this.copiar_datos)
+        this.$emit('copiarDatosDomicilioLegal', true);
     },
   },
   mounted() {

@@ -1723,6 +1723,12 @@ select {
 .w-2\/5 {
 	width: 40%;
 }
+<<<<<<< HEAD
+=======
+.w-1\/6 {
+	width: 16.666667%;
+}
+>>>>>>> origin
 .min-w-0 {
 	min-width: 0px;
 }
