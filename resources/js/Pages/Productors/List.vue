@@ -362,7 +362,10 @@
                             hover:scale-110
                           "
                         >
-                          <inertia-link href="#" @click="confirmationDelete(productor.id)">
+                          <inertia-link
+                            href="#"
+                            @click="confirmationDelete(productor.id)"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               class="h-6 w-6"
@@ -451,12 +454,12 @@
   </app-layout>
 </template>
 
-
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import ChartPieB from "@/Components/charts/pieBorradores";
 import JetDialogModal from "@/Jetstream/DialogModal";
 import Pagination from "@/Components/Pagination";
+import Swal from "sweetalert2";
 
 export default {
   props: {

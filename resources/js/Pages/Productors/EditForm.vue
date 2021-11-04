@@ -1434,26 +1434,12 @@
                 >
                 <span
                   v-if="$props.productor.estado === 'borrador'"
-                  class="
-                    bg-pink-200
-                    text-pink-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-pink-200 text-pink-600 py-1 px-3 rounded text-xs"
                   >Borrador</span
                 >
                 <span
                   v-if="$props.productor.estado === 'aprobado'"
-                  class="
-                    bg-green-200
-                    text-green-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-green-200 text-green-600 py-1 px-3 rounded text-xs"
                   >Aprobado</span
                 >
                 <span
@@ -1470,14 +1456,7 @@
                 >
                 <span
                   v-if="$props.productor.estado === 'con observacion'"
-                  class="
-                    bg-gray-200
-                    text-gary-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-gray-200 text-gary-600 py-1 px-3 rounded text-xs"
                   >Con Obesrvacion</span
                 >
                 <span
@@ -1589,26 +1568,12 @@
                 >
                 <span
                   v-if="$props.productor.estado === 'borrador'"
-                  class="
-                    bg-pink-200
-                    text-pink-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-pink-200 text-pink-600 py-1 px-3 rounded text-xs"
                   >Borrador</span
                 >
                 <span
                   v-if="$props.productor.estado === 'aprobado'"
-                  class="
-                    bg-green-200
-                    text-green-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-green-200 text-green-600 py-1 px-3 rounded text-xs"
                   >Aprobado</span
                 >
                 <span
@@ -1625,14 +1590,7 @@
                 >
                 <span
                   v-if="$props.productor.estado === 'con observacion'"
-                  class="
-                    bg-gray-200
-                    text-gary-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-gray-200 text-gary-600 py-1 px-3 rounded text-xs"
                   >Con Obesrvacion</span
                 >
                 <span
@@ -1978,41 +1936,49 @@ export default {
             label: "Principio",
             url: "#inicio",
             color: "bg-yellow-500 hover:bg-yellow-800",
+            ver: true,
           },
           {
             label: "Datos del Productor",
             url: "#section_productor",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
           {
             label: "Domicilio Legal",
             url: "#section_domicilio_legal",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
           {
             label: "Domicilio de Administración",
             url: "#section_domicilio_administrativo",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
           {
             label: "Datos de la Mina",
             url: "#section_mina_uno",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
           {
             label: "Datos de Mina Segunda Parte",
             url: "#section_datos_mina_dos",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
           {
             label: "Ubicación de Mina",
             url: "#section_datos_mina_ubicacion",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
           {
             label: "Finalizar Proceso",
             url: "#finalizar",
             color: "bg-red-500 hover:bg-red-800",
+            ver: true,
           },
         ],
       },
@@ -2648,14 +2614,14 @@ export default {
   methods: {
     submit() {
       let self = this;
-      console.log("el id es:", this.form.id);
+      // console.log("el id es:", this.form.id);
 
       if (
         typeof this.form.id !== "undefined" &&
         self.form.id != null &&
         self.puedo_enviar_form
       ) {
-        console.log("Entre al if xq:" + self.form.id);
+        // console.log("Entre al if xq:" + self.form.id);
         this.$inertia.put(
           route("productors.update", this.$props.productors.id),
           this.form

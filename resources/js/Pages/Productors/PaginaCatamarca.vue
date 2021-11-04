@@ -822,6 +822,7 @@
       :evaluacion="autoridad_minera"
       :testing="mostrar_testing"
       :id="$props.id"
+      v-on:mostrarpasosiguiente="mostrarpasos($event)"
     >
     </BotonesPaginaCatamarca>
   </div>
@@ -999,12 +1000,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_gestor_autorizacion_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_autorizacion_gestor_valido = newValue;
       //tengo que enviarsela al padre
     },
     cambio_el_archivo_gestor_autorizacion(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.autorizacion_gestor = newValue;
       //tengo que enviarsela al padre
     },
@@ -1022,12 +1023,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_constancia_afip_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_constancia_afip_valido = newValue;
       //tengo que enviarsela al padre
     },
     cambio_el_archivo_constancia_afip(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.constancia_afip = newValue;
       //tengo que enviarsela al padre
     },
@@ -1052,12 +1053,16 @@ export default {
     update_valor_ayuda_local(newValor) {
       this.ayuda_local = newValor;
     },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
+    },
   },
   mounted() {
     let self = this;
     this.$nextTick(() => {
-      console.log("por buscar los datos de catamarca desde el hijo \n\n\n");
-      console.log("\n\n\n mi id es : " + this.$props.id + " \n\n\n");
+      // console.log("por buscar los datos de catamarca desde el hijo \n\n\n");
+      // console.log("\n\n\n mi id es : " + this.$props.id + " \n\n\n");
       if (this.$inertia.page.props.user.id_provincia === 10) {
         if (
           typeof this.$props.id === "undefined" ||
@@ -1065,7 +1070,7 @@ export default {
           this.$props.id === "null"
         ) {
           //estoy dando de alta
-          console.log("entre a donde debia");
+          // console.log("entre a donde debia");
           //voy a BUSCAR un objeto vacio
           self.form_catamarca_test.gestor_nombre_apellido = "";
           self.form_catamarca_test.gestor_nombre_apellido_valido = "";

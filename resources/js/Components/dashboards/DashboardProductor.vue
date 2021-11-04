@@ -1111,11 +1111,13 @@ export default {
             label: "Nuevo Borrador",
             url: route("formulario-alta.create"),
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
           {
             label: "Nueva Reinscripción",
             url: route("reinscripciones.create"),
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
         ],
         modal: [

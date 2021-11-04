@@ -76,16 +76,16 @@ Route::get('productores/getProductorMina/{id}', [ProductoresController::class, "
 
 // });
 
-Route::group(['prefix' => 'paises'], function () {
-    // Route::get('paises', 'CountriesController@getCountries')
-    // ->middleware(['auth:sanctum', 'verified']);
-    Route::get('provincias', [CountriesController::class, "getDepartment"])
-        ->middleware(['auth:sanctum', 'verified']);
-    Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
-        ->middleware(['auth:sanctum', 'verified']);
-    Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
-        ->middleware(['auth:sanctum', 'verified']);
-});
+// Route::group(['prefix' => 'paises'], function () {
+//     // Route::get('paises', 'CountriesController@getCountries')
+//     // ->middleware(['auth:sanctum', 'verified']);
+//     Route::get('provincias', [CountriesController::class, "getDepartment"])
+//         ->middleware(['auth:sanctum', 'verified']);
+//     Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
+//         ->middleware(['auth:sanctum', 'verified']);
+//     Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
+//         ->middleware(['auth:sanctum', 'verified']);
+// });
 
 
 Route::resource('productos', ProductosController::class)
@@ -154,6 +154,7 @@ Route::get('/validar_email_productor/{codigo}', [HomeController::class, "valdiar
 Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->name('numero-reinsripiones-nuevas');
 
 Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->name('traer-provincias');
+Route::get('/datos/provincia/{id}', [FormAltaProductorController::class, "provincia_id"])->name('provincia');
 Route::post('/datos/traer_departamentos', [FormAltaProductorController::class, "traer_departamentos_json"])->name('traer-departamentos');
 Route::post('/datos/traer_localidades', [FormAltaProductorController::class, "traer_localidades_json"])->name('traer-localidades');
 Route::post('/datos/traer_minerales', [FormAltaProductorController::class, "traer_minerales_json"])->name('traer-minerales');

@@ -205,7 +205,7 @@
             <p class="pointer-none text-gray-600">
               <span v-if="!nameArchivo" class="text-sm text-center"
                 >Haga click aca para subir los archivo(s) desde su
-                dispotivo.</span
+                dispositivo.</span
               >
               <span v-else class="mt-2 text-base leading-normal text-center uppercase">{{
                 nameArchivo

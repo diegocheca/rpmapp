@@ -1019,6 +1019,7 @@
         :evaluacion="autoridad_minera"
         :testing="mostrar_testing"
         :id="$props.id"
+        v-on:mostrarpasosiguiente="mostrarpasos($event)"
       >
       </BotonesPaginaCinco>
       <!-- <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a> -->
@@ -1315,12 +1316,12 @@ export default {
       //tengo que enviarsela al padre
     },
     updateobs_owner_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_owner_valido = newValue;
       //tengo que enviarsela al padre
     },
     updatevalor_owner(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.owner = newValue;
       //tengo que enviarsela al padre
     },
@@ -1334,12 +1335,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_arrendatario_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_arrendatario_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_arrendatario(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.arrendatario = newValue;
       //tengo que enviarsela al padre
     },
@@ -1353,12 +1354,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_concesionario_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_concesionario_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_concesionario(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.concesionario = newValue;
       //tengo que enviarsela al padre
     },
@@ -1372,22 +1373,22 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_sustancias_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_sustancias_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_sustancias(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.sustancias = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_sustancias_input(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.sustancias_input = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_sustancias_input_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.sustancias_valido_input = newValue;
       //tengo que enviarsela al padre
     },
@@ -1401,22 +1402,22 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_otro_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_otros_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_otro(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.otros = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_otro_input(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.otros_input = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_otro_input_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.todas_las_validaciones = newValue;
       //tengo que enviarsela al padre
     },
@@ -1434,12 +1435,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_canon_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_constancia_pago_canon_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_canon(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.constancia_pago_canon = newValue;
       //tengo que enviarsela al padre
     },
@@ -1457,12 +1458,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_iia_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_iia_canon_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_iia(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.iia = newValue;
       //tengo que enviarsela al padre
     },
@@ -1480,12 +1481,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_dia_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_dia_canon_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_dia(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.dia = newValue;
       //tengo que enviarsela al padre
     },
@@ -1503,12 +1504,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_actividades_valida(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_actividad_a_desarrollar_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_actividades(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.actividad = newValue;
       //tengo que enviarsela al padre
     },
@@ -1526,12 +1527,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_acciones_valida(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_acciones_a_desarrollar_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_acciones(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.acciones_a_desarrollar = newValue;
       //tengo que enviarsela al padre
     },
@@ -1549,12 +1550,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_fecha_inicio_valida(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_fecha_alta_dia_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_fecha_inicio(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.fecha_alta_dia = newValue;
       //tengo que enviarsela al padre
     },
@@ -1572,12 +1573,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_fecha_fin_valida(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_fecha_vencimiento_dia_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_fecha_fin(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.fecha_vencimiento_dia = newValue;
       //tengo que enviarsela al padre
     },
@@ -1604,7 +1605,7 @@ export default {
       this.ayuda_local = newValor;
     },
     enviar_constancia() {
-      console.log("por enviar");
+      // console.log("por enviar");
       const data = new FormData();
       data.append("archivo", this.constancia_de_prueba);
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
@@ -1620,6 +1621,10 @@ export default {
           // handle error
           console.log(error);
         });
+    },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
     },
   },
 };

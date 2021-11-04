@@ -963,6 +963,7 @@
         :evaluacion="autoridad_minera"
         :id="$props.id"
         :testing="mostrar_testing"
+        v-on:mostrarpasosiguiente="mostrarpasos($event)"
       ></BotonesPaginaDos>
     </div>
 
@@ -1197,12 +1198,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_nombre_calle_validacion(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_nombre_calle_legal_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_nombre_calle(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_calle = newValue;
       //tengo que enviarsela al padre
     },
@@ -1212,7 +1213,7 @@ export default {
       //tengo que enviarsela al padre
     },
     update_num_legal_correcto(newValue) {
-      console.log(newValue);
+      // console.log(newValue);
       this.form_pagina.leal_numero_correcto = newValue;
       //tengo que enviarsela al padre
     },
@@ -1221,12 +1222,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_num_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_numero_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_num_legal(newValue) {
-      console.log("traje dddddddddddddun" + newValue);
+      // console.log("traje dddddddddddddun" + newValue);
       this.form_pagina.leal_numero = newValue;
       //tengo que enviarsela al padre
     },
@@ -1244,12 +1245,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_tel_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_telefono_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_tel_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_telefono = newValue;
       //tengo que enviarsela al padre
     },
@@ -1267,13 +1268,13 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_provincia_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_provincia_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_provincia_legal_num_legal(newValue) {
       let self = this;
-      console.log("cambio la provincia de mi hijo por:" + newValue);
+      // console.log("cambio la provincia de mi hijo por:" + newValue);
 
       //this.form_pagina.localidad_mina_provincia = newValue;
       this.form_pagina.leal_provincia = newValue;
@@ -1304,12 +1305,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_dpto_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_departamento_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_dpto_legal_num_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_departamento = newValue;
       //tengo que enviarsela al padre
     },
@@ -1327,12 +1328,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_localidad_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_localidad_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_localidad_legal_num_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_localidad = newValue;
       //tengo que enviarsela al padre
     },
@@ -1350,12 +1351,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_cp_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_cp_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_cp(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_cp = newValue;
       //tengo que enviarsela al padre
     },
@@ -1365,22 +1366,22 @@ export default {
       //tengo que enviarsela al padre
     },
     update_otro_correcto(newValue) {
-      console.log("cambie orto correcto" + newValue);
+      // console.log("cambie orto correcto" + newValue);
       this.form_pagina.leal_otro_correcto = newValue;
       //tengo que enviarsela al padre
     },
     update_obs_otro_legal(newValue) {
-      console.log("cambie el otro");
+      // console.log("cambie el otro");
       this.form_pagina.obs_leal_otro = newValue;
       //tengo que enviarsela al padre
     },
     update_obs_otro_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_otro_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_otro(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_otro = newValue;
       //tengo que enviarsela al padre
     },
@@ -1399,6 +1400,10 @@ export default {
       )
         this.nombrePagina = "legal_";
       else this.nombrePagina = "adm_";
+    },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
     },
   },
   mounted() {
