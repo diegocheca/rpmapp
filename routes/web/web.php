@@ -28,6 +28,8 @@ use App\Http\Controllers\formWebController\MineralesController;
 
 use App\Http\Controllers\DashboardController;
 
+use Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -231,6 +233,13 @@ Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_p
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
 Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
+
+
+/*Route::get('/formulario-alta-pdf/{id}', function () {
+    if( Auth::user()->id_provincia == 70) // sj
+    Route::redirect('/here', '/there');
+});
+*/
 Route::get('/comprobante-presentacion-pdf/{id}', [FormAltaProductorController::class, "comprobante_tramite_pdf"])->name('comprobante-presentacion-pdf');
 
 Route::get('/probando_super_guardado/{id}', [FormAltaProductorController::class, "probando_super_guardado"])->name('probando-super-guardado');
