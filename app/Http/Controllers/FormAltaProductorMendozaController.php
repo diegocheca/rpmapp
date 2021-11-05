@@ -1168,7 +1168,7 @@ class FormAltaProductorMendozaController extends Controller
 		{
             //significa que existe el formulario padre, ahora reviso el form de mendz
             $formulario_provisorio_medonza = FormAltaProductorMendoza::select('*')
-		        ->where('id', '=',$formulario_provisorio->id)->first();
+		        ->where('id_formulario_alta', '=',$formulario_provisorio->id)->first();
             if($formulario_provisorio_medonza != null)
             {
                 //tengo el formulario de mendoza
