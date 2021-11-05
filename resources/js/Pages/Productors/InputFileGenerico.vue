@@ -8,7 +8,9 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img :src="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                </svg>
                 </span>
             </div>
            
@@ -69,9 +71,10 @@
             <br>{{texto_validacion_text_area}}
         </div>
         <div class="w-full md:w-1/2 px-3">
-                <object data="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf" type="application/pdf" width="100%" height="500px"> 
+        GENERICO
+                <object :data="$inertia.page.props.appName+'/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'" type="application/pdf" width="100%" height="500px"> 
                 <p>It appears you don't have a PDF plugin for this browser.
-                    No biggie... you can <a href="http://localhost:8000/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf">click here to
+                    No biggie... you can <a :href="$inertia.page.props.appName+'/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'">click here to
                 download the PDF file.</a></p>  
             </object>
         </div>

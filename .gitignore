@@ -3,6 +3,12 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+/public/js/app.js
+public/js/app.js
+
+/public/css/app.css
+public/css/app.css
+
 # Laravel 4 specific
 bootstrap/compiled.php
 bootstrap/cache
@@ -17,10 +23,10 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
-public/js/app.js
-public/js/helpers_formWeb_sanjuan_observaciones_js.js
-public/js/helpers_formWeb_sanjuan_reinscripciones-wizard_copy_js.js
-public/js/helpers_formWeb_sanjuan_reinscripciones-wizard_js.js
-bootstrap/cache/config.php
 .vscode/settings.json
-public/css/app.css
+bootstrap/
+public/css/*.css
+public/js/*.js
+public/mix-manifest.json
+npm.bat
+Servidor.bat

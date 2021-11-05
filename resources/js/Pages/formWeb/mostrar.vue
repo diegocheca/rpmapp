@@ -1,288 +1,838 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h1
-                class="
-                    text-center text-2xl
-                    font-bold
-                    leading-7
-                    text-gray-300
-                    sm:text-3xl sm:truncate
-                    py-4
-                    bg-gradient-to-l
-                    from-indigo-500
-                    to-indigo-800
-                "
+  <app-layout>
+    <h1
+      class="
+        text-center text-2xl
+        font-bold
+        leading-7
+        text-gray-300
+        sm:text-3xl
+        sm:truncate
+        py-1
+        bg-gradient-to-l
+        from-indigo-500
+        to-indigo-800
+      "
+    >
+      Nueva Solicitud
+    </h1>
+    <div
+      class="
+        grid
+        place-items-center
+        min-h-screen
+        bg-indigo-100
+        p-5
+      "
+    >
+      <!-- <section class="grid grid-cols-1 sm:grid-cols-2 gap-4"> -->
+      <!-- CARD 1 -->
+      <!-- <inertia-link
+            :href="route('formweb.solicitudes.create')"
+            type="button"
+            class="w-full h-screen items-center justify-center bg-grey-lighter"
+          >
+            <label
+              class="
+                w-64
+                flex flex-col
+                items-center
+                px-4
+                py-6
+                bg-white
+                text-blue
+                rounded-lg
+                shadow-lg
+                tracking-wide
+                uppercase
+                border border-blue-600
+                cursor-pointer
+                hover:bg-blue-600
+                hover:text-white
+              "
             >
-                LISTA DE SOLICITUDES
-            </h1>
-        </template>
+              <svg
+                id="Capa_1"
+                enable-background="new 0 0 512 512"
+                height="50"
+                viewBox="0 0 512 512"
+                width="50"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <g>
+                    <g>
+                      <path
+                        d="m256 22c-135.31 0-245 109.69-245 245 0 119.109 85.001 218.349 197.649 240.41l47.351-16.07 47.351 16.07c112.648-22.061 197.649-121.301 197.649-240.41 0-135.31-109.69-245-245-245z"
+                        fill="#aad963"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g><circle cx="256" cy="252" fill="#c8ea73" r="200" /></g>
+                  </g>
+                  <g>
+                    <g>
+                      <g>
+                        <path
+                          d="m256 0c-57.25 0-142.054 91.297-142.054 203.189v114.487c0 26.151 21.2 47.351 47.351 47.351 30.173 0 57.784 16.963 71.422 43.878l11.443 22.584h23.676l11.443-22.584c13.638-26.915 41.248-43.878 71.422-43.878 26.151 0 47.351-21.2 47.351-47.351v-114.487c0-111.892-84.804-203.189-142.054-203.189z"
+                          fill="#f2f7f4"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m256 0c-57.25 0-142.054 91.297-142.054 203.189v114.487c0 26.151 21.2 47.351 47.351 47.351 30.173 0 57.784 16.963 71.422 43.878l11.443 22.584h11.838v-96.462h-51.553c-9.941 0-18-8.059-18-18v-113.472c0-101.148 69.553-173.555 69.553-173.555-8.284 0-15-6.716-15-15s6.716-15 15-15z"
+                          fill="#e0e7e3"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m161.297 335.027c-9.568 0-17.352-7.784-17.352-17.352v-114.486c0-43.855 15.791-89.505 43.324-125.246 25.377-32.94 53.417-47.943 68.731-47.943s43.354 15.003 68.729 47.943c27.533 35.741 43.324 81.391 43.324 125.246v114.486c0 9.568-7.783 17.352-17.351 17.352-39.28 0-150.124 0-189.405 0z"
+                          fill="#e0e7e3"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m256 30c-15.314 0-43.354 15.003-68.73 47.943-27.533 35.741-43.324 81.391-43.324 125.246v114.486c0 9.568 7.784 17.352 17.352 17.352h64.651c-41.218-72.064-44.107-207.696 30.051-305.027z"
+                          fill="#d1dad5"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m256 243.351c-9.804 0-17.081 14.67-22.404 33.822-13.228 47.591-7.743 98.446 14.583 142.508l5.983 11.808h3.676l5.983-11.809c22.326-44.062 27.811-94.916 14.583-142.507-5.323-19.152-12.6-33.822-22.404-33.822z"
+                          fill="#c0c9c3"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m291.514 455.165h-71.027v-29.595c0-9.807 7.95-17.757 17.757-17.757h35.513c9.807 0 17.757 7.95 17.757 17.757z"
+                          fill="#d0794e"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m268.243 407.813h-30c-9.807 0-17.757 7.95-17.757 17.757v29.595h30v-29.595c.001-9.807 7.95-17.757 17.757-17.757z"
+                          fill="#bd5a40"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m291.514 443.327h-71.027c-6.538 0-11.838 5.3-11.838 11.838v52.246c15.322 3.001 31.15 4.59 47.351 4.59s32.029-1.589 47.351-4.59v-52.246c0-6.538-5.3-11.838-11.837-11.838z"
+                          fill="#bd5a40"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m208.649 455.165v52.246c9.804 1.92 19.815 3.257 30 3.97v-56.216c0-6.538 5.3-11.838 11.838-11.838h-30c-6.538 0-11.838 5.3-11.838 11.838z"
+                          fill="#aa3c31"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <span class="mt-2 text-base leading-normal"
+                >Solicitud Exploración</span
+              >
+            </label>
+          </inertia-link> -->
+      <!-- END OF CARD 1 -->
+      <!-- CARD 2 -->
+      <!-- <inertia-link
+            :href="route('formweb.descubrimiento')"
+            type="button"
+            class="w-full h-screen items-center justify-center bg-grey-lighter"
+          >
+            <label
+              class="
+                w-64
+                flex flex-col
+                items-center
+                px-4
+                py-6
+                bg-white
+                text-blue
+                rounded-lg
+                shadow-lg
+                tracking-wide
+                uppercase
+                border border-blue-600
+                cursor-pointer
+                hover:bg-blue-600
+                hover:text-white
+              "
+            >
+              <svg
+                id="Capa_1"
+                enable-background="new 0 0 512 512"
+                height="50"
+                viewBox="0 0 512 512"
+                width="50"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <g>
+                    <g>
+                      <path
+                        d="m245 11c-27.185 0-53.332 4.436-77.767 12.609l-111.154 388.391c19.248 23.284 42.725 42.936 69.244 57.811h24.443l20.443 19.546c8.347 2.673 16.882 4.924 25.592 6.699l18.816-6.699 5.753 10.415c8.101.809 16.316 1.228 24.63 1.228s16.529-.419 24.63-1.228l5.923-10.415 18.645 6.699c8.71-1.776 17.245-4.026 25.592-6.699l17.167-19.546h27.719c74.78-41.946 125.324-121.97 125.324-213.811 0-135.31-109.69-245-245-245z"
+                        fill="#8ac8f0"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m472 196c-66.255-66.255-118.411-34.545-191-112.773-40.114-43.23-83.22-56.443-113.767-59.618-72.005 24.086-129.096 80.698-153.854 152.391z"
+                        fill="#ffcd53"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m110.888 180.252v-4.252c0-78.796 60.305-126.781 89.557-145.424-12.039-3.834-23.29-5.935-33.212-6.967-72.005 24.086-129.096 80.698-153.854 152.391z"
+                        fill="#ffb629"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m56.079 412h304.041c18.172 0 34.06-12.249 38.684-29.823l33.196-126.177v-19.955l-432 19.955c0 59.272 21.05 113.627 56.079 156z"
+                        fill="#d0794e"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m160.096 256v-7.395l-160.096 7.395c0 59.272 21.05 113.627 56.079 156h104.017c-14.359 0-26-11.641-26-26s11.641-26 26-26v-52c-14.359 0-26-11.641-26-26s11.64-26 26-26z"
+                        fill="#bd5a40"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m3.268 216-.003.001c-2.141 13.016-3.265 26.376-3.265 39.999h452c11.046 0 20-8.954 20-20v-40z"
+                        fill="#aa3c31"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m110.888 216v-4.592l-107.62 4.592-.003.001c-2.141 13.016-3.265 26.376-3.265 39.999h110.888c-9.55 0-17.292-8.954-17.292-20s7.742-20 17.292-20z"
+                        fill="#962e29"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m512 196c0 5.52-2.24 10.52-5.86 14.14s-8.62 5.86-14.14 5.86h-488.75c2.26-13.75 5.66-27.12 10.11-40h478.64c11.05 0 20 8.95 20 20z"
+                        fill="#d0794e"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m110.888 176h-97.515c-4.448 12.88-7.846 26.247-10.105 40h107.619c-11.046 0-20-8.954-20-20s8.955-20 20.001-20z"
+                        fill="#bd5a40"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m404.638 360 13.681-52h-412.775c3.926 18.164 9.858 35.581 17.567 52z"
+                        fill="#bd5a40"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m134.096 334c0-14.359 11.641-26 26-26h-154.552c3.926 18.164 9.858 35.581 17.567 52h136.985c-14.36 0-26-11.641-26-26z"
+                        fill="#aa3c31"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m294.199 496.056-115.107-115.106-14.142 14.142 104.68 104.68c8.319-.83 16.516-2.074 24.569-3.716z"
+                        fill="#bd5a40"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m220.37 499.772 104.68-104.68-14.142-14.142-115.107 115.106c8.053 1.642 16.25 2.886 24.569 3.716z"
+                        fill="#bd5a40"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g><circle cx="245" cy="461" fill="#aa3c31" r="25" /></g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m245 341c-66.274 0-120 53.726-120 120 0 2.964.112 5.901.323 8.811 14.154 7.939 29.174 14.514 44.886 19.546-3.355-8.82-5.209-18.374-5.209-28.357 0-44.112 35.888-80 80-80s80 35.888 80 80c0 9.983-1.854 19.537-5.209 28.357 15.713-5.032 30.732-11.606 44.886-19.546.211-2.91.323-5.847.323-8.811 0-66.274-53.726-120-120-120z"
+                        fill="#aa3c31"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m245 461c0-9.252 5.03-17.324 12.5-21.647-3.678-2.128-7.945-3.353-12.5-3.353-13.807 0-25 11.193-25 25s11.193 25 25 25c4.555 0 8.822-1.224 12.5-3.353-7.47-4.323-12.5-12.395-12.5-21.647z"
+                        fill="#962e29"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m245 381c-11.046 0-20-8.954-20-20s8.954-20 20-20c-66.274 0-120 53.726-120 120 0 2.964.112 5.901.323 8.811 14.154 7.939 29.174 14.514 44.886 19.546-3.355-8.82-5.209-18.374-5.209-28.357 0-44.112 35.888-80 80-80z"
+                        fill="#962e29"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m179.606 109.261h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.357 7.5-7.5 7.5z"
+                        fill="#ffe47d"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m266.117 141.025h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                        fill="#ffe47d"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m330.968 160.373h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                        fill="#ffe47d"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m399.33 151.904h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                        fill="#ffe47d"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m152 160.373h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                        fill="#ffe47d"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m77.078 138.925h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                        fill="#fe9d09"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m120.888 88.883h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                        fill="#fe9d09"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m286.117 88.55h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                        fill="#ffe47d"
+                      />
+                    </g>
+                  </g>
+                  <g>
+                    <g>
+                      <path
+                        d="m214.932 64.5h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                        fill="#ffe47d"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <span class="mt-2 text-base leading-normal"
+                >Solicitud Descubriminto</span
+              >
+            </label>
+          </inertia-link> -->
+      <!-- END OF CARD 2 -->
+      <!-- </section> -->
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <inertia-link
-                        :href="route('solicitudes.create')"
-                        class="
-                            flex-shrink-0
-                            bg-blue-500
-                            text-white text-base
-                            font-semibold
-                            py-2
-                            px-4
-                            rounded-lg
-                            shadow-md
-                            hover:bg-blue-700
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-blue-500
-                            focus:ring-offset-2
-                            focus:ring-offset-blue-200
-                        "
-                        type="button"
-                    >
-                        Nuevo
-                    </inertia-link>
-
-                    <inertia-link
-                        href="/prueba"
-                        class="
-                            flex-shrink-0
-                            bg-blue-500
-                            text-white text-base
-                            font-semibold
-                            py-2
-                            px-4
-                            rounded-lg
-                            shadow-md
-                            hover:bg-blue-700
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-blue-500
-                            focus:ring-offset-2
-                            focus:ring-offset-blue-200
-                        "
-                        type="button"
-                    >
-                        prueba
-                    </inertia-link>
-                    
-                    <inertia-link
-                        href="/menu"
-                        class="
-                            flex-shrink-0
-                            bg-blue-500
-                            text-white text-base
-                            font-semibold
-                            py-2
-                            px-4
-                            rounded-lg
-                            shadow-md
-                            hover:bg-blue-700
-                            focus:outline-none
-                            focus:ring-2
-                            focus:ring-blue-500
-                            focus:ring-offset-2
-                            focus:ring-offset-blue-200
-                        "
-                        type="button"
-                    >
-                        Menu
-                    </inertia-link>
-
-                    <table
-                        class="
-                            rounded-t-lg
-                            mt-5
-                            min-w-full
-                            mx-auto
-                            bg-gray-800
-                            text-gray-100
-                        "
-                    >
-                        <thead>
-                            <tr class="text-left border-b border-gray-300">
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    ID
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    Plazo Solicitado
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    Periodo Trabajo
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-left text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    Nombre Solicitud
-                                </th>
-                                <th
-                                    scope="col"
-                                    class="
-                                        px-6
-                                        py-3
-                                        text-center text-xs
-                                        font-medium
-                                        text-gray-100
-                                        uppercase
-                                        tracking-wider
-                                    "
-                                >
-                                    Acciones
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody
-                            class="
-                                bg-gray-700
-                                border-b border-gray-600
-                                text-gray-200
-                            "
-                        >
-                            <tr
-                                v-for="solicitud in solicitudes"
-                                :key="solicitud.id"
-                            >
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium">
-                                                {{ solicitud.id }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm">
-                                        {{ solicitud.plazo_solicitado }}
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm">
-                                        {{ solicitud.periodo_trabajo }}
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm">
-                                        {{ solicitud.tipo_solicitud.nombre }}
-                                    </div>
-                                </td>
-                                <td class="flex m-2">
-                                    <inertia-link
-                                        :href="
-                                            route(
-                                                'solicitudes.edit',
-                                                solicitud.id
-                                            )
-                                        "
-                                        class="
-                                            flex-shrink-0
-                                            bg-purple-600
-                                            text-white text-base
-                                            font-semibold
-                                            py-2
-                                            px-4
-                                            rounded-lg
-                                            shadow-md
-                                            hover:bg-purple-700
-                                            focus:outline-none
-                                            focus:ring-2
-                                            focus:ring-purple-500
-                                            focus:ring-offset-2
-                                            focus:ring-offset-purple-200
-                                        "
-                                        type="button"
-                                    >
-                                        Editar
-                                    </inertia-link>
-                                    <inertia-link
-                                        method="delete"
-                                        :href="
-                                            route(
-                                                'solicitudes.destroy',
-                                                solicitud.id
-                                            )
-                                        "
-                                        class="
-                                            flex-shrink-0
-                                            bg-pink-500
-                                            text-white text-base
-                                            font-semibold
-                                            py-2
-                                            px-4
-                                            rounded-lg
-                                            shadow-md
-                                            hover:bg-pink-700
-                                            focus:outline-none
-                                            focus:ring-2
-                                            focus:ring-pink-500
-                                            focus:ring-offset-2
-                                            focus:ring-offset-pink-200
-                                        "
-                                        type="button"
-                                    >
-                                        Borrar
-                                    </inertia-link>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+      <!-- component -->
+      <div
+        class="
+          justify-center
+          items-center
+          mt-6
+          h-full
+          lg:h-screen
+          overflow-auto
+        "
+      >
+        <div
+          class="
+            grid grid-cols-1
+            gap-6
+            sm:grid-cols-2
+            md:grid-cols-2
+            lg:grid-cols-2
+            xl:grid-cols-2
+          "
+        >
+          <!-- Start Card -->
+          <inertia-link
+            :href="route('formweb.solicitudes.create')"
+            type="button"
+            class="
+              bg-blue-300
+              pt-3
+              px-2
+              bg-gradient-to-b
+              from-indigo-400
+              to-indigo-800
+              rounded-xl
+              shadow-lg
+              w-52
+            "
+          >
+            <div class="flex justify-center">
+              <div
+                class="
+                  flex
+                  justify-center
+                  p-4
+                  bg-indigo-300
+                  ring-2 ring-indigo-200
+                  rounded-lg
+                  shadow-xl
+                  w-32
+                "
+              >
+                <svg
+                  id="Capa_1"
+                  enable-background="new 0 0 512 512"
+                  height="50"
+                  viewBox="0 0 512 512"
+                  width="50"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <g>
+                      <g>
+                        <path
+                          d="m256 22c-135.31 0-245 109.69-245 245 0 119.109 85.001 218.349 197.649 240.41l47.351-16.07 47.351 16.07c112.648-22.061 197.649-121.301 197.649-240.41 0-135.31-109.69-245-245-245z"
+                          fill="#aad963"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g><circle cx="256" cy="252" fill="#c8ea73" r="200" /></g>
+                    </g>
+                    <g>
+                      <g>
+                        <g>
+                          <path
+                            d="m256 0c-57.25 0-142.054 91.297-142.054 203.189v114.487c0 26.151 21.2 47.351 47.351 47.351 30.173 0 57.784 16.963 71.422 43.878l11.443 22.584h23.676l11.443-22.584c13.638-26.915 41.248-43.878 71.422-43.878 26.151 0 47.351-21.2 47.351-47.351v-114.487c0-111.892-84.804-203.189-142.054-203.189z"
+                            fill="#f2f7f4"
+                          />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path
+                            d="m256 0c-57.25 0-142.054 91.297-142.054 203.189v114.487c0 26.151 21.2 47.351 47.351 47.351 30.173 0 57.784 16.963 71.422 43.878l11.443 22.584h11.838v-96.462h-51.553c-9.941 0-18-8.059-18-18v-113.472c0-101.148 69.553-173.555 69.553-173.555-8.284 0-15-6.716-15-15s6.716-15 15-15z"
+                            fill="#e0e7e3"
+                          />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path
+                            d="m161.297 335.027c-9.568 0-17.352-7.784-17.352-17.352v-114.486c0-43.855 15.791-89.505 43.324-125.246 25.377-32.94 53.417-47.943 68.731-47.943s43.354 15.003 68.729 47.943c27.533 35.741 43.324 81.391 43.324 125.246v114.486c0 9.568-7.783 17.352-17.351 17.352-39.28 0-150.124 0-189.405 0z"
+                            fill="#e0e7e3"
+                          />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path
+                            d="m256 30c-15.314 0-43.354 15.003-68.73 47.943-27.533 35.741-43.324 81.391-43.324 125.246v114.486c0 9.568 7.784 17.352 17.352 17.352h64.651c-41.218-72.064-44.107-207.696 30.051-305.027z"
+                            fill="#d1dad5"
+                          />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path
+                            d="m256 243.351c-9.804 0-17.081 14.67-22.404 33.822-13.228 47.591-7.743 98.446 14.583 142.508l5.983 11.808h3.676l5.983-11.809c22.326-44.062 27.811-94.916 14.583-142.507-5.323-19.152-12.6-33.822-22.404-33.822z"
+                            fill="#c0c9c3"
+                          />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path
+                            d="m291.514 455.165h-71.027v-29.595c0-9.807 7.95-17.757 17.757-17.757h35.513c9.807 0 17.757 7.95 17.757 17.757z"
+                            fill="#d0794e"
+                          />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path
+                            d="m268.243 407.813h-30c-9.807 0-17.757 7.95-17.757 17.757v29.595h30v-29.595c.001-9.807 7.95-17.757 17.757-17.757z"
+                            fill="#bd5a40"
+                          />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path
+                            d="m291.514 443.327h-71.027c-6.538 0-11.838 5.3-11.838 11.838v52.246c15.322 3.001 31.15 4.59 47.351 4.59s32.029-1.589 47.351-4.59v-52.246c0-6.538-5.3-11.838-11.837-11.838z"
+                            fill="#bd5a40"
+                          />
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path
+                            d="m208.649 455.165v52.246c9.804 1.92 19.815 3.257 30 3.97v-56.216c0-6.538 5.3-11.838 11.838-11.838h-30c-6.538 0-11.838 5.3-11.838 11.838z"
+                            fill="#aa3c31"
+                          />
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
             </div>
+            <div class="p-4">
+              <p class="text-white text-xl text-center font-semibold">
+                Solicitud Exploración
+              </p>
+              <!-- <div class="flex justify-between mt-2">
+                <p class="text-gray-200">200 Files</p>
+                <p class="text-white">20 MB</p>
+              </div> -->
+            </div>
+          </inertia-link>
+          <!--End Card -->
+
+          <!-- Start Card -->
+          <inertia-link
+            :href="route('formweb.descubrimiento')"
+            type="button"
+            class="
+              bg-green-300
+              pt-3
+              px-2
+              bg-gradient-to-b
+              from-green-300
+              to-green-800
+              rounded-xl
+              shadow-lg
+              w-52
+            "
+          >
+            <div class="flex justify-center">
+              <div
+                class="
+                  flex
+                  justify-center
+                  p-4
+                  bg-green-300
+                  ring-2 ring-green-100
+                  rounded-lg
+                  shadow-xl
+                  w-32
+                "
+              >
+                <svg
+                  id="Capa_1"
+                  enable-background="new 0 0 512 512"
+                  height="50"
+                  viewBox="0 0 512 512"
+                  width="50"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g>
+                    <g>
+                      <g>
+                        <path
+                          d="m245 11c-27.185 0-53.332 4.436-77.767 12.609l-111.154 388.391c19.248 23.284 42.725 42.936 69.244 57.811h24.443l20.443 19.546c8.347 2.673 16.882 4.924 25.592 6.699l18.816-6.699 5.753 10.415c8.101.809 16.316 1.228 24.63 1.228s16.529-.419 24.63-1.228l5.923-10.415 18.645 6.699c8.71-1.776 17.245-4.026 25.592-6.699l17.167-19.546h27.719c74.78-41.946 125.324-121.97 125.324-213.811 0-135.31-109.69-245-245-245z"
+                          fill="#8ac8f0"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m472 196c-66.255-66.255-118.411-34.545-191-112.773-40.114-43.23-83.22-56.443-113.767-59.618-72.005 24.086-129.096 80.698-153.854 152.391z"
+                          fill="#ffcd53"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m110.888 180.252v-4.252c0-78.796 60.305-126.781 89.557-145.424-12.039-3.834-23.29-5.935-33.212-6.967-72.005 24.086-129.096 80.698-153.854 152.391z"
+                          fill="#ffb629"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m56.079 412h304.041c18.172 0 34.06-12.249 38.684-29.823l33.196-126.177v-19.955l-432 19.955c0 59.272 21.05 113.627 56.079 156z"
+                          fill="#d0794e"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m160.096 256v-7.395l-160.096 7.395c0 59.272 21.05 113.627 56.079 156h104.017c-14.359 0-26-11.641-26-26s11.641-26 26-26v-52c-14.359 0-26-11.641-26-26s11.64-26 26-26z"
+                          fill="#bd5a40"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m3.268 216-.003.001c-2.141 13.016-3.265 26.376-3.265 39.999h452c11.046 0 20-8.954 20-20v-40z"
+                          fill="#aa3c31"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m110.888 216v-4.592l-107.62 4.592-.003.001c-2.141 13.016-3.265 26.376-3.265 39.999h110.888c-9.55 0-17.292-8.954-17.292-20s7.742-20 17.292-20z"
+                          fill="#962e29"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m512 196c0 5.52-2.24 10.52-5.86 14.14s-8.62 5.86-14.14 5.86h-488.75c2.26-13.75 5.66-27.12 10.11-40h478.64c11.05 0 20 8.95 20 20z"
+                          fill="#d0794e"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m110.888 176h-97.515c-4.448 12.88-7.846 26.247-10.105 40h107.619c-11.046 0-20-8.954-20-20s8.955-20 20.001-20z"
+                          fill="#bd5a40"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m404.638 360 13.681-52h-412.775c3.926 18.164 9.858 35.581 17.567 52z"
+                          fill="#bd5a40"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m134.096 334c0-14.359 11.641-26 26-26h-154.552c3.926 18.164 9.858 35.581 17.567 52h136.985c-14.36 0-26-11.641-26-26z"
+                          fill="#aa3c31"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m294.199 496.056-115.107-115.106-14.142 14.142 104.68 104.68c8.319-.83 16.516-2.074 24.569-3.716z"
+                          fill="#bd5a40"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m220.37 499.772 104.68-104.68-14.142-14.142-115.107 115.106c8.053 1.642 16.25 2.886 24.569 3.716z"
+                          fill="#bd5a40"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g><circle cx="245" cy="461" fill="#aa3c31" r="25" /></g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m245 341c-66.274 0-120 53.726-120 120 0 2.964.112 5.901.323 8.811 14.154 7.939 29.174 14.514 44.886 19.546-3.355-8.82-5.209-18.374-5.209-28.357 0-44.112 35.888-80 80-80s80 35.888 80 80c0 9.983-1.854 19.537-5.209 28.357 15.713-5.032 30.732-11.606 44.886-19.546.211-2.91.323-5.847.323-8.811 0-66.274-53.726-120-120-120z"
+                          fill="#aa3c31"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m245 461c0-9.252 5.03-17.324 12.5-21.647-3.678-2.128-7.945-3.353-12.5-3.353-13.807 0-25 11.193-25 25s11.193 25 25 25c4.555 0 8.822-1.224 12.5-3.353-7.47-4.323-12.5-12.395-12.5-21.647z"
+                          fill="#962e29"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m245 381c-11.046 0-20-8.954-20-20s8.954-20 20-20c-66.274 0-120 53.726-120 120 0 2.964.112 5.901.323 8.811 14.154 7.939 29.174 14.514 44.886 19.546-3.355-8.82-5.209-18.374-5.209-28.357 0-44.112 35.888-80 80-80z"
+                          fill="#962e29"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m179.606 109.261h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.357 7.5-7.5 7.5z"
+                          fill="#ffe47d"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m266.117 141.025h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                          fill="#ffe47d"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m330.968 160.373h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                          fill="#ffe47d"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m399.33 151.904h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                          fill="#ffe47d"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m152 160.373h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                          fill="#ffe47d"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m77.078 138.925h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                          fill="#fe9d09"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m120.888 88.883h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                          fill="#fe9d09"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m286.117 88.55h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                          fill="#ffe47d"
+                        />
+                      </g>
+                    </g>
+                    <g>
+                      <g>
+                        <path
+                          d="m214.932 64.5h-20c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5h20c4.142 0 7.5 3.358 7.5 7.5s-3.358 7.5-7.5 7.5z"
+                          fill="#ffe47d"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="p-4">
+              <p class="text-white text-xl text-center font-semibold">
+                Solicitud Descubrimiento
+              </p>
+              <!-- <div class="flex justify-between mt-2">
+                <p class="text-gray-200">200 Files</p>
+                <p class="text-white">650 MB</p>
+              </div> -->
+            </div>
+          </inertia-link>
+          <!--End Card -->
         </div>
-    </app-layout>
+      </div>
+    </div>
+    <!-- </main> -->
+  </app-layout>
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayoutFormWeb";
+import Label from "../../Jetstream/Label.vue";
 export default {
-    props: {
-        solicitudes: Array,
-    },
-    components: {
-        AppLayout,
-    },
+  props: {
+    solicitudes: Array,
+  },
+  components: {
+    AppLayout,
+    //Label,
+  },
 };
 </script>

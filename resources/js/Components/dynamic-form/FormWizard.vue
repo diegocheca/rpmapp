@@ -1,12 +1,13 @@
 <template>
-<div>
+<loading v-if="loading" />
+<div  v-else>
     <div class="block w-full text-center text-grey-darkest text-2xl p-10">
         {{ titleForm }}
     </div>
 
     <div class="flex">
 
-        <div v-for="(item, index) in formSchema" :key="index" :class="`w-1/${formSchema.length}`">
+        <div v-for="(item, index) in formSchema" :key="index" :class="`w-1/${formSchema.length > 5? 5 : formSchema.length}`">
 
             <div class="relative mb-2">
                 <div v-if="index >= 1" class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
@@ -77,6 +78,7 @@ import AppLayout from "@/Layouts/AppLayout";
 import { createYupStepSchema } from '../../../../helpers/formularios/default/yupSchemaCreator';
 import DragAndDropFile from "./DragAndDropFile.vue";
 import DynamicInputs from "./DynamicInputs.vue";
+import Loading from '../Loading.vue'
 import { Form, Field, ErrorMessage, useForm  } from 'vee-validate';
 import inputsTypes from '../../../../helpers/enums/inputsTypes';
 import VueMultiselect from 'vue-multiselect'
@@ -92,7 +94,8 @@ export default {
         ErrorMessage,
         VueMultiselect,
         DragAndDropFile,
-        DynamicInputs
+        DynamicInputs,
+        Loading
     },
     props: {
         action: {
@@ -138,7 +141,11 @@ export default {
         dataForm: {
             require: false,
             type: Array
-        }
+        },
+        productors: {
+            require: false,
+            type: Array
+        },
     },
     emits: [
         'valuesForm'
@@ -147,6 +154,7 @@ export default {
     data() {
         const currentStep = 0;
         const formValues = {};
+        const loading = true;
 
         return {
             progressUpload: 0,
@@ -159,7 +167,8 @@ export default {
             yepSchemas: [],
             currentStep,
             formValues,
-            disableSave: false
+            disableSave: false,
+            loading
         };
     },
     methods: {
@@ -169,7 +178,7 @@ export default {
 
             if (this.currentStep === this.formSchema.length - 1) {
                 this.saveForm();
-                console.log("Done: ", JSON.stringify(this.formValues, null, 2));
+                // console.log("Done: ", JSON.stringify(this.formValues, null, 2));
                 //this.disableSave = true;
                 return;
             }
@@ -252,13 +261,14 @@ export default {
     // },
     async mounted() {
         const module = await import(`../../../../helpers/formularios/${this.$props.province}`)
-        this.formSchema = module.getFormSchema(this.$props.builder, this.$props.action, this.$props.dataForm);
+        this.formSchema = await module.getFormSchema(this.$props.builder, this.$props.action, this.$props.dataForm, this.$props.productors);
 
         for (let index = 0; index < this.formSchema.length; index++) {
             this.yepSchemas.push([this.formSchema[index]].reduce(createYupStepSchema, {},this.$props.evaluate));
 
         }
 
+        this.loading = false;
         //console.log(this.formSchema.map(e => e.bodyStep.map(e1 => e1.body.inputs)));
         // this.formSchema = subFormSchema.map(e => e.bodyStep);
 
@@ -269,7 +279,7 @@ export default {
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style src="vue-multiselect/dist/vue-multiselect.css" ></style>
 <style scoped>
 input:checked ~ .dot {
   transform: translateX(100%);

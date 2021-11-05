@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class formEstadoTerreno extends Model
 {
-    //use HasFactory;
+    use HasFactory;
     protected $table = 'formEstadoTerreno';
     protected $fillable = [
         'id',
-        'nombre_estado'        
+        'nombre_estado' ,
+               
     ];
     //Relacion de mucho a muchos con Terreno
     public function terreno()
@@ -20,8 +21,8 @@ class formEstadoTerreno extends Model
     }
     
     //relacion de muchos a muchos con Estado Terreno
-    public function minatemporal()
+    public function mina()
     {
-        return $this->belongsToMany('App\Models\formWebModels\formMinaTemporal');
+        return $this->belongsToMany('App\Models\formWebModels\formMina');
     }
 }

@@ -6,7 +6,9 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img src="http://localhost:8000/svg/telstreet.svg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
                 </span>
             </div>
             <input 
@@ -18,25 +20,25 @@
             name="leal_telefono"
             v-model="leal_telefono"
             v-bind:class=clase_de_input_calle_tel_legal
-            :disabled="evaluacion"
+            :disabled="evaluacion || $props.desactivar_legal_telefono"
             @input="cambio_input_calle_tel_legal($event.target.value)"  
             >
         </div>
         <p v-bind:class=clase_cartel_nota_legalcalletel>{{cartel_nota_legalcalletel}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || mostrar_legal_telefono_correccion" >
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType_tel" v-model="leal_telefono_correcto" value="true" v-on:change="actaulizar_variable_legalcalletel(true)">
+                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-green-600" :name="name_correcto"  v-model="legal_calle_tel_correcto_local" value="true" v-on:change="actaulizar_variable_legalcalletel(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType_tel" v-model="leal_telefono_correcto" value="false" v-on:change="actaulizar_variable_legalcalletel(false)">
+                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="legal_calle_tel_correcto_local" value="false" v-on:change="actaulizar_variable_legalcalletel(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType_tel" v-model="leal_telefono_correcto" value="nada" v-on:change="actaulizar_variable_legalcalletel('nada')">
+                        <input type="radio" :disabled="$props.desactivar_legal_telefono_correccion" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto"  v-model="legal_calle_tel_correcto_local" value="nada" v-on:change="actaulizar_variable_legalcalletel('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -51,6 +53,7 @@
                     id="obs_leal_telefono"
                     name="obs_leal_telefono"
                     v-model="obs_leal_telefono"
+                    :disabled="$props.desactivar_legal_telefono_correccion"
                     v-bind:class=clase_text_area_calle_legal_tel
                     @input="actaulizar_contenido_text_area_calle_legal_tel($event.target.value)" 
                     >
@@ -103,7 +106,11 @@ export default {
         'evaluacion',
         'label',
         'testing',
-    ],
+        'name_correcto',
+        'desactivar_legal_telefono',
+        'mostrar_legal_telefono_correccion',
+        'desactivar_legal_telefono_correccion',
+        ],
   data() {
     return {
         clase_de_input_calle_tel_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
@@ -121,8 +128,8 @@ export default {
   },
   methods:{
     actaulizar_variable_legalcalletel(valor) {
-        this.leal_telefono_correcto = valor;
-        this.$emit('changetellegalcorrecto',this.leal_telefono_correcto);
+        this.legal_calle_tel_correcto_local = valor;
+        this.$emit('changetellegalcorrecto',this.legal_calle_tel_correcto_local);
     },
      
       actaulizar_contenido_text_area_calle_legal_tel(value) {

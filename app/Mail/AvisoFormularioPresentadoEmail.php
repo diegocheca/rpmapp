@@ -16,11 +16,12 @@ class AvisoFormularioPresentadoEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($email, $razonsocial, $fecha)
+    public function __construct($email, $razonsocial, $id, $fecha)
     {
         //
         $this->email = $email;
         $this->razonsocial = $razonsocial;
+        $this->id = $id;
         $this->fecha = $fecha;
 
     }
@@ -35,7 +36,8 @@ class AvisoFormularioPresentadoEmail extends Mailable
         return $this->from("gismineronacional@gmail.com")->view('emails.aviso-formulario-presentado')->with([
             'email' => $this->email,
             'razonsocial' => $this->razonsocial,
-            'fecha' => $this->fecha,
+            'id' => $this->id,
+            'fecha' => $this->fecha
         ]);
     }
 }

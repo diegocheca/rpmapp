@@ -13,28 +13,28 @@
             <input 
             type="text" 
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Tipo Sociedad"
+            placeholder="Tipo de Sociedad"
             v-model="tiposociedad"
             v-bind:class=clase_de_input_tiposociedad
-            :disabled="evaluacion"
+            :disabled="evaluacion || $props.tipo_sociedad_disable"
             @input="cambio_input_tiposociedad($event.target.value)" 
             >
         </div>
         <p v-bind:class=clase_cartel_nota_tiposociedad>{{cartel_nota_campo_tiposociedad}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || tipo_sociedad_correccion_mostrar">
             <div class="w-full md:w-1/3 px-3">
-                <span class="text-gray-700">Correcto?</span>
+                <span class="text-gray-700">Correcto?</span> 
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="name_tiposociedad_correcto"  v-model="tiposociedad_correcto" value="true" v-on:change="actaulizar_variable_tiposociedad(true)">
+                        <input type="radio" :disabled="$props.tipo_sociedad_correccion_desactivar" class="form-radio h-5 w-5 text-green-600" name="name_tiposociedad_correcto"  v-model="tiposociedad_correcto" value="true" v-on:change="actaulizar_variable_tiposociedad(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="name_tiposociedad_correcto"  v-model="tiposociedad_correcto" value="false" v-on:change="actaulizar_variable_tiposociedad(false)">
+                        <input type="radio" :disabled="$props.tipo_sociedad_correccion_desactivar" class="form-radio h-5 w-5 text-red-600" name="name_tiposociedad_correcto"  v-model="tiposociedad_correcto" value="false" v-on:change="actaulizar_variable_tiposociedad(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="name_tiposociedad_correcto" v-model="tiposociedad_correcto" value="nada" v-on:change="actaulizar_variable_tiposociedad('nada')">
+                        <input type="radio" :disabled="$props.tipo_sociedad_correccion_desactivar" class="form-radio h-5 w-5 text-indigo-600" name="name_tiposociedad_correcto" v-model="tiposociedad_correcto" value="nada" v-on:change="actaulizar_variable_tiposociedad('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -50,6 +50,7 @@
                     name="obs_tiposociedad"
                     v-model="obs_tiposociedad"
                     v-bind:class=clase_text_area_tiposociedad
+                    :disabled="$props.tipo_sociedad_correccion_desactivar" 
                     @input="actaulizar_contenido_text_area_tiposociedad($event.target.value)" 
                     
                     >
@@ -98,6 +99,9 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'tipo_sociedad_disable',
+        'tipo_sociedad_correccion_mostrar',
+        'tipo_sociedad_correccion_desactivar',
 
         
     ],

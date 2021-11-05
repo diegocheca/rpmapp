@@ -6,7 +6,9 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img src="http://localhost:8000/svg/numstreet.svg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
                 </span>
             </div>
             <input 
@@ -18,25 +20,25 @@
             name="leal_numero"
             v-model="leal_numero"
             v-bind:class=clase_de_input_calle_num_legal
-            :disabled="evaluacion"
+            :disabled="evaluacion || $props.desactivar_legal_calle_num"
             @input="cambio_input_calle_num_legal($event.target.value)" 
             >
         </div>
         <p v-bind:class=clase_cartel_nota_legalcallenum>{{cartel_nota_legalcallenum}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || mostrar_legal_calle_num_correccion">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio  h-5 w-5 text-green-600" name="accountTypenum_calle" v-model="leal_numero_correcto" value="true" v-on:change="actaulizar_variable_legalcallenum(true)">
+                        <input type="radio" :disabled="$props.desactivar_legal_calle_num_correccion" class="form-radio  h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_numero_correcto" value="true" v-on:change="actaulizar_variable_legalcallenum(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio  h-5 w-5 text-red-600" name="accountTypenum_calle" v-model="leal_numero_correcto" value="false" v-on:change="actaulizar_variable_legalcallenum(false)">
+                        <input type="radio" :disabled="$props.desactivar_legal_calle_num_correccion" class="form-radio  h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_numero_correcto" value="false" v-on:change="actaulizar_variable_legalcallenum(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio  h-5 w-5 text-indigo-600" name="accountTypenum_calle" v-model="leal_numero_correcto" value="nada" v-on:change="actaulizar_variable_legalcallenum('nada')">
+                        <input type="radio" :disabled="$props.desactivar_legal_calle_num_correccion" class="form-radio  h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_numero_correcto" value="nada" v-on:change="actaulizar_variable_legalcallenum('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -52,6 +54,7 @@
                     name="obs_leal_numero"
                     v-model="obs_leal_numero"
                     v-bind:class=clase_text_area_calle_legal_num
+                    :disabled="$props.desactivar_legal_calle_num_correccion"
                     @input="actaulizar_contenido_text_area_calle_legal_num($event.target.value)" 
                     >
                 </textarea>
@@ -76,7 +79,7 @@
             </div>
             <div class="flex">
                 <div v-show="testing_hijo">
-                   -- nombre calle:{{leal_numero}}--
+                    -- nombre calle:{{leal_numero}}--
                     --nombre calle Valido:{{leal_numero_valido}}--
                     --nombre calle Valido local:{{calle_num_legal_valido_local}}--
                     
@@ -94,6 +97,7 @@
 <script>
 export default {
     props: [
+        'titulo',
         'leal_numero', 
         'leal_numero_valido', 
         'leal_numero_correcto', 
@@ -102,6 +106,10 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'name_correcto',
+        'desactivar_legal_calle_num',
+        'mostrar_legal_calle_num_correccion',
+        'desactivar_legal_calle_num_correccion',
     ],
   data() {
     return {

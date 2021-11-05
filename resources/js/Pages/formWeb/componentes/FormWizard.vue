@@ -9,6 +9,7 @@
                 v-for="(item, index) in formSchema"
                 :key="index"
                 :class="`w-1/${formSchema.length}`"
+                 class="w-1/2 p-4 bg-800"
             >
                 <div class="relative mb-2">
                     <div
@@ -42,7 +43,7 @@
                                 :class="[
                                     currentStep >= index
                                         ? item.bgColorProgress
-                                        : '',
+                                        : ''
                                 ]"
                                 style="width: 100%"
                             ></div>
@@ -85,6 +86,7 @@
                 </div>
             </div>
         </div>
+        
         <Form
             @submit="onSubmit"
             :validation-schema="currentSchema"
@@ -96,7 +98,7 @@
                 </template>
             </div>
             <div class="flex gap-x-5 justify-center pt-9">
-                <button
+                <!-- <button
                     v-if="currentStep > 0"
                     type="button"
                     class="
@@ -110,7 +112,7 @@
                     @click="prevStep"
                 >
                     Anterior
-                </button>
+                </button> -->
                 <button
                     v-if="!disableSave"
                     type="submit"
@@ -129,7 +131,7 @@
                             : "Siguiente"
                     }}
                 </button>
-                <button
+               <!--  <button
                     v-if="currentStep == formSchema.length - 1 && disableSave"
                     type="button"
                     class="
@@ -164,7 +166,7 @@
                         ></path>
                     </svg>
                     Guardando...
-                </button>
+                </button> -->
             </div>
 
             <!-- <inertia-link :href="route('reinscripciones.index')" class="w-20 text-center py-2 mb-4 text-sm font-medium rounded-full block border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">
@@ -205,6 +207,7 @@
                     <pre>
                     {{ values }}
                 </pre
+                
                     >
                 </div>
             </template>
@@ -213,7 +216,7 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayoutFormWeb";
 // import { createYupStepSchema } from '../../../../helpers/formularios/default/yupSchemaCreator';
 import { createYupStepSchema } from "../../../../../helpers/default/yupSchemaCreator";
 import DragAndDropFile from "./DragAndDropFile.vue";
@@ -245,6 +248,19 @@ export default {
             require: true,
             type: String,
         },
+        mineral:{
+           require: true,
+            type: String, 
+        },
+        estado_terreno:{
+           require: true,
+            type: String,  
+        },
+        estado_solicitud: {
+            require: true,
+            type: String,
+        },
+        
         titleForm: {
             require: true,
             type: String,
@@ -266,7 +282,7 @@ export default {
         dataForm: {
             require: false,
             type: Array,
-        },
+        },        
     },
     emits: ["valuesForm"],
 
@@ -289,11 +305,13 @@ export default {
             // accumlate the form values with the values from previous steps
             localStorage.setItem("dniV", values.dni);
             Object.assign(this.formValues, values);
+
             if (this.currentStep === this.formSchema.length - 1) {
                 console.log("Done: ", JSON.stringify(this.formValues, null, 2));
                 this.disableSave = true;
                 return;
             }
+
             await axios.post("solicitudesDatos", {
                 step: this.currentStep + 1,
                 datos: this.formValues,
@@ -360,7 +378,7 @@ export default {
 };
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.css"></style>
+<style src="vue-multiselect/dist/vue-multiselect.css" scoped></style>
 <style scoped>
 input:checked ~ .dot {
     transform: translateX(100%);

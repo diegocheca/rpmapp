@@ -6,7 +6,9 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img src="http://localhost:8000/svg/zipcode.svg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 19v-8.93a2 2 0 01.89-1.664l7-4.666a2 2 0 012.22 0l7 4.666A2 2 0 0121 10.07V19M3 19a2 2 0 002 2h14a2 2 0 002-2M3 19l6.75-4.5M21 19l-6.75-4.5M3 10l6.75 4.5M21 10l-6.75 4.5m0 0l-1.14.76a2 2 0 01-2.22 0l-1.14-.76" />
+                </svg>
                 </span>
             </div>
             <input 
@@ -18,25 +20,25 @@
             name="leal_cp"
             v-model="leal_cp"
             v-bind:class=clase_de_input_calle_cp_legal
-            :disabled="evaluacion"
+            :disabled="evaluacion || desactivar_legal_cod_pos"
             @input="cambio_input_calle_cp_legal($event.target.value)" 
             >
         </div>
         <p v-bind:class=clase_cartel_nota_legal_cp>{{cartel_nota_legal_cp}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || mostrar_legal_cod_pos_correccion">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="leal_cp_correcto" value="true" v-on:change="actaulizar_variable_legal_cp(true)">
+                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_cp_correcto" value="true" v-on:change="actaulizar_variable_legal_cp(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="leal_cp_correcto" value="false" v-on:change="actaulizar_variable_legal_cp(false)">
+                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_cp_correcto" value="false" v-on:change="actaulizar_variable_legal_cp(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="leal_cp_correcto" value="nada" v-on:change="actaulizar_variable_legal_cp('nada')">
+                        <input type="radio" :disabled="desactivar_legal_cod_pos_correccion" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_cp_correcto" value="nada" v-on:change="actaulizar_variable_legal_cp('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -51,6 +53,7 @@
                     id="obs_leal_cp"
                     name="obs_leal_cp"
                     v-model="obs_leal_cp"
+                    :disabled="desactivar_legal_cod_pos_correccion" 
                     v-bind:class=clase_text_area_calle_legal_cp
                     @input="actaulizar_contenido_text_area_calle_legal_cp($event.target.value)" 
                     >
@@ -102,6 +105,10 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'name_correcto',
+        'desactivar_legal_cod_pos',
+        'mostrar_legal_cod_pos_correccion',
+        'desactivar_legal_cod_pos_correccion',
     ],
   data() {
     return {

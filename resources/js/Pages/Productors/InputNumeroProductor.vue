@@ -13,27 +13,28 @@
             type="text" 
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
             placeholder="Num. Productor"
+            maxlength=""
             v-model="numeroproductor"
             v-bind:class=clase_de_input_numprod
-            :disabled="evaluacion"
+            :disabled="evaluacion|| $props.num_prod_disable"
             @input="cambio_input_numprod($event.target.value)"  
             >
         </div>
         <p v-bind:class=clase_cartel_nota_numprod>{{cartel_nota_campo_numprod}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || num_prod_correccion_mostrar">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="name_numeroproductor_correcto"  v-model="numeroproductor_correcto" value="true" v-on:change="actaulizar_variable_numprod(true)">
+                        <input type="radio" :disabled="$props.num_prod_correccion_desactivar" class="form-radio h-5 w-5 text-green-600" name="name_numeroproductor_correcto"  v-model="numeroproductor_correcto" value="true" v-on:change="actaulizar_variable_numprod(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="name_numeroproductor_correcto"  v-model="numeroproductor_correcto" value="false" v-on:change="actaulizar_variable_numprod(false)">
+                        <input type="radio" :disabled="$props.num_prod_correccion_desactivar" class="form-radio h-5 w-5 text-red-600" name="name_numeroproductor_correcto"  v-model="numeroproductor_correcto" value="false" v-on:change="actaulizar_variable_numprod(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="name_numeroproductor_correcto" v-model="numeroproductor_correcto" value="nada" v-on:change="actaulizar_variable_numprod('nada')">
+                        <input type="radio" :disabled="$props.num_prod_correccion_desactivar" class="form-radio h-5 w-5 text-indigo-600" name="name_numeroproductor_correcto" v-model="numeroproductor_correcto" value="nada" v-on:change="actaulizar_variable_numprod('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -49,6 +50,7 @@
                     name="obs_numeroproductor"
                     v-model="obs_numeroproductor"
                     v-bind:class=clase_text_area_numprod
+                    :disabled="$props.num_prod_correccion_desactivar"
                     @input="actaulizar_contenido_text_area_numprod($event.target.value)" 
                     
                     >
@@ -98,6 +100,9 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'num_prod_disable',
+        'num_prod_correccion_mostrar',
+        'num_prod_correccion_desactivar',
     ],
   data() {
     return {

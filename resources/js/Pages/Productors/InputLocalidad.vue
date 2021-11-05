@@ -6,37 +6,38 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img src="http://localhost:8000/svg/state.svg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
                 </span>
             </div>
             <input 
             type="text" 
-            maxlength="30"
-            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Núumero de calle"
+            placeholder="Localidad del Domicilio"
             id="leal_localidad"
             name="leal_localidad"
             v-model="leal_localidad"
             v-bind:class=clase_de_input_calle_localidad_legal
-            :disabled="evaluacion"
+            :disabled="evaluacion || desactivar_legal_localidad"
             @input="cambio_input_calle_localidad_legal($event.target.value)" 
             >
         <p v-bind:class=clase_cartel_nota_legalcallelocalidad>{{cartel_nota_legalcallelocal}}.</p>
     </div>
-    <div class="flex" v-if="evaluacion">
+     <p v-bind:class=clase_cartel_nota_legalcallelocalidad>{{cartel_nota_legalcallelocal}}.</p>
+    <div class="flex" v-if="evaluacion || mostrar_legal_localidad_correccion">
         <div class="w-full md:w-1/3 px-3">
             <span class="text-gray-700">Es correcto?</span>
             <div class="mt-2">
                 <label class="inline-flex items-center">
-                    <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType_localidad" v-model="leal_localidad_correcto" value="true" v-on:change="actaulizar_variable_legalcallelocalidad(true)">
+                    <input type="radio" :disabled="desactivar_legal_localidad_correccion" class="form-radio h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_localidad_correcto" value="true" v-on:change="actaulizar_variable_legalcallelocalidad(true)">
                     <span class="ml-2">Si</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType_localidad" v-model="leal_localidad_correcto" value="false" v-on:change="actaulizar_variable_legalcallelocalidad(false)">
+                    <input type="radio" :disabled="desactivar_legal_localidad_correccion" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_localidad_correcto" value="false" v-on:change="actaulizar_variable_legalcallelocalidad(false)">
                     <span class="ml-2">No</span>
                 </label>
                 <label class="inline-flex items-center ml-6">
-                    <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType_localidad" v-model="leal_localidad_correcto" value="nada" v-on:change="actaulizar_variable_legalcallelocalidad('nada')">
+                    <input type="radio" :disabled="desactivar_legal_localidad_correccion" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_localidad_correcto" value="nada" v-on:change="actaulizar_variable_legalcallelocalidad('nada')">
                     <span class="ml-2">Sin evaluar</span>
                 </label>
             </div>
@@ -51,6 +52,7 @@
                 id="obs_leal_localidad"
                 name="obs_leal_localidad"
                 v-model="obs_leal_localidad"
+                :disabled="desactivar_legal_localidad_correccion"
                 v-bind:class=clase_text_area_calle_legal_localidad
                 @input="actaulizar_contenido_text_area_calle_legal_localidad($event.target.value)" 
                 >
@@ -103,6 +105,10 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'name_correcto',
+        'desactivar_legal_localidad',
+        'mostrar_legal_localidad_correccion',
+        'desactivar_legal_localidad_correccion',
 
     ],
   data() {

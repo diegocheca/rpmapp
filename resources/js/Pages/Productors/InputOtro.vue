@@ -6,37 +6,39 @@
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <img src="http://localhost:8000/svg/otherstreet.svg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
                 </span>
             </div>
             <input 
             type="text" 
             maxlength="40"
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
-            placeholder="Teléfono de domicilio"
+            placeholder="Otro Dato del domicilio"
             id="leal_otro"
             name="leal_otro"
             v-model="leal_otro"
             v-bind:class=clase_de_input_calle_otro_legal
-            :disabled="evaluacion"
+            :disabled="evaluacion || desactivar_legal_otro"
             @input="cambio_input_calle_otro_legal($event.target.value)" 
             >
         </div>
         <p v-bind:class=clase_cartel_nota_legalcalleotro>{{cartel_nota_legalcalle_otro}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || mostrar_legal_otro_correccion">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType_otro" v-model="leal_otro_correcto" value="true" v-on:change="actaulizar_variable_legalcalle_otro(true)">
+                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-green-600" :name="name_correcto" v-model="leal_otro_correcto" value="true" v-on:change="actaulizar_variable_legalcalle_otro(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType_otro" v-model="leal_otro_correcto" value="false" v-on:change="actaulizar_variable_legalcalle_otro(false)">
+                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-red-600" :name="name_correcto" v-model="leal_otro_correcto" value="false" v-on:change="actaulizar_variable_legalcalle_otro(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType_otro" v-model="leal_otro_correcto" value="nada" v-on:change="actaulizar_variable_legalcalle_otro('nada')">
+                        <input type="radio" :disabled="desactivar_legal_otro_correccion" class="form-radio h-5 w-5 text-indigo-600" :name="name_correcto" v-model="leal_otro_correcto" value="nada" v-on:change="actaulizar_variable_legalcalle_otro('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -51,6 +53,7 @@
                     id="obs_leal_otro"
                     name="obs_leal_otro"
                     v-model="obs_leal_otro"
+                    :disabled="desactivar_legal_otro_correccion"
                     v-bind:class=clase_text_area_calle_legal_otro
                     @input="actaulizar_contenido_text_area_calle_legal_otro($event.target.value)" 
                     >
@@ -104,6 +107,10 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'name_correcto',
+        'desactivar_legal_otro',
+        'mostrar_legal_otro_correccion',
+        'desactivar_legal_otro_correccion',
 
 
     ],

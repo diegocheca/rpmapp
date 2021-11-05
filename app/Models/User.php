@@ -13,9 +13,9 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 //nuevo
-//use Tymon\JWTAuth\Contracts\JWTSubject;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens;
     use HasFactory;
@@ -25,22 +25,12 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use HasRoles;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $table = 'users';
 
     protected $fillable = [
-        'name', 'email', 'password', 'id_provincia'
+        'name', 'email', 'password', 'id_provincia', 'provincia'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -48,24 +38,17 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'profile_photo_url',
     ];
-
+    public function provincia()
+    {
+        return $this->belongsTo(Provincias::class, 'id_provincia');
+    }
     public function getPermissionArray()
     {
         // dd($this->getAllPermissions());
@@ -75,7 +58,6 @@ class User extends Authenticatable
         });
     }
 
-    //nuevo para jwt
     public function getJWTIdentifier()
     {
         return $this->getKey();

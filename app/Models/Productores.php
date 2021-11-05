@@ -12,7 +12,7 @@ class Productores extends Model
     use HasFactory;
     use SoftDeletes;
     protected $table = 'productores';
-
+    protected $guarded = [];
     protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
         'cuit',
@@ -46,6 +46,8 @@ class Productores extends Model
         'estado',
         'created_at',
         'deleted_at',
-        'updated_at' ,
+        'updated_at',
+        'id_formulario',
+        'usuario_creador'
     ];
 }

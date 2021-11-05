@@ -50,4 +50,17 @@ class CountriesController extends Controller
 
 	}
 
+    public static function getDepartmentArray($id){
+		//dd($request->id_prov);
+		return Departamentos::select('id as value', 'nombre as label')->where('provincia_id','=', $id)
+        ->orderBy('label')
+        ->get();
+	}
+
+    public static function getProvince($id){
+		return Provincias::select('id as value', 'nombre as label')
+        ->where('id','=', $id)
+        ->first();
+	}
+
 }

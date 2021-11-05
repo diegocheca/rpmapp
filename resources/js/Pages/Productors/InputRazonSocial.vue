@@ -15,27 +15,25 @@
             placeholder="Razon Social"
             v-model="razon_social"
             v-bind:class=clase_de_input_razon_social
-            :disabled="evaluacion"
+            :disabled="evaluacion || $props.razonsocial_disable"
             @input="cambio_input_razonsocial($event.target.value)"
             >
         </div>
-        {{razon_social_correcto_local}}
-        {{razon_social_correcto}}
         <p v-bind:class=clase_cartel_nota_campo>{{cartel_nota_campo}}.</p>
-        <div class="flex" v-if="evaluacion">
+        <div class="flex" v-if="evaluacion || $props.razonsocial_correccion_mostrar">
             <div class="w-full md:w-1/3 px-3">
                 <span class="text-gray-700">Es correcto?</span>
                 <div class="mt-2">
                     <label class="inline-flex items-center">
-                        <input type="radio" class="form-radio h-5 w-5 text-green-600" name="accountType" v-model="razon_social_correcto_local" value="true" v-on:change="actaulizar_variable_razonsocial(true)">
+                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-green-600" name="name_razon_social" v-model="razon_social_correcto_local" value="true" v-on:change="actaulizar_variable_razonsocial(true)">
                         <span class="ml-2">Si</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-red-600" name="accountType" v-model="razon_social_correcto_local" value="false" v-on:change="actaulizar_variable_razonsocial(false)">
+                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-red-600" name="name_razon_social" v-model="razon_social_correcto_local"  value="false" v-on:change="actaulizar_variable_razonsocial(false)">
                         <span class="ml-2">No</span>
                     </label>
                     <label class="inline-flex items-center ml-6">
-                        <input type="radio" class="form-radio h-5 w-5 text-indigo-600" name="accountType" v-model="razon_social_correcto_local" value="nada" v-on:change="actaulizar_variable_razonsocial('nada')">
+                        <input type="radio"  :disabled="$props.razonsocial_correccion_desactivar" class="form-radio h-5 w-5 text-indigo-600" name="name_razon_social" v-model="razon_social_correcto_local"  value="nada" v-on:change="actaulizar_variable_razonsocial('nada')">
                         <span class="ml-2">Sin evaluar</span>
                     </label>
                 </div>
@@ -51,6 +49,8 @@
                     name="obs_razon_social"
                     v-model="obs_razon_social"
                     v-bind:class=clase_text_area
+                    :disabled="$props.razonsocial_correccion_desactivar"
+
                     @input="updateValue($event.target.value)"
                     >
                 </textarea>
@@ -102,6 +102,9 @@ export default {
         'evaluacion',
         'label',
         'testing',
+        'razonsocial_disable',
+        'razonsocial_correccion_mostrar',
+        'razonsocial_correccion_desactivar',
     ],
   data() {
     return {
@@ -179,10 +182,10 @@ export default {
             this.clase_cartel_nota_campo= 'text-red-500 text-xs italic';
             this.razon_social_valido_local = false;
         }
-        if(this.razon_social.length >= 40)
+        if(this.razon_social.length >= 50)
         {
             this.clase_de_input_razon_social =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
-            this.cartel_nota_campo=  'Valor Incorrecta - debe tener menos de 30 caracteres';
+            this.cartel_nota_campo=  'Valor Incorrecta - debe tener menos de 50 caracteres';
             this.clase_cartel_nota_campo=  'text-red-500 text-xs italic';
             this.razon_social_valido_local = false;
         }
