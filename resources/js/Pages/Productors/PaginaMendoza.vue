@@ -174,9 +174,8 @@
             <h2 class="text-gray-800 text-3xl font-semibold">
                 {{ titulo_pagina }}
             </h2>
-            <br /><br />
-            <div class="flex items-center justify-center"></div>
             <br />
+            <div class="flex items-center justify-center"></div>
             <br />
             <div class="flex flex-wrap">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -227,7 +226,7 @@
                 </div>
             </div>
             <div class="flex flex-wrap">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <NombreMina
                         v-if="permisos_mostrar.concesion_minera_asiento_n"
                         v-bind:valor_input_props="form_mendoza.concesion_minera_asiento_n"
@@ -247,7 +246,7 @@
                     >
                     </NombreMina>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <NombreMina
                         v-if="permisos_mostrar.concesion_minera_fojas"
                         v-bind:valor_input_props="form_mendoza.concesion_minera_fojas"
@@ -255,21 +254,19 @@
                         v-bind:evualacion_correcto="false"
                         v-bind:valor_obs="false"
                         v-bind:valor_valido_obs="false"
-                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:evaluacion="false"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Concesion Minera Fojas:'"
                         v-bind:icon="$inertia.page.props.appName + '/svg/state.svg'"
                         v-bind:desactivar_input="permisos_disables.concesion_minera_fojas"
                         v-bind:mostrar_correccion="false"
-                        v-bind:desactivar_correccion="false"
+                        v-bind:desactivar_correccion="true"
                         v-on:changevalido="update_concesion_minera_fojas_valido($event)"
                         v-on:changevalor="update_valor_concesion_minera_fojas($event)"
                     >
                     </NombreMina>
                 </div>
-            </div>
-            <div class="flex flex-wrap">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <NombreMina
                         v-if="permisos_mostrar.concesion_minera_tomo_n"
                         v-bind:valor_input_props="form_mendoza.concesion_minera_tomo_n"
@@ -277,7 +274,7 @@
                         v-bind:evualacion_correcto="false"
                         v-bind:valor_obs="false"
                         v-bind:valor_valido_obs="false"
-                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:evaluacion="false"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Concesion Minera Tomo N°:'"
                         v-bind:icon="$inertia.page.props.appName + '/svg/state.svg'"
@@ -316,58 +313,13 @@
                         valida deel padre
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                    <NombreMina
-                        v-if="permisos_mostrar.concesion_minera_reg_m_y_d"
-                        v-bind:valor_input_props="form_mendoza.concesion_minera_reg_m_y_d"
-                        v-bind:valor_input_validacion="form_mendoza.concesion_minera_reg_m_y_d_valido"
-                        v-bind:evualacion_correcto="false"
-                        v-bind:valor_obs="false"
-                        v-bind:valor_valido_obs="false"
-                        v-bind:evaluacion="autoridad_minera"
-                        v-bind:testing="mostrar_testing"
-                        v-bind:label="'Concesion Minera Reg Libro MyD:'"
-                        v-bind:icon="
-                            $inertia.page.props.appName + '/svg/state.svg'
-                        "
-                        v-bind:desactivar_input="permisos_disables.concesion_minera_reg_m_y_d"
-                        v-bind:mostrar_correccion="false"
-                        v-bind:desactivar_correccion="false"
-                        v-on:changeobsvalido="update_concesion_minera_reg_m_y_d_valida($event)"
-                        v-on:changevalor="update_valor_concesion_minera_reg_m_y_d($event)"
-                    >
-                    </NombreMina>
-                    <div v-show="ayuda_local">
-                        <br />
-                        <div
-                            class="
-                                bg-blue-50
-                                text-gray-800
-                                bg-opacity-20
-                                text-opacity-80
-                                ring ring-4 ring-blue-100
-                            "
-                        >
-                            <p class="p-3">
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Na m quisquam doloremque
-                                placeat op.
-                            </p>
-                        </div>
-                        <br />
-                    </div>
-                    <div class="flex" v-if="mostrar_testing">
-                        -- localidad_mina_provincia deel padre --
-                        localidad_mina_provincia_validacion valida deel padre{
-                        -- localidad_mina_provincia_correcto correcto deel padre
-                        -- obs_localidad_mina_provincia observacion deel padre
-                        -- obs_localidad_mina_provincia_valido observacion
-                        valida deel padre
-                    </div>
-                </div>
+                
             </div>
             <div class="flex flex-wrap">
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                
+            </div>
+            <div class="flex flex-wrap">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <NombreMina
                         v-if="permisos_mostrar.concesion_minera_reg_cant"
                         v-bind:valor_input_props="form_mendoza.concesion_minera_reg_cant"
@@ -375,7 +327,7 @@
                         v-bind:evualacion_correcto="false"
                         v-bind:valor_obs="false"
                         v-bind:valor_valido_obs="false"
-                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:evaluacion="false"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Concesion  Reg Cantidad:'"
                         v-bind:icon="$inertia.page.props.appName + '/svg/state.svg'"
@@ -414,7 +366,7 @@
                         valida deel padre
                     </div>
                 </div>
-                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                     <NombreMina
 
 
@@ -429,7 +381,7 @@
                         v-bind:evualacion_correcto="false"
                         v-bind:valor_obs="false"
                         v-bind:valor_valido_obs="false"
-                        v-bind:evaluacion="autoridad_minera"
+                        v-bind:evaluacion="false"
                         v-bind:testing="mostrar_testing"
                         v-bind:label="'Concesion Minera Reg Libro Men:'"
                         v-bind:icon="
@@ -440,6 +392,55 @@
                         v-bind:desactivar_correccion="false"
                         v-on:changevalido="update_concesion_minera_reg_men_valido($event)"
                         v-on:changevalor="update_valor_concesion_minera_reg_men($event)"
+                    >
+                    </NombreMina>
+                    <div v-show="ayuda_local">
+                        <br />
+                        <div
+                            class="
+                                bg-blue-50
+                                text-gray-800
+                                bg-opacity-20
+                                text-opacity-80
+                                ring ring-4 ring-blue-100
+                            "
+                        >
+                            <p class="p-3">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Na m quisquam doloremque
+                                placeat op.
+                            </p>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="flex" v-if="mostrar_testing">
+                        -- localidad_mina_provincia deel padre --
+                        localidad_mina_provincia_validacion valida deel padre{
+                        -- localidad_mina_provincia_correcto correcto deel padre
+                        -- obs_localidad_mina_provincia observacion deel padre
+                        -- obs_localidad_mina_provincia_valido observacion
+                        valida deel padre
+                    </div>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <NombreMina
+                        v-if="permisos_mostrar.concesion_minera_reg_m_y_d"
+                        v-bind:valor_input_props="form_mendoza.concesion_minera_reg_m_y_d"
+                        v-bind:valor_input_validacion="form_mendoza.concesion_minera_reg_m_y_d_valido"
+                        v-bind:evualacion_correcto="false"
+                        v-bind:valor_obs="false"
+                        v-bind:valor_valido_obs="false"
+                        v-bind:evaluacion="false"
+                        v-bind:testing="mostrar_testing"
+                        v-bind:label="'Concesion Minera Reg Libro MyD:'"
+                        v-bind:icon="
+                            $inertia.page.props.appName + '/svg/state.svg'
+                        "
+                        v-bind:desactivar_input="permisos_disables.concesion_minera_reg_m_y_d"
+                        v-bind:mostrar_correccion="false"
+                        v-bind:desactivar_correccion="false"
+                        v-on:changeobsvalido="update_concesion_minera_reg_m_y_d_valida($event)"
+                        v-on:changevalor="update_valor_concesion_minera_reg_m_y_d($event)"
                     >
                     </NombreMina>
                     <div v-show="ayuda_local">
@@ -535,6 +536,9 @@
             <div class="flex flex-wrap"></div>
         </div>
 
+        <br>
+        <br>
+
         <div class="flex items-stretch w-full justify-items-stretch">
             <BotonesPaginaMendoza
                 v-bind:link_volver="titulo_boton_volver"
@@ -551,7 +555,6 @@
             >
             </BotonesPaginaMendoza>
         </div>
-        {{form_mendoza}}
     </div>
 </template>
 
@@ -611,8 +614,6 @@ export default {
             this.mostrar_modal_datos_ya_guardados = false;
         },
 
-
-
         //FUNCIONES DE decreto3737
         update_decreto3737_valido(newValue) {
             this.form_mendoza.decreto3737_valido = newValue;
@@ -629,9 +630,6 @@ export default {
         update_valor_decreto3737(newValue) {
             this.form_mendoza.decreto3737 = newValue;
         },
-
-
-
 
         //FUNCIONES DE situacion_min
         update_situacion_mina_valido(newValue) {
@@ -650,22 +648,6 @@ export default {
             this.form_mendoza.situacion_mina = newValue;
         },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //FUNCIONES DE concesion_minera_asiento_n
         update_concesion_minera_asiento_n_valido(newValue) {
             this.form_mendoza.concesion_minera_asiento_n_valido = newValue;
@@ -673,11 +655,6 @@ export default {
         update_valor_concesion_minera_asiento_n(newValue) {
             this.form_mendoza.concesion_minera_asiento_n = newValue;
         },
-
-
-
-
-
 
         //FUNCIONES DE concesion_minera_fojas
         update_concesion_minera_fojas_valido(newValue) {
@@ -687,16 +664,6 @@ export default {
             this.form_mendoza.concesion_minera_fojas = newValue;
         },
 
-
-
-
-
-
-
-
-
-
-
         //FUNCIONES DE N OTIFICACION DE GESTOR
         update_concesion_minera_tomo_n_valido(newValue) {
             this.form_mendoza.concesion_minera_tomo_n_validacion = newValue;
@@ -705,11 +672,6 @@ export default {
             this.form_mendoza.concesion_minera_tomo_n = newValue;
         },
 
-
-
-        
-
-
         //FUNCIONES DE PROFESION DE GESTOR
         update_concesion_minera_reg_m_y_d_valida(newValue) {
             this.form_mendoza.concesion_minera_reg_m_y_d_valido = newValue;
@@ -717,23 +679,6 @@ export default {
         update_valor_concesion_minera_reg_m_y_d(newValue) {
             this.form_mendoza.concesion_minera_reg_m_y_d = newValue;
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         update_concesion_minera_reg_cant_valida(newValue) {
             this.form_mendoza.concesion_minera_reg_cant_valido = newValue;
@@ -744,17 +689,6 @@ export default {
             //tengo que enviarsela al padre
         },
 
-
-
-
-
-
-
-
-        
-
-
-
         update_concesion_minera_reg_men_valido(newValue) {
             this.form_mendoza.concesion_minera_reg_men_valido = newValue;
             //tengo que enviarsela al padre
@@ -763,21 +697,6 @@ export default {
             this.form_mendoza.concesion_minera_reg_men = newValue;
             //tengo que enviarsela al padre
         },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //FUNCIONES DE update_valor_concesion_minera_reg_d_y_c
         update_concesion_minera_reg_d_y_c_valido(newValue) {
@@ -795,12 +714,6 @@ export default {
         update_valor_concesion_minera_reg_d_y_c(newValue) {
             this.form_mendoza.concesion_minera_reg_d_y_c = newValue;
         },
-
-
-
-
-
-
 
         //mostrar ayuda
         update_valor_ayuda_local(newValor) {
@@ -846,13 +759,10 @@ export default {
                     self.form_mendoza.concesion_minera_reg_men = "";
                     self.form_mendoza.concesion_minera_reg_men_valido = "";
 
-
-
                     self.form_mendoza.concesion_minera_reg_d_y_c = "";
                     self.form_mendoza.concesion_minera_reg_d_y_c_valido = "";
                     self.form_mendoza.obs_concesion_minera_reg_d_y_c = "";
                     self.form_mendoza.obs_concesion_minera_reg_d_y_c_valido = "";
-
 
                     self.form_mendoza.paso_mend_progreso = "";
                     self.form_mendoza.paso_mend_aprobado = "";
@@ -901,9 +811,7 @@ export default {
                                 "/editar"
                         )
                         .then(function (response) {
-                            console.log("los disables son:");
                             console.log(response.data.disables);
-                            console.log("los mostrar son:");
                             console.log(response.data.mostrar);
                             if (response.data.status === "ok") {
                                 self.permisos_mostrar = response.data.mostrar;

@@ -424,60 +424,40 @@ class FormAltaProductorMendozaController extends Controller
         //editar - en revision
         $disables [10]['Productor']['editar']
         ['en revision']['altaProdMinero'] = [
-            "nombre_gestor" => true,
-            "nombre_gestor_correccion" => true,
-            "dni_gestor" => true,
-            "dni_gestor_correccion" => true,
-            "profesion_gestor" => true,
-            "profesion_gestor_correccion" => true,
-            "telefono_gestor" => true,
-            "telefono_gestor_correccion" => true,
-            "notificacion_gestor" => true,
-            "notificacion_gestor_correccion" => true,
-            "email_gestor" => true,
-            "email_gestor_correccion" => true,
-            "dni_productor" => true,
-            "dni_productor_correccion" => true,
-            "foto_productor" => true,
-            "foto_productor_correccion" => true,
-            "constancia_afip" => true,
-            "constancia_afip_correccion" => true,
-            "autorizacion_gestor" => true,
-            "autorizacion_gestor_correccion" => true,
-            "paso_catamarca"=> true,
-            "boton_catamarca"=> true,
-
-            "estado" => true,
-            "boton_actualizar" => true,
+            "decreto3737" => true,
+            "decreto3737_correccion" => true,
+            "situacion_mina" => true,
+            "situacion_mina_correccion" => true,
+            "concesion_minera_asiento_n" => true,
+            "concesion_minera_fojas" => true,
+            "concesion_minera_tomo_n" => true,
+            "concesion_minera_reg_m_y_d" => true,
+            "concesion_minera_reg_cant" => true,
+            "concesion_minera_reg_men" => true,
+            "concesion_minera_reg_d_y_c" => true,
+            "obs_datos_minas" => true,
+					
+            "paso_mendoza"=> true,
+            "boton_mendoza"=> true,
 
         ];
         $disables [10]['Autoridad']['editar']
         ['en revision']['altaProdMinero'] = [
-            "nombre_gestor" => true,
-            "nombre_gestor_correccion" => false,
-            "dni_gestor" => true,
-            "dni_gestor_correccion" => false,
-            "profesion_gestor" => true,
-            "profesion_gestor_correccion" => false,
-            "telefono_gestor" => true,
-            "telefono_gestor_correccion" => false,
-            "notificacion_gestor" => true,
-            "notificacion_gestor_correccion" => false,
-            "email_gestor" => true,
-            "email_gestor_correccion" => false,
-            "dni_productor" => true,
-            "dni_productor_correccion" => false,
-            "foto_productor" => true,
-            "foto_productor_correccion" => false,
-            "constancia_afip" => true,
-            "constancia_afip_correccion" => false,
-            "autorizacion_gestor" => true,
-            "autorizacion_gestor_correccion" => false,
-            "paso_catamarca"=> false,
-            "boton_catamarca"=> false,
-
-            "estado" => false,
-            "boton_actualizar" => false,
+            "decreto3737" => true,
+            "decreto3737_correccion" => false,
+            "situacion_mina" => true,
+            "situacion_mina_correccion" => false,
+            "concesion_minera_asiento_n" => true,
+            "concesion_minera_fojas" => true,
+            "concesion_minera_tomo_n" => true,
+            "concesion_minera_reg_m_y_d" => true,
+            "concesion_minera_reg_cant" => true,
+            "concesion_minera_reg_men" => true,
+            "concesion_minera_reg_d_y_c" => true,
+            "obs_datos_minas" => false,
+					
+            "paso_mendoza"=> false,
+            "boton_mendoza"=> false,
 
         ];
         $disables [10]['Administrador']['editar']['en revision']['altaProdMinero'] =
@@ -541,33 +521,21 @@ class FormAltaProductorMendozaController extends Controller
         ];
         $mostrar [10]['Autoridad']['editar']
         ['en revision']['altaProdMinero'] = [
-            "nombre_gestor" => true,
-            "nombre_gestor_correccion" => true,
-            "dni_gestor" => true,
-            "dni_gestor_correccion" => true,
-            "profesion_gestor" => true,
-            "profesion_gestor_correccion" => true,
-            "telefono_gestor" => true,
-            "telefono_gestor_correccion" => true,
-            "notificacion_gestor" => true,
-            "notificacion_gestor_correccion" => true,
-            "email_gestor" => true,
-            "email_gestor_correccion" => true,
-            "dni_productor" => true,
-            "dni_productor_correccion" => true,
-            "foto_productor" => true,
-            "foto_productor_correccion" => true,
-            "constancia_afip" => true,
-            "constancia_afip_correccion" => true,
-            "autorizacion_gestor" => true,
-            "autorizacion_gestor_correccion" => true,
-            "paso_catamarca"=> true,
-            "boton_catamarca"=> true,
-
-
-            "estado" => true,
-
-            "boton_actualizar" => true,
+            "decreto3737" => true,
+            "decreto3737_correccion" => true,
+            "situacion_mina" => true,
+            "situacion_mina_correccion" => true,
+            "concesion_minera_asiento_n" => true,
+            "concesion_minera_fojas" => true,
+            "concesion_minera_tomo_n" => true,
+            "concesion_minera_reg_m_y_d" => true,
+            "concesion_minera_reg_cant" => true,
+            "concesion_minera_reg_men" => true,
+            "concesion_minera_reg_d_y_c" => true,
+            "obs_datos_minas" => true,
+					
+            "paso_mendoza"=> true,
+            "boton_mendoza"=> true,
         ];
         $mostrar [10]['Administrador']['editar']['en revision']['altaProdMinero'] =
         [
@@ -1176,22 +1144,26 @@ class FormAltaProductorMendozaController extends Controller
                 if($request->es_evaluacion)
                 {
                     //soy autoridad
-                    $formulario_provisorio->decreto3737_correcto = $request->decreto3737_correcto;
-                    $formulario_provisorio->obs_decreto3737 = $request->obs_decreto3737;
-                    $formulario_provisorio->situacion_mina_correcto = $request->situacion_mina_correcto;
-                    $formulario_provisorio->obs_situacion_mina = $request->obs_situacion_mina;
-                    $formulario_provisorio->obs_concesion_minera_reg_d_y_c = $request->obs_concesion_minera_reg_d_y_c;
-                    $formulario_provisorio->concesion_minera_reg_d_y_c_correcto = $request->concesion_minera_reg_d_y_c_correcto;
+                    $request->decreto3737_correcto = $request->decreto3737_correcto === 'true' ? true:false;
+                    $request->situacion_mina_correcto = $request->situacion_mina_correcto === 'true' ? true:false;
+                    $request->concesion_minera_reg_d_y_c_correcto = $request->concesion_minera_reg_d_y_c_correcto === 'true' ? true:false;
 
-                    $formulario_provisorio->created_by = Auth::user()->id;
-                    $formulario_provisorio->updated_by =  Auth::user()->id;
-                    $formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-                    if($formulario_provisorio->save())
+                    $formulario_provisorio_medonza->decreto3737_correcto = $request->decreto3737_correcto;
+                    $formulario_provisorio_medonza->obs_decreto3737 = $request->obs_decreto3737;
+                    $formulario_provisorio_medonza->situacion_mina_correcto = $request->situacion_mina_correcto;
+                    $formulario_provisorio_medonza->obs_situacion_mina = $request->obs_situacion_mina;
+                    $formulario_provisorio_medonza->concesion_minera_reg_d_y_c_correcto = $request->concesion_minera_reg_d_y_c_correcto;
+                    $formulario_provisorio_medonza->obs_concesion_minera_reg_d_y_c = $request->obs_concesion_minera_reg_d_y_c;
+
+                    $formulario_provisorio_medonza->created_by = Auth::user()->id;
+                    $formulario_provisorio_medonza->updated_by =  Auth::user()->id;
+                    $formulario_provisorio_medonza->updated_at = date("Y-m-d H:i:s");
+                    if($formulario_provisorio_medonza->save())
                         return response()->json([
                             'status' => 'ok',
                             'msg' => 'se creo el paso de mendoza correctamente',
                             'rol' => 'autoridad',
-                            'id'=> $formulario_provisorio->id
+                            'id'=> $formulario_provisorio_medonza->id
                         ],201);
                     else 
                         return response()->json([
@@ -1202,23 +1174,23 @@ class FormAltaProductorMendozaController extends Controller
                 }
                 elseif(!$request->es_evaluacion){
                     //soy productor
-                    $formulario_provisorio->decreto3737 = $request->decreto3737;
-                    $formulario_provisorio->situacion_mina = $request->situacion_mina;
-                    $formulario_provisorio->concesion_minera_asiento_n = $request->concesion_minera_asiento_n;
-                    $formulario_provisorio->concesion_minera_fojas = $request->concesion_minera_fojas;
-                    $formulario_provisorio->concesion_minera_tomo_n = $request->concesion_minera_tomo_n;
-                    $formulario_provisorio->concesion_minera_reg_m_y_d = $request->concesion_minera_reg_m_y_d;
-                    $formulario_provisorio->concesion_minera_reg_cant = $request->concesion_minera_reg_cant;
-                    $formulario_provisorio->concesion_minera_reg_men = $request->concesion_minera_reg_men;
-                    $formulario_provisorio->concesion_minera_reg_d_y_c = $request->concesion_minera_reg_d_y_c;
-                    $formulario_provisorio->updated_by =  Auth::user()->id;
-                    $formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-                    if($formulario_provisorio->save())
+                    $formulario_provisorio_medonza->decreto3737 = $request->decreto3737;
+                    $formulario_provisorio_medonza->situacion_mina = $request->situacion_mina;
+                    $formulario_provisorio_medonza->concesion_minera_asiento_n = $request->concesion_minera_asiento_n;
+                    $formulario_provisorio_medonza->concesion_minera_fojas = $request->concesion_minera_fojas;
+                    $formulario_provisorio_medonza->concesion_minera_tomo_n = $request->concesion_minera_tomo_n;
+                    $formulario_provisorio_medonza->concesion_minera_reg_m_y_d = $request->concesion_minera_reg_m_y_d;
+                    $formulario_provisorio_medonza->concesion_minera_reg_cant = $request->concesion_minera_reg_cant;
+                    $formulario_provisorio_medonza->concesion_minera_reg_men = $request->concesion_minera_reg_men;
+                    $formulario_provisorio_medonza->concesion_minera_reg_d_y_c = $request->concesion_minera_reg_d_y_c;
+                    $formulario_provisorio_medonza->updated_by =  Auth::user()->id;
+                    $formulario_provisorio_medonza->updated_at = date("Y-m-d H:i:s");
+                    if($formulario_provisorio_medonza->save())
                         return response()->json([
                             'status' => 'ok',
                             'msg' => 'se guardo correctamente la infromacion',
                             'rol' => 'productor',
-                            'id'=> $formulario_provisorio->id
+                            'id'=> $formulario_provisorio_medonza->id
                         ],201);
                     else 
                         return response()->json([
