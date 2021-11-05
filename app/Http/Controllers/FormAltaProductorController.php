@@ -11821,7 +11821,10 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 			elseif($borrador->provincia == 10) // catamarca
 				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_cata', $data);
 			elseif($borrador->provincia == 50) // mendoza
+			{
+				$data ['title'] = 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES DE LA PROVINCIA DE MENDOZA';
 				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_mendoza', $data);
+			}
 
 			return $pdf->stream('Comprobante_de_inscripcion.pdf');
 		}
