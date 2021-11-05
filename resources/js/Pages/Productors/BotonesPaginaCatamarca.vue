@@ -1,37 +1,35 @@
 <template>
   <div class="flex items-center justify-center w-full">
-    <!-- <jet-dialog-modal
-      :show="mostrar_modal_datos_ya_guardados"
-      @close="cerrar_modal_datos_uno"
-    >
-      <template #title>
-        {{ modal_tittle }}
-      </template>
-      <template #content>
-        {{ modal_body }}
-      </template>
-      <template #footer>
-        <button @click="cerrar_modal_datos_uno">Ok</button>
-      </template>
-    </jet-dialog-modal> -->
+    <!-- <jet-dialog-modal :show="mostrar_modal_datos_ya_guardados" @close="cerrar_modal_datos_uno">
+            <template #title>
+                    {{modal_tittle}}
+            </template>
+            <template #content>
+                    {{modal_body}}
+            </template>
+            <template #footer>
+                <button @click="cerrar_modal_datos_uno">
+                        Ok
+                </button>
+            </template>
+        </jet-dialog-modal> -->
 
     <div class="flex w-full">
       <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
         <a :href="link_volver">
           <button
             class="
-              animate-pulse
-              px-4
-              py-2
-              mb-4
-              text-sm
+              text-xl
               font-medium
-              rounded-full
-              block
-              border-b border-red-300
-              bg-red-200
-              hover:bg-red-300
-              text-red-900
+              mx-auto
+              py-3
+              px-5
+              text-indigo-500
+              border border-gray-400
+              rounded-xl
+              bg-gray-100
+              shadow-xl
+              hover:text-white hover:shadow-xl hover:bg-gray-600
             "
           >
             {{ titulo_boton_volver }}
@@ -42,25 +40,83 @@
         <button
           type="button"
           class="
-            animate-pulse
-            text-white
-            uppercase
-            text-lg
+            text-xl
+            font-medium
             mx-auto
-            py-6
-            px-20
-            rounded-full
-            block
-            border-b border-blue-300
-            bg-blue-200
-            hover:bg-blue-300
-            text-blue-700
+            py-3
+            px-5
+            text-indigo-500
+            border border-gray-400
+            rounded-xl
+            bg-gray-100
+            shadow-xl
+            hover:text-white hover:shadow-xl hover:bg-gray-600
           "
           @click="guardar_avnces_cinco"
         >
           {{ titulo_boton_guardar }}
         </button>
       </div>
+    </div>
+    <div v-show="testing">
+      * gestor_nombre_apellido: {{ $props.formulario.gestor_nombre_apellido }} *
+      * gestor_nombre_apellido_valido:
+      {{ $props.formulario.gestor_nombre_apellido_valido }} * *
+      gestor_nombre_apellido_correcto:
+      {{ $props.formulario.gestor_nombre_apellido_correcto }} * *
+      obs_gestor_nombre_apellido:
+      {{ $props.formulario.obs_gestor_nombre_apellido }} * *
+      obs_gestor_nombre_valido:
+      {{ $props.formulario.obs_gestor_nombre_valido }} * * gestor_dni :
+      {{ $props.formulario.gestor_dni }} * * gestor_dni_valido :
+      {{ $props.formulario.gestor_dni_valido }} * * gestor_dni_correcto :
+      {{ $props.formulario.gestor_dni_correcto }} * * obs_gestor_dni :
+      {{ $props.formulario.obs_gestor_dni }} * * obs_gestor_dni_valido :
+      {{ $props.formulario.obs_gestor_dni_valido }} * * gestor_profesion:
+      {{ $props.formulario.gestor_profesion }} * * gestor_profesion_valido:
+      {{ $props.formulario.gestor_profesion_valido }} * *
+      gestor_profesion_correcto:
+      {{ $props.formulario.gestor_profesion_correcto }} * *
+      obs_gestor_profesion: {{ $props.formulario.obs_gestor_profesion }} * *
+      obs_gestor_profesion_valido:
+      {{ $props.formulario.obs_gestor_profesion_valido }} * * gestor_telefono :
+      {{ $props.formulario.gestor_telefono }} * * gestor_telefono_valido :
+      {{ $props.formulario.gestor_telefono_valido }} * *
+      gestor_telefono_correcto :
+      {{ $props.formulario.gestor_telefono_correcto }} * * obs_gestor_telefono :
+      {{ $props.formulario.obs_gestor_telefono }} * * obs_gestor_telefono_valido
+      : {{ $props.formulario.obs_gestor_telefono_valido }} * * gestor_email :
+      {{ $props.formulario.gestor_email }} * * gestor_email_valido :
+      {{ $props.formulario.gestor_email_valido }} * * gestor_email_correcto :
+      {{ $props.formulario.gestor_email_correcto }} * * obs_gestor_email :
+      {{ $props.formulario.obs_gestor_email }} * * obs_gestor_email_valido :
+      {{ $props.formulario.obs_gestor_email_valido }} * * gestor_notificacion :
+      {{ $props.formulario.gestor_notificacion }} * * gestor_notificacion_valido
+      : {{ $props.formulario.gestor_notificacion_valido }} * *
+      gestor_notificacion_correcto :
+      {{ $props.formulario.gestor_notificacion_correcto }} * *
+      obs_gestor_notificacion :
+      {{ $props.formulario.obs_gestor_notificacion }} * *
+      obs_gestor_notificacion_valido :
+      {{ $props.formulario.obs_gestor_notificacion_valido }} * * foto_4x4 :
+      {{ $props.formulario.foto_4x4 }} * * foto_4x4_valido :
+      {{ $props.formulario.foto_4x4_valido }} * * foto_4x4_correcto :
+      {{ $props.formulario.foto_4x4_correcto }} * * obs_foto_4x4 :
+      {{ $props.formulario.obs_foto_4x4 }} * * obs_foto_4x4_valido :
+      {{ $props.formulario.obs_foto_4x4_valido }} * * autorizacion_gestor :
+      {{ $props.formulario.autorizacion_gestor }} * * autorizacion_gestor_valido
+      : {{ $props.formulario.autorizacion_gestor_valido }} * *
+      autorizacion_gestor_correcto :
+      {{ $props.formulario.autorizacion_gestor_correcto }} * *
+      obs_autorizacion_gestor :
+      {{ $props.formulario.obs_autorizacion_gestor }} * *
+      obs_autorizacion_gestor_valido :
+      {{ $props.formulario.obs_autorizacion_gestor_valido }} * * primer_hoja_dni
+      : {{ $props.formulario.primer_hoja_dni }} * * hoja_dni_valido :
+      {{ $props.formulario.hoja_dni_valido }} * * hoja_dni_correcto :
+      {{ $props.formulario.hoja_dni_correcto }} * * obs_hoja_dni :
+      {{ $props.formulario.obs_hoja_dni }} * * obs_hoja_dni_valido :
+      {{ $props.formulario.obs_hoja_dni_valido }} *
     </div>
     <div v-show="true">
       {{ $props.formulario.gestor_nombre_apellido }}
@@ -154,7 +210,7 @@ export default {
       let self = this;
       const data = new FormData();
       data.append("id", this.$props.id);
-      data.append("evaluacion", this.$props.evaluacion);
+      data.append("es_evaluacion", this.$props.evaluacion);
       data.append("testing", this.$props.testing);
 
       data.append(
@@ -328,6 +384,24 @@ export default {
         this.$props.formulario.obs_segunda_hoja_dni_valido
       );
 
+      data.append("constancia_afip", this.$props.formulario.constancia_afip);
+      data.append(
+        "constancia_afip_valido",
+        this.$props.formulario.constancia_afip_valido
+      );
+      data.append(
+        "constancia_afip_correcto",
+        this.$props.formulario.constancia_afip_correcto
+      );
+      data.append(
+        "obs_constancia_afip",
+        this.$props.formulario.obs_constancia_afip
+      );
+      data.append(
+        "obs_constancia_afip_valido",
+        this.$props.formulario.obs_constancia_afip_valido
+      );
+
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
       axios
         .post(
@@ -353,8 +427,7 @@ export default {
             ).then((result) => {
               self.ver_pagina_siguiente(true);
             });
-          }
-          else if (
+          } else if (
             response.data.msg ===
             "se actualizo el paso de catamarca correctamente"
           ) {
@@ -369,8 +442,8 @@ export default {
               "Se actualizaron los datos de Catamarca correctamente.",
               "success"
             ).then((result) => {
-                self.ver_pagina_siguiente(true);
-              });
+              self.ver_pagina_siguiente(true);
+            });
           } else {
             // console.log("NO todo bien");
             Swal.fire("Error", "Error inesperado.", "error");

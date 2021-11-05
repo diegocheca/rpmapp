@@ -98,6 +98,7 @@ let schema;
 
 export async function getFormSchema({ ...schema }, action, dataForm) {
     const departamentos = await axios.get(`/paises/departamentos/74`);
+    const minerales = await axios.get(`/minerales/getMinerals`);
 
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
@@ -124,7 +125,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                             inputs: [
                                 {
                                     label: 'Departamento',
-                                    value: {},
+                                    value: undefined,
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
@@ -147,7 +148,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                 },
                                 {
                                     label: 'Partido',
-                                    value: {},
+                                    value: undefined,
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
@@ -290,45 +291,24 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                                 value: {},
                                                 type: inputsTypes.SELECT,
                                                 colSpan: '',
-                                                options: [
-                                                    {
-                                                        label: 'Oro',
-                                                        value: 'Oro',
-                                                    },
-                                                    {
-                                                        label: 'Plata',
-                                                        value: 'Plata',
-                                                    },
-                                                    {
-                                                        label: 'Cobre',
-                                                        value: 'Cobre',
-                                                    },
-                                                    {
-                                                        label: 'Hierro',
-                                                        value: 'Hierro',
-                                                    },
-                                                    {
-                                                        label: 'Cal',
-                                                        value: 'Cal',
-                                                    },
-                                                    {
-                                                        label: 'Ripio',
-                                                        value: 'Ripio',
-                                                    },
-                                                    {
-                                                        label: 'Platino',
-                                                        value: 'Platino',
-                                                    },
-                                                    {
-                                                        label: 'Diamante',
-                                                        value: 'Diamante',
-                                                    }
-                                                ],
+                                                options: minerales.data,
                                                 name: 'nombre_mineral',
                                                 multiple: false,
                                                 closeOnSelect: true,
                                                 searchable: false,
                                                 placeholder: 'Selecciona una opción',
+                                                componentDepends: [
+                                                    {
+                                                        component:'produccion_anual',
+                                                        element: 'horizontalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    },
+                                                    {
+                                                        component:'comercializacion',
+                                                        element: 'verticalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    }
+                                                ],
                                                 // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
                                             },
                                             {
@@ -364,18 +344,13 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                         .array()
                                         .of(
                                             yup.object().shape({
-                                                variedad: yup.string().nullable().required('Debes completar este campo'),
                                                 nombre_mineral: yup.object().when('mineral', {
                                                     is: value => _.isEmpty(value),
                                                     then: yup.object().nullable().required('Debes elegir un elemento')
                                                 }),
-                                                produccion: yup.string().nullable().required('Debes completar este campo'),
-                                                unidades: yup.object().when('unidadesSelect', {
-                                                        is: value => _.isEmpty(value),
-                                                        then: yup.object().nullable().required('Debes elegir un elemento')
-                                                }),
-                                                precio_venta: yup.string().nullable().required('Debes completar este campo'),
-                                                // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                                ley: yup.string().nullable().required('Debes completar este campo'),
+                                                calidad: yup.string().nullable().required('Debes completar este campo'),
+                                                observaciones: yup.string().required('Debes completar este campo').nullable(),
                                                 // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
                                                 // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
                                                 row_evaluacion: action == 'evaluate'? yup.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').nullable().required('Debes seleccionar una opción') : {},
@@ -388,6 +363,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                     label: 'Producción Anual',
                                     type: inputsTypes.TABLE,
                                     name: "produccion_anual",
+                                    typeTable: "vertical",
                                     verticalTitle: [
                                         'Enero',
                                         'Febrero',
@@ -404,20 +380,27 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                     ],
                                     horizontalTitle: [],
                                     element: [
-                                        [{
-                                            label: '',
-                                            value: '',
-                                            type: inputsTypes.NUMBER,
-                                            name: 'production',
-                                        }]
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'production',
+                                            }
+                                        ]
                                     ],
-                                    observation: new Observations({schema, name: 'production', action}).observations,
-                                    validations: yup
+                                    observation: new Observations({schema, name: 'produccion_anual', action}).observations,
+                                    validations:
+                                        yup
                                         .array()
                                         .of(
-                                            yup.object().shape({
-                                                production: yup.string().nullable().required('Debes completar este campo')
-                                            })
+                                            yup
+                                            .array()
+                                            .of(
+                                                yup.object().shape({
+                                                    production: yup.string().required('Debes completar este campo').nullable()
+                                                })
+                                            )
                                         )
                                         .strict(),
                                 },
@@ -425,6 +408,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                     label: 'Comercialización',
                                     type: inputsTypes.TABLE,
                                     name: "comercializacion",
+                                    typeTable: "horizontal",
                                     verticalTitle: [],
                                     horizontalTitle: [
                                         'Cantidad mensual',
@@ -436,12 +420,6 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                             {
                                                 label: '',
                                                 value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'marca',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad',
                                             },
@@ -449,19 +427,29 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                                 label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
-                                                name: 'observaciones',
+                                                name: 'firma',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'destino',
                                             },
                                         ]
                                     ],
-                                    // observation: new Observations({schema, name: 'production', action}).observations,
+                                    observation: new Observations({schema, name: 'comercializacion', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(
-                                            yup.object().shape({
-                                                marca: yup.string().nullable().required('Debes completar este campo'),
-                                                cantidad: yup.string().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
-                                                observaciones: yup.string().nullable().required('Debes completar este campo'),
-                                            })
+                                            // yup
+                                            // .array()
+                                            // .of(
+                                                yup.object().shape({
+                                                    cantidad: yup.string().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
+                                                    firma: yup.string().nullable().required('Debes completar este campo'),
+                                                    destino: yup.string().nullable().required('Debes completar este campo'),
+                                                })
+                                            // )
                                         )
                                         .strict(),
                                 },
@@ -533,7 +521,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                             },
                                         ]
                                     ],
-                                    // observation: new Observations({schema, name: 'production', action}).observations,
+                                    observation: new Observations({schema, name: 'uso_explosivos', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(
@@ -734,7 +722,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                             },
                                         ]
                                     ],
-                                    // observation: new Observations({schema, name: 'production', action}).observations,
+                                    observation: new Observations({schema, name: 'production', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(

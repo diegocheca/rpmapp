@@ -2996,9 +2996,7 @@ class FormAltaProductorController extends Controller
 					"titulo_correccion" => false,
 					"boton_guardar_cuatro" => false,
 					"paso_cuatro" => false,
-
-
-
+		
 					"owner" => false,
 					"owner_correccion" => false,
 					"arrendatario" => false,
@@ -3028,8 +3026,7 @@ class FormAltaProductorController extends Controller
 					"fecha_vencimiento_dia_correccion" => false,
 					"boton_guardar_cinco" => false,
 					"paso_cinco" => false,
-
-
+		
 					"ubicacion_prov" => false,
 					"ubicacion_prov_correccion" => false,
 					"ubicacion_dpto" => false,
@@ -3047,31 +3044,24 @@ class FormAltaProductorController extends Controller
 					"ubicacion_estado_observacion" => false,
 					"boton_guardar_seis" => false,
 					"paso_seis" => false,
-
-
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
-
+		
+		
+					"decreto3737" => false,
+					"decreto3737_correccion" => true,
+					"situacion_mina" => false,
+					"situacion_mina_correccion" => true,
+					"concesion_minera_asiento_n" => false,
+					"concesion_minera_fojas" => false,
+					"concesion_minera_tomo_n" => false,
+					"concesion_minera_reg_m_y_d" => false,
+					"concesion_minera_reg_cant" => false,
+					"concesion_minera_reg_men" => false,
+					"concesion_minera_reg_d_y_c" => false,
+					"obs_datos_minas" => true,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
+		
 					"estado" => false,
 					"boton_actualizar" => false,
 
@@ -3197,32 +3187,24 @@ class FormAltaProductorController extends Controller
 					"ubicacion_long_correccion" => false,
 					"boton_guardar_seis" => true,
 					"paso_seis" => true,
-
-
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
-
-
+		
+		
+					"decreto3737" => true,
+					"decreto3737_correccion" => false,
+					"situacion_mina" => true,
+					"situacion_mina_correccion" => false,
+					"concesion_minera_asiento_n" => true,
+					"concesion_minera_fojas" => true,
+					"concesion_minera_tomo_n" => true,
+					"concesion_minera_reg_m_y_d" => true,
+					"concesion_minera_reg_cant" => true,
+					"concesion_minera_reg_men" => true,
+					"concesion_minera_reg_d_y_c" => true,
+					"obs_datos_minas" => false,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
+		
 					"estado" => true,
 
 					"boton_actualizar" => true,
@@ -3358,31 +3340,25 @@ class FormAltaProductorController extends Controller
 					"ubicacion_estado_observacion" => false,
 					"boton_guardar_seis" => false,
 					"paso_seis" => false,
-
-
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
-
+		
+		
+					"decreto3737" => true,
+					"decreto3737_correccion" => false,
+					"situacion_mina" => true,
+					"situacion_mina_correccion" => false,
+					"concesion_minera_asiento_n" => true,
+					"concesion_minera_fojas" => true,
+					"concesion_minera_tomo_n" => true,
+					"concesion_minera_reg_m_y_d" => true,
+					"concesion_minera_reg_cant" => true,
+					"concesion_minera_reg_men" => true,
+					"concesion_minera_reg_d_y_c" => true,
+					"obs_datos_minas" => false,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
+		
+		
 					"estado" => false,
 					"boton_actualizar" => false,
 
@@ -3508,32 +3484,26 @@ class FormAltaProductorController extends Controller
 					"ubicacion_long_correccion" => false,
 					"boton_guardar_seis" => true,
 					"paso_seis" => true,
-
-
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
-
-
+		
+		
+					
+					"decreto3737" => true,
+					"decreto3737_correccion" => true,
+					"situacion_mina" => true,
+					"situacion_mina_correccion" => true,
+					"concesion_minera_asiento_n" => true,
+					"concesion_minera_fojas" => true,
+					"concesion_minera_tomo_n" => true,
+					"concesion_minera_reg_m_y_d" => true,
+					"concesion_minera_reg_cant" => true,
+					"concesion_minera_reg_men" => true,
+					"concesion_minera_reg_d_y_c" => true,
+					"obs_datos_minas" => true,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
+		
+		
 					"estado" => true,
 
 					"boton_actualizar" => true,
@@ -3669,31 +3639,25 @@ class FormAltaProductorController extends Controller
 					"ubicacion_estado_observacion" => false,
 					"boton_guardar_seis" => false,
 					"paso_seis" => false,
-
-
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
-
+		
+		
+					"decreto3737" => false,
+					"decreto3737_correccion" => false,
+					"situacion_mina" => false,
+					"situacion_mina_correccion" => false,
+					"concesion_minera_asiento_n" => false,
+					"concesion_minera_fojas" => false,
+					"concesion_minera_tomo_n" => false,
+					"concesion_minera_reg_m_y_d" => false,
+					"concesion_minera_reg_cant" => false,
+					"concesion_minera_reg_men" => false,
+					"concesion_minera_reg_d_y_c" => false,
+					"obs_datos_minas" => false,
+					
+					"paso_mendoza"=> false,
+					"boton_mendoza"=> false,
+		
+		
 					"estado" => false,
 					"boton_actualizar" => false,
 
@@ -3819,32 +3783,26 @@ class FormAltaProductorController extends Controller
 					"ubicacion_long_correccion" => false,
 					"boton_guardar_seis" => true,
 					"paso_seis" => true,
-
-
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
-
-
+		
+		
+					"decreto3737" => true,
+					"decreto3737_correccion" => true,
+					"situacion_mina" => true,
+					"situacion_mina_correccion" => true,
+					"concesion_minera_asiento_n" => true,
+					"concesion_minera_fojas" => true,
+					"concesion_minera_tomo_n" => true,
+					"concesion_minera_reg_m_y_d" => true,
+					"concesion_minera_reg_cant" => true,
+					"concesion_minera_reg_men" => true,
+					"concesion_minera_reg_d_y_c" => true,
+					"concesion_minera_reg_d_y_c_correccion" => true,
+					
+					"paso_mendoza"=> true,
+					"boton_mendoza"=> true,
+		
+		
+		
 					"estado" => true,
 
 					"boton_actualizar" => true,
@@ -6696,7 +6654,43 @@ class FormAltaProductorController extends Controller
 						$mostrar["paso_catamarca"] = true;
 						$mostrar["boton_catamarca"] = true;
 					}
-				} elseif ($estado_formulario == 'en revision' || $estado_formulario == 'en proceso') {
+
+					if(Auth::user()->id_provincia == 50) // es de mendoza
+					{
+
+						$disables["decreto3737"] =  false;
+						$disables["decreto3737_correccion"] =  true;
+						$disables["situacion_mina"] =  false;
+						$disables["situacion_mina_correccion"] =  true;
+						$disables["concesion_minera_asiento_n"] =  false;
+						$disables["concesion_minera_fojas"] =  false;
+						$disables["concesion_minera_tomo_n"] =  false;
+						$disables["concesion_minera_reg_m_y_d"] =  false;
+						$disables["concesion_minera_reg_cant"] =  false;
+						$disables["concesion_minera_reg_men"] =  false;
+						$disables["concesion_minera_reg_d_y_c"] =  false;
+						$disables["obs_datos_minas"] =  true;
+						$disables["paso_mendoza"]=  false;
+						$disables["boton_mendoza"]=  false;
+
+						$mostrar["decreto3737"] = true;
+						$mostrar["decreto3737_correccion"] = false;
+						$mostrar["situacion_mina"] = true;
+						$mostrar["situacion_mina_correccion"] = false;
+						$mostrar["concesion_minera_asiento_n"] = true;
+						$mostrar["concesion_minera_fojas"] = true;
+						$mostrar["concesion_minera_tomo_n"] = true;
+						$mostrar["concesion_minera_reg_m_y_d"] = true;
+						$mostrar["concesion_minera_reg_cant"] = true;
+						$mostrar["concesion_minera_reg_men"] = true;
+						$mostrar["concesion_minera_reg_d_y_c"] = true;
+						$mostrar["obs_datos_minas"] = false;
+						$mostrar["paso_mendoza"] = true;
+						$mostrar["boton_mendoza"] = true;
+					}
+				}
+				elseif($estado_formulario == 'en revision' || $estado_formulario == 'en proceso')
+				{
 					//CASO: Productor - Edicion - En revision
 					//ed lo tiene la auotirdad minera y solo puede ver
 					//le dejo los permisos de lectura no mas
@@ -10336,22 +10330,24 @@ class FormAltaProductorController extends Controller
 
 	public function correccion_guardar_paso_catamarca(Request $request)
 	{
-		if ($request->id == 'null') $request->id = null;
-		if ($request->es_evaluacion == 'false')
-			$request->es_evaluacion = false;
-		else $request->es_evaluacion = true;
-
-		$request->es_evaluacion = false;
+		if($request->id == 'null') $request->id = null;
+		if($request->evaluacion == 'false')
+		$request->es_evaluacion =false;
+		else $request->es_evaluacion =true;
+		
+		//$request->es_evaluacion =false;
+		//var_dump($request->es_evaluacion);die();
 		$request->id = (int)$request->id;
-		var_dump($request->id);
-		die();
 		date_default_timezone_set('America/Argentina/Buenos_Aires');
 		if ($request->id != null && $request->id > 0 && is_int($request->id)) {
 			//voy a editar un registro
 			$formularioCatamarca = FormAltaProductorCatamarca::where('id_formulario_alta', '=', $request->id)->first();
 			if ($formularioCatamarca != null) // no se encontro el registor, lo debo crear
 			{
-				if ($request->es_evaluacion == false) {
+				//echo "estoy aqui";die();
+				if($request->es_evaluacion == false)
+				{
+					//echo "estoy a3333qui";die();
 					//Voy a editar un registro
 					//soy productor
 					$formularioCatamarca->gestor_nombre_apellido = $request->gestor_nombre_apellido;
@@ -10362,14 +10358,17 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->gestor_email = $request->gestor_email;
 
 
-
-					if (
+					//echo "por entrar";
+					if(
 						($request->primer_hoja_dni != null)
 						&&
 						($request->primer_hoja_dni != '')
 						&&
-						(is_object($request->primer_hoja_dni))
-					) {
+						(is_object($request->primer_hoja_dni)) 
+					)
+					{
+						//echo "entre";
+						//var_dump($request->primer_hoja_dni->path());die();
 						$contents = file_get_contents($request->primer_hoja_dni->path());
 						$formularioCatamarca->primer_hoja_dni =  Storage::put('public/files_formularios' . '/' . $request->id, $request->primer_hoja_dni);
 					}
@@ -10397,8 +10396,7 @@ class FormAltaProductorController extends Controller
 						$contents = file_get_contents($request->foto_4x4->path());
 						$formularioCatamarca->foto_4x4 =  Storage::put('public/files_formularios' . '/' . $request->id, $request->foto_4x4);
 					}
-
-					if (
+					if(
 						($request->constancia_afip != null)
 						&&
 						($request->constancia_afip != '')
@@ -10422,21 +10420,154 @@ class FormAltaProductorController extends Controller
 					}
 
 					$formularioCatamarca->updated_by = Auth::user()->id;
-
+					$formularioCatamarca->updated_by = Auth::user()->id;
+					$formularioCatamarca->id_formulario_alta = $request->id;
+					//var_dump($formularioCatamarca);die();
 					$formularioCatamarca->save();
 
 					return response()->json([
 						'status' => 'ok',
-						'msg' => 'se actualizo el paso de catamarca correctamente',
+						'msg' => 'se actualizo correctamente el paso de catamarca',
 						'id_creado' => $formularioCatamarca->id
 					], 201);
 				} else {
 					//voy a editar como autoridad
 					//soy autoridad
+
+					/*var_dump($request->gestor_nombre_apellido_correcto,
+					$request->obs_gestor_nombre_apellido, 
+					$request->gestor_dni_correcto, $request->obs_gestor_dni);die();
+*/
+
+					if($request->gestor_nombre_apellido_correcto == 'false')
+						$request->gestor_nombre_apellido_correcto = false;
+					elseif($request->gestor_nombre_apellido_correcto == 'true')
+						$request->gestor_nombre_apellido_correcto = true;
+					else
+						$request->gestor_nombre_apellido_correcto = null;
+
+					$formularioCatamarca->gestor_nombre_apellido_correcto = $request->gestor_nombre_apellido_correcto;
+					$formularioCatamarca->obs_gestor_nombre_apellido = $request->obs_gestor_nombre_apellido;
+
+
+					if($request->gestor_dni_correcto == 'false')
+						$request->gestor_dni_correcto = false;
+					elseif($request->gestor_dni_correcto == 'true')
+						$request->gestor_dni_correcto = true;
+					else
+						$request->gestor_dni_correcto = null;
+
+					$formularioCatamarca->gestor_dni_correcto = $request->gestor_dni_correcto;
+					$formularioCatamarca->obs_gestor_dni = $request->obs_gestor_dni;
+
+
+					if($request->gestor_profesion_correcto == 'false')
+						$request->gestor_profesion_correcto = false;
+					elseif($request->gestor_profesion_correcto == 'true')
+						$request->gestor_profesion_correcto = true;
+					else
+						$request->gestor_profesion_correcto = null;
+
+					$formularioCatamarca->gestor_profesion_correcto = $request->gestor_profesion_correcto;
+					$formularioCatamarca->obs_gestor_profesion = $request->obs_gestor_profesion;
+
+					if($request->gestor_telefono_correcto == 'false')
+						$request->gestor_telefono_correcto = false;
+					elseif($request->gestor_telefono_correcto == 'true')
+						$request->gestor_telefono_correcto = true;
+					else
+						$request->gestor_telefono_correcto = null;
+
+					$formularioCatamarca->gestor_telefono_correcto = $request->gestor_telefono_correcto;
+					$formularioCatamarca->obs_gestor_telefono = $request->obs_gestor_telefono;
+
+
+					if($request->gestor_email_correcto == 'false')
+						$request->gestor_email_correcto = false;
+					elseif($request->gestor_email_correcto == 'true')
+						$request->gestor_email_correcto = true;
+					else
+						$request->gestor_email_correcto = null;
+
+					$formularioCatamarca->obs_gestor_email = $request->gestor_email_correcto;
+					$formularioCatamarca->gestor_email_correcto = $request->obs_gestor_email;
+
+
+					if($request->gestor_notificacion_correcto == 'false')
+						$request->gestor_notificacion_correcto = false;
+					elseif($request->gestor_notificacion_correcto == 'true')
+						$request->gestor_notificacion_correcto = true;
+					else
+						$request->gestor_notificacion_correcto = null;
+
+					$formularioCatamarca->gestor_notificacion_correcto = $request->gestor_notificacion_correcto;
+					$formularioCatamarca->obs_gestor_notificacion = $request->obs_gestor_notificacion;
+
+
+					if($request->autorizacion_gestor_correcto == 'false')
+						$request->autorizacion_gestor_correcto = false;
+					elseif($request->autorizacion_gestor_correcto == 'true')
+						$request->autorizacion_gestor_correcto = true;
+					else
+						$request->autorizacion_gestor_correcto = null;
+
+					$formularioCatamarca->autorizacion_gestor_correcto = $request->autorizacion_gestor_correcto;
+					$formularioCatamarca->obs_autorizacion_gestor = $request->obs_autorizacion_gestor;
+
+
+
+
+					if($request->foto_4x4_correcto == 'false')
+						$request->foto_4x4_correcto = false;
+					elseif($request->foto_4x4_correcto == 'true')
+						$request->foto_4x4_correcto = true;
+					else
+						$request->foto_4x4_correcto = null;
+
+					$formularioCatamarca->foto_4x4_correcto = $request->foto_4x4_correcto;
+					$formularioCatamarca->obs_foto_4x4 = $request->obs_foto_4x4;
+
+
+
+					if($request->constancia_afip_correcto == 'false')
+						$request->constancia_afip_correcto = false;
+					elseif($request->constancia_afip_correcto == 'true')
+						$request->constancia_afip_correcto = true;
+					else
+						$request->constancia_afip_correcto = null;
+
+					$formularioCatamarca->constancia_afip_correcto = $request->constancia_afip_correcto;
+					$formularioCatamarca->obs_constancia_afip = $request->obs_constancia_afip;
+
+
+					if($request->hoja_dni_correcto == 'false')
+						$request->hoja_dni_correcto = false;
+					elseif($request->hoja_dni_correcto == 'true')
+						$request->hoja_dni_correcto = true;
+					else
+						$request->hoja_dni_correcto = null;
+					
+					$formularioCatamarca->hoja_dni_correcto = $request->hoja_dni_correcto;
+					$formularioCatamarca->obs_hoja_dni = $request->obs_hoja_dni;
+
+
+					$formularioCatamarca->updated_by = Auth::user()->id;
+					$formularioCatamarca->id_formulario_alta = $request->id;
+					//var_dump($formularioCatamarca);die();
+					$formularioCatamarca->save();
+					
+					return response()->json([
+						'status' => 'ok',
+						'msg' => 'se actualizo el paso de catamarca correctamente',
+						'id_creado' => $formularioCatamarca->id
+					],201);
+					
 				}
 			} else {
 				//voy a crear un nuevo registro
-				if ($request->es_evaluacion == false) {
+				if($request->es_evaluacion == false)
+				{
+					// echo "aca";die();
 					//soy productor y voy a crear el registro
 					//con los valores que cargo como productor sin evaluacion
 					$formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
@@ -11014,7 +11145,9 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				$productor->leal_calle = $formulario_provisorio->leal_calle;
 				$productor->leal_numero = $formulario_provisorio->leal_numero;
 				$productor->leal_telefono = $formulario_provisorio->leal_telefono;
-				$productor->leal_pais = $formulario_provisorio->leal_pais;
+				// $productor->leal_pais = $formulario_provisorio->leal_pais;
+				$productor->leal_pais = "Argentina";
+
 				$productor->leal_provincia = $formulario_provisorio->leal_provincia;
 				$productor->leal_departamento = $formulario_provisorio->leal_departamento;
 				$productor->leal_localidad = $formulario_provisorio->leal_localidad;
@@ -11341,10 +11474,17 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				//7
 				'updated_at' => $borrador->updated_at,
 			];
+			
+			if($borrador->provincia == 70)
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite', $data);
+			elseif($borrador->provincia == 10) // catamarca
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_cata', $data);
+			elseif($borrador->provincia == 50) // mendoza
+				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_mendoza', $data);
 
-			$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite', $data);
 			return $pdf->stream('Comprobante_de_inscripcion.pdf');
-		} else
+		}
+		else 
 			return "error";
 	}
 

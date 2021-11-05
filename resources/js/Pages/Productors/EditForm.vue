@@ -65,8 +65,7 @@
                 leading-7
                 text-gray-700
                 dark:bg-gray-700
-                sm:text-3xl
-                sm:truncate
+                sm:text-3xl sm:truncate
                 py-1
                 border-indigo-400
               "
@@ -132,8 +131,7 @@
                 leading-7
                 text-gray-700
                 dark:bg-gray-700
-                sm:text-3xl
-                sm:truncate
+                sm:text-3xl sm:truncate
                 py-1
                 border-indigo-400
               "
@@ -1384,6 +1382,22 @@
             :id="$props.productor.id"
           >
           </PaginaCatamarca>
+          <h3>antes de mendoza</h3>
+          <PaginaMendoza
+            v-if="$props.mostrar.paso_mendoza"
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos Form Mendoza'"
+            :titulo_pagina="'Pagina De Mendoza'"
+            :evaluacion="evaluacion_global"
+            :testing="testing_global"
+            :id="$props.productor.id"
+          >
+          </PaginaMendoza>
+          <br />
+          <br />
+          {{ form_mendoza }}
+
           <div id="finalizar"></div>
           <div
             class="
@@ -1492,8 +1506,7 @@
                     rounded
                     shadow
                     leading-tight
-                    focus:outline-none
-                    focus:shadow-outline
+                    focus:outline-none focus:shadow-outline
                   "
                 >
                   <option value="borrador">Borrador</option>
@@ -1520,8 +1533,7 @@
                     rounded
                     shadow
                     leading-tight
-                    focus:outline-none
-                    focus:shadow-outline
+                    focus:outline-none focus:shadow-outline
                   "
                 >
                   <option value="en proceso">En proceso</option>
@@ -1626,8 +1638,7 @@
                     rounded
                     shadow
                     leading-tight
-                    focus:outline-none
-                    focus:shadow-outline
+                    focus:outline-none focus:shadow-outline
                   "
                 >
                   <option value="borrador">Borrador</option>
@@ -1651,8 +1662,7 @@
                     rounded
                     shadow
                     leading-tight
-                    focus:outline-none
-                    focus:shadow-outline
+                    focus:outline-none focus:shadow-outline
                   "
                 >
                   <option value="borrador" disabled>Borrador</option>
@@ -1696,9 +1706,7 @@
                     rounded-xl
                     bg-gray-100
                     shadow-xl
-                    hover:text-white
-                    hover:shadow-xl
-                    hover:bg-gray-600
+                    hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
                   Actualizar
@@ -1718,9 +1726,7 @@
                     rounded-xl
                     bg-gray-100
                     shadow-xl
-                    hover:text-white
-                    hover:shadow-xl
-                    hover:bg-gray-600
+                    hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
                   Actualizar
@@ -1751,9 +1757,7 @@
                     rounded-xl
                     bg-gray-100
                     shadow-xl
-                    hover:text-white
-                    hover:shadow-xl
-                    hover:bg-gray-600
+                    hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
                   Volver Atras
@@ -1761,6 +1765,7 @@
               </div>
             </div>
           </div>
+
           <jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
             <template #title>
               {{ modal_tittle_apro }}
@@ -1890,6 +1895,8 @@ import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos"
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
+
+import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
 
 export default {
@@ -1917,6 +1924,7 @@ export default {
     ValidationErrors,
     CardCatamarca,
     PaginaCatamarca,
+    PaginaMendoza,
   },
   props: [
     "productor",
@@ -2488,8 +2496,9 @@ export default {
         obs_autorizacion_gestor: this.$props.productor.obs_autorizacion_gestor,
         obs_autorizacion_gestor_valido: true,
       },
+      form_mendoza: {},
       /* form_catamarca: {
-				gestor_nombre_apellido:'',
+        gestor_nombre_apellido:'',
 				gestor_nombre_apellido_valido:'',
 				gestor_nombre_apellido_correcto:'',
 				obs_gestor_nombre_apellido:'',
@@ -2712,1399 +2721,72 @@ export default {
             console.log("NO todo bien");
           }
         });
-    },
-    mostrar_modal_aprobar() {
-      //soy autoridad y estoy por cambiar el estado del formulario
-      let form_evaluacion_valida = "";
-      this.AvisoAprueba = true;
-      this.modal_tittle_apro =
-        "Advertencia: esta por aprobar esta solicitud de Productor";
-      form_evaluacion_valida = this.evaluacion_de_evaluaciones();
-      if (form_evaluacion_valida === "") {
-        //el formulario esta bien hecho y no tiene observaciones
-        this.modal_body_apro =
-          " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
-        this.mostrar_boton_aprobar = true;
-        this.mostrar_boton_aprobar_de_todos_modos = false;
-      } else {
-        //el formulario esta bien hecho y no tiene observaciones
-        this.modal_body_apro =
-          " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +
-          form_evaluacion_valida;
-        this.mostrar_boton_aprobar = false;
-        this.mostrar_boton_aprobar_de_todos_modos = true;
-      }
-      //<!-- @click="guardar_avances_todo" -->
-    },
-    evaluacion_de_evaluaciones() {
-      let sin_problemas = "";
-      if (this.form.razon_social_correcto === false)
-        sin_problemas += "\n La Razon Social ha sido Reprobada ";
-      if (this.form.razon_social_correcto === "nada")
-        sin_problemas += "\n La Razon Social no ha sido evaluada ";
-
-      if (this.form.cuit_correcto === false)
-        sin_problemas += "\n El CUIT ha sido Reprobado ";
-      if (this.form.cuit_correcto === "nada")
-        sin_problemas += "\n El CUIR no ha sido evaluado ";
-
-      if (this.form.numeroproductor_correcto === false)
-        sin_problemas += "\n El Numero de Productor ha sido Reprobado ";
-      if (this.form.numeroproductor_correcto === "nada")
-        sin_problemas += "\n El Numero de Productor no ha sido evaluado ";
-
-      if (this.form.tiposociedad_correcto === false)
-        sin_problemas += "\n El tipo de sociedad ha sido Reprobado ";
-      if (this.form.tiposociedad_correcto === "nada")
-        sin_problemas += "\n El tipo de sociedad no ha sido evaluado ";
-
-      if (this.form.inscripciondgr_correcto === false)
-        sin_problemas += "\n La inscripcion de la DGR ha sido Reprobada ";
-      if (this.form.inscripciondgr_correcto === "nada")
-        sin_problemas += "\n La inscripcion de la DGR no ha sido evaluada ";
-
-      if (this.form.constaciasociedad_correcto === false)
-        sin_problemas += "\n La constancia de Sociedad ha sido Reprobada ";
-      if (this.form.constaciasociedad_correcto === "nada")
-        sin_problemas += "\n La constacia de Sociedad no ha sido evaluada ";
-      return sin_problemas;
-    },
-    update_razon_social_evaluacion(valorEvaluacion) {
-      this.form.razon_social_correcto = valorEvaluacion;
-    },
-    update_cuit_evaluacion(valorEvaluacion) {
-      this.form.cuit_correcto = valorEvaluacion;
-    },
-    update_num_prod_evaluacion(valorEvaluacion) {
-      this.form.numeroproductor_correcto = valorEvaluacion;
-    },
-    update_tipo_sociedad_evaluacion(valorEvaluacion) {
-      this.form.tiposociedad_correcto = valorEvaluacion;
-    },
-    update_inscripcion_dgr_evaluacion(valorEvaluacion) {
-      this.form.inscripciondgr_correcto = valorEvaluacion;
-    },
-    update_constancia_sociedad_evaluacion(valorEvaluacion) {
-      this.form.constaciasociedad_correcto = valorEvaluacion;
-    },
-
-    actaulizar_variables_correctas(que_cambio, valor) {
-      if (que_cambio == 1) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.razon_social_correcto = true;
-        if (valor == false) this.form.razon_social_correcto = false;
-        if (valor == "nada") this.form.razon_social_correcto = "nada";
-      }
-      if (que_cambio == 2) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.email_correcto = true;
-        if (valor == false) this.form.email_correcto = false;
-        if (valor == "nada") this.form.email_correcto = "nada";
-      }
-      if (que_cambio == 3) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.cuit_correcto = true;
-        if (valor == false) this.form.cuit_correcto = false;
-        if (valor == "nada") this.form.cuit_correcto = "nada";
-      }
-
-      if (que_cambio == 4) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.numeroproductor_correcto = true;
-        if (valor == false) this.form.numeroproductor_correcto = false;
-        if (valor == "nada") this.form.numeroproductor_correcto = "nada";
-      }
-
-      if (que_cambio == 5) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.tiposociedad_correcto = true;
-        if (valor == false) this.form.tiposociedad_correcto = false;
-        if (valor == "nada") this.form.tiposociedad_correcto = "nada";
-      }
-
-      if (que_cambio == 6) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.inscripciondgr_correcto = true;
-        if (valor == false) this.form.inscripciondgr_correcto = false;
-        if (valor == "nada") this.form.inscripciondgr_correcto = "nada";
-      }
-
-      if (que_cambio == 7) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.constaciasociedad_correcto = true;
-        if (valor == false) this.form.constaciasociedad_correcto = false;
-        if (valor == "nada") this.form.constaciasociedad_correcto = "nada";
-      }
-    },
-    actaulizar_variables_correctas_dos(que_cambio, valor) {
-      if (que_cambio == 1) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.nombre_calle_legal_correcto = true;
-        if (valor == false) this.form.nombre_calle_legal_correcto = false;
-        if (valor == "nada") this.form.nombre_calle_legal_correcto = "nada";
-      }
-      if (que_cambio == 2) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.leal_numero_correcto = true;
-        if (valor == false) this.form.leal_numero_correcto = false;
-        if (valor == "nada") this.form.leal_numero_correcto = "nada";
-      }
-      if (que_cambio == 3) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.leal_telefono_correcto = true;
-        if (valor == false) this.form.leal_telefono_correcto = false;
-        if (valor == "nada") this.form.leal_telefono_correcto = "nada";
-      }
-
-      if (que_cambio == 4) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.leal_pais_correcto = true;
-        if (valor == false) this.form.leal_pais_correcto = false;
-        if (valor == "nada") this.form.leal_pais_correcto = "nada";
-      }
-
-      if (que_cambio == 5) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.leal_provincia_correcto = true;
-        if (valor == false) this.form.leal_provincia_correcto = false;
-        if (valor == "nada") this.form.leal_provincia_correcto = "nada";
-      }
-
-      if (que_cambio == 6) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.leal_departamento_correcto = true;
-        if (valor == false) this.form.leal_departamento_correcto = false;
-        if (valor == "nada") this.form.leal_departamento_correcto = "nada";
-      }
-
-      if (que_cambio == 7) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.leal_localidad_correcto = true;
-        if (valor == false) this.form.leal_localidad_correcto = false;
-        if (valor == "nada") this.form.leal_localidad_correcto = "nada";
-      }
-
-      if (que_cambio == 8) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.leal_cp_correcto = true;
-        if (valor == false) this.form.leal_cp_correcto = false;
-        if (valor == "nada") this.form.leal_cp_correcto = "nada";
-      }
-
-      if (que_cambio == 9) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.leal_otro_correcto = true;
-        if (valor == false) this.form.leal_otro_correcto = false;
-        if (valor == "nada") this.form.leal_otro_correcto = "nada";
-      }
-    },
-
-    actaulizar_variables_correctas_tres(que_cambio, valor) {
-      if (que_cambio == 1) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_calle_correcto = true;
-        if (valor == false) this.form.administracion_calle_correcto = false;
-        if (valor == "nada") this.form.administracion_calle_correcto = "nada";
-      }
-      if (que_cambio == 2) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_numero_correcto = true;
-        if (valor == false) this.form.administracion_numero_correcto = false;
-        if (valor == "nada") this.form.administracion_numero_correcto = "nada";
-      }
-      if (que_cambio == 3) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_telefono_correcto = true;
-        if (valor == false) this.form.administracion_telefono_correcto = false;
-        if (valor == "nada")
-          this.form.administracion_telefono_correcto = "nada";
-      }
-
-      if (que_cambio == 4) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_pais_correcto = true;
-        if (valor == false) this.form.administracion_pais_correcto = false;
-        if (valor == "nada") this.form.administracion_pais_correcto = "nada";
-      }
-
-      if (que_cambio == 5) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_provincia_correcto = true;
-        if (valor == false) this.form.administracion_provincia_correcto = false;
-        if (valor == "nada")
-          this.form.administracion_provincia_correcto = "nada";
-      }
-
-      if (que_cambio == 6) {
-        // significa que camvio la razon_social
-        if (valor == true)
-          this.form.administracion_departamento_correcto = true;
-        if (valor == false)
-          this.form.administracion_departamento_correcto = false;
-        if (valor == "nada")
-          this.form.administracion_departamento_correcto = "nada";
-      }
-
-      if (que_cambio == 7) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_localidad_correcto = true;
-        if (valor == false) this.form.administracion_localidad_correcto = false;
-        if (valor == "nada")
-          this.form.administracion_localidad_correcto = "nada";
-      }
-
-      if (que_cambio == 8) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_cp_correcto = true;
-        if (valor == false) this.form.administracion_cp_correcto = false;
-        if (valor == "nada") this.form.administracion_cp_correcto = "nada";
-      }
-
-      if (que_cambio == 9) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_otro_correcto = true;
-        if (valor == false) this.form.administracion_otro_correcto = false;
-        if (valor == "nada") this.form.administracion_otro_correcto = "nada";
-      }
-    },
-    actaulizar_variables_correctas_cuatro(que_cambio, valor) {
-      if (que_cambio == 1) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.numero_expdiente_correcto = true;
-        if (valor == false) this.form.numero_expdiente_correcto = false;
-        if (valor == "nada") this.form.numero_expdiente_correcto = "nada";
-      }
-      if (que_cambio == 2) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.categoria_correcto = true;
-        if (valor == false) this.form.categoria_correcto = false;
-        if (valor == "nada") this.form.categoria_correcto = "nada";
-      }
-      if (que_cambio == 3) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.nombre_mina_correcto = true;
-        if (valor == false) this.form.nombre_mina_correcto = false;
-        if (valor == "nada") this.form.nombre_mina_correcto = "nada";
-      }
-
-      if (que_cambio == 4) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.descripcion_mina_correcto = true;
-        if (valor == false) this.form.descripcion_mina_correcto = false;
-        if (valor == "nada") this.form.descripcion_mina_correcto = "nada";
-      }
-
-      if (que_cambio == 5) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.distrito_minero_correcto = true;
-        if (valor == false) this.form.distrito_minero_correcto = false;
-        if (valor == "nada") this.form.distrito_minero_correcto = "nada";
-      }
-
-      if (que_cambio == 6) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.mina_cantera_correcto = true;
-        if (valor == false) this.form.mina_cantera_correcto = false;
-        if (valor == "nada") this.form.mina_cantera_correcto = "nada";
-      }
-
-      if (que_cambio == 7) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.mina_cantera_correcto = true;
-        if (valor == false) this.form.mina_cantera_correcto = false;
-        if (valor == "nada") this.form.mina_cantera_correcto = "nada";
-      }
-
-      if (que_cambio == 8) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.minerales_variedad_correcto = true;
-        if (valor == false) this.form.minerales_variedad_correcto = false;
-        if (valor == "nada") this.form.minerales_variedad_correcto = "nada";
-      }
-
-      if (que_cambio == 9) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.administracion_otro_correcto = true;
-        if (valor == false) this.form.administracion_otro_correcto = false;
-        if (valor == "nada") this.form.administracion_otro_correcto = "nada";
-      }
-    },
-    actaulizar_variables_correctas_cinco(que_cambio, valor) {
-      if (que_cambio == 1) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.owner_correcto = true;
-        if (valor == false) this.form.owner_correcto = false;
-        if (valor == "nada") this.form.owner_correcto = "nada";
-      }
-      if (que_cambio == 2) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.arrendatario_correcto = true;
-        if (valor == false) this.form.arrendatario_correcto = false;
-        if (valor == "nada") this.form.arrendatario_correcto = "nada";
-      }
-      if (que_cambio == 3) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.concesionario_correcto = true;
-        if (valor == false) this.form.concesionario_correcto = false;
-        if (valor == "nada") this.form.concesionario_correcto = "nada";
-      }
-
-      if (que_cambio == 4) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.otros_correcto = true;
-        if (valor == false) this.form.otros_correcto = false;
-        if (valor == "nada") this.form.otros_correcto = "nada";
-      }
-
-      if (que_cambio == 5) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.titulo_contrato_posecion_correcto = true;
-        if (valor == false) this.form.titulo_contrato_posecion_correcto = false;
-        if (valor == "nada")
-          this.form.titulo_contrato_posecion_correcto = "nada";
-      }
-
-      if (que_cambio == 6) {
-        // significa que camvio la razon_social
-        if (valor == true)
-          this.form.resolucion_concesion_minera_correcto = true;
-        if (valor == false)
-          this.form.resolucion_concesion_minera_correcto = false;
-        if (valor == "nada")
-          this.form.resolucion_concesion_minera_correcto = "nada";
-      }
-
-      if (que_cambio == 7) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.constancia_pago_canon_correcto = true;
-        if (valor == false) this.form.constancia_pago_canon_correcto = false;
-        if (valor == "nada") this.form.constancia_pago_canon_correcto = "nada";
-      }
-
-      if (que_cambio == 8) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.iia_correcto = true;
-        if (valor == false) this.form.iia_correcto = false;
-        if (valor == "nada") this.form.iia_correcto = "nada";
-      }
-
-      if (que_cambio == 9) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.dia_correcto = true;
-        if (valor == false) this.form.dia_correcto = false;
-        if (valor == "nada") this.form.dia_correcto = "nada";
-      }
-      if (que_cambio == 10) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.acciones_a_desarrollar_correcto = true;
-        if (valor == false) this.form.acciones_a_desarrollar_correcto = false;
-        if (valor == "nada") this.form.acciones_a_desarrollar_correcto = "nada";
-      }
-      if (que_cambio == 11) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.actividad_a_desarrollar_correcto = true;
-        if (valor == false) this.form.actividad_a_desarrollar_correcto = false;
-        if (valor == "nada")
-          this.form.actividad_a_desarrollar_correcto = "nada";
-      }
-      if (que_cambio == 12) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.fecha_alta_dia_correcto = true;
-        if (valor == false) this.form.fecha_alta_dia_correcto = false;
-        if (valor == "nada") this.form.fecha_alta_dia_correcto = "nada";
-      }
-      if (que_cambio == 13) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.fecha_vencimiento_dia_correcto = true;
-        if (valor == false) this.form.fecha_vencimiento_dia_correcto = false;
-        if (valor == "nada") this.form.fecha_vencimiento_dia_correcto = "nada";
-      }
-    },
-    actaulizar_variables_correctas_seis(que_cambio, valor) {
-      if (que_cambio == 1) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.localidad_mina_pais_correcto = true;
-        if (valor == false) this.form.localidad_mina_pais_correcto = false;
-        if (valor == "nada") this.form.localidad_mina_pais_correcto = "nada";
-      }
-      if (que_cambio == 2) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.localidad_mina_provincia_correcto = true;
-        if (valor == false) this.form.localidad_mina_provincia_correcto = false;
-        if (valor == "nada")
-          this.form.localidad_mina_provincia_correcto = "nada";
-      }
-      if (que_cambio == 3) {
-        // significa que camvio la razon_social
-        if (valor == true)
-          this.form.localidad_mina_departamento_correcto = true;
-        if (valor == false)
-          this.form.localidad_mina_departamento_correcto = false;
-        if (valor == "nada")
-          this.form.localidad_mina_departamento_correcto = "nada";
-      }
-
-      if (que_cambio == 4) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.localidad_mina_localidad_correcto = true;
-        if (valor == false) this.form.localidad_mina_localidad_correcto = false;
-        if (valor == "nada")
-          this.form.localidad_mina_localidad_correcto = "nada";
-      }
-
-      if (que_cambio == 5) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.tipo_sistema_correcto = true;
-        if (valor == false) this.form.tipo_sistema_correcto = false;
-        if (valor == "nada") this.form.tipo_sistema_correcto = "nada";
-      }
-
-      if (que_cambio == 6) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.latitud_correcto = true;
-        if (valor == false) this.form.latitud_correcto = false;
-        if (valor == "nada") this.form.latitud_correcto = "nada";
-      }
-
-      if (que_cambio == 7) {
-        // significa que camvio la razon_social
-        if (valor == true) this.form.longitud_correcto = true;
-        if (valor == false) this.form.longitud_correcto = false;
-        if (valor == "nada") this.form.longitud_correcto = "nada";
-      }
-    },
-    calculo_de_porcentajes(que_cambio, valor) {
-      var aprobados = 0;
-      var progreso = 0;
-      var reprobado = 0;
-
-      this.actaulizar_variables_correctas(que_cambio, valor);
-
-      if (this.form.razon_social_correcto == true) {
-        aprobados++;
-      }
-      if (this.form.razon_social_correcto == false) {
-        reprobado++;
-      }
-      if (this.form.razon_social_correcto == "nada") {
-        progreso++;
-      }
-
-      if (this.form.email_correcto == true) {
-        aprobados++;
-      }
-      if (this.form.email_correcto == false) {
-        reprobado++;
-      }
-      if (this.form.email_correcto == "nada") {
-        progreso++;
-      }
-
-      if (this.form.cuit_correcto == true) {
-        aprobados++;
-      }
-      if (this.form.cuit_correcto == false) {
-        reprobado++;
-      }
-      if (this.form.cuit_correcto == "nada") {
-        progreso++;
-      }
-
-      if (this.form.numeroproductor_correcto == true) {
-        aprobados++;
-      }
-      if (this.form.numeroproductor_correcto == false) {
-        reprobado++;
-      }
-      if (this.form.numeroproductor_correcto == "nada") {
-        progreso++;
-      }
-
-      if (this.form.tiposociedad_correcto == true) {
-        aprobados++;
-      }
-      if (this.form.tiposociedad_correcto == false) {
-        reprobado++;
-      }
-      if (this.form.tiposociedad_correcto == "nada") {
-        progreso++;
-      }
-
-      if (this.form.inscripciondgr_correcto == true) {
-        aprobados++;
-      }
-      if (this.form.inscripciondgr_correcto == false) {
-        reprobado++;
-      }
-      if (this.form.inscripciondgr_correcto == "nada") {
-        progreso++;
-      }
-
-      if (this.form.constaciasociedad_correcto == true) {
-        aprobados++;
-      }
-      if (this.form.constaciasociedad_correcto == false) {
-        reprobado++;
-      }
-      if (this.form.constaciasociedad_correcto == "nada") {
-        progreso++;
-      }
-
-      //calcular porcentajes
-
-      this.form.valor_de_progreso = (progreso * 100) / 7;
-      this.form.valor_de_aprobado = (aprobados * 100) / 7;
-      this.form.valor_de_reprobado = (reprobado * 100) / 7;
-
-      if (progreso == 7) this.form.valor_de_progreso = 100;
-      if (aprobados == 7) this.form.valor_de_aprobado = 100;
-      if (reprobado == 7) this.form.valor_de_reprobado = 100;
-
-      this.form.valor_de_progreso = this.form.valor_de_progreso.toFixed(2);
-      this.form.valor_de_aprobado = this.form.valor_de_aprobado.toFixed(2);
-      this.form.valor_de_reprobado = this.form.valor_de_reprobado.toFixed(2);
-    },
-
-    calculo_de_porcentajes_dos(que_cambio, valor) {
-      var aprobados_dos = 0;
-      var progreso_dos = 0;
-      var reprobado_dos = 0;
-
-      this.actaulizar_variables_correctas_dos(que_cambio, valor);
-
-      if (this.form.nombre_calle_legal_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.nombre_calle_legal_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.nombre_calle_legal_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_numero_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_numero_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_numero_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_telefono_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_telefono_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_telefono_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_pais_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_pais_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_pais_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_provincia_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_provincia_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_provincia_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_departamento_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_departamento_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_departamento_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_localidad_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_localidad_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_localidad_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_cp_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_cp_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_cp_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_localidad_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_localidad_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_localidad_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      if (this.form.leal_otro_correcto == true) {
-        aprobados_dos++;
-      }
-      if (this.form.leal_otro_correcto == false) {
-        reprobado_dos++;
-      }
-      if (this.form.leal_otro_correcto == "nada") {
-        progreso_dos++;
-      }
-
-      //calcular porcentajes
-
-      this.form.valor_de_progreso_dos = (progreso_dos * 100) / 9;
-      this.form.valor_de_aprobado_dos = (aprobados_dos * 100) / 9;
-      this.form.valor_de_reprobado_dos = (reprobado_dos * 100) / 9;
-
-      if (progreso_dos == 9) this.form.valor_de_progreso_dos = 100;
-      if (aprobados_dos == 9) this.form.valor_de_aprobado_dos = 100;
-      if (reprobado_dos == 9) this.form.valor_de_reprobado_dos = 100;
-
-      this.form.valor_de_progreso_dos =
-        this.form.valor_de_progreso_dos.toFixed(2);
-      this.form.valor_de_aprobado_dos =
-        this.form.valor_de_aprobado_dos.toFixed(2);
-      this.form.valor_de_reprobado_dos =
-        this.form.valor_de_reprobado_dos.toFixed(2);
-    },
-    calculo_de_porcentajes_tres(que_cambio, valor) {
-      var aprobados_tres = 0;
-      var progreso_tres = 0;
-      var reprobado_tres = 0;
-
-      this.actaulizar_variables_correctas_tres(que_cambio, valor);
-
-      if (this.form.administracion_calle_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_calle_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_calle_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      if (this.form.administracion_numero_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_numero_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_numero_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      if (this.form.administracion_telefono_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_telefono_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_telefono_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      if (this.form.administracion_pais_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_pais_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_pais_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      if (this.form.administracion_departamento_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_departamento_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_departamento_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      if (this.form.administracion_provincia_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_provincia_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_provincia_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      if (this.form.administracion_localidad_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_localidad_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_localidad_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      if (this.form.administracion_cp_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_cp_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_cp_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      if (this.form.administracion_otro_correcto == true) {
-        aprobados_tres++;
-      }
-      if (this.form.administracion_otro_correcto == false) {
-        reprobado_tres++;
-      }
-      if (this.form.administracion_otro_correcto == "nada") {
-        progreso_tres++;
-      }
-
-      //calcular porcentajes
-
-      this.form.valor_de_progreso_tres = (progreso_tres * 100) / 9;
-      this.form.valor_de_aprobado_tres = (aprobados_tres * 100) / 9;
-      this.form.valor_de_reprobado_tres = (reprobado_tres * 100) / 9;
-
-      if (progreso_tres == 9) this.form.valor_de_progreso_tres = 100;
-      if (aprobados_tres == 9) this.form.valor_de_aprobado_tres = 100;
-      if (reprobado_tres == 9) this.form.valor_de_reprobado_tres = 100;
-
-      this.form.valor_de_progreso_tres =
-        this.form.valor_de_progreso_tres.toFixed(2);
-      this.form.valor_de_aprobado_tres =
-        this.form.valor_de_aprobado_tres.toFixed(2);
-      this.form.valor_de_reprobado_tres =
-        this.form.valor_de_reprobado_tres.toFixed(2);
-    },
-
-    calculo_de_porcentajes_cuatro(que_cambio, valor) {
-      var aprobados_cuatro = 0;
-      var progreso_cuatro = 0;
-      var reprobado_cuatro = 0;
-
-      this.actaulizar_variables_correctas_cuatro(que_cambio, valor);
-
-      if (this.form.numero_expdiente_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.numero_expdiente_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.numero_expdiente_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      if (this.form.categoria_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.categoria_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.categoria_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      if (this.form.nombre_mina_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.nombre_mina_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.nombre_mina_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      if (this.form.descripcion_mina_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.descripcion_mina_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.descripcion_mina_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      if (this.form.distrito_minero_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.distrito_minero_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.distrito_minero_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      if (this.form.mina_cantera_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.mina_cantera_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.mina_cantera_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      if (this.form.mina_cantera_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.mina_cantera_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.mina_cantera_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      if (this.form.minerales_variedad_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.minerales_variedad_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.minerales_variedad_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      if (this.form.administracion_otro_correcto == true) {
-        aprobados_cuatro++;
-      }
-      if (this.form.administracion_otro_correcto == false) {
-        reprobado_cuatro++;
-      }
-      if (this.form.administracion_otro_correcto == "nada") {
-        progreso_cuatro++;
-      }
-
-      //calcular porcentajes
-
-      this.form.valor_de_progreso_cuatro = (progreso_cuatro * 100) / 9;
-      this.form.valor_de_aprobado_cuatro = (aprobados_cuatro * 100) / 9;
-      this.form.valor_de_reprobado_cuatro = (reprobado_cuatro * 100) / 9;
-
-      if (progreso_cuatro == 9) this.form.valor_de_progreso_cuatro = 100;
-      if (aprobados_cuatro == 9) this.form.valor_de_aprobado_cuatro = 100;
-      if (reprobado_cuatro == 9) this.form.valor_de_reprobado_cuatro = 100;
-
-      this.form.valor_de_progreso_cuatro =
-        this.form.valor_de_progreso_cuatro.toFixed(2);
-      this.form.valor_de_aprobado_cuatro =
-        this.form.valor_de_aprobado_cuatro.toFixed(2);
-      this.form.valor_de_reprobado_cuatro =
-        this.form.valor_de_reprobado_cuatro.toFixed(2);
-    },
-
-    calculo_de_porcentajes_cinco(que_cambio, valor) {
-      var aprobados_cinco = 0;
-      var progreso_cinco = 0;
-      var reprobado_cinco = 0;
-
-      this.actaulizar_variables_correctas_cinco(que_cambio, valor);
-
-      if (this.form.owner_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.owner_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.owner_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.arrendatario_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.arrendatario_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.arrendatario_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.concesionario_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.concesionario_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.concesionario_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.otros_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.otros_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.otros_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.titulo_contrato_posecion_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.titulo_contrato_posecion_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.titulo_contrato_posecion_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.resolucion_concesion_minera_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.resolucion_concesion_minera_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.resolucion_concesion_minera_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.constancia_pago_canon_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.constancia_pago_canon_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.constancia_pago_canon_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.iia_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.iia_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.iia_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.dia_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.dia_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.dia_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.acciones_a_desarrollar_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.acciones_a_desarrollar_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.acciones_a_desarrollar_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.actividad_a_desarrollar_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.actividad_a_desarrollar_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.actividad_a_desarrollar_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.fecha_alta_dia_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.fecha_alta_dia_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.fecha_alta_dia_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      if (this.form.fecha_vencimiento_dia_correcto == true) {
-        aprobados_cinco++;
-      }
-      if (this.form.fecha_vencimiento_dia_correcto == false) {
-        reprobado_cinco++;
-      }
-      if (this.form.fecha_vencimiento_dia_correcto == "nada") {
-        progreso_cinco++;
-      }
-
-      //calcular porcentajes
-
-      this.form.valor_de_progreso_cinco = (progreso_cinco * 100) / 13;
-      this.form.valor_de_aprobado_cinco = (aprobados_cinco * 100) / 13;
-      this.form.valor_de_reprobado_cinco = (reprobado_cinco * 100) / 13;
-
-      if (progreso_cinco == 13) this.form.valor_de_progreso_cinco = 100;
-      if (aprobados_cinco == 13) this.form.valor_de_aprobado_cinco = 100;
-      if (reprobado_cinco == 13) this.form.valor_de_reprobado_cinco = 100;
-
-      this.form.valor_de_progreso_cinco =
-        this.form.valor_de_progreso_cinco.toFixed(2);
-      this.form.valor_de_aprobado_cinco =
-        this.form.valor_de_aprobado_cinco.toFixed(2);
-      this.form.valor_de_reprobado_cinco =
-        this.form.valor_de_reprobado_cinco.toFixed(2);
-    },
-    calculo_de_porcentajes_seis(que_cambio, valor) {
-      var aprobados_seis = 0;
-      var progreso_seis = 0;
-      var reprobado_seis = 0;
-
-      this.actaulizar_variables_correctas_seis(que_cambio, valor);
-
-      if (this.form.localidad_mina_pais_correcto == true) {
-        aprobados_seis++;
-      }
-      if (this.form.localidad_mina_pais_correcto == false) {
-        reprobado_seis++;
-      }
-      if (this.form.localidad_mina_pais_correcto == "nada") {
-        progreso_seis++;
-      }
-
-      if (this.form.localidad_mina_provincia_correcto == true) {
-        aprobados_seis++;
-      }
-      if (this.form.localidad_mina_provincia_correcto == false) {
-        reprobado_seis++;
-      }
-      if (this.form.localidad_mina_provincia_correcto == "nada") {
-        progreso_seis++;
-      }
-
-      if (this.form.localidad_mina_departamento_correcto == true) {
-        aprobados_seis++;
-      }
-      if (this.form.localidad_mina_departamento_correcto == false) {
-        reprobado_seis++;
-      }
-      if (this.form.localidad_mina_departamento_correcto == "nada") {
-        progreso_seis++;
-      }
-
-      if (this.form.localidad_mina_localidad_correcto == true) {
-        aprobados_seis++;
-      }
-      if (this.form.localidad_mina_localidad_correcto == false) {
-        reprobado_seis++;
-      }
-      if (this.form.localidad_mina_localidad_correcto == "nada") {
-        progreso_seis++;
-      }
-
-      if (this.form.tipo_sistema_correcto == true) {
-        aprobados_seis++;
-      }
-      if (this.form.tipo_sistema_correcto == false) {
-        reprobado_seis++;
-      }
-      if (this.form.tipo_sistema_correcto == "nada") {
-        progreso_seis++;
-      }
-
-      if (this.form.latitud_correcto == true) {
-        aprobados_seis++;
-      }
-      if (this.form.latitud_correcto == false) {
-        reprobado_seis++;
-      }
-      if (this.form.latitud_correcto == "nada") {
-        progreso_seis++;
-      }
-
-      if (this.form.longitud_correcto == true) {
-        aprobados_seis++;
-      }
-      if (this.form.longitud_correcto == false) {
-        reprobado_seis++;
-      }
-      if (this.form.longitud_correcto == "nada") {
-        progreso_seis++;
-      }
-      //calcular porcentajes
-      this.form.valor_de_progreso_seis = (progreso_seis * 100) / 7;
-      this.form.valor_de_aprobado_seis = (aprobados_seis * 100) / 7;
-      this.form.valor_de_reprobado_seis = (reprobado_seis * 100) / 7;
-
-      if (progreso_seis == 7) this.form.valor_de_progreso_seis = 100;
-      if (aprobados_seis == 7) this.form.valor_de_aprobado_seis = 100;
-      if (reprobado_seis == 7) this.form.valor_de_reprobado_seis = 100;
-
-      this.form.valor_de_progreso_seis =
-        this.form.valor_de_progreso_seis.toFixed(2);
-      this.form.valor_de_aprobado_seis =
-        this.form.valor_de_aprobado_seis.toFixed(2);
-      this.form.valor_de_reprobado_seis =
-        this.form.valor_de_reprobado_seis.toFixed(2);
-    },
-
-    guardar_avances_todo: function () {
-      let self = this;
-      // Make a request for a user with a given ID
-      axios
-        .post("/formularios/evaluacion_auto_guardado_todo", {
-          id: this.$props.productor.id,
-          estado: this.form.estado,
-          es_evaluacion: "true",
-        })
-        .then(function (response) {
-          console.log(response.data);
-          if (response.data === "todo bien") {
-            console.log("todo bien");
-            self.modal_tittle = "Paso de todo";
-            self.modal_body =
-              "Se ha guardado correctamente la información . se GUARDO TODO. Gracias";
-            self.confirmingUserDeletion = true;
-          } else {
-            console.log("NO todo bien");
-          }
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
-    },
-  },
-  mounted() {
-    let self = this;
-    //voy a buscar las provincias
-    this.$nextTick(() => {
-      console.log(this.$inertia.page.props.user.id_provincia);
-      if (this.$inertia.page.props.user.id_provincia === 70) {
-        console.log("harcodeo las prov");
-        //rta---> id: 70, nombre: 'San Juan'
-        self.lista_provincias = [
-          {
-            id: 70,
-            nombre: "San Juan",
-          },
-        ];
-      } else {
-        axios
-          .get("/datos/traer_provincias")
-          .then(function (response) {
-            console.log("las provincias son:\n");
-            self.lista_provincias = response.data;
-            console.log(self.lista_provincias);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      }
-    });
-
-    /* this.$nextTick(() => {
-		console.log("por buscar los datos de catamarca");
-		if(this.$inertia.page.props.user.id_provincia === 10 )
-        {
-			console.log("harcodeo las prov");
-			axios.get('/formularios/traer_datos_pagina_catamarca'+'/'+parseInt(this.$props.productor.id))
+      //voy a buscar los dptos
+      if (!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.leal_provincia),
+            })
             .then(function (response) {
-                console.log("los datos de la pagina de catamarca son:\n");
-                
-                console.log(response.data.datos);
-				self.form_catamarca.gestor_nombre_apellido= response.data.datos.gestor_nombre_apellido;
-				self.form_catamarca.gestor_nombre_apellido_valido= response.data.datos.gestor_nombre_apellido_valido;
-				self.form_catamarca.gestor_nombre_apellido_correcto= response.data.datos.gestor_nombre_apellido_correcto;
-				self.form_catamarca.obs_gestor_nombre_apellido= response.data.datos.obs_gestor_nombre_apellido;
-				self.form_catamarca.obs_gestor_nombre_valido= response.data.datos.obs_gestor_nombre_valido;
-				self.form_catamarca.mostrar_nombre_gestor= response.data.datos.mostrar_nombre_gestor;
-				self.form_catamarca.desactivar_nombre_gestor= response.data.datos.desactivar_nombre_gestor;
-				self.form_catamarca.mostrar_nombre_gestor_correccion= response.data.datos.mostrar_nombre_gestor_correccion;
-				self.form_catamarca.desactivar_nombre_gestor_correccion= response.data.datos.desactivar_nombre_gestor_correccion;
-				self.form_catamarca.gestor_dni= response.data.datos.gestor_dni;
-				self.form_catamarca.gestor_dni_valido= response.data.datos.gestor_dni_valido;
-				self.form_catamarca.gestor_dni_correcto= response.data.datos.gestor_dni_correcto;
-				self.form_catamarca.obs_gestor_dni= response.data.datos.obs_gestor_dni;
-				self.form_catamarca.obs_gestor_dni_valido= response.data.datos.obs_gestor_dni_valido;
-				self.form_catamarca.mostrar_dni_gestor= response.data.datos.mostrar_dni_gestor;
-				self.form_catamarca.desactivar_dni_gestor= response.data.datos.desactivar_dni_gestor;
-				self.form_catamarca.mostrar_dni_gestor_correccion= response.data.datos.mostrar_dni_gestor_correccion;
-				self.form_catamarca.desactivar_dni_gestor_correccion= response.data.datos.desactivar_dni_gestor_correccion;
-				self.form_catamarca.gestor_profesion= response.data.datos.gestor_profesion;
-				self.form_catamarca.gestor_profesion_valido= response.data.datos.gestor_profesion_valido;
-				self.form_catamarca.gestor_profesion_correcto= response.data.datos.gestor_profesion_correcto;
-				self.form_catamarca.obs_gestor_profesion= response.data.datos.obs_gestor_profesion;
-				self.form_catamarca.obs_gestor_profesion_valido= response.data.datos.obs_gestor_profesion_valido;
-				self.form_catamarca.mostrar_profesion_gestor= response.data.datos.mostrar_profesion_gestor;
-				self.form_catamarca.desactivar_profesion_gestor= response.data.datos.desactivar_profesion_gestor;
-				self.form_catamarca.mostrar_profesion_gestor_correccion= response.data.datos.mostrar_profesion_gestor_correccion;
-				self.form_catamarca.desactivar_profesion_gestor_correccion= response.data.datos.desactivar_profesion_gestor_correccion;
-				self.form_catamarca.gestor_telefono= response.data.datos.gestor_telefono;
-				self.form_catamarca.gestor_telefono_valido= response.data.datos.gestor_telefono_valido;
-				self.form_catamarca.gestor_telefono_correcto= response.data.datos.gestor_telefono_correcto;
-				self.form_catamarca.obs_gestor_telefono= response.data.datos.obs_gestor_telefono;
-				self.form_catamarca.obs_gestor_telefono_valido= response.data.datos.obs_gestor_telefono_valido;
-				self.form_catamarca.mostrar_telefono_gestor= response.data.datos.mostrar_telefono_gestor;
-				self.form_catamarca.desactivar_telefono_gestor= response.data.datos.desactivar_telefono_gestor;
-				self.form_catamarca.mostrar_telefono_gestor_correccion= response.data.datos.mostrar_telefono_gestor_correccion;
-				self.form_catamarca.desactivar_telefono_gestor_correccion= response.data.datos.desactivar_telefono_gestor_correccion;
-				self.form_catamarca.gestor_notificacion= response.data.datos.gestor_notificacion;
-				self.form_catamarca.gestor_notificacion_valido= response.data.datos.gestor_notificacion_valido;
-				self.form_catamarca.gestor_notificacion_correcto= response.data.datos.gestor_notificacion_correcto;
-				self.form_catamarca.obs_gestor_notificacion= response.data.datos.obs_gestor_notificacion;
-				self.form_catamarca.obs_gestor_notificacion_valido= response.data.datos.obs_gestor_notificacion_valido;
-				self.form_catamarca.mostrar_notificacion_gestor= response.data.datos.mostrar_notificacion_gestor;
-				self.form_catamarca.desactivar_notificacion_gestor= response.data.datos.desactivar_notificacion_gestor;
-				self.form_catamarca.mostrar_notificacion_gestor_correccion= response.data.datos.mostrar_notificacion_gestor_correccion;
-				self.form_catamarca.desactivar_notificacion_gestor_correccion= response.data.datos.desactivar_notificacion_gestor_correccion;
-				self.form_catamarca.gestor_email= response.data.datos.gestor_email;
-				self.form_catamarca.gestor_email_valido= response.data.datos.gestor_email_valido;
-				self.form_catamarca.gestor_email_correcto= response.data.datos.gestor_email_correcto;
-				self.form_catamarca.obs_gestor_email= response.data.datos.obs_gestor_email;
-				self.form_catamarca.obs_gestor_email_valido= response.data.datos.obs_gestor_email_valido;
-				self.form_catamarca.mostrar_email_gestor= response.data.datos.mostrar_email_gestor;
-				self.form_catamarca.desactivar_email_gestor= response.data.datos.desactivar_email_gestor;
-				self.form_catamarca.mostrar_email_gestor_correccion= response.data.datos.mostrar_email_gestor_correccion;
-				self.form_catamarca.desactivar_email_gestor_correccion= response.data.datos.desactivar_email_gestor_correccion;
-				self.form_catamarca.primer_hoja_dni= response.data.datos.primer_hoja_dni;
-				self.form_catamarca.hoja_dni_valido= response.data.datos.hoja_dni_valido;
-				self.form_catamarca.hoja_dni_correcto= response.data.datos.hoja_dni_correcto;
-				self.form_catamarca.obs_hoja_dni= response.data.datos.obs_hoja_dni;
-				self.form_catamarca.obs_hoja_dni_valido= response.data.datos.obs_hoja_dni_valido;
-				self.form_catamarca.mostrar_dni_productor= response.data.datos.mostrar_dni_productor;
-				self.form_catamarca.desactivar_dni_productor= response.data.datos.desactivar_dni_productor;
-				self.form_catamarca.mostrar_dni_productor_correccion= response.data.datos.mostrar_dni_productor_correccion;
-				self.form_catamarca.desactivar_dni_productor_correccion= response.data.datos.desactivar_dni_productor_correccion;
-				self.form_catamarca.segunda_hoja_dni= response.data.datos.segunda_hoja_dni;
-				self.form_catamarca.segunda_hoja_dni_valido= response.data.datos.segunda_hoja_dni_valido;
-				self.form_catamarca.segunda_hoja_dni_correcto= response.data.datos.segunda_hoja_dni_correcto;
-				self.form_catamarca.obs_segunda_hoja_dni= response.data.datos.obs_segunda_hoja_dni;
-				self.form_catamarca.obs_segunda_hoja_dni_valido= response.data.datos.obs_segunda_hoja_dni_valido;
-				self.form_catamarca.foto_4x4= response.data.datos.foto_4x4;
-				self.form_catamarca.foto_4x4_valido= response.data.datos.foto_4x4_valido;
-				self.form_catamarca.foto_4x4_correcto= response.data.datos.foto_4x4_correcto;
-				self.form_catamarca.obs_foto_4x4= response.data.datos.obs_foto_4x4;
-				self.form_catamarca.obs_foto_4x4_valido= response.data.datos.obs_foto_4x4_valido;
-				self.form_catamarca.mostrar_foto_productor= response.data.datos.mostrar_foto_productor;
-				self.form_catamarca.desactivar_foto_productor= response.data.datos.desactivar_foto_productor;
-				self.form_catamarca.mostrar_foto_productor_correccion= response.data.datos.mostrar_foto_productor_correccion;
-				self.form_catamarca.desactivar_foto_productor_correccion= response.data.datos.desactivar_foto_productor_correccion;
-				self.form_catamarca.constancia_afip= response.data.datos.constancia_afip;
-				self.form_catamarca.constancia_afip_valido= response.data.datos.constancia_afip_valido;
-				self.form_catamarca.constancia_afip_correcto= response.data.datos.constancia_afip_correcto;
-				self.form_catamarca.obs_constancia_afip= response.data.datos.obs_constancia_afip;
-				self.form_catamarca.obs_constancia_afip_valido= response.data.datos.obs_constancia_afip_valido;
-				self.form_catamarca.mostrar_constancia_afip= response.data.datos.mostrar_constancia_afip;
-				self.form_catamarca.desactivar_constancia_afip= response.data.datos.desactivar_constancia_afip;
-				self.form_catamarca.mostrar_constancia_afip_correccion= response.data.datos.mostrar_constancia_afip_correccion;
-				self.form_catamarca.desactivar_constancia_afip_correccion= response.data.datos.desactivar_constancia_afip_correccion;
-				self.form_catamarca.autorizacion_gestor= response.data.datos.autorizacion_gestor;
-				self.form_catamarca.autorizacion_gestor_valido= response.data.datos.autorizacion_gestor_valido;
-				self.form_catamarca.autorizacion_gestor_correcto= response.data.datos.autorizacion_gestor_correcto;
-				self.form_catamarca.obs_autorizacion_gestor= response.data.datos.obs_autorizacion_gestor;
-				self.form_catamarca.obs_autorizacion_gestor_valido= response.data.datos.obs_autorizacion_gestor_valido;
-				self.form_catamarca.mostrar_autorizacion_gestor= response.data.datos.mostrar_autorizacion_gestor;
-				self.form_catamarca.desactivar_autorizacion_gestor= response.data.datos.desactivar_autorizacion_gestor;
-				self.form_catamarca.mostrar_autorizacion_gestor_correccion= response.data.datos.mostrar_autorizacion_gestor_correccion;
-				self.form_catamarca.desactivar_autorizacion_gestor_correccion= response.data.datos.desactivar_autorizacion_gestor_correccion;
-
+              console.log("los deptos desde la raiz , legales son:\n");
+              self.lista_dptos_legal = response.data;
+              console.log(self.lista_dptos_legal);
             })
             .catch(function (error) {
-                console.log(error);
+              console.log(error);
             });
-		}
-		});
- */
-
-    // if(!isNaN(parseInt(this.$props.productor.leal_provincia)))
-    // console.log("si");
-    // else console.log("no");
-    // console.log(isNaN(parseInt(this.$props.productor.leal_provincia)));
-
-    //voy a buscar los dptos
-    if (!isNaN(parseInt(this.$props.productor.leal_provincia))) {
-      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
-      this.$nextTick(() => {
-        axios
-          .post("/datos/traer_departamentos", {
-            id_prov: parseInt(this.$props.productor.leal_provincia),
-          })
-          .then(function (response) {
-            console.log("los deptos desde la raiz , legales son:\n");
-            self.lista_dptos_legal = response.data;
-            console.log(self.lista_dptos_legal);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      });
-      console.log(
-        "Mi dpto ya elegido es:",
-        this.$props.productor.leal_departamento
-      );
-      if (!isNaN(parseInt(this.$props.productor.leal_departamento))) {
-        self.form.leal_departamento = this.$props.productor.leal_departamento;
+        });
+        console.log(
+          "Mi dpto ya elegido es:",
+          this.$props.productor.leal_departamento
+        );
+        if (!isNaN(parseInt(this.$props.productor.leal_departamento))) {
+          self.form.leal_departamento = this.$props.productor.leal_departamento;
+        }
+      } else {
+        self.lista_dptos_legal = [];
       }
-    } else {
-      self.lista_dptos_legal = [];
-    }
-    if (!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
-      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
-      this.$nextTick(() => {
-        axios
-          .post("/datos/traer_departamentos", {
-            id_prov: parseInt(this.$props.productor.administracion_provincia),
-          })
-          .then(function (response) {
-            console.log("los deptos desde la raiz son:\n");
-            self.lista_dptos_admin = response.data;
-            console.log(self.lista_dptos_admin);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      });
-    } else {
-      self.lista_dptos_admin = [];
-    }
-    if (!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
-      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
-      this.$nextTick(() => {
-        axios
-          .post("/datos/traer_departamentos", {
-            id_prov: parseInt(this.$props.productor.localidad_mina_provincia),
-          })
-          .then(function (response) {
-            console.log("los deptos desde la raiz son:\n");
-            self.lista_dptos_mina = response.data;
-            console.log(self.lista_dptos_mina);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      });
-    } else {
-      self.lista_dptos_mina = [];
-    }
+      if (!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.administracion_provincia),
+            })
+            .then(function (response) {
+              console.log("los deptos desde la raiz son:\n");
+              self.lista_dptos_admin = response.data;
+              console.log(self.lista_dptos_admin);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      } else {
+        self.lista_dptos_admin = [];
+      }
+      if (!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.localidad_mina_provincia),
+            })
+            .then(function (response) {
+              console.log("los deptos desde la raiz son:\n");
+              self.lista_dptos_mina = response.data;
+              console.log(self.lista_dptos_mina);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      } else {
+        self.lista_dptos_mina = [];
+      }
+    },
   },
 };
 </script>
