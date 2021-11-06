@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 // use Auth;
 //use Illuminate\Auth as Auth;
 use App\Http\Controllers\FormAltaProductorController;
@@ -26,9 +26,11 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
 
-use Auth;
+
+use App\Http\Controllers\ProvisionServer;
+//use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -111,18 +113,18 @@ Route::resource('productores_minas', ProductorMinaController::class)
 Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     // admin
-//     // productor
-//     $mi_rol = '';
-//     if (Auth::user()->hasRole('Autoridad'))
-//         $mi_rol = 'admin';
-//     if (Auth::user()->hasRole('Administrador'))
-//         $mi_rol = 'admin';
-//     if (Auth::user()->hasRole('Productor'))
-//         $mi_rol = 'productor';
-//     return Inertia::render('Dashboard', ['userType' => $mi_rol]);
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboardtest', function () {
+    // admin
+    // productor
+    $mi_rol = '';
+    if (Auth::user()->hasRole('Autoridad'))
+        $mi_rol = 'admin';
+    if (Auth::user()->hasRole('Administrador'))
+        $mi_rol = 'admin';
+    if (Auth::user()->hasRole('Productor'))
+        $mi_rol = 'productor';
+    var_dump($mi_rol);
+})->name('dashboardtest');
 
 
 Route::get('dashboard', [HomeController::class, "dashboard"])
@@ -278,3 +280,6 @@ Route::group(['prefix' => 'paises'], function () {
 //DASHBOARD
 
 Route::get('/dashboard/numproductores', [DashboardController::class, "numProductores"])->name('numProductores');
+
+
+Route::get('/probando_test_pdf/{id}', PresentacionAltaProdMendozaController::class);
