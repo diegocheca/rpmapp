@@ -113,7 +113,7 @@ Route::resource('productores_minas', ProductorMinaController::class)
 Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboardtest', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_inicio', function () {
     // admin
     // productor
     $mi_rol = '';
@@ -124,7 +124,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboardtest', function 
     if (Auth::user()->hasRole('Productor'))
         $mi_rol = 'productor';
     var_dump($mi_rol);
+
+    Route::get('/probando_test_pdf/{id}', PresentacionAltaProdMendozaController::class);
+
 })->name('dashboardtest');
+
+
 
 
 Route::get('dashboard', [HomeController::class, "dashboard"])
@@ -281,5 +286,4 @@ Route::group(['prefix' => 'paises'], function () {
 
 Route::get('/dashboard/numproductores', [DashboardController::class, "numProductores"])->name('numProductores');
 
-
-Route::get('/probando_test_pdf/{id}', PresentacionAltaProdMendozaController::class);
+//Route::get('/probando_test_pdf/{id}', PresentacionAltaProdMendozaController::class);
