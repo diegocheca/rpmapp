@@ -32,8 +32,26 @@ class PresentacionAltaProdMendozaController extends Controller
 		if ( Auth::user()->hasRole('Autoridad') && Auth::user()->id_provincia == 50)
         {
 			$borrador =  DB::table('form_alta_productores')
-            ->select('*')
-            ->where('id', '=', $id)
+            ->select('form_alta_productoresMendoza.id as idMend',
+			'form_alta_productoresMendoza.decreto3737 as decreto3737',
+			'form_alta_productoresMendoza.obs_decreto3737 as obs_decreto3737', 
+			'form_alta_productoresMendoza.decreto3737_correcto as decreto3737_correcto',
+			'form_alta_productoresMendoza.situacion_mina as situacion_mina',
+			'form_alta_productoresMendoza.situacion_mina_correcto as situacion_mina_correcto',
+			'form_alta_productoresMendoza.obs_situacion_mina as obs_situacion_mina',
+
+			'form_alta_productoresMendoza.concesion_minera_asiento_n as concesion_minera_asiento_n',
+			'form_alta_productoresMendoza.concesion_minera_fojas as concesion_minera_fojas',
+			'form_alta_productoresMendoza.concesion_minera_tomo_n as concesion_minera_tomo_n',
+			'form_alta_productoresMendoza.concesion_minera_reg_m_y_d as concesion_minera_reg_m_y_d',
+
+			'form_alta_productoresMendoza.concesion_minera_reg_cant as concesion_minera_reg_cant',
+			'form_alta_productoresMendoza.concesion_minera_reg_men as concesion_minera_reg_men',
+			'form_alta_productoresMendoza.concesion_minera_reg_d_y_c as concesion_minera_reg_d_y_c',
+			'form_alta_productoresMendoza.obs_datos_minas as obs_datos_minas',
+
+			'form_alta_productores.*')
+            ->where('form_alta_productores.id', '=', $id)
             ->join('form_alta_productoresMendoza', 'form_alta_productores.id', '=', 'form_alta_productoresMendoza.id_formulario_alta')
             ->first();
             $puedo_imprimir = true;
@@ -121,9 +139,9 @@ class PresentacionAltaProdMendozaController extends Controller
 			return $pdf->stream('Comprobante_de_inscripcion.pdf');
 		}
 		else 
-        return response()->json([
-			'status' => 'mal',
-			'msg' => 'sin permisos'
-		], 201);
+			return response()->json([
+				'status' => 'mal',
+				'msg' => 'sin permisos'
+			], 201);
 	}
 }
