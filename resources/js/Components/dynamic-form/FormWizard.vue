@@ -7,7 +7,7 @@
 
     <div class="flex">
 
-        <div v-for="(item, index) in formSchema" :key="index" :class="`w-1/${formSchema.length > 5? 5 : formSchema.length}`">
+        <div v-for="(item, index) in formSchema" :key="index" :class="[`w-1/${formSchema.length > 5? 5 : formSchema.length}`, 'invisible', 'lg:visible']">
 
             <div class="relative mb-2">
                 <div v-if="index >= 1" class="absolute flex align-center items-center align-middle content-center" style="width: calc(100% - 2.5rem - 1rem); top: 50%; transform: translate(-50%, -50%)">
@@ -174,7 +174,14 @@ export default {
     methods: {
         onSubmit(values) {
             // accumlate the form values with the values from previous steps
-            Object.assign(this.formValues, values);
+            const currentValues = this.formSchema[this.currentStep].bodyStep[0].body[0].inputs.map((input, index) => {
+                if(values[input.name] && typeof values[input.name] !== 'undefined') {
+                    let obj = {}
+                    obj[`${input.name}`] = values[input.name];
+                    return obj
+                }
+            })
+            Object.assign(this.formValues, ...currentValues);
 
             if (this.currentStep === this.formSchema.length - 1) {
                 this.saveForm();
@@ -182,8 +189,6 @@ export default {
                 //this.disableSave = true;
                 return;
             }
-            // console.log("Current values: ");
-            // console.log(JSON.stringify(this.formValues, null, 2));
             this.currentStep++;
         },
 

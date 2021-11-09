@@ -96,7 +96,7 @@ class ReinscripcionController extends Controller
     {
         $reinscripcion = $request->all();
 
-        // dd($reinscripcion);
+        dd($reinscripcion);
         $saveData = [];
         $newProducts = [];
         foreach ($reinscripcion as $key => $data) {

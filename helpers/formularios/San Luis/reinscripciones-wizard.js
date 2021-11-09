@@ -104,7 +104,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
     // icons => https://heroicons.com/ => svg d=""
     schema =  [
         {
-            icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+            icon: 'M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z',
             bgColorIcon: 'bg-blue-500',
             bgColorProgress: 'bg-blue-300',
             titleStep: 'Producción',
@@ -117,7 +117,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                         //  col 1
                         {
                             title: 'Producción primaria',
-                            width: 'lg:w-2/4', //flex
+                            width: 'w-3/4', //flex
                             columns: 'grid-cols-1', //grid
                             columnsResponsive: 'lg:grid-cols-1', //inside card
                             // infoCard: ''
@@ -195,7 +195,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                         //  col 1
                         {
                             title: 'Explotación',
-                            width: 'lg:w-3/4', //flex
+                            width: 'w-3/4', //flex
                             // columns: '', //grid
                             // columnsResponsive: '', //inside card
                             img: '/images/laborales.png',
@@ -267,7 +267,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                 {
                                     label: '',
                                     type: inputsTypes.LIST,
-                                    name: 'minerales',
+                                    name: 'Productos',
                                     columns: 'grid-cols-1',
                                     // colSpans + 1
                                     columnsResponsive: 'lg:grid-cols-3',
@@ -481,13 +481,13 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                     label: '',
                                     type: inputsTypes.TABLE,
                                     name: "uso_explosivos",
+                                    typeTable: "horizontal",
                                     verticalTitle: [
                                         'Explosivos',
                                         'Mechas',
                                         'Detonantes'
                                     ],
                                     horizontalTitle: [
-                                        // '',
                                         'Nombre',
                                         'Tipo',
                                         'Cantidad mensual',
@@ -499,37 +499,89 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                                 label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
-                                                name: 'nombre',
+                                                name: 'nombre_explosivo',
                                             },
                                             {
                                                 label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
-                                                name: 'tipo',
+                                                name: 'tipo_explosivo',
                                             },
                                             {
                                                 label: '',
                                                 value: '',
                                                 type: inputsTypes.NUMBER,
-                                                name: 'cantidad',
+                                                name: 'cantidad_explosivo',
                                             },
                                             {
                                                 label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
-                                                name: 'observaciones',
+                                                name: 'observaciones_explosivo',
                                             },
-                                        ]
+                                        ],
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'tipo_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones_explosivo',
+                                            },
+                                        ],
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'tipo_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones_explosivo',
+                                            },
+                                        ],
                                     ],
                                     observation: new Observations({schema, name: 'uso_explosivos', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(
                                             yup.object().shape({
-                                                production: yup.string().nullable().required('Debes completar este campo'),
-                                                tipo: yup.string().nullable().required('Debes completar este campo'),
-                                                cantidad: yup.string().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
-                                                observaciones: yup.string().nullable().required('Debes completar este campo'),
+                                                nombre_explosivo: yup.string().nullable().required('Debes completar este campo'),
+                                                tipo_explosivo: yup.string().nullable().required('Debes completar este campo'),
+                                                cantidad_explosivo: yup.string().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
+                                                observaciones_explosivo: yup.string().nullable().required('Debes completar este campo'),
                                             })
                                         )
                                         .strict(),
@@ -541,10 +593,10 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
             ]
         },
         {
-            icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+            icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
             bgColorIcon: 'bg-blue-500',
             bgColorProgress: 'bg-blue-300',
-            titleStep: 'Datos',
+            titleStep: 'Polvorín',
             bodyStep: [
                 // row 1
                 {
@@ -554,7 +606,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                         //  col 1
                         {
                             title: 'Polvorín',
-                            width: 'lg:w-2/4', //flex
+                            width: 'w-2/4', //flex
                             columns: 'grid-cols-1', //grid
                             columnsResponsive: 'lg:grid-cols-1', //inside card
                             // infoCard: ''
@@ -562,7 +614,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                             inputs: [
                                 {
                                     label: 'Posee polvorín',
-                                    value: {},
+                                    value: undefined,
                                     type: inputsTypes.SELECT,
                                     options: [
                                         {label: 'SI', value: 'si'},
@@ -573,11 +625,11 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                     closeOnSelect: true,
                                     searchable: false,
                                     placeholder: 'Selecciona una opción',
-                                    // validations: yup.object().when('polvorinSelect', {
-                                    //     is: value => _.isEmpty(value) || !value,
-                                    //     then: yup.object().required('Debes elegir un elemento').nullable()
-                                    // }),
-                                    validations: yup.object().required('Debes elegir una opción').nullable(),
+                                    validations: yup.object().when('polvorinSelect', {
+                                        is: value => _.isEmpty(value) || !value,
+                                        then: yup.object().required('Debes elegir un elemento').nullable()
+                                    }),
+                                    // validations: yup.object().required('Debes elegir una opción').nullable(),
                                     observation: new Observations({schema, name: 'polvorin', action}).observations
                                 },
                                 {
@@ -615,10 +667,10 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
             ]
         },
         {
-            icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z',
+            icon: 'M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z',
             bgColorIcon: 'bg-blue-500',
             bgColorProgress: 'bg-blue-300',
-            titleStep: 'Datos',
+            titleStep: 'Personal',
             bodyStep: [
                 // row 1
                 {
@@ -628,7 +680,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                         //  col 1
                         {
                             title: 'Cantidad de personal afectado',
-                            width: 'lg:w-2/4', //flex
+                            width: 'w-2/4', //flex
                             columns: 'grid-cols-1', //grid
                             columnsResponsive: 'lg:grid-cols-1', //inside card
                             // infoCard: ''
@@ -669,7 +721,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
             icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
             bgColorIcon: 'bg-blue-500',
             bgColorProgress: 'bg-blue-300',
-            titleStep: 'Producción',
+            titleStep: 'Combustible',
             bodyStep: [
                 {
                     widthResponsive: 'lg:flex-row', //flex
@@ -687,7 +739,9 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                     label: '',
                                     type: inputsTypes.TABLE,
                                     name: "combustible",
-                                    verticalTitle: ['','','',''],
+                                    typeTable: "horizontal",
+                                    addRow: true,
+                                    verticalTitle: [],
                                     horizontalTitle: [
                                         'Combustible',
                                         'Tipo',
@@ -700,7 +754,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                                 label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
-                                                name: 'combustible',
+                                                name: 'nombre',
                                             },
                                             {
                                                 label: '',
@@ -722,12 +776,12 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                             },
                                         ]
                                     ],
-                                    observation: new Observations({schema, name: 'production', action}).observations,
+                                    observation: new Observations({schema, name: 'combustible', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(
                                             yup.object().shape({
-                                                production: yup.string().nullable().required('Debes completar este campo'),
+                                                nombre: yup.string().nullable().required('Debes completar este campo'),
                                                 tipo: yup.string().nullable().required('Debes completar este campo'),
                                                 cantidad: yup.string().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
                                                 observaciones: yup.string().nullable().required('Debes completar este campo'),
@@ -745,83 +799,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
             icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
             bgColorIcon: 'bg-blue-500',
             bgColorProgress: 'bg-blue-300',
-            titleStep: 'Producción',
-            bodyStep: [
-                {
-                    widthResponsive: 'lg:flex-row', //flex
-                    // columns
-                    body: [
-                        //  col 1
-                        {
-                            title: 'Combustible utilizado',
-                            width: 'lg:w-3/4', //flex
-                            // columns: '', //grid
-                            // columnsResponsive: '', //inside card
-                            img: '/images/laborales.png',
-                            inputs: [
-                                {
-                                    label: '',
-                                    type: inputsTypes.TABLE,
-                                    name: "combustible",
-                                    verticalTitle: ['','','',''],
-                                    horizontalTitle: [
-                                        'Combustible',
-                                        'Tipo',
-                                        'Cantidad mensual',
-                                        'Observaciones'
-                                    ],
-                                    element: [
-                                        [
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'combustible',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'tipo',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.NUMBER,
-                                                name: 'cantidad',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'observaciones',
-                                            },
-                                        ]
-                                    ],
-                                    // observation: new Observations({schema, name: 'production', action}).observations,
-                                    validations: yup
-                                        .array()
-                                        .of(
-                                            yup.object().shape({
-                                                production: yup.string().nullable().required('Debes completar este campo'),
-                                                tipo: yup.string().nullable().required('Debes completar este campo'),
-                                                cantidad: yup.string().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
-                                                observaciones: yup.string().nullable().required('Debes completar este campo'),
-                                            })
-                                        )
-                                        .strict(),
-                                },
-                            ]
-                        },
-                    ]
-                },
-            ]
-        },
-        {
-            icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
-            bgColorIcon: 'bg-blue-500',
-            bgColorProgress: 'bg-blue-300',
-            titleStep: 'Producción',
+            titleStep: 'Maquinaria',
             bodyStep: [
                 {
                     widthResponsive: 'lg:flex-row', //flex
@@ -839,6 +817,7 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                     label: '',
                                     type: inputsTypes.TABLE,
                                     name: "equipos",
+                                    typeTable: "horizontal",
                                     verticalTitle: [
                                         'COMPRESORES',
                                         'MARTILLOS',
@@ -869,7 +848,47 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones',
                                             },
-                                        ]
+                                        ],
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'marca',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones',
+                                            },
+                                        ],
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'marca',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones',
+                                            },
+                                        ],
                                     ],
                                     // observation: new Observations({schema, name: 'production', action}).observations,
                                     validations: yup
@@ -889,7 +908,112 @@ export async function getFormSchema({ ...schema }, action, dataForm) {
                 },
             ]
         },
-
+        {
+            icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
+            bgColorIcon: 'bg-blue-500',
+            bgColorProgress: 'bg-blue-300',
+            titleStep: 'Anexo 1',
+            bodyStep: [
+                {
+                    widthResponsive: 'lg:flex-row', //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: 'Anexo 1',
+                            width: 'lg:w-full', //flex
+                            // columns: '', //grid
+                            // columnsResponsive: '', //inside card
+                            img: '/images/laborales.png',
+                            inputs: [
+                                {
+                                    label: 'Personal Afectado a la Mina o Cantera',
+                                    type: inputsTypes.TABLE,
+                                    name: "anexo1",
+                                    typeTable: "horizontal",
+                                    addRow: true,
+                                    verticalTitle: [],
+                                    horizontalTitle: [
+                                        'Apellido',
+                                        'Nombre',
+                                        'DNI',
+                                        'Condición',
+                                        'Acciones'
+                                    ],
+                                    element: [
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'apellido',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'dni',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.RADIO,
+                                                colSpan: '',
+                                                options: [
+                                                    { value: 'permanente', label: 'Permanente'},
+                                                    { value: 'temporario', label: 'Temporario'},
+                                                ],
+                                                name: 'condicion',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.REMOVEICON,
+                                                colSpan: '',
+                                                name: 'remove',
+                                            },
+                                            // {
+                                            //     label: '',
+                                            //     value: undefined,
+                                            //     type: inputsTypes.SELECT,
+                                            //     colSpan: '',
+                                            //     options: [
+                                            //         { value: 'permanente', label: 'Permanente'},
+                                            //         { value: 'Temporario', label: 'Temporario'},
+                                            //     ],
+                                            //     name: 'condicion',
+                                            //     multiple: false,
+                                            //     closeOnSelect: true,
+                                            //     searchable: false,
+                                            //     placeholder: 'Selecciona una opción',
+                                            // },
+                                        ]
+                                    ],
+                                    observation: new Observations({schema, name: 'anexo1', action}).observations,
+                                    validations: yup
+                                        .array()
+                                        .of(
+                                            yup.object().shape({
+                                                apellido: yup.string().nullable().required('Debes completar este campo'),
+                                                nombre: yup.string().nullable().required('Debes completar este campo'),
+                                                dni: yup.string().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
+                                                condicion: yup.string().nullable().required('Debes elegir un elemento'),
+                                            })
+                                        )
+                                        .strict(),
+                                },
+                            ]
+                        },
+                    ]
+                },
+            ]
+        },
     ]
 
     return schema
