@@ -107,10 +107,8 @@
                           rounded-md
                           text-gray-500
                           bg-white
-                          hover:bg-gray-50
-                          hover:text-gray-700
-                          focus:outline-none
-                          focus:bg-gray-50
+                          hover:bg-gray-50 hover:text-gray-700
+                          focus:outline-none focus:bg-gray-50
                           active:bg-gray-50
                           transition
                         "
@@ -203,8 +201,7 @@
                         text-sm
                         border-2 border-transparent
                         rounded-full
-                        focus:outline-none
-                        focus:border-gray-300
+                        focus:outline-none focus:border-gray-300
                         transition
                       "
                     >
@@ -213,6 +210,42 @@
                         :src="$page.props.user.profile_photo_url"
                         :alt="$page.props.user.name"
                       />
+                      <span
+                        class="
+                          font-mono font-semibold
+                          uppercase
+                          ml-4
+                          border-2
+                          shadow-lg
+                          rounded-xl
+                          text-base
+                          w-full
+                          py-1
+                          px-3
+                          bg-white
+                          tracking-wider
+                          border-indigo-400
+                        "
+                      >
+                        {{ $page.props.user.provincia }}
+                      </span>
+                      <!-- <span
+                        class="
+                          font-mono font-semibold
+                          uppercase
+                          ml-4
+                          bg-blue-500
+                          text-white text-base
+                          tracking-wider
+                          p-2
+                          rounded-xl
+                          leading-none
+                          flex
+                          items-center
+                        "
+                      >
+                        {{ $page.props.user.provincia }}
+                      </span> -->
                     </button>
                     <span v-else class="inline-flex rounded-md">
                       <button
@@ -248,6 +281,19 @@
                           />
                         </svg>
                       </button>
+                      <span
+                        class="
+                          bg-blue-600
+                          text-white
+                          p-2
+                          rounded
+                          leading-none
+                          flex
+                          items-center
+                        "
+                      >
+                        {{ $page.props.user.provincia }}
+                      </span>
                     </span>
                   </template>
                   <template #content>
@@ -305,8 +351,7 @@
           antialiased
           text-gray-900
           bg-gray-100
-          dark:bg-dark
-          dark:text-light
+          dark:bg-dark dark:text-light
         "
       >
         <transition name="slide-fade">
@@ -356,6 +401,14 @@
                   <span class="sr-only">Close sidebar</span>
                 </button>
               </div>
+              <tarjetaPresentacion
+                :clase_sup="'mt-0'"
+                :clase_inf="'text-gray-700'"
+                :logoSrc="$page.props.user.profile_photo_url"
+                :logoAlt="$page.props.user.name"
+                :titulo="$page.props.user.name"
+                :subtitulo="$page.props.user.provincia"
+              ></tarjetaPresentacion>
               <nav class="flex flex-col flex-1 w-64 p-4 mt-4">
                 <inertia-link
                   v-if="hasAnyPermission(['rpm.dashboard.show'])"
@@ -747,16 +800,7 @@
         <!-- Page content -->
         <button
           @click="isSidebarOpen = true"
-          class="
-             
-            fixed
-            p-2
-            text-white
-            bg-black
-            rounded-lg
-            top-5
-            left-5
-          "
+          class="fixed p-2 text-white bg-black rounded-lg top-5 left-5"
         >
           <svg
             class="w-6 h-6"
@@ -781,6 +825,7 @@
 </template>
 
 <script>
+import tarjetaPresentacion from "@/Components/TarjetaPresentacion";
 import JetApplicationMark from "@/Jetstream/ApplicationMark";
 import JetBanner from "@/Jetstream/Banner";
 import JetDropdown from "@/Jetstream/Dropdown";
@@ -797,6 +842,7 @@ export default {
     JetNavLink,
     JetResponsiveNavLink,
     JetAuthenticationCardLogo,
+    tarjetaPresentacion,
   },
   data() {
     return {

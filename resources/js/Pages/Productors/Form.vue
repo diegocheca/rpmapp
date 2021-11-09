@@ -16,15 +16,11 @@
             sm:text-3xl
             sm:truncate
             py-1
+            border-indigo-400
           "
-          :class="[
-            porcentajeInscripcion == 100
-              ? 'border-green-400'
-              : 'border-indigo-400',
-          ]"
         >
           Dandose de Alta como nuevo Productor Minero en la Provincia de
-          {{ $props.nombre_provincia }}, Id {{ form.id }}
+          {{ $props.nombre_provincia }}, ID {{ form.id }}
         </h1>
         <!-- <button
           type="button"
@@ -53,7 +49,7 @@
 
           <br /> -->
           <!-- Delete Account Confirmation Modal -->
-          <jet-dialog-modal
+          <!-- <jet-dialog-modal
             class="w-full"
             :show="confirmingUserDeletion"
             @close="closeModal"
@@ -84,7 +80,7 @@
                 Comencemos
               </button>
             </template>
-          </jet-dialog-modal>
+          </jet-dialog-modal> -->
           <!-- <div class="flex items-center justify-center">
             <div
               class="
@@ -337,11 +333,13 @@
             v-on:CreeUnNuevoIdAdcionalPasoAAbuelo="
               update_id_adicional_nuevo($event)
             "
+            v-on:mostrarpasosiguiente="mostar_paso_siguiente(2, $event)"
           >
           </PaginaUnoDatosProductores>
+
           <div id="section_domicilio_legal"></div>
           <PaginaDosDatosDomLegal
-            v-if="$props.mostrar.paso_dos"
+            v-if="m_paso2"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
@@ -463,11 +461,21 @@
             :evaluacion="evaluacion_global"
             :testing="testing_global"
             :id="form.id"
+            v-on:mostrarpasosiguiente="mostar_paso_siguiente(3, $event)"
+            v-on:updateValorPadreNombreCalle="UpdateCalleNombre($event)"
+            v-on:updateValorPadreNumCalle="UpdateCalleNum($event)"
+            v-on:updateValorPadreTel="UpdateTel($event)"
+            v-on:updateValorPadreProv="UpdateProv($event)"
+            v-on:updateValorPadreDepto="UpdateDpto($event)"
+            v-on:updateValorPadreLocalidad="UpdateLocalidad($event)"
+            v-on:updateValorPadreCP="UpdateCP($event)"
+            v-on:updateValorPadreOtro="UpdateOtro($event)"
           >
           </PaginaDosDatosDomLegal>
           <div id="section_domicilio_administrativo"></div>
+          
           <PaginaDosDatosDomLegal
-            v-if="$props.mostrar.paso_tres"
+            v-if="m_paso3"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Domicilio Administrativo'"
@@ -607,12 +615,22 @@
             :evaluacion="evaluacion_global"
             :testing="testing_global"
             :id="form.id"
+            v-on:mostrarpasosiguiente="mostar_paso_siguiente(4, $event)"
+            v-on:updateValorPadreNombreCalle="UpdateCalleNombre($event)"
+            v-on:updateValorPadreNumCalle="UpdateCalleNum($event)"
+            v-on:updateValorPadreTel="UpdateTel($event)"
+            v-on:updateValorPadreProv="UpdateProv($event)"
+            v-on:updateValorPadreDepto="UpdateDpto($event)"
+            v-on:updateValorPadreLocalidad="UpdateLocalidad($event)"
+            v-on:updateValorPadreCP="UpdateCP($event)"
+            v-on:updateValorPadreOtro="UpdateOtro($event)"
+            v-on:copiarDatosDomicilioLegal="mandarDomicilioAlHijo($event)"
           >
           </PaginaDosDatosDomLegal>
           <!-- <div class="flex items-center justify-center"></div> -->
           <div id="section_mina_uno"></div>
           <PaginaCuatroDatosMinaUno
-            v-if="$props.mostrar.paso_cuatro"
+            v-if="m_paso4"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos de Mina Primer Parte'"
@@ -750,12 +768,13 @@
             :id="form.id"
             :testing="testing_global"
             v-on:changevalorcategoria="update_categoria($event)"
+            v-on:mostrarpasosiguiente="mostar_paso_siguiente(5, $event)"
           >
           </PaginaCuatroDatosMinaUno>
           <!-- <div class="flex items-center justify-center"></div> -->
           <div id="section_datos_mina_dos"></div>
           <PaginaCincoDatosMinaDos
-            v-if="$props.mostrar.paso_cinco"
+            v-if="m_paso5"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
@@ -965,13 +984,14 @@
             :id="form.id"
             :testing="testing_global"
             :categoria="form.categoria"
+            v-on:mostrarpasosiguiente="mostar_paso_siguiente(6, $event)"
           >
             <!-- :mostrar_boton_catamarca="$props.mostrar.boton_catamarca" -->
             <!-- :desactivar_boton_catamarca="$props.disables.boton_catamarca" -->
           </PaginaCincoDatosMinaDos>
           <div id="section_datos_mina_ubicacion"></div>
           <PaginaSeisDatosUbicacionMina
-            v-if="$props.mostrar.paso_seis"
+            v-if="m_paso6"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
@@ -1092,6 +1112,7 @@
             :evaluacion="evaluacion_global"
             :id="form.id"
             :testing="testing_global"
+            v-on:mostrarpasosiguiente="mostar_paso_siguiente(7, $event)"
           >
           </PaginaSeisDatosUbicacionMina>
           <div
@@ -1099,16 +1120,35 @@
             v-if="$props.mostrar.paso_catamarca"
           ></div>
           <PaginaCatamarca
-            v-if="$props.mostrar.paso_catamarca"
+            v-if="m_paso7"
             :link_volver="route('formulario-alta.index')"
             :titulo_boton_volver="'volver'"
             :titulo_boton_guardar="'Guardar Datos Form Catamarca'"
-            :titulo_pagina="'Pagina De Catamarca'"
+            :titulo_pagina="'Catamarca'"
             :evaluacion="evaluacion_global"
             :testing="testing_global"
             :id="form.id"
           >
           </PaginaCatamarca>
+<p>Mostrando lla pagina de mendoza.:{{$props.mostrar.paso_mendoza }}</p>
+
+
+           <div
+            id="section_mendoza"
+            v-if="$props.mostrar.paso_mendoza"
+          ></div>
+          <PaginaMendoza
+            v-if="$props.mostrar.paso_mendoza"
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos Form Mendoza'"
+            :titulo_pagina="'Pagina De Mendoza'"
+            :evaluacion="evaluacion_global"
+            :testing="testing_global"
+            :id="form.id"
+          >
+          </PaginaMendoza>
+
           <div id="finalizar"></div>
           <div
             class="
@@ -1304,7 +1344,7 @@
               </div>
             </div>
           </div>
-          <jet-dialog-modal
+          <!-- <jet-dialog-modal
             :show="modalFormularioPresentado"
             @close="closeModalPresentado"
           >
@@ -1317,8 +1357,8 @@
             <template #footer>
               <a :href="route('formulario-alta.index')">OK</a>
             </template>
-          </jet-dialog-modal>
-          <jet-dialog-modal
+          </jet-dialog-modal> -->
+          <!-- <jet-dialog-modal
             :show="AvisoAprueba"
             @close="closeModalAprobar"
             class="flex flex-col"
@@ -1372,7 +1412,7 @@
                 </div>
               </div>
             </template>
-          </jet-dialog-modal>
+          </jet-dialog-modal> -->
         </form>
       </div>
     </div>
@@ -1400,6 +1440,7 @@
 <script>
 import ButtonFixed from "@/Components/ButtonFixed";
 import JetButton from "@/Jetstream/Button";
+import Swal from "sweetalert2";
 
 import AppLayout from "@/Layouts/AppLayout";
 import Banner from "@/Jetstream/Banner";
@@ -1421,10 +1462,13 @@ import PaginaCuatroDatosMinaUno from "@/Pages/Productors/PaginaCuatroDatosMinaUn
 import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos";
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
+import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
 
+
 import provincias from "../../../../helpers/enums/provincias";
+// import { Router } from "@inertiajs/inertia/types/router";
 
 export default {
   components: {
@@ -1451,6 +1495,7 @@ export default {
     PaginaCincoDatosMinaDos,
     PaginaSeisDatosUbicacionMina,
     PaginaCatamarca,
+        PaginaMendoza,
     ValidationErrors,
     Pasos,
   },
@@ -1470,13 +1515,19 @@ export default {
     // console.log("ffffeeeeqqeeeel valor es:");
     // console.log(this.$props.productor);
     return {
-      confirmingUserDeletion: false,
-      modal_tittle: "",
-      modal_body: "",
-      AvisoAprueba: false,
-      modalFormularioPresentado: false,
-      modal_tittle_apro: "",
-      modal_body_apro: "",
+      // confirmingUserDeletion: false,
+      // modal_tittle: "",
+      // modal_body: "",
+      // AvisoAprueba: false,
+      // modalFormularioPresentado: false,
+      // modal_tittle_apro: "",
+      // modal_body_apro: "",
+      m_paso2: false,
+      m_paso3: false,
+      m_paso4: false,
+      m_paso5: false,
+      m_paso6: false,
+      m_paso7: false,
       evaluacion_global: this.$props.soy_autoridad_minera,
       testing_global: this.$props.soy_administrador,
       mostrar_modal_datos_ya_guardados: false,
@@ -1961,41 +2012,49 @@ export default {
             label: "Principio",
             url: "#inicio",
             color: "bg-yellow-500 hover:bg-yellow-800",
+            ver: true,
           },
           {
             label: "Datos del Productor",
             url: "#section_productor",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: true,
           },
           {
             label: "Domicilio Legal",
             url: "#section_domicilio_legal",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: false,
           },
           {
             label: "Domicilio de Administración",
             url: "#section_domicilio_administrativo",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: false,
           },
           {
             label: "Datos de la Mina",
             url: "#section_mina_uno",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: false,
           },
           {
             label: "Datos de Mina Segunda Parte",
             url: "#section_datos_mina_dos",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: false,
           },
           {
             label: "Ubicación de Mina",
             url: "#section_datos_mina_ubicacion",
             color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: false,
           },
           {
             label: "Finalizar Proceso",
             url: "#finalizar",
             color: "bg-red-500 hover:bg-red-800",
+            ver: true,
           },
         ],
         modal: [
@@ -2126,76 +2185,110 @@ export default {
     update_categoria(value) {
       this.form.categoria = value;
     },
-    closeModal() {
-      this.confirmingUserDeletion = false;
-      //this.form.reset()
-    },
+    // closeModal() {
+    // this.confirmingUserDeletion = false;
+    //this.form.reset()
+    // },
     closeModalPresentado() {
-      this.modalFormularioPresentado = false;
+      // this.modalFormularioPresentado = false;
       this.$inertia.get(route("productors.update", this.form.id));
       //this.form.reset()
     },
-    closeModalAprobar() {
-      this.AvisoAprueba = false;
-    },
+    // closeModalAprobar() {
+    //   this.AvisoAprueba = false;
+    // },
     abrirModalPresentar() {
       let form_evaluacion_valida = "";
-      this.AvisoAprueba = true;
-      this.modal_tittle_apro =
-        "Advertencia: esta por presentar esta solicitud de Productor.";
+      // this.AvisoAprueba = true; //mostrar modal
+      // this.modal_tittle_apro =
+      //   "Advertencia: esta por presentar esta solicitud de Productor.";
+      var titulo = "¿Presentar solicitud de Productor?";
+      var subtitulo = "";
+      var htmltitulo = "";
       form_evaluacion_valida = this.evaluacion_de_evaluaciones();
       if (form_evaluacion_valida === "") {
         //el formulario esta bien hecho y no tiene observaciones
-        this.modal_body_apro =
-          " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+        subtitulo =
+          "Este formulario no posee ninguna observación por tanto, puede ser aprobado sin problemas.";
+        // this.modal_body_apro =
+        //   " \n \n Este formulario no posee ninguna observación por tanto, puede ser aprobado sin problemas";
         this.mostrar_boton_aprobar = true;
-        this.mostrar_boton_aprobar_de_todos_modos = false;
+        Swal.fire({
+          title: titulo,
+          text: subtitulo,
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Si, Presentar!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.guardar_avances_todo();
+          }
+        });
+        // this.mostrar_boton_aprobar_de_todos_modos = false; //no funciona
       } else {
-        this.modal_body_apro =
-          " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +
-          form_evaluacion_valida;
+        subtitulo =
+          "Este formulario posee observaciones por tanto, debe revisarlo antes de aprobarlo.";
+        htmltitulo = form_evaluacion_valida;
+        // this.modal_body_apro =
+        //   " \n \n Este formulario posee observaciones por tanto, debe revisarlo antes de aprobarlo" +
+        //   form_evaluacion_valida;
         this.mostrar_boton_aprobar = false;
-        this.mostrar_boton_aprobar_de_todos_modos = true;
+        Swal.fire({
+          title: titulo,
+          // text: subtitulo,
+          html: subtitulo + htmltitulo,
+          icon: "warning",
+          showCancelButton: true,
+          showConfirmButton: false,
+          cancelButtonColor: "#d33",
+        });
+        // this.mostrar_boton_aprobar_de_to.dos_modos = true; //no funciona
       }
     },
     evaluacion_de_evaluaciones() {
       let sin_problemas = "";
       //poner los requeried or not
       if (this.form.razon_social_correcto === false)
-        sin_problemas += "\n La Razon Social ha sido Reprobada ";
+        sin_problemas += "<br/> La Razon Social ha sido Reprobada.";
       if (this.form.razon_social_correcto === "nada")
-        sin_problemas += "\n La Razon Social no ha sido evaluada ";
-
+        sin_problemas += "<br/> La Razon Social no ha sido evaluada.";
       if (this.form.cuit_correcto === false)
-        sin_problemas += "\n El CUIT ha sido Reprobado ";
+        sin_problemas += "<br/> El CUIT ha sido Reprobado.";
       if (this.form.cuit_correcto === "nada")
-        sin_problemas += "\n El CUIR no ha sido evaluado ";
-
+        sin_problemas += "<br/> El CUIR no ha sido evaluado.";
       if (this.form.numeroproductor_correcto === false)
-        sin_problemas += "\n El Numero de Productor ha sido Reprobado ";
+        sin_problemas += "<br/> El Numero de Productor ha sido Reprobado.";
       if (this.form.numeroproductor_correcto === "nada")
-        sin_problemas += "\n El Numero de Productor no ha sido evaluado ";
-
+        sin_problemas += "<br/> El Numero de Productor no ha sido evaluado.";
       if (this.form.tiposociedad_correcto === false)
-        sin_problemas += "\n El tipo de sociedad ha sido Reprobado ";
+        sin_problemas += "<br/> El tipo de sociedad ha sido Reprobado.";
       if (this.form.tiposociedad_correcto === "nada")
-        sin_problemas += "\n El tipo de sociedad no ha sido evaluado ";
-
+        sin_problemas += "<br/> El tipo de sociedad no ha sido evaluado.";
       if (this.form.inscripciondgr_correcto === false)
-        sin_problemas += "\n La inscripcion de la DGR ha sido Reprobada ";
+        sin_problemas += "<br/> La inscripcion de la DGR ha sido Reprobada.";
       if (this.form.inscripciondgr_correcto === "nada")
-        sin_problemas += "\n La inscripcion de la DGR no ha sido evaluada ";
-
+        sin_problemas += "<br/> La inscripcion de la DGR no ha sido evaluada.";
       if (this.form.constaciasociedad_correcto === false)
-        sin_problemas += "\n La constancia de Sociedad ha sido Reprobada ";
+        sin_problemas += "<br/> La constancia de Sociedad ha sido Reprobada.";
       if (this.form.constaciasociedad_correcto === "nada")
-        sin_problemas += "\n La constacia de Sociedad no ha sido evaluada ";
+        sin_problemas += "<br/> La constacia de Sociedad no ha sido evaluada.";
       return sin_problemas;
     },
 
     guardar_avances_todo: function () {
       if (this.form.estado === "presentar") {
         let self = this;
+        Swal.fire({
+          title: "¡Por favor Espere!",
+          html: "Enviando",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          willOpen: () => {
+            Swal.showLoading();
+          },
+        });
         // Make a request for a user with a given ID
         axios
           .post("/formularios/presentar_borrador", {
@@ -2205,26 +2298,57 @@ export default {
           })
           .then(function (response) {
             // console.log(response.data);
+            Swal.hideLoading(Swal.clickConfirm());
             if (response.data.status === "ok") {
-              self.confirmingUserDeletion = false;
-              self.AvisoAprueba = false;
-              self.modalFormularioPresentado = true;
-              self.modal_tittle = response.data.msg;
-              self.modal_body =
-                "Se ha guardado correctamente la información . se GUARDO TODO. Gracias";
+              // self.confirmingUserDeletion = false;
+              // self.AvisoAprueba = false;
+              // self.modalFormularioPresentado = true;
+              // self.modal_tittle = response.data.msg;
+              // self.modal_body =
+              //   "Se ha guardado correctamente la información . se GUARDO TODO. Gracias";
+              // Swal.fire(
+              //   "Se ha guardado correctamente la información.",
+              //   response.data.msg,
+              //   "success"
+              // ).then((result) => {
+              //   if (result.isConfirmed) {
+              //     this.$inertia.get(route("formulario-alta.index"));
+              //   }
+              // });
+              Swal.fire({
+                icon: "success",
+                title: "Se ha guardado correctamente la información.",
+                text: response.data.msg,
+              }).then((result) => {
+                // window.location.replace("/formulario-alta");
+                self.$inertia.get(route("formulario-alta.index"));
+              });
             } else {
-              self.AvisoAprueba = false;
-              self.confirmingUserDeletion = false;
-              self.modalFormularioPresentado = true;
-              self.modal_tittle = response.data.msg;
-              self.modal_body =
-                "Error, por favor comuniquese con el administrador";
+              // self.AvisoAprueba = false;
+              // self.confirmingUserDeletion = false;
+              // self.modalFormularioPresentado = true;
+              // self.modal_tittle = response.data.msg;
+              // self.modal_body =
+              //   "Error, por favor comuniquese con el administrador";
+              Swal.fire({
+                icon: "error",
+                title: "Error...",
+                text:
+                  "Por favor comuniquese con el administrador. " +
+                  response.data.msg,
+              });
             }
           })
           .catch(function (error) {
-            // handle error
+            Swal.hideLoading();
             console.log(error);
           });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error...",
+          text: "Seleccione un Estado, distinto de Borrador.",
+        });
       }
     },
 
@@ -2232,12 +2356,12 @@ export default {
       // console.log("recibi el id:"+id_nuevo+" - desde el nieto");
       this.form.id = id_nuevo;
     },
-    mostrar_explicacion() {
-      this.confirmingUserDeletion = true;
-      this.modal_body =
-        "En este formulario usted puede presentar la solicitud de alta de productor minero. Con esta acción usted demuestra interes en inscribirse como tal, pervio a una evaluación de su solicitud (el presente formulario).";
-      this.modal_tittle = "Explicación de alta de Productores Mineros";
-    },
+    // mostrar_explicacion() {
+    //   this.confirmingUserDeletion = true;
+    //   this.modal_body =
+    //     "En este formulario usted puede presentar la solicitud de alta de productor minero. Con esta acción usted demuestra interes en inscribirse como tal, pervio a una evaluación de su solicitud (el presente formulario).";
+    //   this.modal_tittle = "Explicación de alta de Productores Mineros";
+    // },
 
     pasar_los_num_a_boolean() {
       let self = this;
@@ -2392,6 +2516,97 @@ export default {
     update_id_adicional_nuevo(valorEvaluacion) {
       this.form_particular.id = valorEvaluacion;
     },
+    mostar_paso_siguiente(paso, valor) {
+      switch (paso) {
+        case 2:
+          this.m_paso2 = valor;
+          break;
+        case 3:
+          this.m_paso3 = valor;
+          break;
+        case 4:
+          this.m_paso4 = valor;
+          break;
+        case 5:
+          this.m_paso5 = valor;
+          break;
+        case 6:
+          this.m_paso6 = valor;
+          break;
+        case 7:
+          this.m_paso7 = valor;
+          break;
+        default:
+          break;
+      }
+      this.update_menu_flotante(paso, valor);
+    },
+    update_menu_flotante(id, value) {
+      this.buttonsFixed.links[id].ver = value;
+    },
+
+    mandarDomicilioAlHijo($value){
+      this.form.administracion_calle = this.form.leal_calle;
+      this.form.administracion_numero =this.form.leal_numero;
+      this.form.administracion_telefono = this.form.leal_telefono;
+      this.form.administracion_provincia = this.form.leal_provincia;
+      this.form.administracion_departamento = this.form.leal_departamento;
+      this.form.administracion_localidad = this.form.leal_localidad;
+      this.form.administracion_cp = this.form.leal_cp;
+      this.form.administracion_otro = this.form.leal_otro;
+      console.log("ya copie todo");
+
+      console.log(this.form.administracion_calle,this.form.administracion_numero,this.form.administracion_telefono,this.form.administracion_provincia,this.form.administracion_departamento,this.form.administracion_localidad,this.form.administracion_cp,this.form.administracion_otro);
+    },
+    UpdateCalleNombre($value){
+      if($value.lugar === 'legal')
+        this.form.leal_calle = $value.nombre;
+      else
+        this.form.administracion_calle = $value.nombre;
+    },
+    UpdateCalleNum($value){
+      if($value.lugar === 'legal')
+        this.form.leal_numero = $value.nombre;
+      else
+        this.form.administracion_numero = $value.nombre;
+    },
+    UpdateTel($value){
+      if($value.lugar === 'legal')
+        this.form.leal_telefono = $value.nombre;
+      else
+        this.form.administracion_telefono = $value.nombre;
+    },
+    UpdateProv($value){
+      if($value.lugar === 'legal')
+        this.form.leal_provincia = $value.nombre;
+      else
+        this.form.administracion_provincia = $value.nombre;
+    },
+    UpdateDpto($value){
+      if($value.lugar === 'legal')
+        this.form.leal_departamento = $value.nombre;
+      else
+        this.form.administracion_departamento = $value.nombre;
+    },
+    UpdateLocalidad($value){
+      if($value.lugar === 'legal')
+        this.form.leal_localidad = $value.nombre;
+      else
+        this.form.administracion_localidad = $value.nombre;
+    },
+    UpdateCP($value){
+      if($value.lugar === 'legal')
+        this.form.leal_cp = $value.nombre;
+      else
+        this.form.administracion_cp = $value.nombre;
+    },
+    UpdateOtro($value){
+      if($value.lugar === 'legal')
+        this.form.leal_otro = $value.nombre;
+      else
+        this.form.administracion_otro = $value.nombre;
+    },
+    
   },
 };
 </script>

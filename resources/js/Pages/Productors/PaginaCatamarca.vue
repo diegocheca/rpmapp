@@ -136,39 +136,39 @@
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <span>Pagina de catamarca</span>
         </div>
+        <br />
+        <br />
       </div>
-      <br />
-      <br />
-      <div class="flex flex-wrap">
+      <div class="flex">
         <!-- <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <NombreMina
-                  v-if="$props.mostrar_nombre_gestor"
-                  v-bind:valor_input_props="form_pagina.gestor_nombre_apellido"
-                  v-bind:valor_input_validacion="
-                  form_pagina.gestor_nombre_apellido_valido
-                  "
-                  v-bind:evualacion_correcto="
-                  form_pagina.gestor_nombre_apellido_correcto
-                  "
-                  v-bind:valor_obs="form_pagina.obs_gestor_nombre_apellido"
-                  v-bind:valor_valido_obs="form_pagina.obs_gestor_nombre_valido"
-                  v-bind:evaluacion="autoridad_minera"
-                  v-bind:testing="mostrar_testing"
-                  v-bind:label="'Nombre y Apellido del Gestor:'"
-                  v-bind:icon="$inertia.page.props.appName + '/svg/state.svg'"
-                  v-bind:desactivar_input="$props.desactivar_nombre_gestor"
-                  v-bind:mostrar_correccion="$props.mostrar_nombre_gestor_correccion"
-                  v-bind:desactivar_correccion="
-                  $props.desactivar_nombre_gestor_correccion
-                  "
-                  v-on:changevalido="update_nombre_gestor_valido($event)"
-                  v-on:changecorrecto="update_nombre_gestor_correcto($event)"
-                  v-on:changeobs="update_obs_nombre_gestor($event)"
-                  v-on:changeobsvalido="update_obs_nombre_gestor_valida($event)"
-                  v-on:changevalor="update_valor_nombre_gestor($event)"
-              >
-              </NombreMina>
-          </div> -->
+                <NombreMina
+                    v-if="$props.mostrar_nombre_gestor"
+                    v-bind:valor_input_props="form_pagina.gestor_nombre_apellido"
+                    v-bind:valor_input_validacion="
+                    form_pagina.gestor_nombre_apellido_valido
+                    "
+                    v-bind:evualacion_correcto="
+                    form_pagina.gestor_nombre_apellido_correcto
+                    "
+                    v-bind:valor_obs="form_pagina.obs_gestor_nombre_apellido"
+                    v-bind:valor_valido_obs="form_pagina.obs_gestor_nombre_valido"
+                    v-bind:evaluacion="autoridad_minera"
+                    v-bind:testing="mostrar_testing"
+                    v-bind:label="'Nombre y Apellido del Gestor:'"
+                    v-bind:icon="$inertia.page.props.appName + '/svg/state.svg'"
+                    v-bind:desactivar_input="$props.desactivar_nombre_gestor"
+                    v-bind:mostrar_correccion="$props.mostrar_nombre_gestor_correccion"
+                    v-bind:desactivar_correccion="
+                    $props.desactivar_nombre_gestor_correccion
+                    "
+                    v-on:changevalido="update_nombre_gestor_valido($event)"
+                    v-on:changecorrecto="update_nombre_gestor_correcto($event)"
+                    v-on:changeobs="update_obs_nombre_gestor($event)"
+                    v-on:changeobsvalido="update_obs_nombre_gestor_valida($event)"
+                    v-on:changevalor="update_valor_nombre_gestor($event)"
+                >
+                </NombreMina>
+            </div> -->
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <NombreMina
             v-if="permisos_mostrar.nombre_gestor"
@@ -349,8 +349,8 @@
               "
             >
               <p class="p-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na m
-                quisquam doloremque placeat op.
+                Cuando se selecciona la opcion "Si" el gestor será notificado de
+                los eventos relacionados a este formulario.
               </p>
             </div>
             <br />
@@ -725,6 +725,23 @@
       </BotonesPaginaCatamarca>
       
     </div>
+
+    <!-- <div class="flex justify-end mt-4">
+      <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
+    </div> -->
+    <BotonesPaginaCatamarca
+      v-if="$props.mostrar_boton_catamarca"
+      :link_volver="'#'"
+      :titulo_boton_volver="'volver'"
+      :titulo_boton_guardar="'Guardar Datos de la Mina'"
+      :formulario="form_catamarca_test"
+      :donde_guardar="$props.donde_estoy"
+      :evaluacion="autoridad_minera"
+      :testing="mostrar_testing"
+      :id="$props.id"
+      v-on:mostrarpasosiguiente="mostrarpasos($event)"
+    >
+    </BotonesPaginaCatamarca>
   </div>
 </template>
 
@@ -899,12 +916,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_gestor_autorizacion_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_catamarca_test.obs_autorizacion_gestor_valido = newValue;
       //tengo que enviarsela al padre
     },
     cambio_el_archivo_gestor_autorizacion(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_catamarca_test.autorizacion_gestor = newValue;
       //tengo que enviarsela al padre
     },
@@ -922,12 +939,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_constancia_afip_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_catamarca_test.obs_constancia_afip_valido = newValue;
       //tengo que enviarsela al padre
     },
     cambio_el_archivo_constancia_afip(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_catamarca_test.constancia_afip = newValue;
       //tengo que enviarsela al padre
     },
@@ -992,12 +1009,16 @@ export default {
     update_valor_ayuda_local(newValor) {
       this.ayuda_local = newValor;
     },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
+    },
   },
   mounted() {
     let self = this;
     this.$nextTick(() => {
-      console.log("por buscar los datos de catamarca desde el hijo \n\n\n");
-      console.log("\n\n\n mi id es : " + this.$props.id + " \n\n\n");
+      // console.log("por buscar los datos de catamarca desde el hijo \n\n\n");
+      // console.log("\n\n\n mi id es : " + this.$props.id + " \n\n\n");
       if (this.$inertia.page.props.user.id_provincia === 10) {
         if (
           typeof this.$props.id === "undefined" ||
@@ -1005,7 +1026,7 @@ export default {
           this.$props.id === "null"
         ) {
           //estoy dando de alta
-          console.log("entre a donde debia");
+          // console.log("entre a donde debia");
           //voy a BUSCAR un objeto vacio
           self.form_catamarca_test.gestor_nombre_apellido = "";
           self.form_catamarca_test.gestor_nombre_apellido_valido = "";

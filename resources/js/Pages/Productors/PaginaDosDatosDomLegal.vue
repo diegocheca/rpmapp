@@ -147,6 +147,7 @@
     <div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2> -->
       <!-- <br /><br /> -->
+
       <div class="items-center justify-left">
         <CardDomLegal
           v-if="titulo_boton_guardar === 'Guardar Datos del Domicilio Legal'"
@@ -185,6 +186,21 @@
       </div>
       <br />
       <br />
+      <div
+        v-if="titulo_boton_guardar !== 'Guardar Datos del Domicilio Legal'"
+        class="items-center justify-left"
+      >
+        <span class="text-lg font-semibold mr-3"
+          >Mismos Datos que Domicilio Legal?</span
+        >
+        <Toggle
+          v-model="copiar_datos"
+          @change="buscar_domicilio_en_padre"
+          on-label="SI"
+          off-label="NO"
+        />
+      </div>
+
       <div class="flex flex-wrap">
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
           <InputNombreCalle
@@ -963,6 +979,7 @@
         :evaluacion="autoridad_minera"
         :id="$props.id"
         :testing="mostrar_testing"
+        v-on:mostrarpasosiguiente="mostrarpasos($event)"
       ></BotonesPaginaDos>
     </div>
 
@@ -987,6 +1004,8 @@ import InputLocalidad from "@/Pages/Productors/InputLocalidad";
 import InputCP from "@/Pages/Productors/InputCP";
 import InputOtro from "@/Pages/Productors/InputOtro";
 import BotonesPaginaDos from "@/Pages/Productors/BotonesPaginaDos";
+
+import Toggle from "@vueform/toggle";
 
 export default {
   watch: {},
@@ -1107,6 +1126,7 @@ export default {
     InputLocalidad,
     InputOtro,
     BotonesPaginaDos,
+    Toggle,
   },
 
   data() {
@@ -1119,6 +1139,7 @@ export default {
       autoridad_minera: this.$props.evaluacion,
       ayuda_legal: false,
       ayuda_administrativo: false,
+      copiar_datos: false,
       form_pagina: {
         leal_calle: this.$props.leal_calle,
         nombre_calle_legal_valido: this.$props.nombre_calle_legal_valido,
@@ -1197,14 +1218,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_nombre_calle_validacion(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_nombre_calle_legal_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_nombre_calle(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_calle = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreNombreCalle", {
+        nombre: this.form_pagina.leal_calle,
+        lugar: this.$props.donde_estoy,
+      });
     },
     //FUNCIONES DE Numero de calle
     update_num_legal_valido(newValue) {
@@ -1212,7 +1236,7 @@ export default {
       //tengo que enviarsela al padre
     },
     update_num_legal_correcto(newValue) {
-      console.log(newValue);
+      // console.log(newValue);
       this.form_pagina.leal_numero_correcto = newValue;
       //tengo que enviarsela al padre
     },
@@ -1221,14 +1245,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_num_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_numero_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_num_legal(newValue) {
-      console.log("traje dddddddddddddun" + newValue);
+      // console.log("traje dddddddddddddun" + newValue);
       this.form_pagina.leal_numero = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreNumCalle", {
+        nombre: this.form_pagina.leal_numero,
+        lugar: this.$props.donde_estoy,
+      });
     },
     //FUNCIONES DE TELEFONO
     update_tel_legal_valido(newValue) {
@@ -1244,14 +1271,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_tel_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_telefono_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_tel_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_telefono = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreTel", {
+        nombre: this.form_pagina.leal_telefono,
+        lugar: this.$props.donde_estoy,
+      });
     },
     // FUNCIONES  DE PROVINCIA
     update_provincia_valido(newValue) {
@@ -1267,16 +1297,20 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_provincia_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_provincia_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_provincia_legal_num_legal(newValue) {
       let self = this;
-      console.log("cambio la provincia de mi hijo por:" + newValue);
+      // console.log("cambio la provincia de mi hijo por:" + newValue);
 
       //this.form_pagina.localidad_mina_provincia = newValue;
       this.form_pagina.leal_provincia = newValue;
+      this.$emit("updateValorPadreProv", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
 
       //debo actualizar la lista de departamento que tengo disponibles para elegir
       axios
@@ -1304,14 +1338,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_dpto_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_departamento_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_dpto_legal_num_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_departamento = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreDepto", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
     },
 
     update_localidad_valido(newValue) {
@@ -1327,14 +1364,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_localidad_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_localidad_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_localidad_legal_num_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_localidad = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreLocalidad", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
     },
 
     update_cp_valido(newValue) {
@@ -1350,14 +1390,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_cp_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_cp_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_cp(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_cp = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreCP", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
     },
 
     update_otro_valido(newValue) {
@@ -1365,24 +1408,27 @@ export default {
       //tengo que enviarsela al padre
     },
     update_otro_correcto(newValue) {
-      console.log("cambie orto correcto" + newValue);
+      // console.log("cambie orto correcto" + newValue);
       this.form_pagina.leal_otro_correcto = newValue;
       //tengo que enviarsela al padre
     },
     update_obs_otro_legal(newValue) {
-      console.log("cambie el otro");
+      // console.log("cambie el otro");
       this.form_pagina.obs_leal_otro = newValue;
       //tengo que enviarsela al padre
     },
     update_obs_otro_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_otro_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_otro(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_otro = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreOtro", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
     },
 
     //mostrar ayuda
@@ -1399,6 +1445,14 @@ export default {
       )
         this.nombrePagina = "legal_";
       else this.nombrePagina = "adm_";
+    },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
+    },
+    buscar_domicilio_en_padre() {
+      //busco los datos en el padre
+      if (this.copiar_datos) this.$emit("copiarDatosDomicilioLegal", true);
     },
   },
   mounted() {

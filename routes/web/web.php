@@ -4,11 +4,12 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 // use Auth;
 //use Illuminate\Auth as Auth;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\FormAltaProductorCatamarcaController;
+use App\Http\Controllers\FormAltaProductorMendozaController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -25,7 +26,11 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
+
+
+use App\Http\Controllers\ProvisionServer;
+//use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,16 +85,16 @@ Route::get('minerales/getMinerals', [MineralesController::class, "getMinerals"])
 
 // });
 
-Route::group(['prefix' => 'paises'], function () {
-    // Route::get('paises', 'CountriesController@getCountries')
-    // ->middleware(['auth:sanctum', 'verified']);
-    Route::get('provincias', [CountriesController::class, "getDepartment"])
-        ->middleware(['auth:sanctum', 'verified']);
-    Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
-        ->middleware(['auth:sanctum', 'verified']);
-    Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
-        ->middleware(['auth:sanctum', 'verified']);
-});
+// Route::group(['prefix' => 'paises'], function () {
+//     // Route::get('paises', 'CountriesController@getCountries')
+//     // ->middleware(['auth:sanctum', 'verified']);
+//     Route::get('provincias', [CountriesController::class, "getDepartment"])
+//         ->middleware(['auth:sanctum', 'verified']);
+//     Route::get('departamentos/{id}', [CountriesController::class, "getDepartment"])
+//         ->middleware(['auth:sanctum', 'verified']);
+//     Route::get('localidades/{id}', [CountriesController::class, "getLocation"])
+//         ->middleware(['auth:sanctum', 'verified']);
+// });
 
 
 Route::resource('productos', ProductosController::class)
@@ -108,19 +113,26 @@ Route::resource('productores_minas', ProductorMinaController::class)
 Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     // admin
-//     // productor
-//     $mi_rol = '';
-//     if (Auth::user()->hasRole('Autoridad'))
-//         $mi_rol = 'admin';
-//     if (Auth::user()->hasRole('Administrador'))
-//         $mi_rol = 'admin';
-//     if (Auth::user()->hasRole('Productor'))
-//         $mi_rol = 'productor';
-//     return Inertia::render('Dashboard', ['userType' => $mi_rol]);
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_inicio/{id}', function ($id) {
+    // admin
+    // productor
+    $mi_rol = '';
+    if (Auth::user()->hasRole('Autoridad'))
+        $mi_rol = 'admin';
+    if (Auth::user()->hasRole('Administrador'))
+        $mi_rol = 'admin';
+    if (Auth::user()->hasRole('Productor'))
+        $mi_rol = 'productor';
+    if(Auth::user()->id_provincia == 50){
+        return redirect()->route('comprobante_inicio_mendoza', [$id]);
+    }
+    elseif(Auth::user()->id_provincia == 70){//san juan
+        return redirect()->route('comprobante_inicio_mendoza', [$id]);
+    }
+})->name('dashboardtest');
 
+
+Route::get('/probando_tesdddt_pdf/{id}', PresentacionAltaProdMendozaController::class)->name('comprobante_inicio_mendoza');
 
 Route::get('dashboard', [HomeController::class, "dashboard"])
         ->middleware(['auth:sanctum', 'verified'])->name('dashboard');
@@ -158,6 +170,7 @@ Route::get('/validar_email_productor/{codigo}', [HomeController::class, "valdiar
 Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->name('numero-reinsripiones-nuevas');
 
 Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->name('traer-provincias');
+Route::get('/datos/provincia/{id}', [FormAltaProductorController::class, "provincia_id"])->name('provincia');
 Route::post('/datos/traer_departamentos', [FormAltaProductorController::class, "traer_departamentos_json"])->name('traer-departamentos');
 Route::post('/datos/traer_localidades', [FormAltaProductorController::class, "traer_localidades_json"])->name('traer-localidades');
 Route::post('/datos/traer_minerales', [FormAltaProductorController::class, "traer_minerales_json"])->name('traer-minerales');
@@ -197,9 +210,16 @@ Route::post('/formularios/evaluacion_auto_guardado_cuatro', [FormAltaProductorCo
 Route::post('/formularios/evaluacion_auto_guardado_cinco', [FormAltaProductorController::class, "correccion_guardar_paso_cinco"])->name('correccion_guardar-paso-cinco');
 Route::post('/formularios/evaluacion_auto_guardado_seis', [FormAltaProductorController::class, "correccion_guardar_paso_seis"])->name('correccion_guardar-paso-seis');
 Route::post('/formularios/evaluacion_auto_guardado_catamarcas', [FormAltaProductorController::class, "correccion_guardar_paso_catamarca"])->name('correccion_guardar-paso-catamarca');
+Route::post('/formularios/evaluacion_auto_guardado_mendoza', [FormAltaProductorMendozaController::class, "correccion_guardar_paso_mendoza"])->name('correccion_guardar-paso-mendoza');
+
+
 
 Route::get('/formularios/traer_datos_pagina_catamarca/{id}', [FormAltaProductorCatamarcaController::class, "traer_datos_pagina_catamarca"])->name('traer-datos-pagina-catamarca');
 Route::get('/formularios/traer_permisos_pagina_catamarca/{id}/{accion}', [FormAltaProductorCatamarcaController::class, "traer_permisos_pagina_catamarca"])->name('traer-permisos-pagina-catamarca');
+
+Route::get('/formularios/traer_datos_pagina_mendoza/{id}', [FormAltaProductorMendozaController::class, "traer_datos_pagina_mendoza"])->name('traer-datos-pagina-mendoza');
+Route::get('/formularios/traer_permisos_pagina_mendoza/{id}/{accion}', [FormAltaProductorMendozaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-mendoza');
+
 
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
 Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');
@@ -222,6 +242,8 @@ Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_p
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
 Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
+
+
 Route::get('/comprobante-presentacion-pdf/{id}', [FormAltaProductorController::class, "comprobante_tramite_pdf"])->name('comprobante-presentacion-pdf');
 
 Route::get('/probando_super_guardado/{id}', [FormAltaProductorController::class, "probando_super_guardado"])->name('probando-super-guardado');
@@ -260,3 +282,5 @@ Route::group(['prefix' => 'paises'], function () {
 //DASHBOARD
 
 Route::get('/dashboard/numproductores', [DashboardController::class, "numProductores"])->name('numProductores');
+
+//Route::get('/probando_test_pdf/{id}', PresentacionAltaProdMendozaController::class);

@@ -588,6 +588,7 @@
       :evaluacion="autoridad_minera"
       :testing="mostrar_testing"
       :id="$props.id"
+      v-on:mostrarpasosiguiente="mostrarpasos($event)"
     >
     </BotonesPaginaSeis>
   </div>
@@ -697,7 +698,7 @@ export default {
 
   data() {
     return {
-      saludos: "Saludame qweqweqwe",
+      // saludos: "Saluda",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
       modal_body: "",
@@ -774,22 +775,22 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_provincia_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_localidad_mina_provincia_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_provincia(newValue) {
       let self = this;
-      console.log("cambio la provincia de mi hijo por:" + newValue);
+      // console.log("cambio la provincia de mi hijo por:" + newValue);
 
       this.form_pagina.localidad_mina_provincia = newValue;
       //debo actualizar la lista de departamento que tengo disponibles para elegir
       axios
         .post("/datos/traer_departamentos/", { id_prov: newValue })
         .then(function (response) {
-          console.log("las deptos son:\n");
+          // console.log("las deptos son:\n");
           self.lista_departamentos = response.data;
-          console.log(self.lista_departamentos);
+          // console.log(self.lista_departamentos);
         })
         .catch(function (error) {
           console.log(error);
@@ -810,16 +811,16 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_dpto_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_localidad_mina_departamento_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_dpto(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.localidad_mina_departamento = newValue;
 
       let self = this;
-      console.log("cambio la provincia de mi hijo por:" + newValue);
+      // console.log("cambio la provincia de mi hijo por:" + newValue);
 
       // this.form_pagina.localidad_mina_provincia = newValue;
       // //debo actualizar la lista de departamento que tengo disponibles para elegir
@@ -849,12 +850,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_localidad_valida(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_localidad_mina_localidad_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_localidad(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.localidad_mina_localidad = newValue;
       //tengo que enviarsela al padre
     },
@@ -872,12 +873,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_sist_coor_valida(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_tipo_sistema_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_sist_coor(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.tipo_sistema = newValue;
       //tengo que enviarsela al padre
     },
@@ -895,12 +896,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_latitud_valida(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_latitud_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_latitud(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.latitud = newValue;
       //tengo que enviarsela al padre
     },
@@ -918,12 +919,12 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_sist_coor_lonvalida(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_longitud_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_sist_coor_lon(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.longitud = newValue;
       //tengo que enviarsela al padre
     },
@@ -931,6 +932,10 @@ export default {
     //mostrar ayuda
     update_valor_ayuda_local(newValor) {
       this.ayuda_local = newValor;
+    },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
     },
   },
 };

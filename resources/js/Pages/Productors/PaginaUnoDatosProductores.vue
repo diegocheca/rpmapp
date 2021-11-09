@@ -658,6 +658,7 @@
           v-on:CreeUnNuevoIdAdcional="update_id_adicional_recien_creado($event)"
           v-on:actualizarinscripcion="update_inscripcion($event)"
           v-on:actualizaconstancia="update_constancia($event)"
+          v-on:mostrarpasosiguiente="mostrarpasos($event)"
         ></BotonesPaginaUna>
       </div>
       <!-- <div class="flex justify-end mt-4">
@@ -998,6 +999,10 @@ export default {
     update_constancia(value) {
       this.form_pagina.constaciasociedad = value;
       // this.$emit('ActualizarPathConstanciaAAbuelo',value);
+    },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
     },
   },
 };

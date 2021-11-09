@@ -55,7 +55,6 @@ class CountriesController extends Controller
 		return Departamentos::select('id as value', 'nombre as label')->where('provincia_id','=', $id)
         ->orderBy('label')
         ->get();
-
 	}
 
     public static function getProvince($id){

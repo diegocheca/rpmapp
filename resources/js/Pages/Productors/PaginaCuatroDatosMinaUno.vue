@@ -885,6 +885,7 @@
       :evaluacion="autoridad_minera"
       :testing="mostrar_testing"
       :id="$props.id"
+      v-on:mostrarpasosiguiente="mostrarpasos($event)"
     >
     </BotonesPaginaCuatro>
   </div>
@@ -1374,6 +1375,10 @@ export default {
       this.minerales_locales = newValue;
       //console.log("mis minerales son");
       //console.log(this.minerales_locales); */
+    },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
     },
   },
   mounted() {
