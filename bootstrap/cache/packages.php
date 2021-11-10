@@ -1,4 +1,11 @@
 <?php return array (
+  'amendozaaguiar/laraveles-spanish-for-jetstream' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laraveles\\Spanish\\SpanishServiceProvider',
+    ),
+  ),
   'barryvdh/laravel-dompdf' => 
   array (
     'providers' => 
