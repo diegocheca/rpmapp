@@ -1363,7 +1363,7 @@
                     hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
-                  Actualizar
+                  Actualizaree
                 </button>
               </div>
               <div
@@ -1971,6 +1971,11 @@ export default {
 
         created_by: this.$props.productor.created_by,
         estado: "sin guardar",
+
+        presentador_nombre: this.$props.productor.presentador_nombre,
+        presentador_dni: this.$props.productor.presentador_dni,
+        cargo_empresa: this.$props.productor.cargo_empresa,
+
       },
       form_particular: {
         id: this.$props.productor.id,
@@ -2255,19 +2260,13 @@ export default {
     // },
     abrirModalPresentar() {
       let form_evaluacion_valida = "";
-      // this.AvisoAprueba = true; //mostrar modal
-      // this.modal_tittle_apro =
-      //   "Advertencia: esta por presentar esta solicitud de Productor.";
       var titulo = "¿Presentar solicitud de Productor?";
       var subtitulo = "";
       var htmltitulo = "";
       form_evaluacion_valida = this.evaluacion_de_evaluaciones();
       if (form_evaluacion_valida === "") {
         //el formulario esta bien hecho y no tiene observaciones
-        subtitulo =
-          "Este formulario no posee ninguna observación por tanto, puede ser aprobado sin problemas.";
-        // this.modal_body_apro =
-        //   " \n \n Este formulario no posee ninguna observación por tanto, puede ser aprobado sin problemas";
+        subtitulo ="Este formulario no posee ninguna observación por tanto, puede ser aprobado sin problemas.";
         this.mostrar_boton_aprobar = true;
         Swal.fire({
           title: titulo,
@@ -2351,6 +2350,10 @@ export default {
             id: self.form.id,
             estado: self.form.estado,
             es_evaluacion: self.evaluacion_global,
+            //agrego los campos dni , cargo y nombre
+            nombre_presentador: this.form.presentador_nombre,
+            dni_presentador: this.form.presentador_dni,
+            cargo_empresa: this.form.cargo_empresa,
           })
           .then(function (response) {
             // console.log(response.data);
@@ -2555,15 +2558,15 @@ export default {
     },
     update_input_nombre(value) {
       console.log("Resultado del Input Nombre");
-      console.log(value);
+      this.form.presentador_nombre = value;
     },
     update_input_dni(value) {
       console.log("Resultado del Input DNI");
-      console.log(value);
+      this.form.presentador_dni = value;
     },
     update_input_cargo_empresa(value) {
       console.log("Resultado del Input Cargo de Empresa");
-      console.log(value);
+      this.form.cargo_empresa = value;
     },
     update_num_prod_evaluacion(valorEvaluacion) {
       this.form.numeroproductor_correcto = valorEvaluacion;

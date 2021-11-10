@@ -11082,7 +11082,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 
 	public function presentar_borrador(Request $request)
 	{
-		//dd($request->estado);
+		//dd($request->nombre_presentador, $request->dni_presentador , $request->cargo_empresa);
 		$request->es_evaluacion = $request->es_evaluacion === 'true' ? true : false;
 		$request->id = intval($request->id);
 		if ($request->id > 0) {
@@ -11097,6 +11097,10 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 					$formulario_provisorio->estado = $request->estado;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
+				//datos de presentador
+				$formulario_provisorio->cargo_empresa = $request->cargo_empresa;
+				$formulario_provisorio->presentador_nom_apellido = $request->nombre_presentador;
+				$formulario_provisorio->presentador_dni = $request->dni_presentador;
 				$formulario_provisorio->save();
 				//return response()->json("todo bien");
 				//$email_a_mandar = $formulario_provisorio->email; para prod
