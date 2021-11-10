@@ -4,7 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\User;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 // use Auth;
 //use Illuminate\Auth as Auth;
 use App\Http\Controllers\FormAltaProductorController;
@@ -26,7 +26,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
 
 // use Auth;
 
@@ -111,19 +111,26 @@ Route::resource('productores_minas', ProductorMinaController::class)
 Route::resource('productores', ProductoresController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     // admin
-//     // productor
-//     $mi_rol = '';
-//     if (Auth::user()->hasRole('Autoridad'))
-//         $mi_rol = 'admin';
-//     if (Auth::user()->hasRole('Administrador'))
-//         $mi_rol = 'admin';
-//     if (Auth::user()->hasRole('Productor'))
-//         $mi_rol = 'productor';
-//     return Inertia::render('Dashboard', ['userType' => $mi_rol]);
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_inicio/{id}', function ($id) {
+    // admin
+    // productor
+    $mi_rol = '';
+    if (Auth::user()->hasRole('Autoridad'))
+        $mi_rol = 'admin';
+    if (Auth::user()->hasRole('Administrador'))
+        $mi_rol = 'admin';
+    if (Auth::user()->hasRole('Productor'))
+        $mi_rol = 'productor';
+    if(Auth::user()->id_provincia == 50){
+        return redirect()->route('comprobante_inicio_mendoza', [$id]);
+    }
+    elseif(Auth::user()->id_provincia == 70){//san juan
+        return redirect()->route('comprobante_inicio_mendoza', [$id]);
+    }
+})->name('dashboardtest');
 
+
+Route::get('/probando_tesdddt_pdf/{id}', PresentacionAltaProdMendozaController::class)->name('comprobante_inicio_mendoza');
 
 Route::get('dashboard', [HomeController::class, "dashboard"])
         ->middleware(['auth:sanctum', 'verified'])->name('dashboard');
@@ -235,11 +242,6 @@ Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"
 Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
 
 
-/*Route::get('/formulario-alta-pdf/{id}', function () {
-    if( Auth::user()->id_provincia == 70) // sj
-    Route::redirect('/here', '/there');
-});
-*/
 Route::get('/comprobante-presentacion-pdf/{id}', [FormAltaProductorController::class, "comprobante_tramite_pdf"])->name('comprobante-presentacion-pdf');
 
 Route::get('/probando_super_guardado/{id}', [FormAltaProductorController::class, "probando_super_guardado"])->name('probando-super-guardado');
@@ -278,3 +280,5 @@ Route::group(['prefix' => 'paises'], function () {
 //DASHBOARD
 
 Route::get('/dashboard/numproductores', [DashboardController::class, "numProductores"])->name('numProductores');
+
+//Route::get('/probando_test_pdf/{id}', PresentacionAltaProdMendozaController::class);

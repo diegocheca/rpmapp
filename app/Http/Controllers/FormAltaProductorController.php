@@ -683,7 +683,7 @@ class FormAltaProductorController extends Controller
 				'soy_autoridad' => $soy_autoridad,
 				'soy_administrador' => $soy_administrador,
 				'soy_productor' => $soy_productor,
-				'datos_donut' => $grafico_donut
+				'datos_donut' => $grafico_donut,
 			]);
 		} else {
 			//soy productor, entonces traigo solo mis borradores

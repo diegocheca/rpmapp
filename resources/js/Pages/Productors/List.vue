@@ -299,7 +299,7 @@
                           <inertia-link
                             :href="
                               route(
-                                'comprobante-presentacion-pdf',
+                                'comprobante_inicio',
                                 productor.id
                               )
                             "
