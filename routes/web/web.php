@@ -27,6 +27,7 @@ use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
 
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
+use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
 
 
 use App\Http\Controllers\ProvisionServer;
@@ -127,12 +128,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_inicio/{id}',
         return redirect()->route('comprobante_inicio_mendoza', [$id]);
     }
     elseif(Auth::user()->id_provincia == 70){//san juan
-        return redirect()->route('comprobante_inicio_mendoza', [$id]);
+        return redirect()->route('comprobante_inicio_sanjuan', [$id]);
     }
-})->name('dashboardtest');
+})->name('comprobante_inicio');
 
 
-Route::get('/probando_tesdddt_pdf/{id}', PresentacionAltaProdMendozaController::class)->name('comprobante_inicio_mendoza');
+Route::get('/inicio_tramite_pdf_mdz/{id}', PresentacionAltaProdMendozaController::class)->name('comprobante_inicio_mendoza');
+Route::get('/inicio_tramite_pdf_sj/{id}', PresentacionAltaProdSanJuanController::class)->name('comprobante_inicio_sanjuan');
 
 Route::get('dashboard', [HomeController::class, "dashboard"])
         ->middleware(['auth:sanctum', 'verified'])->name('dashboard');
