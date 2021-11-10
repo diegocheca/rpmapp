@@ -1717,24 +1717,12 @@ select {
 .w-11\/12 {
 	width: 91.666667%;
 }
-<<<<<<< HEAD
-=======
-.w-1\/5 {
-	width: 20%;
-}
-<<<<<<< HEAD
-=======
->>>>>>> f877cd5d9fd556518ae6fdab7cc4c822cf0026e8
 .w-72 {
 	width: 18rem;
 }
 .w-1\/5 {
 	width: 20%;
 }
-.w-px {
-	width: 1px;
-}
->>>>>>> 80bfc8d39c8574e9f7443417982cbccefeeb91f4
 .w-2\/5 {
 	width: 40%;
 }
@@ -2345,16 +2333,6 @@ select {
 	--tw-border-opacity: 1;
 	border-color: rgba(55, 65, 81, var(--tw-border-opacity));
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-.border-blue-600 {
-	--tw-border-opacity: 1;
-	border-color: rgba(37, 99, 235, var(--tw-border-opacity));
-}
->>>>>>> 80bfc8d39c8574e9f7443417982cbccefeeb91f4
->>>>>>> f877cd5d9fd556518ae6fdab7cc4c822cf0026e8
 .border-yellow-300 {
 	--tw-border-opacity: 1;
 	border-color: rgba(252, 211, 77, var(--tw-border-opacity));
@@ -2362,10 +2340,6 @@ select {
 .border-yellow-500 {
 	--tw-border-opacity: 1;
 	border-color: rgba(245, 158, 11, var(--tw-border-opacity));
-}
-.border-blue-300 {
-	--tw-border-opacity: 1;
-	border-color: rgba(147, 197, 253, var(--tw-border-opacity));
 }
 .border-pink-300 {
 	--tw-border-opacity: 1;
@@ -2442,21 +2416,14 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(52, 211, 153, var(--tw-bg-opacity));
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> f877cd5d9fd556518ae6fdab7cc4c822cf0026e8
 .bg-green-500 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
 }
-<<<<<<< HEAD
-=======
 .bg-blue-300 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(147, 197, 253, var(--tw-bg-opacity));
 }
->>>>>>> f877cd5d9fd556518ae6fdab7cc4c822cf0026e8
 .bg-blue-700 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
@@ -2465,11 +2432,6 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
 }
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 80bfc8d39c8574e9f7443417982cbccefeeb91f4
->>>>>>> f877cd5d9fd556518ae6fdab7cc4c822cf0026e8
 .bg-black {
 	--tw-bg-opacity: 1;
 	background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
@@ -3576,16 +3538,6 @@ select {
 	--tw-bg-opacity: 1;
 	background-color: rgba(254, 226, 226, var(--tw-bg-opacity));
 }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-.hover\:bg-blue-600:hover {
-	--tw-bg-opacity: 1;
-	background-color: rgba(37, 99, 235, var(--tw-bg-opacity));
-}
->>>>>>> 80bfc8d39c8574e9f7443417982cbccefeeb91f4
->>>>>>> f877cd5d9fd556518ae6fdab7cc4c822cf0026e8
 .hover\:bg-gray-600:hover {
 	--tw-bg-opacity: 1;
 	background-color: rgba(75, 85, 99, var(--tw-bg-opacity));
