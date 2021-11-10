@@ -347,8 +347,7 @@ export default {
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
       axios
         .post(
-          this.$inertia.page.props.appName +
-            "/formularios/evaluacion_auto_guardado_cuatro",
+          this.$inertia.page.props.appName + "/formularios/evaluacion_auto_guardado_cuatro",
           data
         )
         .then(function (response) {
@@ -379,8 +378,7 @@ export default {
       if (this.$props.minerales["length"] != 0) {
         axios
           .post(
-            this.$inertia.page.props.appName +
-              "/formularios/guardar_lista_minerales",
+            this.$inertia.page.props.appName + "/formularios/guardar_lista_minerales",
             {
               id: this.$props.id,
               lista_minerales: this.$props.minerales,

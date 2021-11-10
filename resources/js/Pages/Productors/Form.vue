@@ -13,8 +13,7 @@
             leading-7
             text-gray-700
             dark:bg-gray-700
-            sm:text-3xl
-            sm:truncate
+            sm:text-3xl sm:truncate
             py-1
             border-indigo-400
           "
@@ -473,7 +472,7 @@
           >
           </PaginaDosDatosDomLegal>
           <div id="section_domicilio_administrativo"></div>
-          
+
           <PaginaDosDatosDomLegal
             v-if="m_paso3"
             :link_volver="route('formulario-alta.index')"
@@ -1130,13 +1129,9 @@
             :id="form.id"
           >
           </PaginaCatamarca>
-<p>Mostrando lla pagina de mendoza.:{{$props.mostrar.paso_mendoza }}</p>
 
-
-           <div
-            id="section_mendoza"
-            v-if="$props.mostrar.paso_mendoza"
-          ></div>
+          <!-- <p>Mostrando lla pagina de mendoza.:{{$props.mostrar.paso_mendoza }}</p> -->
+          <div id="section_mendoza" v-if="$props.mostrar.paso_mendoza"></div>
           <PaginaMendoza
             v-if="$props.mostrar.paso_mendoza"
             :link_volver="route('formulario-alta.index')"
@@ -1164,6 +1159,71 @@
               border-indigo-400
             "
           >
+            <div class="flex flex-wrap">
+              <div
+                class="
+                  w-full
+                  sm:w-2/2
+                  md:w-1/2
+                  lg:w-1/3
+                  xl:w-1/3
+                  2xl:w-1/3
+                  px-3
+                  mb-6
+                  md:mb-0
+                "
+              >
+                <InputComponente
+                  :titulo="'Cargo de la Empresa'"
+                  :tipo="'text'"
+                  :placeholder="'Cargo de la Empresa'"
+                  :value="''"
+                  v-on:ValueInput="update_input_cargo_empresa($event)"
+                ></InputComponente>
+              </div>
+              <div
+                class="
+                  w-full
+                  sm:w-2/2
+                  md:w-1/2
+                  lg:w-1/3
+                  xl:w-1/3
+                  2xl:w-1/3
+                  px-3
+                  mb-6
+                  md:mb-0
+                "
+              >
+                <InputComponente
+                  :titulo="'Nombre y Apellido'"
+                  :tipo="'text'"
+                  :placeholder="'Nombre y Apellido'"
+                  :value="''"
+                  v-on:ValueInput="update_input_nombre($event)"
+                ></InputComponente>
+              </div>
+              <div
+                class="
+                  w-full
+                  sm:w-2/2
+                  md:w-1/2
+                  lg:w-1/3
+                  xl:w-1/3
+                  2xl:w-1/3
+                  px-3
+                  mb-6
+                  md:mb-0
+                "
+              >
+                <InputComponente
+                  :titulo="'DNI'"
+                  :tipo="'number'"
+                  :placeholder="'DNI'"
+                  :value="''"
+                  v-on:ValueInput="update_input_dni($event)"
+                ></InputComponente>
+              </div>
+            </div>
             <div class="flex flex-wrap">
               <div class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0">
                 <label
@@ -1260,8 +1320,7 @@
                     rounded
                     shadow
                     leading-tight
-                    focus:outline-none
-                    focus:shadow-outline
+                    focus:outline-none focus:shadow-outline
                   "
                 >
                   <option value="borrador">Borrador</option>
@@ -1301,9 +1360,7 @@
                     rounded-xl
                     bg-gray-100
                     shadow-xl
-                    hover:text-white
-                    hover:shadow-xl
-                    hover:bg-gray-600
+                    hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
                   Actualizar
@@ -1334,9 +1391,7 @@
                     rounded-xl
                     bg-gray-100
                     shadow-xl
-                    hover:text-white
-                    hover:shadow-xl
-                    hover:bg-gray-600
+                    hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
                   Volver Atras
@@ -1441,6 +1496,7 @@
 import ButtonFixed from "@/Components/ButtonFixed";
 import JetButton from "@/Jetstream/Button";
 import Swal from "sweetalert2";
+import InputComponente from "../../Components/InputText.vue";
 
 import AppLayout from "@/Layouts/AppLayout";
 import Banner from "@/Jetstream/Banner";
@@ -1466,7 +1522,6 @@ import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
 
-
 import provincias from "../../../../helpers/enums/provincias";
 // import { Router } from "@inertiajs/inertia/types/router";
 
@@ -1474,6 +1529,7 @@ export default {
   components: {
     ButtonFixed,
     JetButton,
+    InputComponente,
 
     AppLayout,
     Banner,
@@ -1495,7 +1551,7 @@ export default {
     PaginaCincoDatosMinaDos,
     PaginaSeisDatosUbicacionMina,
     PaginaCatamarca,
-        PaginaMendoza,
+    PaginaMendoza,
     ValidationErrors,
     Pasos,
   },
@@ -2497,6 +2553,18 @@ export default {
     update_cuit_evaluacion(valorEvaluacion) {
       this.form.cuit_correcto = valorEvaluacion;
     },
+    update_input_nombre(value) {
+      console.log("Resultado del Input Nombre");
+      console.log(value);
+    },
+    update_input_dni(value) {
+      console.log("Resultado del Input DNI");
+      console.log(value);
+    },
+    update_input_cargo_empresa(value) {
+      console.log("Resultado del Input Cargo de Empresa");
+      console.log(value);
+    },
     update_num_prod_evaluacion(valorEvaluacion) {
       this.form.numeroproductor_correcto = valorEvaluacion;
     },
@@ -2545,9 +2613,9 @@ export default {
       this.buttonsFixed.links[id].ver = value;
     },
 
-    mandarDomicilioAlHijo($value){
+    mandarDomicilioAlHijo($value) {
       this.form.administracion_calle = this.form.leal_calle;
-      this.form.administracion_numero =this.form.leal_numero;
+      this.form.administracion_numero = this.form.leal_numero;
       this.form.administracion_telefono = this.form.leal_telefono;
       this.form.administracion_provincia = this.form.leal_provincia;
       this.form.administracion_departamento = this.form.leal_departamento;
@@ -2556,57 +2624,49 @@ export default {
       this.form.administracion_otro = this.form.leal_otro;
       console.log("ya copie todo");
 
-      console.log(this.form.administracion_calle,this.form.administracion_numero,this.form.administracion_telefono,this.form.administracion_provincia,this.form.administracion_departamento,this.form.administracion_localidad,this.form.administracion_cp,this.form.administracion_otro);
+      console.log(
+        this.form.administracion_calle,
+        this.form.administracion_numero,
+        this.form.administracion_telefono,
+        this.form.administracion_provincia,
+        this.form.administracion_departamento,
+        this.form.administracion_localidad,
+        this.form.administracion_cp,
+        this.form.administracion_otro
+      );
     },
-    UpdateCalleNombre($value){
-      if($value.lugar === 'legal')
-        this.form.leal_calle = $value.nombre;
-      else
-        this.form.administracion_calle = $value.nombre;
+    UpdateCalleNombre($value) {
+      if ($value.lugar === "legal") this.form.leal_calle = $value.nombre;
+      else this.form.administracion_calle = $value.nombre;
     },
-    UpdateCalleNum($value){
-      if($value.lugar === 'legal')
-        this.form.leal_numero = $value.nombre;
-      else
-        this.form.administracion_numero = $value.nombre;
+    UpdateCalleNum($value) {
+      if ($value.lugar === "legal") this.form.leal_numero = $value.nombre;
+      else this.form.administracion_numero = $value.nombre;
     },
-    UpdateTel($value){
-      if($value.lugar === 'legal')
-        this.form.leal_telefono = $value.nombre;
-      else
-        this.form.administracion_telefono = $value.nombre;
+    UpdateTel($value) {
+      if ($value.lugar === "legal") this.form.leal_telefono = $value.nombre;
+      else this.form.administracion_telefono = $value.nombre;
     },
-    UpdateProv($value){
-      if($value.lugar === 'legal')
-        this.form.leal_provincia = $value.nombre;
-      else
-        this.form.administracion_provincia = $value.nombre;
+    UpdateProv($value) {
+      if ($value.lugar === "legal") this.form.leal_provincia = $value.nombre;
+      else this.form.administracion_provincia = $value.nombre;
     },
-    UpdateDpto($value){
-      if($value.lugar === 'legal')
-        this.form.leal_departamento = $value.nombre;
-      else
-        this.form.administracion_departamento = $value.nombre;
+    UpdateDpto($value) {
+      if ($value.lugar === "legal") this.form.leal_departamento = $value.nombre;
+      else this.form.administracion_departamento = $value.nombre;
     },
-    UpdateLocalidad($value){
-      if($value.lugar === 'legal')
-        this.form.leal_localidad = $value.nombre;
-      else
-        this.form.administracion_localidad = $value.nombre;
+    UpdateLocalidad($value) {
+      if ($value.lugar === "legal") this.form.leal_localidad = $value.nombre;
+      else this.form.administracion_localidad = $value.nombre;
     },
-    UpdateCP($value){
-      if($value.lugar === 'legal')
-        this.form.leal_cp = $value.nombre;
-      else
-        this.form.administracion_cp = $value.nombre;
+    UpdateCP($value) {
+      if ($value.lugar === "legal") this.form.leal_cp = $value.nombre;
+      else this.form.administracion_cp = $value.nombre;
     },
-    UpdateOtro($value){
-      if($value.lugar === 'legal')
-        this.form.leal_otro = $value.nombre;
-      else
-        this.form.administracion_otro = $value.nombre;
+    UpdateOtro($value) {
+      if ($value.lugar === "legal") this.form.leal_otro = $value.nombre;
+      else this.form.administracion_otro = $value.nombre;
     },
-    
   },
 };
 </script>

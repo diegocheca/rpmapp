@@ -28,7 +28,7 @@ use App\Http\Controllers\formWebController\MineralesController;
 
 use App\Http\Controllers\DashboardController;
 
-use Auth;
+// use Auth;
 
 /*
 |--------------------------------------------------------------------------
