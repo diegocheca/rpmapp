@@ -1153,7 +1153,7 @@ class FormAltaProductorMendozaController extends Controller
                     $formulario_provisorio_medonza->situacion_mina_correcto = $request->situacion_mina_correcto;
                     $formulario_provisorio_medonza->obs_situacion_mina = $request->obs_situacion_mina;
                     $formulario_provisorio_medonza->concesion_minera_reg_d_y_c_correcto = $request->concesion_minera_reg_d_y_c_correcto;
-                    $formulario_provisorio_medonza->obs_concesion_minera_reg_d_y_c = $request->obs_concesion_minera_reg_d_y_c;
+                    $formulario_provisorio_medonza->obs_datos_minas = $request->obs_concesion_minera_reg_d_y_c;
 
                     $formulario_provisorio_medonza->created_by = Auth::user()->id;
                     $formulario_provisorio_medonza->updated_by =  Auth::user()->id;

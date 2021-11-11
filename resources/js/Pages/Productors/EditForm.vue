@@ -1277,6 +1277,7 @@
 						name="estado"
 						v-model="form.estado"
 						:disabled="$props.disables.estado"
+            @input="calcular_nombre_boton($event.target.value)" 
 						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 						<option value="borrador">Borrador</option>
 						<option value="en revision" disabled>En revision</option>
@@ -1297,7 +1298,7 @@
 						<option value="en revision">En revision</option>
 						<option value="aprobado">Aprobado</option>
 						<option value="reprobado">Reprobado</option>
-						<option value="con observacion">Con Observacion</option>
+						<option value="con observacion">Con Obswwwwwwwwwwwervacion</option>
 						
 					</select>
 				</div>
@@ -1378,7 +1379,7 @@
 							:disabled="$props.disables.boton_actualizar"
 							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
 						>
-							Actualizar
+							{{nombre_boton_actualizar}} Solicitud
 						</button>
 						<button
 							v-if="!evaluacion_global"
@@ -1386,7 +1387,7 @@
 							:disabled="$props.disables.boton_actualizar"
 							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
 						>
-							Actualizar
+							Actualizarrrrrrrr
 						</button>
 					</div>
 			</div>
@@ -1671,6 +1672,7 @@ export default {
       lista_dptos_legal: [],
       lista_dptos_admin: [],
       lista_dptos_mina: [],
+      nombre_boton_actualizar: '',
       mostrar_boton_aprobar: false,
       mostrar_boton_aprobar_de_todos_modos: false,
       lista_de_minerales_del_back: this.$props.lista_minerales_cargados,
@@ -2331,6 +2333,25 @@ export default {
         this.mostrar_boton_aprobar_de_todos_modos = true;
       }
       //<!-- @click="guardar_avances_todo" -->
+    },
+    calcular_nombre_boton(valor) {
+      switch(valor){
+        case "en revision":
+          this.nombre_boton_actualizar = "Presentar ";
+          break;
+        case "con observacion":
+          this.nombre_boton_actualizar = "Observar ";
+          break;
+        case "borrador":
+          this.nombre_boton_actualizar = "Actualzar ";
+          break;
+        case "reprobado":
+          this.nombre_boton_actualizar = "Reprobar ";
+          break;
+        case "aprobado":
+          this.nombre_boton_actualizar = "Aprobar ";
+          break;
+      }
     },
     presentar_de_todos_modos() {
       let self = this;
