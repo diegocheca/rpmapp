@@ -1237,6 +1237,79 @@
 			</PaginaMendoza>
 			<br>
 			<br>
+
+      
+
+
+
+      <div class="flex flex-wrap">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-0
+          "
+        >
+          <InputComponente
+            :titulo="'Cargo de la Empresa'"
+            :tipo="'text'"
+            :placeholder="'Cargo de la Empresa'"
+            :value="''"
+            :v-model="form.cargo_empresa"
+            v-on:ValueInput="update_input_cargo_empresa($event)"
+          ></InputComponente>
+        </div>
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-0
+          "
+        >
+          <InputComponente
+            :titulo="'Nombre y Apellido'"
+            :tipo="'text'"
+            :placeholder="'Nombre y Apellido'"
+            :value="''"
+            :v-model="form.presentador_nombre"
+            v-on:ValueInput="update_input_nombre($event)"
+          ></InputComponente>
+        </div>
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-0
+          "
+        >
+          <InputComponente
+            :titulo="'DNI'"
+            :tipo="'number'"
+            :placeholder="'DNI'"
+            :value="''"
+            :v-model="form.presentador_dni"
+            v-on:ValueInput="update_input_dni($event)"
+          ></InputComponente>
+        </div>
+      </div>
 			
 			<div class="flex" v-if="evaluacion_global">
 				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -1562,11 +1635,12 @@ import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
-
+import InputComponente from "../../Components/InputText.vue";
 export default {
   components: {
     ButtonFixed,
     JetButton,
+    InputComponente,
     AppLayout,
     Banner,
     Modal,
@@ -2160,6 +2234,10 @@ export default {
           this.$props.productor.autorizacion_gestor_correcto,
         obs_autorizacion_gestor: this.$props.productor.obs_autorizacion_gestor,
         obs_autorizacion_gestor_valido: true,
+
+        presentador_nombre: this.$props.productor.presentador_nom_apellido,
+        presentador_dni: this.$props.productor.presentador_dni,
+        cargo_empresa: this.$props.productor.cargo_empresa,
       },
       form_mendoza: {},
       /* form_catamarca: {
@@ -2310,6 +2388,18 @@ export default {
     },
     closeModalAprobar() {
       this.AvisoAprueba = false;
+    },
+    update_input_nombre(value) {
+      console.log("Resultado del Input Nombre");
+      this.form.presentador_nombre = value;
+    },
+    update_input_dni(value) {
+      console.log("Resultado del Input DNI");
+      this.form.presentador_dni = value;
+    },
+    update_input_cargo_empresa(value) {
+      console.log("Resultado del Input Cargo de Empresa");
+      this.form.cargo_empresa = value;
     },
     mostrar_modal_presentar() {
       //soy productor y estoy por presentar el formulario
