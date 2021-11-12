@@ -8,12 +8,11 @@
       py-4
       px-8
       bg-white
-      shadow-lg
       my-20
       border-indigo-400
     "
   >
-    <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
+    <!-- <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_catamarca">
         <img
           class="
@@ -125,7 +124,7 @@
           />
         </label>
       </div>
-    </div>
+    </div> -->
     <div>
       <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br />

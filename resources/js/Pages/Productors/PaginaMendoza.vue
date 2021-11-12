@@ -2,7 +2,6 @@
     <div
         class="
             border-2
-            shadow-lg
             rounded-2xl
             w-full
             py-4
@@ -535,10 +534,8 @@
             </div>
             <div class="flex flex-wrap"></div>
         </div>
-
         <br>
         <br>
-
         <div class="flex items-stretch w-full justify-items-stretch">
             <BotonesPaginaMendoza
                 v-bind:link_volver="titulo_boton_volver"
