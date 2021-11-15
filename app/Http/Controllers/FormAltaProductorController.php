@@ -7560,7 +7560,8 @@ class FormAltaProductorController extends Controller
 			elseif (intval($borradores->fecha_vencimiento_dia_correcto) == 0)
 				$borradores->fecha_vencimiento_dia_correcto = false;
 
-				//dd($borradores->cargo_empresa);
+
+			/* dd($borradores->decreto3737_correcto); */
 			return Inertia::render('Productors/EditForm', [
 				'productor' => $borradores,
 				'lista_minerales_cargados' => $minerales_asociados,
