@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- <title>Formulario de Alta de Productor Minero de San Juan</title> -->
-
-     <meta charset="UTF-8">
-    <title>TABLA DE PRODUCTOS</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>CREDENCIAL DE PRODUCToR</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
         @page {
@@ -37,73 +35,40 @@
             line-height: 35px;
         }
         table tr {
-  /*display: block;*/
-  border-top: 0px solid white;
-}
+          /*display: block;*/
+          border-top: 0px solid white;
+        }
     </style>
-
-
-</head>
+  </head>
 <body>
+  <p style="font-size:12px;">Mendoza, {{$dia}} de  {{$mes}}, de {{$anio}}</p>
 
-            <table class="table text-center table-bordered">
-               <tbody>
-                    <tr>
-                        <td style="font-size:8px;">Ministerio de Mineria <br> Secretaria Técnica</td>
-                        <td style="font-size:10px;"> <strong>SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94</strong></td>
-                        <td> <strong>R064 Hoja 1 </strong></td>
-                    </tr>
-                </tbody>
-            </table>
-    <p style="font-size:12px;">Al Señor <br>
-    <strong>DIRECTOR  DE LA DIRECCION DE MINERÍA</strong> <br>
+    <p style="font-size:12px;"><strong> Al Señor <br>
+    DIRECTOR  DE LA DIRECCION DE MINERÍA</strong> <br>
     S__________/__________D</p>
-    <p style="font-size:12px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tengo el agrado de dirigirme a Ud., a los efectos de solicitar se me inscriba o reinscriba (1) en el REGISTRO DE PRODUCTORES MINEROS  de  la  Provincia. – (De conformidad al Decreto 998/73 ).- </p>
-    <p>A los fines que correspondan  manifiesto con carácter de DECLARACIÓN JURADA, los siguientes datos:</p>
-    <table class="table table-bordered">
-       <tbody>
-            <tr>
-                <td style="font-size:10px;">1. &nbsp;&nbsp; El productor minero:</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
-      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
-        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
-          <td  style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Razon Social: {{$razon_social}}</p></td>
-          <td  style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;"> N° CUIT: {{$ciut}}</p></td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="table table-bordered">
-       <tbody>
-            <tr>
-                <td style="font-size:10px;">2. &nbsp;&nbsp; DOMICILIO LEGAL EN LA PROVINCIA DE MENDOZA </td>
-            </tr>
-        </tbody>
-    </table>
-   
+    <p style="font-size:12px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tengo el agrado de dirigirme a Ud., a los efectos de solicitar se me <strong> inscriba </strong> en el <strong>REGISTRO DE PRODUCTORES MINEROS </strong> de  la  Provincia. – (De conformidad al Decreto 998/73 ).- </p>
+    <p>A los fines que correspondan  manifiesto con carácter de <strong>DECLARACIÓN JURADA</strong>, los siguientes datos:</p>
+    <br>
+    <p style="font-size:12px;">  <strong> El productor minero: </strong> {{$razon_social}} </p>
+    <p style="font-size:12px;">  <strong> Con CUIT: </strong> {{$ciut}} </p>
 
 
-   <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
-      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
-        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Calle: {{$leal_calle}}</p></td>
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Numero: {{$leal_numero}}</p></td>
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Localidad: {{$leal_localidad}}</p></td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="table"  style="margin: 0px 0px 0px 0px !important;padding: 0px 0px 0px 0px !important;">
-      <tbody style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
-        <tr style="margin: 0px 0px 0px 0px !important; padding: 0px 0px 0px 0px !important;">
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Departamento: {{$leal_departamento}}</p></td>
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Telefono: {{$leal_telefono}}</p></td>
-          <td style="border-bottom: 0px solid rgb(255, 255, 255);border-top: 0px solid rgb(255, 255, 255);padding: 0px 0px 0px 0px !important; margin: 0px 0px 0px 0px !important;"><p style="font-size:12px;">  Codigo Postal: {{$leal_cp}}</p></td>
-        </tr>
-      </tbody>
-    </table>
+    <p style="font-size:12px;"> Domicilio Real: {{$administracion_calle}} {{$administracion_numero}} - {{$leal_localidad}}    - Codigo Postal: {{$administracion_cp}}  -Telefono: {{$administracion_telefono}}</p>
+
+    <p style="font-size:12px;"> Domicilio Legal: {{$leal_calle}} {{$leal_numero}} - {{$leal_localidad}}    - Codigo Postal: {{$leal_cp}}  -Telefono: {{$leal_telefono}}</p>
+    
+    <p style="font-size:12px;"> <strong> Num Productor : </strong> {{$numeroproductor}}   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Beneficio Ley 3737 - Decreto: {{$decreto}} </p>
+    
+<p style="font-size:12px;"> Yacimiento/s o Cantera/s  del Productor: {{$mina_cantera}} </p>
+<p style="font-size:12px;"> Nº Distrito Minero: {{$distrito_minero}} </p>
+<p style="font-size:12px;"> Expediente de la Concesión Minera: {{$numero_expdiente}} </p>
+<p style="font-size:12px;"> Mineral o Roca Explotada: {{$minerales_variedad}} </p>
+<p style="font-size:12px;"> Situación: {{$minerales_variedad}} </p>
+<p style="font-size:12px;"> Ubicación (Departamento): {{$localidad_mina_departamento}} </p>
+
+
+
+
     <table class="table table-bordered">
       <tbody>
             <tr>

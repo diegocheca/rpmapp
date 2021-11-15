@@ -21,14 +21,22 @@ class ComprobanteProductorMendozaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke($id)
     {
+		setlocale(LC_ALL, 'es_ES');
+
         date_default_timezone_set('America/Argentina/Buenos_Aires');
 		$puedo_imprimir = false;
 		if (Auth::user()->hasRole('Administrador'))
         {
             $puedo_imprimir = true;
-            $borrador = FormAltaProductor::find($id);
+            //$borrador = FormAltaProductor::find($id);
+
+			$borrador = DB::table('form_alta_productores')
+            ->join('form_alta_productoresMendoza', 'form_alta_productores.id', '=', 'form_alta_productoresMendoza.id_formulario_alta')
+			->where('form_alta_productores.id', '=', $id)
+            ->select('form_alta_productoresMendoza.*', 'form_alta_productores.*')
+            ->get();
         }
 		if ( Auth::user()->hasRole('Autoridad') && Auth::user()->id_provincia == 50)
         {
@@ -60,15 +68,77 @@ class ComprobanteProductorMendozaController extends Controller
 		if ( Auth::user()->hasRole('Productor') && Auth::user()->id_provincia == 50)
         {
             $borrador =  DB::table('form_alta_productores')
-            ->select('*')
+            ->select('form_alta_productoresMendoza.id as idMend',
+			'form_alta_productoresMendoza.decreto3737 as decreto3737',
+			'form_alta_productoresMendoza.obs_decreto3737 as obs_decreto3737', 
+			'form_alta_productoresMendoza.decreto3737_correcto as decreto3737_correcto',
+			'form_alta_productoresMendoza.situacion_mina as situacion_mina',
+			'form_alta_productoresMendoza.situacion_mina_correcto as situacion_mina_correcto',
+			'form_alta_productoresMendoza.obs_situacion_mina as obs_situacion_mina',
+
+			'form_alta_productoresMendoza.concesion_minera_asiento_n as concesion_minera_asiento_n',
+			'form_alta_productoresMendoza.concesion_minera_fojas as concesion_minera_fojas',
+			'form_alta_productoresMendoza.concesion_minera_tomo_n as concesion_minera_tomo_n',
+			'form_alta_productoresMendoza.concesion_minera_reg_m_y_d as concesion_minera_reg_m_y_d',
+
+			'form_alta_productoresMendoza.concesion_minera_reg_cant as concesion_minera_reg_cant',
+			'form_alta_productoresMendoza.concesion_minera_reg_men as concesion_minera_reg_men',
+			'form_alta_productoresMendoza.concesion_minera_reg_d_y_c as concesion_minera_reg_d_y_c',
+			'form_alta_productoresMendoza.obs_datos_minas as obs_datos_minas',
+
+			'form_alta_productores.*')
             ->where('form_alta_productores.id', '=', $id)
+			->where('form_alta_productores.created_by', '=', Auth::user()->id)
             ->join('form_alta_productoresMendoza', 'form_alta_productores.id', '=', 'form_alta_productoresMendoza.id_formulario_alta')
             ->first();
             $puedo_imprimir = true;
         }
 		if ($borrador != null && $puedo_imprimir) {
+
+			$monthNum  = date_format( date_create($borrador->updated_at), 'm');
+			switch($monthNum){
+				case 1:
+					$monthNum = "Enero";
+					break;
+				case 2:
+					$monthNum = "Febrero";
+					break;
+				
+				case 3:
+					$monthNum = "Marzo";
+					break;
+				case 4:
+					$monthNum = "Abril";
+					break;
+				case 5:
+					$monthNum = "Mayo";
+					break;
+				case 6:
+					$monthNum = "Junio";
+					break;
+				case 7:
+					$monthNum = "Julio";
+					break;
+				case 8:
+					$monthNum = "Agosto";
+					break;
+				case 9:
+					$monthNum = "Septiembre";
+					break;
+				case 10:
+					$monthNum = "Octubre";
+					break;
+				case 11:
+					$monthNum = "Noviembre";
+					break;
+				case 12:
+					$monthNum = "Diciembre";
+					break;
+			}
+			//dd($monthNum);
+
 			$data = [
-				'title' => 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94',
+				'title' => 'COMPROBANTE DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94',
 				'date_generado' => date('d/m/Y'),
 				//1
 				'id' => $borrador->id,
@@ -131,7 +201,12 @@ class ComprobanteProductorMendozaController extends Controller
 				'latitud' => $borrador->latitud,
 				'longitud' => $borrador->longitud,
 
+				'decreto' => $borrador->decreto3737,
+
 				//7
+				'dia' =>date_format( date_create($borrador->updated_at), 'd'),
+				'mes' => $monthNum,
+				'anio' =>date_format( date_create($borrador->updated_at), 'Y'),
 				'updated_at' => $borrador->updated_at,
 			];
 			
