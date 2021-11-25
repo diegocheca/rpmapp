@@ -29,6 +29,8 @@ use App\Http\Controllers\formWebController\MineralesController;
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
 use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
 
+
+use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
 // use Auth;
 
 /*
@@ -133,6 +135,29 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_inicio/{id}',
 
 Route::get('/inicio_tramite_pdf_mdz/{id}', PresentacionAltaProdMendozaController::class)->name('comprobante_inicio_mendoza');
 Route::get('/inicio_tramite_pdf_sj/{id}', PresentacionAltaProdSanJuanController::class)->name('comprobante_inicio_sanjuan');
+
+
+//*******************COMPROBANTE DE PRODUCTOR */
+Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_productor_aprobado/{id}', function ($id) {
+    $mi_rol = '';
+    if (Auth::user()->hasRole('Autoridad'))
+        $mi_rol = 'admin';
+    if (Auth::user()->hasRole('Administrador'))
+        $mi_rol = 'admin';
+    if (Auth::user()->hasRole('Productor'))
+        $mi_rol = 'productor';
+    if(Auth::user()->id_provincia == 50){
+        return redirect()->route('comprobante_prod_apro_mendoza', [$id]);
+    }
+    elseif(Auth::user()->id_provincia == 70){//san juan
+        return redirect()->route('comprobante_inicio_sanjuan', [$id]);
+    }
+})->name('formulario-alta-pdf');
+Route::get('/comprobante_prod_mendz_aprobado/{id}', ComprobanteProductorMendozaController::class)->name('comprobante_prod_apro_mendoza');
+
+
+
+
 
 Route::get('dashboard', [HomeController::class, "dashboard"])
         ->middleware(['auth:sanctum', 'verified'])->name('dashboard');
@@ -241,7 +266,7 @@ Route::post('/formularios/buscar_id_form/', [FormAltaProductorController::class,
 Route::get('/probando_pdf/', [FormAltaProductorController::class, "ejemplo_pdf_prueba"])->name('probando-pdf');
 Route::get('/probando_pdf_re/', [FormAltaProductorController::class, "ejemplo_pdf_prueba_reinscripcion"])->name('probando-pdf');
 Route::get('/probando_form/', [FormAltaProductorController::class, "pdf_sin_pdf"])->name('ejemplo-pdf');
-Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
+//Route::get('/formulario-alta-pdf/{id}', [FormAltaProductorController::class, "formulario_alta_pdf"])->name('formulario-alta-pdf');
 
 
 Route::get('/comprobante-presentacion-pdf/{id}', [FormAltaProductorController::class, "comprobante_tramite_pdf"])->name('comprobante-presentacion-pdf');

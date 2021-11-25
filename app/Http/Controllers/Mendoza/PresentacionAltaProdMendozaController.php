@@ -60,7 +60,7 @@ class PresentacionAltaProdMendozaController extends Controller
         {
             $borrador =  DB::table('form_alta_productores')
             ->select('*')
-            ->where('id', '=', $id)
+            ->where('form_alta_productores.id', '=', $id)
             ->join('form_alta_productoresMendoza', 'form_alta_productores.id', '=', 'form_alta_productoresMendoza.id_formulario_alta')
             ->first();
             $puedo_imprimir = true;

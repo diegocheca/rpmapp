@@ -478,8 +478,8 @@
                         v-bind:valor_input_props="form_mendoza.concesion_minera_reg_d_y_c"
                         v-bind:valor_input_validacion="form_mendoza.concesion_minera_reg_d_y_c_valido"
                         v-bind:evualacion_correcto="form_mendoza.concesion_minera_reg_d_y_c_correcto"
-                        v-bind:valor_obs="form_mendoza.obs_concesion_minera_reg_d_y_c"
-                        v-bind:valor_valido_obs="form_mendoza.obs_concesion_minera_reg_d_y_c_valido
+                        v-bind:valor_obs="form_mendoza.obs_datos_minas"
+                        v-bind:valor_valido_obs="form_mendoza.obs_datos_minas_valido
                         "
                         v-bind:evaluacion="autoridad_minera"
                         v-bind:testing="mostrar_testing"
@@ -496,9 +496,9 @@
                         v-on:changecorrecto="
                             update_concesion_minera_reg_d_y_c_correcto($event)
                         "
-                        v-on:changeobs="update_obs_concesion_minera_reg_d_y_c($event)"
+                        v-on:changeobs="update_obs_datos_minas($event)"
                         v-on:changeobsvalido="
-                            update_obs_concesion_minera_reg_d_y_c_valida($event)
+                            update_obs_datos_minas_valida($event)
                         "
                         v-on:changevalor="update_valor_concesion_minera_reg_d_y_c($event)"
                     >
@@ -702,11 +702,11 @@ export default {
         update_concesion_minera_reg_d_y_c_correcto(newValue) {
             this.form_mendoza.concesion_minera_reg_d_y_c_correcto = newValue;
         },
-        update_obs_concesion_minera_reg_d_y_c(newValue) {
-            this.form_mendoza.obs_concesion_minera_reg_d_y_c = newValue;
+        update_obs_datos_minas(newValue) {
+            this.form_mendoza.obs_datos_minas = newValue;
         },
-        update_obs_concesion_minera_reg_d_y_c_valida(newValue) {
-            this.form_mendoza.obs_concesion_minera_reg_d_y_c_valido = newValue;
+        update_obs_datos_minas_valida(newValue) {
+            this.form_mendoza.obs_datos_minas_valido = newValue;
         },
         update_valor_concesion_minera_reg_d_y_c(newValue) {
             this.form_mendoza.concesion_minera_reg_d_y_c = newValue;
@@ -758,8 +758,8 @@ export default {
 
                     self.form_mendoza.concesion_minera_reg_d_y_c = "";
                     self.form_mendoza.concesion_minera_reg_d_y_c_valido = "";
-                    self.form_mendoza.obs_concesion_minera_reg_d_y_c = "";
-                    self.form_mendoza.obs_concesion_minera_reg_d_y_c_valido = "";
+                    self.form_mendoza.obs_datos_minas = "";
+                    self.form_mendoza.obs_datos_minas_valido = "";
 
                     self.form_mendoza.paso_mend_progreso = "";
                     self.form_mendoza.paso_mend_aprobado = "";
@@ -780,7 +780,6 @@ export default {
                             console.log(error);
                         });
                 } else {
-                    console.log("estoy editando");
                     //estoy por editar
                     //voy a BUSCAR LOS DATOS DEL FORMULARIO
                     axios
@@ -793,6 +792,7 @@ export default {
                             console.log(response.datos);
                             if (response.data.status === "ok") {
                                 self.form_mendoza = response.data.datos;
+                                self.form_mendoza.obs_datos_minas = response.data.datos.obs_datos_minas;//arreglar esto
                             } else console.log("error al buscar datos: " + response.data.msg);
                         })
                         .catch(function (error) {

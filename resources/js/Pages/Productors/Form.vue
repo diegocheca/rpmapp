@@ -1154,6 +1154,7 @@
                     name="estado"
                     v-model="form.estado"
                     :disabled="$props.disables.estado"
+                    @input="calcular_nombre_boton($event.target.value)"
                     class="
                       block
                       appearance-none
@@ -1209,7 +1210,7 @@
                       hover:text-white hover:shadow-xl hover:bg-gray-600
                     "
                   >
-                    Actualizar
+                    {{nombre_boton_actualizar}}
                   </button>
                 </div>
                 <div
@@ -1362,6 +1363,7 @@ export default {
       lista_dptos_admin: [],
       lista_dptos_mina: [],
       mostrar_boton_aprobar: false,
+      nombre_boton_actualizar: 'Guardar',
       mostrar_boton_aprobar_de_todos_modos: false,
       lista_de_minerales_del_back: this.$props.lista_minerales_cargados,
       form: {
@@ -2023,6 +2025,17 @@ export default {
       this.$inertia.get(route("productors.update", this.form.id));
       //this.form.reset()
     },
+    calcular_nombre_boton(valor) {
+      switch(valor){
+        case "presentar":
+          this.nombre_boton_actualizar = "Presentar Solicitud";
+          break;
+        case "borrador":
+          this.nombre_boton_actualizar = "Guardar Solicitud";
+          break;
+      }
+    },
+    
     // closeModalAprobar() {
     //   this.AvisoAprueba = false;
     // },

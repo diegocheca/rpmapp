@@ -7559,6 +7559,9 @@ class FormAltaProductorController extends Controller
 				$borradores->fecha_vencimiento_dia_correcto = true;
 			elseif (intval($borradores->fecha_vencimiento_dia_correcto) == 0)
 				$borradores->fecha_vencimiento_dia_correcto = false;
+
+
+			/* dd($borradores->decreto3737_correcto); */
 			return Inertia::render('Productors/EditForm', [
 				'productor' => $borradores,
 				'lista_minerales_cargados' => $minerales_asociados,
@@ -11071,6 +11074,12 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 			$formulario_provisorio = FormAltaProductor::select('*')
 				->where('id', '=', $request->id)->first();
 			if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')) { // soy autoridad minera
+				if($formulario_provisorio->estado == 'borrador')
+				{
+					$formulario_provisorio->cargo_empresa = $request->cargo_empresa;
+					$formulario_provisorio->presentador_nom_apellido = $request->nombre_presentador;
+					$formulario_provisorio->presentador_dni = $request->dni_presentador;
+				}
 
 				if ($request->estado == 'presentar')
 					$formulario_provisorio->estado = "en revision";
@@ -11079,13 +11088,8 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				//datos de presentador
-				if($formulario_provisorio->estado == 'borrador')
-				{
-					$formulario_provisorio->cargo_empresa = $request->cargo_empresa;
-					$formulario_provisorio->presentador_nom_apellido = $request->nombre_presentador;
-					$formulario_provisorio->presentador_dni = $request->dni_presentador;
-				}
-				$formulario_provisorio->save();
+				
+				//$formulario_provisorio->save();
 				//$email_a_mandar = $formulario_provisorio->email; para prod
 				$email_a_mandar = 'diegochecarelli@gmail.com';
 				if ($formulario_provisorio->estado  == "en revision") {

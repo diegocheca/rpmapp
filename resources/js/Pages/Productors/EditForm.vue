@@ -1238,10 +1238,6 @@
 			<br>
 			<br>
 
-      
-
-
-
       <div class="flex flex-wrap">
         <div
           class="
@@ -1260,8 +1256,7 @@
             :titulo="'Cargo de la Empresa'"
             :tipo="'text'"
             :placeholder="'Cargo de la Empresa'"
-            :value="''"
-            :v-model="form.cargo_empresa"
+            :value="form.cargo_empresa"
             v-on:ValueInput="update_input_cargo_empresa($event)"
           ></InputComponente>
         </div>
@@ -1282,8 +1277,7 @@
             :titulo="'Nombre y Apellido'"
             :tipo="'text'"
             :placeholder="'Nombre y Apellido'"
-            :value="''"
-            :v-model="form.presentador_nombre"
+            :value="form.presentador_nombre"
             v-on:ValueInput="update_input_nombre($event)"
           ></InputComponente>
         </div>
@@ -1304,8 +1298,7 @@
             :titulo="'DNI'"
             :tipo="'number'"
             :placeholder="'DNI'"
-            :value="''"
-            :v-model="form.presentador_dni"
+            :value="form.presentador_dni"
             v-on:ValueInput="update_input_dni($event)"
           ></InputComponente>
         </div>
@@ -1446,14 +1439,14 @@
 						</inertia-link>
 					</div>
 					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0" v-if="$props.mostrar.boton_actualizar">
-						<button
+						<a
 							v-if="evaluacion_global"
-							@click="mostrar_modal_aprobar"
+							@click="mostrar_modal_presentar"
 							:disabled="$props.disables.boton_actualizar"
 							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
 						>
 							{{nombre_boton_actualizar}} Solicitud
-						</button>
+						</a>
 						<button
 							v-if="!evaluacion_global"
 							@click="mostrar_modal_presentar"
