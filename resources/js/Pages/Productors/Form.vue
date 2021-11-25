@@ -963,6 +963,7 @@
               :evaluacion="evaluacion_global"
               :testing="testing_global"
               :id="form.id"
+              v-on:mostrarpasosiguiente="mostar_paso_siguiente(7, $event)"
             >
             </PaginaCatamarca>
 
@@ -2376,6 +2377,7 @@ export default {
           this.m_paso7 = valor;
           break;
         default:
+          this.m_paso7 = valor;
           break;
       }
       this.update_menu_flotante(paso, valor);

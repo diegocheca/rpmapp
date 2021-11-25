@@ -11,7 +11,7 @@
           mb-2
         "
         for="input_componente"
-        >{{ label }}:
+        >{{ label }} :
       </label>
       <div class="flex" v-if="evaluacion || mostrar_correccion">
         <div class="w-full md:w-1/3 px-3">

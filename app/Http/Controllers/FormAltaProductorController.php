@@ -11126,26 +11126,10 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 			], 201);
 		} else {
 			return response()->json([
-				'status' => 'mal',
+				'status' => 'error',
 				'msg' => 'Error en el ID pasado.'
-			], 201);
+			], 500);
 		}
-		/*
-			//tengo que enviar email
-			//$email_a_mandar = $formulario_provisorio->email; para prod
-			$email_a_mandar = 'diegochecarelli@gmail.com';
-			Mail::to($formulario_provisorio->email)->send(new AvisoFormularioAprobadoEmail(
-				$request->id,
-				$request->razon_social,
-				date("Y-m-d H:i:s")
-			));
-			//tengo que crear todos los campos de la base de datos
-			}
-			
-		else{//soy productor
-			return response()->json("error");
-		}
-		*/
 	}
 
 	public function probando_super_guardado($id_formulario)
