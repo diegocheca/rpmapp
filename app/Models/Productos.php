@@ -24,6 +24,51 @@ class Productos extends Model
         'precio_venta',
         'created_by',
         'estado',
+        'ley',
+        'calidad',
+        'volumen_comercializado',
+        'volumen_acopiado',
+        'volumen_descarte',
+        'capacidad',
+
+        'nombre_mineral_evaluacion',
+        'variedad_evaluacion',
+        'produccion_evaluacion',
+        'unidades_evaluacion',
+        'precio_venta_evaluacion',
+        'ley_evaluacion',
+        'calidad_evaluacion',
+        'volumen_comercializado_evaluacion',
+        'volumen_acopiado_evaluacion',
+        'volumen_descarte_evaluacion',
+        'capacidad_evaluacion',
+
+        'nombre_mineral_comentario',
+        'variedad_comentario',
+        'produccion_comentario',
+        'unidades_comentario',
+        'precio_venta_comentario',
+        'ley_comentario',
+        'calidad_comentario',
+        'volumen_comercializado_comentario',
+        'volumen_acopiado_comentario',
+        'volumen_descarte_comentario',
+        'capacidad_comentario',
+
+        // San Luis
+        'ley',
+        'calidad',
+        'observaciones',
+
     ];
 
+    public function comercializacion()
+    {
+        return $this->hasMany(ReinscripcionesComercializacion::class, 'id_productos');
+    }
+
+    public function produccion()
+    {
+        return $this->hasMany(ReinscripcionesProduccion::class, 'id_productos');
+    }
 }

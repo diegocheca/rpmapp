@@ -7,10 +7,9 @@ export default class Observaciones {
     }
 
     getFormSchema(data) {
-        // console.log(data);
         if (data.action == 'create') return {};
 
-        return {
+        const obsReturn = {
             name: `${data.name}_evaluacion`,
             value: data.schema[`${data.name}_evaluacion`],
             options: [
@@ -39,8 +38,23 @@ export default class Observaciones {
                 type: inputsTypes.TEXTAREA,
                 name: `${data.name}_comentario`,
                 validationType: "string",
-                validations: yup.string().when(`${data.name}_evaluacion`, { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').required('Debes agregar una observación').nullable() }).nullable(),
+                validations:
+                    yup
+                    .string()
+                    .when(`${data.name}_evaluacion`, {
+                        is: "rechazado",
+                        then:
+                        yup
+                        .string()
+                        .min(5, 'Debes ingresar al menos 5 caracteres')
+                        .max(50, 'Puedes ingresar hasta 50 caracteres')
+                        .required('Debes agregar una observación')
+                        .nullable()
+                    })
+                    .nullable(),
             }
         }
+        // console.log(obsReturn);
+        return obsReturn;
     }
 }

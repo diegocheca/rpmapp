@@ -3,7 +3,7 @@
         <!-- row -->
         <div v-for="(row, indexRow) in formSchema" :key="indexRow" class="flex flex-col justify-center" :class="row.widthResponsive">
             <!-- column -->
-            <div v-for="(col, indexCol) in row.body" :key="indexCol" class="bg-white rounded shadow-lg p-8 my-4 mx-auto" :class="col.width">
+            <div v-for="(col, indexCol) in row.body" :key="indexCol" class="bg-white rounded-2xl border-2 border-indigo-400 p-8 my-4 mx-auto" :class="col.width">
                 <div class="font-bold text-lg">{{col.title}}</div>
                 <hr v-if="col.title" class="my-5">
                 <div class="grid gap-4 " :class="[col.columns, col.columnsResponsive]">
@@ -30,7 +30,7 @@
                                             :name="item.name"
                                             :on-label="item.labelOn"
                                             :off-label="item.labelOff"
-                                            :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado') ? true: false"
+                                            :disabled="action != 'create' && (evaluate || item?.observation?.value == 'aprobado') || status == 'aprobado' ? true: false"
                                             @change="handleHiddenComponent(item, col.inputs)"
                                         />
                                         <!-- <input type="checkbox"  v-model="item.value"
@@ -51,12 +51,17 @@
 
 
                             <!-- textarea -->
-                            <Field v-if="item.type == inputsTypes.TEXTAREA" :value="item.value" :name="item.name" :as="item.type" class="rounded-md py-2 px-3 text-grey-darkest" />
+                            <label v-if="item.type == inputsTypes.TEXTAREA" class="relative block ">
+                                <Field :value="item.value" :name="item.name" :as="item.type" class="rounded-md py-2 px-3 text-grey-darkest w-full" :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado') ? true: false"  :class="[ statusColors[ item.observation.value ] ]" />
+                                <svg v-if="action != 'create' && (item.observation.value == 'aprobado')" xmlns="http://www.w3.org/2000/svg" class="pointer-events-none w-8 h-8 absolute top-1/2 transform -translate-y-1/2 left-3 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#10B981"/>
+                                </svg>
 
+                            </label>
 
                             <!-- select/multiple -->
                             <Field v-if="item.type == inputsTypes.SELECT" v-slot="{ field }" :name="item.name" :value="item.value">
-                                <VueMultiselect v-bind="field" v-model="item.value" :id="item" :value="item.value" :options="item.options" :ref="item.name" :multiple="item.multiple" :loading="item.isLoading? item.isLoading : false" :close-on-select="item.closeOnSelect" :searchable="item.searchable" :placeholder="item.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" @select="getAsyncOptionsSelect" @input="getAsyncOptionsSelect" />
+                                <VueMultiselect v-bind="field" v-model="item.value" :id="item" :value="item.value" :options="item.options" :ref="item.name" :multiple="item.multiple" :loading="item.isLoading? item.isLoading : false" :close-on-select="item.closeOnSelect" :searchable="item.searchable" :placeholder="item.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado')? true: false" @select="getAsyncOptionsSelect" @input="getAsyncOptionsSelect" />
                             </Field>
 
                             <!-- file -->
@@ -81,6 +86,7 @@
                             <!-- Display error to evaluate -->
                             <!-- <pre>{{as= col.inputs}}</pre> -->
                             <span role="alert" class="text-red-500" v-if="item.type != inputsTypes.LIST && action != 'create' && !evaluate && item.observation?.value == 'rechazado' "> OBSERVACIÓN: {{item.observation.comment.value}}</span>
+                            <span role="alert" class="text-gray-500" v-if="item.type != inputsTypes.LIST && action != 'create' && !evaluate && item.observation?.value == 'sin evaluar' ">en espera de evaluación</span>
                             <!-- <pre>{{errorEvaluation}}</pre> -->
 
                             <!-- LIST ELEMENTS -->
@@ -202,7 +208,7 @@
 
                                 </fieldset>
 
-                                <div v-if="evaluate? false: true" class="flex justify-center pt-9">
+                                <div v-if="evaluate && status != 'aprobado'? false: true" class="flex justify-center pt-9">
                                     <button type="button" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-2 py-1" @click="addNewRow(item, col.inputs)">+ Agregar registro</button>
                                 </div>
                             </template>
@@ -236,10 +242,9 @@
                                                             <Field
                                                                 v-if="ele.type !== inputsTypes.SELECT"
                                                                 :value="ele.value"
-                                                                
                                                                 :name="`${item.name}[${index2}][${indexElementTable2}].${ele.name}`"
                                                                 :type="ele.type"
-                                                                class="inp"
+                                                                class="inp w-full"
                                                                 :disabled="action != 'create' && (evaluate) ? true: false"
                                                             />
                                                             <ErrorMessage class="text-red-500" :name="`${item.name}[${index2}][${indexElementTable2}].${ele.name}`" />
@@ -256,35 +261,67 @@
                                                     </div>
                                                 </td>
                                                 <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                    <Field v-show="false" :name="`${item.name}[${indexElement}].id`" :value="ele.id" />
                                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ item.horizontalTitle[indexElementTable2] }}</span>
                                                     <div  class="flex items-center flex-col">
                                                         <Field
                                                             v-if="inputsTypes.INPUTS_DEFAULT.indexOf(ele.type) > -1 && ele.type !== inputsTypes.RADIO"
                                                             :value="ele.value"
-                                                            
                                                             :name="`${item.name}[${indexElement}].${ele.name}`"
                                                             :type="ele.type"
-                                                            class="inp"
-                                                            :disabled="action != 'create' && (evaluate) ? true: false"
+                                                            class="inp w-full"
+                                                            :disabled="action != 'create' && ele.disabled"
                                                         />
                                                         <template v-if="ele.type == inputsTypes.RADIO">
                                                             <label class="flex flex-row items-center" v-for="(opt, indexOpt) in ele.options" :key="indexOpt">
                                                                 <Field
                                                                     :value="opt.value"
-                                                                    
                                                                     :name="`${item.name}[${indexElement}].${ele.name}`"
                                                                     :type="ele.type"
                                                                     class="mr-2"
-                                                                    :disabled="action != 'create' && (evaluate) ? true: false"
+                                                                    :disabled="action != 'create' && ele.disabled"
                                                                 >
                                                                 </Field>
                                                                 {{opt.label}}
                                                             </label>
                                                         </template>
-                                                        <template v-if="ele.type == inputsTypes.REMOVEICON">
-                                                            <svg @click="removeRowTable(item, indexElement)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <template v-if="ele.type == inputsTypes.REMOVEICON || ele.type == 'observation'">
+                                                            <svg v-if="ele.type == inputsTypes.REMOVEICON && !evaluate" @click="removeRowTable(item, indexElement)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                             </svg>
+                                                            <div v-if="ele.type == 'observation' && evaluate" class="grid grid-rows-2 grid-flow-col p-4 mt-5 rounded-lg"
+                                                            :class="[action != 'create' && ele.value != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]">
+                                                                <!-- <pre>{{ele}}</pre> -->
+                                                                <div class="w-full flex flex-wrap">
+                                                                    <span class="w-full text-gray-700">
+                                                                        Correcto?
+                                                                    </span>
+                                                                    <div v-for="(obs, index) in ele.options" :key="index">
+                                                                        <label>
+                                                                            <Field :name="`${item.name}[${indexElement}].${ele.name}`" :type="obs.type" class="mx-2 text-grey-darkest" :value="obs.value" v-model="ele.value"/>
+                                                                            <span>{{obs.label}}</span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <ErrorMessage class="w-full text-red-500" :name="item.name" />
+                                                                </div>
+                                                                <div v-show="action != 'create' && ele.value == 'rechazado'" class="w-full flex flex-col transition duration-500 ease-in mt-3">
+                                                                    <label :for="`${item.name}[${indexElement}].${ele.name}`" class="mb-2 uppercase text-md text-grey-darkest">{{ele.comment.label}} :</label>
+                                                                    <Field :name="`${item.name}[${indexElement}].${ele.comment.name}`" as="textarea" class="rounded-md py-2 px-3 text-grey-darkest" :value="ele.comment.value" />
+                                                                    <ErrorMessage class="text-red-500" :name="`${item.name}[${indexElement}].${ele.name}`" />
+                                                                </div>
+                                                            </div>
+                                                            <div v-else>-</div>
+                                                        </template>
+                                                        <template v-if="ele.type == 'comment' && !evaluate">
+                                                            <div v-if="ele.value != null" class="bg-red-200 p-4 mt-5 rounded-lg flex flex-col">
+                                                                <b>
+                                                                    Observación de rechazo:
+                                                                </b>
+                                                                <p>
+                                                                    {{ele.value}}
+                                                                </p>
+                                                            </div>
+
                                                         </template>
                                                         <ErrorMessage class="text-red-500" :name="`${item.name}[${indexElement}].${ele.name}`" />
                                                     </div>
@@ -293,112 +330,11 @@
                                         </tbody>
                                     </table>
                                 </fieldset>
-                                <div v-if="!evaluate && item.addRow" class="flex justify-center space-x-5 pt-9">
+                                <div v-if="!evaluate && item.addRow && status != 'aprobado'" class="flex justify-center space-x-5 pt-9">
                                     <button type="button" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-2 py-1" @click="addRowTable(item)">
                                         + Agregar registro
                                     </button>
                                 </div>
-                                 <!-- <div class="container flex justify-center mx-auto ">
-                                    <div class="flex flex-col">
-                                        <div class="w-full">
-                                            <div class="border-b border-gray-200 shadow">
-                                                <div class="flex flex-col">
-                                                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                                                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                                                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                                                                <fieldset>
-                                                                    <table class="min-w-full divide-y divide-gray-200">
-                                                                        <thead class="bg-gray-50">
-                                                                            <tr>
-                                                                                <th v-if="item.verticalTitle.length > 0" scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                                </th>
-                                                                                <th v-for="(title, index) in item.horizontalTitle" :key="index" scope="col" class="px-6 py-3 text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
-                                                                                    {{ title }}
-                                                                                </th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody v-if="item.typeTable == 'vertical'" class="bg-white divide-y divide-gray-200" >
-                                                                            <template v-for="(nameTitle, index2) in item.verticalTitle" :key="index2">
-                                                                                <tr v-for="(element, indexElement) in item.element" :key="indexElement" >
-                                                                                    <td v-if="item.verticalTitle" class="px-6 py-4 whitespace-nowrap border-r border-gray-200 shadow">
-                                                                                        <div class="flex items-center">
-                                                                                            {{ nameTitle }}
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="px-6 py-4 whitespace-nowrap">
-                                                                                        <div v-bind="field" class="flex items-center flex-col">
-                                                                                            <Field
-                                                                                                v-if="ele.type !== inputsTypes.SELECT"
-                                                                                                :value="ele.value"
-                                                                                                :name="`${item.name}[${index2}][${indexElementTable2}].${ele.name}`"
-                                                                                                :type="ele.type"
-                                                                                                class="inp"
-                                                                                                :disabled="action != 'create' && (evaluate) ? true: false"
-                                                                                            />
-                                                                                            <ErrorMessage class="text-red-500" :name="`${item.name}[${index2}][${indexElementTable2}].${ele.name}`" />
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </template>
-                                                                        </tbody>
-                                                                        <tbody v-if="item.typeTable == 'horizontal'" class="bg-white divide-y divide-gray-200" >
-                                                                            <tr v-for="(element, indexElement) in item.element" :key="indexElement" >
-                                                                                <td v-if="item.verticalTitle.length > 0" class="px-6 py-4 whitespace-nowrap border-r border-gray-200 shadow">
-                                                                                    <div class="flex items-center">
-                                                                                        {{ item.verticalTitle[indexElement] }}
-                                                                                    </div>
-                                                                                </td>
-                                                                                <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="px-6 py-4 whitespace-nowrap">
-                                                                                    <div  class="flex items-center flex-col">
-                                                                                        <Field
-                                                                                            v-if="inputsTypes.INPUTS_DEFAULT.indexOf(ele.type) > -1 && ele.type !== inputsTypes.RADIO"
-                                                                                            :value="ele.value"
-                                                                                            v-bind="field"
-                                                                                            :name="`${item.name}[${indexElement}].${ele.name}`"
-                                                                                            :type="ele.type"
-                                                                                            class="inp"
-                                                                                            :disabled="action != 'create' && (evaluate) ? true: false"
-                                                                                        />
-                                                                                        <template v-if="ele.type == inputsTypes.RADIO">
-                                                                                            <label class="flex flex-row items-center" v-for="(opt, indexOpt) in ele.options" :key="indexOpt">
-                                                                                                <Field
-                                                                                                    :value="opt.value"
-                                                                                                    v-bind="field"
-                                                                                                    :name="`${item.name}[${indexElement}].${ele.name}`"
-                                                                                                    :type="ele.type"
-                                                                                                    class="mr-2"
-                                                                                                    :disabled="action != 'create' && (evaluate) ? true: false"
-                                                                                                >
-                                                                                                </Field>
-                                                                                                {{opt.label}}
-                                                                                            </label>
-                                                                                        </template>
-                                                                                        <template v-if="ele.type == inputsTypes.REMOVEICON">
-                                                                                            <svg @click="removeRowTable(item, indexElement)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                                                            </svg>
-                                                                                        </template>
-                                                                                        <ErrorMessage class="text-red-500" :name="`${item.name}[${indexElement}].${ele.name}`" />
-                                                                                    </div>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </fieldset>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div v-if="!evaluate && item.addRow" class="flex justify-center space-x-5 pt-9">
-                                                <button type="button" class="bg-blue-500 hover:bg-blue-800 rounded text-white px-2 py-1" @click="addRowTable(item)">
-                                                    + Agregar registro
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </template>
 
                             <!-- review -->
@@ -415,7 +351,7 @@
                                     </div>
                                     <ErrorMessage class="w-full text-red-500" :name="item.observation.name" />
                                 </div>
-                                <div v-show="action != 'create' && valuesForm[item.observation.name] == 'rechazado'" class="w-full flex flex-col transition duration-500 ease-in">
+                                <div v-show="action != 'create' && valuesForm[item.observation.name] == 'rechazado' && item.observation?.comment" class="w-full flex flex-col transition duration-500 ease-in">
                                     <label :for="item.name" class="mb-2 uppercase text-md text-grey-darkest">{{item.observation.comment.label}} :</label>
                                     <Field :name="item.observation.comment.name" :as="item.observation.comment.type" class="rounded-md py-2 px-3 text-grey-darkest" :value="item.observation.comment.value" />
                                     <ErrorMessage class="text-red-500" :name="item.observation.comment.name" />
@@ -469,6 +405,10 @@ export default {
             type: String,
         },
         valuesForm: {
+            require: true,
+        },
+        status: {
+            type: String,
             require: true,
         },
         // errorEvaluation: {
@@ -622,12 +562,33 @@ export default {
             }
         },
         addRowTable(item) {
-            item.element.push(item.element[0]);
+            let newItem = [...item.element[0]];
+
+            newItem.forEach(e => {
+                e.value = ''
+                if(e.id)
+                    e.id = ''
+                e.disabled = false
+            })
+            newItem = newItem.filter(e => e.type != "comment")
+            const remove = newItem.find(e => e.type == "remove")
+            if(!remove) {
+                newItem.push({
+                    label: '',
+                    value: '',
+                    type: inputsTypes.REMOVEICON,
+                    colSpan: '',
+                    name: 'remove',
+                });
+            }
+            item.element.push(newItem);
         },
         removeRowTable(item, index) {
             const firstElement = item.element[0]
             // const index = item.element.length - 1 > 0 ? item.element.length - 1 : 0;
             item.element.splice( index, 1);
+            // item.element = item.element.filter((e, i) =>  index-1 != i);
+
 
             if(item.element.length == 0) {
                item.element.push(firstElement);
@@ -691,7 +652,7 @@ export default {
 
     },
     mounted() {
-        console.log(this.formSchema);
+        // console.log(this.formSchema);
     //   this.handleHiddenComponent()
     },
 };

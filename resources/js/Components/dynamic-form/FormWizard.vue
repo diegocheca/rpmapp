@@ -33,7 +33,7 @@
         <div v-for="(item, index) in formSchema" :key="index">
             <template v-if="currentStep === index">
                 <!-- <DynamicInputs :formSchema="item.bodyStep"/> -->
-                <DynamicInputs :formSchema="item.bodyStep" :action="action" :evaluate="evaluate" :valuesForm="values" />
+                <DynamicInputs :formSchema="item.bodyStep" :action="action" :evaluate="evaluate" :valuesForm="values" :status="builder.estado" />
             </template>
         </div>
         <div class="flex gap-x-5 justify-center my-10">
@@ -83,6 +83,8 @@ import { Form, Field, ErrorMessage, useForm  } from 'vee-validate';
 import inputsTypes from '../../../../helpers/enums/inputsTypes';
 import VueMultiselect from 'vue-multiselect'
 import * as yup from "yup";
+import Swal from "sweetalert2";
+import asdVue from './asd.vue';
 // import {FormBuilder} from '../../../../helpers/formularios/sanjuan/reinscripciones';
 
 
@@ -173,17 +175,40 @@ export default {
     },
     methods: {
         onSubmit(values) {
+
             // accumlate the form values with the values from previous steps
-            const currentValues = this.formSchema[this.currentStep].bodyStep[0].body[0].inputs.map((input, index) => {
-                if(values[input.name] && typeof values[input.name] !== 'undefined') {
-                    let obj = {}
-                    obj[`${input.name}`] = values[input.name];
-                    return obj
-                }
-            })
+            let currentValues = this.formSchema[this.currentStep].bodyStep.map(bodyStep => {
+                return bodyStep.body.map(body => {
+                    const inputs = body.inputs.map((input, index) => {
+                        if(values[input.name] && typeof values[input.name] !== 'undefined') {
+                            let obj = {}
+                            obj[`${input.name}`] = values[input.name];
+
+                            if(values[`${input.name}_evaluacion`]){
+                                obj[`${input.name}_evaluacion`] = values[`${input.name}_evaluacion`];
+                                obj[`${input.name}_comentario`] = values[`${input.name}_comentario`];
+                            }
+
+
+                            return obj
+                        }
+                    })
+                    return inputs.flat();
+                });
+            });
+
+            currentValues = currentValues.flat(2)
+            // const currentValues = this.formSchema[this.currentStep].bodyStep[0].body[0].inputs.map((input, index) => {
+            //     if(values[input.name] && typeof values[input.name] !== 'undefined') {
+            //         let obj = {}
+            //         obj[`${input.name}`] = values[input.name];
+            //         return obj
+            //     }
+            // })
             Object.assign(this.formValues, ...currentValues);
 
             if (this.currentStep === this.formSchema.length - 1) {
+                if(this.$props.builder.estado == "aprobado") return;
                 this.saveForm();
                 // console.log("Done: ", JSON.stringify(this.formValues, null, 2));
                 //this.disableSave = true;

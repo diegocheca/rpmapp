@@ -37,6 +37,39 @@ class Reinscripciones extends Model
         'nombre',
         'dni',
         'cargo',
+
+        // San Luis
+        'id_departamento',
+        'id_localidad',
+        'subterranea',
+        'cielo_abierto',
+        'manual',
+        'mecanizada',
+        'expediente',
+        'polvorin',
+        'ubicacion',
+        'dimensiones',
+        'personal_permanente',
+        'temporario',
+        'total',
+
+        //Catamarca
+        'production_checkbox',
+
+        //La Rioja
+        'reserva',
+        'vida_util',
+        'volumen_total',
+        'volumen_unitario',
+        'volumen_comercializado',
+        'procesamiento_mineral',
+        'personal_perm_tecnicos',
+        'permiso_anmac',
+        'fecha_concesion',
+        'anios_concesion',
+        'inicio_explotacion',
+
+
         'created_by',
         'estado',
     ];
@@ -44,6 +77,26 @@ class Reinscripciones extends Model
     public function productos()
     {
         return $this->hasMany(Productos::class, 'id_reinscripcion');
+    }
+
+    public function combustibles()
+    {
+        return $this->hasMany(ReinscripcionesCombustible::class, 'id_reinscripcion');
+    }
+
+    public function explosivos()
+    {
+        return $this->hasMany(ReinscripcionesExplosivos::class, 'id_reinscripcion');
+    }
+
+    public function anexo1()
+    {
+        return $this->hasMany(ReinscripcionesAnexo1::class, 'id_reinscripcion');
+    }
+
+    public function equipos()
+    {
+        return $this->hasMany(ReinscripcionesEquipos::class, 'id_reinscripcion');
     }
 
 }

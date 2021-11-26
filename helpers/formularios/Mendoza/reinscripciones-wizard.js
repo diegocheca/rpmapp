@@ -154,13 +154,6 @@ console.log(schema);
                                     label: 'Productor',
                                     value: schema?.id_productor? productor : undefined,
                                     type: inputsTypes.SELECT,
-                                    // get axios
-                                    async: true,
-                                    asyncUrl: '/productores/getProductorMina',
-                                    inputDepends: ['id_mina'],
-                                    inputClearDepends: ['id_mina'],
-                                    isLoading: false,
-                                    //
                                     options: productors,
                                     name: 'id_productor',
                                     multiple: false,
@@ -174,39 +167,9 @@ console.log(schema);
                                     observation: new Observations({schema, name: 'id_productor', action}).observations
                                 },
                                 {
-                                    label: 'Mina',
-                                    value: !minas? undefined : minas.data.find( e=> schema.id_mina === e.value ),
-                                    type: inputsTypes.SELECT,
-                                    // get axios
-                                    // async: true,
-                                    // asyncUrl: '/paises/localidades',
-                                    // inputDepends: [''],
-                                    // inputClearDepends: [''],
-                                    isLoading: false,
-                                    //
-                                    options: !minas? [] : minas.data,
-                                    name: 'id_mina',
-                                    multiple: false,
-                                    closeOnSelect: true,
-                                    searchable: false,
-                                    placeholder: 'Selecciona una opción',
-                                    validations: yup.object().when('minaSelect', {
-                                        is: value => _.isEmpty(value) || !value,
-                                        then: yup.object().required('Debes elegir un elemento').nullable()
-                                    }),
-                                    observation: new Observations({schema, name: 'id_mina', action}).observations
-                                },
-                                {
-                                    label: 'Departamento',
+                                    label: 'Ubicación Planta Industrial',
                                     value: schema?.id_departamento? id_departamento : undefined,
                                     type: inputsTypes.SELECT,
-                                    // get axios
-                                    async: true,
-                                    asyncUrl: '/paises/localidades',
-                                    inputDepends: ['id_localidad'],
-                                    inputClearDepends: ['id_localidad'],
-                                    isLoading: false,
-                                    //
                                     options: departamentos.data,
                                     name: 'id_departamento',
                                     multiple: false,
@@ -220,32 +183,12 @@ console.log(schema);
                                     observation: new Observations({schema, name: 'id_departamento', action}).observations
                                 },
                                 {
-                                    label: 'Partido',
-                                    value: schema?.id_localidad? id_localidad : undefined,
-                                    type: inputsTypes.SELECT,
-                                    // get axios
-                                    async: true,
-                                    isLoading: false,
-                                    //
-                                    options: !localidades?.data? [] : localidades.data,
-                                    name: 'id_localidad',
-                                    multiple: false,
-                                    closeOnSelect: true,
-                                    searchable: false,
-                                    placeholder: 'Selecciona una opción',
-                                    validations: yup.object().when('localidadSelect', {
-                                        is: value => _.isEmpty(value) || !value,
-                                        then: yup.object().required('Debes elegir un elemento').nullable()
-                                    }),
-                                    observation: new Observations({schema, name: 'id_localidad', action}).observations
-                                },
-                                {
-                                    label: 'Expediente N°',
-                                    value: schema?.expediente,
+                                    label: 'Superficie ocupada',
+                                    value: schema.cargo,
                                     type: inputsTypes.TEXT,
-                                    name: 'expediente',
+                                    name: 'superficie',
                                     validations: yup.string().required('Debes completar este campo'),
-                                    observation: new Observations({schema, name: 'expediente', action}).observations
+                                    observation: new Observations({schema, name: 'superficie', action}).observations
 
                                 },
                             ]
@@ -589,25 +532,25 @@ console.log(schema);
                                         [
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[0].nombre_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[0].nombre_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'nombre_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[0].tipo_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[0].tipo_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'tipo_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[0].cantidad_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[0].cantidad_explosivo : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[0].observaciones_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[0].observaciones_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones_explosivo',
                                             },
@@ -615,25 +558,25 @@ console.log(schema);
                                         [
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[1].nombre_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[1].nombre_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'nombre_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[1].tipo_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[1].tipo_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'tipo_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[1].cantidad_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[1].cantidad_explosivo : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[1].observaciones_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[1].observaciones_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones_explosivo',
                                             },
@@ -641,25 +584,25 @@ console.log(schema);
                                         [
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[2].nombre_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[2].nombre_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'nombre_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[2].tipo_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[2].tipo_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'tipo_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[2].cantidad_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[2].cantidad_explosivo : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[2].observaciones_explosivo : '',
+                                                value: schema.explosivos?.length > 0? schema.explosivos[2].observaciones_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones_explosivo',
                                             },
