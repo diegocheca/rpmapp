@@ -145,7 +145,7 @@ class DashboardController extends Controller
             'msg' => 'Sin permisos',
             'cantidad' => 0,
         ], 200);
-        $numero = Productores::select('id')->where('estado', '=', 'en revision')->get();
+        $numero = FormAltaProductor::select('id')->where('estado', '=', 'en revision')->get();
         return response()->json([
             'status' => 'ok',
             'msg' => 'Consulta exitosa.',
@@ -159,7 +159,7 @@ class DashboardController extends Controller
             'msg' => 'Sin permisos',
             'cantidad' => 0,
         ], 200);
-        $numero = Productores::select('id')->where('estado', '=', 'borrador')->get();
+        $numero = FormAltaProductor::select('id')->where('estado', '=', 'borrador')->get();
         return response()->json([
             'status' => 'ok',
             'msg' => 'Consulta exitosa.',
