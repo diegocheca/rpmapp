@@ -60,7 +60,7 @@ class PresentacionAltaProdMendozaController extends Controller
         {
             $borrador =  DB::table('form_alta_productores')
             ->select('*')
-            ->where('id', '=', $id)
+            ->where('form_alta_productores.id', '=', $id)
             ->join('form_alta_productoresMendoza', 'form_alta_productores.id', '=', 'form_alta_productoresMendoza.id_formulario_alta')
             ->first();
             $puedo_imprimir = true;
@@ -135,7 +135,7 @@ class PresentacionAltaProdMendozaController extends Controller
 			];
 			
             $data ['title'] = 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES DE LA PROVINCIA DE MENDOZA';
-            $pdf = PDF::loadView('pdfs.Mendoza.comprobante_inicio_tramite_mendoza', $data);
+            $pdf = PDF::loadView('pdfs.Mendoza.comprobante_inicio_tramite', $data);
 			return $pdf->stream('Comprobante_de_inscripcion.pdf');
 		}
 		else 

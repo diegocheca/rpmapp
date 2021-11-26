@@ -141,6 +141,7 @@
           :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="mostrar_ayuda"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
+          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
         ></CardProductor>
       </div>
       <br />
@@ -800,6 +801,7 @@ export default {
     //   console.log("eeeel valor es:");
     //   console.log(this.$props.inscripciondgr);
     return {
+      continuar_pagina: false,
       saludos: "Saludos",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
@@ -999,6 +1001,10 @@ export default {
     update_constancia(value) {
       this.form_pagina.constaciasociedad = value;
       // this.$emit('ActualizarPathConstanciaAAbuelo',value);
+    },
+    update_valor_pagina_siguiente(v) {
+      // console.log("valor: ", v);
+      this.$emit("mostrarpasosiguiente", v);
     },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);

@@ -54,18 +54,68 @@ use Illuminate\Http\UploadedFile;
 class FormAltaProductorMendozaController extends Controller
 {
     //
+
+
+/* 
+			if (is_null($borradores->decreto3737_correcto))
+				$borradores->decreto3737_correcto = 'nada';
+			elseif (intval($borradores->decreto3737_correcto) == 1)
+				$borradores->decreto3737_correcto = true;
+			elseif (intval($borradores->decreto3737_correcto) == 0)
+				$borradores->decreto3737_correcto = false;
+
+			if (is_null($borradores->situacion_mina_correcto))
+				$borradores->situacion_mina_correcto = 'nada';
+			elseif (intval($borradores->situacion_mina_correcto) == 1)
+				$borradores->situacion_mina_correcto = true;
+			elseif (intval($borradores->situacion_mina_correcto) == 0)
+				$borradores->situacion_mina_correcto = false;
+
+
+			if (is_null($borradores->concesion_minera_reg_d_y_c_correcto))
+				$borradores->concesion_minera_reg_d_y_c_correcto = 'nada';
+			elseif (intval($borradores->concesion_minera_reg_d_y_c_correcto) == 1)
+				$borradores->concesion_minera_reg_d_y_c_correcto = true;
+			elseif (intval($borradores->concesion_minera_reg_d_y_c_correcto) == 0)
+				$borradores->concesion_minera_reg_d_y_c_correcto = false; */
+
+
+
     public function traer_datos_pagina_mendoza($id){
         //dd($id);
         $formulario = FormAltaProductorMendoza::select('*')
 				->where("id_formulario_alta", "=", $id)
 				->first();
         //mendoza
-        if($formulario!=null)
-            return response()->json([
-                'status' => 'ok',
-                'msg' => 'se encontro correctamente',
-                'datos' => $formulario
-            ],201);
+        if($formulario!=null){
+			if (is_null($formulario->decreto3737_correcto))
+				$formulario->decreto3737_correcto = 'nada';
+			elseif (intval($formulario->decreto3737_correcto) == 1)
+				$formulario->decreto3737_correcto = true;
+			elseif (intval($formulario->decreto3737_correcto) == 0)
+				$formulario->decreto3737_correcto = false;
+
+			if (is_null($formulario->situacion_mina_correcto))
+				$formulario->situacion_mina_correcto = 'nada';
+			elseif (intval($formulario->situacion_mina_correcto) == 1)
+				$formulario->situacion_mina_correcto = true;
+			elseif (intval($formulario->situacion_mina_correcto) == 0)
+				$formulario->situacion_mina_correcto = false;
+
+
+			if (is_null($formulario->concesion_minera_reg_d_y_c_correcto))
+				$formulario->concesion_minera_reg_d_y_c_correcto = 'nada';
+			elseif (intval($formulario->concesion_minera_reg_d_y_c_correcto) == 1)
+				$formulario->concesion_minera_reg_d_y_c_correcto = true;
+			elseif (intval($formulario->concesion_minera_reg_d_y_c_correcto) == 0)
+				$formulario->concesion_minera_reg_d_y_c_correcto = false; 
+                
+                return response()->json([
+                    'status' => 'ok',
+                    'msg' => 'se encontro correctamente',
+                    'datos' => $formulario
+                ],201);
+        }
         else
             return response()->json([
                 'status' => 'ok',
@@ -1144,27 +1194,48 @@ class FormAltaProductorMendozaController extends Controller
                 if($request->es_evaluacion)
                 {
                     //soy autoridad
-                    $request->decreto3737_correcto = $request->decreto3737_correcto === 'true' ? true:false;
-                    $request->situacion_mina_correcto = $request->situacion_mina_correcto === 'true' ? true:false;
-                    $request->concesion_minera_reg_d_y_c_correcto = $request->concesion_minera_reg_d_y_c_correcto === 'true' ? true:false;
+                    //dd($request->obs_concesion_minera_reg_d_y_c);
+                    if ((!is_bool($request->decreto3737_correcto)) && ($request->decreto3737_correcto == 'nada'))
+                        $request->decreto3737_correcto = null;
+                    elseif ($request->decreto3737_correcto == 'false')
+                        $request->decreto3737_correcto = false;
+                    elseif ($request->decreto3737_correcto == 'true')
+                        $request->decreto3737_correcto = true;
+
+                    if ((!is_bool($request->situacion_mina_correcto)) && ($request->situacion_mina_correcto == 'nada'))
+                        $request->situacion_mina_correcto = null;
+                    elseif ($request->situacion_mina_correcto == 'false')
+                        $request->situacion_mina_correcto = false;
+                    elseif ($request->situacion_mina_correcto == 'true')
+                        $request->situacion_mina_correcto = true;
+
+                    if ((!is_bool($request->concesion_minera_reg_d_y_c_correcto)) && ($request->concesion_minera_reg_d_y_c_correcto == 'nada'))
+                        $request->concesion_minera_reg_d_y_c_correcto = null;
+                    elseif ($request->concesion_minera_reg_d_y_c_correcto == 'false')
+                        $request->concesion_minera_reg_d_y_c_correcto = false;
+                    elseif ($request->concesion_minera_reg_d_y_c_correcto == 'true')
+                        $request->concesion_minera_reg_d_y_c_correcto = true;
+
+                    //dd($request->decreto3737_correcto , $request->situacion_mina_correcto , $request->concesion_minera_reg_d_y_c_correcto);
 
                     $formulario_provisorio_medonza->decreto3737_correcto = $request->decreto3737_correcto;
                     $formulario_provisorio_medonza->obs_decreto3737 = $request->obs_decreto3737;
                     $formulario_provisorio_medonza->situacion_mina_correcto = $request->situacion_mina_correcto;
                     $formulario_provisorio_medonza->obs_situacion_mina = $request->obs_situacion_mina;
                     $formulario_provisorio_medonza->concesion_minera_reg_d_y_c_correcto = $request->concesion_minera_reg_d_y_c_correcto;
-                    $formulario_provisorio_medonza->obs_concesion_minera_reg_d_y_c = $request->obs_concesion_minera_reg_d_y_c;
+                    $formulario_provisorio_medonza->obs_datos_minas = $request->obs_concesion_minera_reg_d_y_c;
 
                     $formulario_provisorio_medonza->created_by = Auth::user()->id;
                     $formulario_provisorio_medonza->updated_by =  Auth::user()->id;
                     $formulario_provisorio_medonza->updated_at = date("Y-m-d H:i:s");
-                    if($formulario_provisorio_medonza->save())
+                    if($formulario_provisorio_medonza->save()){
                         return response()->json([
                             'status' => 'ok',
                             'msg' => 'se creo el paso de mendoza correctamente',
                             'rol' => 'autoridad',
                             'id'=> $formulario_provisorio_medonza->id
                         ],201);
+                    }
                     else 
                         return response()->json([
                             'status' => 'mal',

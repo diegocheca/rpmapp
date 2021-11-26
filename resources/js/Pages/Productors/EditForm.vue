@@ -1237,6 +1237,72 @@
 			</PaginaMendoza>
 			<br>
 			<br>
+
+      <div class="flex flex-wrap">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-0
+          "
+        >
+          <InputComponente
+            :titulo="'Cargo de la Empresa'"
+            :tipo="'text'"
+            :placeholder="'Cargo de la Empresa'"
+            :value="form.cargo_empresa"
+            v-on:ValueInput="update_input_cargo_empresa($event)"
+          ></InputComponente>
+        </div>
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-0
+          "
+        >
+          <InputComponente
+            :titulo="'Nombre y Apellido'"
+            :tipo="'text'"
+            :placeholder="'Nombre y Apellido'"
+            :value="form.presentador_nombre"
+            v-on:ValueInput="update_input_nombre($event)"
+          ></InputComponente>
+        </div>
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-0
+          "
+        >
+          <InputComponente
+            :titulo="'DNI'"
+            :tipo="'number'"
+            :placeholder="'DNI'"
+            :value="form.presentador_dni"
+            v-on:ValueInput="update_input_dni($event)"
+          ></InputComponente>
+        </div>
+      </div>
 			
 			<div class="flex" v-if="evaluacion_global">
 				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -1277,6 +1343,7 @@
 						name="estado"
 						v-model="form.estado"
 						:disabled="$props.disables.estado"
+            @input="calcular_nombre_boton($event.target.value)" 
 						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
 						<option value="borrador">Borrador</option>
 						<option value="en revision" disabled>En revision</option>
@@ -1297,7 +1364,7 @@
 						<option value="en revision">En revision</option>
 						<option value="aprobado">Aprobado</option>
 						<option value="reprobado">Reprobado</option>
-						<option value="con observacion">Con Observacion</option>
+						<option value="con observacion">Con Obswwwwwwwwwwwervacion</option>
 						
 					</select>
 				</div>
@@ -1372,21 +1439,21 @@
 						</inertia-link>
 					</div>
 					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0" v-if="$props.mostrar.boton_actualizar">
-						<button
+						<a
 							v-if="evaluacion_global"
-							@click="mostrar_modal_aprobar"
+							@click="mostrar_modal_presentar"
 							:disabled="$props.disables.boton_actualizar"
 							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
 						>
-							Actualizar
-						</button>
+							{{nombre_boton_actualizar}} Solicitud
+						</a>
 						<button
 							v-if="!evaluacion_global"
 							@click="mostrar_modal_presentar"
 							:disabled="$props.disables.boton_actualizar"
 							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
 						>
-							Actualizar
+							Actualizarrrrrrrr
 						</button>
 					</div>
 			</div>
@@ -1561,11 +1628,12 @@ import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
-
+import InputComponente from "../../Components/InputText.vue";
 export default {
   components: {
     ButtonFixed,
     JetButton,
+    InputComponente,
     AppLayout,
     Banner,
     Modal,
@@ -1671,6 +1739,7 @@ export default {
       lista_dptos_legal: [],
       lista_dptos_admin: [],
       lista_dptos_mina: [],
+      nombre_boton_actualizar: '',
       mostrar_boton_aprobar: false,
       mostrar_boton_aprobar_de_todos_modos: false,
       lista_de_minerales_del_back: this.$props.lista_minerales_cargados,
@@ -2158,6 +2227,10 @@ export default {
           this.$props.productor.autorizacion_gestor_correcto,
         obs_autorizacion_gestor: this.$props.productor.obs_autorizacion_gestor,
         obs_autorizacion_gestor_valido: true,
+
+        presentador_nombre: this.$props.productor.presentador_nom_apellido,
+        presentador_dni: this.$props.productor.presentador_dni,
+        cargo_empresa: this.$props.productor.cargo_empresa,
       },
       form_mendoza: {},
       /* form_catamarca: {
@@ -2309,6 +2382,18 @@ export default {
     closeModalAprobar() {
       this.AvisoAprueba = false;
     },
+    update_input_nombre(value) {
+      console.log("Resultado del Input Nombre");
+      this.form.presentador_nombre = value;
+    },
+    update_input_dni(value) {
+      console.log("Resultado del Input DNI");
+      this.form.presentador_dni = value;
+    },
+    update_input_cargo_empresa(value) {
+      console.log("Resultado del Input Cargo de Empresa");
+      this.form.cargo_empresa = value;
+    },
     mostrar_modal_presentar() {
       //soy productor y estoy por presentar el formulario
       let form_evaluacion_valida = "";
@@ -2331,6 +2416,25 @@ export default {
         this.mostrar_boton_aprobar_de_todos_modos = true;
       }
       //<!-- @click="guardar_avances_todo" -->
+    },
+    calcular_nombre_boton(valor) {
+      switch(valor){
+        case "en revision":
+          this.nombre_boton_actualizar = "Presentar ";
+          break;
+        case "con observacion":
+          this.nombre_boton_actualizar = "Observar ";
+          break;
+        case "borrador":
+          this.nombre_boton_actualizar = "Actualzar ";
+          break;
+        case "reprobado":
+          this.nombre_boton_actualizar = "Reprobar ";
+          break;
+        case "aprobado":
+          this.nombre_boton_actualizar = "Aprobar ";
+          break;
+      }
     },
     presentar_de_todos_modos() {
       let self = this;
