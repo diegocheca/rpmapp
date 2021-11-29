@@ -312,4 +312,4 @@ Route::get('/dashboard/numproductores', [DashboardController::class, "numProduct
 Route::get('/dashboard/numproductorespendientes', [DashboardController::class, "numProductoresPendientes"])->name('numProductoresPendientes');
 Route::get('/dashboard/numproductoresborradores', [DashboardController::class, "numProductoresBorradores"])->name('numProductoresBorradores');
 
-//Route::get('/probando_test_pdf/{id}', PresentacionAltaProdMendozaController::class);
+Route::get('/probandodtpos', PresentacionAltaProdMendozaController::class);

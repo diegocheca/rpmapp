@@ -34,10 +34,27 @@ class HomeController extends Controller
             $mi_rol = 'admin';
 
             $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
+            //datosDepartamentos
             $dataChart = new ChartsController();
             $dataChart->axis->x = 'departamentos';
             $dataChart->axis->y = 'cantidad';
-            $dataChart->data = $departments;
+            //$dataChart->data = $departments;
+            $ejemplo = [
+                    [
+                        "label"=> "algo",
+                        "value"=> 213,
+
+                    ],
+                    [
+                        "label"=> "algo2",
+                        "value"=> 200,
+                    ],
+                    [
+                        "label"=> "algo3",
+                        "value"=> 150,
+                    ]
+            ];
+            $dataChart->data = $ejemplo;
             $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
             return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
@@ -48,6 +65,10 @@ class HomeController extends Controller
             return Inertia::render('Dashboard', ['userType' => $mi_rol ]);
         }
 
+    }
+    public function prueba(){
+        $departments = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
+        var_dump($departments);die();
     }
 
     static function userData()

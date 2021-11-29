@@ -41,6 +41,18 @@ class CountriesController extends Controller
 		return response()->json($departamentos);
 
 	}
+	public static function datosDepartamentos($id){
+		$departamentos = Departamentos::select('id', 'fuente as value', 'nombre as label')->where('provincia_id','=', $id)
+        ->orderBy('label')
+        ->get();
+		var_dump($departamentos);die();
+		/*foreach($departamentos as $depto){
+			$depto=>value = 
+
+		}*/
+		return response()->json($departamentos);
+
+	}
 	public function getLocation($id, Request $request){
 		//dd($request->id_prov);
 		$localidades = Localidades::select('id as value', 'nombre as label')->where('departamento_id','=', $id)
