@@ -137,4 +137,36 @@ class DashboardController extends Controller
             'cantidad' => $numero->count(),
         ], 200);
     }
+
+    public function numProductoresPendientes(){
+        if(Auth::user()->hasRole('Productor'))
+        return response()->json([
+            'status' => 'mal', // true
+            'msg' => 'Sin permisos',
+            'cantidad' => 0,
+        ], 200);
+        $numero = FormAltaProductor::select('id')->where('estado', '=', 'en revision')->get();
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'Consulta exitosa.',
+            'cantidad' => $numero->count(),
+        ], 200);
+    }
+    public function numProductoresBorradores(){
+        if(Auth::user()->hasRole('Productor'))
+        return response()->json([
+            'status' => 'mal', // true
+            'msg' => 'Sin permisos',
+            'cantidad' => 0,
+        ], 200);
+        $numero = FormAltaProductor::select('id')->where('estado', '=', 'borrador')->get();
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'Consulta exitosa.',
+            'cantidad' => $numero->count(),
+        ], 200);
+    }
+
+
+    
 }

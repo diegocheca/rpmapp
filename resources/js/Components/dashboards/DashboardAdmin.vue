@@ -17,12 +17,12 @@
                                 </svg>
                             </div>
                             <div class="flex flex-col flex-grow ml-4">
-                                <div class="text-sm text-gray-500">Nuevas inscripciones</div>
+                                <div class="text-sm text-gray-500">Borradores de inscripciones</div>
                                 <vue3-autocounter
                                     class="font-bold text-lg"
                                     ref="counter1"
                                     :startAmount="0"
-                                    :endAmount="17"
+                                    :endAmount="cantidad_productores_borrador"
                                     :duration="3"
                                     prefix=""
                                     suffix=""
@@ -73,7 +73,7 @@
                                 class="font-bold text-lg"
                                 ref="counter1"
                                 :startAmount="0"
-                                :endAmount="51"
+                                :endAmount="cantidad_productores_pendientes"
                                 :duration="3"
                                 prefix=""
                                 suffix=""
@@ -82,6 +82,8 @@
                                 :decimals="0"
                                 :autoinit="true"
                             />
+                            
+
                             <svg xmlns="http://www.w3.org/2000/svg" class="ml-5 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -287,6 +289,8 @@
                 chartShow: false,
                 nuevas_reinscripciones:'',
                 cantidad_productores: 0,
+                cantidad_productores_borrador: 0,
+                cantidad_productores_pendientes: 0,
             }
         },
         methods: {
@@ -322,9 +326,46 @@
                 })
             },
             
+            buscar_nuevas_incripciones(){
+                let self = this;
+                axios.get('/dashboard/numproductorespendientes')
+                .then(function (response) {
+                    if(response.data.status === 'ok')
+                        self.cantidad_productores_pendientes = response.data.cantidad;
+                    else self.cantidad = 0;
+                    // console.log(response.data.msg);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+            },
+            buscar_borrador_incripciones(){
+                console.log("por buscar borradores");
+                let self = this;
+                axios.get('/dashboard/numproductoresborradores')
+                .then(function (response) {
+                    if(response.data.status === 'ok'){
+                        self.cantidad_productores_borrador = response.data.cantidad;
+                        console.log("obtuve tanto borradores:"+self.cantidad_productores_borrador);
+
+                    }
+                    else self.cantidad = 0;
+                    // console.log(response.data.msg);
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error);
+                })
+            },
+            
+            
         },
         mounted() {
             this.buscar_nuevas_reincripciones();
+            this.buscar_nuevas_incripciones();
+            this.buscar_borrador_incripciones();
+            
         }
     }
 </script>
