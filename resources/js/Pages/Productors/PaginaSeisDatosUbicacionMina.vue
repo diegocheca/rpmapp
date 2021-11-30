@@ -532,7 +532,7 @@
     <BotonesPaginaSeis
       v-if="$props.mostrar_boton_guardar_seis"
       :link_volver="'#'"
-      :titulo_boton_volver="'volver'"
+      :titulo_boton_volver="'Volver'"
       :titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
       :localidad_mina_provincia="form_pagina.localidad_mina_provincia"
       :localidad_mina_provincia_validacion="

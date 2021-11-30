@@ -717,22 +717,22 @@
       </div>
       <br />
       <br />
-      <div class="flex items-stretch w-full justify-items-stretch">
-        <BotonesPaginaCatamarca
-          v-bind:link_volver="titulo_boton_volver"
-          v-bind:titulo_boton_volver="titulo_boton_volver"
-          v-bind:titulo_boton_guardar="titulo_boton_guardar"
-          v-bind:formulario="form_catamarca_test"
-          v-bind:donde_guardar="
-            $inertia.page.props.appName +
-            '/formularios/evaluacion_auto_guardado_catamarcas'
-          "
-          v-bind:evaluacion="$props.evaluacion"
-          v-bind:testing="$props.testing"
-          v-bind:id="$props.id"
-        >
-        </BotonesPaginaCatamarca>
-      </div>
+      <!-- <div class="flex items-stretch w-full justify-items-stretch"> -->
+      <BotonesPaginaCatamarca
+        :link_volver="link_volver"
+        v-bind:titulo_boton_volver="titulo_boton_volver"
+        v-bind:titulo_boton_guardar="titulo_boton_guardar"
+        v-bind:formulario="form_catamarca_test"
+        v-bind:donde_guardar="
+          $inertia.page.props.appName +
+          '/formularios/evaluacion_auto_guardado_catamarcas'
+        "
+        v-bind:evaluacion="$props.evaluacion"
+        v-bind:testing="$props.testing"
+        v-bind:id="$props.id"
+      >
+      </BotonesPaginaCatamarca>
+      <!-- </div> -->
     </div>
 
     <!-- <div class="flex justify-end mt-4">

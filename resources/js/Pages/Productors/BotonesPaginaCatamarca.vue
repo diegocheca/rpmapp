@@ -14,29 +14,10 @@
             </template>
         </jet-dialog-modal> -->
 
-    <div class="flex w-full">
-      <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
-        <a :href="link_volver">
-          <button
-            class="
-              text-xl
-              font-medium
-              mx-auto
-              py-3
-              px-5
-              text-indigo-500
-              border border-gray-400
-              rounded-xl
-              bg-gray-100
-              shadow-xl
-              hover:text-white hover:shadow-xl hover:bg-gray-600
-            "
-          >
-            {{ titulo_boton_volver }}
-          </button>
-        </a>
-      </div>
-      <div class="w-full md:w-4/5 px-3 mb-6 md:mb-0">
+    <div class="flex items-stretch w-full justify-items-stretch">
+      <div
+        class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full"
+      >
         <button
           type="button"
           class="
@@ -56,6 +37,26 @@
         >
           {{ titulo_boton_guardar }}
         </button>
+      </div>
+      <div class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5">
+        <a
+          :href="link_volver"
+          class="
+            text-xl
+            font-medium
+            mx-auto
+            py-3
+            px-5
+            text-indigo-500
+            border border-gray-400
+            rounded-xl
+            bg-gray-100
+            shadow-xl
+            hover:text-white hover:shadow-xl hover:bg-gray-600
+          "
+        >
+          {{ titulo_boton_volver }}
+        </a>
       </div>
     </div>
     <div v-show="testing">

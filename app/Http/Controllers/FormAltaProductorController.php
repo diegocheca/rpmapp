@@ -3139,7 +3139,7 @@ class FormAltaProductorController extends Controller
 					"minerales" => true,
 					"minerales_correccion" => false,
 					"titulo" => true,
-					"titulo_correccion" => true,
+					"titulo_correccion" => false,
 					"boton_guardar_cuatro" => true,
 					"paso_cuatro" => true,
 

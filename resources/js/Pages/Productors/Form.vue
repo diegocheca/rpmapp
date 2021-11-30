@@ -140,7 +140,9 @@
               v-on:CreeUnNuevoIdAdcionalPasoAAbuelo="
                 update_id_adicional_nuevo($event)
               "
-              v-on:mostrarpasosiguiente="mostar_paso_siguiente(2, $event)"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Datos del Productor', $event)
+              "
             >
             </PaginaUnoDatosProductores>
 
@@ -270,7 +272,9 @@
               :evaluacion="evaluacion_global"
               :testing="testing_global"
               :id="form.id"
-              v-on:mostrarpasosiguiente="mostar_paso_siguiente(3, $event)"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Domicilio Legal', $event)
+              "
               v-on:updateValorPadreNombreCalle="UpdateCalleNombre($event)"
               v-on:updateValorPadreNumCalle="UpdateCalleNum($event)"
               v-on:updateValorPadreTel="UpdateTel($event)"
@@ -428,7 +432,9 @@
               :evaluacion="evaluacion_global"
               :testing="testing_global"
               :id="form.id"
-              v-on:mostrarpasosiguiente="mostar_paso_siguiente(4, $event)"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Domicilio de Administración', $event)
+              "
               v-on:updateValorPadreNombreCalle="UpdateCalleNombre($event)"
               v-on:updateValorPadreNumCalle="UpdateCalleNum($event)"
               v-on:updateValorPadreTel="UpdateTel($event)"
@@ -595,7 +601,9 @@
               :id="form.id"
               :testing="testing_global"
               v-on:changevalorcategoria="update_categoria($event)"
-              v-on:mostrarpasosiguiente="mostar_paso_siguiente(5, $event)"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Datos de la Mina', $event)
+              "
             >
             </PaginaCuatroDatosMinaUno>
 
@@ -815,7 +823,9 @@
               :id="form.id"
               :testing="testing_global"
               :categoria="form.categoria"
-              v-on:mostrarpasosiguiente="mostar_paso_siguiente(6, $event)"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Datos de Mina Segunda Parte', $event)
+              "
             >
               <!-- :mostrar_boton_catamarca="$props.mostrar.boton_catamarca" -->
               <!-- :desactivar_boton_catamarca="$props.disables.boton_catamarca" -->
@@ -946,7 +956,9 @@
               :evaluacion="evaluacion_global"
               :id="form.id"
               :testing="testing_global"
-              v-on:mostrarpasosiguiente="mostar_paso_siguiente(7, $event)"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Ubicación de Mina', $event)
+              "
             >
             </PaginaSeisDatosUbicacionMina>
 
@@ -955,28 +967,33 @@
               v-if="$props.mostrar.paso_catamarca"
             ></div>
             <PaginaCatamarca
-              v-if="m_paso7 && $props.mostrar.paso_catamarca"
-              :link_volver="route('formulario-alta.index')"
-              :titulo_boton_volver="'volver'"
-              :titulo_boton_guardar="'Guardar Datos Form Catamarca'"
+              v-if="m_catamarca && $props.mostrar.paso_catamarca"
+              :link_volver="'#'"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar Datos'"
               :titulo_pagina="'Catamarca'"
               :evaluacion="evaluacion_global"
               :testing="testing_global"
               :id="form.id"
-              v-on:mostrarpasosiguiente="mostar_paso_siguiente(7, $event)"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Catamarca', $event)
+              "
             >
             </PaginaCatamarca>
 
             <div id="section_mendoza" v-if="$props.mostrar.paso_mendoza"></div>
             <PaginaMendoza
-              v-if="$props.mostrar.paso_mendoza"
+              v-if="m_mendoza && $props.mostrar.paso_mendoza"
               :link_volver="route('formulario-alta.index')"
-              :titulo_boton_volver="'volver'"
-              :titulo_boton_guardar="'Guardar Datos Form Mendoza'"
-              :titulo_pagina="'Pagina De Mendoza'"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar Datos'"
+              :titulo_pagina="'Mendoza'"
               :evaluacion="evaluacion_global"
               :testing="testing_global"
               :id="form.id"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Mendoza', $event)
+              "
             >
             </PaginaMendoza>
 
@@ -1210,7 +1227,7 @@
                       hover:text-white hover:shadow-xl hover:bg-gray-600
                     "
                   >
-                    {{nombre_boton_actualizar}}
+                    {{ nombre_boton_actualizar }}
                   </button>
                 </div>
                 <div
@@ -1353,7 +1370,8 @@ export default {
       m_paso4: false,
       m_paso5: false,
       m_paso6: false,
-      m_paso7: false,
+      m_catamarca: false, //Catamarca
+      m_mendoza: false, //Mendoza
       evaluacion_global: this.$props.soy_autoridad_minera,
       testing_global: this.$props.soy_administrador,
       mostrar_modal_datos_ya_guardados: false,
@@ -1363,7 +1381,7 @@ export default {
       lista_dptos_admin: [],
       lista_dptos_mina: [],
       mostrar_boton_aprobar: false,
-      nombre_boton_actualizar: 'Guardar',
+      nombre_boton_actualizar: "Guardar",
       mostrar_boton_aprobar_de_todos_modos: false,
       lista_de_minerales_del_back: this.$props.lista_minerales_cargados,
       form: {
@@ -1882,6 +1900,18 @@ export default {
             ver: false,
           },
           {
+            label: "Catamarca",
+            url: "#section_catamarca",
+            color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: false,
+          },
+          {
+            label: "Mendoza",
+            url: "#section_mendoza",
+            color: "bg-indigo-500 hover:bg-indigo-800",
+            ver: false,
+          },
+          {
             label: "Finalizar Proceso",
             url: "#finalizar",
             color: "bg-red-500 hover:bg-red-800",
@@ -2026,7 +2056,7 @@ export default {
       //this.form.reset()
     },
     calcular_nombre_boton(valor) {
-      switch(valor){
+      switch (valor) {
         case "presentar":
           this.nombre_boton_actualizar = "Presentar Solicitud";
           break;
@@ -2035,7 +2065,7 @@ export default {
           break;
       }
     },
-    
+
     // closeModalAprobar() {
     //   this.AvisoAprueba = false;
     // },
@@ -2371,36 +2401,82 @@ export default {
     },
     mostar_paso_siguiente(paso, valor) {
       switch (paso) {
-        case 2:
+        case "Datos del Productor":
+          //Habilita módulo Domicilio Legal
           this.m_paso2 = valor;
           break;
-        case 3:
+        case "Domicilio Legal":
+          //Habilita módulo Domicilio Administrativo
           this.m_paso3 = valor;
           break;
-        case 4:
+        case "Domicilio de Administración":
+          //Habilita módulo Datos de Mina
           this.m_paso4 = valor;
           break;
-        case 5:
+        case "Datos de la Mina":
+          //Habilita módulo Datos Mina 2da
           this.m_paso5 = valor;
           break;
-        case 6:
+        case "Datos de Mina Segunda Parte":
+          //Habilita módulo Ubicación Mina
           this.m_paso6 = valor;
           break;
-        case 7:
-          this.m_paso7 = valor;
+        case "Ubicación de Mina":
+          //Habilita módulo Catamarca o Mendoza o Final
+          // console.log("Provincia: ", this.$inertia.page.props.user.id_provincia);
+          // console.log("Provincia: ", this.$inertia.page.props.user.provincia);
+          if (this.$inertia.page.props.user.id_provincia == 10)
+            this.m_catamarca = valor;
+          if (this.$inertia.page.props.user.id_provincia == 50)
+            this.m_mendoza = valor;
+          break;
+        case "Catamarca":
+          // this.m_paso6 = valor;
+          break;
+        case "Mendoza":
+          // this.m_paso6 = valor;
           break;
         default:
-          this.m_paso7 = valor;
+          // this.m_paso7 = valor;
           break;
       }
       this.update_menu_flotante(paso, valor);
     },
-    update_menu_flotante(id, value) {
-      this.buttonsFixed.links[id].ver = value;
-      if (value) {
+    update_menu_flotante(paso, value) {
+      // console.log("cantidad = ", this.buttonsFixed.links.length);
+      let id = this.buttonsFixed.links.findIndex(
+        (element) => element.label == paso
+      );
+      id = id + 1;
+      if (
+        paso != "Mendoza" &&
+        paso != "Catamarca" &&
+        paso != "Ubicación de Mina"
+      ) {
+        this.buttonsFixed.links[id].ver = value;
         window.location.href = this.buttonsFixed.links[id].url;
       } else {
-        window.location.href = this.buttonsFixed.links[id - 1].url;
+        if (paso == "Ubicación de Mina") {
+          let id_provincia = this.$inertia.page.props.user.id_provincia;
+          if (id_provincia != 50 && id_provincia != 10) {
+            let id_final = this.buttonsFixed.links.findIndex(
+              (element) => element.label == "Finalizar Proceso"
+            );
+            // this.buttonsFixed.links[id_final].ver = true;
+            window.location.href = this.buttonsFixed.links[id_final].url;
+          } else {
+            let id_CatMen = this.buttonsFixed.links.findIndex(
+              (element) =>
+                element.label == this.$inertia.page.props.user.provincia
+            );
+            this.buttonsFixed.links[id_CatMen].ver = value;
+            window.location.href = this.buttonsFixed.links[id_CatMen].url;
+          }
+        }
+        if (paso == "Mendoza" || paso == "Catamarca") {
+          window.location.href =
+            this.buttonsFixed.links[this.buttonsFixed.links.length - 1].url;
+        }
       }
     },
 

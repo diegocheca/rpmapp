@@ -195,7 +195,6 @@
               flex flex-col
               items-center
               justify-center
-              items-center
             "
           >
             <!---<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -233,7 +232,7 @@
       </p>
     </div>
     <div class="w-full md:w-1/2 px-3" v-else>
-      <object
+      <!-- <object
         :data="valor_input"
         type="application/pdf"
         width="100%"
@@ -246,13 +245,13 @@
             >Haciendo clik aquí</a
           >
         </p>
-      </object>
+      </object> -->
       <div class="flex items-center justify-center w-full">
         <label
           class="
             flex flex-col
             rounded-lg
-            border-4 border-dashed
+            border-4 border-dashed border-gray-400
             w-full
             h-60
             p-10
@@ -268,7 +267,6 @@
               flex flex-col
               items-center
               justify-center
-              items-center
             "
           >
             <!---<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -301,7 +299,7 @@
           />
         </label>
       </div>
-      <p class="text-sm text-gray-300">
+      <p class="text-sm text-gray-400">
         <span>Tipos de archivos: doc,pdf</span>
       </p>
     </div>

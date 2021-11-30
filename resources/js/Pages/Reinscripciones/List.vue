@@ -12,7 +12,6 @@
     >
       Reinscripciones
     </h2>
-
     <div class="overflow-x-auto">
       <div class="w-11/12 flex flex-row-reverse mt-3">
         <inertia-link
@@ -200,7 +199,6 @@
       </div>
       <ChartBarM v-if="hasAnyPermission(['reinscripciones.revision'])" />
     </div>
-
     <jet-dialog-modal
       v-if="hasAnyPermission(['reinscripciones.revision'])"
       :show="modalConfirmDelete"
