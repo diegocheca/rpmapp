@@ -1,5 +1,5 @@
 <template>
-    <div class="items-center bg-teal-lighter">
+    <div class="items-center bg-teal-lighter mx-10">
         <!-- row -->
         <div v-for="(row, indexRow) in formSchema" :key="indexRow" class="flex flex-col justify-center" :class="row.widthResponsive">
             <!-- column -->
@@ -40,6 +40,20 @@
                                 </Field>
                             </div>
 
+                            <!-- radio -->
+                            <template v-if="item.type == inputsTypes.RADIO">
+                                <label class="flex flex-row items-center" v-for="(opt, indexOpt) in item.options" :key="indexOpt">
+                                    <Field
+                                        :value="opt.value"
+                                        :name="item.name"
+                                        :type="item.type"
+                                        class="mr-2"
+                                        :disabled="action != 'create' && item.disabled"
+                                    >
+                                    </Field>
+                                    {{opt.label}}
+                                </label>
+                            </template>
                             <!-- default -->
                             <label v-if="inputsTypes.INPUTS_DEFAULT.indexOf(item.type) > -1" class="relative block">
                                 <Field  :value="item.value" :name="item.name" :type="item.type" class="rounded-md py-2 px-3 text-grey-darkest appearance-none w-full block  " :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado') ? true: false"  :class="[ statusColors[ item.observation.value ] ]" />
@@ -262,7 +276,7 @@
                                                 </td>
                                                 <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                                     <Field v-show="false" :name="`${item.name}[${indexElement}].id`" :value="ele.id" />
-                                                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ item.horizontalTitle[indexElementTable2] }}</span>
+                                                    <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-0 text-xs font-bold uppercase">{{ item.horizontalTitle[indexElementTable2] }}</span>
                                                     <div  class="flex items-center flex-col">
                                                         <Field
                                                             v-if="inputsTypes.INPUTS_DEFAULT.indexOf(ele.type) > -1 && ele.type !== inputsTypes.RADIO"
@@ -272,6 +286,10 @@
                                                             class="inp w-full"
                                                             :disabled="action != 'create' && ele.disabled"
                                                         />
+                                                        <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${item.name}[${indexElement}].${ele.name}`" :value="ele.value">
+                                                            <VueMultiselect  v-bind="field" :name="`${item.name}[${indexElement}].${ele.name}`" :ref="`${item.name}[${indexElement}].${ele.name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" v-model="ele.value" >
+                                                            </VueMultiselect>
+                                                        </Field>
                                                         <template v-if="ele.type == inputsTypes.RADIO">
                                                             <label class="flex flex-row items-center" v-for="(opt, indexOpt) in ele.options" :key="indexOpt">
                                                                 <Field
@@ -562,10 +580,11 @@ export default {
             }
         },
         addRowTable(item) {
-            let newItem = [...item.element[0]];
+            // let newItem = [...item.element[0]];
+            let newItem = JSON.parse(JSON.stringify(item.element[0]));
 
             newItem.forEach(e => {
-                e.value = ''
+                e.value = e.type != inputsTypes.SELECT? '' : undefined;
                 if(e.id)
                     e.id = ''
                 e.disabled = false
@@ -605,7 +624,11 @@ export default {
             // this.columnsTable.value.push(rows[0]);
         },
         async getAsyncOptionsSelect(value, element){
-            // console.log(element);
+            // console.log(this.valuesForm);
+            if(element.inTable) {
+                this.getAsyncOptionsSelectTable(value, element);
+                return;
+            }
             if(!element || !element.inputDepends || element.inputDepends.length == 0) return;
 
             const elementChange = element.inputDepends;
@@ -645,6 +668,56 @@ export default {
 
         },
 
+        async getAsyncOptionsSelectTable(value, element){
+            if(!element || !element.inputDepends || element.inputDepends.length == 0) return;
+            try {
+
+                const elementChange = element.inputDepends;
+                for (let index = 0; index < elementChange.length; index++) {
+                    if(value) {
+
+                            const response = await axios.get(`${element.asyncUrl}/${value.value}`);
+
+                            // for (let index = 0; index < element.inputClearDepends.length; index++) {
+                            //     const clear = element.inputClearDepends[index];
+                            //     this.$refs[clear].options.splice(0,this.$refs[clear].options.length);
+                            //     this.$refs[clear].select({})
+
+                            // }
+
+                            // for (let index = 0; index < response.data.length; index++) {
+                            //     const opt = response.data[index];
+                            //         this.$refs[elementDepends].options.push(opt);
+                            // }
+
+                            // this.$refs[elementDepends].isLoading = false;
+
+                        const elementDepends = elementChange[index];
+
+                        for (const key in this.$refs) {
+                            const [ k0, k1 ] = elementDepends.split('.');
+                            if(`${k0}[${index}].${k1}` == key) {
+                                this.$refs[`${k0}[${index}].${k1}`].options.splice(0,this.$refs[`${k0}[${index}].${k1}`].options.length);
+                                this.$refs[`${k0}[${index}].${k1}`].select({})
+
+                                for (let indexResp = 0; index < response.data.length; index++) {
+                                    const opt = response.data[indexResp];
+                                    this.$refs[`${k0}[${index}].${k1}`].options.push(opt);
+                                }
+
+                            }
+
+                        }
+
+                        // this.$refs[elementDepends].isLoading = true;
+                    }
+                }
+
+            } catch (error) {
+
+            }
+
+        },
         getValueInput(elementArray, value) {
             const element = elementArray.find(e => e.value == value);
             return element? element : {}

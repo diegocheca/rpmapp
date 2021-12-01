@@ -19,6 +19,14 @@ class ReinscripcionesComercializacion extends Model
         'cantidad',
         'firma',
         'destino',
+
+        'variedad_calidad',
+        'granul',
+        'ley_tipo',
+        'ley_valor',
+        'precio_venta',
+        'no_vendido',
+
         'evaluacion',
         'comentario',
         'created_by'

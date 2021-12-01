@@ -17,7 +17,7 @@ class ReinscripcionSanLuis extends Migration
         Schema::create('reinscripciones', function (Blueprint $table) {
 
             $table->bigIncrements('id');
-            $table->bigInteger('id_mina')->nullable()->default(null);
+            // $table->bigInteger('id_mina')->nullable()->default(null);
             $table->bigInteger('id_productor')->nullable()->default(null);
             $table->date('fecha_vto')->nullable()->default(null);
 
@@ -153,8 +153,6 @@ class ReinscripcionSanLuis extends Migration
 
             $table->string("id_productor_evaluacion")->nullable()->default(null);
             $table->string("id_productor_comentario")->nullable()->default(null);
-            $table->string("id_mina_evaluacion")->nullable()->default(null);
-            $table->string("id_mina_comentario")->nullable()->default(null);
 
             $table->boolean("production_checkbox")->nullable()->default();
             $table->string("production_checkbox_evaluacion")->nullable()->default(null);
@@ -204,10 +202,64 @@ class ReinscripcionSanLuis extends Migration
             $table->string('inicio_explotacion_evaluacion')->nullable()->default(null);
             $table->string('inicio_explotacion_comentario', 50)->nullable()->default(null);
 
+            $table->string('compresores')->nullable()->default(null);
+            $table->string('compresores_evaluacion')->nullable()->default(null);
+            $table->string('compresores_comentario', 50)->nullable()->default(null);
+
+            $table->string('grupo_electrogeno')->nullable()->default(null);
+            $table->string('grupo_electrogeno_evaluacion')->nullable()->default(null);
+            $table->string('grupo_electrogeno_comentario', 50)->nullable()->default(null);
+
+            $table->string('camion_mineralero')->nullable()->default(null);
+            $table->string('camion_mineralero_evaluacion')->nullable()->default(null);
+            $table->string('camion_mineralero_comentario', 50)->nullable()->default(null);
+
+            $table->string('cargadora_frontal')->nullable()->default(null);
+            $table->string('cargadora_frontal_evaluacion')->nullable()->default(null);
+            $table->string('cargadora_frontal_comentario', 50)->nullable()->default(null);
+
+            $table->string('equipo_ventilacion')->nullable()->default(null);
+            $table->string('equipo_ventilacion_evaluacion')->nullable()->default(null);
+            $table->string('equipo_ventilacion_comentario', 50)->nullable()->default(null);
+
+            $table->string('martillo_neumatico')->nullable()->default(null);
+            $table->string('martillo_neumatico_evaluacion')->nullable()->default(null);
+            $table->string('martillo_neumatico_comentario', 50)->nullable()->default(null);
+
+            $table->string('via_decauville')->nullable()->default(null);
+            $table->string('via_decauville_evaluacion')->nullable()->default(null);
+            $table->string('via_decauville_comentario', 50)->nullable()->default(null);
+
+            $table->string('vagoneta')->nullable()->default(null);
+            $table->string('vagoneta_evaluacion')->nullable()->default(null);
+            $table->string('vagoneta_comentario', 50)->nullable()->default(null);
+
+            $table->string('bomba_desagote')->nullable()->default(null);
+            $table->string('bomba_desagote_evaluacion')->nullable()->default(null);
+            $table->string('bomba_desagote_comentario', 50)->nullable()->default(null);
+
+            $table->string('taller_equipado')->nullable()->default(null);
+            $table->string('taller_equipado_evaluacion')->nullable()->default(null);
+            $table->string('taller_equipado_comentario', 50)->nullable()->default(null);
+
+            $table->string('campamento')->nullable()->default(null);
+            $table->string('campamento_evaluacion')->nullable()->default(null);
+            $table->string('campamento_comentario', 50)->nullable()->default(null);
+
+            $table->string('vivienda')->nullable()->default(null);
+            $table->string('vivienda_evaluacion')->nullable()->default(null);
+            $table->string('vivienda_comentario', 50)->nullable()->default(null);
+
+            $table->string('meses_trabajo', 100)->nullable()->default(null);
+            $table->string('meses_trabajo_evaluacion')->nullable()->default(null);
+            $table->string('meses_trabajo_comentario', 50)->nullable()->default(null);
+
+            $table->string('razones_meses_trabajo', 100)->nullable()->default(null);
+            $table->string('razones_meses_trabajo_evaluacion')->nullable()->default(null);
+            $table->string('razones_meses_trabajo_comentario', 50)->nullable()->default(null);
+
             $table->string('estado', 25)->nullable()->default(null);
 
-            $table->foreign('id_mina')->references('id')->on('mina_cantera') ->onUpdate('cascade')
-            ->onDelete('cascade');
             $table->foreign('id_productor')->references('id')->on('productores') ->onUpdate('cascade')
             ->onDelete('cascade');
 
@@ -224,6 +276,10 @@ class ReinscripcionSanLuis extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('id_reinscripcion')->nullable()->default(null);
+
+            $table->bigInteger('id_mina')->nullable()->default(null);
+            $table->string("id_mina_evaluacion")->nullable()->default(null);
+            $table->string("id_mina_comentario")->nullable()->default(null);
 
             $table->string('nombre_mineral', 200)->nullable()->default(null);
             $table->string('nombre_mineral_evaluacion')->nullable()->default(null);
@@ -280,6 +336,8 @@ class ReinscripcionSanLuis extends Migration
             $table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
             ->onDelete('cascade');
 
+            $table->foreign('id_mina')->references('id')->on('mina_cantera') ->onUpdate('cascade')
+            ->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -423,6 +481,11 @@ class ReinscripcionSanLuis extends Migration
             $table->string('mes', 100)->nullable()->default(null);
             $table->integer('cantidad')->nullable()->default(null)->default(0);
 
+            $table->string('lugar_consumo', 100)->nullable()->default(null);
+            $table->string('razon_social_comprador', 100)->nullable()->default(null);
+            $table->string('domicilio', 100)->nullable()->default(null);
+            $table->string('actividad', 100)->nullable()->default(null);
+
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);
 
@@ -446,6 +509,39 @@ class ReinscripcionSanLuis extends Migration
             $table->integer('cantidad')->nullable()->default(null)->default(0);
             $table->string('firma', 100)->nullable()->default(null);
             $table->string('destino', 100)->nullable()->default(null);
+            $table->string('variedad_calidad', 100)->nullable()->default(null);
+            $table->string('granul', 100)->nullable()->default(null);
+            $table->string('ley_tipo', 100)->nullable()->default(null);
+            $table->string('ley_valor', 100)->nullable()->default(null);
+            $table->string('precio_venta', 100)->nullable()->default(null);
+            $table->string('no_vendido', 100)->nullable()->default(null);
+
+
+            $table->string('evaluacion')->nullable()->default(null);
+            $table->string('comentario', 50)->nullable()->default(null);
+
+            $table->foreign('id_productos')->references('id')->on('productos') ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->timestamps();
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
+
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish2_ci';
+            $table->index(['id', 'id_productos']);
+        });
+
+        Schema::create('reinscripcionesTransporte', function (Blueprint $table) {
+            $table->bigIncrements('id');
+
+            $table->bigInteger('id_productos')->nullable()->default(null);
+
+            $table->integer('desde')->nullable()->default(null)->default(0);
+            $table->string('hasta', 100)->nullable()->default(null);
+            $table->string('distancia', 100)->nullable()->default(null);
+            $table->string('medio_transporte', 100)->nullable()->default(null);
+            $table->string('coste_flete', 100)->nullable()->default(null);
 
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);

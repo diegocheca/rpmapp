@@ -15,7 +15,7 @@ class Reinscripciones extends Model
 
     protected $date = ['created_at', 'deleted_at', 'updated_at', 'fecha_vto' ];
     protected $fillable = [
-        'id_mina',
+        // 'id_mina',
         'id_productor',
         'fecha_vto',
         'prospeccion',
@@ -69,6 +69,22 @@ class Reinscripciones extends Model
         'anios_concesion',
         'inicio_explotacion',
 
+        //Mendoza
+        'semimecanizada',
+        'compresores',
+        'grupo_electrogeno',
+        'camion_mineralero',
+        'cargadora_frontal',
+        'equipo_ventilacion',
+        'martillo_neumatico',
+        'via_decauville',
+        'vagoneta',
+        'bomba_desagote',
+        'taller_equipado',
+        'campamento',
+        'vivienda',
+        'meses_trabajo',
+        'razones_meses_trabajo',
 
         'created_by',
         'estado',

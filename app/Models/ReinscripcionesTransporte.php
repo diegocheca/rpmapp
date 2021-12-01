@@ -7,22 +7,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ReinscripcionesProduccion extends Model
+class ReinscripcionesTransporte extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'reinscripcionesProduccion';
+    protected $table = 'reinscripcionesTransporte';
 
     protected $date = ['created_at', 'deleted_at', 'updated_at', 'fecha_vto' ];
     protected $fillable = [
         'id_productos',
-        'mes',
-        'cantidad',
-
-        'lugar_consumo',
-        'razon_social_comprador',
-        'domicilio',
-        'actividad',
+        'desde',
+        'hasta',
+        'distancia',
+        'medio_transporte',
+        'coste_flete',
 
         'evaluacion',
         'comentario',
