@@ -49,23 +49,26 @@ class ReinscripcionController extends Controller
         {
             $reinscripciones = DB::table('reinscripciones')
             ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
-            ->join('mina_cantera', 'reinscripciones.id_mina', '=', 'mina_cantera.id')
+            ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+            ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
             ->where('usuario_creador', '=', Auth::user()->id)
-            ->select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
+            ->select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
             ->get();
         }
         elseif(Auth::user()->hasRole('Autoridad')) {
             $reinscripciones = DB::table('reinscripciones')
             ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
-            ->join('mina_cantera', 'reinscripciones.id_mina', '=', 'mina_cantera.id')
+           ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+            ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
             // ->where('productores.leal_provincia', $user->province->value)
-            ->select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
+            ->select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
             ->get();
         }
         else //administrador
-            $reinscripciones = Reinscripciones::select('reinscripciones.id','reinscripciones.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
+            $reinscripciones = Reinscripciones::select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
             ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
-            ->join('mina_cantera', 'reinscripciones.id_mina', '=', 'mina_cantera.id')
+           ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+            ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
             ->get();
         //dd($user->province->value,Auth::user()->hasRole('Autoridad') );
         return Inertia::render('Reinscripciones/List', ['reinscripciones' => $reinscripciones]);
