@@ -26,7 +26,7 @@ export default {
             let item = {}
             console.log(element.value);
             item[`${this.dataChart.axis.x}`] = element.label
-            item[`${this.dataChart.axis.y}`] = !element.value? Math.floor(Math.random() * (100 - 3)) + 3 : element.value
+            item[`${this.dataChart.axis.y}`] = element.value
             element[this.dataChart.axis.x]
             return item
         });

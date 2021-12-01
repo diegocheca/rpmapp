@@ -312,4 +312,5 @@ Route::get('/dashboard/numproductores', [DashboardController::class, "numProduct
 Route::get('/dashboard/numproductorespendientes', [DashboardController::class, "numProductoresPendientes"])->name('numProductoresPendientes');
 Route::get('/dashboard/numproductoresborradores', [DashboardController::class, "numProductoresBorradores"])->name('numProductoresBorradores');
 
-Route::get('/probandodtpos', PresentacionAltaProdMendozaController::class);
+
+Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])->name('mostrar_datos_por_dtpo');

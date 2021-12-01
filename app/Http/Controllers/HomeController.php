@@ -38,23 +38,8 @@ class HomeController extends Controller
             $dataChart = new ChartsController();
             $dataChart->axis->x = 'departamentos';
             $dataChart->axis->y = 'cantidad';
-            //$dataChart->data = $departments;
-            $ejemplo = [
-                    [
-                        "label"=> "algo",
-                        "value"=> 213,
-
-                    ],
-                    [
-                        "label"=> "algo2",
-                        "value"=> 200,
-                    ],
-                    [
-                        "label"=> "algo3",
-                        "value"=> 150,
-                    ]
-            ];
-            $dataChart->data = $ejemplo;
+            $deptos = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
+            $dataChart->data = $deptos ;
             $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
             return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
@@ -66,7 +51,7 @@ class HomeController extends Controller
         }
 
     }
-    public function prueba(){
+    public function mostrar_datos_por_dtpo(){
         $departments = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
         var_dump($departments);die();
     }
