@@ -461,7 +461,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                                 ...new Observations({schema, name: 'row', action}).observations
                                             }
                                         ],
-                                        action
+                                        action,
+                                        schema
                                     }),
                                     // observation: new Observations({schema, name: 'equipos', action}).observations,
                                     validations: yup
@@ -630,7 +631,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                                 ...new Observations({schema, name: 'row', action}).observations
                                             }
                                         ],
-                                        action
+                                        action,
+                                        schema
                                     }),
                                     // observation: new Observations({schema, name: 'explosivos', action}).observations,
                                     validations: yup
@@ -764,7 +766,7 @@ function getChildrens({data, selectedChild, listMinerales}) {
     return newChildrens;
 }
 
-function getChildrensTable({data, key, selectedChild, listMinerales, action}) {
+function getChildrensTable({data, key, selectedChild, listMinerales, action, schema}) {
     let child = selectedChild
 
     if (!data || data.length == 0) {

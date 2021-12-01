@@ -29,6 +29,13 @@ use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 
 class ReinscripcionController extends Controller
 {
+    private $commonCountries = [
+        'SanJuan',
+        'Catamarca',
+        'EntreRíos',
+        'RíoNegro'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -377,6 +384,47 @@ class ReinscripcionController extends Controller
             'productorsList' => $productorsList
         ];
     }
+
+    protected function MendozaData($id)
+    {
+        $productors = ProductoresController::productoresUsuario();
+        $reinscripcion = Reinscripciones::find($id);
+        $reinscripcion->explosivos = $reinscripcion->explosivos;
+        $reinscripcion->equipos = $reinscripcion->equipos;
+        $reinscripcion = array_merge($reinscripcion->toArray(), Reinscripciones::find($id)->productos->toArray()[0]);
+
+        $provinces = CountriesController::getProvinces();
+
+        $productorsList = [];
+        for ($i=0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
+        }
+
+        return [
+            'reinscripcion' => $reinscripcion,
+            'provinces' => $provinces,
+            'productorsList' => $productorsList
+        ];
+    }
+
+    protected function CommonData($id)
+    {
+        $productors = ProductoresController::productoresUsuario();
+        $reinscripcion = Reinscripciones::find($id);
+
+        $provinces = CountriesController::getProvinces();
+
+        $productorsList = [];
+        for ($i=0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
+        }
+
+        return [
+            'reinscripcion' => $reinscripcion,
+            'provinces' => $provinces,
+            'productorsList' => $productorsList
+        ];
+    }
     /**
      * Display the specified resource.
      *
@@ -396,10 +444,15 @@ class ReinscripcionController extends Controller
      */
     public function edit($id)
     {
-
         $user = HomeController::userData();
         $provinceName = str_replace(" ", "", $user->province->label);
-        $functionRedirect = $provinceName."Data";
+
+        if(in_array($provinceName, $this->commonCountries)) {
+            $functionRedirect = "CommonData";
+        } else {
+            $functionRedirect = $provinceName."Data";
+        }
+
         $data = $this->$functionRedirect($id);
 
         // $productors = ProductoresController::productoresUsuario();

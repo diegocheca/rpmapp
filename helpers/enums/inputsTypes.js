@@ -13,7 +13,7 @@ const TABLE = "table";
 const REMOVEICON = "remove";
 
 
-const INPUTS_DEFAULT = [TEXT, NUMBER, PASSWORD, RADIO, EMAIL, DATE];
+const INPUTS_DEFAULT = [TEXT, NUMBER, PASSWORD, EMAIL, DATE];
 
 export default {
     TEXT,
