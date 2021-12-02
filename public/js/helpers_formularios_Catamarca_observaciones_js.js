@@ -57,9 +57,9 @@ var Observaciones = /*#__PURE__*/function () {
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].TEXTAREA,
           name: "".concat(data.name, "_comentario"),
           validationType: "string",
-          validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("observacion_".concat(data.name), {
+          validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("".concat(data.name, "_evaluacion"), {
             is: "rechazado",
-            then: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').required('Debes agregar una observación')
+            then: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').required('Debes agregar una observación').nullable()
           }).nullable()
         }
       };
