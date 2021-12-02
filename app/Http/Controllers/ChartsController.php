@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\EmailsAConfirmar;
 use App\Models\Minerales;
+use App\Models\Reinscripciones;
 
 class ChartsController extends Controller
 {
@@ -21,6 +22,22 @@ class ChartsController extends Controller
         $this->dataChart->province = '';
     }
 
+    private function calcular_destino_produccion($provincia){
+        $datos = [];
+        /*if($provincia == 99)
+        {
+            //soy autoridad nacional
+            echo "algo";
+        }
+        else
+        {
+            //no soy autoridad nacional. voy a buscar por prov
+            $temporal = Reinscripciones::select('id', 'id_departamento','')->where('id_departamento')
+            $datos["exportacion"] = 
+        }*/
+        
+    }
+
     public function reportes()
     {
         $soldIn = clone $this->dataChart;
@@ -29,6 +46,7 @@ class ChartsController extends Controller
         $soldIn->axis->x = 'tipo';
         $soldIn->axis->y = 'cantidad';
         $soldIn->data = [];
+        $datos_calculados  = $this->calcular_destino_produccion(Auth::user()->id_provincia);
         array_push($soldIn->data, [ "label" => "Provincia", "value" => 100 ]);
         array_push($soldIn->data, [ "label" => "Pais", "value" => 100 ]);
         array_push($soldIn->data, [ "label" => "Exportación", "value" => 100 ]);
