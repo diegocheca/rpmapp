@@ -289,7 +289,7 @@ class ReinscripcionSanLuis extends Migration
             $table->string('variedad_evaluacion')->nullable()->default(null);
             $table->string('variedad_comentario', 50)->nullable()->default(null);
 
-            $table->integer('produccion')->nullable()->default(null);
+            $table->string('produccion')->nullable()->default(null);
             $table->string('produccion_evaluacion')->nullable()->default(null);
             $table->string('produccion_comentario', 50)->nullable()->default(null);
 
@@ -298,7 +298,7 @@ class ReinscripcionSanLuis extends Migration
             $table->string('unidades_comentario', 50)->nullable()->default(null);
 
             // $table->string('otra_unidad', 200)->default(null);
-            $table->integer('precio_venta')->nullable()->default(null);
+            $table->string('precio_venta')->nullable()->default(null);
             $table->string('precio_venta_evaluacion')->nullable()->default(null);
             $table->string('precio_venta_comentario', 50)->nullable()->default(null);
 
