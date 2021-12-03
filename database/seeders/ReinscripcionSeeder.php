@@ -21,6 +21,15 @@ class ReinscripcionSeeder extends Seeder
      *
      * @return void
      */
+
+     public function id_depto_rando($idProv){
+         $departamentos = Departamentos::select('id','nombre')->where('provincia_id', '=', $idProv)->get(); 
+         $departamentos = $departamentos->toArray();
+         //dd($departamentos);
+
+         return $departamentos;
+
+     }
     public function run()
     {
         //
@@ -29,21 +38,20 @@ class ReinscripcionSeeder extends Seeder
         //datos globales
         $idProvincia = 70;
         $comentarios = false;
-
+        $estados = ["aprobado","rechazado", "en proceso"];
 
         if($idProvincia == 0)
         {
             //no tenog seteada la provincia y voy a buscar una cualquiera
             $ids_de_provincias = [2,6,10,14,18,22,26,30,34,38,42,46,50,54,58,62,66,70,74,78,82,86,90,94];
-            $idProvincia = $ids_de_provincias[$faker->numberBetween($min = 0, $max = count($ids_de_provincias))];
+            $idProvincia = $ids_de_provincias[$faker->numberBetween($min = 0, $max = (count($ids_de_provincias) -1))];
         }
         for($i = 0;$i< 100; $i++)
         {
             $ids_de_productores = [136, 139,140];
 
-
             $nuevo_reinscripcion = new Reinscripciones();
-            $nuevo_reinscripcion->id_productor = $ids_de_productores[$faker->numberBetween($min = 0, $max = count($ids_de_productores))];
+            $nuevo_reinscripcion->id_productor = $ids_de_productores[$faker->numberBetween($min = 0, $max = (count($ids_de_productores)-1))];
             $nuevo_reinscripcion->fecha_vto = date('Y-m-d', strtotime("2021-12-01". ' + 6 months'));
             $nuevo_reinscripcion->prospeccion = 1;
             if($comentarios)
@@ -182,6 +190,65 @@ class ReinscripcionSeeder extends Seeder
                 $nuevo_reinscripcion->personal_trans_otros_evaluacion = null;
                 $nuevo_reinscripcion->personal_trans_otros_comentario = null;
             }
+            $nuevo_reinscripcion->nombre = $faker->name;
+            if($comentarios)
+            {
+                $nuevo_reinscripcion->nombre_evaluacion = $faker->text($maxNbChars = 50);
+                $nuevo_reinscripcion->nombre_comentario = $faker->text($maxNbChars = 50);
+                $nuevo_reinscripcion->dni_evaluacion = $faker->text($maxNbChars = 50);
+                $nuevo_reinscripcion->dni_comentario = $faker->text($maxNbChars = 50);
+                $nuevo_reinscripcion->cargo_evaluacion =  $faker->text($maxNbChars = 50);
+                $nuevo_reinscripcion->cargo_comentario =  $faker->text($maxNbChars = 50);
+                $nuevo_reinscripcion->id_departamento_evaluacion = $faker->text($maxNbChars = 50);
+                $nuevo_reinscripcion->id_departamento_comentario =$faker->text($maxNbChars = 50);
+
+
+
+            }
+            else {
+                $nuevo_reinscripcion->nombre_evaluacion = null;
+                $nuevo_reinscripcion->nombre_comentario = null;
+                $nuevo_reinscripcion->dni_evaluacion = null;
+                $nuevo_reinscripcion->dni_comentario =null;
+                $nuevo_reinscripcion->cargo_evaluacion = null;
+                $nuevo_reinscripcion->cargo_comentario = null;
+                $nuevo_reinscripcion->id_departamento_evaluacion = null;
+                $nuevo_reinscripcion->id_departamento_comentario = null;
+
+            }
+            $nuevo_reinscripcion->dni = $faker->numberBetween($min = 25000000, $max = 50000000);
+            $nuevo_reinscripcion->cargo =  $faker->jobTitle;
+
+            //buscar los departamentos de esta provincia
+            $id_depatamento_faker = $this->id_depto_rando($idProvincia);
+            $nuevo_reinscripcion->id_departamento = $id_depatamento_faker[$faker->numberBetween($min = 0, $max = (count($id_depatamento_faker))-1)]["nombre"];
+            //dd($nuevo_reinscripcion->id_departamento);
+            $nuevo_reinscripcion->id_localidad = $faker->numberBetween($min = 10, $max = 100);
+            $nuevo_reinscripcion->subterranea = null;
+            $nuevo_reinscripcion->cielo_abierto= null;
+            $nuevo_reinscripcion->manual = null;
+            $nuevo_reinscripcion->mecanizada= null;
+            $nuevo_reinscripcion->expediente = $faker->swiftBicNumber;
+            $nuevo_reinscripcion->polvorin= null;
+            $nuevo_reinscripcion->ubicacion= null;
+            $nuevo_reinscripcion->dimensiones= null;
+            $nuevo_reinscripcion->personal_permanente= $faker->numberBetween($min = 0, $max = 100);
+            $nuevo_reinscripcion->temporario = $faker->numberBetween($min = 0, $max = 100);
+            $nuevo_reinscripcion->total = $faker->numberBetween($min = 0, $max = 100);
+            $nuevo_reinscripcion->production_checkbox = null;
+            $nuevo_reinscripcion->reserva = null;
+            $nuevo_reinscripcion->vida_util = null;
+            $nuevo_reinscripcion->volumen_total = null;
+            $nuevo_reinscripcion->volumen_unitario = null;
+            $nuevo_reinscripcion->volumen_comercializado= null;
+            $nuevo_reinscripcion->procesamiento_mineral= null;
+            $nuevo_reinscripcion->personal_perm_tecnicos= null;
+            $nuevo_reinscripcion->permiso_anmac= null;
+            $nuevo_reinscripcion->fecha_concesion = null;
+            $nuevo_reinscripcion->anios_concesion= null;
+            $nuevo_reinscripcion->inicio_explotacion= null;
+            $nuevo_reinscripcion->compresores= null;
+            $nuevo_reinscripcion->grupo_electrogeno= null;
 
 
 
@@ -189,150 +256,111 @@ class ReinscripcionSeeder extends Seeder
 
 
 
-/*
+
+            $nuevo_reinscripcion->id_localidad_evaluacion = null;
+            $nuevo_reinscripcion->id_localidad_comentario = null;
+            $nuevo_reinscripcion->subterranea_evaluacion = null;
+            $nuevo_reinscripcion->subterranea_comentario = null;
+            $nuevo_reinscripcion->cielo_abierto_evaluacion = null;
+            $nuevo_reinscripcion->cielo_abierto_comentario = null;
+            $nuevo_reinscripcion->manual_evaluacion = null;
+            $nuevo_reinscripcion->manual_comentario = null;
+            $nuevo_reinscripcion->mecanizada_evaluacion = null;
+            $nuevo_reinscripcion->mecanizada_comentario = null;
+            $nuevo_reinscripcion->expediente_evaluacion = null;
+            $nuevo_reinscripcion->expediente_comentario = null;
+            $nuevo_reinscripcion->polvorin_evaluacion = null;
+            $nuevo_reinscripcion->polvorin_comentario = null;
+            $nuevo_reinscripcion->ubicacion_evaluacion = null;
+            $nuevo_reinscripcion->ubicacion_comentario = null;
+            $nuevo_reinscripcion->dimensiones_evaluacion = null;
+            $nuevo_reinscripcion->dimensiones_comentario = null;
+            $nuevo_reinscripcion->personal_permanente_evaluacion = null;
+            $nuevo_reinscripcion->personal_permanente_comentario = null;
+            $nuevo_reinscripcion->temporario_evaluacion = null;
+            $nuevo_reinscripcion->temporario_comentario = null;
+            $nuevo_reinscripcion->total_evaluacion = null;
+            $nuevo_reinscripcion->total_comentario = null;
+            $nuevo_reinscripcion->id_productor_evaluacion = null;
+            $nuevo_reinscripcion->id_productor_comentario = null;
+            $nuevo_reinscripcion->production_checkbox_evaluacion = null;
+            $nuevo_reinscripcion->production_checkbox_comentario = null;
+            $nuevo_reinscripcion->reserva_evaluacion = null;
+            $nuevo_reinscripcion->reserva_comentario = null;
+            $nuevo_reinscripcion->vida_util_evaluacion = null;
+            $nuevo_reinscripcion->vida_util_comentario = null;
+            $nuevo_reinscripcion->volumen_total_evaluacion = null;
+            $nuevo_reinscripcion->volumen_total_comentario = null;
+            $nuevo_reinscripcion->volumen_unitario_evaluacion = null;
+            $nuevo_reinscripcion->volumen_unitario_comentario = null;
+            $nuevo_reinscripcion->volumen_comercializado_evaluacion = null;
+            $nuevo_reinscripcion->volumen_comercializado_comentario = null;
+            $nuevo_reinscripcion->procesamiento_mineral_evaluacion = null;
+            $nuevo_reinscripcion->procesamiento_mineral_comentario = null;
+            $nuevo_reinscripcion->personal_perm_tecnicos_evaluacion = null;
+            $nuevo_reinscripcion->personal_perm_tecnicos_comentario = null;
+            $nuevo_reinscripcion->permiso_anmac_evaluacion = null;
+            $nuevo_reinscripcion->permiso_anmac_comentario = null;
+            $nuevo_reinscripcion->fecha_concesion_evaluacion = null;
+            $nuevo_reinscripcion->fecha_concesion_comentario = null;
+            $nuevo_reinscripcion->anios_concesion_evaluacion = null;
+            $nuevo_reinscripcion->anios_concesion_comentario = null;
+            $nuevo_reinscripcion->inicio_explotacion_evaluacion = null;
+            $nuevo_reinscripcion->inicio_explotacion_comentario = null;
+            $nuevo_reinscripcion->compresores_evaluacion = null;
+            $nuevo_reinscripcion->compresores_comentario = null;
+            $nuevo_reinscripcion->grupo_electrogeno_evaluacion = null;
+            $nuevo_reinscripcion->grupo_electrogeno_comentario = null;
 
 
-            $nuevo_reinscripcion->nombre
-            $nuevo_reinscripcion->nombre_evaluacion
-            $nuevo_reinscripcion->nombre_comentario
-            $nuevo_reinscripcion->dni
-            $nuevo_reinscripcion->dni_evaluacion
-            $nuevo_reinscripcion->dni_comentario
-            $nuevo_reinscripcion->cargo
-            $nuevo_reinscripcion->cargo_evaluacion
-            $nuevo_reinscripcion->cargo_comentario
-            $nuevo_reinscripcion->id_departamento
-            $nuevo_reinscripcion->id_departamento_evaluacion
-            $nuevo_reinscripcion->id_departamento_comentario
-            $nuevo_reinscripcion->id_localidad
-            $nuevo_reinscripcion->id_localidad_evaluacion
-            $nuevo_reinscripcion->id_localidad_comentario
-            $nuevo_reinscripcion->subterranea
-            $nuevo_reinscripcion->subterranea_evaluacion
-            $nuevo_reinscripcion->subterranea_comentario
-            $nuevo_reinscripcion->cielo_abierto
-            $nuevo_reinscripcion->cielo_abierto_evaluacion
-            $nuevo_reinscripcion->cielo_abierto_comentario
-            $nuevo_reinscripcion->manual
-            $nuevo_reinscripcion->manual_evaluacion
-            $nuevo_reinscripcion->manual_comentario
-            $nuevo_reinscripcion->mecanizada
-            $nuevo_reinscripcion->mecanizada_evaluacion
-            $nuevo_reinscripcion->mecanizada_comentario
-            $nuevo_reinscripcion->expediente
-            $nuevo_reinscripcion->expediente_evaluacion
-            $nuevo_reinscripcion->expediente_comentario
-            $nuevo_reinscripcion->polvorin
-            $nuevo_reinscripcion->polvorin_evaluacion
-            $nuevo_reinscripcion->polvorin_comentario
-            $nuevo_reinscripcion->ubicacion
-            $nuevo_reinscripcion->ubicacion_evaluacion
-            $nuevo_reinscripcion->ubicacion_comentario
-            $nuevo_reinscripcion->dimensiones
-            $nuevo_reinscripcion->dimensiones_evaluacion
-            $nuevo_reinscripcion->dimensiones_comentario
-            $nuevo_reinscripcion->personal_permanente
-            $nuevo_reinscripcion->personal_permanente_evaluacion
-            $nuevo_reinscripcion->personal_permanente_comentario
-            $nuevo_reinscripcion->temporario
-            $nuevo_reinscripcion->temporario_evaluacion
-            $nuevo_reinscripcion->temporario_comentario
-            $nuevo_reinscripcion->total
-            $nuevo_reinscripcion->total_evaluacion
-            $nuevo_reinscripcion->total_comentario
-            $nuevo_reinscripcion->id_productor_evaluacion
-            $nuevo_reinscripcion->id_productor_comentario
-            $nuevo_reinscripcion->production_checkbox
-            $nuevo_reinscripcion->production_checkbox_evaluacion
-            $nuevo_reinscripcion->production_checkbox_comentario
-            $nuevo_reinscripcion->reserva
-            $nuevo_reinscripcion->reserva_evaluacion
-            $nuevo_reinscripcion->reserva_comentario
-            $nuevo_reinscripcion->vida_util
-            $nuevo_reinscripcion->vida_util_evaluacion
-            $nuevo_reinscripcion->vida_util_comentario
-            $nuevo_reinscripcion->volumen_total
-            $nuevo_reinscripcion->volumen_total_evaluacion
-            $nuevo_reinscripcion->volumen_total_comentario
-            $nuevo_reinscripcion->volumen_unitario
-            $nuevo_reinscripcion->volumen_unitario_evaluacion
-            $nuevo_reinscripcion->volumen_unitario_comentario
-            $nuevo_reinscripcion->volumen_comercializado
-            $nuevo_reinscripcion->volumen_comercializado_evaluacion
-            $nuevo_reinscripcion->volumen_comercializado_comentario
-            $nuevo_reinscripcion->procesamiento_mineral
-            $nuevo_reinscripcion->procesamiento_mineral_evaluacion
-            $nuevo_reinscripcion->procesamiento_mineral_comentario
-            $nuevo_reinscripcion->personal_perm_tecnicos
-            $nuevo_reinscripcion->personal_perm_tecnicos_evaluacion
-            $nuevo_reinscripcion->personal_perm_tecnicos_comentario
-            $nuevo_reinscripcion->permiso_anmac
-            $nuevo_reinscripcion->permiso_anmac_evaluacion
-            $nuevo_reinscripcion->permiso_anmac_comentario
-            $nuevo_reinscripcion->fecha_concesion
-            $nuevo_reinscripcion->fecha_concesion_evaluacion
-            $nuevo_reinscripcion->fecha_concesion_comentario
-            $nuevo_reinscripcion->anios_concesion
-            $nuevo_reinscripcion->anios_concesion_evaluacion
-            $nuevo_reinscripcion->anios_concesion_comentario
-            $nuevo_reinscripcion->inicio_explotacion
-            $nuevo_reinscripcion->inicio_explotacion_evaluacion
-            $nuevo_reinscripcion->inicio_explotacion_comentario
-            $nuevo_reinscripcion->compresores
-            $nuevo_reinscripcion->compresores_evaluacion
-            $nuevo_reinscripcion->compresores_comentario
-            $nuevo_reinscripcion->grupo_electrogeno
-            $nuevo_reinscripcion->grupo_electrogeno_evaluacion
-            $nuevo_reinscripcion->grupo_electrogeno_comentario
-            camion_mineralero
-            camion_mineralero_evaluacion
-            camion_mineralero_comentario
-            cargadora_frontal
-            cargadora_frontal_evaluacion
-            cargadora_frontal_comentario
-            equipo_ventilacion
-            equipo_ventilacion_evaluacion
-            equipo_ventilacion_comentario
-            martillo_neumatico
-            martillo_neumatico_evaluacion
-            martillo_neumatico_comentario
-            via_decauville
-            via_decauville_evaluacion
-            via_decauville_comentario
-            vagoneta
-            vagoneta_evaluacion
-            vagoneta_comentario
-            bomba_desagote
-            bomba_desagote_evaluacion
-            bomba_desagote_comentario
-            taller_equipado
-            taller_equipado_evaluacion
-            taller_equipado_comentario
-            campamento
-            campamento_evaluacion
-            campamento_comentario
-            vivienda
-            vivienda_evaluacion
-            vivienda_comentario
-            meses_trabajo
-            meses_trabajo_evaluacion
-            meses_trabajo_comentario
-            razones_meses_trabajo
-            razones_meses_trabajo_evaluacion
-            razones_meses_trabajo_comentario
-            estado
-            created_at
-            updated_at
-            deleted_at
-
-*/
 
 
-            
 
+
+
+            $nuevo_reinscripcion->camion_mineralero = null;
+            $nuevo_reinscripcion->cargadora_frontal = null;
+            $nuevo_reinscripcion->equipo_ventilacion = null;
+            $nuevo_reinscripcion->martillo_neumatico = null;
+            $nuevo_reinscripcion->via_decauville = null;
+            $nuevo_reinscripcion->vagoneta = null;
+            $nuevo_reinscripcion->bomba_desagote = null;
+            $nuevo_reinscripcion->taller_equipado = null;
+            $nuevo_reinscripcion->campamento = null;
+            $nuevo_reinscripcion->vivienda = null;
+            $nuevo_reinscripcion->meses_trabajo = null;
+            $nuevo_reinscripcion->razones_meses_trabajo = null;
+
+            $nuevo_reinscripcion->estado = $estados[ $faker->numberBetween($min = 0, $max = 2)];
+
+
+            $nuevo_reinscripcion->camion_mineralero_evaluacion= null;
+            $nuevo_reinscripcion->camion_mineralero_comentario= null;
+            $nuevo_reinscripcion->cargadora_frontal_evaluacion= null;
+            $nuevo_reinscripcion->cargadora_frontal_comentario= null;
+            $nuevo_reinscripcion->equipo_ventilacion_evaluacion= null;
+            $nuevo_reinscripcion->equipo_ventilacion_comentario= null;
+            $nuevo_reinscripcion->martillo_neumatico_evaluacion= null;
+            $nuevo_reinscripcion->martillo_neumatico_comentario= null;
+            $nuevo_reinscripcion->via_decauville_evaluacion= null;
+            $nuevo_reinscripcion->via_decauville_comentario= null;
+            $nuevo_reinscripcion->vagoneta_evaluacion= null;
+            $nuevo_reinscripcion->vagoneta_comentario= null;
+            $nuevo_reinscripcion->bomba_desagote_evaluacion= null;
+            $nuevo_reinscripcion->bomba_desagote_comentario= null;
+            $nuevo_reinscripcion->taller_equipado_evaluacion= null;
+            $nuevo_reinscripcion->taller_equipado_comentario= null;
+            $nuevo_reinscripcion->campamento_evaluacion= null;
+            $nuevo_reinscripcion->campamento_comentario= null;
+            $nuevo_reinscripcion->vivienda_evaluacion= null;
+            $nuevo_reinscripcion->vivienda_comentario= null;
+            $nuevo_reinscripcion->meses_trabajo_evaluacion= null;
+            $nuevo_reinscripcion->meses_trabajo_comentario= null;
+            $nuevo_reinscripcion->razones_meses_trabajo_evaluacion= null;
+            $nuevo_reinscripcion->razones_meses_trabajo_comentario= null;
+            $nuevo_reinscripcion->save();
 
 
         }
-
-
+    }
 }
