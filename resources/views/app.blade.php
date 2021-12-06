@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="shortcut icon" href="{{url('slick/img/ico_rpm.png')}}" type="image/png">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
@@ -22,7 +22,7 @@
 <body class="font-sans antialiased">
     @inertia
 
-    @env ('local')
+    @env('local')
     <!-- <script src="http://localhost:3000/browser-sync/browser-sync-client.js"></script> -->
     @endenv
 </body>

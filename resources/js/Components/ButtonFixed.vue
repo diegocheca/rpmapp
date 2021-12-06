@@ -63,14 +63,14 @@
       v-for="(item, index) in buttons.links"
       :key="index"
     >
-      <inertia-link
+      <a
         v-if="item.ver"
         class="text-center rounded-full text-white px-3 py-2"
         :class="item.color"
         :href="item.url"
       >
         {{ item.label }}
-      </inertia-link>
+      </a>
     </template>
   </div>
 </template>

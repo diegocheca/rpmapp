@@ -1,19 +1,5 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full">
-    <!-- <jet-dialog-modal
-      :show="mostrar_modal_datos_ya_guardados"
-      @close="cerrar_modal_datos_uno"
-    >
-      <template #title>
-        {{ modal_tittle }}
-      </template>
-      <template #content>
-        {{ modal_body }}
-      </template>
-      <template #footer>
-        <button @click="cerrar_modal_datos_uno">Ok</button>
-      </template>
-    </jet-dialog-modal> -->
     <div class="flex items-stretch w-full justify-items-stretch">
       <div
         class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full"

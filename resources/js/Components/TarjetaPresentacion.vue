@@ -69,18 +69,41 @@
       >{{ titulo }}</span
     >
     <span
+      v-if="ClaroOscuro == 'oscuro'"
       class="
         font-mono font-semibold
         uppercase
         ml-4
         bg-blue-500
-        text-white text-base
+        text-white 
+        text-base
         tracking-wider
-        p-2
         rounded-xl
-        leading-none
-        flex
-        items-center
+        border-2
+        shadow-lg
+        w-full
+        py-1
+        px-3
+      "
+    >
+      {{ subtitulo }}
+    </span>
+    <span
+      v-if="ClaroOscuro == 'claro'"
+      class="
+        font-mono font-semibold
+        uppercase
+        ml-4
+        bg-white
+        border-indigo-400
+        text-base
+        tracking-wider
+        rounded-xl
+        border-2
+        shadow-lg
+        w-full
+        py-1
+        px-3
       "
     >
       {{ subtitulo }}
@@ -96,6 +119,7 @@ export default {
     "logoAlt",
     "titulo",
     "subtitulo",
+    "ClaroOscuro",
   ],
 };
 </script>

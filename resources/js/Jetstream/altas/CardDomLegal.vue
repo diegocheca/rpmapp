@@ -11,7 +11,7 @@
           "
         />
       </div>
-      <div class="col-span-8 mt-1">
+      <div class="col-span-6 mt-1">
         <span class="text-gray-800 text-2xl font-bold">{{ titulo }}</span>
         <!-- <div class="flex space-x-2 text-gray-400 text-sm">
             <svg
@@ -130,6 +130,15 @@
           off-label="NO"
         />
       </div>
+      <div class="col-span-2 mt-2" v-if="$props.mostrarayuda">
+        <span class="text-lg font-semibold mr-3">Sin Datos</span>
+        <Toggle
+          v-model="valor_pagina"
+          @change="pagina_siguiente"
+          on-label="SI"
+          off-label="NO"
+        />
+      </div>
     </div>
     <!-- </a> -->
   </div>
@@ -158,11 +167,16 @@ export default {
   data() {
     return {
       valor_ayuda_local: this.$props.ayuda,
+      valor_pagina: false,
     };
   },
   methods: {
     cambio_de_ayuda() {
       this.$emit("changevalorayuda", this.valor_ayuda_local);
+    },
+    pagina_siguiente() {
+      // console.log(this.valor_pagina);
+      this.$emit("continuarpagina", this.valor_pagina);
     },
   },
 };
