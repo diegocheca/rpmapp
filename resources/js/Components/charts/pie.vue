@@ -30,7 +30,8 @@ export default {
         chart.data = this.dataChart.data.map( (element) => {
             let item = {}
             item[`${this.dataChart.axis.x}`] = element.label
-            item[`${this.dataChart.axis.y}`] = Math.floor(Math.random() * (100 - 3)) + 3
+            //item[`${this.dataChart.axis.y}`] = Math.floor(Math.random() * (100 - 3)) + 3
+            item[`${this.dataChart.axis.y}`] = element.value
             element[this.dataChart.axis.x]
             return item
         });

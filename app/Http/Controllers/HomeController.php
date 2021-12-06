@@ -34,10 +34,12 @@ class HomeController extends Controller
             $mi_rol = 'admin';
 
             $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
+            //datosDepartamentos
             $dataChart = new ChartsController();
             $dataChart->axis->x = 'departamentos';
             $dataChart->axis->y = 'cantidad';
-            $dataChart->data = $departments;
+            $deptos = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
+            $dataChart->data = $deptos ;
             $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
             return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
@@ -48,6 +50,10 @@ class HomeController extends Controller
             return Inertia::render('Dashboard', ['userType' => $mi_rol ]);
         }
 
+    }
+    public function mostrar_datos_por_dtpo(){
+        $departments = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
+        var_dump($departments);die();
     }
 
     static function userData()

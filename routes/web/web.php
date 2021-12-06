@@ -26,6 +26,8 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
 
+use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
 use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
 
@@ -309,5 +311,8 @@ Route::group(['prefix' => 'paises'], function () {
 //DASHBOARD
 
 Route::get('/dashboard/numproductores', [DashboardController::class, "numProductores"])->name('numProductores');
+Route::get('/dashboard/numproductorespendientes', [DashboardController::class, "numProductoresPendientes"])->name('numProductoresPendientes');
+Route::get('/dashboard/numproductoresborradores', [DashboardController::class, "numProductoresBorradores"])->name('numProductoresBorradores');
 
-//Route::get('/probando_test_pdf/{id}', PresentacionAltaProdMendozaController::class);
+
+Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])->name('mostrar_datos_por_dtpo');
