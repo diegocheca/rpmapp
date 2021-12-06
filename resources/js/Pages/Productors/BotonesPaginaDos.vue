@@ -31,9 +31,7 @@
             rounded-xl
             bg-gray-100
             shadow-xl
-            hover:text-white
-            hover:shadow-xl
-            hover:bg-gray-600
+            hover:text-white hover:shadow-xl hover:bg-gray-600
           "
           @click="guardar_avnces_dos"
         >
@@ -54,9 +52,7 @@
             rounded-xl
             bg-gray-100
             shadow-xl
-            hover:text-white
-            hover:shadow-xl
-            hover:bg-gray-600
+            hover:text-white hover:shadow-xl hover:bg-gray-600
           "
         >
           {{ titulo_boton_volver }}
@@ -294,6 +290,8 @@ export default {
       }
 
       if (this.$props.donde_guardar === "administrativo") {
+        // console.log("Guardar Dom Adm:");
+        // console.log(this.$props);
         axios
           .post("/formularios/evaluacion_auto_guardado_tres", {
             id: this.$props.id,

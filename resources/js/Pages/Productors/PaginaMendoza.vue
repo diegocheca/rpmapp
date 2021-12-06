@@ -226,6 +226,7 @@
         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_fojas"
+            :tipoInput="'number'"
             v-bind:valor_input_props="form_mendoza.concesion_minera_fojas"
             v-bind:valor_input_validacion="
               form_mendoza.concesion_minera_fojas_valido
@@ -247,7 +248,8 @@
         </div>
         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <NombreMina
-            v-if="permisos_mostrar.concesion_minera_tomo_n"
+            v-if="permisos_mostrar.concesion_minera_tomo_n"            
+            :tipoInput="'number'"
             v-bind:valor_input_props="form_mendoza.concesion_minera_tomo_n"
             v-bind:valor_input_validacion="
               form_mendoza.concesion_minera_tomo_n_validacion
@@ -450,31 +452,19 @@
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_reg_d_y_c"
             v-bind:valor_input_props="form_mendoza.concesion_minera_reg_d_y_c"
-            v-bind:valor_input_validacion="
-              form_mendoza.concesion_minera_reg_d_y_c_valido
-            "
-            v-bind:evualacion_correcto="
-              form_mendoza.concesion_minera_reg_d_y_c_correcto
-            "
+            v-bind:valor_input_validacion="form_mendoza.concesion_minera_reg_d_y_c_valido"
+            v-bind:evualacion_correcto="form_mendoza.concesion_minera_reg_d_y_c_correcto"
             v-bind:valor_obs="form_mendoza.obs_datos_minas"
             v-bind:valor_valido_obs="form_mendoza.obs_datos_minas_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Concesion  Reg D y C :'"
             v-bind:icon="$inertia.page.props.appName + '/svg/state.svg'"
-            v-bind:desactivar_input="
-              permisos_disables.concesion_minera_reg_d_y_c
-            "
-            v-bind:mostrar_correccion="
-              permisos_mostrar.concesion_minera_reg_d_y_c_correccion
-            "
-            v-bind:desactivar_correccion="
-              permisos_disables.concesion_minera_reg_d_y_c_correccion
-            "
+            v-bind:desactivar_input="permisos_disables.concesion_minera_reg_d_y_c"
+            v-bind:mostrar_correccion="permisos_mostrar.concesion_minera_reg_d_y_c_correccion"
+            v-bind:desactivar_correccion="permisos_disables.concesion_minera_reg_d_y_c_correccion"
             v-on:changevalido="update_concesion_minera_reg_d_y_c_valido($event)"
-            v-on:changecorrecto="
-              update_concesion_minera_reg_d_y_c_correcto($event)
-            "
+            v-on:changecorrecto="update_concesion_minera_reg_d_y_c_correcto($event)"
             v-on:changeobs="update_obs_datos_minas($event)"
             v-on:changeobsvalido="update_obs_datos_minas_valida($event)"
             v-on:changevalor="update_valor_concesion_minera_reg_d_y_c($event)"
@@ -519,7 +509,7 @@
         v-bind:formulario="form_mendoza"
         v-bind:donde_guardar="
           $inertia.page.props.appName +
-          '/formularios/evaluacion_auto_guardado_catamarcas'
+          '/formularios/evaluacion_auto_guardado_mendoza'
         "
         v-bind:evaluacion="$props.evaluacion"
         v-bind:testing="$props.testing"
@@ -554,6 +544,7 @@ export default {
     "evaluacion",
     "testing",
     "id",
+    "editar",
   ],
   components: {
     JetDialogModal,
@@ -702,14 +693,15 @@ export default {
   mounted() {
     let self = this;
     this.$nextTick(() => {
-      console.log("por buscar los datos de mendoza desde el hijo \n\n\n");
-      console.log("\n\n\n mi id es : " + this.$props.id + " \n\n\n");
+      // console.log("por buscar los datos de mendoza desde el hijo \n\n\n");
+      // console.log("\n\n\n mi id es : " + this.$props.id + " \n\n\n");
       if (this.$inertia.page.props.user.id_provincia === 50) {
-        if (
-          typeof this.$props.id === "undefined" ||
-          this.$props.id === null ||
-          this.$props.id === "null"
-        ) {
+        // if (
+        //   typeof this.$props.id === "undefined" ||
+        //   this.$props.id === null ||
+        //   this.$props.id === "null"
+        // ) {
+          if (this.$props.editar === false || this.$props.editar === 'false') {
           //estoy dando de alta
           self.form_mendoza.decreto3737 = "";
           self.form_mendoza.decreto3737_correcto = "";
@@ -769,7 +761,7 @@ export default {
                 parseInt(this.$props.id)
             )
             .then(function (response) {
-              console.log(response.datos);
+              // console.log(response.datos);
               if (response.data.status === "ok") {
                 self.form_mendoza = response.data.datos;
                 self.form_mendoza.obs_datos_minas =
@@ -779,7 +771,7 @@ export default {
             .catch(function (error) {
               console.log(error);
             });
-          console.log("voy por los permisos");
+          // console.log("voy por los permisos");
           //voy a buscar los permisos
           axios
             .get(
@@ -789,8 +781,8 @@ export default {
                 "/editar"
             )
             .then(function (response) {
-              console.log(response.data.disables);
-              console.log(response.data.mostrar);
+              // console.log(response.data.disables);
+              // console.log(response.data.mostrar);
               if (response.data.status === "ok") {
                 self.permisos_mostrar = response.data.mostrar;
                 self.permisos_disables = response.data.disables;

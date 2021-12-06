@@ -482,9 +482,7 @@
             v-bind:icon="$inertia.page.props.appName + '/svg/pinmap.svg'"
             v-bind:desactivar_input="$props.desactivar_ubicacion_long"
             v-bind:mostrar_correccion="$props.mostrar_ubicacion_long_correccion"
-            v-bind:desactivar_correccion="
-              $props.desactivar_ubicacion_long_correccion
-            "
+            v-bind:desactivar_correccion="$props.desactivar_ubicacion_long_correccion"
             v-on:changevalido="update_sist_coor_lonvalido($event)"
             v-on:changecorrecto="update_sist_coor_loncorrecto($event)"
             v-on:changeobs="update_obs_sist_coor_lon($event)"

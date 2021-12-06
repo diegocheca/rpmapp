@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center justify-center w-full">
-    <jet-dialog-modal
+    <!-- <jet-dialog-modal
       :show="mostrar_modal_datos_ya_guardados"
       @close="cerrar_modal_datos_uno"
     >
@@ -14,9 +14,11 @@
         <button @click="cerrar_modal_datos_uno">Ok</button>
       </template>
     </jet-dialog-modal>
-
+ -->
     <div class="flex items-stretch w-full justify-items-stretch">
-      <div class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full">
+      <div
+        class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full"
+      >
         <button
           type="button"
           class="
@@ -38,8 +40,9 @@
         </button>
       </div>
       <div class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5">
-        <a :href="link_volver"
-            class="
+        <a
+          :href="link_volver"
+          class="
             text-xl
             font-medium
             mx-auto
@@ -51,9 +54,9 @@
             bg-gray-100
             shadow-xl
             hover:text-white hover:shadow-xl hover:bg-gray-600
-            "
-          >
-            {{ titulo_boton_volver }}
+          "
+        >
+          {{ titulo_boton_volver }}
         </a>
       </div>
     </div>
@@ -107,6 +110,8 @@
 
 <script>
 import JetDialogModal from "@/Jetstream/DialogModal";
+import Swal from "sweetalert2";
+
 export default {
   props: [
     "link_volver",
@@ -125,13 +130,19 @@ export default {
   },
   data() {
     return {
-      mostrar_modal_datos_ya_guardados: false,
-      modal_tittle: "",
-      modal_body: "",
+      // mostrar_modal_datos_ya_guardados: false,
+      // modal_tittle: "",
+      // modal_body: "",
     };
   },
   methods: {
+    ver_pagina_siguiente(valor) {
+      this.$emit("mostrarpasosiguiente", valor);
+      // console.log('valor: ',valor);
+    },
     guardar_avnces_cinco() {
+      // console.log("Mendoza:");
+      // console.log(this.$props.formulario);
       //Soy autoridad minera
       let self = this;
       const data = new FormData();
@@ -198,7 +209,8 @@ export default {
         "obs_concesion_minera_reg_d_y_c",
         this.$props.formulario.obs_concesion_minera_reg_d_y_c
       );
-
+      // console.log("Data:");
+      // console.log(data);
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
       axios
         .post(
@@ -207,16 +219,32 @@ export default {
           data
         )
         .then(function (response) {
-          console.log("todo bien, se creo");
-          self.modal_tittle =
-            "Datos del paso de Catamarca han sido guardados correctamente";
-          self.modal_body = response.data.msg;
-          self.mostrar_modal_datos_ya_guardados = true;
+          // console.log(response);
+          // self.modal_tittle =
+          //   "Datos del paso de Mendoza han sido guardados correctamente";
+          // self.modal_body = response.data.msg;
+          // self.mostrar_modal_datos_ya_guardados = true;
+          if (response.data.msg == "se creo el registro correctamente") {
+            Swal.fire(
+              "Datos guardados correctamente.",
+              "Gracias por usar este servicio, por favor continue completando el formulario.",
+              "success"
+            ).then((result) => {
+              self.ver_pagina_siguiente(true);
+            });
+          } else {
+            Swal.fire("Error", "Error inesperado.", "error");
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          Swal.fire("Error", "Error inesperado. <br/>" + error, "error");
+          console.log(error);
         });
     },
-    cerrar_modal_datos_uno() {
-      this.mostrar_modal_datos_ya_guardados = false;
-    },
+    // cerrar_modal_datos_uno() {
+    //   this.mostrar_modal_datos_ya_guardados = false;
+    // },
   },
 };
 </script>

@@ -991,6 +991,7 @@
               :evaluacion="evaluacion_global"
               :testing="testing_global"
               :id="form.id"
+              :editar="false"
               v-on:mostrarpasosiguiente="
                 mostar_paso_siguiente('Mendoza', $event)
               "
@@ -1460,7 +1461,7 @@ export default {
         obs_leal_telefono: this.$props.productor.obs_leal_telefono,
         obs_leal_telefono_valido: false,
 
-        leal_pais: "Argentina",
+        leal_pais: this.$props.productor.leal_pais,
         leal_pais_valido: true,
         leal_pais_correcto: true,
         obs_leal_pais: "",
@@ -2369,15 +2370,15 @@ export default {
       this.form.cuit_correcto = valorEvaluacion;
     },
     update_input_nombre(value) {
-      console.log("Resultado del Input Nombre");
+      // console.log("Resultado del Input Nombre");
       this.form.presentador_nombre = value;
     },
     update_input_dni(value) {
-      console.log("Resultado del Input DNI");
+      // console.log("Resultado del Input DNI");
       this.form.presentador_dni = value;
     },
     update_input_cargo_empresa(value) {
-      console.log("Resultado del Input Cargo de Empresa");
+      // console.log("Resultado del Input Cargo de Empresa");
       this.form.cargo_empresa = value;
     },
     update_num_prod_evaluacion(valorEvaluacion) {
