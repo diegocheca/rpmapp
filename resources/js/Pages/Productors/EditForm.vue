@@ -431,7 +431,7 @@
           <PaginaDosDatosDomLegal
             v-if="$props.mostrar.paso_dos"
             :link_volver="route('formulario-alta.index')"
-            :titulo_boton_volver="'volver'"
+            :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
             :titulo_pagina="'Domicilio Legal'"
             :leal_calle="form.leal_calle"
@@ -1646,7 +1646,7 @@
                 </select>
               </div>
             </div>
-sss            <br />
+            sss <br />
             <div class="flex">
               <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <inertia-link
@@ -2645,11 +2645,97 @@ export default {
       nuevo: this.$props.productor,
     };
   },
+  mounted() {
+    let self = this;
+    this.$nextTick(() => {
+      // console.log(this.$inertia.page.props.user.id_provincia);
+      if (this.$inertia.page.props.user.id_provincia === 70) {
+        // console.log("harcodeo las prov");
+        self.lista_provincias = [
+          {
+            id: 70,
+            nombre: "San Juan",
+          },
+        ];
+      } else {
+        axios
+          .get("/datos/traer_provincias")
+          .then(function (response) {
+            // console.log("las provincias so2n:\n");
+            self.lista_provincias = response.data;
+            // console.log(self.lista_provincias);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    });
+    //voy a buscar los dptos
+    if (!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+      this.$nextTick(() => {
+        axios
+          .post("/datos/traer_departamentos", {
+            id_prov: parseInt(this.$props.productor.leal_provincia),
+          })
+          .then(function (response) {
+            // console.log("los deptos desde la raiz , legales son:\n");
+            self.lista_dptos_legal = response.data;
+            // console.log(self.lista_dptos_legal);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    } else {
+      self.lista_dptos_legal = [];
+    }
+    if (!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+      this.$nextTick(() => {
+        axios
+          .post("/datos/traer_departamentos", {
+            id_prov: parseInt(this.$props.productor.administracion_provincia),
+          })
+          .then(function (response) {
+            // console.log("los deptos desde la raiz son:\n");
+            self.lista_dptos_admin = response.data;
+            // console.log(self.lista_dptos_admin);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    } else {
+      self.lista_dptos_admin = [];
+    }
+    if (!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+      this.$nextTick(() => {
+        axios
+          .post("/datos/traer_departamentos", {
+            id_prov: parseInt(this.$props.productor.localidad_mina_provincia),
+          })
+          .then(function (response) {
+            // console.log("los deptos desde la raiz son:\n");
+            self.lista_dptos_mina = response.data;
+            // console.log(self.lista_dptos_mina);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    } else {
+      self.lista_dptos_mina = [];
+    }
+  },
   methods: {
+    handleClick(data) {
+      this.showModalPasos = data.show;
+    },
     submit() {
       let self = this;
       // console.log("el id es:", this.form.id);
-
       if (
         typeof this.form.id !== "undefined" &&
         self.form.id != null &&
@@ -2831,9 +2917,95 @@ export default {
               id_prov: parseInt(this.$props.productor.localidad_mina_provincia),
             })
             .then(function (response) {
-              console.log("los deptos desde la raiz son:\n");
+              // console.log("los deptos desde la raiz son:\n");
               self.lista_dptos_mina = response.data;
-              console.log(self.lista_dptos_mina);
+              // console.log(self.lista_dptos_mina);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      } else {
+        self.lista_dptos_mina = [];
+      }
+    },
+    buscar_provincias() {
+      //voy a buscar las provincias
+      // console.log("PROVVVVV");
+      this.$nextTick(() => {
+        // console.log(this.$inertia.page.props.user.id_provincia);
+        if (this.$inertia.page.props.user.id_provincia === 70) {
+          // console.log("harcodeo las prov");
+          //rta---> id: 70, nombre: 'San Juan'
+          self.lista_provincias = [
+            {
+              id: 70,
+              nombre: "San Juan",
+            },
+          ];
+        } else {
+          axios
+            .get("/datos/traer_provincias")
+            .then(function (response) {
+              // console.log("las provincias so22n:\n");
+              self.lista_provincias = response.data;
+              // console.log(self.lista_provincias);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+      });
+      //voy a buscar los dptos
+      if (!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.leal_provincia),
+            })
+            .then(function (response) {
+              // console.log("los deptos desde la raiz , legales son:\n");
+              self.lista_dptos_legal = response.data;
+              // console.log(self.lista_dptos_legal);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      } else {
+        self.lista_dptos_legal = [];
+      }
+      if (!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.administracion_provincia),
+            })
+            .then(function (response) {
+              // console.log("los deptos desde la raiz son:\n");
+              self.lista_dptos_admin = response.data;
+              // console.log(self.lista_dptos_admin);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      } else {
+        self.lista_dptos_admin = [];
+      }
+      if (!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.localidad_mina_provincia),
+            })
+            .then(function (response) {
+              // console.log("los deptos desde la raiz son:\n");
+              self.lista_dptos_mina = response.data;
+              // console.log(self.lista_dptos_mina);
             })
             .catch(function (error) {
               console.log(error);

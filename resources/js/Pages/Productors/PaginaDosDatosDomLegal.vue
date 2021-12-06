@@ -564,7 +564,6 @@
           </div>
         </div>
       </div>
-
       <div class="flex flex-wrap">
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
           <SelectDepartamento

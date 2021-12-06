@@ -238,6 +238,7 @@
             v-bind:testing="mostrar_testing"
             v-bind:label="'Departamento de Ubicacion de la Mina'"
             v-bind:lista_departamentos="lista_departamentos"
+            v-bind:lista_departamentos_dos="$props.lista_dptos"
             v-bind:desactivar_legal_dpto="$props.desactivar_ubicacion_dpto"
             v-bind:mostrar_legal_dpto_correccion="
               $props.mostrar_ubicacion_dpto_correccion
@@ -482,7 +483,9 @@
             v-bind:icon="$inertia.page.props.appName + '/svg/pinmap.svg'"
             v-bind:desactivar_input="$props.desactivar_ubicacion_long"
             v-bind:mostrar_correccion="$props.mostrar_ubicacion_long_correccion"
-            v-bind:desactivar_correccion="$props.desactivar_ubicacion_long_correccion"
+            v-bind:desactivar_correccion="
+              $props.desactivar_ubicacion_long_correccion
+            "
             v-on:changevalido="update_sist_coor_lonvalido($event)"
             v-on:changecorrecto="update_sist_coor_loncorrecto($event)"
             v-on:changeobs="update_obs_sist_coor_lon($event)"
@@ -756,6 +759,12 @@ export default {
     };
   },
   methods: {
+    cargar_dptos() {
+      let self = this;
+      //console.log("mis deptos de legal padre es:",self.$props.lista_dptos);
+      self.lista_departamentos = self.$props.lista_dptos;
+      //console.log("mis deptos de legal hijo es:",self.lista_departamentos);
+    },
     cerrar_modal_datos_uno() {
       this.mostrar_modal_datos_ya_guardados = false;
     },
