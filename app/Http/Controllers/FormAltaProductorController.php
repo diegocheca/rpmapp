@@ -11731,4 +11731,169 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		//        }
 		//else response()->json("error en el email");
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public function cargandoexcelmdz(){
+        $array = [];
+		/*
+		$array[1] = 
+		[
+			0 -> Distrito,
+			1 -> Localidad
+			2 -> Departamento,
+			3-> Mina,
+			4-> Nro Expte
+			5-> Expte Acumulado
+			6-> Nombre Yacimiento
+			7-> Mineral
+			8-> Diseminado
+			9-> Cat
+			10-> Pet
+			11 -> Concesionario
+			12-> Cuit
+			13-> Mensura
+			14-> Estado
+			15-> Situación
+			16-> Expte Ambiental
+		 */
+        $array[1] = [1,"El Sosneado",50105,2774,"2354-B-2002",null,"Arroyo La Manga","Carbón",false,1,2,"null","20-11617671-9","S/Mensura","Borrado","ver pasivos","null"];
+        $array[2] = [1,"El Sosneado",50105,2648,"2100-C-1999",null,"Atahualpa","Cobre Disem.",true,1,1,"null","null","S/Mensura","Vacante","inactiva","null"];
+        $array[3] = [1,"El Sosneado",50105,2209,"39-P-1983",null,"Atuel","Turba",false,2,1,"null","null","S/Mensura","Borrado","ver pasivos","null"];
+        $array[4] = [1,"El Sosneado",50105,17,"4249-C-41",null,"Baku","Petroleo",false,1,5,"Petroquimica Comodoro Rivadavia Sa","30-056359811-1","Mensurada","Vigente","explotación","null"];
+        $array[5] = [1,"El Sosneado",50105,0,"2878-M-2005",null,"Barroso","Cobre-Oro",false,1,1,"Minera Agaucu S.A.","null","S/Mensura","Vigente","inactiva","577-M-2011"];
+        $array[6] = [1,"El Sosneado",50105,2635,"3520-V-2010",null,"Beatriz","Cobre Disem.",true,1,35,"null","null","S/Mensura","Vacante","inactiva","null"];
+        $array[7] = [1,"El Sosneado",50105,21,"1307-D-27",null,"Bolivar","Brea Petrolifera",false,1,6,"null","null","Mensurada","Borrado","ver pasivos","null"];
+        $array[8] = [1,"El Sosneado",50105,16,"4249-C-41",null,"Cerro Del Alquitran","Petroleo",false,1,5,"Petroquimica Comodoro Rivadavia Sa","30-056359811-1","Mensurada","Vigente","explotación","null"];
+        $array[9] = [1,"El Sosneado",50105,2588,"2104-C-1999",null,"Chipre","Cobre Disem.",true,1,1,"Concina, Raúl Ernesto","null","S/Mensura","Vacante","inactiva","null"];
+        $array[10] = [1,"El Sosneado",50105,8,"178-H-11",null,"Cooper","Azufre",false,1,3,"null","null","Mensurada","Borrado","ver pasivos","null"];
+        $array[11] = [1,"El Sosneado",50105,1,"3451-N-1943",null,"El Condor","Carbon",false,1,3,"Cruz Del Sur Y Cia Srl ","90-81043108-2","Mensurada","Vigente","reserva","null"];
+        $array[12] = [1,"El Sosneado",50105,10,"1931-M-40",null,"Eloisa","Carbon",false,1,7,"null","null","Mensurada","Borrado","ver pasivos","null"];
+        $array[13] = [1,"El Sosneado",50105,20,"383-H-1947",null,"Falucho","Brea Petrolifera",false,1,3,"Pott Godoy, M Y Ot","null","Mensurada","Vigente","reserva","null"];
+        $array[14] = [1,"El Sosneado",50105,12,"4031-J-39",null,"General Mitre","Carbon",false,1,7,"null","null","Mensurada","Borrado","ver pasivos","null"];
+        $array[15] = [1,"El Sosneado",50105,11,"4030-L-39",null,"General Roca","Carbon",false,1,7,"null","null","Mensurada","Borrado","ver pasivos","null"];
+        $array[16] = [1,"El Sosneado",50105,13,"4249-C-1941",null,"General San Martin","Petroleo",false,1,5,"El Sosneado Cia Argentina De Petróleo S.A.","30-64434151-4","Mensurada","Vigente","reserva","null"];
+        $array[17] = [1,"El Sosneado",50105,2738,"2171-C-2000",null,"La Negra","Cobre Disem.",true,1,1,"null","null","S/Mensura","Vacante","inactiva","null"];
+        $array[18] = [1,"El Sosneado",50105,18,"4249-C-41",null,"La Paloma","Petroleo",false,1,5,"Petroquimica Comodoro Rivadavia Sa","30-056359811-1","Mensurada","Vigente","explotación","null"];
+        $array[19] = [1,"El Sosneado",50105,7,"4249-C-1941",null,"Los Buitres","Petroleo",false,1,5,"Petroquimica Comodoro Rivadavia Sa","30-056359811-1","Mensurada","Vigente","explotación","null"];
+        $array[20] = [1,"El Sosneado",50105,2591,"2317-D-2002",null,"Los Gateados","Oro,Plata,Cobre Dis.",true,1,1,"null","null","S/Mensura","Borrado","ver pasivos","null"];
+        for($i=1; $i<=20;$i++){
+            //$array[$i]
+			//PASO 1
+				$formulario_provisorio = new FormAltaProductor();
+				$formulario_provisorio->razonsocial = $array[$i][11];
+				$formulario_provisorio->email = null;
+				$formulario_provisorio->cuit = $array[$i][12];
+				$formulario_provisorio->numeroproductor =$i;
+				$formulario_provisorio->tiposociedad =null;
+				$formulario_provisorio->constaciasociedad = null;
+				$formulario_provisorio->inscripciondgr = null;
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->estado = "borrador";
+				$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->created_by = Auth::user()->id;
+				$formulario_provisorio->provincia = 50;
+				$formulario_provisorio->save();
+				//Paso 2 
+
+				$formulario_provisorio->leal_calle = null;
+				$formulario_provisorio->leal_numero = null;
+				$formulario_provisorio->leal_telefono = null;
+				$formulario_provisorio->leal_provincia = 50;
+				$formulario_provisorio->leal_departamento = $array[$i][2];
+				$formulario_provisorio->leal_localidad = $array[$i][1];
+				$formulario_provisorio->leal_cp = null;
+				$formulario_provisorio->leal_otro = null;
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
+
+				//paso 3 
+				$formulario_provisorio->administracion_calle = null;
+				$formulario_provisorio->administracion_numero = null;
+				$formulario_provisorio->administracion_telefono = null;
+				$formulario_provisorio->administracion_pais = "Argentina";
+				$formulario_provisorio->administracion_provincia = 50;
+				$formulario_provisorio->administracion_departamento = $array[$i][2];
+				$formulario_provisorio->administracion_localidad = $array[$i][1];
+				$formulario_provisorio->administracion_cp = null;
+				$formulario_provisorio->administracion_otro = null;
+				$formulario_provisorio->updated_paso_tres = date("Y-m-d H:i:s");
+				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
+
+
+				//PASO 4
+				if($array[$i][9] == 1)
+				{
+					$nombre_mina = 'Mina';
+					$categoria = 'primera';
+
+				}
+				elseif($array[$i][9] == 2){
+					$nombre_mina = 'Mina';
+					$categoria = 'segunda';
+				}
+				else{
+					$nombre_mina = 'Cantera';
+					$categoria = 'tercera';
+				}
+				$formulario_provisorio->numero_expdiente = $array[$i][4];
+				$formulario_provisorio->categoria = $categoria;
+				$formulario_provisorio->nombre_mina = $array[$i][6];
+				$formulario_provisorio->descripcion_mina = null;
+				$formulario_provisorio->distrito_minero = $array[$i][0];
+				$formulario_provisorio->mina_cantera =$nombre_mina;
+				$formulario_provisorio->resolucion_concesion_minera = null;
+				$formulario_provisorio->titulo_contrato_posecion = null;
+				$formulario_provisorio->plano_inmueble = null;
+				$formulario_provisorio->titulo_contrato_posecion = null;
+				$formulario_provisorio->resolucion_concesion_minera = null;
+				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+				$formulario_provisorio->save();
+				//escribir minerales
+				
+
+
+
+
+
+        }
+
+    }
 }
