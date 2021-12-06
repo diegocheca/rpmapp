@@ -221,7 +221,7 @@ class ReinscripcionSeeder extends Seeder
 
             //buscar los departamentos de esta provincia
             $id_depatamento_faker = $this->id_depto_rando($idProvincia);
-            $nuevo_reinscripcion->id_departamento = $id_depatamento_faker[$faker->numberBetween($min = 0, $max = (count($id_depatamento_faker))-1)]["nombre"];
+            $nuevo_reinscripcion->id_departamento = $id_depatamento_faker[$faker->numberBetween($min = 0, $max = (count($id_depatamento_faker))-1)]["id"];
             //dd($nuevo_reinscripcion->id_departamento);
             $nuevo_reinscripcion->id_localidad = $faker->numberBetween($min = 10, $max = 100);
             $nuevo_reinscripcion->subterranea = null;
@@ -247,8 +247,8 @@ class ReinscripcionSeeder extends Seeder
             $nuevo_reinscripcion->fecha_concesion = null;
             $nuevo_reinscripcion->anios_concesion= null;
             $nuevo_reinscripcion->inicio_explotacion= null;
-            $nuevo_reinscripcion->compresores= null;
-            $nuevo_reinscripcion->grupo_electrogeno= null;
+            //$nuevo_reinscripcion->compresores= null;
+            //$nuevo_reinscripcion->grupo_electrogeno= null;
 
 
 
@@ -307,10 +307,10 @@ class ReinscripcionSeeder extends Seeder
             $nuevo_reinscripcion->anios_concesion_comentario = null;
             $nuevo_reinscripcion->inicio_explotacion_evaluacion = null;
             $nuevo_reinscripcion->inicio_explotacion_comentario = null;
-            $nuevo_reinscripcion->compresores_evaluacion = null;
-            $nuevo_reinscripcion->compresores_comentario = null;
-            $nuevo_reinscripcion->grupo_electrogeno_evaluacion = null;
-            $nuevo_reinscripcion->grupo_electrogeno_comentario = null;
+            // $nuevo_reinscripcion->compresores_evaluacion = null;
+            // $nuevo_reinscripcion->compresores_comentario = null;
+            // $nuevo_reinscripcion->grupo_electrogeno_evaluacion = null;
+            // $nuevo_reinscripcion->grupo_electrogeno_comentario = null;
 
 
 
@@ -318,46 +318,46 @@ class ReinscripcionSeeder extends Seeder
 
 
 
-            $nuevo_reinscripcion->camion_mineralero = null;
-            $nuevo_reinscripcion->cargadora_frontal = null;
-            $nuevo_reinscripcion->equipo_ventilacion = null;
-            $nuevo_reinscripcion->martillo_neumatico = null;
-            $nuevo_reinscripcion->via_decauville = null;
-            $nuevo_reinscripcion->vagoneta = null;
-            $nuevo_reinscripcion->bomba_desagote = null;
-            $nuevo_reinscripcion->taller_equipado = null;
-            $nuevo_reinscripcion->campamento = null;
-            $nuevo_reinscripcion->vivienda = null;
-            $nuevo_reinscripcion->meses_trabajo = null;
-            $nuevo_reinscripcion->razones_meses_trabajo = null;
+            //$nuevo_reinscripcion->camion_mineralero = null;
+            // $nuevo_reinscripcion->cargadora_frontal = null;
+            // $nuevo_reinscripcion->equipo_ventilacion = null;
+            // $nuevo_reinscripcion->martillo_neumatico = null;
+            // $nuevo_reinscripcion->via_decauville = null;
+            // $nuevo_reinscripcion->vagoneta = null;
+            // $nuevo_reinscripcion->bomba_desagote = null;
+            // $nuevo_reinscripcion->taller_equipado = null;
+            // $nuevo_reinscripcion->campamento = null;
+            // $nuevo_reinscripcion->vivienda = null;
+            // $nuevo_reinscripcion->meses_trabajo = null;
+            // $nuevo_reinscripcion->razones_meses_trabajo = null;
 
             $nuevo_reinscripcion->estado = $estados[ $faker->numberBetween($min = 0, $max = 2)];
 
 
-            $nuevo_reinscripcion->camion_mineralero_evaluacion= null;
-            $nuevo_reinscripcion->camion_mineralero_comentario= null;
-            $nuevo_reinscripcion->cargadora_frontal_evaluacion= null;
-            $nuevo_reinscripcion->cargadora_frontal_comentario= null;
-            $nuevo_reinscripcion->equipo_ventilacion_evaluacion= null;
-            $nuevo_reinscripcion->equipo_ventilacion_comentario= null;
-            $nuevo_reinscripcion->martillo_neumatico_evaluacion= null;
-            $nuevo_reinscripcion->martillo_neumatico_comentario= null;
-            $nuevo_reinscripcion->via_decauville_evaluacion= null;
-            $nuevo_reinscripcion->via_decauville_comentario= null;
-            $nuevo_reinscripcion->vagoneta_evaluacion= null;
-            $nuevo_reinscripcion->vagoneta_comentario= null;
-            $nuevo_reinscripcion->bomba_desagote_evaluacion= null;
-            $nuevo_reinscripcion->bomba_desagote_comentario= null;
-            $nuevo_reinscripcion->taller_equipado_evaluacion= null;
-            $nuevo_reinscripcion->taller_equipado_comentario= null;
-            $nuevo_reinscripcion->campamento_evaluacion= null;
-            $nuevo_reinscripcion->campamento_comentario= null;
-            $nuevo_reinscripcion->vivienda_evaluacion= null;
-            $nuevo_reinscripcion->vivienda_comentario= null;
-            $nuevo_reinscripcion->meses_trabajo_evaluacion= null;
-            $nuevo_reinscripcion->meses_trabajo_comentario= null;
-            $nuevo_reinscripcion->razones_meses_trabajo_evaluacion= null;
-            $nuevo_reinscripcion->razones_meses_trabajo_comentario= null;
+            // $nuevo_reinscripcion->camion_mineralero_evaluacion= null;
+            // $nuevo_reinscripcion->camion_mineralero_comentario= null;
+            // $nuevo_reinscripcion->cargadora_frontal_evaluacion= null;
+            // $nuevo_reinscripcion->cargadora_frontal_comentario= null;
+            // $nuevo_reinscripcion->equipo_ventilacion_evaluacion= null;
+            // $nuevo_reinscripcion->equipo_ventilacion_comentario= null;
+            // $nuevo_reinscripcion->martillo_neumatico_evaluacion= null;
+            // $nuevo_reinscripcion->martillo_neumatico_comentario= null;
+            // $nuevo_reinscripcion->via_decauville_evaluacion= null;
+            // $nuevo_reinscripcion->via_decauville_comentario= null;
+            // $nuevo_reinscripcion->vagoneta_evaluacion= null;
+            // $nuevo_reinscripcion->vagoneta_comentario= null;
+            // $nuevo_reinscripcion->bomba_desagote_evaluacion= null;
+            // $nuevo_reinscripcion->bomba_desagote_comentario= null;
+            // $nuevo_reinscripcion->taller_equipado_evaluacion= null;
+            // $nuevo_reinscripcion->taller_equipado_comentario= null;
+            // $nuevo_reinscripcion->campamento_evaluacion= null;
+            // $nuevo_reinscripcion->campamento_comentario= null;
+            // $nuevo_reinscripcion->vivienda_evaluacion= null;
+            // $nuevo_reinscripcion->vivienda_comentario= null;
+            // $nuevo_reinscripcion->meses_trabajo_evaluacion= null;
+            // $nuevo_reinscripcion->meses_trabajo_comentario= null;
+            // $nuevo_reinscripcion->razones_meses_trabajo_evaluacion= null;
+            // $nuevo_reinscripcion->razones_meses_trabajo_comentario= null;
             $nuevo_reinscripcion->save();
 
 
