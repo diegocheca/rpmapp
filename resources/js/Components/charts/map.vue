@@ -38,8 +38,15 @@ export default {
     chart.geodata = geoDataJson.default
 
     // var data = [];
+    var aux
     for (var i = 0; i < chart.geodata.features.length; i++) {
-        chart.geodata.features[i].properties.value = Math.floor(Math.random() * (100 - 3)) + 3
+      console.log("por mostrar data chart");
+      console.log(this.$props.dataChart.data[0].label);
+      aux = this.$props.dataChart.data.find( array =>  array.label === chart.geodata.features[i].properties.name);
+      if (aux ===  undefined)
+        chart.geodata.features[i].properties.value = 0
+      else 
+        chart.geodata.features[i].properties.value = aux.value
     }
 
     // Set projection

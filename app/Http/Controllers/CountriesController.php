@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Provincias;
 use App\Models\Departamentos;
 use App\Models\Localidades;
+use App\Models\FormAltaProductor;
 
 use Illuminate\Http\Request;
 
@@ -45,12 +46,39 @@ class CountriesController extends Controller
 		$departamentos = Departamentos::select('id', 'fuente as value', 'nombre as label')->where('provincia_id','=', $id)
         ->orderBy('label')
         ->get();
-		var_dump($departamentos);die();
-		/*foreach($departamentos as $depto){
-			$depto=>value = 
-
-		}*/
-		return response()->json($departamentos);
+		//var_dump($departamentos);die();
+		$index = 0;
+		$aux =  [];
+		$array = [];
+		foreach($departamentos as $depto){
+			$querytmp = FormAltaProductor::select('id')
+			->where('leal_departamento', '=', $depto->id)
+			->where('estado', '!=', 'reprobado')
+			->get();
+			if( $querytmp != null && $querytmp->count() > 0){
+				$aux["label"] = $depto->label;
+				$aux["value"] = $querytmp->count();
+				array_push($array, $aux);
+			}
+			// else {
+			// 	$aux["label"] = $depto->label;
+			// 	$aux["value"] = $querytmp->count();
+			// 	array_push($array, $aux);
+			// }
+		}
+		//depues del foreach, busco los q no tienen dpto declarado
+		$querytmp = FormAltaProductor::select('id')
+			->where('leal_departamento', '=', null)
+			->where('leal_provincia', '=', $id)
+			->where('estado', '!=', 'reprobado')
+			->get();
+		if( $querytmp != null && $querytmp->count() > 0){
+			$aux["label"] = "Sin Depto";
+			$aux["value"] = $querytmp->count();
+			array_push($array, $aux);
+		}
+		//dd($array);
+		return $array;
 
 	}
 	public function getLocation($id, Request $request){

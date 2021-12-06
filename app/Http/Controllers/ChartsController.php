@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\EmailsAConfirmar;
 use App\Models\Minerales;
+use App\Models\Reinscripciones;
+use Illuminate\Support\Facades\DB;
 
 class ChartsController extends Controller
 {
@@ -21,6 +23,41 @@ class ChartsController extends Controller
         $this->dataChart->province = '';
     }
 
+    private function calcular_destino_produccion($provincia){
+        $datos = [];
+        if($provincia == 99)
+        {
+            //soy autoridad nacional
+            echo "algo";
+        }
+        else
+        {
+            //no soy autoridad nacional. voy a buscar por prov
+
+            $temporal = DB::table('reinscripciones')
+            ->join('productor', 'productor.leal_provincia', '=', $provincia)
+            ->where('estado', '=', 'aprobada')
+            ->where('reinscripciones.estado', '=', 'aprobado')
+            ->select('reinscripciones.*')
+            ->get();
+            $acumulador_exportacion = 0;
+            $acumulador_provincia = 0;
+            $acumulador_otras_provincias = 0;
+
+            foreach($temporal as $key){
+                $acumulador_exportacion += $key->porcentaje_exportado;
+                $acumulador_provincia += $key->porcentaje_venta_provincia;
+                $acumulador_otras_provincias += $key->porcentaje_venta_otras_provincias;
+            }
+            $datos["exportacion"] = $acumulador_exportacion / $temporal->count();
+            $datos["otras_prov"] = $acumulador_provincia / $temporal->count();
+            $datos["prov"] = $acumulador_otras_provincias / $temporal->count();
+            return $datos;
+
+        }
+        
+    }
+
     public function reportes()
     {
         $soldIn = clone $this->dataChart;
@@ -29,6 +66,7 @@ class ChartsController extends Controller
         $soldIn->axis->x = 'tipo';
         $soldIn->axis->y = 'cantidad';
         $soldIn->data = [];
+        $datos_calculados  = $this->calcular_destino_produccion(Auth::user()->id_provincia);
         array_push($soldIn->data, [ "label" => "Provincia", "value" => 100 ]);
         array_push($soldIn->data, [ "label" => "Pais", "value" => 100 ]);
         array_push($soldIn->data, [ "label" => "Exportación", "value" => 100 ]);
