@@ -7,7 +7,8 @@ export default class Observaciones {
     }
 
     getFormSchema(data) {
-        // console.log(data);
+        console.log(data.schema);
+        console.log(data.schema[`${data.name}_comentario`]);
         if (data.action == 'create') return {};
 
         return {

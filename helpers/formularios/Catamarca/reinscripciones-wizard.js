@@ -342,46 +342,55 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     // validations: yup.boolean().required(),
                                 },
                                 {
-                                    label: '',
-                                    type: inputsTypes.LIST,
-                                    name: 'Productos',
-                                    columns: 'grid-cols-1',
+                                    label: 'Datos de las minas o canteras que se explotan',
+                                    type: inputsTypes.TABLE,
+                                    name: "Productos",
+                                    typeTable: "horizontal",
+                                    addRow: true,
                                     hidden: !schema.cantidad_productos? true : false,
-                                    // colSpans + 1
-                                    columnsResponsive: 'lg:grid-cols-3',
-                                    childrens: getChildrens(schema.productos),
-                                    elements: [
-                                        [
+                                    verticalTitle: [],
+                                    horizontalTitle: [
+                                        'Producto Extraído',
+                                        'Variedad de',
+                                        'Producción',
+                                        'Unidades',
+                                        'Precio de Venta (en $)',
+                                        'Acciones'
+                                    ],
+                                    element: getChildrensTable({
+                                        data: schema.productos,
+                                        // data: schema.equipos,
+                                        selectedChild:  [
                                             {
-                                                label: 'Producto Extraído',
-                                                value: {},
+                                                label: '',
+                                                value: undefined,
                                                 type: inputsTypes.SELECT,
-                                                colSpan: '',
+                                                isLoading: false,
                                                 options: minerales.data,
                                                 name: 'nombre_mineral',
                                                 multiple: false,
+                                                isLoading: false,
                                                 closeOnSelect: true,
-                                                searchable: true,
+                                                searchable: false,
                                                 placeholder: 'Selecciona una opción',
-                                                // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
                                             },
                                             {
-                                                label: 'Variedad de',
+                                                label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'variedad',
                                                 colSpan: '',
                                             },
                                             {
-                                                label: 'Producción',
+                                                label: '',
                                                 value: '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'produccion',
                                                 colSpan: '',
                                             },
                                             {
-                                                label: 'Unidades',
-                                                value: {},
+                                                label: '',
+                                                value: undefined,
                                                 type: inputsTypes.SELECT,
                                                 colSpan: '',
                                                 options: [
@@ -406,65 +415,172 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
 
                                             },
                                             {
-                                                label: 'Precio de Venta (en $)',
+                                                label: '',
                                                 value: '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'precio_venta',
                                                 colSpan: '',
                                             },
-                                            // {
-                                            //     label: 'Empresa compradora',
-                                            //     value: '',
-                                            //     type: inputsTypes.TEXT,
-                                            //     name: 'empresa_compradora',
-                                            //     colSpan: '',
-                                            // },
-                                            // {
-                                            //     label: 'Dirección empresa campradora',
-                                            //     value: '',
-                                            //     type: inputsTypes.TEXT,
-                                            //     name: 'direccion_empresa_compradora',
-                                            //     colSpan: '',
-                                            // },
-                                            // {
-                                            //     label: 'Actividad empresa campradora',
-                                            //     value: '',
-                                            //     type: inputsTypes.TEXT,
-                                            //     name: 'actividad_empresa_compradora',
-                                            //     colSpan: '',
-                                            // },
                                             {
-                                                colSpan: 'lg:w-5/5',
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.REMOVEICON,
+                                                colSpan: '',
+                                                name: 'remove',
+                                            },
+                                            {
                                                 type: 'observation',
                                                 ...new Observations({schema, name: 'row', action}).observations
                                             }
 
-                                        ]
-                                    ],
+                                        ],
+                                        listMinerales: minerales.data,
+                                        action
+                                    }),
+                                    // observation: new Observations({schema, name: 'equipos', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(
                                             yup.object().shape({
+                                                nombre_mineral: yup.object().when('mineralSelect', {
+                                                    is: value => _.isEmpty(value) || !value,
+                                                    then: yup.object().required('Debes elegir un elemento').nullable()
+                                                }).nullable(),
                                                 variedad: yup.string().nullable().required('Debes completar este campo'),
-                                                nombre_mineral: yup.object().when('mineral', {
-                                                    is: value => _.isEmpty(value),
-                                                    then: yup.object().nullable().required('Debes elegir un elemento')
-                                                }),
-                                                produccion: yup.string().nullable().required('Debes completar este campo'),
+                                                produccion: yup.string().required('Debes completar este campo'),
                                                 unidades: yup.object().when('unidadesSelect', {
-                                                        is: value => _.isEmpty(value),
-                                                        then: yup.object().nullable().required('Debes elegir un elemento')
-                                                }),
+                                                    is: value => _.isEmpty(value) || !value,
+                                                    then: yup.object().required('Debes elegir un elemento').nullable()
+                                                }).nullable(),
                                                 precio_venta: yup.string().nullable().required('Debes completar este campo'),
-                                                // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
-                                                // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
-                                                // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
-                                                row_evaluacion: action == 'evaluate'? yup.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').nullable().required('Debes seleccionar una opción') : {},
-                                                row_comentario: action == 'evaluate'? yup.string().when('observacion_row', { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación') }).nullable() : {}
                                             })
                                         )
                                         .strict(),
                                 },
+                                // {
+                                //     label: '',
+                                //     type: inputsTypes.LIST,
+                                //     name: 'Productos',
+                                //     columns: 'grid-cols-1',
+                                //     hidden: !schema.cantidad_productos? true : false,
+                                //     // colSpans + 1
+                                //     columnsResponsive: 'lg:grid-cols-3',
+                                //     childrens: getChildrens(schema.productos),
+                                //     elements: [
+                                //         [
+                                //             {
+                                //                 label: 'Producto Extraído',
+                                //                 value: {},
+                                //                 type: inputsTypes.SELECT,
+                                //                 colSpan: '',
+                                //                 options: minerales.data,
+                                //                 name: 'nombre_mineral',
+                                //                 multiple: false,
+                                //                 closeOnSelect: true,
+                                //                 searchable: true,
+                                //                 placeholder: 'Selecciona una opción',
+                                //                 // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
+                                //             },
+                                //             {
+                                //                 label: 'Variedad de',
+                                //                 value: '',
+                                //                 type: inputsTypes.TEXT,
+                                //                 name: 'variedad',
+                                //                 colSpan: '',
+                                //             },
+                                //             {
+                                //                 label: 'Producción',
+                                //                 value: '',
+                                //                 type: inputsTypes.NUMBER,
+                                //                 name: 'produccion',
+                                //                 colSpan: '',
+                                //             },
+                                //             {
+                                //                 label: 'Unidades',
+                                //                 value: {},
+                                //                 type: inputsTypes.SELECT,
+                                //                 colSpan: '',
+                                //                 options: [
+                                //                     {
+                                //                         label: 'toneladas',
+                                //                         value: 'toneladas',
+                                //                     },
+                                //                     {
+                                //                         label: 'mts 3',
+                                //                         value: 'mts 3',
+                                //                     },
+                                //                     {
+                                //                         label: 'otros',
+                                //                         value: 'otros',
+                                //                     }
+                                //                 ],
+                                //                 name: 'unidades',
+                                //                 multiple: false,
+                                //                 closeOnSelect: true,
+                                //                 searchable: false,
+                                //                 placeholder: 'Selecciona una opción',
+
+                                //             },
+                                //             {
+                                //                 label: 'Precio de Venta (en $)',
+                                //                 value: '',
+                                //                 type: inputsTypes.NUMBER,
+                                //                 name: 'precio_venta',
+                                //                 colSpan: '',
+                                //             },
+                                //             // {
+                                //             //     label: 'Empresa compradora',
+                                //             //     value: '',
+                                //             //     type: inputsTypes.TEXT,
+                                //             //     name: 'empresa_compradora',
+                                //             //     colSpan: '',
+                                //             // },
+                                //             // {
+                                //             //     label: 'Dirección empresa campradora',
+                                //             //     value: '',
+                                //             //     type: inputsTypes.TEXT,
+                                //             //     name: 'direccion_empresa_compradora',
+                                //             //     colSpan: '',
+                                //             // },
+                                //             // {
+                                //             //     label: 'Actividad empresa campradora',
+                                //             //     value: '',
+                                //             //     type: inputsTypes.TEXT,
+                                //             //     name: 'actividad_empresa_compradora',
+                                //             //     colSpan: '',
+                                //             // },
+                                //             {
+                                //                 colSpan: 'lg:w-5/5',
+                                //                 type: 'observation',
+                                //                 ...new Observations({schema, name: 'row', action}).observations
+                                //             }
+
+                                //         ]
+                                //     ],
+                                //     validations: yup
+                                //         .array()
+                                //         .of(
+                                //             yup.object().shape({
+                                //                 variedad: yup.string().nullable().required('Debes completar este campo'),
+                                //                 nombre_mineral: yup.object().when('mineral', {
+                                //                     is: value => _.isEmpty(value),
+                                //                     then: yup.object().nullable().required('Debes elegir un elemento')
+                                //                 }),
+                                //                 produccion: yup.string().nullable().required('Debes completar este campo'),
+                                //                 unidades: yup.object().when('unidadesSelect', {
+                                //                         is: value => _.isEmpty(value),
+                                //                         then: yup.object().nullable().required('Debes elegir un elemento')
+                                //                 }),
+                                //                 precio_venta: yup.string().nullable().required('Debes completar este campo'),
+                                //                 // empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                //                 // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                //                 // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                //                 row_evaluacion: action == 'evaluate'? yup.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').nullable().required('Debes seleccionar una opción') : {},
+                                //                 row_comentario: action == 'evaluate'? yup.string().when('observacion_row', { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación') }).nullable() : {}
+                                //             })
+                                //         )
+                                //         .strict(),
+                                // },
                             ]
                         },
                     ]
@@ -584,4 +700,61 @@ function setValue(value, name, schema) {
    return schema[name] = value;
 }
 
+function getChildrensTable({data, key, selectedChild, listMinerales, action}) {
+    let child = selectedChild
+
+    if (!data || data.length == 0) {
+        child = child.filter(e => e.type != "observation");
+        return [child];
+    }
+
+    let newChildrens = [];
+    for (let index = 0; index < data.length; index++) {
+        const object = data[index];
+        let clone = JSON.parse(JSON.stringify(child));
+        for (const property in object) {
+            const i = clone.findIndex(e => e.name == property);
+
+            if (i == -1) continue;
+
+            if (clone[i].type == 'select') {
+                // clone[i].value = JSON.parse(object[property]);
+                // clone[i].value = listMinerales[index];
+                clone[i].value = clone[i].options.find( e => object[property] == e.value );
+
+            } else {
+                clone[i].value = object[property];
+                clone[i].disabled = object["evaluacion"] == "aprobado";
+            }
+            if (typeof clone[i].id !== 'undefined') {
+                clone[i].id = object["id"];
+            }
+        }
+
+        // set result observation
+        const obsIndex = clone.findIndex(e => e.name == 'row_evaluacion');
+        if (obsIndex > -1) {
+            clone[obsIndex].value = object["value"];
+            clone[obsIndex].comment.value = object["comment"];
+        }
+
+        if(action == 'evaluate') {
+            clone = clone.filter(e => e.name != 'remove');
+        } else {
+            clone = clone.filter(e => e.name != 'row_evaluacion');
+            // if(object["evaluacion"] == "rechazado") {
+                clone.push({
+                    type: "comment",
+                    value: object["comentario"]
+                });
+            // }
+            if(object["evaluacion"] == "aprobado") {
+                clone = clone.filter(e => e.name != 'remove');
+            }
+        }
+
+        newChildrens.push(clone);
+    }
+    return newChildrens;
+}
 

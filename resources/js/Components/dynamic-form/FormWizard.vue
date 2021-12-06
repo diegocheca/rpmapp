@@ -184,7 +184,8 @@ export default {
             let currentValues = this.formSchema[this.currentStep].bodyStep.map(bodyStep => {
                 return bodyStep.body.map(body => {
                     const inputs = body.inputs.map((input, index) => {
-                        if(values[input.name] && typeof values[input.name] !== 'undefined') {
+                        // if(values[input.name] && typeof values[input.name] !== 'undefined') {
+                        if(values.hasOwnProperty(input.name)) {
                             let obj = {}
                             obj[`${input.name}`] = values[input.name];
 

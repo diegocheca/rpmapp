@@ -309,7 +309,7 @@
                                                             </svg>
                                                             <div v-if="ele.type == 'observation' && evaluate" class="grid grid-rows-2 grid-flow-col p-4 mt-5 rounded-lg"
                                                             :class="[action != 'create' && ele.value != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]">
-                                                                <!-- <pre>{{ele}}</pre> -->
+                                                                <pre>{{ele.comment.value}}</pre>
                                                                 <div class="w-full flex flex-wrap">
                                                                     <span class="w-full text-gray-700">
                                                                         Correcto?

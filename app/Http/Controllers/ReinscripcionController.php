@@ -20,6 +20,7 @@ use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\HomeControllerM;
 use App\Models\Provincias;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -52,8 +53,10 @@ class ReinscripcionController extends Controller
             ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
             ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
             ->where('usuario_creador', '=', Auth::user()->id)
+            ->whereNull('reinscripciones.deleted_at')
             ->select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
-            ->get();
+            ->get()
+            ->unique('reinscripciones.id');
         }
         elseif(Auth::user()->hasRole('Autoridad')) {
             $reinscripciones = DB::table('reinscripciones')
@@ -61,15 +64,19 @@ class ReinscripcionController extends Controller
            ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
             ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
             // ->where('productores.leal_provincia', $user->province->value)
+            ->whereNull('reinscripciones.deleted_at')
             ->select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
-            ->get();
+            ->get()
+            ->unique('reinscripciones.id');;
         }
         else //administrador
             $reinscripciones = Reinscripciones::select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
             ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
-           ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+            ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
             ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
-            ->get();
+            ->whereNull('reinscripciones.deleted_at')
+            ->get()
+            ->unique('reinscripciones.id');
         //dd($user->province->value,Auth::user()->hasRole('Autoridad') );
         return Inertia::render('Reinscripciones/List', ['reinscripciones' => $reinscripciones]);
     }
@@ -117,8 +124,8 @@ class ReinscripcionController extends Controller
         $reinscripcion = $request->all();
         // dd($reinscripcion);
         $user = HomeController::userData();
-        $provinceData = Provincias::where('id','=', $user->province->value)->first();
-        $period = date('Y-m-d', strtotime("+$provinceData->duracion_reinscripcion months", strtotime(date("Y-m-d"))));
+        // $provinceData = Provincias::where('id','=', $user->province->value)->first();
+        // $period = date('Y-m-d', strtotime("+$provinceData->duracion_reinscripcion months", strtotime(date("Y-m-d"))));
 
         $saveData = [];
         $newProducts = [];
@@ -131,9 +138,7 @@ class ReinscripcionController extends Controller
 
             if ($key == "Productos") {
 
-                if(!empty($reinscripcion['production_checkbox']) && $reinscripcion['production_checkbox'] == true) continue;
-
-
+                if(!empty($reinscripcion['production_checkbox']) && $reinscripcion['production_checkbox'] == false) continue;
 
                 $saveData["cantidad_productos"] = count($data);
 
@@ -172,35 +177,38 @@ class ReinscripcionController extends Controller
             $saveData[$key] = $data;
         }
 
-        $saveData['fecha_vto'] = $period ;
+        $saveData['fecha_vto'] = null ;
         $saveData['estado'] = 'en proceso';
-
-        // $newReinscription = Reinscripciones::create($saveData);
 
 
         DB::beginTransaction();
         try {
-            // if(isset($saveData['nombre_mineral_evaluacion'])) {
-            //     unset($saveData['nombre_mineral_evaluacion']);
-            // }
-            // llama a la funcion especifica de cada provincia
             $provinceName = str_replace(" ", "", $user->province->label);
-            $functionRedirect = $provinceName."Store";
-            // dd($functionRedirect);
-            $this->$functionRedirect($saveData, $newProducts, null);
+            if(in_array($provinceName, $this->commonCountries)) {
+                $newReinscription = Reinscripciones::create($saveData);
+                if(!empty($reinscripcion['production_checkbox']) && $reinscripcion['production_checkbox']) {
+                    for ($i = 0; $i < count($newProducts); $i++) {
+                        $newProducts[$i]["id_mina"] = $saveData["id_mina"];
+                        $newProducts[$i]["id_reinscripcion"] = $newReinscription["id"];
+                        Productos::create($newProducts[$i]);
+                    }
+                }
+            } else {
+                // if(isset($saveData['nombre_mineral_evaluacion'])) {
+                //     unset($saveData['nombre_mineral_evaluacion']);
+                // }
+                // llama a la funcion especifica de cada provincia
+                $provinceName = str_replace(" ", "", $user->province->label);
+                $functionRedirect = $provinceName."Store";
+                // dd($functionRedirect);
+                $this->$functionRedirect($saveData, $newProducts, null);
+
+            }
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollback();
             return response()->json(['error' => $ex->getMessage()], 500);
         }
-
-
-        // if(!empty($reinscripcion['production_checkbox']) && $reinscripcion['production_checkbox']) {
-        //     for ($i = 0; $i < count($newProducts); $i++) {
-        //         $newProducts[$i]["id_reinscripcion"] = $newReinscription["id"];
-        //         Productos::create($newProducts[$i]);
-        //     }
-        // }
 
         return Redirect::route('reinscripciones.index');
     }
@@ -414,7 +422,6 @@ class ReinscripcionController extends Controller
     {
         $productors = ProductoresController::productoresUsuario();
         $reinscripcion = Reinscripciones::find($id);
-
         $provinces = CountriesController::getProvinces();
 
         $productorsList = [];
@@ -422,6 +429,29 @@ class ReinscripcionController extends Controller
             array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
         }
 
+        $idMina = DB::table('reinscripciones')
+        ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+        ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
+        ->where('reinscripciones.id', '=', $id)
+        ->whereNull('productos.deleted_at')
+        ->select(['productos.id_mina', 'id_mina_evaluacion', 'id_mina_comentario'])
+        ->first();
+
+        $reinscripcion['id_mina'] = isset($idMina)? $idMina->id_mina : null;
+        $reinscripcion['id_mina_evaluacion'] = isset($idMina)? $idMina->id_mina_evaluacion : null;
+        $reinscripcion['id_mina_comentario'] = isset($idMina)? $idMina->id_mina_comentario : null;
+        $reinscripcion->productos = Reinscripciones::find($id)->productos;
+        // dd(
+        //     DB::table('reinscripciones')
+        //         ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+        //         ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
+        //         ->where('reinscripciones.id', '=', $id)
+        //         ->whereNull('productos.deleted_at')
+        //         // ->select('productos.id_mina')
+        //         ->get()
+        // );
+
+        // dd($reinscripcion);
         return [
             'reinscripcion' => $reinscripcion,
             'provinces' => $provinces,
@@ -507,10 +537,14 @@ class ReinscripcionController extends Controller
     {
         $user = HomeController::userData();
         $provinceName = str_replace(" ", "", $user->province->label);
-        $functionRedirect = $provinceName."Data";
+
+        if(in_array($provinceName, $this->commonCountries)) {
+            $functionRedirect = "CommonData";
+        } else {
+            $functionRedirect = $provinceName."Data";
+        }
+
         $data = $this->$functionRedirect($id);
-
-
         // $productors = ProductoresController::productoresUsuario();
         // $reinscripcion = Reinscripciones::find($id);
         // $reinscripcion->productos = Reinscripciones::find($id)->productos;
@@ -558,7 +592,6 @@ class ReinscripcionController extends Controller
      */
     public function updateRevision(Request $request, $id)
     {
-
         $dataReinscripcion = $request->all();
         $dataReinscripcionFilter = [];
         $dataReinscripcionProductsFilter = [];
@@ -576,10 +609,7 @@ class ReinscripcionController extends Controller
         //     }
         // }
 
-        $dataReinscripcionFilter['equipos'] = $dataReinscripcion['equipos'];
-        $dataReinscripcionFilter['explosivos'] = $dataReinscripcion['explosivos'];
-
-        // dd($dataReinscripcionFilter);
+        // dd($allStatus);
 
 
         $statusRechazado = in_array('rechazado', $allStatus);
@@ -587,41 +617,81 @@ class ReinscripcionController extends Controller
 
 
 
-        // dd($statusRechazado || $statusSinEvaluar);
+        // dd($statusRechazado ,$statusSinEvaluar);
         if ($statusRechazado || $statusSinEvaluar) {
             $newStatus =  $statusRechazado ? 'rechazado' : 'en proceso';
+            $dataReinscripcionFilter['fecha_vto'] = null;
         } else {
             $newStatus =  'aprobado';
+            $provinceData = Provincias::where('id','=', $user->province->value)->first();
+            $dataReinscripcionFilter['fecha_vto'] = date('Y-m-d', strtotime("+$provinceData->duracion_reinscripcion months", strtotime(date("Y-m-d"))));
         }
 
         $dataReinscripcionFilter['estado'] = $newStatus;
 
         DB::beginTransaction();
         try {
-            // dd($dataReinscripcionFilter);
             // llama a la funcion especifica de cada provincia
             $provinceName = str_replace(" ", "", $user->province->label);
-            $functionRedirect = $provinceName."Store";
-            // dd($functionRedirect);
-            $this->$functionRedirect($dataReinscripcionFilter, null, $id, null );
+
+            if(in_array($provinceName, $this->commonCountries)) {
+                $schemaNames = Schema::getColumnListing('reinscripciones');
+                $saveDataReinscripcion = [];
+                for ($i=0; $i < count($schemaNames); $i++) {
+                    $exists = array_key_exists($schemaNames[$i], $dataReinscripcionFilter);
+                    if($exists) {
+                        $saveDataReinscripcion[$schemaNames[$i]] = $dataReinscripcionFilter[$schemaNames[$i]];
+                    }
+                }
+                // dd($dataReinscripcionFilter);
+                Reinscripciones::where('id', $id)->update($saveDataReinscripcion);
+
+                if(isset($dataReinscripcion['Productos']) && count($dataReinscripcion['Productos']) > 0) {
+
+                    $toUpdate = Reinscripciones::find($id);
+                    for ($i = 0; $i < count($toUpdate->productos); $i++) {
+                        $schemaNamesProd = Schema::getColumnListing('productos');
+
+                        $saveDataProd = [];
+                        for ($j=0; $j < count($schemaNamesProd) ; $j++) {
+                            $exists = array_key_exists($schemaNamesProd[$j], $dataReinscripcionFilter);
+                            // dd($dataReinscripcionFilter);
+                            if($exists) {
+                                $saveDataProd[$schemaNamesProd[$j]] = $dataReinscripcionFilter[$schemaNamesProd[$j]];
+                            }
+                        }
+                        // var_dump($toUpdate->productos[$i]['id']);
+
+                        $saveDataProd['comment'] = $dataReinscripcion['Productos'][$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcion['Productos'][$i]['row_comentario'] : null;
+                        $saveDataProd['value'] = $dataReinscripcion['Productos'][$i]['row_evaluacion'];
+                        $saveDataProd['estado'] = $newStatus;
+
+                        Productos::where('id', $toUpdate->productos[$i]['id'])->update(
+                            $saveDataProd
+                            // [
+                            // 'comment' => $dataReinscripcionProductsFilter[$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcionProductsFilter[$i]['row_comentario'] : null,
+                            // 'value' =>  $dataReinscripcionProductsFilter[$i]['row_evaluacion'],
+                            // 'estado' => $newStatus
+                            // ]
+                        );
+                    }
+                }
+            } else {
+                $functionRedirect = $provinceName."Store";
+                if(isset($dataReinscripcion['equipos'])) {
+                    $dataReinscripcionFilter['equipos'] = $dataReinscripcion['equipos'];
+                }
+                if(isset($dataReinscripcion['explosivos'])) {
+                    $dataReinscripcionFilter['explosivos'] = $dataReinscripcion['explosivos'];
+                }
+
+                $this->$functionRedirect($dataReinscripcionFilter, null, $id, null );
+            }
             DB::commit();
         } catch (\Exception $ex) {
             DB::rollback();
             return response()->json(['error' => $ex->getMessage()], 500);
         }
-
-        // Reinscripciones::where('id', $id)->update($dataReinscripcionFilter);
-
-        // if(isset($dataReinscripcion['production_checkbox']) && $dataReinscripcion['production_checkbox']) {
-        //     $toUpdate = Reinscripciones::find($id);
-        //     for ($i = 0; $i < count($toUpdate->productos); $i++) {
-        //         Productos::where('id', $dataReinscripcionProductsFilter[$i]['id'])->update([
-        //             'comment' => $dataReinscripcionProductsFilter[$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcionProductsFilter[$i]['row_comentario'] : null,
-        //             'value' =>  $dataReinscripcionProductsFilter[$i]['row_evaluacion'],
-        //             'estado' => $newStatus
-        //         ]);
-        //     }
-        // }
 
         return Redirect::route('reinscripciones.index');
     }
@@ -653,8 +723,8 @@ class ReinscripcionController extends Controller
     {
         $toUpdate = Reinscripciones::find($id);
         $user = HomeController::userData();
-        $provinceData = Provincias::where('id','=', $user->province->value)->first();
-        $period = date('Y-m-d', strtotime("+$provinceData->duracion_reinscripcion months", strtotime(date("Y-m-d"))));
+        // $provinceData = Provincias::where('id','=', $user->province->value)->first();
+        // $period = date('Y-m-d', strtotime("+$provinceData->duracion_reinscripcion months", strtotime(date("Y-m-d"))));
 
         if ($toUpdate["estado"] != "aprobado") {
             $reinscripcion = $request->all();
@@ -703,7 +773,7 @@ class ReinscripcionController extends Controller
                 $saveData[$key] = $data;
             }
 
-            $saveData['fecha_vto'] = $period ;
+            $saveData['fecha_vto'] = null ;
             $saveData['estado'] = 'en proceso';
 
             // $newReinscription = Reinscripciones::create($saveData);
@@ -711,42 +781,46 @@ class ReinscripcionController extends Controller
 
             DB::beginTransaction();
             try {
-                // llama a la funcion especifica de cada provincia
                 $provinceName = str_replace(" ", "", $user->province->label);
-                $functionRedirect = $provinceName."Store";
-                // dd($functionRedirect);
-                $this->$functionRedirect($saveData, $newProducts, $id, 'edit');
+                if(in_array($provinceName, $this->commonCountries)) {
+                    // update reinscripcion
+
+                    $toUpdate->update($saveData);
+
+                    for ($i = 0; $i < count($newProducts); $i++) {
+                        if (!empty($newProducts[$i]["id"])) {
+                            // update product
+                            $product = Productos::find($newProducts[$i]["id"]);
+                            $product->update($newProducts[$i]);
+                        } else {
+                            // create product
+                            $newProducts[$i]["id_reinscripcion"] = $id;
+                            $newProducts[$i]["id_mina"] = $saveData['id_mina'];
+                            $prod = Productos::create($newProducts[$i]);
+                            $newProducts[$i]["id"] = $prod["id"];
+                        }
+                    }
+
+                    $allProducts = Productos::where('id_reinscripcion', $id)->get();
+                    for ($i = 0; $i < count($allProducts); $i++) {
+                        $clave = array_search($allProducts[$i]["id"], array_column($newProducts, 'id'));
+                        if ($clave === false) {
+                            // delete producto
+                            $deletedRows = Productos::where('id', $allProducts[$i]["id"])->delete();
+                        }
+                    }
+                } else {
+                    // llama a la funcion especifica de cada provincia
+                    $functionRedirect = $provinceName."Store";
+                    // dd($functionRedirect);
+                    $this->$functionRedirect($saveData, $newProducts, $id, 'edit');
+                }
                 DB::commit();
             } catch (\Exception $ex) {
                 DB::rollback();
                 return response()->json(['error' => $ex->getMessage()], 500);
             }
 
-            // update reinscripcion
-
-            // $toUpdate->update($saveData);
-
-            // for ($i = 0; $i < count($newProducts); $i++) {
-            //     if (!empty($newProducts[$i]["id"])) {
-            //         // update product
-            //         $product = Productos::find($newProducts[$i]["id"]);
-            //         $product->update($newProducts[$i]);
-            //     } else {
-            //         // create product
-            //         $newProducts[$i]["id_reinscripcion"] = $id;
-            //         $prod = Productos::create($newProducts[$i]);
-            //         $newProducts[$i]["id"] = $prod["id"];
-            //     }
-            // }
-
-            // $allProducts = Productos::where('id_reinscripcion', $id)->get();
-            // for ($i = 0; $i < count($allProducts); $i++) {
-            //     $clave = array_search($allProducts[$i]["id"], array_column($newProducts, 'id'));
-            //     if ($clave === false) {
-            //         // delete producto
-            //         $deletedRows = Productos::where('id', $allProducts[$i]["id"])->delete();
-            //     }
-            // }
         }
 
         return Redirect::route('reinscripciones.index');
