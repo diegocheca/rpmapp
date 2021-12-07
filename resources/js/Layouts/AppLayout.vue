@@ -20,7 +20,7 @@
                   :href="route('dashboard')"
                   :active="route().current('dashboard')"
                 >
-                  Dashboard
+                  Inicio
                 </jet-nav-link>
                 <jet-nav-link
                   v-if="hasAnyPermission(['rpm.borradores.show'])"
@@ -229,23 +229,6 @@
                       >
                         {{ $page.props.user.provincia }}
                       </span>
-                      <!-- <span
-                        class="
-                          font-mono font-semibold
-                          uppercase
-                          ml-4
-                          bg-blue-500
-                          text-white text-base
-                          tracking-wider
-                          p-2
-                          rounded-xl
-                          leading-none
-                          flex
-                          items-center
-                        "
-                      >
-                        {{ $page.props.user.provincia }}
-                      </span> -->
                     </button>
                     <span v-else class="inline-flex rounded-md">
                       <button
@@ -408,6 +391,7 @@
                 :logoAlt="$page.props.user.name"
                 :titulo="$page.props.user.name"
                 :subtitulo="$page.props.user.provincia"
+                :ClaroOscuro="'claro'"
               ></tarjetaPresentacion>
               <nav class="flex flex-col flex-1 w-64 p-4 mt-4">
                 <inertia-link
@@ -443,7 +427,7 @@
                       d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                     />
                   </svg>
-                  <span>Inicio (Dashboard)</span>
+                  <span>Inicio</span>
                 </inertia-link>
                 <inertia-link
                   v-if="hasAnyPermission(['rpm.borradores.show'])"

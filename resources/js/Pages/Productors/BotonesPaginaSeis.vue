@@ -31,9 +31,7 @@
             rounded-xl
             bg-gray-100
             shadow-xl
-            hover:text-white
-            hover:shadow-xl
-            hover:bg-gray-600
+            hover:text-white hover:shadow-xl hover:bg-gray-600
           "
           @click="guardar_avnces_uno"
         >
@@ -54,9 +52,7 @@
             rounded-xl
             bg-gray-100
             shadow-xl
-            hover:text-white
-            hover:shadow-xl
-            hover:bg-gray-600
+            hover:text-white hover:shadow-xl hover:bg-gray-600
           "
         >
           {{ titulo_boton_volver }}
@@ -235,7 +231,7 @@ export default {
         })
         .catch(function (error) {
           // handle error
-            Swal.fire("Error", "Error inesperado. <br/>" + error, "error");
+          Swal.fire("Error", "Error inesperado. <br/>" + error, "error");
           console.log(error);
         });
       //soy una autoridad minera

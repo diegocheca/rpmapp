@@ -8,12 +8,11 @@
       py-4
       px-8
       bg-white
-      shadow-lg
       my-20
       border-indigo-400
     "
   >
-    <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
+    <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a
         v-if="titulo_boton_guardar === 'Guardar Datos del Domicilio Legal'"
         href="#section_domicilio_legal"
@@ -143,12 +142,12 @@
           />
         </label>
       </div>
-    </div>
+    </div> -->
     <div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2> -->
       <!-- <br /><br /> -->
 
-      <div class="items-center justify-left">
+      <div class="items-center justify-left sticky top-0 z-10">
         <CardDomLegal
           v-if="titulo_boton_guardar === 'Guardar Datos del Domicilio Legal'"
           :progreso="50"
@@ -163,6 +162,7 @@
           :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_legal"
           v-on:changevalorayuda="update_valor_ayuda_local_legal($event)"
+          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
         ></CardDomLegal>
 
         <CardDomAdmin
@@ -182,6 +182,7 @@
           :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_administrativo"
           v-on:changevalorayuda="update_valor_ayuda_local_admi($event)"
+          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
         ></CardDomAdmin>
       </div>
       <br />
@@ -563,7 +564,6 @@
           </div>
         </div>
       </div>
-
       <div class="flex flex-wrap">
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
           <SelectDepartamento
@@ -922,25 +922,26 @@
       </div>
     </div>
     <br /><br />
+
     <div class="flex items-center justify-center">
       <BotonesPaginaDos
         v-if="mostrar_boton_guardar_dos"
         :link_volver="'#'"
-        :titulo_boton_volver="'volver'"
+        :titulo_boton_volver="'Volver'"
         :titulo_boton_guardar="'Guardar Datos del Domicilio'"
-        :leal_calle="form_pagina.leal_calle"
+        :leal_calle="leal_calle"
         :nombre_calle_legal_valido="form_pagina.nombre_calle_legal_valido"
         :nombre_calle_legal_correcto="form_pagina.nombre_calle_legal_correcto"
         :obs_nombre_calle_legal="form_pagina.obs_nombre_calle_legal"
         :obs_nombre_calle_legal_valido="
           form_pagina.obs_nombre_calle_legal_valido
         "
-        :leal_numero="form_pagina.leal_numero"
+        :leal_numero="leal_numero"
         :leal_numero_valido="form_pagina.leal_numero_valido"
         :leal_numero_correcto="form_pagina.leal_numero_correcto"
         :obs_leal_numero="form_pagina.obs_leal_numero"
         :obs_leal_numero_valido="form_pagina.obs_leal_numero_valido"
-        :leal_telefono="form_pagina.leal_telefono"
+        :leal_telefono="leal_telefono"
         :leal_telefono_valido="form_pagina.leal_telefono_valido"
         :leal_telefono_correcto="form_pagina.leal_telefono_correcto"
         :obs_leal_telefono="form_pagina.obs_leal_telefono"
@@ -950,27 +951,27 @@
         :leal_pais_correcto="form_pagina.leal_pais_correcto"
         :obs_leal_pais="form_pagina.obs_leal_pais"
         :obs_leal_pais_valido="form_pagina.obs_leal_pais_valido"
-        :leal_provincia="form_pagina.leal_provincia"
+        :leal_provincia="leal_provincia"
         :leal_provincia_valido="form_pagina.leal_provincia_valido"
         :leal_provincia_correcto="form_pagina.leal_provincia_correcto"
         :obs_leal_provincia="form_pagina.obs_leal_provincia"
         :obs_leal_provincia_valido="form_pagina.obs_leal_provincia_valido"
-        :leal_departamento="form_pagina.leal_departamento"
+        :leal_departamento="leal_departamento"
         :leal_departamento_valido="form_pagina.leal_departamento_valido"
         :leal_departamento_correcto="form_pagina.leal_departamento_correcto"
         :obs_leal_departamento="form_pagina.obs_leal_departamento"
         :obs_leal_departamento_valido="form_pagina.obs_leal_departamento_valido"
-        :leal_localidad="form_pagina.leal_localidad"
+        :leal_localidad="leal_localidad"
         :leal_localidad_valido="form_pagina.leal_localidad_valido"
         :leal_localidad_correcto="form_pagina.leal_localidad_correcto"
         :obs_leal_localidad="form_pagina.obs_leal_localidad"
         :obs_leal_localidad_valido="form_pagina.obs_leal_localidad_valido"
-        :leal_cp="form_pagina.leal_cp"
+        :leal_cp="leal_cp"
         :leal_cp_valido="form_pagina.leal_cp_valido"
         :leal_cp_correcto="form_pagina.leal_cp_correcto"
         :obs_leal_cp="form_pagina.obs_leal_cp"
         :obs_leal_cp_valido="form_pagina.obs_leal_cp_valido"
-        :leal_otro="form_pagina.leal_otro"
+        :leal_otro="leal_otro"
         :leal_otro_valido="form_pagina.leal_otro_valido"
         :leal_otro_correcto="form_pagina.leal_otro_correcto"
         :obs_leal_otro="form_pagina.obs_leal_otro"
@@ -1449,6 +1450,10 @@ export default {
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
       // console.log("valor: ", v);
+    },
+    update_valor_pagina_siguiente(v) {
+      // console.log("valor: ", v);
+      this.$emit("mostrarpasosiguiente", v);
     },
     buscar_domicilio_en_padre() {
       //busco los datos en el padre

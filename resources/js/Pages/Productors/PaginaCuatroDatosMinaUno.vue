@@ -8,12 +8,11 @@
       py-4
       px-8
       bg-white
-      shadow-lg
       my-20
       border-indigo-400
     "
   >
-    <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
+    <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_mina_uno">
         <img
           class="
@@ -124,11 +123,11 @@
           />
         </label>
       </div>
-    </div>
+    </div> -->
     <div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br /> -->
-      <div class="items-center justify-left">
+      <div class="items-center justify-left sticky top-0 z-10">
         <CardMinaUno
           :progreso="50"
           :aprobado="50"
@@ -141,6 +140,7 @@
           :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_local"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
+          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
         ></CardMinaUno>
       </div>
       <br />
@@ -160,7 +160,6 @@
                         v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
                         v-on:changevalornumexp="updatevalor_num_exp($event)"
                     ></NumeroExpedienteMina> -->
-
           <NombreMina
             v-if="$props.mostrar_num_exp"
             v-bind:valor_input_props="$props.numero_expdiente"
@@ -191,7 +190,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">
@@ -261,7 +260,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">
@@ -321,7 +320,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">Es el nombre que se le ha asignado a la mina.</p>
@@ -376,7 +375,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">
@@ -434,7 +433,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">
@@ -569,7 +568,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">
@@ -633,7 +632,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">
@@ -703,7 +702,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">
@@ -773,7 +772,7 @@
                 text-gray-800
                 bg-opacity-20
                 text-opacity-80
-                ring ring-4 ring-blue-100
+                ring-4 ring-blue-100
               "
             >
               <p class="p-3">
@@ -1376,9 +1375,11 @@ export default {
       //console.log("mis minerales son");
       //console.log(this.minerales_locales); */
     },
+    update_valor_pagina_siguiente(v) {
+      this.$emit("mostrarpasosiguiente", v);
+    },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
-      // console.log("valor: ", v);
     },
   },
   mounted() {

@@ -1,5 +1,5 @@
 <template>
-    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">Título</div>
+    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">{{titulo}}</div>
     <div class="chart-pie" ref="chartdiv" />
 </template>
 
@@ -13,6 +13,7 @@ am4core.useTheme(am4themes_animated);
 
 export default {
     props: {
+        titulo: String,
         aprobados: Number,
         reprobados: Number,
         borrador_cant: Number,

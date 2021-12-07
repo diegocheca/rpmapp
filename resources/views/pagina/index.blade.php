@@ -10,7 +10,9 @@
   <meta name="author" content="Grayrids">
   <title>RPM - SJ</title>
   <!--====== Favicon Icon ======-->
-  <link rel="shortcut icon" href="{{url('slick/img/2.png')}}" type="image/png">
+  {{-- <link rel="shortcut icon" href="{{url('slick/img/2.png')}}" type="image/png"> --}}
+  <link rel="shortcut icon" href="{{url('slick/img/ico_rpm.png')}}" type="image/png">
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="{{url('slick/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{url('slick/css/animate.css')}}">
@@ -33,7 +35,7 @@
     </div>
     <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
       <div class="container">
-        <a href="index.html" class="navbar-brand"><img src="{{url('slick/img/logo.png')}}" alt="" width="65%"></a>
+        <a href="index.html" class="navbar-brand"><img src="{{url('slick/img/Logo_RPM.png')}}" alt="" width="40%"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <i class="lni-menu"></i>
         </button>

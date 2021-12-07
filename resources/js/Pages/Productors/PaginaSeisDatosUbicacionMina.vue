@@ -8,12 +8,11 @@
       py-4
       px-8
       bg-white
-      shadow-lg
       my-20
       border-indigo-400
     "
   >
-    <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
+    <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_datos_mina_ubicacion">
         <img
           class="
@@ -123,11 +122,11 @@
           />
         </label>
       </div>
-    </div>
+    </div> -->
     <div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br /> -->
-      <div class="items-center justify-left">
+      <div class="items-center justify-left sticky top-0 z-10">
         <CardMinaUbicacion
           :progreso="50"
           :aprobado="50"
@@ -140,6 +139,7 @@
           :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_local"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
+          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
         ></CardMinaUbicacion>
       </div>
       <br />
@@ -238,6 +238,7 @@
             v-bind:testing="mostrar_testing"
             v-bind:label="'Departamento de Ubicacion de la Mina'"
             v-bind:lista_departamentos="lista_departamentos"
+            v-bind:lista_departamentos_dos="$props.lista_dptos"
             v-bind:desactivar_legal_dpto="$props.desactivar_ubicacion_dpto"
             v-bind:mostrar_legal_dpto_correccion="
               $props.mostrar_ubicacion_dpto_correccion
@@ -532,7 +533,7 @@
     <BotonesPaginaSeis
       v-if="$props.mostrar_boton_guardar_seis"
       :link_volver="'#'"
-      :titulo_boton_volver="'volver'"
+      :titulo_boton_volver="'Volver'"
       :titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
       :localidad_mina_provincia="form_pagina.localidad_mina_provincia"
       :localidad_mina_provincia_validacion="
@@ -758,6 +759,12 @@ export default {
     };
   },
   methods: {
+    cargar_dptos() {
+      let self = this;
+      //console.log("mis deptos de legal padre es:",self.$props.lista_dptos);
+      self.lista_departamentos = self.$props.lista_dptos;
+      //console.log("mis deptos de legal hijo es:",self.lista_departamentos);
+    },
     cerrar_modal_datos_uno() {
       this.mostrar_modal_datos_ya_guardados = false;
     },
@@ -933,9 +940,11 @@ export default {
     update_valor_ayuda_local(newValor) {
       this.ayuda_local = newValor;
     },
+    update_valor_pagina_siguiente(v) {
+      this.$emit("mostrarpasosiguiente", v);
+    },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
-      // console.log("valor: ", v);
     },
   },
 };
