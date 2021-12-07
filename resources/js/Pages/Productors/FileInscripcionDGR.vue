@@ -189,7 +189,6 @@
               flex flex-col
               items-center
               justify-center
-              items-center
             "
           >
             <!---<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -207,9 +206,11 @@
                 >Haga click aca para subir los archivo(s) desde su
                 dispositivo.</span
               >
-              <span v-else class="mt-2 text-base leading-normal text-center uppercase">{{
-                nameArchivo
-              }}</span>
+              <span
+                v-else
+                class="mt-2 text-base leading-normal text-center uppercase"
+                >{{ nameArchivo }}</span
+              >
             </p>
           </div>
           <input
@@ -241,7 +242,7 @@
               $inertia.page.props.appName +
               '/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'
             "
-            >click here to download the PDF file.</a
+            >Haga clic aquí para descargar el archivo PDF.</a
           >
         </p>
       </object>
@@ -255,13 +256,13 @@
         <label
           class="
             flex flex-col
-            rounded-lg
-            border-4 border-dashed
             w-full
-            h-60
-            p-10
+            h-5
+            p-5
             group
             text-center
+            bg-blue-600
+            hover:bg-blue-800
           "
         >
           <div
@@ -272,41 +273,32 @@
               flex flex-col
               items-center
               justify-center
-              items-center
             "
           >
-            <!---<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                        </svg>-->
-            <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-              <img
-                class="has-mask h-36 object-center"
-                src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
-                alt="freepik image"
-              />
-            </div>
-            <p class="pointer-none text-gray-500">
-              <span class="text-sm"
-                >Para cambiar el archivo: Arrastrar y soltar</span
+            <p class="pointer-none text-gray-600">
+              <span v-if="!nameArchivo" class="text-md text-center text-white"
+                >Haga click aca para subir los archivo(s) desde su
+                dispositivo.</span
               >
-              los archivo(s) <br />
-              o
-              <a href="" id="" class="text-blue-600 hover:underline"
-                >seleccionar un archivo</a
+              <span
+                v-else
+                class="text-md text-center text-white"
+                >Nuevo Archivo: {{ nameArchivo }}</span
               >
-              desde su dispotivo
             </p>
           </div>
           <input
             :disabled="$props.inscripcion_disable"
             type="file"
-            class="hidden"
+            v-on:change="handleFileUpload()"
+            ref="file"
+            class="cursor-pointer block w-full opacity-0 pin-r pin-t"
             @change="cambio_el_archivo"
           />
         </label>
       </div>
-      <p class="text-sm text-gray-300">
-        <span>Tipos de archivos: doc,pdf</span>
+      <p class="text-sm text-gray-400">
+        <span>Tipos de archivos: doc,pdf,tipos de imagenes.</span>
       </p>
     </div>
   </div>

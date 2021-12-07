@@ -1492,7 +1492,7 @@
                   <option value="aprobado">Aprobado</option>
                   <option value="reprobado">Reprobado</option>
                   <option value="con observacion">
-                    Con Obswwwwwwwwwwwervacion
+                    Con Observación
                   </option>
                 </select>
               </div>
@@ -1525,7 +1525,7 @@
                     text-purple-600
                     py-1
                     px-3
-                    rounded-full
+                    rounded
                     text-xs
                   "
                   >En proceso</span
@@ -1537,7 +1537,7 @@
                     text-pink-600
                     py-1
                     px-3
-                    rounded-full
+                    rounded
                     text-xs
                   "
                   >Borrador</span
@@ -1549,7 +1549,7 @@
                     text-green-600
                     py-1
                     px-3
-                    rounded-full
+                    rounded
                     text-xs
                   "
                   >Aprobado</span
@@ -1561,7 +1561,7 @@
                     text-yellow-600
                     py-1
                     px-3
-                    rounded-full
+                    rounded
                     text-xs
                   "
                   >En revision</span
@@ -1573,14 +1573,14 @@
                     text-gary-600
                     py-1
                     px-3
-                    rounded-full
+                    rounded
                     text-xs
                   "
                   >Con Obesrvacion</span
                 >
                 <span
                   v-if="$props.productor.estado === 'reprobado'"
-                  class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs"
+                  class="bg-red-200 text-red-600 py-1 px-3 rounded text-xs"
                   >Reprobado</span
                 >
               </div>
@@ -1646,28 +1646,21 @@
                 </select>
               </div>
             </div>
-            sss <br />
-            <div class="flex">
-              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <inertia-link
-                  :href="route('formulario-alta.index')"
-                  class="
-                    px-4
-                    py-2
-                    text-sm
-                    font-medium
-                    rounded-full
-                    border-b border-red-300
-                    bg-red-200
-                    hover:bg-red-300
-                    text-red-900
-                  "
-                >
-                  Volver
-                </inertia-link>
-              </div>
+            <br />
+            <div
+              class="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-2 w-full"
+            >
               <div
-                class="w-full md:w-1/2 px-3 mb-6 md:mb-0"
+                class="
+                  grid
+                  justify-start
+                  mb-6
+                  md:mb-0
+                  px-3
+                  sm:w-5/5
+                  self-center
+                  w-full
+                "
                 v-if="$props.mostrar.boton_actualizar"
               >
                 <a
@@ -1675,18 +1668,17 @@
                   @click="mostrar_modal_presentar"
                   :disabled="$props.disables.boton_actualizar"
                   class="
-                    text-white
-                    uppercase
-                    text-lg
+                    text-xl
+                    font-medium
                     mx-auto
-                    py-6
-                    px-20
-                    rounded-full
-                    block
-                    border-b border-green-300
-                    bg-purple-200
-                    hover:bg-purple-300
-                    text-purple-700
+                    py-3
+                    px-5
+                    text-indigo-500
+                    border border-gray-400
+                    rounded-xl
+                    bg-gray-100
+                    shadow-xl
+                    hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
                   {{ nombre_boton_actualizar }} Solicitud
@@ -1696,22 +1688,52 @@
                   @click="mostrar_modal_presentar"
                   :disabled="$props.disables.boton_actualizar"
                   class="
-                    text-white
-                    uppercase
-                    text-lg
+                    text-xl
+                    font-medium
                     mx-auto
-                    py-6
-                    px-20
-                    rounded-full
-                    block
-                    border-b border-green-300
-                    bg-purple-200
-                    hover:bg-purple-300
-                    text-purple-700
+                    py-3
+                    px-5
+                    text-indigo-500
+                    border border-gray-400
+                    rounded-xl
+                    bg-gray-100
+                    shadow-xl
+                    hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
                   Actuadddlizar
                 </button>
+              </div>
+              <div
+                class="
+                  grid
+                  justify-end
+                  mb-6
+                  md:mb-0
+                  px-3
+                  sm:w-5/5
+                  self-center
+                  w-full
+                "
+              >
+                <inertia-link
+                  :href="route('formulario-alta.index')"
+                  class="
+                    text-xl
+                    font-medium
+                    mx-auto
+                    py-3
+                    px-5
+                    text-indigo-500
+                    border border-gray-400
+                    rounded-xl
+                    bg-gray-100
+                    shadow-xl
+                    hover:text-white hover:shadow-xl hover:bg-gray-600
+                  "
+                >
+                  Volver Atras
+                </inertia-link>
               </div>
             </div>
           </div>
@@ -1869,7 +1891,7 @@
                   py-2
                   text-sm
                   font-medium
-                  rounded-full
+                  rounded
                   border-b border-green-300
                   bg-green-200
                   hover:bg-green-300
@@ -2780,7 +2802,7 @@ export default {
       if (form_evaluacion_valida === "") {
         //el formulario esta bien hecho y no tiene observaciones
         this.modal_body_apro =
-          " \n \n Eswwwwwwwwwwwwwwte formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+          " \n \n Este formulario no posee ninguna observación por tanto, puede ser aprobado sin problemas";
         this.mostrar_boton_aprobar = true;
         this.mostrar_boton_aprobar_de_todos_modos = true;
       } else {
