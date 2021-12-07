@@ -2480,7 +2480,6 @@ export default {
         }
       }
     },
-
     mandarDomicilioAlHijo($value) {
       this.form.administracion_calle = this.form.leal_calle;
       this.form.administracion_numero = this.form.leal_numero;
