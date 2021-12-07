@@ -122,6 +122,10 @@ class ReinscripcionSanLuis extends Migration
             $table->string('mecanizada_evaluacion')->nullable()->default(null);
             $table->string('mecanizada_comentario', 50)->nullable()->default(null);
 
+            $table->tinyInteger('semimecanizada')->nullable()->default(null);
+            $table->string('semimecanizada_evaluacion')->nullable()->default(null);
+            $table->string('semimecanizada_comentario', 50)->nullable()->default(null);
+
             $table->string('expediente', 100)->nullable();
             $table->string('expediente_evaluacion')->nullable()->default(null);
             $table->string('expediente_comentario', 50)->nullable()->default(null);
@@ -329,6 +333,10 @@ class ReinscripcionSanLuis extends Migration
             $table->string('capacidad_evaluacion')->nullable()->default(null);
             $table->string('capacidad_comentario', 50)->nullable()->default(null);
 
+            $table->string('explotacion')->nullable()->default(null);
+            $table->string('explotacion_evaluacion')->nullable()->default(null);
+            $table->string('explotacion_comentario', 50)->nullable()->default(null);
+
             $table->string('observaciones', 100)->nullable()->default(null);
             $table->string('comment', 50)->nullable()->default(null);
             $table->string('value', 50)->nullable()->default(null);
@@ -353,7 +361,7 @@ class ReinscripcionSanLuis extends Migration
 
             $table->string('nombre', 100)->nullable()->default(null);
             $table->string('tipo', 100)->nullable()->default(null);
-            $table->integer('cantidad')->nullable()->default(null);
+            $table->string('cantidad')->nullable()->default(null);
             $table->string('observaciones', 100)->nullable()->default(null);
 
             $table->string('evaluacion')->nullable()->default(null);
@@ -377,7 +385,7 @@ class ReinscripcionSanLuis extends Migration
             $table->bigInteger('id_reinscripcion')->nullable()->default(null);
 
             $table->string('marca', 100)->nullable()->default(null);
-            $table->integer('cantidad')->nullable()->default(null);
+            $table->string('cantidad')->nullable()->default(null);
             $table->string('observaciones', 100)->nullable();
 
             $table->string('nombre', 200)->nullable()->default(null);
@@ -479,7 +487,7 @@ class ReinscripcionSanLuis extends Migration
             $table->bigInteger('id_productos')->nullable()->default(null);
 
             $table->string('mes', 100)->nullable()->default(null);
-            $table->integer('cantidad')->nullable()->default(null)->default(0);
+            $table->string('cantidad')->nullable()->default(null)->default(0);
 
             $table->string('lugar_consumo', 100)->nullable()->default(null);
             $table->string('razon_social_comprador', 100)->nullable()->default(null);
@@ -506,7 +514,7 @@ class ReinscripcionSanLuis extends Migration
 
             $table->bigInteger('id_productos')->nullable()->default(null);
 
-            $table->integer('cantidad')->nullable()->default(null)->default(0);
+            $table->string('cantidad')->nullable()->default(null)->default(0);
             $table->string('firma', 100)->nullable()->default(null);
             $table->string('destino', 100)->nullable()->default(null);
             $table->string('variedad_calidad', 100)->nullable()->default(null);
@@ -537,7 +545,7 @@ class ReinscripcionSanLuis extends Migration
 
             $table->bigInteger('id_productos')->nullable()->default(null);
 
-            $table->integer('desde')->nullable()->default(null)->default(0);
+            $table->string('desde')->nullable()->default(null)->default(0);
             $table->string('hasta', 100)->nullable()->default(null);
             $table->string('distancia', 100)->nullable()->default(null);
             $table->string('medio_transporte', 100)->nullable()->default(null);

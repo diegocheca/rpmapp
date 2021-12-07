@@ -49,11 +49,13 @@
                                         :type="item.type"
                                         class="mr-2"
                                         :disabled="action != 'create' && item.disabled"
+                                        v-model="item.value"
                                     >
                                     </Field>
                                     {{opt.label}}
                                 </label>
                             </template>
+
                             <!-- default -->
                             <label v-if="inputsTypes.INPUTS_DEFAULT.indexOf(item.type) > -1" class="relative block">
                                 <Field  :value="item.value" :name="item.name" :type="item.type" class="rounded-md py-2 px-3 text-grey-darkest appearance-none w-full block  " :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado') ? true: false"  :class="[ statusColors[ item.observation.value ] ]" />
@@ -287,7 +289,7 @@
                                                             :disabled="action != 'create' && ele.disabled"
                                                         />
                                                         <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${item.name}[${indexElement}].${ele.name}`" :value="ele.value">
-                                                            <VueMultiselect  v-bind="field" :name="`${item.name}[${indexElement}].${ele.name}`" :ref="`${item.name}[${indexElement}].${ele.name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" v-model="ele.value" >
+                                                            <VueMultiselect  v-bind="field" :name="`${item.name}[${indexElement}].${ele.name}`" :ref="`${item.name}[${indexElement}].${ele.name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" @select="handleChageOptionSelectTable" v-model="ele.value" >
                                                             </VueMultiselect>
                                                         </Field>
                                                         <template v-if="ele.type == inputsTypes.RADIO">
@@ -396,6 +398,8 @@ import inputsTypes from '../../../../helpers/enums/inputsTypes';
 import VueMultiselect from 'vue-multiselect';
 import DTable from './DynamicTable.vue';
 import Toggle from "@vueform/toggle";
+import { provide, inject, ref } from 'vue'
+import { forEach } from 'lodash';
 
 export default {
     components: {
@@ -434,11 +438,7 @@ export default {
         //     type: Array
         // }
     },
-    provide() {
-        return {
-            columnsTable: this.columnsTable
-        };
-    },
+
     data() {
         const statusColors = {
             'aprobado': 'border-green-500 pl-14',
@@ -580,10 +580,14 @@ export default {
             }
         },
         addRowTable(item) {
+
             // let newItem = [...item.element[0]];
             let newItem = JSON.parse(JSON.stringify(item.element[0]));
 
+            // let finish = undefined;
+
             newItem.forEach(e => {
+                // finish = e.value;
                 e.value = e.type != inputsTypes.SELECT? '' : undefined;
                 if(e.id)
                     e.id = ''
@@ -600,6 +604,8 @@ export default {
                     name: 'remove',
                 });
             }
+
+            // if(finish) return
             item.element.push(newItem);
         },
         removeRowTable(item, index) {
@@ -624,7 +630,7 @@ export default {
             // this.columnsTable.value.push(rows[0]);
         },
         async getAsyncOptionsSelect(value, element){
-            // console.log(this.valuesForm);
+            //console.log(this.valuesForm);
             if(element.inTable) {
                 this.getAsyncOptionsSelectTable(value, element);
                 return;
@@ -718,6 +724,18 @@ export default {
             }
 
         },
+        handleChageOptionSelectTable(value, element) {
+            const elementChange = element.ele.componentDepends;
+            const index = element.id;
+            if(!elementChange) return;
+
+            elementChange.forEach(element => {
+                const [ table, nameInput ] = element.split('.');
+                const asd = `${table}[${index}].${nameInput}`
+                this.$refs[`${table}[${index}].${nameInput}`].select(value)
+            });
+
+        },
         getValueInput(elementArray, value) {
             const element = elementArray.find(e => e.value == value);
             return element? element : {}
@@ -725,8 +743,7 @@ export default {
 
     },
     mounted() {
-        // console.log(this.formSchema);
-    //   this.handleHiddenComponent()
+        //   this.handleHiddenComponent()
     },
 };
 </script>

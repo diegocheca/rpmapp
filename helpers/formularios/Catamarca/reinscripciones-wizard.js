@@ -373,6 +373,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                                 closeOnSelect: true,
                                                 searchable: false,
                                                 placeholder: 'Selecciona una opción',
+                                                id: '',
                                             },
                                             {
                                                 label: '',

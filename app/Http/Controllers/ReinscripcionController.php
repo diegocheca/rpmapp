@@ -19,6 +19,7 @@ use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\HomeControllerM;
 use App\Models\Provincias;
+use App\Models\ReinscripcionesTransporte;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
@@ -88,14 +89,24 @@ class ReinscripcionController extends Controller
      */
     public function create()
     {
-        $productors = ProductoresController::productoresUsuario();
-        $provinces = CountriesController::getProvinces();
         $user = HomeController::userData();
+        $provinceName = str_replace(" ", "", $user->province->label);
 
-        $productorsList = [];
-        for ($i=0; $i < count($productors['productores']); $i++) {
-            array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
+        if(in_array($provinceName, $this->commonCountries)) {
+            $functionRedirect = "CommonData";
+        } else {
+            $functionRedirect = $provinceName."Data";
         }
+
+        $data = $this->$functionRedirect(null);
+        // $productors = ProductoresController::productoresUsuario();
+        // $provinces = CountriesController::getProvinces();
+        // $user = HomeController::userData();
+
+        // $productorsList = [];
+        // for ($i=0; $i < count($productors['productores']); $i++) {
+        //     array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
+        // }
         //
         // return Inertia::render('Reinscripciones/Form');
         return Inertia::render('Reinscripciones/Form', [
@@ -108,8 +119,8 @@ class ReinscripcionController extends Controller
             'titleForm' => 'Crear reinscripción',
             'titleBtnSave' => 'Guardar',
             'evaluate' => false,
-            'provincia' => $provinces,
-            'productores' => $productorsList
+            'provincia' => $data['provinces'],
+            'productores' => $data['productorsList']
         ]);
     }
 
@@ -201,7 +212,7 @@ class ReinscripcionController extends Controller
                 $provinceName = str_replace(" ", "", $user->province->label);
                 $functionRedirect = $provinceName."Store";
                 // dd($functionRedirect);
-                $this->$functionRedirect($saveData, $newProducts, null);
+                $this->$functionRedirect($saveData, $newProducts, null, 'create');
 
             }
             DB::commit();
@@ -399,10 +410,30 @@ class ReinscripcionController extends Controller
     protected function MendozaData($id)
     {
         $productors = ProductoresController::productoresUsuario();
-        $reinscripcion = Reinscripciones::find($id);
-        $reinscripcion->explosivos = $reinscripcion->explosivos;
-        $reinscripcion->equipos = $reinscripcion->equipos;
-        $reinscripcion = array_merge($reinscripcion->toArray(), Reinscripciones::find($id)->productos->toArray()[0]);
+
+        if($id) {
+            $reinscripcion = Reinscripciones::find($id);
+            $reinscripcion->productos = $reinscripcion->productos;
+
+            $comercializacion = [];
+            $produccion = [];
+            $transporte = [];
+            for ($i=0; $i < count($reinscripcion->productos); $i++) {
+                $com = ReinscripcionesComercializacion::where('id_productos', $reinscripcion->productos[$i]['id'])->first();
+                $tr = ReinscripcionesTransporte::where('id_productos', $reinscripcion->productos[$i]['id'])->first();
+                $pro = ReinscripcionesProduccion::where('id_productos', $reinscripcion->productos[$i]['id'])->first();
+                $com['nombre_mineral'] = $reinscripcion->productos[$i]['nombre_mineral'];
+                $tr['nombre_mineral'] = $reinscripcion->productos[$i]['nombre_mineral'];
+                $pro['nombre_mineral'] = $reinscripcion->productos[$i]['nombre_mineral'];
+                array_push($comercializacion, $com );
+                array_push($produccion, $pro);
+                array_push($transporte, $tr);
+            }
+
+            $reinscripcion->comercializacion = $comercializacion;
+            $reinscripcion->produccion = $produccion;
+            $reinscripcion->transporte = $transporte;
+        }
 
         $provinces = CountriesController::getProvinces();
 
@@ -412,10 +443,211 @@ class ReinscripcionController extends Controller
         }
 
         return [
-            'reinscripcion' => $reinscripcion,
+            'reinscripcion' => isset($reinscripcion)? $reinscripcion : null,
             'provinces' => $provinces,
             'productorsList' => $productorsList
         ];
+    }
+
+    protected function MendozaStore($saveData, $newProducts, $idReinscripcion, $action)
+    {
+        if(empty($idReinscripcion)) {
+            //add new reinscripcion
+            $arrayValues = $saveData;
+            // dd($arrayValues);
+            $arrayValues["cantidad_productos"] = count($arrayValues['produccion']);
+
+            // nueva reinscripcion
+            $newReinscription = Reinscripciones::create($arrayValues);
+
+            //productos
+            for ($prod=0; $prod < count($arrayValues['productos']); $prod++) {
+                $producto = $arrayValues['productos'][$prod];
+                $newProducts = [
+                    "id_reinscripcion" => $newReinscription["id"],
+                    "id_mina" => $producto["id_mina"]["value"],
+                    "nombre_mineral" => $producto["nombre_mineral"]["value"],
+                    "explotacion" => $producto["explotacion"],
+                    "calidad" => $producto["calidad"],
+                    "capacidad" => $producto["capacidad"],
+                    "estado" => "en proceso"
+                ];
+
+                //productos
+                $addProducts = Productos::create($newProducts);
+
+                //comercializacion
+                    $saveData['comercializacion'][$prod]["id_reinscripcion"] = $newReinscription["id"];
+                    $saveData['comercializacion'][$prod]["id_productos"] = $addProducts['id'];
+                    ReinscripcionesComercializacion::create($saveData['comercializacion'][$prod]);
+
+                //transporte
+                    $saveData['transporte'][$prod]["id_reinscripcion"] = $newReinscription["id"];
+                    $saveData['transporte'][$prod]["id_productos"] = $addProducts['id'];
+                    ReinscripcionesTransporte::create($saveData['transporte'][$prod]);
+
+                //producción
+                    $saveData['produccion'][$prod]["id_reinscripcion"] = $newReinscription["id"];
+                    $saveData['produccion'][$prod]["id_productos"] = $addProducts['id'];
+                    ReinscripcionesProduccion::create($saveData['produccion'][$prod]);
+            }
+
+
+        } else {
+            $arr = Reinscripciones::where('id', $idReinscripcion)->first()->toArray();
+            $arrayValues = array_intersect_key($arr,$saveData);
+            foreach ($arrayValues as $key => $value) {
+                $arrayValues[$key] = $saveData[$key];
+            }
+
+            //add new reinscripcion
+            // dd($saveData);
+            if(!empty($action) && $action == 'edit') {
+                $arrayValues["cantidad_productos"] = count($saveData['productos']);
+            }
+            //modificar reinscripcion
+            $newReinscription = Reinscripciones::where('id', $idReinscripcion)->update($arrayValues);
+
+            if($action == 'edit') {
+                //productos
+                for ($prod=0; $prod < count($saveData['productos']); $prod++) {
+                    $producto = $saveData['productos'][$prod];
+                    $productValues = [
+                        "id_reinscripcion" => $newReinscription,
+                        "id_mina" => $producto["id_mina"]["value"],
+                        "nombre_mineral" => $producto["nombre_mineral"]["value"],
+                        "explotacion" => $producto["explotacion"],
+                        "calidad" => $producto["calidad"],
+                        "capacidad" => $producto["capacidad"],
+                        "estado" => "en proceso"
+                    ];
+                    if(!empty($producto['id'])) {
+                        $saveEditProducts = Productos::where('id', $producto['id'])->update($productValues);
+
+                        unset($saveData['comercializacion'][$prod]["nombre_mineral"]);
+                        ReinscripcionesComercializacion::where('id', $saveData['comercializacion'][$prod]['id'])->update($saveData['comercializacion'][$prod]);
+
+                        unset($saveData['transporte'][$prod]["nombre_mineral"]);
+                        ReinscripcionesTransporte::where('id', $saveData['transporte'][$prod]['id'])->update($saveData['transporte'][$prod]);
+
+                        unset($saveData['produccion'][$prod]["nombre_mineral"]);
+                        ReinscripcionesProduccion::where('id', $saveData['produccion'][$prod]['id'])->update($saveData['produccion'][$prod]);
+
+                    } else {
+                        //productos
+                        $addProducts = Productos::create($productValues);
+
+                        //comercializacion
+                        $saveData['comercializacion'][$prod]["id_reinscripcion"] = $newReinscription;
+                        $saveData['comercializacion'][$prod]["id_productos"] = $addProducts['id'];
+
+                        unset($saveData['comercializacion'][$prod]["nombre_mineral"]);
+                        // $saveData['comercializacion'][$prod]["nombre_mineral"] = $saveData['comercializacion'][$prod]["nombre_mineral"]["value"];
+                        ReinscripcionesComercializacion::create($saveData['comercializacion'][$prod]);
+
+                        //transporte
+                        $saveData['transporte'][$prod]["id_reinscripcion"] = $newReinscription;
+                        $saveData['transporte'][$prod]["id_productos"] = $addProducts['id'];
+                        unset($saveData['transporte'][$prod]["nombre_mineral"]);
+                        // $saveData['transporte'][$prod]["nombre_mineral"] = $saveData['transporte'][$prod]["nombre_mineral"]["value"];
+                        ReinscripcionesTransporte::create($saveData['transporte'][$prod]);
+
+                        //producción
+                        $saveData['produccion'][$prod]["id_reinscripcion"] = $newReinscription;
+                        $saveData['produccion'][$prod]["id_productos"] = $addProducts['id'];
+                        unset($saveData['produccion'][$prod]["nombre_mineral"]);
+                        // $saveData['produccion'][$prod]["nombre_mineral"] = $saveData['produccion'][$prod]["nombre_mineral"]["value"];
+                        ReinscripcionesProduccion::create($saveData['produccion'][$prod]);
+                    }
+                }
+
+                // //comercializacion
+                // for ($com = 0; $com < count($saveData['comercializacion']); $com++) {
+                //     if(!empty($saveData['comercializacion'][$com]['id'])) {
+                //         unset($saveData['comercializacion'][$com]["nombre_mineral"]);
+                //         ReinscripcionesComercializacion::where('id', $saveData['comercializacion'][$com]['id'])->update($saveData['comercializacion'][$com]);
+                //     } else {
+                //         $saveData['comercializacion'][$prod]["id_productos"] = $addProducts['id'];
+                //         $saveData['comercializacion'][$com]["id_reinscripcion"] = $idReinscripcion;
+                //         ReinscripcionesComercializacion::create($saveData['comercializacion'][$com]);
+                //     }
+                // }
+
+                // //transporte
+                // for ($tra = 0; $tra < count($saveData['transporte']); $tra++) {
+                //     if(!empty($saveData['transporte'][$tra]['id'])) {
+                //         unset($saveData['transporte'][$tra]["nombre_mineral"]);
+                //         ReinscripcionesTransporte::where('id', $saveData['transporte'][$tra]['id'])->update($saveData['transporte'][$tra]);
+                //     } else {
+                //         $saveData['transporte'][$tra]["id_reinscripcion"] = $idReinscripcion;
+                //         ReinscripcionesTransporte::create($saveData['transporte'][$tra]);
+                //     }
+                // }
+
+                //  //producción
+                //  for ($pro = 0; $pro < count($saveData['produccion']); $pro++) {
+                //     if(!empty($saveData['produccion'][$pro]['id'])) {
+                //         unset($saveData['produccion'][$pro]["nombre_mineral"]);
+                //         ReinscripcionesProduccion::where('id', $saveData['produccion'][$pro]['id'])->update($saveData['produccion'][$pro]);
+                //     } else {
+                //         $saveData['produccion'][$pro]["id_reinscripcion"] = $idReinscripcion;
+                //         ReinscripcionesProduccion::create($saveData['produccion'][$pro]);
+                //     }
+                // }
+
+            } else {
+                 //productos
+                for ($prod=0; $prod < count($saveData['productos']); $prod++) {
+                    $producto = $saveData['productos'][$prod];
+
+                    Productos::where('id', $producto['id'])->update([
+                        'comment' => $saveData['productos'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['productos'][$prod]['row_comentario'] : null,
+                        'value' =>  $saveData['productos'][$prod]['row_evaluacion']
+                    ]);
+
+                    if(!empty($producto['id'])) {
+                        $productValues = [
+                            "id_mina" => $producto["id_mina"]["value"],
+                            "nombre_mineral" => $producto["nombre_mineral"]["value"],
+                            "explotacion" => $producto["explotacion"],
+                            "calidad" => $producto["calidad"],
+                            "capacidad" => $producto["capacidad"],
+                            "estado" => "en proceso"
+                        ];
+
+                        $saveEditProducts = Productos::where('id', $producto['id'])->update($productValues);
+
+                        //comercializacion
+                        unset($saveData['comercializacion'][$prod]["nombre_mineral"]);
+                        ReinscripcionesComercializacion::where('id_productos', $producto['id'])->update([
+                            'evaluacion' => $saveData['comercializacion'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['comercializacion'][$prod]['row_comentario'] : null,
+                            'comentario' =>  $saveData['comercializacion'][$prod]['row_evaluacion']
+                        ]);
+
+                        //transporte
+                        unset($saveData['transporte'][$prod]["nombre_mineral"]);
+                        ReinscripcionesTransporte::where('id_productos', $producto['id'])->update([
+                            'evaluacion' => $saveData['transporte'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['transporte'][$prod]['row_comentario'] : null,
+                            'comentario' =>  $saveData['transporte'][$prod]['row_evaluacion']
+                        ]);
+
+                        //producción
+                        unset($saveData['produccion'][$prod]["nombre_mineral"]);
+                        ReinscripcionesProduccion::where('id_productos', $producto['id'])->update([
+                            'evaluacion' => $saveData['produccion'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['produccion'][$prod]['row_comentario'] : null,
+                            'comentario' =>  $saveData['produccion'][$prod]['row_evaluacion']
+                        ]);
+
+                    }
+                    //  else {
+
+                    // }
+                }
+            }
+
+        }
+
+
     }
 
     protected function CommonData($id)
@@ -684,6 +916,19 @@ class ReinscripcionController extends Controller
                 if(isset($dataReinscripcion['explosivos'])) {
                     $dataReinscripcionFilter['explosivos'] = $dataReinscripcion['explosivos'];
                 }
+                if(isset($dataReinscripcion['comercializacion'])) {
+                    $dataReinscripcionFilter['comercializacion'] = $dataReinscripcion['comercializacion'];
+                }
+                if(isset($dataReinscripcion['productos'])) {
+                    $dataReinscripcionFilter['productos'] = $dataReinscripcion['productos'];
+                }
+                if(isset($dataReinscripcion['transporte'])) {
+                    $dataReinscripcionFilter['transporte'] = $dataReinscripcion['transporte'];
+                }
+                if(isset($dataReinscripcion['produccion'])) {
+                    $dataReinscripcionFilter['produccion'] = $dataReinscripcion['produccion'];
+                }
+
 
                 $this->$functionRedirect($dataReinscripcionFilter, null, $id, null );
             }
