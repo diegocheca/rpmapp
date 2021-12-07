@@ -431,7 +431,7 @@
           <PaginaDosDatosDomLegal
             v-if="$props.mostrar.paso_dos"
             :link_volver="route('formulario-alta.index')"
-            :titulo_boton_volver="'volver'"
+            :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Domicilio Legal'"
             :titulo_pagina="'Domicilio Legal'"
             :leal_calle="form.leal_calle"
@@ -1106,397 +1106,686 @@
 				
 				<a :href="route('productors.index')"><button class="px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900">Volver</button></a>
 			</div> -->
-			<div id="section_datos_mina_ubicacion"></div>
-			<br>
-			<PaginaSeisDatosUbicacionMina
-			v-if="$props.mostrar.paso_seis"
+          <div id="section_datos_mina_ubicacion"></div>
+          <PaginaSeisDatosUbicacionMina
+            v-if="$props.mostrar.paso_seis"
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
+            :titulo_pagina="'Pagina datos de Ubicacion de la Mina'"
+            :localidad_mina_pais="form.localidad_mina_pais"
+            :localidad_mina_pais_validacion="
+              form.localidad_mina_pais_validacion
+            "
+            :localidad_mina_pais_correcto="form.localidad_mina_pais_correcto"
+            :obs_localidad_mina_pais="form.obs_localidad_mina_pais"
+            :obs_localidad_mina_pais_valido="
+              form.obs_localidad_mina_pais_valido
+            "
+            :localidad_mina_provincia="form.localidad_mina_provincia"
+            :localidad_mina_provincia_validacion="
+              form.localidad_mina_provincia_validacion
+            "
+            :localidad_mina_provincia_correcto="
+              form.localidad_mina_provincia_correcto
+            "
+            :obs_localidad_mina_provincia="form.obs_localidad_mina_provincia"
+            :obs_localidad_mina_provincia_valido="
+              form.obs_localidad_mina_provincia_valido
+            "
+            :mostrar_ubicacion_prov="$props.mostrar.ubicacion_prov"
+            :desactivar_ubicacion_prov="$props.disables.ubicacion_prov"
+            :mostrar_ubicacion_prov_correccion="
+              $props.mostrar.ubicacion_prov_correccion
+            "
+            :desactivar_ubicacion_prov_correccion="
+              $props.disables.ubicacion_prov_correccion
+            "
+            :localidad_mina_departamento="form.localidad_mina_departamento"
+            :localidad_mina_departamento_validacion="
+              form.localidad_mina_departamento_validacion
+            "
+            :localidad_mina_departamento_correcto="
+              form.localidad_mina_departamento_correcto
+            "
+            :obs_localidad_mina_departamento="
+              form.obs_localidad_mina_departamento
+            "
+            :obs_localidad_mina_departamento_valido="
+              form.obs_localidad_mina_departamento_valido
+            "
+            :mostrar_ubicacion_dpto="$props.mostrar.ubicacion_dpto"
+            :desactivar_ubicacion_dpto="$props.disables.ubicacion_dpto"
+            :mostrar_ubicacion_dpto_correccion="
+              $props.mostrar.ubicacion_dpto_correccion
+            "
+            :desactivar_ubicacion_dpto_correccion="
+              $props.disables.ubicacion_dpto_correccion
+            "
+            :localidad_mina_localidad="form.localidad_mina_localidad"
+            :localidad_mina_localidad_validacion="
+              form.localidad_mina_localidad_validacion
+            "
+            :localidad_mina_localidad_correcto="
+              form.localidad_mina_localidad_correcto
+            "
+            :obs_localidad_mina_localidad="form.obs_localidad_mina_localidad"
+            :obs_localidad_mina_localidad_valido="
+              form.obs_localidad_mina_localidad_valido
+            "
+            :mostrar_ubicacion_localidad="$props.mostrar.ubicacion_localidad"
+            :desactivar_ubicacion_localidad="
+              $props.disables.ubicacion_localidad
+            "
+            :mostrar_ubicacion_localidad_correccion="
+              $props.mostrar.ubicacion_localidad_correccion
+            "
+            :desactivar_ubicacion_localidad_correccion="
+              $props.disables.ubicacion_localidad_correccion
+            "
+            :tipo_sistema="form.tipo_sistema"
+            :tipo_sistema_validacion="form.tipo_sistema_validacion"
+            :tipo_sistema_correcto="form.tipo_sistema_correcto"
+            :obs_tipo_sistema="form.obs_tipo_sistema"
+            :obs_tipo_sistema_valido="form.obs_tipo_sistema_valido"
+            :mostrar_ubicacion_sistema="$props.mostrar.ubicacion_sistema"
+            :desactivar_ubicacion_sistema="$props.disables.ubicacion_sistema"
+            :mostrar_ubicacion_sistema_correccion="
+              $props.mostrar.ubicacion_sistema_correccion
+            "
+            :desactivar_ubicacion_sistema_correccion="
+              $props.disables.ubicacion_sistema_correccion
+            "
+            :latitud="form.latitud"
+            :latitud_validacion="form.latitud_validacion"
+            :latitud_correcto="form.latitud_correcto"
+            :obs_latitud="form.obs_latitud"
+            :obs_latitud_valido="form.obs_latitud_valido"
+            :mostrar_ubicacion_latitud="$props.mostrar.ubicacion_latitud"
+            :desactivar_ubicacion_latitud="$props.disables.ubicacion_latitud"
+            :mostrar_ubicacion_latitud_correccion="
+              $props.mostrar.ubicacion_latitud_correccion
+            "
+            :desactivar_ubicacion_latitud_correccion="
+              $props.disables.ubicacion_latitud_correccion
+            "
+            :longitud="form.longitud"
+            :longitud_validacion="form.longitud_validacion"
+            :longitud_correcto="form.longitud_correcto"
+            :obs_longitud="form.obs_longitud"
+            :obs_longitud_valido="form.obs_longitud_valido"
+            :mostrar_ubicacion_long="$props.mostrar.ubicacion_long"
+            :desactivar_ubicacion_long="$props.disables.ubicacion_long"
+            :mostrar_ubicacion_long_correccion="
+              $props.mostrar.ubicacion_long_correccion
+            "
+            :desactivar_ubicacion_long_correccion="
+              $props.disables.ubicacion_long_correccion
+            "
+            :lista_provincias="lista_provincias"
+            :lista_dptos="lista_dptos_mina"
+            :mostrar_boton_guardar_seis="$props.mostrar.boton_guardar_seis"
+            :desactivar_boton_guardar_seis="$props.disables.boton_guardar_seis"
+            :evaluacion="evaluacion_global"
+            :id="$props.productor.id"
+            :testing="testing_global"
+          >
+          </PaginaSeisDatosUbicacionMina>
 
-				:link_volver="route('formulario-alta.index')"
-				:titulo_boton_volver="'volver'"
-				:titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
-				:titulo_pagina="'Pagina datos de Ubicacion de la Mina'"
+          <div
+            id="section_catamarca"
+            v-if="$props.mostrar.paso_catamarca"
+          ></div>
+          <PaginaCatamarca
+            v-if="$props.mostrar.paso_catamarca"
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'Volver'"
+            :titulo_boton_guardar="'Guardar Datos'"
+            :titulo_pagina="'Catamarca'"
+            :evaluacion="evaluacion_global"
+            :testing="testing_global"
+            :id="$props.productor.id"
+          >
+          </PaginaCatamarca>
 
-				:localidad_mina_pais="form.localidad_mina_pais"
-				:localidad_mina_pais_validacion="form.localidad_mina_pais_validacion"
-				:localidad_mina_pais_correcto="form.localidad_mina_pais_correcto"
-				:obs_localidad_mina_pais="form.obs_localidad_mina_pais"
-				:obs_localidad_mina_pais_valido="form.obs_localidad_mina_pais_valido"
-				
-				:localidad_mina_provincia="form.localidad_mina_provincia"
-				:localidad_mina_provincia_validacion="form.localidad_mina_provincia_validacion"
-				:localidad_mina_provincia_correcto="form.localidad_mina_provincia_correcto"
-				:obs_localidad_mina_provincia="form.obs_localidad_mina_provincia"
-				:obs_localidad_mina_provincia_valido="form.obs_localidad_mina_provincia_valido"
-				:mostrar_ubicacion_prov="$props.mostrar.ubicacion_prov"
-				:desactivar_ubicacion_prov="$props.disables.ubicacion_prov"
-				:mostrar_ubicacion_prov_correccion="$props.mostrar.ubicacion_prov_correccion"
-				:desactivar_ubicacion_prov_correccion="$props.disables.ubicacion_prov_correccion"
+          <div id="section_mendoza" v-if="$props.mostrar.paso_mendoza"></div>
+          <PaginaMendoza
+            v-if="$props.mostrar.paso_mendoza"
+            :link_volver="route('formulario-alta.index')"
+            :titulo_boton_volver="'volver'"
+            :titulo_boton_guardar="'Guardar Datos'"
+            :titulo_pagina="'Mendoza'"
+            :evaluacion="evaluacion_global"
+            :testing="testing_global"
+            :id="$props.productor.id"
+          >
+          </PaginaMendoza>
 
-				
-				:localidad_mina_departamento="form.localidad_mina_departamento"
-				:localidad_mina_departamento_validacion="form.localidad_mina_departamento_validacion"
-				:localidad_mina_departamento_correcto="form.localidad_mina_departamento_correcto"
-				:obs_localidad_mina_departamento="form.obs_localidad_mina_departamento"
-				:obs_localidad_mina_departamento_valido="form.obs_localidad_mina_departamento_valido"
-				:mostrar_ubicacion_dpto="$props.mostrar.ubicacion_dpto"
-				:desactivar_ubicacion_dpto="$props.disables.ubicacion_dpto"
-				:mostrar_ubicacion_dpto_correccion="$props.mostrar.ubicacion_dpto_correccion"
-				:desactivar_ubicacion_dpto_correccion="$props.disables.ubicacion_dpto_correccion"
+          <div id="finalizar"></div>
+          <div
+            class="
+              border-2
+              shadow-lg
+              rounded-2xl
+              w-full
+              py-4
+              px-8
+              bg-white
+              my-20
+              border-indigo-400
+            "
+          >
+            <div class="flex flex-wrap">
+              <div
+                class="
+                  w-full
+                  sm:w-2/2
+                  md:w-1/2
+                  lg:w-1/3
+                  xl:w-1/3
+                  2xl:w-1/3
+                  px-3
+                  mb-6
+                  md:mb-0
+                "
+              >
+                <InputComponente
+                  :titulo="'Cargo de la Empresa'"
+                  :tipo="'text'"
+                  :placeholder="'Cargo de la Empresa'"
+                  :value="form.cargo_empresa"
+                  v-on:ValueInput="update_input_cargo_empresa($event)"
+                ></InputComponente>
+              </div>
+              <div
+                class="
+                  w-full
+                  sm:w-2/2
+                  md:w-1/2
+                  lg:w-1/3
+                  xl:w-1/3
+                  2xl:w-1/3
+                  px-3
+                  mb-6
+                  md:mb-0
+                "
+              >
+                <InputComponente
+                  :titulo="'Nombre y Apellido'"
+                  :tipo="'text'"
+                  :placeholder="'Nombre y Apellido'"
+                  :value="form.presentador_nombre"
+                  v-on:ValueInput="update_input_nombre($event)"
+                ></InputComponente>
+              </div>
+              <div
+                class="
+                  w-full
+                  sm:w-2/2
+                  md:w-1/2
+                  lg:w-1/3
+                  xl:w-1/3
+                  2xl:w-1/3
+                  px-3
+                  mb-6
+                  md:mb-0
+                "
+              >
+                <InputComponente
+                  :titulo="'DNI'"
+                  :tipo="'number'"
+                  :placeholder="'DNI'"
+                  :value="form.presentador_dni"
+                  v-on:ValueInput="update_input_dni($event)"
+                ></InputComponente>
+              </div>
+            </div>
 
-				:localidad_mina_localidad="form.localidad_mina_localidad"
-				:localidad_mina_localidad_validacion="form.localidad_mina_localidad_validacion"
-				:localidad_mina_localidad_correcto="form.localidad_mina_localidad_correcto"
-				:obs_localidad_mina_localidad="form.obs_localidad_mina_localidad"
-				:obs_localidad_mina_localidad_valido="form.obs_localidad_mina_localidad_valido"
-				:mostrar_ubicacion_localidad="$props.mostrar.ubicacion_localidad"
-				:desactivar_ubicacion_localidad="$props.disables.ubicacion_localidad"
-				:mostrar_ubicacion_localidad_correccion="$props.mostrar.ubicacion_localidad_correccion"
-				:desactivar_ubicacion_localidad_correccion="$props.disables.ubicacion_localidad_correccion"
+            <div class="flex" v-if="evaluacion_global">
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                  for="name"
+                  >Creado Por:</label
+                >
+                <br />
+                <input
+                  id="cuit"
+                  disabled
+                  v-model="form.created_by"
+                  class="border py-2 px-3 text-grey-darkest"
+                />
+              </div>
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                  for="estado"
+                  >Estado Actual:</label
+                ><br />
+                <span
+                  v-if="$props.productor.estado === 'en proceso'"
+                  class="
+                    bg-purple-200
+                    text-purple-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >En proceso</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'borrador'"
+                  class="
+                    bg-pink-200
+                    text-pink-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >Borrador</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'aprobado'"
+                  class="
+                    bg-green-200
+                    text-green-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >Aprobado</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'en revision'"
+                  class="
+                    bg-yellow-200
+                    text-yellow-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >En revision</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'con observacion'"
+                  class="
+                    bg-gray-200
+                    text-gary-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >Con Obesrvacion</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'reprobado'"
+                  class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs"
+                  >Reprobado</span
+                >
+              </div>
+              <div
+                class="w-full md:w-1/2 px-3 mb-6 md:mb-0"
+                v-if="$props.mostrar.estado"
+              >
+                <label
+                  class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                  for="estado"
+                  >Nuevo Estado:</label
+                ><br />
+                <select
+                  v-if="$props.productor.estado === 'en revision'"
+                  id="estado"
+                  name="estado"
+                  v-model="form.estado"
+                  :disabled="$props.disables.estado"
+                  @input="calcular_nombre_boton($event.target.value)"
+                  class="
+                    block
+                    appearance-none
+                    bg-white
+                    border border-gray-400
+                    hover:border-gray-500
+                    px-4
+                    py-2
+                    pr-8
+                    rounded
+                    shadow
+                    leading-tight
+                    focus:outline-none focus:shadow-outline
+                  "
+                >
+                  <option value="borrador">Borrador</option>
+                  <option value="en revision" disabled>En revision</option>
+                  <option value="aprobado">Aprobado</option>
+                  <option value="reprobado">Reprobado</option>
+                  <option value="con observacion">Con Observacion</option>
+                </select>
+                <select
+                  v-else
+                  id="estado"
+                  name="estado"
+                  v-model="form.estado"
+                  :disabled="$props.disables.estado"
+                  class="
+                    block
+                    appearance-none
+                    bg-white
+                    border border-gray-400
+                    hover:border-gray-500
+                    px-4
+                    py-2
+                    pr-8
+                    rounded
+                    shadow
+                    leading-tight
+                    focus:outline-none focus:shadow-outline
+                  "
+                >
+                  <option value="en proceso">En proceso</option>
+                  <option value="borrador">Borrador</option>
+                  <option value="en revision">En revision</option>
+                  <option value="aprobado">Aprobado</option>
+                  <option value="reprobado">Reprobado</option>
+                  <option value="con observacion">
+                    Con Obswwwwwwwwwwwervacion
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="flex" v-else>
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                  for="name"
+                  >Actualizado Por última vez:</label
+                >
+                <br />
+                <input
+                  id="cuit"
+                  disabled
+                  v-model="form.updated_at"
+                  class="border py-2 px-3 text-grey-darkest"
+                />
+              </div>
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <label
+                  class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                  for="estado"
+                  >Estado Actual:</label
+                ><br />
+                <span
+                  v-if="$props.productor.estado === 'en proceso'"
+                  class="
+                    bg-purple-200
+                    text-purple-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >En proceso</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'borrador'"
+                  class="
+                    bg-pink-200
+                    text-pink-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >Borrador</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'aprobado'"
+                  class="
+                    bg-green-200
+                    text-green-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >Aprobado</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'en revision'"
+                  class="
+                    bg-yellow-200
+                    text-yellow-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >En revision</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'con observacion'"
+                  class="
+                    bg-gray-200
+                    text-gary-600
+                    py-1
+                    px-3
+                    rounded-full
+                    text-xs
+                  "
+                  >Con Obesrvacion</span
+                >
+                <span
+                  v-if="$props.productor.estado === 'reprobado'"
+                  class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs"
+                  >Reprobado</span
+                >
+              </div>
+              <div
+                class="w-full md:w-1/2 px-3 mb-6 md:mb-0"
+                v-if="$props.mostrar.estado"
+              >
+                <label
+                  class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                  for="estado"
+                  >Nuevo Estado:</label
+                ><br />
+                <select
+                  v-if="$props.productor.estado === 'borrador'"
+                  id="estado"
+                  name="estado"
+                  v-model="form.estado"
+                  :disabled="$props.disables.estado"
+                  class="
+                    block
+                    appearance-none
+                    bg-white
+                    border border-gray-400
+                    hover:border-gray-500
+                    px-4
+                    py-2
+                    pr-8
+                    rounded
+                    shadow
+                    leading-tight
+                    focus:outline-none focus:shadow-outline
+                  "
+                >
+                  <option value="borrador">Borrador</option>
+                  <option value="en revision">Presentar</option>
+                </select>
+                <select
+                  v-if="$props.productor.estado === 'con observacion'"
+                  id="estado"
+                  name="estado"
+                  v-model="form.estado"
+                  :disabled="$props.disables.estado"
+                  class="
+                    block
+                    appearance-none
+                    bg-white
+                    border border-gray-400
+                    hover:border-gray-500
+                    px-4
+                    py-2
+                    pr-8
+                    rounded
+                    shadow
+                    leading-tight
+                    focus:outline-none focus:shadow-outline
+                  "
+                >
+                  <option value="borrador" disabled>Borrador</option>
+                  <option value="con observacion" disabled>
+                    Con Observacion
+                  </option>
+                  <option value="en revision">Presentar</option>
+                </select>
+              </div>
+            </div>
+            sss <br />
+            <div class="flex">
+              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <inertia-link
+                  :href="route('formulario-alta.index')"
+                  class="
+                    px-4
+                    py-2
+                    text-sm
+                    font-medium
+                    rounded-full
+                    border-b border-red-300
+                    bg-red-200
+                    hover:bg-red-300
+                    text-red-900
+                  "
+                >
+                  Volver
+                </inertia-link>
+              </div>
+              <div
+                class="w-full md:w-1/2 px-3 mb-6 md:mb-0"
+                v-if="$props.mostrar.boton_actualizar"
+              >
+                <a
+                  v-if="evaluacion_global"
+                  @click="mostrar_modal_presentar"
+                  :disabled="$props.disables.boton_actualizar"
+                  class="
+                    text-white
+                    uppercase
+                    text-lg
+                    mx-auto
+                    py-6
+                    px-20
+                    rounded-full
+                    block
+                    border-b border-green-300
+                    bg-purple-200
+                    hover:bg-purple-300
+                    text-purple-700
+                  "
+                >
+                  {{ nombre_boton_actualizar }} Solicitud
+                </a>
+                <button
+                  v-if="!evaluacion_global"
+                  @click="mostrar_modal_presentar"
+                  :disabled="$props.disables.boton_actualizar"
+                  class="
+                    text-white
+                    uppercase
+                    text-lg
+                    mx-auto
+                    py-6
+                    px-20
+                    rounded-full
+                    block
+                    border-b border-green-300
+                    bg-purple-200
+                    hover:bg-purple-300
+                    text-purple-700
+                  "
+                >
+                  Actualizar
+                </button>
+              </div>
+            </div>
+          </div>
+          <jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
+            <template #title>
+              {{ modal_tittle_apro }}
+            </template>
+            <template #content>
+              {{ modal_body_apro }}
+            </template>
+            <template #footer>
+              <div class="flex">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                  <button
+                    @click="closeModalAprobar"
+                    class="
+                      py-3
+                      px-6
+                      text-white
+                      rounded-lg
+                      bg-yellow-400
+                      shadow-lg
+                      block
+                      md:inline-block
+                    "
+                  >
+                    Vuelvo a revisar
+                  </button>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                  <button
+                    v-show="mostrar_boton_aprobar"
+                    @click="closeModalAprobar"
+                    class="
+                      py-3
+                      px-6
+                      text-white
+                      rounded-lg
+                      bg-green-400
+                      shadow-lg
+                      block
+                      md:inline-block
+                    "
+                  >
+                    Actualizar
+                  </button>
+                </div>
 
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                  <button
+                    v-show="mostrar_boton_aprobar_de_todos_modos"
+                    @click="presentar_de_todos_modos"
+                    class="
+                      py-3
+                      px-6
+                      text-white
+                      rounded-lg
+                      bg-green-400
+                      shadow-lg
+                      block
+                      md:inline-block
+                    "
+                  >
+                    Actualizar de todos Modos
+                  </button>
+                </div>
+              </div>
+            </template>
+          </jet-dialog-modal>
 
-				:tipo_sistema="form.tipo_sistema"
-				:tipo_sistema_validacion="form.tipo_sistema_validacion"
-				:tipo_sistema_correcto="form.tipo_sistema_correcto"
-				:obs_tipo_sistema="form.obs_tipo_sistema"
-				:obs_tipo_sistema_valido="form.obs_tipo_sistema_valido"
-				:mostrar_ubicacion_sistema="$props.mostrar.ubicacion_sistema"
-				:desactivar_ubicacion_sistema="$props.disables.ubicacion_sistema"
-				:mostrar_ubicacion_sistema_correccion="$props.mostrar.ubicacion_sistema_correccion"
-				:desactivar_ubicacion_sistema_correccion="$props.disables.ubicacion_sistema_correccion"
-
-				:latitud="form.latitud"
-				:latitud_validacion="form.latitud_validacion"
-				:latitud_correcto="form.latitud_correcto"
-				:obs_latitud="form.obs_latitud"
-				:obs_latitud_valido="form.obs_latitud_valido"
-				:mostrar_ubicacion_latitud="$props.mostrar.ubicacion_latitud"
-				:desactivar_ubicacion_latitud="$props.disables.ubicacion_latitud"
-				:mostrar_ubicacion_latitud_correccion="$props.mostrar.ubicacion_latitud_correccion"
-				:desactivar_ubicacion_latitud_correccion="$props.disables.ubicacion_latitud_correccion"
-
-				:longitud="form.longitud"
-				:longitud_validacion="form.longitud_validacion"
-				:longitud_correcto="form.longitud_correcto"
-				:obs_longitud="form.obs_longitud"
-				:obs_longitud_valido="form.obs_longitud_valido"
-				:mostrar_ubicacion_long="$props.mostrar.ubicacion_long"
-				:desactivar_ubicacion_long="$props.disables.ubicacion_long"
-				:mostrar_ubicacion_long_correccion="$props.mostrar.ubicacion_long_correccion"
-				:desactivar_ubicacion_long_correccion="$props.disables.ubicacion_long_correccion"
-
-
-				:lista_provincias="lista_provincias"
-				:lista_dptos="lista_dptos_mina"
-
-				:mostrar_boton_guardar_seis="$props.mostrar.boton_guardar_seis"
-				:desactivar_boton_guardar_seis="$props.disables.boton_guardar_seis"
-
-
-				
-				
-				:evaluacion ="evaluacion_global"
-				:id="$props.productor.id"
-				:testing="testing_global"
-
-			>
-
-			</PaginaSeisDatosUbicacionMina>
-			<br>
-			
-			<hr>
-			<br>
-
-			<div id="section_catamarca" v-if="$props.mostrar.paso_catamarca"></div>
-			<PaginaCatamarca
-			v-if="$props.mostrar.paso_catamarca"
-				:link_volver="route('formulario-alta.index')"
-				:titulo_boton_volver="'volver'"
-				:titulo_boton_guardar="'Guardar Datos Form Catamarca'"
-				:titulo_pagina="'Pagina De Catamarca'"
-
-				:evaluacion ="evaluacion_global"
-				:testing="testing_global"
-				:id="$props.productor.id"
-			>
-			</PaginaCatamarca>
-			<br>
-			<br>
-
-
-			<PaginaMendoza
-			v-if="$props.mostrar.paso_mendoza"
-				:link_volver="route('formulario-alta.index')"
-				:titulo_boton_volver="'volver'"
-				:titulo_boton_guardar="'Guardar Datos Form Mendoza'"
-				:titulo_pagina="'Pagina De Mendoza'"
-
-				:evaluacion ="evaluacion_global"
-				:testing="testing_global"
-				:id="$props.productor.id"
-			>
-			</PaginaMendoza>
-			<br>
-			<br>
-
-      <div class="flex flex-wrap">
-        <div
-          class="
-            w-full
-            sm:w-2/2
-            md:w-1/2
-            lg:w-1/3
-            xl:w-1/3
-            2xl:w-1/3
-            px-3
-            mb-6
-            md:mb-0
-          "
-        >
-          <InputComponente
-            :titulo="'Cargo de la Empresa'"
-            :tipo="'text'"
-            :placeholder="'Cargo de la Empresa'"
-            :value="form.cargo_empresa"
-            v-on:ValueInput="update_input_cargo_empresa($event)"
-          ></InputComponente>
-        </div>
-        <div
-          class="
-            w-full
-            sm:w-2/2
-            md:w-1/2
-            lg:w-1/3
-            xl:w-1/3
-            2xl:w-1/3
-            px-3
-            mb-6
-            md:mb-0
-          "
-        >
-          <InputComponente
-            :titulo="'Nombre y Apellido'"
-            :tipo="'text'"
-            :placeholder="'Nombre y Apellido'"
-            :value="form.presentador_nombre"
-            v-on:ValueInput="update_input_nombre($event)"
-          ></InputComponente>
-        </div>
-        <div
-          class="
-            w-full
-            sm:w-2/2
-            md:w-1/2
-            lg:w-1/3
-            xl:w-1/3
-            2xl:w-1/3
-            px-3
-            mb-6
-            md:mb-0
-          "
-        >
-          <InputComponente
-            :titulo="'DNI'"
-            :tipo="'number'"
-            :placeholder="'DNI'"
-            :value="form.presentador_dni"
-            v-on:ValueInput="update_input_dni($event)"
-          ></InputComponente>
-        </div>
-      </div>
-			
-			<div class="flex" v-if="evaluacion_global">
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-					<label
-						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-						for="name"
-						>Creado Por:</label
-					>
-					<br>
-					<input
-						id="cuit"
-						disabled
-						v-model="form.created_by"
-						class="border py-2 px-3 text-grey-darkest"
-					/>
-				</div>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-					<label
-						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-						for="estado"
-						>Estado Actual:</label><br>
-						<span v-if="$props.productor.estado === 'en proceso'"  class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En proceso</span>
-						<span v-if="$props.productor.estado === 'borrador'"  class="bg-pink-200 text-pink-600 py-1 px-3 rounded-full text-xs">Borrador</span>
-						<span v-if="$props.productor.estado === 'aprobado'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Aprobado</span>
-						<span v-if="$props.productor.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
-						<span v-if="$props.productor.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
-						<span v-if="$props.productor.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
-				</div>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0" v-if="$props.mostrar.estado">
-					<label
-						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-						for="estado"
-						>Nuevo Estado:</label
-					><br>
-					<select
-						v-if="$props.productor.estado === 'en revision'"
-						id="estado"
-						name="estado"
-						v-model="form.estado"
-						:disabled="$props.disables.estado"
-            @input="calcular_nombre_boton($event.target.value)" 
-						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-						<option value="borrador">Borrador</option>
-						<option value="en revision" disabled>En revision</option>
-						<option value="aprobado">Aprobado</option>
-						<option value="reprobado">Reprobado</option>
-						<option value="con observacion">Con Observacion</option>
-						
-					</select>
-					<select
-						v-else
-						id="estado"
-						name="estado"
-						v-model="form.estado"
-						:disabled="$props.disables.estado"
-						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-						<option value="en proceso">En proceso</option>
-						<option value="borrador">Borrador</option>
-						<option value="en revision">En revision</option>
-						<option value="aprobado">Aprobado</option>
-						<option value="reprobado">Reprobado</option>
-						<option value="con observacion">Con Obswwwwwwwwwwwervacion</option>
-						
-					</select>
-				</div>
-			</div>
-			<div class="flex" v-else>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-					<label
-						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-						for="name"
-						>Actualizado Por última vez:</label
-					>
-					<br>
-					<input
-						id="cuit"
-						disabled
-						v-model="form.updated_at"
-						class="border py-2 px-3 text-grey-darkest"
-					/>
-				</div>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-					<label
-						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-						for="estado"
-						>Estado Actual:</label><br>
-						<span v-if="$props.productor.estado === 'en proceso'"  class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">En proceso</span>
-						<span v-if="$props.productor.estado === 'borrador'"  class="bg-pink-200 text-pink-600 py-1 px-3 rounded-full text-xs">Borrador</span>
-						<span v-if="$props.productor.estado === 'aprobado'" class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Aprobado</span>
-						<span v-if="$props.productor.estado === 'en revision'" class="bg-yellow-200 text-yellow-600 py-1 px-3 rounded-full text-xs">En revision</span>
-						<span v-if="$props.productor.estado === 'con observacion'" class="bg-gray-200 text-gary-600 py-1 px-3 rounded-full text-xs">Con Obesrvacion</span>
-						<span v-if="$props.productor.estado === 'reprobado'" class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Reprobado</span>
-				</div>
-				<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0" v-if="$props.mostrar.estado">
-					<label
-						class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-						for="estado"
-						>Nuevo Estado:</label
-					><br>
-					<select
-						v-if="$props.productor.estado === 'borrador'"
-						id="estado"
-						name="estado"
-						v-model="form.estado"
-						:disabled="$props.disables.estado"
-						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-						<option value="borrador">Borrador</option>
-						<option value="en revision">Presentar</option>
-						
-					</select>
-					<select
-						v-if="$props.productor.estado === 'con observacion'"
-						id="estado"
-						name="estado"
-						v-model="form.estado"
-						:disabled="$props.disables.estado"
-						class="block appearance-none bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-						<option value="borrador" disabled>Borrador</option>
-						<option value="con observacion" disabled>Con Observacion</option>
-						<option value="en revision">Presentar</option>
-					</select>
-				</div>
-			</div>
-			<br>
-			<br>
-			<br>
-			<div class="flex">
-					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-						<inertia-link
-							:href="route('formulario-alta.index')"
-							class="px-4 py-2  text-sm font-medium rounded-full  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
-						>
-							Volver
-						</inertia-link>
-					</div>
-					<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0" v-if="$props.mostrar.boton_actualizar">
-						<a
-							v-if="evaluacion_global"
-							@click="mostrar_modal_presentar"
-							:disabled="$props.disables.boton_actualizar"
-							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-						>
-							{{nombre_boton_actualizar}} Solicitud
-						</a>
-						<button
-							v-if="!evaluacion_global"
-							@click="mostrar_modal_presentar"
-							:disabled="$props.disables.boton_actualizar"
-							class=" text-white uppercase text-lg mx-auto py-6 px-20 rounded-full block  border-b border-green-300 bg-purple-200 hover:bg-purple-300 text-purple-700"
-						>
-							Actualizarrrrrrrr
-						</button>
-					</div>
-			</div>
-			<jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
-					<template #title>
-							{{modal_tittle_apro}}
-					</template>
-					<template #content>
-							{{modal_body_apro}}
-							
-					</template>
-					<template #footer>
-						<div class="flex">
-							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-								<button  @click="closeModalAprobar" class="  py-3 px-6 text-white rounded-lg bg-yellow-400 shadow-lg block md:inline-block">
-									Vuelvo a revisar
-
-								</button>
-							</div>
-							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-								<button
-									v-show="mostrar_boton_aprobar"
-									@click="closeModalAprobar"
-									class="  py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
-								>
-									Actualizar
-								</button>
-							</div>
-
-							<div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-								<button
-									v-show="mostrar_boton_aprobar_de_todos_modos"
-									@click="presentar_de_todos_modos"
-									class="  py-3 px-6 text-white rounded-lg bg-green-400 shadow-lg block md:inline-block"
-								>
-									Actualizar de todos Modos
-								</button>
-							</div>
-						</div>
-					</template>
-			</jet-dialog-modal>
-
-			<jet-dialog-modal :show="mostrar_modal_datos_ya_guardados" @close="cerrar_modal_datos_uno">
+          <jet-dialog-modal
+            :show="mostrar_modal_datos_ya_guardados"
+            @close="cerrar_modal_datos_uno"
+          >
             <template #title>
               {{ modal_tittle_apro }}
             </template>
@@ -1739,7 +2028,7 @@ export default {
       lista_dptos_legal: [],
       lista_dptos_admin: [],
       lista_dptos_mina: [],
-      nombre_boton_actualizar: '',
+      nombre_boton_actualizar: "",
       mostrar_boton_aprobar: false,
       mostrar_boton_aprobar_de_todos_modos: false,
       lista_de_minerales_del_back: this.$props.lista_minerales_cargados,
@@ -2356,11 +2645,97 @@ export default {
       nuevo: this.$props.productor,
     };
   },
+  mounted() {
+    let self = this;
+    this.$nextTick(() => {
+      // console.log(this.$inertia.page.props.user.id_provincia);
+      if (this.$inertia.page.props.user.id_provincia === 70) {
+        // console.log("harcodeo las prov");
+        self.lista_provincias = [
+          {
+            id: 70,
+            nombre: "San Juan",
+          },
+        ];
+      } else {
+        axios
+          .get("/datos/traer_provincias")
+          .then(function (response) {
+            // console.log("las provincias so2n:\n");
+            self.lista_provincias = response.data;
+            // console.log(self.lista_provincias);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    });
+    //voy a buscar los dptos
+    if (!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+      this.$nextTick(() => {
+        axios
+          .post("/datos/traer_departamentos", {
+            id_prov: parseInt(this.$props.productor.leal_provincia),
+          })
+          .then(function (response) {
+            // console.log("los deptos desde la raiz , legales son:\n");
+            self.lista_dptos_legal = response.data;
+            // console.log(self.lista_dptos_legal);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    } else {
+      self.lista_dptos_legal = [];
+    }
+    if (!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+      this.$nextTick(() => {
+        axios
+          .post("/datos/traer_departamentos", {
+            id_prov: parseInt(this.$props.productor.administracion_provincia),
+          })
+          .then(function (response) {
+            // console.log("los deptos desde la raiz son:\n");
+            self.lista_dptos_admin = response.data;
+            // console.log(self.lista_dptos_admin);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    } else {
+      self.lista_dptos_admin = [];
+    }
+    if (!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+      //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+      this.$nextTick(() => {
+        axios
+          .post("/datos/traer_departamentos", {
+            id_prov: parseInt(this.$props.productor.localidad_mina_provincia),
+          })
+          .then(function (response) {
+            // console.log("los deptos desde la raiz son:\n");
+            self.lista_dptos_mina = response.data;
+            // console.log(self.lista_dptos_mina);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    } else {
+      self.lista_dptos_mina = [];
+    }
+  },
   methods: {
+    handleClick(data) {
+      this.showModalPasos = data.show;
+    },
     submit() {
       let self = this;
       // console.log("el id es:", this.form.id);
-
       if (
         typeof this.form.id !== "undefined" &&
         self.form.id != null &&
@@ -2418,7 +2793,7 @@ export default {
       //<!-- @click="guardar_avances_todo" -->
     },
     calcular_nombre_boton(valor) {
-      switch(valor){
+      switch (valor) {
         case "en revision":
           this.nombre_boton_actualizar = "Presentar ";
           break;
@@ -2542,9 +2917,95 @@ export default {
               id_prov: parseInt(this.$props.productor.localidad_mina_provincia),
             })
             .then(function (response) {
-              console.log("los deptos desde la raiz son:\n");
+              // console.log("los deptos desde la raiz son:\n");
               self.lista_dptos_mina = response.data;
-              console.log(self.lista_dptos_mina);
+              // console.log(self.lista_dptos_mina);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      } else {
+        self.lista_dptos_mina = [];
+      }
+    },
+    buscar_provincias() {
+      //voy a buscar las provincias
+      // console.log("PROVVVVV");
+      this.$nextTick(() => {
+        // console.log(this.$inertia.page.props.user.id_provincia);
+        if (this.$inertia.page.props.user.id_provincia === 70) {
+          // console.log("harcodeo las prov");
+          //rta---> id: 70, nombre: 'San Juan'
+          self.lista_provincias = [
+            {
+              id: 70,
+              nombre: "San Juan",
+            },
+          ];
+        } else {
+          axios
+            .get("/datos/traer_provincias")
+            .then(function (response) {
+              // console.log("las provincias so22n:\n");
+              self.lista_provincias = response.data;
+              // console.log(self.lista_provincias);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
+      });
+      //voy a buscar los dptos
+      if (!isNaN(parseInt(this.$props.productor.leal_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.leal_provincia),
+            })
+            .then(function (response) {
+              // console.log("los deptos desde la raiz , legales son:\n");
+              self.lista_dptos_legal = response.data;
+              // console.log(self.lista_dptos_legal);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      } else {
+        self.lista_dptos_legal = [];
+      }
+      if (!isNaN(parseInt(this.$props.productor.administracion_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.administracion_provincia),
+            })
+            .then(function (response) {
+              // console.log("los deptos desde la raiz son:\n");
+              self.lista_dptos_admin = response.data;
+              // console.log(self.lista_dptos_admin);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        });
+      } else {
+        self.lista_dptos_admin = [];
+      }
+      if (!isNaN(parseInt(this.$props.productor.localidad_mina_provincia))) {
+        //signafica que tengo una provincia ya elegida asiq traifgo sus dptos
+        this.$nextTick(() => {
+          axios
+            .post("/datos/traer_departamentos", {
+              id_prov: parseInt(this.$props.productor.localidad_mina_provincia),
+            })
+            .then(function (response) {
+              // console.log("los deptos desde la raiz son:\n");
+              self.lista_dptos_mina = response.data;
+              // console.log(self.lista_dptos_mina);
             })
             .catch(function (error) {
               console.log(error);

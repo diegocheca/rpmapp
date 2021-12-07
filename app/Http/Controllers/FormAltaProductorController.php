@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Exception;
 use App\Models\FormAltaProductor;
 use App\Models\FormAltaProductorCatamarca;
@@ -2996,7 +2997,7 @@ class FormAltaProductorController extends Controller
 					"titulo_correccion" => false,
 					"boton_guardar_cuatro" => false,
 					"paso_cuatro" => false,
-		
+
 					"owner" => false,
 					"owner_correccion" => false,
 					"arrendatario" => false,
@@ -3026,7 +3027,7 @@ class FormAltaProductorController extends Controller
 					"fecha_vencimiento_dia_correccion" => false,
 					"boton_guardar_cinco" => false,
 					"paso_cinco" => false,
-		
+
 					"ubicacion_prov" => false,
 					"ubicacion_prov_correccion" => false,
 					"ubicacion_dpto" => false,
@@ -3044,8 +3045,8 @@ class FormAltaProductorController extends Controller
 					"ubicacion_estado_observacion" => false,
 					"boton_guardar_seis" => false,
 					"paso_seis" => false,
-		
-		
+
+
 					"decreto3737" => false,
 					"decreto3737_correccion" => true,
 					"situacion_mina" => false,
@@ -3058,10 +3059,10 @@ class FormAltaProductorController extends Controller
 					"concesion_minera_reg_men" => false,
 					"concesion_minera_reg_d_y_c" => false,
 					"obs_datos_minas" => true,
-					
-					"paso_mendoza"=> true,
-					"boton_mendoza"=> true,
-		
+
+					"paso_mendoza" => true,
+					"boton_mendoza" => true,
+
 					"estado" => false,
 					"boton_actualizar" => false,
 
@@ -3139,7 +3140,7 @@ class FormAltaProductorController extends Controller
 					"minerales" => true,
 					"minerales_correccion" => false,
 					"titulo" => true,
-					"titulo_correccion" => true,
+					"titulo_correccion" => false,
 					"boton_guardar_cuatro" => true,
 					"paso_cuatro" => true,
 
@@ -3187,8 +3188,8 @@ class FormAltaProductorController extends Controller
 					"ubicacion_long_correccion" => false,
 					"boton_guardar_seis" => true,
 					"paso_seis" => true,
-		
-		
+
+
 					"decreto3737" => true,
 					"decreto3737_correccion" => false,
 					"situacion_mina" => true,
@@ -3201,10 +3202,10 @@ class FormAltaProductorController extends Controller
 					"concesion_minera_reg_men" => true,
 					"concesion_minera_reg_d_y_c" => true,
 					"obs_datos_minas" => false,
-					
-					"paso_mendoza"=> true,
-					"boton_mendoza"=> true,
-		
+
+					"paso_mendoza" => true,
+					"boton_mendoza" => true,
+
 					"estado" => true,
 
 					"boton_actualizar" => true,
@@ -3340,8 +3341,8 @@ class FormAltaProductorController extends Controller
 					"ubicacion_estado_observacion" => false,
 					"boton_guardar_seis" => false,
 					"paso_seis" => false,
-		
-		
+
+
 					"decreto3737" => true,
 					"decreto3737_correccion" => false,
 					"situacion_mina" => true,
@@ -3354,11 +3355,11 @@ class FormAltaProductorController extends Controller
 					"concesion_minera_reg_men" => true,
 					"concesion_minera_reg_d_y_c" => true,
 					"obs_datos_minas" => false,
-					
-					"paso_mendoza"=> true,
-					"boton_mendoza"=> true,
-		
-		
+
+					"paso_mendoza" => true,
+					"boton_mendoza" => true,
+
+
 					"estado" => false,
 					"boton_actualizar" => false,
 
@@ -3484,9 +3485,9 @@ class FormAltaProductorController extends Controller
 					"ubicacion_long_correccion" => false,
 					"boton_guardar_seis" => true,
 					"paso_seis" => true,
-		
-		
-					
+
+
+
 					"decreto3737" => true,
 					"decreto3737_correccion" => true,
 					"situacion_mina" => true,
@@ -3499,11 +3500,11 @@ class FormAltaProductorController extends Controller
 					"concesion_minera_reg_men" => true,
 					"concesion_minera_reg_d_y_c" => true,
 					"obs_datos_minas" => true,
-					
-					"paso_mendoza"=> true,
-					"boton_mendoza"=> true,
-		
-		
+
+					"paso_mendoza" => true,
+					"boton_mendoza" => true,
+
+
 					"estado" => true,
 
 					"boton_actualizar" => true,
@@ -3639,8 +3640,8 @@ class FormAltaProductorController extends Controller
 					"ubicacion_estado_observacion" => false,
 					"boton_guardar_seis" => false,
 					"paso_seis" => false,
-		
-		
+
+
 					"decreto3737" => false,
 					"decreto3737_correccion" => false,
 					"situacion_mina" => false,
@@ -3653,11 +3654,11 @@ class FormAltaProductorController extends Controller
 					"concesion_minera_reg_men" => false,
 					"concesion_minera_reg_d_y_c" => false,
 					"obs_datos_minas" => false,
-					
-					"paso_mendoza"=> false,
-					"boton_mendoza"=> false,
-		
-		
+
+					"paso_mendoza" => false,
+					"boton_mendoza" => false,
+
+
 					"estado" => false,
 					"boton_actualizar" => false,
 
@@ -3783,8 +3784,8 @@ class FormAltaProductorController extends Controller
 					"ubicacion_long_correccion" => false,
 					"boton_guardar_seis" => true,
 					"paso_seis" => true,
-		
-		
+
+
 					"decreto3737" => true,
 					"decreto3737_correccion" => true,
 					"situacion_mina" => true,
@@ -3797,12 +3798,12 @@ class FormAltaProductorController extends Controller
 					"concesion_minera_reg_men" => true,
 					"concesion_minera_reg_d_y_c" => true,
 					"concesion_minera_reg_d_y_c_correccion" => true,
-					
-					"paso_mendoza"=> true,
-					"boton_mendoza"=> true,
-		
-		
-		
+
+					"paso_mendoza" => true,
+					"boton_mendoza" => true,
+
+
+
 					"estado" => true,
 
 					"boton_actualizar" => true,
@@ -5750,7 +5751,7 @@ class FormAltaProductorController extends Controller
 			$entro = true;
 		}
 		//reviso si el usuairo es productor o auotridad minera xq no importa para ver
-		elseif ($formulario->provincia == Auth::user()->id_provincia) {
+		else if ($formulario->provincia == Auth::user()->id_provincia) {
 			//estoy en mi misma provincia
 			$entro = true;
 		} else
@@ -6655,7 +6656,7 @@ class FormAltaProductorController extends Controller
 						$mostrar["boton_catamarca"] = true;
 					}
 
-					if(Auth::user()->id_provincia == 50) // es de mendoza
+					if (Auth::user()->id_provincia == 50) // es de mendoza
 					{
 
 						$disables["decreto3737"] =  false;
@@ -6670,8 +6671,8 @@ class FormAltaProductorController extends Controller
 						$disables["concesion_minera_reg_men"] =  false;
 						$disables["concesion_minera_reg_d_y_c"] =  false;
 						$disables["obs_datos_minas"] =  true;
-						$disables["paso_mendoza"]=  false;
-						$disables["boton_mendoza"]=  false;
+						$disables["paso_mendoza"] =  false;
+						$disables["boton_mendoza"] =  false;
 
 						$mostrar["decreto3737"] = true;
 						$mostrar["decreto3737_correccion"] = false;
@@ -6688,9 +6689,7 @@ class FormAltaProductorController extends Controller
 						$mostrar["paso_mendoza"] = true;
 						$mostrar["boton_mendoza"] = true;
 					}
-				}
-				elseif($estado_formulario == 'en revision' || $estado_formulario == 'en proceso')
-				{
+				} elseif ($estado_formulario == 'en revision' || $estado_formulario == 'en proceso') {
 					//CASO: Productor - Edicion - En revision
 					//ed lo tiene la auotirdad minera y solo puede ver
 					//le dejo los permisos de lectura no mas
@@ -6796,7 +6795,7 @@ class FormAltaProductorController extends Controller
 						$mostrar["paso_catamarca"] = false;
 						$mostrar["boton_catamarca"] = false;
 					}
-					if(Auth::user()->id_provincia == 50) // es de mendoza
+					if (Auth::user()->id_provincia == 50) // es de mendoza
 					{
 
 						$disables["decreto3737"] =  true;
@@ -6811,8 +6810,8 @@ class FormAltaProductorController extends Controller
 						$disables["concesion_minera_reg_men"] =  true;
 						$disables["concesion_minera_reg_d_y_c"] =  true;
 						$disables["obs_datos_minas"] =  true;
-						$disables["paso_mendoza"]=  true;
-						$disables["boton_mendoza"]=  true;
+						$disables["paso_mendoza"] =  true;
+						$disables["boton_mendoza"] =  true;
 
 						$mostrar["decreto3737"] = true;
 						$mostrar["decreto3737_correccion"] = true;
@@ -6829,9 +6828,7 @@ class FormAltaProductorController extends Controller
 						$mostrar["paso_mendoza"] = true;
 						$mostrar["boton_mendoza"] = true;
 					}
-				}
-				elseif($estado_formulario == 'aprobado')
-				{
+				} elseif ($estado_formulario == 'aprobado') {
 					//CASO: Productor - Edicion - Aprobado
 					//e.d. lo tiene la auotirdad minera y el productor
 					//le dejo los permisos de lectura no mas
@@ -7165,7 +7162,7 @@ class FormAltaProductorController extends Controller
 						$mostrar["paso_catamarca"] = true;
 						$mostrar["boton_catamarca"] = true;
 					}
-					if(Auth::user()->id_provincia == 50) // es de mendoza
+					if (Auth::user()->id_provincia == 50) // es de mendoza
 					{
 
 						$disables["decreto3737"] =  true;
@@ -7180,8 +7177,8 @@ class FormAltaProductorController extends Controller
 						$disables["concesion_minera_reg_men"] =  true;
 						$disables["concesion_minera_reg_d_y_c"] =  true;
 						$disables["obs_datos_minas"] =  false;
-						$disables["paso_mendoza"]=  true;
-						$disables["boton_mendoza"]=  true;
+						$disables["paso_mendoza"] =  true;
+						$disables["boton_mendoza"] =  true;
 
 						$mostrar["decreto3737"] = true;
 						$mostrar["decreto3737_correccion"] = true;
@@ -7198,10 +7195,7 @@ class FormAltaProductorController extends Controller
 						$mostrar["paso_mendoza"] = true;
 						$mostrar["boton_mendoza"] = true;
 					}
-
-				}
-				elseif($estado_formulario == 'aprobado')
-				{
+				} elseif ($estado_formulario == 'aprobado') {
 					//CASO: Autoridad - Edicion - Aprobado
 					//e.d. lo tiene la auotirdad minera y el productor
 					//le dejo los permisos de lectura no mas
@@ -9137,6 +9131,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->leal_calle = $request->leal_calle;
 				$formulario_provisorio->leal_numero = $request->leal_numero;
 				$formulario_provisorio->leal_telefono = $request->leal_telefono;
+				$formulario_provisorio->leal_pais = "Argentina";
 				$formulario_provisorio->leal_provincia = $request->leal_provincia;
 				$formulario_provisorio->leal_departamento = $request->leal_departamento;
 				$formulario_provisorio->leal_localidad = $request->leal_localidad;
@@ -10385,11 +10380,11 @@ class FormAltaProductorController extends Controller
 
 	public function correccion_guardar_paso_catamarca(Request $request)
 	{
-		if($request->id == 'null') $request->id = null;
-		if($request->evaluacion == 'false')
-		$request->es_evaluacion =false;
-		else $request->es_evaluacion =true;
-		
+		if ($request->id == 'null') $request->id = null;
+		if ($request->evaluacion == 'false')
+			$request->es_evaluacion = false;
+		else $request->es_evaluacion = true;
+
 		//$request->es_evaluacion =false;
 		//var_dump($request->es_evaluacion);die();
 		$request->id = (int)$request->id;
@@ -10400,8 +10395,7 @@ class FormAltaProductorController extends Controller
 			if ($formularioCatamarca != null) // no se encontro el registor, lo debo crear
 			{
 				//echo "estoy aqui";die();
-				if($request->es_evaluacion == false)
-				{
+				if ($request->es_evaluacion == false) {
 					//echo "estoy a3333qui";die();
 					//Voy a editar un registro
 					//soy productor
@@ -10414,14 +10408,13 @@ class FormAltaProductorController extends Controller
 
 
 					//echo "por entrar";
-					if(
+					if (
 						($request->primer_hoja_dni != null)
 						&&
 						($request->primer_hoja_dni != '')
 						&&
-						(is_object($request->primer_hoja_dni)) 
-					)
-					{
+						(is_object($request->primer_hoja_dni))
+					) {
 						//echo "entre";
 						//var_dump($request->primer_hoja_dni->path());die();
 						$contents = file_get_contents($request->primer_hoja_dni->path());
@@ -10451,7 +10444,7 @@ class FormAltaProductorController extends Controller
 						$contents = file_get_contents($request->foto_4x4->path());
 						$formularioCatamarca->foto_4x4 =  Storage::put('public/files_formularios' . '/' . $request->id, $request->foto_4x4);
 					}
-					if(
+					if (
 						($request->constancia_afip != null)
 						&&
 						($request->constancia_afip != '')
@@ -10494,9 +10487,9 @@ class FormAltaProductorController extends Controller
 					$request->gestor_dni_correcto, $request->obs_gestor_dni);die();
 */
 
-					if($request->gestor_nombre_apellido_correcto == 'false')
+					if ($request->gestor_nombre_apellido_correcto == 'false')
 						$request->gestor_nombre_apellido_correcto = false;
-					elseif($request->gestor_nombre_apellido_correcto == 'true')
+					elseif ($request->gestor_nombre_apellido_correcto == 'true')
 						$request->gestor_nombre_apellido_correcto = true;
 					else
 						$request->gestor_nombre_apellido_correcto = null;
@@ -10505,9 +10498,9 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->obs_gestor_nombre_apellido = $request->obs_gestor_nombre_apellido;
 
 
-					if($request->gestor_dni_correcto == 'false')
+					if ($request->gestor_dni_correcto == 'false')
 						$request->gestor_dni_correcto = false;
-					elseif($request->gestor_dni_correcto == 'true')
+					elseif ($request->gestor_dni_correcto == 'true')
 						$request->gestor_dni_correcto = true;
 					else
 						$request->gestor_dni_correcto = null;
@@ -10516,9 +10509,9 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->obs_gestor_dni = $request->obs_gestor_dni;
 
 
-					if($request->gestor_profesion_correcto == 'false')
+					if ($request->gestor_profesion_correcto == 'false')
 						$request->gestor_profesion_correcto = false;
-					elseif($request->gestor_profesion_correcto == 'true')
+					elseif ($request->gestor_profesion_correcto == 'true')
 						$request->gestor_profesion_correcto = true;
 					else
 						$request->gestor_profesion_correcto = null;
@@ -10526,9 +10519,9 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->gestor_profesion_correcto = $request->gestor_profesion_correcto;
 					$formularioCatamarca->obs_gestor_profesion = $request->obs_gestor_profesion;
 
-					if($request->gestor_telefono_correcto == 'false')
+					if ($request->gestor_telefono_correcto == 'false')
 						$request->gestor_telefono_correcto = false;
-					elseif($request->gestor_telefono_correcto == 'true')
+					elseif ($request->gestor_telefono_correcto == 'true')
 						$request->gestor_telefono_correcto = true;
 					else
 						$request->gestor_telefono_correcto = null;
@@ -10537,9 +10530,9 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->obs_gestor_telefono = $request->obs_gestor_telefono;
 
 
-					if($request->gestor_email_correcto == 'false')
+					if ($request->gestor_email_correcto == 'false')
 						$request->gestor_email_correcto = false;
-					elseif($request->gestor_email_correcto == 'true')
+					elseif ($request->gestor_email_correcto == 'true')
 						$request->gestor_email_correcto = true;
 					else
 						$request->gestor_email_correcto = null;
@@ -10548,9 +10541,9 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->gestor_email_correcto = $request->obs_gestor_email;
 
 
-					if($request->gestor_notificacion_correcto == 'false')
+					if ($request->gestor_notificacion_correcto == 'false')
 						$request->gestor_notificacion_correcto = false;
-					elseif($request->gestor_notificacion_correcto == 'true')
+					elseif ($request->gestor_notificacion_correcto == 'true')
 						$request->gestor_notificacion_correcto = true;
 					else
 						$request->gestor_notificacion_correcto = null;
@@ -10559,9 +10552,9 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->obs_gestor_notificacion = $request->obs_gestor_notificacion;
 
 
-					if($request->autorizacion_gestor_correcto == 'false')
+					if ($request->autorizacion_gestor_correcto == 'false')
 						$request->autorizacion_gestor_correcto = false;
-					elseif($request->autorizacion_gestor_correcto == 'true')
+					elseif ($request->autorizacion_gestor_correcto == 'true')
 						$request->autorizacion_gestor_correcto = true;
 					else
 						$request->autorizacion_gestor_correcto = null;
@@ -10572,9 +10565,9 @@ class FormAltaProductorController extends Controller
 
 
 
-					if($request->foto_4x4_correcto == 'false')
+					if ($request->foto_4x4_correcto == 'false')
 						$request->foto_4x4_correcto = false;
-					elseif($request->foto_4x4_correcto == 'true')
+					elseif ($request->foto_4x4_correcto == 'true')
 						$request->foto_4x4_correcto = true;
 					else
 						$request->foto_4x4_correcto = null;
@@ -10584,9 +10577,9 @@ class FormAltaProductorController extends Controller
 
 
 
-					if($request->constancia_afip_correcto == 'false')
+					if ($request->constancia_afip_correcto == 'false')
 						$request->constancia_afip_correcto = false;
-					elseif($request->constancia_afip_correcto == 'true')
+					elseif ($request->constancia_afip_correcto == 'true')
 						$request->constancia_afip_correcto = true;
 					else
 						$request->constancia_afip_correcto = null;
@@ -10595,13 +10588,13 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->obs_constancia_afip = $request->obs_constancia_afip;
 
 
-					if($request->hoja_dni_correcto == 'false')
+					if ($request->hoja_dni_correcto == 'false')
 						$request->hoja_dni_correcto = false;
-					elseif($request->hoja_dni_correcto == 'true')
+					elseif ($request->hoja_dni_correcto == 'true')
 						$request->hoja_dni_correcto = true;
 					else
 						$request->hoja_dni_correcto = null;
-					
+
 					$formularioCatamarca->hoja_dni_correcto = $request->hoja_dni_correcto;
 					$formularioCatamarca->obs_hoja_dni = $request->obs_hoja_dni;
 
@@ -10610,18 +10603,16 @@ class FormAltaProductorController extends Controller
 					$formularioCatamarca->id_formulario_alta = $request->id;
 					//var_dump($formularioCatamarca);die();
 					$formularioCatamarca->save();
-					
+
 					return response()->json([
 						'status' => 'ok',
 						'msg' => 'se actualizo el paso de catamarca correctamente',
 						'id_creado' => $formularioCatamarca->id
-					],201);
-					
+					], 201);
 				}
 			} else {
 				//voy a crear un nuevo registro
-				if($request->es_evaluacion == false)
-				{
+				if ($request->es_evaluacion == false) {
 					// echo "aca";die();
 					//soy productor y voy a crear el registro
 					//con los valores que cargo como productor sin evaluacion
@@ -11066,7 +11057,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 
 	public function presentar_borrador(Request $request)
 	{
-		//dd($request->nombre_presentador, $request->dni_presentador , $request->cargo_empresa);
+		// dd($request->nombre_presentador, $request->dni_presentador , $request->cargo_empresa);
 		$request->es_evaluacion = $request->es_evaluacion === 'true' ? true : false;
 		$request->id = intval($request->id);
 		if ($request->id > 0) {
@@ -11074,8 +11065,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 			$formulario_provisorio = FormAltaProductor::select('*')
 				->where('id', '=', $request->id)->first();
 			if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')) { // soy autoridad minera
-				if($formulario_provisorio->estado == 'borrador')
-				{
+				if ($formulario_provisorio->estado == 'borrador') {
 					$formulario_provisorio->cargo_empresa = $request->cargo_empresa;
 					$formulario_provisorio->presentador_nom_apellido = $request->nombre_presentador;
 					$formulario_provisorio->presentador_dni = $request->dni_presentador;
@@ -11087,8 +11077,9 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 					$formulario_provisorio->estado = $request->estado;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
+				$formulario_provisorio->save();
 				//datos de presentador
-				
+
 				//$formulario_provisorio->save();
 				//$email_a_mandar = $formulario_provisorio->email; para prod
 				$email_a_mandar = 'diegochecarelli@gmail.com';
@@ -11130,26 +11121,10 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 			], 201);
 		} else {
 			return response()->json([
-				'status' => 'mal',
+				'status' => 'error',
 				'msg' => 'Error en el ID pasado.'
-			], 201);
+			], 500);
 		}
-		/*
-			//tengo que enviar email
-			//$email_a_mandar = $formulario_provisorio->email; para prod
-			$email_a_mandar = 'diegochecarelli@gmail.com';
-			Mail::to($formulario_provisorio->email)->send(new AvisoFormularioAprobadoEmail(
-				$request->id,
-				$request->razon_social,
-				date("Y-m-d H:i:s")
-			));
-			//tengo que crear todos los campos de la base de datos
-			}
-			
-		else{//soy productor
-			return response()->json("error");
-		}
-		*/
 	}
 
 	public function probando_super_guardado($id_formulario)
@@ -11431,9 +11406,9 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		// dd($id);
 		try {
 			$datos_provincia = Provincias::select('id', 'nombre')->orderBy('nombre')->where('id', '=', $id)->get();
-			return response()->json($datos_provincia,200);
+			return response()->json($datos_provincia, 200);
 		} catch (Exception $e) {
-            return response()->json($e->getMessage(),500);
+			return response()->json($e->getMessage(), 500);
 		}
 	}
 
@@ -11536,20 +11511,19 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				//7
 				'updated_at' => $borrador->updated_at,
 			];
-			
-			if($borrador->provincia == 70)
+
+			if ($borrador->provincia == 70)
 				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite', $data);
-			elseif($borrador->provincia == 10) // catamarca
+			elseif ($borrador->provincia == 10) // catamarca
 				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_cata', $data);
-			elseif($borrador->provincia == 50) // mendoza
+			elseif ($borrador->provincia == 50) // mendoza
 			{
-				$data ['title'] = 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES DE LA PROVINCIA DE MENDOZA';
+				$data['title'] = 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES DE LA PROVINCIA DE MENDOZA';
 				$pdf = PDF::loadView('pdfs.comprobante_inicio_tramite_mendoza', $data);
 			}
 
 			return $pdf->stream('Comprobante_de_inscripcion.pdf');
-		}
-		else 
+		} else
 			return "error";
 	}
 

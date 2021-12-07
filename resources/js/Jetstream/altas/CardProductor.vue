@@ -141,7 +141,7 @@
           /> -->
         <!-- </label> -->
       </div>
-      <div class="col-span-2 mt-2" v-if="$props.mostrarayuda">
+      <div class="col-span-2 mt-2">
         <span class="text-lg font-semibold mr-3">Sin Datos</span>
         <Toggle
           v-model="valor_pagina"
@@ -185,7 +185,6 @@ export default {
       this.$emit("changevalorayuda", this.valor_ayuda_local);
     },
     pagina_siguiente() {
-      // console.log(this.valor_pagina);
       this.$emit("continuarpagina", this.valor_pagina);
     },
   },

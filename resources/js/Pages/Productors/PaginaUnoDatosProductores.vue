@@ -8,11 +8,10 @@
       py-4
       px-8
       bg-white
-      shadow-lg
       border-indigo-400
     "
   >
-    <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
+    <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_productor">
         <img
           class="
@@ -123,11 +122,11 @@
           />
         </label>
       </div>
-    </div>
+    </div> -->
     <div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br /> -->
-      <div class="items-center justify-left">
+      <div class="items-center justify-left sticky top-0 z-10">
         <CardProductor
           :progreso="50"
           :aprobado="25"
@@ -782,6 +781,7 @@ export default {
     "evaluacion",
     "testing",
     "id",
+    "valorpagina",
   ],
 
   components: {
@@ -1003,12 +1003,10 @@ export default {
       // this.$emit('ActualizarPathConstanciaAAbuelo',value);
     },
     update_valor_pagina_siguiente(v) {
-      // console.log("valor: ", v);
       this.$emit("mostrarpasosiguiente", v);
     },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
-      // console.log("valor: ", v);
     },
   },
 };
