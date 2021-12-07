@@ -1710,7 +1710,7 @@
                     text-purple-700
                   "
                 >
-                  Actualizar
+                  Actuadddlizar
                 </button>
               </div>
             </div>
@@ -1756,7 +1756,7 @@
                       md:inline-block
                     "
                   >
-                    Actualizar
+                    Actuaqqqqlizar
                   </button>
                 </div>
 
@@ -1826,7 +1826,7 @@
                       md:inline-block
                     "
                   >
-                    Actualizar
+                    Actualizar123
                   </button>
                 </div>
 
@@ -2775,17 +2775,18 @@ export default {
       this.AvisoAprueba = true;
       this.modal_tittle_apro =
         "Advertencia: esta por presentar esta solicitud de Productor.";
-      form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+      //form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+      form_evaluacion_valida = true; //sacar esta linea para control de datos
       if (form_evaluacion_valida === "") {
         //el formulario esta bien hecho y no tiene observaciones
         this.modal_body_apro =
-          " \n \n Este formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
+          " \n \n Eswwwwwwwwwwwwwwte formulario no posee ninguna observación por tatnto, puede ser aprobado sin problemas";
         this.mostrar_boton_aprobar = true;
-        this.mostrar_boton_aprobar_de_todos_modos = false;
+        this.mostrar_boton_aprobar_de_todos_modos = true;
       } else {
         //el formulario esta bien hecho y no tiene observaciones
         this.modal_body_apro =
-          " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +
+          " \n \n Esddddddddddddddte formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +
           form_evaluacion_valida;
         this.mostrar_boton_aprobar = false;
         this.mostrar_boton_aprobar_de_todos_modos = true;
