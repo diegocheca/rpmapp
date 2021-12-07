@@ -451,7 +451,7 @@
             <PaginaCuatroDatosMinaUno
               v-if="m_paso4"
               :link_volver="route('formulario-alta.index')"
-              :titulo_boton_volver="'volver'"
+              :titulo_boton_volver="'Volver'"
               :titulo_boton_guardar="'Guardar Datos de Mina Primer Parte'"
               :titulo_pagina="'Datos de Mina Primera Parte'"
               :numero_expdiente="form.numero_expdiente"
