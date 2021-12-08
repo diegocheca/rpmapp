@@ -11074,6 +11074,9 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 			$formulario_provisorio = FormAltaProductor::select('*')
 				->where('id', '=', $request->id)->first();
 				//dd($formulario_provisorio);
+				//dd($request->cargo_empresa,$request->nombre_presentador,$request->dni_presentador);
+
+				//dd($formulario_provisorio->estado, $request->estado);
 			if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')) { // soy autoridad minera
 				if($formulario_provisorio->estado == 'borrador')
 				{
@@ -11085,13 +11088,12 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 
 				if ($request->estado == 'presentar')
 					$formulario_provisorio->estado = "en revision";
-				else
+				if ($request->estado!= null)
 					$formulario_provisorio->estado = $request->estado;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				//datos de presentador
-				//dd($formulario_provisorio->id);
-				$formulario_provisorio->save();
+				$resulado = $formulario_provisorio->save();
 				
 				//$formulario_provisorio->save();
 				//$email_a_mandar = $formulario_provisorio->email; para prod

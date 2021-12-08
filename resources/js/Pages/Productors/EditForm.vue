@@ -1701,7 +1701,7 @@
                     hover:text-white hover:shadow-xl hover:bg-gray-600
                   "
                 >
-                  Actuadddlizar
+                  Actualizar
                 </button>
               </div>
               <div
@@ -2808,7 +2808,7 @@ export default {
       } else {
         //el formulario esta bien hecho y no tiene observaciones
         this.modal_body_apro =
-          " \n \n Esddddddddddddddte formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +
+          " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +
           form_evaluacion_valida;
         this.mostrar_boton_aprobar = false;
         this.mostrar_boton_aprobar_de_todos_modos = true;
@@ -2838,7 +2838,10 @@ export default {
       let self = this;
       const data = new FormData();
       data.append("id", this.$props.productor.id);
-      data.append("estado", self.form.estado);
+      data.append("cargo_empresa", self.form.cargo_empresa);
+      data.append("nombre_presentador", self.form.presentador_nombre);
+      data.append("dni_presentador", self.form.presentador_dni);
+
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
       axios
         .post(
@@ -2857,7 +2860,7 @@ export default {
               self.closeModalAprobar = false;
               self.mostrar_modal_datos_ya_guardados = true;
             }
-            if (self.form.estado === "en revision") {
+            if (response.data.msg === "Formulario Actualizado Correctamente.") {
               // lo presente como productor
               console.log("todo bien");
               self.modal_tittle = "Se actualizo estado";
@@ -2876,6 +2879,16 @@ export default {
               self.mostrar_modal_datos_ya_guardados = true;
             }
           }
+          if (response.data.msg === "Formulario Actualizado Correctamente.") {
+            // lo presente como productor
+            console.log("todo bien");
+            self.modal_tittle = "Se actualizo estado";
+            self.modal_body =
+              "Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera";
+            self.closeModalAprobar = false;
+            self.mostrar_modal_datos_ya_guardados = true;
+          }
+
           if (response.data.msg === "formulario no encontrado") {
             console.log("todo mal, no se encontro");
             self.modal_tittle = "Paso 1 Guardado Fallido";
