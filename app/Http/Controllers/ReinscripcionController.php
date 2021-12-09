@@ -65,7 +65,7 @@ class ReinscripcionController extends Controller
             ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
            ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
             ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
-            // ->where('productores.leal_provincia', $user->province->value)
+            ->where('productores.leal_provincia', $user->province->value)
             ->whereNull('reinscripciones.deleted_at')
             ->select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
             ->groupBy('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','encargado','productores.razonsocial','mina')
