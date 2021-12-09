@@ -16,11 +16,10 @@ use App\Mail\AvisoFormularioPresentadoEmail;
 use App\Mail\AvisoFormularioAprobadoEmail;
 use App\Mail\AvisoFormularioConObservaciones;
 
-
+use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 
 use Illuminate\Database\Seeder;
-use Faker\Factory  as Faker;
 
 use App\Models\EmailsAConfirmar;
 use App\Models\Productors;
@@ -11069,13 +11068,19 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		//dd($request->nombre_presentador, $request->dni_presentador , $request->cargo_empresa);
 		$request->es_evaluacion = $request->es_evaluacion === 'true' ? true : false;
 		$request->id = intval($request->id);
+		//dd($request->id);
 		if ($request->id > 0) {
 			date_default_timezone_set('America/Argentina/Buenos_Aires');
 			$formulario_provisorio = FormAltaProductor::select('*')
 				->where('id', '=', $request->id)->first();
+				//dd($formulario_provisorio);
+				//dd($request->cargo_empresa,$request->nombre_presentador,$request->dni_presentador);
+
+				//dd($formulario_provisorio->estado, $request->estado);
 			if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')) { // soy autoridad minera
 				if($formulario_provisorio->estado == 'borrador')
 				{
+					//dd("entre aca en borrador");
 					$formulario_provisorio->cargo_empresa = $request->cargo_empresa;
 					$formulario_provisorio->presentador_nom_apellido = $request->nombre_presentador;
 					$formulario_provisorio->presentador_dni = $request->dni_presentador;
@@ -11083,11 +11088,12 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 
 				if ($request->estado == 'presentar')
 					$formulario_provisorio->estado = "en revision";
-				else
+				if ($request->estado!= null)
 					$formulario_provisorio->estado = $request->estado;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				//datos de presentador
+				$resulado = $formulario_provisorio->save();
 				
 				//$formulario_provisorio->save();
 				//$email_a_mandar = $formulario_provisorio->email; para prod
@@ -11200,7 +11206,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				$productor->razonsocial = $formulario_provisorio->razonsocial;
 				$productor->numeroproductor = $formulario_provisorio->numeroproductor;
 				$productor->email = $formulario_provisorio->email;
-				$productor->domicilio_prod = "cambiar esto";
+				$productor->domicilio_prod = "Sin Domicilio";
 				$productor->tiposociedad = $formulario_provisorio->tiposociedad;
 				$productor->inscripciondgr = $formulario_provisorio->inscripciondgr;
 				$productor->constaciasociedad = $formulario_provisorio->constaciasociedad;
@@ -11208,7 +11214,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				$productor->leal_numero = $formulario_provisorio->leal_numero;
 				$productor->leal_telefono = $formulario_provisorio->leal_telefono;
 				// $productor->leal_pais = $formulario_provisorio->leal_pais;
-				$productor->leal_pais = "Argentina";
+				$productor->leal_pais = null;
 
 				$productor->leal_provincia = $formulario_provisorio->leal_provincia;
 				$productor->leal_departamento = $formulario_provisorio->leal_departamento;
@@ -11769,6 +11775,10 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 
 	public function cargandoexcelmdz(){
         $array = [];
+
+
+		$faker = Faker::create();
+
 		/*
 		$array[1] = 
 		[
@@ -12689,23 +12699,7 @@ $array[891] = [24,"Uspallata",50049,2463,"119-M-89",null,"Cerro Canario 1","Oro-
 $array[892] = [24,"Uspallata",50049,2471,"264-M-91",null,"Cerro Canario 2","Oro-Plata",false,1,1,"Gobierfalse De Mendoza Dgm","null","S/Mensura","Vigente","null","null"];
 $array[893] = [24,"Uspallata",50049,1076,"853-B-60",null,"Chiruza","Plomo",false,1,1,"null","null","Mensurada","Vacante","null","null"];
 $array[894] = [24,"Uspallata",50049,1210,"130-D-63",null,"Constantifalse","Amianto",false,2,1,"null","null","Mensurada","Vacante","null","null"];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$array[895] = [24,,Uspallata",50049,2462,"3503-D-2010",null,"Contapiera","Oro",false,1,1,"Dumit truemeram, Diego Raúl","null","S/Mensura","Vacante Sol.,null","false Posee"];
+$array[895] = [24,"Uspallata",50049,2462,"3503-D-2010",null,"Contapiera","Oro",false,1,1,"Dumit truemeram, Diego Raúl","null","S/Mensura","Vacante Sol.,null","false Posee"];
 $array[896] = [24,"Uspallata",50049,382,"4468-B-38",null,"Corina","Amianto",false,2,4,"De Martini, Jose A","null","Mensurada","Vigente","null","null"];
 $array[897] = [24,"Uspallata",50049,2273,"66-O-84",null,"Dana","Plomo",false,1,1,"null","null","S/Mensura","Vacante","null","null"];
 $array[898] = [24,"Uspallata",50049,1587,"41-M-67",null,"Don Alberto","Fluorita",false,1,2,"Monllor, Alfredo","null","Mensurada","Vacante","null","null"];
@@ -12729,7 +12723,7 @@ $array[915] = [24,"Uspallata",50049,380,"1191-C-39",null,"La Mendocina","Amianto
 $array[916] = [24,"Uspallata",50049,1300,"656-C-62",null,"La falsena","Talco",false,2,2,"Caccavari, Jose R.","null","Mensurada","Vigente","null","null"];
 $array[917] = [24,"Uspallata",50049,381,"756-C-1958",null,"La Salada","Amianto",false,2,2,"Caccavari, Juan","null","Mensurada","Vacante","null","null"];
 $array[918] = [24,"Uspallata",50049,684,"83883-53",null,"La Turca","Bentonita",false,2,3,"Monllor, Alfredo","null","Mensurada","Vigente","null","null"];
-$array[919] = [24,"Uspallata",50049,2804,"299-B-1990",null,"Las Animas ,"Plomo-Plata",false,1,1,"Minera Del Oeste Srl","null","S/Mensura","Vigente","null","null"];
+$array[919] = [24,"Uspallata",50049,2804,"299-B-1990",null,"Las Animas ","Plomo-Plata",false,1,1,"Minera Del Oeste Srl","null","S/Mensura","Vigente","null","null"];
 $array[920] = [24,"Uspallata",50049,2764,"300-B-1990",null,"Las Animas II","Plomo-Plata",false,1,1,"Minera Del Oeste Srl","null","S/Mensura","Vigente","null","null"];
 $array[921] = [24,"Uspallata",50049,752,"65496-M-56",null,"Libertad","Caolin",false,2,2,"Monllor, Alfredo","null","Mensurada","Vigente","null","null"];
 $array[922] = [24,"Uspallata",50049,1089,"939-A-59",null,"Liliana Mirtha","Talco",false,2,1,"Uspallata Minerales Samic","null","Mensurada","Vigente","null","null"];
@@ -12737,14 +12731,14 @@ $array[923] = [24,"Uspallata",50049,384,"2103-B-39",null,"Los Chuecos","Amianto"
 $array[924] = [24,"Uspallata",50049,627,"443-A-51",null,"Los Once","Caolin",false,2,2,"Minera Cema Saicyf","null","Mensurada","Vigente","null","null"];
 $array[925] = [24,"Uspallata",50049,2683,"293-B-1990",null,"Luaner","Esquistos Bitumin.",false,1,13,"Minera Del Oeste Srl","null","S/Mensura","Vigente","null","null"];
 $array[926] = [24,"Uspallata",50049,2499,"393-F-93",null,"LulI","Oro",false,1,1,"Ferri, Mario Pedro","null","S/Mensura","Vigente","null","null"];
-$array[927] = [24,"Uspallata",50049,376,"3159-A-39",null,"Manto Azul,"Cobre",false,1,3,"Tres Picos Samic","null","Mensurada","Vigente","null","null"];
+$array[927] = [24,"Uspallata",50049,376,"3159-A-39",null,"Manto Azul","Cobre",false,1,3,"Tres Picos Samic","null","Mensurada","Vigente","null","null"];
 $array[928] = [24,"Uspallata",50049,378,"5315-G-42",null,"Manto Poroso","Cobre",true,1,2,"Dumit truemeram, Diego Raúl","null","Mensurada","Vigente","null","null"];
 $array[929] = [24,"Uspallata",50049,899,"824-S-57",null,"Maria Alejandra","Talco",false,2,1,"Galo A. Borlenghi Y José M. Caccavari","null","Mensurada","Vigente","null","null"];
 $array[930] = [24,"Uspallata",50049,388,"531-A-43",null,"Maria Felisa","Talco",false,2,7,"Talcomín Srl - P/ Quiebra","null","Mensurada","Vigente","null","null"];
 $array[931] = [24,"Uspallata",50049,375,"2152-B-35",null,"Maria Lidia","Amianto",false,2,3,"Talcomín Srl - P/ Quiebra","null","Mensurada","Vigente","null","null"];
 $array[932] = [24,"Uspallata",50049,2595,"109-P-1992",null,"María Martha","Cuarzo",false,1,1,"null","null","S/Mensura","Vacante","null","null"];
 $array[933] = [24,"Uspallata",50049,391,"456-B-42",null,"Maria Susana","Talco",false,2,3,"Blanco, Roberto Manuel","null","Mensurada","Vigente","null","null"];
-$array[934] = [24,"Uspallata",50049,1370,"722-B-60",null,"Mariscal,"Talco",false,2,1,"Galo A. Borlenghi Y José M. Caccavari","null","Mensurada","Vigente","null","null"];
+$array[934] = [24,"Uspallata",50049,1370,"722-B-60",null,"Mariscal","Talco",false,2,1,"Galo A. Borlenghi Y José M. Caccavari","null","Mensurada","Vigente","null","null"];
 $array[935] = [24,"Uspallata",50049,2578,"1910-M-1998",null,"Milagro","Oro,Cobre",true,1,1,"Martínez, Juan Roberto Y Otros","null","S/Mensura","Vigente","null","null"];
 $array[936] = [24,"Uspallata",50049,1390,"723-Q-60",null,"Ney","Talco",false,2,1,"Galo A. Borlenghi Y José M. Caccavari","null","Mensurada","Vigente","null","null"];
 $array[937] = [24,"Uspallata",50049,2212,"61-M-1983",null,"falserma","Talco",false,2,1,"Catarifalse, Eduardo Hugo","null","Mensurada","Vigente","null","null"];
@@ -12753,7 +12747,7 @@ $array[939] = [24,"Uspallata",50049,2805,"301-S-1990",null,"Nueva II","Plomo-Pla
 $array[940] = [24,"Uspallata",50049,379,"748-T-1939",null,"Paramillos D/Uspallata","Plomo, Plata",false,1,58,"Nuclear Mendoza Se","null","Mensurada","Vigente","null","null"];
 $array[941] = [24,"Uspallata",50049,373,"107-B-36",null,"Rivadavia","Amianto",false,2,2,"Juan M.Borlenghi Y José M. Caccavari","null","Mensurada","Vigente","null","null"];
 $array[942] = [24,"Uspallata",50049,1234,"650-C-62",null,"Salada Segunda","Talco",false,2,1,"Caccavari, Jose R.","null","Mensurada","Vigente","null","null"];
-$array[943] = [24,"Uspallata",50049,387,"2831-P-2005",null,"50091,"Amianto",false,2,1,"Pozo, Juan","null","S/Mensura","Vigente","null","null"];
+$array[943] = [24,"Uspallata",50049,387,"2831-P-2005",null,"50091","Amianto",false,2,1,"Pozo, Juan","null","S/Mensura","Vigente","null","null"];
 $array[944] = [24,"Uspallata",50049,1068,"670-C-59",null,"San Felipe","Talco",false,2,3,"Lucero, Jose A","null","Mensurada","Vigente","null","null"];
 $array[945] = [24,"Uspallata",50049,1263,"668-C-61",null,"Santa Maria","Fluorita",false,1,3,"null","null","Mensurada","Vacante","null","null"];
 $array[946] = [24,"Uspallata",50049,2389,"159-M-86",null,"Santa Teretrueta","Hierro",false,1,3,"Billiton World Exploration Inc (SUC Arg)","null","Mensurada","Vacante","null","null"];
@@ -12762,15 +12756,17 @@ $array[948] = [24,"Uspallata",50049,2753,"292-R-1992",null,"truelvia","Zeolita "
 $array[949] = [24,"Uspallata",50049,2803,"298-B-1990",null,"Trinidad II","Plomo-Plata",false,1,1,"Minera Del Oeste Srl","null","S/Mensura","Vigente","null","null"];
 $array[950] = [24,"Uspallata",50049,1463,"170-A-62",null,"Turena","Talco",false,2,1,"null","null","S/Mensura","Vacante Sol.,null","null"];
 $array[951] = [24,"Uspallata",50049,1418,"490-M-44",null,"Victoria","Talco",false,2,1,"Talcomín Srl - P/ Quiebra","null","Mensurada","Vigente","null","null"];
+
+/*
 $array[952] = [25,"La Cortaderita",50049,852,"65222-C-56",null,"Agua Dulce","Talco",false,2,1,"Ciratruefalse, Angel","null","Mensurada","Vigente","null","null"];
 $array[953] = [25,"La Cortaderita",50049,401,"147-T-1943",null,"Andacollo","Cobre",false,1,3,"null","null","Mensurada","Vacante Solic.,null","null"];
-$array[954] = [25,"La Cortaderita",50049,1458,"3124-M-2006",null,"Azul,"Talco",false,2,2,"null","null","Mensurada","Vacante","null","null"];
-$array[955] = [25,"La Cortaderita",50049,407,"3210-M-2007","424-G-1895 , 499-M-1958 , 489-M-2006."Brillante","Oro",false,1,4,"Monllor, Rafael Carlos","null","Mensurada","Vigente","null","null"];
+$array[954] = [25,"La Cortaderita",50049,1458,"3124-M-2006",null,"Azul","Talco",false,2,2,"null","null","Mensurada","Vacante","null","null"];
+$array[955] = [25,"La Cortaderita",50049,407,"3210-M-2007","424-G-1895 , 499-M-1958 , 489-M-2006.Brillante","Oro",false,1,4,"Monllor, Rafael Carlos","null","Mensurada","Vigente","null","null"];
 $array[956] = [25,"La Cortaderita",50049,398,"4133-M-43",null,"Carmen","Oro",false,1,5,"Tomás, Julián Rubén","null","Mensurada","Vigente","null","null"];
 $array[957] = [25,"La Cortaderita",50049,2490,"21-M-90",null,"Carolina","Talco",false,2,1,"Monllor, Rafael Carlos Y Otros","null","S/Mensura","Vigente","null","null"];
 $array[958] = [25,"La Cortaderita",50049,730,"101021-54",null,"Cerros San Antonio","Cobre",false,1,2,"Cia Minera Santa Rosa","null","Mensurada","Vigente","null","null"];
 $array[959] = [25,"La Cortaderita",50049,406,"3654-U-1914",null,"Delirio","Oro",false,1,1,"Monllor, Rafael Carlos","null","Mensurada","Vigente","null","null"];
-$array[960] = [25,"La Cortaderita",50049,2782,"3462-E-2010",null,"Delirio 1,"Oro ",false,1,1,"null","null","S/Mensura","Vacante","null","null"];
+$array[960] = [25,"La Cortaderita",50049,2782,"3462-E-2010",null,"Delirio 1","Oro ",false,1,1,"null","null","S/Mensura","Vacante","null","null"];
 $array[961] = [25,"La Cortaderita",50049,2784,"274-B-1994",null,"Delirio 11,"Oro",false,1,1,"null","null","S/Mensura","Vacante","null","null"];
 $array[962] = [25,"La Cortaderita",50049,2783,"3465-E-2010",null,"Delirio 4,"Oro",false,1,1,"null","null","S/Mensura","Vacante","null","null"];
 $array[963] = [25,"La Cortaderita",50049,2439,"87-M-87",null,"Diego","Talco",false,2,1,"Monllor, Rafael Carlos","null","S/Mensura","Vigente","null","null"];
@@ -13096,17 +13092,21 @@ $array[1282] = [29,"San Miguel",50056,448,"349-P-1946",null,"Unión II","Sulfato
 $array[1283] = [0,"null",null,2199,"85-R-1981",null,"El Alacrán","Tierras truelicosas",false,2,1,"Roco Víctor Hugo","null","null,Vigente","null","null"];
 $array[1284] = [0,,null,", 50049,0,"3004-M-2005",null,"Hendy","Oro-Plata-Cobre",false,0,0,"Minera Río De La Plata S.A.","null","null,null,null","false Encontrado"];
 $array[1285] = [1,"El Sosneado",50105,2856,"2547-M-2003",null,"Nueva Frontera","Cobre, oro disem.",true,1,1,"null","null","S/Mensura","Vacante","inactiva","null"];
+*/
 
-
-        for($i=1; $i<=20;$i++){
+        for($i=1; $i<=500;$i++){
             //$array[$i]
 			//PASO 1
+
+			var_dump("voy por la vuelta: ".$i."\n\n");
+
+			//dd($array[$i][12]);
 				$formulario_provisorio = new FormAltaProductor();
 				$formulario_provisorio->razonsocial = $array[$i][11];
-				$formulario_provisorio->email = null;
+				$formulario_provisorio->email = $faker->email();
 				$formulario_provisorio->cuit = $array[$i][12];
 				$formulario_provisorio->numeroproductor =$i;
-				$formulario_provisorio->tiposociedad =null;
+				$formulario_provisorio->tiposociedad ='S.A.';
 				$formulario_provisorio->constaciasociedad = null;
 				$formulario_provisorio->inscripciondgr = null;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
@@ -13115,7 +13115,9 @@ $array[1285] = [1,"El Sosneado",50105,2856,"2547-M-2003",null,"Nueva Frontera","
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				$formulario_provisorio->created_by = Auth::user()->id;
 				$formulario_provisorio->provincia = 50;
-				$formulario_provisorio->save();
+				$resultado = $formulario_provisorio->save();
+
+				//dd($resultado);
 				//Paso 2 
 
 				$formulario_provisorio->leal_calle = null;
@@ -13135,7 +13137,7 @@ $array[1285] = [1,"El Sosneado",50105,2856,"2547-M-2003",null,"Nueva Frontera","
 				$formulario_provisorio->administracion_calle = null;
 				$formulario_provisorio->administracion_numero = null;
 				$formulario_provisorio->administracion_telefono = null;
-				$formulario_provisorio->administracion_pais = "Argentina";
+				$formulario_provisorio->administracion_pais = null;
 				$formulario_provisorio->administracion_provincia = 50;
 				$formulario_provisorio->administracion_departamento = $array[$i][2];
 				$formulario_provisorio->administracion_localidad = $array[$i][1];
@@ -13221,7 +13223,10 @@ $array[1285] = [1,"El Sosneado",50105,2856,"2547-M-2003",null,"Nueva Frontera","
 				$formulario_provisorio->iia = null;
 				$formulario_provisorio->dia = null;
 				$formulario_provisorio->acciones_a_desarrollar = $array[$i][13];
-				$formulario_provisorio->actividad = $array[$i][15];
+				$actividad= null;
+				if(isset($array[$i][15]))
+					$actividad = $array[$i][15];
+				$formulario_provisorio->actividad = $actividad;
 				$formulario_provisorio->fecha_alta_dia = null;
 				$formulario_provisorio->fecha_vencimiento_dia =null;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
@@ -13229,7 +13234,7 @@ $array[1285] = [1,"El Sosneado",50105,2856,"2547-M-2003",null,"Nueva Frontera","
 				
 
 				//Paso 6
-				$formulario_provisorio->localidad_mina_pais = "Argentina";
+				$formulario_provisorio->localidad_mina_pais = null;
 				$formulario_provisorio->localidad_mina_provincia = 50;
 				$formulario_provisorio->localidad_mina_departamento =  $array[$i][2];
 				$formulario_provisorio->localidad_mina_localidad = $array[$i][1];
@@ -13248,11 +13253,11 @@ $array[1285] = [1,"El Sosneado",50105,2856,"2547-M-2003",null,"Nueva Frontera","
 
 
 
-				Mail::to($email_a_mandar)->send(new AvisoFormularioAprobadoEmail(
+				/*Mail::to($email_a_mandar)->send(new AvisoFormularioAprobadoEmail(
 					$formulario_provisorio->id,
 					$formulario_provisorio->razon_social,
 					date("Y-m-d H:i:s")
-				));
+				));*/
 
 				$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
 				$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
@@ -13260,6 +13265,24 @@ $array[1285] = [1,"El Sosneado",50105,2856,"2547-M-2003",null,"Nueva Frontera","
 				$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
 				$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
 
+				var_dump("El id del borrador es:");
+				var_dump($formulario_provisorio->id);
+
+
+				var_dump("El id del productor es:");
+				var_dump($id_productor_nuevo);
+				var_dump("El id de la mina es:");
+				var_dump($id_mina_nueva);
+				var_dump("El id de la id_dia_iia_nueva es:");
+				var_dump($id_dia_iia_nueva);
+				var_dump("El id de la id_dia_iia_nueva es:");
+				var_dump($id_dia_iia_nueva);
+				var_dump("El id de la id_pago_canon_nuevo es:");
+				var_dump($id_pago_canon_nuevo);
+				var_dump("El id de la id_mina_productor es:");
+				var_dump($id_mina_productor);
+
+				echo"\n\n";
 				
 				
 

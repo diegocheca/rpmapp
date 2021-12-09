@@ -9,7 +9,6 @@
         <span
           class="
             flex
-            items-center
             leading-normal
             bg-grey-lighter
             border-1
@@ -23,7 +22,6 @@
             bg-blue-300
             justify-center
             items-center
-            text-xl
             rounded-lg
             text-white
           "

@@ -623,7 +623,6 @@
             v-on:cambioarchivo="cambio_el_archivo_inmueble($event)"
           >
           </SubirArchivo>
-
           <div v-show="ayuda_local">
             <br />
             <div

@@ -318,4 +318,4 @@ Route::get('/dashboard/numproductoresborradores', [DashboardController::class, "
 Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])->name('mostrar_datos_por_dtpo');
 
 
-Route::get('/cargandoexcelmdz', [HomeController::class, "cargandoexcelmdz"])->name('cargandoexcelmdz');
+Route::get('/cargandoexcelmdz', [FormAltaProductorController::class, "cargandoexcelmdz"])->name('cargandoexcelmdz');
