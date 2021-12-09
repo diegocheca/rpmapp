@@ -4,6 +4,11 @@ import inputsTypes from '../../enums/inputsTypes';
 import fileAccept from '../../enums/fileAccept';
 
 export async function getFormSchema({ ...schema }, action, dataForm, productors) {
+
+    const productor = !schema.id_productor? productors : productors.find( e=> schema.id_productor === e.value );
+    const minas = !schema.id_productor? undefined : await axios.get(`/productores/getProductorMina/${productor.value}`);
+    const minerales = await axios.get(`/minerales/getMinerals`);
+
     // name => unique
     // icons => https://heroicons.com/ => svg d=""
     return [
@@ -56,7 +61,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Productor',
-                                    value: {},
+                                    value: schema.id_productor? productor : undefined,
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     async: true,
@@ -79,7 +84,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Mina',
-                                    value: {},
+                                    value: !minas? undefined : minas.data.find( e=> schema.id_mina === e.value ),
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     // async: true,
@@ -88,7 +93,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     // inputClearDepends: [''],
                                     isLoading: false,
                                     //
-                                    options: [],
+                                    options: !minas? [] : minas.data,
                                     name: 'id_mina',
                                     multiple: false,
                                     closeOnSelect: true,
@@ -167,6 +172,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     label: 'Prospección',
                                     value: schema.prospeccion? true : false,
                                     type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
                                     name: 'prospeccion',
                                     observation: new Observations({schema, name: 'prospeccion', action}).observations
 
@@ -175,6 +182,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     label: 'Explotación',
                                     value: schema.explotacion? true : false,
                                     type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
                                     name: 'explotacion',
                                     observation: new Observations({schema, name: 'explotacion', action}).observations
 
@@ -183,6 +192,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     label: 'Desarrollo',
                                     value: schema.desarrollo? true : false,
                                     type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
                                     name: 'desarrollo',
                                     observation: new Observations({schema, name: 'desarrollo', action}).observations
 
@@ -191,6 +202,8 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     label: 'Exploración',
                                     value: schema.explotacion? true : false,
                                     type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
                                     name: 'exploracion',
                                     observation: new Observations({schema, name: 'exploracion', action}).observations
 
@@ -312,10 +325,28 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                             img: '/images/laborales.png',
                             inputs: [
                                 {
+                                    label: 'Si no se produjo ningún mineral, debe seleccionar "NO"',
+                                    // value: schema.prospeccion? true : false,
+                                    value: !schema.cantidad_productos? false : true,
+                                    type: inputsTypes.CHECKBOX,
+                                    labelOn: "SI",
+                                    labelOff: "NO",
+                                    name: 'production_checkbox',
+                                    hiddenComponent: [
+                                        {
+                                            component:   "Productos",
+                                            value: false
+                                        }
+                                    ],
+                                    // observation: new Observations({schema, name: 'prospeccion', action}).observations
+                                    // validations: yup.boolean().required(),
+                                },
+                                {
                                     label: '',
                                     type: inputsTypes.LIST,
                                     name: 'Productos',
                                     columns: 'grid-cols-1',
+                                    hidden: !schema.cantidad_productos? true : false,
                                     // colSpans + 1
                                     columnsResponsive: 'lg:grid-cols-3',
                                     childrens: getChildrens(schema.productos),
@@ -326,44 +357,11 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                                 value: {},
                                                 type: inputsTypes.SELECT,
                                                 colSpan: '',
-                                                options: [
-                                                    {
-                                                        label: 'Oro',
-                                                        value: 'Oro',
-                                                    },
-                                                    {
-                                                        label: 'Plata',
-                                                        value: 'Plata',
-                                                    },
-                                                    {
-                                                        label: 'Cobre',
-                                                        value: 'Cobre',
-                                                    },
-                                                    {
-                                                        label: 'Hierro',
-                                                        value: 'Hierro',
-                                                    },
-                                                    {
-                                                        label: 'Cal',
-                                                        value: 'Cal',
-                                                    },
-                                                    {
-                                                        label: 'Ripio',
-                                                        value: 'Ripio',
-                                                    },
-                                                    {
-                                                        label: 'Platino',
-                                                        value: 'Platino',
-                                                    },
-                                                    {
-                                                        label: 'Diamante',
-                                                        value: 'Diamante',
-                                                    }
-                                                ],
+                                                options: minerales.data,
                                                 name: 'nombre_mineral',
                                                 multiple: false,
                                                 closeOnSelect: true,
-                                                searchable: false,
+                                                searchable: true,
                                                 placeholder: 'Selecciona una opción',
                                                 // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
                                             },
@@ -582,5 +580,8 @@ function getChildrens(data, observation) {
     return newChildrens;
 }
 
+function setValue(value, name, schema) {
+   return schema[name] = value;
+}
 
 

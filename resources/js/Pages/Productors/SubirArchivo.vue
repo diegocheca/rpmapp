@@ -11,7 +11,7 @@
           mb-2
         "
         for="input_componente"
-        >{{ label }}:
+        >{{ label }} :
       </label>
       <div class="flex" v-if="evaluacion || mostrar_correccion">
         <div class="w-full md:w-1/3 px-3">
@@ -195,7 +195,6 @@
               flex flex-col
               items-center
               justify-center
-              items-center
             "
           >
             <!---<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -211,11 +210,13 @@
             <p class="pointer-none text-gray-600">
               <span v-if="!nameArchivo" class="text-sm text-center"
                 >Haga click aca para subir los archivo(s) desde su
-                dispotivo.</span
+                dispositivo.</span
               >
-              <span v-else class="mt-2 text-base leading-normal text-center uppercase">{{
-                nameArchivo
-              }}</span>
+              <span
+                v-else
+                class="mt-2 text-base leading-normal text-center uppercase"
+                >{{ nameArchivo }}</span
+              >
             </p>
           </div>
           <input
@@ -243,7 +244,7 @@
           It appears you don't have a PDF plugin for this browser. No biggie...
           you can
           <a :href="$inertia.page.props.appName + '/storage/files_formularios/'"
-            >Haciendo clik aquí</a
+            >Haga clic aquí para descargar el archivo PDF.</a
           >
         </p>
       </object>
@@ -251,13 +252,13 @@
         <label
           class="
             flex flex-col
-            rounded-lg
-            border-4 border-dashed
             w-full
-            h-60
-            p-10
+            h-5
+            p-5
             group
             text-center
+            bg-blue-600
+            hover:bg-blue-800
           "
         >
           <div
@@ -268,27 +269,18 @@
               flex flex-col
               items-center
               justify-center
-              items-center
             "
           >
-            <!---<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                        </svg>-->
-            <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-              <img
-                class="has-mask h-36 object-center"
-                src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
-                alt="freepik image"
-              />
-            </div>
             <p class="pointer-none text-gray-600">
-              <span v-if="!nameArchivo" class="text-sm text-center"
+              <span v-if="!nameArchivo" class="text-md text-center text-white"
                 >Haga click aca para subir los archivo(s) desde su
-                dispotivo.</span
+                dispositivo.</span
               >
-              <span v-else class="mt-2 text-base leading-normal text-center uppercase">{{
-                nameArchivo
-              }}</span>
+              <span
+                v-else
+                class="text-md text-center text-white"
+                >Nuevo Archivo: {{ nameArchivo }}</span
+              >
             </p>
           </div>
           <input
@@ -301,8 +293,8 @@
           />
         </label>
       </div>
-      <p class="text-sm text-gray-300">
-        <span>Tipos de archivos: doc,pdf</span>
+      <p class="text-sm text-gray-400">
+        <span>Tipos de archivos: doc,pdf,tipos de imagenes.</span>
       </p>
     </div>
   </div>

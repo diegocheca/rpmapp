@@ -1,21 +1,9 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full">
-    <jet-dialog-modal
-      :show="mostrar_modal_datos_ya_guardados"
-      @close="cerrar_modal_datos_uno"
-    >
-      <template #title>
-        {{ modal_tittle }}
-      </template>
-      <template #content>
-        {{ modal_body }}
-      </template>
-      <template #footer>
-        <button @click="cerrar_modal_datos_uno">Ok</button>
-      </template>
-    </jet-dialog-modal>
     <div class="flex items-stretch w-full justify-items-stretch">
-      <div class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full ">
+      <div
+        class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full"
+      >
         <button
           type="button"
           :disabled="$props.desactivar_boton_guardar_uno"
@@ -100,6 +88,8 @@
 
 <script>
 import JetDialogModal from "@/Jetstream/DialogModal";
+import Swal from "sweetalert2";
+
 export default {
   props: [
     "link_volver",
@@ -154,13 +144,16 @@ export default {
   },
   data() {
     return {
-      saludos: "Saludame qweqweqwe",
-      mostrar_modal_datos_ya_guardados: false,
-      modal_tittle: "",
-      modal_body: "",
+      // mostrar_modal_datos_ya_guardados: false,
+      // modal_tittle: "",
+      // modal_body: "",
     };
   },
   methods: {
+    ver_pagina_siguiente(valor) {
+      this.$emit("mostrarpasosiguiente", valor);
+      // console.log('valor: ',valor);
+    },
     mandar_id_al_padre(id) {
       this.$emit("CreeUnNuevoId", id);
     },
@@ -169,7 +162,7 @@ export default {
     },
 
     actualizar_inscripcion_nueva(pathnueva) {
-      console.log("actualizando la inscripcion");
+      // console.log("actualizando la inscripcion");
       this.$emit("actualizarinscripcion", pathnueva);
     },
     actualizar_cosntancia_nueva(pathnueva) {
@@ -178,7 +171,6 @@ export default {
 
     guardar_avnces_uno() {
       //alert("el id q mando es:"+this.$props.evaluacion);
-
       // if(this.$props.evaluacion)
       // {
       //Soy autoridad minera
@@ -255,15 +247,44 @@ export default {
       axios
         .post("/formularios/evaluacion_auto_guardado_uno", data)
         .then(function (response) {
-        //   console.log(response.data.msg);
-          if (response.data.msg === "Datos actualizados correctamente.") {
+          //   console.log(response.data.msg);
+          // if (response.data.msg === "Datos actualizados correctamente.") {
+          //   // console.log("todo bien");
+          //   // self.modal_tittle = "Datos guardados correctamente como Autoridad";
+          //   // self.modal_body =
+          //   //   "Recien hemos guardados los datos del productor de manera correcta, siendo Autoridad, gracias por usar este servcio, por favor continue llenando el formulario";
+          //   // self.mostrar_modal_datos_ya_guardados = true;
+          //   Swal.fire(
+          //     "Datos guardados correctamente como Autoridad.",
+          //     "Gracias por usar este servicio, por favor continue completando el formulario.",
+          //     "success"
+          //   ).then((result) => {
+          //     self.ver_pagina_siguiente(true);
+          //   });
+          //   // console.log(response.data.path_inscripcion);
+          //   // console.log(response.data.path_constaciasociedad);
+          //   if (response.data.path_inscripcion !== "")
+          //     self.actualizar_inscripcion_nueva(response.data.path_inscripcion);
+          //   if (response.data.path_constaciasociedad !== "")
+          //     self.actualizar_cosntancia_nueva(
+          //       response.data.path_constaciasociedad
+          //     );
+          // }
+          if (response.data.rol === "productor") {
             // console.log("todo bien");
-            self.modal_tittle = "Datos guardados correctamente como Autoridad";
-            self.modal_body =
-              "Recien hemos guardados los datos del productor de manera correcta, siendo Autoridad, gracias por usar este servcio, por favor continue llenando el formulario";
-            self.mostrar_modal_datos_ya_guardados = true;
-            console.log(response.data.path_inscripcion);
-            console.log(response.data.path_constaciasociedad);
+            // self.modal_tittle = "Datos guardados correctamente como Productor";
+            // self.modal_body =
+            //   "Recien hemos guardados los datos del productor de manera correcta, siendo Autoridad, gracias por usar este servcio, por favor continue llenando el formulario";
+            // self.mostrar_modal_datos_ya_guardados = true;
+            Swal.fire(
+              "Datos guardados correctamente como Productor.",
+              "Gracias por usar este servicio, por favor continue completando el formulario.",
+              "success"
+            ).then((result) => {
+              self.ver_pagina_siguiente(true);
+            });
+            // console.log(response.data.path_inscripcion);
+            // console.log(response.data.path_constaciasociedad);
             if (response.data.path_inscripcion !== "")
               self.actualizar_inscripcion_nueva(response.data.path_inscripcion);
             if (response.data.path_constaciasociedad !== "")
@@ -271,64 +292,56 @@ export default {
                 response.data.path_constaciasociedad
               );
           }
-
-          if (response.data.msg === "Datos actualizados correctamente..") {
-            // console.log("todo bien");
-            self.modal_tittle = "Datos guardados correctamente como Productor";
-            self.modal_body =
-              "Recien hemos guardados los datos del productor de manera correcta, siendo Autoridad, gracias por usar este servcio, por favor continue llenando el formulario";
-            self.mostrar_modal_datos_ya_guardados = true;
-            console.log(response.data.path_inscripcion);
-            console.log(response.data.path_constaciasociedad);
-            if (response.data.path_inscripcion !== "")
-              self.actualizar_inscripcion_nueva(response.data.path_inscripcion);
-            if (response.data.path_constaciasociedad !== "")
-              self.actualizar_cosntancia_nueva(
-                response.data.path_constaciasociedad
-              );
+          else if (response.data.rol === "autoridad") {
+            // self.modal_tittle =
+            //   "Datos de de evaluación Productor guardados correctamente.";
+            // self.modal_body =
+            //   "Recien hemos guardados los datos de la evaluacin que ha cargado usted como autoridad minera.";
+            // self.mostrar_modal_datos_ya_guardados = true;
+            Swal.fire(
+              "Se guardaron correctamente los datos de Evaluación del Productor.",
+              "Se guardó los datos de la evaluación que ha cargado usted como autoridad minera.",
+              "success"
+            ).then((result) => {
+              self.ver_pagina_siguiente(true);
+            });
           }
-
-          if (
-            response.data.msg ===
-            "Datos de evaluacion ha sido actualizados correctamente."
-          ) {
-            self.modal_tittle =
-              "Datos de de evaluación Productor guardados correctamente.";
-            self.modal_body =
-              "Recien hemos guardados los datos de la evaluacin que ha cargado usted como autoridad minera.";
-            self.mostrar_modal_datos_ya_guardados = true;
-          }
-          if (response.data.msg === "se creo el borrador") {
-            console.log("todo bien, se creo el borrador");
-            self.modal_tittle = "Se creó correctamente nuevo Borrador";
-            self.modal_body =
-              "Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias por usar este servicio. El id es:" +
-              response.data.id +
-              " - Ademas el estado del borrador es:" +
-              response.data.estado;
-            self.mostrar_modal_datos_ya_guardados = true;
+          else if (response.data.msg === "se creo el borrador") {
+            // console.log("todo bien, se creo el borrador");
+            // self.modal_tittle = "Se creó correctamente nuevo Borrador";
+            // self.modal_body =
+            //   "Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias por usar este servicio. El id es:" +
+            //   response.data.id +
+            //   " - Ademas el estado del borrador es: " +
+            //   response.data.estado;
+            // self.mostrar_modal_datos_ya_guardados = true;
+            Swal.fire(
+              "Se creó correctamente un nuevo Borrador.",
+              "Se ha guardado correctamente los Datos del Productor. <b> <br/> [ Id = " +
+                response.data.id +
+                " ] <br/> [ Estado = " +
+                response.data.estado +
+                " ]. </b>",
+              "success"
+            ).then((result) => {
+              self.ver_pagina_siguiente(true);
+            });
             self.mandar_id_al_padre(response.data.id);
             self.mandar_id_adicional_al_padre(response.data.id_adicional);
           } else {
-            console.log("NO todo bien");
+            // console.log("NO todo bien");
+            Swal.fire("Error", "Error inesperado.", "error");
           }
         })
         .catch(function (error) {
           // handle error
+          Swal.fire("Error", "Error inesperado. <br/>" + error, "error");
           console.log(error);
         });
-      //soy una autoridad minera
-
-      //   }
-      // if(!this.$props.evaluacion)
-      // {
-      //       //soy un productor
-
-      // }
     },
-    cerrar_modal_datos_uno() {
-      this.mostrar_modal_datos_ya_guardados = false;
-    },
+    // cerrar_modal_datos_uno() {
+    //   this.mostrar_modal_datos_ya_guardados = false;
+    // },
   },
 };
 </script>

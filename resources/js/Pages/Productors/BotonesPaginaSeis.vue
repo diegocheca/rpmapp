@@ -1,6 +1,6 @@
 <template>
   <div>
-    <jet-dialog-modal
+    <!-- <jet-dialog-modal
       :show="mostrar_modal_datos_ya_guardados"
       @close="cerrar_modal_datos_uno"
     >
@@ -13,7 +13,7 @@
       <template #footer>
         <button @click="cerrar_modal_datos_uno">Ok</button>
       </template>
-    </jet-dialog-modal>
+    </jet-dialog-modal> -->
     <div class="flex items-stretch w-full justify-items-stretch">
       <div
         class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full"
@@ -31,9 +31,7 @@
             rounded-xl
             bg-gray-100
             shadow-xl
-            hover:text-white
-            hover:shadow-xl
-            hover:bg-gray-600
+            hover:text-white hover:shadow-xl hover:bg-gray-600
           "
           @click="guardar_avnces_uno"
         >
@@ -54,9 +52,7 @@
             rounded-xl
             bg-gray-100
             shadow-xl
-            hover:text-white
-            hover:shadow-xl
-            hover:bg-gray-600
+            hover:text-white hover:shadow-xl hover:bg-gray-600
           "
         >
           {{ titulo_boton_volver }}
@@ -100,6 +96,7 @@
 
 <script>
 import JetDialogModal from "@/Jetstream/DialogModal";
+import Swal from "sweetalert2";
 export default {
   props: [
     "link_volver",
@@ -146,13 +143,17 @@ export default {
   },
   data() {
     return {
-      saludos: "Saludame qweqweqwe",
-      mostrar_modal_datos_ya_guardados: false,
-      modal_tittle: "",
-      modal_body: "",
+      // saludos: "Saludame",
+      // mostrar_modal_datos_ya_guardados: false,
+      // modal_tittle: "",
+      // modal_body: "",
     };
   },
   methods: {
+    ver_pagina_siguiente(valor) {
+      this.$emit("mostrarpasosiguiente", valor);
+      // console.log('valor: ',valor);
+    },
     guardar_avnces_uno() {
       //if(this.$props.evaluacion)
       //{
@@ -209,27 +210,28 @@ export default {
           valor_de_reprobado: 20,
         })
         .then(function (response) {
-          console.log(response.data);
+          // console.log(response.data);
           if (response.data === "se actualizaron los datos correctamente") {
-            console.log("todo bien");
-            self.modal_tittle = "Datos guardados correctamente";
-            self.modal_body =
-              "Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario";
-            self.mostrar_modal_datos_ya_guardados = true;
-          }
-
-          if (response.data === "formulario no encontrado") {
-            console.log("todo mal, no se encontro");
-            self.modal_tittle = "Paso 1 Guardado Fallido";
-            self.modal_body =
-              "NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias";
-            self.mostrar_modal_datos_ya_guardados = true;
+            // console.log("todo bien");
+            // self.modal_tittle = "Datos guardados correctamente";
+            // self.modal_body =
+            //   "Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario";
+            // self.mostrar_modal_datos_ya_guardados = true;
+            Swal.fire(
+              "Datos guardados correctamente.",
+              "Gracias por usar este servicio, por favor continue completando el formulario.",
+              "success"
+            ).then((result) => {
+              self.ver_pagina_siguiente(true);
+            });
           } else {
-            console.log("NO todo bien");
+            Swal.fire("Error", "Error inesperado.", "error");
+            // console.log("NO todo bien");
           }
         })
         .catch(function (error) {
           // handle error
+          Swal.fire("Error", "Error inesperado. <br/>" + error, "error");
           console.log(error);
         });
       //soy una autoridad minera
@@ -241,9 +243,9 @@ export default {
 
       // }
     },
-    cerrar_modal_datos_uno() {
-      this.mostrar_modal_datos_ya_guardados = false;
-    },
+    // cerrar_modal_datos_uno() {
+    //   this.mostrar_modal_datos_ya_guardados = false;
+    // },
   },
 };
 </script>

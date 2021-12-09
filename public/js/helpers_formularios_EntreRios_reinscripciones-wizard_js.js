@@ -75,21 +75,21 @@ var Observaciones = /*#__PURE__*/function () {
         options: [{
           label: 'Si',
           value: 'aprobado',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO
         }, {
           label: 'No',
           value: 'rechazado',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO
         }, {
           label: 'Sin evaluar',
           value: 'sin evaluar',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.RADIO
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].RADIO
         }],
         validations: data.action == 'evaluate' ? yup__WEBPACK_IMPORTED_MODULE_1__.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').required('Debes seleccionar una opción').nullable() : null,
         comment: {
           label: 'OBSERVACIÓN',
           value: data.schema["".concat(data.name, "_comentario")],
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__.default.TEXTAREA,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].TEXTAREA,
           name: "".concat(data.name, "_comentario"),
           validationType: "string",
           validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("observacion_".concat(data.name), {
@@ -163,10 +163,10 @@ function getFormSchema(_ref, action, dataForm) {
         inputs: [{
           label: 'Nombre y apellido',
           value: schema.nombre,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
           name: 'nombre',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo').nullable(),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'nombre',
             action: action
@@ -174,10 +174,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'DNI',
           value: schema.dni,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'dni',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'dni',
             action: action
@@ -185,10 +185,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Cargo en la empresa',
           value: schema.cargo,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
           name: 'cargo',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'cargo',
             action: action
@@ -219,10 +219,10 @@ function getFormSchema(_ref, action, dataForm) {
         inputs: [{
           label: 'Porcentaje vendido a Provincia',
           value: schema.porcentaje_venta_provincia,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'porcentaje_venta_provincia',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'porcentaje_venta_provincia',
             action: action
@@ -230,10 +230,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Porcentaje vendido a otras Provincias',
           value: schema.porcentaje_venta_otras_provincias,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'porcentaje_venta_otras_provincias',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'porcentaje_venta_otras_provincias',
             action: action
@@ -241,10 +241,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Porcentaje Exportado',
           value: schema.porcentaje_exportado,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'porcentaje_exportado',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes completar este campo'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'porcentaje_exportado',
             action: action
@@ -263,9 +263,9 @@ function getFormSchema(_ref, action, dataForm) {
         inputs: [{
           label: 'Prospección',
           value: schema.prospeccion ? true : false,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.CHECKBOX,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].CHECKBOX,
           name: 'prospeccion',
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'prospeccion',
             action: action
@@ -273,9 +273,9 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Explotación',
           value: schema.explotacion ? true : false,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.CHECKBOX,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].CHECKBOX,
           name: 'explotacion',
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'explotacion',
             action: action
@@ -283,9 +283,9 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Desarrollo',
           value: schema.desarrollo ? true : false,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.CHECKBOX,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].CHECKBOX,
           name: 'desarrollo',
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'desarrollo',
             action: action
@@ -293,9 +293,9 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Exploración',
           value: schema.explotacion ? true : false,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.CHECKBOX,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].CHECKBOX,
           name: 'exploracion',
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'exploracion',
             action: action
@@ -323,10 +323,10 @@ function getFormSchema(_ref, action, dataForm) {
         inputs: [{
           label: 'Profesional Técnico Permanente',
           value: schema.personal_perm_profesional,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'personal_perm_profesional',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'personal_perm_profesional',
             action: action
@@ -334,10 +334,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Operarios y Obreros Permanente',
           value: schema.personal_perm_operarios,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'personal_perm_operarios',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'personal_perm_operarios',
             action: action
@@ -345,10 +345,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Administrativo Permanente',
           value: schema.personal_perm_administrativos,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'personal_perm_administrativos',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'personal_perm_administrativos',
             action: action
@@ -356,10 +356,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Otros Permanente',
           value: schema.personal_perm_otros,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'personal_perm_otros',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'personal_perm_otros',
             action: action
@@ -367,10 +367,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Profesional Transitorio',
           value: schema.personal_trans_profesional,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'personal_trans_profesional',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'personal_trans_profesional',
             action: action
@@ -378,10 +378,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Operarios y Obreros Transitorio',
           value: schema.personal_trans_operarios,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'personal_trans_operarios',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'personal_trans_operarios',
             action: action
@@ -389,10 +389,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Administrativo Transitorio',
           value: schema.personal_trans_administrativos,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'personal_trans_administrativos',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'personal_trans_administrativos',
             action: action
@@ -400,10 +400,10 @@ function getFormSchema(_ref, action, dataForm) {
         }, {
           label: 'Otros Transitorio',
           value: schema.personal_trans_otros,
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
           name: 'personal_trans_otros',
           validations: yup__WEBPACK_IMPORTED_MODULE_0__.string().required('Debes ingresar una cantidad.'),
-          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          observation: new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'personal_trans_otros',
             action: action
@@ -430,7 +430,7 @@ function getFormSchema(_ref, action, dataForm) {
         img: '/images/laborales.png',
         inputs: [{
           label: '',
-          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.LIST,
+          type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].LIST,
           name: 'Productos',
           columns: 'grid-cols-1',
           // colSpans + 1
@@ -439,7 +439,7 @@ function getFormSchema(_ref, action, dataForm) {
           elements: [[{
             label: 'Producto Extraído',
             value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
             colSpan: '',
             options: [{
               label: 'Oro',
@@ -475,19 +475,19 @@ function getFormSchema(_ref, action, dataForm) {
           }, {
             label: 'Variedad de',
             value: '',
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.TEXT,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].TEXT,
             name: 'variedad',
             colSpan: ''
           }, {
             label: 'Producción',
             value: '',
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
             name: 'produccion',
             colSpan: ''
           }, {
             label: 'Unidades',
             value: {},
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.SELECT,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].SELECT,
             colSpan: '',
             options: [{
               label: 'toneladas',
@@ -507,7 +507,7 @@ function getFormSchema(_ref, action, dataForm) {
           }, {
             label: 'Precio de Venta (en $)',
             value: '',
-            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__.default.NUMBER,
+            type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_2__["default"].NUMBER,
             name: 'precio_venta',
             colSpan: ''
           }, // {
@@ -534,7 +534,7 @@ function getFormSchema(_ref, action, dataForm) {
           _objectSpread({
             colSpan: 'lg:w-5/5',
             type: 'observation'
-          }, new _observaciones__WEBPACK_IMPORTED_MODULE_1__.default({
+          }, new _observaciones__WEBPACK_IMPORTED_MODULE_1__["default"]({
             schema: schema,
             name: 'row',
             action: action

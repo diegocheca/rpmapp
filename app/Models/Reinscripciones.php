@@ -15,7 +15,7 @@ class Reinscripciones extends Model
 
     protected $date = ['created_at', 'deleted_at', 'updated_at', 'fecha_vto' ];
     protected $fillable = [
-        'id_mina',
+        // 'id_mina',
         'id_productor',
         'fecha_vto',
         'prospeccion',
@@ -37,6 +37,55 @@ class Reinscripciones extends Model
         'nombre',
         'dni',
         'cargo',
+
+        // San Luis
+        'id_departamento',
+        'id_localidad',
+        'subterranea',
+        'cielo_abierto',
+        'manual',
+        'mecanizada',
+        'expediente',
+        'polvorin',
+        'ubicacion',
+        'dimensiones',
+        'personal_permanente',
+        'temporario',
+        'total',
+
+        //Catamarca
+        'production_checkbox',
+
+        //La Rioja
+        'reserva',
+        'vida_util',
+        'volumen_total',
+        'volumen_unitario',
+        'volumen_comercializado',
+        'procesamiento_mineral',
+        'personal_perm_tecnicos',
+        'permiso_anmac',
+        'fecha_concesion',
+        'anios_concesion',
+        'inicio_explotacion',
+
+        //Mendoza
+        'semimecanizada',
+        'compresores',
+        'grupo_electrogeno',
+        'camion_mineralero',
+        'cargadora_frontal',
+        'equipo_ventilacion',
+        'martillo_neumatico',
+        'via_decauville',
+        'vagoneta',
+        'bomba_desagote',
+        'taller_equipado',
+        'campamento',
+        'vivienda',
+        'meses_trabajo',
+        'razones_meses_trabajo',
+
         'created_by',
         'estado',
     ];
@@ -44,6 +93,26 @@ class Reinscripciones extends Model
     public function productos()
     {
         return $this->hasMany(Productos::class, 'id_reinscripcion');
+    }
+
+    public function combustibles()
+    {
+        return $this->hasMany(ReinscripcionesCombustible::class, 'id_reinscripcion');
+    }
+
+    public function explosivos()
+    {
+        return $this->hasMany(ReinscripcionesExplosivos::class, 'id_reinscripcion');
+    }
+
+    public function anexo1()
+    {
+        return $this->hasMany(ReinscripcionesAnexo1::class, 'id_reinscripcion');
+    }
+
+    public function equipos()
+    {
+        return $this->hasMany(ReinscripcionesEquipos::class, 'id_reinscripcion');
     }
 
 }

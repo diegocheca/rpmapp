@@ -1,6 +1,6 @@
 <template>
   <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-    <a
+    <inertia-link
       :href="route('login')"
       class="
         relative
@@ -28,7 +28,7 @@
         />
       </svg>
       <span class="ml-1">Ingresar</span>
-    </a>
+    </inertia-link>
   </div>
   <jet-authentication-card>
     <template #logo>
@@ -65,6 +65,7 @@
         <select
           id="provincia"
           v-model="form.id_provincia"
+          @change="namepro($event)"
           required
           class="
             mt-1
@@ -210,11 +211,23 @@ export default {
         terms: false,
         // id_provincia: 70, // San Juan
         id_provincia: "Seleccione Provincia...",
+        provincia: "",
       }),
+      idSelPro: 10,
     };
   },
 
   methods: {
+    async namepro(v) {
+      var nameprovincia = "";
+      await axios
+        .get("/datos/provincia" + "/" + v.target.value)
+        .then(function (response) {
+          nameprovincia = response.data[0].nombre;
+        });
+      this.form.provincia = nameprovincia;
+      // console.log("Valor3: ", nameprovincia);
+    },
     submit() {
       this.form.post(this.route("register"), {
         onFinish: () => this.form.reset("password", "password_confirmation"),

@@ -20,7 +20,7 @@
                   :href="route('dashboard')"
                   :active="route().current('dashboard')"
                 >
-                  Dashboard
+                  Inicio
                 </jet-nav-link>
                 <jet-nav-link
                   v-if="hasAnyPermission(['rpm.borradores.show'])"
@@ -107,10 +107,8 @@
                           rounded-md
                           text-gray-500
                           bg-white
-                          hover:bg-gray-50
-                          hover:text-gray-700
-                          focus:outline-none
-                          focus:bg-gray-50
+                          hover:bg-gray-50 hover:text-gray-700
+                          focus:outline-none focus:bg-gray-50
                           active:bg-gray-50
                           transition
                         "
@@ -203,8 +201,7 @@
                         text-sm
                         border-2 border-transparent
                         rounded-full
-                        focus:outline-none
-                        focus:border-gray-300
+                        focus:outline-none focus:border-gray-300
                         transition
                       "
                     >
@@ -213,6 +210,25 @@
                         :src="$page.props.user.profile_photo_url"
                         :alt="$page.props.user.name"
                       />
+                      <span
+                        class="
+                          font-mono font-semibold
+                          uppercase
+                          ml-4
+                          border-2
+                          shadow-lg
+                          rounded-xl
+                          text-base
+                          w-full
+                          py-1
+                          px-3
+                          bg-white
+                          tracking-wider
+                          border-indigo-400
+                        "
+                      >
+                        {{ $page.props.user.provincia }}
+                      </span>
                     </button>
                     <span v-else class="inline-flex rounded-md">
                       <button
@@ -248,6 +264,19 @@
                           />
                         </svg>
                       </button>
+                      <span
+                        class="
+                          bg-blue-600
+                          text-white
+                          p-2
+                          rounded
+                          leading-none
+                          flex
+                          items-center
+                        "
+                      >
+                        {{ $page.props.user.provincia }}
+                      </span>
                     </span>
                   </template>
                   <template #content>
@@ -305,8 +334,7 @@
           antialiased
           text-gray-900
           bg-gray-100
-          dark:bg-dark
-          dark:text-light
+          dark:bg-dark dark:text-light
         "
       >
         <transition name="slide-fade">
@@ -356,8 +384,17 @@
                   <span class="sr-only">Close sidebar</span>
                 </button>
               </div>
+              <tarjetaPresentacion
+                :clase_sup="'mt-0'"
+                :clase_inf="'text-gray-700'"
+                :logoSrc="$page.props.user.profile_photo_url"
+                :logoAlt="$page.props.user.name"
+                :titulo="$page.props.user.name"
+                :subtitulo="$page.props.user.provincia"
+                :ClaroOscuro="'claro'"
+              ></tarjetaPresentacion>
               <nav class="flex flex-col flex-1 w-64 p-4 mt-4">
-                <a
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.dashboard.show'])"
                   :href="route('dashboard')"
                   :active="route().current('dashboard')"
@@ -390,9 +427,9 @@
                       d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                     />
                   </svg>
-                  <span>Inicio (Dashboard)</span>
-                </a>
-                <a
+                  <span>Inicio</span>
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.borradores.show'])"
                   :href="route('formulario-alta.index')"
                   :active="route().current('formulario-alta.index')"
@@ -426,8 +463,8 @@
                     />
                   </svg>
                   <span>Borradores</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.pagos.show'])"
                   :href="route('pagos.index')"
                   :active="route().current('pagos.index')"
@@ -467,8 +504,8 @@
                     ></path>
                   </svg>
                   <span>Pagos</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.reinscripciones.show'])"
                   :href="route('reinscripciones.index')"
                   :active="route().current('reinscripciones.index')"
@@ -502,8 +539,8 @@
                     />
                   </svg>
                   <span>Reinscripciones</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.producto.show'])"
                   :href="route('productos.index')"
                   :active="route().current('productos.index')"
@@ -540,8 +577,8 @@
                     />
                   </svg>
                   <span>Producto</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.iiasydias.show'])"
                   :href="route('iiadias.index')"
                   :active="route().current('iiadias.index')"
@@ -578,8 +615,8 @@
                     />
                   </svg>
                   <span>IIASyDIAS</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.prodmina.show'])"
                   :href="route('productores_minas.index')"
                   :active="route().current('productores_minas.index')"
@@ -613,8 +650,8 @@
                     />
                   </svg>
                   <span>ProdMina</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['rpm.productores.show'])"
                   :href="route('productores.index')"
                   :active="route().current('productores.index')"
@@ -650,8 +687,8 @@
                     />
                   </svg>
                   <span>Productores</span>
-                </a>
-                <a
+                </inertia-link>
+                <inertia-link
                   v-if="hasAnyPermission(['formweb.formulariosweb.show'])"
                   :href="route('formweb.solicitudes.index')"
                   :active="route().current('formweb.solicitudes.index')"
@@ -686,10 +723,10 @@
                     />
                   </svg>
                   <span>Formularios WEB</span>
-                </a>
+                </inertia-link>
               </nav>
               <div class="flex-shrink-0 p-4">
-                <a
+                <inertia-link
                   v-if="hasAnyPermission(['admin.users.index'])"
                   :href="route('admin.users.index')"
                   class="
@@ -718,7 +755,7 @@
                     />
                   </svg>
                   <span>Configuración</span>
-                </a>
+                </inertia-link>
                 <!-- Authentication -->
                 <form @submit.prevent="logout">
                   <button class="flex items-center space-x-2">
@@ -747,16 +784,7 @@
         <!-- Page content -->
         <button
           @click="isSidebarOpen = true"
-          class="
-             
-            fixed
-            p-2
-            text-white
-            bg-black
-            rounded-lg
-            top-5
-            left-5
-          "
+          class="fixed p-2 text-white bg-black rounded-lg top-5 left-5"
         >
           <svg
             class="w-6 h-6"
@@ -781,6 +809,7 @@
 </template>
 
 <script>
+import tarjetaPresentacion from "@/Components/TarjetaPresentacion";
 import JetApplicationMark from "@/Jetstream/ApplicationMark";
 import JetBanner from "@/Jetstream/Banner";
 import JetDropdown from "@/Jetstream/Dropdown";
@@ -797,6 +826,7 @@ export default {
     JetNavLink,
     JetResponsiveNavLink,
     JetAuthenticationCardLogo,
+    tarjetaPresentacion,
   },
   data() {
     return {

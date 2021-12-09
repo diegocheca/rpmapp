@@ -45,7 +45,17 @@ class ProductoresController extends Controller
 
     public static function productoresUsuario()
     {
-        $productores = Productores::where('usuario_creador', Auth::user()->id)->get();
+        $user = HomeController::userData();
+        if(Auth::user()->hasRole('Productor'))
+        {
+            $productores = Productores::where('usuario_creador', Auth::user()->id)->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
+        }
+        elseif(Auth::user()->hasRole('Autoridad')) {
+            $productores = Productores::select('*')->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
+        }
+        else //administrador
+            $productores = Productores::all();
+
         return [
             'productores' => $productores
         ];
@@ -53,7 +63,7 @@ class ProductoresController extends Controller
 
     public static function getProductorMina($id){
 		//dd($id);
-		$productorMina =		$productorMina = DB::table('productor_mina')
+		$productorMina = DB::table('productor_mina')
         ->join('mina_cantera', 'productor_mina.id_mina', '=', 'mina_cantera.id')
         ->where('productor_mina.id_productor', $id)
         ->select('mina_cantera.id as value', 'mina_cantera.nombre as label')

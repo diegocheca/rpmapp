@@ -1,7 +1,7 @@
 <template>
     <div>
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-        for="input_componente"
+        for=""
         >{{label}}</label>
         <div class="flex items-stretch w-full mb-4 relative">
             <div class="flex">
@@ -10,7 +10,7 @@
                 </span>
             </div>
             <input 
-            type="text" 
+            :type="tipoInput?'number':'text'" 
             maxlength="30"
             class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
             placeholder="Complete este campo"
@@ -95,6 +95,7 @@
 <script>
 export default {
     props: [
+        'tipoInput',
         'valor_input_props', 
         'valor_input_validacion', 
         'evualacion_correcto', 

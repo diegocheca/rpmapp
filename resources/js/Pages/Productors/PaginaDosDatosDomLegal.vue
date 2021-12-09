@@ -1,23 +1,31 @@
 <template>
   <div
     class="
-      border border-gray-300 border border-gray-300
+      border-2
+      shadow-lg
+      rounded-2xl
       w-full
       py-4
       px-8
       bg-white
-      shadow-lg
-      rounded-lg
       my-20
+      border-indigo-400
     "
   >
-    <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
+    <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a
         v-if="titulo_boton_guardar === 'Guardar Datos del Domicilio Legal'"
         href="#section_domicilio_legal"
-      > 
+      >
         <img
-          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500 bg-white"
+          class="
+            w-20
+            h-20
+            object-cover
+            rounded-full
+            border-2 border-indigo-500
+            bg-white
+          "
           :src="
             $inertia.page.props.appName +
             '/formulario_alta/imagenes/domicilio-cards.png'
@@ -26,7 +34,14 @@
       </a>
       <a v-else href="#section_domicilio_administrativo">
         <img
-          class="w-20 h-20 object-cover rounded-full border-2 border-indigo-500 bg-white"
+          class="
+            w-20
+            h-20
+            object-cover
+            rounded-full
+            border-2 border-indigo-500
+            bg-white
+          "
           :src="
             $inertia.page.props.appName +
             '/formulario_alta/imagenes/domicilio-cards.png'
@@ -127,24 +142,27 @@
           />
         </label>
       </div>
-    </div>
+    </div> -->
     <div>
-      <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
-      <br /><br />
-      <div class="flex items-center justify-center">
+      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2> -->
+      <!-- <br /><br /> -->
+
+      <div class="items-center justify-left sticky top-0 z-10">
         <CardDomLegal
           v-if="titulo_boton_guardar === 'Guardar Datos del Domicilio Legal'"
           :progreso="50"
           :aprobado="50"
           :reprobado="50"
           :lugar="'Argentina, San Juan'"
+          :titulo="titulo_pagina"
           :updated_at="'hace 10 minutos'"
           :mostrarayuda="true"
           :evaluacion="autoridad_minera"
-          :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-          :clase_inf="'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+          :clase_sup="'gap-6'"
+          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_legal"
           v-on:changevalorayuda="update_valor_ayuda_local_legal($event)"
+          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
         ></CardDomLegal>
 
         <CardDomAdmin
@@ -156,17 +174,34 @@
           :aprobado="50"
           :reprobado="50"
           :lugar="'Argentina, San Juan'"
+          :titulo="titulo_pagina"
           :updated_at="'hace 10 minutos'"
           :mostrarayuda="true"
           :evaluacion="autoridad_minera"
-          :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-          :clase_inf="'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
+          :clase_sup="'gap-6'"
+          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_administrativo"
           v-on:changevalorayuda="update_valor_ayuda_local_admi($event)"
+          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
         ></CardDomAdmin>
       </div>
       <br />
       <br />
+      <div
+        v-if="titulo_boton_guardar !== 'Guardar Datos del Domicilio Legal'"
+        class="items-center justify-left"
+      >
+        <span class="text-lg font-semibold mr-3"
+          >Mismos Datos que Domicilio Legal?</span
+        >
+        <Toggle
+          v-model="copiar_datos"
+          @change="buscar_domicilio_en_padre"
+          on-label="SI"
+          off-label="NO"
+        />
+      </div>
+
       <div class="flex flex-wrap">
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
           <InputNombreCalle
@@ -529,7 +564,6 @@
           </div>
         </div>
       </div>
-
       <div class="flex flex-wrap">
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
           <SelectDepartamento
@@ -888,25 +922,26 @@
       </div>
     </div>
     <br /><br />
+
     <div class="flex items-center justify-center">
       <BotonesPaginaDos
         v-if="mostrar_boton_guardar_dos"
         :link_volver="'#'"
-        :titulo_boton_volver="'volver'"
+        :titulo_boton_volver="'Volver'"
         :titulo_boton_guardar="'Guardar Datos del Domicilio'"
-        :leal_calle="form_pagina.leal_calle"
+        :leal_calle="leal_calle"
         :nombre_calle_legal_valido="form_pagina.nombre_calle_legal_valido"
         :nombre_calle_legal_correcto="form_pagina.nombre_calle_legal_correcto"
         :obs_nombre_calle_legal="form_pagina.obs_nombre_calle_legal"
         :obs_nombre_calle_legal_valido="
           form_pagina.obs_nombre_calle_legal_valido
         "
-        :leal_numero="form_pagina.leal_numero"
+        :leal_numero="leal_numero"
         :leal_numero_valido="form_pagina.leal_numero_valido"
         :leal_numero_correcto="form_pagina.leal_numero_correcto"
         :obs_leal_numero="form_pagina.obs_leal_numero"
         :obs_leal_numero_valido="form_pagina.obs_leal_numero_valido"
-        :leal_telefono="form_pagina.leal_telefono"
+        :leal_telefono="leal_telefono"
         :leal_telefono_valido="form_pagina.leal_telefono_valido"
         :leal_telefono_correcto="form_pagina.leal_telefono_correcto"
         :obs_leal_telefono="form_pagina.obs_leal_telefono"
@@ -916,27 +951,27 @@
         :leal_pais_correcto="form_pagina.leal_pais_correcto"
         :obs_leal_pais="form_pagina.obs_leal_pais"
         :obs_leal_pais_valido="form_pagina.obs_leal_pais_valido"
-        :leal_provincia="form_pagina.leal_provincia"
+        :leal_provincia="leal_provincia"
         :leal_provincia_valido="form_pagina.leal_provincia_valido"
         :leal_provincia_correcto="form_pagina.leal_provincia_correcto"
         :obs_leal_provincia="form_pagina.obs_leal_provincia"
         :obs_leal_provincia_valido="form_pagina.obs_leal_provincia_valido"
-        :leal_departamento="form_pagina.leal_departamento"
+        :leal_departamento="leal_departamento"
         :leal_departamento_valido="form_pagina.leal_departamento_valido"
         :leal_departamento_correcto="form_pagina.leal_departamento_correcto"
         :obs_leal_departamento="form_pagina.obs_leal_departamento"
         :obs_leal_departamento_valido="form_pagina.obs_leal_departamento_valido"
-        :leal_localidad="form_pagina.leal_localidad"
+        :leal_localidad="leal_localidad"
         :leal_localidad_valido="form_pagina.leal_localidad_valido"
         :leal_localidad_correcto="form_pagina.leal_localidad_correcto"
         :obs_leal_localidad="form_pagina.obs_leal_localidad"
         :obs_leal_localidad_valido="form_pagina.obs_leal_localidad_valido"
-        :leal_cp="form_pagina.leal_cp"
+        :leal_cp="leal_cp"
         :leal_cp_valido="form_pagina.leal_cp_valido"
         :leal_cp_correcto="form_pagina.leal_cp_correcto"
         :obs_leal_cp="form_pagina.obs_leal_cp"
         :obs_leal_cp_valido="form_pagina.obs_leal_cp_valido"
-        :leal_otro="form_pagina.leal_otro"
+        :leal_otro="leal_otro"
         :leal_otro_valido="form_pagina.leal_otro_valido"
         :leal_otro_correcto="form_pagina.leal_otro_correcto"
         :obs_leal_otro="form_pagina.obs_leal_otro"
@@ -945,6 +980,7 @@
         :evaluacion="autoridad_minera"
         :id="$props.id"
         :testing="mostrar_testing"
+        v-on:mostrarpasosiguiente="mostrarpasos($event)"
       ></BotonesPaginaDos>
     </div>
 
@@ -969,6 +1005,8 @@ import InputLocalidad from "@/Pages/Productors/InputLocalidad";
 import InputCP from "@/Pages/Productors/InputCP";
 import InputOtro from "@/Pages/Productors/InputOtro";
 import BotonesPaginaDos from "@/Pages/Productors/BotonesPaginaDos";
+
+import Toggle from "@vueform/toggle";
 
 export default {
   watch: {},
@@ -1089,6 +1127,7 @@ export default {
     InputLocalidad,
     InputOtro,
     BotonesPaginaDos,
+    Toggle,
   },
 
   data() {
@@ -1101,6 +1140,7 @@ export default {
       autoridad_minera: this.$props.evaluacion,
       ayuda_legal: false,
       ayuda_administrativo: false,
+      copiar_datos: false,
       form_pagina: {
         leal_calle: this.$props.leal_calle,
         nombre_calle_legal_valido: this.$props.nombre_calle_legal_valido,
@@ -1179,14 +1219,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_nombre_calle_validacion(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_nombre_calle_legal_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_nombre_calle(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_calle = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreNombreCalle", {
+        nombre: this.form_pagina.leal_calle,
+        lugar: this.$props.donde_estoy,
+      });
     },
     //FUNCIONES DE Numero de calle
     update_num_legal_valido(newValue) {
@@ -1194,7 +1237,7 @@ export default {
       //tengo que enviarsela al padre
     },
     update_num_legal_correcto(newValue) {
-      console.log(newValue);
+      // console.log(newValue);
       this.form_pagina.leal_numero_correcto = newValue;
       //tengo que enviarsela al padre
     },
@@ -1203,14 +1246,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_num_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_numero_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_num_legal(newValue) {
-      console.log("traje dddddddddddddun" + newValue);
+      // console.log("traje dddddddddddddun" + newValue);
       this.form_pagina.leal_numero = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreNumCalle", {
+        nombre: this.form_pagina.leal_numero,
+        lugar: this.$props.donde_estoy,
+      });
     },
     //FUNCIONES DE TELEFONO
     update_tel_legal_valido(newValue) {
@@ -1226,14 +1272,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_tel_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_telefono_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_tel_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_telefono = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreTel", {
+        nombre: this.form_pagina.leal_telefono,
+        lugar: this.$props.donde_estoy,
+      });
     },
     // FUNCIONES  DE PROVINCIA
     update_provincia_valido(newValue) {
@@ -1249,16 +1298,20 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_provincia_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_provincia_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_provincia_legal_num_legal(newValue) {
       let self = this;
-      console.log("cambio la provincia de mi hijo por:" + newValue);
+      // console.log("cambio la provincia de mi hijo por:" + newValue);
 
       //this.form_pagina.localidad_mina_provincia = newValue;
       this.form_pagina.leal_provincia = newValue;
+      this.$emit("updateValorPadreProv", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
 
       //debo actualizar la lista de departamento que tengo disponibles para elegir
       axios
@@ -1286,14 +1339,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_dpto_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_departamento_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_dpto_legal_num_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_departamento = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreDepto", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
     },
 
     update_localidad_valido(newValue) {
@@ -1309,14 +1365,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_localidad_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_localidad_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_localidad_legal_num_legal(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_localidad = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreLocalidad", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
     },
 
     update_cp_valido(newValue) {
@@ -1332,14 +1391,17 @@ export default {
       //tengo que enviarsela al padre
     },
     update_obs_cp_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_cp_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_cp(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_cp = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreCP", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
     },
 
     update_otro_valido(newValue) {
@@ -1347,24 +1409,27 @@ export default {
       //tengo que enviarsela al padre
     },
     update_otro_correcto(newValue) {
-      console.log("cambie orto correcto" + newValue);
+      // console.log("cambie orto correcto" + newValue);
       this.form_pagina.leal_otro_correcto = newValue;
       //tengo que enviarsela al padre
     },
     update_obs_otro_legal(newValue) {
-      console.log("cambie el otro");
+      // console.log("cambie el otro");
       this.form_pagina.obs_leal_otro = newValue;
       //tengo que enviarsela al padre
     },
     update_obs_otro_legal_valido(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.obs_leal_otro_valido = newValue;
       //tengo que enviarsela al padre
     },
     update_valor_otro(newValue) {
-      console.log("traje un" + newValue);
+      // console.log("traje un" + newValue);
       this.form_pagina.leal_otro = newValue;
-      //tengo que enviarsela al padre
+      this.$emit("updateValorPadreOtro", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
     },
 
     //mostrar ayuda
@@ -1381,6 +1446,18 @@ export default {
       )
         this.nombrePagina = "legal_";
       else this.nombrePagina = "adm_";
+    },
+    mostrarpasos(v) {
+      this.$emit("mostrarpasosiguiente", v);
+      // console.log("valor: ", v);
+    },
+    update_valor_pagina_siguiente(v) {
+      // console.log("valor: ", v);
+      this.$emit("mostrarpasosiguiente", v);
+    },
+    buscar_domicilio_en_padre() {
+      //busco los datos en el padre
+      if (this.copiar_datos) this.$emit("copiarDatosDomicilioLegal", true);
     },
   },
   mounted() {
