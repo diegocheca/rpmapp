@@ -28,7 +28,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = User::with(['roles','provincia'])->orderBy('id')->get();
+        $users = User::with(['roles', 'provincia'])->orderBy('id')->get();
         //  echo $users;
         return  Inertia::render('Users/listarUsers', ['usuarios' => $users]);
     }
@@ -50,9 +50,9 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-
+        $provincias = CountriesController::getProvinces();
+        // echo $provincias;
         $user->hasRole(Role::all());
-        // echo $user;
         $roles = Role::all();
         // echo $roles;
         $rolesAll = [];
@@ -96,26 +96,22 @@ class UserController extends Controller
         // $user->hasExactRoles(Role::all()->pluck('id','name'));
         // $usuario = $user->getRoleNames(); // Returns a collection
         // echo $rolesP;
-        return  Inertia::render('Users/UserEditar', ['usuario' => $user, 'roles' => $rolesAll, 'rolesUser' => $rolesUserId]);
+        return  Inertia::render('Users/UserEditar', ['usuario' => $user, 'roles' => $rolesAll, 'rolesUser' => $rolesUserId, 'provincias' => $provincias]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     public function update(Request $request, User $user)
     {
-        // echo $user;
+        $nameProvincia = CountriesController::getProvince($request->idProv);
+        $nameProvincia = $nameProvincia->label;
+        // dd($nameProvincia);
         // echo collect($request->get('checkedroles'));
         // $user->update($request->all());
 
         $user->update([
             'name' => $request->name,
-            'email' => $request->email
+            'email' => $request->email,
+            'id_provincia' => $request->idProv,
+            'provincia' => $nameProvincia,
         ]);
 
         if ($request->get('checkedroles')) {
