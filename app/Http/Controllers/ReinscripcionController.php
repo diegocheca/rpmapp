@@ -392,9 +392,18 @@ class ReinscripcionController extends Controller
     {
         $productors = ProductoresController::productoresUsuario();
         $reinscripcion = Reinscripciones::find($id);
-        $reinscripcion->explosivos = $reinscripcion->explosivos;
-        $reinscripcion->equipos = $reinscripcion->equipos;
-        $reinscripcion = array_merge($reinscripcion->toArray(), Reinscripciones::find($id)->productos->toArray()[0]);
+
+        if(!empty($reinscripcion->explosivos)) {
+            $reinscripcion->explosivos = $reinscripcion->explosivos;
+        }
+
+        if(!empty($reinscripcion->equipos)) {
+            $reinscripcion->equipos = $reinscripcion->equipos;
+        }
+
+        if(!empty(Reinscripciones::find($id)->productos)){
+            $reinscripcion = array_merge($reinscripcion->toArray(), Reinscripciones::find($id)->productos->toArray()[0]);
+        }
 
         $provinces = CountriesController::getProvinces();
 
