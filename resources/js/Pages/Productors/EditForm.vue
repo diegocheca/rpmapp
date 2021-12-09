@@ -1778,7 +1778,7 @@
                       md:inline-block
                     "
                   >
-                    Actualizar
+                    Actuaqqqqlizar
                   </button>
                 </div>
 
@@ -1848,7 +1848,7 @@
                       md:inline-block
                     "
                   >
-                    Actualizar
+                    Actualizar123
                   </button>
                 </div>
 
@@ -2797,7 +2797,8 @@ export default {
       this.AvisoAprueba = true;
       this.modal_tittle_apro =
         "Advertencia: esta por presentar esta solicitud de Productor.";
-      form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+      //form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+      form_evaluacion_valida = true; //sacar esta linea para control de datos
       if (form_evaluacion_valida === "") {
         //el formulario esta bien hecho y no tiene observaciones
         this.modal_body_apro =
@@ -2837,7 +2838,10 @@ export default {
       let self = this;
       const data = new FormData();
       data.append("id", this.$props.productor.id);
-      data.append("estado", self.form.estado);
+      data.append("cargo_empresa", self.form.cargo_empresa);
+      data.append("nombre_presentador", self.form.presentador_nombre);
+      data.append("dni_presentador", self.form.presentador_dni);
+
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
       axios
         .post(
@@ -2856,7 +2860,7 @@ export default {
               self.closeModalAprobar = false;
               self.mostrar_modal_datos_ya_guardados = true;
             }
-            if (self.form.estado === "en revision") {
+            if (response.data.msg === "Formulario Actualizado Correctamente.") {
               // lo presente como productor
               console.log("todo bien");
               self.modal_tittle = "Se actualizo estado";
@@ -2875,6 +2879,16 @@ export default {
               self.mostrar_modal_datos_ya_guardados = true;
             }
           }
+          if (response.data.msg === "Formulario Actualizado Correctamente.") {
+            // lo presente como productor
+            console.log("todo bien");
+            self.modal_tittle = "Se actualizo estado";
+            self.modal_body =
+              "Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera";
+            self.closeModalAprobar = false;
+            self.mostrar_modal_datos_ya_guardados = true;
+          }
+
           if (response.data.msg === "formulario no encontrado") {
             console.log("todo mal, no se encontro");
             self.modal_tittle = "Paso 1 Guardado Fallido";

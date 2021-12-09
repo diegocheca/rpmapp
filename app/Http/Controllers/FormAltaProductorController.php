@@ -16,11 +16,10 @@ use App\Mail\AvisoFormularioPresentadoEmail;
 use App\Mail\AvisoFormularioAprobadoEmail;
 use App\Mail\AvisoFormularioConObservaciones;
 
-
+use Faker\Factory as Faker;
 use Illuminate\Support\Str;
 
 use Illuminate\Database\Seeder;
-use Faker\Factory  as Faker;
 
 use App\Models\EmailsAConfirmar;
 use App\Models\Productors;
@@ -11069,13 +11068,19 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		//dd($request->nombre_presentador, $request->dni_presentador , $request->cargo_empresa);
 		$request->es_evaluacion = $request->es_evaluacion === 'true' ? true : false;
 		$request->id = intval($request->id);
+		//dd($request->id);
 		if ($request->id > 0) {
 			date_default_timezone_set('America/Argentina/Buenos_Aires');
 			$formulario_provisorio = FormAltaProductor::select('*')
 				->where('id', '=', $request->id)->first();
+				//dd($formulario_provisorio);
+				//dd($request->cargo_empresa,$request->nombre_presentador,$request->dni_presentador);
+
+				//dd($formulario_provisorio->estado, $request->estado);
 			if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')) { // soy autoridad minera
 				if($formulario_provisorio->estado == 'borrador')
 				{
+					//dd("entre aca en borrador");
 					$formulario_provisorio->cargo_empresa = $request->cargo_empresa;
 					$formulario_provisorio->presentador_nom_apellido = $request->nombre_presentador;
 					$formulario_provisorio->presentador_dni = $request->dni_presentador;
@@ -11083,11 +11088,12 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 
 				if ($request->estado == 'presentar')
 					$formulario_provisorio->estado = "en revision";
-				else
+				if ($request->estado!= null)
 					$formulario_provisorio->estado = $request->estado;
 				$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
 				$formulario_provisorio->updated_by = Auth::user()->id;
 				//datos de presentador
+				$resulado = $formulario_provisorio->save();
 				
 				//$formulario_provisorio->save();
 				//$email_a_mandar = $formulario_provisorio->email; para prod
@@ -11200,7 +11206,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				$productor->razonsocial = $formulario_provisorio->razonsocial;
 				$productor->numeroproductor = $formulario_provisorio->numeroproductor;
 				$productor->email = $formulario_provisorio->email;
-				$productor->domicilio_prod = "cambiar esto";
+				$productor->domicilio_prod = "Sin Domicilio";
 				$productor->tiposociedad = $formulario_provisorio->tiposociedad;
 				$productor->inscripciondgr = $formulario_provisorio->inscripciondgr;
 				$productor->constaciasociedad = $formulario_provisorio->constaciasociedad;
@@ -11208,7 +11214,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 				$productor->leal_numero = $formulario_provisorio->leal_numero;
 				$productor->leal_telefono = $formulario_provisorio->leal_telefono;
 				// $productor->leal_pais = $formulario_provisorio->leal_pais;
-				$productor->leal_pais = "Argentina";
+				$productor->leal_pais = null;
 
 				$productor->leal_provincia = $formulario_provisorio->leal_provincia;
 				$productor->leal_departamento = $formulario_provisorio->leal_departamento;
@@ -13260,6 +13266,24 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 // 				$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
 // 				$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
 
+				// var_dump("El id del borrador es:");
+				// var_dump($formulario_provisorio->id);
+
+
+				// var_dump("El id del productor es:");
+				// var_dump($id_productor_nuevo);
+				// var_dump("El id de la mina es:");
+				// var_dump($id_mina_nueva);
+				// var_dump("El id de la id_dia_iia_nueva es:");
+				// var_dump($id_dia_iia_nueva);
+				// var_dump("El id de la id_dia_iia_nueva es:");
+				// var_dump($id_dia_iia_nueva);
+				// var_dump("El id de la id_pago_canon_nuevo es:");
+				// var_dump($id_pago_canon_nuevo);
+				// var_dump("El id de la id_mina_productor es:");
+				// var_dump($id_mina_productor);
+
+				// echo"\n\n";
 				
 				
 
