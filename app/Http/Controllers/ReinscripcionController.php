@@ -693,7 +693,11 @@ class ReinscripcionController extends Controller
         $reinscripcion['id_mina'] = isset($idMina)? $idMina->id_mina : null;
         $reinscripcion['id_mina_evaluacion'] = isset($idMina)? $idMina->id_mina_evaluacion : null;
         $reinscripcion['id_mina_comentario'] = isset($idMina)? $idMina->id_mina_comentario : null;
-        $reinscripcion->productos = Reinscripciones::find($id)->productos;
+
+        if(!empty(Reinscripciones::find($id)->productos)) {
+            $reinscripcion->productos = Reinscripciones::find($id)->productos;
+        }
+
         // dd(
         //     DB::table('reinscripciones')
         //         ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
