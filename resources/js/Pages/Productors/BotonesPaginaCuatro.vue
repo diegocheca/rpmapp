@@ -345,9 +345,11 @@ export default {
       data.append("valor_de_aprobado", 20);
       data.append("valor_de_reprobado", 20);
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
+console.log(this.$inertia.page.props.appName);
+      alert(this.$inertia.page.props.appName);
       axios
         .post(
-          this.$inertia.page.props.appName + "/formularios/evaluacion_auto_guardado_cuatro",
+          "/formularios/evaluacion_auto_guardado_cuatro",
           data
         )
         .then(function (response) {
@@ -378,7 +380,7 @@ export default {
       if (this.$props.minerales["length"] != 0) {
         axios
           .post(
-            this.$inertia.page.props.appName + "/formularios/guardar_lista_minerales",
+            "/formularios/guardar_lista_minerales",
             {
               id: this.$props.id,
               lista_minerales: this.$props.minerales,
