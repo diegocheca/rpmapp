@@ -10,8 +10,10 @@ const FILE = "file";
 const LIST = "list";
 const DATE = "date";
 const TABLE = "table";
+const REMOVEICON = "remove";
 
-const INPUTS_DEFAULT = [TEXT, NUMBER, PASSWORD, RADIO, EMAIL, DATE];
+
+const INPUTS_DEFAULT = [TEXT, NUMBER, PASSWORD, EMAIL, DATE];
 
 export default {
     TEXT,
@@ -26,5 +28,7 @@ export default {
     LIST,
     INPUTS_DEFAULT,
     DATE,
-    TABLE
+    TABLE,
+    REMOVEICON,
+
 };

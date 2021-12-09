@@ -83,6 +83,8 @@ Route::get('productores/getProductorMina/{id}', [ProductoresController::class, "
     ->middleware(['auth:sanctum', 'verified'])->name('productores.getProductorMina');
 Route::get('minerales/getMinerals', [MineralesController::class, "getMinerals"])
     ->middleware(['auth:sanctum', 'verified'])->name('minerales.getMinerals');
+    Route::get('minerales/getMineral/{id}', [MineralesController::class, "getMineral"])
+    ->middleware(['auth:sanctum', 'verified'])->name('minerales.getMineral');
     //     Route::get('provincias', 'ReinscripcionController@getCountries')
 //         ->middleware(['auth:sanctum', 'verified']);
 

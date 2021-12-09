@@ -7,7 +7,7 @@ export default class Observaciones {
     }
 
     getFormSchema(data) {
-        console.log(data);
+        // console.log(data);
         if (data.action == 'create') return {};
 
         return {
@@ -39,7 +39,7 @@ export default class Observaciones {
                 type: inputsTypes.TEXTAREA,
                 name: `${data.name}_comentario`,
                 validationType: "string",
-                validations: yup.string().when(`observacion_${data.name}`, { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').required('Debes agregar una observación') }).nullable(),
+                validations: yup.string().when(`${data.name}_evaluacion`, { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').required('Debes agregar una observación').nullable() }).nullable(),
             }
         }
     }

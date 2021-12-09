@@ -16,9 +16,9 @@ class MineralesController extends Controller
 
     // public static function getTipoDocumento($id, Request $request){
 
-        public static function getMineral(){
-         $lista_mineral = Minerales::all('id as value', 'name as label'); 
-        return $lista_mineral;     
+    public static function getMineral($id){
+        $mineral = Minerales::find($id, ['id as value', 'name as label']);
+        return response()->json($mineral);
 	}
 
     public static function getMinerals(){
@@ -26,7 +26,7 @@ class MineralesController extends Controller
 		return response()->json($lista_mineral);
 
 	}
-    
+
     public function index()
     {
         //
