@@ -338,8 +338,10 @@ class ReinscripcionSanLuis extends Migration
             $table->string('explotacion_comentario', 50)->nullable()->default(null);
 
             $table->string('observaciones', 100)->nullable()->default(null);
-            $table->string('comment', 50)->nullable()->default(null);
-            $table->string('value', 50)->nullable()->default(null);
+
+            $table->string('evaluacion')->nullable()->default(null);
+            $table->string('comentario', 50)->nullable()->default(null);
+
 
             $table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
             ->onDelete('cascade');

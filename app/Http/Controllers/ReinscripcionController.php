@@ -53,11 +53,12 @@ class ReinscripcionController extends Controller
             ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
             ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
             ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
-            ->where('usuario_creador', '=', Auth::user()->id)
+            ->where('productores.usuario_creador', '=', Auth::user()->id)
             ->whereNull('reinscripciones.deleted_at')
             ->select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
+            ->groupBy('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','encargado','productores.razonsocial','mina')
             ->get()
-            ->unique('reinscripciones.id');
+            ;
         }
         elseif(Auth::user()->hasRole('Autoridad')) {
             $reinscripciones = DB::table('reinscripciones')
@@ -67,8 +68,9 @@ class ReinscripcionController extends Controller
             // ->where('productores.leal_provincia', $user->province->value)
             ->whereNull('reinscripciones.deleted_at')
             ->select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
+            ->groupBy('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','encargado','productores.razonsocial','mina')
             ->get()
-            ->unique('reinscripciones.id');;
+            ;
         }
         else //administrador
             $reinscripciones = Reinscripciones::select('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','reinscripciones.nombre as encargado','productores.razonsocial','mina_cantera.nombre as mina')
@@ -76,8 +78,9 @@ class ReinscripcionController extends Controller
             ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
             ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
             ->whereNull('reinscripciones.deleted_at')
+            ->groupBy('reinscripciones.id','productos.id_mina','reinscripciones.id_productor','reinscripciones.estado','encargado','productores.razonsocial','mina')
             ->get()
-            ->unique('reinscripciones.id');
+            ;
         //dd($user->province->value,Auth::user()->hasRole('Autoridad') );
         return Inertia::render('Reinscripciones/List', ['reinscripciones' => $reinscripciones]);
     }
@@ -451,6 +454,7 @@ class ReinscripcionController extends Controller
 
     protected function MendozaStore($saveData, $newProducts, $idReinscripcion, $action)
     {
+        // create
         if(empty($idReinscripcion)) {
             //add new reinscripcion
             $arrayValues = $saveData;
@@ -508,6 +512,7 @@ class ReinscripcionController extends Controller
             //modificar reinscripcion
             $newReinscription = Reinscripciones::where('id', $idReinscripcion)->update($arrayValues);
 
+            // edit
             if($action == 'edit') {
                 //productos
                 for ($prod=0; $prod < count($saveData['productos']); $prod++) {
@@ -596,49 +601,56 @@ class ReinscripcionController extends Controller
                 // }
 
             } else {
-                 //productos
+                // revision
+                $bandRechazado = false;
+                //productos
                 for ($prod=0; $prod < count($saveData['productos']); $prod++) {
                     $producto = $saveData['productos'][$prod];
 
                     Productos::where('id', $producto['id'])->update([
-                        'comment' => $saveData['productos'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['productos'][$prod]['row_comentario'] : null,
-                        'value' =>  $saveData['productos'][$prod]['row_evaluacion']
+                        'comentario' => $saveData['productos'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['productos'][$prod]['row_comentario'] : null,
+                        'evaluacion' =>  $saveData['productos'][$prod]['row_evaluacion']
                     ]);
 
-                    if(!empty($producto['id'])) {
-                        $productValues = [
-                            "id_mina" => $producto["id_mina"]["value"],
-                            "nombre_mineral" => $producto["nombre_mineral"]["value"],
-                            "explotacion" => $producto["explotacion"],
-                            "calidad" => $producto["calidad"],
-                            "capacidad" => $producto["capacidad"],
-                            "estado" => "en proceso"
-                        ];
+                    // if(!empty($producto['id'])) {
+                        // $productValues = [
+                        //     "id_mina" => $producto["id_mina"]["value"],
+                        //     "nombre_mineral" => $producto["nombre_mineral"]["value"],
+                        //     "explotacion" => $producto["explotacion"],
+                        //     "calidad" => $producto["calidad"],
+                        //     "capacidad" => $producto["capacidad"],
+                        //     "estado" => "en proceso"
+                        // ];
 
-                        $saveEditProducts = Productos::where('id', $producto['id'])->update($productValues);
+                        // $saveEditProducts = Productos::where('id', $producto['id'])->update($productValues);
 
                         //comercializacion
                         unset($saveData['comercializacion'][$prod]["nombre_mineral"]);
                         ReinscripcionesComercializacion::where('id_productos', $producto['id'])->update([
-                            'evaluacion' => $saveData['comercializacion'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['comercializacion'][$prod]['row_comentario'] : null,
-                            'comentario' =>  $saveData['comercializacion'][$prod]['row_evaluacion']
+                            'evaluacion' => $saveData['comercializacion'][$prod]['row_evaluacion'] ,
+                            'comentario' =>  $saveData['comercializacion'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['comercializacion'][$prod]['row_comentario'] : null
                         ]);
 
                         //transporte
                         unset($saveData['transporte'][$prod]["nombre_mineral"]);
                         ReinscripcionesTransporte::where('id_productos', $producto['id'])->update([
-                            'evaluacion' => $saveData['transporte'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['transporte'][$prod]['row_comentario'] : null,
-                            'comentario' =>  $saveData['transporte'][$prod]['row_evaluacion']
+                            'evaluacion' => $saveData['transporte'][$prod]['row_evaluacion'] ,
+                            'comentario' =>  $saveData['transporte'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['transporte'][$prod]['row_comentario'] : null
                         ]);
 
                         //producción
                         unset($saveData['produccion'][$prod]["nombre_mineral"]);
                         ReinscripcionesProduccion::where('id_productos', $producto['id'])->update([
-                            'evaluacion' => $saveData['produccion'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['produccion'][$prod]['row_comentario'] : null,
-                            'comentario' =>  $saveData['produccion'][$prod]['row_evaluacion']
+                            'evaluacion' => $saveData['produccion'][$prod]['row_evaluacion'] ,
+                            'comentario' =>  $saveData['produccion'][$prod]['row_evaluacion'] == "rechazado" ? $saveData['produccion'][$prod]['row_comentario'] : null
                         ]);
 
-                    }
+                        if(!$bandRechazado && ($saveData['comercializacion'][$prod]['row_evaluacion'] == "rechazado" || $saveData['productos'][$prod]['row_evaluacion'] == "rechazado" || $saveData['transporte'][$prod]['row_evaluacion'] == "rechazado" || $saveData['produccion'][$prod]['row_evaluacion'] == "rechazado")) {
+                            $bandRechazado = true;
+                            Reinscripciones::where('id', $idReinscripcion)->update(["estado" => "rechazado"]);
+                        }
+
+                    // }
                     //  else {
 
                     // }
@@ -894,14 +906,14 @@ class ReinscripcionController extends Controller
                         }
                         // var_dump($toUpdate->productos[$i]['id']);
 
-                        $saveDataProd['comment'] = $dataReinscripcion['Productos'][$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcion['Productos'][$i]['row_comentario'] : null;
-                        $saveDataProd['value'] = $dataReinscripcion['Productos'][$i]['row_evaluacion'];
+                        $saveDataProd['comentario'] = $dataReinscripcion['Productos'][$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcion['Productos'][$i]['row_comentario'] : null;
+                        $saveDataProd['evaluacion'] = $dataReinscripcion['Productos'][$i]['row_evaluacion'];
                         $saveDataProd['estado'] = $newStatus;
 
                         Productos::where('id', $toUpdate->productos[$i]['id'])->update(
                             $saveDataProd
                             // [
-                            // 'comment' => $dataReinscripcionProductsFilter[$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcionProductsFilter[$i]['row_comentario'] : null,
+                            // 'comentario' => $dataReinscripcionProductsFilter[$i]['row_evaluacion'] == "rechazado" ? $dataReinscripcionProductsFilter[$i]['row_comentario'] : null,
                             // 'value' =>  $dataReinscripcionProductsFilter[$i]['row_evaluacion'],
                             // 'estado' => $newStatus
                             // ]

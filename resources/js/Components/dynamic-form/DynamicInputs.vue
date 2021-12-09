@@ -48,7 +48,7 @@
                                         :name="item.name"
                                         :type="item.type"
                                         class="mr-2"
-                                        :disabled="action != 'create' && item.disabled"
+                                        :disabled="action != 'create' && (evaluate || item?.observation?.value == 'aprobado') || status == 'aprobado' ? true: false"
                                         v-model="item.value"
                                     >
                                     </Field>
@@ -286,10 +286,10 @@
                                                             :name="`${item.name}[${indexElement}].${ele.name}`"
                                                             :type="ele.type"
                                                             class="inp w-full"
-                                                            :disabled="action != 'create' && ele.disabled"
+                                                            :disabled="(action != 'create' && (evaluate || item.observation?.value == 'aprobado')) || ele.disabled ? true: false"
                                                         />
                                                         <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${item.name}[${indexElement}].${ele.name}`" :value="ele.value">
-                                                            <VueMultiselect  v-bind="field" :name="`${item.name}[${indexElement}].${ele.name}`" :ref="`${item.name}[${indexElement}].${ele.name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate? true: false" @select="handleChageOptionSelectTable" v-model="ele.value" >
+                                                            <VueMultiselect  v-bind="field" :name="`${item.name}[${indexElement}].${ele.name}`" :ref="`${item.name}[${indexElement}].${ele.name}`" :id="{ ele, id: `${indexElement}`}" :options="ele.options" :multiple="ele.multiple" :close-on-select="ele.closeOnSelect" :searchable="ele.sercheable" :placeholder="ele.placeholder" label="label" track-by="value" selectLabel="Presiona para seleccionar" deselectLabel="Presiona para quitarlo" :disabled="evaluate || ele.disabled ? true: false" @select="handleChageOptionSelectTable" v-model="ele.value" >
                                                             </VueMultiselect>
                                                         </Field>
                                                         <template v-if="ele.type == inputsTypes.RADIO">
@@ -299,7 +299,7 @@
                                                                     :name="`${item.name}[${indexElement}].${ele.name}`"
                                                                     :type="ele.type"
                                                                     class="mr-2"
-                                                                    :disabled="action != 'create' && ele.disabled"
+                                                                    :disabled="(action != 'create' && (evaluate || item.observation?.value == 'aprobado')) || ele.disabled ? true: false"
                                                                 >
                                                                 </Field>
                                                                 {{opt.label}}
@@ -309,9 +309,10 @@
                                                             <svg v-if="ele.type == inputsTypes.REMOVEICON && !evaluate" @click="removeRowTable(item, indexElement)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                             </svg>
+                                                            <!-- <pre>{{ele}}</pre> -->
                                                             <div v-if="ele.type == 'observation' && evaluate" class="grid grid-rows-2 grid-flow-col p-4 mt-5 rounded-lg"
                                                             :class="[action != 'create' && ele.value != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]">
-                                                                <pre>{{ele.comment.value}}</pre>
+
                                                                 <div class="w-full flex flex-wrap">
                                                                     <span class="w-full text-gray-700">
                                                                         Correcto?

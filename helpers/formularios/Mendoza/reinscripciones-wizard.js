@@ -210,351 +210,351 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                         },
                     ]
                 },
-                {
-                    widthResponsive: 'lg:flex-row', //flex
-                    // columns
-                    body: [
-                        //  col 1
-                        {
-                            title: 'Datos del productor minero',
-                            width: 'w-full', //flex
-                            columns: 'grid-cols-1', //grid
-                            columnsResponsive: 'lg:grid-cols-1', //inside card
-                            // infoCard: ''
-                           // img: '/images/laborales.png',
-                            inputs: [
-                                {
-                                    label: 'Producto que se destino al consumo propio y/o comercializado',
-                                    type: inputsTypes.TABLE,
-                                    name: "comercializacion",
-                                    typeTable: "horizontal",
-                                    addRow: true,
-                                    componentParentDepends: "productos.nombre_mineral",
-                                    verticalTitle: [],
-                                    horizontalTitle: [
-                                        'Nombre',
-                                        'Variedad y Calidad',
-                                        'Tamaño o Granul.',
-                                        'Ley Valor',
-                                        'Ley Tipo',
-                                        'Toneladas',
-                                        'Precio Venta Boca Mina por Tn.',
-                                        'Existencias No Vendidas al 31/12',
-                                        'Acciones'
-                                    ],
-                                    element: getChildrensTable({
-                                        data: schema.comercializacion,
-                                        selectedChild: [
-                                            {
-                                                label: '',
-                                                value: undefined,
-                                                type: inputsTypes.SELECT,
-                                                isLoading: false,
-                                                options: minerales.data,
-                                                name: 'nombre_mineral',
-                                                multiple: false,
-                                                isLoading: false,
-                                                closeOnSelect: true,
-                                                searchable: false,
-                                                placeholder: 'Selecciona una opción',
-                                                id: '',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'variedad_calidad',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.NUMBER,
-                                                name: 'granul',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'ley_tipo',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'ley_valor',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.NUMBER,
-                                                name: 'cantidad',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.NUMBER,
-                                                name: 'precio_venta',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.NUMBER,
-                                                name: 'no_vendido',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.REMOVEICON,
-                                                colSpan: '',
-                                                name: 'remove',
-                                            },
-                                            {
-                                                type: 'observation',
-                                                ...new Observations({schema, name: 'row', action}).observations
-                                            }
-                                        ],
-                                        action
-                                    }),
-                                    // observation: new Observations({schema, name: 'equipos', action}).observations,
-                                    validations: yup
-                                        .array()
-                                        .of(
-                                            yup.object().shape({
-                                                nombre_mineral: yup.object().when('mineralSelect', {
-                                                    is: value => _.isEmpty(value) || !value,
-                                                    then: yup.object().required('Debes elegir un elemento').nullable()
-                                                }).nullable(),
-                                                variedad_calidad: yup.string().nullable().required('Debes completar este campo'),
-                                                granul: yup.string().nullable().required('Debes completar este campo'),
-                                                ley_tipo: yup.string().nullable().required('Debes completar este campo'),
-                                                ley_valor: yup.string().nullable().required('Debes completar este campo'),
-                                                cantidad: yup.string().nullable().required('Debes completar este campo'),
-                                                precio_venta: yup.string().nullable().required('Debes completar este campo'),
-                                                no_vendido: yup.string().nullable().required('Debes completar este campo'),
-                                            })
-                                        )
-                                        .strict(),
-                                },
-                            ]
-                        },
-                    ]
-                },
-                {
-                    widthResponsive: 'lg:flex-row', //flex
-                    // columns
-                    body: [
-                        //  col 1
-                        {
-                            title: 'Datos sobre transporte',
-                            width: 'w-full', //flex
-                            // columns: '', //grid
-                            // columnsResponsive: '', //inside card
-                            img: '/images/laborales.png',
-                            inputs: [
-                                {
-                                    label: '',
-                                    type: inputsTypes.TABLE,
-                                    name: "transporte",
-                                    componentParentDepends: "productos",
-                                    typeTable: "horizontal",
-                                    addRow: true,
-                                    verticalTitle: [],
-                                    horizontalTitle: [
-                                        'Nombre del Producto Transportado',
-                                        'Desde',
-                                        'Hasta',
-                                        'Distancia (Km.)',
-                                        'Medio de Transporte Usado',
-                                        'Costo de Flete ($/Tn.)',
-                                        'Acciones'
-                                    ],
-                                    element: getChildrensTable({
-                                        data: schema.transporte,
-                                        selectedChild: [
-                                            {
-                                                label: '',
-                                                value: undefined,
-                                                type: inputsTypes.SELECT,
-                                                isLoading: false,
-                                                options: minerales.data,
-                                                name: 'nombre_mineral',
-                                                multiple: false,
-                                                isLoading: false,
-                                                closeOnSelect: true,
-                                                searchable: false,
-                                                placeholder: 'Selecciona una opción',
-                                                id: '',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'desde',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'hasta',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.NUMBER,
-                                                name: 'distancia',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'medio_transporte',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.NUMBER,
-                                                name: 'coste_flete',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.REMOVEICON,
-                                                colSpan: '',
-                                                name: 'remove',
-                                            },
-                                            {
-                                                type: 'observation',
-                                                ...new Observations({schema, name: 'row', action}).observations
-                                            }
-                                        ],
-                                        action
-                                    }),
-                                    // observation: new Observations({schema, name: 'equipos', action}).observations,
-                                    validations: yup
-                                        .array()
-                                        .of(
-                                            yup.object().shape({
-                                                nombre_mineral: yup.object().when('mineralSelect', {
-                                                    is: value => _.isEmpty(value) || !value,
-                                                    then: yup.object().required('Debes elegir un elemento').nullable()
-                                                }).nullable(),
-                                                desde: yup.string().nullable().required('Debes completar este campo'),
-                                                hasta: yup.string().nullable().required('Debes completar este campo'),
-                                                distancia: yup.string().nullable().required('Debes completar este campo'),
-                                                medio_transporte: yup.string().nullable().required('Debes completar este campo'),
-                                                coste_flete: yup.string().nullable().required('Debes completar este campo'),
-                                            })
-                                        )
-                                        .strict(),
-                                },
-                            ]
-                        },
-                    ]
-                },
-                {
-                    widthResponsive: 'lg:flex-row', //flex
-                    // columns
-                    body: [
-                        //  col 1
-                        {
-                            title: 'Destino de la producción',
-                            width: 'w-full', //flex
-                            // columns: '', //grid
-                            // columnsResponsive: '', //inside card
-                            img: '/images/laborales.png',
-                            inputs: [
-                                {
-                                    label: '',
-                                    type: inputsTypes.TABLE,
-                                    name: "produccion",
-                                    componentParentDepends: "productos",
-                                    typeTable: "horizontal",
-                                    addRow: true,
-                                    verticalTitle: [],
-                                    horizontalTitle: [
-                                        'Nombre del Producto Vendido',
-                                        'Lugar de Consumo',
-                                        'Nombre o Razón Social de Firma Compradora',
-                                        'Domicilio Comprador',
-                                        'Actividad Comprador',
-                                        'Acciones'
-                                    ],
-                                    element: getChildrensTable({
-                                        data: schema.produccion,
-                                        selectedChild: [
-                                            {
-                                                label: '',
-                                                value: undefined,
-                                                type: inputsTypes.SELECT,
-                                                isLoading: false,
-                                                options: minerales.data,
-                                                name: 'nombre_mineral',
-                                                multiple: false,
-                                                isLoading: false,
-                                                closeOnSelect: true,
-                                                searchable: false,
-                                                placeholder: 'Selecciona una opción',
-                                                id: '',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'lugar_consumo',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'razon_social_comprador',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'domicilio',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.TEXT,
-                                                name: 'actividad',
-                                            },
-                                            {
-                                                label: '',
-                                                value: '',
-                                                type: inputsTypes.REMOVEICON,
-                                                colSpan: '',
-                                                name: 'remove',
-                                            },
-                                            {
-                                                type: 'observation',
-                                                ...new Observations({schema, name: 'row', action}).observations
-                                            }
-                                        ],
-                                        action
-                                    }),
-                                    // observation: new Observations({schema, name: 'equipos', action}).observations,
-                                    validations: yup
-                                        .array()
-                                        .of(
-                                            yup.object().shape({
-                                                nombre_mineral: yup.object().when('mineralSelect', {
-                                                    is: value => _.isEmpty(value) || !value,
-                                                    then: yup.object().required('Debes elegir un elemento').nullable()
-                                                }).nullable(),
-                                                lugar_consumo: yup.string().nullable().required('Debes completar este campo'),
-                                                razon_social_comprador: yup.string().nullable().required('Debes completar este campo'),
-                                                domicilio: yup.string().nullable().required('Debes completar este campo'),
-                                                actividad: yup.string().nullable().required('Debes completar este campo'),
-                                            })
-                                        )
-                                        .strict(),
-                                },
-                            ]
-                        },
-                    ]
-                },
+                // {
+                //     widthResponsive: 'lg:flex-row', //flex
+                //     // columns
+                //     body: [
+                //         //  col 1
+                //         {
+                //             title: 'Datos del productor minero',
+                //             width: 'w-full', //flex
+                //             columns: 'grid-cols-1', //grid
+                //             columnsResponsive: 'lg:grid-cols-1', //inside card
+                //             // infoCard: ''
+                //            // img: '/images/laborales.png',
+                //             inputs: [
+                //                 {
+                //                     label: 'Producto que se destino al consumo propio y/o comercializado',
+                //                     type: inputsTypes.TABLE,
+                //                     name: "comercializacion",
+                //                     typeTable: "horizontal",
+                //                     addRow: true,
+                //                     componentParentDepends: "productos.nombre_mineral",
+                //                     verticalTitle: [],
+                //                     horizontalTitle: [
+                //                         'Nombre',
+                //                         'Variedad y Calidad',
+                //                         'Tamaño o Granul.',
+                //                         'Ley Valor',
+                //                         'Ley Tipo',
+                //                         'Toneladas',
+                //                         'Precio Venta Boca Mina por Tn.',
+                //                         'Existencias No Vendidas al 31/12',
+                //                         'Acciones'
+                //                     ],
+                //                     element: getChildrensTable({
+                //                         data: schema.comercializacion,
+                //                         selectedChild: [
+                //                             {
+                //                                 label: '',
+                //                                 value: undefined,
+                //                                 type: inputsTypes.SELECT,
+                //                                 isLoading: false,
+                //                                 options: minerales.data,
+                //                                 name: 'nombre_mineral',
+                //                                 multiple: false,
+                //                                 isLoading: false,
+                //                                 closeOnSelect: true,
+                //                                 searchable: false,
+                //                                 placeholder: 'Selecciona una opción',
+                //                                 id: '',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'variedad_calidad',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.NUMBER,
+                //                                 name: 'granul',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'ley_tipo',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'ley_valor',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.NUMBER,
+                //                                 name: 'cantidad',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.NUMBER,
+                //                                 name: 'precio_venta',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.NUMBER,
+                //                                 name: 'no_vendido',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.REMOVEICON,
+                //                                 colSpan: '',
+                //                                 name: 'remove',
+                //                             },
+                //                             {
+                //                                 type: 'observation',
+                //                                 ...new Observations({schema, name: 'row', action}).observations
+                //                             }
+                //                         ],
+                //                         action
+                //                     }),
+                //                     // observation: new Observations({schema, name: 'equipos', action}).observations,
+                //                     validations: yup
+                //                         .array()
+                //                         .of(
+                //                             yup.object().shape({
+                //                                 nombre_mineral: yup.object().when('mineralSelect', {
+                //                                     is: value => _.isEmpty(value) || !value,
+                //                                     then: yup.object().required('Debes elegir un elemento').nullable()
+                //                                 }).nullable(),
+                //                                 variedad_calidad: yup.string().nullable().required('Debes completar este campo'),
+                //                                 granul: yup.string().nullable().required('Debes completar este campo'),
+                //                                 ley_tipo: yup.string().nullable().required('Debes completar este campo'),
+                //                                 ley_valor: yup.string().nullable().required('Debes completar este campo'),
+                //                                 cantidad: yup.string().nullable().required('Debes completar este campo'),
+                //                                 precio_venta: yup.string().nullable().required('Debes completar este campo'),
+                //                                 no_vendido: yup.string().nullable().required('Debes completar este campo'),
+                //                             })
+                //                         )
+                //                         .strict(),
+                //                 },
+                //             ]
+                //         },
+                //     ]
+                // },
+                // {
+                //     widthResponsive: 'lg:flex-row', //flex
+                //     // columns
+                //     body: [
+                //         //  col 1
+                //         {
+                //             title: 'Datos sobre transporte',
+                //             width: 'w-full', //flex
+                //             // columns: '', //grid
+                //             // columnsResponsive: '', //inside card
+                //             img: '/images/laborales.png',
+                //             inputs: [
+                //                 {
+                //                     label: '',
+                //                     type: inputsTypes.TABLE,
+                //                     name: "transporte",
+                //                     componentParentDepends: "productos",
+                //                     typeTable: "horizontal",
+                //                     addRow: true,
+                //                     verticalTitle: [],
+                //                     horizontalTitle: [
+                //                         'Nombre del Producto Transportado',
+                //                         'Desde',
+                //                         'Hasta',
+                //                         'Distancia (Km.)',
+                //                         'Medio de Transporte Usado',
+                //                         'Costo de Flete ($/Tn.)',
+                //                         'Acciones'
+                //                     ],
+                //                     element: getChildrensTable({
+                //                         data: schema.transporte,
+                //                         selectedChild: [
+                //                             {
+                //                                 label: '',
+                //                                 value: undefined,
+                //                                 type: inputsTypes.SELECT,
+                //                                 isLoading: false,
+                //                                 options: minerales.data,
+                //                                 name: 'nombre_mineral',
+                //                                 multiple: false,
+                //                                 isLoading: false,
+                //                                 closeOnSelect: true,
+                //                                 searchable: false,
+                //                                 placeholder: 'Selecciona una opción',
+                //                                 id: '',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'desde',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'hasta',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.NUMBER,
+                //                                 name: 'distancia',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'medio_transporte',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.NUMBER,
+                //                                 name: 'coste_flete',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.REMOVEICON,
+                //                                 colSpan: '',
+                //                                 name: 'remove',
+                //                             },
+                //                             {
+                //                                 type: 'observation',
+                //                                 ...new Observations({schema, name: 'row', action}).observations
+                //                             }
+                //                         ],
+                //                         action
+                //                     }),
+                //                     // observation: new Observations({schema, name: 'equipos', action}).observations,
+                //                     validations: yup
+                //                         .array()
+                //                         .of(
+                //                             yup.object().shape({
+                //                                 nombre_mineral: yup.object().when('mineralSelect', {
+                //                                     is: value => _.isEmpty(value) || !value,
+                //                                     then: yup.object().required('Debes elegir un elemento').nullable()
+                //                                 }).nullable(),
+                //                                 desde: yup.string().nullable().required('Debes completar este campo'),
+                //                                 hasta: yup.string().nullable().required('Debes completar este campo'),
+                //                                 distancia: yup.string().nullable().required('Debes completar este campo'),
+                //                                 medio_transporte: yup.string().nullable().required('Debes completar este campo'),
+                //                                 coste_flete: yup.string().nullable().required('Debes completar este campo'),
+                //                             })
+                //                         )
+                //                         .strict(),
+                //                 },
+                //             ]
+                //         },
+                //     ]
+                // },
+                // {
+                //     widthResponsive: 'lg:flex-row', //flex
+                //     // columns
+                //     body: [
+                //         //  col 1
+                //         {
+                //             title: 'Destino de la producción',
+                //             width: 'w-full', //flex
+                //             // columns: '', //grid
+                //             // columnsResponsive: '', //inside card
+                //             img: '/images/laborales.png',
+                //             inputs: [
+                //                 {
+                //                     label: '',
+                //                     type: inputsTypes.TABLE,
+                //                     name: "produccion",
+                //                     componentParentDepends: "productos",
+                //                     typeTable: "horizontal",
+                //                     addRow: true,
+                //                     verticalTitle: [],
+                //                     horizontalTitle: [
+                //                         'Nombre del Producto Vendido',
+                //                         'Lugar de Consumo',
+                //                         'Nombre o Razón Social de Firma Compradora',
+                //                         'Domicilio Comprador',
+                //                         'Actividad Comprador',
+                //                         'Acciones'
+                //                     ],
+                //                     element: getChildrensTable({
+                //                         data: schema.produccion,
+                //                         selectedChild: [
+                //                             {
+                //                                 label: '',
+                //                                 value: undefined,
+                //                                 type: inputsTypes.SELECT,
+                //                                 isLoading: false,
+                //                                 options: minerales.data,
+                //                                 name: 'nombre_mineral',
+                //                                 multiple: false,
+                //                                 isLoading: false,
+                //                                 closeOnSelect: true,
+                //                                 searchable: false,
+                //                                 placeholder: 'Selecciona una opción',
+                //                                 id: '',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'lugar_consumo',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'razon_social_comprador',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'domicilio',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.TEXT,
+                //                                 name: 'actividad',
+                //                             },
+                //                             {
+                //                                 label: '',
+                //                                 value: '',
+                //                                 type: inputsTypes.REMOVEICON,
+                //                                 colSpan: '',
+                //                                 name: 'remove',
+                //                             },
+                //                             {
+                //                                 type: 'observation',
+                //                                 ...new Observations({schema, name: 'row', action}).observations
+                //                             }
+                //                         ],
+                //                         action
+                //                     }),
+                //                     // observation: new Observations({schema, name: 'equipos', action}).observations,
+                //                     validations: yup
+                //                         .array()
+                //                         .of(
+                //                             yup.object().shape({
+                //                                 nombre_mineral: yup.object().when('mineralSelect', {
+                //                                     is: value => _.isEmpty(value) || !value,
+                //                                     then: yup.object().required('Debes elegir un elemento').nullable()
+                //                                 }).nullable(),
+                //                                 lugar_consumo: yup.string().nullable().required('Debes completar este campo'),
+                //                                 razon_social_comprador: yup.string().nullable().required('Debes completar este campo'),
+                //                                 domicilio: yup.string().nullable().required('Debes completar este campo'),
+                //                                 actividad: yup.string().nullable().required('Debes completar este campo'),
+                //                             })
+                //                         )
+                //                         .strict(),
+                //                 },
+                //             ]
+                //         },
+                //     ]
+                // },
             ]
         },
         {
@@ -709,375 +709,375 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                 },
             ]
         },
-        // {
-        //     icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
-        //     bgColorIcon: 'bg-blue-500',
-        //     bgColorProgress: 'bg-blue-300',
-        //     titleStep: 'Comercialización',
-        //     bodyStep: [
-        //         {
-        //             widthResponsive: 'lg:flex-row', //flex
-        //             // columns
-        //             body: [
-        //                 //  col 1
-        //                 {
-        //                     title: 'Datos de Comercialización',
-        //                     width: 'w-full', //flex
-        //                     // columns: '', //grid
-        //                     // columnsResponsive: '', //inside card
-        //                     img: '/images/laborales.png',
-        //                     inputs: [
-        //                         {
-        //                             label: 'Producto que se destino al consumo propio y/o comercializado',
-        //                             type: inputsTypes.TABLE,
-        //                             name: "comercializacion",
-        //                             typeTable: "horizontal",
-        //                             addRow: true,
-        //                             componentParentDepends: "productos.nombre_mineral",
-        //                             verticalTitle: [],
-        //                             horizontalTitle: [
-        //                                 'Nombre',
-        //                                 'Variedad y Calidad',
-        //                                 'Tamaño o Granul.',
-        //                                 'Ley Valor',
-        //                                 'Ley Tipo',
-        //                                 'Toneladas',
-        //                                 'Precio Venta Boca Mina por Tn.',
-        //                                 'Existencias No Vendidas al 31/12',
-        //                                 'Acciones'
-        //                             ],
-        //                             element: getChildrensTable({
-        //                                 data: schema.comercializacion,
-        //                                 selectedChild: [
-        //                                     {
-        //                                         label: '',
-        //                                         value: undefined,
-        //                                         type: inputsTypes.SELECT,
-        //                                         isLoading: false,
-        //                                         options: minerales.data,
-        //                                         name: 'nombre_mineral',
-        //                                         multiple: false,
-        //                                         isLoading: false,
-        //                                         closeOnSelect: true,
-        //                                         searchable: false,
-        //                                         placeholder: 'Selecciona una opción',
-        //                                         id: '',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'variedad_calidad',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.NUMBER,
-        //                                         name: 'granul',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'ley_tipo',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'ley_valor',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.NUMBER,
-        //                                         name: 'cantidad',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.NUMBER,
-        //                                         name: 'precio_venta',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.NUMBER,
-        //                                         name: 'no_vendido',
-        //                                     },
-        //                                     // {
-        //                                     //     label: '',
-        //                                     //     value: '',
-        //                                     //     type: inputsTypes.REMOVEICON,
-        //                                     //     colSpan: '',
-        //                                     //     name: 'remove',
-        //                                     // },
-        //                                     {
-        //                                         type: 'observation',
-        //                                         ...new Observations({schema, name: 'row', action}).observations
-        //                                     }
-        //                                 ],
-        //                                 action
-        //                             }),
-        //                             // observation: new Observations({schema, name: 'equipos', action}).observations,
-        //                             validations: yup
-        //                                 .array()
-        //                                 .of(
-        //                                     yup.object().shape({
-        //                                         nombre_mineral: yup.object().when('mineralSelect', {
-        //                                             is: value => _.isEmpty(value) || !value,
-        //                                             then: yup.object().required('Debes elegir un elemento').nullable()
-        //                                         }).nullable(),
-        //                                         variedad_calidad: yup.string().nullable().required('Debes completar este campo'),
-        //                                         granul: yup.string().nullable().required('Debes completar este campo'),
-        //                                         ley_tipo: yup.string().nullable().required('Debes completar este campo'),
-        //                                         ley_valor: yup.string().nullable().required('Debes completar este campo'),
-        //                                         cantidad: yup.string().nullable().required('Debes completar este campo'),
-        //                                         precio_venta: yup.string().nullable().required('Debes completar este campo'),
-        //                                         no_vendido: yup.string().nullable().required('Debes completar este campo'),
-        //                                     })
-        //                                 )
-        //                                 .strict(),
-        //                         },
-        //                     ]
-        //                 },
-        //             ]
-        //         },
-        //     ]
-        // },
-        // {
-        //     icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
-        //     bgColorIcon: 'bg-blue-500',
-        //     bgColorProgress: 'bg-blue-300',
-        //     titleStep: 'Transporte',
-        //     infoStep: 'Especificar las etapas de transporte desde Mina hasta el lugar de consumo incluyendo en cada etapa los costos de carga y descarga (Si bien el productor generalmente no efectúa todas las etapas de transporte se le solicita la información al respecto que sea de su conocimiento). Agregar diversas alternativas si las hay.',
-        //     bodyStep: [
-        //         {
-        //             widthResponsive: 'lg:flex-row', //flex
-        //             // columns
-        //             body: [
-        //                 //  col 1
-        //                 {
-        //                     title: 'Datos sobre transporte',
-        //                     width: 'w-full', //flex
-        //                     // columns: '', //grid
-        //                     // columnsResponsive: '', //inside card
-        //                     img: '/images/laborales.png',
-        //                     inputs: [
-        //                         {
-        //                             label: '',
-        //                             type: inputsTypes.TABLE,
-        //                             name: "transporte",
-        //                             componentParentDepends: "productos",
-        //                             typeTable: "horizontal",
-        //                             addRow: true,
-        //                             verticalTitle: [],
-        //                             horizontalTitle: [
-        //                                 'Nombre del Producto Transportado',
-        //                                 'Desde',
-        //                                 'Hasta',
-        //                                 'Distancia (Km.)',
-        //                                 'Medio de Transporte Usado',
-        //                                 'Costo de Flete ($/Tn.)',
-        //                                 'Acciones'
-        //                             ],
-        //                             element: getChildrensTable({
-        //                                 data: schema.transporte,
-        //                                 selectedChild: [
-        //                                     {
-        //                                         label: '',
-        //                                         value: undefined,
-        //                                         type: inputsTypes.SELECT,
-        //                                         isLoading: false,
-        //                                         options: minerales.data,
-        //                                         name: 'nombre_mineral',
-        //                                         multiple: false,
-        //                                         isLoading: false,
-        //                                         closeOnSelect: true,
-        //                                         searchable: false,
-        //                                         placeholder: 'Selecciona una opción',
-        //                                         id: '',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'desde',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'hasta',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.NUMBER,
-        //                                         name: 'distancia',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'medio_transporte',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.NUMBER,
-        //                                         name: 'coste_flete',
-        //                                     },
-        //                                     // {
-        //                                     //     label: '',
-        //                                     //     value: '',
-        //                                     //     type: inputsTypes.REMOVEICON,
-        //                                     //     colSpan: '',
-        //                                     //     name: 'remove',
-        //                                     // },
-        //                                     {
-        //                                         type: 'observation',
-        //                                         ...new Observations({schema, name: 'row', action}).observations
-        //                                     }
-        //                                 ],
-        //                                 action
-        //                             }),
-        //                             // observation: new Observations({schema, name: 'equipos', action}).observations,
-        //                             validations: yup
-        //                                 .array()
-        //                                 .of(
-        //                                     yup.object().shape({
-        //                                         nombre_mineral: yup.object().when('mineralSelect', {
-        //                                             is: value => _.isEmpty(value) || !value,
-        //                                             then: yup.object().required('Debes elegir un elemento').nullable()
-        //                                         }).nullable(),
-        //                                         desde: yup.string().nullable().required('Debes completar este campo'),
-        //                                         hasta: yup.string().nullable().required('Debes completar este campo'),
-        //                                         distancia: yup.string().nullable().required('Debes completar este campo'),
-        //                                         medio_transporte: yup.string().nullable().required('Debes completar este campo'),
-        //                                         coste_flete: yup.string().nullable().required('Debes completar este campo'),
-        //                                     })
-        //                                 )
-        //                                 .strict(),
-        //                         },
-        //                     ]
-        //                 },
-        //             ]
-        //         },
-        //     ]
-        // },
-        // {
-        //     icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
-        //     bgColorIcon: 'bg-blue-500',
-        //     bgColorProgress: 'bg-blue-300',
-        //     titleStep: 'Producción',
-        //     bodyStep: [
-        //         {
-        //             widthResponsive: 'lg:flex-row', //flex
-        //             // columns
-        //             body: [
-        //                 //  col 1
-        //                 {
-        //                     title: 'Destino de la producción',
-        //                     width: 'w-full', //flex
-        //                     // columns: '', //grid
-        //                     // columnsResponsive: '', //inside card
-        //                     img: '/images/laborales.png',
-        //                     inputs: [
-        //                         {
-        //                             label: '',
-        //                             type: inputsTypes.TABLE,
-        //                             name: "produccion",
-        //                             componentParentDepends: "productos",
-        //                             typeTable: "horizontal",
-        //                             addRow: true,
-        //                             verticalTitle: [],
-        //                             horizontalTitle: [
-        //                                 'Nombre del Producto Vendido',
-        //                                 'Lugar de Consumo',
-        //                                 'Nombre o Razón Social de Firma Compradora',
-        //                                 'Domicilio Comprador',
-        //                                 'Actividad Comprador',
-        //                                 'Acciones'
-        //                             ],
-        //                             element: getChildrensTable({
-        //                                 data: schema.produccion,
-        //                                 selectedChild: [
-        //                                     {
-        //                                         label: '',
-        //                                         value: undefined,
-        //                                         type: inputsTypes.SELECT,
-        //                                         isLoading: false,
-        //                                         options: minerales.data,
-        //                                         name: 'nombre_mineral',
-        //                                         multiple: false,
-        //                                         isLoading: false,
-        //                                         closeOnSelect: true,
-        //                                         searchable: false,
-        //                                         placeholder: 'Selecciona una opción',
-        //                                         id: '',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'lugar_consumo',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'razon_social_comprador',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'domicilio',
-        //                                     },
-        //                                     {
-        //                                         label: '',
-        //                                         value: '',
-        //                                         type: inputsTypes.TEXT,
-        //                                         name: 'actividad',
-        //                                     },
-        //                                     // {
-        //                                     //     label: '',
-        //                                     //     value: '',
-        //                                     //     type: inputsTypes.REMOVEICON,
-        //                                     //     colSpan: '',
-        //                                     //     name: 'remove',
-        //                                     // },
-        //                                     {
-        //                                         type: 'observation',
-        //                                         ...new Observations({schema, name: 'row', action}).observations
-        //                                     }
-        //                                 ],
-        //                                 action
-        //                             }),
-        //                             // observation: new Observations({schema, name: 'equipos', action}).observations,
-        //                             validations: yup
-        //                                 .array()
-        //                                 .of(
-        //                                     yup.object().shape({
-        //                                         nombre_mineral: yup.object().when('mineralSelect', {
-        //                                             is: value => _.isEmpty(value) || !value,
-        //                                             then: yup.object().required('Debes elegir un elemento').nullable()
-        //                                         }).nullable(),
-        //                                         lugar_consumo: yup.string().nullable().required('Debes completar este campo'),
-        //                                         razon_social_comprador: yup.string().nullable().required('Debes completar este campo'),
-        //                                         domicilio: yup.string().nullable().required('Debes completar este campo'),
-        //                                         actividad: yup.string().nullable().required('Debes completar este campo'),
-        //                                     })
-        //                                 )
-        //                                 .strict(),
-        //                         },
-        //                     ]
-        //                 },
-        //             ]
-        //         },
-        //     ]
-        // },
+        {
+            icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
+            bgColorIcon: 'bg-blue-500',
+            bgColorProgress: 'bg-blue-300',
+            titleStep: 'Comercialización',
+            bodyStep: [
+                {
+                    widthResponsive: 'lg:flex-row', //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: 'Datos de Comercialización',
+                            width: 'w-full', //flex
+                            // columns: '', //grid
+                            // columnsResponsive: '', //inside card
+                            img: '/images/laborales.png',
+                            inputs: [
+                                {
+                                    label: 'Producto que se destino al consumo propio y/o comercializado',
+                                    type: inputsTypes.TABLE,
+                                    name: "comercializacion",
+                                    typeTable: "horizontal",
+                                    addRow: true,
+                                    componentParentDepends: "productos.nombre_mineral",
+                                    verticalTitle: [],
+                                    horizontalTitle: [
+                                        'Nombre',
+                                        'Variedad y Calidad',
+                                        'Tamaño o Granul.',
+                                        'Ley Valor',
+                                        'Ley Tipo',
+                                        'Toneladas',
+                                        'Precio Venta Boca Mina por Tn.',
+                                        'Existencias No Vendidas al 31/12',
+                                        'Acciones'
+                                    ],
+                                    element: getChildrensTable({
+                                        data: schema.comercializacion,
+                                        selectedChild: [
+                                            {
+                                                label: '',
+                                                value: undefined,
+                                                type: inputsTypes.SELECT,
+                                                isLoading: false,
+                                                options: minerales.data,
+                                                name: 'nombre_mineral',
+                                                multiple: false,
+                                                isLoading: false,
+                                                closeOnSelect: true,
+                                                searchable: false,
+                                                placeholder: 'Selecciona una opción',
+                                                id: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'variedad_calidad',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'granul',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'ley_tipo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'ley_valor',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'precio_venta',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'no_vendido',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.REMOVEICON,
+                                                colSpan: '',
+                                                name: 'remove',
+                                            },
+                                            {
+                                                type: 'observation',
+                                                ...new Observations({schema, name: 'row', action}).observations
+                                            }
+                                        ],
+                                        action
+                                    }),
+                                    // observation: new Observations({schema, name: 'equipos', action}).observations,
+                                    validations: yup
+                                        .array()
+                                        .of(
+                                            yup.object().shape({
+                                                nombre_mineral: yup.object().when('mineralSelect', {
+                                                    is: value => _.isEmpty(value) || !value,
+                                                    then: yup.object().required('Debes elegir un elemento').nullable()
+                                                }).nullable(),
+                                                variedad_calidad: yup.string().nullable().required('Debes completar este campo'),
+                                                granul: yup.string().nullable().required('Debes completar este campo'),
+                                                ley_tipo: yup.string().nullable().required('Debes completar este campo'),
+                                                ley_valor: yup.string().nullable().required('Debes completar este campo'),
+                                                cantidad: yup.string().nullable().required('Debes completar este campo'),
+                                                precio_venta: yup.string().nullable().required('Debes completar este campo'),
+                                                no_vendido: yup.string().nullable().required('Debes completar este campo'),
+                                            })
+                                        )
+                                        .strict(),
+                                },
+                            ]
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
+            bgColorIcon: 'bg-blue-500',
+            bgColorProgress: 'bg-blue-300',
+            titleStep: 'Transporte',
+            infoStep: 'Especificar las etapas de transporte desde Mina hasta el lugar de consumo incluyendo en cada etapa los costos de carga y descarga (Si bien el productor generalmente no efectúa todas las etapas de transporte se le solicita la información al respecto que sea de su conocimiento). Agregar diversas alternativas si las hay.',
+            bodyStep: [
+                {
+                    widthResponsive: 'lg:flex-row', //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: 'Datos sobre transporte',
+                            width: 'w-full', //flex
+                            // columns: '', //grid
+                            // columnsResponsive: '', //inside card
+                            img: '/images/laborales.png',
+                            inputs: [
+                                {
+                                    label: '',
+                                    type: inputsTypes.TABLE,
+                                    name: "transporte",
+                                    componentParentDepends: "productos",
+                                    typeTable: "horizontal",
+                                    addRow: true,
+                                    verticalTitle: [],
+                                    horizontalTitle: [
+                                        'Nombre del Producto Transportado',
+                                        'Desde',
+                                        'Hasta',
+                                        'Distancia (Km.)',
+                                        'Medio de Transporte Usado',
+                                        'Costo de Flete ($/Tn.)',
+                                        'Acciones'
+                                    ],
+                                    element: getChildrensTable({
+                                        data: schema.transporte,
+                                        selectedChild: [
+                                            {
+                                                label: '',
+                                                value: undefined,
+                                                type: inputsTypes.SELECT,
+                                                isLoading: false,
+                                                options: minerales.data,
+                                                name: 'nombre_mineral',
+                                                multiple: false,
+                                                isLoading: false,
+                                                closeOnSelect: true,
+                                                searchable: false,
+                                                placeholder: 'Selecciona una opción',
+                                                id: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'desde',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'hasta',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'distancia',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'medio_transporte',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'coste_flete',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.REMOVEICON,
+                                                colSpan: '',
+                                                name: 'remove',
+                                            },
+                                            {
+                                                type: 'observation',
+                                                ...new Observations({schema, name: 'row', action}).observations
+                                            }
+                                        ],
+                                        action
+                                    }),
+                                    // observation: new Observations({schema, name: 'equipos', action}).observations,
+                                    validations: yup
+                                        .array()
+                                        .of(
+                                            yup.object().shape({
+                                                nombre_mineral: yup.object().when('mineralSelect', {
+                                                    is: value => _.isEmpty(value) || !value,
+                                                    then: yup.object().required('Debes elegir un elemento').nullable()
+                                                }).nullable(),
+                                                desde: yup.string().nullable().required('Debes completar este campo'),
+                                                hasta: yup.string().nullable().required('Debes completar este campo'),
+                                                distancia: yup.string().nullable().required('Debes completar este campo'),
+                                                medio_transporte: yup.string().nullable().required('Debes completar este campo'),
+                                                coste_flete: yup.string().nullable().required('Debes completar este campo'),
+                                            })
+                                        )
+                                        .strict(),
+                                },
+                            ]
+                        },
+                    ]
+                },
+            ]
+        },
+        {
+            icon: 'M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z',
+            bgColorIcon: 'bg-blue-500',
+            bgColorProgress: 'bg-blue-300',
+            titleStep: 'Producción',
+            bodyStep: [
+                {
+                    widthResponsive: 'lg:flex-row', //flex
+                    // columns
+                    body: [
+                        //  col 1
+                        {
+                            title: 'Destino de la producción',
+                            width: 'w-full', //flex
+                            // columns: '', //grid
+                            // columnsResponsive: '', //inside card
+                            img: '/images/laborales.png',
+                            inputs: [
+                                {
+                                    label: '',
+                                    type: inputsTypes.TABLE,
+                                    name: "produccion",
+                                    componentParentDepends: "productos",
+                                    typeTable: "horizontal",
+                                    addRow: true,
+                                    verticalTitle: [],
+                                    horizontalTitle: [
+                                        'Nombre del Producto Vendido',
+                                        'Lugar de Consumo',
+                                        'Nombre o Razón Social de Firma Compradora',
+                                        'Domicilio Comprador',
+                                        'Actividad Comprador',
+                                        'Acciones'
+                                    ],
+                                    element: getChildrensTable({
+                                        data: schema.produccion,
+                                        selectedChild: [
+                                            {
+                                                label: '',
+                                                value: undefined,
+                                                type: inputsTypes.SELECT,
+                                                isLoading: false,
+                                                options: minerales.data,
+                                                name: 'nombre_mineral',
+                                                multiple: false,
+                                                isLoading: false,
+                                                closeOnSelect: true,
+                                                searchable: false,
+                                                placeholder: 'Selecciona una opción',
+                                                id: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'lugar_consumo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'razon_social_comprador',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'domicilio',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'actividad',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.REMOVEICON,
+                                                colSpan: '',
+                                                name: 'remove',
+                                            },
+                                            {
+                                                type: 'observation',
+                                                ...new Observations({schema, name: 'row', action}).observations
+                                            }
+                                        ],
+                                        action
+                                    }),
+                                    // observation: new Observations({schema, name: 'equipos', action}).observations,
+                                    validations: yup
+                                        .array()
+                                        .of(
+                                            yup.object().shape({
+                                                nombre_mineral: yup.object().when('mineralSelect', {
+                                                    is: value => _.isEmpty(value) || !value,
+                                                    then: yup.object().required('Debes elegir un elemento').nullable()
+                                                }).nullable(),
+                                                lugar_consumo: yup.string().nullable().required('Debes completar este campo'),
+                                                razon_social_comprador: yup.string().nullable().required('Debes completar este campo'),
+                                                domicilio: yup.string().nullable().required('Debes completar este campo'),
+                                                actividad: yup.string().nullable().required('Debes completar este campo'),
+                                            })
+                                        )
+                                        .strict(),
+                                },
+                            ]
+                        },
+                    ]
+                },
+            ]
+        },
         {
             icon: 'M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z',
             bgColorIcon: 'bg-blue-500',
@@ -1244,6 +1244,7 @@ function getChildrensTable({data, key, selectedChild, listMinerales, action}) {
                 // clone[i].value = JSON.parse(object[property]);
                 // clone[i].value = listMinerales[index];
                 clone[i].value = clone[i].options.find( e => object[property] == e.value );
+                clone[i].disabled = object["evaluacion"] == "aprobado";
 
             } else {
                 clone[i].value = object[property];
@@ -1257,8 +1258,9 @@ function getChildrensTable({data, key, selectedChild, listMinerales, action}) {
         // set result observation
         const obsIndex = clone.findIndex(e => e.name == 'row_evaluacion');
         if (obsIndex > -1) {
-            clone[obsIndex].value = object["value"];
-            clone[obsIndex].comment.value = object["comment"];
+
+            clone[obsIndex].value = object["value"] ?? object["evaluacion"];
+            clone[obsIndex].comment.value = object["comment"] ?? object["comentario"];
         }
 
         if(action == 'evaluate') {
