@@ -2837,15 +2837,17 @@ export default {
     presentar_de_todos_modos() {
       let self = this;
       const data = new FormData();
+      //alert(self.form.estado);
       data.append("id", this.$props.productor.id);
       data.append("cargo_empresa", self.form.cargo_empresa);
       data.append("nombre_presentador", self.form.presentador_nombre);
       data.append("dni_presentador", self.form.presentador_dni);
+      data.append("estado", self.form.estado);
 
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
       axios
         .post(
-          this.$inertia.page.props.appName + "/formularios/presentar_borrador",
+         "/formularios/presentar_borrador",
           data
         )
         .then(function (response) {
