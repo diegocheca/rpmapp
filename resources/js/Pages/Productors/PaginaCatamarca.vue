@@ -576,9 +576,6 @@
             concesion resolucion minera de Mina observacion valida deel padre:
             {{}}
           </div>
-          <br />
-          <hr />
-          <br />
         </div>
       </div>
       <br />
@@ -1036,7 +1033,7 @@ export default {
           self.form_catamarca_test.gestor_nombre_apellido = "";
           self.form_catamarca_test.gestor_nombre_apellido_valido = "";
           self.form_catamarca_test.gestor_nombre_apellido_correcto = "";
-          self.form_catamarca_test.obs_gestor_nombre_apellido = "";
+          self.form_catamarca_test.obs_gestor_nombre_apellido = false;
           self.form_catamarca_test.obs_gestor_nombre_valido = "";
           self.form_catamarca_test.mostrar_nombre_gestor = "";
           self.form_catamarca_test.desactivar_nombre_gestor = "";
@@ -1046,7 +1043,7 @@ export default {
           self.form_catamarca_test.gestor_dni = "";
           self.form_catamarca_test.gestor_dni_valido = "";
           self.form_catamarca_test.gestor_dni_correcto = "";
-          self.form_catamarca_test.obs_gestor_dni = "";
+          self.form_catamarca_test.obs_gestor_dni = false;
           self.form_catamarca_test.obs_gestor_dni_valido = "";
           self.form_catamarca_test.mostrar_dni_gestor = "";
           self.form_catamarca_test.desactivar_dni_gestor = "";
@@ -1056,7 +1053,7 @@ export default {
           self.form_catamarca_test.gestor_profesion = "";
           self.form_catamarca_test.gestor_profesion_valido = "";
           self.form_catamarca_test.gestor_profesion_correcto = "";
-          self.form_catamarca_test.obs_gestor_profesion = "";
+          self.form_catamarca_test.obs_gestor_profesion = false;
           self.form_catamarca_test.obs_gestor_profesion_valido = "";
           self.form_catamarca_test.mostrar_profesion_gestor = "";
           self.form_catamarca_test.desactivar_profesion_gestor = "";
@@ -1066,7 +1063,7 @@ export default {
           self.form_catamarca_test.gestor_telefono = "";
           self.form_catamarca_test.gestor_telefono_valido = "";
           self.form_catamarca_test.gestor_telefono_correcto = "";
-          self.form_catamarca_test.obs_gestor_telefono = "";
+          self.form_catamarca_test.obs_gestor_telefono = false;
           self.form_catamarca_test.obs_gestor_telefono_valido = "";
           self.form_catamarca_test.mostrar_telefono_gestor = "";
           self.form_catamarca_test.desactivar_telefono_gestor = "";
@@ -1076,7 +1073,7 @@ export default {
           self.gestor_notificacion = true;
           self.gestor_notificacion_valido = "";
           self.gestor_notificacion_correcto = "";
-          self.obs_gestor_notificacion = "";
+          self.obs_gestor_notificacion = false;
           self.obs_gestor_notificacion_valido = "";
           self.mostrar_notificacion_gestor = "";
           self.desactivar_notificacion_gestor = "";
@@ -1085,7 +1082,7 @@ export default {
 
           self.form_catamarca_test.gestor_email = "";
           self.form_catamarca_test.gestor_email_valido = "";
-          self.form_catamarca_test.gestor_email_correcto = "";
+          self.form_catamarca_test.gestor_email_correcto = false;
           self.form_catamarca_test.obs_gestor_email = "";
           self.form_catamarca_test.obs_gestor_email_valido = "";
           self.form_catamarca_test.mostrar_email_gestor = "";
@@ -1093,17 +1090,17 @@ export default {
           self.form_catamarca_test.mostrar_email_gestor_correccion = "";
           self.form_catamarca_test.desactivar_email_gestor_correccion = "";
 
-          self.form_catamarca_test.primer_hoja_dni = "";
+          self.form_catamarca_test.primer_hoja_dni = null;
           self.form_catamarca_test.hoja_dni_valido = "";
           self.form_catamarca_test.hoja_dni_correcto = "";
-          self.form_catamarca_test.obs_hoja_dni = "";
+          self.form_catamarca_test.obs_hoja_dni = false;
           self.form_catamarca_test.obs_hoja_dni_valido = "";
           self.form_catamarca_test.mostrar_dni_productor = "";
           self.form_catamarca_test.desactivar_dni_productor = "";
           self.form_catamarca_test.mostrar_dni_productor_correccion = "";
           self.form_catamarca_test.desactivar_dni_productor_correccion = "";
 
-          self.form_catamarca_test.segunda_hoja_dni = "";
+          self.form_catamarca_test.segunda_hoja_dni = null;
           self.form_catamarca_test.segunda_hoja_dni_valido = "";
           self.form_catamarca_test.segunda_hoja_dni_correcto = "";
           self.form_catamarca_test.obs_segunda_hoja_dni = "";
@@ -1112,7 +1109,7 @@ export default {
           self.foto_4x4 = "";
           self.foto_4x4_valido = "";
           self.foto_4x4_correcto = "";
-          self.obs_foto_4x4 = "";
+          self.obs_foto_4x4 = false;
           self.obs_foto_4x4_valido = "";
           self.mostrar_foto_productor = "";
           self.desactivar_foto_productor = "";
@@ -1122,17 +1119,17 @@ export default {
           self.constancia_afip = "";
           self.constancia_afip_valido = "";
           self.constancia_afip_correcto = "";
-          self.obs_constancia_afip = "";
+          self.obs_constancia_afip = false;
           self.obs_constancia_afip_valido = "";
           self.mostrar_constancia_afip = "";
           self.desactivar_constancia_afip = "";
           self.mostrar_constancia_afip_correccion = "";
           self.desactivar_constancia_afip_correccion = "";
 
-          self.form_catamarca_test.autorizacion_gestor = "";
+          self.form_catamarca_test.autorizacion_gestor = null;
           self.form_catamarca_test.autorizacion_gestor_valido = "";
           self.form_catamarca_test.autorizacion_gestor_correcto = "";
-          self.form_catamarca_test.obs_autorizacion_gestor = "";
+          self.form_catamarca_test.obs_autorizacion_gestor = false;
           self.form_catamarca_test.obs_autorizacion_gestor_valido = "";
           self.form_catamarca_test.mostrar_autorizacion_gestor = "";
           self.form_catamarca_test.desactivar_autorizacion_gestor = "";

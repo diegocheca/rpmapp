@@ -8,7 +8,7 @@
   <meta name="keywords" content="Bootstrap, Landing page, Template, Business, Service">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="author" content="Grayrids">
-  <title>RPM - SJ</title>
+  <title>RPM</title>
   <!--====== Favicon Icon ======-->
   {{-- <link rel="shortcut icon" href="{{url('slick/img/2.png')}}" type="image/png"> --}}
   <link rel="shortcut icon" href="{{url('slick/img/ico_rpm.png')}}" type="image/png">

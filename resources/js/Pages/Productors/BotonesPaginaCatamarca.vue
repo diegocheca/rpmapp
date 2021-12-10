@@ -119,7 +119,7 @@
       {{ $props.formulario.obs_hoja_dni }} * * obs_hoja_dni_valido :
       {{ $props.formulario.obs_hoja_dni_valido }} *
     </div>
-    <div v-show="true">
+    <div v-show="testing">
       {{ $props.formulario.gestor_nombre_apellido }}
       {{ $props.formulario.gestor_nombre_apellido_valido }}
       {{ $props.formulario.gestor_nombre_apellido_correcto }}
