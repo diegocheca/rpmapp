@@ -290,6 +290,7 @@ class ReinscripcionController extends Controller
             // foreach ($arrayValues as $key => $value) {
             //     $arrayValues[$key] = $saveData[$key];
             // }
+            // dd($saveData);
             //add new reinscripcion
             $arrayValues = $saveData;
             $arrayValues["cantidad_productos"] = 1;
@@ -298,6 +299,7 @@ class ReinscripcionController extends Controller
 
             $newProducts = [
                 "id_reinscripcion" => $newReinscription["id"],
+                "id_mina" => $arrayValues["id_mina"],
                 "nombre_mineral" => $arrayValues["nombre_mineral"]["value"],
                 "produccion" => $arrayValues["volumen_total"],
                 "precio_venta" => $arrayValues["precio_venta"],
@@ -312,17 +314,20 @@ class ReinscripcionController extends Controller
             $addProducts = Productos::create($newProducts);
 
             //equipos
-            for ($eq = 0; $eq < count($saveData['equipos']); $eq++) {
-                $saveData['equipos'][$eq]["id_reinscripcion"] = $newReinscription["id"];
-                ReinscripcionesEquipos::create($saveData['equipos'][$eq]);
-                // dd($saveData['equipos'][$eq]);
+            if(isset($saveData['equipos'])){
+                for ($eq = 0; $eq < count($saveData['equipos']); $eq++) {
+                    $saveData['equipos'][$eq]["id_reinscripcion"] = $newReinscription["id"];
+                    ReinscripcionesEquipos::create($saveData['equipos'][$eq]);
+                    // dd($saveData['equipos'][$eq]);
+                }
             }
-
             //explosivos
-            for ($exp = 0; $exp < count($saveData['explosivos']); $exp++) {
-                $saveData['explosivos'][$exp]["id_reinscripcion"] = $newReinscription["id"];
-                ReinscripcionesExplosivos::create($saveData['explosivos'][$exp]);
-                // dd($saveData['explosivos'][$exp]);
+            if(isset($saveData['explosivos'])){
+                for ($exp = 0; $exp < count($saveData['explosivos']); $exp++) {
+                    $saveData['explosivos'][$exp]["id_reinscripcion"] = $newReinscription["id"];
+                    ReinscripcionesExplosivos::create($saveData['explosivos'][$exp]);
+                    // dd($saveData['explosivos'][$exp]);
+                }
             }
 
         } else {
@@ -349,39 +354,46 @@ class ReinscripcionController extends Controller
 
             if($action == 'edit') {
                 //equipos
-                for ($eq = 0; $eq < count($saveData['equipos']); $eq++) {
-                    if(!empty($saveData['equipos'][$eq]['id'])) {
-                        $addEquipos = ReinscripcionesEquipos::where('id', $saveData['equipos'][$eq]['id'])->update($saveData['equipos'][$eq]);
-                    } else {
-                        $saveData['equipos'][$eq]["id_reinscripcion"] = $idReinscripcion;
-                        ReinscripcionesEquipos::create($saveData['equipos'][$eq]);
+                if(isset($saveData['equipos'])){
+                    for ($eq = 0; $eq < count($saveData['equipos']); $eq++) {
+                        if(!empty($saveData['equipos'][$eq]['id'])) {
+                            $addEquipos = ReinscripcionesEquipos::where('id', $saveData['equipos'][$eq]['id'])->update($saveData['equipos'][$eq]);
+                        } else {
+                            $saveData['equipos'][$eq]["id_reinscripcion"] = $idReinscripcion;
+                            ReinscripcionesEquipos::create($saveData['equipos'][$eq]);
+                        }
                     }
                 }
                 //explosivos
-                for ($exp = 0; $exp < count($saveData['explosivos']); $exp++) {
-                    if(!empty($saveData['explosivos'][$exp]['id'])) {
-                        $addExplosivos = ReinscripcionesExplosivos::where('id', $saveData['explosivos'][$exp]['id'])->update($saveData['explosivos'][$exp]);
-                    } else {
-                        $saveData['explosivos'][$exp]["id_reinscripcion"] = $idReinscripcion;
-                        ReinscripcionesExplosivos::create($saveData['explosivos'][$exp]);
+                if(isset($saveData['explosivos'])){
+                    for ($exp = 0; $exp < count($saveData['explosivos']); $exp++) {
+                        if(!empty($saveData['explosivos'][$exp]['id'])) {
+                            $addExplosivos = ReinscripcionesExplosivos::where('id', $saveData['explosivos'][$exp]['id'])->update($saveData['explosivos'][$exp]);
+                        } else {
+                            $saveData['explosivos'][$exp]["id_reinscripcion"] = $idReinscripcion;
+                            ReinscripcionesExplosivos::create($saveData['explosivos'][$exp]);
+                        }
                     }
                 }
             } else {
                 //equipos
-                for ($eq = 0; $eq < count($saveData['equipos']); $eq++) {
-                    $addEquipos = ReinscripcionesEquipos::where('id', $saveData['equipos'][$eq]['id'])->update([
-                        'comentario' => $saveData['equipos'][$eq]['row_evaluacion'] == "rechazado" ? $saveData['equipos'][$eq]['row_comentario'] : null,
-                        'evaluacion' =>  $saveData['equipos'][$eq]['row_evaluacion']
-                    ]);
+                if(isset($saveData['equipos'])){
+                    for ($eq = 0; $eq < count($saveData['equipos']); $eq++) {
+                        $addEquipos = ReinscripcionesEquipos::where('id', $saveData['equipos'][$eq]['id'])->update([
+                            'comentario' => $saveData['equipos'][$eq]['row_evaluacion'] == "rechazado" ? $saveData['equipos'][$eq]['row_comentario'] : null,
+                            'evaluacion' =>  $saveData['equipos'][$eq]['row_evaluacion']
+                        ]);
+                    }
                 }
                 // explosivos
-                for ($exp = 0; $exp < count($saveData['explosivos']); $exp++) {
-                    $addExplosivos = ReinscripcionesExplosivos::where('id', $saveData['explosivos'][$exp]['id'])->update([
-                        'comentario' => $saveData['explosivos'][$exp]['row_evaluacion'] == "rechazado" ? $saveData['explosivos'][$exp]['row_comentario'] : null,
-                        'evaluacion' =>  $saveData['explosivos'][$exp]['row_evaluacion']
-                    ]);
+                if(isset($saveData['explosivos'])){
+                    for ($exp = 0; $exp < count($saveData['explosivos']); $exp++) {
+                        $addExplosivos = ReinscripcionesExplosivos::where('id', $saveData['explosivos'][$exp]['id'])->update([
+                            'comentario' => $saveData['explosivos'][$exp]['row_evaluacion'] == "rechazado" ? $saveData['explosivos'][$exp]['row_comentario'] : null,
+                            'evaluacion' =>  $saveData['explosivos'][$exp]['row_evaluacion']
+                        ]);
+                    }
                 }
-
             }
         }
 
@@ -402,7 +414,9 @@ class ReinscripcionController extends Controller
         }
 
         if(!empty(Reinscripciones::find($id)->productos)){
-            $reinscripcion = array_merge($reinscripcion->toArray(), Reinscripciones::find($id)->productos->toArray()[0]);
+            $productos = Reinscripciones::find($id)->productos->toArray()[0];
+            unset($productos['id']);
+            $reinscripcion = array_merge($reinscripcion->toArray(), $productos);
         }
 
         $provinces = CountriesController::getProvinces();
