@@ -345,8 +345,8 @@ export default {
       data.append("valor_de_aprobado", 20);
       data.append("valor_de_reprobado", 20);
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
-console.log(this.$inertia.page.props.appName);
-      alert(this.$inertia.page.props.appName);
+// console.log(this.$inertia.page.props.appName);
+//       alert(this.$inertia.page.props.appName);
       axios
         .post(
           "/formularios/evaluacion_auto_guardado_cuatro",

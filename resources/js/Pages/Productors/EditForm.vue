@@ -579,7 +579,7 @@
           <PaginaDosDatosDomLegal
             v-if="$props.mostrar.paso_tres"
             :link_volver="route('formulario-alta.index')"
-            :titulo_boton_volver="'volver'"
+            :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Domicilio Administrativo'"
             :titulo_pagina="'Domicilio Administrativo'"
             :leal_calle="form.administracion_calle"
@@ -2936,9 +2936,9 @@ export default {
               id_prov: parseInt(this.$props.productor.administracion_provincia),
             })
             .then(function (response) {
-              console.log("los deptos desde la raiz son:\n");
+              // console.log("los deptos desde la raiz son:\n");
               self.lista_dptos_admin = response.data;
-              console.log(self.lista_dptos_admin);
+              // console.log(self.lista_dptos_admin);
             })
             .catch(function (error) {
               console.log(error);
