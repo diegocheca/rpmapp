@@ -477,7 +477,7 @@ export default {
       if (this.$props.soy_administrador === true) {
         return true;
       }
-      console.log(this.$props.soy_productor, this.$props.soy_autoridad);
+      // console.log(this.$props.soy_productor, this.$props.soy_autoridad);
       if (
         this.$props.soy_productor === true ||
         this.$props.soy_productor === "true"
@@ -554,10 +554,23 @@ export default {
       }
     },
     confirmationDelete(id) {
-      this.mostrarModal = true;
+      // this.mostrarModal = true;
       this.modal_tittle = "Eliminando Formulario";
       this.modal_body = "Esta seguro de eliminar este registro?";
       this.id_a_eliminar = id;
+      Swal.fire({
+        title: this.modal_tittle,
+        text: this.modal_body,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.eliminarRegistro();
+        }
+      });
     },
     closeModal() {
       this.mostrarModal = false;
@@ -565,21 +578,50 @@ export default {
     },
     eliminarRegistro() {
       let self = this;
+      Swal.fire({
+        title: "¡Por favor Espere!",
+        html: "Eliminado",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      });
       axios
         .delete("/formularios/eliminar_formulario" + "/" + this.id_a_eliminar)
         .then(function (response) {
-          console.log(response.data);
+          // console.log(response.data);
+          Swal.hideLoading(Swal.clickConfirm());
           if (response.data.msg === "se elimino correctamente") {
-            console.log("todo bien");
-            console.log("eliminado");
-            self.mostrarModal = false;
-            self.mostrar_alert_eliminar = true;
+            // console.log("todo bien");
+            // console.log("eliminado");
+            // self.mostrarModal = false;
+            // self.mostrar_alert_eliminar = true;
+            Swal.fire({
+              icon: "success",
+              title: "EL registro fue eliminado correctamente.",
+              // text: response.data.msg,
+            }).then((result) => {
+              // window.location.replace("/formulario-alta");
+              self.$inertia.get(route("formulario-alta.index"));
+            });
           } else {
-            console.log("NO todo bien");
+            console.log("Error");
+            Swal.fire({
+              icon: "error",
+              title: "Error...",
+              text: "Por favor comuniquese con el administrador.",
+            });
           }
         })
         .catch(function (error) {
+          Swal.hideLoading();
           // handle error
+          Swal.fire({
+            icon: "error",
+            title: "Error...",
+            text: error,
+          });
           console.log(error);
         });
     },
@@ -589,7 +631,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$props.datos_donut.aprobados);
+    // console.log(this.$props.datos_donut.aprobados);
   },
 };
 </script>
