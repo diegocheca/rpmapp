@@ -40,8 +40,8 @@ export default {
     // var data = [];
     var aux
     for (var i = 0; i < chart.geodata.features.length; i++) {
-      console.log("por mostrar data chart");
-      console.log(this.$props.dataChart.data[0].label);
+      // console.log("por mostrar data chart");
+      // console.log(this.$props.dataChart.data[0].label);
       aux = this.$props.dataChart.data.find( array =>  array.label === chart.geodata.features[i].properties.name);
       if (aux ===  undefined)
         chart.geodata.features[i].properties.value = 0

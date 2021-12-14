@@ -488,18 +488,21 @@ export default {
         if (estado === "aprobado") return false;
         if (estado === "en revision") return false;
         if (estado === "reprobado") return false;
-      } else {
-        if (
-          this.$props.soy_autoridad === true ||
-          this.$props.soy_autoridad === "true"
-        ) {
-          if (estado === "en proceso") return true;
-          if (estado === "borrador") return false;
-          if (estado === "con observacion") return false;
-          if (estado === "aprobado") return false;
-          if (estado === "en revision") return true;
-          if (estado === "reprobado") return false;
-        }
+      } else if (
+        this.$props.soy_autoridad === true ||
+        this.$props.soy_autoridad === "true"
+      ) {
+        if (estado === "en proceso") return true;
+        if (estado === "borrador") return false;
+        if (estado === "con observacion") return false;
+        if (estado === "aprobado") return false;
+        if (estado === "en revision") return true;
+        if (estado === "reprobado") return false;
+      } else if (
+        this.$props.soy_administrador === true ||
+        this.$props.soy_administrador === "true"
+      ) {
+        return true;
       }
       return false;
     },
@@ -515,7 +518,6 @@ export default {
       /*}
             else return true;*/
     },
-
     mostrar_imprimir_comprobante(estado) {
       /*if(this.$props.soy_productor === true || this.$props.soy_productor === 'true')
             {*/
@@ -539,19 +541,23 @@ export default {
         if (estado === "aprobado") return false;
         if (estado === "en revision") return false;
         if (estado === "reprobado") return false;
-      } else {
-        if (
-          this.$props.soy_autoridad === true ||
-          this.$props.soy_autoridad === "true"
-        ) {
-          if (estado === "en proceso") return true;
-          if (estado === "borrador") return false;
-          if (estado === "con observacion") return false;
-          if (estado === "aprobado") return false;
-          if (estado === "en revision") return true;
-          if (estado === "reprobado") return false;
-        }
+      } else if (
+        this.$props.soy_autoridad === true ||
+        this.$props.soy_autoridad === "true"
+      ) {
+        if (estado === "en proceso") return true;
+        if (estado === "borrador") return false;
+        if (estado === "con observacion") return false;
+        if (estado === "aprobado") return false;
+        if (estado === "en revision") return true;
+        if (estado === "reprobado") return false;
+      } else if (
+        this.$props.soy_administrador === true ||
+        this.$props.soy_administrador === "true"
+      ) {
+        return true;
       }
+      return false;
     },
     confirmationDelete(id) {
       // this.mostrarModal = true;

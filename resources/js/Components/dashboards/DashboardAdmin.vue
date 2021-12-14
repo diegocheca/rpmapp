@@ -308,13 +308,13 @@
                 })
             },
             buscar_borrador_incripciones(){
-                console.log("por buscar borradores");
+                // console.log("por buscar borradores");
                 let self = this;
                 axios.get('/dashboard/numproductoresborradores')
                 .then(function (response) {
                     if(response.data.status === 'ok'){
                         self.cantidad_productores_borrador = response.data.cantidad;
-                        console.log("obtuve tanto borradores:"+self.cantidad_productores_borrador);
+                        // console.log("obtuve tanto borradores:"+self.cantidad_productores_borrador);
 
                     }
                     else self.cantidad = 0;
@@ -332,6 +332,7 @@
             this.buscar_nuevas_reincripciones();
             this.buscar_nuevas_incripciones();
             this.buscar_borrador_incripciones();
+            // this.buscar_productores();
             
         }
     }
