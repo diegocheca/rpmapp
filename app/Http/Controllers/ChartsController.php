@@ -33,11 +33,10 @@ class ChartsController extends Controller
         else
         {
             //no soy autoridad nacional. voy a buscar por prov
-
             $temporal = DB::table('reinscripciones')
-            ->join('productor', 'productor.leal_provincia', '=', $provincia)
-            ->where('estado', '=', 'aprobada')
-            ->where('reinscripciones.estado', '=', 'aprobado')
+            ->join('productores', 'productores.id', '=', 'reinscripciones.id_productor')
+            ->where('reinscripciones.estado', '=', 'aprobada')
+            ->where('productores.leal_provincia', '=', $provincia)
             ->select('reinscripciones.*')
             ->get();
             $acumulador_exportacion = 0;
@@ -49,9 +48,9 @@ class ChartsController extends Controller
                 $acumulador_provincia += $key->porcentaje_venta_provincia;
                 $acumulador_otras_provincias += $key->porcentaje_venta_otras_provincias;
             }
-            $datos["exportacion"] = $acumulador_exportacion / $temporal->count();
-            $datos["otras_prov"] = $acumulador_provincia / $temporal->count();
-            $datos["prov"] = $acumulador_otras_provincias / $temporal->count();
+            $datos["exportacion"] = $temporal->count() > 0 ? $acumulador_exportacion / $temporal->count() : 0;  
+            $datos["otras_prov"] = $temporal->count() > 0 ? $acumulador_otras_provincias / $temporal->count() : 0;  
+            $datos["prov"] = $temporal->count() > 0 ? $acumulador_provincia / $temporal->count() : 0;  
             return $datos;
 
         }
@@ -67,9 +66,12 @@ class ChartsController extends Controller
         $soldIn->axis->y = 'cantidad';
         $soldIn->data = [];
         $datos_calculados  = $this->calcular_destino_produccion(Auth::user()->id_provincia);
-        array_push($soldIn->data, [ "label" => "Provincia", "value" => 100 ]);
-        array_push($soldIn->data, [ "label" => "Pais", "value" => 100 ]);
-        array_push($soldIn->data, [ "label" => "Exportación", "value" => 100 ]);
+        //dd($datos_calculados);
+        if($datos_calculados ["exportacion"] == 0 && $datos_calculados ["otras_prov"] == 0  && $datos_calculados ["prov"] == 0 ){
+            array_push($soldIn->data, [ "label" => "Provincia", "value" => 100 ]);
+            array_push($soldIn->data, [ "label" => "Pais", "value" => 100 ]);
+            array_push($soldIn->data, [ "label" => "Exportación", "value" => 100 ]);
+        }
         // CountriesController::getDepartmentArray(Auth::user()->id_provincia);
         // $soldIn->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
