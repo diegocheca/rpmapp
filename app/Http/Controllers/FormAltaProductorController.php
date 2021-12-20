@@ -42,6 +42,11 @@ use App\Models\Minerales_Borradores;
 
 use App\Models\User;
 
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+
 use \PDF;
 
 use Illuminate\Support\Facades\Storage;
@@ -12687,10 +12692,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 	public function cargandoexcelmdz()
 	{
 		$array = [];
-
-
 		$faker = Faker::create();
-
 		/*
 		$array[1] = 
 		[
@@ -14250,6 +14252,10 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 			$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
 			$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
 
+
+
+			
+
 			var_dump("El id del borrador es:");
 			var_dump($formulario_provisorio->id);
 			var_dump("El id del productor es:");
@@ -14268,13 +14274,36 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 			echo "\n\n";
 		}
 	}
-
-
+	/**
+     * This method will load a lot of Catamarca's productors.
+     * To run this moethod you must have acces to APR_URL/cargarCatamarca
+	 * without params
+     * @param  nothing
+     * @return id's inserted into db on screen
+     */
 	public function cargarCatamarca(){
-		$array = [];
+		/* Pasos a realizar:
 
+		1 - declaro array con todos los datos hardcodeados desde el excel q nos mandaron
+		2 - creo el usuario de quien va a cargar el formulario
+		2 - creo objeto FormAltaProductor y actualizo el paso  1  del objeto
+		3 - creo objeto FormAltaProductor y actualizo el paso  2  del objeto
+		4 - creo objeto FormAltaProductor y actualizo el paso  3  del objeto
+		5 - creo objeto FormAltaProductor y actualizo el paso  4  del objeto
+		6 - creo objeto FormAltaProductor y actualizo el paso  5  del objeto
+		7 - creo objeto FormAltaProductor y actualizo el paso  6  del objeto
+		8 - creo objeto Productor en base a los datos del formulario recien creado
+		9 - creo objeto Mina Cantera en base a los datos del formulario recien creado
+		10 - creo objeto Dia Iia en base a los datos del formulario recien creado
+		11 - creo objeto Pago Canon en base a los datos del formulario recien creado
+		12 - creo objeto Mina-Productor en base a los datos del formulario recien creado
+		 */
 		
+		 
+
+		$array = [];
 		/*
+		Formato del array
 		1 --> fecha_alta
 		2 --> Concesionario
 		3 --> Representante
@@ -14291,19 +14320,19 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		14 --> estado de documentacion
 		15 --> mis emails
 		*/
-
-
 		$array[1] = ["3/3/1990","YMAD","YMAD",2,"Abel Peirano","994*995*1137*1*1014","Hualfin- Dpto.Belen","Y-79/59","Salta 1127-Capital","Salta 1127- Catamarca","03833-420148","null","30-54668676-7","completa","null"];
 		$array[2] = ["3/3/1990","Loma Negra C.I.A.S.A.","Dr. Roque Sala Martinez",4,"Doña Amalia","1053","Guallamba-Dpto. El Alto","023/77","Bouchar 680- Cap.Federal","Calle Rojas 335-Catamarca","null","null","30-50053085-1","null","loma.negra@gmail.com"];
 		$array[3] = ["3/3/1990","El Cerrito S.R.L.","Angel Raul Garriga",5,"El Morro","1053","Esquiu- Dpto. La Paz","D-05/06","Alfonso Carrizo 93-Catamarca","Av. Virgen del Valle 327 - Catamarca","03833-427946","elcerritosrl@gmail.com","30-50456952-3","completa","null"];
 		$array[4] = ["21/9/1990","Lucita Fernandez","Lucita Fernandez",10," Don Arturo","1024*1022","La Majada- Dpto.Ancasti","F- 125/02","Rivadavia","Rivadavia","null","null","null","null","null"];
 		$array[5] = ["28/12/1990","YES - CAT - Cuberes Balancini","Reyes Balancini",12,"Los Bufalos","1056","La Dorada-Dpto. La Paz","11/91","Catamarca 2384-B° Yapeyu- Cba.","Catamarca 2384-B° Yapeyu- Cba.","null","null","null","null","yes.cat.cuberes@gmail.com"];
 		$array[6] = ["24/2/1993","Santa Rita S.R.L.","Miguel Yampa/ Dr. Gonzalez Vera",33,"Santa Rita","1179","Capillitas- Dpto. Andalgala","14/92","Mercado Oeste S/N°- Dpto. Andalgala","null","null","null","null","null","santa.rita.srl@gmail.com"];
-		$array[7] = ["20/8/2005","Soria, Julio Ariel","Soria, Julio Ariel",40,"San Benito","1160","Rio Miraflores - Dpto. Capayan","02S2015","General Villegas 719. Cordoba","null","15593321 - 15407789","null","null","null","julio.soria@gmail.com"];
+		//$array[7] = ["20/8/2005","Soria, Julio Ariel","Soria, Julio Ariel",40,"San Benito","1160","Rio Miraflores - Dpto. Capayan","02S2015","General Villegas 719. Cordoba","null","15593321 - 15407789","null","null","null","julio.soria@gmail.com"];
+		$array[7] = ["20/8/2005","Soria, Julio Ariel","Soria, Julio Ariel",40,"San Benito","1160","Rio Miraflores - Dpto. Capayan","02S2015","General Villegas 719. Cordoba","null","15593321","null","null","null","julio.soria@gmail.com"];
 		$array[8] = ["22/12/1993","Minera Alumbrera Ltd. ","Walter Miñaura",43,"Bajo de la Alumbrera","994*995*1*1014","Hualfin- Dpto.Belen","154/91","Av.Belgrano 485, Piso 1°, Oficina 3, Ciudad Autonoma de Buenos Aires","Prado N° 290-1° Piso- Dpto. Capital","03833-421810","null","30-66330174-4","null","minera.alumbrera@gmail.com"];
-		$array[9] = ["null","Minera del Altiplano- FMC","Carlos Daniel Chavez Diaz",45,"Proyecto Fenix","1050","S.H.Muerto-Dpto. Antof. De la Sierra","varios","Ejercito Del Norte 20 - Prov. Salta","Esquiu 591, 2° Piso -   Catamarca","03834433222/ 03874322100","null","30-64279606-9","null","minera.atiplano@gmail.com"];
-		$array[10] = ["13/3/2002","Zanier, Ruben","Atilo Fabian",62,"San Antonio","1056","San Antonio- Dpto. La Paz","Z-025/04","Av. Italia 1500- Malagueño-Cba.","Dr. Manuel Navarro 490-La Chacarita","(Fabian) 429065-15684780","null","30-55733056-5","null","ruben.zanier@gmail.com"];
-		$array[11] = ["null","Renaud, Daniel J./Cristian Rozic Echeverria","Silva, Nancy Adriana Elizabeth",64,"Los Patos- La Redonda I-Barrial.Aurelio-Don Carlos","1180","S.H.Muerto-Dpto. Antof. De la Sierra","R-210/94-R-55/00-R-77/99-R-54/00-R-56/00","Gral Guemes 110-Campo Quijano-Salta","B° 144 VVNorte. C/91- Catamarca","03833- 458408/ 15623929","null","20-07638835-1","null","null"];
+		//$array[9] = ["null","Minera del Altiplano- FMC","Carlos Daniel Chavez Diaz",45,"Proyecto Fenix","1050","S.H.Muerto-Dpto. Antof. De la Sierra","varios","Ejercito Del Norte 20 - Prov. Salta","Esquiu 591, 2° Piso -   Catamarca","03834433222/03874322100","null","30-64279606-9","null","minera.atiplano@gmail.com"];
+		$array[9] = ["null","Minera del Altiplano- FMC","Carlos Daniel Chavez Diaz",45,"Proyecto Fenix","1050","S.H.Muerto-Dpto. Antof. De la Sierra","varios","Ejercito Del Norte 20 - Prov. Salta","Esquiu 591, 2° Piso -   Catamarca","03834433222","null","30-64279606-9","null","minera.atiplano@gmail.com"];
+		$array[10] = ["13/3/2002","Zanier, Ruben","Atilo Fabian",62,"San Antonio","1056","San Antonio- Dpto. La Paz","Z-025/04","Av. Italia 1500- Malagueño-Cba.","Dr. Manuel Navarro 490-La Chacarita","15684780","null","30-55733056-5","null","ruben.zanier@gmail.com"];
+		$array[11] = ["null","Renaud, Daniel J./Cristian Rozic Echeverria","Silva, Nancy Adriana Elizabeth",64,"Los Patos- La Redonda I-Barrial.Aurelio-Don Carlos","1180","S.H.Muerto-Dpto. Antof. De la Sierra","R-210/94-R-55/00-R-77/99-R-54/00-R-56/00","Gral Guemes 110-Campo Quijano-Salta","B° 144 VVNorte. C/91- Catamarca","03833-15623929","null","20-07638835-1","null","null"];
 		$array[12] = ["1/3/2004","Arqueros, Luis Gaston","Ing. Rolando de La Fuente",69," Maktub XXIII- ","1180*1028","S.H.Muerto-Dpto. Antof. De la Sierra","M-27/00-51 y 52/00- 248/03","Ruta Nac. 51-Km 22,5 Campo Quijano","Rivas Lara 177 B° san Fdo. Catamarca","null","null","null","null","luis.arqueros@gmail.com"];
 		$array[13] = ["17/8/2005","Minerales de Recreo","Enrique Perea",86,"Las Gemelas- Yacimientos del Recreo","1056","Recreo- Dpto. La Paz","T-20/99- M-40/06","Avda. Roca 281. Esqu. Tablada. Piso: PA Dpto. 15 Villa Allende 5105 - Prov. Cordoba","Calle Federico Espeche Nº 1448","03832 - 15688104","null","30-68755805-8","null","minerales.de.recreo@gmail.com"];
 		$array[14] = ["10/5/2006","Minera Agua Rica LLC","Dra. Maria Gabriela Uriburu Casillo",92,"Minera Agua Rica","994*1","Cerro Atajo-Dpto. Andalga","M-107/93","Chacabuco-Esquina Tucumán-Catamarca","Prado N° 290-2° Piso- Dpto. Capital","3834-751680/3835434762","maria.uriburu@yamana.com","null","null","null"];
@@ -14335,9 +14364,7 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		$array[40] = ["2/6/2014","ZAR STELLA DEL VALLE","SECO ZAR DIANA MARIA",161,"MADIAN","1160","Rio del Valle - Capital","1581Z2013","Padre Celestino Zanella N° 341 - La Chacarita - Capital","Padre Celestino Zanella N° 341 - La Chacarita - Capital","0383 - 154333366","secozardm@hotmail.com","27-12796608-2","COMPLETA","null"];
 		$array[41] = ["08/08//2014","FIKINGER MARTIN RICARDO","DEL PINO GASTON DIEGO",163,"LA GENEROSA","1160","Rio San Pablo - Dpto. Capayan","1304F2013","Barrio 29 vv – Casa N° 13, Huillapima, Dpto. Capayan","La Pampa 1568, S.F.V Catamarca  - Capital","0383 - 154254557","gdelpinopalermo@hotmail.com","20-33438142-1","COMPLETA","null"];
 		$array[42] = ["11/11/2014","GASO JOSE ARIEL","GASO JOSE ARIEL",165,"SAN NICOLAS","1160","Rio del Valle  -  Dpto. Capital","0013G2014","Dr. Julio Herrera N° 646 - Catamarca","Dr. Julio Herrera N° 646 - Catamarca"," ","null","20-29786912-5","COMPLETA","null"];
-
 		$array[43] = ["17/12/2014","COMPAÑÍA MINERA ESPERANZA S.A.","Andreotti Rosales Pablo Martin",166,"CACHARI PAMPA III y IV","1097","Dpto. Antofagasta de la Sierra","C-185/2012","Hipolito Irigoyen Sur N° 48 -  San Juan","Maipu N° 294 - Catamarca capital","0383 - 4426957","estudiorosales294@arnet.com.ar","null","COMPLETA","null"];
-
 		$array[44] = ["11/2/2015","GUIDO MOGUETTA EMPRESA CONSTRUCTORA","MOGUETTA GUIDO DAVID",167,"del sur, B, Yerba Buena, El Bolson, Punta del Agua, La segunda Aconquija,","1160","Dpto. Capital- Dpto. Capayan","G-055/2014, M-28-2019,  S-27-2020, S-26-2020, 2021-00119679, 2021-00285279","Calle José Hernandez s/n° - Sumalao, Dpto. Valle Viejo","Calle José Hernandez s/n° - Sumalao, Dpto. Valle Viejo","0383- 4441003","mooguettaconstructora@arhetbiz.com.ar","20-08042389-7","COMPLETA","null"];
 		$array[45] = ["18/6/2015","FUENZALIDA JOSE ALFREDO","FUENZALIDA YANINA JORGELINA",168,"JOSECITO","1160","Dpto. Andalgala","F-27-2015","Barrio Juan Domingo Peron. Casa 16. Dpto Andalgala","Barrio Juan Domingo Peron. Casa 16. Dpto Andalgala","0383 -154901424","null","20-16127679-1","COMPLETA","null"];
 		$array[46] = ["22/12/2015","MENDEZ, MATIAS RAMON","MENDEZ, MATIAS RAMON",170,"LA PRODUCTIVA","1071","DPTO. ANCASTI","M-1432-2013","OBISPO ESQUIU N° 942","OBISPO ESQUIU N° 942","0383-154241634","null","null","solicitud de baja de la cantera en tramite","null"];
@@ -14353,8 +14380,6 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		$array[56] = ["13/6/2017","AGÜERO MARIA MARGARITA","MACAGNO E. MARIO",181,"LOS DIVISADEROS","1160","DPTO. CAPAYAN","138A2016","GOB. GUILLERMO CORREA Nº 443 - CAPITAL","CHACABUCO Nº 451 - CAPITAL","351-5740621","mmacagno@moniemocammisa.com.ar","30-70878353-2","COMPLETA","null"];
 		$array[57] = ["14/6/2017","BRUNELLO ANNABE MERCEDES","RICARDO PREVEDELLO",182,"EL TANO","1160","Dpto. Capital","B-001-2006","Padre Esquiu 35.","Padre Esquiu 35.","Fijo: 4446089","ricardoprevellosrl@hotmail.com.ar","30-70865284-5","COMPLETA","null"];
 		$array[58] = ["4/9/2017","LUNA ANGEL CESAR","null",183,"LA BIENVENIDA","1071","Loc. Los Mogotes - Dpto. Ancasti","L-102-2016","calle s/n - Los Mogotes","null","Cel: 3832461979","null","20-12642865-1","COMPLETA","null"];
-
-
 		$array[59] = ["19/9/2017","FORNACIARI JOSE LUIS","null",184,"LA JUSTINA, LA POTOLA, LA FORTUNA y LA FORTUNA I","1101","Carachi Pampa - Dpto. Ant. De la Sierra","F-100-2008","Republica N° 306 - S.F.V. de Catamarca","Junin Nº 169- piso 1 - Dpto. 7 - San Miguel de Tucuman","null","null","20-10017156-3","null","null"];
 		$array[60] = ["10/10/2017","ITALCA CONSTRUCTORA S.R.L.","LUIS A. CATTARUZZA",185,"ITALCA","1160","RIO ONGOLI, DPTO. CAPITAL","I-149-2016","AV. RAMON RECALDE 2658","AV. RAMON RECALDE 2658","0383-154521976","LUISCATTARUZZA@HOTMAIL.COM","30-70939529-3","null","null"];
 		$array[61] = ["10/11/2017","GARNOR SRL","GARCIA MARIA FERNANDA LETICIA",186,"ARIDOS ACONQUIJA","1160","LOC. ACONQUIJA, DPTO. ANDALGALA","G-082-2016","RIVADAVIA 765","RIVADAVIA 765","0383-154225569","fernandagarcialm@gmail.com","33-71514782-9","null","null"];
@@ -14365,15 +14390,14 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		$array[66] = ["19/10/2018","Minera Alumbrera Ltd. ","CPN Walter Miñaura",191,"Alumbrera I- Las Blancas","1160","LOC. ACONQUIJA, DPTO. ANDALGALA","M-06-2001/ M- 04-2001","Av.Belgrano 485, Piso 1°, Oficina 3, Ciudad Autonoma de Buenos Aires","Prado N° 290-1° Piso- Dpto. Capital","3834421810-3834432840","walter.minaura@glencore.com.ar","30-66330174-4","completa","null"];
 		$array[67] = ["16/7/2019","LIEX SA","Cambeses Florencia",192,"Proyecto Tres Quebradas","1050","Loc. Fiambalá- Dpto. Tinogasta","41D2017","Patricias Mendocinas 1077-1° Piso-Dpto. A- Mendoza","San Martin 280. SFVC","3834436515","null","null","completa","null"];
 		$array[68] = ["16/8/2019","POSCO Argentina SAU","Dr. Gerardo José Monti",193,"Canteras: A, B, C, D, G,E","1160","Dpto. Antofagasta de la Sierra","11P2019- 12P2019-13P2019-14P2019-16P2019-15P2019","Av. Leandro Alem N° 882- CABA","San  Martin N° 197- Dpto. Capital","3834814093","estudiopvya@arnetbiz.com.ar","30-71613922-7","completa","null"];
-		$array[69] = ["16/8/2019","POSCO Argentina SAU","Dr. Gerardo José Monti",194,"Barreal 2-Luna Blanca V- Pachamama-La Primera-La Segunda-La Tercera-China-Luna Blanca IV-Rocio 1-Luna Blanca III-Beatriz IV-Nelly VI-Luna Blanca-Meme-Quiero Retruco-Truco-El Tordo- Marcos I","1050","Dpto. Antofagasta de la Sierra","160G2002-813G2007-227G2007-289G2007-290G2007-291A2007-354G2007-812G2009-815G2009-117G2010-268G2010-269G2010-1280G2006-1430M2006-1198G2006-1197G2006-1178G2006-186G2018-","Av. Leandro Alem N° 882- CABA","San Martin N° 197- Dpto. Capital","3834814093","estudiopvya@arnetbiz.com.ar","30-71613922-7","completa","null"];
-		
-        
+		//$array[69] = ["16/8/2019","POSCO Argentina SAU","Dr. Gerardo José Monti",194,"Barreal 2-Luna Blanca V- Pachamama-La Primera-La Segunda-La Tercera-China-Luna Blanca IV-Rocio 1-Luna Blanca III-Beatriz IV-Nelly VI-Luna Blanca-Meme-Quiero Retruco-Truco-El Tordo- Marcos I","1050","Dpto. Antofagasta de la Sierra","160G2002-813G2007-227G2007-289G2007-290G2007-291A2007-354G2007-812G2009-815G2009-117G2010-268G2010-269G2010-1280G2006-1430M2006-1198G2006-1197G2006-1178G2006-186G2018-","Av. Leandro Alem N° 882- CABA","San Martin N° 197- Dpto. Capital","3834814093","estudiopvya@arnetbiz.com.ar","30-71613922-7","completa","null"];
+		$array[69] = ["16/8/2019","POSCO Argentina SAU","Dr. Gerardo José Monti",194,"Barreal 2","1050","Dpto. Antofagasta de la Sierra","160G2002","Av. Leandro Alem N° 882- CABA","San Martin N° 197- Dpto. Capital","3834814093","estudiopvya@arnetbiz.com.ar","30-71613922-7","completa","null"];
         $array[70] = ["29/8/2019","Bollecich Dardo Clemente","Miranda Emma Luciana",195,"El Barrrial","1149","Dpto. Tinogasta","B-64-2018","Ministro Dulce 183. SFVC","Ministro Dulce 183. SFVC","3834-665930","emilumiranda@gmail.com","20-11079307-4","completa","null"];
 		$array[71] = ["9/9/2019","Galaxy Lithium Sal de Vida SA","Dr. José Ernesto Vila Melo",196,"Cantera M","1160","Dpto. Antofagasta de la Sierra","G-39-2017","San Martín N° 197-SFVC","San Martín N° 197-SFVC","3834205109","estudiopvya@arnetbiz.com.ar","30-71105187-9","completa","null"];
 		$array[72] = ["9/9/2019","Galaxy Lithium Sal de Vida SA","Dr. José Ernesto Vila Melo",197,"Luna Blanca- La Redonda V- Agostina- Los Patos- Don Pepe- Don Carlos- Aurelio- Rodolfo- Delia- El Tordo- Luna Blanca VI- Luna Blanca II- Centenario- Cachita Barrial I- Monserrat- Monserrat I","1050","Dpto. Antofagasta de la Sierra","1280G2006-161G2002- 168G2002-210G1994","San Martín N° 197-SFVC","San Martín N° 197-SFVC","3834205109","estudiopvya@arnetbiz.com.ar","30-71105187-10","completa","null"];
 		$array[73] = ["25/9/2019","Compañía Minera del NOA SA","Romano, Luis Eduardo",198,"Luis II","1050","Dpto. Belén","22-2015","Austria 2248- 2° Piso- CABA","Rojas 667","11-61375126","null","null","null","null"];
 		$array[74] = ["10/12/2019","Minera del Altiplano- FMC","Fernando Ruiz Moreno",199,"Maria","1160","Dpto. Antofagasta de la Sierra","M-63-2017","Real Ejercito del Norte 20","Junin esquina Prado. Planta Alta","0387-154429135","daniel.Riva@livent.com","30-64279606-9","null","null"];
-		$array[75] = ["3/3/2020","Di Giorgio Osvaldo - Chahla Roberto","Guadalupe Salas",200,"Corina II","Pb-Ag","1175","197/2019","Jose Marmol 2040 - Bs As","Esquiu 434","3834-046538","Isabelsalas43@yahoo.com.ar","20-13406712-9","completa","null"];
+		$array[75] = ["3/3/2020","Di Giorgio Osvaldo - Chahla Roberto","Guadalupe Salas",200,"Corina II","1000*995","1175","197/2019","Jose Marmol 2040 - Bs As","Esquiu 434","3834-046538","Isabelsalas43@yahoo.com.ar","20-13406712-9","completa","null"];
 		$array[76] = ["21/5/2020","Catamarca Mining Corp.","Odella Maglione, Nelson Ricardo",201,"Leandro","1000","Antofagasta de la Sierra","47C2019","Rodriguez Peña 2082-CABA","Esquiú 434","3834606217","Lensur@live.com","20-60364943-6","completa","null"];
 		$array[77] = ["4/8/2020","Bravo Luis Gerardo","Bravo, Luis Gerardo",202,"Santa Catalina II","1","Ancasti","127B2011","San Martin N° 840-La Cocha- Tucuman","Chacabuco N° 916-SFVC","3834-358820","lugebra@yahoo.com.ar","20-16944998-9","completa","null"];
 		$array[78] = ["30/11/2020","Layus Jorge Gustavo","Tanco Pablo",203,"La Morenita","1160","Capayan","142-L-2016","Obrador San Martin - Ctmarca","Ruta Prov. 111 - km 7 1/2 - CBA","null","null","30-70878353-2","completa","null"];
@@ -14381,11 +14405,6 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		$array[80] = ["30/8/2021","Villarroel jorge Adrian","Zarate Mariana veronica",205,"San Jorge","1097","Capital","07-V-2014","Ortiz de Ocampo s/n B° san jorge","Ortiz de Ocampo s/n B° san jorge","3834218047","mariana16zarate@gmail.com","20-35500863-1","completa","null"];
 		$array[81] = ["15/9/2021","Jais servicios mineros y construcciones civiles","Julio Jorge Jais",206,"Chañaritos","1160","andalgala","EX2021 - 263828 - CAT - DPM#MM","Malli I S/Nº","Bº 10 de Noviembre Casa Nº 21","null","null","null","incompleta","null"];
 		//$array[82] = [null, "Mitre N° 562 - Tancacha - Prov. De Cordoba","Manuel Navarro 490 - SF del V de Catamarca","0383-154684780","atiliofabian@gmail.com","30-70999517-7","null","null
-
-
-
-
-
 
         //ARIDOS *---> 1160
 		//Rodocrosita --> 1179
@@ -14395,234 +14414,209 @@ $formularioNuevoCatamarca  = new FormAltaProductorCatamarca();
 		//Puzolana--> 1149
 		//Arenas --> 1097
 		//Magnesio --> 1137
-
-
-	//	dd(Carbon::parse($array[4][0])->format('Y-m-d H:i:s'));
+		//	dd(Carbon::parse($array[4][0])->format('Y-m-d H:i:s'));
 		$faker = Faker::create();
 
-
-	for ($i = 1; $i <= 81; $i++) {
-		//$array[$i]
-		//PASO 1
-		//if ($i == 549)
-		//	continue;
-		//dd(Carbon::parse($array[$i][0])->format('Y-m-d H:i:s'));
-
-		//dd( intval($array[554][2]));
-
-		//dd(str_replace("-","",$array[$i][12]));
-
-		/*
-		*** 2 --> Representante
-		*** 3 --> num prod
-		*** 4 --> nombre del yacimiento
-		*** 5 --> mineral
-		*** 6 --> ubicacion de minerales
-		***7 --> expedientes
-		****8 --> domicilio real
-		****9 --> domicilio legal
-		****10 --> telefono
-		***11 --> email
-		*****12 --> cuit
-		13 --> estado de documentacion
-		***14 --> mis emails
-		*/
-
-		$mail = $faker->email();
-		if(  
-			(isset($array[$i][14])) 
-			&& 
-			(strval($array[$i][14])  != "null")
-			 )
-			$mail = $array[$i][14];
-		if(isset($array[$i][11]) && strval($array[$i][11]) != "null" )
-			$mail = $array[$i][11];
-
+		for ($i = 1; $i <= 81; $i++) {
+			/* CREO LAS VARIABLES PARA USAR*/
+			$mail = $faker->email();
+			if(  
+				(isset($array[$i][14])) 
+				&& 
+				(strval($array[$i][14])  != "null")
+				)
+				$mail = $array[$i][14];
+			if(isset($array[$i][11]) && strval($array[$i][11]) != "null" )
+				$mail = $array[$i][11];
 
 			$cuit = 0;
 			if(isset($array[$i][12]))
-			$cuit = str_replace("-","",$array[$i][12]);
+				$cuit = str_replace("-","",$array[$i][12]);
 
 
-		$formulario_provisorio = new FormAltaProductor();
-		$formulario_provisorio->razonsocial = $array[$i][2];
-		$formulario_provisorio->email = $mail;
-		$formulario_provisorio->cuit = $cuit;
-		$formulario_provisorio->numeroproductor =  $array[$i][3];
-		$formulario_provisorio->tiposociedad = 'S.A.';
-		$formulario_provisorio->constaciasociedad = null;
-		$formulario_provisorio->inscripciondgr = null;
-		$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		$formulario_provisorio->estado = "borrador";
-		$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
-		$formulario_provisorio->updated_by = Auth::user()->id;
-		$formulario_provisorio->created_by = Auth::user()->id;
-		$formulario_provisorio->provincia = 50;
-		//$formulario_provisorio->created_at = Carbon::parse($array[$i][0])->format('Y-m-d H:i:s'); 
-		$resultado = $formulario_provisorio->save();
+			$domicilio = null;
+			if(isset($array[$i][9]))
+				$domicilio = $array[$i][9];
 
-		//dd($resultado);
-		//Paso 2 
-$domicilio = null;
-if(isset($array[$i][9]))
-$domicilio = $array[$i][9];
+			$telefono = null;
+			if(isset($array[$i][10]))
+				$telefono = $array[$i][10];
 
-$telefono = null;
-if(isset($array[$i][10]))
-$telefono = $array[$i][10];
-		$formulario_provisorio->leal_calle = $domicilio;
-		$formulario_provisorio->leal_numero = null;
-		$formulario_provisorio->leal_telefono = $telefono;
-		$formulario_provisorio->leal_provincia = 50;
-		$formulario_provisorio->leal_departamento = null;
-		$formulario_provisorio->leal_localidad =null;
-		$formulario_provisorio->leal_cp = null;
-		$formulario_provisorio->leal_otro = null;
-		$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
-		$formulario_provisorio->updated_by = Auth::user()->id;
-		$formulario_provisorio->save();
+			$categoria = "segunda";
 
-		//paso 3 
-		$formulario_provisorio->administracion_calle = $array[$i][8];
-		$formulario_provisorio->administracion_numero = null;
-		$formulario_provisorio->administracion_telefono = $telefono;
-		$formulario_provisorio->administracion_pais = "Argentina";
-		$formulario_provisorio->administracion_provincia = 50;
-		$formulario_provisorio->administracion_departamento = $array[$i][2];
-		$formulario_provisorio->administracion_localidad = $array[$i][1];
-		$formulario_provisorio->administracion_cp = null;
-		$formulario_provisorio->administracion_otro = null;
-		$formulario_provisorio->updated_paso_tres = date("Y-m-d H:i:s");
-		$formulario_provisorio->updated_by = Auth::user()->id;
-		$formulario_provisorio->save();
+			$id_user = 0;
 
+			$id_provincia = 10; //Catamarca
+			//FIN DE INICIO DE VARIABLES
 
-		//PASO 4
-		$categoria = "segunda";
-		$formulario_provisorio->numero_expdiente = $array[$i][7];
-		$formulario_provisorio->categoria = $categoria;
-		$formulario_provisorio->nombre_mina = $array[$i][4];
-		$formulario_provisorio->descripcion_mina = null;
-		$formulario_provisorio->distrito_minero =null;
-		$formulario_provisorio->mina_cantera = "mina";
-		$formulario_provisorio->resolucion_concesion_minera = null;
-		$formulario_provisorio->titulo_contrato_posecion = null;
-		$formulario_provisorio->plano_inmueble = null;
-		$formulario_provisorio->titulo_contrato_posecion = null;
-		$formulario_provisorio->resolucion_concesion_minera = null;
-		$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		$formulario_provisorio->save();
-		
-		//Paso 5
-		$formulario_provisorio->owner = null;
-		$formulario_provisorio->arrendatario = null;
-		$formulario_provisorio->concesionario = null;
-		$formulario_provisorio->sustancias_de_aprovechamiento_comun = 0;
-		$formulario_provisorio->sustancias_de_aprovechamiento_comun_aclaracion = null;
-		$formulario_provisorio->otros = 0;
-		$formulario_provisorio->otro_caracter_acalaracion = null;
-		$formulario_provisorio->constancia_pago_canon = null;
-		$formulario_provisorio->iia = null;
-		$formulario_provisorio->dia = null;
-		$formulario_provisorio->acciones_a_desarrollar = null;
-		$formulario_provisorio->actividad = null;
-		$formulario_provisorio->fecha_alta_dia = null;
-		$formulario_provisorio->fecha_vencimiento_dia = null;
-		$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		$formulario_provisorio->save();
+			//crear el usuario
+			$resultado = User::create([
+				'name' => $array[$i][2],
+				'email' => $mail,
+				'password' => bcrypt('password'),
+				'current_team_id' => 10, // team_catamarca
+				'profile_photo_path' => "profile-photos/catamarca.png",
+				'first_name' => $array[$i][2],
+				'last_name' =>  $array[$i][2],
+				'provincia' => "Catamarca",
+				'id_provincia' => $id_provincia,
+			])->assignRole('Productor');
+			$id_user = $resultado->id;
+			//Termino de crear usuario
 
+			//PASO 1
+			$formulario_provisorio = new FormAltaProductor();
+			$formulario_provisorio->razonsocial = $array[$i][2];
+			$formulario_provisorio->email = $mail;
+			$formulario_provisorio->cuit = $cuit;
+			$formulario_provisorio->numeroproductor =  $array[$i][3];
+			$formulario_provisorio->tiposociedad = 'S.A.';
+			$formulario_provisorio->constaciasociedad = null;
+			$formulario_provisorio->inscripciondgr = null;
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->estado = "borrador";
+			$formulario_provisorio->updated_paso_uno = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_by = $id_user;
+			$formulario_provisorio->created_by = $id_user;
+			$formulario_provisorio->provincia = $id_provincia;
+			//$formulario_provisorio->created_at = Carbon::parse($array[$i][0])->format('Y-m-d H:i:s'); 
+			$resultado = $formulario_provisorio->save();
+			//Paso 2 
+			$formulario_provisorio->leal_calle = $domicilio;
+			$formulario_provisorio->leal_numero = null;
+			$formulario_provisorio->leal_telefono = $telefono;
+			$formulario_provisorio->leal_provincia = $id_provincia;
+			$formulario_provisorio->leal_departamento = null;
+			$formulario_provisorio->leal_localidad =null;
+			$formulario_provisorio->leal_cp = null;
+			$formulario_provisorio->leal_otro = null;
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_paso_dos = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_by = $id_user;
+			$formulario_provisorio->save();
+			//paso 3 
+			$formulario_provisorio->administracion_calle = $array[$i][8];
+			$formulario_provisorio->administracion_numero = null;
+			$formulario_provisorio->administracion_telefono = $telefono;
+			$formulario_provisorio->administracion_pais = "Argentina";
+			$formulario_provisorio->administracion_provincia = $id_provincia;
+			$formulario_provisorio->administracion_departamento = $array[$i][2];
+			$formulario_provisorio->administracion_localidad = $array[$i][1];
+			$formulario_provisorio->administracion_cp = null;
+			$formulario_provisorio->administracion_otro = null;
+			$formulario_provisorio->updated_paso_tres = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_by = $id_user;
+			$formulario_provisorio->save();
+			//PASO 4
+			
+			$formulario_provisorio->numero_expdiente = $array[$i][7];
+			$formulario_provisorio->categoria = $categoria;
+			$formulario_provisorio->nombre_mina = $array[$i][4];
+			$formulario_provisorio->descripcion_mina = null;
+			$formulario_provisorio->distrito_minero =null;
+			$formulario_provisorio->mina_cantera = "mina";
+			$formulario_provisorio->resolucion_concesion_minera = null;
+			$formulario_provisorio->titulo_contrato_posecion = null;
+			$formulario_provisorio->plano_inmueble = null;
+			$formulario_provisorio->titulo_contrato_posecion = null;
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->save();
+			//Paso 5
+			$formulario_provisorio->owner = null;
+			$formulario_provisorio->arrendatario = null;
+			$formulario_provisorio->concesionario = null;
+			$formulario_provisorio->sustancias_de_aprovechamiento_comun = 0;
+			$formulario_provisorio->sustancias_de_aprovechamiento_comun_aclaracion = null;
+			$formulario_provisorio->otros = 0;
+			$formulario_provisorio->otro_caracter_acalaracion = null;
+			$formulario_provisorio->constancia_pago_canon = null;
+			$formulario_provisorio->iia = null;
+			$formulario_provisorio->dia = null;
+			$formulario_provisorio->acciones_a_desarrollar = null;
+			$formulario_provisorio->actividad = null;
+			$formulario_provisorio->fecha_alta_dia = null;
+			$formulario_provisorio->fecha_vencimiento_dia = null;
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->save();
+			//Paso 6
+			$formulario_provisorio->localidad_mina_pais = "Argentina";
+			$formulario_provisorio->localidad_mina_provincia = $id_provincia;
+			$formulario_provisorio->localidad_mina_departamento = null;
+			$formulario_provisorio->localidad_mina_localidad = $array[$i][6];
+			$formulario_provisorio->tipo_sistema = null;
+			$formulario_provisorio->longitud = null;
+			$formulario_provisorio->latitud =  null;
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_paso_seis = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_by = $id_user;
 
-		//Paso 6
-		$formulario_provisorio->localidad_mina_pais = "Argentina";
-		$formulario_provisorio->localidad_mina_provincia = 50;
-		$formulario_provisorio->localidad_mina_departamento = null;
-		$formulario_provisorio->localidad_mina_localidad = $array[$i][6];
-		$formulario_provisorio->tipo_sistema = null;
-		$formulario_provisorio->longitud = null;
-		$formulario_provisorio->latitud =  null;
-		$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		$formulario_provisorio->updated_paso_seis = date("Y-m-d H:i:s");
-		$formulario_provisorio->updated_by = Auth::user()->id;
+			$formulario_provisorio->cargo_empresa = "Representante";
+			$formulario_provisorio->presentador_nom_apellido = $array[$i][2];
+			$formulario_provisorio->presentador_dni = 0;
+			$formulario_provisorio->save();
 
+			$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
+			$formulario_provisorio->updated_by = Auth::user()->id;
+			$formulario_provisorio->save();
 
-		$formulario_provisorio->cargo_empresa = "Representante";
-		$formulario_provisorio->presentador_nom_apellido = $array[$i][2];
-		$formulario_provisorio->presentador_dni = 0;
-		$formulario_provisorio->save();
+			//parto el string de minerales
+			$mineralesACargar = explode("*", $array[$i][5]);
+			for ($y = 0; $y < count($mineralesACargar); $y++) {
+				//dd(count($mineralesACargar), $mineralesACargar, $y, $mineralesACargar[$y]);
+				$nuevo_min = new Minerales_Borradores();
+				$nuevo_min->id_formulario = $formulario_provisorio->id;
+				$nuevo_min->id_mineral = $mineralesACargar[$y];
+				$nuevo_min->lugar_donde_se_encuentra = null;
+				$nuevo_min->variedad = null;
+				$nuevo_min->segunda_cat_mineral_explotado = null;
+				$nuevo_min->mostrar_lugar_segunda_cat = null;
+				$nuevo_min->mostrar_otro_mineral_segunda_cat = null;
+				$nuevo_min->otro_mineral_segunda_cat = null;
+				$nuevo_min->observacion = null;
+				$nuevo_min->clase_text_area_presentacion = null;
+				$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = null;
+				$nuevo_min->texto_validacion_text_area_presentacion = null;
+				$nuevo_min->presentacion_valida = null;
+				$nuevo_min->evaluacion_correcto = null;
+				$nuevo_min->observacion_autoridad = null;
+				$nuevo_min->clase_text_area = null;
+				$nuevo_min->clase_text_evaluacion_de_text_area = null;
+				$nuevo_min->texto_validacion_text_area = null;
+				$nuevo_min->obs_valida = null;
+				$nuevo_min->lista_de_minerales_array = '';
+				$nuevo_min->thumb = null;
+				$nuevo_min->created_by = $id_user;
+				$nuevo_min->estado = "aprobado";
+				$nuevo_min->updated_by =  $id_user;
 
+				$nuevo_min->created_at = null; //date("Y-m-d H:i:s");
+				$nuevo_min->updated_at = null; //date("Y-m-d H:i:s");
 
-		$formulario_provisorio->updated_at = date("Y-m-d H:i:s");
-		$formulario_provisorio->updated_by = Auth::user()->id;
-		$formulario_provisorio->save();
+				$nuevo_min->save();
+			}
 
+			$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
+			$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
+			$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
+			$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
+			$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
 
-
-		//parto el string de minerales
-		$mineralesACargar = explode("*", $array[$i][5]);
-		for ($y = 0; $y < count($mineralesACargar); $y++) {
-			//dd(count($mineralesACargar), $mineralesACargar, $y, $mineralesACargar[$y]);
-			$nuevo_min = new Minerales_Borradores();
-			$nuevo_min->id_formulario = $formulario_provisorio->id;
-			$nuevo_min->id_mineral = $mineralesACargar[$y];
-			$nuevo_min->lugar_donde_se_encuentra = null;
-			$nuevo_min->variedad = null;
-			$nuevo_min->segunda_cat_mineral_explotado = null;
-			$nuevo_min->mostrar_lugar_segunda_cat = null;
-			$nuevo_min->mostrar_otro_mineral_segunda_cat = null;
-			$nuevo_min->otro_mineral_segunda_cat = null;
-			$nuevo_min->observacion = null;
-			$nuevo_min->clase_text_area_presentacion = null;
-			$nuevo_min->clase_text_evaluacion_de_text_area_presentacion = null;
-			$nuevo_min->texto_validacion_text_area_presentacion = null;
-			$nuevo_min->presentacion_valida = null;
-			$nuevo_min->evaluacion_correcto = null;
-			$nuevo_min->observacion_autoridad = null;
-			$nuevo_min->clase_text_area = null;
-			$nuevo_min->clase_text_evaluacion_de_text_area = null;
-			$nuevo_min->texto_validacion_text_area = null;
-			$nuevo_min->obs_valida = null;
-			$nuevo_min->lista_de_minerales_array = '';
-			$nuevo_min->thumb = null;
-			$nuevo_min->created_by = Auth::user()->id;
-			$nuevo_min->estado = "aprobado";
-			$nuevo_min->updated_by =  Auth::user()->id;
-
-			$nuevo_min->created_at = null; //date("Y-m-d H:i:s");
-			$nuevo_min->updated_at = null; //date("Y-m-d H:i:s");
-
-			$nuevo_min->save();
+			var_dump("El id del borrador es:");
+			var_dump($formulario_provisorio->id);
+			var_dump("El id del productor es:");
+			var_dump($id_productor_nuevo);
+			var_dump("El id de la mina es:");
+			var_dump($id_mina_nueva);
+			var_dump("El id de la id_dia_iia_nueva es:");
+			var_dump($id_dia_iia_nueva);
+			var_dump("El id de la id_dia_iia_nueva es:");
+			var_dump($id_dia_iia_nueva);
+			var_dump("El id de la id_pago_canon_nuevo es:");
+			var_dump($id_pago_canon_nuevo);
+			var_dump("El id de la id_mina_productor es:");
+			var_dump($id_mina_productor);
+			echo "\n\n<br><hr><br>";
 		}
-
-		/*Mail::to($email_a_mandar)->send(new AvisoFormularioAprobadoEmail(
-				$formulario_provisorio->id,
-				$formulario_provisorio->razon_social,
-				date("Y-m-d H:i:s")
-			));*/
-
-		$id_productor_nuevo = $this->crear_registro_productor($formulario_provisorio->id);
-		$id_mina_nueva = $this->crear_registro_mina_cantera($formulario_provisorio->id);
-		$id_dia_iia_nueva = $this->crear_registro_dia_iia($formulario_provisorio->id);
-		$id_pago_canon_nuevo = $this->crear_registro_pago_canon($formulario_provisorio->id);
-		$id_mina_productor = $this->crear_mina_productor($formulario_provisorio->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
-
-		var_dump("El id del borrador es:");
-		var_dump($formulario_provisorio->id);
-		var_dump("El id del productor es:");
-		var_dump($id_productor_nuevo);
-		var_dump("El id de la mina es:");
-		var_dump($id_mina_nueva);
-		var_dump("El id de la id_dia_iia_nueva es:");
-		var_dump($id_dia_iia_nueva);
-		var_dump("El id de la id_dia_iia_nueva es:");
-		var_dump($id_dia_iia_nueva);
-		var_dump("El id de la id_pago_canon_nuevo es:");
-		var_dump($id_pago_canon_nuevo);
-		var_dump("El id de la id_mina_productor es:");
-		var_dump($id_mina_productor);
-		var_dump("el dpto es:" . intval($array[$i][2]));
-		echo "\n\n";
-	}
 
 
 
