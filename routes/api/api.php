@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticarController;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\ReinscripcionController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -44,3 +43,4 @@ Route::group([
 
 // Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->middleware(['jwt.verify'])->name('numero-reinsripiones-nuevas');
 Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->middleware(['jwt.verify'])->name('traer-provincias');
+Route::apiResource('formaltaprod1', 'App\Http\Controllers\FormAltaProdPaso1Controller');
