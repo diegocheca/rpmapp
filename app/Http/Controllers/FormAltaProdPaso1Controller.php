@@ -83,6 +83,7 @@ class FormAltaProdPaso1Controller extends Controller
     public function show(FormAltaProdPaso1 $formAltaProdPaso1)
     {
         //
+        $formAltaProdPaso1->id =
     }
 
     /**
