@@ -4,18 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\FormAltaProdPaso1;
 use Illuminate\Http\Request;
-
+use Auth;
 class FormAltaProdPaso1Controller extends Controller
 {
 
-    public $tipo_productor;
-	public $cuit;
-	public $razonsocial;
-	public $numeroproductor;
-	public $email;
-	public $tiposociedad;
-	public $inscripciondgr;
-	public $constaciasociedad;
+   //public $tipo_productor;
+	protected $cuit;
+	protected $razonsocial;
+	protected $numeroproductor;
+	protected $email;
+	protected $tiposociedad;
+	protected $inscripciondgr;
+	protected $constaciasociedad;
 
 
 	// public $cuit_correcto;
@@ -35,14 +35,9 @@ class FormAltaProdPaso1Controller extends Controller
 	// public $paso_1_progreso;
 	// public $paso_1_aprobado;
 	// public $paso_1_reprobado;
-
-
-	public $created_by;
-	public $updated_by;
-	public $estado;
-
-	public $updated_paso_uno;
-
+	protected $created_by;
+	protected $updated_by;
+	protected $estado;
     /**
      * Display a listing of the resource.
      *
@@ -50,7 +45,15 @@ class FormAltaProdPaso1Controller extends Controller
      */
     public function index()
     {
-        //
+        //Lista todos los pasos uno de formularios para mostrar mediante json
+        $formularios_uno = null;
+        /* if (Auth::user()->hasRole('Productor')) 
+            $formularios_uno = FormAltaProdPaso1::select('*')->where('created_by', '=', Auth::user()->id)->first();
+        if (Auth::user()->hasRole('Autoridad')) 
+            $formularios_uno = FormAltaProdPaso1::select('*')->where('provincia', '=', Auth::user()->id);
+        if (Auth::user()->hasRole('Administrador')) 
+            $formularios_uno = FormAltaProdPaso1::select('*')->where('created_by', '=', Auth::user()->id);
+        } */
     }
 
     /**
@@ -83,7 +86,7 @@ class FormAltaProdPaso1Controller extends Controller
     public function show(FormAltaProdPaso1 $formAltaProdPaso1)
     {
         //
-        $formAltaProdPaso1->id =
+        //$formAltaProdPaso1->id =
     }
 
     /**
