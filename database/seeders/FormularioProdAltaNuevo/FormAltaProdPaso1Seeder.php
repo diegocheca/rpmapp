@@ -80,6 +80,7 @@ class FormAltaProdPaso1Seeder extends Seeder
         for($i = 0;$i< 100; $i++)
         {
 
+
             /*Crear formulario*/
 
             $estado = $estados[$faker->numberBetween(0,count($estados))]; 

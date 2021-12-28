@@ -133,7 +133,6 @@ $nuevo_formulario->updated_by,
 
 
             $nuevo_formulario->save();
-            //id_formulario
            
             $nuevo_productor = new FormAltaProdPaso1();
             $nuevo_productor->id_formulario = $nuevo_formulario->id;
