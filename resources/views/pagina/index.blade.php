@@ -77,7 +77,7 @@
         <div class="col-lg-6 col-md-12 col-xs-12">
           <div class="contents">
             <h2 class="head-title">Registro de Productores Mineros ( RPM )</h2>
-            <p>Registro de productores Mineros ante el Ministerio de Mineria de la Provincia de San Juan , Argentina.</p>
+            {{-- <p>Registro de productores Mineros ante el Ministerio de Mineria de la Provincia de {{$provincia}}, Argentina.</p> --}}
             <div class="header-button">
               <a href="{{url('login')}}" class="btn btn-border-filled">Entrar</a>
               <a href="#contact" class="btn btn-border page-scroll">Contactanos</a>
@@ -1227,7 +1227,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="site-info text-center">
-                <p>P.N.U.D. y Secretaría de Miniría Nacional</p>
+                <p>P.N.U.D. y Secretaría de Minería Nacional</p>
               </div>
 
             </div>
