@@ -16,6 +16,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductorsController;
 use App\Http\Controllers\PagocanonminaController;
+
 use App\Http\Controllers\ReinscripcionController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\IiadiaController;
@@ -323,3 +324,5 @@ Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])-
 
 
 Route::get('/cargandoexcelmdz', [FormAltaProductorController::class, "cargandoexcelmdz"])->name('cargandoexcelmdz');
+Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatamarca"])->name('cargarCatamarca');
+
