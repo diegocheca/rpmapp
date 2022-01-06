@@ -1,17 +1,31 @@
 <template>
-  <div
-    class="
-      border-2
-      shadow-lg
-      rounded-2xl
-      w-full
-      py-4
-      px-8
-      bg-white
-      my-20
-      border-indigo-400
-    "
-  >
+  <div>
+    <div class="items-center justify-left">
+      <!-- <CardMinaUno
+        :progreso="50"
+        :aprobado="50"
+        :reprobado="50"
+        :lugar="'Argentina, San Juan'"
+        :titulo="titulo_pagina"
+        :updated_at="'hace 10 minutos'"
+        :mostrarayuda="true"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
+        :ayuda="ayuda_local"
+        v-on:changevalorayuda="update_valor_ayuda_local($event)"
+        v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+      ></CardMinaUno> -->
+      <Card
+        :icono="'/formulario_alta/imagenes/tipo_caracter_card.svg'"
+        :titulo="titulo_pagina"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :show="mostrar_modulo"
+        v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
+      ></Card>
+    </div>
+    <!-- <br />
+      <br /> -->
     <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_mina_uno">
         <img
@@ -124,27 +138,30 @@
         </label>
       </div>
     </div> -->
-    <div>
-      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
-      <br /><br /> -->
-      <div class="items-center justify-left sticky top-0 z-10">
-        <CardMinaUno
-          :progreso="50"
-          :aprobado="50"
-          :reprobado="50"
-          :lugar="'Argentina, San Juan'"
-          :titulo="titulo_pagina"
-          :updated_at="'hace 10 minutos'"
+    <div
+      v-if="mostrar_modulo"
+      class="
+        border-2
+        shadow-lg
+        rounded-2xl
+        w-full
+        py-4
+        px-8
+        bg-white
+        border-indigo-400
+      "
+    >
+      <div class="items-center justify-left sticky top-1 z-10">
+        <Menu
           :mostrarayuda="true"
-          :clase_sup="'gap-6'"
-          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
-          :ayuda="ayuda_local"
+          :ayuda="false"
+          :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
-        ></CardMinaUno>
+        ></Menu>
       </div>
-      <br />
-      <br />
+      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
+      <br /><br /> -->
       <div class="flex flex-wrap">
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
           <!-- <NumeroExpedienteMina 
@@ -800,96 +817,104 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- <div class="flex justify-end mt-4">
+
+      <!-- <div class="flex justify-end mt-4">
       <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
     </div> -->
-    <div v-show="mostrar_testing">
-      <h1>los minerales en el padre son</h1>
-      {{ minerales_locales }}
+      <div v-show="mostrar_testing">
+        <h1>los minerales en el padre son</h1>
+        {{ minerales_locales }}
+      </div>
+      <!-- el id es: {{$props.id}} -->
+      <BotonesPaginaCuatro
+        v-if="$props.mostrar_boton_guardar_cuatro"
+        :link_volver="'#'"
+        :titulo_boton_volver="'volver'"
+        :titulo_boton_guardar="'Guardar Datos de la Mina'"
+        :numero_expdiente="form_pagina.numero_expdiente"
+        :numero_expdiente_valido="form_pagina.numero_expdiente_valido"
+        :numero_expdiente_correcto="form_pagina.numero_expdiente_correcto"
+        :obs_numero_expdiente="form_pagina.obs_numero_expdiente"
+        :obs_numero_expdiente_valido="form_pagina.obs_numero_expdiente_valido"
+        :categoria="form_pagina.categoria"
+        :categoria_validacion="form_pagina.categoria_validacion"
+        :categoria_correcto="form_pagina.categoria_correcto"
+        :obs_categoria="form_pagina.obs_categoria"
+        :obs_categoria_valido="form_pagina.obs_categoria_valido"
+        :nombre_mina="form_pagina.nombre_mina"
+        :nombre_mina_validacion="form_pagina.nombre_mina_validacion"
+        :nombre_mina_correcto="form_pagina.nombre_mina_correcto"
+        :obs_nombre_mina="form_pagina.obs_nombre_mina"
+        :obs_nombre_mina_valido="form_pagina.obs_nombre_mina_valido"
+        :descripcion_mina="form_pagina.descripcion_mina"
+        :descripcion_mina_validacion="form_pagina.descripcion_mina_validacion"
+        :descripcion_mina_correcto="form_pagina.descripcion_mina_correcto"
+        :obs_descripcion_mina="form_pagina.obs_descripcion_mina"
+        :obs_descripcion_mina_valido="form_pagina.obs_descripcion_mina_valido"
+        :distrito_minero="form_pagina.distrito_minero"
+        :distrito_minero_validacion="form_pagina.distrito_minero_validacion"
+        :distrito_minero_correcto="form_pagina.distrito_minero_correcto"
+        :obs_distrito_minero="form_pagina.obs_distrito_minero"
+        :obs_distrito_minero_valido="form_pagina.obs_distrito_minero_valido"
+        :mina_cantera="form_pagina.mina_cantera"
+        :mina_cantera_validacion="form_pagina.mina_cantera_validacion"
+        :mina_cantera_correcto="form_pagina.mina_cantera_correcto"
+        :obs_mina_cantera="form_pagina.obs_mina_cantera"
+        :obs_mina_cantera_valido="form_pagina.obs_mina_cantera_valido"
+        :plano_inmueble="form_pagina.plano_inmueble"
+        :plano_inmueble_validacion="form_pagina.plano_inmueble_validacion"
+        :plano_inmueble_correcto="form_pagina.plano_inmueble_correcto"
+        :obs_plano_inmueble="form_pagina.obs_plano_inmueble"
+        :obs_plano_inmueble_valido="form_pagina.obs_plano_inmueble_valido"
+        :minerales_variedad="form_pagina.minerales_variedad"
+        :minerales_variedad_validacion="
+          form_pagina.minerales_variedad_validacion
+        "
+        :minerales_variedad_correcto="form_pagina.minerales_variedad_correcto"
+        :obs_minerales_variedad="form_pagina.obs_minerales_variedad"
+        :obs_minerales_variedad_valido="
+          form_pagina.obs_minerales_variedad_valido
+        "
+        :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
+        :resolucion_concesion_minera_validacion="
+          form_pagina.resolucion_concesion_minera_validacion
+        "
+        :resolucion_concesion_minera_correcto="
+          form_pagina.resolucion_concesion_minera_correcto
+        "
+        :obs_resolucion_concesion_minera="
+          form_pagina.obs_resolucion_concesion_minera
+        "
+        :obs_resolucion_concesion_minera_valido="
+          form_pagina.obs_resolucion_concesion_minera_valido
+        "
+        :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
+        :titulo_contrato_posecion_validacion="
+          form_pagina.titulo_contrato_posecion_validacion
+        "
+        :titulo_contrato_posecion_correcto="
+          form_pagina.titulo_contrato_posecion_correcto
+        "
+        :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
+        :obs_titulo_contrato_posecion_valido="
+          form_pagina.obs_titulo_contrato_posecion_valido
+        "
+        :minerales="minerales_locales"
+        :donde_guardar="$props.donde_estoy"
+        :evaluacion="autoridad_minera"
+        :testing="mostrar_testing"
+        :id="$props.id"
+        v-on:mostrarpasosiguiente="mostrarpasos($event)"
+      >
+      </BotonesPaginaCuatro>
     </div>
-    <!-- el id es: {{$props.id}} -->
-    <BotonesPaginaCuatro
-      v-if="$props.mostrar_boton_guardar_cuatro"
-      :link_volver="'#'"
-      :titulo_boton_volver="'volver'"
-      :titulo_boton_guardar="'Guardar Datos de la Mina'"
-      :numero_expdiente="form_pagina.numero_expdiente"
-      :numero_expdiente_valido="form_pagina.numero_expdiente_valido"
-      :numero_expdiente_correcto="form_pagina.numero_expdiente_correcto"
-      :obs_numero_expdiente="form_pagina.obs_numero_expdiente"
-      :obs_numero_expdiente_valido="form_pagina.obs_numero_expdiente_valido"
-      :categoria="form_pagina.categoria"
-      :categoria_validacion="form_pagina.categoria_validacion"
-      :categoria_correcto="form_pagina.categoria_correcto"
-      :obs_categoria="form_pagina.obs_categoria"
-      :obs_categoria_valido="form_pagina.obs_categoria_valido"
-      :nombre_mina="form_pagina.nombre_mina"
-      :nombre_mina_validacion="form_pagina.nombre_mina_validacion"
-      :nombre_mina_correcto="form_pagina.nombre_mina_correcto"
-      :obs_nombre_mina="form_pagina.obs_nombre_mina"
-      :obs_nombre_mina_valido="form_pagina.obs_nombre_mina_valido"
-      :descripcion_mina="form_pagina.descripcion_mina"
-      :descripcion_mina_validacion="form_pagina.descripcion_mina_validacion"
-      :descripcion_mina_correcto="form_pagina.descripcion_mina_correcto"
-      :obs_descripcion_mina="form_pagina.obs_descripcion_mina"
-      :obs_descripcion_mina_valido="form_pagina.obs_descripcion_mina_valido"
-      :distrito_minero="form_pagina.distrito_minero"
-      :distrito_minero_validacion="form_pagina.distrito_minero_validacion"
-      :distrito_minero_correcto="form_pagina.distrito_minero_correcto"
-      :obs_distrito_minero="form_pagina.obs_distrito_minero"
-      :obs_distrito_minero_valido="form_pagina.obs_distrito_minero_valido"
-      :mina_cantera="form_pagina.mina_cantera"
-      :mina_cantera_validacion="form_pagina.mina_cantera_validacion"
-      :mina_cantera_correcto="form_pagina.mina_cantera_correcto"
-      :obs_mina_cantera="form_pagina.obs_mina_cantera"
-      :obs_mina_cantera_valido="form_pagina.obs_mina_cantera_valido"
-      :plano_inmueble="form_pagina.plano_inmueble"
-      :plano_inmueble_validacion="form_pagina.plano_inmueble_validacion"
-      :plano_inmueble_correcto="form_pagina.plano_inmueble_correcto"
-      :obs_plano_inmueble="form_pagina.obs_plano_inmueble"
-      :obs_plano_inmueble_valido="form_pagina.obs_plano_inmueble_valido"
-      :minerales_variedad="form_pagina.minerales_variedad"
-      :minerales_variedad_validacion="form_pagina.minerales_variedad_validacion"
-      :minerales_variedad_correcto="form_pagina.minerales_variedad_correcto"
-      :obs_minerales_variedad="form_pagina.obs_minerales_variedad"
-      :obs_minerales_variedad_valido="form_pagina.obs_minerales_variedad_valido"
-      :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
-      :resolucion_concesion_minera_validacion="
-        form_pagina.resolucion_concesion_minera_validacion
-      "
-      :resolucion_concesion_minera_correcto="
-        form_pagina.resolucion_concesion_minera_correcto
-      "
-      :obs_resolucion_concesion_minera="
-        form_pagina.obs_resolucion_concesion_minera
-      "
-      :obs_resolucion_concesion_minera_valido="
-        form_pagina.obs_resolucion_concesion_minera_valido
-      "
-      :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
-      :titulo_contrato_posecion_validacion="
-        form_pagina.titulo_contrato_posecion_validacion
-      "
-      :titulo_contrato_posecion_correcto="
-        form_pagina.titulo_contrato_posecion_correcto
-      "
-      :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
-      :obs_titulo_contrato_posecion_valido="
-        form_pagina.obs_titulo_contrato_posecion_valido
-      "
-      :minerales="minerales_locales"
-      :donde_guardar="$props.donde_estoy"
-      :evaluacion="autoridad_minera"
-      :testing="mostrar_testing"
-      :id="$props.id"
-      v-on:mostrarpasosiguiente="mostrarpasos($event)"
-    >
-    </BotonesPaginaCuatro>
   </div>
 </template>
 
 <script>
+import Card from "@/Jetstream/altas/ComponenteCardProvincia";
+import Menu from "@/Jetstream/altas/MenuModulo";
+
 import JetDialogModal from "@/Jetstream/DialogModal";
 import CardMinaUno from "@/Jetstream/altas/CardMinaUno";
 import NumeroExpedienteMina from "@/Pages/Productors/NumeroExpedienteMina";
@@ -1015,6 +1040,8 @@ export default {
   ],
 
   components: {
+    Card,
+    Menu,
     JetDialogModal,
     CardMinaUno,
     NumeroExpedienteMina,
@@ -1029,6 +1056,8 @@ export default {
 
   data() {
     return {
+      mostrar_modulo: true,
+      continuar_pagina: false,
       saludos: "Saludos",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
@@ -1376,9 +1405,15 @@ export default {
     },
     update_valor_pagina_siguiente(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.continuar_pagina = v;
+      this.mostrar_modulo = !v;
+    },
+    update_valor_ocultar_modulo(v) {
+      this.mostrar_modulo = v;
     },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.mostrar_modulo = !v;
     },
   },
   mounted() {

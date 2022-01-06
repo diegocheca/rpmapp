@@ -1,17 +1,5 @@
 <template>
-  <div
-    class="
-      border-2
-      shadow-lg
-      rounded-2xl
-      w-full
-      py-4
-      px-8
-      bg-white
-      my-20
-      border-indigo-400
-    "
-  >
+  <div>
     <!-- <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_catamarca">
         <img
@@ -125,20 +113,39 @@
         </label>
       </div>
     </div> -->
-    <div>
-      <div class="items-center justify-left sticky top-0 z-10">
-        <Card
-          :icono="'/formulario_alta/imagenes/catamarca.png'"
-          :titulo="titulo_pagina"
+    <div class="items-center justify-left">
+      <Card
+        :icono="'/formulario_alta/imagenes/catamarca.png'"
+        :titulo="titulo_pagina"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :show="mostrar_modulo"
+        v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
+      ></Card>
+    </div>
+    <!-- <br /><br /> -->
+    <div
+      v-if="mostrar_modulo"
+      class="
+        border-2
+        shadow-lg
+        rounded-2xl
+        w-full
+        py-4
+        px-8
+        bg-white
+        border-indigo-400
+      "
+    >
+      <div class="items-center justify-left sticky top-1 z-10">
+        <Menu
           :mostrarayuda="true"
-          :clase_sup="'gap-6'"
-          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_local"
+          :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
-        ></Card>
+        ></Menu>
       </div>
-      <br /><br />
       <!-- <div class="flex items-center justify-center"></div>
       <br />
       <br /> -->
@@ -730,30 +737,32 @@
       >
       </BotonesPaginaCatamarca>
       <!-- </div> -->
-    </div>
 
-    <!-- <div class="flex justify-end mt-4">
+      <!-- <div class="flex justify-end mt-4">
       <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
-    </div> -->
-    <BotonesPaginaCatamarca
-      v-if="$props.mostrar_boton_catamarca"
-      :link_volver="'#'"
-      :titulo_boton_volver="'volver'"
-      :titulo_boton_guardar="'Guardar Datos de la Mina'"
-      :formulario="form_catamarca_test"
-      :donde_guardar="$props.donde_estoy"
-      :evaluacion="autoridad_minera"
-      :testing="mostrar_testing"
-      :id="$props.id"
-      v-on:mostrarpasosiguiente="mostrarpasos($event)"
-    >
-    </BotonesPaginaCatamarca>
+    </div>  -->
+      <BotonesPaginaCatamarca
+        v-if="$props.mostrar_boton_catamarca"
+        :link_volver="'#'"
+        :titulo_boton_volver="'volver'"
+        :titulo_boton_guardar="'Guardar Datos de la Mina'"
+        :formulario="form_catamarca_test"
+        :donde_guardar="$props.donde_estoy"
+        :evaluacion="autoridad_minera"
+        :testing="mostrar_testing"
+        :id="$props.id"
+        v-on:mostrarpasosiguiente="mostrarpasos($event)"
+      >
+      </BotonesPaginaCatamarca>
+    </div>
   </div>
 </template>
 
 <script>
-import JetDialogModal from "@/Jetstream/DialogModal";
 import Card from "@/Jetstream/altas/ComponenteCardProvincia";
+import Menu from "@/Jetstream/altas/MenuModulo";
+
+import JetDialogModal from "@/Jetstream/DialogModal";
 import SelectProvincia from "@/Pages/Productors/SelectProvincia";
 import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 import NombreMina from "@/Pages/Productors/NombreMina";
@@ -778,6 +787,7 @@ export default {
   components: {
     JetDialogModal,
     Card,
+    Menu,
     SelectProvincia,
     SelectDepartamento,
     NombreMina,
@@ -789,6 +799,8 @@ export default {
   },
   data() {
     return {
+      mostrar_modulo: true,
+      continuar_pagina: false,
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
       modal_body: "",
@@ -1010,10 +1022,15 @@ export default {
     },
     update_valor_pagina_siguiente(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.continuar_pagina = v;
+      this.mostrar_modulo = !v;
+    },
+    update_valor_ocultar_modulo(v) {
+      this.mostrar_modulo = v;
     },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
-      // console.log("valor: ", v);
+      this.mostrar_modulo = !v;
     },
   },
   mounted() {

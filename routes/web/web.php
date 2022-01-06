@@ -134,6 +134,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_inicio/{id}',
     }
     elseif(Auth::user()->id_provincia == 70){//san juan
         return redirect()->route('comprobante_inicio_sanjuan', [$id]);
+    }else{
+        return redirect()->route('comprobante_inicio_sanjuan', [$id]);
     }
 })->name('comprobante_inicio');
 
@@ -155,6 +157,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_productor_apr
         return redirect()->route('comprobante_prod_apro_mendoza', [$id]);
     }
     elseif(Auth::user()->id_provincia == 70){//san juan
+        return redirect()->route('comprobante_inicio_sanjuan', [$id]);
+    }else{
         return redirect()->route('comprobante_inicio_sanjuan', [$id]);
     }
 })->name('formulario-alta-pdf');
