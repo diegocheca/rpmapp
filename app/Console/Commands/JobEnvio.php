@@ -41,6 +41,16 @@ class JobEnvio extends Command
      */
     public function handle()
     {
+        /*
+        Pasos a seguir:
+        1 - buscar la ultima actualizacion de mi provincia
+        2 - buscar los datos q voy a mandar en base al updated and created
+        3 - enviarlos
+        4 - esperar la respues
+        5 - actualizar el cron que recien creo
+        6 - 
+         */
+        $datos_productores = FormAltaProductor::all();
         return 0;
     }
 }
