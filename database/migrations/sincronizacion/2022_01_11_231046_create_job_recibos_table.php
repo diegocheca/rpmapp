@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJobEnviosTable extends Migration
+class CreateJobRecibosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateJobEnviosTable extends Migration
      */
     public function up()
     {
-        Schema::create('job_envios', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->longText('datos')->nullable();
-            $table->string('estado', 35)->default(null)->nullable();
-            $table->string('tabla', 50)->default(null)->nullable();
-
-            $table->dateTime('inicio', $precision = 0)->default(null)->nullable();
-            $table->dateTime('fin', $precision = 0)->default(null)->nullable();
+        Schema::create('job_recibos', function (Blueprint $table) {
+            $table->id();
             $table->integer('provincia_id');
+            $table->longText('datos')->nullable();
+            $table->string('tabla', 50)->default(null)->nullable();
+            $table->string('estado', 35)->default(null)->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at');
         });
@@ -34,6 +31,6 @@ class CreateJobEnviosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_envios');
+        Schema::dropIfExists('job_recibos');
     }
 }
