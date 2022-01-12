@@ -60,7 +60,9 @@ class JobEnvioCommand extends Command
         ->first();
         $ultima_job = strval($ultima_job->created_at);
         //2
-        $datos_productores = Productores::select('*')->where('updated_at','>',$ultima_job)->orWhere('created_at','>',$ultima_job)->get();
+        $datos_productores = Productores::select('*')->where('updated_at','>',$ultima_job)
+        ->orWhere('created_at','>',$ultima_job)
+        ->get();
         $datos_productores_a_mandar = array();
         $indice = 0;
         foreach($datos_productores as $productor){
@@ -112,7 +114,14 @@ class JobEnvioCommand extends Command
             'tabla' => 'productores',
         ]);
 
-        dd();
+        //el servidor recibe los datos
+       // el servidor guardos en la bd , en la tabla job_recibo
+       // el servidor me respondo code=200 y status ok
+
+        // guardo el correcto funcionamiento del script
+        // esto seria actualizar la fila de job_envio , estado exitoso y hora y fun de ejecucion
+
+//        dd();
         return 0;
     }
 }
