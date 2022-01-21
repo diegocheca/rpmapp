@@ -167,7 +167,7 @@ class JobEnvioCommand extends Command
                 ->retry(3, 100)
                 ->timeout(10)
                 ->withToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzMTY1MzU0MSwibmJmIjoxNjMxNjUzNTQxLCJqdGkiOiIzNHA0U1JSMGRCazFTWm00Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-QWEx5YYjsfjBeIgI9LSdoXapADydx49qMKOXCfJd5M')
-                ->post('http://localhost:8080/api/visor/setDatosCantidades', [
+                ->post('http://45.5.153.83:3000/api/visor/setDatosCantidades', [
                     // 'provincia_id' => config('sincronizacion.pronvicia_id'),
                     'provincia_id' => $id_provincia,
                     'name_provincia' => $provincia,
