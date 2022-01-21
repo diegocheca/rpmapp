@@ -6,6 +6,7 @@ use Exception;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 class VisorController extends Controller
 {
@@ -36,13 +37,21 @@ class VisorController extends Controller
     #inserta en la DB Nacion
     public function setDatos(Request $request)
     {
-
+        // print_r('hola');
+        // die();
         try {
+            $datos_recibidos = DB::connection('rpm')->table('job_recibos')->insertGetId(
+                array(
+                    'provincia_id' => $request->provincia_id,
+                    'datos' => $request->datos,
+                    'tabla' =>  $request->tabla,
+                    'estado' => 0,
+                )
+            );
 
-            return response()->json(['response' => 'insert correcta', 'data' => $request->provincia], 200);
+            return response()->json(['response' => 'ok', 'id' => $datos_recibidos], 200);
         } catch (Exception $e) {
             return response()->json(['response' => $e->getMessage()], 500);
         }
     }
-
 }
