@@ -41,6 +41,14 @@ Route::group([
 	Route::post('register', 'App\Http\Controllers\AuthController@register');
 });
 
+Route::group(['prefix' => 'visor', 'middleware' => ['jwt.verify']], function () {
+	// Route::get('getProductores', 'App\Http\Controllers\VisorController@getProductors');
+	// Route::get('CantProductors', 'App\Http\Controllers\VisorController@CantProductors');
+	/* */
+    // Route::post('setDatosCompletos','App\Http\Controllers\VisorController@setDatos');
+    Route::post('setDatosCantidades','App\Http\Controllers\VisorController@setDatos');
+});
+
 // Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->middleware(['jwt.verify'])->name('numero-reinsripiones-nuevas');
 Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->middleware(['jwt.verify'])->name('traer-provincias');
 Route::apiResource('formaltaprod1', 'App\Http\Controllers\FormAltaProdPaso1Controller');
