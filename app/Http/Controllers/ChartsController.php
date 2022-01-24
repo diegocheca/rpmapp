@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\EmailsAConfirmar;
 use App\Models\Minerales;
+use App\Models\Provincias;
 use App\Models\Reinscripciones;
 use Illuminate\Support\Facades\DB;
 
@@ -48,17 +49,44 @@ class ChartsController extends Controller
                 $acumulador_provincia += $key->porcentaje_venta_provincia;
                 $acumulador_otras_provincias += $key->porcentaje_venta_otras_provincias;
             }
-            $datos["exportacion"] = $temporal->count() > 0 ? $acumulador_exportacion / $temporal->count() : 0;  
-            $datos["otras_prov"] = $temporal->count() > 0 ? $acumulador_otras_provincias / $temporal->count() : 0;  
-            $datos["prov"] = $temporal->count() > 0 ? $acumulador_provincia / $temporal->count() : 0;  
+            $datos["exportacion"] = $temporal->count() > 0 ? $acumulador_exportacion / $temporal->count() : 0;
+            $datos["otras_prov"] = $temporal->count() > 0 ? $acumulador_otras_provincias / $temporal->count() : 0;
+            $datos["prov"] = $temporal->count() > 0 ? $acumulador_provincia / $temporal->count() : 0;
             return $datos;
 
         }
-        
+
     }
 
     public function reportes()
     {
+
+        $provincesList = Provincias::select('id as value', 'nombre as label')
+        ->orderBy('label')
+        ->get();
+
+        $mapPie = clone $this->dataChart;
+        $mapPie->title = 'Minerales de primera categoría más importante';
+        $mapPie->axis->x = 'label';
+        $mapPie->axis->y = 'value';
+        $mapPie->data = [];
+        // array_push($mapPie->data, [ "label" => "Provincia", "value" => 150 ]);
+        // array_push($mapPie->data, [ "label" => "Pais", "value" => 67 ]);
+        // array_push($mapPie->data, [ "label" => "Exportación", "value" => 33 ]);
+
+        $mapPie->data = [[
+            'province' => 'Buenos Aires',
+            'minerals' => [[ "label" => "Provincia", "value" => 150], [ "label" => "Pais", "value" => 67 ], [ "label" => "Exportación", "value" => 33 ] ]
+        ],
+        [
+            'province' => 'Santa Fe',
+            'minerals' => [[ "label" => "Provincia", "value" => 100], [ "label" => "Pais", "value" => 617 ], [ "label" => "Exportación", "value" => 3 ] ]
+        ],
+        [
+            'province' => 'San Juan',
+            'minerals' => [[ "label" => "Provincia", "value" => 50], [ "label" => "Pais", "value" => 87 ], [ "label" => "Exportación", "value" => 223 ] ]
+        ]];
+
         $soldIn = clone $this->dataChart;
 
         $soldIn->title = 'Cantidad vendida a nivel provincia, país y exterior';
@@ -114,6 +142,6 @@ class ChartsController extends Controller
         array_push($reinscriptionPersons->data, [ "label" => "Administrativo Transitorio", "value" => random_int(0, 199) ]);
         array_push($reinscriptionPersons->data, [ "label" => "Otros Transitorio", "value" => random_int(0, 199) ]);
 
-        return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons ]);
+        return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons, 'provincesList' => $provincesList, 'mapPie' => $mapPie ]);
     }
 }

@@ -1,5 +1,5 @@
 <template>
-      <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">{{data.title}}</div>
+    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">{{data.title}}</div>
     <div class="chart-pie" ref="chartdiv" />
 </template>
 
@@ -30,10 +30,10 @@ export default {
 
     chart.contentHeight = 800
 
-    if(!this.dataChart) {
+    if(!this.$props.dataChart) {
       this.data.dataDefault();
     } else {
-      this.data = this.dataChart
+      this.data = this.$props.dataChart
     }
 
 
@@ -43,8 +43,16 @@ export default {
           `../../../../helpers/geoJson/Argentina.json`
         );
         chart.geodata = geoDataJson.default
+
+        geoDataJson.default.features.forEach(e => {
+          // console.log(e.properties.name);
+          const provinceElement = this.$props.dataChart.data.find(f => f.province == e.properties.name);
+          e.properties.valueMap =  !provinceElement? undefined : provinceElement.minerals
+        });
+
     }
     catch (e) {
+      console.log(e);
         chart.raiseCriticalError(new Error("Error al cargar el mapa. Comunicate con el administrador."));
     }
 
@@ -110,7 +118,8 @@ export default {
     pieSeries.data = this.data.data.map( (element) => {
       let item = {}
       item[`${this.data.axis.x}`] = element.label
-      item[`${this.data.axis.y}`] = Math.floor(Math.random() * (100 - 3)) + 3
+      // item[`${this.data.axis.y}`] = Math.floor(Math.random() * (100 - 3)) + 3
+      item[`${this.data.axis.y}`] = element.value
       element[this.data.axis.x]
       return item
     });
@@ -279,7 +288,7 @@ export default {
 
       for (var i = 0; i < pieSeries.dataItems.length; i++) {
         let dataItem = pieSeries.dataItems.getIndex(i);
-        dataItem.value = Math.round(Math.random() * 100);
+        dataItem.value = pieSeries.data[i][`${this.data.axis.y}`];
         dataItem.slice.fill = am4core.color(am4core.colors.interpolate(
           fill.rgb,
           am4core.color("#ffffff").rgb,
@@ -313,8 +322,8 @@ export default {
 }
 </script>
 <style scoped>
-.hello {
+.chart-pie {
   width: 100%;
-  height: 500px;
+  height: 600px;
 }
 </style>

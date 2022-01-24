@@ -24,7 +24,7 @@ export default {
         chart.scrollbarX = new am4core.Scrollbar();
         chart.data = this.dataChart.data.map( (element) => {
             let item = {}
-            console.log(element.value);
+            // console.log(element.value);
             item[`${this.dataChart.axis.x}`] = element.label
             item[`${this.dataChart.axis.y}`] = element.value
             element[this.dataChart.axis.x]
