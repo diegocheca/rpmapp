@@ -11,6 +11,15 @@ return [
     |
     */
 
-    'pronvicia_id' => env('PROVINCIA_ID',0)
+    'provincia_id' => env('ID_PROV', 0),
+    'provincia' => env('PROVINCIA', 'Desconocida'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | URL SERVER DE NACIÓN
+    |--------------------------------------------------------------------------
+    */
+    'servidorNacion' => env('SERVER_NACION', 'Desconocido'),
+    'tokenNacion' => env('SERVER_TOKEN', 'Ninguno'),
 
 ];

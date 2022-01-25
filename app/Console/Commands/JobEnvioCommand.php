@@ -4,11 +4,12 @@ namespace App\Console\Commands;
 
 use Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Exception;
-
 use Illuminate\Console\Command;
 use App\Models\Productores;
+use App\Models\MinaCantera;
+use App\Models\Minerales_Borradores;
+use App\Models\Reinscripciones;
 use App\Models\JobEnvio;
 use App\Http\Controllers\FormAltaProductorController;
 use Faker\Factory as Faker;
@@ -143,53 +144,62 @@ class JobEnvioCommand extends Command
         6 - 
          */
         //1
-
-        // $texto = "[" . date("Y-m-d H:i:s") . "] : Hola, mi nombre es Kucho";
-        // Storage::appends("archivo.txt", $texto);
-        $user = Auth::user();
-        $id_provincia = $user->id_provincia;
-        $provincia = $user->provincia;
         try {
-            $productores = DB::connection('rpm')->table('productores')
-                // ->where('deleted_at','!=',null)
-                ->count();
-            // dd($productores);
+            $id_provincia = config('sincronizacion.provincia_id');
+            $provincia = config('sincronizacion.provincia');
+            $urlServer = config('sincronizacion.servidorNacion');
+            $token = config('sincronizacion.tokenNacion');
+
+            // $productores = DB::connection('rpm')->table('productores')
+            //     // ->where('deleted_at','!=',null)
+            //     ->count();
+            $productores = Productores::count();
+            $minas = MinaCantera::count();
+            $minerales = Minerales_Borradores::count();
+            $reinscripciones = Reinscripciones::count();
             $arrayDatos = array(
                 'cantidadProductores' => $productores,
-                'cantidadMinas' => 5,
-                'cantidadReinsc' => 10,
-                'mineralPrimeraCat' => 1,
+                'cantidadMinas' => $minas,
+                'cantidadReinsc' => $reinscripciones,
+                'mineralPrimeraCat' => $minerales,
                 'mineralSegundaCat' => 2,
                 'mineralTerceraCat' => 3,
             );
 
-            $response = Http::withOptions(['verify' => false,])
-                ->retry(3, 100)
-                ->timeout(10)
-                ->withToken('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzMTY1MzU0MSwibmJmIjoxNjMxNjUzNTQxLCJqdGkiOiIzNHA0U1JSMGRCazFTWm00Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-QWEx5YYjsfjBeIgI9LSdoXapADydx49qMKOXCfJd5M')
-                ->post('http://localhost:8080/api/visor/setDatosCantidades', [
+            // $response = Http::withOptions(['verify' => false, 'debug' => false,])
+            $response = Http::retry(3, 100)
+                ->withHeaders([
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json'
+                ])
+                // ->timeout(10)
+                ->withToken($token)
+                ->post($urlServer . 'visor/setDatosCantidades', [
                     // 'provincia_id' => config('sincronizacion.pronvicia_id'),
                     'provincia_id' => $id_provincia,
                     'name_provincia' => $provincia,
                     'datos' => json_encode($arrayDatos),
                     'tabla' => 'productores',
                 ]);
+            // ->get('http://45.5.153.83:3000/api/datos/traer_provincias');
 
             // $var1 = $response->successful();
             // $var2 = $response->failed();
             // $var3 = $response->serverError();
             // $var4 = $response->clientError();
             $responseData = $response->getBody()->getContents();
-            $result = json_decode($responseData);
+            //$result = json_decode($responseData);
             // $result = json_decode($response->getBody());
             // echo $response->getBody();
             // var_dump($result);
-
+            file_put_contents('dataRecivido.txt', $responseData);
+            file_put_contents('dataEnviado.txt', json_encode($arrayDatos));
             // dd($response);
-            return response()->json(['response' => $result], 200);
-            return 0;
+            return response()->json(['response' => $responseData], 200);
+            // return 0;
         } catch (Exception $e) {
             // return 0;
+            file_put_contents('dataKucho.txt', $e);
             return response()->json(['msg' => $e->getMessage()], 500);
         }
 
