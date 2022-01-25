@@ -10,7 +10,7 @@ class JobRecibo extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'job_envios';
+    protected $table = 'job_recibos';
     protected $guarded = [];
     protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
