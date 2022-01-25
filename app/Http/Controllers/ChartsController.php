@@ -30,6 +30,8 @@ class ChartsController extends Controller
         {
             //soy autoridad nacional
             echo "algo";
+            //buscar en la tabla sincronizada cual es el valor
+
         }
         else
         {
@@ -60,6 +62,11 @@ class ChartsController extends Controller
 
     public function reportes()
     {
+        $mi_provincia = Auth::user()->id_provincia;
+        if(Auth::user()->id = 1)
+            $mi_provincia = 99;
+
+        $reinscripcionesModel = new Reinscripciones();
 
         $provincesList = Provincias::select('id as value', 'nombre as label')
         ->orderBy('label')
@@ -96,8 +103,8 @@ class ChartsController extends Controller
         $datos_calculados  = $this->calcular_destino_produccion(Auth::user()->id_provincia);
         //dd($datos_calculados);
         if($datos_calculados ["exportacion"] == 0 && $datos_calculados ["otras_prov"] == 0  && $datos_calculados ["prov"] == 0 ){
-            array_push($soldIn->data, [ "label" => "Provincia", "value" => 100 ]);
-            array_push($soldIn->data, [ "label" => "Pais", "value" => 100 ]);
+            array_push($soldIn->data, [ "label" => "Provincia", "value" => 445 ]);
+            array_push($soldIn->data, [ "label" => "Pais", "value" => 211 ]);
             array_push($soldIn->data, [ "label" => "Exportación", "value" => 100 ]);
         }
         // CountriesController::getDepartmentArray(Auth::user()->id_provincia);
@@ -129,14 +136,18 @@ class ChartsController extends Controller
 
         $reinscriptionPersons = clone $this->dataChart;
 
+        /* DONUT CHART - CANTIDAD DE PERSONAS */
         $reinscriptionPersons->title = 'Persona declaradas en reinscripción';
         $reinscriptionPersons->axis->x = 'tipo';
         $reinscriptionPersons->axis->y = 'cantidad';
         $reinscriptionPersons->data = [];
-        array_push($reinscriptionPersons->data, [ "label" => "Profesional Técnico Permanente", "value" => random_int(0, 199) ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Permanente", "value" => random_int(0, 199) ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Administrativo Permanente", "value" => random_int(0, 199) ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Otros Permanente", "value" => random_int(0, 199) ]);
+        $valores_personas_transitorias = $reinscripcionesModel->cantidad_de_personas_transitorias($mi_provincia);
+        $valores_personas_permanentes = $reinscripcionesModel->cantidad_de_personas_permante($mi_provincia);
+        var_dump($valores_personas_transitorias);
+        array_push($reinscriptionPersons->data, [ "label" => "Profesional Técnico Permanente", "value" => $valores_personas_permanentes["profesionales_permanentes"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Permanente", "value" => $valores_personas_permanentes["operarios_permanentes"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Administrativo Permanente", "value" =>  $valores_personas_permanentes["administrativos_permanentes"]  ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Otros Permanente", "value" => $valores_personas_permanentes["otros_permanentes"] ]);
         array_push($reinscriptionPersons->data, [ "label" => "Profesional Transitorio", "value" => random_int(0, 199) ]);
         array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Transitorio", "value" => random_int(0, 199) ]);
         array_push($reinscriptionPersons->data, [ "label" => "Administrativo Transitorio", "value" => random_int(0, 199) ]);
