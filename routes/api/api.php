@@ -43,7 +43,7 @@ Route::group([
 
 Route::group(['prefix' => 'visor', 'middleware' => ['jwt.verify']], function () {
 	// Route::get('getProductores', 'App\Http\Controllers\VisorController@getProductors');
-	// Route::get('CantProductors', 'App\Http\Controllers\VisorController@CantProductors');
+	Route::get('CantProductors', 'App\Http\Controllers\VisorController@CantProductors');
 	/* */
     // Route::post('setDatosCompletos','App\Http\Controllers\VisorController@setDatos');
     Route::post('setDatosCantidades','App\Http\Controllers\VisorController@setDatos');
