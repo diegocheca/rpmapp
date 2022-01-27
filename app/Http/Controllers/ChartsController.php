@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\EmailsAConfirmar;
+use App\Models\JobRecibo;
 use App\Models\Minerales;
 use App\Models\Reinscripciones;
 use Illuminate\Support\Facades\DB;
@@ -105,6 +106,8 @@ class ChartsController extends Controller
         $reinscriptionPersons->axis->x = 'tipo';
         $reinscriptionPersons->axis->y = 'cantidad';
         $reinscriptionPersons->data = [];
+        $job_recibo_model = new JobRecibo();
+        $job_recibo_model->datos_grafico_ventas();
         array_push($reinscriptionPersons->data, [ "label" => "Profesional Técnico Permanente", "value" => random_int(0, 199) ]);
         array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Permanente", "value" => random_int(0, 199) ]);
         array_push($reinscriptionPersons->data, [ "label" => "Administrativo Permanente", "value" => random_int(0, 199) ]);
