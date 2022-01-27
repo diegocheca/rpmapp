@@ -149,7 +149,14 @@ class JobEnvioCommand extends Command
             $provincia = config('sincronizacion.provincia');
             $urlServer = config('sincronizacion.servidorNacion');
             $token = config('sincronizacion.tokenNacion');
+            $dtInicio = new \DateTime;
+            $dtInicio = $dtInicio->format('Y-m-d H:i:s');
 
+            /***** EJEMPLOS *****/
+            $arrayMinPrim = array("oro" => 10, "plata" => 5);
+            $arrayMinSec = array("mineral1" => 100, "mineral2" => 55);
+            $arrayMinTer = array("mineral1" => 170, "mineral2" => 35);
+            /********************/
             // $productores = DB::connection('rpm')->table('productores')
             //     // ->where('deleted_at','!=',null)
             //     ->count();
@@ -161,9 +168,9 @@ class JobEnvioCommand extends Command
                 'cantidadProductores' => $productores,
                 'cantidadMinas' => $minas,
                 'cantidadReinsc' => $reinscripciones,
-                'mineralPrimeraCat' => $minerales,
-                'mineralSegundaCat' => 2,
-                'mineralTerceraCat' => 3,
+                'mineralPrimeraCat' => $arrayMinPrim,
+                'mineralSegundaCat' => $arrayMinSec,
+                'mineralTerceraCat' => $arrayMinTer,
             );
 
             // $response = Http::withOptions(['verify' => false, 'debug' => false,])
@@ -181,21 +188,51 @@ class JobEnvioCommand extends Command
                     'datos' => json_encode($arrayDatos),
                     'tabla' => 'productores',
                 ]);
-            // ->get('http://45.5.153.83:3000/api/datos/traer_provincias');
 
-            // $var1 = $response->successful();
-            // $var2 = $response->failed();
-            // $var3 = $response->serverError();
-            // $var4 = $response->clientError();
-            $responseData = $response->getBody()->getContents();
-            //$result = json_decode($responseData);
-            // $result = json_decode($response->getBody());
-            // echo $response->getBody();
+            // $responseData = (is_object($response) ? ((isset($response->DateInsert)) ? $response->DateInsert  : '') : '');
+            $arrayRespuestas = array(
+                'getStatusCode' => $response->getStatusCode(),
+                'successful' => $response->successful(),
+                'failed' => $response->failed(),
+                'serverError' => $response->serverError(),
+                'clientError' => $response->clientError(),
+            );
+
+
+            // $responseData = $response->getBody()->getContents();
+            // $result = json_decode($responseData);
+            // $responseData = json_decode($response->getBody(),true);
+            // $responseData = json_decode(json_encode($response->getBody()->getContents()), true);
+            $result = json_decode( json_encode( $response ));
+            // $result = $result->response;
+            // $responseData = $response->getBody();
             // var_dump($result);
-            file_put_contents('dataRecivido.txt', $responseData);
+            file_put_contents('dataRecivido.txt', $response);
             file_put_contents('dataEnviado.txt', json_encode($arrayDatos));
+
+            #{"getStatusCode":200,"successful":true,"failed":false,"serverError":false,"clientError":false}
+            if ($response->successful()) {
+                $envio = JobEnvio::create([
+                    'datos' => json_encode($arrayDatos),
+                    'estado' => 'enviado',
+                    'tabla' => 'general',
+                    'inicio' => $dtInicio,
+                    'fin' => null,
+                    'provincia_id' => $id_provincia,
+                ]);
+            } else {
+                $envio = JobEnvio::create([
+                    'datos' => json_encode($arrayDatos),
+                    'estado' => 'errorEnvio',
+                    'tabla' => null,
+                    'inicio' => $dtInicio,
+                    'fin' => null,
+                    'provincia_id' => $id_provincia,
+                ]);
+            }
+
             // dd($response);
-            return response()->json(['response' => $responseData], 200);
+            // return response()->json(['response' => $responseData], 200);
             // return 0;
         } catch (Exception $e) {
             // return 0;
@@ -218,3 +255,18 @@ class JobEnvioCommand extends Command
         // return 0;
     }
 }
+/*
+
+{
+    cantProductores
+    cantReenc
+    exp=[
+        exp, 
+        prov, 
+        pais
+    ]
+
+}
+
+
+*/
