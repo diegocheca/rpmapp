@@ -34,8 +34,10 @@ class JobReciboSeeder extends Seeder
         for($i = 0;$i<250; $i++)
         {
             $valor_provincia = $faker->numberBetween(0,100);
-            $valor_pais = $faker->numberBetween(0,(100-$valor_provincia));
-            $valor_exterior = 100 - $valor_provincia + $valor_pais;
+            $limite_uno = 100-$valor_provincia;
+            $valor_pais = $faker->numberBetween(0,$limite_uno);
+            $valor_exterior = 100 - ( $valor_provincia + $valor_pais);
+            
 
             if($faker->numberBetween(0,10) > 7) {
                 $datos_fake_a_enviar = 'sin datos';
