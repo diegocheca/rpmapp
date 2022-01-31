@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+
 class JobRecibo extends Model
 {
     use HasFactory;
@@ -112,6 +113,27 @@ class JobRecibo extends Model
         $datos_front["acumulador_obreros_permanentes"] =  ($acumulador_obreros_permanentes / $total_de_personas)*100;
         $datos_front["acumulador_obreros_contratados"] =  ($acumulador_obreros_contratados / $total_de_personas)*100;
         //dd($datos_front);
+
+        return $datos_front;
+    }
+
+    public function buscar_minerales_por_provincia($id_provincia){
+        $datos = $this->select('*')
+        ->where('datos', 'not like', '%sin%%datos%')
+        ->where('estado', '=', 'success')
+        ->where('provincia_id', '=', $id_provincia)
+        ->orderBy('created_at', 'DESC')
+        ->first();
+
+        //dd($datos->datos);
+        $datos = json_decode($datos->datos); 
+        dd((array)$datos->mineralPrimeraCat);
+        $datos_front = array();
+        $datos_front["datos_primer"] = json_decode($datos->mineralPrimeraCat);
+        $datos_front["datos_segunda"] = json_decode($datos->mineralSegundaCat);
+        $datos_front["datos_tercera"] = json_decode($datos->mineralTerceraCat);
+
+        dd($datos_front);
 
         return $datos_front;
     }
