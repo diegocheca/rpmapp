@@ -18,152 +18,48 @@ use Illuminate\Support\Facades\Http;
 
 class JobEnvioCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'enviar:datos';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Este job envía los datos que posee la provincia hacia la bd de nación para la sincronización';
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
-    // public function handle2()
-    // {
-    //     /*
-    //     Pasos a seguir:
-    //     1 - buscar la ultima actualizacion de mi provincia
-    //     2 - buscar los datos q voy a mandar en base al updated and created
-    //     3 - enviarlos
-    //     4 - esperar la respues
-    //     5 - actualizar el cron que recien creo
-    //     6 - 
-    //      */
-    //     //1
-    //     $ultima_job = JobEnvio::select("created_at")
-    //         ->orderBy('created_at', 'desc')
-    //         ->where('provincia_id', '=', config('sincronizacion.pronvicia_id'))
-    //         ->where('estado', '=', 'success')
-    //         ->first();
-    //     $ultima_job = strval($ultima_job->created_at);
-    //     //2
-    //     $datos_productores = Productores::select('*')->where('updated_at', '>', $ultima_job)
-    //         ->orWhere('created_at', '>', $ultima_job)
-    //         ->get();
-    //     $datos_productores_a_mandar = array();
-    //     $indice = 0;
-    //     foreach ($datos_productores as $productor) {
-    //         //esto es cada uno de los rows que voy a mandar
-    //         $datos_productores_a_mandar[$indice] = array(
-    //             "id" => $productor->id,
-    //             'cuit' => $productor->cuit,
-    //             'razonsocial' => $productor->razonsocial,
-    //             'numeroproductor' => $productor->numeroproductor,
-    //             'email' => $productor->email,
-    //             'domicilio_prod' => $productor->domicilio_prod,
-    //             'tiposociedad' => $productor->tiposociedad,
-    //             'inscripciondgr' => $productor->inscripciondgr,
-    //             'constaciasociedad' => $productor->constaciasociedad,
-    //             'leal_calle' => $productor->leal_calle,
-    //             'leal_numero' => $productor->leal_numero,
-    //             'leal_telefono' => $productor->leal_telefono,
-    //             'leal_pais' => $productor->leal_pais,
-    //             'leal_provincia' => $productor->leal_provincia,
-    //             'leal_departamento' => $productor->leal_departamento,
-    //             'leal_localidad' => $productor->leal_localidad,
-    //             'leal_cp' => $productor->leal_cp,
-    //             'leal_otro' => $productor->leal_otro,
-    //             'administracion_calle' => $productor->administracion_calle,
-    //             'administracion_numero' => $productor->administracion_numero,
-    //             'administracion_telefono' => $productor->administracion_telefono,
-    //             'administracion_pais' => $productor->administracion_pais,
-    //             'administracion_provincia' => $productor->administracion_provincia,
-    //             'administracion_departamento' => $productor->administracion_departamento,
-    //             'administracion_localidad' => $productor->administracion_localidad,
-    //             'administracion_cp' => $productor->administracion_cp,
-    //             'administracion_otro' => $productor->administracion_otro,
-    //             'numero_expdiente' => $productor->numero_expdiente,
-    //             'created_by' => $productor->created_by,
-    //             'estado' => $productor->estado,
-    //             'created_at' => $productor->created_at,
-    //             'deleted_at' => $productor->deleted_at,
-    //             'updated_at' => $productor->updated_at,
-    //             'id_formulario' => $productor->id_formulario,
-    //             'usuario_creador' => $productor->usuario_creador,
-    //         );
-    //         $indice++;
-    //     }
-    //     //$response = Http::get('https://laravel.com/docs/8.x/http-client#introduction');
-    //     $envio_todo_junto = array("id" => $productor->id, "datos" => json_encode($envio));
-    //     $response = Http::post('http://example.com/users', [
-    //         'provincia_id' => config('sincronizacion.pronvicia_id'),
-    //         'datos' => json_encode($datos_productores_a_mandar),
-    //         'tabla' => 'productores',
-    //     ]);
-
-    //     //el servidor recibe los datos
-    //     // el servidor guardos en la bd , en la tabla job_recibo
-    //     // el servidor me respondo code=200 y status ok
-
-    //     // guardo el correcto funcionamiento del script
-    //     // esto seria actualizar la fila de job_envio , estado exitoso y hora y fun de ejecucion
-
-    //     //        dd();
-    //     return 0;
-    // }
-
-
     public function handle()
     {
-        /*
-        Pasos a seguir:
-        1 - 
-        2 - 
-        3 - 
-        4 - 
-        5 - 
-        6 - 
-         */
-        //1
         try {
+            # id de la provincia 
             $id_provincia = config('sincronizacion.provincia_id');
+            # nombre de la provincia 
             $provincia = config('sincronizacion.provincia');
+            # url del servidor de Nación
             $urlServer = config('sincronizacion.servidorNacion');
+            # token para el endpoint de nación
             $token = config('sincronizacion.tokenNacion');
+            # obtengo fecha y hora para inicio del job 
             $dtInicio = new \DateTime;
             $dtInicio = $dtInicio->format('Y-m-d H:i:s');
 
-            /***** EJEMPLOS *****/
-            $arrayMinPrim = array("oro" => 10, "plata" => 5);
-            $arrayMinSec = array("mineral1" => 100, "mineral2" => 55);
-            $arrayMinTer = array("mineral1" => 170, "mineral2" => 35);
-            /********************/
-            // $productores = DB::connection('rpm')->table('productores')
-            //     // ->where('deleted_at','!=',null)
-            //     ->count();
+            /***** PORCENTAHE DE PERSONAL *****/
+            $procentajePersonal = $this->porcPersonal();
+            /**********************************/
+            /************ MINERALES ***********/
+            $arrayMinPrim = $this->cantCategoriasMinerales("primera");
+            $arrayMinSec = $this->cantCategoriasMinerales("segunda");
+            $arrayMinTer = $this->cantCategoriasMinerales("tercera");
+            /**********************************/
+            /****** PORCENTAJE DE VENTAS ******/
+            $arrayPorcVent = $this->porcVentas();
+            /**********************************/
+
+            # Cantidad de Productores
             $productores = Productores::count();
+            # Cantidad de Minas Canteras
             $minas = MinaCantera::count();
-            $minerales = Minerales_Borradores::count();
+            # Cantidad de Reinscripciones
             $reinscripciones = Reinscripciones::count();
+
+            # Array para enviar
             $arrayDatos = array(
                 'cantidadProductores' => $productores,
                 'cantidadMinas' => $minas,
@@ -171,9 +67,10 @@ class JobEnvioCommand extends Command
                 'mineralPrimeraCat' => $arrayMinPrim,
                 'mineralSegundaCat' => $arrayMinSec,
                 'mineralTerceraCat' => $arrayMinTer,
+                "porcentajes_ventas" => $arrayPorcVent,
+                "porcentajes_personas" => $procentajePersonal,
             );
 
-            // $response = Http::withOptions(['verify' => false, 'debug' => false,])
             $response = Http::retry(3, 100)
                 ->withHeaders([
                     'Content-Type' => 'application/json',
@@ -182,47 +79,37 @@ class JobEnvioCommand extends Command
                 // ->timeout(10)
                 ->withToken($token)
                 ->post($urlServer . 'visor/setDatosCantidades', [
-                    // 'provincia_id' => config('sincronizacion.pronvicia_id'),
                     'provincia_id' => $id_provincia,
                     'name_provincia' => $provincia,
-                    'datos' => json_encode($arrayDatos),
+                    'datos' => json_encode($arrayDatos, JSON_UNESCAPED_UNICODE),
                     'tabla' => 'productores',
                 ]);
 
             // $responseData = (is_object($response) ? ((isset($response->DateInsert)) ? $response->DateInsert  : '') : '');
-            $arrayRespuestas = array(
-                'getStatusCode' => $response->getStatusCode(),
-                'successful' => $response->successful(),
-                'failed' => $response->failed(),
-                'serverError' => $response->serverError(),
-                'clientError' => $response->clientError(),
-            );
+            // $arrayRespuestas = array(
+            //     'getStatusCode' => $response->getStatusCode(),
+            //     'successful' => $response->successful(),
+            //     'failed' => $response->failed(),
+            //     'serverError' => $response->serverError(),
+            //     'clientError' => $response->clientError(),
+            // );
 
-
-            // $responseData = $response->getBody()->getContents();
-            // $result = json_decode($responseData);
-            // $responseData = json_decode($response->getBody(),true);
-            // $responseData = json_decode(json_encode($response->getBody()->getContents()), true);
-            $result = json_decode( json_encode( $response ));
-            // $result = $result->response;
-            // $responseData = $response->getBody();
-            // var_dump($result);
             file_put_contents('dataRecivido.txt', $response);
-            file_put_contents('dataEnviado.txt', json_encode($arrayDatos));
+            file_put_contents('dataEnviado.txt',  json_encode($arrayDatos, JSON_UNESCAPED_UNICODE));
 
             #{"getStatusCode":200,"successful":true,"failed":false,"serverError":false,"clientError":false}
             if ($response->successful()) {
                 $envio = JobEnvio::create([
-                    'datos' => json_encode($arrayDatos),
+                    'datos' => json_encode($arrayDatos, JSON_UNESCAPED_UNICODE),
                     'estado' => 'enviado',
-                    'tabla' => 'general',
+                    'tabla' => $response['id'],
                     'inicio' => $dtInicio,
-                    'fin' => null,
+                    'fin' => $response['DateInsert'],
                     'provincia_id' => $id_provincia,
                 ]);
             } else {
                 $envio = JobEnvio::create([
-                    'datos' => json_encode($arrayDatos),
+                    'datos' => json_encode($arrayDatos, JSON_UNESCAPED_UNICODE),
                     'estado' => 'errorEnvio',
                     'tabla' => null,
                     'inicio' => $dtInicio,
@@ -230,43 +117,59 @@ class JobEnvioCommand extends Command
                     'provincia_id' => $id_provincia,
                 ]);
             }
-
-            // dd($response);
-            // return response()->json(['response' => $responseData], 200);
-            // return 0;
         } catch (Exception $e) {
-            // return 0;
             file_put_contents('dataKucho.txt', $e);
-            return response()->json(['msg' => $e->getMessage()], 500);
+            $envio = JobEnvio::create([
+                'datos' => json_encode($arrayDatos, JSON_UNESCAPED_UNICODE),
+                'estado' => $e->getMessage(),
+                'tabla' => null,
+                'inicio' => $dtInicio,
+                'fin' => null,
+                'provincia_id' => $id_provincia,
+            ]);
         }
+    }
+    public function cantCategoriasMinerales($categoria)
+    {
+        $sql = "select g.name, count (*) as cantidad from
+        (SELECT f.id as id_formulario, f.estado, m.id as id_mineral, m.name, m.categoria FROM minerales_borradores as b
+        left join form_alta_productores as f on b.id_formulario = f.id
+        left join mineral as m on m.id = b.id_mineral
+        where lower(f.estado) = lower('aprobado') and lower(m.categoria)=lower('" . $categoria . "')) as g
+        group by g.name having count(*)>=1";
+        $arrayCategoria = DB::connection('rpm')->select($sql);
+        return  $arrayCategoria;
+    }
+    public function porcVentas()
+    {
+        $sql = 'select sum(porcentaje_venta_provincia) as provincia, sum (porcentaje_venta_otras_provincias) as pais, sum(porcentaje_exportado) as exterior from reinscripciones where fecha_vto >= now() and fecha_vto is not null';
+        $arrayVentas  = DB::connection('rpm')->select($sql);
+        return $arrayVentas;
+    }
+    public function porcPersonal()
+    {
+        $sqlPerm = 'select 
+        sum(personal_perm_profesional) as profesional, 
+        sum(personal_perm_operarios) as operarios, 
+        sum(personal_perm_administrativos) as administrativos,
+        sum(personal_perm_otros) as otros
+        FROM reinscripciones
+        where fecha_vto is not null and fecha_vto >= now()';
+        $permanente = DB::connection('rpm')->select($sqlPerm);
 
-
-        //$response = Http::get('https://laravel.com/docs/8.x/http-client#introduction');
-
-
-        //el servidor recibe los datos
-        // el servidor guardos en la bd , en la tabla job_recibo
-        // el servidor me respondo code=200 y status ok
-
-        // guardo el correcto funcionamiento del script
-        // esto seria actualizar la fila de job_envio , estado exitoso y hora y fun de ejecucion
-
-        //        dd();
-        // return 0;
+        $sqlTran = 'select 
+        sum(personal_trans_profesional) as profesional, 
+        sum(personal_trans_operarios) as operarios, 
+        sum(personal_trans_administrativos) as administrativos,
+        sum(personal_trans_otros) as otros
+        FROM reinscripciones
+        where fecha_vto is not null and fecha_vto >= now()';
+        $transitorios = DB::connection('rpm')->select($sqlTran);
+        $result = array(
+            'permanentes' => $permanente,
+            'transitorios' => $transitorios,
+        );
+        // dd($result);
+        return $result;
     }
 }
-/*
-
-{
-    cantProductores
-    cantReenc
-    exp=[
-        exp, 
-        prov, 
-        pais
-    ]
-
-}
-
-
-*/
