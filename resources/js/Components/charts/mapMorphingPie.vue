@@ -279,7 +279,7 @@ export default {
 
       for (var i = 0; i < pieSeries.dataItems.length; i++) {
         let dataItem = pieSeries.dataItems.getIndex(i);
-        dataItem.value = Math.round(Math.random() * 100);
+        dataItem.value = 33.33;
         dataItem.slice.fill = am4core.color(am4core.colors.interpolate(
           fill.rgb,
           am4core.color("#ffffff").rgb,

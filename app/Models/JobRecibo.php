@@ -127,14 +127,40 @@ class JobRecibo extends Model
 
         //dd($datos->datos);
         $datos = json_decode($datos->datos); 
-        dd((array)$datos->mineralPrimeraCat);
+       // dd((array)$datos->mineralPrimeraCat);
         $datos_front = array();
-        $datos_front["datos_primer"] = json_decode($datos->mineralPrimeraCat);
+        /*$datos_front["datos_primer"] = json_decode($datos->mineralPrimeraCat);
         $datos_front["datos_segunda"] = json_decode($datos->mineralSegundaCat);
         $datos_front["datos_tercera"] = json_decode($datos->mineralTerceraCat);
 
         dd($datos_front);
-
+*/
+        return $datos_front;
+    }
+    
+    public function cantidadMineralesPorPais(){
+        $datos = $this->select('*')
+        ->where('datos', 'not like', '%sin%%datos%')
+        ->where('estado', '=', 'success')
+        ->orderBy('created_at', 'DESC')
+        ->groupBy('provincia_id','id')
+        ->get();
+        $provincias_ya_leidas = array();
+        $cantidad_registros = 0;
+        $total_de_personas = 0;
+        $datos_front = array();
+        foreach($datos as $key){
+            if(array_search($key->provincia_id, $provincias_ya_leidas) ) {
+                continue;
+            }
+            else {
+                array_push($provincias_ya_leidas,$key->provincia_id);
+                $datos_front[$key->provincia_id]["primera"] = json_decode($key->datos)->mineralPrimeraCat;
+                $datos_front[$key->provincia_id]["segunda"] = json_decode($key->datos)->mineralSegundaCat;
+                $datos_front[$key->provincia_id]["tercera"] = json_decode($key->datos)->mineralTerceraCat;
+                $cantidad_registros++;
+            }
+        }
         return $datos_front;
     }
 }

@@ -10,11 +10,47 @@ use Faker\Factory as Faker;
 
 class JobReciboSeeder extends Seeder
 {
+    public $minerales_primera = ["oro", "plata", "cobre", "Platino", "mercurio", "Hierro", "Plomo", "Estanio", "Zinc", "Niquel","Cobalto", "Bismuto"];
+    public $minerales_segunda = ["Piedras Preciosas", "Aguas Corrientes", "Placeres", "Desmontes", "Salitres", "Salinas", "Turberas", "Metales no comprendidos en 1° Categ.", "Ocres", "Baritina","Caparrosas", "Amianto"];
+    public $minerales_tercera = ["Piedras Calizas", "Margas", "Yeso", "Alabastro", "Granitos", "Dolomita", "Cuarcitas", "Basaltos", "Cascajo", "Conchilla","Perlita", "Piedra Laja"];
+    
+
+    public function numbersWithoutRepeted($categoria, $cantidad){
+        $faker = Faker::create();
+        $array_de_numeros = array();
+        $cantidad_de_elementos = 0;
+        if($categoria == 1 ) {
+            $cantidad_de_elementos = count($this->minerales_primera)-1;
+        }
+        if($categoria == 2 ) {
+            $cantidad_de_elementos = count($this->minerales_segunda)-1;
+        }
+        if($categoria == 3 ) {
+            $cantidad_de_elementos = count($this->minerales_tercera)-1;
+        }
+        $indices_ya_utilizados = array();
+        for ($i=0; $i < $cantidad; $i++) { 
+            $nuevo_indice = $faker->numberBetween(0,$cantidad_de_elementos);
+            $result = array_search($nuevo_indice, $indices_ya_utilizados, true);
+            while ( $result !== false && ( intval($result) === 0 ||
+            intval($result) === 1||
+            intval($result) === 2 ||
+            intval($result) === 3 || 
+            intval($result) === 4)  ) {
+                $nuevo_indice = $faker->numberBetween(0,$cantidad_de_elementos);
+                $result = array_search($nuevo_indice, $indices_ya_utilizados, true);
+            }
+            array_push($indices_ya_utilizados,$nuevo_indice);
+            $array_de_numeros[$i] = $nuevo_indice;
+        }
+        return $array_de_numeros;
+    }
     /**
      * Run the database seeds.
      *
      * @return void
      */
+
     public function run()
     {
         $estados = [
@@ -43,24 +79,100 @@ class JobReciboSeeder extends Seeder
                 $datos_fake_a_enviar = 'sin datos';
             }
             else { 
+                $indexWithoutRepetedFirst = $this->numbersWithoutRepeted(1,5);
+                $indexWithoutRepetedSecound = $this->numbersWithoutRepeted(2,5);
+                $indexWithoutRepetedThird = $this->numbersWithoutRepeted(3,5);
+
+                $first_cat_first_max = $faker->numberBetween(500,19999);
+                $first_cat_second_max= $faker->numberBetween(500,$first_cat_first_max);
+                $first_cat_third_max= $faker->numberBetween(450,$first_cat_second_max);
+                $first_cat_fourth_max= $faker->numberBetween(400,$first_cat_third_max);
+                $first_cat_fifth_max= $faker->numberBetween(400,$first_cat_fourth_max);
+
+                $second_cat_first_max = $faker->numberBetween(500,19999);
+                $second_cat_second_max= $faker->numberBetween(500,$second_cat_first_max);
+                $second_cat_third_max= $faker->numberBetween(450,$second_cat_second_max);
+                $second_cat_fourth_max= $faker->numberBetween(400,$second_cat_third_max);
+                $second_cat_fifth_max= $faker->numberBetween(400,$second_cat_fourth_max);
+
+
+                $third_cat_first_max = $faker->numberBetween(500,19999);
+                $third_cat_second_max= $faker->numberBetween(500,$third_cat_first_max);
+                $third_cat_third_max= $faker->numberBetween(450,$third_cat_second_max);
+                $third_cat_fourth_max= $faker->numberBetween(400,$third_cat_third_max);
+                $third_cat_fifth_max= $faker->numberBetween(400,$third_cat_fourth_max);
+
+
                 $datos_fake_a_enviar = array(
                     "cantidadProductores"=>$faker->numberBetween(0,800),
                     "cantidadReinsc"=> $faker->numberBetween(0,800),
                     "mineralPrimeraCat" => array(
-                        "oro"=>$faker->numberBetween(0,600),
-                        "plata"=>$faker->numberBetween(0,600),
-                        "cobre"=>$faker->numberBetween(0,600)
+                        array( 
+                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[0]] ,
+                            "cantidad"=> $first_cat_first_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[1]] ,
+                            "cantidad"=> $first_cat_second_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[2]] ,
+                            "cantidad"=> $first_cat_third_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[3]] ,
+                            "cantidad"=> $first_cat_fourth_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[4]] ,
+                            "cantidad"=> $first_cat_fifth_max
+                        )
                     ),
-                    "mineralSegundaCat"=> array(
-                        "mineral1"=>$faker->numberBetween(0,600),
-                        "mineral2"=>$faker->numberBetween(0,600),
-                        "mineral3"=>$faker->numberBetween(0,600)
+                    "mineralSegundaCat" => array(
+                        array( 
+                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[0]] ,
+                            "cantidad"=> $second_cat_first_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[1]] ,
+                            "cantidad"=> $second_cat_second_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[2]] ,
+                            "cantidad"=> $second_cat_third_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[3]] ,
+                            "cantidad"=> $second_cat_fourth_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[4]] ,
+                            "cantidad"=> $second_cat_fifth_max
+                        )
                     ),
-                    "mineralTerceraCat"=> array(
-                        "mineral4"=>$faker->numberBetween(0,600),
-                        "mineral5"=>$faker->numberBetween(0,600),
-                        "mineral6"=>$faker->numberBetween(0,600)
+                    "mineralTerceraCat"  => array(
+                        array( 
+                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[0]] ,
+                            "cantidad"=> $third_cat_first_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[1]] ,
+                            "cantidad"=> $third_cat_second_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[2]] ,
+                            "cantidad"=> $third_cat_third_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[3]] ,
+                            "cantidad"=> $third_cat_fourth_max
+                        ),
+                        array( 
+                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[4]] ,
+                            "cantidad"=> $third_cat_fifth_max
+                        )
                     ),
+
                     "porcentajes_ventas"=> array(
                         "provincia"=>$valor_provincia,
                         "pais"=>$valor_pais,

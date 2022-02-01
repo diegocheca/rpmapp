@@ -63,9 +63,8 @@ class ChartsController extends Controller
         $job_recibo_model = new JobRecibo();
         $soldIn = clone $this->dataChart;
 
-
         $datos_minerales = $job_recibo_model->buscar_minerales_por_provincia(70);
-        dd($datos_minerales);
+        $datos_minerales_pais = $job_recibo_model->cantidadMineralesPorPais();
 
         $soldIn->title = 'Cantidad vendida a nivel provincia, país y exterior';
         $soldIn->axis->x = 'tipo';
