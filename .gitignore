@@ -30,3 +30,10 @@ public/js/*.js
 public/mix-manifest.json
 npm.bat
 Servidor.bat
+
+#datos sensibles de provincias
+app\Console\Commands\Catamarca.php
+app\Console\Commands\backfuncionCargarCatamarca.php
+app\Console\Commands\Mendoza.php
+app\Console\Commands\backfuncionCargarMendoza.php
+

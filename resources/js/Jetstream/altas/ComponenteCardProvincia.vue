@@ -1,5 +1,5 @@
 <template>
-  <div :class="clase_sup">
+  <div class="mt-5 mb-3" :class="clase_sup" @click="prueba(!show)">
     <div :class="clase_inf">
       <div class="flex justify-center">
         <img
@@ -8,7 +8,7 @@
           width="50%"
         />
       </div>
-      <div class="col-span-6 mt-1">
+      <div class="col-span-4 mt-1">
         <span class="text-gray-800 text-2xl font-bold">{{ titulo }}</span>
         <!-- <div class="flex space-x-2 text-gray-400 text-sm">
             <svg
@@ -76,23 +76,40 @@
 					</div>
 				</div> -->
       </div>
-      <div class="col-span-2 mt-2" v-if="$props.mostrarayuda">
-        <span class="text-lg font-semibold mr-3">Necesita ayuda?</span>
+      <!-- <div class="col-start-7 col-end-9 mt-2 ml-4" v-if="$props.mostrarayuda">
+        <span class="text-lg font-semibold mr-1">Necesita ayuda?</span>
         <Toggle
           v-model="valor_ayuda_local"
           @change="cambio_de_ayuda"
           on-label="SI"
           off-label="NO"
         />
-      </div>
-      <div class="col-span-2 mt-2">
-        <span class="text-lg font-semibold mr-3">Sin Datos</span>
+      </div> -->
+      <!-- <div class="col-start-9 col-end-11 mt-2 ml-4">
+        <span class="text-lg font-semibold mr-1">Sin Datos</span>
         <Toggle
-          v-model="valor_pagina"
+          v-model="continuar"
           @change="pagina_siguiente"
           on-label="SI"
           off-label="NO"
         />
+      </div> -->
+      <div class="col-start-11 col-end-13 mt-2 ml-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          :class="[!show ? 'transform rotate-180' : '']"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M5 11l7-7 7 7M5 19l7-7 7 7"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -107,31 +124,40 @@ export default {
   props: [
     "icono",
     "titulo",
-    "mostrarayuda",
+    // "mostrarayuda",
     "clase_sup",
     "clase_inf",
-    "ayuda",
-
-    "progreso",
-    "aprobado",
-    "reprobado",
-    "lugar",
-    "updated_at",
-    "evaluacion",
+    "show",
+    // "ayuda",
+    // "progreso",
+    // "aprobado",
+    // "reprobado",
+    // "lugar",
+    // "updated_at",
+    // "evaluacion",
   ],
-
   data() {
     return {
-      valor_ayuda_local: this.$props.ayuda,
-      valor_pagina: false,
+      // valor_ayuda_local: this.$props.ayuda,
+      // continuar: false,
+      // ocultar: true,
+      // show: false,
     };
   },
   methods: {
-    cambio_de_ayuda() {
-      this.$emit("changevalorayuda", this.valor_ayuda_local);
-    },
-    pagina_siguiente() {
-      this.$emit("continuarpagina", this.valor_pagina);
+    // cambio_de_ayuda() {
+    //   this.$emit("changevalorayuda", this.valor_ayuda_local);
+    // },
+    // pagina_siguiente() {
+    //   this.$emit("continuarpagina", this.continuar);
+    // },
+    // ocultar_modulo() {
+    //   this.$emit("ocultarmodulo", this.ocultar);
+    //   // this.$emit("ocultarmodulo", !this.show);
+    // },
+    prueba(v) {
+      this.$emit("ocultarmodulo", v);
+      // this.show = v;
     },
   },
 };

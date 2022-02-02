@@ -1,18 +1,16 @@
 <template>
-  <div
-    class="
-      border-2
-      rounded-2xl
-      w-full
-      py-4
-      px-8
-      bg-white
-      shadow-lg
-      my-20
-      border-indigo-400
-    "
-  >
-    <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
+  <div>
+    <div class="items-center justify-left">
+      <Card
+        :icono="'/formulario_alta/imagenes/mendoza3.png'"
+        :titulo="titulo_pagina"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :show="mostrar_modulo"
+        v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
+      ></Card>
+    </div>
+    <!-- <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_catamarca">
         <img
           class="
@@ -124,26 +122,36 @@
           />
         </label>
       </div>
-    </div>
-    <div>
+    </div> -->
+    <div
+      v-if="mostrar_modulo"
+      class="
+        border-2
+        shadow-lg
+        rounded-2xl
+        w-full
+        py-4
+        px-8
+        bg-white
+        border-indigo-400
+      "
+    >
+      <div class="items-center justify-left sticky top-1 z-10">
+        <Menu
+          :mostrarayuda="true"
+          :ayuda="ayuda_local"
+          :continuar="continuar_pagina"
+          v-on:changevalorayuda="update_valor_ayuda_local($event)"
+          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+        ></Menu>
+      </div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">
         {{ titulo_pagina }}
       </h2> -->
-      <div class="items-center justify-left sticky top-0 z-10">
-        <Card
-          :icono="'/formulario_alta/imagenes/mendoza3.png'"
-          :titulo="titulo_pagina"
-          :mostrarayuda="true"
-          :clase_sup="'gap-6'"
-          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
-          :ayuda="ayuda_local"
-          v-on:changevalorayuda="update_valor_ayuda_local($event)"
-          v-on:continuarpagina="update_valor_pagina_siguiente($event)"
-        ></Card>
-      </div>
-      <br />
+
+      <!-- <br />
       <div class="flex items-center justify-center"></div>
-      <br />
+      <br /> -->
       <div class="flex flex-wrap">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <NombreMina
@@ -248,7 +256,7 @@
         </div>
         <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
           <NombreMina
-            v-if="permisos_mostrar.concesion_minera_tomo_n"            
+            v-if="permisos_mostrar.concesion_minera_tomo_n"
             :tipoInput="'number'"
             v-bind:valor_input_props="form_mendoza.concesion_minera_tomo_n"
             v-bind:valor_input_validacion="
@@ -452,19 +460,31 @@
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_reg_d_y_c"
             v-bind:valor_input_props="form_mendoza.concesion_minera_reg_d_y_c"
-            v-bind:valor_input_validacion="form_mendoza.concesion_minera_reg_d_y_c_valido"
-            v-bind:evualacion_correcto="form_mendoza.concesion_minera_reg_d_y_c_correcto"
+            v-bind:valor_input_validacion="
+              form_mendoza.concesion_minera_reg_d_y_c_valido
+            "
+            v-bind:evualacion_correcto="
+              form_mendoza.concesion_minera_reg_d_y_c_correcto
+            "
             v-bind:valor_obs="form_mendoza.obs_datos_minas"
             v-bind:valor_valido_obs="form_mendoza.obs_datos_minas_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Concesion  Reg D y C :'"
             v-bind:icon="$inertia.page.props.appName + '/svg/state.svg'"
-            v-bind:desactivar_input="permisos_disables.concesion_minera_reg_d_y_c"
-            v-bind:mostrar_correccion="permisos_mostrar.concesion_minera_reg_d_y_c_correccion"
-            v-bind:desactivar_correccion="permisos_disables.concesion_minera_reg_d_y_c_correccion"
+            v-bind:desactivar_input="
+              permisos_disables.concesion_minera_reg_d_y_c
+            "
+            v-bind:mostrar_correccion="
+              permisos_mostrar.concesion_minera_reg_d_y_c_correccion
+            "
+            v-bind:desactivar_correccion="
+              permisos_disables.concesion_minera_reg_d_y_c_correccion
+            "
             v-on:changevalido="update_concesion_minera_reg_d_y_c_valido($event)"
-            v-on:changecorrecto="update_concesion_minera_reg_d_y_c_correcto($event)"
+            v-on:changecorrecto="
+              update_concesion_minera_reg_d_y_c_correcto($event)
+            "
             v-on:changeobs="update_obs_datos_minas($event)"
             v-on:changeobsvalido="update_obs_datos_minas_valida($event)"
             v-on:changevalor="update_valor_concesion_minera_reg_d_y_c($event)"
@@ -498,32 +518,35 @@
         </div>
       </div>
       <div class="flex flex-wrap"></div>
-    </div>
-    <br />
-    <br />
-    <div class="flex items-stretch w-full justify-items-stretch">
-      <BotonesPaginaMendoza
-        v-bind:link_volver="link_volver"
-        v-bind:titulo_boton_volver="titulo_boton_volver"
-        v-bind:titulo_boton_guardar="titulo_boton_guardar"
-        v-bind:formulario="form_mendoza"
-        v-bind:donde_guardar="
-          $inertia.page.props.appName +
-          '/formularios/evaluacion_auto_guardado_mendoza'
-        "
-        v-bind:evaluacion="$props.evaluacion"
-        v-bind:testing="$props.testing"
-        v-bind:id="$props.id"
-        v-on:mostrarpasosiguiente="mostrarpasos($event)"
-      >
-      </BotonesPaginaMendoza>
+
+      <br />
+      <br />
+      <div class="flex items-stretch w-full justify-items-stretch">
+        <BotonesPaginaMendoza
+          v-bind:link_volver="link_volver"
+          v-bind:titulo_boton_volver="titulo_boton_volver"
+          v-bind:titulo_boton_guardar="titulo_boton_guardar"
+          v-bind:formulario="form_mendoza"
+          v-bind:donde_guardar="
+            $inertia.page.props.appName +
+            '/formularios/evaluacion_auto_guardado_mendoza'
+          "
+          v-bind:evaluacion="$props.evaluacion"
+          v-bind:testing="$props.testing"
+          v-bind:id="$props.id"
+          v-on:mostrarpasosiguiente="mostrarpasos($event)"
+        >
+        </BotonesPaginaMendoza>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import JetDialogModal from "@/Jetstream/DialogModal";
 import Card from "@/Jetstream/altas/ComponenteCardProvincia";
+import Menu from "@/Jetstream/altas/MenuModulo";
+
+import JetDialogModal from "@/Jetstream/DialogModal";
 import SelectProvincia from "@/Pages/Productors/SelectProvincia";
 import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 import NombreMina from "@/Pages/Productors/NombreMina";
@@ -549,6 +572,7 @@ export default {
   components: {
     JetDialogModal,
     Card,
+    Menu,
     SelectProvincia,
     SelectDepartamento,
     NombreMina,
@@ -560,6 +584,8 @@ export default {
   },
   data() {
     return {
+      mostrar_modulo: true,
+      continuar_pagina: false,
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
       modal_body: "",
@@ -684,10 +710,15 @@ export default {
     },
     update_valor_pagina_siguiente(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.continuar_pagina = v;
+      this.mostrar_modulo = !v;
+    },
+    update_valor_ocultar_modulo(v) {
+      this.mostrar_modulo = v;
     },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
-      // console.log("valor: ", v);
+      this.mostrar_modulo = !v;
     },
   },
   mounted() {
@@ -701,7 +732,7 @@ export default {
         //   this.$props.id === null ||
         //   this.$props.id === "null"
         // ) {
-          if (this.$props.editar === false || this.$props.editar === 'false') {
+        if (this.$props.editar === false || this.$props.editar === "false") {
           //estoy dando de alta
           self.form_mendoza.decreto3737 = "";
           self.form_mendoza.decreto3737_correcto = "";
@@ -745,6 +776,7 @@ export default {
             .then(function (response) {
               if (response.data.status === "ok") {
                 self.permisos_mostrar = response.data.mostrar;
+                // console.log(self.permisos_mostrar);
                 self.permisos_disables = response.data.disables;
               } else console.log("error al buscar permisos: " + response.data.msg);
             })

@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function dashboard()
     {
         $mi_rol = '';
-        if(Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Administrador')){
+        if (Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Administrador')) {
             $mi_rol = 'admin';
 
             $departments = CountriesController::getDepartmentArray(Auth::user()->id_provincia);
@@ -39,21 +39,21 @@ class HomeController extends Controller
             $dataChart->axis->x = 'departamentos';
             $dataChart->axis->y = 'cantidad';
             $deptos = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
-            $dataChart->data = $deptos ;
+            $dataChart->data = $deptos;
             $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
-            return Inertia::render('Dashboard', ['userType' => $mi_rol,'dataChart'=> $dataChart ]);
-
-        } else if(Auth::user()->hasRole('Productor')){
+            return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart]);
+        } else if (Auth::user()->hasRole('Productor')) {
             $mi_rol = 'productor';
 
-            return Inertia::render('Dashboard', ['userType' => $mi_rol ]);
+            return Inertia::render('Dashboard', ['userType' => $mi_rol]);
         }
-
     }
-    public function mostrar_datos_por_dtpo(){
+    public function mostrar_datos_por_dtpo()
+    {
         $departments = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
-        var_dump($departments);die();
+        var_dump($departments);
+        die();
     }
 
     static function userData()

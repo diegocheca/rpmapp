@@ -122,61 +122,58 @@ class DashboardController extends Controller
     {
         //
     }
-
     public function numProductores()
     {
-        if (Auth::user()->hasRole('Productor'))
-            return response()->json([
-                'status' => 'mal', // true
-                'msg' => 'Sin permisos',
-                'cantidad' => 0,
-            ], 200);
-        $numero = Productores::select('id')->where('estado', '=', 'aprobado')->get();
+        $numero = 0;
+        if (Auth::user()->hasRole('Autoridad'))
+            $numero = FormAltaProductor::select('id')
+                ->where('estado', '=', 'aprobado')
+                ->where('provincia', '=', Auth::user()->id_provincia)
+                ->count();
+        if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Nacion') )
+            $numero = FormAltaProductor::select('id')
+                ->where('estado', '=', 'aprobado')
+                ->count();
         return response()->json([
             'status' => 'ok',
             'msg' => 'Consulta exitosa.',
-            'cantidad' => $numero->count(),
+            'cantidad' => $numero,
         ], 200);
     }
-
     public function numProductoresPendientes()
     {
-        if (Auth::user()->hasRole('Productor'))
-            return response()->json([
-                'status' => 'mal', // true
-                'msg' => 'Sin permisos',
-                'cantidad' => 0,
-            ], 200);
-        $numero = FormAltaProductor::select('id')->where('estado', '=', 'en revision')->get();
+        $numero = 0;
+        if (Auth::user()->hasRole('Autoridad'))
+            $numero = FormAltaProductor::select('id')
+                ->where('estado', '=', 'en revision')
+                ->where('provincia', '=', Auth::user()->id_provincia)
+                ->count();
+        if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Nacion') )
+            $numero = FormAltaProductor::select('id')
+                ->where('estado', '=', 'en revision')
+                ->count();
         return response()->json([
             'status' => 'ok',
             'msg' => 'Consulta exitosa.',
-            'cantidad' => $numero->count(),
+            'cantidad' => $numero,
         ], 200);
     }
     public function numProductoresBorradores()
     {
-        // dd(Auth::user()->id_provincia);
-        if (Auth::user()->hasRole('Productor'))
-            return response()->json([
-                'status' => 'mal', // true
-                'msg' => 'Sin permisos',
-                'cantidad' => 0,
-            ], 200);
-        $provincia = Auth::user()->id_provincia;
-        $numero = FormAltaProductor::select('id')->where('estado', '=', 'borrador')->where('provincia', $provincia)->count();
+        $numero = 0;
         if (Auth::user()->hasRole('Autoridad'))
-            return response()->json([
-                'status' => 'ok',
-                'msg' => 'Consulta exitosa.',
-                'cantidad' => $numero,
-            ], 200);
-        $numeroAdm = FormAltaProductor::select('id')->where('estado', '=', 'borrador')->count();
-        if (Auth::user()->hasRole('Administrador'))
-            return response()->json([
-                'status' => 'ok',
-                'msg' => 'Consulta exitosa.',
-                'cantidad' => $numeroAdm,
-            ], 200);
+            $numero = FormAltaProductor::select('id')
+                ->where('estado', '=', 'borrador')
+                ->where('provincia','=', Auth::user()->id_provincia)
+                ->count();
+        if(Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Nacion') )
+            $numero = FormAltaProductor::select('id')
+            ->where('estado', '=', 'borrador')
+            ->count();
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'Consulta exitosa.',
+            'cantidad' => $numero,
+        ], 200);
     }
 }

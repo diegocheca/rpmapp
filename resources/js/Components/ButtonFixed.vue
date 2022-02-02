@@ -8,8 +8,7 @@
       h-16
       mr-24
       mb-20
-      md:mr-12
-      md:mb-8
+      md:mr-12 md:mb-8
       cursor-pointer
       z-10
     "
@@ -59,10 +58,7 @@
     >
       {{ item.label }}
     </button>
-    <template
-      v-for="(item, index) in buttons.links"
-      :key="index"
-    >
+    <template v-for="(item, index) in buttons.links" :key="index">
       <a
         v-if="item.ver"
         class="text-center rounded-full text-white px-3 py-2"
