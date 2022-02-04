@@ -60,7 +60,7 @@ class ChartsController extends Controller
 
     public function minerales_todas_categorias(){
         $job_recibo_model = new JobRecibo();
-        return $job_recibo_model->cantidadMineralesPorPais();
+        dd($job_recibo_model->cantidadMineralesPorPais()) ;
     }
 
     public function reportes()
