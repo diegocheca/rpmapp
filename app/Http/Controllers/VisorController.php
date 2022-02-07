@@ -11,7 +11,7 @@ use App\Models\JobRecibo;
 
 class VisorController extends Controller
 {
-    #inserta en la DB Nacion
+    #Inserta en la DB Nacion
     public function setDatos(Request $request)
     {
         try {
