@@ -26,17 +26,9 @@ class JobRecibo extends Model
     public function datos_grafico_ventas(){
         $datos = $this->select('*')
             ->where('datos', 'not like', '%sin%%datos%')
-            ->where('estado', '=', 'success')
             ->orderBy('created_at', 'DESC')
             ->groupBy('provincia_id','id')
             ->get();
-        /*foreach($datos as $key){
-            var_dump($key->provincia_id);
-            var_dump( 
-                Carbon::createFromFormat('Y-m-d H:i:s',$key->created_at)->format('M d Y') );
-            var_dump("---------");
-        }
-        die();*/
         $acumulador_exportacion = 0;
         $acumulador_provincia = 0;
         $acumulador_otras_provincias = 0;
