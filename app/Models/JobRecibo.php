@@ -56,9 +56,16 @@ class JobRecibo extends Model
             }
         }
         //dd(count($provincias_ya_leidas));
-        $datos_front["exportacion"] =  $acumulador_exportacion / $cantidad_registros;  
-        $datos_front["otras_prov"] =  $acumulador_otras_provincias / $cantidad_registros;
-        $datos_front["prov"] = $acumulador_provincia / $cantidad_registros;
+        if ($cantidad_registros != 0) {
+            $datos_front["exportacion"] =  $acumulador_exportacion / $cantidad_registros;  
+            $datos_front["otras_prov"] =  $acumulador_otras_provincias / $cantidad_registros;
+            $datos_front["prov"] = $acumulador_provincia / $cantidad_registros;
+        }
+        else {
+            $datos_front["exportacion"] = 0;
+            $datos_front["otras_prov"] = 0;
+            $datos_front["prov"] = 0;
+        }
         return $datos_front;
     }
 
