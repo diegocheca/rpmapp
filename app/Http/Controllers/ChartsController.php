@@ -147,17 +147,6 @@ class ChartsController extends Controller
         $reinscriptionPersons->axis->x = 'tipo';
         $reinscriptionPersons->axis->y = 'cantidad';
         $reinscriptionPersons->data = [];
-<<<<<<< HEAD
-        $datos_porcentajes_personas = $job_recibo_model->calcular_porcentajes_personas();
-        array_push($reinscriptionPersons->data, [ "label" => "Profesional Técnico Permanente", "value" => $datos_porcentajes_personas["acumulador_profesionales_permanentes"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Permanente", "value" => $datos_porcentajes_personas["acumulador_obreros_permanentes"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Administrativo Permanente", "value" => $datos_porcentajes_personas["acumulador_administrativos_permanentes"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Otros Permanente", "value" => $datos_porcentajes_personas["acumulador_otros_permanentes"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Profesional Transitorio", "value" =>$datos_porcentajes_personas["acumulador_profesionales_contratados"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Transitorio", "value" =>$datos_porcentajes_personas["acumulador_obreros_contratados"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Administrativo Transitorio", "value" =>$datos_porcentajes_personas["acumulador_administrativos_contratados"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Otros Transitorio", "value" => $datos_porcentajes_personas["acumulador_otros_contratados"] ]);
-=======
         $valores_personas_transitorias = $reinscripcionesModel->cantidad_de_personas_transitorias($mi_provincia);
         $valores_personas_permanentes = $reinscripcionesModel->cantidad_de_personas_permante($mi_provincia);
         var_dump($valores_personas_transitorias);
@@ -169,7 +158,6 @@ class ChartsController extends Controller
         array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Transitorio", "value" => random_int(0, 199) ]);
         array_push($reinscriptionPersons->data, [ "label" => "Administrativo Transitorio", "value" => random_int(0, 199) ]);
         array_push($reinscriptionPersons->data, [ "label" => "Otros Transitorio", "value" => random_int(0, 199) ]);
->>>>>>> 48fad3afd9f1dad4b2f5101c1ef58c49d457e2e5
 
         return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons, 'provincesList' => $provincesList, 'mapPie' => $mapPie ]);
     }
