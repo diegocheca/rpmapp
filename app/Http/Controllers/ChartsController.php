@@ -61,6 +61,11 @@ class ChartsController extends Controller
 
     }
 
+    public function minerales_todas_categorias(){
+        $job_recibo_model = new JobRecibo();
+        dd($job_recibo_model->cantidadMineralesPorPais()) ;
+    }
+
     public function reportes()
     {
         $mi_provincia = Auth::user()->id_provincia;

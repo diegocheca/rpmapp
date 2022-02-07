@@ -326,3 +326,9 @@ Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])-
 Route::get('/cargandoexcelmdz', [FormAltaProductorController::class, "cargandoexcelmdz"])->name('cargandoexcelmdz');
 Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatamarca"])->name('cargarCatamarca');
 
+
+
+
+//REPORTES
+Route::get('/datos_minerales_todas_cat', [ChartsController::class, "minerales_todas_categorias"])->name('datos-minerales-todas-cat');
+

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-
+use App\Models\Provincias;
 
 class JobRecibo extends Model
 {
@@ -139,6 +139,7 @@ class JobRecibo extends Model
     }
     
     public function cantidadMineralesPorPais(){
+        $provinciaModel = new Provincias();
         $datos = $this->select('*')
         ->where('datos', 'not like', '%sin%%datos%')
         ->where('estado', '=', 'success')
@@ -155,9 +156,15 @@ class JobRecibo extends Model
             }
             else {
                 array_push($provincias_ya_leidas,$key->provincia_id);
-                $datos_front[$key->provincia_id]["primera"] = json_decode($key->datos)->mineralPrimeraCat;
-                $datos_front[$key->provincia_id]["segunda"] = json_decode($key->datos)->mineralSegundaCat;
-                $datos_front[$key->provincia_id]["tercera"] = json_decode($key->datos)->mineralTerceraCat;
+
+                $nombre_provincia = $provinciaModel->nombreDeProvinciaPorId($key->provincia_id);
+                $datos_front[$cantidad_registros] = array(
+                    "nombre" => $nombre_provincia->nombre,
+                    "id_provincia" => $key->provincia_id,
+                    "primera" =>  json_decode($key->datos)->mineralPrimeraCat,
+                    "segunda" => json_decode($key->datos)->mineralSegundaCat,
+                    "tercera" => json_decode($key->datos)->mineralTerceraCat
+                );
                 $cantidad_registros++;
             }
         }

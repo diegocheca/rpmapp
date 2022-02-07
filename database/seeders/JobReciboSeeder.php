@@ -108,68 +108,68 @@ class JobReciboSeeder extends Seeder
                     "cantidadReinsc"=> $faker->numberBetween(0,800),
                     "mineralPrimeraCat" => array(
                         array( 
-                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[0]] ,
-                            "cantidad"=> $first_cat_first_max
+                            "label" => $this->minerales_primera[$indexWithoutRepetedFirst[0]] ,
+                            "value"=> $first_cat_first_max
                         ),
                         array( 
-                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[1]] ,
-                            "cantidad"=> $first_cat_second_max
+                            "label" => $this->minerales_primera[$indexWithoutRepetedFirst[1]] ,
+                            "value"=> $first_cat_second_max
                         ),
                         array( 
-                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[2]] ,
-                            "cantidad"=> $first_cat_third_max
+                            "label" => $this->minerales_primera[$indexWithoutRepetedFirst[2]] ,
+                            "value"=> $first_cat_third_max
                         ),
                         array( 
-                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[3]] ,
-                            "cantidad"=> $first_cat_fourth_max
+                            "label" => $this->minerales_primera[$indexWithoutRepetedFirst[3]] ,
+                            "value"=> $first_cat_fourth_max
                         ),
                         array( 
-                            "name" => $this->minerales_primera[$indexWithoutRepetedFirst[4]] ,
-                            "cantidad"=> $first_cat_fifth_max
+                            "label" => $this->minerales_primera[$indexWithoutRepetedFirst[4]] ,
+                            "value"=> $first_cat_fifth_max
                         )
                     ),
                     "mineralSegundaCat" => array(
                         array( 
-                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[0]] ,
-                            "cantidad"=> $second_cat_first_max
+                            "label" => $this->minerales_segunda[$indexWithoutRepetedSecound[0]] ,
+                            "value"=> $second_cat_first_max
                         ),
                         array( 
-                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[1]] ,
-                            "cantidad"=> $second_cat_second_max
+                            "label" => $this->minerales_segunda[$indexWithoutRepetedSecound[1]] ,
+                            "value"=> $second_cat_second_max
                         ),
                         array( 
-                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[2]] ,
-                            "cantidad"=> $second_cat_third_max
+                            "label" => $this->minerales_segunda[$indexWithoutRepetedSecound[2]] ,
+                            "value"=> $second_cat_third_max
                         ),
                         array( 
-                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[3]] ,
-                            "cantidad"=> $second_cat_fourth_max
+                            "label" => $this->minerales_segunda[$indexWithoutRepetedSecound[3]] ,
+                            "value"=> $second_cat_fourth_max
                         ),
                         array( 
-                            "name" => $this->minerales_segunda[$indexWithoutRepetedSecound[4]] ,
-                            "cantidad"=> $second_cat_fifth_max
+                            "label" => $this->minerales_segunda[$indexWithoutRepetedSecound[4]] ,
+                            "value"=> $second_cat_fifth_max
                         )
                     ),
                     "mineralTerceraCat"  => array(
                         array( 
-                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[0]] ,
-                            "cantidad"=> $third_cat_first_max
+                            "label" => $this->minerales_tercera[$indexWithoutRepetedThird[0]] ,
+                            "value"=> $third_cat_first_max
                         ),
                         array( 
-                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[1]] ,
-                            "cantidad"=> $third_cat_second_max
+                            "label" => $this->minerales_tercera[$indexWithoutRepetedThird[1]] ,
+                            "value"=> $third_cat_second_max
                         ),
                         array( 
-                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[2]] ,
-                            "cantidad"=> $third_cat_third_max
+                            "label" => $this->minerales_tercera[$indexWithoutRepetedThird[2]] ,
+                            "value"=> $third_cat_third_max
                         ),
                         array( 
-                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[3]] ,
-                            "cantidad"=> $third_cat_fourth_max
+                            "label" => $this->minerales_tercera[$indexWithoutRepetedThird[3]] ,
+                            "value"=> $third_cat_fourth_max
                         ),
                         array( 
-                            "name" => $this->minerales_tercera[$indexWithoutRepetedThird[4]] ,
-                            "cantidad"=> $third_cat_fifth_max
+                            "label" => $this->minerales_tercera[$indexWithoutRepetedThird[4]] ,
+                            "value"=> $third_cat_fifth_max
                         )
                     ),
 
