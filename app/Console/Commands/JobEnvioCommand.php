@@ -131,7 +131,7 @@ class JobEnvioCommand extends Command
     }
     public function cantCategoriasMinerales($categoria)
     {
-        $sql = "select g.name, count (*) as cantidad from
+        $sql = "select g.name as label, count (*) as value from
         (SELECT f.id as id_formulario, f.estado, m.id as id_mineral, m.name, m.categoria FROM minerales_borradores as b
         left join form_alta_productores as f on b.id_formulario = f.id
         left join mineral as m on m.id = b.id_mineral
@@ -149,7 +149,7 @@ class JobEnvioCommand extends Command
     public function porcPersonal()
     {
         $sqlPerm = 'select 
-        sum(personal_perm_profesional) as profesional, 
+        sum(personal_perm_profesional) as profesionales, 
         sum(personal_perm_operarios) as operarios, 
         sum(personal_perm_administrativos) as administrativos,
         sum(personal_perm_otros) as otros
