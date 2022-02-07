@@ -126,16 +126,14 @@ class JobRecibo extends Model
         ->first();
 
         //dd($datos->datos);
-        $datos = json_decode($datos->datos); 
-       // dd((array)$datos->mineralPrimeraCat);
-        $datos_front = array();
-        /*$datos_front["datos_primer"] = json_decode($datos->mineralPrimeraCat);
-        $datos_front["datos_segunda"] = json_decode($datos->mineralSegundaCat);
-        $datos_front["datos_tercera"] = json_decode($datos->mineralTerceraCat);
-
-        dd($datos_front);
-*/
-        return $datos_front;
+        if ($datos != null && $datos != false) {
+            $datos = json_decode($datos->datos); 
+            $datos_front = array();
+            return $datos_front;
+        }
+        else {
+            return false;
+        }
     }
     
     public function cantidadMineralesPorPais(){
