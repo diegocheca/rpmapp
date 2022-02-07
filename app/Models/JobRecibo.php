@@ -108,17 +108,29 @@ class JobRecibo extends Model
             }
         }
         
-        $datos_front["acumulador_profesionales_permanentes"] =  ($acumulador_profesionales_permanentes / $total_de_personas)*100;
-        $datos_front["acumulador_profesionales_contratados"] =  ($acumulador_profesionales_contratados / $total_de_personas)*100;
-        
-        $datos_front["acumulador_otros_permanentes"] =  ($acumulador_otros_permanentes / $total_de_personas)*100;
-        $datos_front["acumulador_otros_contratados"] =  ($acumulador_otros_contratados / $total_de_personas)*100;
-        
-        $datos_front["acumulador_administrativos_permanentes"] =  ($acumulador_administrativos_permanentes / $total_de_personas) * 100;
-        $datos_front["acumulador_administrativos_contratados"] =  ($acumulador_administrativos_contratados / $total_de_personas) * 100;
-        
-        $datos_front["acumulador_obreros_permanentes"] =  ($acumulador_obreros_permanentes / $total_de_personas)*100;
-        $datos_front["acumulador_obreros_contratados"] =  ($acumulador_obreros_contratados / $total_de_personas)*100;
+        if ($total_de_personas != 0) {
+            $datos_front["acumulador_profesionales_permanentes"] =  ($acumulador_profesionales_permanentes / $total_de_personas)*100;
+            $datos_front["acumulador_profesionales_contratados"] =  ($acumulador_profesionales_contratados / $total_de_personas)*100;
+            
+            $datos_front["acumulador_otros_permanentes"] =  ($acumulador_otros_permanentes / $total_de_personas)*100;
+            $datos_front["acumulador_otros_contratados"] =  ($acumulador_otros_contratados / $total_de_personas)*100;
+            
+            $datos_front["acumulador_administrativos_permanentes"] =  ($acumulador_administrativos_permanentes / $total_de_personas) * 100;
+            $datos_front["acumulador_administrativos_contratados"] =  ($acumulador_administrativos_contratados / $total_de_personas) * 100;
+            
+            $datos_front["acumulador_obreros_permanentes"] =  ($acumulador_obreros_permanentes / $total_de_personas)*100;
+            $datos_front["acumulador_obreros_contratados"] =  ($acumulador_obreros_contratados / $total_de_personas)*100;
+        }
+        else {
+            $datos_front["acumulador_profesionales_permanentes"] = 0;
+            $datos_front["acumulador_profesionales_contratados"] = 0;
+            $datos_front["acumulador_otros_permanentes"] = 0;
+            $datos_front["acumulador_otros_contratados"] = 0;
+            $datos_front["acumulador_administrativos_permanentes"] = 0;
+            $datos_front["acumulador_administrativos_contratados"] = 0;
+            $datos_front["acumulador_obreros_permanentes"] = 0;
+            $datos_front["acumulador_obreros_contratados"] = 0;
+        }
         //dd($datos_front);
 
         return $datos_front;
