@@ -35,7 +35,6 @@ class JobRecibo extends Model
         $provincias_ya_leidas = array();
         $cantidad_registros = 0;
         foreach($datos as $key){
-            //var_dump(json_decode($key->datos)->porcentajes_ventas);die();
             if(array_search($key->provincia_id, $provincias_ya_leidas) ) {
                 continue;
             }
