@@ -150,7 +150,7 @@ class JobEnvioCommand extends Command
     {
         $sqlPerm = 'select 
         sum(personal_perm_profesional) as profesionales, 
-        sum(personal_perm_operarios) as operarios, 
+        sum(personal_perm_operarios) as obreros, 
         sum(personal_perm_administrativos) as administrativos,
         sum(personal_perm_otros) as otros
         FROM reinscripciones
@@ -158,8 +158,8 @@ class JobEnvioCommand extends Command
         $permanente = DB::connection('rpm')->select($sqlPerm);
 
         $sqlTran = 'select 
-        sum(personal_trans_profesional) as profesional, 
-        sum(personal_trans_operarios) as operarios, 
+        sum(personal_trans_profesional) as profesionales, 
+        sum(personal_trans_operarios) as obreros, 
         sum(personal_trans_administrativos) as administrativos,
         sum(personal_trans_otros) as otros
         FROM reinscripciones
