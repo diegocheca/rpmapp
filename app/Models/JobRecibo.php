@@ -41,9 +41,9 @@ class JobRecibo extends Model
             }
             else {
                 array_push($provincias_ya_leidas,$key->provincia_id);
-                $acumulador_exportacion += json_decode($key->datos)->porcentajes_ventas->exterior;
-                $acumulador_provincia += json_decode($key->datos)->porcentajes_ventas->provincia;
-                $acumulador_otras_provincias += json_decode($key->datos)->porcentajes_ventas->pais;
+                $acumulador_exportacion += intval( json_decode($key->datos)->porcentajes_ventas[0]->exterior);
+                $acumulador_provincia += intval( json_decode($key->datos)->porcentajes_ventas[0]->provincia);
+                $acumulador_otras_provincias += intval( json_decode($key->datos)->porcentajes_ventas[0]->pais);
                 $cantidad_registros++;
             }
         }
@@ -64,7 +64,7 @@ class JobRecibo extends Model
     public function calcular_porcentajes_personas(){
         $datos = $this->select('*')
         ->where('datos', 'not like', '%sin%%datos%')
-        ->where('estado', '=', 'success')
+       //  ->where('estado', '=', 'success')
         ->orderBy('created_at', 'DESC')
         ->groupBy('provincia_id','id')
         ->get();
@@ -86,16 +86,16 @@ class JobRecibo extends Model
             }
             else {
                 array_push($provincias_ya_leidas,$key->provincia_id);
-                $acumulador_profesionales_permanentes += json_decode($key->datos)->porcentajes_personas->permanentes->profesionales;
-                $acumulador_profesionales_contratados += json_decode($key->datos)->porcentajes_personas->transitorios->profesionales;
-                $acumulador_otros_permanentes += json_decode($key->datos)->porcentajes_personas->permanentes->otros;
-                $acumulador_otros_contratados += json_decode($key->datos)->porcentajes_personas->transitorios->otros;
-                $acumulador_administrativos_permanentes += json_decode($key->datos)->porcentajes_personas->permanentes->administrativos;
-                $acumulador_administrativos_contratados += json_decode($key->datos)->porcentajes_personas->transitorios->administrativos;
-                $acumulador_obreros_permanentes += json_decode($key->datos)->porcentajes_personas->permanentes->obreros;
-                $acumulador_obreros_contratados += json_decode($key->datos)->porcentajes_personas->transitorios->obreros;
+                $acumulador_profesionales_permanentes += json_decode($key->datos)->porcentajes_personas->permanentes[0]->profesionales;
+                $acumulador_profesionales_contratados += json_decode($key->datos)->porcentajes_personas->transitorios[0]->profesionales;
+                $acumulador_otros_permanentes += json_decode($key->datos)->porcentajes_personas->permanentes[0]->otros;
+                $acumulador_otros_contratados += json_decode($key->datos)->porcentajes_personas->transitorios[0]->otros;
+                $acumulador_administrativos_permanentes += json_decode($key->datos)->porcentajes_personas->permanentes[0]->administrativos;
+                $acumulador_administrativos_contratados += json_decode($key->datos)->porcentajes_personas->transitorios[0]->administrativos;
+                $acumulador_obreros_permanentes += json_decode($key->datos)->porcentajes_personas->permanentes[0]->obreros;
+                $acumulador_obreros_contratados += json_decode($key->datos)->porcentajes_personas->transitorios[0]->obreros;
                 $cantidad_registros++;
-                $total_de_personas += json_decode($key->datos)->porcentajes_personas->permanentes->profesionales +json_decode($key->datos)->porcentajes_personas->transitorios->profesionales +json_decode($key->datos)->porcentajes_personas->permanentes->otros +json_decode($key->datos)->porcentajes_personas->transitorios->otros +json_decode($key->datos)->porcentajes_personas->permanentes->administrativos +json_decode($key->datos)->porcentajes_personas->transitorios->administrativos +json_decode($key->datos)->porcentajes_personas->permanentes->obreros +json_decode($key->datos)->porcentajes_personas->transitorios->obreros;
+                $total_de_personas += json_decode($key->datos)->porcentajes_personas->permanentes[0]->profesionales +json_decode($key->datos)->porcentajes_personas->transitorios[0]->profesionales +json_decode($key->datos)->porcentajes_personas->permanentes[0]->otros +json_decode($key->datos)->porcentajes_personas->transitorios[0]->otros +json_decode($key->datos)->porcentajes_personas->permanentes[0]->administrativos +json_decode($key->datos)->porcentajes_personas->transitorios[0]->administrativos +json_decode($key->datos)->porcentajes_personas->permanentes[0]->obreros +json_decode($key->datos)->porcentajes_personas->transitorios[0]->obreros;
 
             }
         }
@@ -131,7 +131,7 @@ class JobRecibo extends Model
     public function buscar_minerales_por_provincia($id_provincia){
         $datos = $this->select('*')
         ->where('datos', 'not like', '%sin%%datos%')
-        ->where('estado', '=', 'success')
+       //  ->where('estado', '=', 'success')
         ->where('provincia_id', '=', $id_provincia)
         ->orderBy('created_at', 'DESC')
         ->first();
@@ -151,7 +151,7 @@ class JobRecibo extends Model
         $provinciaModel = new Provincias();
         $datos = $this->select('*')
         ->where('datos', 'not like', '%sin%%datos%')
-        ->where('estado', '=', 'success')
+       //  ->where('estado', '=', 'success')
         ->orderBy('created_at', 'DESC')
         ->groupBy('provincia_id','id')
         ->get();
