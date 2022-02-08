@@ -142,9 +142,16 @@ class JobEnvioCommand extends Command
     }
     public function porcVentas()
     {
-        $sql = 'select sum(porcentaje_venta_provincia) as provincia, sum (porcentaje_venta_otras_provincias) as pais, sum(porcentaje_exportado) as exterior from reinscripciones where fecha_vto >= now() and fecha_vto is not null';
+        $sql = 'select count(*) as cant_reg, sum(porcentaje_venta_provincia) as provincia, sum (porcentaje_venta_otras_provincias) as pais, sum(porcentaje_exportado) as exterior from reinscripciones where fecha_vto >= now() and fecha_vto is not null';
         $arrayVentas  = DB::connection('rpm')->select($sql);
-        return $arrayVentas;
+         # Array
+         $arrayPorcVentas = array(
+            'provincia' => $arrayVentas[0]->provincia / $arrayVentas[0]->cant_reg,
+            'pais' => $arrayVentas[0]->pais / $arrayVentas[0]->cant_reg,
+            'exterior' => $arrayVentas[0]->exterior / $arrayVentas[0]->cant_reg,
+        );
+        // dd($arrayPorcVentas);
+       return $arrayPorcVentas;
     }
     public function porcPersonal()
     {
