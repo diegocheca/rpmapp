@@ -72,7 +72,7 @@ class JobRecibo extends Model
         /*$datos_front["provincia_id"]= 99;
         $datos_front["provincia_name"]= "todos";
         array_push($procentajes_por_provincias, $datos_front);*/
-
+        // dd(json_encode($procentajes_por_provincias));
         return $procentajes_por_provincias;
     }
 
@@ -101,16 +101,16 @@ class JobRecibo extends Model
                 continue;
             } else {
                 array_push($provincias_ya_leidas, $key->provincia_id);
-                $acumulador_profesionales_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->profesionales);
-                $acumulador_profesionales_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->profesionales);
-                $acumulador_otros_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->otros);
-                $acumulador_otros_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->otros);
-                $acumulador_administrativos_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->administrativos);
-                $acumulador_administrativos_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->administrativos);
-                $acumulador_obreros_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->obreros);
-                $acumulador_obreros_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->obreros);
+                $acumulador_profesionales_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->profesionales);
+                $acumulador_profesionales_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->profesionales);
+                $acumulador_otros_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->otros);
+                $acumulador_otros_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->otros);
+                $acumulador_administrativos_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->administrativos);
+                $acumulador_administrativos_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->administrativos);
+                $acumulador_obreros_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->obreros);
+                $acumulador_obreros_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->obreros);
                 $cantidad_registros++;
-                $total_de_personas += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->profesionales) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->profesionales) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->otros) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->otros) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->administrativos) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->administrativos) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->obreros) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->obreros);
+                $total_de_personas += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->profesionales) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->profesionales) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->otros) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->otros) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->administrativos) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->administrativos) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->obreros) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->obreros);
             }
         }
 
