@@ -150,7 +150,6 @@ class JobEnvioCommand extends Command
             'pais' => $arrayVentas[0]->pais / $arrayVentas[0]->cant_reg,
             'exterior' => $arrayVentas[0]->exterior / $arrayVentas[0]->cant_reg,
         );
-        // dd($arrayPorcVentas);
        return $arrayPorcVentas;
     }
     public function porcPersonal()
