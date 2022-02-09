@@ -77,10 +77,12 @@ class ChartsController extends Controller
         $soldIn->data = [];
         $datos_calculados  = $this->calcular_destino_produccion(Auth::user()->id_provincia);
         $mis_datos_venta = $job_recibo_model->datos_grafico_ventas();
+
+        //dd($mis_datos_venta);
         if($datos_calculados ["exportacion"] == 0 && $datos_calculados ["otras_prov"] == 0  && $datos_calculados ["prov"] == 0 ){
-            array_push($soldIn->data, [ "label" => "Provincia", "value" => $mis_datos_venta["prov"] ]);
-            array_push($soldIn->data, [ "label" => "Pais", "value" => $mis_datos_venta["otras_prov"] ]);
-            array_push($soldIn->data, [ "label" => "Exportación", "value" => $mis_datos_venta["exportacion"] ]);
+            array_push($soldIn->data, [ "label" => "Provincia", "value" => $mis_datos_venta[0]["provincia"] ]);
+            array_push($soldIn->data, [ "label" => "Pais", "value" => $mis_datos_venta[0]["otras_provincias"] ]);
+            array_push($soldIn->data, [ "label" => "Exportación", "value" => $mis_datos_venta[0]["exportacion"] ]);
         }
         // CountriesController::getDepartmentArray(Auth::user()->id_provincia);
         // $soldIn->province = CountriesController::getProvince(Auth::user()->id_provincia);
@@ -124,6 +126,6 @@ class ChartsController extends Controller
         array_push($reinscriptionPersons->data, [ "label" => "Administrativo Transitorio", "value" =>$datos_porcentajes_personas["acumulador_administrativos_contratados"] ]);
         array_push($reinscriptionPersons->data, [ "label" => "Otros Transitorio", "value" => $datos_porcentajes_personas["acumulador_otros_contratados"] ]);
 
-        return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons ]);
+        return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons, 'porcentajesDewVentaPorProvincia' => $mis_datos_venta ]);
     }
 }

@@ -34,6 +34,8 @@ class JobRecibo extends Model
         $acumulador_provincia = 0;
         $acumulador_otras_provincias = 0;
         $provincias_ya_leidas = array();
+        $procentajes_por_provincias = array();
+        $provinciaModel = new Provincias();
         $cantidad_registros = 0;
         foreach ($datos as $key) {
             //var_dump(json_decode($key->datos)->porcentajes_ventas);die();
@@ -45,9 +47,19 @@ class JobRecibo extends Model
                 $acumulador_provincia += doubleval(json_decode($key->datos)->porcentajes_ventas->provincia);
                 $acumulador_otras_provincias += doubleval(json_decode($key->datos)->porcentajes_ventas->pais);
                 $cantidad_registros++;
+                //por cada provincia
+                
+                $temp = array();
+                $temp["provincia_id"] = $key->provincia_id;
+                $temporal = $provinciaModel->nombreDeProvinciaPorId($key->provincia_id);
+                $temp["provincia_nombre"] = $temporal->nombre;
+                $temp["exportacion"] = doubleval(json_decode($key->datos)->porcentajes_ventas->exterior);
+                $temp["provincia"] = doubleval(json_decode($key->datos)->porcentajes_ventas->provincia);
+                $temp["otras_provincias"] = doubleval(json_decode($key->datos)->porcentajes_ventas->pais);
+                array_push($procentajes_por_provincias, $temp);
             }
         }
-        //dd(count($provincias_ya_leidas));
+        
         if ($cantidad_registros != 0) {
             $datos_front["exportacion"] =  $acumulador_exportacion / $cantidad_registros;
             $datos_front["otras_prov"] =  $acumulador_otras_provincias / $cantidad_registros;
@@ -57,7 +69,11 @@ class JobRecibo extends Model
             $datos_front["otras_prov"] = 0;
             $datos_front["prov"] = 0;
         }
-        return $datos_front;
+        /*$datos_front["provincia_id"]= 99;
+        $datos_front["provincia_name"]= "todos";
+        array_push($procentajes_por_provincias, $datos_front);*/
+
+        return $procentajes_por_provincias;
     }
 
     public function calcular_porcentajes_personas()
@@ -85,16 +101,16 @@ class JobRecibo extends Model
                 continue;
             } else {
                 array_push($provincias_ya_leidas, $key->provincia_id);
-                $acumulador_profesionales_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->profesionales);
-                $acumulador_profesionales_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->profesionales);
-                $acumulador_otros_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->otros);
-                $acumulador_otros_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->otros);
-                $acumulador_administrativos_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->administrativos);
-                $acumulador_administrativos_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->administrativos);
-                $acumulador_obreros_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->obreros);
-                $acumulador_obreros_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->obreros);
+                $acumulador_profesionales_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->profesionales);
+                $acumulador_profesionales_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->profesionales);
+                $acumulador_otros_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->otros);
+                $acumulador_otros_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->otros);
+                $acumulador_administrativos_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->administrativos);
+                $acumulador_administrativos_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->administrativos);
+                $acumulador_obreros_permanentes += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->obreros);
+                $acumulador_obreros_contratados += doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->obreros);
                 $cantidad_registros++;
-                $total_de_personas += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->profesionales) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->profesionales) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->otros) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->otros) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->administrativos) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->administrativos) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes[0]->obreros) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios[0]->obreros);
+                $total_de_personas += doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->profesionales) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->profesionales) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->otros) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->otros) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->administrativos) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->administrativos) + doubleval(json_decode($key->datos)->porcentajes_personas->permanentes->obreros) + doubleval(json_decode($key->datos)->porcentajes_personas->transitorios->obreros);
             }
         }
 
