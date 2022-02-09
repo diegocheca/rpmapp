@@ -174,7 +174,7 @@ class JobRecibo extends Model
         $total_de_personas = 0;
         $datos_front = array();
         foreach ($datos as $key) {
-            if (array_search($key->provincia_id, $provincias_ya_leidas)) {
+            if (in_array($key->provincia_id, $provincias_ya_leidas)) {
                 continue;
             } else {
                 array_push($provincias_ya_leidas, $key->provincia_id);
