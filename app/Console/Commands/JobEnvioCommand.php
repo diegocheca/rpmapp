@@ -144,13 +144,13 @@ class JobEnvioCommand extends Command
     {
         $sql = 'select count(*) as cant_reg, sum(porcentaje_venta_provincia) as provincia, sum (porcentaje_venta_otras_provincias) as pais, sum(porcentaje_exportado) as exterior from reinscripciones where fecha_vto >= now() and fecha_vto is not null';
         $arrayVentas  = DB::connection('rpm')->select($sql);
-         # Array
-         $arrayPorcVentas = array(
+        # Array
+        $arrayPorcVentas = array(
             'provincia' => $arrayVentas[0]->provincia / $arrayVentas[0]->cant_reg,
             'pais' => $arrayVentas[0]->pais / $arrayVentas[0]->cant_reg,
             'exterior' => $arrayVentas[0]->exterior / $arrayVentas[0]->cant_reg,
         );
-       return $arrayPorcVentas;
+        return $arrayPorcVentas;
     }
     public function porcPersonal()
     {
@@ -171,11 +171,14 @@ class JobEnvioCommand extends Command
         FROM reinscripciones
         where fecha_vto is not null and fecha_vto >= now()';
         $transitorios = DB::connection('rpm')->select($sqlTran);
-        $result = array(
-            'permanentes' => $permanente,
-            'transitorios' => $transitorios,
-        );
+        $object = new \stdClass();
+        $object->permanentes = (count($permanente) != 0) ? $permanente[0] : 0;
+        $object->transitorios = (count($transitorios) != 0) ? $transitorios[0] : 0;
+        // $result = array(
+        //     'permanentes' => (count($permanente) != 0) ? $permanente[0] : 0,
+        //     'transitorios' => (count($transitorios) != 0) ? $transitorios[0] : 0,
+        // );
         // dd($result);
-        return $result;
+        return $object;
     }
 }
