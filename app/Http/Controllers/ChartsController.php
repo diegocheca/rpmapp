@@ -118,10 +118,12 @@ class ChartsController extends Controller
         $soldIn->data = [];
         $datos_calculados  = $this->calcular_destino_produccion(Auth::user()->id_provincia);
         $mis_datos_venta = $job_recibo_model->datos_grafico_ventas();
+
+        //dd($mis_datos_venta);
         if($datos_calculados ["exportacion"] == 0 && $datos_calculados ["otras_prov"] == 0  && $datos_calculados ["prov"] == 0 ){
-            array_push($soldIn->data, [ "label" => "Provincia", "value" => $mis_datos_venta["prov"] ]);
-            array_push($soldIn->data, [ "label" => "Pais", "value" => $mis_datos_venta["otras_prov"] ]);
-            array_push($soldIn->data, [ "label" => "Exportación", "value" => $mis_datos_venta["exportacion"] ]);
+            array_push($soldIn->data, [ "label" => "Provincia", "value" => $mis_datos_venta[0]["provincia"] ]);
+            array_push($soldIn->data, [ "label" => "Pais", "value" => $mis_datos_venta[0]["otras_provincias"] ]);
+            array_push($soldIn->data, [ "label" => "Exportación", "value" => $mis_datos_venta[0]["exportacion"] ]);
         }
         // CountriesController::getDepartmentArray(Auth::user()->id_provincia);
         // $soldIn->province = CountriesController::getProvince(Auth::user()->id_provincia);
@@ -156,18 +158,16 @@ class ChartsController extends Controller
         $reinscriptionPersons->axis->x = 'tipo';
         $reinscriptionPersons->axis->y = 'cantidad';
         $reinscriptionPersons->data = [];
-        $valores_personas_transitorias = $reinscripcionesModel->cantidad_de_personas_transitorias($mi_provincia);
-        $valores_personas_permanentes = $reinscripcionesModel->cantidad_de_personas_permante($mi_provincia);
-        // var_dump($valores_personas_transitorias);
-        array_push($reinscriptionPersons->data, [ "label" => "Profesional Técnico Permanente", "value" => $valores_personas_permanentes["profesionales_permanentes"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Permanente", "value" => $valores_personas_permanentes["operarios_permanentes"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Administrativo Permanente", "value" =>  $valores_personas_permanentes["administrativos_permanentes"]  ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Otros Permanente", "value" => $valores_personas_permanentes["otros_permanentes"] ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Profesional Transitorio", "value" => random_int(0, 199) ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Transitorio", "value" => random_int(0, 199) ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Administrativo Transitorio", "value" => random_int(0, 199) ]);
-        array_push($reinscriptionPersons->data, [ "label" => "Otros Transitorio", "value" => random_int(0, 199) ]);
+        $datos_porcentajes_personas = $job_recibo_model->calcular_porcentajes_personas();
+        array_push($reinscriptionPersons->data, [ "label" => "Profesional Técnico Permanente", "value" => $datos_porcentajes_personas["acumulador_profesionales_permanentes"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Permanente", "value" => $datos_porcentajes_personas["acumulador_obreros_permanentes"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Administrativo Permanente", "value" => $datos_porcentajes_personas["acumulador_administrativos_permanentes"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Otros Permanente", "value" => $datos_porcentajes_personas["acumulador_otros_permanentes"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Profesional Transitorio", "value" =>$datos_porcentajes_personas["acumulador_profesionales_contratados"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Transitorio", "value" =>$datos_porcentajes_personas["acumulador_obreros_contratados"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Administrativo Transitorio", "value" =>$datos_porcentajes_personas["acumulador_administrativos_contratados"] ]);
+        array_push($reinscriptionPersons->data, [ "label" => "Otros Transitorio", "value" => $datos_porcentajes_personas["acumulador_otros_contratados"] ]);
 
-        return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons, 'provincesList' => $provincesList, 'mapPie' => $mapPie ]);
+        return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons, 'porcentajesDewVentaPorProvincia' => $mis_datos_venta ]);
     }
 }

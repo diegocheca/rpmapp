@@ -131,7 +131,7 @@ class JobEnvioCommand extends Command
     }
     public function cantCategoriasMinerales($categoria)
     {
-        $sql = "select g.name, count (*) as cantidad from
+        $sql = "select g.name as label, count (*) as value from
         (SELECT f.id as id_formulario, f.estado, m.id as id_mineral, m.name, m.categoria FROM minerales_borradores as b
         left join form_alta_productores as f on b.id_formulario = f.id
         left join mineral as m on m.id = b.id_mineral
@@ -142,15 +142,21 @@ class JobEnvioCommand extends Command
     }
     public function porcVentas()
     {
-        $sql = 'select sum(porcentaje_venta_provincia) as provincia, sum (porcentaje_venta_otras_provincias) as pais, sum(porcentaje_exportado) as exterior from reinscripciones where fecha_vto >= now() and fecha_vto is not null';
+        $sql = 'select count(*) as cant_reg, sum(porcentaje_venta_provincia) as provincia, sum (porcentaje_venta_otras_provincias) as pais, sum(porcentaje_exportado) as exterior from reinscripciones where fecha_vto >= now() and fecha_vto is not null';
         $arrayVentas  = DB::connection('rpm')->select($sql);
-        return $arrayVentas;
+         # Array
+         $arrayPorcVentas = array(
+            'provincia' => $arrayVentas[0]->provincia / $arrayVentas[0]->cant_reg,
+            'pais' => $arrayVentas[0]->pais / $arrayVentas[0]->cant_reg,
+            'exterior' => $arrayVentas[0]->exterior / $arrayVentas[0]->cant_reg,
+        );
+       return $arrayPorcVentas;
     }
     public function porcPersonal()
     {
         $sqlPerm = 'select 
-        sum(personal_perm_profesional) as profesional, 
-        sum(personal_perm_operarios) as operarios, 
+        sum(personal_perm_profesional) as profesionales, 
+        sum(personal_perm_operarios) as obreros, 
         sum(personal_perm_administrativos) as administrativos,
         sum(personal_perm_otros) as otros
         FROM reinscripciones
@@ -158,8 +164,8 @@ class JobEnvioCommand extends Command
         $permanente = DB::connection('rpm')->select($sqlPerm);
 
         $sqlTran = 'select 
-        sum(personal_trans_profesional) as profesional, 
-        sum(personal_trans_operarios) as operarios, 
+        sum(personal_trans_profesional) as profesionales, 
+        sum(personal_trans_operarios) as obreros, 
         sum(personal_trans_administrativos) as administrativos,
         sum(personal_trans_otros) as otros
         FROM reinscripciones
