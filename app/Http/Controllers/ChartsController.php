@@ -63,11 +63,15 @@ class ChartsController extends Controller
 
     public function minerales_todas_categorias(){
         $job_recibo_model = new JobRecibo();
-        dd($job_recibo_model->cantidadMineralesPorPais()) ;
+        return $job_recibo_model->cantidadMineralesPorPais();
     }
 
     public function reportes()
     {
+
+        // dd($this->minerales_todas_categorias());
+
+
         $mi_provincia = Auth::user()->id_provincia;
         if(Auth::user()->id = 1)
             $mi_provincia = 99;
@@ -79,7 +83,7 @@ class ChartsController extends Controller
         ->get();
 
         $mapPie = clone $this->dataChart;
-        $mapPie->title = 'Minerales de primera categoría más importante';
+        $mapPie->title = 'Minerales por categoría más importantes';
         $mapPie->axis->x = 'label';
         $mapPie->axis->y = 'value';
         $mapPie->data = [];
@@ -87,20 +91,20 @@ class ChartsController extends Controller
         // array_push($mapPie->data, [ "label" => "Pais", "value" => 67 ]);
         // array_push($mapPie->data, [ "label" => "Exportación", "value" => 33 ]);
 
-        $mapPie->data = [[
-            'province' => 'Buenos Aires',
-            'minerals' => [[ "label" => "Provincia", "value" => 150], [ "label" => "Pais", "value" => 67 ], [ "label" => "Exportación", "value" => 33 ] ]
-        ],
-        [
-            'province' => 'Santa Fe',
-            'minerals' => [[ "label" => "Provincia", "value" => 100], [ "label" => "Pais", "value" => 617 ], [ "label" => "Exportación", "value" => 3 ] ]
-        ],
-        [
-            'province' => 'San Juan',
-            'minerals' => [[ "label" => "Provincia", "value" => 50], [ "label" => "Pais", "value" => 87 ], [ "label" => "Exportación", "value" => 223 ] ]
-        ]];
+        // $mapPie->data = [[
+        //     'province' => 'Buenos Aires',
+        //     'minerals' => [[ "label" => "Provincia", "value" => 150], [ "label" => "Pais", "value" => 67 ], [ "label" => "Exportación", "value" => 33 ] ]
+        // ],
+        // [
+        //     'province' => 'Santa Fe',
+        //     'minerals' => [[ "label" => "Provincia", "value" => 100], [ "label" => "Pais", "value" => 617 ], [ "label" => "Exportación", "value" => 3 ] ]
+        // ],
+        // [
+        //     'province' => 'San Juan',
+        //     'minerals' => [[ "label" => "Provincia", "value" => 50], [ "label" => "Pais", "value" => 87 ], [ "label" => "Exportación", "value" => 223 ] ]
+        // ]];
 
-
+        $mapPie->data = $this->minerales_todas_categorias();
         //****************** */
         $job_recibo_model = new JobRecibo();
         $soldIn = clone $this->dataChart;
@@ -154,7 +158,7 @@ class ChartsController extends Controller
         $reinscriptionPersons->data = [];
         $valores_personas_transitorias = $reinscripcionesModel->cantidad_de_personas_transitorias($mi_provincia);
         $valores_personas_permanentes = $reinscripcionesModel->cantidad_de_personas_permante($mi_provincia);
-        var_dump($valores_personas_transitorias);
+        // var_dump($valores_personas_transitorias);
         array_push($reinscriptionPersons->data, [ "label" => "Profesional Técnico Permanente", "value" => $valores_personas_permanentes["profesionales_permanentes"] ]);
         array_push($reinscriptionPersons->data, [ "label" => "Operarios y Obreros Permanente", "value" => $valores_personas_permanentes["operarios_permanentes"] ]);
         array_push($reinscriptionPersons->data, [ "label" => "Administrativo Permanente", "value" =>  $valores_personas_permanentes["administrativos_permanentes"]  ]);
