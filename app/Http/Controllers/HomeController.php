@@ -20,7 +20,7 @@ class HomeController extends Controller
     // }
     public function index()
     {
-        return view('pagina-home.index');
+        return view('pagina.index');
     }
     public function thanks()
     {
