@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Contact;
+use App\Models\Contacto;
 use Mail;
 use App\Mail\ContactEmail;
 
@@ -16,7 +16,7 @@ class ContactController extends Controller
    public function contactPost(Request $request) 
    {
     $this->validate($request, [ 'name' => 'required', 'email' => 'required|email', 'message' => 'required' ]);
-    Contact::create($request->all());
+    Contacto::create($request->all());
 
     $to_email = "diegochecarelli@gmail.com";
 
@@ -35,7 +35,7 @@ class ContactController extends Controller
 //        //$message->from('gismineronacional@gmail.com');
 //        //$message->to('diegochecarelli@gmail.com', 'DiegoC')->subject('Mensaje desde los agrimensores');
 //    });
-    return back()->with('success', 'Thank you for contacting me!'); 
+    return back()->with('success', 'Muchas gracias por escribirnos. Pronto le responderemos. Saludos'); 
    }
 
    public function mensajes_sin_leer()

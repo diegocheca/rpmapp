@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Inertia::share('appName', env('APP_URL'));
     }
 
     /**
@@ -24,7 +25,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        \Carbon\Carbon::setLocale('es');
-        \Carbon\Carbon::setlocale(LC_TIME, 'es_ES.UTF-8');
     }
 }
