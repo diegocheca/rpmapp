@@ -40,7 +40,6 @@
             rounded-2xl
             p-3
             bg-white
-            dark:bg-gray-700
             border-2
           "
           :class="[
@@ -91,7 +90,6 @@
             rounded-2xl
             p-3
             bg-white
-            dark:bg-gray-700
             border-2
           "
           :class="[
@@ -147,7 +145,6 @@
           rounded-2xl
           p-3
           bg-white
-          dark:bg-gray-700
           border-2 border-indigo-400
         "
       >
@@ -183,16 +180,14 @@
             rounded-2xl
             p-3
             bg-white
-            dark:bg-gray-700
             border-2 border-indigo-400
           "
         >
-          <p class="font-bold text-md p-4 text-black dark:text-white">
+          <p class="font-bold text-md p-4 text-black">
             Mis inscripciones
             <span
               class="
                 text-sm text-gray-500
-                dark:text-gray-300 dark:text-white
                 ml-2
               "
             >
@@ -290,7 +285,7 @@
                   justify-between
                   py-3
                   border-b-2 border-gray-100
-                  dark:border-gray-800
+                   
                   cursor-pointer
                 "
               >
@@ -553,16 +548,14 @@
             rounded-2xl
             p-3
             bg-white
-            dark:bg-gray-700
             border-2 border-indigo-400
           "
         >
-          <p class="font-bold text-md p-4 text-black dark:text-white">
+          <p class="font-bold text-md p-4 text-black">
             Mis reinscripciones
             <span
               class="
                 text-sm text-gray-500
-                dark:text-gray-300 dark:text-white
                 ml-2
               "
             >
@@ -663,7 +656,7 @@
                   justify-between
                   py-3
                   border-b-2 border-gray-100
-                  dark:border-gray-800
+                   
                   cursor-pointer
                 "
               >

@@ -64,7 +64,6 @@
                 font-bold
                 leading-7
                 text-gray-700
-                dark:bg-gray-700
                 sm:text-3xl sm:truncate
                 py-1
                 border-indigo-400
@@ -130,7 +129,6 @@
                 font-bold
                 leading-7
                 text-gray-700
-                dark:bg-gray-700
                 sm:text-3xl sm:truncate
                 py-1
                 border-indigo-400

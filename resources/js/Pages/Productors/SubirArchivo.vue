@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex sm:w-2/2 md:w-2/2">
     <div class="w-full md:w-1/2 px-3">
       <label
         class="
@@ -173,60 +173,64 @@
         </div>
       </div>
     </div>
-    <div v-if="valor_input === null || valor_input === undefined">
-      <div class="flex items-center justify-center w-full h-full">
+    <div v-if="valor_input === null || valor_input === undefined" class="w-full md:w-1/2 px-3">
+      <div class="flex items-center justify-center w-full">
         <label
           class="
             flex flex-col
             rounded-lg
-            border-4 border-dashed border-gray-400
-            w-full
-            h-60
-            p-10
+            border-4 border-dashed border-gray-300
+            hover:bg-gray-100 hover:border-blue-600
+            p-2
             group
             text-center
+            w-full
           "
         >
           <div
-            class="
-              h-full
-              w-full
-              text-center
-              flex flex-col
-              items-center
-              justify-center
-            "
+            class="w-full text-center flex flex-col items-center justify-center"
           >
-            <!---<svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                        </svg>-->
-            <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-10 h-10 text-gray-300 group-hover:text-blue-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+              />
+            </svg>
+            <!-- <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
               <img
                 class="has-mask h-36 object-center"
                 src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
                 alt="freepik image"
               />
-            </div>
-            <p class="pointer-none text-gray-600">
-              <span v-if="!nameArchivo" class="text-sm text-center"
-                >Haga click aca para subir los archivo(s) desde su
-                dispositivo.</span
-              >
-              <span
-                v-else
-                class="mt-2 text-base leading-normal text-center uppercase"
-                >{{ nameArchivo }}</span
-              >
-            </p>
+            </div> -->
           </div>
           <input
+            class="text-sm cursor-pointer w-36 hidden"
             :disabled="desactivar_input"
             type="file"
             v-on:change="handleFileUpload()"
             ref="file"
-            class="cursor-pointer block w-full opacity-0 pin-r pin-t"
             @change="cambio_el_archivo"
           />
+          <p class="pointer-none text-gray-600">
+            <span v-if="!nameArchivo" class="text-sm text-center"
+              >Haga click aca para subir los archivo(s) desde su
+              dispositivo.</span
+            >
+            <span
+              v-else
+              class="mt-2 text-base leading-normal text-center uppercase"
+              >{{ nameArchivo }}</span
+            >
+          </p>
         </label>
       </div>
       <p class="text-sm text-gray-400">
@@ -241,8 +245,7 @@
         height="500px"
       >
         <p>
-          It appears you don't have a PDF plugin for this browser. No biggie...
-          you can
+          Parece que no tiene un complemento de PDF para este navegador.
           <a :href="$inertia.page.props.appName + '/storage/files_formularios/'"
             >Haga clic aquí para descargar el archivo PDF.</a
           >
@@ -276,9 +279,7 @@
                 >Haga click aca para subir los archivo(s) desde su
                 dispositivo.</span
               >
-              <span
-                v-else
-                class="text-md text-center text-white"
+              <span v-else class="text-md text-center text-white"
                 >Nuevo Archivo: {{ nameArchivo }}</span
               >
             </p>

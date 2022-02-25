@@ -1,11 +1,11 @@
 <template>
     <div>
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
         for="leal_otro"
         >{{label}}</label>
-        <div class="flex items-stretch w-full mb-4 relative">
+        <div class="flex items-stretch w-full relative">
             <div class="flex">
-                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
+                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark w-12 h-10 bg-blue-300 justify-center text-xl rounded-lg text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
@@ -14,7 +14,7 @@
             <input 
             type="text" 
             maxlength="40"
-            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
+            class="flex-shrink flex-grow flex-auto leading-normal w-px border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
             placeholder="Otro Dato del domicilio"
             id="leal_otro"
             name="leal_otro"
@@ -116,8 +116,8 @@ export default {
     ],
   data() {
     return {
-        clase_de_input_calle_otro_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-        cartel_nota_legalcalle_otro: 'Campo Correcto',
+        clase_de_input_calle_otro_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white',
+        cartel_nota_legalcalle_otro: '',
         clase_cartel_nota_legalcalleotro: 'text-green-500 text-xs italic',
         clase_text_area_calle_legal_otro: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
         cartel_nota_evaluacion_otro_calle: 'Observacion Correcta',
@@ -167,21 +167,21 @@ export default {
     cambio_input_calle_otro_legal(){
         if(this.leal_otro.length <= 4)
         {
-            this.clase_de_input_calle_otro_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_otro_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legalcalle_otro= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
             this.clase_cartel_nota_legalcalleotro= 'text-red-500 text-xs italic';
             this.calle_localidad_legal_valido_otro = false;
         }
         if(this.leal_otro.length >= 40)
         {
-            this.clase_de_input_calle_otro_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_otro_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legalcalle_otro=  'Valor Incorrecta - debe tener menos de 30 caracteres';
             this.clase_cartel_nota_legalcalleotro=  'text-red-500 text-xs italic';
             this.calle_localidad_legal_valido_otro = false;
         }
         if( this.leal_otro !== '' && this.leal_otro.length <= 30 && this.leal_otro.length >= 3)
         {
-            this.clase_de_input_calle_otro_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_otro_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legalcalle_otro =  'Valor Correcto';
             this.clase_cartel_nota_legalcalleotro =  'text-green-500 text-xs italic';
             this.calle_localidad_legal_valido_otro = true;

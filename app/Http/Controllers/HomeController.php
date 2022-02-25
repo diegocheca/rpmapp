@@ -21,6 +21,7 @@ class HomeController extends Controller
     public function index()
     {
         return view("pagina.index");
+        // return Inertia::render('Welcome');
     }
     public function thanks()
     {

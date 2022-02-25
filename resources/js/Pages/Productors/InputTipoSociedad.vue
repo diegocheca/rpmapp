@@ -1,7 +1,7 @@
 <template>
     <div>
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">{{label}}</label>
-        <div class="flex items-stretch w-full mb-4 relative">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1">{{label}}</label>
+        <div class="flex items-stretch w-full relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
                 <svg cxmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,9 +107,9 @@ export default {
     ],
   data() {
     return {
-        clase_de_input_tiposociedad: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+        clase_de_input_tiposociedad: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white',
         clase_cartel_nota_tiposociedad: 'text-green-500 text-xs italic',
-        cartel_nota_campo_tiposociedad: 'Campo Correcto',
+        cartel_nota_campo_tiposociedad: '',
         tiposociedad_correcto_local: this.$props.tiposociedad_correcto,
         tiposociedad_valido_local:this.$props.tiposociedad_valido,
         clase_text_area_tiposociedad: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
@@ -152,21 +152,21 @@ export default {
     cambio_input_tiposociedad(value){
         if(this.tiposociedad.length <= 4)
         {
-            this.clase_de_input_tiposociedad= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_tiposociedad= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_campo_tiposociedad= 'Campo Incorrecta - debe ser mayor a 3 carcteres';
             this.clase_cartel_nota_tiposociedad= 'text-red-500 text-xs italic';
             this.tiposociedad_valido_local = false;
         }
         if(this.tiposociedad.length >= 40)
         {
-            this.clase_de_input_tiposociedad =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_tiposociedad =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_campo_tiposociedad=  'Campo Incorrecta - debe tener menos de 30 caracteres';
             this.clase_cartel_nota_tiposociedad=  'text-red-500 text-xs italic';
             this.tiposociedad_valido_local = false;
         }
         if( this.tiposociedad !== '' && this.tiposociedad.length <= 30 && this.tiposociedad.length >= 3)
         {
-            this.clase_de_input_tiposociedad=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_tiposociedad=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_campo_tiposociedad =  'Campo Correcto';
             this.clase_cartel_nota_tiposociedad =  'text-green-500 text-xs italic';
             this.tiposociedad_valido_local = true;

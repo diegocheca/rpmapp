@@ -6,8 +6,6 @@
         antialiased
         text-gray-900
         bg-gray-100
-        dark:bg-dark
-        dark:text-light
       "
     >
       <div v-show="isSidebarOpen" class="fixed inset-y-0 z-10 flex w-80">

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">{{label}}</label>
-        <div class="flex items-stretch w-full mb-4 relative">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1">{{label}}</label>
+        <div class="flex items-stretch w-full relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
                 <svg cxmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -104,9 +104,9 @@ export default {
     ],
   data() {
     return {
-        clase_de_input_cuit: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
+        clase_de_input_cuit: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white',
         clase_cartel_nota_cuit: 'text-green-500 text-xs italic',
-        cartel_nota_campo_cuit: 'Campo Correcto',
+        cartel_nota_campo_cuit: '',
         cuit_correcto_local: this.$props.cuit_correcto,
         cuit_valido_local:this.$props.email_valido,
         clase_text_area_cuit: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
@@ -131,13 +131,13 @@ export default {
             this.clase_cartel_nota_evaluacion_cuit_text_area=  'text-red-500 text-xs italic';
             
         }
-        if(this.$props.obs_cuit.length >= 50)
+        if(this.$props.obs_cuit.length >= 15)
         {
             this.clase_text_area_cuit =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_evaluacion_cuit_text_area=  'Observacion Incorrecta - debe tener menos de 50 caracteres';
             this.clase_cartel_nota_evaluacion_cuit_text_area=  'text-red-500 text-xs italic';
         }
-        if( this.$props.obs_cuit !== '' && this.$props.obs_cuit.length <= 30 && this.$props.obs_cuit.length >= 3)
+        if( this.$props.obs_cuit !== '' && this.$props.obs_cuit.length <= 15 && this.$props.obs_cuit.length >= 3)
         {
             this.clase_text_area_cuit=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_evaluacion_cuit_text_area=  'Observacion Correcta';
@@ -149,21 +149,21 @@ export default {
     cambio_input_cuit(value){
         if(this.cuit.length <= 4)
         {
-            this.clase_de_input_cuit= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_cuit= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_campo_cuit= 'Campo Incorrecta - debe ser mayor a 3 carcteres';
             this.clase_cartel_nota_cuit= 'text-red-500 text-xs italic';
             this.cuit_valido_local = false;
         }
         if(this.cuit.length >= 40)
         {
-            this.clase_de_input_cuit =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_cuit =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_campo_cuit=  'Campo Incorrecta - debe tener menos de 30 caracteres';
             this.clase_cartel_nota_cuit=  'text-red-500 text-xs italic';
             this.cuit_valido_local = false;
         }
         if( this.cuit !== '' && this.cuit.length <= 30 && this.cuit.length >= 3)
         {
-            this.clase_de_input_cuit=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_cuit=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_campo_cuit =  'Campo Correcto';
             this.clase_cartel_nota_cuit =  'text-green-500 text-xs italic';
             this.cuit_valido_local = true;

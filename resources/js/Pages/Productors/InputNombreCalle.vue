@@ -1,17 +1,18 @@
 <template>
     <div>
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
         for="leal_calle"
         >{{label}}</label>
-        <div class="flex items-stretch w-full mb-4 relative">
+        <div class="flex items-stretch w-full relative">
             <div class="flex">
-                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
+                <span class="flex leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
                 </span>
             </div>
             <input 
+            class="flex-shrink flex-grow flex-auto leading-normal w-px border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
             type="text" 
             placeholder="Ingrese el nombre de la calle"
             id="leal_calle"
@@ -110,8 +111,8 @@ export default {
     ],
   data() {
     return {
-        clase_de_input_calle_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-        cartel_nota_legalcalle: 'Campo Correcto',
+        clase_de_input_calle_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border border-l-0 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white',
+        cartel_nota_legalcalle: '',
         clase_cartel_nota_legalcalle: 'text-green-500 text-xs italic',
         clase_text_area_calle_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
         cartel_nota_evaluacion_nom_calle: 'Observacion Correcta',
@@ -162,21 +163,21 @@ export default {
     cambio_input_calle_legal(value){
         if(this.leal_calle.length <= 4)
         {
-            this.clase_de_input_calle_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legalcalle= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
             this.clase_cartel_nota_legalcalle= 'text-red-500 text-xs italic';
             this.calle_legal_valido_local = false;
         }
         if(this.leal_calle.length >= 40)
         {
-            this.clase_de_input_calle_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legalcalle=  'Valor Incorrecta - debe tener menos de 30 caracteres';
             this.clase_cartel_nota_legalcalle=  'text-red-500 text-xs italic';
             this.calle_legal_valido_local = false;
         }
         if( this.leal_calle !== '' && this.leal_calle.length <= 30 && this.leal_calle.length >= 3)
         {
-            this.clase_de_input_calle_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legalcalle =  'Valor Correcto';
             this.clase_cartel_nota_legalcalle =  'text-green-500 text-xs italic';
             this.calle_legal_valido_local = true;

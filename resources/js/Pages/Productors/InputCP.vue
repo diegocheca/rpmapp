@@ -1,9 +1,9 @@
 <template>
     <div>
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
         for="leal_cp"
         >{{label}}</label>
-        <div class="flex items-stretch w-full mb-4 relative">
+        <div class="flex items-stretch w-full relative">
             <div class="flex">
                 <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -14,7 +14,7 @@
             <input 
             type="text" 
             maxlength="8"
-            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
+            class="flex-shrink flex-grow flex-auto leading-normal w-px border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
             placeholder="Cod Postal"
             id="leal_cp"
             name="leal_cp"
@@ -112,8 +112,8 @@ export default {
     ],
   data() {
     return {
-        clase_de_input_calle_cp_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-        cartel_nota_legal_cp: 'Campo Correcto',
+        clase_de_input_calle_cp_legal: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white',
+        cartel_nota_legal_cp: '',
         clase_cartel_nota_legal_cp: 'text-green-500 text-xs italic',
         clase_text_area_calle_legal_cp: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
         cartel_nota_evaluacion_cp_calle: 'Observacion Correcta',
@@ -163,21 +163,21 @@ export default {
     cambio_input_calle_cp_legal(){
         if(this.leal_cp.length <= 4)
         {
-            this.clase_de_input_calle_cp_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_cp_legal= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legal_cp= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
             this.clase_cartel_nota_legal_cp= 'text-red-500 text-xs italic';
             this.calle_localidad_legal_valido_cp = false;
         }
         if(this.leal_cp.length >= 9)
         {
-            this.clase_de_input_calle_cp_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_cp_legal =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legal_cp=  'Valor Incorrecta - debe tener menos de 30 caracteres';
             this.clase_cartel_nota_legal_cp=  'text-red-500 text-xs italic';
             this.calle_localidad_legal_valido_cp = false;
         }
         if( this.leal_cp !== '' && this.leal_cp.length <= 8 && this.leal_cp.length >= 3)
         {
-            this.clase_de_input_calle_cp_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_de_input_calle_cp_legal=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.cartel_nota_legal_cp =  'Valor Correcto';
             this.clase_cartel_nota_legal_cp =  'text-green-500 text-xs italic';
             this.calle_localidad_legal_valido_cp = true;

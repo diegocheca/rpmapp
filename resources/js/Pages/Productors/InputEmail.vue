@@ -1,10 +1,10 @@
 <template>
   <div>
     <label
-      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
       >{{ label }}</label
     >
-    <div class="flex items-stretch w-full mb-4 relative">
+    <div class="flex items-stretch w-full relative">
       <div class="flex">
         <span
           class="
@@ -221,9 +221,9 @@ export default {
   data() {
     return {
       clase_de_input_email:
-        "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
+        "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white",
       clase_cartel_nota_email: "text-green-500 text-xs italic",
-      cartel_nota_campo: "Campo Correcto",
+      cartel_nota_campo: "",
       email_correcto_local: this.$props.email_correcto,
       email_valido_local: this.$props.email_valido,
       obs_email_valido_local: this.$props.obs_email_valido,
@@ -281,7 +281,7 @@ export default {
     cambio_input_email(value) {
       if (this.email.length <= 4) {
         this.clase_de_input_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.cartel_nota_campo =
           "Campo Incorrecta - debe ser mayor a 3 carcteres";
         this.clase_cartel_nota_email = "text-red-500 text-xs italic";
@@ -289,7 +289,7 @@ export default {
       }
       if (this.email.length >= 40) {
         this.clase_de_input_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.cartel_nota_campo =
           "Campo Incorrecta - debe tener menos de 30 caracteres";
         this.clase_cartel_nota_email = "text-red-500 text-xs italic";
@@ -301,7 +301,7 @@ export default {
         this.email.length >= 3
       ) {
         this.clase_de_input_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.cartel_nota_campo = "Campo Correcto";
         this.clase_cartel_nota_email = "text-green-500 text-xs italic";
         this.email_valido_local = true;

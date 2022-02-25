@@ -163,20 +163,8 @@
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br /> -->
       <div class="flex flex-wrap">
-        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
-          <!-- <NumeroExpedienteMina 
-                        v-bind:numero_expdiente="$props.numero_expdiente"
-                        v-bind:numero_expdiente_valido="$props.numero_expdiente_valido"
-                        v-bind:numero_expdiente_correcto="$props.numero_expdiente_correcto"
-                        v-bind:obs_numero_expdiente="$props.obs_numero_expdiente"
-                        v-bind:obs_numero_expdiente_valido="$props.obs_numero_expdiente_valido"
-                        v-bind:evaluacion="true"
-                        v-on:changenumexpvalido="update_num_exp_valido($event)"
-                        v-on:changenumexpcorrecto="update_num_exp_correcto($event)"
-                        v-on:changeobsnumexp="updateobs_num_exp($event)"
-                        v-on:changeobsnumexpvalido="updateobs_num_exp_valido($event)"
-                        v-on:changevalornumexp="updatevalor_num_exp($event)"
-                    ></NumeroExpedienteMina> -->
+        <!-- N° de Expediente -->
+        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="$props.mostrar_num_exp"
             v-bind:valor_input_props="$props.numero_expdiente"
@@ -217,7 +205,6 @@
             </div>
             <br />
           </div>
-
           <div class="flex flex-col" v-if="mostrar_testing">
             <br />
             num exp de Mina valor padre: {{ form_pagina.numero_expdiente }}
@@ -232,21 +219,8 @@
             {{ form_pagina.obs_numero_expdiente_valido }}
           </div>
         </div>
+        <!-- Distrito Minero -->
         <div class="w-full sm:w-2/2 md:w-1/2 px-3">
-          <!-- <DistritoMinero
-                        v-bind:distrito_minero="$props.distrito_minero"
-                        v-bind:distrito_minero_validacion="$props.distrito_minero_validacion"
-                        v-bind:distrito_minero_correcto="$props.distrito_minero_correcto"
-                        v-bind:obs_distrito_minero="$props.obs_distrito_minero"
-                        v-bind:obs_distrito_minero_valido="$props.obs_distrito_minero_valido"
-                        v-bind:evaluacion="true"
-                        v-on:changevalido="update_distrito_minero_valido($event)"
-                        v-on:changecorrecto="update_distrito_minero_correcto($event)"
-                        v-on:changeobs="update_distrito_minero_obs($event)"
-                        v-on:changeobsvalido="update_distrito_minero_valido_obs($event)"
-                        v-on:changevalor="update_distrito_minero($event)"
-                    >
-                    </DistritoMinero> -->
           <NombreMina
             v-if="$props.mostrar_distrito"
             v-bind:valor_input_props="$props.distrito_minero"
@@ -303,7 +277,8 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
+        <!-- Nombre Mina -->
+        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="$props.mostrar_nombre_mina"
             v-bind:valor_input_props="$props.nombre_mina"
@@ -328,7 +303,6 @@
             v-on:changevalor="update_valor_nom_mina_($event)"
           >
           </NombreMina>
-
           <div v-show="ayuda_local">
             <br />
             <div
@@ -357,7 +331,8 @@
             {{ form_pagina.obs_nombre_mina_valido }}
           </div>
         </div>
-        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
+        <!-- Descripción Mina -->
+        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="$props.mostrar_descripcion_mina"
             v-bind:valor_input_props="$props.descripcion_mina"
@@ -417,7 +392,8 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
+        <!-- Categoria Mineral -->
+        <div class="w-full sm:w-2/2 md:w-1/2 px-3">
           <SelectGenerico
             v-if="mostrar_categoria"
             v-bind:valor_input_props="$props.categoria"
@@ -474,24 +450,24 @@
             {{ form_pagina.obs_categoria_valido }}
           </div>
         </div>
-        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full sm:w-2/2 md:w-1/2 px-3">
           <div
             v-if="
               form_pagina.categoria === 'primera' ||
               $props.categoria === 'primera'
             "
             class="
-              w-40
-              h-40
-              m-4
+              w-auto
+              h-auto
+              mt-5
               bg-gradient-to-r
-              from-blue-600
-              to-blue-300
-              rounded-2xl
+              from-blue-900
+              to-blue-600
+              rounded
               items-center
               justify-center
               text-center text-white
-              py-16
+              py-2
             "
           >
             Mina de Primera Categoria
@@ -502,17 +478,17 @@
               $props.categoria === 'segunda'
             "
             class="
-              w-40
-              h-40
-              m-4
+              w-auto
+              h-auto
+              mt-5
               bg-gradient-to-r
-              from-purple-600
-              to-purple-300
-              rounded-2xl
+              from-purple-900
+              to-purple-600
+              rounded
               items-center
               justify-center
               text-center text-white
-              py-16
+              py-2
             "
           >
             Mina de Segunda Categoria
@@ -523,25 +499,25 @@
               $props.categoria === 'tercera'
             "
             class="
-              w-40
-              h-40
-              m-4
+              w-auto
+              h-auto
+              mt-5
               bg-gradient-to-r
-              from-green-600
-              to-green-300
-              rounded-2xl
+              from-green-900
+              to-green-600
+              rounded
               items-center
               justify-center
               text-center text-white
-              py-16
+              py-2
             "
           >
             Cantera de Tercer Categoria
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+      <div v-if="form_pagina.categoria" class="flex flex-wrap">
+        <div class="w-full md:w-2/2 px-3 mb-2 md:mb-2">
           <SubirArchivo
             v-if="
               form_pagina.categoria !== 'tercera' &&
@@ -611,7 +587,7 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-2/2 px-3 mb-2 md:mb-2">
           <SubirArchivo
             v-if="
               form_pagina.categoria === 'tercera' && $props.mostrar_plano_mina
@@ -677,10 +653,8 @@
           </div>
         </div>
       </div>
-      <br />
-      <br />
       <div class="flex flex-wrap">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-2/2 px-3 mb-2 md:mb-2">
           <SubirArchivo
             v-if="form_pagina.categoria === 'tercera' && $props.mostrar_titulo"
             v-bind:valor_input_props="form_pagina.titulo_contrato_posecion"
@@ -709,7 +683,6 @@
             v-on:cambioarchivo="cambio_el_archivo_titulo($event)"
           >
           </SubirArchivo>
-
           <div v-show="ayuda_local">
             <br />
             <div
@@ -747,7 +720,7 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div v-if="form_pagina.categoria" class="w-full md:w-2/2 px-3 mb-2 md:mb-2">
           <ListadeMinerales
             v-if="$props.mostrar_minerales"
             v-bind:valor_input_props="$props.titulo_contrato_posecion"

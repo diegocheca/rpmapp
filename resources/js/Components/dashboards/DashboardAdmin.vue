@@ -5,8 +5,8 @@
                 Dashboard
             </h2>
         </template>
-        <main class="p-4 md:p-14 bg-gray-100 dark:bg-gray-800 md:space-x-4 space-y-4">
-            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
+        <main class="p-4 md:p-14 bg-gray-100 md:space-x-4 space-y-4">
+            <div class="shadow-lg rounded-2xl p-4 bg-white ">
                 <div class="grid grid-cols-12 gap-2">
                     <div class="col-span-12 sm:col-span-6 md:col-span-3">
                         <div class="flex flex-row bg-white shadow-sm rounded p-4">
@@ -128,7 +128,7 @@
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                 <div class=" md:w-1/4 space-y-4">
 
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
+                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white border-l-8 border-indigo-400">
                         <a :href="'#'" class="cursor-pointer">
                             <vue3-autocounter
                                 class="text-4xl count-number"
@@ -147,7 +147,7 @@
 
                         </a>
                     </div>
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
+                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white border-l-8 border-indigo-400">
                         <a :href="'#'" class="cursor-pointer">
                             <vue3-autocounter
                                 class="text-4xl count-number"
@@ -165,7 +165,7 @@
                             <div class="">productores mineros</div>
                         </a>
                     </div>
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
+                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white border-l-8 border-indigo-400">
                         <a :href="'#'" class="cursor-pointer">
                             <vue3-autocounter
                                 class="text-4xl count-number"
@@ -183,7 +183,7 @@
                             <div class="">productores mineros</div>
                         </a>
                     </div>
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
+                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white border-l-8 border-indigo-400">
                         <a :href="'#'" class="cursor-pointer">
                             <vue3-autocounter
                                 class="text-4xl count-number"
@@ -198,21 +198,21 @@
                                 :decimals="0"
                                 :autoinit="true"
                             />
-                            <div class="">productoredds mineros</div>
+                            <div class="">Otros Datos</div>
                         </a>
                     </div>
                 </div>
                 
-                <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white w-full ">
                     <ChartMap :dataChart="dataChart" />
                     
                 </div>
             </div>
 
-            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
+            <div class="shadow-lg rounded-2xl p-4 bg-white ">
                 <ChartBar v-if="!chartShow" :dataChart="dataChart" />
             </div>
-            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
+            <div class="shadow-lg rounded-2xl p-4 bg-white ">
                 <ChartPie  :dataChart="dataChart" />
             </div>
 

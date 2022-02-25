@@ -27,6 +27,20 @@
       <!-- <div class="col-span-4 mt-1">
         <span class="text-gray-800 text-2xl font-bold">{{ titulo }}</span>
       </div> -->
+      
+      <!-- Copiar Datos de Domicilio Legal -->
+      <div v-if="$props.mostrarCopiarDatos" class="col-start-1 col-end-7 ml-4">
+        <span class="text font-semibold mr-1"
+          >Mismos Datos que Domicilio Legal?</span
+        >
+        <Toggle
+          v-model="copiar_datos"
+          @change="buscar_domicilio_en_padre"
+          on-label="SI"
+          off-label="NO"
+        />
+      </div>
+      <!-- Ayuda -->
       <div class="col-start-7 col-end-9 ml-4" v-if="$props.mostrarayuda">
         <span class="text font-semibold mr-1">Necesita ayuda?</span>
         <Toggle
@@ -36,6 +50,7 @@
           off-label="NO"
         />
       </div>
+      <!-- Seguir sin Guardar -->
       <div class="col-start-9 col-end-11 ml-4">
         <span class="text font-semibold mr-1">Continuar sin Guardar</span>
         <Toggle
@@ -69,11 +84,13 @@ export default {
     "lugar",
     "updated_at",
     "evaluacion",
+    "mostrarCopiarDatos",
   ],
   data() {
     return {
       valor_ayuda_local: this.$props.ayuda,
       continuar_local: this.$props.continuar,
+      copiar_datos: false,
     };
   },
   methods: {
@@ -82,6 +99,10 @@ export default {
     },
     pagina_siguiente() {
       this.$emit("continuarpagina", this.continuar_local);
+    },
+    buscar_domicilio_en_padre() {
+      //busco los datos en el padre
+      if (this.copiar_datos) this.$emit("copiar_datos", true);
     },
   },
 };

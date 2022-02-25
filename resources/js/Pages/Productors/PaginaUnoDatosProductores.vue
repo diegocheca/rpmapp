@@ -168,14 +168,14 @@
         <div
           class="
             w-full
-            sm:w-2/2
-            md:w-1/2
-            lg:w-1/2
-            xl:w-1/2
-            2xl:w-1/2
+            sm:w-4/4
+            md:w-1/4
+            lg:w-1/4
+            xl:w-1/4
+            2xl:w-1/4
             px-3
             mb-6
-            md:mb-0
+            md:mb-2
           "
         >
           <InputNumeroProductor
@@ -206,7 +206,6 @@
           >
           </InputNumeroProductor>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -218,7 +217,7 @@
             >
               <p class="p-3">
                 Este es el número único con el que se identifican los
-                productores, si usted no lo posee, el sistema le asignara uno.
+                productores, si usted no lo posee, el sistema le genera uno.
               </p>
             </div>
             <br />
@@ -238,14 +237,14 @@
         <div
           class="
             w-full
-            sm:w-2/2
-            md:w-1/2
-            lg:w-1/2
-            xl:w-1/2
-            2xl:w-1/2
+            sm:w-4/4
+            md:w-1/4
+            lg:w-1/4
+            xl:w-1/4
+            2xl:w-1/4
             px-3
             mb-6
-            md:mb-0
+            md:mb-2
           "
         >
           <InputCuit
@@ -270,7 +269,6 @@
           >
           </InputCuit>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -293,8 +291,6 @@
             observacion deel padre{{ form_pagina.obs_cuit }}
           </div>
         </div>
-      </div>
-      <div class="flex flex-wrap">
         <div
           class="
             w-full
@@ -305,7 +301,7 @@
             2xl:w-1/2
             px-3
             mb-6
-            md:mb-0
+            md:mb-2
           "
         >
           <InputRazonSocial
@@ -336,7 +332,6 @@
             v-on:changerazonsocial="update_razon_social($event)"
           ></InputRazonSocial>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -348,8 +343,8 @@
             >
               <p class="p-3">
                 En caso de ser una persona física, debe completar este campo con
-                su nombre y apellido. En caso de ser una empresa debe completar
-                este campo con el nombre con el que se identifica ante la AFIP.
+                su nombre y apellido. Si es una empresa debe completar este
+                campo con el nombre con el que se identifica ante la AFIP.
               </p>
             </div>
             <br />
@@ -370,7 +365,20 @@
             }}
           </div>
         </div>
-        <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 px-3">
+      </div>
+      <div class="flex flex-wrap">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            md:mb-2
+          "
+        >
           <InputEmail
             v-if="$props.mostrar_email"
             v-bind:email="form_pagina.email"
@@ -394,7 +402,6 @@
           >
           </InputEmail>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -421,8 +428,6 @@
             observacion valida deel padre{{ form_pagina.obs_email_valido }}
           </div>
         </div>
-      </div>
-      <div class="flex flex-wrap">
         <div
           class="
             w-full
@@ -433,7 +438,7 @@
             2xl:w-1/2
             px-3
             mb-6
-            md:mb-0
+            md:mb-2
           "
         >
           <InputTipoSociedad
@@ -462,7 +467,6 @@
           >
           </InputTipoSociedad>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -489,12 +493,14 @@
           </div>
         </div>
       </div>
-      <br />
+      <!-- <div class="flex flex-wrap">
+      </div> -->
+      <!-- <br /> -->
       <hr />
       <br />
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap mb-2">
         <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
-        <div class="w-full sd:w-2/2 md:w-2/2 px-3 mb-6 md:mb-0">
+        <div class="w-full sm:w-2/2 md:w-2/2 px-3 mb-6 md:mb-0">
           <FileInscripcionDGR
             v-if="$props.mostrar_inscripcion_dgr"
             v-bind:fileinput_valor="form_pagina.inscripciondgr"
@@ -538,9 +544,7 @@
                 Debe ser un archivo del tipo PDF.
               </p>
             </div>
-            <br />
           </div>
-          <br />
           <div class="flex" v-if="mostrar_testing">
             -- valor inscripcion dgr:{{ form_pagina.inscripciondgr }}* --
             inscripcion dgr valida deel padre{{
@@ -555,7 +559,6 @@
           </div>
         </div>
       </div>
-      <br />
       <hr />
       <br />
       <div class="flex">
@@ -593,23 +596,23 @@
             v-on:cambioarchivo="update_archivo_constancia($event)"
           >
           </FileInscripcionDGR>
-          <div
-            v-show="mostrar_ayuda"
-            class="
-              bg-blue-50
-              text-gray-800
-              bg-opacity-20
-              text-opacity-80
-              ring ring-4 ring-blue-100
-            "
-          >
-            <p class="p-3">
-              Esta constancia debe ser descargada desde la página de la AFIP.
-              Debe ser un archivo PDF.
-            </p>
+          <div v-show="mostrar_ayuda">
             <br />
+            <div
+              class="
+                bg-blue-50
+                text-gray-800
+                bg-opacity-20
+                text-opacity-80
+                ring ring-4 ring-blue-100
+              "
+            >
+              <p class="p-3">
+                Esta constancia debe ser descargada desde la página de la AFIP.
+                Debe ser un archivo PDF.
+              </p>
+            </div>
           </div>
-          <br />
           <div class="flex" v-if="mostrar_testing">
             -- valor constancia sociedad:{{ form_pagina.constanciasociedad }}*
             -- constancia de sociedad valida deel padre{{
@@ -624,13 +627,13 @@
           </div>
         </div>
       </div>
-      <br /><br />
+      <br />
       <div>
         <BotonesPaginaUna
           v-if="$props.mostrar_boton_guardar_uno"
           :link_volver="'#'"
           :titulo_boton_volver="'Volver'"
-          :titulo_boton_guardar="'Guardar Datos del Productor'"
+          :titulo_boton_guardar="'Guardar'"
           :razon_social="form_pagina.razon_social"
           :razon_social_valido="form_pagina.razon_social_valido"
           :razon_social_correcto="form_pagina.razon_social_correcto"

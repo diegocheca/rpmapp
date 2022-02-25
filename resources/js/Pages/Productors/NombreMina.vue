@@ -1,18 +1,18 @@
 <template>
     <div>
-        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
         for=""
         >{{label}}</label>
-        <div class="flex items-stretch w-full mb-4 relative">
+        <div class="flex items-stretch w-full relative">
             <div class="flex">
-                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
+                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark w-12 h-10 bg-blue-300 justify-center text-xl rounded-lg text-white">
                 <img :src="icon">
                 </span>
             </div>
             <input 
             :type="tipoInput?'number':'text'" 
             maxlength="30"
-            class="flex-shrink flex-grow flex-auto leading-normal w-px flex-1 border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
+            class="flex-shrink flex-grow flex-auto leading-normal w-px border border-l-0 h-10 border-grey-light rounded-lg rounded-l-none px-3 relative focus:border-blue focus:shadow" 
             placeholder="Complete este campo"
             id="input_componente"
             name="input_componente"
@@ -113,8 +113,8 @@ export default {
     ],
   data() {
     return {
-        clase_border_de_input: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
-        texto_validacion_input: 'Campo Correcto',
+        clase_border_de_input: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white',
+        texto_validacion_input: '',
         clase_cartel_validacion_input: 'text-green-500 text-xs italic',
         clase_text_area: 'appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white',
         texto_validacion_text_area: 'Observacion Correcta',
@@ -169,21 +169,21 @@ export default {
     cambio_input(){
         if(this.valor_input.length <= 4)
         {
-            this.clase_border_de_input= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_border_de_input= 'appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.texto_validacion_input= 'Valor Incorrecta - debe ser mayor a 3 carcteres';
             this.clase_cartel_validacion_input= 'text-red-500 text-xs italic';
             this.validacion_input_local = false;
         }
         if(this.valor_input.length >= 40)
         {
-            this.clase_border_de_input =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_border_de_input =  'appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.texto_validacion_input=  'Valor Incorrecta - debe tener menos de 30 caracteres';
             this.clase_cartel_validacion_input=  'text-red-500 text-xs italic';
             this.validacion_input_local = false;
         }
         if( this.valor_input !== '' && this.valor_input.length <= 30 && this.valor_input.length >= 3)
         {
-            this.clase_border_de_input=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white';
+            this.clase_border_de_input=  'appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white';
             this.texto_validacion_input =  'Valor Correcto';
             this.clase_cartel_validacion_input =  'text-green-500 text-xs italic';
             this.validacion_input_local = true;
