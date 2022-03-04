@@ -918,6 +918,23 @@ class FormAltaProductorController extends Controller
 		$productor_a_devolver->paso_6_aprobado = null;
 		$productor_a_devolver->paso_6_reprobado = null;
 		$productor_a_devolver->updated_paso_seis = null;
+
+		$productor_a_devolver->sustancias_de_aprovechamiento_comun_aclaracion = null;
+		$productor_a_devolver->provincia = null;
+		$productor_a_devolver->constancia_paga_canon_monto = null;
+		$productor_a_devolver->constancia_paga_canon_monto_correcto = null;
+		$productor_a_devolver->obs_constancia_paga_canon_monto = null;
+		$productor_a_devolver->constancia_paga_canon_inicio = null;
+		$productor_a_devolver->constancia_paga_canon_inicio_correct = null;
+		$productor_a_devolver->obs_constancia_paga_canon_inicio = null;
+		$productor_a_devolver->constancia_paga_canon_fin = null;
+		$productor_a_devolver->constancia_paga_canon_fin_correcto = null;
+		$productor_a_devolver->obs_constancia_paga_canon_fin = null;
+		$productor_a_devolver->cargo_empresa = null;
+		$productor_a_devolver->presentador_nom_apellido = null;
+		$productor_a_devolver->presentador_dni = null;
+		$productor_a_devolver->observacion = null;
+
 		return $productor_a_devolver;
 
 		//var_dump($productor_a_devolver);die();
@@ -9912,6 +9929,7 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->cuit = $request->cuit;
 				$formulario_provisorio->numeroproductor = $request->numeroproductor;
 				$formulario_provisorio->tiposociedad = $request->tiposociedad;
+				
 				if (($request->constaciasociedad != 'null') && ($request->constaciasociedad != null || $request->constaciasociedad != '')) {
 					$contents = file_get_contents($request->constaciasociedad->path());
 					$formulario_provisorio->constaciasociedad =  Storage::put('public/files_formularios' . '/' . $request->id, $request->constaciasociedad);
@@ -12029,7 +12047,7 @@ class FormAltaProductorController extends Controller
 			//dd($formulario_provisorio->estado, $request->estado);
 			if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad') || Auth::user()->hasRole('Productor')) { // soy autoridad minera
 				if ($formulario_provisorio->estado == 'borrador') {
-					//dd("entre aca en borrador");
+					$formulario_provisorio->observacion = $request->observacion;
 					$formulario_provisorio->cargo_empresa = $request->cargo_empresa;
 					$formulario_provisorio->presentador_nom_apellido = $request->nombre_presentador;
 					$formulario_provisorio->presentador_dni = $request->dni_presentador;

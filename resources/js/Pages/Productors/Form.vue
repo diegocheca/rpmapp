@@ -1012,6 +1012,37 @@
                 border-indigo-400
               "
             >
+
+            <div class="flex flex-wrap">
+              <div
+                class="
+                  w-full
+                  sm:w-1/1
+                  md:w-1/1
+                  lg:w-1/1
+                  xl:w-1/1
+                  2xl:w-1/1
+                  px-3
+                  mb-6
+                  md:mb-0
+                "
+              >
+                <InputComponente
+                  :titulo="'Observacion'"
+                  :tipo="'text'"
+                  :placeholder="'Agregue alguna obervación'"
+                  :value="form.observacion"
+                  v-on:ValueInput="update_input_observacion($event)"
+                ></InputComponente>
+              </div>
+              
+              
+            </div>
+
+
+
+
+
               <div class="flex flex-wrap">
                 <div
                   class="
@@ -1765,6 +1796,7 @@ export default {
         presentador_nombre: this.$props.productor.presentador_nombre,
         presentador_dni: this.$props.productor.presentador_dni,
         cargo_empresa: this.$props.productor.cargo_empresa,
+        observacion: this.$props.productor.observacion,
       },
       form_particular: {
         id: this.$props.productor.id,
@@ -2168,6 +2200,7 @@ export default {
             nombre_presentador: this.form.presentador_nombre,
             dni_presentador: this.form.presentador_dni,
             cargo_empresa: this.form.cargo_empresa,
+            observacion: this.form.observacion,
           })
           .then(function (response) {
             // console.log(response.data);
@@ -2369,6 +2402,9 @@ export default {
     },
     update_cuit_evaluacion(valorEvaluacion) {
       this.form.cuit_correcto = valorEvaluacion;
+    },
+    update_input_observacion(value) {
+      this.form.observacion = value;
     },
     update_input_nombre(value) {
       // console.log("Resultado del Input Nombre");
