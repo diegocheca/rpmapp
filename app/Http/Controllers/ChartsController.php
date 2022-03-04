@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Models\EmailsAConfirmar;
 use App\Models\JobRecibo;
 use App\Models\Minerales;
+use App\Models\Provincias;
 use App\Models\Reinscripciones;
 use Illuminate\Support\Facades\DB;
 
@@ -30,6 +31,8 @@ class ChartsController extends Controller
         {
             //soy autoridad nacional
             echo "algo";
+            //buscar en la tabla sincronizada cual es el valor
+
         }
         else
         {
@@ -49,22 +52,60 @@ class ChartsController extends Controller
                 $acumulador_provincia += $key->porcentaje_venta_provincia;
                 $acumulador_otras_provincias += $key->porcentaje_venta_otras_provincias;
             }
-            $datos["exportacion"] = $temporal->count() > 0 ? $acumulador_exportacion / $temporal->count() : 0;  
-            $datos["otras_prov"] = $temporal->count() > 0 ? $acumulador_otras_provincias / $temporal->count() : 0;  
-            $datos["prov"] = $temporal->count() > 0 ? $acumulador_provincia / $temporal->count() : 0;  
+            $datos["exportacion"] = $temporal->count() > 0 ? $acumulador_exportacion / $temporal->count() : 0;
+            $datos["otras_prov"] = $temporal->count() > 0 ? $acumulador_otras_provincias / $temporal->count() : 0;
+            $datos["prov"] = $temporal->count() > 0 ? $acumulador_provincia / $temporal->count() : 0;
             return $datos;
 
         }
-        
+
     }
 
     public function minerales_todas_categorias(){
         $job_recibo_model = new JobRecibo();
-        dd($job_recibo_model->cantidadMineralesPorPais()) ;
+        return $job_recibo_model->cantidadMineralesPorPais();
     }
 
     public function reportes()
     {
+
+        // dd($this->minerales_todas_categorias());
+
+
+        $mi_provincia = Auth::user()->id_provincia;
+        if(Auth::user()->id = 1)
+            $mi_provincia = 99;
+
+        $reinscripcionesModel = new Reinscripciones();
+
+        $provincesList = Provincias::select('id as value', 'nombre as label')
+        ->orderBy('label')
+        ->get();
+
+        $mapPie = clone $this->dataChart;
+        $mapPie->title = 'Minerales por categoría más importantes';
+        $mapPie->axis->x = 'label';
+        $mapPie->axis->y = 'value';
+        $mapPie->data = [];
+        // array_push($mapPie->data, [ "label" => "Provincia", "value" => 150 ]);
+        // array_push($mapPie->data, [ "label" => "Pais", "value" => 67 ]);
+        // array_push($mapPie->data, [ "label" => "Exportación", "value" => 33 ]);
+
+        // $mapPie->data = [[
+        //     'province' => 'Buenos Aires',
+        //     'minerals' => [[ "label" => "Provincia", "value" => 150], [ "label" => "Pais", "value" => 67 ], [ "label" => "Exportación", "value" => 33 ] ]
+        // ],
+        // [
+        //     'province' => 'Santa Fe',
+        //     'minerals' => [[ "label" => "Provincia", "value" => 100], [ "label" => "Pais", "value" => 617 ], [ "label" => "Exportación", "value" => 3 ] ]
+        // ],
+        // [
+        //     'province' => 'San Juan',
+        //     'minerals' => [[ "label" => "Provincia", "value" => 50], [ "label" => "Pais", "value" => 87 ], [ "label" => "Exportación", "value" => 223 ] ]
+        // ]];
+
+        $mapPie->data = $this->minerales_todas_categorias();
+        //****************** */
         $job_recibo_model = new JobRecibo();
         $soldIn = clone $this->dataChart;
 
@@ -112,6 +153,7 @@ class ChartsController extends Controller
 
         $reinscriptionPersons = clone $this->dataChart;
 
+        /* DONUT CHART - CANTIDAD DE PERSONAS */
         $reinscriptionPersons->title = 'Persona declaradas en reinscripción';
         $reinscriptionPersons->axis->x = 'tipo';
         $reinscriptionPersons->axis->y = 'cantidad';
