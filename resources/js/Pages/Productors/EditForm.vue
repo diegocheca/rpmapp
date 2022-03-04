@@ -1275,6 +1275,39 @@
               border-indigo-400
             "
           >
+          <div class="flex flex-wrap">
+              <div
+                class="
+                  w-full
+                  sm:w-1/1
+                  md:w-1/1
+                  lg:w-1/1
+                  xl:w-1/1
+                  2xl:w-1/1
+                  px-3
+                  mb-6
+                  md:mb-0
+                "
+              >
+                <InputComponente
+                  :titulo="'Observacion'"
+                  :tipo="'text'"
+                  :placeholder="'Agregue alguna obervación'"
+                  :value="form.observacion"
+                  v-on:ValueInput="update_input_observacion($event)"
+                ></InputComponente>
+              </div>
+              
+              
+            </div>
+
+
+
+
+
+
+
+
             <div class="flex flex-wrap">
               <div
                 class="
@@ -1340,6 +1373,7 @@
                 ></InputComponente>
               </div>
             </div>
+
 
             <div class="flex" v-if="evaluacion_global">
               <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -2520,6 +2554,7 @@ export default {
         presentador_nombre: this.$props.productor.presentador_nom_apellido,
         presentador_dni: this.$props.productor.presentador_dni,
         cargo_empresa: this.$props.productor.cargo_empresa,
+        observacion: this.$props.productor.observacion,
       },
       form_mendoza: {},
       /* form_catamarca: {
@@ -2757,6 +2792,9 @@ export default {
     closeModalAprobar() {
       this.AvisoAprueba = false;
     },
+    update_input_observacion(value) {
+      this.form.observacion = value;
+    },
     update_input_nombre(value) {
       // console.log("Resultado del Input Nombre");
       this.form.presentador_nombre = value;
@@ -2840,6 +2878,7 @@ export default {
       const data = new FormData();
       //alert(self.form.estado);
       data.append("id", this.$props.productor.id);
+      data.append("observacion", self.form.observacion);
       data.append("cargo_empresa", self.form.cargo_empresa);
       data.append("nombre_presentador", self.form.presentador_nombre);
       data.append("dni_presentador", self.form.presentador_dni);
