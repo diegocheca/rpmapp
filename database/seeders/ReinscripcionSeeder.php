@@ -112,8 +112,11 @@ class ReinscripcionSeeder extends Seeder
                 $nuevo_reinscripcion->cantidad_productos_comentario = null;
             }
 
-            $valor_provincia = $faker->numberBetween($min = 0, $max = 100);
+
+            
+            
             $nuevo_reinscripcion->porcentaje_venta_provincia =  $faker->numberBetween($min = 0, $max = 100);
+            $limite_uno = 100-$nuevo_reinscripcion->porcentaje_venta_provincia;
             if($comentarios)
             {
                 $nuevo_reinscripcion->porcentaje_venta_provincia_evaluacion = $faker->text($maxNbChars = 50);
@@ -124,7 +127,7 @@ class ReinscripcionSeeder extends Seeder
                 $nuevo_reinscripcion->porcentaje_venta_provincia_evaluacion = null;
                 $nuevo_reinscripcion->porcentaje_venta_provincia_comentario = null;
             }
-            $nuevo_reinscripcion->porcentaje_venta_otras_provincias =  $faker->numberBetween($min = 0, $max = 100-$nuevo_reinscripcion->porcentaje_venta_provincia);
+            $nuevo_reinscripcion->porcentaje_venta_otras_provincias =  $faker->numberBetween($min = 0, $max = $limite_uno);
             if($comentarios)
             {
                 $nuevo_reinscripcion->porcentaje_venta_otras_provincias_evaluacion = $faker->text($maxNbChars = 50);
@@ -135,7 +138,7 @@ class ReinscripcionSeeder extends Seeder
                 $nuevo_reinscripcion->porcentaje_venta_otras_provincias_evaluacion = null;
                 $nuevo_reinscripcion->porcentaje_venta_otras_provincias_comentario = null;
             }
-            $nuevo_reinscripcion->porcentaje_exportado =  $faker->numberBetween($min = 0, $max = 100-$nuevo_reinscripcion->porcentaje_venta_provincia - $nuevo_reinscripcion->porcentaje_venta_otras_provincias);
+            $nuevo_reinscripcion->porcentaje_exportado =  100 - ( $nuevo_reinscripcion->porcentaje_venta_provincia + $nuevo_reinscripcion->porcentaje_venta_otras_provincias );
             if($comentarios)
             {
                 $nuevo_reinscripcion->porcentaje_exportado_evaluacion = $faker->text($maxNbChars = 50);

@@ -26,7 +26,7 @@
             <div class="row">
               <banner></banner>
             </div>
-            <br />
+            <!-- <br /> -->
             <div id="section_productor"></div>
             <PaginaUnoDatosProductores
               v-if="$props.mostrar.paso_uno"
@@ -452,8 +452,8 @@
               v-if="m_paso4"
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
-              :titulo_boton_guardar="'Guardar Datos de Mina Primer Parte'"
-              :titulo_pagina="'Datos de Mina Primera Parte'"
+              :titulo_boton_guardar="'Guardar Datos'"
+              :titulo_pagina="'Datos del Yacimiento Parte 1'"
               :numero_expdiente="form.numero_expdiente"
               :numero_expdiente_valido="form.numero_expdiente_valido"
               :numero_expdiente_correcto="form.numero_expdiente_correcto"
@@ -612,8 +612,8 @@
               v-if="m_paso5"
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
-              :titulo_boton_guardar="'Guardar Datos de Mina Segunda Parte'"
-              :titulo_pagina="'Datos de Mina Segunda Parte'"
+              :titulo_boton_guardar="'Guardar Datos'"
+              :titulo_pagina="'Datos del Yacimiento Parte 2'"
               :owner="form.owner"
               :owner_correcto="form.owner_correcto"
               :obs_owner="form.obs_owner"
@@ -971,7 +971,7 @@
               :link_volver="'#'"
               :titulo_boton_volver="'Volver'"
               :titulo_boton_guardar="'Guardar Datos'"
-              :titulo_pagina="'Catamarca'"
+              :titulo_pagina="'Datos Extras de la Provincia'"
               :evaluacion="evaluacion_global"
               :testing="testing_global"
               :id="form.id"
@@ -1225,7 +1225,7 @@
                       rounded-xl
                       bg-gray-100
                       shadow-xl
-                      hover:text-white hover:shadow-xl hover:bg-gray-600
+                      hover:text-white hover:shadow-xl hover:bg-green-600
                     "
                   >
                     {{ nombre_boton_actualizar }}
@@ -1256,7 +1256,7 @@
                       rounded-xl
                       bg-gray-100
                       shadow-xl
-                      hover:text-white hover:shadow-xl hover:bg-gray-600
+                      hover:text-white hover:shadow-xl hover:bg-red-600
                     "
                   >
                     Volver Atras
@@ -2161,7 +2161,8 @@ export default {
         axios
           .post("/formularios/presentar_borrador", {
             id: self.form.id,
-            estado: self.form.estado,
+            // estado: self.form.estado,
+            estado: 'en revision',
             es_evaluacion: self.evaluacion_global,
             //agrego los campos dni , cargo y nombre
             nombre_presentador: this.form.presentador_nombre,
@@ -2491,16 +2492,16 @@ export default {
       this.form.administracion_otro = this.form.leal_otro;
       // console.log("ya copie todo");
 
-      console.log(
-        this.form.administracion_calle,
-        this.form.administracion_numero,
-        this.form.administracion_telefono,
-        this.form.administracion_provincia,
-        this.form.administracion_departamento,
-        this.form.administracion_localidad,
-        this.form.administracion_cp,
-        this.form.administracion_otro
-      );
+      // console.log(
+      //   this.form.administracion_calle,
+      //   this.form.administracion_numero,
+      //   this.form.administracion_telefono,
+      //   this.form.administracion_provincia,
+      //   this.form.administracion_departamento,
+      //   this.form.administracion_localidad,
+      //   this.form.administracion_cp,
+      //   this.form.administracion_otro
+      // );
     },
     UpdateCalleNombre($value) {
       if ($value.lugar === "legal") this.form.leal_calle = $value.nombre;

@@ -579,7 +579,7 @@
           <PaginaDosDatosDomLegal
             v-if="$props.mostrar.paso_tres"
             :link_volver="route('formulario-alta.index')"
-            :titulo_boton_volver="'volver'"
+            :titulo_boton_volver="'Volver'"
             :titulo_boton_guardar="'Guardar Datos del Domicilio Administrativo'"
             :titulo_pagina="'Domicilio Administrativo'"
             :leal_calle="form.administracion_calle"
@@ -1491,9 +1491,7 @@
                   <option value="en revision">En revision</option>
                   <option value="aprobado">Aprobado</option>
                   <option value="reprobado">Reprobado</option>
-                  <option value="con observacion">
-                    Con Observación
-                  </option>
+                  <option value="con observacion">Con Observación</option>
                 </select>
               </div>
             </div>
@@ -1532,26 +1530,12 @@
                 >
                 <span
                   v-if="$props.productor.estado === 'borrador'"
-                  class="
-                    bg-pink-200
-                    text-pink-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-pink-200 text-pink-600 py-1 px-3 rounded text-xs"
                   >Borrador</span
                 >
                 <span
                   v-if="$props.productor.estado === 'aprobado'"
-                  class="
-                    bg-green-200
-                    text-green-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-green-200 text-green-600 py-1 px-3 rounded text-xs"
                   >Aprobado</span
                 >
                 <span
@@ -1568,14 +1552,7 @@
                 >
                 <span
                   v-if="$props.productor.estado === 'con observacion'"
-                  class="
-                    bg-gray-200
-                    text-gary-600
-                    py-1
-                    px-3
-                    rounded
-                    text-xs
-                  "
+                  class="bg-gray-200 text-gary-600 py-1 px-3 rounded text-xs"
                   >Con Obesrvacion</span
                 >
                 <span
@@ -1778,7 +1755,7 @@
                       md:inline-block
                     "
                   >
-                    Actuaqqqqlizar
+                    Actualizar
                   </button>
                 </div>
 
@@ -1848,7 +1825,7 @@
                       md:inline-block
                     "
                   >
-                    Actualizar123
+                    Actualizar
                   </button>
                 </div>
 
@@ -1911,6 +1888,7 @@
 <script>
 import ButtonFixed from "@/Components/ButtonFixed";
 import JetButton from "@/Jetstream/Button";
+import Swal from "sweetalert2";
 
 import AppLayout from "@/Layouts/AppLayout";
 import Banner from "@/Jetstream/Banner";
@@ -2757,7 +2735,7 @@ export default {
     },
     submit() {
       let self = this;
-      // console.log("el id es:", this.form.id);
+      console.log("el id es:", this.form.id);
       if (
         typeof this.form.id !== "undefined" &&
         self.form.id != null &&
@@ -2780,40 +2758,54 @@ export default {
       this.AvisoAprueba = false;
     },
     update_input_nombre(value) {
-      console.log("Resultado del Input Nombre");
+      // console.log("Resultado del Input Nombre");
       this.form.presentador_nombre = value;
     },
     update_input_dni(value) {
-      console.log("Resultado del Input DNI");
+      // console.log("Resultado del Input DNI");
       this.form.presentador_dni = value;
     },
     update_input_cargo_empresa(value) {
-      console.log("Resultado del Input Cargo de Empresa");
+      // console.log("Resultado del Input Cargo de Empresa");
       this.form.cargo_empresa = value;
     },
     mostrar_modal_presentar() {
       //soy productor y estoy por presentar el formulario
       let form_evaluacion_valida = "";
-      this.AvisoAprueba = true;
+      // this.AvisoAprueba = true;
       this.modal_tittle_apro =
         "Advertencia: esta por presentar esta solicitud de Productor.";
-      //form_evaluacion_valida = this.evaluacion_de_evaluaciones();
-      form_evaluacion_valida = true; //sacar esta linea para control de datos
-      if (form_evaluacion_valida === "") {
-        //el formulario esta bien hecho y no tiene observaciones
-        this.modal_body_apro =
-          " \n \n Este formulario no posee ninguna observación por tanto, puede ser aprobado sin problemas";
-        this.mostrar_boton_aprobar = true;
-        this.mostrar_boton_aprobar_de_todos_modos = true;
-      } else {
-        //el formulario esta bien hecho y no tiene observaciones
-        this.modal_body_apro =
-          " \n \n Este formulario posee observaciones por tatnto, debe revisarlo antes de aprobarlo" +
-          form_evaluacion_valida;
-        this.mostrar_boton_aprobar = false;
-        this.mostrar_boton_aprobar_de_todos_modos = true;
-      }
+      // form_evaluacion_valida = this.evaluacion_de_evaluaciones();
+      // form_evaluacion_valida = true; //sacar esta linea para control de datos
+      // if (form_evaluacion_valida === "") {
+      //   //el formulario esta bien hecho y no tiene observaciones
+      //   this.modal_body_apro =
+      //     " \n \n Este formulario no posee ninguna observación por tanto, puede ser aprobado sin problemas";
+      //   this.mostrar_boton_aprobar = true;
+      //   this.mostrar_boton_aprobar_de_todos_modos = true;
+      // } else {
+      //   //el formulario esta bien hecho y no tiene observaciones
+      //   this.modal_body_apro =
+      //     " \n \n Este formulario posee observaciones por tanto, debe revisarlo antes de aprobarlo" +
+      //     form_evaluacion_valida;
+      //   this.mostrar_boton_aprobar = false;
+      //   this.mostrar_boton_aprobar_de_todos_modos = true;
+      // }
       //<!-- @click="guardar_avances_todo" -->
+
+      Swal.fire({
+        title: "Actualizar Registros",
+        text: "Advertencia: esta por actualizar esta solicitud de Productor.",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Actualizar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.presentar_de_todos_modos();
+        }
+      });
     },
     calcular_nombre_boton(valor) {
       switch (valor) {
@@ -2835,69 +2827,94 @@ export default {
       }
     },
     presentar_de_todos_modos() {
+      Swal.fire({
+        title: "¡Por favor Espere!",
+        html: "Actualizando",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      });
       let self = this;
       const data = new FormData();
+      //alert(self.form.estado);
       data.append("id", this.$props.productor.id);
       data.append("cargo_empresa", self.form.cargo_empresa);
       data.append("nombre_presentador", self.form.presentador_nombre);
       data.append("dni_presentador", self.form.presentador_dni);
+      data.append("estado", self.form.estado);
 
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
       axios
-        .post(
-          this.$inertia.page.props.appName + "/formularios/presentar_borrador",
-          data
-        )
+        .post("/formularios/presentar_borrador", data)
         .then(function (response) {
-          console.log(response.data);
+          // console.log(response.data);
+          Swal.hideLoading(Swal.clickConfirm());
           if (response.data.msg === "Datos actualizados correctamente.") {
             if (self.form.estado === "aprobado") {
               // lo aprobe en el back, siendo autoridad
-              console.log("todo bien");
+              // console.log("todo bien");
               self.modal_tittle = "Se aprobó la solicitud";
               self.modal_body =
                 "Se ha guardado el estado de la solicitud como aprobado. Esta acción implica que la persona que presentó este formulario será considerado como productor.";
               self.closeModalAprobar = false;
               self.mostrar_modal_datos_ya_guardados = true;
             }
-            if (response.data.msg === "Formulario Actualizado Correctamente.") {
-              // lo presente como productor
-              console.log("todo bien");
-              self.modal_tittle = "Se actualizo estado";
-              self.modal_body =
-                "Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera";
-              self.closeModalAprobar = false;
-              self.mostrar_modal_datos_ya_guardados = true;
-            }
-            if (self.form.estado === "con observacion") {
+            // if (response.data.msg === "Formulario Actualizado Correctamente.") {
+            //   // lo presente como productor
+            //   console.log("todo bien");
+            //   self.modal_tittle = "Se actualizo estado";
+            //   self.modal_body =
+            //     "Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera";
+            //   self.closeModalAprobar = false;
+            //   self.mostrar_modal_datos_ya_guardados = true;
+            // }
+            else if (self.form.estado === "con observacion") {
               // lo aprobe en el back, siendo autoridad
-              console.log("todo bien");
+              // console.log("todo bien");
               self.modal_tittle = "Se cambio el estado del Formulario";
               self.modal_body =
                 "Se ha guardado el estado del como Formulario con Observaciones. Esta acción implica que la persona que presentó este formulario será notificado y deberá relaizar los cambios necesarios.";
               self.closeModalAprobar = false;
               self.mostrar_modal_datos_ya_guardados = true;
             }
-          }
-          if (response.data.msg === "Formulario Actualizado Correctamente.") {
+          } else if (
+            response.data.msg === "Formulario Actualizado Correctamente."
+          ) {
             // lo presente como productor
-            console.log("todo bien");
+            // console.log("todo bien");
             self.modal_tittle = "Se actualizo estado";
             self.modal_body =
-              "Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espera un respuesta de la autoriudad minera";
-            self.closeModalAprobar = false;
-            self.mostrar_modal_datos_ya_guardados = true;
-          }
-
-          if (response.data.msg === "formulario no encontrado") {
-            console.log("todo mal, no se encontro");
+              "Se ha guardado el estado del borrador como una solicitud de presentación. Ahora espere una respuesta de la autoridad minera";
+            // self.closeModalAprobar = false;
+            // self.mostrar_modal_datos_ya_guardados = true;
+            Swal.fire({
+              icon: "success",
+              title: "Se actualizó correctamente la información.",
+              // text: self.modal_body,
+            }).then((result) => {
+              // window.location.replace("/formulario-alta");
+              self.$inertia.get(route("formulario-alta.index"));
+            });
+          } else if (response.data.msg === "formulario no encontrado") {
+            // console.log("todo mal, no se encontro");
             self.modal_tittle = "Paso 1 Guardado Fallido";
             self.modal_body =
               "NO Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias";
             self.mostrar_modal_datos_ya_guardados = true;
           } else {
-            console.log("NO todo bien");
+            console.log("error");
+            Swal.fire({
+              icon: "error",
+              title: "Error...",
+              text: "Por favor comuniquese con el administrador.",
+            });
           }
+        })
+        .catch(function (error) {
+          Swal.hideLoading();
+          console.log(error);
         });
       //voy a buscar los dptos
       if (!isNaN(parseInt(this.$props.productor.leal_provincia))) {
@@ -2934,9 +2951,9 @@ export default {
               id_prov: parseInt(this.$props.productor.administracion_provincia),
             })
             .then(function (response) {
-              console.log("los deptos desde la raiz son:\n");
+              // console.log("los deptos desde la raiz son:\n");
               self.lista_dptos_admin = response.data;
-              console.log(self.lista_dptos_admin);
+              // console.log(self.lista_dptos_admin);
             })
             .catch(function (error) {
               console.log(error);

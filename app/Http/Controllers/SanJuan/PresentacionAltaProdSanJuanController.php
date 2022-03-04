@@ -37,6 +37,15 @@ class PresentacionAltaProdSanJuanController extends Controller
             ->first();
             $puedo_imprimir = true;
         }
+		if ( Auth::user()->hasRole('Autoridad') ||  Auth::user()->hasRole('Productor') ) //soy la Rioja
+        {
+			$borrador = FormAltaProductor::select('*')
+            ->where('id', '=',$id)
+            ->where('provincia', '=', Auth::user()->id_provincia)
+            ->first();
+            $puedo_imprimir = true;
+        }
+		// dd($borrador);
 		if ($borrador != null && $puedo_imprimir) {
 			$data = [
 				'title' => 'SOLICITUD DE INSCRIPCIÓN EN EL REGISTRO DE PRODUCTORES COMERCIANTES E INDUSTRIALES MINEROS . LEY 6531/94',

@@ -1,17 +1,5 @@
 <template>
-  <div
-    class="
-      border-2
-      shadow-lg
-      rounded-2xl
-      w-full
-      py-4
-      px-8
-      bg-white
-      my-20
-      border-indigo-400
-    "
-  >
+  <div>
     <!-- <div class="flex justify-center md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_catamarca">
         <img
@@ -125,20 +113,39 @@
         </label>
       </div>
     </div> -->
-    <div>
-      <div class="items-center justify-left sticky top-0 z-10">
-        <Card
-          :icono="'/formulario_alta/imagenes/catamarca.png'"
-          :titulo="titulo_pagina"
+    <div class="items-center justify-left">
+      <Card
+        :icono="'/formulario_alta/imagenes/catamarca.png'"
+        :titulo="titulo_pagina"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :show="mostrar_modulo"
+        v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
+      ></Card>
+    </div>
+    <!-- <br /><br /> -->
+    <div
+      v-if="mostrar_modulo"
+      class="
+        border-2
+        shadow-lg
+        rounded-2xl
+        w-full
+        py-4
+        px-8
+        bg-white
+        border-indigo-400
+      "
+    >
+      <div class="items-center justify-left sticky top-1 z-10">
+        <Menu
           :mostrarayuda="true"
-          :clase_sup="'gap-6'"
-          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_local"
+          :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
-        ></Card>
+        ></Menu>
       </div>
-      <br /><br />
       <!-- <div class="flex items-center justify-center"></div>
       <br />
       <br /> -->
@@ -576,9 +583,6 @@
             concesion resolucion minera de Mina observacion valida deel padre:
             {{}}
           </div>
-          <br />
-          <hr />
-          <br />
         </div>
       </div>
       <br />
@@ -733,30 +737,32 @@
       >
       </BotonesPaginaCatamarca>
       <!-- </div> -->
-    </div>
 
-    <!-- <div class="flex justify-end mt-4">
+      <!-- <div class="flex justify-end mt-4">
       <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
-    </div> -->
-    <BotonesPaginaCatamarca
-      v-if="$props.mostrar_boton_catamarca"
-      :link_volver="'#'"
-      :titulo_boton_volver="'volver'"
-      :titulo_boton_guardar="'Guardar Datos de la Mina'"
-      :formulario="form_catamarca_test"
-      :donde_guardar="$props.donde_estoy"
-      :evaluacion="autoridad_minera"
-      :testing="mostrar_testing"
-      :id="$props.id"
-      v-on:mostrarpasosiguiente="mostrarpasos($event)"
-    >
-    </BotonesPaginaCatamarca>
+    </div>  -->
+      <BotonesPaginaCatamarca
+        v-if="$props.mostrar_boton_catamarca"
+        :link_volver="'#'"
+        :titulo_boton_volver="'volver'"
+        :titulo_boton_guardar="'Guardar Datos de la Mina'"
+        :formulario="form_catamarca_test"
+        :donde_guardar="$props.donde_estoy"
+        :evaluacion="autoridad_minera"
+        :testing="mostrar_testing"
+        :id="$props.id"
+        v-on:mostrarpasosiguiente="mostrarpasos($event)"
+      >
+      </BotonesPaginaCatamarca>
+    </div>
   </div>
 </template>
 
 <script>
-import JetDialogModal from "@/Jetstream/DialogModal";
 import Card from "@/Jetstream/altas/ComponenteCardProvincia";
+import Menu from "@/Jetstream/altas/MenuModulo";
+
+import JetDialogModal from "@/Jetstream/DialogModal";
 import SelectProvincia from "@/Pages/Productors/SelectProvincia";
 import SelectDepartamento from "@/Pages/Productors/SelectDepartamento";
 import NombreMina from "@/Pages/Productors/NombreMina";
@@ -781,6 +787,7 @@ export default {
   components: {
     JetDialogModal,
     Card,
+    Menu,
     SelectProvincia,
     SelectDepartamento,
     NombreMina,
@@ -792,6 +799,8 @@ export default {
   },
   data() {
     return {
+      mostrar_modulo: true,
+      continuar_pagina: false,
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
       modal_body: "",
@@ -1013,10 +1022,15 @@ export default {
     },
     update_valor_pagina_siguiente(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.continuar_pagina = v;
+      this.mostrar_modulo = !v;
+    },
+    update_valor_ocultar_modulo(v) {
+      this.mostrar_modulo = v;
     },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
-      // console.log("valor: ", v);
+      this.mostrar_modulo = !v;
     },
   },
   mounted() {
@@ -1036,7 +1050,7 @@ export default {
           self.form_catamarca_test.gestor_nombre_apellido = "";
           self.form_catamarca_test.gestor_nombre_apellido_valido = "";
           self.form_catamarca_test.gestor_nombre_apellido_correcto = "";
-          self.form_catamarca_test.obs_gestor_nombre_apellido = "";
+          self.form_catamarca_test.obs_gestor_nombre_apellido = false;
           self.form_catamarca_test.obs_gestor_nombre_valido = "";
           self.form_catamarca_test.mostrar_nombre_gestor = "";
           self.form_catamarca_test.desactivar_nombre_gestor = "";
@@ -1046,7 +1060,7 @@ export default {
           self.form_catamarca_test.gestor_dni = "";
           self.form_catamarca_test.gestor_dni_valido = "";
           self.form_catamarca_test.gestor_dni_correcto = "";
-          self.form_catamarca_test.obs_gestor_dni = "";
+          self.form_catamarca_test.obs_gestor_dni = false;
           self.form_catamarca_test.obs_gestor_dni_valido = "";
           self.form_catamarca_test.mostrar_dni_gestor = "";
           self.form_catamarca_test.desactivar_dni_gestor = "";
@@ -1056,7 +1070,7 @@ export default {
           self.form_catamarca_test.gestor_profesion = "";
           self.form_catamarca_test.gestor_profesion_valido = "";
           self.form_catamarca_test.gestor_profesion_correcto = "";
-          self.form_catamarca_test.obs_gestor_profesion = "";
+          self.form_catamarca_test.obs_gestor_profesion = false;
           self.form_catamarca_test.obs_gestor_profesion_valido = "";
           self.form_catamarca_test.mostrar_profesion_gestor = "";
           self.form_catamarca_test.desactivar_profesion_gestor = "";
@@ -1066,7 +1080,7 @@ export default {
           self.form_catamarca_test.gestor_telefono = "";
           self.form_catamarca_test.gestor_telefono_valido = "";
           self.form_catamarca_test.gestor_telefono_correcto = "";
-          self.form_catamarca_test.obs_gestor_telefono = "";
+          self.form_catamarca_test.obs_gestor_telefono = false;
           self.form_catamarca_test.obs_gestor_telefono_valido = "";
           self.form_catamarca_test.mostrar_telefono_gestor = "";
           self.form_catamarca_test.desactivar_telefono_gestor = "";
@@ -1076,7 +1090,7 @@ export default {
           self.gestor_notificacion = true;
           self.gestor_notificacion_valido = "";
           self.gestor_notificacion_correcto = "";
-          self.obs_gestor_notificacion = "";
+          self.obs_gestor_notificacion = false;
           self.obs_gestor_notificacion_valido = "";
           self.mostrar_notificacion_gestor = "";
           self.desactivar_notificacion_gestor = "";
@@ -1085,7 +1099,7 @@ export default {
 
           self.form_catamarca_test.gestor_email = "";
           self.form_catamarca_test.gestor_email_valido = "";
-          self.form_catamarca_test.gestor_email_correcto = "";
+          self.form_catamarca_test.gestor_email_correcto = false;
           self.form_catamarca_test.obs_gestor_email = "";
           self.form_catamarca_test.obs_gestor_email_valido = "";
           self.form_catamarca_test.mostrar_email_gestor = "";
@@ -1093,17 +1107,17 @@ export default {
           self.form_catamarca_test.mostrar_email_gestor_correccion = "";
           self.form_catamarca_test.desactivar_email_gestor_correccion = "";
 
-          self.form_catamarca_test.primer_hoja_dni = "";
+          self.form_catamarca_test.primer_hoja_dni = null;
           self.form_catamarca_test.hoja_dni_valido = "";
           self.form_catamarca_test.hoja_dni_correcto = "";
-          self.form_catamarca_test.obs_hoja_dni = "";
+          self.form_catamarca_test.obs_hoja_dni = false;
           self.form_catamarca_test.obs_hoja_dni_valido = "";
           self.form_catamarca_test.mostrar_dni_productor = "";
           self.form_catamarca_test.desactivar_dni_productor = "";
           self.form_catamarca_test.mostrar_dni_productor_correccion = "";
           self.form_catamarca_test.desactivar_dni_productor_correccion = "";
 
-          self.form_catamarca_test.segunda_hoja_dni = "";
+          self.form_catamarca_test.segunda_hoja_dni = null;
           self.form_catamarca_test.segunda_hoja_dni_valido = "";
           self.form_catamarca_test.segunda_hoja_dni_correcto = "";
           self.form_catamarca_test.obs_segunda_hoja_dni = "";
@@ -1112,7 +1126,7 @@ export default {
           self.foto_4x4 = "";
           self.foto_4x4_valido = "";
           self.foto_4x4_correcto = "";
-          self.obs_foto_4x4 = "";
+          self.obs_foto_4x4 = false;
           self.obs_foto_4x4_valido = "";
           self.mostrar_foto_productor = "";
           self.desactivar_foto_productor = "";
@@ -1122,17 +1136,17 @@ export default {
           self.constancia_afip = "";
           self.constancia_afip_valido = "";
           self.constancia_afip_correcto = "";
-          self.obs_constancia_afip = "";
+          self.obs_constancia_afip = false;
           self.obs_constancia_afip_valido = "";
           self.mostrar_constancia_afip = "";
           self.desactivar_constancia_afip = "";
           self.mostrar_constancia_afip_correccion = "";
           self.desactivar_constancia_afip_correccion = "";
 
-          self.form_catamarca_test.autorizacion_gestor = "";
+          self.form_catamarca_test.autorizacion_gestor = null;
           self.form_catamarca_test.autorizacion_gestor_valido = "";
           self.form_catamarca_test.autorizacion_gestor_correcto = "";
-          self.form_catamarca_test.obs_autorizacion_gestor = "";
+          self.form_catamarca_test.obs_autorizacion_gestor = false;
           self.form_catamarca_test.obs_autorizacion_gestor_valido = "";
           self.form_catamarca_test.mostrar_autorizacion_gestor = "";
           self.form_catamarca_test.desactivar_autorizacion_gestor = "";

@@ -32,7 +32,8 @@ var Observaciones = /*#__PURE__*/function () {
   _createClass(Observaciones, [{
     key: "getFormSchema",
     value: function getFormSchema(data) {
-      // console.log(data);
+      console.log(data.schema);
+      console.log(data.schema["".concat(data.name, "_comentario")]);
       if (data.action == 'create') return {};
       return {
         name: "".concat(data.name, "_evaluacion"),
@@ -57,9 +58,9 @@ var Observaciones = /*#__PURE__*/function () {
           type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_0__["default"].TEXTAREA,
           name: "".concat(data.name, "_comentario"),
           validationType: "string",
-          validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("observacion_".concat(data.name), {
+          validations: yup__WEBPACK_IMPORTED_MODULE_1__.string().when("".concat(data.name, "_evaluacion"), {
             is: "rechazado",
-            then: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').required('Debes agregar una observación')
+            then: yup__WEBPACK_IMPORTED_MODULE_1__.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').required('Debes agregar una observación').nullable()
           }).nullable()
         }
       };

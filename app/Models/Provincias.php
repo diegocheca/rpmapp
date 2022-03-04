@@ -21,4 +21,10 @@ class Provincias extends Model
         'nombre',
         'nombre_completo'
     ];
+
+    public function nombreDeProvinciaPorId($id_provincia){
+        return $this->select('nombre')
+        ->where("id", "=", $id_provincia)
+        ->first();
+    }
 }

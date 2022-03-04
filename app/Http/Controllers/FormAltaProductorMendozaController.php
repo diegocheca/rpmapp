@@ -166,6 +166,7 @@ class FormAltaProductorMendozaController extends Controller
                 'mostrar' => false,
             ], 201);
 
+        # Crear
         $disables[10]['Productor']['crear']['borrador']['altaProdMinero'] = [
 
             "decreto3737" => false,
@@ -202,36 +203,24 @@ class FormAltaProductorMendozaController extends Controller
             "boton_mendoza" => true,
 
         ];
-        $disables[10]['Administrador']['crear']['borrador']['altaProdMinero'] =
-            [
-                "nombre_gestor" => false,
-                "nombre_gestor_correccion" => false,
-                "dni_gestor" => false,
-                "dni_gestor_correccion" => false,
-                "profesion_gestor" => false,
-                "profesion_gestor_correccion" => false,
-                "telefono_gestor" => false,
-                "telefono_gestor_correccion" => false,
-                "notificacion_gestor" => false,
-                "notificacion_gestor_correccion" => false,
-                "email_gestor" => false,
-                "email_gestor_correccion" => false,
-                "dni_productor" => false,
-                "dni_productor_correccion" => false,
-                "foto_productor" => false,
-                "foto_productor_correccion" => false,
-                "constancia_afip" => false,
-                "constancia_afip_correccion" => false,
-                "autorizacion_gestor" => false,
-                "autorizacion_gestor_correccion" => false,
-                "paso_catamarca" => false,
-                "boton_catamarca" => false,
+        $disables[10]['Administrador']['crear']['borrador']['altaProdMinero'] = [
+            "decreto3737" => true,
+            "decreto3737_correccion" => false,
+            "situacion_mina" => true,
+            "situacion_mina_correccion" => false,
+            "concesion_minera_asiento_n" => true,
+            "concesion_minera_fojas" => true,
+            "concesion_minera_tomo_n" => true,
+            "concesion_minera_reg_m_y_d" => true,
+            "concesion_minera_reg_cant" => true,
+            "concesion_minera_reg_men" => true,
+            "concesion_minera_reg_d_y_c" => true,
+            "obs_datos_minas" => false,
 
-                "estado" => false,
-                "boton_actualizar" => false,
+            "paso_mendoza" => true,
+            "boton_mendoza" => true,
 
-            ];
-
+        ];
         $mostrar[10]['Productor']['crear']['borrador']['altaProdMinero'] = [
             "decreto3737" => true,
             "decreto3737_correccion" => false,
@@ -271,43 +260,30 @@ class FormAltaProductorMendozaController extends Controller
 
             "boton_actualizar" => true,
         ];
-        $mostrar[10]['Administrador']['crear']['borrador']['altaProdMinero'] =
-            [
-                "nombre_gestor" => true,
-                "nombre_gestor_correccion" => true,
-                "dni_gestor" => true,
-                "dni_gestor_correccion" => true,
-                "profesion_gestor" => true,
-                "profesion_gestor_correccion" => true,
-                "telefono_gestor" => true,
-                "telefono_gestor_correccion" => true,
-                "notificacion_gestor" => true,
-                "notificacion_gestor_correccion" => true,
-                "email_gestor" => true,
-                "email_gestor_correccion" => true,
-                "dni_productor" => true,
-                "dni_productor_correccion" => true,
-                "foto_productor" => true,
-                "foto_productor_correccion" => true,
-                "constancia_afip" => true,
-                "constancia_afip_correccion" => true,
-                "autorizacion_gestor" => true,
-                "autorizacion_gestor_correccion" => true,
-                "paso_catamarca" => true,
-                "boton_catamarca" => true,
+        $mostrar[10]['Administrador']['crear']['borrador']['altaProdMinero'] = [
+            "decreto3737" => true,
+            "decreto3737_correccion" => false,
+            "situacion_mina" => true,
+            "situacion_mina_correccion" => false,
+            "concesion_minera_asiento_n" => true,
+            "concesion_minera_fojas" => true,
+            "concesion_minera_tomo_n" => true,
+            "concesion_minera_reg_m_y_d" => true,
+            "concesion_minera_reg_cant" => true,
+            "concesion_minera_reg_men" => true,
+            "concesion_minera_reg_d_y_c" => true,
+            "obs_datos_minas" => false,
+
+            "paso_mendoza" => true,
+            "boton_mendoza" => true,
 
 
-                "estado" => true,
+            "estado" => true,
 
-                "boton_actualizar" => true,
-            ];
+            "boton_actualizar" => true,
+        ];
 
-
-
-
-
-
-        //editar
+        # Editar
         $disables[10]['Productor']['editar']['borrador']['altaProdMinero'] = [
             "decreto3737" => false,
             "decreto3737_correccion" => true,
@@ -354,36 +330,34 @@ class FormAltaProductorMendozaController extends Controller
             "boton_actualizar" => false,
 
         ];
-        $disables[10]['Administrador']['editar']['borrador']['altaProdMinero'] =
-            [
-                "nombre_gestor" => false,
-                "nombre_gestor_correccion" => false,
-                "dni_gestor" => false,
-                "dni_gestor_correccion" => false,
-                "profesion_gestor" => false,
-                "profesion_gestor_correccion" => false,
-                "telefono_gestor" => false,
-                "telefono_gestor_correccion" => false,
-                "notificacion_gestor" => false,
-                "notificacion_gestor_correccion" => false,
-                "email_gestor" => false,
-                "email_gestor_correccion" => false,
-                "dni_productor" => false,
-                "dni_productor_correccion" => false,
-                "foto_productor" => false,
-                "foto_productor_correccion" => false,
-                "constancia_afip" => false,
-                "constancia_afip_correccion" => false,
-                "autorizacion_gestor" => false,
-                "autorizacion_gestor_correccion" => false,
-                "paso_catamarca" => false,
-                "boton_catamarca" => false,
+        $disables[10]['Administrador']['editar']['borrador']['altaProdMinero'] = [
+            "nombre_gestor" => false,
+            "nombre_gestor_correccion" => false,
+            "dni_gestor" => false,
+            "dni_gestor_correccion" => false,
+            "profesion_gestor" => false,
+            "profesion_gestor_correccion" => false,
+            "telefono_gestor" => false,
+            "telefono_gestor_correccion" => false,
+            "notificacion_gestor" => false,
+            "notificacion_gestor_correccion" => false,
+            "email_gestor" => false,
+            "email_gestor_correccion" => false,
+            "dni_productor" => false,
+            "dni_productor_correccion" => false,
+            "foto_productor" => false,
+            "foto_productor_correccion" => false,
+            "constancia_afip" => false,
+            "constancia_afip_correccion" => false,
+            "autorizacion_gestor" => false,
+            "autorizacion_gestor_correccion" => false,
+            "paso_catamarca" => false,
+            "boton_catamarca" => false,
 
-                "estado" => false,
-                "boton_actualizar" => false,
+            "estado" => false,
+            "boton_actualizar" => false,
 
-            ];
-
+        ];
         $mostrar[10]['Productor']['editar']['borrador']['altaProdMinero'] = [
             "decreto3737" => true,
             "decreto3737_correccion" => false,
@@ -430,38 +404,37 @@ class FormAltaProductorMendozaController extends Controller
 
             "boton_actualizar" => true,
         ];
-        $mostrar[10]['Administrador']['editar']['borrador']['altaProdMinero'] =
-            [
-                "nombre_gestor" => true,
-                "nombre_gestor_correccion" => true,
-                "dni_gestor" => true,
-                "dni_gestor_correccion" => true,
-                "profesion_gestor" => true,
-                "profesion_gestor_correccion" => true,
-                "telefono_gestor" => true,
-                "telefono_gestor_correccion" => true,
-                "notificacion_gestor" => true,
-                "notificacion_gestor_correccion" => true,
-                "email_gestor" => true,
-                "email_gestor_correccion" => true,
-                "dni_productor" => true,
-                "dni_productor_correccion" => true,
-                "foto_productor" => true,
-                "foto_productor_correccion" => true,
-                "constancia_afip" => true,
-                "constancia_afip_correccion" => true,
-                "autorizacion_gestor" => true,
-                "autorizacion_gestor_correccion" => true,
-                "paso_catamarca" => true,
-                "boton_catamarca" => true,
+        $mostrar[10]['Administrador']['editar']['borrador']['altaProdMinero'] = [
+            "nombre_gestor" => true,
+            "nombre_gestor_correccion" => true,
+            "dni_gestor" => true,
+            "dni_gestor_correccion" => true,
+            "profesion_gestor" => true,
+            "profesion_gestor_correccion" => true,
+            "telefono_gestor" => true,
+            "telefono_gestor_correccion" => true,
+            "notificacion_gestor" => true,
+            "notificacion_gestor_correccion" => true,
+            "email_gestor" => true,
+            "email_gestor_correccion" => true,
+            "dni_productor" => true,
+            "dni_productor_correccion" => true,
+            "foto_productor" => true,
+            "foto_productor_correccion" => true,
+            "constancia_afip" => true,
+            "constancia_afip_correccion" => true,
+            "autorizacion_gestor" => true,
+            "autorizacion_gestor_correccion" => true,
+            "paso_catamarca" => true,
+            "boton_catamarca" => true,
 
 
-                "estado" => true,
+            "estado" => true,
 
-                "boton_actualizar" => true,
-            ];
+            "boton_actualizar" => true,
+        ];
 
-        //editar - en revision
+        # Editar - en revision
         $disables[10]['Productor']['editar']['en revision']['altaProdMinero'] = [
             "decreto3737" => true,
             "decreto3737_correccion" => true,
@@ -498,35 +471,33 @@ class FormAltaProductorMendozaController extends Controller
             "boton_mendoza" => false,
 
         ];
-        $disables[10]['Administrador']['editar']['en revision']['altaProdMinero'] =
-            [
-                "nombre_gestor" => true,
-                "nombre_gestor_correccion" => true,
-                "dni_gestor" => true,
-                "dni_gestor_correccion" => true,
-                "profesion_gestor" => true,
-                "profesion_gestor_correccion" => true,
-                "telefono_gestor" => true,
-                "telefono_gestor_correccion" => true,
-                "notificacion_gestor" => true,
-                "notificacion_gestor_correccion" => true,
-                "email_gestor" => true,
-                "email_gestor_correccion" => true,
-                "dni_productor" => true,
-                "dni_productor_correccion" => true,
-                "foto_productor" => true,
-                "foto_productor_correccion" => true,
-                "constancia_afip" => true,
-                "constancia_afip_correccion" => true,
-                "autorizacion_gestor" => true,
-                "autorizacion_gestor_correccion" => true,
-                "paso_catamarca" => true,
-                "boton_catamarca" => true,
+        $disables[10]['Administrador']['editar']['en revision']['altaProdMinero'] = [
+            "nombre_gestor" => true,
+            "nombre_gestor_correccion" => true,
+            "dni_gestor" => true,
+            "dni_gestor_correccion" => true,
+            "profesion_gestor" => true,
+            "profesion_gestor_correccion" => true,
+            "telefono_gestor" => true,
+            "telefono_gestor_correccion" => true,
+            "notificacion_gestor" => true,
+            "notificacion_gestor_correccion" => true,
+            "email_gestor" => true,
+            "email_gestor_correccion" => true,
+            "dni_productor" => true,
+            "dni_productor_correccion" => true,
+            "foto_productor" => true,
+            "foto_productor_correccion" => true,
+            "constancia_afip" => true,
+            "constancia_afip_correccion" => true,
+            "autorizacion_gestor" => true,
+            "autorizacion_gestor_correccion" => true,
+            "paso_catamarca" => true,
+            "boton_catamarca" => true,
 
-                "estado" => true,
-                "boton_actualizar" => true,
-            ];
-
+            "estado" => true,
+            "boton_actualizar" => true,
+        ];
         $mostrar[10]['Productor']['editar']['en revision']['altaProdMinero'] = [
             "nombre_gestor" => true,
             "nombre_gestor_correccion" => true,
@@ -573,41 +544,37 @@ class FormAltaProductorMendozaController extends Controller
             "paso_mendoza" => true,
             "boton_mendoza" => true,
         ];
-        $mostrar[10]['Administrador']['editar']['en revision']['altaProdMinero'] =
-            [
-                "nombre_gestor" => true,
-                "nombre_gestor_correccion" => true,
-                "dni_gestor" => true,
-                "dni_gestor_correccion" => true,
-                "profesion_gestor" => true,
-                "profesion_gestor_correccion" => true,
-                "telefono_gestor" => true,
-                "telefono_gestor_correccion" => true,
-                "notificacion_gestor" => true,
-                "notificacion_gestor_correccion" => true,
-                "email_gestor" => true,
-                "email_gestor_correccion" => true,
-                "dni_productor" => true,
-                "dni_productor_correccion" => true,
-                "foto_productor" => true,
-                "foto_productor_correccion" => true,
-                "constancia_afip" => true,
-                "constancia_afip_correccion" => true,
-                "autorizacion_gestor" => true,
-                "autorizacion_gestor_correccion" => true,
-                "paso_catamarca" => true,
-                "boton_catamarca" => true,
+        $mostrar[10]['Administrador']['editar']['en revision']['altaProdMinero'] = [
+            "nombre_gestor" => true,
+            "nombre_gestor_correccion" => true,
+            "dni_gestor" => true,
+            "dni_gestor_correccion" => true,
+            "profesion_gestor" => true,
+            "profesion_gestor_correccion" => true,
+            "telefono_gestor" => true,
+            "telefono_gestor_correccion" => true,
+            "notificacion_gestor" => true,
+            "notificacion_gestor_correccion" => true,
+            "email_gestor" => true,
+            "email_gestor_correccion" => true,
+            "dni_productor" => true,
+            "dni_productor_correccion" => true,
+            "foto_productor" => true,
+            "foto_productor_correccion" => true,
+            "constancia_afip" => true,
+            "constancia_afip_correccion" => true,
+            "autorizacion_gestor" => true,
+            "autorizacion_gestor_correccion" => true,
+            "paso_catamarca" => true,
+            "boton_catamarca" => true,
 
 
-                "estado" => true,
+            "estado" => true,
 
-                "boton_actualizar" => true,
-            ];
+            "boton_actualizar" => true,
+        ];
 
-
-
-
-        //Ver
+        # Ver
         $disables[10]['Productor']['ver']['borrador']['altaProdMinero'] = [
             "nombre_gestor" => false,
             "nombre_gestor_correccion" => false,
@@ -664,36 +631,34 @@ class FormAltaProductorMendozaController extends Controller
             "boton_actualizar" => false,
 
         ];
-        $disables[10]['Administrador']['ver']['borrador']['altaProdMinero'] =
-            [
-                "nombre_gestor" => false,
-                "nombre_gestor_correccion" => false,
-                "dni_gestor" => false,
-                "dni_gestor_correccion" => false,
-                "profesion_gestor" => false,
-                "profesion_gestor_correccion" => false,
-                "telefono_gestor" => false,
-                "telefono_gestor_correccion" => false,
-                "notificacion_gestor" => false,
-                "notificacion_gestor_correccion" => false,
-                "email_gestor" => false,
-                "email_gestor_correccion" => false,
-                "dni_productor" => false,
-                "dni_productor_correccion" => false,
-                "foto_productor" => false,
-                "foto_productor_correccion" => false,
-                "constancia_afip" => false,
-                "constancia_afip_correccion" => false,
-                "autorizacion_gestor" => false,
-                "autorizacion_gestor_correccion" => false,
-                "paso_catamarca" => false,
-                "boton_catamarca" => false,
+        $disables[10]['Administrador']['ver']['borrador']['altaProdMinero'] = [
+            "nombre_gestor" => false,
+            "nombre_gestor_correccion" => false,
+            "dni_gestor" => false,
+            "dni_gestor_correccion" => false,
+            "profesion_gestor" => false,
+            "profesion_gestor_correccion" => false,
+            "telefono_gestor" => false,
+            "telefono_gestor_correccion" => false,
+            "notificacion_gestor" => false,
+            "notificacion_gestor_correccion" => false,
+            "email_gestor" => false,
+            "email_gestor_correccion" => false,
+            "dni_productor" => false,
+            "dni_productor_correccion" => false,
+            "foto_productor" => false,
+            "foto_productor_correccion" => false,
+            "constancia_afip" => false,
+            "constancia_afip_correccion" => false,
+            "autorizacion_gestor" => false,
+            "autorizacion_gestor_correccion" => false,
+            "paso_catamarca" => false,
+            "boton_catamarca" => false,
 
-                "estado" => false,
-                "boton_actualizar" => false,
+            "estado" => false,
+            "boton_actualizar" => false,
 
-            ];
-
+        ];
         $mostrar[10]['Productor']['ver']['borrador']['altaProdMinero'] = [
             "nombre_gestor" => true,
             "nombre_gestor_correccion" => false,
@@ -752,39 +717,37 @@ class FormAltaProductorMendozaController extends Controller
 
             "boton_actualizar" => true,
         ];
-        $mostrar[10]['Administrador']['ver']['borrador']['altaProdMinero'] =
-            [
-                "nombre_gestor" => true,
-                "nombre_gestor_correccion" => true,
-                "dni_gestor" => true,
-                "dni_gestor_correccion" => true,
-                "profesion_gestor" => true,
-                "profesion_gestor_correccion" => true,
-                "telefono_gestor" => true,
-                "telefono_gestor_correccion" => true,
-                "notificacion_gestor" => true,
-                "notificacion_gestor_correccion" => true,
-                "email_gestor" => true,
-                "email_gestor_correccion" => true,
-                "dni_productor" => true,
-                "dni_productor_correccion" => true,
-                "foto_productor" => true,
-                "foto_productor_correccion" => true,
-                "constancia_afip" => true,
-                "constancia_afip_correccion" => true,
-                "autorizacion_gestor" => true,
-                "autorizacion_gestor_correccion" => true,
-                "paso_catamarca" => true,
-                "boton_catamarca" => true,
+        $mostrar[10]['Administrador']['ver']['borrador']['altaProdMinero'] = [
+            "nombre_gestor" => true,
+            "nombre_gestor_correccion" => true,
+            "dni_gestor" => true,
+            "dni_gestor_correccion" => true,
+            "profesion_gestor" => true,
+            "profesion_gestor_correccion" => true,
+            "telefono_gestor" => true,
+            "telefono_gestor_correccion" => true,
+            "notificacion_gestor" => true,
+            "notificacion_gestor_correccion" => true,
+            "email_gestor" => true,
+            "email_gestor_correccion" => true,
+            "dni_productor" => true,
+            "dni_productor_correccion" => true,
+            "foto_productor" => true,
+            "foto_productor_correccion" => true,
+            "constancia_afip" => true,
+            "constancia_afip_correccion" => true,
+            "autorizacion_gestor" => true,
+            "autorizacion_gestor_correccion" => true,
+            "paso_catamarca" => true,
+            "boton_catamarca" => true,
 
 
-                "estado" => true,
+            "estado" => true,
 
-                "boton_actualizar" => true,
-            ];
+            "boton_actualizar" => true,
+        ];
 
-
-        //Ver -aprobado
+        # Ver -aprobado
         $disables[10]['Productor']['ver']['aprobado']['altaProdMinero'] = [
             "nombre_gestor" => true,
             "nombre_gestor_correccion" => true,
@@ -841,36 +804,34 @@ class FormAltaProductorMendozaController extends Controller
             "boton_actualizar" => true,
 
         ];
-        $disables[10]['Administrador']['ver']['aprobado']['altaProdMinero'] =
-            [
-                "nombre_gestor" => true,
-                "nombre_gestor_correccion" => true,
-                "dni_gestor" => true,
-                "dni_gestor_correccion" => true,
-                "profesion_gestor" => true,
-                "profesion_gestor_correccion" => true,
-                "telefono_gestor" => true,
-                "telefono_gestor_correccion" => true,
-                "notificacion_gestor" => true,
-                "notificacion_gestor_correccion" => true,
-                "email_gestor" => true,
-                "email_gestor_correccion" => true,
-                "dni_productor" => true,
-                "dni_productor_correccion" => true,
-                "foto_productor" => true,
-                "foto_productor_correccion" => true,
-                "constancia_afip" => true,
-                "constancia_afip_correccion" => true,
-                "autorizacion_gestor" => true,
-                "autorizacion_gestor_correccion" => true,
-                "paso_catamarca" => true,
-                "boton_catamarca" => true,
+        $disables[10]['Administrador']['ver']['aprobado']['altaProdMinero'] = [
+            "nombre_gestor" => true,
+            "nombre_gestor_correccion" => true,
+            "dni_gestor" => true,
+            "dni_gestor_correccion" => true,
+            "profesion_gestor" => true,
+            "profesion_gestor_correccion" => true,
+            "telefono_gestor" => true,
+            "telefono_gestor_correccion" => true,
+            "notificacion_gestor" => true,
+            "notificacion_gestor_correccion" => true,
+            "email_gestor" => true,
+            "email_gestor_correccion" => true,
+            "dni_productor" => true,
+            "dni_productor_correccion" => true,
+            "foto_productor" => true,
+            "foto_productor_correccion" => true,
+            "constancia_afip" => true,
+            "constancia_afip_correccion" => true,
+            "autorizacion_gestor" => true,
+            "autorizacion_gestor_correccion" => true,
+            "paso_catamarca" => true,
+            "boton_catamarca" => true,
 
-                "estado" => true,
-                "boton_actualizar" => true,
+            "estado" => true,
+            "boton_actualizar" => true,
 
-            ];
-
+        ];
         $mostrar[10]['Productor']['ver']['aprobado']['altaProdMinero'] = [
             "nombre_gestor" => true,
             "nombre_gestor_correccion" => true,
@@ -929,38 +890,37 @@ class FormAltaProductorMendozaController extends Controller
 
             "boton_actualizar" => true,
         ];
-        $mostrar[10]['Administrador']['ver']['aprobado']['altaProdMinero'] =
-            [
-                "nombre_gestor" => true,
-                "nombre_gestor_correccion" => true,
-                "dni_gestor" => true,
-                "dni_gestor_correccion" => true,
-                "profesion_gestor" => true,
-                "profesion_gestor_correccion" => true,
-                "telefono_gestor" => true,
-                "telefono_gestor_correccion" => true,
-                "notificacion_gestor" => true,
-                "notificacion_gestor_correccion" => true,
-                "email_gestor" => true,
-                "email_gestor_correccion" => true,
-                "dni_productor" => true,
-                "dni_productor_correccion" => true,
-                "foto_productor" => true,
-                "foto_productor_correccion" => true,
-                "constancia_afip" => true,
-                "constancia_afip_correccion" => true,
-                "autorizacion_gestor" => true,
-                "autorizacion_gestor_correccion" => true,
-                "paso_catamarca" => true,
-                "boton_catamarca" => true,
+        $mostrar[10]['Administrador']['ver']['aprobado']['altaProdMinero'] = [
+            "nombre_gestor" => true,
+            "nombre_gestor_correccion" => true,
+            "dni_gestor" => true,
+            "dni_gestor_correccion" => true,
+            "profesion_gestor" => true,
+            "profesion_gestor_correccion" => true,
+            "telefono_gestor" => true,
+            "telefono_gestor_correccion" => true,
+            "notificacion_gestor" => true,
+            "notificacion_gestor_correccion" => true,
+            "email_gestor" => true,
+            "email_gestor_correccion" => true,
+            "dni_productor" => true,
+            "dni_productor_correccion" => true,
+            "foto_productor" => true,
+            "foto_productor_correccion" => true,
+            "constancia_afip" => true,
+            "constancia_afip_correccion" => true,
+            "autorizacion_gestor" => true,
+            "autorizacion_gestor_correccion" => true,
+            "paso_catamarca" => true,
+            "boton_catamarca" => true,
 
 
-                "estado" => true,
+            "estado" => true,
 
-                "boton_actualizar" => true,
-            ];
+            "boton_actualizar" => true,
+        ];
 
-        //Editar -aprobado
+        # Editar -aprobado
         $disables[10]['Productor']['editar']['aprobado']['altaProdMinero'] = [
             "nombre_gestor" => true,
             "nombre_gestor_correccion" => true,
@@ -1017,36 +977,34 @@ class FormAltaProductorMendozaController extends Controller
             "boton_actualizar" => true,
 
         ];
-        $disables[10]['Administrador']['editar']['aprobado']['altaProdMinero'] =
-            [
-                "nombre_gestor" => true,
-                "nombre_gestor_correccion" => true,
-                "dni_gestor" => true,
-                "dni_gestor_correccion" => true,
-                "profesion_gestor" => true,
-                "profesion_gestor_correccion" => true,
-                "telefono_gestor" => true,
-                "telefono_gestor_correccion" => true,
-                "notificacion_gestor" => true,
-                "notificacion_gestor_correccion" => true,
-                "email_gestor" => true,
-                "email_gestor_correccion" => true,
-                "dni_productor" => true,
-                "dni_productor_correccion" => true,
-                "foto_productor" => true,
-                "foto_productor_correccion" => true,
-                "constancia_afip" => true,
-                "constancia_afip_correccion" => true,
-                "autorizacion_gestor" => true,
-                "autorizacion_gestor_correccion" => true,
-                "paso_catamarca" => true,
-                "boton_catamarca" => true,
+        $disables[10]['Administrador']['editar']['aprobado']['altaProdMinero'] = [
+            "nombre_gestor" => true,
+            "nombre_gestor_correccion" => true,
+            "dni_gestor" => true,
+            "dni_gestor_correccion" => true,
+            "profesion_gestor" => true,
+            "profesion_gestor_correccion" => true,
+            "telefono_gestor" => true,
+            "telefono_gestor_correccion" => true,
+            "notificacion_gestor" => true,
+            "notificacion_gestor_correccion" => true,
+            "email_gestor" => true,
+            "email_gestor_correccion" => true,
+            "dni_productor" => true,
+            "dni_productor_correccion" => true,
+            "foto_productor" => true,
+            "foto_productor_correccion" => true,
+            "constancia_afip" => true,
+            "constancia_afip_correccion" => true,
+            "autorizacion_gestor" => true,
+            "autorizacion_gestor_correccion" => true,
+            "paso_catamarca" => true,
+            "boton_catamarca" => true,
 
-                "estado" => true,
-                "boton_actualizar" => true,
+            "estado" => true,
+            "boton_actualizar" => true,
 
-            ];
-
+        ];
         $mostrar[10]['Productor']['editar']['aprobado']['altaProdMinero'] = [
             "nombre_gestor" => true,
             "nombre_gestor_correccion" => true,

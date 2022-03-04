@@ -1,17 +1,32 @@
 <template>
-  <div
-    class="
-      border-2
-      shadow-lg
-      rounded-2xl
-      w-full
-      py-4
-      px-8
-      bg-white
-      my-20
-      border-indigo-400
-    "
-  >
+  <div>
+    <div class="items-center justify-left">
+      <!-- <CardMinaDos
+        :progreso="50"
+        :aprobado="50"
+        :reprobado="50"
+        :lugar="'Argentina, San Juan'"
+        :titulo="titulo_pagina"
+        :updated_at="'hace 10 minutos'"
+        :mostrarayuda="true"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
+        :ayuda="ayuda_local"
+        v-on:changevalorayuda="update_valor_ayuda_local($event)"
+        v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+      ></CardMinaDos> -->
+      <Card
+        :icono="'/slick/img/features/mina-parte-dos.svg'"
+        :titulo="titulo_pagina"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :show="mostrar_modulo"
+        v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
+      ></Card>
+    </div>
+    <!-- <br />
+      <br /> -->
+
     <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_datos_mina_dos">
         <img
@@ -124,27 +139,30 @@
         </label>
       </div>
     </div> -->
-    <div>
-      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
-      <br /><br /> -->
-      <div class="items-center justify-left sticky top-0 z-10">
-        <CardMinaDos
-          :progreso="50"
-          :aprobado="50"
-          :reprobado="50"
-          :lugar="'Argentina, San Juan'"
-          :titulo="titulo_pagina"
-          :updated_at="'hace 10 minutos'"
+    <div
+      v-if="mostrar_modulo"
+      class="
+        border-2
+        shadow-lg
+        rounded-2xl
+        w-full
+        py-4
+        px-8
+        bg-white
+        border-indigo-400
+      "
+    >
+      <div class="items-center justify-left sticky top-1 z-10">
+        <Menu
           :mostrarayuda="true"
-          :clase_sup="'gap-6'"
-          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_local"
+          :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
-        ></CardMinaDos>
+        ></Menu>
       </div>
-      <br />
-      <br />
+      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
+      <br /><br /> -->
       <div class="flex items-center justify-center bg-teal-lightest font-sans">
         <div class="w-full bg-white rounded shadow p-6 m-8">
           <CaracterQueInvoca
@@ -585,7 +603,6 @@
           </div>
         </div>
       </div>
-
       <br />
       <hr />
       <br />
@@ -771,7 +788,6 @@
           </div>
         </div>
       </div>
-
       <div class="flex">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <FechaGenerica
@@ -902,132 +918,137 @@
       <div class="flex">
         <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0"></div>
       </div>
-    </div>
-    <div class="flex justify-end mt-4">
-      <BotonesPaginaCinco
-        v-if="$props.mostrar_boton_guardar_cinco"
-        :link_volver="'#'"
-        :titulo_boton_volver="'volver'"
-        :titulo_boton_guardar="'Guardar Datos de la Mina'"
-        :owner="form_pagina.owner"
-        :owner_correcto="form_pagina.owner_correcto"
-        :obs_owner="form_pagina.obs_owner"
-        :obs_owner_valido="form_pagina.obs_owner_valido"
-        :arrendatario="form_pagina.arrendatario"
-        :arrendatario_correcto="form_pagina.arrendatario_correcto"
-        :obs_arrendatario="form_pagina.obs_arrendatario"
-        :obs_arrendatario_valido="form_pagina.obs_arrendatario_valido"
-        :concesionario="form_pagina.concesionario"
-        :concesionario_correcto="form_pagina.concesionario_correcto"
-        :obs_concesionario="form_pagina.obs_concesionario"
-        :obs_concesionario_valido="form_pagina.obs_concesionario_valido"
-        :otros="form_pagina.otros"
-        :otros_correcto="form_pagina.otros_correcto"
-        :obs_otros="form_pagina.obs_otros"
-        :obs_otros_valido="form_pagina.obs_otros_valido"
-        :otros_input="form_pagina.otros_input"
-        :otros_input_valido="form_pagina.otros_input_valido"
-        :sustancias="form_pagina.sustancias"
-        :sustancias_correcto="form_pagina.sustancias_correcto"
-        :obs_sustancias="form_pagina.obs_sustancias"
-        :obs_sustancias_valido="form_pagina.obs_sustancias_valido"
-        :sustancias_input="form_pagina.sustancias_input"
-        :sustancias_input_valido="form_pagina.sustancias_input_valido"
-        :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
-        :titulo_contrato_posecion_validacion="
-          form_pagina.titulo_contrato_posecion_validacion
-        "
-        :titulo_contrato_posecion_correcto="
-          form_pagina.titulo_contrato_posecion_correcto
-        "
-        :obs_titulo_contrato_posecion="form_pagina.obs_titulo_contrato_posecion"
-        :obs_titulo_contrato_posecion_valido="
-          form_pagina.obs_titulo_contrato_posecion_valido
-        "
-        :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
-        :resolucion_concesion_minera_validacion="
-          form_pagina.resolucion_concesion_minera_validacion
-        "
-        :resolucion_concesion_minera_correcto="
-          form_pagina.resolucion_concesion_minera_correcto
-        "
-        :obs_resolucion_concesion_minera="
-          form_pagina.obs_resolucion_concesion_minera
-        "
-        :obs_resolucion_concesion_minera_valido="
-          form_pagina.obs_resolucion_concesion_minera_valido
-        "
-        :constancia_pago_canon="form_pagina.constancia_pago_canon"
-        :constancia_pago_canon_validacion="
-          form_pagina.constancia_pago_canon_validacion
-        "
-        :constancia_pago_canon_correcto="
-          form_pagina.constancia_pago_canon_correcto
-        "
-        :obs_constancia_pago_canon="form_pagina.obs_constancia_pago_canon"
-        :obs_constancia_pago_canon_valido="
-          form_pagina.obs_constancia_pago_canon_valido
-        "
-        :iia="form_pagina.iia"
-        :iia_canon_validacion="form_pagina.iia_canon_validacion"
-        :iia_correcto="form_pagina.iia_correcto"
-        :obs_iia_canon="form_pagina.obs_iia_canon"
-        :obs_iia_canon_valido="form_pagina.obs_iia_canon_valido"
-        :dia="form_pagina.dia"
-        :dia_canon_validacion="form_pagina.dia_canon_validacion"
-        :dia_correcto="form_pagina.dia_correcto"
-        :obs_dia_canon="form_pagina.obs_dia_canon"
-        :obs_dia_canon_valido="form_pagina.obs_dia_canon_valido"
-        :acciones_a_desarrollar="form_pagina.acciones_a_desarrollar"
-        :acciones_a_desarrollar_validacion="
-          form_pagina.acciones_a_desarrollar_validacion
-        "
-        :acciones_a_desarrollar_correcto="
-          form_pagina.acciones_a_desarrollar_correcto
-        "
-        :obs_acciones_a_desarrollar="form_pagina.obs_acciones_a_desarrollar"
-        :obs_acciones_a_desarrollar_valido="
-          form_pagina.obs_acciones_a_desarrollar_valido
-        "
-        :actividad="form_pagina.actividad"
-        :actividad_a_desarrollar_validacion="
-          form_pagina.actividad_a_desarrollar_validacion
-        "
-        :actividad_a_desarrollar_correcto="
-          form_pagina.actividad_a_desarrollar_correcto
-        "
-        :obs_actividad_a_desarrollar="form_pagina.obs_actividad_a_desarrollar"
-        :obs_actividad_a_desarrollar_valido="
-          form_pagina.obs_actividad_a_desarrollar_valido
-        "
-        :fecha_alta_dia="form_pagina.fecha_alta_dia"
-        :fecha_alta_dia_validacion="form_pagina.fecha_alta_dia_validacion"
-        :fecha_alta_dia_correcto="form_pagina.fecha_alta_dia_correcto"
-        :obs_fecha_alta_dia="form_pagina.obs_fecha_alta_dia"
-        :obs_fecha_alta_dia_valido="form_pagina.obs_fecha_alta_dia_valido"
-        :fecha_vencimiento_dia="form_pagina.fecha_vencimiento_dia"
-        :fecha_vencimiento_dia_validacion="
-          form_pagina.fecha_vencimiento_dia_validacion
-        "
-        :fecha_vencimiento_dia_correcto="
-          form_pagina.fecha_vencimiento_dia_correcto
-        "
-        :obs_fecha_vencimiento_dia="form_pagina.obs_fecha_vencimiento_dia"
-        :obs_fecha_vencimiento_dia_valido="
-          form_pagina.obs_fecha_vencimiento_dia_valido
-        "
-        :evaluacion="autoridad_minera"
-        :testing="mostrar_testing"
-        :id="$props.id"
-        v-on:mostrarpasosiguiente="mostrarpasos($event)"
-      >
-      </BotonesPaginaCinco>
-      <!-- <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a> -->
+      <div class="flex justify-end mt-4">
+        <BotonesPaginaCinco
+          v-if="$props.mostrar_boton_guardar_cinco"
+          :link_volver="'#'"
+          :titulo_boton_volver="'volver'"
+          :titulo_boton_guardar="'Guardar Datos de la Mina'"
+          :owner="form_pagina.owner"
+          :owner_correcto="form_pagina.owner_correcto"
+          :obs_owner="form_pagina.obs_owner"
+          :obs_owner_valido="form_pagina.obs_owner_valido"
+          :arrendatario="form_pagina.arrendatario"
+          :arrendatario_correcto="form_pagina.arrendatario_correcto"
+          :obs_arrendatario="form_pagina.obs_arrendatario"
+          :obs_arrendatario_valido="form_pagina.obs_arrendatario_valido"
+          :concesionario="form_pagina.concesionario"
+          :concesionario_correcto="form_pagina.concesionario_correcto"
+          :obs_concesionario="form_pagina.obs_concesionario"
+          :obs_concesionario_valido="form_pagina.obs_concesionario_valido"
+          :otros="form_pagina.otros"
+          :otros_correcto="form_pagina.otros_correcto"
+          :obs_otros="form_pagina.obs_otros"
+          :obs_otros_valido="form_pagina.obs_otros_valido"
+          :otros_input="form_pagina.otros_input"
+          :otros_input_valido="form_pagina.otros_input_valido"
+          :sustancias="form_pagina.sustancias"
+          :sustancias_correcto="form_pagina.sustancias_correcto"
+          :obs_sustancias="form_pagina.obs_sustancias"
+          :obs_sustancias_valido="form_pagina.obs_sustancias_valido"
+          :sustancias_input="form_pagina.sustancias_input"
+          :sustancias_input_valido="form_pagina.sustancias_input_valido"
+          :titulo_contrato_posecion="form_pagina.titulo_contrato_posecion"
+          :titulo_contrato_posecion_validacion="
+            form_pagina.titulo_contrato_posecion_validacion
+          "
+          :titulo_contrato_posecion_correcto="
+            form_pagina.titulo_contrato_posecion_correcto
+          "
+          :obs_titulo_contrato_posecion="
+            form_pagina.obs_titulo_contrato_posecion
+          "
+          :obs_titulo_contrato_posecion_valido="
+            form_pagina.obs_titulo_contrato_posecion_valido
+          "
+          :resolucion_concesion_minera="form_pagina.resolucion_concesion_minera"
+          :resolucion_concesion_minera_validacion="
+            form_pagina.resolucion_concesion_minera_validacion
+          "
+          :resolucion_concesion_minera_correcto="
+            form_pagina.resolucion_concesion_minera_correcto
+          "
+          :obs_resolucion_concesion_minera="
+            form_pagina.obs_resolucion_concesion_minera
+          "
+          :obs_resolucion_concesion_minera_valido="
+            form_pagina.obs_resolucion_concesion_minera_valido
+          "
+          :constancia_pago_canon="form_pagina.constancia_pago_canon"
+          :constancia_pago_canon_validacion="
+            form_pagina.constancia_pago_canon_validacion
+          "
+          :constancia_pago_canon_correcto="
+            form_pagina.constancia_pago_canon_correcto
+          "
+          :obs_constancia_pago_canon="form_pagina.obs_constancia_pago_canon"
+          :obs_constancia_pago_canon_valido="
+            form_pagina.obs_constancia_pago_canon_valido
+          "
+          :iia="form_pagina.iia"
+          :iia_canon_validacion="form_pagina.iia_canon_validacion"
+          :iia_correcto="form_pagina.iia_correcto"
+          :obs_iia_canon="form_pagina.obs_iia_canon"
+          :obs_iia_canon_valido="form_pagina.obs_iia_canon_valido"
+          :dia="form_pagina.dia"
+          :dia_canon_validacion="form_pagina.dia_canon_validacion"
+          :dia_correcto="form_pagina.dia_correcto"
+          :obs_dia_canon="form_pagina.obs_dia_canon"
+          :obs_dia_canon_valido="form_pagina.obs_dia_canon_valido"
+          :acciones_a_desarrollar="form_pagina.acciones_a_desarrollar"
+          :acciones_a_desarrollar_validacion="
+            form_pagina.acciones_a_desarrollar_validacion
+          "
+          :acciones_a_desarrollar_correcto="
+            form_pagina.acciones_a_desarrollar_correcto
+          "
+          :obs_acciones_a_desarrollar="form_pagina.obs_acciones_a_desarrollar"
+          :obs_acciones_a_desarrollar_valido="
+            form_pagina.obs_acciones_a_desarrollar_valido
+          "
+          :actividad="form_pagina.actividad"
+          :actividad_a_desarrollar_validacion="
+            form_pagina.actividad_a_desarrollar_validacion
+          "
+          :actividad_a_desarrollar_correcto="
+            form_pagina.actividad_a_desarrollar_correcto
+          "
+          :obs_actividad_a_desarrollar="form_pagina.obs_actividad_a_desarrollar"
+          :obs_actividad_a_desarrollar_valido="
+            form_pagina.obs_actividad_a_desarrollar_valido
+          "
+          :fecha_alta_dia="form_pagina.fecha_alta_dia"
+          :fecha_alta_dia_validacion="form_pagina.fecha_alta_dia_validacion"
+          :fecha_alta_dia_correcto="form_pagina.fecha_alta_dia_correcto"
+          :obs_fecha_alta_dia="form_pagina.obs_fecha_alta_dia"
+          :obs_fecha_alta_dia_valido="form_pagina.obs_fecha_alta_dia_valido"
+          :fecha_vencimiento_dia="form_pagina.fecha_vencimiento_dia"
+          :fecha_vencimiento_dia_validacion="
+            form_pagina.fecha_vencimiento_dia_validacion
+          "
+          :fecha_vencimiento_dia_correcto="
+            form_pagina.fecha_vencimiento_dia_correcto
+          "
+          :obs_fecha_vencimiento_dia="form_pagina.obs_fecha_vencimiento_dia"
+          :obs_fecha_vencimiento_dia_valido="
+            form_pagina.obs_fecha_vencimiento_dia_valido
+          "
+          :evaluacion="autoridad_minera"
+          :testing="mostrar_testing"
+          :id="$props.id"
+          v-on:mostrarpasosiguiente="mostrarpasos($event)"
+        >
+        </BotonesPaginaCinco>
+        <!-- <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a> -->
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Card from "@/Jetstream/altas/ComponenteCardProvincia";
+import Menu from "@/Jetstream/altas/MenuModulo";
+
 import JetDialogModal from "@/Jetstream/DialogModal";
 import CardMinaDos from "@/Jetstream/altas/CardMinaDos";
 import CaracterQueInvoca from "@/Pages/Productors/CaracterQueInvoca";
@@ -1193,6 +1214,8 @@ export default {
   ],
 
   components: {
+    Card,
+    Menu,
     JetDialogModal,
     CardMinaDos,
     CaracterQueInvoca,
@@ -1205,6 +1228,8 @@ export default {
 
   data() {
     return {
+      mostrar_modulo: true,
+      continuar_pagina: false,
       saludos: "Saludame qweqweqwe",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
@@ -1624,9 +1649,15 @@ export default {
     },
     update_valor_pagina_siguiente(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.continuar_pagina = v;
+      this.mostrar_modulo = !v;
+    },
+    update_valor_ocultar_modulo(v) {
+      this.mostrar_modulo = v;
     },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.mostrar_modulo = !v;
     },
   },
 };

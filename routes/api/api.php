@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticarController;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\ReinscripcionController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,10 +13,6 @@ use App\Http\Controllers\ReinscripcionController;
 |--------------------------------------------------------------------------
 	bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzMTY1MzU0MSwibmJmIjoxNjMxNjUzNTQxLCJqdGkiOiIzNHA0U1JSMGRCazFTWm00Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-QWEx5YYjsfjBeIgI9LSdoXapADydx49qMKOXCfJd5M
 |--------------------------------------------------------------------------
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
 */
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -46,5 +41,11 @@ Route::group([
 	Route::post('register', 'App\Http\Controllers\AuthController@register');
 });
 
+Route::group(['prefix' => 'visor', 'middleware' => ['jwt.verify']], function () {
+	// Route::get('CantProductors', 'App\Http\Controllers\VisorController@CantProductors');
+    Route::post('setDatosCantidades','App\Http\Controllers\VisorController@setDatos');
+});
+
 // Route::get('/numero_reinscripciones_nuevas', [ReinscripcionController::class, "numero_reinsripiones_nuevas"])->middleware(['jwt.verify'])->name('numero-reinsripiones-nuevas');
 Route::get('/datos/traer_provincias', [FormAltaProductorController::class, "traer_provincias_json"])->middleware(['jwt.verify'])->name('traer-provincias');
+Route::apiResource('formaltaprod1', 'App\Http\Controllers\FormAltaProdPaso1Controller');

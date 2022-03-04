@@ -16,6 +16,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductorsController;
 use App\Http\Controllers\PagocanonminaController;
+
 use App\Http\Controllers\ReinscripcionController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\IiadiaController;
@@ -133,6 +134,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_inicio/{id}',
     }
     elseif(Auth::user()->id_provincia == 70){//san juan
         return redirect()->route('comprobante_inicio_sanjuan', [$id]);
+    }else{
+        return redirect()->route('comprobante_inicio_sanjuan', [$id]);
     }
 })->name('comprobante_inicio');
 
@@ -154,6 +157,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_productor_apr
         return redirect()->route('comprobante_prod_apro_mendoza', [$id]);
     }
     elseif(Auth::user()->id_provincia == 70){//san juan
+        return redirect()->route('comprobante_inicio_sanjuan', [$id]);
+    }else{
         return redirect()->route('comprobante_inicio_sanjuan', [$id]);
     }
 })->name('formulario-alta-pdf');
@@ -319,3 +324,11 @@ Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])-
 
 
 Route::get('/cargandoexcelmdz', [FormAltaProductorController::class, "cargandoexcelmdz"])->name('cargandoexcelmdz');
+Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatamarca"])->name('cargarCatamarca');
+
+
+
+
+//REPORTES
+Route::get('/datos_minerales_todas_cat', [ChartsController::class, "minerales_todas_categorias"])->name('datos-minerales-todas-cat');
+

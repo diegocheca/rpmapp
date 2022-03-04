@@ -1,17 +1,32 @@
 <template>
-  <div
-    class="
-      border-2
-      shadow-lg
-      rounded-2xl
-      w-full
-      py-4
-      px-8
-      bg-white
-      my-20
-      border-indigo-400
-    "
-  >
+  <div>
+    <div class="items-center justify-left">
+      <!-- <CardMinaUbicacion
+        :progreso="50"
+        :aprobado="50"
+        :reprobado="50"
+        :lugar="'Argentina, San Juan'"
+        :titulo="titulo_pagina"
+        :updated_at="'hace 10 minutos'"
+        :mostrarayuda="true"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
+        :ayuda="ayuda_local"
+        v-on:changevalorayuda="update_valor_ayuda_local($event)"
+        v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+      ></CardMinaUbicacion> -->
+      <Card
+        :icono="'/slick/img/features/plano-minero.svg'"
+        :titulo="titulo_pagina"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :show="mostrar_modulo"
+        v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
+      ></Card>
+    </div>
+    <!-- <br />
+      <br /> -->
+
     <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_datos_mina_ubicacion">
         <img
@@ -123,27 +138,30 @@
         </label>
       </div>
     </div> -->
-    <div>
-      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
-      <br /><br /> -->
-      <div class="items-center justify-left sticky top-0 z-10">
-        <CardMinaUbicacion
-          :progreso="50"
-          :aprobado="50"
-          :reprobado="50"
-          :lugar="'Argentina, San Juan'"
-          :titulo="titulo_pagina"
-          :updated_at="'hace 10 minutos'"
+    <div
+      v-if="mostrar_modulo"
+      class="
+        border-2
+        shadow-lg
+        rounded-2xl
+        w-full
+        py-4
+        px-8
+        bg-white
+        border-indigo-400
+      "
+    >
+      <div class="items-center justify-left sticky top-1 z-10">
+        <Menu
           :mostrarayuda="true"
-          :clase_sup="'gap-6'"
-          :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
           :ayuda="ayuda_local"
+          :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
-        ></CardMinaUbicacion>
+        ></Menu>
       </div>
-      <br />
-      <br />
+      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
+      <br /><br /> -->
       <div class="flex">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           País: <span>Argentina</span>
@@ -525,77 +543,79 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- <div class="flex justify-end mt-4">
+      <!-- <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div> -->
-    <BotonesPaginaSeis
-      v-if="$props.mostrar_boton_guardar_seis"
-      :link_volver="'#'"
-      :titulo_boton_volver="'Volver'"
-      :titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
-      :localidad_mina_provincia="form_pagina.localidad_mina_provincia"
-      :localidad_mina_provincia_validacion="
-        form_pagina.localidad_mina_provincia_validacion
-      "
-      :localidad_mina_provincia_correcto="
-        form_pagina.localidad_mina_provincia_correcto
-      "
-      :obs_localidad_mina_provincia="form_pagina.obs_localidad_mina_provincia"
-      :obs_localidad_mina_provincia_valido="
-        form_pagina.obs_localidad_mina_provincia_valido
-      "
-      :localidad_mina_departamento="form_pagina.localidad_mina_departamento"
-      :localidad_mina_departamento_validacion="
-        form_pagina.localidad_mina_departamento_validacion
-      "
-      :localidad_mina_departamento_correcto="
-        form_pagina.localidad_mina_departamento_correcto
-      "
-      :obs_localidad_mina_departamento="
-        form_pagina.obs_localidad_mina_departamento
-      "
-      :obs_localidad_mina_departamento_valido="
-        form_pagina.obs_localidad_mina_departamento_valido
-      "
-      :localidad_mina_localidad="form_pagina.localidad_mina_localidad"
-      :localidad_mina_localidad_validacion="
-        form_pagina.localidad_mina_localidad_validacion
-      "
-      :localidad_mina_localidad_correcto="
-        form_pagina.localidad_mina_localidad_correcto
-      "
-      :obs_localidad_mina_localidad="form_pagina.obs_localidad_mina_localidad"
-      :obs_localidad_mina_localidad_valido="
-        form_pagina.obs_localidad_mina_localidad_valido
-      "
-      :tipo_sistema="form_pagina.tipo_sistema"
-      :tipo_sistema_validacion="form_pagina.tipo_sistema_validacion"
-      :tipo_sistema_correcto="form_pagina.tipo_sistema_correcto"
-      :obs_tipo_sistema="form_pagina.obs_tipo_sistema"
-      :obs_tipo_sistema_valido="form_pagina.obs_tipo_sistema_valido"
-      :latitud="form_pagina.latitud"
-      :latitud_validacion="form_pagina.latitud_validacion"
-      :latitud_correcto="form_pagina.latitud_correcto"
-      :obs_latitud="form_pagina.obs_latitud"
-      :obs_latitud_valido="form_pagina.obs_latitud_valido"
-      :longitud="form_pagina.longitud"
-      :longitud_validacion="form_pagina.longitud_validacion"
-      :longitud_correcto="form_pagina.longitud_correcto"
-      :obs_longitud="form_pagina.obs_longitud"
-      :obs_longitud_valido="form_pagina.obs_longitud_valido"
-      :donde_guardar="$props.donde_estoy"
-      :evaluacion="autoridad_minera"
-      :testing="mostrar_testing"
-      :id="$props.id"
-      v-on:mostrarpasosiguiente="mostrarpasos($event)"
-    >
-    </BotonesPaginaSeis>
+      <BotonesPaginaSeis
+        v-if="$props.mostrar_boton_guardar_seis"
+        :link_volver="'#'"
+        :titulo_boton_volver="'Volver'"
+        :titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
+        :localidad_mina_provincia="form_pagina.localidad_mina_provincia"
+        :localidad_mina_provincia_validacion="
+          form_pagina.localidad_mina_provincia_validacion
+        "
+        :localidad_mina_provincia_correcto="
+          form_pagina.localidad_mina_provincia_correcto
+        "
+        :obs_localidad_mina_provincia="form_pagina.obs_localidad_mina_provincia"
+        :obs_localidad_mina_provincia_valido="
+          form_pagina.obs_localidad_mina_provincia_valido
+        "
+        :localidad_mina_departamento="form_pagina.localidad_mina_departamento"
+        :localidad_mina_departamento_validacion="
+          form_pagina.localidad_mina_departamento_validacion
+        "
+        :localidad_mina_departamento_correcto="
+          form_pagina.localidad_mina_departamento_correcto
+        "
+        :obs_localidad_mina_departamento="
+          form_pagina.obs_localidad_mina_departamento
+        "
+        :obs_localidad_mina_departamento_valido="
+          form_pagina.obs_localidad_mina_departamento_valido
+        "
+        :localidad_mina_localidad="form_pagina.localidad_mina_localidad"
+        :localidad_mina_localidad_validacion="
+          form_pagina.localidad_mina_localidad_validacion
+        "
+        :localidad_mina_localidad_correcto="
+          form_pagina.localidad_mina_localidad_correcto
+        "
+        :obs_localidad_mina_localidad="form_pagina.obs_localidad_mina_localidad"
+        :obs_localidad_mina_localidad_valido="
+          form_pagina.obs_localidad_mina_localidad_valido
+        "
+        :tipo_sistema="form_pagina.tipo_sistema"
+        :tipo_sistema_validacion="form_pagina.tipo_sistema_validacion"
+        :tipo_sistema_correcto="form_pagina.tipo_sistema_correcto"
+        :obs_tipo_sistema="form_pagina.obs_tipo_sistema"
+        :obs_tipo_sistema_valido="form_pagina.obs_tipo_sistema_valido"
+        :latitud="form_pagina.latitud"
+        :latitud_validacion="form_pagina.latitud_validacion"
+        :latitud_correcto="form_pagina.latitud_correcto"
+        :obs_latitud="form_pagina.obs_latitud"
+        :obs_latitud_valido="form_pagina.obs_latitud_valido"
+        :longitud="form_pagina.longitud"
+        :longitud_validacion="form_pagina.longitud_validacion"
+        :longitud_correcto="form_pagina.longitud_correcto"
+        :obs_longitud="form_pagina.obs_longitud"
+        :obs_longitud_valido="form_pagina.obs_longitud_valido"
+        :donde_guardar="$props.donde_estoy"
+        :evaluacion="autoridad_minera"
+        :testing="mostrar_testing"
+        :id="$props.id"
+        v-on:mostrarpasosiguiente="mostrarpasos($event)"
+      >
+      </BotonesPaginaSeis>
+    </div>
   </div>
 </template>
 
 <script>
+import Card from "@/Jetstream/altas/ComponenteCardProvincia";
+import Menu from "@/Jetstream/altas/MenuModulo";
+
 import JetDialogModal from "@/Jetstream/DialogModal";
 import CardMinaUbicacion from "@/Jetstream/altas/CardMinaUbicacion";
 import SelectProvincia from "@/Pages/Productors/SelectProvincia";
@@ -688,6 +708,8 @@ export default {
   ],
 
   components: {
+    Card,
+    Menu,
     JetDialogModal,
     CardMinaUbicacion,
     SelectProvincia,
@@ -699,6 +721,8 @@ export default {
 
   data() {
     return {
+      mostrar_modulo: true,
+      continuar_pagina: false,
       // saludos: "Saluda",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
@@ -942,9 +966,15 @@ export default {
     },
     update_valor_pagina_siguiente(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.continuar_pagina = v;
+      this.mostrar_modulo = !v;
+    },
+    update_valor_ocultar_modulo(v) {
+      this.mostrar_modulo = v;
     },
     mostrarpasos(v) {
       this.$emit("mostrarpasosiguiente", v);
+      this.mostrar_modulo = !v;
     },
   },
 };
