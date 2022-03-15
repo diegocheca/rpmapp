@@ -201,11 +201,34 @@
                             <div class="">productoredds mineros</div>
                         </a>
                     </div>
+                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700">
+                        <div class="ml-8 py-3 text-xl text-gray-600 leading-7 font-semibold text-center">
+                            Vencimientos
+                        </div>
+                        <Calendar is-expanded/>
+                             <jet-dialog-modal :show="showDeleteConfirmationModal" @close="closeModal">
+                                <template #title>
+                                        {{modal_tittle}}
+                                </template>
+                                <template #content>
+                                        {{modal_body}}
+                                        
+                                </template>
+                                <template #footer>
+                                    <button class="px-4 py-2 rounded-md text-sm font-medium border shadow focus:outline-none focus:ring transition text-gray-600 bg-gray-50 border-gray-200 hover:bg-gray-100 active:bg-gray-200 focus:ring-gray-300" @click="closeModal">
+                                            Cancelar
+                                    </button>
+                                    <button 
+                                    class="px-4 py-2 rounded-md text-sm font-medium border shadow focus:outline-none focus:ring transition text-red-600 bg-red-50 border-red-200 hover:bg-red-100 active:bg-red-200 focus:ring-red-300"
+                                    @click="deleteButtonAction">
+                                            Eliminar
+                                    </button>
+                                </template>
+                            </jet-dialog-modal>
+                    </div>
                 </div>
-                
                 <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
                     <ChartMap :dataChart="dataChart" />
-                    
                 </div>
             </div>
 
@@ -217,7 +240,6 @@
             </div>
 
             <div><TimeLine /></div>
-            
 
         </main>
 
@@ -231,8 +253,10 @@
     import ChartBar from '@/Components/charts/bar'
     import ChartMap from '@/Components/charts/map'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
+    import JetDialogModal from "@/Jetstream/DialogModal";
     import Vue3autocounter from "vue3-autocounter";
     import TimeLine from "@/Components/charts/line";
+    import Calendar from "../Calendar.vue"
 
     export default {
         components: {
@@ -245,6 +269,8 @@
             JetAuthenticationCardLogo,
             Vue3autocounter,
             TimeLine,
+            Calendar,
+            JetDialogModal
         },
         props: {
             dataChart: {
