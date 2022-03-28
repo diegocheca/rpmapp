@@ -48,7 +48,11 @@ use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
 */
 
 
-Route::get('/', [HomeController::class, "index"])->name('pagina-web');
+
+Route::get('/', [HomeController::class, "index"]);
+Route::get('/home', [HomeController::class, "index"]);
+
+
 Route::get('/welcome', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -57,6 +61,8 @@ Route::get('/welcome', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+
 
 Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);

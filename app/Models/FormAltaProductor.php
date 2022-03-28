@@ -204,8 +204,21 @@ class FormAltaProductor extends Model
 		'paso_6_reprobado',
 		'updated_paso_seis',
         'sustancias_de_aprovechamiento_comun_aclaracion',
-        'provincia'
-    ];
+        'provincia',
+        'constancia_paga_canon_monto',
+        'constancia_paga_canon_monto_correcto',
+        'obs_constancia_paga_canon_monto',
+        'constancia_paga_canon_inicio',
+        'constancia_paga_canon_inicio_correct',
+        'obs_constancia_paga_canon_inicio',
+        'constancia_paga_canon_fin',
+        'constancia_paga_canon_fin_correcto',
+        'obs_constancia_paga_canon_fin',
+        'cargo_empresa',
+        'presentador_nom_apellido',
+        'presentador_dni',
+        'observacion'
+        ];
     
     
     
