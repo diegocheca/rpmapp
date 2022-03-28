@@ -40,8 +40,14 @@
     <p v-bind:class="clase_cartel_nota_legalcallelocalidad">
       {{ cartel_nota_legalcallelocal }}.
     </p>
-    <div class="flex" v-if="evaluacion || mostrar_legal_localidad_correccion">
-      <div class="w-full md:w-1/3 px-3">
+    <div
+      v-if="
+        evaluacion ||
+        mostrar_legal_localidad_correccion ||
+        $props.mostrar_evaluacion_adm
+      "
+    >
+      <!-- <div class="w-full md:w-1/3 px-3">
         <span class="text-gray-700">Es correcto?</span>
         <div class="mt-2">
           <label class="inline-flex items-center">
@@ -114,7 +120,18 @@
         <p v-bind:class="clase_cartel_nota_evaluacion_localidad_calle">
           {{ cartel_nota_evaluacion_localidad_calle }}
         </p>
-      </div>
+      </div> -->
+      <SeccionEvaluacion
+        :correccion_desactivar="desactivar_legal_localidad_correccion"
+        :name_correcto="name_correcto"
+        :correcto="legal_calle_localidad_correcto_local"
+        v-on:change_correcto="actaulizar_variable_legalcallelocalidad($event)"
+        :obs_observacion="observacion_loc"
+        v-on:change_obs="
+          actaulizar_contenido_text_area_calle_legal_localidad($event)
+        "
+      >
+      </SeccionEvaluacion>
     </div>
     <div
       class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8"
@@ -186,7 +203,12 @@
 </template>
 
 <script>
+import SeccionEvaluacion from "@/Components/SeccionEvaluacion";
+
 export default {
+  components: {
+    SeccionEvaluacion,
+  },
   props: [
     "leal_localidad",
     "leal_localidad_valido",
@@ -200,10 +222,12 @@ export default {
     "desactivar_legal_localidad",
     "mostrar_legal_localidad_correccion",
     "desactivar_legal_localidad_correccion",
+    "mostrar_evaluacion_adm",
   ],
   data() {
     return {
-      clase_de_input_calle_localidad_legal: "appearance-none block w-full bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white",
+      clase_de_input_calle_localidad_legal:
+        "appearance-none block w-full bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white",
       cartel_nota_legalcallelocal: "",
       clase_cartel_nota_legalcallelocalidad: "text-green-500 text-xs italic",
       clase_text_area_calle_legal_localidad:
@@ -213,8 +237,8 @@ export default {
         "text-green-500 text-xs italic",
       calle_localidad_legal_valido_local: this.$props.leal_localidad_valido,
       legal_calle_localidad_correcto_local: this.$props.leal_localidad_correcto,
-      obs_calle_localidad_legal_valido_local:
-        this.$props.obs_leal_localidad_valido,
+      observacion_loc: this.$props.obs_leal_localidad,
+
       testing_hijo: false,
       //border-green-500
     };
@@ -229,40 +253,8 @@ export default {
     },
 
     actaulizar_contenido_text_area_calle_legal_localidad(value) {
-      if (this.$props.obs_leal_localidad.length <= 2) {
-        this.clase_text_area_calle_legal_localidad =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_localidad_calle =
-          "Observacion Incorrecta - debe ser mayor a 2 carcteres";
-        this.clase_cartel_nota_evaluacion_localidad_calle =
-          "text-red-500 text-xs italic";
-        this.obs_calle_localidad_legal_valido_local = false;
-        this.$emit("changeobslocalidadlegalvalido", false);
-      }
-      if (this.$props.obs_leal_localidad.length >= 50) {
-        this.clase_text_area_calle_legal_localidad =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_localidad_calle =
-          "Observacion Incorrecta - debe tener menos de 50 caracteres";
-        this.clase_cartel_nota_evaluacion_localidad_calle =
-          "text-red-500 text-xs italic";
-        this.obs_calle_localidad_legal_valido_local = false;
-        this.$emit("changeobslocalidadlegalvalido", false);
-      }
-      if (
-        this.$props.obs_leal_localidad !== "" &&
-        this.$props.obs_leal_localidad.length <= 30 &&
-        this.$props.obs_leal_localidad.length >= 3
-      ) {
-        this.clase_text_area_calle_legal_localidad =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_localidad_calle = "Observacion Correcta";
-        this.clase_cartel_nota_evaluacion_localidad_calle =
-          "text-green-500 text-xs italic";
-        this.obs_calle_localidad_legal_valido_local = false;
-        this.$emit("changeobslocalidadlegalvalido", true);
-      }
-      this.$emit("changeobsrlocalidadlegal", this.$props.obs_leal_localidad);
+      this.observacion_loc = value;
+      this.$emit("changeobsrlocalidadlegal",value);
     },
     cambio_input_calle_localidad_legal(value) {
       if (this.leal_localidad.length <= 4) {

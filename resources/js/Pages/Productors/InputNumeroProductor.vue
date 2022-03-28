@@ -88,77 +88,100 @@
     <p v-bind:class="clase_cartel_nota_numprod">
       {{ cartel_nota_campo_numprod }}.
     </p>
-    <div class="flex" v-if="evaluacion || num_prod_correccion_mostrar">
-      <div class="w-full md:w-1/3 px-3">
-        <span class="text-gray-700">Correcto?</span>
-        <div class="mt-2">
-          <label class="inline-flex items-center">
-            <input
-              type="radio"
+    <div
+      v-if="
+        evaluacion ||
+        num_prod_correccion_mostrar ||
+        $props.mostrar_evaluacion_adm
+      "
+    >
+      <!-- <div class="bg-white shadow-md rounded-md pb-2 border border-red-600">
+        <h3 class="bg-red-800 px-4 text-white rounded-t mb-2">
+          Seccion de evaluacion
+        </h3>
+        <div class="">
+          <div class="w-full px-3">
+            <span class="text-gray-700 mr-2">Correcto?</span>
+            <label>
+              <input
+                type="radio"
+                :disabled="$props.num_prod_correccion_desactivar"
+                class="form-radio h-4 w-4 text-green-600"
+                name="name_numeroproductor_correcto"
+                v-model="numeroproductor_correcto"
+                value="true"
+                v-on:change="actaulizar_variable_numprod(true)"
+              />
+              <span class="ml-2">Si</span>
+            </label>
+            <label class="ml-2">
+              <input
+                type="radio"
+                :disabled="$props.num_prod_correccion_desactivar"
+                class="form-radio h-4 w-4 text-red-600"
+                name="name_numeroproductor_correcto"
+                v-model="numeroproductor_correcto"
+                value="false"
+                v-on:change="actaulizar_variable_numprod(false)"
+              />
+              <span class="ml-2">No</span>
+            </label>
+            <label class="ml-2">
+              <input
+                type="radio"
+                :disabled="$props.num_prod_correccion_desactivar"
+                class="form-radio h-4 w-4 text-indigo-600"
+                name="name_numeroproductor_correcto"
+                v-model="numeroproductor_correcto"
+                value="nada"
+                v-on:change="actaulizar_variable_numprod('nada')"
+              />
+              <span class="ml-2">Sin evaluar</span>
+            </label>
+          </div>
+          <div v-show="numeroproductor_correcto_local" class="w-full px-3">
+            <label
+              class="
+                block
+                uppercase
+                tracking-wide
+                text-gray-700 text-xs
+                font-bold
+                mb-1
+                mt-2
+              "
+              for="obs_numeroproductor"
+              >Observación:</label
+            >
+            <textarea
+              id="obs_numeroproductor"
+              name="obs_numeroproductor"
+              v-model="obs_numeroproductor"
+              v-bind:class="clase_text_area_numprod"
               :disabled="$props.num_prod_correccion_desactivar"
-              class="form-radio h-5 w-5 text-green-600"
-              name="name_numeroproductor_correcto"
-              v-model="numeroproductor_correcto"
-              value="true"
-              v-on:change="actaulizar_variable_numprod(true)"
-            />
-            <span class="ml-2">Si</span>
-          </label>
-          <label class="inline-flex items-center ml-6">
-            <input
-              type="radio"
-              :disabled="$props.num_prod_correccion_desactivar"
-              class="form-radio h-5 w-5 text-red-600"
-              name="name_numeroproductor_correcto"
-              v-model="numeroproductor_correcto"
-              value="false"
-              v-on:change="actaulizar_variable_numprod(false)"
-            />
-            <span class="ml-2">No</span>
-          </label>
-          <label class="inline-flex items-center ml-6">
-            <input
-              type="radio"
-              :disabled="$props.num_prod_correccion_desactivar"
-              class="form-radio h-5 w-5 text-indigo-600"
-              name="name_numeroproductor_correcto"
-              v-model="numeroproductor_correcto"
-              value="nada"
-              v-on:change="actaulizar_variable_numprod('nada')"
-            />
-            <span class="ml-2">Sin evaluar</span>
-          </label>
+              @input="
+                actaulizar_contenido_text_area_numprod($event.target.value)
+              "
+            >
+            </textarea>
+            <p v-bind:class="clase_cartel_nota_evaluacion_numprod_text_area">
+              {{ cartel_nota_evaluacion_numprod_text_area }}
+            </p>
+          </div>
         </div>
-      </div>
-      <div
-        v-show="!numeroproductor_correcto_local"
-        class="w-full md:w-2/3 px-3"
+      </div> -->
+
+      <!-- Probando Componente -->
+      <SeccionEvaluacion
+        :correccion_desactivar="$props.num_prod_correccion_desactivar"
+        :name_correcto="'name_numeroproductor_correcto'"
+        :correcto="numeroproductor_correcto_local"
+        v-on:change_correcto="actaulizar_variable_numprod($event)"
+        :obs_observacion="observacion_local"
+        v-on:change_obs="actaulizar_contenido_text_area_numprod($event)"
       >
-        <label
-          class="
-            block
-            uppercase
-            tracking-wide
-            text-gray-700 text-xs
-            font-bold
-            mb-2
-          "
-          for="obs_numeroproductor"
-          >Observación:</label
-        >
-        <textarea
-          id="obs_numeroproductor"
-          name="obs_numeroproductor"
-          v-model="obs_numeroproductor"
-          v-bind:class="clase_text_area_numprod"
-          :disabled="$props.num_prod_correccion_desactivar"
-          @input="actaulizar_contenido_text_area_numprod($event.target.value)"
-        >
-        </textarea>
-        <p v-bind:class="clase_cartel_nota_evaluacion_numprod_text_area">
-          {{ cartel_nota_evaluacion_numprod_text_area }}
-        </p>
-      </div>
+      </SeccionEvaluacion>
+      <!-- ******************* -->
     </div>
     <div
       class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8"
@@ -228,7 +251,12 @@
 
 <script>
 import Swal from "sweetalert2";
+import SeccionEvaluacion from "@/Components/SeccionEvaluacion";
+
 export default {
+  components: {
+    SeccionEvaluacion,
+  },
   props: [
     "numeroproductor",
     "numeroproductor_valido",
@@ -241,15 +269,18 @@ export default {
     "num_prod_disable",
     "num_prod_correccion_mostrar",
     "num_prod_correccion_desactivar",
+    "mostrar_evaluacion_adm",
   ],
   data() {
     return {
       //   clase_de_input_numprod:
       //     "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
-      clase_de_input_numprod: "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white",
+      clase_de_input_numprod:
+        "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white",
       clase_cartel_nota_numprod: "text-green-500 text-xs italic",
       cartel_nota_campo_numprod: "",
       numeroproductor_correcto_local: this.$props.numeroproductor_correcto,
+      observacion_local: this.$props.obs_numeroproductor,
       numeroproductor_valido_local: this.$props.numeroproductor_valido,
       clase_text_area_numprod:
         "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
@@ -287,39 +318,39 @@ export default {
 
     actaulizar_variable_numprod(valor) {
       this.numeroproductor_correcto_local = valor;
-      console.log(this.numeroproductor_correcto_local);
       this.$emit("changenumprodcorrecto", this.numeroproductor_correcto_local);
     },
 
     actaulizar_contenido_text_area_numprod(value) {
-      if (this.$props.obs_numeroproductor.length <= 2) {
-        this.clase_text_area_numprod =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_numprod_text_area =
-          "Observacion Incorrecta - debe ser mayor a 2 carcteres";
-        this.clase_cartel_nota_evaluacion_numprod_text_area =
-          "text-red-500 text-xs italic";
-      }
-      if (this.$props.obs_numeroproductor.length >= 50) {
-        this.clase_text_area_numprod =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_numprod_text_area =
-          "Observacion Incorrecta - debe tener menos de 50 caracteres";
-        this.clase_cartel_nota_evaluacion_numprod_text_area =
-          "text-red-500 text-xs italic";
-      }
-      if (
-        this.$props.obs_numeroproductor !== "" &&
-        this.$props.obs_numeroproductor.length <= 30 &&
-        this.$props.obs_numeroproductor.length >= 3
-      ) {
-        this.clase_text_area_numprod =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_numprod_text_area = "Observacion Correcta";
-        this.clase_cartel_nota_evaluacion_numprod_text_area =
-          "text-green-500 text-xs italic";
-      }
-      this.$emit("changeobsnumprod", this.$props.obs_numeroproductor);
+      this.observacion_local = value;
+      this.$emit("changeobsnumprod", value);
+      // if (this.$props.obs_numeroproductor.length <= 2) {
+      //   this.clase_text_area_numprod =
+      //     "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+      //   this.cartel_nota_evaluacion_numprod_text_area =
+      //     "Observacion Incorrecta - debe ser mayor a 2 carcteres";
+      //   this.clase_cartel_nota_evaluacion_numprod_text_area =
+      //     "text-red-500 text-xs italic";
+      // }
+      // if (this.$props.obs_numeroproductor.length >= 50) {
+      //   this.clase_text_area_numprod =
+      //     "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+      //   this.cartel_nota_evaluacion_numprod_text_area =
+      //     "Observacion Incorrecta - debe tener menos de 50 caracteres";
+      //   this.clase_cartel_nota_evaluacion_numprod_text_area =
+      //     "text-red-500 text-xs italic";
+      // }
+      // if (
+      //   this.$props.obs_numeroproductor !== "" &&
+      //   this.$props.obs_numeroproductor.length <= 30 &&
+      //   this.$props.obs_numeroproductor.length >= 3
+      // ) {
+      //   this.clase_text_area_numprod =
+      //     "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+      //   this.cartel_nota_evaluacion_numprod_text_area = "Observacion Correcta";
+      //   this.clase_cartel_nota_evaluacion_numprod_text_area =
+      //     "text-green-500 text-xs italic";
+      // }
     },
     cambio_input_numprod(value) {
       if (this.numeroproductor.length < 3) {

@@ -65,7 +65,8 @@
             text-green-800
             bg-green-100
             hover:bg-green-600
-            hover:border-2 hover:border-green-600
+            hover:border-2
+            hover:border-green-600
             hover:text-white
           "
           @click="agregar_mineral()"
@@ -108,7 +109,8 @@
               bg-blue-300
               p-4
               py-2
-              text-black font-medium
+              text-black
+              font-medium
               rounded
             "
           >
@@ -117,10 +119,9 @@
 
           <div class="bg-white shadow-md rounded-xl p-4 border border-gray-300">
             <div class="flex-none lg:flex">
-
               <!--******* Indice para cada mineral *******-->
               <!-- <div class="flex flex-wrap"> -->
-                <!-- <div
+              <!-- <div
                   class="
                     md:w-1/8
                     sm:w-8/8
@@ -136,9 +137,8 @@
                 >
                   {{ index + 1 }}°
                 </div> -->
-                <!-- <h2 class="flex-auto font-medium">{{mineral.id_mineral}}</h2> -->
+              <!-- <h2 class="flex-auto font-medium">{{mineral.id_mineral}}</h2> -->
               <!-- </div> -->
-
 
               <!--******* Imagen de mineral *******-->
               <div
@@ -159,98 +159,169 @@
                 > -->
 
               <!--******* Select de Mineral *******-->
-              <div
-                class="
-                  w-full
-                  sm:w-4/4
-                  md:w-1/4
-                  lg:w-1/4
-                  xl:w-1/4
-                  2xl:w-1/4
-                  px-3
-                "
-              >
-                <div class="flex" v-if="$props.tipo_yacimiento === 'segunda'">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5 mr-3"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                    ></path>
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                    ></path>
-                  </svg>
-                  <label for="select_mineral_explotado"
-                    >Mineral Explotado:</label
-                  >
-                  <select
-                    :disabled="$props.evaluacion || $props.desactivar_input"
-                    class="form-control"
-                    id="select_mineral_explotado"
-                    name="select_mineral_explotado"
-                    v-model="mineral.segunda_cat_mineral_explotado"
-                    @change="
-                      cambio_select_tipo_mineral_explotado_segunda_cat(
-                        $event,
-                        index
-                      )
-                    "
-                  >
-                    <option value="aprovechamiento_comun">
-                      Sustancias de aprovechamiento común
-                    </option>
-                    <option value="conceden_preferentemente">
-                      Sustancias que se conceden preferentemente al dueño del
-                      suelo
-                    </option>
-                  </select>
-                </div>
-                <div class="flex" v-if="$props.tipo_yacimiento === 'segunda'">
-                  <select
-                    :disabled="$props.evaluacion || $props.desactivar_input"
-                    v-model="mineral.id_mineral"
-                    @change="cambio_select_mineral_segunda_cat($event, index)"
-                  >
-                    <option
-                      v-for="opcion in mineral.lista_de_minerales_array"
-                      v-bind:key="opcion.id"
-                      :value="opcion.id"
+              <div class="px-3">
+                <div
+                  class="flex flex-wrap"
+                  v-if="$props.tipo_yacimiento === 'segunda'"
+                >
+                  <!-- Mineral Explotado -->
+                  <div class="w-full px-3 mb-6 md:mb-3">
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="select_mineral_explotado"
+                      >Mineral Explotado:</label
                     >
-                      {{ opcion.name }}
-                    </option>
-                  </select>
-                </div>
-                <div class="flex" v-if="$props.tipo_yacimiento === 'segunda'">
-                  <div v-show="mineral.mostrar_lugar_segunda_cat">
-                    <label for="select_lugar_mineral"
+                    <div class="flex items-stretch w-full">
+                      <select
+                        :disabled="$props.evaluacion || $props.desactivar_input"
+                        class="
+                          rounded
+                          border border-grey-light
+                          focus:border-blue focus:shadow
+                          w-full
+                        "
+                        id="select_mineral_explotado"
+                        name="select_mineral_explotado"
+                        v-model="mineral.segunda_cat_mineral_explotado"
+                        @change="
+                          cambio_select_tipo_mineral_explotado_segunda_cat(
+                            $event,
+                            index
+                          )
+                        "
+                      >
+                        <option value="0" selected disabled>
+                          Seleccione Mineral Explotado...
+                        </option>
+                        <option value="aprovechamiento_comun">
+                          Sustancias de aprovechamiento común
+                        </option>
+                        <option value="conceden_preferentemente">
+                          Sustancias que se conceden preferentemente al dueño
+                          del suelo
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- Sustancia -->
+                  <div
+                    class="w-full px-3 mb-6 md:mb-2"
+                    v-show="mineral.segunda_cat_mineral_explotado != 0"
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="select_mineral_explotado"
+                      >Sustancia:</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <select
+                        class="
+                          rounded
+                          border border-grey-light
+                          focus:border-blue focus:shadow
+                          w-full
+                        "
+                        :disabled="$props.evaluacion || $props.desactivar_input"
+                        v-model="mineral.id_mineral"
+                        @change="
+                          cambio_select_mineral_segunda_cat($event, index)
+                        "
+                      >
+                        <option value="0" selected Disabled>
+                          Seleccione un Sustancia...
+                        </option>
+                        <option
+                          v-for="opcion in mineral.lista_de_minerales_array"
+                          v-bind:key="opcion.id"
+                          :value="opcion.id"
+                        >
+                          {{ opcion.name }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- Lugar donde se encuentra -->
+                  <div
+                    class="w-full px-3 mb-6 md:mb-2"
+                    v-show="mineral.mostrar_lugar_segunda_cat"
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="select_lugar_mineral"
                       >Lugar donde se encuentra:</label
                     >
-                    <select
-                      :disabled="$props.evaluacion || $props.desactivar_input"
-                      class="form-control"
-                      id="select_lugar_mineral"
-                      name="select_lugar_mineral"
-                      v-model="mineral.lugar_donde_se_enccuentra"
-                      @change="cambio_mineral_explotado($event, index)"
+                    <div class="flex items-stretch w-full relative">
+                      <select
+                        :disabled="$props.evaluacion || $props.desactivar_input"
+                        class="
+                          rounded
+                          border border-grey-light
+                          focus:border-blue focus:shadow
+                          w-full
+                        "
+                        id="select_lugar_mineral"
+                        name="select_lugar_mineral"
+                        v-model="mineral.lugar_donde_se_enccuentra"
+                        @change="cambio_mineral_explotado($event, index)"
+                      >
+                        <option value="" selected Disabled>
+                          Seleccione un Lugar...
+                        </option>
+                        <option value="lecho_de_los_rios">
+                          Lechos de los ríos
+                        </option>
+                        <option value="aguas_corrientes">
+                          Aguas Corrientes
+                        </option>
+                        <option value="placeres">Placeres</option>
+                      </select>
+                    </div>
+                  </div>
+                  <!-- Nombre del mineral no comprendido en 1° categoría -->
+                  <div
+                    class="w-full px-3 mb-6 md:mb-2"
+                    v-show="mineral.mostrar_otro_mineral_segunda_cat"
+                  >
+                    <label for="otro_mineral_segunda_categoria"
+                      >Nombre del Mineral:</label
                     >
-                      <option value="lecho_de_los_rios">
-                        Lechos de los ríos
-                      </option>
-                      <option value="aguas_corrientes">Aguas Corrientes</option>
-                      <option value="placeres">Placeres</option>
-                    </select>
-                    <br />
+                    <div class="flex items-stretch w-full relative">
+                      <input
+                        :disabled="$props.evaluacion || $props.desactivar_input"
+                        type="text"
+                        maxlength="25"
+                        class="
+                          rounded
+                          border border-grey-light
+                          focus:border-blue focus:shadow
+                          w-full
+                        "
+                        name="otro_mineral_segunda_categoria"
+                        id="otro_mineral_segunda_categoria"
+                        v-model="mineral.otro_mineral_segunda_cat"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div v-if="$props.tipo_yacimiento !== 'segunda'">
@@ -290,23 +361,6 @@
                     </select>
                   </div>
                 </div>
-                <div class="flex" v-if="$props.tipo_yacimiento === 'segunda'">
-                  <div v-show="mineral.mostrar_otro_mineral_segunda_cat">
-                    <label for="otro_mineral_segunda_categoria"
-                      >Nombre del mineral no comprendido en 1° categoría:</label
-                    >
-                    <input
-                      :disabled="$props.evaluacion || $props.desactivar_input"
-                      type="text"
-                      maxlength="25"
-                      class="form-control"
-                      name="otro_mineral_segunda_categoria"
-                      id="otro_mineral_segunda_categoria"
-                      v-model="mineral.otro_mineral_segunda_cat"
-                    />
-                    <br />
-                  </div>
-                </div>
               </div>
 
               <!--******* Observación de Mineral *******-->
@@ -319,7 +373,7 @@
                   xl:w-3/2
                   2xl:w-3/2
                   px-3
-               "
+                "
               >
                 <div class="items-center">
                   <label
@@ -371,7 +425,7 @@
               </div>
               <!-- </div> -->
               <!-- <div class="flex p-4 pb-2 border-t border-gray-200 "></div> -->
-              
+
               <!--******* Boton Eliminar *******-->
               <!-- <div
                 class="
@@ -409,102 +463,104 @@
                   Eliminar Mineral
                 </button>
               </div> -->
-              
+
               <!--******* Validación *******-->
-              <!-- <div class="w-full md:w-2/3 px-3">
-                <div v-if="evaluacion || $props.mostrar_correccion">
-                  <h3>Seccion de evaluacion</h3>
-                  <div class="flex">
-                    <div class="w-full md:w-1/3 px-3">
-                      <span class="text-gray-700">Es correcto?</span>
-                      <div class="mt-2">
-                        <label class="inline-flex items-center">
-                          <input
-                            type="radio"
-                            :disabled="desactivar_correccion"
-                            class="form-radio h-5 w-5 text-green-400"
-                            :name="'name_mineral_correccion'.index"
-                            v-model="mineral.evaluacion_correcto"
-                            value="true"
-                            v-on:change="
-                              actaulizar_variable_correccion(true, index)
-                            "
-                          />
-                          <span class="ml-2">Si</span>
-                        </label>
-                        <label class="inline-flex items-center ml-6">
-                          <input
-                            type="radio"
-                            :disabled="desactivar_correccion"
-                            class="form-radio h-5 w-5 text-red-400"
-                            :name="'name_mineral_correccion'.index"
-                            v-model="mineral.evaluacion_correcto"
-                            value="false"
-                            v-on:change="
-                              actaulizar_variable_correccion(false, index)
-                            "
-                          />
-                          <span class="ml-2">No</span>
-                        </label>
-                        <label class="inline-flex items-center ml-6">
-                          <input
-                            type="radio"
-                            :disabled="desactivar_correccion"
-                            class="form-radio h-5 w-5 text-indigo-400"
-                            :name="'name_mineral_correccion'.index"
-                            v-model="mineral.evaluacion_correcto"
-                            value="nada"
-                            v-on:change="
-                              actaulizar_variable_correccion('nada', index)
-                            "
-                          />
-                          <span class="ml-2">Sin evaluar</span>
-                        </label>
-                      </div>
-                    </div>
-                    <div
-                      v-show="!mineral.evaluacion_correcto"
-                      class="w-full md:w-2/3 px-3"
-                    >
-                      <label
-                        class="
-                          block
-                          uppercase
-                          tracking-wide
-                          text-gray-700 text-xs
-                          font-bold
-                          mb-2
-                        "
-                        for="observaciones"
-                        >Observación:</label
-                      >
-                      <textarea
-                        id="observaciones"
-                        name="observaciones"
-                        v-model="mineral.observacion_autoridad"
-                        v-bind:class="mineral.clase_text_area"
-                        :disabled="desactivar_correccion"
-                        @input="
-                          actaulizar_contenido_text_area(
-                            $event.target.value,
-                            index
-                          )
-                        "
-                      >
-                      </textarea>
-                      <p
-                        v-bind:class="
-                          mineral.clase_text_evaluacion_de_text_area
-                        "
-                      >
-                        {{ mineral.texto_validacion_text_area }}
-                      </p>
+              <!-- </div> -->
+            </div>
+            <!-- <div v-if="true"> -->
+            <div  v-if="$props.evaluacion || $props.mostrar_correccion || $props.mostrar_evaluacion_adm" >
+              <div
+                class="bg-white shadow-md rounded-xl pb-4 border border-red-600"
+              >
+                <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                  Seccion de evaluacion
+                </h3>
+                <div class="flex">
+                  <div class="w-full md:w-1/3 px-3">
+                    <span class="text-gray-700">Es correcto?</span>
+                    <div class="mt-2">
+                      <label class="inline-flex items-center">
+                        <input
+                          type="radio"
+                          :disabled="desactivar_correccion"
+                          class="form-radio h-5 w-5 text-green-400"
+                          :name="'name_mineral_correccion'.index"
+                          v-model="mineral.evaluacion_correcto"
+                          value="true"
+                          v-on:change="
+                            actaulizar_variable_correccion(true, index)
+                          "
+                        />
+                        <span class="ml-2">Si</span>
+                      </label>
+                      <label class="inline-flex items-center ml-6">
+                        <input
+                          type="radio"
+                          :disabled="desactivar_correccion"
+                          class="form-radio h-5 w-5 text-red-400"
+                          :name="'name_mineral_correccion'.index"
+                          v-model="mineral.evaluacion_correcto"
+                          value="false"
+                          v-on:change="
+                            actaulizar_variable_correccion(false, index)
+                          "
+                        />
+                        <span class="ml-2">No</span>
+                      </label>
+                      <label class="inline-flex items-center ml-6">
+                        <input
+                          type="radio"
+                          :disabled="desactivar_correccion"
+                          class="form-radio h-5 w-5 text-indigo-400"
+                          :name="'name_mineral_correccion'.index"
+                          v-model="mineral.evaluacion_correcto"
+                          value="nada"
+                          v-on:change="
+                            actaulizar_variable_correccion('nada', index)
+                          "
+                        />
+                        <span class="ml-2">Sin evaluar</span>
+                      </label>
                     </div>
                   </div>
+                  <div
+                    v-show="!mineral.evaluacion_correcto"
+                    class="w-full md:w-2/3 px-3"
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-2
+                      "
+                      for="observaciones"
+                      >Observación:</label
+                    >
+                    <textarea
+                      id="observaciones"
+                      name="observaciones"
+                      v-model="mineral.observacion_autoridad"
+                      v-bind:class="mineral.clase_text_area"
+                      :disabled="desactivar_correccion"
+                      @input="
+                        actaulizar_contenido_text_area(
+                          $event.target.value,
+                          index
+                        )
+                      "
+                    >
+                    </textarea>
+                    <p
+                      v-bind:class="mineral.clase_text_evaluacion_de_text_area"
+                    >
+                      {{ mineral.texto_validacion_text_area }}
+                    </p>
+                  </div>
                 </div>
-              </div> -->
-
-              <!-- </div> -->
+              </div>
             </div>
           </div>
         </div>
@@ -532,6 +588,7 @@ export default {
     "desactivar_input",
     "mostrar_correccion",
     "desactivar_correccion",
+    "mostrar_evaluacion_adm"
   ],
   data() {
     return {
@@ -540,7 +597,7 @@ export default {
       texto_validacion_input: "Campo Correcto",
       clase_cartel_validacion_input: "text-green-500 text-xs italic",
       clase_text_area:
-        "appearance-none block w-full bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white",
+        "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded mb-1 leading-tight focus:outline-none focus:bg-white",
       clase_text_area_presentacion:
         "appearance-none block w-full sm:h-32 bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white",
       texto_validacion_text_area: "Observacion Correcta",
@@ -574,7 +631,7 @@ export default {
     actaulizar_contenido_text_area(value, index) {
       if (this.minerales[index].observacion_autoridad.length <= 2) {
         this.minerales[index].clase_text_area =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.minerales[index].texto_validacion_text_area =
           "Observacion Incorrecta - debe ser mayor a 2 carcteres";
         this.minerales[index].clase_text_evaluacion_de_text_area =
@@ -584,7 +641,7 @@ export default {
       }
       if (this.minerales[index].observacion_autoridad.length >= 50) {
         this.minerales[index].clase_text_area =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.minerales[index].texto_validacion_text_area =
           "Observacion Incorrecta - debe tener menos de 50 caracteres";
         this.minerales[index].clase_text_evaluacion_de_text_area =
@@ -598,7 +655,7 @@ export default {
         this.minerales[index].observacion_autoridad.length >= 3
       ) {
         this.minerales[index].clase_text_area =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.minerales[index].texto_validacion_text_area =
           "Observacion Correcta";
         this.minerales[index].clase_text_evaluacion_de_text_area =
@@ -686,7 +743,7 @@ export default {
       var mineral_aux = {
         id_mineral: "0",
         id_varieadad: "",
-        segunda_cat_mineral_explotado: "",
+        segunda_cat_mineral_explotado: "0",
         lugar_donde_se_enccuentra: "",
         mostrar_lugar_segunda_cat: false,
         mostrar_otro_mineral_segunda_cat: false,
@@ -697,15 +754,14 @@ export default {
           "py-0.5 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white",
         clase_text_evaluacion_de_text_area_presentacion:
           "text-red-500 text-xs italic",
-        texto_validacion_text_area_presentacion:
-          "",
+        texto_validacion_text_area_presentacion: "",
         presentacion_valida: true,
         evaluacion_correcto: true,
         observacion_autoridad: "",
         clase_text_area:
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white",
+          "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-500 rounded mb-1 leading-tight focus:outline-none focus:bg-white",
         clase_text_evaluacion_de_text_area: "text-red-500 text-xs italic",
-        texto_validacion_text_area: "Observacion Correcta",
+        texto_validacion_text_area: "",
         obs_valida: true,
         lista_de_minerales_array: [],
         thumb: this.$inertia.page.props.appName + "/minerales/thumbs/3.png",
@@ -769,10 +825,18 @@ export default {
     cambio_select_tipo_mineral_explotado_segunda_cat: function (event, index) {
       // console.log("el index es: "+index);
       // console.log("acabo de elegir: "+ this.minerales[index].segunda_cat_mineral_explotado);
+      this.minerales[index].id_mineral = 0;
       if (
         this.minerales[index].segunda_cat_mineral_explotado ===
         "aprovechamiento_comun"
       ) {
+        if (
+          this.minerales[index].id_mineral === 1031 ||
+          this.minerales[index].id_mineral === 1032
+        ) {
+          this.minerales[index].mostrar_lugar_segunda_cat = true;
+        }
+        this.minerales[index].mostrar_otro_mineral_segunda_cat = false;
         this.minerales[index].lista_de_minerales_array = [
           {
             id: 1031,
@@ -795,84 +859,86 @@ export default {
             name: "Escoriales",
           },
         ];
-      } else {
-        if (
-          this.minerales[index].segunda_cat_mineral_explotado ===
-          "conceden_preferentemente"
-        ) {
-          this.minerales[index].lista_de_minerales_array = [
-            {
-              id: 1036,
-              name: "Salitres",
-            },
-            {
-              id: 1037,
-              name: "Salinas",
-            },
-            {
-              id: 1038,
-              name: "Turberas",
-            },
-            {
-              id: 1039,
-              name: "Metales no comprendidos en 1° Categ.",
-            },
-            {
-              id: 1040,
-              name: "Tierras Piritosas y Aluminosas",
-            },
-            {
-              id: 1041,
-              name: "Abrasivos",
-            },
-            {
-              id: 1042,
-              name: "Ocres",
-            },
-            {
-              id: 1043,
-              name: "Resinas",
-            },
-            {
-              id: 1044,
-              name: "Esteatitas",
-            },
-            {
-              id: 1045,
-              name: "Baritina",
-            },
-            {
-              id: 1046,
-              name: "Caparrosas",
-            },
-            {
-              id: 1047,
-              name: "Grafito",
-            },
-            {
-              id: 1048,
-              name: "Caolí­n",
-            },
-            {
-              id: 1049,
-              name: "Sales Alcalinas o Alcalino Terrosas",
-            },
-            {
-              id: 1050,
-              name: "Amianto",
-            },
-            {
-              id: 1051,
-              name: "Bentonita",
-            },
-            {
-              id: 1052,
-              name: "Zeolitas o Minerales Permutantes o Permutíticos",
-            },
-          ];
-        } else {
-          this.minerales[index].lista_de_minerales_array = [];
+      } else if (
+        this.minerales[index].segunda_cat_mineral_explotado ===
+        "conceden_preferentemente"
+      ) {
+        if (this.minerales[index].id_mineral === 1039) {
+          this.minerales[index].mostrar_otro_mineral_segunda_cat = true;
         }
+        this.minerales[index].mostrar_lugar_segunda_cat = false;
+        this.minerales[index].lista_de_minerales_array = [
+          {
+            id: 1036,
+            name: "Salitres",
+          },
+          {
+            id: 1037,
+            name: "Salinas",
+          },
+          {
+            id: 1038,
+            name: "Turberas",
+          },
+          {
+            id: 1039,
+            name: "Metales no comprendidos en 1° Categ.",
+          },
+          {
+            id: 1040,
+            name: "Tierras Piritosas y Aluminosas",
+          },
+          {
+            id: 1041,
+            name: "Abrasivos",
+          },
+          {
+            id: 1042,
+            name: "Ocres",
+          },
+          {
+            id: 1043,
+            name: "Resinas",
+          },
+          {
+            id: 1044,
+            name: "Esteatitas",
+          },
+          {
+            id: 1045,
+            name: "Baritina",
+          },
+          {
+            id: 1046,
+            name: "Caparrosas",
+          },
+          {
+            id: 1047,
+            name: "Grafito",
+          },
+          {
+            id: 1048,
+            name: "Caolí­n",
+          },
+          {
+            id: 1049,
+            name: "Sales Alcalinas o Alcalino Terrosas",
+          },
+          {
+            id: 1050,
+            name: "Amianto",
+          },
+          {
+            id: 1051,
+            name: "Bentonita",
+          },
+          {
+            id: 1052,
+            name: "Zeolitas o Minerales Permutantes o Permutíticos",
+          },
+        ];
+      } else {
+        this.minerales[index].lista_de_minerales_array = [];
       }
       this.actualizar_valores_padre();
     },

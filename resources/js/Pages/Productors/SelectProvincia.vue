@@ -43,8 +43,14 @@
     <p v-bind:class="clase_cartel_nota_legalcalleprov">
       {{ cartel_nota_legalcalleprov }}.
     </p>
-    <div class="flex" v-if="evaluacion || mostrar_legal_prov_correccion">
-      <div class="w-full md:w-1/3 px-3">
+    <div
+      v-if="
+        evaluacion ||
+        mostrar_legal_prov_correccion ||
+        $props.mostrar_evaluacion_adm
+      "
+    >
+      <!-- <div class="w-full md:w-1/3 px-3">
         <span class="text-gray-700">Es correcto?</span>
         <div class="mt-2">
           <label class="inline-flex items-center">
@@ -115,7 +121,18 @@
         <p v-bind:class="clase_cartel_nota_evaluacion_prov_calle">
           {{ cartel_nota_evaluacion_prov_calle }}
         </p>
-      </div>
+      </div> -->
+      <SeccionEvaluacion
+        :correccion_desactivar="$props.desactivar_legal_prov_correccion"
+        :name_correcto="name_correcto"
+        :correcto="legal_calle_prov_correcto_local"
+        :obs_observacion="observacion_prod"
+        v-on:change_correcto="cactaulizar_variable_legalcalleprov($event)"
+        v-on:change_obs="
+          actaulizar_contenido_text_area_calle_legal_prov($event)
+        "
+      >
+      </SeccionEvaluacion>
     </div>
     <div
       class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8"
@@ -188,7 +205,12 @@
 </template>
 
 <script>
+import SeccionEvaluacion from "@/Components/SeccionEvaluacion";
+
 export default {
+  components: {
+    SeccionEvaluacion,
+  },
   props: [
     "leal_provincia",
     "leal_provincia_valido",
@@ -203,10 +225,12 @@ export default {
     "desactivar_legal_prov",
     "mostrar_legal_prov_correccion",
     "desactivar_legal_prov_correccion",
+    "mostrar_evaluacion_adm",
   ],
   data() {
     return {
-      clase_de_input_provincia_legal:"appearance-none block w-full bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white",
+      clase_de_input_provincia_legal:
+        "appearance-none block w-full bg-gray-200 text-gray-700 border rounded mb-1 leading-tight focus:outline-none focus:bg-white",
       cartel_nota_legalcalleprov: "",
       clase_cartel_nota_legalcalleprov: "text-green-500 text-xs italic",
       clase_text_area_calle_legal_prov:
@@ -214,10 +238,12 @@ export default {
       cartel_nota_evaluacion_prov_calle: "Observacion Correcta",
       clase_cartel_nota_evaluacion_prov_calle: "text-green-500 text-xs italic",
       calle_prov_legal_valido_local: this.$props.leal_provincia_valido,
-      legal_calle_prov_correcto_local: this.$props.leal_provincia_correcto,
       obs_calle_prov_legal_valido_local: this.$props.obs_leal_provincia_valido,
       leal_provincia_local: this.$props.leal_provincia,
+
+      legal_calle_prov_correcto_local: this.$props.leal_provincia_correcto,
       observacion_prod: this.$props.obs_leal_provincia,
+
       testing_hijo: false,
 
       //border-green-500
@@ -231,42 +257,9 @@ export default {
         this.legal_calle_prov_correcto_local
       );
     },
-
     actaulizar_contenido_text_area_calle_legal_prov(value) {
-      if (this.$props.obs_leal_provincia.length <= 2) {
-        this.clase_text_area_calle_legal_prov =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_prov_calle =
-          "Observacion Incorrecta - debe ser mayor a 2 carcteres";
-        this.clase_cartel_nota_evaluacion_prov_calle =
-          "text-red-500 text-xs italic";
-        this.obs_calle_prov_legal_valido_local = false;
-        this.$emit("changeobsprovlegalvalido", false);
-      }
-      if (this.$props.obs_leal_provincia.length >= 50) {
-        this.clase_text_area_calle_legal_prov =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_prov_calle =
-          "Observacion Incorrecta - debe tener menos de 50 caracteres";
-        this.clase_cartel_nota_evaluacion_prov_calle =
-          "text-red-500 text-xs italic";
-        this.obs_calle_prov_legal_valido_local = false;
-        this.$emit("changeobsprovlegalvalido", false);
-      }
-      if (
-        this.$props.obs_leal_provincia !== "" &&
-        this.$props.obs_leal_provincia.length <= 30 &&
-        this.$props.obs_leal_provincia.length >= 3
-      ) {
-        this.clase_text_area_calle_legal_prov =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_prov_calle = "Observacion Correcta";
-        this.clase_cartel_nota_evaluacion_prov_calle =
-          "text-green-500 text-xs italic";
-        this.obs_calle_prov_legal_valido_local = false;
-        this.$emit("changeobsprovlegalvalido", true);
-      }
-      this.$emit("changeobsrpovlegal", this.$props.obs_leal_provincia);
+      this.observacion_prod = value;
+      this.$emit("changeobsrpovlegal", this.observacion_prod);
     },
     cambio_input_calle_prov_legal(value) {
       //alert("cambio la provincia"+value);

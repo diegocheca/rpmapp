@@ -156,15 +156,32 @@
         <Menu
           :mostrarayuda="true"
           :ayuda="ayuda_local"
+          :evaluacion="evaluacion_adm"
+          :mostrar_evaluacion="mostrar_evaluacion_adm"
           :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+          v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
         ></Menu>
       </div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br /> -->
-      <div class="flex items-center justify-center bg-teal-lightest font-sans">
-        <div class="w-full bg-white rounded shadow p-6 m-8">
+      <div class="flex flex-wrap mb-4">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            rounded
+            shadow-md
+            p-6
+            hover:bg-lime-100
+          "
+        >
           <CaracterQueInvoca
             v-if="$props.mostrar_owner"
             v-bind:valor_input_props="form_pagina.owner"
@@ -185,6 +202,7 @@
             v-bind:desactivar_owner_correccion="
               $props.desactivar_owner_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changecorrecto="update_owner_correcto($event)"
             v-on:changeobs="updateobs_owner($event)"
             v-on:changeobsvalido="updateobs_owner_valido($event)"
@@ -221,9 +239,21 @@
             {{ form_pagina.obs_numero_expdiente_valido }}
           </div>
         </div>
-      </div>
-      <div class="flex items-center justify-center bg-teal-lightest font-sans">
-        <div class="w-full bg-white rounded shadow p-6 m-8">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            rounded
+            shadow-md
+            p-6
+            hover:bg-lime-100
+          "
+        >
           <CaracterQueInvoca
             v-if="$props.mostrar_arrendatario"
             v-bind:valor_input_props="form_pagina.arrendatario"
@@ -246,6 +276,7 @@
             v-bind:desactivar_owner_correccion="
               $props.desactivar_arrendatario_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changecorrecto="update_arrendatario_correcto($event)"
             v-on:changeobs="update_obs_arrendatario($event)"
             v-on:changeobsvalido="update_obs_arrendatario_valido($event)"
@@ -281,204 +312,244 @@
             {{ form_pagina.obs_arrendatario_valido }}
           </div>
         </div>
-      </div>
-      <div class="flex items-center justify-center bg-teal-lightest font-sans">
-        <div class="w-full bg-white rounded shadow p-6 m-8">
-          <div class="flex">
-            <CaracterQueInvoca
-              v-if="$props.mostrar_concesionario"
-              v-bind:valor_input_props="form_pagina.concesionario"
-              v-bind:evualacion_correcto="form_pagina.concesionario_correcto"
-              v-bind:valor_obs="form_pagina.obs_concesionario"
-              v-bind:valor_valido_obs="form_pagina.obs_concesionario_valido"
-              v-bind:evaluacion="autoridad_minera"
-              v-bind:testing="mostrar_testing"
-              v-bind:label="'Concesionario'"
-              v-bind:label_true="'Soy Concesionario'"
-              v-bind:label_false="'No soy concesionario'"
-              v-bind:otro_label="false"
-              v-bind:otro_input="false"
-              v-bind:name_correcion="'correcion_concesionario'"
-              v-bind:name_checkbox="'check_concesionario'"
-              v-bind:desactivar_owner="$props.desactivar_concesionario"
-              v-bind:mostrar_owner_correccion="
-                $props.mostrar_concesionario_correccion
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            rounded
+            shadow-md
+            p-6
+            hover:bg-lime-100
+          "
+        >
+          <CaracterQueInvoca
+            v-if="$props.mostrar_concesionario"
+            v-bind:valor_input_props="form_pagina.concesionario"
+            v-bind:evualacion_correcto="form_pagina.concesionario_correcto"
+            v-bind:valor_obs="form_pagina.obs_concesionario"
+            v-bind:valor_valido_obs="form_pagina.obs_concesionario_valido"
+            v-bind:evaluacion="autoridad_minera"
+            v-bind:testing="mostrar_testing"
+            v-bind:label="'Concesionario'"
+            v-bind:label_true="'Soy Concesionario'"
+            v-bind:label_false="'No soy concesionario'"
+            v-bind:otro_label="false"
+            v-bind:otro_input="false"
+            v-bind:name_correcion="'correcion_concesionario'"
+            v-bind:name_checkbox="'check_concesionario'"
+            v-bind:desactivar_owner="$props.desactivar_concesionario"
+            v-bind:mostrar_owner_correccion="
+              $props.mostrar_concesionario_correccion
+            "
+            v-bind:desactivar_owner_correccion="
+              $props.desactivar_concesionario_correccion
+            "
+            :mostrar_evaluacion_adm="evaluacion_adm"
+            v-on:changecorrecto="update_concesionario_correcto($event)"
+            v-on:changeobs="update_obs_concesionario($event)"
+            v-on:changeobsvalido="update_obs_concesionario_valido($event)"
+            v-on:changevalor="update_valor_concesionario($event)"
+          ></CaracterQueInvoca>
+          <div v-show="ayuda_local">
+            <br />
+            <div
+              class="
+                bg-blue-50
+                text-gray-800
+                bg-opacity-20
+                text-opacity-80
+                ring ring-4 ring-blue-100
               "
-              v-bind:desactivar_owner_correccion="
-                $props.desactivar_concesionario_correccion
-              "
-              v-on:changecorrecto="update_concesionario_correcto($event)"
-              v-on:changeobs="update_obs_concesionario($event)"
-              v-on:changeobsvalido="update_obs_concesionario_valido($event)"
-              v-on:changevalor="update_valor_concesionario($event)"
-            ></CaracterQueInvoca>
-            <div v-show="ayuda_local">
-              <br />
-              <div
-                class="
-                  bg-blue-50
-                  text-gray-800
-                  bg-opacity-20
-                  text-opacity-80
-                  ring ring-4 ring-blue-100
-                "
-              >
-                <p class="p-3">
-                  Hace referencia a si usted posee la conecesión de la
-                  manifestación que se esta declarando
-                </p>
-              </div>
-              <br />
+            >
+              <p class="p-3">
+                Hace referencia a si usted posee la conecesión de la
+                manifestación que se esta declarando
+              </p>
             </div>
-            <div class="flex" v-if="mostrar_testing">
-              <br />
-              concesionario de Mina valor padre:
-              {{ form_pagina.concesionario }} <br />
-              concesionario de Mina correcto deel padre:
-              {{ form_pagina.concesionario_correcto }} <br />
-              concesionario de Mina observacion deel padre:
-              {{ form_pagina.obs_concesionario }} <br />
-              concesionario de Mina observacion valida deel padre:
-              {{ form_pagina.obs_concesionario_valido }}
-            </div>
+            <br />
+          </div>
+          <div class="flex" v-if="mostrar_testing">
+            <br />
+            concesionario de Mina valor padre:
+            {{ form_pagina.concesionario }} <br />
+            concesionario de Mina correcto deel padre:
+            {{ form_pagina.concesionario_correcto }} <br />
+            concesionario de Mina observacion deel padre:
+            {{ form_pagina.obs_concesionario }} <br />
+            concesionario de Mina observacion valida deel padre:
+            {{ form_pagina.obs_concesionario_valido }}
           </div>
         </div>
       </div>
-      <div class="flex items-center justify-center bg-teal-lightest font-sans">
-        <div class="w-full bg-white rounded shadow p-6 m-8">
-          <div class="flex">
-            <CaracterQueInvoca
-              v-if="$props.mostrar_sustancias"
-              v-bind:valor_input_props="form_pagina.sustancias"
-              v-bind:evualacion_correcto="form_pagina.sustancias_correcto"
-              v-bind:valor_obs="form_pagina.obs_sustancias"
-              v-bind:valor_valido_obs="form_pagina.obs_sustancias_valido"
-              v-bind:evaluacion="autoridad_minera"
-              v-bind:testing="mostrar_testing"
-              v-bind:label="'Las sustancias son de Aprovechamiento común?'"
-              v-bind:label_true="'Si'"
-              v-bind:label_false="'No'"
-              v-bind:otro_label="'Concesión Minera:'"
-              v-bind:otro_input="form_pagina.sustancias_input"
-              v-bind:name_correcion="'correcion_sustancias'"
-              v-bind:name_checkbox="'check_sustancias'"
-              v-bind:desactivar_owner="$props.desactivar_sustancias"
-              v-bind:mostrar_owner_correccion="
-                $props.mostrar_sustancias_correccion
+      <div class="flex flex-wrap mb-4">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            rounded
+            shadow-md
+            p-6
+            hover:bg-lime-100
+          "
+        >
+          <CaracterQueInvoca
+            v-if="$props.mostrar_sustancias"
+            v-bind:valor_input_props="form_pagina.sustancias"
+            v-bind:evualacion_correcto="form_pagina.sustancias_correcto"
+            v-bind:valor_obs="form_pagina.obs_sustancias"
+            v-bind:valor_valido_obs="form_pagina.obs_sustancias_valido"
+            v-bind:evaluacion="autoridad_minera"
+            v-bind:testing="mostrar_testing"
+            v-bind:label="'Las sustancias son de Aprovechamiento común?'"
+            v-bind:label_true="'Si'"
+            v-bind:label_false="'No'"
+            v-bind:otro_label="'Concesión Minera:'"
+            v-bind:otro_input="form_pagina.sustancias_input"
+            v-bind:name_correcion="'correcion_sustancias'"
+            v-bind:name_checkbox="'check_sustancias'"
+            v-bind:desactivar_owner="$props.desactivar_sustancias"
+            v-bind:mostrar_owner_correccion="
+              $props.mostrar_sustancias_correccion
+            "
+            v-bind:desactivar_owner_correccion="
+              $props.desactivar_sustancias_correccion
+            "
+            :mostrar_evaluacion_adm="evaluacion_adm"
+            v-on:changecorrecto="update_sustancias_correcto($event)"
+            v-on:changeobs="update_obs_sustancias($event)"
+            v-on:changeobsvalido="update_obs_sustancias_valido($event)"
+            v-on:changevalor="update_valor_sustancias($event)"
+            v-on:changeotroinput="update_valor_sustancias_input($event)"
+            v-on:changeotroinputvalido="
+              update_valor_sustancias_input_valido($event)
+            "
+          ></CaracterQueInvoca>
+          <div v-show="ayuda_local">
+            <br />
+            <div
+              class="
+                bg-blue-50
+                text-gray-800
+                bg-opacity-20
+                text-opacity-80
+                ring ring-4 ring-blue-100
               "
-              v-bind:desactivar_owner_correccion="
-                $props.desactivar_sustancias_correccion
-              "
-              v-on:changecorrecto="update_sustancias_correcto($event)"
-              v-on:changeobs="update_obs_sustancias($event)"
-              v-on:changeobsvalido="update_obs_sustancias_valido($event)"
-              v-on:changevalor="update_valor_sustancias($event)"
-              v-on:changeotroinput="update_valor_sustancias_input($event)"
-              v-on:changeotroinputvalido="
-                update_valor_sustancias_input_valido($event)
-              "
-            ></CaracterQueInvoca>
-            <div v-show="ayuda_local">
-              <br />
-              <div
-                class="
-                  bg-blue-50
-                  text-gray-800
-                  bg-opacity-20
-                  text-opacity-80
-                  ring ring-4 ring-blue-100
-                "
-              >
-                <p class="p-3">
-                  Hace referencia a si existen o sustancias de aprovechamiento
-                  común en la minifestación que esta declarando.
-                </p>
-              </div>
-              <br />
+            >
+              <p class="p-3">
+                Hace referencia a si existen o sustancias de aprovechamiento
+                común en la minifestación que esta declarando.
+              </p>
             </div>
-            <div class="flex" v-if="mostrar_testing">
-              <br />
-              otro de Mina valor padre: {{ form_pagina.otros }} <br />
-              otro de Mina correcto deel padre:
-              {{ form_pagina.otros_correcto }} <br />
-              otro de Mina observacion deel padre: {{ form_pagina.obs_otros }}
-              <br />
-              otro de Mina observacion valida deel padre:
-              {{ form_pagina.obs_otros_valido }}
+            <br />
+          </div>
+          <div class="flex" v-if="mostrar_testing">
+            <br />
+            otro de Mina valor padre: {{ form_pagina.otros }} <br />
+            otro de Mina correcto deel padre:
+            {{ form_pagina.otros_correcto }} <br />
+            otro de Mina observacion deel padre: {{ form_pagina.obs_otros }}
+            <br />
+            otro de Mina observacion valida deel padre:
+            {{ form_pagina.obs_otros_valido }}
+          </div>
+        </div>
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            rounded
+            shadow-md
+            p-6
+            hover:bg-lime-100
+          "
+        >
+          <CaracterQueInvoca
+            v-if="$props.mostrar_otros"
+            v-bind:valor_input_props="form_pagina.otros"
+            v-bind:evualacion_correcto="form_pagina.otros_correcto"
+            v-bind:valor_obs="form_pagina.obs_otros"
+            v-bind:valor_valido_obs="form_pagina.obs_otros_valido"
+            v-bind:evaluacion="autoridad_minera"
+            v-bind:testing="mostrar_testing"
+            v-bind:label="'Otros'"
+            v-bind:label_true="'Tengo un dato que declarar'"
+            v-bind:label_false="'No tengo más datos a declarar'"
+            v-bind:otro_label="'Aclaracion de otro dato'"
+            v-bind:otro_input="form_pagina.otros_input"
+            v-bind:name_correcion="'correcion_otros'"
+            v-bind:name_checkbox="'check_otros'"
+            v-bind:desactivar_owner="$props.desactivar_otros"
+            v-bind:mostrar_owner_correccion="$props.mostrar_otros_correccion"
+            v-bind:desactivar_owner_correccion="
+              $props.desactivar_otros_correccion
+            "
+            :mostrar_evaluacion_adm="evaluacion_adm"
+            v-on:changecorrecto="update_otro_correcto($event)"
+            v-on:changeobs="update_obs_otro($event)"
+            v-on:changeobsvalido="update_obs_otro_valido($event)"
+            v-on:changevalor="update_valor_otro($event)"
+            v-on:changeotroinput="update_valor_otro_input($event)"
+            v-on:changeotroinputvalido="update_valor_otro_input_valido($event)"
+          ></CaracterQueInvoca>
+          <div v-show="ayuda_local">
+            <br />
+            <div
+              class="
+                bg-blue-50
+                text-gray-800
+                bg-opacity-20
+                text-opacity-80
+                ring ring-4 ring-blue-100
+              "
+            >
+              <p class="p-3">
+                Este campo debe ser completado si usted cree que queda algún
+                otro dato importante para declarar
+              </p>
             </div>
+            <br />
+          </div>
+          <div class="flex" v-if="mostrar_testing">
+            <br />
+            otro de Mina valor padre: {{ form_pagina.otros }} <br />
+            otro de Mina correcto deel padre:
+            {{ form_pagina.otros_correcto }} <br />
+            otro de Mina observacion deel padre: {{ form_pagina.obs_otros }}
+            <br />
+            otro de Mina observacion valida deel padre:
+            {{ form_pagina.obs_otros_valido }}
           </div>
         </div>
       </div>
-      <div class="flex items-center justify-center bg-teal-lightest font-sans">
-        <div class="w-full bg-white rounded shadow p-6 m-8">
-          <div class="flex">
-            <CaracterQueInvoca
-              v-if="$props.mostrar_otros"
-              v-bind:valor_input_props="form_pagina.otros"
-              v-bind:evualacion_correcto="form_pagina.otros_correcto"
-              v-bind:valor_obs="form_pagina.obs_otros"
-              v-bind:valor_valido_obs="form_pagina.obs_otros_valido"
-              v-bind:evaluacion="autoridad_minera"
-              v-bind:testing="mostrar_testing"
-              v-bind:label="'Otros'"
-              v-bind:label_true="'Tengo un dato que declarar'"
-              v-bind:label_false="'No tengo más datos a declarar'"
-              v-bind:otro_label="'Aclaracion de otro dato'"
-              v-bind:otro_input="form_pagina.otros_input"
-              v-bind:name_correcion="'correcion_otros'"
-              v-bind:name_checkbox="'check_otros'"
-              v-bind:desactivar_owner="$props.desactivar_otros"
-              v-bind:mostrar_owner_correccion="$props.mostrar_otros_correccion"
-              v-bind:desactivar_owner_correccion="
-                $props.desactivar_otros_correccion
-              "
-              v-on:changecorrecto="update_otro_correcto($event)"
-              v-on:changeobs="update_obs_otro($event)"
-              v-on:changeobsvalido="update_obs_otro_valido($event)"
-              v-on:changevalor="update_valor_otro($event)"
-              v-on:changeotroinput="update_valor_otro_input($event)"
-              v-on:changeotroinputvalido="
-                update_valor_otro_input_valido($event)
-              "
-            ></CaracterQueInvoca>
-            <div v-show="ayuda_local">
-              <br />
-              <div
-                class="
-                  bg-blue-50
-                  text-gray-800
-                  bg-opacity-20
-                  text-opacity-80
-                  ring ring-4 ring-blue-100
-                "
-              >
-                <p class="p-3">
-                  Este campo debe ser completado si usted cree que queda algún
-                  otro dato importante para declarar
-                </p>
-              </div>
-              <br />
-            </div>
-            <div class="flex" v-if="mostrar_testing">
-              <br />
-              otro de Mina valor padre: {{ form_pagina.otros }} <br />
-              otro de Mina correcto deel padre:
-              {{ form_pagina.otros_correcto }} <br />
-              otro de Mina observacion deel padre: {{ form_pagina.obs_otros }}
-              <br />
-              otro de Mina observacion valida deel padre:
-              {{ form_pagina.obs_otros_valido }}
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- <button class="  px-4 py-2   mb-4  text-sm     font-medium   rounded-full block  border-b border-red-300 bg-red-200 hover:bg-red-300 text-red-900"
-         @click="enviar_constancia"
-         >
-            Subir archivo
-        </button> -->
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+      <div class="flex flex-wrap">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <SubirArchivo
             v-if="
               $props.mostrar_contancias_canon && $props.categoria !== 'Cantera'
@@ -504,6 +575,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_contancias_canon_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_canon_valido($event)"
             v-on:changecorrecto="update_canon_correcto($event)"
             v-on:changeobs="update_obs_canon($event)"
@@ -544,12 +616,19 @@
             {{ form_pagina.obs_constancia_pago_canon_valido }}
           </div>
         </div>
-      </div>
-      <br />
-      <hr />
-      <br />
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <SubirArchivo
             v-if="$props.mostrar_iia"
             v-bind:valor_input_props="form_pagina.iia"
@@ -563,6 +642,7 @@
             v-bind:desactivar_input="$props.desactivar_iia"
             v-bind:mostrar_correccion="$props.mostrar_iia_correccion"
             v-bind:desactivar_correccion="$props.desactivar_iia_correccion"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_iia_valido($event)"
             v-on:changecorrecto="update_iia_correcto($event)"
             v-on:changeobs="update_obs_iia($event)"
@@ -583,8 +663,8 @@
               "
             >
               <p class="p-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na m
-                quisquam doloremque placeat op.
+                Aquí debe colocar un archivo donde quede constancia del IIA de
+                actividades Minera.
               </p>
             </div>
             <br />
@@ -602,12 +682,19 @@
             {{ form_pagina.obs_iia_canon_valido }}
           </div>
         </div>
-      </div>
-      <br />
-      <hr />
-      <br />
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <SubirArchivo
             v-if="$props.mostrar_dia"
             v-bind:valor_input_props="form_pagina.dia"
@@ -621,6 +708,7 @@
             v-bind:desactivar_input="$props.desactivar_dia"
             v-bind:mostrar_correccion="$props.mostrar_dia_correccion"
             v-bind:desactivar_correccion="$props.desactivar_dia_correccion"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_dia_valido($event)"
             v-on:changecorrecto="update_dia_correcto($event)"
             v-on:changeobs="update_obs_dia($event)"
@@ -664,7 +752,7 @@
       <hr />
       <br />
       <div class="flex">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="$props.mostrar_actividad"
             v-bind:valor_input_props="form_pagina.actividad"
@@ -688,6 +776,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_actividad_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_actividades_valido($event)"
             v-on:changecorrecto="update_actividades_correcto($event)"
             v-on:changeobs="update_obs_actividades($event)"
@@ -706,10 +795,7 @@
                 ring ring-4 ring-blue-100
               "
             >
-              <p class="p-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na m
-                quisquam doloremque placeat op.
-              </p>
+              <p class="p-3">Actividades a desarrolar en la Mina.</p>
             </div>
             <br />
           </div>
@@ -726,7 +812,7 @@
             {{ form_pagina.obs_actividad_a_desarrollar_valido }}
           </div>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="$props.mostrar_acciones"
             v-bind:valor_input_props="form_pagina.acciones_a_desarrollar"
@@ -748,6 +834,7 @@
             v-bind:desactivar_input="$props.desactivar_acciones"
             v-bind:mostrar_correccion="$props.mostrar_acciones_correccion"
             v-bind:desactivar_correccion="$props.desactivar_acciones_correccion"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_accionesvalido($event)"
             v-on:changecorrecto="update_acciones_correcto($event)"
             v-on:changeobs="update_obs_acciones($event)"
@@ -766,10 +853,7 @@
                 ring ring-4 ring-blue-100
               "
             >
-              <p class="p-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na m
-                quisquam doloremque placeat op.
-              </p>
+              <p class="p-3">Acciones a desarrollar en la Mina.</p>
             </div>
             <br />
           </div>
@@ -808,6 +892,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_fecha_alta_dia_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_fecha_iniciovalido($event)"
             v-on:changecorrecto="update_fecha_inicio_correcto($event)"
             v-on:changeobs="update_obs_fecha_inicio($event)"
@@ -826,10 +911,7 @@
                 ring ring-4 ring-blue-100
               "
             >
-              <p class="p-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na m
-                quisquam doloremque placeat op.
-              </p>
+              <p class="p-3">Fecha de Notificación de DIA.</p>
             </div>
             <br />
           </div>
@@ -872,6 +954,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_fecha_vencimiento_dia_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_fecha_fin_valido($event)"
             v-on:changecorrecto="update_fecha_fin_correcto($event)"
             v-on:changeobs="update_obs_fecha_fin($event)"
@@ -890,10 +973,7 @@
                 ring ring-4 ring-blue-100
               "
             >
-              <p class="p-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Na m
-                quisquam doloremque placeat op.
-              </p>
+              <p class="p-3">Fecha de Vencimiento de DIA.</p>
             </div>
             <br />
           </div>
@@ -911,12 +991,6 @@
             {{ form_pagina.obs_fecha_vencimiento_dia_valido }}
           </div>
         </div>
-      </div>
-      <div class="flex">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0"></div>
-      </div>
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0"></div>
       </div>
       <div class="flex justify-end mt-4">
         <BotonesPaginaCinco
@@ -1228,9 +1302,10 @@ export default {
 
   data() {
     return {
+      evaluacion_adm: false,
+      mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
       continuar_pagina: false,
-      saludos: "Saludame qweqweqwe",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
       modal_body: "",
@@ -1328,6 +1403,9 @@ export default {
     };
   },
   methods: {
+    update_valor_evaluacion_Adm(newValor) {
+      this.evaluacion_adm = newValor;
+    },
     cerrar_modal_datos_uno() {
       this.mostrar_modal_datos_ya_guardados = false;
     },

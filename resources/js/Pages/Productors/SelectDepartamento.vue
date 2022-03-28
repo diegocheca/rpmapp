@@ -50,8 +50,14 @@
     <p v-bind:class="clase_cartel_nota_legalcalledpto">
       {{ clacartel_nota_legalcalledpto }}.
     </p>
-    <div class="flex" v-if="evaluacion || mostrar_legal_dpto_correccion">
-      <div class="w-full md:w-1/3 px-3">
+    <div
+      v-if="
+        evaluacion ||
+        mostrar_legal_dpto_correccion ||
+        $props.mostrar_evaluacion_adm
+      "
+    >
+      <!-- <div class="w-full md:w-1/3 px-3">
         <span class="text-gray-700">Es correcto?</span>
         <div class="mt-2">
           <label class="inline-flex items-center">
@@ -122,7 +128,18 @@
         <p v-bind:class="clase_cartel_nota_evaluacion_dpto_calle">
           {{ cartel_nota_evaluacion_dpto_calle }}
         </p>
-      </div>
+      </div> -->
+      <SeccionEvaluacion
+        :correccion_desactivar="$props.desactivar_legal_dpto_correccion"
+        :name_correcto="name_correcto"
+        :correcto="legal_calle_dpto_correcto_local"
+        v-on:change_correcto="cactaulizar_variable_legalcalledpto($event)"
+        :obs_observacion="observacion_dep"
+        v-on:change_obs="
+          actaulizar_contenido_text_area_calle_legal_dpto($event)
+        "
+      >
+      </SeccionEvaluacion>
     </div>
     <div
       class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8"
@@ -196,7 +213,12 @@
 </template>
 
 <script>
+import SeccionEvaluacion from "@/Components/SeccionEvaluacion";
+
 export default {
+  components: {
+    SeccionEvaluacion,
+  },
   props: [
     "leal_departamento",
     "leal_departamento_valido",
@@ -212,6 +234,7 @@ export default {
     "desactivar_legal_dpto",
     "mostrar_legal_dpto_correccion",
     "desactivar_legal_dpto_correccion",
+    "mostrar_evaluacion_adm",
   ],
   data() {
     return {
@@ -227,6 +250,7 @@ export default {
       legal_calle_dpto_correcto_local: this.$props.leal_departamento_correcto,
       obs_calle_dpto_legal_valido_local:
         this.$props.obs_leal_departamento_valido,
+      observacion_dep: this.$props.obs_leal_departamento,
       testing_hijo: false,
       nueva_lista_dptos: this.$props.lista_departamentos_dos,
       //border-green-500
@@ -252,40 +276,8 @@ export default {
     },
 
     actaulizar_contenido_text_area_calle_legal_dpto(value) {
-      if (this.$props.obs_leal_departamento.length <= 2) {
-        this.clase_text_area_calle_legal_dpto =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_dpto_calle =
-          "Observacion Incorrecta - debe ser mayor a 2 carcteres";
-        this.clase_cartel_nota_evaluacion_dpto_calle =
-          "text-red-500 text-xs italic";
-        this.obs_calle_dpto_legal_valido_local = false;
-        this.$emit("changeobsdptolegalvalido", false);
-      }
-      if (this.$props.obs_leal_departamento.length >= 50) {
-        this.clase_text_area_calle_legal_dpto =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_dpto_calle =
-          "Observacion Incorrecta - debe tener menos de 50 caracteres";
-        this.clase_cartel_nota_evaluacion_dpto_calle =
-          "text-red-500 text-xs italic";
-        this.obs_calle_dpto_legal_valido_local = false;
-        this.$emit("changeobsdptolegalvalido", false);
-      }
-      if (
-        this.$props.obs_leal_departamento !== "" &&
-        this.$props.obs_leal_departamento.length <= 30 &&
-        this.$props.obs_leal_departamento.length >= 3
-      ) {
-        this.clase_text_area_calle_legal_dpto =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_dpto_calle = "Observacion Correcta";
-        this.clase_cartel_nota_evaluacion_dpto_calle =
-          "text-green-500 text-xs italic";
-        this.obs_calle_dpto_legal_valido_local = false;
-        this.$emit("changeobsdptolegalvalido", true);
-      }
-      this.$emit("changeobsrdptolegal", this.$props.obs_leal_departamento);
+      this.observacion_dep = value;
+      this.$emit("changeobsrdptolegal", this.observacion_dep);
     },
     cambio_input_calle_dpto_legal(value) {
       /*if(this.leal_departamento.length <= 4)

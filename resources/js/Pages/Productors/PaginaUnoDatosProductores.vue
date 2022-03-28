@@ -156,9 +156,12 @@
         <Menu
           :mostrarayuda="true"
           :ayuda="false"
+          :evaluacion="evaluacion_adm"
+          :mostrar_evaluacion="mostrar_evaluacion_adm"
           :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+          v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
         ></Menu>
       </div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
@@ -199,6 +202,7 @@
             v-bind:num_prod_correccion_desactivar="
               $props.desactivar_num_prod_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changenumprodvalido="update_num_prod_valido($event)"
             v-on:changenumprodcorrecto="update_num_prod_correcto($event)"
             v-on:changeobsnumprod="update_obs_num_prod($event)"
@@ -262,6 +266,7 @@
             v-bind:cuit_correccion_desactivar="
               $props.desactivar_cuit_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changecuitvalido="update_cuit_valido($event)"
             v-on:changecuitcorrecto="update_cuit_correcto($event)"
             v-on:changeobscuit="update_obs_cuit($event)"
@@ -321,6 +326,7 @@
             v-bind:razonsocial_correccion_desactivar="
               $props.desactivar_razon_social_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changerazonsocialvalido="update_razon_social_valido($event)"
             v-on:changerazonsocialcorrecto="
               update_razon_social_correcto($event)
@@ -376,6 +382,7 @@
             xl:w-1/2
             2xl:w-1/2
             px-3
+            mb-6
             md:mb-2
           "
         >
@@ -394,6 +401,7 @@
             v-bind:email_correccion_desactivar="
               $props.desactivar_email_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changeemailvalido="update_email_valido($event)"
             v-on:changeemailcorrecto="update_email_correcto($event)"
             v-on:changeobsemail="update_obs_email($event)"
@@ -458,6 +466,7 @@
             v-bind:tipo_sociedad_correccion_desactivar="
               $props.desactivar_tipo_sociedad_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changetiposociedadvalido="update_tipo_sociedad_valido($event)"
             v-on:changetiposociedadcorrecto="
               update_tipo_sociedad_correcto($event)
@@ -498,9 +507,21 @@
       <!-- <br /> -->
       <hr />
       <br />
-      <div class="flex flex-wrap mb-2">
+      <div class="flex flex-wrap">
         <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
-        <div class="w-full sm:w-2/2 md:w-2/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <FileInscripcionDGR
             v-if="$props.mostrar_inscripcion_dgr"
             v-bind:fileinput_valor="form_pagina.inscripciondgr"
@@ -521,6 +542,7 @@
             v-bind:inscripcion_correccion_desactivar="
               $props.desactivar_inscripcion_dgr_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changeinscripciondgrcorrecto="
               update_inscripcion_dgr_correcto($event)
             "
@@ -558,11 +580,19 @@
             }}
           </div>
         </div>
-      </div>
-      <hr />
-      <br />
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <FileInscripcionDGR
             v-if="$props.mostrar_constancia_sociedad"
             v-bind:fileinput_valor="form_pagina.constaciasociedad"
@@ -587,6 +617,7 @@
             v-bind:inscripcion_correccion_desactivar="
               $props.desactivar_constancia_sociedad_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changeinscripciondgrcorrecto="
               update_constancia_sociedad_correcto($event)
             "
@@ -627,6 +658,10 @@
           </div>
         </div>
       </div>
+      <!-- <hr />
+      <br />
+      <div class="flex">
+      </div> -->
       <br />
       <div>
         <BotonesPaginaUna
@@ -827,9 +862,10 @@ export default {
     //   console.log("eeeel valor es:");
     //   console.log(this.$props.inscripciondgr);
     return {
+      evaluacion_adm: false,
+      mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
       continuar_pagina: false,
-      saludos: "Saludos",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
       modal_body: "",
@@ -883,6 +919,9 @@ export default {
     };
   },
   methods: {
+    update_valor_evaluacion_Adm(newValor) {
+      this.evaluacion_adm = newValor;
+    },
     cerrar_modal_datos_uno() {
       this.mostrar_modal_datos_ya_guardados = false;
     },

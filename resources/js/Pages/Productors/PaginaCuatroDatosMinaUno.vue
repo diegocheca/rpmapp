@@ -155,9 +155,12 @@
         <Menu
           :mostrarayuda="true"
           :ayuda="false"
+          :evaluacion="evaluacion_adm"
+          :mostrar_evaluacion="mostrar_evaluacion_adm"
           :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+          v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
         ></Menu>
       </div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
@@ -167,19 +170,22 @@
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="$props.mostrar_num_exp"
-            v-bind:valor_input_props="$props.numero_expdiente"
-            v-bind:valor_input_validacion="$props.numero_expdiente_valido"
-            v-bind:evualacion_correcto="$props.numero_expdiente_correcto"
-            v-bind:valor_obs="$props.obs_numero_expdiente"
-            v-bind:valor_valido_obs="$props.obs_numero_expdiente_valido"
+            v-bind:valor_input_props="form_pagina.numero_expdiente"
+            v-bind:valor_input_validacion="form_pagina.numero_expdiente_valido"
+            v-bind:evualacion_correcto="form_pagina.numero_expdiente_correcto"
+            v-bind:valor_obs="form_pagina.obs_numero_expdiente"
+            v-bind:valor_valido_obs="form_pagina.obs_numero_expdiente_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Numero de Expediente'"
             v-bind:icon="$inertia.page.props.appName + '/svg/telstreet.svg'"
             v-bind:name_correcto="'num_exp_correcto'"
-            v-bind:desactivar_input="$props.desactivar_num_exp"
-            v-bind:mostrar_correccion="$props.mostrar_num_exp_correccion"
-            v-bind:desactivar_correccion="$props.desactivar_num_exp_correccion"
+            v-bind:desactivar_input="form_pagina.desactivar_num_exp"
+            v-bind:mostrar_correccion="form_pagina.mostrar_num_exp_correccion"
+            v-bind:desactivar_correccion="
+              form_pagina.desactivar_num_exp_correccion
+            "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_num_exp_valido($event)"
             v-on:changecorrecto="update_num_exp_correcto($event)"
             v-on:changeobs="updateobs_num_exp($event)"
@@ -223,19 +229,24 @@
         <div class="w-full sm:w-2/2 md:w-1/2 px-3">
           <NombreMina
             v-if="$props.mostrar_distrito"
-            v-bind:valor_input_props="$props.distrito_minero"
-            v-bind:valor_input_validacion="$props.distrito_minero_validacion"
-            v-bind:evualacion_correcto="$props.distrito_minero_correcto"
-            v-bind:valor_obs="$props.obs_distrito_minero"
-            v-bind:valor_valido_obs="$props.obs_distrito_minero_valido"
+            v-bind:valor_input_props="form_pagina.distrito_minero"
+            v-bind:valor_input_validacion="
+              form_pagina.distrito_minero_validacion
+            "
+            v-bind:evualacion_correcto="form_pagina.distrito_minero_correcto"
+            v-bind:valor_obs="form_pagina.obs_distrito_minero"
+            v-bind:valor_valido_obs="form_pagina.obs_distrito_minero_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Distrito Minero'"
             v-bind:icon="$inertia.page.props.appName + '/svg/numdistrito.svg'"
             v-bind:name_correcto="'distrito_correcto'"
-            v-bind:desactivar_input="$props.desactivar_distrito"
-            v-bind:mostrar_correccion="$props.mostrar_distrito_correccion"
-            v-bind:desactivar_correccion="$props.desactivar_distrito_correccion"
+            v-bind:desactivar_input="form_pagina.desactivar_distrito"
+            v-bind:mostrar_correccion="form_pagina.mostrar_distrito_correccion"
+            v-bind:desactivar_correccion="
+              form_pagina.desactivar_distrito_correccion
+            "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_distrito_minero_valido($event)"
             v-on:changecorrecto="update_distrito_minero_correcto($event)"
             v-on:changeobs="update_distrito_minero_obs($event)"
@@ -281,21 +292,24 @@
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="$props.mostrar_nombre_mina"
-            v-bind:valor_input_props="$props.nombre_mina"
-            v-bind:valor_input_validacion="$props.nombre_mina_validacion"
-            v-bind:evualacion_correcto="$props.nombre_mina_correcto"
-            v-bind:valor_obs="$props.obs_nombre_mina"
-            v-bind:valor_valido_obs="$props.obs_nombre_mina_valido"
+            v-bind:valor_input_props="form_pagina.nombre_mina"
+            v-bind:valor_input_validacion="form_pagina.nombre_mina_validacion"
+            v-bind:evualacion_correcto="form_pagina.nombre_mina_correcto"
+            v-bind:valor_obs="form_pagina.obs_nombre_mina"
+            v-bind:valor_valido_obs="form_pagina.obs_nombre_mina_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Nombre de Mina'"
             v-bind:icon="$inertia.page.props.appName + '/svg/nommina.svg'"
             v-bind:name_correcto="'nombre_mina_correcto'"
-            v-bind:desactivar_input="$props.desactivar_nombre_mina"
-            v-bind:mostrar_correccion="$props.mostrar_nombre_mina_correccion"
-            v-bind:desactivar_correccion="
-              $props.desactivar_nombre_mina_correccion
+            v-bind:desactivar_input="form_pagina.desactivar_nombre_mina"
+            v-bind:mostrar_correccion="
+              form_pagina.mostrar_nombre_mina_correccion
             "
+            v-bind:desactivar_correccion="
+              form_pagina.desactivar_nombre_mina_correccion
+            "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_nom_mina_valido($event)"
             v-on:changecorrecto="update_nom_mina_correcto($event)"
             v-on:changeobs="update_obs_nom_mina($event)"
@@ -335,23 +349,26 @@
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="$props.mostrar_descripcion_mina"
-            v-bind:valor_input_props="$props.descripcion_mina"
-            v-bind:valor_input_validacion="$props.descripcion_mina_validacion"
-            v-bind:evualacion_correcto="$props.descripcion_mina_correcto"
-            v-bind:valor_obs="$props.obs_descripcion_mina"
-            v-bind:valor_valido_obs="$props.obs_descripcion_mina_valido"
+            v-bind:valor_input_props="form_pagina.descripcion_mina"
+            v-bind:valor_input_validacion="
+              form_pagina.descripcion_mina_validacion
+            "
+            v-bind:evualacion_correcto="form_pagina.descripcion_mina_correcto"
+            v-bind:valor_obs="form_pagina.obs_descripcion_mina"
+            v-bind:valor_valido_obs="form_pagina.obs_descripcion_mina_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Descripcion de la Mina'"
             v-bind:icon="$inertia.page.props.appName + '/svg/description.svg'"
             v-bind:name_correcto="'descripcion_mina_correcto'"
-            v-bind:desactivar_input="$props.desactivar_descripcion_mina"
+            v-bind:desactivar_input="form_pagina.desactivar_descripcion_mina"
             v-bind:mostrar_correccion="
-              $props.mostrar_descripcion_mina_correccion
+              form_pagina.mostrar_descripcion_mina_correccion
             "
             v-bind:desactivar_correccion="
-              $props.desactivar_descripcion_mina_correccion
+              form_pagina.desactivar_descripcion_mina_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_descripcion_valido($event)"
             v-on:changecorrecto="update_descripcion_correcto($event)"
             v-on:changeobs="update_obs_descripcion($event)"
@@ -393,24 +410,25 @@
       </div>
       <div class="flex flex-wrap">
         <!-- Categoria Mineral -->
-        <div class="w-full sm:w-2/2 md:w-1/2 px-3">
+        <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2">
           <SelectGenerico
             v-if="mostrar_categoria"
-            v-bind:valor_input_props="$props.categoria"
-            v-bind:valor_input_validacion="$props.categoria_validacion"
-            v-bind:evualacion_correcto="$props.categoria_correcto"
-            v-bind:valor_obs="$props.obs_categoria"
-            v-bind:valor_valido_obs="$props.obs_categoria_valido"
+            v-bind:valor_input_props="form_pagina.categoria"
+            v-bind:valor_input_validacion="form_pagina.categoria_validacion"
+            v-bind:evualacion_correcto="form_pagina.categoria_correcto"
+            v-bind:valor_obs="form_pagina.obs_categoria"
+            v-bind:valor_valido_obs="form_pagina.obs_categoria_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Categoria del Mineral'"
             v-bind:icon="$inertia.page.props.appName + '/svg/minetest.svg'"
             v-bind:name_correccion="'categoria_correccion'"
-            v-bind:desactivar_input="$props.desactivar_categoria"
-            v-bind:mostrar_correccion="$props.mostrar_categoria_correccion"
+            v-bind:desactivar_input="form_pagina.desactivar_categoria"
+            v-bind:mostrar_correccion="form_pagina.mostrar_categoria_correccion"
             v-bind:desactivar_correccion="
-              $props.desactivar_categoria_correccion
+              form_pagina.desactivar_categoria_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_cat_valido($event)"
             v-on:changecorrecto="update_cat_correcto($event)"
             v-on:changeobs="update_obs_cat($event)"
@@ -545,6 +563,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_resolucion_concesion_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_resol_conce_valido($event)"
             v-on:changecorrecto="update_resol_conce_correcto($event)"
             v-on:changeobs="update_obs_resol_conce($event)"
@@ -587,7 +606,19 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-2/2 px-3 mb-2 md:mb-2">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <SubirArchivo
             v-if="
               form_pagina.categoria === 'tercera' && $props.mostrar_plano_mina
@@ -608,6 +639,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_plano_mina_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_plano_inmueble_valido($event)"
             v-on:changecorrecto="update_plano_inmueble_correcto($event)"
             v-on:changeobs="update_obs_plano_inmueble($event)"
@@ -652,9 +684,19 @@
             }}
           </div>
         </div>
-      </div>
-      <div class="flex flex-wrap">
-        <div class="w-full md:w-2/2 px-3 mb-2 md:mb-2">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <SubirArchivo
             v-if="form_pagina.categoria === 'tercera' && $props.mostrar_titulo"
             v-bind:valor_input_props="form_pagina.titulo_contrato_posecion"
@@ -675,6 +717,7 @@
             v-bind:desactivar_input="$props.desactivar_titulo"
             v-bind:mostrar_correccion="$props.mostrar_titulo_correccion"
             v-bind:desactivar_correccion="$props.desactivar_titulo_correccion"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_titulo_contrato_valido($event)"
             v-on:changecorrecto="update_titulo_contrato_correcto($event)"
             v-on:changeobs="update_obs_titulo_contrato($event)"
@@ -720,7 +763,10 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div v-if="form_pagina.categoria" class="w-full md:w-2/2 px-3 mb-2 md:mb-2">
+        <div
+          v-if="form_pagina.categoria"
+          class="w-full md:w-2/2 px-3 mb-2 md:mb-2"
+        >
           <ListadeMinerales
             v-if="$props.mostrar_minerales"
             v-bind:valor_input_props="$props.titulo_contrato_posecion"
@@ -746,6 +792,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_minerales_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_titulo_contrato_valido($event)"
             v-on:changecorrecto="update_titulo_contrato_correcto($event)"
             v-on:changeobs="update_obs_titulo_contrato($event)"
@@ -790,7 +837,6 @@
           </div>
         </div>
       </div>
-
       <!-- <div class="flex justify-end mt-4">
       <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
     </div> -->
@@ -1029,9 +1075,11 @@ export default {
 
   data() {
     return {
+      evaluacion_adm: false,
+      mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
       continuar_pagina: false,
-      saludos: "Saludos",
+      // saludos: "Saludos",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
       modal_body: "",
@@ -1334,7 +1382,9 @@ export default {
     update_valor_ayuda_local(newValor) {
       this.ayuda_local = newValor;
     },
-
+    update_valor_evaluacion_Adm(newValor) {
+      this.evaluacion_adm = newValor;
+    },
     //FUNCIONES DE MINERALES
     update_valor_minerales(newValue) {
       // console.log("traje un en pagina cuatro"+newValue);
