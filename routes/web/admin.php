@@ -28,6 +28,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('categorias', CategoryController::class)
         ->middleware(['auth:sanctum', 'verified'])
         ->names('categorias');
+    
+    Route::resource('categorias', CategoryController::class)
+        ->middleware(['auth:sanctum', 'verified'])
+        ->names('categorias');
         
     Route::get('/excel_productores', [ProductoresController::class, 'importView'])->middleware(['auth:sanctum', 'verified'])->name('vistaImport');
 
