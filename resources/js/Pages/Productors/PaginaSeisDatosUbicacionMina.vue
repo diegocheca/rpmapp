@@ -155,20 +155,35 @@
         <Menu
           :mostrarayuda="true"
           :ayuda="ayuda_local"
+          :evaluacion="evaluacion_adm"
+          :mostrar_evaluacion="mostrar_evaluacion_adm"
           :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+          v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
         ></Menu>
       </div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
       <br /><br /> -->
-      <div class="flex">
+      <!-- <div class="flex">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           País: <span>Argentina</span>
         </div>
-      </div>
-      <div class="flex">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      </div> -->
+      <div class="flex flex-wrap">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <SelectProvincia
             v-if="mostrar_ubicacion_prov"
             v-bind:leal_provincia="$props.localidad_mina_provincia"
@@ -194,6 +209,7 @@
             v-bind:desactivar_legal_prov_correccion="
               $props.desactivar_ubicacion_prov_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changeprovlegalvalido="update_provincia_valido($event)"
             v-on:changeprovlegalcorrecto="update_provincia_correcto($event)"
             v-on:changeobsrpovlegal="update_obs_provincia($event)"
@@ -236,7 +252,19 @@
             padre{{ form_pagina.obs_localidad_mina_provincia_valido }}
           </div>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <SelectDepartamento
             v-if="mostrar_ubicacion_dpto"
             v-bind:leal_departamento="$props.localidad_mina_departamento"
@@ -264,6 +292,7 @@
             v-bind:desactivar_legal_dpto_correccion="
               $props.desactivar_ubicacion_dpto_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changedptolegalvalido="update_dpto_valido($event)"
             v-on:changedptolegalcorrecto="update_dpto_correcto($event)"
             v-on:changeobsrdptolegal="updateobs_dpto_legal($event)"
@@ -307,9 +336,19 @@
             }}
           </div>
         </div>
-      </div>
-      <div class="flex">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <NombreMina
             v-if="mostrar_ubicacion_localidad"
             v-bind:valor_input_props="$props.localidad_mina_localidad"
@@ -332,6 +371,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_ubicacion_localidad_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_localidad_valido($event)"
             v-on:changecorrecto="update_localidad_correcto($event)"
             v-on:changeobs="update_obs_localidad($event)"
@@ -371,7 +411,21 @@
             padre: {{ form_pagina.obs_localidad_mina_localidad_valido }}
           </div>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      </div>
+      <div class="flex flex-wrap">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <TipoDeSistemaGeo
             v-if="$props.mostrar_ubicacion_sistema"
             v-bind:valor_input_props="$props.tipo_sistema"
@@ -389,6 +443,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_ubicacion_sistema_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_sist_coor_valido($event)"
             v-on:changecorrecto="update_sist_coor_correcto($event)"
             v-on:changeobs="update_obs_sist_coor($event)"
@@ -428,9 +483,19 @@
             {{ form_pagina.obs_tipo_sistema_valido }}
           </div>
         </div>
-      </div>
-      <div class="flex">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <NombreMina
             v-if="$props.mostrar_ubicacion_latitud"
             v-bind:valor_input_props="$props.latitud"
@@ -449,6 +514,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_ubicacion_latitud_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_latitud_valido($event)"
             v-on:changecorrecto="update_latitud_correcto($event)"
             v-on:changeobs="update_obs_latitud($event)"
@@ -487,7 +553,19 @@
             {{ form_pagina.obs_latitud_valido }}
           </div>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-3/3
+            md:w-1/3
+            lg:w-1/3
+            xl:w-1/3
+            2xl:w-1/3
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <NombreMina
             v-if="$props.mostrar_ubicacion_long"
             v-bind:valor_input_props="$props.longitud"
@@ -504,6 +582,7 @@
             v-bind:desactivar_correccion="
               $props.desactivar_ubicacion_long_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_sist_coor_lonvalido($event)"
             v-on:changecorrecto="update_sist_coor_loncorrecto($event)"
             v-on:changeobs="update_obs_sist_coor_lon($event)"
@@ -543,6 +622,8 @@
           </div>
         </div>
       </div>
+      <!-- <div class="flex">
+      </div> -->
       <!-- <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div> -->
@@ -721,6 +802,8 @@ export default {
 
   data() {
     return {
+      evaluacion_adm: false,
+      mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
       continuar_pagina: false,
       // saludos: "Saluda",
@@ -783,6 +866,9 @@ export default {
     };
   },
   methods: {
+    update_valor_evaluacion_Adm(newValor) {
+      this.evaluacion_adm = newValor;
+    },
     cargar_dptos() {
       let self = this;
       //console.log("mis deptos de legal padre es:",self.$props.lista_dptos);
@@ -792,7 +878,6 @@ export default {
     cerrar_modal_datos_uno() {
       this.mostrar_modal_datos_ya_guardados = false;
     },
-
     update_provincia_valido(newValue) {
       this.form_pagina.localidad_mina_provincia_validacion = newValue;
       //tengo que enviarsela al padre

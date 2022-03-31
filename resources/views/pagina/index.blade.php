@@ -269,7 +269,7 @@
               <img src="{{url('slick/img/features/mineral-minero.svg')}}" class="img-fluid" alt="">
             </div>
             <div class="feature-info float-left">
-              <h4>Trasnparencia</h4>
+              <h4>Transparencia</h4>
               <p>El sistema contribuye a sumar transparancia en <br> el manejo de la extracción de minerales <br>y sus cantidades, cuidando el medio ambiente.</p>
             </div>
           </div>
