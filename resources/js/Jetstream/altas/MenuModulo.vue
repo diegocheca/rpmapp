@@ -29,7 +29,7 @@
       </div> -->
 
       <!-- Copiar Datos de Domicilio Legal -->
-      <div v-if="$props.mostrarCopiarDatos" class="col-start-1 col-end-4 ml-4">
+      <div v-if="$props.mostrarCopiarDatos" class="col-start-1 col-end-5 ml-4">
         <span class="text-sm font-semibold mr-1"
           >Mismos Datos que Domicilio Legal?</span
         >
@@ -44,8 +44,7 @@
       <div
         class="col-start-6 col-end-7 ml-4"
         v-if="
-          $inertia.page.props.user.roles[0].name == 'Administrador' ||
-          mostrar_evaluacion_adm
+          $inertia.page.props.user.roles[0].name == 'Administrador'
         "
       >
         <span class="text-sm font-semibold mr-1">Evaluación</span>

@@ -12820,6 +12820,7 @@ class FormAltaProductorController extends Controller
 					'path_constaciasociedad' => $formulario_provisorio->constaciasociedad,
 					'estado' => $formulario_provisorio->estado,
 					'id' => $formulario_provisorio->id,
+					'num_rpm' => $formulario_provisorio->numeroproductor,
 					'id_adicional' => $id_adicional,
 				], 201);
 			} else {

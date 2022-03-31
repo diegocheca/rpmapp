@@ -67,14 +67,17 @@
       <button
         id="btngenerar"
         @click="generar()"
+        :disabled="evaluacion || $props.num_prod_disable"
+        :class="
+          evaluacion || $props.num_prod_disable
+            ? 'bg-gray-500 '
+            : 'bg-blue-500 hover:bg-gradient-to-r from-blue-900'
+        "
         class="
           rounded rounded-l-none
           w-auto
           h-10
           px-3
-          bg-blue-500
-          hover:bg-gradient-to-r
-          from-blue-900
           shadow-xl
           font-medium
           text-white
@@ -273,6 +276,7 @@ export default {
   ],
   data() {
     return {
+      numProductor: 0,
       //   clase_de_input_numprod:
       //     "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
       clase_de_input_numprod:
@@ -291,7 +295,8 @@ export default {
     };
   },
   methods: {
-    generar() {
+    async generar() {
+      var num;
       Swal.fire({
         title: "¡Por favor Espere!",
         html: "Generando número de Productor",
@@ -301,19 +306,21 @@ export default {
           Swal.showLoading();
         },
       });
-      axios
+      await axios
         .get("/numeroProductor")
         .then(function (response) {
           if (response.data.status === "ok") {
             Swal.hideLoading(Swal.clickConfirm());
             // alert(response.data.response);
-            document.getElementById("numProductores").value =
-              response.data.response;
+            num = response.data.response;
+            document.getElementById("numProductores").value = num;
           }
         })
         .catch(function (error) {
           console.log(error);
         });
+      this.$emit("changenumprod", num);
+      this.$emit("changenumprodvalido", true);
     },
 
     actaulizar_variable_numprod(valor) {
