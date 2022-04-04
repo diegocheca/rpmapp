@@ -94,8 +94,8 @@ class JobEnvioCommand extends Command
             //     'clientError' => $response->clientError(),
             // );
 
-            file_put_contents('dataRecivido.txt', $response);
-            file_put_contents('dataEnviado.txt',  json_encode($arrayDatos, JSON_UNESCAPED_UNICODE));
+            // file_put_contents('dataRecivido.txt', $response);
+            // file_put_contents('dataEnviado.txt',  json_encode($arrayDatos, JSON_UNESCAPED_UNICODE));
 
             #{"getStatusCode":200,"successful":true,"failed":false,"serverError":false,"clientError":false}
             if ($response->successful()) {
@@ -118,7 +118,7 @@ class JobEnvioCommand extends Command
                 ]);
             }
         } catch (Exception $e) {
-            file_put_contents('dataKucho.txt', $e);
+            // file_put_contents('dataKucho.txt', $e);
             $envio = JobEnvio::create([
                 'datos' => json_encode($arrayDatos, JSON_UNESCAPED_UNICODE),
                 'estado' => $e->getMessage(),
@@ -174,11 +174,6 @@ class JobEnvioCommand extends Command
         $object = new \stdClass();
         $object->permanentes = (count($permanente) != 0) ? $permanente[0] : 0;
         $object->transitorios = (count($transitorios) != 0) ? $transitorios[0] : 0;
-        // $result = array(
-        //     'permanentes' => (count($permanente) != 0) ? $permanente[0] : 0,
-        //     'transitorios' => (count($transitorios) != 0) ? $transitorios[0] : 0,
-        // );
-        // dd($result);
         return $object;
     }
 }
