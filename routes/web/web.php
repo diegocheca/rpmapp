@@ -34,6 +34,8 @@ use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
 
 
 use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
+
+use App\Console\Commands\JobEnvioCommand;
 // use Auth;
 
 /*
@@ -337,3 +339,7 @@ Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatam
 
 //REPORTES
 Route::get('/datos_minerales_todas_cat', [ChartsController::class, "minerales_todas_categorias"])->name('datos-minerales-todas-cat');
+
+// DATOS PARA EL DASHBOARD
+Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('porcentaje_ventas');
+
