@@ -1,0 +1,69 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "name": "Zomb"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -0.89283227920,
+            41.647919529
+          ]
+        }
+      },
+   {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "name": "SuperZombie"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -0.8906328678131105,
+            41.64822818509019
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "name": "Zombie"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -0.8909547328948976,
+            41.649017855186635
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "name": "ZombieBoy"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -0.8945703506469727,
+            41.6551184318944
+          ]
+        }
+      }
+    ]
+  }

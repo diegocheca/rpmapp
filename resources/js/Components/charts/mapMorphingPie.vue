@@ -1,5 +1,5 @@
 <template>
-      <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">{{data.title}}</div>
+    <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">{{data.title}}</div>
     <div class="chart-pie" ref="chartdiv" />
 </template>
 
@@ -17,25 +17,33 @@ export default {
   props: {
     dataChart: {
       required: false
+    },
+    mineralType: {
+      required: false
     }
   },
   data() {
     return {
       data: new ChartClass(),
+      // mineralType: "primera",
       chart: null
     }
   },
+  // methods: {
+  //   handleProvince(type) {
+  //     this.mineralType = type
+  //   },
+  // },
   async mounted() {
     let chart = am4core.create(this.$refs.chartdiv, am4maps.MapChart);
-
+console.log(this.$props.dataChart);
     chart.contentHeight = 800
 
-    if(!this.dataChart) {
+    if(!this.$props.dataChart) {
       this.data.dataDefault();
     } else {
-      this.data = this.dataChart
+      this.data = this.$props.dataChart
     }
-
 
     try {
         // chart.geodata = am4geodata_worldHigh;
@@ -43,8 +51,16 @@ export default {
           `../../../../helpers/geoJson/Argentina.json`
         );
         chart.geodata = geoDataJson.default
+
+        geoDataJson.default.features.forEach(e => {
+          // console.log(e.properties.name);
+          const provinceElement = this.$props.dataChart.data.find(f => f.province == e.properties.name);
+          e.properties.valueMap =  !provinceElement? undefined : provinceElement.minerals
+        });
+
     }
     catch (e) {
+      console.log(e);
         chart.raiseCriticalError(new Error("Error al cargar el mapa. Comunicate con el administrador."));
     }
 
@@ -101,19 +117,10 @@ export default {
     pieChart.chartContainer.minWidth = 1;
 
     let pieSeries = pieChart.series.push(new am4charts.PieSeries());
-    // pieSeries.dataFields.value = "value";
-    // pieSeries.dataFields.category = "category";
-    // pieSeries.data = [{ value: 100, category: "First" }, { value: 20, category: "Second" }, { value: 10, category: "Third" }];
 
     pieSeries.dataFields.value = this.data.axis.y;
     pieSeries.dataFields.category = this.data.axis.x;
-    pieSeries.data = this.data.data.map( (element) => {
-      let item = {}
-      item[`${this.data.axis.x}`] = element.label
-      item[`${this.data.axis.y}`] = Math.floor(Math.random() * (100 - 3)) + 3
-      element[this.data.axis.x]
-      return item
-    });
+
 
     let dropShadowFilter = new am4core.DropShadowFilter();
     dropShadowFilter.blur = 4;
@@ -124,10 +131,9 @@ export default {
     sliceTemplate.strokeOpacity = 0;
 
     let activeState = sliceTemplate.states.getKey("active");
-    activeState.properties.shiftRadius = 0; // no need to pull on click, as country circle under the pie won't make it good
-
+    activeState.properties.shiftRadius = 0;
     let sliceHoverState = sliceTemplate.states.getKey("hover");
-    sliceHoverState.properties.shiftRadius = 0; // no need to pull on click, as country circle under the pie won't make it good
+    sliceHoverState.properties.shiftRadius = 0;
 
     // we don't need default pie chart animation, so change defaults
     let hiddenState = pieSeries.hiddenState;
@@ -262,6 +268,7 @@ export default {
     }
 
     const showPieChart = (polygon) => {
+      // console.log(polygon.dataItem.dataContext.name);
       polygon.polygon.measure();
       let radius = polygon.polygon.measuredWidth / 2 * polygon.globalScale / chart.seriesContainer.scale;
       pieChart.width = radius * 2;
@@ -277,9 +284,21 @@ export default {
       let fill = polygon.fill;
       let desaturated = fill.saturate(0.3);
 
+      const province = this.data.data.find( e => e.nombre == polygon.dataItem.dataContext.name)
+      // console.log(this.$props.mineralType);
+      console.log(this.data.data);
+      pieSeries.data = province[this.$props.mineralType].map( (element) => {
+        let item = {}
+        item[`${this.data.axis.x}`] = element.label
+        item[`${this.data.axis.y}`] = element.value
+        element[this.data.axis.x]
+        // console.log(element);
+        return item
+      });
+
       for (var i = 0; i < pieSeries.dataItems.length; i++) {
         let dataItem = pieSeries.dataItems.getIndex(i);
-        dataItem.value = 33.33;
+        dataItem.value = pieSeries.data[i][`${this.data.axis.y}`];
         dataItem.slice.fill = am4core.color(am4core.colors.interpolate(
           fill.rgb,
           am4core.color("#ffffff").rgb,
@@ -301,10 +320,6 @@ export default {
 
     this.chart = chart;
   },
-  methods: {
-
-
-  },
   beforeDestroy() {
     if (this.chart) {
       this.chart.dispose();
@@ -313,8 +328,8 @@ export default {
 }
 </script>
 <style scoped>
-.hello {
+.chart-pie {
   width: 100%;
-  height: 500px;
+  height: 600px;
 }
 </style>

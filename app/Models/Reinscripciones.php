@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Reinscripciones extends Model
 {
@@ -114,5 +115,88 @@ class Reinscripciones extends Model
     {
         return $this->hasMany(ReinscripcionesEquipos::class, 'id_reinscripcion');
     }
+
+    public function cantidad_de_personas_transitorias($id_provincia)
+    {
+        $datos = [];
+        if($id_provincia > 1 && $id_provincia<99) {
+            //soy una autoridad de mineria y filtro solo para provincia
+            $temporal = DB::table('reinscripciones')
+            ->join('productores', 'productores.id', '=', 'reinscripciones.id_productor')
+            ->where('reinscripciones.estado', '=', 'aprobada')
+            ->where('productores.leal_provincia', '=', $id_provincia)
+            ->select('reinscripciones.*')
+            ->get();
+        }
+        else {
+            //soy visor de buenos aires
+            $temporal = DB::table('reinscripciones')
+            ->join('productores', 'productores.id', '=', 'reinscripciones.id_productor')
+            ->where('reinscripciones.estado', '=', 'aprobada')
+            //->where('productores.leal_provincia', '=', $id_provincia)
+            ->select('reinscripciones.*')
+            ->get();
+        }
+
+        $acumulador_profesionales_transitorios = 0;
+        $acumulador_operarios_tansitorios = 0;
+        $acumulador_administrativos_transitorios = 0;
+        $acumulador_otros_transitorios = 0;
+
+        foreach($temporal as $key){
+            $acumulador_profesionales_transitorios += $key->personal_trans_profesional;
+            $acumulador_operarios_tansitorios += $key->personal_trans_operarios;
+            $acumulador_administrativos_transitorios += $key->personal_trans_administrativos;
+            $acumulador_otros_transitorios += $key->personal_trans_otros;
+        }
+        $datos["profesionales_transitorios"] = $temporal->count() > 0 ? $acumulador_profesionales_transitorios  : 0;
+        $datos["operarios_tansitorios"] = $temporal->count() > 0 ? $acumulador_operarios_tansitorios : 0;
+        $datos["administrativos_transitorios"] = $temporal->count() > 0 ? $acumulador_administrativos_transitorios : 0;
+        $datos["otros_transitorios"] = $temporal->count() > 0 ? $acumulador_otros_transitorios : 0;
+
+        return $datos;
+    }
+
+    public function cantidad_de_personas_permante($id_provincia)
+    {
+        $datos = [];
+        if($id_provincia > 1 && $id_provincia<99) {
+            //soy una autoridad de mineria y filtro solo para provincia
+            $temporal = DB::table('reinscripciones')
+            ->join('productores', 'productores.id', '=', 'reinscripciones.id_productor')
+            ->where('reinscripciones.estado', '=', 'aprobada')
+            ->where('productores.leal_provincia', '=', $id_provincia)
+            ->select('reinscripciones.*')
+            ->get();
+        }
+        else {
+            //soy visor de buenos aires
+            $temporal = DB::table('reinscripciones')
+            ->join('productores', 'productores.id', '=', 'reinscripciones.id_productor')
+            ->where('reinscripciones.estado', '=', 'aprobada')
+            //->where('productores.leal_provincia', '=', $id_provincia)
+            ->select('reinscripciones.*')
+            ->get();
+        }
+
+        $acumulador_profesionales_permanentes = 0;
+        $acumulador_operarios_permanentes = 0;
+        $acumulador_administrativos_permanentes = 0;
+        $acumulador_otros_permanentes = 0;
+
+        foreach($temporal as $key){
+            $acumulador_profesionales_permanentes += $key->personal_perm_profesional;
+            $acumulador_operarios_permanentes += $key->personal_perm_operarios;
+            $acumulador_administrativos_permanentes += $key->personal_perm_administrativos;
+            $acumulador_otros_permanentes += $key->personal_perm_otros;
+        }
+        $datos["profesionales_permanentes"] = $temporal->count() > 0 ? $acumulador_profesionales_permanentes  : 0;
+        $datos["operarios_permanentes"] = $temporal->count() > 0 ? $acumulador_operarios_permanentes : 0;
+        $datos["administrativos_permanentes"] = $temporal->count() > 0 ? $acumulador_administrativos_permanentes : 0;
+        $datos["otros_permanentes"] = $temporal->count() > 0 ? $acumulador_otros_permanentes : 0;
+
+        return $datos;
+    }
+
 
 }
