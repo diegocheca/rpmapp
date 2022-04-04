@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use Spatie\Permission\Models\Role;
 
 class AltaFormularioController extends Controller
 {
@@ -25,6 +28,7 @@ class AltaFormularioController extends Controller
     public function create()
     {
         //
+        return  Inertia::render('Admin/Formularios/AltaProductor/create');
     }
 
     /**
@@ -58,6 +62,10 @@ class AltaFormularioController extends Controller
     public function edit($id)
     {
         //
+        $currentRole = Auth::user()->getRoleNames()[0];
+        $allRoles = Role::all();
+        // dd($allRoles);
+        return  Inertia::render('Admin/Formularios/AltaProductor/edit', [ 'currentRole' => $currentRole, 'allRoles' => $allRoles ]);
     }
 
     /**
