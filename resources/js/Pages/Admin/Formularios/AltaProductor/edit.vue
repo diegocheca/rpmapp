@@ -1,5 +1,6 @@
 <script setup>
   import AppLayout from "@/Layouts/AppLayoutAdmin";
+  import Loading from '@/Components/Loading.vue';
   import { reactive, ref, computed, onMounted } from "vue";
   import dataFormJson from "./jsonForm.json"
   import VueMultiselect from 'vue-multiselect'
@@ -11,38 +12,56 @@
     currentRole: String,
     allRoles: Array
   })
- const dataJson = reactive( dataFormJson["alta_productor"]["editar"] )
- const roles = props.allRoles.map(e => { return { label: e.name, value: e.id }})
- const data = reactive({
-   rol: "Productor",
-   jsonSelections: []
- })
- console.log(roles);
+  const dataJson = dataFormJson["alta_productor"]
+  const activetab = ref("alta")
+  const dataSelected = reactive({data: dataJson[activetab.value]})
+  const roles = props.allRoles.map(e => { return { label: e.name, value: e.id }})
+  const data = reactive({
+    rol: {
+      label: "",
+      value: ""
+    },
+    jsonSelections: []
+  })
+  const loading = ref(false)
+//  console.log(roles);
 
-  const activetab = ref(1)
   const categorias = [
     {
-      description: 'Nuevo',
-      id: 1
+      description: 'Alta',
+      id: "alta"
     },
-      {
+    {
       description: 'Editar',
-      id: 2
+      id: "editar"
+    },
+    {
+      description: 'Ver',
+      id: "ver"
     }
   ]
 
   const getRoleSelect = (value) => {
-    console.log(value)
-    data.rol = value.label
+    loading.value = true
+    // data.rol = "as"
+    setTimeout(function(){
+      data.rol = value
+      loading.value = false
+    }, 1000);
+
   }
-  const filterCategory = computed(() => {
-    return []
-      // return this.permisos.filter(
-      //   (item, index) => item.category_id === this.activetab
-      // );
-  })
+  const filterCategory = () => {
+    dataSelected.data = dataJson[activetab.value]
+    data.rol = {
+      label: "",
+      value: ""
+    }
+  }
 
+  const onSubmit = (values) => {
 
+    console.log(values);
+  }
 </script>
 <template>
   <AppLayout>
@@ -67,7 +86,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <Form @submit="onSubmit" :validation-schema="currentSchema" v-slot="{ values, errors }">
-              <div class="grid grid-cols-1 mt-5 mx-7">
+              <div class="grid grid-cols-1 my-8 mx-7">
                 <div class="mb-3">
                   <label
                     class="
@@ -80,42 +99,6 @@
                   >
                 </div>
                 <div style="bg-white">
-                  <Field v-slot="{ field }"
-                      name="rol"
-                      
-                    >
-                    <!-- :value="item.value" -->
-                      <VueMultiselect
-                      class="w-5"
-                      v-bind="field"
-                      id="rol"
-                      :options="roles"
-                      ref="rol"
-                      :multiple="false"
-                      :close-on-select="true"
-                      placeholder="Selecciona un rol"
-                      label="label"
-                      track-by="value"
-                      selectLabel="Presiona para seleccionar"
-                      deselectLabel="Presiona para quitarlo"
-                      @select="getRoleSelect"
-                      />
-                       <!-- :id="item"
-                      :value="item.value"
-                      :options="item.options"
-                      :ref="item.name"
-                      :multiple="item.multiple"
-                      :loading="item.isLoading? item.isLoading : false"
-                      :close-on-select="item.closeOnSelect"
-                      :searchable="item.searchable"
-                      :placeholder="item.placeholder"
-                      label="label"
-                      track-by="value"
-                      selectLabel="Presiona para seleccionar"
-                      deselectLabel="Presiona para quitarlo"
-                      :disabled="action != 'create' && (evaluate || item.observation.value == 'aprobado')? true: false"
-                      @select="getAsyncOptionsSelect" @input="getAsyncOptionsSelect" -->
-                    </Field>
                   <ul class="flex cursor-pointer">
                     <div class="w-full sm:w-1/2" v-for="(categoria, index) in categorias" :key="index">
                       <li
@@ -141,6 +124,7 @@
                           hover:border-gray-400
                           hover:font-black
                         "
+                        @click="filterCategory()"
                       >
                         {{ categoria.description }}
                       </li>
@@ -153,70 +137,112 @@
                   :key="index"
                 >
                   <div v-if="activetab === categoria.id" class="tabcontent">
-                    <div class="flex flex-col mt-5 mx-7">
-                      <div class="bg-white rounded-2xl border-2 border-indigo-400 p-8 my-4" v-for="(pagina, indexDataForm) in dataJson[data.rol]" :key="indexDataForm">
-                        <div class="text-gray-800 text-2xl font-bold mb-5">{{pagina.title}}</div>
-                        <div class="w-full flex flex-wrap">
-                          
-                          <div class="border-2 w-1/2 p-3" v-for="(item, indexItem) in pagina.inputs" :key="indexItem" >
-                            <div class="text-gray-800 text-lg font-bold mb-5">{{item.label}}:</div>
-                            <div class="flex flex-row justify-center space-x-2">
-                              <div v-for="(checkValidation, indexValidation) in item.validations" :key="indexValidation">
-                                <Field v-slot="{ field }" :name="item.name" >
-                                  <div class="text-base">
-                                    {{checkValidation.label}}
-                                    <Toggle
-                                        v-bind="field"
-                                        :ref="checkValidation.name"
-                                        :name="checkValidation.name"
-                                        on-label="SI"
-                                        off-label="NO"
-                                    />
-                                    <!-- v-model="item.value"
-                                      v-bind="field"
-                                      ref="toggle"
-                                      :name="item.name"
-                                      :on-label="item.labelOn"
-                                      :off-label="item.labelOff"
-                                      :disabled="action != 'create' && (evaluate || item?.observation?.value == 'aprobado') || status == 'aprobado' ? true: false"
-                                      @change="handleHiddenComponent(item, col.inputs)" -->
+                    <Field v-slot="{ field }"
+                      name="rol"
+                      class="my-5"
+                      :value="data.rol"
+                    >
+                    <!-- :value="item.value" -->
+                      <VueMultiselect
+                      v-model="data.rol"
+                      class="w-5 my-5"
+                      v-bind="field"
+                      id="rol"
+                      :options="roles"
+                      ref="rol"
+                      :multiple="false"
+                      :close-on-select="true"
+                      placeholder="Selecciona un rol"
+                      label="label"
+                      track-by="value"
+                      selectLabel="Presiona para seleccionar"
+                      deselectLabel="Presiona para quitarlo"
+                      @select="getRoleSelect"
+                      />
+                    </Field>
+                    <loading v-if="loading" />
+                    <div v-else class="flex flex-col mt-5 mx-7">
+                      <div class="accordion" id="accordionPages">
+                        <!-- {{dataSelected.data}} -->
+                        <div v-for="(pagina, indexDataForm) in dataSelected.data[data.rol.label]" :key="indexDataForm" class="accordion-item bg-white border border-gray-200">
+                          <h2 class="accordion-header mb-0" :id="`headingPages${indexDataForm}`">
+                            <button class="
+                              accordion-button
+                              collapsed
+                              relative
+                              flex
+                              items-center
+                              w-full
+                              py-4
+                              px-5
+                              text-base text-gray-800 text-left
+                              bg-white
+                              border-0
+                              rounded-none
+                              transition
+                              focus:outline-none
+                            " type="button" data-bs-toggle="collapse" :data-bs-target="`#collapsePages${indexDataForm}`" aria-expanded="false"
+                              :aria-controls="`collapsePages${indexDataForm}`">
+                              <div class="text-gray-800 text-2xl font-bold mb-5">{{pagina.title}}</div>
+                            </button>
+                          </h2>
+                          <div :id="`collapsePages${indexDataForm}`" class="accordion-collapse collapse" :aria-labelledby="`headingPages${indexDataForm}`"
+                            data-bs-parent="#accordionPages">
+                            <div class="accordion-body py-4 px-5 ">
+                              <div class="accordion" id="accordionInputs">
+                                <div v-for="(item, indexItem) in pagina.inputs" :key="indexItem" class="accordion-item bg-white border border-gray-200">
+                                  <h2 class="accordion-header mb-0" :id="`headingInputs${indexDataForm}-${indexItem}`">
+                                    <button class="
+                                      accordion-button
+                                      collapsed
+                                      relative
+                                      flex
+                                      items-center
+                                      w-full
+                                      py-4
+                                      px-5
+                                      text-base text-gray-800 text-left
+                                      bg-white
+                                      border-0
+                                      rounded-none
+                                      transition
+                                      focus:outline-none
+                                    " type="button" data-bs-toggle="collapse" :data-bs-target="`#collapseInputs${indexDataForm}-${indexItem}`" aria-expanded="false"
+                                      :aria-controls="`collapseInputs${indexDataForm}-${indexItem}`">
+                                      {{item.label}}
+                                    </button>
+                                  </h2>
+                                  <div :id="`collapseInputs${indexDataForm}-${indexItem}`" class="accordion-collapse collapse" :aria-labelledby="`headingInputs${indexDataForm}-${indexItem}`"
+                                    data-bs-parent="#accordionInputs">
+                                    <div class="accordion-body py-4 px-5 flex flex-col space-y-2">
+                                      <div v-for="(checkValidation, indexValidation) in item.validations" :key="indexValidation">
+                                        <Field v-slot="{ field }" :name="item.name" >
+                                          <div class="text-base flex justify-between px-4">
+                                            {{checkValidation.label}}
+                                            <Toggle
+                                                v-model="checkValidation.value"
+                                                v-bind="field"
+                                                :ref="checkValidation.name"
+                                                :name="checkValidation.name"
+                                                on-label="SI"
+                                                off-label="NO"
+                                            />
+                                          </div>
+                                        </Field>
+                                      </div>
+                                    </div>
                                   </div>
-                                          <!-- <div class="flex items-center justify-center w-full mb-12"> -->
-                                </Field>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-
-                      </div>
-                      <div>
-                        <div class="grid grid-cols-4 grid-rows-3 gap-1">
-                          <div
-                            v-for="(data, index) in dataJson"
-                            :key="index"
-                          >
-                            <label>
-                                <!-- :id="permiso.name"
-                                :value="permiso.id"
-                                name="rol"
-                                checked="false"
-                                type="checkbox"
-                                class="mr-1"
-                                v-model="form.checkedpermisos" -->
-                              <input
-                              />
-                              <!-- {{ permiso.description }} -->
-                            </label>
-                          </div>
-                        </div>
-                        <br />
-                        <!-- <span v-if="hasAnyPermission(['dev.dev.show'])">Permisos ID: {{ form.checkedpermisos }}</span> -->
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="flex justify-end md:gap-8 gap-4 pt-5 pb-5 pr-5">
+              <div class="flex justify-end md:gap-8 gap-4 py-12 pr-5">
                 <inertia-link
                   :href="route('admin.roles.index')"
                   class="
@@ -260,63 +286,6 @@
 </template>
 
 <script>
-// import AppLayout from "@/Layouts/AppLayoutAdmin";
-// import { reactive } from "vue";
-// export default {
-//   components: {
-//     AppLayout,
-//   },
-//   props: {
-//     currentRole: String,
-//   },
-//   setup() {
-//     const dataForm = reactive({})
-//     const categorias = [
-//       {
-//         description: 'Nuevo',
-//         id: 1
-//       },
-//        {
-//         description: 'Editar',
-//         id: 2
-//       }
-//     ]
-//     return {
-//       activetab: 1,
-//       dataForm,
-//       categorias
-//     }
-//   },
-//   // data() {
-//   //   return {
-//   //     form: {
-//   //       name: this.$props.roles.name,
-//   //       checkedpermisos: [],
-//   //     },
-//   //     activetab: 1,
-//   //   };
-//   // },
-//   computed: {
-//     filterCategory() {
-//       return []
-//       // return this.permisos.filter(
-//       //   (item, index) => item.category_id === this.activetab
-//       // );
-//     },
-//   },
-//   async mounted() {
-//     this.dataForm = await import(`./jsonForm.json`)
-//     console.log(this.dataForm['alta_productor']['alta'][this.currentRole]);
-//   },
-//   methods: {
-//     // submit() {
-//     //   this.$inertia.put(
-//     //     route("admin.roles.update", this.$props.roles.id),
-//     //     this.form
-//     //   );
-//     // },
-//   },
-// };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.css"></style>
 <style src="@vueform/toggle/themes/default.css"></style>
