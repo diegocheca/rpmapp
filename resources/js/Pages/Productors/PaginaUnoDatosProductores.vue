@@ -156,9 +156,12 @@
         <Menu
           :mostrarayuda="true"
           :ayuda="false"
+          :evaluacion="evaluacion_adm"
+          :mostrar_evaluacion="mostrar_evaluacion_adm"
           :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+          v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
         ></Menu>
       </div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
@@ -168,14 +171,14 @@
         <div
           class="
             w-full
-            sm:w-2/2
-            md:w-1/2
-            lg:w-1/2
-            xl:w-1/2
-            2xl:w-1/2
+            sm:w-4/4
+            md:w-1/4
+            lg:w-1/4
+            xl:w-1/4
+            2xl:w-1/4
             px-3
             mb-6
-            md:mb-0
+            md:mb-2
           "
         >
           <InputNumeroProductor
@@ -199,6 +202,7 @@
             v-bind:num_prod_correccion_desactivar="
               $props.desactivar_num_prod_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changenumprodvalido="update_num_prod_valido($event)"
             v-on:changenumprodcorrecto="update_num_prod_correcto($event)"
             v-on:changeobsnumprod="update_obs_num_prod($event)"
@@ -206,7 +210,6 @@
           >
           </InputNumeroProductor>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -218,7 +221,7 @@
             >
               <p class="p-3">
                 Este es el número único con el que se identifican los
-                productores, si usted no lo posee, el sistema le asignara uno.
+                productores, si usted no lo posee, el sistema le genera uno.
               </p>
             </div>
             <br />
@@ -238,14 +241,14 @@
         <div
           class="
             w-full
-            sm:w-2/2
-            md:w-1/2
-            lg:w-1/2
-            xl:w-1/2
-            2xl:w-1/2
+            sm:w-4/4
+            md:w-1/4
+            lg:w-1/4
+            xl:w-1/4
+            2xl:w-1/4
             px-3
             mb-6
-            md:mb-0
+            md:mb-2
           "
         >
           <InputCuit
@@ -263,6 +266,7 @@
             v-bind:cuit_correccion_desactivar="
               $props.desactivar_cuit_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changecuitvalido="update_cuit_valido($event)"
             v-on:changecuitcorrecto="update_cuit_correcto($event)"
             v-on:changeobscuit="update_obs_cuit($event)"
@@ -270,7 +274,6 @@
           >
           </InputCuit>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -293,8 +296,6 @@
             observacion deel padre{{ form_pagina.obs_cuit }}
           </div>
         </div>
-      </div>
-      <div class="flex flex-wrap">
         <div
           class="
             w-full
@@ -305,7 +306,7 @@
             2xl:w-1/2
             px-3
             mb-6
-            md:mb-0
+            md:mb-2
           "
         >
           <InputRazonSocial
@@ -325,6 +326,7 @@
             v-bind:razonsocial_correccion_desactivar="
               $props.desactivar_razon_social_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changerazonsocialvalido="update_razon_social_valido($event)"
             v-on:changerazonsocialcorrecto="
               update_razon_social_correcto($event)
@@ -336,7 +338,6 @@
             v-on:changerazonsocial="update_razon_social($event)"
           ></InputRazonSocial>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -348,8 +349,8 @@
             >
               <p class="p-3">
                 En caso de ser una persona física, debe completar este campo con
-                su nombre y apellido. En caso de ser una empresa debe completar
-                este campo con el nombre con el que se identifica ante la AFIP.
+                su nombre y apellido. Si es una empresa debe completar este
+                campo con el nombre con el que se identifica ante la AFIP.
               </p>
             </div>
             <br />
@@ -370,7 +371,21 @@
             }}
           </div>
         </div>
-        <div class="w-full sm:w-2/2 md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 px-3">
+      </div>
+      <div class="flex flex-wrap">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <InputEmail
             v-if="$props.mostrar_email"
             v-bind:email="form_pagina.email"
@@ -386,6 +401,7 @@
             v-bind:email_correccion_desactivar="
               $props.desactivar_email_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changeemailvalido="update_email_valido($event)"
             v-on:changeemailcorrecto="update_email_correcto($event)"
             v-on:changeobsemail="update_obs_email($event)"
@@ -394,7 +410,6 @@
           >
           </InputEmail>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -421,8 +436,6 @@
             observacion valida deel padre{{ form_pagina.obs_email_valido }}
           </div>
         </div>
-      </div>
-      <div class="flex flex-wrap">
         <div
           class="
             w-full
@@ -433,7 +446,7 @@
             2xl:w-1/2
             px-3
             mb-6
-            md:mb-0
+            md:mb-2
           "
         >
           <InputTipoSociedad
@@ -453,6 +466,7 @@
             v-bind:tipo_sociedad_correccion_desactivar="
               $props.desactivar_tipo_sociedad_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changetiposociedadvalido="update_tipo_sociedad_valido($event)"
             v-on:changetiposociedadcorrecto="
               update_tipo_sociedad_correcto($event)
@@ -462,7 +476,6 @@
           >
           </InputTipoSociedad>
           <div v-show="mostrar_ayuda">
-            <br />
             <div
               class="
                 bg-blue-50
@@ -489,12 +502,26 @@
           </div>
         </div>
       </div>
-      <br />
+      <!-- <div class="flex flex-wrap">
+      </div> -->
+      <!-- <br /> -->
       <hr />
       <br />
       <div class="flex flex-wrap">
         <!-- el valor de la inscripcion: {{form_pagina.inscripciondgr}} -->
-        <div class="w-full sd:w-2/2 md:w-2/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <FileInscripcionDGR
             v-if="$props.mostrar_inscripcion_dgr"
             v-bind:fileinput_valor="form_pagina.inscripciondgr"
@@ -515,6 +542,7 @@
             v-bind:inscripcion_correccion_desactivar="
               $props.desactivar_inscripcion_dgr_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changeinscripciondgrcorrecto="
               update_inscripcion_dgr_correcto($event)
             "
@@ -538,9 +566,7 @@
                 Debe ser un archivo del tipo PDF.
               </p>
             </div>
-            <br />
           </div>
-          <br />
           <div class="flex" v-if="mostrar_testing">
             -- valor inscripcion dgr:{{ form_pagina.inscripciondgr }}* --
             inscripcion dgr valida deel padre{{
@@ -554,12 +580,19 @@
             }}
           </div>
         </div>
-      </div>
-      <br />
-      <hr />
-      <br />
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-2
+          "
+        >
           <FileInscripcionDGR
             v-if="$props.mostrar_constancia_sociedad"
             v-bind:fileinput_valor="form_pagina.constaciasociedad"
@@ -584,6 +617,7 @@
             v-bind:inscripcion_correccion_desactivar="
               $props.desactivar_constancia_sociedad_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changeinscripciondgrcorrecto="
               update_constancia_sociedad_correcto($event)
             "
@@ -593,23 +627,23 @@
             v-on:cambioarchivo="update_archivo_constancia($event)"
           >
           </FileInscripcionDGR>
-          <div
-            v-show="mostrar_ayuda"
-            class="
-              bg-blue-50
-              text-gray-800
-              bg-opacity-20
-              text-opacity-80
-              ring ring-4 ring-blue-100
-            "
-          >
-            <p class="p-3">
-              Esta constancia debe ser descargada desde la página de la AFIP.
-              Debe ser un archivo PDF.
-            </p>
+          <div v-show="mostrar_ayuda">
             <br />
+            <div
+              class="
+                bg-blue-50
+                text-gray-800
+                bg-opacity-20
+                text-opacity-80
+                ring ring-4 ring-blue-100
+              "
+            >
+              <p class="p-3">
+                Esta constancia debe ser descargada desde la página de la AFIP.
+                Debe ser un archivo PDF.
+              </p>
+            </div>
           </div>
-          <br />
           <div class="flex" v-if="mostrar_testing">
             -- valor constancia sociedad:{{ form_pagina.constanciasociedad }}*
             -- constancia de sociedad valida deel padre{{
@@ -624,13 +658,17 @@
           </div>
         </div>
       </div>
-      <br /><br />
+      <!-- <hr />
+      <br />
+      <div class="flex">
+      </div> -->
+      <br />
       <div>
         <BotonesPaginaUna
           v-if="$props.mostrar_boton_guardar_uno"
           :link_volver="'#'"
           :titulo_boton_volver="'Volver'"
-          :titulo_boton_guardar="'Guardar Datos del Productor'"
+          :titulo_boton_guardar="'Guardar'"
           :razon_social="form_pagina.razon_social"
           :razon_social_valido="form_pagina.razon_social_valido"
           :razon_social_correcto="form_pagina.razon_social_correcto"
@@ -824,9 +862,10 @@ export default {
     //   console.log("eeeel valor es:");
     //   console.log(this.$props.inscripciondgr);
     return {
+      evaluacion_adm: false,
+      mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
       continuar_pagina: false,
-      saludos: "Saludos",
       mostrar_modal_datos_ya_guardados: false,
       modal_tittle: "",
       modal_body: "",
@@ -880,6 +919,9 @@ export default {
     };
   },
   methods: {
+    update_valor_evaluacion_Adm(newValor) {
+      this.evaluacion_adm = newValor;
+    },
     cerrar_modal_datos_uno() {
       this.mostrar_modal_datos_ya_guardados = false;
     },

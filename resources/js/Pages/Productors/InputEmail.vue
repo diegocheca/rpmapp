@@ -1,10 +1,10 @@
 <template>
   <div>
     <label
-      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+      class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
       >{{ label }}</label
     >
-    <div class="flex items-stretch w-full mb-4 relative">
+    <div class="flex items-stretch w-full relative">
       <div class="flex">
         <span
           class="
@@ -57,8 +57,7 @@
           rounded-lg rounded-l-none
           px-3
           relative
-          focus:border-blue
-          focus:shadow
+          focus:border-blue focus:shadow
         "
         placeholder="Email"
         v-model="email"
@@ -68,8 +67,8 @@
       />
     </div>
     <p v-bind:class="clase_cartel_nota_email">{{ cartel_nota_campo }}.</p>
-    <div class="flex" v-if="evaluacion || email_correccion_mostrar">
-      <div class="w-full md:w-1/3 px-3">
+    <div v-if="evaluacion || email_correccion_mostrar|| $props.mostrar_evaluacion_adm">
+      <!-- <div class="w-full md:w-1/3 px-3">
         <span class="text-gray-700">Correcto?</span>
         <div class="mt-2">
           <label class="inline-flex items-center">
@@ -135,7 +134,16 @@
         <p v-bind:class="clase_cartel_nota_evaluacion_email_text_area">
           {{ cartel_nota_evaluacion_email_text_area }}
         </p>
-      </div>
+      </div> -->
+      <SeccionEvaluacion
+        :correccion_desactivar="$props.email_correccion_desactivar"
+        :name_correcto="'name_email_correcto'"
+        :correcto="email_correcto"
+        :obs_observacion="obs_email_correcto_local"
+        v-on:change_correcto="actaulizar_variable_email($event)"
+        v-on:change_obs="actaulizar_contenido_text_area($event)"
+      >
+      </SeccionEvaluacion>
     </div>
     <div
       class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8"
@@ -204,7 +212,12 @@
 </template>
 
 <script>
+import SeccionEvaluacion from "@/Components/SeccionEvaluacion";
+
 export default {
+  components: {
+    SeccionEvaluacion,
+  },
   props: [
     "email",
     "email_valido",
@@ -217,14 +230,16 @@ export default {
     "email_disable",
     "email_correccion_mostrar",
     "email_correccion_desactivar",
+    "mostrar_evaluacion_adm",
   ],
   data() {
     return {
       clase_de_input_email:
-        "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white",
+        "appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white",
       clase_cartel_nota_email: "text-green-500 text-xs italic",
-      cartel_nota_campo: "Campo Correcto",
+      cartel_nota_campo: "",
       email_correcto_local: this.$props.email_correcto,
+      obs_email_correcto_local: this.$props.obs_email,
       email_valido_local: this.$props.email_valido,
       obs_email_valido_local: this.$props.obs_email_valido,
       clase_text_area_email:
@@ -238,50 +253,17 @@ export default {
   methods: {
     actaulizar_variable_email(valor) {
       this.email_correcto_local = valor;
-      console.log(this.email_correcto_local);
       this.$emit("changeemailcorrecto", this.email_correcto_local);
     },
 
     actaulizar_contenido_text_area(value) {
-      if (this.$props.obs_email.length <= 2) {
-        this.clase_text_area_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_email_text_area =
-          "Observacion Incorrecta - debe ser mayor a 2 carcteres";
-        this.clase_cartel_nota_evaluacion_email_text_area =
-          "text-red-500 text-xs italic";
-        this.obs_email_valido_local = false;
-        this.$emit("changeobsemailvalido", this.obs_email_valido_local);
-      }
-      if (this.$props.obs_email.length >= 50) {
-        this.clase_text_area_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_email_text_area =
-          "Observacion Incorrecta - debe tener menos de 50 caracteres";
-        this.clase_cartel_nota_evaluacion_email_text_area =
-          "text-red-500 text-xs italic";
-        this.obs_email_valido_local = false;
-        this.$emit("changeobsemailvalido", this.obs_email_valido_local);
-      }
-      if (
-        this.$props.obs_email !== "" &&
-        this.$props.obs_email.length <= 30 &&
-        this.$props.obs_email.length >= 3
-      ) {
-        this.clase_text_area_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
-        this.cartel_nota_evaluacion_email_text_area = "Observacion Correcta";
-        this.clase_cartel_nota_evaluacion_email_text_area =
-          "text-green-500 text-xs italic";
-        this.obs_email_valido_local = true;
-        this.$emit("changeobsemailvalido", this.obs_email_valido_local);
-      }
-      this.$emit("changeobsemail", this.$props.obs_email);
+      this.obs_email_correcto_local = value;
+      this.$emit("changeobsemail", this.obs_email_correcto_local);
     },
     cambio_input_email(value) {
       if (this.email.length <= 4) {
         this.clase_de_input_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border-red-500 border rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.cartel_nota_campo =
           "Campo Incorrecta - debe ser mayor a 3 carcteres";
         this.clase_cartel_nota_email = "text-red-500 text-xs italic";
@@ -289,7 +271,7 @@ export default {
       }
       if (this.email.length >= 40) {
         this.clase_de_input_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.cartel_nota_campo =
           "Campo Incorrecta - debe tener menos de 30 caracteres";
         this.clase_cartel_nota_email = "text-red-500 text-xs italic";
@@ -301,7 +283,7 @@ export default {
         this.email.length >= 3
       ) {
         this.clase_de_input_email =
-          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white";
+          "appearance-none block w-full bg-gray-200 text-gray-700 border border-green-500 rounded py-3 px-4 mb-1 leading-tight focus:outline-none focus:bg-white";
         this.cartel_nota_campo = "Campo Correcto";
         this.clase_cartel_nota_email = "text-green-500 text-xs italic";
         this.email_valido_local = true;

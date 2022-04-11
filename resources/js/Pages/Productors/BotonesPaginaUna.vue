@@ -307,7 +307,7 @@ export default {
             });
           }
           else if (response.data.msg === "se creo el borrador") {
-            // console.log("todo bien, se creo el borrador");
+            console.log("data = ", response.data);
             // self.modal_tittle = "Se creó correctamente nuevo Borrador";
             // self.modal_body =
             //   "Se ha guardado correctamente la información referida al paso 1: Datos del Productor. Gracias por usar este servicio. El id es:" +
@@ -318,10 +318,7 @@ export default {
             Swal.fire(
               "Se creó correctamente un nuevo Borrador.",
               "Se ha guardado correctamente los Datos del Productor. <b> <br/> [ Id = " +
-                response.data.id +
-                " ] <br/> [ Estado = " +
-                response.data.estado +
-                " ]. </b>",
+                response.data.id +" ] <br/> [N° RPM = "+ response.data.num_rpm +" ] <br/> [ Estado = " + response.data.estado + " ]. </b>",
               "success"
             ).then((result) => {
               self.ver_pagina_siguiente(true);
