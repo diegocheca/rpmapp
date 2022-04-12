@@ -7,12 +7,11 @@
           font-bold
           leading-7
           text-gray-300
-          sm:text-3xl
-          sm:truncate
+          sm:text-3xl sm:truncate
           py-1
-          bg-gradient-to-l
-          from-indigo-500
-          to-indigo-800
+          bg-gradient-to-b
+          from-yellow-900
+          to-slate-700
         "
       >
         Lista de Categorias
@@ -199,9 +198,10 @@
                       Editar
                     </inertia-link>
                     <!-- Borrar -->
-                    <inertia-link
-                      method="delete"
-                      :href="route('admin.categorias.destroy', categoria)"
+                    <a
+                      v-if="hasAnyPermission(['admin.categorias.destroy'])"
+                      href="#"
+                      @click="deleteUser(categoria)"
                       class="
                         ml-1
                         flex-shrink-0
@@ -223,7 +223,7 @@
                       as="button"
                     >
                       Borrar
-                    </inertia-link>
+                    </a>
                   </td>
                 </tr>
               </tbody>
@@ -235,6 +235,7 @@
   </app-layout>
 </template>
 <script>
+import Swal from "sweetalert2";
 import AppLayout from "@/Layouts/AppLayoutAdmin";
 export default {
   props: {
@@ -242,6 +243,65 @@ export default {
   },
   components: {
     AppLayout,
+  },
+  methods: {
+    deleteUser(categoria) {
+      Swal.fire({
+        title: "Eliminar Categoria",
+        text: "Esta seguro de eliminar esta Categoria?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.eliminarRegistro(categoria.id);
+        }
+      });
+    },
+    eliminarRegistro(id) {
+      let self = this;
+      Swal.fire({
+        title: "¡Por favor Espere!",
+        html: "Eliminado",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      axios
+        .delete("/admin/eliminar_categorias" + "/" + id)
+        .then(function (response) {
+          // console.log(response.data);
+          Swal.hideLoading(Swal.clickConfirm());
+          if (response.data.status === "ok") {
+            Swal.fire({
+              icon: "success",
+              title: "La categorias fue eliminado correctamente.",
+            }).then((result) => {
+              self.$inertia.get(route("admin.categorias.index"));
+            });
+          } else {
+            console.log("Error");
+            Swal.fire({
+              icon: "error",
+              title: "Error...",
+              text: "Por favor comuniquese con el administrador.",
+            });
+          }
+        })
+        .catch(function (error) {
+          Swal.hideLoading();
+          Swal.fire({
+            icon: "error",
+            title: "Error...",
+            text: error,
+          });
+          console.log(error);
+        });
+    },
   },
 };
 </script>

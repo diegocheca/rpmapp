@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\CountriesController;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Exception;
 
 class UserController extends Controller
 {
@@ -120,15 +121,21 @@ class UserController extends Controller
         return Redirect::route('admin.users.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
-        return Redirect::route('admin.users.index')->with('info', 'El rol se se eliminó con éxito');
+        // dd($user);
+        try {
+            $usuario = User::find($id)->delete();
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'se elimino correctamente',
+                'id_eliminado' => $id
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'msg' => $e,
+            ], 500);
+        }
     }
 }

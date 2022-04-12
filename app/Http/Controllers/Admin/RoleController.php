@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\Admin\Category;
-
+use Exception;
 class RoleController extends Controller
 {
     function __construct()
@@ -117,9 +117,23 @@ class RoleController extends Controller
         return Redirect::route('admin.roles.index', $role)->with('info', 'El rol se actualizó con éxito');
     }
 
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        $role->delete();
-        return Redirect::route('admin.roles.index')->with('info', 'El rol se se eliminó con éxito');
+        // $role->delete();
+        // return Redirect::route('admin.roles.index')->with('info', 'El rol se se eliminó con éxito');
+
+        try {
+            $rol = Role::find($id)->delete();
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'se elimino correctamente',
+                'id_eliminado' => $id
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'msg' => $e,
+            ], 500);
+        }
     }
 }

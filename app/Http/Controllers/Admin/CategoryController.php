@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Exception;
 
 class CategoryController extends Controller
 {
@@ -65,9 +66,22 @@ class CategoryController extends Controller
         return Redirect::route('admin.categorias.index')->with('info', 'El permisos se actualizó con éxito');
     }
 
-    public function destroy(Category $categoria)
+    public function destroy($id)
     {
-        $categoria->delete();
-        return Redirect::route('admin.categorias.index')->with('info', 'El permisos se se eliminó con éxito');
+        // $categoria->delete();
+        // return Redirect::route('admin.categorias.index')->with('info', 'El permisos se se eliminó con éxito');
+        try {
+            $rol = Category::find($id)->delete();
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'se elimino correctamente',
+                'id_eliminado' => $id
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'msg' => $e,
+            ], 500);
+        }
     }
 }

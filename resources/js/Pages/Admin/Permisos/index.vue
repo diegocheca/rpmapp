@@ -7,8 +7,7 @@
           font-bold
           leading-7
           text-gray-300
-          sm:text-3xl
-          sm:truncate
+          sm:text-3xl sm:truncate
           py-1
           bg-gradient-to-l
           from-indigo-500
@@ -121,7 +120,7 @@
                     Descripción
                   </th>
                   <th
-                    v-if="hasAnyPermission(['admin.users.edit'])"
+                    v-if="hasAnyPermission(['admin.permisos.edit'])"
                     scope="col"
                     colspan="2"
                     class="
@@ -170,13 +169,13 @@
                     </div>
                   </td>
                   <td
-                    v-if="hasAnyPermission(['admin.users.edit'])"
+                    v-if="hasAnyPermission(['admin.permisos.edit'])"
                     class="px-6 py-4 whitespace-nowrap"
                     width="10px"
                   >
                     <!-- Editar -->
                     <inertia-link
-                      v-if="hasAnyPermission(['admin.users.edit'])"
+                      v-if="hasAnyPermission(['admin.permisos.edit'])"
                       :href="route('admin.permisos.edit', permiso)"
                       class="
                         flex-shrink-0
@@ -199,9 +198,10 @@
                       Editar
                     </inertia-link>
                     <!-- Borrar -->
-                    <inertia-link
-                      method="delete"
-                      :href="route('admin.permisos.destroy', permiso)"
+                    <a
+                      v-if="hasAnyPermission(['admin.permisos.destroy'])"
+                      href="#"
+                      @click="deleteUser(permiso)"
                       class="
                         ml-1
                         flex-shrink-0
@@ -223,7 +223,7 @@
                       as="button"
                     >
                       Borrar
-                    </inertia-link>
+                    </a>
                   </td>
                 </tr>
               </tbody>
@@ -235,6 +235,7 @@
   </app-layout>
 </template>
 <script>
+import Swal from "sweetalert2";
 import AppLayout from "@/Layouts/AppLayoutAdmin";
 export default {
   props: {
@@ -242,6 +243,65 @@ export default {
   },
   components: {
     AppLayout,
+  },
+  methods: {
+    deleteUser(permiso) {
+      Swal.fire({
+        title: "Eliminar Permiso",
+        text: "Esta seguro de eliminar este Permiso?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.eliminarRegistro(permiso.id);
+        }
+      });
+    },
+    eliminarRegistro(id) {
+      let self = this;
+      Swal.fire({
+        title: "¡Por favor Espere!",
+        html: "Eliminado",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      axios
+        .delete("/admin/eliminar_permiso" + "/" + id)
+        .then(function (response) {
+          // console.log(response.data);
+          Swal.hideLoading(Swal.clickConfirm());
+          if (response.data.status === "ok") {
+            Swal.fire({
+              icon: "success",
+              title: "El permiso fue eliminado correctamente.",
+            }).then((result) => {
+              self.$inertia.get(route("admin.permisos.index"));
+            });
+          } else {
+            console.log("Error");
+            Swal.fire({
+              icon: "error",
+              title: "Error...",
+              text: "Por favor comuniquese con el administrador.",
+            });
+          }
+        })
+        .catch(function (error) {
+          Swal.hideLoading();
+          Swal.fire({
+            icon: "error",
+            title: "Error...",
+            text: error,
+          });
+          console.log(error);
+        });
+    },
   },
 };
 </script>
