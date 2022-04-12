@@ -8548,8 +8548,8 @@ class FormAltaProductorController extends Controller
 					"boton_actualizar" => true,
 				];
 			}
-		}elseif (Auth::user()->id_provincia  == 58) {
-			$nombre_provincia = "Neuquén";
+		}elseif (Auth::user()->id_provincia  == 62) {
+			$nombre_provincia = "Rio Negro";
 			if (Auth::user()->hasRole('Productor')) {
 				$disables = [
 					"razon_social" => false,
