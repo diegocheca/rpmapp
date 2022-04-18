@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AltaFormularioController;
 use Illuminate\Support\Facades\Route;
 
 /************* ROLES *************/
@@ -28,6 +29,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('categorias', CategoryController::class)
         ->middleware(['auth:sanctum', 'verified'])
         ->names('categorias');
+    
+    Route::resource('altaProductor', AltaFormularioController::class)
+        ->middleware(['auth:sanctum', 'verified'])
+        ->names('altaProductor');
         
     Route::get('/excel_productores', [ProductoresController::class, 'importView'])->middleware(['auth:sanctum', 'verified'])->name('vistaImport');
 
