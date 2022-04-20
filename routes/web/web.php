@@ -26,6 +26,7 @@ use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
+use App\Http\Controllers\BandejaEntradaEmailsController;
 
 use App\Http\Controllers\DashboardController;
 
@@ -338,3 +339,6 @@ Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatam
 //REPORTES
 Route::get('/datos_minerales_todas_cat', [ChartsController::class, "minerales_todas_categorias"])->name('datos-minerales-todas-cat');
 
+// BANDEJA DE ENTRADAS EMAILS
+Route::resource('/inbox', BandejaEntradaEmailsController::class)
+    ->middleware(['auth:sanctum', 'verified']);
