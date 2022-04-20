@@ -7,6 +7,7 @@
   import { Form, Field, ErrorMessage } from 'vee-validate';
   import Toggle from "@vueform/toggle";
   import 'tw-elements';
+import axios from "axios";
 
   const props = defineProps({
     currentRole: String,
@@ -16,11 +17,31 @@
   const activetab = ref("alta")
   const dataSelected = reactive({data: dataJson[activetab.value]})
   const roles = props.allRoles.map(e => { return { label: e.name, value: e.id }})
+  const estados = [
+    {
+      label: "asdasd",
+      value: "1"
+    },{
+      label: "dqwdq",
+      value: "2"
+    },{
+      label: "dqwdq",
+      value: "3"
+    },{
+      label: "dqwdqw",
+      value: "4"
+    }
+  ]
+  const estado_seleccionado = reactive({
+      label: "",
+      value: ""
+    })
   const data = reactive({
     rol: {
       label: "",
       value: ""
     },
+    
     jsonSelections: []
   })
   const loading = ref(false)
@@ -50,9 +71,23 @@
     }, 1000);
 
   }
+  const getEstadoSelect = (value) => {
+    loading.value = true
+    // data.rol = "as"
+    setTimeout(function(){
+      estado_seleccionado= value
+      loading.value = false
+    }, 1000);
+
+  }
+  
   const filterCategory = () => {
     dataSelected.data = dataJson[activetab.value]
     data.rol = {
+      label: "",
+      value: ""
+    }
+    estado_seleccionado= {
       label: "",
       value: ""
     }
@@ -64,6 +99,21 @@
       action: activetab.value
     }
     console.log(values);
+    axios
+      .post("/admin/altaProductor", {
+        values: values,
+      })
+      .then(function (response) {
+        console.log(response.data);
+        if (response.data === "se actualizaron los datos correctamente") {
+        } else {
+          // console.log("NO todo bien");
+        }
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
   }
 </script>
 <template>
@@ -144,7 +194,6 @@
                     class="my-5"
                     :value="data.rol"
                   >
-                  <!-- :value="item.value" -->
                     <VueMultiselect
                     v-model="data.rol"
                     class="w-5 my-5"
@@ -162,6 +211,31 @@
                     @select="getRoleSelect"
                     />
                   </Field>
+
+                  <Field v-slot="{ field }"
+                    name="estados"
+                    class="my-5"
+                    :value="estado_seleccionado"
+                  >
+                  <!-- :value="item.value" -->
+                    <VueMultiselect
+                    v-model="estado_seleccionado"
+                    class="w-5 my-5"
+                    v-bind="field"
+                    id="estados"
+                    :options="estados"
+                    ref="estados"
+                    :multiple="false"
+                    :close-on-select="true"
+                    placeholder="Selecciona un estado"
+                    label="label"
+                    track-by="value"
+                    selectLabel="Presiona para seleccionar"
+                    deselectLabel="Presiona para quitarlo"
+                    @select="getEstadoSelect"
+                    />
+                  </Field>
+
                   <loading v-if="loading" />
                   <div v-else class="flex flex-col mt-5 mx-7">
                     <div class="accordion" id="accordionPages">
