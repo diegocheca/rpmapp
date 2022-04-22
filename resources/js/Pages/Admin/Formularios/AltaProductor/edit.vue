@@ -7,7 +7,7 @@
   import { Form, Field, ErrorMessage } from 'vee-validate';
   import Toggle from "@vueform/toggle";
   import 'tw-elements';
-import axios from "axios";
+  import axios from "axios";
 
   const props = defineProps({
     currentRole: String,
@@ -20,28 +20,28 @@ import axios from "axios";
   const estados = [
     {
       label: "asdasd",
-      value: "1"
+      value: 1
     },{
       label: "dqwdq",
-      value: "2"
+      value: 2
     },{
       label: "dqwdq",
-      value: "3"
+      value: 3
     },{
       label: "dqwdqw",
-      value: "4"
+      value: 4
     }
   ]
-  const estado_seleccionado = reactive({
-      label: "",
-      value: ""
-    })
+
   const data = reactive({
     rol: {
       label: "",
       value: ""
     },
-    
+    estadoSeleccionado: {
+      label: "",
+      value: ""
+    },
     jsonSelections: []
   })
   const loading = ref(false)
@@ -74,10 +74,10 @@ import axios from "axios";
   const getEstadoSelect = (value) => {
     loading.value = true
     // data.rol = "as"
-    setTimeout(function(){
-      estado_seleccionado= value
+    // setTimeout(function(){
+      data.estadoSeleccionado= value
       loading.value = false
-    }, 1000);
+    // }, 1000);
 
   }
   
@@ -87,7 +87,7 @@ import axios from "axios";
       label: "",
       value: ""
     }
-    estado_seleccionado= {
+    estadoSeleccionado= {
       label: "",
       value: ""
     }
@@ -189,7 +189,7 @@ import axios from "axios";
                 :key="index"
               >
                 <div v-if="activetab === categoria.id" class="tabcontent">
-                  <Field v-slot="{ field }"
+                  <!-- <Field v-slot="{ field }"
                     name="rol"
                     class="my-5"
                     :value="data.rol"
@@ -210,24 +210,23 @@ import axios from "axios";
                     deselectLabel="Presiona para quitarlo"
                     @select="getRoleSelect"
                     />
-                  </Field>
+                  </Field> -->
 
                   <Field v-slot="{ field }"
-                    name="estados"
+                    name="estadoSeleccionado"
                     class="my-5"
-                    :value="estado_seleccionado"
+                    :value="data.estadoSeleccionado"
                   >
-                  <!-- :value="item.value" -->
                     <VueMultiselect
-                    v-model="estado_seleccionado"
+                    v-model="data.estadoSeleccionado"
                     class="w-5 my-5"
                     v-bind="field"
-                    id="estados"
+                    id="estadoSeleccionado"
                     :options="estados"
-                    ref="estados"
+                    ref="estadoSeleccionado"
                     :multiple="false"
                     :close-on-select="true"
-                    placeholder="Selecciona un estado"
+                    placeholder="Selecciona un rol"
                     label="label"
                     track-by="value"
                     selectLabel="Presiona para seleccionar"
