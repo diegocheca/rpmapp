@@ -343,3 +343,5 @@ Route::get('/datos_minerales_todas_cat', [ChartsController::class, "minerales_to
 // DATOS PARA EL DASHBOARD
 Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('porcentaje_ventas');
 
+// VER LOGS
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');

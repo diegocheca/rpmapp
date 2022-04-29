@@ -433,7 +433,7 @@ export default {
       axios
         .get("/porcentaje_ventas")
         .then(function (response) {
-          console.log(response);
+        //   console.log(response);
           if (response.status == 200) {
             self.porc_venta_provincia = response.data.provincia;
             self.porc_venta_pais = response.data.pais;

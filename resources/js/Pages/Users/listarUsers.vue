@@ -6,8 +6,7 @@
         font-bold
         leading-7
         text-gray-300
-        sm:text-3xl
-        sm:truncate
+        sm:text-3xl sm:truncate
         py-1
         bg-gradient-to-l
         from-indigo-500
@@ -138,10 +137,8 @@
                                         </div>
                                     </div>
                                 </td> -->
-
                 <td class="px-6 py-4 whitespace-nowrap">
                   <div class="flex items-center">
-                    
                     <div class="ml-4">
                       <div class="uppercase text-sm font-medium text-white-900">
                         {{ usuario.name }}
@@ -198,10 +195,11 @@
                   >
                     Editar
                   </inertia-link>
-                  <inertia-link
-                    method="delete"
+                  <!-- :href="route('admin.users.destroy', usuario)" -->
+                  <a
                     v-if="hasAnyPermission(['admin.users.destroy'])"
-                    :href="route('admin.users.destroy', usuario)"
+                    href="#"
+                    @click="deleteUser(usuario)"
                     class="
                       ml-1
                       flex-shrink-0
@@ -223,7 +221,7 @@
                     as="button"
                   >
                     Borrar
-                  </inertia-link>
+                  </a>
                 </td>
               </tr>
             </tbody>
@@ -234,6 +232,7 @@
   </app-layout>
 </template>
 <script>
+import Swal from "sweetalert2";
 import AppLayout from "@/Layouts/AppLayoutAdmin";
 export default {
   props: {
@@ -241,6 +240,65 @@ export default {
   },
   components: {
     AppLayout,
+  },
+  methods: {
+    deleteUser(usuario) {
+      Swal.fire({
+        title: "Eliminar Usuario",
+        text: "Esta seguro de eliminar este Usuario?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.eliminarRegistro(usuario.id);
+        }
+      });
+    },
+    eliminarRegistro(id) {
+      let self = this;
+      Swal.fire({
+        title: "¡Por favor Espere!",
+        html: "Eliminado",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      axios
+        .delete("/admin/eliminar_usuario" + "/" + id)
+        .then(function (response) {
+          // console.log(response.data);
+          Swal.hideLoading(Swal.clickConfirm());
+          if (response.data.status === "ok") {
+            Swal.fire({
+              icon: "success",
+              title: "El usuario fue eliminado correctamente.",
+            }).then((result) => {
+              self.$inertia.get(route("admin.users.index"));
+            });
+          } else {
+            console.log("Error");
+            Swal.fire({
+              icon: "error",
+              title: "Error...",
+              text: "Por favor comuniquese con el administrador.",
+            });
+          }
+        })
+        .catch(function (error) {
+          Swal.hideLoading();
+          Swal.fire({
+            icon: "error",
+            title: "Error...",
+            text: error,
+          });
+          console.log(error);
+        });
+    },
   },
 };
 </script>
