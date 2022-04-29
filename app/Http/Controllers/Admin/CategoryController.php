@@ -8,6 +8,8 @@ use App\Models\Admin\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Exception;
+use App\Http\Controllers\Logs;
+
 
 class CategoryController extends Controller
 {
@@ -18,7 +20,7 @@ class CategoryController extends Controller
         $this->middleware('can:admin.categorias.create')->only('create', 'store');
         $this->middleware('can:admin.categorias.destroy')->only('destroy');
     }
-
+    
     public function index()
     {
         $categorias = Category::all();
@@ -55,15 +57,21 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $categoria)
     {
-        $request->validate([
-            'name',
-            'description'
-        ]);
-        $categoria->update([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
-        return Redirect::route('admin.categorias.index')->with('info', 'El permisos se actualizó con éxito');
+        try {
+            $request->validate([
+                'name',
+                'description'
+            ]);
+            $categoria->update([
+                'name' => $request->name,
+                'description' => $request->description,
+            ]);
+            Logs::info('Se actualizo una Categoria.-','rpm');
+            return Redirect::route('admin.categorias.index')->with('info', 'El permisos se actualizó con éxito');
+        } catch (Exception $e) {
+            Logs::error($e,'rpm');
+            return Redirect::route('admin.categorias.index');
+        }
     }
 
     public function destroy($id)
