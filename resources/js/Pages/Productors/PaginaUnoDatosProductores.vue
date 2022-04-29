@@ -128,11 +128,19 @@
         v-on:changevalorayuda="update_valor_ayuda_local($event)"
         v-on:continuarpagina="update_valor_pagina_siguiente($event)"
       ></CardProductor> -->
-      <Card
+      <!-- <Card
         :icono="'/slick/img/features/casco-minero.svg'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
         :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :show="mostrar_modulo"
+        v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
+      ></Card> -->
+      <Card
+        :icono="'/slick/img/features/casco-minero.svg'"
+        :titulo="titulo_pagina"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border bg-sky-500 text-white shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
         :show="mostrar_modulo"
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
