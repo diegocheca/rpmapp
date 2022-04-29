@@ -20,7 +20,7 @@ class CategoryController extends Controller
         $this->middleware('can:admin.categorias.create')->only('create', 'store');
         $this->middleware('can:admin.categorias.destroy')->only('destroy');
     }
-    
+
     public function index()
     {
         $categorias = Category::all();
@@ -34,15 +34,21 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
-        $request->validate([
-            'name',
-            'description',
-        ]);
-        $nom = strtolower($request->name);
-        $categorias = Category::create(['name' => $nom, 'description' => $request->description]);
-
-        return Redirect::route('admin.categorias.index', $categorias);
+        try {
+            // dd($request);
+            $request->validate([
+                'name',
+                'description',
+            ]);
+            $nom = strtolower($request->name);
+            $categorias = Category::create(['name' => $nom, 'description' => $request->description]);
+            $msg = 'Se creó una nueva Categoría. Nombre de categoría: ' . $nom . '.';
+            Logs::info($msg, 'rpm');
+            return Redirect::route('admin.categorias.index', $categorias);
+        } catch (Exception $e) {
+            Logs::error($e, 'rpm');
+            return Redirect::route('admin.categorias.index', $categorias);
+        }
     }
 
     public function show($id)
@@ -66,10 +72,10 @@ class CategoryController extends Controller
                 'name' => $request->name,
                 'description' => $request->description,
             ]);
-            Logs::info('Se actualizo una Categoria.-','rpm');
+            Logs::info('Se actualizo una Categoria.-', 'rpm');
             return Redirect::route('admin.categorias.index')->with('info', 'El permisos se actualizó con éxito');
         } catch (Exception $e) {
-            Logs::error($e,'rpm');
+            Logs::error($e, 'rpm');
             return Redirect::route('admin.categorias.index');
         }
     }
