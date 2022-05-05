@@ -6,6 +6,13 @@ use App\Models\Permission;
 use App\Http\Requests\StorePermissionRequest;
 use App\Http\Requests\UpdatePermissionRequest;
 
+use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use Illuminate\Http\Request;
+use App\Models\EmailsAConfirmar;
+use App\Http\Controllers\ChartsController;
+use App\Models\Provincias;
+
 class PermissionController extends Controller
 {
     /**
@@ -15,6 +22,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
+        return Inertia::render('Admin/PermisosNuevos/permisos');
         //
     }
 
@@ -27,6 +35,25 @@ class PermissionController extends Controller
     {
         //
     }
+    public function get_permisos_form($rol,$estado,$accion, $pagina, $provincia,$formulario){
+        $resultado = Permission::query_permissions_all_page($provincia ,$rol, $formulario, $accion , $estado, $pagina);
+        //dd($resultado); 
+        if(!empty($resultado )) {
+            return response()->json([
+                'status' => 'success',
+                'msg' => 'Permisos encontrados.',
+                'permisos' => json_encode($resultado[0])
+            ], 201);
+        }
+        else {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'Permisos no encontrados.',
+                'permisos' => false
+            ], 201);
+        }
+
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,8 +61,10 @@ class PermissionController extends Controller
      * @param  \App\Http\Requests\StorePermissionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePermissionRequest $request)
+    //public function store(StorePermissionRequest $request)
+    public function store(Request $request)
     {
+        dd("en el store");
         //
     }
 

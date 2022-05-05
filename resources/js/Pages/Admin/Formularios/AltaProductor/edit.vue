@@ -8,28 +8,40 @@
   import Toggle from "@vueform/toggle";
   import 'tw-elements';
   import axios from "axios";
+  import { JSONParser } from "@amcharts/amcharts4/core";
+import { each } from "@amcharts/amcharts4/.internal/core/utils/Iterator";
+import { forEach } from "lodash";
 
   const props = defineProps({
     currentRole: String,
     allRoles: Array
   })
-  const dataJson = dataFormJson["alta_productor"]
+  let dataJson = dataFormJson["alta_productor"]
   const activetab = ref("alta")
   const dataSelected = reactive({data: dataJson[activetab.value]})
   const roles = props.allRoles.map(e => { return { label: e.name, value: e.id }})
   const estados = [
     {
-      label: "asdasd",
+      label: "Borrador",
       value: 1
     },{
-      label: "dqwdq",
+      label: "En revision",
       value: 2
     },{
-      label: "dqwdq",
+      label: "Observado",
       value: 3
     },{
-      label: "dqwdqw",
+      label: "Corregido",
       value: 4
+    },{
+      label: "Aprobado",
+      value: 5
+    },{
+      label: "Suspendido",
+      value: 6
+    },{
+      label: "No admitido",
+      value: 7
     }
   ]
 
@@ -42,7 +54,8 @@
       label: "",
       value: ""
     },
-    jsonSelections: []
+    jsonSelections: [],
+    permisos_de_api: {}
   })
   const loading = ref(false)
 //  console.log(roles);
@@ -63,12 +76,44 @@
   ]
 
   const getRoleSelect = (value) => {
+    let self = this;
     loading.value = true
     // data.rol = "as"
+    console.log("datos\n\n");
+    //console.log(data.estadoSeleccionado.label,data.estadoSeleccionado.value );
+    console.log(value.label);
+    console.log("tab",activetab.value);
+    axios
+      .post("/admin/get_permisos_form", {
+        "id_rol": value.value, "accion": activetab.value, "estado": data.estadoSeleccionado.value
+      })
+      .then(function (response) {
+        if (response.data.status === "success") {
+            data.permisos_de_api = JSON.parse(response.data.permisos);
+            data.permisos_de_api.map((value, index)=>{
+            data.permisos_de_api[index].data = JSON.parse(data.permisos_de_api[index].data);
+          });
+          data.permisos_de_api.forEach((element, index)=>{
+            var pagina = "pagina"+ String(index+1);
+            dataJson[activetab.value][value.label][pagina]["inputs"] = element.data; 
+          });
+          //console.log(data.permisos_de_api[8].data);
+        } else {
+          console.log("NO todo bien");
+        }
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+
     setTimeout(function(){
       data.rol = value
       loading.value = false
     }, 1000);
+
+
+
 
   }
   const getEstadoSelect = (value) => {
@@ -189,28 +234,7 @@
                 :key="index"
               >
                 <div v-if="activetab === categoria.id" class="tabcontent">
-                  <!-- <Field v-slot="{ field }"
-                    name="rol"
-                    class="my-5"
-                    :value="data.rol"
-                  >
-                    <VueMultiselect
-                    v-model="data.rol"
-                    class="w-5 my-5"
-                    v-bind="field"
-                    id="rol"
-                    :options="roles"
-                    ref="rol"
-                    :multiple="false"
-                    :close-on-select="true"
-                    placeholder="Selecciona un rol"
-                    label="label"
-                    track-by="value"
-                    selectLabel="Presiona para seleccionar"
-                    deselectLabel="Presiona para quitarlo"
-                    @select="getRoleSelect"
-                    />
-                  </Field> -->
+
 
                   <Field v-slot="{ field }"
                     name="estadoSeleccionado"
@@ -234,6 +258,32 @@
                     @select="getEstadoSelect"
                     />
                   </Field>
+
+
+                  <Field v-slot="{ field }"
+                    name="rol"
+                    class="my-5"
+                    :value="data.rol"
+                  >
+                    <VueMultiselect
+                    v-model="data.rol"
+                    class="w-5 my-5"
+                    v-bind="field"
+                    id="rol"
+                    :options="roles"
+                    ref="rol"
+                    :multiple="false"
+                    :close-on-select="true"
+                    placeholder="Selecciona un rol"
+                    label="label"
+                    track-by="value"
+                    selectLabel="Presiona para seleccionar"
+                    deselectLabel="Presiona para quitarlo"
+                    @select="getRoleSelect"
+                    />
+                  </Field>
+
+                 
 
                   <loading v-if="loading" />
                   <div v-else class="flex flex-col mt-5 mx-7">

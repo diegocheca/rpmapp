@@ -328,6 +328,8 @@ Route::get('/dashboard/numproductoresborradores', [DashboardController::class, "
 
 Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])->name('mostrar_datos_por_dtpo');
 
+Route::get('/permisos_nuevos', [HomeController::class, "mostrar_permisos"])->name('mostrar_permisos');
+
 
 Route::get('/cargandoexcelmdz', [FormAltaProductorController::class, "cargandoexcelmdz"])->name('cargandoexcelmdz');
 Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatamarca"])->name('cargarCatamarca');

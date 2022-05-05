@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Spatie\Permission\Models\Role;
 use App\Models\Provincias;
+use App\Models\Permission;
 
 class AltaFormularioController extends Controller
 {
@@ -19,8 +20,10 @@ class AltaFormularioController extends Controller
     public function index()
     {
         //
+        $permisos = Permission::select('*')->where('id_provincia', '=', Auth::user()->id_provincia)->get();
+        $collection = collect(json_decode($permisos, true));
+        var_dump($collection->where('id', 51860));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -28,9 +31,43 @@ class AltaFormularioController extends Controller
      */
     public function create()
     {
-        //
         return  Inertia::render('Admin/Formularios/AltaProductor/create');
     }
+
+    public function traducir_perfil($perfil){
+        if($perfil == 'Productor')
+            return 4;
+        elseif($perfil == 'Administrador')
+            return 1;
+        elseif($perfil == 'User')
+            return 2;
+        elseif($perfil == 'Autoridad')
+            return 3;
+        else return false;
+    }
+
+    public function traducir_accion($accion){
+        if($accion == 'alta')
+            return  1;
+        elseif($accion == 'edicion')
+            return 2;
+        elseif($accion == 'ver')
+            return 3;
+        else return false;
+    }
+    public function traducir_estado($estado){
+        //sin terminar
+        if($estado == 'Productor')
+            return 4;
+        elseif($estado == 'Borrador')
+            return 1;
+        elseif($estado == 'En revision')
+            return 2;
+        elseif($estado == 'Autoridad')
+            return 3;
+        else return false;
+    }
+    
 
     public function completar_arra_input($input){
         if($input == null){
@@ -57,19 +94,24 @@ class AltaFormularioController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        
+
+        dd("fsadasd");
         $perfil = $request->values["rol"]["label"];
         $accion = $request->values["action"];
         $inputs = $request->values["inputs"][$accion][strtolower($perfil)];
-        //dd( $inputs);
-        if($perfil =="Productor"){
+        $estado = $request->values["estadoSeleccionado"]["value"];
+        
+        if( $perfil == 0 || $perfil == null
+            || 
+            $accion == 0 || $accion == null
+            || $inputs == 0 || $inputs == null
+            || $estado == 0 || $estado == null
+            ){
             $inputs_temporal = [];
             foreach ($inputs as $pagina => $pagina_value) {
                 //paginas: pagina1,  pagina2,  pagina3, etc 
                 //completar array con los null to false
                 $pagina_temporal = [];
-               //dd($pagina_value);
                 foreach ($pagina_value as $input => $value) {
                     //por cada input 
                     if(count($value) != 3){
@@ -78,43 +120,73 @@ class AltaFormularioController extends Controller
                     else {
                         $pagina_temporal[$input] = $value;
                     }
-                   // dd( $pagina_temporal[$input]);
                 }
                 $inputs_temporal[$pagina] = $pagina_temporal;
-                //dd( $inputs_temporal);
             }
             $inputs = $inputs_temporal;
-            //buscar todo el string
-            $mis_permisos  = Provincias::select('permisos')->where('id', '=', Auth::user()->id_provincia)->first();
-            $mis_permisos = $mis_permisos->toJson();
-            $mis_permisos = json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $mis_permisos), true );
-            $mis_permisos = $mis_permisos["permisos"];
+            $inputs = (object) $inputs;
+            $superObjeto = [];
+            $index = 0;
+            foreach($inputs as $pagina){
+                $pagina_obj = (object) $pagina;
+                //dd($pagina_obj);
+                $subindex = 0;
+                foreach($pagina_obj as $input_de_pagina => $value){
+                    //var_dump($input_de_pagina ,$value);
+                    $new_pagina_a_escribir_db = [
+                        "name" => '',
+                        "label" => '',
+                        "image" => "/storage/algo.jpg",
+                        "validations" => [
+                            [
+                                "name"=>"inputs.alta.productor.pagina1.".$input_de_pagina.".disabled",
+                                "label"=> "Desabilitado",
+                                "value"=> false
+                            ],
+                            [
+                                "name"=>"inputs.alta.productor.pagina1.".$input_de_pagina.".mostrar",
+                                "label"=> "Mostrar",
+                                "value"=> false
+                            ],
+                            [
+                                "name"=>"inputs.alta.productor.pagina1.".$input_de_pagina.".required",
+                                "label"=> "Requerido",
+                                "value"=> false
+                            ]
+                        ]
+                    ];
 
-            try {
-                $array = json_decode($mis_permisos, true, 1024, JSON_THROW_ON_ERROR);
-                printf('Valid JSON output: %s', print_r($array, true));
-            } catch (\JsonException $exception) {
-                printf('Invalid JSON input: %s', print_r($exception, true));
+                    $new_pagina_a_escribir_db["name"] = $input_de_pagina;
+                    $new_pagina_a_escribir_db["label"] = $input_de_pagina;
+
+                    if(isset($value["disabled"]) && $value["disabled"]){
+                        $new_pagina_a_escribir_db["validations"][0]["value"] = true;
+                    }
+                    if(isset($value["mostrar"]) && $value["mostrar"]){
+                        $new_pagina_a_escribir_db["validations"][1]["value"] = true;
+                    }
+                    if(isset($value["required"]) && $value["required"]){
+                        $new_pagina_a_escribir_db["validations"][2]["value"] = true;
+                    }
+                    $superObjeto[$index][$subindex] = $new_pagina_a_escribir_db;
+                    $subindex++;
+                }
+                $index++;
             }
-            die();
-
-            //$mis_permisos = json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $mis_permisos), true );
-            var_dump($data);die();
-            //$mis_permisos = json_encode($mis_permisos, true);
-           //$collection = collect(json_decode($mis_permisos, true));
-           //$collection = collect(json_decode($collection ["permisos"], true));
-
-           $collection =json_decode( preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $collection ["permisos"]), true );
-
-            var_dump($collection);die();
-            $mis_permisos_dos =  json_decode($mis_permisos["permisos"]);
-            $mis_permisos = json_encode($mis_permisos->permisos, true);
-            //$collection = collect(json_decode($mis_permisos, true));
-            $mis_permisos = json_decode($mis_permisos);
+            // por provincia .... por rol .... por formulario ... por accion ... por estado ... por pagina ... datos
+            $perfil = $this->traducir_perfil($perfil);
+            $accion = $this->traducir_accion($accion);
             
-            $mis_permisos = json_decode($mis_permisos->permisos);
-            $mis_permisos = json_decode($mis_permisos->permisos);
-            var_dump($mis_permisos);
+            $success_flag = true;
+            for ($i=0; $i < 9 ; $i++) { 
+                $resultado = Permission::guardar_paso(Auth::user()->id_provincia ,$perfil, 1, $accion , $estado, $i , $superObjeto[$i] ); 
+                if($resultado && $success_flag) {
+                    $success_flag = true;
+                }
+                else {
+                    $success_flag = false;
+                }
+            }
         }
         else return "Error";
     }
@@ -155,6 +227,41 @@ class AltaFormularioController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function get_permisos_form(Request $request)
+    {
+        //
+        //dd($request->estado);
+        $perfil = $request->id_rol;
+        $accion = $this->traducir_accion($request->accion);
+        //$estado = $this->traducir_estado($request->estado);
+        $estado = $request->estado;
+        $resultado = Permission::query_permissions_all_page(Auth::user()->id_provincia ,$perfil, 1, $accion , $estado  ); 
+        if(!empty($resultado )) {
+            return response()->json([
+                'status' => 'success',
+                'msg' => 'Permisos encontrados.',
+                'permisos' => \json_encode($resultado)
+            ], 201);
+        }
+        else {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'Permisos no encontrados.',
+                'permisos' => false
+            ], 201);
+        }
+
     }
 
     /**

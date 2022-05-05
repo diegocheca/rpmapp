@@ -22,6 +22,7 @@ class CreatePermissionsTable extends Migration
             $table->integer('pagina')->nullable(); // 1 pagina1  - 2 pagina2 - ... - 8 pagina mendoza
             $table->integer('estado')->nullable(); // 1 borrador  - 2 presentado - 3 observado - 4 corregido - 5 aprobado
             $table->text('data')->nullable(false); // json con los inputs
+            $table->text('nombres')->nullable(false); // json con los nombre
             $table->integer('edited_by')->nullable(false); // id de quien escribio
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
