@@ -170,15 +170,15 @@
                                     </div>
                                     <div class="w-2/3">
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" @change="check($event, index-1, 5, 2)"><span class="ml-2 text-gray-700">M</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][5][2]" @change="change_permiso($event,index, 5,2)"> <span class="ml-2 text-gray-700">M</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" @change="check($event, index-1, 5, 1 )"><span class="ml-2 text-gray-700">D</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][5][1]"  @change="change_permiso($event,index, 5,1)"><span class="ml-2 text-gray-700">D</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" @change="check($event, index-1, 5, 0 )"><span class="ml-2 text-gray-700">R</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][5][0]"  @change="change_permiso($event,index, 5,0)"><span class="ml-2 text-gray-700">R</span>
                                         </label>
                                     </div>
                                 </div>
@@ -190,15 +190,15 @@
                                     </div>
                                     <div class="w-2/3">
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" checked><span class="ml-2 text-gray-700">M</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][4][2]" @change="change_permiso($event,index, 4,2)"><span class="ml-2 text-gray-700">M</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" checked><span class="ml-2 text-gray-700">D</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][4][1]"  @change="change_permiso($event,index, 4,1)"><span class="ml-2 text-gray-700">D</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" checked><span class="ml-2 text-gray-700">R</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][4][0]"  @change="change_permiso($event,index, 4,0)"><span class="ml-2 text-gray-700">R</span>
                                         </label>
                                     </div>
                                 </div>
@@ -210,15 +210,15 @@
                                     </div>
                                     <div class="w-2/3">
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" checked><span class="ml-2 text-gray-700">M</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][3][2]" @change="change_permiso($event,index, 3,2)"><span class="ml-2 text-gray-700">M</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" checked><span class="ml-2 text-gray-700">D</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][3][1]"  @change="change_permiso($event,index, 3,1)"><span class="ml-2 text-gray-700">D</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" checked><span class="ml-2 text-gray-700">R</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][3][0]"  @change="change_permiso($event,index, 3,0)"><span class="ml-2 text-gray-700">R</span>
                                         </label>
                                     </div>
                                 </div>
@@ -235,15 +235,15 @@
                                     </div>
                                     <div class="w-2/3">
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" checked><span class="ml-2 text-gray-700">M</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][2][2]" @change="change_permiso($event,index, 2,2)"><span class="ml-2 text-gray-700">M</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" checked><span class="ml-2 text-gray-700">D</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][2][1]"  @change="change_permiso($event,index, 2,1)"><span class="ml-2 text-gray-700">D</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" checked><span class="ml-2 text-gray-700">R</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][2][0]"  @change="change_permiso($event,index, 2,0)"><span class="ml-2 text-gray-700">R</span>
                                         </label>
                                     </div>
                                 </div>
@@ -255,15 +255,15 @@
                                     </div>
                                     <div class="w-2/3">
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" checked><span class="ml-2 text-gray-700">M</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][1][2]" @change="change_permiso($event,index, 1,2)"><span class="ml-2 text-gray-700">M</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" checked><span class="ml-2 text-gray-700">D</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][1][1]"  @change="change_permiso($event,index, 1,1)"><span class="ml-2 text-gray-700">D</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" checked><span class="ml-2 text-gray-700">R</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][1][0]"  @change="change_permiso($event,index, 1,0)"><span class="ml-2 text-gray-700">R</span>
                                         </label>
                                     </div>
                                 </div>
@@ -275,15 +275,15 @@
                                     </div>
                                     <div class="w-2/3">
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" checked><span class="ml-2 text-gray-700">M</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][0][2]" @change="change_permiso($event,index, 0,2)"><span class="ml-2 text-gray-700">M</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" checked><span class="ml-2 text-gray-700">D</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][0][1]"  @change="change_permiso($event,index, 0,1)"><span class="ml-2 text-gray-700">D</span>
                                         </label>
 
                                         <label class="inline-flex items-center mt-3">
-                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" checked><span class="ml-2 text-gray-700">R</span>
+                                            <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][0][0]"  @change="change_permiso($event,index, 0,0)"><span class="ml-2 text-gray-700">R</span>
                                         </label>
                                     </div>
                                 </div>
@@ -310,7 +310,8 @@
 
                     
                     <button
-                        type="submit"
+                        type="button"
+                        @click="mostrar_todo()"
                         class="block bg-blue-500 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
                     >
                         Actualizar
@@ -680,6 +681,8 @@ export default {
         });
         const checks_names = null;
 
+        const super_permisos = [];
+
         const requerid = 1;
         const disabled = 2;
         const mostrar = 4;
@@ -687,55 +690,86 @@ export default {
         return { form };
     },
     methods: {
+        change_permiso(event, index, fila, columna){
+            console.log("toque un change \n\n");
+            console.log(event, index, fila, columna);
+            console.log(this.super_permisos[index][fila][columna]);
+            console.log(this.super_permisos);
+            /*if(columna===0) {
+                console.log("entre al 0");
+                self.form.permisos = this.form.permisos[index][fila][columna] & 4 === 4 ? true : false;
+            }
+            if(columna===1) {
+                console.log("entre al 1");
+                self.form.permisos = this.form.permisos[index][fila][columna] & 2 === 2 ? true : false;
+            }
+            if(columna===2) {
+                console.log("entre al 2");
+                self.form.permisos = this.form.permisos[index][fila][columna] & 1 === 1 ? true : false;
+            }*/
+
+        },
+        decodificador(index, fila, columna){
+            console.log(index, fila, columna);
+            //buscco el boleano en mi areglo de permisos:
+            if(columna===0) {
+                console.log("entre al 0");
+                return this.form.permisos[index][fila][columna] & 4 === 4 ? true : false;
+            }
+            if(columna===1) {
+                console.log("entre al 1");
+                return this.form.permisos[index][fila][columna] & 2 === 2 ? true : false;
+            }
+            if(columna===2) {
+                console.log("entre al 2");
+                return this.form.permisos[index][fila][columna] & 1 === 1 ? true : false;
+            }
+            return false;
+
+        },
+        iniciar_array(vueltas){
+            for (let index = 0; index < vueltas; index++) {
+                this.super_permisos[index] = Array(6);
+                for (let sub_index = 0; sub_index < 6; sub_index++) {
+                    this.super_permisos[index][sub_index] = Array(3);
+                    for (let sub_sub_index = 0; sub_sub_index < 3; sub_sub_index++) {
+                        this.super_permisos[index][sub_index][sub_sub_index] = false;
+                    }
+                }
+            }
+
+        },
         search_for_the_permissions() {
         let self = this;
         axios
         .get("/admin/get_permisos_form_nuevo/"+this.form.rol+"/"+this.form.estado+"/"+this.form.accion+"/"+this.form.pagina+"/"+this.form.provincia+"/"+this.form.formulario)
         .then(function (response) {
             if (response.data.status === "success") {
-                var aux = JSON.parse(response.data.permisos);
+                let aux = JSON.parse(response.data.permisos);
                 console.log("todo bien: \n\n");
                 console.log(JSON.parse(response.data.permisos));
                 self.checks_names = String(aux.nombres).split('-');
                 self.form.permisos = String(aux.data).split('-');
                 //paso numeros a bolean
+                
+                console.log(self.checks_names, self.form.permisos);
+                self.super_permisos = Array(self.checks_names.length);
+                self.iniciar_array(self.checks_names.length);
                 self.form.permisos.map((value, index)=>{
                     //value = 775577
-                    var value_temp = [value[5],value[4],value[3],value[2],value[1],value[0]]; // transformo el string 777777 en array
-                    var permisos_function = [];
+                    let value_temp = [value[5],value[4],value[3],value[2],value[1],value[0]]; // transformo el string 777777 en array
+                    //self.super_permisos[index] = Array(6);
                     value_temp.map((value_sub, index_sub)=>{
-                        console.log(parseInt(value_sub), 1&parseInt(value_sub),  2&parseInt(value_sub) ,4&parseInt(value_sub) );
-                        // value_sub = 7 , 6 , 5 ,4 
-                        //                     input(row)   cual 7, rol, m/d/r
-                        permisos_function[index][index_sub][5][2]=  parseInt(value_sub) & 4 ? true : false;
-                        permisos_function[index][index_sub][5][1]=  parseInt(value_sub) & 2 ? true : false;
-                        permisos_function[index][index_sub][5][0]=  parseInt(value_sub) & 1 ? true : false;
-
-                        permisos_function[index][index_sub][4][2]=  parseInt(value_sub) & 4 ? true : false;
-                        permisos_function[index][index_sub][4][1]=  parseInt(value_sub) & 2 ? true : false;
-                        permisos_function[index][index_sub][4][0]=  parseInt(value_sub) & 1 ? true : false;
-
-                        permisos_function[index][index_sub][3][2]=  parseInt(value_sub) & 4 ? true : false;
-                        permisos_function[index][index_sub][3][1]=  parseInt(value_sub) & 2 ? true : false;
-                        permisos_function[index][index_sub][3][0]=  parseInt(value_sub) & 1 ? true : false;
-
-                        permisos_function[index][index_sub][2][2]=  parseInt(value_sub) & 4 ? true : false;
-                        permisos_function[index][index_sub][2][1]=  parseInt(value_sub) & 2 ? true : false;
-                        permisos_function[index][index_sub][2][0]=  parseInt(value_sub) & 1 ? true : false;
-
-                        permisos_function[index][index_sub][1][2]=  parseInt(value_sub) & 4 ? true : false;
-                        permisos_function[index][index_sub][1][1]=  parseInt(value_sub) & 2 ? true : false;
-                        permisos_function[index][index_sub][1][0]=  parseInt(value_sub) & 1 ? true : false;
-
-                        permisos_function[index][index_sub][0][2]=  parseInt(value_sub) & 4 ? true : false;
-                        permisos_function[index][index_sub][0][1]=  parseInt(value_sub) & 2 ? true : false;
-                        permisos_function[index][index_sub][0][0]=  parseInt(value_sub) & 1 ? true : false;
-
+                        //                     input(row)   cual 7, m/d/r
+                        self.super_permisos[index][index_sub][2]=  parseInt(value_sub) & 4  === 4 ? true : false; //mostrar
+                        self.super_permisos[index][index_sub][1]=  parseInt(value_sub) & 2  === 2 ? true : false; //disabled
+                        self.super_permisos[index][index_sub][0]=  parseInt(value_sub) & 1  === 1 ? true : false; // required
                     });
                 });
+                
 
                 console.log("super arra de booleans:\n\n\n");
-                console.log(permisos_function);
+                console.log(self.super_permisos);
                 
             } else {
             console.log("NO todo bien");
@@ -762,6 +796,10 @@ export default {
             this.search_for_the_permissions();
             //this.form.post(route("admin.permisos_nuevos.store"));
         },
+        mostrar_todo(){
+            console.log(this.super_permisos);
+            console.table(console.table(this.super_permisos));
+        }
     },
 };
 </script>
