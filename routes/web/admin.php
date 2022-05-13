@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         ->middleware(['auth:sanctum', 'verified'])
         ->names('permisos_nuevos');
     Route::get('/get_permisos_form_nuevo/{rol}/{estado}/{accion}/{pagina}/{provincia}/{formulario}', [PermissionController::class, 'get_permisos_form'])->middleware(['auth:sanctum', 'verified'])->name('get_permisos_form_nuevo');
+    Route::post('/update_permisos_form_nuevo', [PermissionController::class, 'update_permisos_form'])->middleware(['auth:sanctum', 'verified'])->name('update_permisos_form_nuevo');
         
 
     Route::resource('categorias', CategoryController::class)

@@ -54,6 +54,25 @@ class PermissionController extends Controller
         }
 
     }
+    public function update_permisos_form(Request $request) {
+        //$resultado = Permission::query_permissions_all_page($provincia ,$rol, $formulario, $accion , $estado, $pagina);
+        $row_to_update = Permission::update_query_permissions_all_page($request->provincia ,$request->rol, $request->formulario, $request->accion , $request->estado, $request->pagina, $request->permisos, $request->id);
+        if($row_to_update){
+            return response()->json([
+                'status' => 'success',
+                'msg' => 'Permisos encontrados.',
+                'permisos' => true
+            ], 201);
+        }
+        else {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'Permisos No guardados.',
+                'permisos' => false
+            ], 201);
+        }
+        
+    }
 
     /**
      * Store a newly created resource in storage.

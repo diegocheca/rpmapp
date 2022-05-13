@@ -47,7 +47,31 @@ class Permission extends Model
         ->get();
         return $filas;
     }
-    
-
-
+    public static function permisos_a_numeros ($super_array) {
+        $super_texto = '';
+        foreach($super_array as $permiso ) {
+            $num = 0;
+            $num_text = '';
+            foreach($permiso as $inputs) {
+                if($inputs[0]) {
+                    $num++;
+                }
+                if($inputs[1]) {
+                    $num+=2;
+                }
+                if($inputs[2]) {
+                    $num+=4;
+                }
+                $num_text .=$num;
+                $num = 0;
+            }
+            $super_texto.=$num_text."-";
+        }
+        return substr($super_texto, 0, -1);
+    }
+    public static function update_query_permissions_all_page($id_provincia ,$perfil, $formualrio, $accion , $estado, $pagina, $permisos,$id) {
+        $filas = Permission::find($id);
+        $filas->data = Permission::permisos_a_numeros($permisos);
+        return $filas->save();
+    }
 }
