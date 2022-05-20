@@ -50,6 +50,7 @@
     46 => 'Barryvdh\\DomPDF\\ServiceProvider',
     47 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     48 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    49 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
   ),
   'eager' => 
   array (
@@ -87,6 +88,7 @@
     31 => 'Barryvdh\\DomPDF\\ServiceProvider',
     32 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     33 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    34 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
   ),
   'deferred' => 
   array (

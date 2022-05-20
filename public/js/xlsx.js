@@ -6,7 +6,7 @@
   \*******************************************/
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
-/* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "?130a")["Buffer"];
+/* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "?cfe0")["Buffer"];
 /*! cpexcel.js (C) 2013-present SheetJS -- http://sheetjs.com */
 /*jshint -W100 */
 var cptable = {version:"1.15.0"};
@@ -1523,7 +1523,7 @@ if ( true && module.exports && typeof DO_NOT_EXPORT_CODEPAGE === 'undefined') mo
   \************************************/
 /***/ ((module, exports, __webpack_require__) => {
 
-/* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "?7276")["Buffer"];
+/* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "?1bda")["Buffer"];
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
 
 JSZip - A Javascript class for generating and reading zip files
@@ -10537,8 +10537,8 @@ module.exports = ZStream;
   \***********************************/
 /***/ ((module, exports, __webpack_require__) => {
 
-/* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "?7276")["Buffer"];
-/* provided dependency */ var process = __webpack_require__(/*! process/browser */ "./node_modules/process/browser.js");
+/* provided dependency */ var Buffer = __webpack_require__(/*! buffer */ "?1bda")["Buffer"];
+/* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 /*! xlsx.js (C) 2013-present SheetJS -- http://sheetjs.com */
 /* vim: set ts=2: */
 /*exported XLSX */
@@ -11977,7 +11977,7 @@ function parse_extra_field(blob) {
 	return o;
 }
 var fs;
-function get_fs() { return fs || (fs = __webpack_require__(/*! fs */ "?58fb")); }
+function get_fs() { return fs || (fs = __webpack_require__(/*! fs */ "?6764")); }
 function parse(file, options) {
 if(file[0] == 0x50 && file[1] == 0x4b) return parse_zip(file, options);
 if(file.length < 512) throw new Error("CFB file size " + file.length + " < 512");
@@ -13223,7 +13223,7 @@ return exports;
 
 if( true && typeof DO_NOT_EXPORT_CFB === 'undefined') { module.exports = CFB; }
 var _fs;
-if(true) try { _fs = __webpack_require__(/*! fs */ "?58fb"); } catch(e) {}
+if(true) try { _fs = __webpack_require__(/*! fs */ "?6764"); } catch(e) {}
 
 /* normalize data for blob ctor */
 function blobify(data) {
@@ -14164,7 +14164,7 @@ var make_offcrypto = function(O, _crypto) {
 	var crypto;
 	if(typeof _crypto !== 'undefined') crypto = _crypto;
 	else if(true) {
-		try { crypto = __webpack_require__(/*! crypto */ "?e708"); }
+		try { crypto = __webpack_require__(/*! crypto */ "?2554"); }
 		catch(e) { crypto = null; }
 	}
 
@@ -32321,7 +32321,7 @@ return utils;
 })(utils);
 
 if(has_buf && "function" != 'undefined') (function() {
-	var Readable = __webpack_require__(/*! stream */ "?20df").Readable;
+	var Readable = (__webpack_require__(/*! stream */ "?8e96").Readable);
 
 	var write_csv_stream = function(sheet, opts) {
 		var stream = Readable();
@@ -32464,7 +32464,7 @@ var XLS = XLSX, ODS = XLSX;
 
 /***/ }),
 
-/***/ "?130a":
+/***/ "?cfe0":
 /*!************************!*\
   !*** buffer (ignored) ***!
   \************************/
@@ -32474,7 +32474,7 @@ var XLS = XLSX, ODS = XLSX;
 
 /***/ }),
 
-/***/ "?7276":
+/***/ "?1bda":
 /*!************************!*\
   !*** buffer (ignored) ***!
   \************************/
@@ -32484,7 +32484,7 @@ var XLS = XLSX, ODS = XLSX;
 
 /***/ }),
 
-/***/ "?e708":
+/***/ "?2554":
 /*!************************!*\
   !*** crypto (ignored) ***!
   \************************/
@@ -32494,7 +32494,7 @@ var XLS = XLSX, ODS = XLSX;
 
 /***/ }),
 
-/***/ "?58fb":
+/***/ "?6764":
 /*!********************!*\
   !*** fs (ignored) ***!
   \********************/
@@ -32504,7 +32504,7 @@ var XLS = XLSX, ODS = XLSX;
 
 /***/ }),
 
-/***/ "?20df":
+/***/ "?8e96":
 /*!************************!*\
   !*** stream (ignored) ***!
   \************************/

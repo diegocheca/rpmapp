@@ -31,6 +31,7 @@ use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
 use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
+use App\Http\Controllers\JujuyController;
 
 
 use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
@@ -350,3 +351,6 @@ Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('
 
 // VER LOGS
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');
+
+// JUJUY
+Route::get('/api_jujuy', [JujuyController::class, "index"])->name('index-jujuy');
