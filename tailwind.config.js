@@ -13,7 +13,13 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+                // sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+                sans: ['system-ui'],//,'Roboto','Raleway'],
+                // serif: ["Roboto"],
+                // display: ["Oswald"],
+                // body: ['"Open Sans"'],
+                // display: ['ui-serif'],
+                // mono:['Georgia'],
             },
         },
         // screens: {

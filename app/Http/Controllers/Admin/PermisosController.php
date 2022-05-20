@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use App\Models\Admin\Category;
+use Exception;
 
 class PermisosController extends Controller
 {
@@ -140,9 +141,22 @@ class PermisosController extends Controller
         return Redirect::route('admin.permisos.index', $permiso)->with('info', 'El permisos se actualizó con éxito');
     }
 
-    public function destroy(Permission $permiso)
+    public function destroy($id)
     {
-        $permiso->delete();
-        return Redirect::route('admin.permisos.index')->with('info', 'El permisos se se eliminó con éxito');
+        // $permiso->delete();
+        // return Redirect::route('admin.permisos.index')->with('info', 'El permisos se se eliminó con éxito');
+        try {
+            $rol = Permission::find($id)->delete();
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'se elimino correctamente',
+                'id_eliminado' => $id
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'msg' => $e,
+            ], 500);
+        }
     }
 }
