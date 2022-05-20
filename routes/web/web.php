@@ -330,6 +330,9 @@ Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])-
 
 Route::get('/permisos_nuevos', [HomeController::class, "mostrar_permisos"])->name('mostrar_permisos');
 
+Route::get('/test_provied', [HomeController::class, "test_provied"])->name('test_provied');
+
+
 
 Route::get('/cargandoexcelmdz', [FormAltaProductorController::class, "cargandoexcelmdz"])->name('cargandoexcelmdz');
 Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatamarca"])->name('cargarCatamarca');

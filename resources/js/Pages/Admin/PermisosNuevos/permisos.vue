@@ -125,167 +125,173 @@
                         Buscar
                     </button>
                     </form>
-                <br>
-                <br>
-                <br>
-<br>
-<br>
-<br>
+<div class="flex overflow-auto h-96">
+    <div class="flex-none w-14 h-14">
+    </div>
+    <div class="grow h-full">
+        <div class="flex-row-reverse w-full  ">
+                    <div class="flex" v-for="(item, index) in checks_names" :key="index">
+                        <div class="w-1/5">
+                            <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                                </svg>
+                                <span class="ml-3 text-xl">{{item}}</span>
+                            </a>
+                            <p class="mt-2 text-sm text-gray-500">{{index + 1}} - Valores:  {{form.permisos[index]}} </p>
+                        </div>
+                        <div  class="w-4/5">
+                            <div class="flex" >
+                                <div class="w-1/2">
+                                    <span class="ml-3 text-xl">Value</span>
+                                    <ul style="list-style-type: none">
+                                        <li> 
+                                            <div class="flex" >
+                                                <div class="w-1/3">
+                                                    <span class="ml-2 text-gray-700">Administrador {{form.permisos[index][0]}} {{mostrar}} </span>
+                                                </div>
+                                                <div class="w-2/3">
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][5][2]" @change="change_permiso($event,index, 5,2)"> <span class="ml-2 text-gray-700">M</span>
+                                                    </label>
 
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][5][1]"  @change="change_permiso($event,index, 5,1)"><span class="ml-2 text-gray-700">D</span>
+                                                    </label>
 
-                <div class="row" v-for="(item, index) in checks_names" :key="index">
-                    <div class="w-1/5">
-                        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                            </svg>
-                            <span class="ml-3 text-xl">{{item}}</span>
-                        </a>
-                        <p class="mt-2 text-sm text-gray-500">{{index + 1}} - Valores:  {{form.permisos[index]}} </p>
-                    </div>
-                    <div  class="w-4/5">
-                        <div class="flex" >
-                            <div class="w-1/2">
-                                <span class="ml-3 text-xl">Value</span>
-                                <ul style="list-style-type: none">
-                                    <li> 
-                                        <div class="flex" >
-                                            <div class="w-1/3">
-                                                <span class="ml-2 text-gray-700">Administrador {{form.permisos[index][0]}} {{mostrar}} </span>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][5][0]"  @change="change_permiso($event,index, 5,0)"><span class="ml-2 text-gray-700">R</span>
+                                                    </label>
+                                                </div>
                                             </div>
-                                            <div class="w-2/3">
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][5][2]" @change="change_permiso($event,index, 5,2)"> <span class="ml-2 text-gray-700">M</span>
-                                                </label>
+                                        </li>
+                                        <li> 
+                                            <div class="flex" >
+                                                <div class="w-1/3">
+                                                    <span class="ml-2 text-gray-700">Autoridad {{form.permisos[index][1]}}</span>
+                                                </div>
+                                                <div class="w-2/3">
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][4][2]" @change="change_permiso($event,index, 4,2)"><span class="ml-2 text-gray-700">M</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][5][1]"  @change="change_permiso($event,index, 5,1)"><span class="ml-2 text-gray-700">D</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][4][1]"  @change="change_permiso($event,index, 4,1)"><span class="ml-2 text-gray-700">D</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][5][0]"  @change="change_permiso($event,index, 5,0)"><span class="ml-2 text-gray-700">R</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][4][0]"  @change="change_permiso($event,index, 4,0)"><span class="ml-2 text-gray-700">R</span>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li> 
-                                        <div class="flex" >
-                                            <div class="w-1/3">
-                                                <span class="ml-2 text-gray-700">Autoridad {{form.permisos[index][1]}}</span>
-                                            </div>
-                                            <div class="w-2/3">
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][4][2]" @change="change_permiso($event,index, 4,2)"><span class="ml-2 text-gray-700">M</span>
-                                                </label>
+                                        </li>
+                                        <li> 
+                                            <div class="flex" >
+                                                <div class="w-1/3">
+                                                    <span class="ml-2 text-gray-700">Productor {{form.permisos[index][2]}}</span>
+                                                </div>
+                                                <div class="w-2/3">
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][3][2]" @change="change_permiso($event,index, 3,2)"><span class="ml-2 text-gray-700">M</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][4][1]"  @change="change_permiso($event,index, 4,1)"><span class="ml-2 text-gray-700">D</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][3][1]"  @change="change_permiso($event,index, 3,1)"><span class="ml-2 text-gray-700">D</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][4][0]"  @change="change_permiso($event,index, 4,0)"><span class="ml-2 text-gray-700">R</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][3][0]"  @change="change_permiso($event,index, 3,0)"><span class="ml-2 text-gray-700">R</span>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li> 
-                                        <div class="flex" >
-                                            <div class="w-1/3">
-                                                <span class="ml-2 text-gray-700">Productor {{form.permisos[index][2]}}</span>
-                                            </div>
-                                            <div class="w-2/3">
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][3][2]" @change="change_permiso($event,index, 3,2)"><span class="ml-2 text-gray-700">M</span>
-                                                </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="w-1/2">
+                                    <span class="ml-3 text-xl">Correccion</span>
+                                    <ul style="list-style-type: none">
+                                        <li> 
+                                            <div class="flex" >
+                                                <div class="w-1/3">
+                                                    <span class="ml-2 text-gray-700">Administrador {{form.permisos[index][3]}}</span>
+                                                </div>
+                                                <div class="w-2/3">
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][2][2]" @change="change_permiso($event,index, 2,2)"><span class="ml-2 text-gray-700">M</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][3][1]"  @change="change_permiso($event,index, 3,1)"><span class="ml-2 text-gray-700">D</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][2][1]"  @change="change_permiso($event,index, 2,1)"><span class="ml-2 text-gray-700">D</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][3][0]"  @change="change_permiso($event,index, 3,0)"><span class="ml-2 text-gray-700">R</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][2][0]"  @change="change_permiso($event,index, 2,0)"><span class="ml-2 text-gray-700">R</span>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="w-1/2">
-                                <span class="ml-3 text-xl">Correccion</span>
-                                <ul style="list-style-type: none">
-                                    <li> 
-                                        <div class="flex" >
-                                            <div class="w-1/3">
-                                                <span class="ml-2 text-gray-700">Administrador {{form.permisos[index][3]}}</span>
-                                            </div>
-                                            <div class="w-2/3">
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][2][2]" @change="change_permiso($event,index, 2,2)"><span class="ml-2 text-gray-700">M</span>
-                                                </label>
+                                        </li>
+                                        <li> 
+                                            <div class="flex" >
+                                                <div class="w-1/3">
+                                                    <span class="ml-2 text-gray-700">Autoridad {{form.permisos[index][4]}}</span>
+                                                </div>
+                                                <div class="w-2/3">
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][1][2]" @change="change_permiso($event,index, 1,2)"><span class="ml-2 text-gray-700">M</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][2][1]"  @change="change_permiso($event,index, 2,1)"><span class="ml-2 text-gray-700">D</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][1][1]"  @change="change_permiso($event,index, 1,1)"><span class="ml-2 text-gray-700">D</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][2][0]"  @change="change_permiso($event,index, 2,0)"><span class="ml-2 text-gray-700">R</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][1][0]"  @change="change_permiso($event,index, 1,0)"><span class="ml-2 text-gray-700">R</span>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li> 
-                                        <div class="flex" >
-                                            <div class="w-1/3">
-                                                <span class="ml-2 text-gray-700">Autoridad {{form.permisos[index][4]}}</span>
-                                            </div>
-                                            <div class="w-2/3">
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][1][2]" @change="change_permiso($event,index, 1,2)"><span class="ml-2 text-gray-700">M</span>
-                                                </label>
+                                        </li>
+                                        <li> 
+                                            <div class="flex" >
+                                                <div class="w-1/3">
+                                                    <span class="ml-2 text-gray-700">Productor {{form.permisos[index][5]}}</span>
+                                                </div>
+                                                <div class="w-2/3">
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][0][2]" @change="change_permiso($event,index, 0,2)"><span class="ml-2 text-gray-700">M</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][1][1]"  @change="change_permiso($event,index, 1,1)"><span class="ml-2 text-gray-700">D</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][0][1]"  @change="change_permiso($event,index, 0,1)"><span class="ml-2 text-gray-700">D</span>
+                                                    </label>
 
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][1][0]"  @change="change_permiso($event,index, 1,0)"><span class="ml-2 text-gray-700">R</span>
-                                                </label>
+                                                    <label class="inline-flex items-center mt-3">
+                                                        <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][0][0]"  @change="change_permiso($event,index, 0,0)"><span class="ml-2 text-gray-700">R</span>
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li> 
-                                        <div class="flex" >
-                                            <div class="w-1/3">
-                                                <span class="ml-2 text-gray-700">Productor {{form.permisos[index][5]}}</span>
-                                            </div>
-                                            <div class="w-2/3">
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" v-model="super_permisos[index][0][2]" @change="change_permiso($event,index, 0,2)"><span class="ml-2 text-gray-700">M</span>
-                                                </label>
-
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-red-600" v-model="super_permisos[index][0][1]"  @change="change_permiso($event,index, 0,1)"><span class="ml-2 text-gray-700">D</span>
-                                                </label>
-
-                                                <label class="inline-flex items-center mt-3">
-                                                    <input type="checkbox" class="form-checkbox h-5 w-5 text-orange-600" v-model="super_permisos[index][0][0]"  @change="change_permiso($event,index, 0,0)"><span class="ml-2 text-gray-700">R</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+                        <hr>
+                        <br>
                     </div>
-                </div>
-                <button
-                    type="button"
-                    @click="mostrar_todo()"
-                    class="block bg-blue-500 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
-                >
-                    Actualizar
-                </button>
-                
+        </div>    
+    </div>
+    <div class="flex-none w-14 h-14">
+    </div>
+</div>
+
+                    <button
+                        type="button"
+                        @click="mostrar_todo()"
+                        class="block bg-blue-500 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
+                    >
+                        Actualizar
+                    </button>
+
+               
             </div>
         </div>
     </AppLayout>

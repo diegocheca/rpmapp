@@ -82,6 +82,9 @@ class HomeController extends Controller
         return view("confirmation.index");
     }
 
+    public function test_provied(){
+        return Inertia::render('Admin/Provide/index');
+    }
     public function create()
     {
         //
