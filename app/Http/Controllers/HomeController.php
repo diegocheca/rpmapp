@@ -50,6 +50,11 @@ class HomeController extends Controller
             return Inertia::render('Dashboard', ['userType' => $mi_rol]);
         }
     }
+
+    public function mostrar_permisos(){
+        return Inertia::render('Admin/PermisosNuevos/permisos');
+    }
+
     public function mostrar_datos_por_dtpo()
     {
         $departments = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
@@ -77,6 +82,9 @@ class HomeController extends Controller
         return view("confirmation.index");
     }
 
+    public function test_provied(){
+        return Inertia::render('Admin/Provide/index');
+    }
     public function create()
     {
         //
