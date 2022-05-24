@@ -63,9 +63,8 @@ export default {
 
     computed: {
         widthClass() {
-            return {
-                '48': 'w-48',
-            }[this.width.toString()]
+            return 'w-'+this.$props.width;
+            
         },
 
         alignmentClasses() {
