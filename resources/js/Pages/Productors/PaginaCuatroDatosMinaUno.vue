@@ -19,7 +19,7 @@
         :icono="'/formulario_alta/imagenes/tipo_caracter_card.svg'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
-        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :clase_inf="'border shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
         :show="mostrar_modulo"
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
@@ -138,19 +138,7 @@
         </label>
       </div>
     </div> -->
-    <div
-      v-if="mostrar_modulo"
-      class="
-        border-2
-        shadow-lg
-        rounded-2xl
-        w-full
-        py-4
-        px-8
-        bg-white
-        border-indigo-400
-      "
-    >
+    <div v-if="mostrar_modulo" class="shadow-lg w-full py-4 px-8 bg-white">
       <div class="items-center justify-left sticky top-1 z-10">
         <Menu
           :mostrarayuda="true"
@@ -849,7 +837,8 @@
         v-if="$props.mostrar_boton_guardar_cuatro"
         :link_volver="'#'"
         :titulo_boton_volver="'volver'"
-        :titulo_boton_guardar="'Guardar Datos de la Mina'"
+        :mostrar_btn_volver="false"
+        :titulo_boton_guardar="'Guardar'"
         :numero_expdiente="form_pagina.numero_expdiente"
         :numero_expdiente_valido="form_pagina.numero_expdiente_valido"
         :numero_expdiente_correcto="form_pagina.numero_expdiente_correcto"

@@ -103,7 +103,7 @@ svg.highlight {
   <h2>Registro de Productores Mineros - San Juan.</h2>
   <br>
   <br>
-  <a  href="{{url('formularios')}}"><h1 style="color:white;">Ir página principal</h1></a>
+  <a  href="{{url('dashboard')}}"><h1 style="color:white;">Ir página principal</h1></a>
 </div>
 
 

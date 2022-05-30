@@ -4,6 +4,7 @@
       <div class="w-full bg-white rounded shadow-lg p-8 m-4">
         <div id="inicio"></div>
         <div class="flex">
+         <!-- {{ $props.mostrar}} -->
           <div
             v-if="$props.mostrar.alerta_puede_editar"
             class="w-full w-2/2 px-3 mb-6 md:mb-0"

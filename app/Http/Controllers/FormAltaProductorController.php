@@ -10947,7 +10947,7 @@ class FormAltaProductorController extends Controller
 					$mostrar["boton_guardar_seis"] = true;
 					$mostrar["boton_actualizar"] = true;
 
-					$mostrar["alerta_puede_editar"] = true;
+					$mostrar["alerta_puede_editar"] = false;
 
 					if (Auth::user()->id_provincia == 10) // es de catamarca
 					{

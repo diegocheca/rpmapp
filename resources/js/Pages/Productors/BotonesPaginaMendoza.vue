@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center w-full">
+  <div class="flex flex-col items-center justify-center w-full">
     <!-- <jet-dialog-modal
       :show="mostrar_modal_datos_ya_guardados"
       @close="cerrar_modal_datos_uno"
@@ -17,47 +17,51 @@
  -->
     <div class="flex items-stretch w-full justify-items-stretch">
       <div
-        class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full"
+        class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5 w-full"
+      >
+        <a
+          v-if="mostrar_btn_volver"
+          :href="link_volver"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-gray-400
+            bg-gray-400
+            shadow-md
+            font-bold
+            hover:text-white
+            hover:shadow-xl
+            hover:bg-red-700
+            hover:border-red-700
+          "
+        >
+          {{ titulo_boton_volver }}
+        </a>
+      </div>
+      <div
+        class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center"
       >
         <button
           type="button"
           class="
-            text-xl
-            font-medium
+            uppercase
             mx-auto
             py-3
             px-5
-            text-indigo-500
-            border border-gray-400
-            rounded-xl
-            bg-gray-100
-            shadow-xl
-            hover:text-white hover:shadow-xl hover:bg-gray-600
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
           "
           @click="guardar_avnces_cinco"
         >
           {{ titulo_boton_guardar }}
         </button>
-      </div>
-      <div class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5">
-        <a
-          :href="link_volver"
-          class="
-            text-xl
-            font-medium
-            mx-auto
-            py-3
-            px-5
-            text-indigo-500
-            border border-gray-400
-            rounded-xl
-            bg-gray-100
-            shadow-xl
-            hover:text-white hover:shadow-xl hover:bg-gray-600
-          "
-        >
-          {{ titulo_boton_volver }}
-        </a>
       </div>
     </div>
     <div v-show="testing">
@@ -115,6 +119,7 @@ import Swal from "sweetalert2";
 export default {
   props: [
     "link_volver",
+    "mostrar_btn_volver",
     "titulo_boton_volver",
     "titulo_boton_guardar",
 

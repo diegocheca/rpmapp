@@ -5,7 +5,7 @@
         :icono="'/formulario_alta/imagenes/mendoza3.png'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
-        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :clase_inf="'border shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
         :show="mostrar_modulo"
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
@@ -123,26 +123,17 @@
         </label>
       </div>
     </div> -->
-    <div
-      v-if="mostrar_modulo"
-      class="
-        border-2
-        shadow-lg
-        rounded-2xl
-        w-full
-        py-4
-        px-8
-        bg-white
-        border-indigo-400
-      "
-    >
+    <div v-if="mostrar_modulo" class="shadow-lg w-full py-4 px-8 bg-white">
       <div class="items-center justify-left sticky top-1 z-10">
         <Menu
           :mostrarayuda="true"
-          :ayuda="ayuda_local"
+          :ayuda="false"
+          :evaluacion="evaluacion_adm"
+          :mostrar_evaluacion="mostrar_evaluacion_adm"
           :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+          v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
         ></Menu>
       </div>
       <!-- <h2 class="text-gray-800 text-3xl font-semibold">
@@ -153,7 +144,7 @@
       <div class="flex items-center justify-center"></div>
       <br /> -->
       <div class="flex flex-wrap">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.decreto3737"
             v-bind:valor_input_props="form_mendoza.decreto3737"
@@ -170,6 +161,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.decreto3737_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_decreto3737_valido($event)"
             v-on:changecorrecto="update_decreto3737_correcto($event)"
             v-on:changeobs="update_obs_decreto3737($event)"
@@ -178,7 +170,7 @@
           >
           </NombreMina>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.situacion_mina"
             v-bind:valor_input_props="form_mendoza.situacion_mina"
@@ -197,6 +189,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.situacion_mina_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_situacion_mina_valido($event)"
             v-on:changecorrecto="update_situacion_mina_correcto($event)"
             v-on:changeobs="update_obs_situacion_mina($event)"
@@ -207,7 +200,7 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_asiento_n"
             v-bind:valor_input_props="form_mendoza.concesion_minera_asiento_n"
@@ -226,12 +219,13 @@
             "
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="true"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_concesion_minera_asiento_n_valido($event)"
             v-on:changevalor="update_valor_concesion_minera_asiento_n($event)"
           >
           </NombreMina>
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_fojas"
             :tipoInput="'number'"
@@ -249,12 +243,13 @@
             v-bind:desactivar_input="permisos_disables.concesion_minera_fojas"
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="true"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_concesion_minera_fojas_valido($event)"
             v-on:changevalor="update_valor_concesion_minera_fojas($event)"
           >
           </NombreMina>
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_tomo_n"
             :tipoInput="'number'"
@@ -272,6 +267,7 @@
             v-bind:desactivar_input="permisos_disables.concesion_minera_tomo_n"
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="false"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_concesion_minera_tomo_n_valido($event)"
             v-on:changevalor="update_valor_concesion_minera_tomo_n($event)"
           >
@@ -305,7 +301,7 @@
       </div>
       <div class="flex flex-wrap"></div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_reg_cant"
             v-bind:valor_input_props="form_mendoza.concesion_minera_reg_cant"
@@ -327,6 +323,7 @@
             v-on:changeobsvalido="
               update_concesion_minera_reg_cant_valida($event)
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalor="update_valor_concesion_minera_reg_cant($event)"
           >
           </NombreMina>
@@ -356,7 +353,7 @@
             obs_localidad_mina_provincia_valido observacion valida deel padre
           </div>
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_reg_men"
             v-bind:valor_input_props="form_mendoza.concesion_minera_reg_men"
@@ -373,6 +370,7 @@
             v-bind:desactivar_input="permisos_disables.concesion_minera_reg_men"
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="false"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_concesion_minera_reg_men_valido($event)"
             v-on:changevalor="update_valor_concesion_minera_reg_men($event)"
           >
@@ -403,7 +401,7 @@
             obs_localidad_mina_provincia_valido observacion valida deel padre
           </div>
         </div>
-        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_reg_m_y_d"
             v-bind:valor_input_props="form_mendoza.concesion_minera_reg_m_y_d"
@@ -422,6 +420,7 @@
             "
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="false"
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changeobsvalido="
               update_concesion_minera_reg_m_y_d_valida($event)
             "
@@ -456,7 +455,7 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.concesion_minera_reg_d_y_c"
             v-bind:valor_input_props="form_mendoza.concesion_minera_reg_d_y_c"
@@ -481,6 +480,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.concesion_minera_reg_d_y_c_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_concesion_minera_reg_d_y_c_valido($event)"
             v-on:changecorrecto="
               update_concesion_minera_reg_d_y_c_correcto($event)
@@ -517,13 +517,12 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap"></div>
 
       <br />
-      <br />
-      <div class="flex items-stretch w-full justify-items-stretch">
+      <div>
         <BotonesPaginaMendoza
           v-bind:link_volver="link_volver"
+          :mostrar_btn_volver="false"
           v-bind:titulo_boton_volver="titulo_boton_volver"
           v-bind:titulo_boton_guardar="titulo_boton_guardar"
           v-bind:formulario="form_mendoza"
@@ -584,6 +583,8 @@ export default {
   },
   data() {
     return {
+      evaluacion_adm: false,
+      mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
       continuar_pagina: false,
       mostrar_modal_datos_ya_guardados: false,
@@ -600,6 +601,9 @@ export default {
     };
   },
   methods: {
+    update_valor_evaluacion_Adm(newValor) {
+      this.evaluacion_adm = newValor;
+    },
     cerrar_modal_datos_uno() {
       this.mostrar_modal_datos_ya_guardados = false;
     },
