@@ -340,5 +340,10 @@ Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatam
 Route::get('/datos_minerales_todas_cat', [ChartsController::class, "minerales_todas_categorias"])->name('datos-minerales-todas-cat');
 
 // BANDEJA DE ENTRADAS EMAILS
-Route::resource('/inbox', BandejaEntradaEmailsController::class)
-    ->middleware(['auth:sanctum', 'verified']);
+// Route::resource('/inbox', BandejaEntradaEmailsController::class)->middleware(['auth:sanctum', 'verified']);
+Route::group(['prefix' => 'inbox'], function () {
+    Route::get('', [BandejaEntradaEmailsController::class, "index"])->middleware(['auth:sanctum', 'verified'])->name('inbox');
+    Route::get('{id}', [BandejaEntradaEmailsController::class, "indexId"])->middleware(['auth:sanctum', 'verified'])->name('inbox.id');
+    Route::post('store', [BandejaEntradaEmailsController::class, "store"])->middleware(['auth:sanctum', 'verified']);
+    Route::get('show/{id}', [BandejaEntradaEmailsController::class, "show"])->middleware(['auth:sanctum', 'verified']);
+});

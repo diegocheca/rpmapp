@@ -1,6 +1,6 @@
 <template>
   <div>
-    <DashboardAdmin v-if="userType == 'admin'" :dataChart="dataChart" />
+    <DashboardAdmin v-if="userType == 'admin'" :dataChart="dataChart" :calendarEvents="calendarEvents" />
     <DashboardProductor v-if="userType == 'productor'" />
 <!--
     <div
@@ -69,6 +69,9 @@ export default {
       default: "admin",
     },
     dataChart: {
+      required: true,
+    },
+    calendarEvents: {
       required: true,
     },
   },

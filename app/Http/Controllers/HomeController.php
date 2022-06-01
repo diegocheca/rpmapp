@@ -7,6 +7,8 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\EmailsAConfirmar;
 use App\Http\Controllers\ChartsController;
+use App\Models\iia_dia;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -42,7 +44,14 @@ class HomeController extends Controller
             $dataChart->data = $deptos;
             $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
-            return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart]);
+            $iiaDiaList = DB::table('iia_dia')
+            ->whereNotNull('fecha_vencimiento')
+            ->leftjoin('productores', 'iia_dia.id_formulario', '=', 'productores.id_formulario')
+            ->get();
+
+            $calendarEvents = [ 'iiaDia' => $iiaDiaList];
+
+            return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart, 'calendarEvents' => $calendarEvents]);
         } else if (Auth::user()->hasRole('Productor')) {
             $mi_rol = 'productor';
 

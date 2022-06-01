@@ -1,9 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Mail\MensajesEmail;
+use App\Models\MensajesProductor;
+use App\Models\Productores;
 use Inertia\Inertia;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 class BandejaEntradaEmailsController extends Controller
 {
@@ -14,7 +22,22 @@ class BandejaEntradaEmailsController extends Controller
      */
     public function index()
     {
-        return Inertia::render('BandejaEntrada/List');
+        $user = HomeController::userData();
+        $productors = Productores::select('*')->where('leal_provincia', '=', $user->id_provincia)->get();
+        for ($i=0; $i < count($productors); $i++) {
+            $productors[$i]->lastMessage = MensajesProductor::select('*')->where('id_productor', $productors[$i]->id)->orderBy('created_at', 'desc')->first();
+        }
+        return Inertia::render('BandejaEntrada/List', ['productors' => $productors]);
+    }
+
+    public function indexId($id)
+    {
+        $user = HomeController::userData();
+        $productors = Productores::select('*')->where('leal_provincia', '=', $user->id_provincia)->get();
+        for ($i=0; $i < count($productors); $i++) {
+            $productors[$i]->lastMessage = MensajesProductor::select('*')->where('id_productor', $productors[$i]->id)->orderBy('created_at', 'desc')->first();
+        }
+        return Inertia::render('BandejaEntrada/List', ['productors' => $productors, 'productorSelected' => $id]);
     }
 
     /**
@@ -35,9 +58,38 @@ class BandejaEntradaEmailsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->all();
+        $user = HomeController::userData();
 
+        $message = [
+            'id_productor' => $data['selectedProductor'],
+            'id_provincia' => $user->id_provincia,
+            'mensaje' => $data['newMessage'],
+            'titulo' => $data['titulo']
+        ];
+
+        $productor = Productores::select('*')->where('id', '=', $data['selectedProductor'])->first();
+
+        try {
+
+            Mail::to("rodrigokokot@gmail.com")->send(new MensajesEmail(
+                $productor->email,
+                date("d-m-Yd H:i:s"),
+                $message['mensaje']
+            ));
+
+            $message['estado'] = 'enviado';
+            $newMessage = MensajesProductor::create($message);
+            return response()->json([
+                'newMessage' => $newMessage,
+                'success' => true
+            ], 200);
+        } catch (\Exception $ex) {
+            $message['estado'] = 'error';
+            $newMessage = MensajesProductor::create($message);
+            return response()->json(['error' => $ex->getMessage(), 'success' => false], 500);
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -46,7 +98,8 @@ class BandejaEntradaEmailsController extends Controller
      */
     public function show($id)
     {
-        //
+        $messages = MensajesProductor::select('*')->where('id_productor', $id)->orderBy('created_at', 'desc')->get();
+        return response()->json($messages);
     }
 
     /**
@@ -82,4 +135,5 @@ class BandejaEntradaEmailsController extends Controller
     {
         //
     }
+
 }
