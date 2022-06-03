@@ -35,6 +35,8 @@ use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
 
 
 use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
+
+use App\Console\Commands\JobEnvioCommand;
 // use Auth;
 
 /*
@@ -68,7 +70,6 @@ Route::get('/welcome', function () {
 Route::resource('productors', ProductorsController::class)
     ->middleware(['auth:sanctum', 'verified']);
 
-
 // REINSCRIPCIONES
 
 // Route::group(['prefix' => 'reinscripciones'], function () {
@@ -89,11 +90,14 @@ Route::get('reinscripciones/productores', [ReinscripcionController::class, "prod
 
 Route::get('productores/getProductorMina/{id}', [ProductoresController::class, "getProductorMina"])
     ->middleware(['auth:sanctum', 'verified'])->name('productores.getProductorMina');
+Route::get('numeroProductor', [ProductoresController::class, 'getNumeroProductor'])
+    ->middleware(['auth:sanctum', 'verified'])->name('numeroProductor');
+
 Route::get('minerales/getMinerals', [MineralesController::class, "getMinerals"])
     ->middleware(['auth:sanctum', 'verified'])->name('minerales.getMinerals');
-    Route::get('minerales/getMineral/{id}', [MineralesController::class, "getMineral"])
+Route::get('minerales/getMineral/{id}', [MineralesController::class, "getMineral"])
     ->middleware(['auth:sanctum', 'verified'])->name('minerales.getMineral');
-    //     Route::get('provincias', 'ReinscripcionController@getCountries')
+//     Route::get('provincias', 'ReinscripcionController@getCountries')
 //         ->middleware(['auth:sanctum', 'verified']);
 
 // });
@@ -136,12 +140,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_inicio/{id}',
         $mi_rol = 'admin';
     if (Auth::user()->hasRole('Productor'))
         $mi_rol = 'productor';
-    if(Auth::user()->id_provincia == 50){
+    if (Auth::user()->id_provincia == 50) {
         return redirect()->route('comprobante_inicio_mendoza', [$id]);
-    }
-    elseif(Auth::user()->id_provincia == 70){//san juan
+    } elseif (Auth::user()->id_provincia == 70) { //san juan
         return redirect()->route('comprobante_inicio_sanjuan', [$id]);
-    }else{
+    } else {
         return redirect()->route('comprobante_inicio_sanjuan', [$id]);
     }
 })->name('comprobante_inicio');
@@ -160,12 +163,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_productor_apr
         $mi_rol = 'admin';
     if (Auth::user()->hasRole('Productor'))
         $mi_rol = 'productor';
-    if(Auth::user()->id_provincia == 50){
+    if (Auth::user()->id_provincia == 50) {
         return redirect()->route('comprobante_prod_apro_mendoza', [$id]);
-    }
-    elseif(Auth::user()->id_provincia == 70){//san juan
+    } elseif (Auth::user()->id_provincia == 70) { //san juan
         return redirect()->route('comprobante_inicio_sanjuan', [$id]);
-    }else{
+    } else {
         return redirect()->route('comprobante_inicio_sanjuan', [$id]);
     }
 })->name('formulario-alta-pdf');
@@ -176,7 +178,7 @@ Route::get('/comprobante_prod_mendz_aprobado/{id}', ComprobanteProductorMendozaC
 
 
 Route::get('dashboard', [HomeController::class, "dashboard"])
-        ->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+    ->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard1', function () {
@@ -190,7 +192,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/users', function () {
 })->name('users.index');
 
 Route::get('reportes', [ChartsController::class, "reportes"])
-        ->middleware(['auth:sanctum', 'verified'])->name('reportes');
+    ->middleware(['auth:sanctum', 'verified'])->name('reportes');
 
 
 Route::resource('formulario-alta', FormAltaProductorController::class)
@@ -329,6 +331,11 @@ Route::get('/dashboard/numproductoresborradores', [DashboardController::class, "
 
 Route::get('/probandodtpos', [HomeController::class, "mostrar_datos_por_dtpo"])->name('mostrar_datos_por_dtpo');
 
+Route::get('/permisos_nuevos', [HomeController::class, "mostrar_permisos"])->name('mostrar_permisos');
+
+Route::get('/test_provied', [HomeController::class, "test_provied"])->name('test_provied');
+
+
 
 Route::get('/cargandoexcelmdz', [FormAltaProductorController::class, "cargandoexcelmdz"])->name('cargandoexcelmdz');
 Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatamarca"])->name('cargarCatamarca');
@@ -339,6 +346,7 @@ Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatam
 //REPORTES
 Route::get('/datos_minerales_todas_cat', [ChartsController::class, "minerales_todas_categorias"])->name('datos-minerales-todas-cat');
 
+<<<<<<< HEAD
 // BANDEJA DE ENTRADAS EMAILS
 // Route::resource('/inbox', BandejaEntradaEmailsController::class)->middleware(['auth:sanctum', 'verified']);
 Route::group(['prefix' => 'inbox'], function () {
@@ -347,3 +355,10 @@ Route::group(['prefix' => 'inbox'], function () {
     Route::post('store', [BandejaEntradaEmailsController::class, "store"])->middleware(['auth:sanctum', 'verified']);
     Route::get('show/{id}', [BandejaEntradaEmailsController::class, "show"])->middleware(['auth:sanctum', 'verified']);
 });
+=======
+// DATOS PARA EL DASHBOARD
+Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('porcentaje_ventas');
+
+// VER LOGS
+Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');
+>>>>>>> 541e26a507d11220e492b883352bc38079046bfa

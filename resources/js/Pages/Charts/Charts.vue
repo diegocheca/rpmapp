@@ -99,10 +99,10 @@
                 </div>
             </div> -->
             <!-- <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <div class="md:w-1/2 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                <div class="md:w-1/2 shadow-lg rounded-2xl p-4 bg-white w-full ">
                     <ChartPie :dataChart="soldIn" />
                 </div>
-                <div class="md:w-1/2 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                <div class="md:w-1/2 shadow-lg rounded-2xl p-4 bg-white w-full ">
                     <ChartPie :dataChart="reinscriptionPersons" />
                 </div>
             </div> -->
@@ -114,17 +114,17 @@
             </div>
 
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                <div class="shadow-lg rounded-2xl p-4 bg-white w-full ">
                     <ChartPie :dataChart="soldIn" />
                 </div>
             </div>
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                <div class="shadow-lg rounded-2xl p-4 bg-white w-full ">
                     <ChartPie :dataChart="reinscriptionPersons" />
                 </div>
             </div>
             <div v-for="(item, index) in mineralPrice" :key="index" class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                <div class="shadow-lg rounded-2xl p-4 bg-white w-full ">
                     <ChartBar :dataChart="item" />
                 </div>
             </div>
@@ -136,7 +136,7 @@
             </div>
 
             <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
+                <div class="shadow-lg rounded-2xl p-4 bg-white w-full ">
                     <Line />
                 </div>
             </div>

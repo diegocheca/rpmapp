@@ -13,7 +13,6 @@
               font-bold
               leading-7
               text-gray-700
-              dark:bg-gray-700
               sm:text-3xl sm:truncate
               py-1
               border-indigo-400
@@ -145,7 +144,7 @@
               "
             >
             </PaginaUnoDatosProductores>
-
+            
             <div id="section_domicilio_legal"></div>
             <PaginaDosDatosDomLegal
               v-if="m_paso2"
@@ -2527,16 +2526,15 @@ export default {
       this.form.administracion_cp = this.form.leal_cp;
       this.form.administracion_otro = this.form.leal_otro;
       // console.log("ya copie todo");
-
       // console.log(
-      //   this.form.administracion_calle,
-      //   this.form.administracion_numero,
-      //   this.form.administracion_telefono,
-      //   this.form.administracion_provincia,
-      //   this.form.administracion_departamento,
-      //   this.form.administracion_localidad,
-      //   this.form.administracion_cp,
-      //   this.form.administracion_otro
+      //   this.form.administracion_calle, Ruta Nacional 40 
+      //   this.form.administracion_numero, 3422
+      //   this.form.administracion_telefono, 4941245
+      //   this.form.administracion_provincia, 10
+      //   this.form.administracion_departamento, 10035
+      //   this.form.administracion_localidad, Capital
+      //   this.form.administracion_cp, 5435
+      //   this.form.administracion_otro Movimiento de minerales
       // );
     },
     UpdateCalleNombre($value) {

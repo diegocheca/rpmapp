@@ -168,6 +168,6 @@ class ChartsController extends Controller
         array_push($reinscriptionPersons->data, [ "label" => "Administrativo Transitorio", "value" =>$datos_porcentajes_personas["acumulador_administrativos_contratados"] ]);
         array_push($reinscriptionPersons->data, [ "label" => "Otros Transitorio", "value" => $datos_porcentajes_personas["acumulador_otros_contratados"] ]);
 
-        return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons, 'porcentajesDewVentaPorProvincia' => $mis_datos_venta, 'provincesList' => $provincesList, 'mapPie' => $mapPie ]);
+        return Inertia::render('Charts/Charts', ['soldIn'=> $soldIn, 'mineralPrice' => $mineralPrice, 'reinscriptionPersons' => $reinscriptionPersons, 'porcentajesDewVentaPorProvincia' => $mis_datos_venta, 'mapPie' => $mapPie, 'provincesList' => $provincesList ]);
     }
 }

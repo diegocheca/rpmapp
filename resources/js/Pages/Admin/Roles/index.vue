@@ -7,8 +7,7 @@
           font-bold
           leading-7
           text-gray-300
-          sm:text-3xl
-          sm:truncate
+          sm:text-3xl sm:truncate
           py-1
           bg-gradient-to-l
           from-indigo-500
@@ -205,10 +204,10 @@
                       Editar
                     </inertia-link>
                     <!-- Borrar -->
-                    <inertia-link
+                    <a
                       v-if="hasAnyPermission(['admin.roles.destroy'])"
-                      method="delete"
-                      :href="route('admin.roles.destroy', rol)"
+                      href="#"
+                      @click="deleteUser(rol)"
                       class="
                         ml-1
                         flex-shrink-0
@@ -231,7 +230,7 @@
                       as="button"
                     >
                       Borrar
-                    </inertia-link>
+                    </a>
                   </td>
                 </tr>
               </tbody>
@@ -243,6 +242,7 @@
   </app-layout>
 </template>
 <script>
+import Swal from "sweetalert2";
 import AppLayout from "@/Layouts/AppLayoutAdmin";
 export default {
   props: {
@@ -250,6 +250,65 @@ export default {
   },
   components: {
     AppLayout,
+  },
+  methods: {
+    deleteUser(rol) {
+      Swal.fire({
+        title: "Eliminar Rol",
+        text: "Esta seguro de eliminar este Rol?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.eliminarRegistro(rol.id);
+        }
+      });
+    },
+    eliminarRegistro(id) {
+      let self = this;
+      Swal.fire({
+        title: "¡Por favor Espere!",
+        html: "Eliminado",
+        allowOutsideClick: false,
+        showConfirmButton: false,
+        willOpen: () => {
+          Swal.showLoading();
+        },
+      });
+      axios
+        .delete("/admin/eliminar_rol" + "/" + id)
+        .then(function (response) {
+          // console.log(response.data);
+          Swal.hideLoading(Swal.clickConfirm());
+          if (response.data.status === "ok") {
+            Swal.fire({
+              icon: "success",
+              title: "El rol fue eliminado correctamente.",
+            }).then((result) => {
+              self.$inertia.get(route("admin.roles.index"));
+            });
+          } else {
+            console.log("Error");
+            Swal.fire({
+              icon: "error",
+              title: "Error...",
+              text: "Por favor comuniquese con el administrador.",
+            });
+          }
+        })
+        .catch(function (error) {
+          Swal.hideLoading();
+          Swal.fire({
+            icon: "error",
+            title: "Error...",
+            text: error,
+          });
+          console.log(error);
+        });
+    },
   },
 };
 </script>

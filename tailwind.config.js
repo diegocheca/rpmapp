@@ -13,7 +13,13 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+                // sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+                sans: ['system-ui'],//,'Roboto','Raleway'],
+                // serif: ["Roboto"],
+                // display: ["Oswald"],
+                // body: ['"Open Sans"'],
+                // display: ['ui-serif'],
+                // mono:['Georgia'],
             },
         },
         // screens: {
@@ -42,5 +48,7 @@ module.exports = {
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
+        require('tw-elements/dist/plugin')
     ],
+    content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
 };

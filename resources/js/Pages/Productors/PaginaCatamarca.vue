@@ -141,9 +141,12 @@
         <Menu
           :mostrarayuda="true"
           :ayuda="ayuda_local"
+          :evaluacion="evaluacion_adm"
+          :mostrar_evaluacion="mostrar_evaluacion_adm"
           :continuar="continuar_pagina"
           v-on:changevalorayuda="update_valor_ayuda_local($event)"
           v-on:continuarpagina="update_valor_pagina_siguiente($event)"
+          v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
         ></Menu>
       </div>
       <!-- <div class="flex items-center justify-center"></div>
@@ -156,7 +159,7 @@
       <!-- <br />
         <br />
       </div> -->
-      <div class="flex">
+      <div class="flex flex-wrap">
         <!-- <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <NombreMina
                     v-if="$props.mostrar_nombre_gestor"
@@ -186,7 +189,7 @@
                 >
                 </NombreMina>
             </div> -->
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 sm:w-2/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.nombre_gestor"
             v-bind:valor_input_props="
@@ -213,6 +216,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.nombre_gestor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_nombre_gestor_valido($event)"
             v-on:changecorrecto="update_nombre_gestor_correcto($event)"
             v-on:changeobs="update_obs_nombre_gestor($event)"
@@ -221,7 +225,7 @@
           >
           </NombreMina>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 sm:w-2/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.dni_gestor"
             v-bind:valor_input_props="form_catamarca_test.gestor_dni"
@@ -240,6 +244,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.dni_gestor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_gestor_dni_valido($event)"
             v-on:changecorrecto="update_gestor_dni_correcto($event)"
             v-on:changeobs="update_obs_gestor_dni($event)"
@@ -250,7 +255,7 @@
         </div>
       </div>
       <div class="flex flex-wrap">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 sm:w-2/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.profesion_gestor"
             v-bind:valor_input_props="form_catamarca_test.gestor_profesion"
@@ -275,6 +280,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.profesion_gestor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_gestor_profesion_valido($event)"
             v-on:changecorrecto="update_gestor_profesion_correcto($event)"
             v-on:changeobs="update_obs_gestor_profesion($event)"
@@ -283,7 +289,7 @@
           >
           </NombreMina>
         </div>
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div class="w-full md:w-1/2 sm:w-2/2 px-3 mb-2 md:mb-2">
           <NombreMina
             v-if="permisos_mostrar.telefono_gestor"
             v-bind:valor_input_props="form_catamarca_test.gestor_telefono"
@@ -308,6 +314,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.telefono_gestor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_gestor_telefono_valido($event)"
             v-on:changecorrecto="update_gestor_telefono_correcto($event)"
             v-on:changeobs="update_obs_gestor_telefono($event)"
@@ -341,6 +348,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.email_gestor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_gestor_email_valido($event)"
             v-on:changecorrecto="update_gestor_email_correcto($event)"
             v-on:changeobs="update_obs_gestor_email($event)"
@@ -401,6 +409,7 @@
             v-bind:desactivar_owner_correccion="
               permisos_disables.notificacion_gestor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changecorrecto="update_gestor_noti_correcto($event)"
             v-on:changeobs="update_obs_gestor_noti($event)"
             v-on:changeobsvalido="update_obs_gestor_noti_valida($event)"
@@ -437,9 +446,13 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap"></div>
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+      <br />
+      <hr />
+      <br />
+      <div class="flex flex-wrap">
+        <div
+          class="w-full md:w-1/3 sm:w-3/3 lg:w-1/3 xl:w-1/3 px-3 mb-2 md:mb-2"
+        >
           <SubirArchivo
             v-if="permisos_mostrar.foto_productor"
             v-bind:valor_input_props="form_catamarca_test.foto_4x4"
@@ -457,6 +470,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.foto_productor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_foto_valido($event)"
             v-on:changecorrecto="update_foto_correcto($event)"
             v-on:changeobs="update_obs_foto($event)"
@@ -492,12 +506,9 @@
             foto 4x4 observacion valida deel padre: {{}}
           </div>
         </div>
-      </div>
-      <br />
-      <hr />
-      <br />
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div
+          class="w-full md:w-1/3 sm:w-3/3 lg:w-1/3 xl:w-1/3 px-3 mb-2 md:mb-2"
+        >
           <SubirArchivo
             v-if="permisos_mostrar.dni_productor"
             v-bind:valor_input_props="form_catamarca_test.primer_hoja_dni"
@@ -515,6 +526,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.dni_productor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_foto_dni_1_valido($event)"
             v-on:changecorrecto="update_foto_dni_1_correcto($event)"
             v-on:changeobs="update_obs_foto_dni_1($event)"
@@ -522,9 +534,38 @@
             v-on:cambioarchivo="cambio_el_archivo_foto_dni_1($event)"
           >
           </SubirArchivo>
-          <br />
-          <hr />
-          <br />
+          <div v-show="ayuda_local">
+            <br />
+            <div
+              class="
+                bg-blue-50
+                text-gray-800
+                bg-opacity-20
+                text-opacity-80
+                ring ring-4 ring-blue-100
+              "
+            >
+              <p class="p-3">
+                Copia de 1° y 2° hoja de D.N.I.. Este acpeta los siguientes
+                formatos: pdf, png o jpeg.
+              </p>
+            </div>
+            <br />
+          </div>
+          <div class="flex" v-if="mostrar_testing">
+            <br />
+            concesion resolucion minera de Mina valor padre: {{}} <br />
+            concesion resolucion minera de Mina valido del padre: {{}} <br />
+            concesion resolucion minera de Mina correcto deel padre: {{}} <br />
+            concesion resolucion minera de Mina observacion deel padre: {{}}
+            <br />
+            concesion resolucion minera de Mina observacion valida deel padre:
+            {{}}
+          </div>
+        </div>
+        <div
+          class="w-full md:w-1/3 sm:w-3/3 lg:w-1/3 xl:w-1/3 px-3 mb-2 md:mb-2"
+        >
           <SubirArchivo
             v-if="permisos_mostrar.dni_productor"
             v-bind:valor_input_props="form_catamarca_test.segunda_hoja_dni"
@@ -548,6 +589,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.dni_productor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_foto_dni_2_valido($event)"
             v-on:changecorrecto="update_foto_dni_2_correcto($event)"
             v-on:changeobs="update_obs_foto_dni_2($event)"
@@ -588,8 +630,10 @@
       <br />
       <hr />
       <br />
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+      <div class="flex flex-wrap">
+        <div
+          class="w-full md:w-1/2 sm:w-2/2 lg:w-1/2 xl:w-1/2 px-3 mb-2 md:mb-2"
+        >
           <SubirArchivo
             v-if="permisos_mostrar.autorizacion_gestor"
             v-bind:valor_input_props="form_catamarca_test.autorizacion_gestor"
@@ -613,6 +657,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.autorizacion_gestor_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_gestor_autorizacion_valido($event)"
             v-on:changecorrecto="update_gestor_autorizacion_correcto($event)"
             v-on:changeobs="update_obs_gestor_autorizacion($event)"
@@ -651,12 +696,9 @@
             {{}}
           </div>
         </div>
-      </div>
-      <br />
-      <hr />
-      <br />
-      <div class="flex">
-        <div class="w-full md:w-2/2 px-3 mb-6 md:mb-0">
+        <div
+          class="w-full md:w-1/2 sm:w-2/2 lg:w-1/2 xl:w-1/2 px-3 mb-2 md:mb-2"
+        >
           <SubirArchivo
             v-if="permisos_mostrar.constancia_afip"
             v-bind:valor_input_props="form_catamarca_test.constancia_afip"
@@ -680,6 +722,7 @@
             v-bind:desactivar_correccion="
               permisos_disables.constancia_afip_correccion
             "
+            :mostrar_evaluacion_adm="evaluacion_adm"
             v-on:changevalido="update_constancia_afip_valido($event)"
             v-on:changecorrecto="update_constancia_afip_correcto($event)"
             v-on:changeobs="update_obs_constancia_afip($event)"
@@ -799,6 +842,8 @@ export default {
   },
   data() {
     return {
+      evaluacion_adm: false,
+      mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
       continuar_pagina: false,
       mostrar_modal_datos_ya_guardados: false,
@@ -815,6 +860,9 @@ export default {
     };
   },
   methods: {
+    update_valor_evaluacion_Adm(newValor) {
+      this.evaluacion_adm = newValor;
+    },
     cerrar_modal_datos_uno() {
       this.mostrar_modal_datos_ya_guardados = false;
     },
