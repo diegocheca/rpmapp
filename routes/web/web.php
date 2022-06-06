@@ -346,7 +346,6 @@ Route::get('/cargarCatamarca', [FormAltaProductorController::class, "cargarCatam
 //REPORTES
 Route::get('/datos_minerales_todas_cat', [ChartsController::class, "minerales_todas_categorias"])->name('datos-minerales-todas-cat');
 
-<<<<<<< HEAD
 // BANDEJA DE ENTRADAS EMAILS
 // Route::resource('/inbox', BandejaEntradaEmailsController::class)->middleware(['auth:sanctum', 'verified']);
 Route::group(['prefix' => 'inbox'], function () {
@@ -355,10 +354,8 @@ Route::group(['prefix' => 'inbox'], function () {
     Route::post('store', [BandejaEntradaEmailsController::class, "store"])->middleware(['auth:sanctum', 'verified']);
     Route::get('show/{id}', [BandejaEntradaEmailsController::class, "show"])->middleware(['auth:sanctum', 'verified']);
 });
-=======
 // DATOS PARA EL DASHBOARD
 Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('porcentaje_ventas');
 
 // VER LOGS
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');
->>>>>>> 541e26a507d11220e492b883352bc38079046bfa

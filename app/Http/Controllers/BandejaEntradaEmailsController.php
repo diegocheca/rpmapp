@@ -72,7 +72,7 @@ class BandejaEntradaEmailsController extends Controller
 
         try {
 
-            Mail::to("rodrigokokot@gmail.com")->send(new MensajesEmail(
+            Mail::to(env('MAIL_FROM_ADDRESS'))->send(new MensajesEmail(
                 $productor->email,
                 date("d-m-Yd H:i:s"),
                 $message['mensaje']

@@ -179,101 +179,20 @@
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                <div class=" md:w-1/4 space-y-4">
-
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
-                        <a :href="'#'" class="cursor-pointer">
-                            <vue3-autocounter
-                                class="text-4xl count-number"
-                                ref="counter1"
-                                :startAmount="0"
-                                :endAmount="cantidad_productores"
-                                :duration="4"
-                                prefix=""
-                                suffix=""
-                                separator=""
-                                decimalSeparator=""
-                                :decimals="0"
-                                :autoinit="true"
-                            />
-                            <div class="">productores mineros</div>
-
-                        </a>
-                    </div>
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
-                        <a :href="'#'" class="cursor-pointer">
-                            <vue3-autocounter
-                                class="text-4xl count-number"
-                                ref="counter2"
-                                :startAmount="0"
-                                :endAmount="250"
-                                :duration="3"
-                                prefix=""
-                                suffix=""
-                                separator=""
-                                decimalSeparator=""
-                                :decimals="0"
-                                :autoinit="true"
-                            />
-                            <div class="">productores mineros</div>
-                        </a>
-                    </div>
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
-                        <a :href="'#'" class="cursor-pointer">
-                            <vue3-autocounter
-                                class="text-4xl count-number"
-                                ref="counter3"
-                                :startAmount="0"
-                                :endAmount="22"
-                                :duration="3"
-                                prefix=""
-                                suffix=""
-                                separator=""
-                                decimalSeparator=""
-                                :decimals="0"
-                                :autoinit="true"
-                            />
-                            <div class="">productores mineros</div>
-                        </a>
-                    </div>
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700 border-l-8 border-indigo-400">
-                        <a :href="'#'" class="cursor-pointer">
-                            <vue3-autocounter
-                                class="text-4xl count-number"
-                                ref="counter4"
-                                :startAmount="0"
-                                :endAmount="65"
-                                :duration="3"
-                                prefix=""
-                                suffix=""
-                                separator=""
-                                decimalSeparator=""
-                                :decimals="0"
-                                :autoinit="true"
-                            />
-                            <div class="">productoredds mineros</div>
-                        </a>
-                    </div>
-                    <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700">
-                        <div class="flex">
-                            <jet-nav-link :href="route('inbox')">
-                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
-                                </svg>
-                            </jet-nav-link>
-                            <div class="ml-8 py-3 text-xl text-gray-600 leading-7 font-semibold text-center">
-                                Vencimientos
-                            </div>
-                        </div>
-                        <Calendar is-expanded :calendarEvents="calendarEvents" />
-                    </div>
-                </div>
-                <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700 w-full ">
-                    <ChartMap :dataChart="dataChart" />
-=======
           </div>
+          <!-- <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700">
+                    <div class="flex">
+                        <jet-nav-link :href="route('inbox')">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
+                            </svg>
+                        </jet-nav-link>
+                        <div class="ml-8 py-3 text-xl text-gray-600 leading-7 font-semibold text-center">
+                            Vencimientos
+                        </div>
+                    </div>
+                    <Calendar is-expanded :calendarEvents="calendarEvents" />
+                </div> -->
           <div class="col-span-12 sm:col-span-6 md:col-span-3">
             <div class="flex flex-row bg-white shadow-sm rounded p-4">
               <div
@@ -342,7 +261,6 @@
                       d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
                     />
                   </svg>
->>>>>>> 541e26a507d11220e492b883352bc38079046bfa
                 </div>
               </div>
             </div>
@@ -463,21 +381,10 @@
           </div>
         </div>
 
-<<<<<<< HEAD
-            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
-                <ChartBar v-if="!chartShow" :dataChart="dataChart" />
-            </div>
-            <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-700">
-                <ChartPie  :dataChart="dataChart" />
-            </div>
-
-            <div><TimeLine /></div>
-=======
         <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white w-full">
           <ChartMap :dataChart="dataChart" />
         </div>
       </div>
->>>>>>> 541e26a507d11220e492b883352bc38079046bfa
 
       <div class="shadow-lg rounded-2xl p-4 bg-white">
         <ChartBar v-if="!chartShow" :dataChart="dataChart" />
@@ -491,128 +398,6 @@
   </AppLayout>
 </template>
 <script>
-<<<<<<< HEAD
-    import JetApplicationLogo from '@/Jetstream/ApplicationLogo'
-    import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
-    import ChartPie from '@/Components/charts/pie'
-    import ChartBar from '@/Components/charts/bar'
-    import ChartMap from '@/Components/charts/map'
-    import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo'
-    import JetDialogModal from "@/Jetstream/DialogModal";
-    import Vue3autocounter from "vue3-autocounter";
-    import TimeLine from "@/Components/charts/line";
-    import Calendar from "../Calendar.vue"
-    import JetNavLink from "@/Jetstream/NavLink";
-
-    export default {
-        components: {
-            JetApplicationLogo,
-            AppLayout,
-            Welcome,
-            ChartPie,
-            ChartBar,
-            ChartMap,
-            JetAuthenticationCardLogo,
-            Vue3autocounter,
-            TimeLine,
-            Calendar,
-            JetDialogModal,
-            JetNavLink,
-        },
-        props: {
-            dataChart: {
-                required: true
-            },
-            calendarEvents: {
-                required: true,
-            },
-        },
-        data() {
-            return {
-                chartShow: false,
-                nuevas_reinscripciones:'',
-                cantidad_productores: 0,
-                cantidad_productores_borrador: 0,
-                cantidad_productores_pendientes: 0,
-            }
-        },
-        methods: {
-            toggle() {
-                this.chartShow = !this.chartShow
-            },
-            buscar_nuevas_reincripciones(){
-                let self = this;
-                axios.get('/numero_reinscripciones_nuevas')
-                .then(function (response) {
-                    if(response.data.status === true)
-                        self.nuevas_reinscripciones = response.data.nuevas_inscripciones;
-                    else self.nuevas_reinscripciones = 0;
-                    // console.log(response.data.msg);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-            },
-            buscar_nuevas_reincripciones(){
-                let self = this;
-                axios.get('/dashboard/numproductores')
-                .then(function (response) {
-                    if(response.data.status === 'ok')
-                        self.cantidad_productores = response.data.cantidad;
-                    else self.cantidad = 0;
-                    // console.log(response.data.msg);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-            },
-            
-            buscar_nuevas_incripciones(){
-                let self = this;
-                axios.get('/dashboard/numproductorespendientes')
-                .then(function (response) {
-                    if(response.data.status === 'ok')
-                        self.cantidad_productores_pendientes = response.data.cantidad;
-                    else self.cantidad = 0;
-                    // console.log(response.data.msg);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-            },
-            buscar_borrador_incripciones(){
-                // console.log("por buscar borradores");
-                let self = this;
-                axios.get('/dashboard/numproductoresborradores')
-                .then(function (response) {
-                    if(response.data.status === 'ok'){
-                        self.cantidad_productores_borrador = response.data.cantidad;
-                        // console.log("obtuve tanto borradores:"+self.cantidad_productores_borrador);
-
-                    }
-                    else self.cantidad = 0;
-                    // console.log(response.data.msg);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-            },
-            
-            
-        },
-        mounted() {
-            this.buscar_nuevas_reincripciones();
-            this.buscar_nuevas_incripciones();
-            this.buscar_borrador_incripciones();
-            // this.buscar_productores();
-        }
-    }
-=======
 import JetApplicationLogo from "@/Jetstream/ApplicationLogo";
 import AppLayout from "@/Layouts/AppLayout";
 import Welcome from "@/Jetstream/Welcome";
@@ -622,6 +407,10 @@ import ChartMap from "@/Components/charts/map";
 import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 import Vue3autocounter from "vue3-autocounter";
 import TimeLine from "@/Components/charts/line";
+import Calendar from "../Calendar.vue"
+import JetNavLink from "@/Jetstream/NavLink";
+import JetDialogModal from "@/Jetstream/DialogModal";
+
 
 export default {
   components: {
@@ -634,11 +423,18 @@ export default {
     JetAuthenticationCardLogo,
     Vue3autocounter,
     TimeLine,
+    Calendar,
+    JetDialogModal,
+    JetNavLink,
   },
   props: {
     dataChart: {
       required: true,
     },
+    calendarEvents: {
+      required: true,
+    },
+
   },
   data() {
     return {
@@ -751,5 +547,4 @@ export default {
     // this.buscar_productores();
   },
 };
->>>>>>> 541e26a507d11220e492b883352bc38079046bfa
 </script>
