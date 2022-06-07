@@ -6,7 +6,7 @@
   import VueMultiselect from 'vue-multiselect'
   import { Form, Field, ErrorMessage } from 'vee-validate';
   import Toggle from "@vueform/toggle";
-  import 'tw-elements';
+  // import 'tw-elements';
   import axios from "axios";
   import { JSONParser } from "@amcharts/amcharts4/core";
 import { each } from "@amcharts/amcharts4/.internal/core/utils/Iterator";
