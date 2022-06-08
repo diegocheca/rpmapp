@@ -7,6 +7,8 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\EmailsAConfirmar;
 use App\Http\Controllers\ChartsController;
+use App\Models\iia_dia;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -20,8 +22,7 @@ class HomeController extends Controller
     // }
     public function index()
     {
-        return view("pagina.index");
-        // return Inertia::render('Welcome');
+        return view('pagina.index');
     }
     public function thanks()
     {
@@ -43,18 +44,21 @@ class HomeController extends Controller
             $dataChart->data = $deptos;
             $dataChart->province = CountriesController::getProvince(Auth::user()->id_provincia);
 
-            return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart]);
+            $iiaDia =DB::table("iia_dia")
+            ->join('form_alta_productores', 'form_alta_productores.id', '=', 'iia_dia.id_formulario')
+            ->whereNotNull('iia_dia.fecha_vencimiento')
+            ->get();
+
+            $calendarEvents = [
+                "iiaDia" => $iiaDia
+            ];
+            return Inertia::render('Dashboard', ['userType' => $mi_rol, 'dataChart' => $dataChart, 'calendarEvents' => $calendarEvents]);
         } else if (Auth::user()->hasRole('Productor')) {
             $mi_rol = 'productor';
 
             return Inertia::render('Dashboard', ['userType' => $mi_rol]);
         }
     }
-
-    public function mostrar_permisos(){
-        return Inertia::render('Admin/PermisosNuevos/permisos');
-    }
-
     public function mostrar_datos_por_dtpo()
     {
         $departments = CountriesController::datosDepartamentos(Auth::user()->id_provincia);
@@ -82,9 +86,6 @@ class HomeController extends Controller
         return view("confirmation.index");
     }
 
-    public function test_provied(){
-        return Inertia::render('Admin/Provide/index');
-    }
     public function create()
     {
         //

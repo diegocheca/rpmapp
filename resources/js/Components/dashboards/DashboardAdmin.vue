@@ -366,6 +366,19 @@
               <div class="">Porcentaje Venta al Exterior</div>
             </a>
           </div>
+          <div class="w-full shadow-lg rounded-2xl p-3 bg-white dark:bg-gray-700">
+            <div class="flex">
+                <jet-nav-link :href="route('inbox')">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
+                    </svg>
+                </jet-nav-link>
+                <div class="ml-8 py-3 text-xl text-gray-600 leading-7 font-semibold text-center">
+                    Vencimientos
+                </div>
+            </div>
+            <Calendar is-expanded :calendarEvents="calendarEvents" />
+        </div>
         </div>
 
         <div class="md:w-3/4 shadow-lg rounded-2xl p-4 bg-white w-full">
@@ -394,6 +407,10 @@ import ChartMap from "@/Components/charts/map";
 import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 import Vue3autocounter from "vue3-autocounter";
 import TimeLine from "@/Components/charts/line";
+import Calendar from "../Calendar.vue"
+import JetNavLink from "@/Jetstream/NavLink";
+import JetDialogModal from "@/Jetstream/DialogModal";
+
 
 export default {
   components: {
@@ -406,11 +423,18 @@ export default {
     JetAuthenticationCardLogo,
     Vue3autocounter,
     TimeLine,
+    Calendar,
+    JetDialogModal,
+    JetNavLink,
   },
   props: {
     dataChart: {
       required: true,
     },
+    calendarEvents: {
+      required: true,
+    },
+
   },
   data() {
     return {
