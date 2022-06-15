@@ -25,6 +25,8 @@ use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\CountriesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ChartsController;
+use App\Http\Controllers\NotificacionController;
+
 use App\Http\Controllers\formWebController\MineralesController;
 
 use App\Http\Controllers\DashboardController;
@@ -354,3 +356,11 @@ Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'i
 
 // JUJUY
 Route::get('/api_jujuy', [JujuyController::class, "index"])->name('index-jujuy');
+
+
+//Notificaciones
+Route::get('/notificaciones', [NotificacionController::class, "get_notifications"])->name('get-notifications');
+
+
+Route::get('/crear_contacto', [DashboardController::class, "crear_contacto"])->name('crear-contacto');
+Route::get('/notificaciones', [DashboardController::class, "notificaciones"])->name('notificaciones');

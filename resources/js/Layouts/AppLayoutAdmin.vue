@@ -369,7 +369,7 @@
         <div class="flex items-center">
           <div x-data="{ notificationOpen: false }" class="relative">
             <button
-              @click="notificationOpen = !notificationOpen"
+              @click="show_notification()"
               class="flex mx-4 text-gray-600 focus:outline-none"
             >
               <svg
@@ -389,7 +389,7 @@
             </button>
             <div
               x-show="notificationOpen"
-              @click="notificationOpen = false"
+              @click="show_notification()"
               class="fixed inset-0 h-full w-full z-10"
               style="display: none"
             ></div>
@@ -562,6 +562,11 @@ export default {
           console.log(error);
         });
     },
+    show_notification(){
+      this.notificationOpen = !this.notificationOpen;
+
+    }
+
   },
 };
 </script>

@@ -42,8 +42,11 @@ use App\Models\Minerales;
 use App\Models\Minerales_Borradores;
 
 use App\Models\User;
+use App\Models\Contacto;
 
 use Illuminate\Support\Facades\Storage;
+
+use App\Notifications\NewEventNotification;
 
 class DashboardController extends Controller
 {
@@ -121,6 +124,30 @@ class DashboardController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function crear_contacto(){
+
+        $user = Auth::user();
+
+        $message = $user->contactos()->create([
+            
+            "name" =>" tu hermana",
+            "email" =>"tuhermana2022@gmail.com",
+            'message' => "sfsdfsdfsdfsdfsdfdsfsdf",
+            'estado' =>"sin leer"
+            //user_id = Auth::user()->id;
+
+        ]);
+
+        $message->user->notify(new NewEventNotification($message, $user));
+
+    }
+
+    public function notificaciones(){
+        $user = Auth::user();
+        dd(Auth::user()->notifications()->latest()->paginate());
+
     }
     public function numProductores()
     {

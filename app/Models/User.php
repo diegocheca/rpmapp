@@ -11,7 +11,7 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-
+use App\Models\Contacto;
 //nuevo
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
@@ -79,5 +79,10 @@ class User extends Authenticatable implements JWTSubject
         } else {
             return false;
         }
+    }
+
+    public function contactos()
+    {
+        return $this->hasMany(Contacto::class);
     }
 }

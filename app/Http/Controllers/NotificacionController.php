@@ -28,6 +28,10 @@ class NotificacionController extends Controller
         //
     }
 
+    public function get_notifications(){
+        return Notificacion::get_notifications();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

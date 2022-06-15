@@ -38,6 +38,7 @@ class HandleInertiaRequests extends Middleware
     {
         // dd($request->user());
         return array_merge(parent::share($request), [
+            'unreadNotificationsCount' => $request->user()->unreadNotifications()->count(),
             'auth' => [
                 'user' => $request->user() ?   $request->user()->only('id', 'name', 'email') : null,
                 'can' => $request->user() ? $request->user()->getPermissionArray() : []
