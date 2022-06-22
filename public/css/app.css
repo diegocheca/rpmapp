@@ -1476,6 +1476,9 @@ textarea.form-control.is-invalid {
   height: auto;
   transition: width 0.35s ease;
 }
+.dropdown-menu {
+  z-index: 1000;
+}
 .dropdown-item.active {
   color: #1f2937;
   -webkit-text-decoration: none;
@@ -1520,6 +1523,11 @@ textarea.form-control.is-invalid {
 .\!nav-tabs .\!nav-item.\!show .\!nav-link {
   color: #2563eb !important;
   border-color: #2563eb !important;
+}
+.nav-tabs .dropdown-menu {
+  margin-top: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .nav-pills .nav-link {
   background: #f3f4f6;

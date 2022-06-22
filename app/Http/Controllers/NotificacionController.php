@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Notificacion;
 use App\Http\Requests\StoreNotificacionRequest;
 use App\Http\Requests\UpdateNotificacionRequest;
+use Auth;
 
 class NotificacionController extends Controller
 {
@@ -28,8 +29,37 @@ class NotificacionController extends Controller
         //
     }
 
+    
+    public function get_notifications_dos(){
+        if(Auth::user() != null) {
+            return response()->json([
+                'status' => 'success',
+                'msg' => 'notificaciones correctas',
+                'datos' => auth()->user()->notifications()->latest()->paginate()
+            ], 201);
+
+        }
+        else return response()->json([
+            'status' => 'error',
+            'msg' => 'notificaciones incorrectas',
+            'datos' => null
+        ], 201);
+    }
+
     public function get_notifications(){
-        return Notificacion::get_notifications();
+        if(Auth::user() != null) {
+            return response()->json([
+                'status' => 'success',
+                'msg' => 'notificaciones correctas',
+                'datos' => auth()->user()->notifications()->latest()->paginate()
+            ], 201);
+
+        }
+        else return response()->json([
+            'status' => 'error',
+            'msg' => 'notificaciones incorrectas',
+            'datos' => null
+        ], 201);
     }
 
     /**

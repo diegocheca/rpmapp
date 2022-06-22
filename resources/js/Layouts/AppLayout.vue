@@ -172,396 +172,18 @@
                                 </td>
 
                             </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
+                            <tr v-for="notification in mis_notifications" :key="notification.id" class="relative transform scale-100 text-xs py-1 border-b-2 border-blue-100 cursor-default">
                                 <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
+                                    <div class="text-gray-400">333 jule</div>
                                     <div>07:45</div>
                                 </td>
 
                                 <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
+                                    <div class="leading-5 text-gray-500 font-medium">{{notification.id}}</div>
+                                    <div class="leading-5 text-gray-900">{{notification.data.contacto.name}}
+                                        <a class="text-blue-500 hover:underline" href="#">#4444</a></div>
+                                    <div class="leading-5 text-gray-800">dddddddddd</div>
                                 </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
-                            </tr>
-                                                    <tr class="relative transform scale-100
-                                        text-xs py-1 border-b-2 border-blue-100 cursor-default
-
-                                ">
-                                <td class="pl-5 pr-3 whitespace-no-wrap">
-                                    <div class="text-gray-400">24 jule</div>
-                                    <div>07:45</div>
-                                </td>
-
-                                <td class="px-2 py-2 whitespace-no-wrap">
-                                    <div class="leading-5 text-gray-500 font-medium">Taylor Otwel</div>
-                                    <div class="leading-5 text-gray-900">Create pull request #1213
-                                        <a class="text-blue-500 hover:underline" href="#">#231231</a></div>
-                                    <div class="leading-5 text-gray-800">Hello message</div>
-                                </td>
-
                             </tr>
                         </tbody>
                     </table>
@@ -1477,6 +1099,7 @@ export default {
     return {
       isSidebarOpen: false,
       showingNavigationDropdown: false,
+      mis_notifications: {}
     };
   },
   methods: {
@@ -1492,37 +1115,20 @@ export default {
     //     );
     // },
     mostrar_notificaciones(){
-      alert("q onda loko");
-      this.mostrar_notificaciones = !this.mostrar_notificaciones;
+      let self = this;
       axios
-          .get("/notificaciones")
+          .get("/notificaciones_dos")
           .then(function (response) {
-            // console.log(response.data);
-            if (response.data === "se actualizaron los datos correctamente") {
-              // console.log(
-              //   "se actualizaron los datos correctamente, siendo un productor"
-              // );
-              // self.modal_tittle = "Datos guardados correctamente";
-              // self.modal_body =
-              //   "Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario";
-              // self.mostrar_modal_datos_ya_guardados = true;
-              Swal.fire(
-                "Datos guardados correctamente.",
-                "Gracias por usar este servicio, por favor continue completando el formulario.",
-                "success"
-              ).then((result) => {
-                self.ver_pagina_siguiente(true);
-              });
-            } else {
-              // console.log("NO todo bien");
-              Swal.fire("Error", "Error inesperado.", "error");
-            }
+            console.log("axios",response.data.datos.data);
+              self.mis_notifications = response.data.datos.data;
+              console.log(self.mis_notifications);
           })
           .catch(function (error) {
             // handle error
-            Swal.fire("Error", "Error inesperado. <br/>" + error, "error");
+            alert("error al buscar las notificaciones");
             console.log(error);
           });
+          //console.log(JSON.parse(JSON.stringify(this.notifications)))
     },
     logout() {
       //this.$inertia.post(route("logout"))

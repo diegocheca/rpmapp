@@ -360,7 +360,18 @@ Route::get('/api_jujuy', [JujuyController::class, "index"])->name('index-jujuy')
 
 //Notificaciones
 Route::get('/notificaciones', [NotificacionController::class, "get_notifications"])->name('get-notifications');
+Route::get('/notificaciones_dos', [NotificacionController::class, "get_notifications_dos"])->name('get-notifications-dos');
 
 
 Route::get('/crear_contacto', [DashboardController::class, "crear_contacto"])->name('crear-contacto');
 Route::get('/notificaciones', [DashboardController::class, "notificaciones"])->name('notificaciones');
+
+Route::get('/ver', function () {
+    return view('welcome');
+});
+
+Route::get('test', function () {
+    event(new App\Events\StatusLiked('Someone'));
+    event(new App\Events\MyEvent('Tu hermana 9999'));
+    return "Event has been sent!";
+});
