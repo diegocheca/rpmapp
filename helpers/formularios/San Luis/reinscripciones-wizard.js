@@ -175,7 +175,7 @@ console.log(schema);
                                 },
                                 {
                                     label: 'Mina',
-                                    value: !minas? undefined : minas.data.find( e=> schema.id_mina === e.value ),
+                                    value: !minas? undefined : minas.data.find( e=> schema.id_mina == e.value ),
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     // async: true,

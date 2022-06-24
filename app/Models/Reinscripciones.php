@@ -16,7 +16,7 @@ class Reinscripciones extends Model
 
     protected $date = ['created_at', 'deleted_at', 'updated_at', 'fecha_vto' ];
     protected $fillable = [
-        // 'id_mina',
+        'id_mina',
         'id_productor',
         'fecha_vto',
         'prospeccion',
