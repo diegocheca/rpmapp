@@ -37,7 +37,7 @@ use App\Http\Controllers\JujuyController;
 
 
 use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
-
+use App\Http\Controllers\TicketsController;
 use App\Console\Commands\JobEnvioCommand;
 // use Auth;
 
@@ -371,7 +371,9 @@ Route::get('/ver', function () {
 });
 
 Route::get('test', function () {
-    event(new App\Events\StatusLiked('Someone'));
-    event(new App\Events\MyEvent('Tu hermana 9999'));
+    //event(new App\Events\StatusLiked('Someone'));
+    event(new App\Events\MyEvent('Tu viernes en la tarde'));
     return "Event has been sent!";
 });
+
+Route::post('/tickets/store/', [TicketsController::class, "store"])->name('tickets-store');

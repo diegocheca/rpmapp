@@ -6,6 +6,24 @@
       </h2>
     </template>
     <main class="p-4 md:p-14 bg-gray-100 md:space-x-4 space-y-4">
+      <div class="w-full h-full">
+                <div class="absolute bottom-0 right-0 mr-8 mb-32 ">
+                    <div class="bg-white rounded-lg shadow-md px-4 py-2 border-1 border-gray-400">
+                        Si tienes un problema con la aplicación. Podemos ayudarte.
+                        <svg class="inline w-6" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                             viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                            <path style="fill:#1B4145;" d="M337.455,133.897C433.857,133.897,512,195.96,512,272.518c0,54.665-39.846,101.933-97.729,124.502
+                c-4.038,26.225,3.938,53.969,23.951,74.174c-38.413,0-70.869-25.645-81.546-60.893c-6.313,0.549-12.724,0.84-19.221,0.84
+                c-96.396,0-174.545-62.064-174.545-138.622C162.909,195.96,241.06,133.897,337.455,133.897z"/>
+                            <path style="fill:#FFD24D;" d="M174.545,40.806C78.143,40.806,0,102.87,0,179.427c0,54.665,39.846,101.933,97.729,124.502
+                c4.038,26.225-3.938,53.969-23.951,74.174c38.413,0,70.869-25.645,81.546-60.893c6.313,0.549,12.724,0.84,19.221,0.84
+                c96.396,0,174.545-62.064,174.545-138.622C349.091,102.87,270.94,40.806,174.545,40.806z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <MensajesParaAdmin></MensajesParaAdmin>
       <div class="shadow-lg rounded-2xl p-4 bg-white">
         <div class="grid grid-cols-12 gap-2">
           <h1>You have {{$page.props.unreadNotificationsCount}} notifications</h1>
@@ -382,7 +400,16 @@
       </div>
 
       <div><TimeLine /></div>
+
+
+
+
     </main>
+
+
+    <widgetMensajes></widgetMensajes>
+
+
   </AppLayout>
 </template>
 <script>
@@ -395,6 +422,8 @@ import ChartMap from "@/Components/charts/map";
 import JetAuthenticationCardLogo from "@/Jetstream/AuthenticationCardLogo";
 import Vue3autocounter from "vue3-autocounter";
 import TimeLine from "@/Components/charts/line";
+import MensajesParaAdmin from "@/Pages/Mensajes/MensajesParaAdmin";
+import widgetMensajes from "@/Pages/Mensajes/widgetMensajes";
 
 export default {
   components: {
@@ -407,6 +436,8 @@ export default {
     JetAuthenticationCardLogo,
     Vue3autocounter,
     TimeLine,
+    MensajesParaAdmin,
+    widgetMensajes
   },
   props: {
     dataChart: {
