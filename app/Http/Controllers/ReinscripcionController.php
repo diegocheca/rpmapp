@@ -38,7 +38,8 @@ class ReinscripcionController extends Controller
         'RíoNegro',
         'Neuquén',
         'SantiagodelEstero',
-        'Tucumán'
+        'Tucumán',
+        'Salta'
     ];
 
     /**
