@@ -36,7 +36,10 @@ class ReinscripcionController extends Controller
         'Catamarca',
         'EntreRíos',
         'RíoNegro',
-        'Neuquén'
+        'Neuquén',
+        'SantiagodelEstero',
+        'Tucumán',
+        'Salta'
     ];
 
     /**
@@ -133,7 +136,7 @@ class ReinscripcionController extends Controller
     public function store(Request $request)
     {
         $reinscripcion = $request->all();
-        // dd($reinscripcion);
+
         $user = HomeController::userData();
         // $provinceData = Provincias::where('id','=', $user->province->value)->first();
         // $period = date('Y-m-d', strtotime("+$provinceData->duracion_reinscripcion months", strtotime(date("Y-m-d"))));
@@ -190,7 +193,6 @@ class ReinscripcionController extends Controller
 
         $saveData['fecha_vto'] = null;
         $saveData['estado'] = 'en proceso';
-
 
         DB::beginTransaction();
         try {
@@ -690,7 +692,7 @@ class ReinscripcionController extends Controller
             ->select(['productos.id_mina', 'id_mina_evaluacion', 'id_mina_comentario'])
             ->first();
 
-        $reinscripcion['id_mina'] = isset($idMina) ? $idMina->id_mina : null;
+        $reinscripcion['id_mina'] = isset($idMina) ? $idMina->id_mina : (isset($reinscripcion->id_mina)? $reinscripcion->id_mina : null);
         $reinscripcion['id_mina_evaluacion'] = isset($idMina) ? $idMina->id_mina_evaluacion : null;
         $reinscripcion['id_mina_comentario'] = isset($idMina) ? $idMina->id_mina_comentario : null;
 
@@ -1008,7 +1010,7 @@ class ReinscripcionController extends Controller
                 // }
 
                 if ($key == "Productos") {
-                    if (!empty($reinscripcion['production_checkbox']) && $reinscripcion['production_checkbox'] == true) continue;
+                    if (!empty($reinscripcion['production_checkbox']) && $reinscripcion['production_checkbox'] == false) continue;
                     $saveData["cantidad_productos"] = count($data);
 
                     for ($i = 0; $i < count($data); $i++) {

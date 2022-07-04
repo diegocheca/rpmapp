@@ -2,7 +2,7 @@
   <div class="ml-8 mt-8 text-xl text-gray-600 leading-7 font-semibold">
     Productores por departamento
   </div>
-  <div class="chart-bar" ref="chartdiv" />
+  <div class="chart-map" ref="chartdiv" />
 </template>
 
 <script>
@@ -115,8 +115,8 @@ export default {
 };
 </script>
 <style>
-.chart-bar {
+.chart-map {
   width: 100%;
-  height: 400px;
+  height: 650px;
 }
 </style>

@@ -36,7 +36,7 @@ export default {
   // },
   async mounted() {
     let chart = am4core.create(this.$refs.chartdiv, am4maps.MapChart);
-console.log(this.$props.dataChart);
+// console.log(this.$props.dataChart);
     chart.contentHeight = 800
 
     if(!this.$props.dataChart) {
@@ -60,7 +60,7 @@ console.log(this.$props.dataChart);
 
     }
     catch (e) {
-      console.log(e);
+     // console.log(e);
         chart.raiseCriticalError(new Error("Error al cargar el mapa. Comunicate con el administrador."));
     }
 
@@ -286,7 +286,7 @@ console.log(this.$props.dataChart);
 
       const province = this.data.data.find( e => e.nombre == polygon.dataItem.dataContext.name)
       // console.log(this.$props.mineralType);
-      console.log(this.data.data);
+      //console.log(this.data.data);
       pieSeries.data = province[this.$props.mineralType].map( (element) => {
         let item = {}
         item[`${this.data.axis.x}`] = element.label

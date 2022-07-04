@@ -493,7 +493,10 @@ function getChildrens(data, observation) {
             if (i == -1) continue;
 
             if (clone[i].select) {
-                clone[i].value = JSON.parse(object[property]);
+                clone[i].value = {
+                    label: property,
+                    value: object[property]
+                }
             } else {
                 clone[i].value = object[property];
             }

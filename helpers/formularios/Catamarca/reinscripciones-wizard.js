@@ -84,7 +84,7 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Mina',
-                                    value: !minas? undefined : minas.data.find( e=> schema.id_mina === e.value ),
+                                    value: !minas? undefined : minas.data.find( e=> schema.id_mina == e.value ),
                                     type: inputsTypes.SELECT,
                                     // get axios
                                     // async: true,
@@ -654,7 +654,10 @@ function getChildrens(data, observation) {
             if (i == -1) continue;
 
             if (clone[i].select) {
-                clone[i].value = JSON.parse(object[property]);
+                clone[i].value = {
+                    label: property,
+                    value: object[property]
+                }
             } else {
                 clone[i].value = object[property];
             }
