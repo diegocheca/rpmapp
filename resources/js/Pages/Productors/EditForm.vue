@@ -2769,7 +2769,7 @@ export default {
     },
     submit() {
       let self = this;
-      console.log("el id es:", this.form.id);
+      // console.log("el id es:", this.form.id);
       if (
         typeof this.form.id !== "undefined" &&
         self.form.id != null &&

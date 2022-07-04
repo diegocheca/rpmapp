@@ -34,6 +34,7 @@ use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
 
 
 use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
+use App\Http\Controllers\Jujuy\JujuyController;
 
 use App\Console\Commands\JobEnvioCommand;
 // use Auth;
@@ -153,7 +154,7 @@ Route::get('/inicio_tramite_pdf_mdz/{id}', PresentacionAltaProdMendozaController
 Route::get('/inicio_tramite_pdf_sj/{id}', PresentacionAltaProdSanJuanController::class)->name('comprobante_inicio_sanjuan');
 
 
-//*******************COMPROBANTE DE PRODUCTOR */
+/******************* COMPROBANTE DE PRODUCTOR ********************/
 Route::middleware(['auth:sanctum', 'verified'])->get('/comprobante_productor_aprobado/{id}', function ($id) {
     $mi_rol = '';
     if (Auth::user()->hasRole('Autoridad'))
@@ -350,3 +351,11 @@ Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('
 
 // VER LOGS
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');
+
+
+Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
+    // Jujuy
+    Route::get('apiJujuy', [JujuyController::class, 'index'])->name('apiJujuy');
+    Route::get('consultarDatos', [JujuyController::class, 'simula_datos']);
+    Route::post('enviarDatos', [JujuyController::class, 'datos_enviados']);
+});

@@ -12802,8 +12802,8 @@ class FormAltaProductorController extends Controller
 				$formulario_provisorio->save();
 				$id_adicional = 0;
 				//return response()->json($formulario_provisorio->id);
-				//if(Auth::user()->id_provincia == 10) // es de catamarca
-				if (true) //para probar
+				if(Auth::user()->id_provincia == 10) // es de catamarca
+				// if (true) //para probar
 				{
 					$formulario_catamarca = new FormAltaProductorCatamarca();
 					$formulario_catamarca->id_formulario_alta = $formulario_provisorio->id;
