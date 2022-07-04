@@ -40,6 +40,7 @@
         "vee-validate": "^4.4.11",
         "vue-form-wizard": "^0.8.4",
         "vue-has-error-laravel": "^0.1.16",
+        "vue-json-viewer": "^3.0.4",
         "vue-multiselect": "^3.0.0-alpha.2",
         "vue3-autocounter": "^1.0.6",
         "vue3-carousel": "^0.1.27",
