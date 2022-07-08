@@ -26,6 +26,40 @@ class PermissionController extends Controller
         //
     }
 
+    public function buscar_permisos_formulario($prov,$accion,$formulario,$pagina){
+        if($prov == 0){
+            $prov = Auth::user()->id_provincia;
+        }
+        //ver de donde saco el estado
+        $estado = 0;
+        $permisos_a_pasar = -1;
+		// 1 Administrator - 2 user - 3 Autoridad -4 Productor
+		if(Auth::user()->hasRole('Administrador'))
+			$permisos_a_pasar = 1;
+		elseif(Auth::user()->hasRole('Autoridad'))
+			$permisos_a_pasar = 3;
+		elseif(Auth::user()->hasRole('Productor'))
+			$permisos_a_pasar = 4;
+		if($permisos_a_pasar == -1){
+			return var_dump("error en sesion");
+		}
+        $resultado = Permission::dame_permisos($prov ,$permisos_a_pasar, $formulario, $accion , $estado, $pagina);
+        if(!empty($resultado )) {
+            return response()->json([
+                'status' => 'success',
+                'msg' => 'Permisos encontrados.',
+                'permisos' => json_encode($resultado[0])
+            ], 201);
+        }
+        else {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'Permisos no encontrados.',
+                'permisos' => false
+            ], 201);
+        } 
+    }
+
     /**
      * Show the form for creating a new resource.
      *

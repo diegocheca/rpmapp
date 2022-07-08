@@ -305,10 +305,10 @@
                 border-l-4 border-transparent
                 hover:border-indigo-500
               "
-              :href="route('admin.altaProductor.index')"
-              v-on:click="activetab = 'Importar'"
+              :href="route('admin.permisos_nuevos.index')"
+              v-on:click="activetab = 'PermisosForm'"
               v-bind:class="[
-                activetab === 'Importar'
+                activetab === 'PermisosForm'
                   ? 'active border-indigo-500 text-gray-100 bg-gray-700 bg-opacity-25 font-black'
                   : '',
               ]"
@@ -327,7 +327,7 @@
                   d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"
                 />
               </svg>
-              <span class="mx-3">PermisosJson</span>
+              <span class="mx-3">Permisos Form</span>
             </inertia-link>
           </nav>
         </div>

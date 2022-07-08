@@ -25,6 +25,7 @@ use Illuminate\Database\Seeder;
 use App\Models\EmailsAConfirmar;
 use App\Models\Productors;
 use App\Models\Productores;
+use App\Models\Permission;
 
 
 use App\Models\MinaCantera;
@@ -9488,6 +9489,37 @@ class FormAltaProductorController extends Controller
 			}
 		}
 
+		$permisos_a_pasar = -1;
+		// 1 Administrator - 2 user - 3 Autoridad -4 Productor
+		if(Auth::user()->hasRole('Administrador'))
+			$permisos_a_pasar = 1;
+		elseif(Auth::user()->hasRole('Autoridad'))
+			$permisos_a_pasar = 3;
+		elseif(Auth::user()->hasRole('Productor'))
+			$permisos_a_pasar = 4;
+		if($permisos_a_pasar == -1){
+			return var_dump("error en sesion");
+		}
+		if(Auth::user()->id_provincia  == 86){ 
+			$permisos = Permission::dame_permisos(Auth::user()->id_provincia ,$permisos_a_pasar, 1, 2 , 1, 99);
+		}
+		//dd($permisos,$disables,$mostrar);
+		/*
+		//Agregando permisos
+		$permisos_a_pasar = -1;
+		// 1 Administrator - 2 user - 3 Autoridad -4 Productor
+		if(Auth::user()->hasRole('Administrador'))
+			$permisos_a_pasar = 1;
+		elseif(Auth::user()->hasRole('Autoridad'))
+			$permisos_a_pasar = 3;
+		elseif(Auth::user()->hasRole('Productor'))
+			$permisos_a_pasar = 4;
+		if($permisos_a_pasar == -1){
+			return var_dump("error en sesion");
+		}
+		$permisos = Permission::dame_permisos(Auth::user()->id_provincia ,$permisos_a_pasar, 1, 2 , 1, 99);
+*/
+		dd($permisos,$disables,$mostrar);
 
 		if ($nombre_provincia != "") {
 			$productor = $this->dame_un_productor_vacio();
@@ -9501,18 +9533,34 @@ class FormAltaProductorController extends Controller
 			$datos_creador = null;
 			$soy_productor = true;
 			//var_dump($disables["boton_catamarca"]);die();
-			return Inertia::render('Productors/Form', [
-				'productor' => $productor,
-				'lista_minerales_cargados' => $minerales_asociados,
-				'creado' => $datos_creador,
-				'soy_administrador' => false,
-				'soy_autoridad_minera' => false,
-				"soy_productor" => $soy_productor,
-				"disables" => $disables,
-				"mostrar" => $mostrar,
-				"productor_particular" => $productor_particular,
-				"nombre_provincia" => $nombre_provincia
-			]);
+			if(Auth::user()->id_provincia  == 86){ 
+				return Inertia::render('ProductorsNuevo/Form', [
+					'productor' => $productor,
+					'lista_minerales_cargados' => $minerales_asociados,
+					'creado' => $datos_creador,
+					'soy_administrador' => false,
+					'soy_autoridad_minera' => false,
+					"soy_productor" => $soy_productor,
+					"disables" => $disables,
+					"mostrar" => $mostrar,
+					"productor_particular" => $productor_particular,
+					"nombre_provincia" => $nombre_provincia
+				]);
+			}
+			else {
+				return Inertia::render('Productors/Form', [
+					'productor' => $productor,
+					'lista_minerales_cargados' => $minerales_asociados,
+					'creado' => $datos_creador,
+					'soy_administrador' => false,
+					'soy_autoridad_minera' => false,
+					"soy_productor" => $soy_productor,
+					"disables" => $disables,
+					"mostrar" => $mostrar,
+					"productor_particular" => $productor_particular,
+					"nombre_provincia" => $nombre_provincia
+				]);
+			}
 		} else {
 			return Inertia::render('Common/SinProvincia', [
 				'mensaje' => 'Su provincia aun no ha sido implemntada',
