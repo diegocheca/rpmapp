@@ -331,7 +331,7 @@
                                                                     <ErrorMessage class="text-red-500" :name="`${item.name}[${indexElement}].${ele.name}`" />
                                                                 </div>
                                                             </div>
-                                                            <div v-else>-</div>
+                                                            <div v-else></div>
                                                         </template>
                                                         <template v-if="ele.type == 'comment' && !evaluate">
                                                             <div v-if="ele.value != null" class="bg-red-200 p-4 mt-5 rounded-lg flex flex-col">
@@ -566,19 +566,19 @@ export default {
             row[0].id = null;
             item.childrens = [...item.childrens, row ];
 
-            if(item.componentDepends?.length > 0) {
+            // if(item.componentDepends?.length > 0) {
 
-                item.componentDepends.forEach( comp => {
-                    const depend = inputs.find( e => e.name == comp.component);
-                    if(depend.typeTable === "vertical") {
-                        depend.element[0].push(depend.element[0][0]);
-                    } else if(depend.typeTable === "horizontal") {
-                        depend.element.push(depend.element[0]);
-                    }
-                });
-                // this.addColumnsTable({ componentDepends: item.componentDepends, row, inputs, values})
-                // this.columnsTable.value.push(item.childrens[0]);
-            }
+            //     item.componentDepends.forEach( comp => {
+            //         const depend = inputs.find( e => e.name == comp.component);
+            //         if(depend.typeTable === "vertical") {
+            //             depend.element[0].push(depend.element[0][0]);
+            //         } else if(depend.typeTable === "horizontal") {
+            //             depend.element.push(depend.element[0]);
+            //         }
+            //     });
+            //     // this.addColumnsTable({ componentDepends: item.componentDepends, row, inputs, values})
+            //     // this.columnsTable.value.push(item.childrens[0]);
+            // }
         },
         addRowTable(item) {
 
@@ -611,24 +611,40 @@ export default {
         },
         removeRowTable(item, index) {
             const firstElement = item.element[0]
-            // const index = item.element.length - 1 > 0 ? item.element.length - 1 : 0;
+
+             if(!item.element.length) return
+
+            for (let index2 = 0; index2 < item.element[index].length; index2++) {
+                const element = item.element[index][index2];
+                element.componentDepends?.forEach( comp => {
+                    const depend = this.formSchema[0].body[0].inputs.find( e => e.name == comp.component);
+                    depend.horizontalTitle.splice( index, 1);
+                })
+            }
+
             item.element.splice( index, 1);
-            // item.element = item.element.filter((e, i) =>  index-1 != i);
-
-
             if(item.element.length == 0) {
                item.element.push(firstElement);
             }
         },
-        addColumnsTable({componentDepends, row, inputs, values}) {
+        addColumnsTable({componentDepends, rowId, inputs, values}) {
             if(!componentDepends) return
+            const depend = inputs.find( e => e.name === componentDepends.component);
+            if(depend[componentDepends.element].length <= parseInt(rowId)){
+                depend[componentDepends.element].push(values.label);
+                depend.element[0].push(depend.element[0]);
+                depend[componentDepends.element].push("");
+            }else depend[componentDepends.element][rowId] = values.label;
 
-            componentDepends.forEach( comp => {
-                const depend = inputs.find( e => e.name == comp.component);
-                const variableTitleCell = row.find( e => e.name == comp.titleCell);
-                depend[comp.element].push(values[variableTitleCell.name].label);
-            })
-            // this.columnsTable.value.push(rows[0]);
+        },
+        addRowsTable({componentDepends, rowId, inputs, values}) {
+            if(!componentDepends) return
+            const depend = inputs.find( e => e.name === componentDepends.component);
+            if(depend[componentDepends.element].length <= parseInt(rowId)){
+                depend[componentDepends.element].push(values.label);
+                depend.element.push(depend.element[0]);
+            }else depend[componentDepends.element][rowId] = values.label;
+
         },
         async getAsyncOptionsSelect(value, element){
             //console.log(this.valuesForm);
@@ -726,16 +742,19 @@ export default {
 
         },
         handleChageOptionSelectTable(value, element) {
-            const elementChange = element.ele.componentDepends;
-            const index = element.id;
-            if(!elementChange) return;
+            if(element.ele.componentDepends?.length > 0) {
+                for (let index = 0; index < element.ele.componentDepends.length; index++) {
+                    const title = element.ele.componentDepends[index].element
+                    if( title === "horizontalTitle") {
+                        this.addColumnsTable({ componentDepends: element.ele.componentDepends[index], rowId: element.id,  inputs: this.formSchema[0].body[0].inputs, values: value})
+                    } else if( title === "verticalTitle") {
+                        this.addRowsTable({ componentDepends: element.ele.componentDepends[index], rowId: element.id,  inputs: this.formSchema[0].body[0].inputs, values: value})
+                    }
+                }
 
-            elementChange.forEach(element => {
-                const [ table, nameInput ] = element.split('.');
-                const asd = `${table}[${index}].${nameInput}`
-                this.$refs[`${table}[${index}].${nameInput}`].select(value)
-            });
 
+
+            }
         },
         getValueInput(elementArray, value) {
             const element = elementArray.find(e => e.value == value);

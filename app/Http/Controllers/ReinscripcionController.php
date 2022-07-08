@@ -278,6 +278,39 @@ class ReinscripcionController extends Controller
         }
     }
 
+    protected function SanLuisData($id)
+    {
+        $productors = ProductoresController::productoresUsuario();
+        $reinscripcion = Reinscripciones::find($id);
+
+        if (!empty($reinscripcion->explosivos)) {
+            $reinscripcion->explosivos = $reinscripcion->explosivos;
+        }
+
+        if (!empty($reinscripcion->equipos)) {
+            $reinscripcion->equipos = $reinscripcion->equipos;
+        }
+
+        if (!empty(Reinscripciones::find($id)->productos)) {
+            $productos = Reinscripciones::find($id)->productos->toArray()[0];
+            unset($productos['id']);
+            $reinscripcion = array_merge($reinscripcion->toArray(), $productos);
+        }
+
+        $provinces = CountriesController::getProvinces();
+
+        $productorsList = [];
+        for ($i = 0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, ['value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial]);
+        }
+
+        return [
+            'reinscripcion' => $reinscripcion,
+            'provinces' => $provinces,
+            'productorsList' => $productorsList
+        ];
+    }
+
     protected function LaRiojaStore($saveData, $newProducts, $idReinscripcion, $action)
     {
         if (empty($idReinscripcion)) {

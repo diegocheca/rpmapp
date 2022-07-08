@@ -34,13 +34,15 @@ const childMinerals =[ // default value,
     }
 ]
 
-const childProduccionAnual =[ // default value,
-    {
-        label: '',
-        value: '',
-        type: inputsTypes.NUMBER,
-        name: 'cantidad',
-    }
+const childProduccionAnual =[
+    [
+        {
+            label: '',
+            value: '',
+            type: inputsTypes.NUMBER,
+            name: 'production',
+        }
+    ]
 ]
 
 const childComercializacion = [
@@ -339,27 +341,21 @@ console.log(schema);
                             inputs: [
                                 {
                                     label: '',
-                                    type: inputsTypes.LIST,
-                                    name: 'Productos',
-                                    columns: 'grid-cols-1',
-                                    // colSpans + 1
-                                    columnsResponsive: 'lg:grid-cols-3',
-                                    componentDepends: [
-                                        {
-                                            component:'produccion_anual',
-                                            element: 'horizontalTitle',
-                                            titleCell: 'nombre_mineral'
-                                        },
-                                        {
-                                            component:'comercializacion',
-                                            element: 'verticalTitle',
-                                            titleCell: 'nombre_mineral'
-                                        }
+                                    type: inputsTypes.TABLE,
+                                    name: "Productos",
+                                    typeTable: "horizontal",
+                                    addRow: true,
+                                    verticalTitle: [],
+                                    horizontalTitle: [
+                                        'Mineral Extraído',
+                                        'Ley',
+                                        'Calidad',
+                                        'Observaciones'
                                     ],
-                                    elements: [
+                                    element: [
                                         [
                                             {
-                                                label: 'Mineral Extraído',
+                                                label: '',
                                                 value: {},
                                                 type: inputsTypes.SELECT,
                                                 colSpan: '',
@@ -381,46 +377,46 @@ console.log(schema);
                                                         titleCell: 'nombre_mineral'
                                                     }
                                                 ],
-                                                // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
                                             },
                                             {
-                                                label: 'Ley',
+                                                label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
-                                                name: 'ley',
+                                                name: 'ley2',
                                                 colSpan: '',
                                             },
                                             {
-                                                label: 'Calidad',
+                                                label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'calidad',
                                                 colSpan: '',
                                             },
                                             {
-                                                label: 'Observaciones',
+                                                label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones',
                                                 colSpan: '',
                                             },
-                                            {
-                                                colSpan: 'lg:w-5/5',
-                                                type: 'observation',
-                                                ...new Observations({schema, name: 'row', action}).observations
-                                            }
+                                            // {
+                                            //     colSpan: 'lg:w-5/5',
+                                            //     type: 'observation',
+                                            //     ...new Observations({schema, name: 'row', action}).observations
+                                            // }
 
                                         ]
                                     ],
+                                    observation: new Observations({schema, name: 'Productos', action}).observations,
                                     childrens: getChildrens({ data: schema.productos, selectedChild: childMinerals, listMinerales}),
                                     validations: yup
                                         .array()
                                         .of(
                                             yup.object().shape({
-                                                nombre_mineral: yup.object().when('mineral', {
-                                                    is: value => _.isEmpty(value),
-                                                    then: yup.object().nullable().required('Debes elegir un elemento')
-                                                }),
+                                                // nombre_mineral: yup.object().when('mineral', {
+                                                //     is: value => _.isEmpty(value),
+                                                //     then: yup.object().nullable().required('Debes elegir un elemento')
+                                                // }),
                                                 ley: yup.string().nullable().required('Debes completar este campo'),
                                                 calidad: yup.string().nullable().required('Debes completar este campo'),
                                                 observaciones: yup.string().required('Debes completar este campo').nullable(),
@@ -432,6 +428,101 @@ console.log(schema);
                                         )
                                         .strict(),
                                 },
+                                // {
+                                //     label: '',
+                                //     type: inputsTypes.LIST,
+                                //     name: 'Productos',
+                                //     columns: 'grid-cols-1',
+                                //     // colSpans + 1
+                                //     columnsResponsive: 'lg:grid-cols-3',
+                                //     componentDepends: [
+                                //         {
+                                //             component:'produccion_anual',
+                                //             element: 'horizontalTitle',
+                                //             titleCell: 'nombre_mineral'
+                                //         },
+                                //         {
+                                //             component:'comercializacion',
+                                //             element: 'verticalTitle',
+                                //             titleCell: 'nombre_mineral'
+                                //         }
+                                //     ],
+                                //     elements: [
+                                //         [
+                                //             {
+                                //                 label: 'Mineral Extraído',
+                                //                 value: {},
+                                //                 type: inputsTypes.SELECT,
+                                //                 colSpan: '',
+                                //                 options: minerales.data,
+                                //                 name: 'nombre_mineral',
+                                //                 multiple: false,
+                                //                 closeOnSelect: true,
+                                //                 searchable: false,
+                                //                 placeholder: 'Selecciona una opción',
+                                //                 componentDepends: [
+                                //                     {
+                                //                         component:'produccion_anual',
+                                //                         element: 'horizontalTitle',
+                                //                         titleCell: 'nombre_mineral'
+                                //                     },
+                                //                     {
+                                //                         component:'comercializacion',
+                                //                         element: 'verticalTitle',
+                                //                         titleCell: 'nombre_mineral'
+                                //                     }
+                                //                 ],
+                                //                 // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
+                                //             },
+                                //             {
+                                //                 label: 'Ley',
+                                //                 value: '',
+                                //                 type: inputsTypes.TEXT,
+                                //                 name: 'ley',
+                                //                 colSpan: '',
+                                //             },
+                                //             {
+                                //                 label: 'Calidad',
+                                //                 value: '',
+                                //                 type: inputsTypes.TEXT,
+                                //                 name: 'calidad',
+                                //                 colSpan: '',
+                                //             },
+                                //             {
+                                //                 label: 'Observaciones',
+                                //                 value: '',
+                                //                 type: inputsTypes.TEXT,
+                                //                 name: 'observaciones',
+                                //                 colSpan: '',
+                                //             },
+                                //             {
+                                //                 colSpan: 'lg:w-5/5',
+                                //                 type: 'observation',
+                                //                 ...new Observations({schema, name: 'row', action}).observations
+                                //             }
+
+                                //         ]
+                                //     ],
+                                //     childrens: getChildrens({ data: schema.productos, selectedChild: childMinerals, listMinerales}),
+                                //     validations: yup
+                                //         .array()
+                                //         .of(
+                                //             yup.object().shape({
+                                //                 nombre_mineral: yup.object().when('mineral', {
+                                //                     is: value => _.isEmpty(value),
+                                //                     then: yup.object().nullable().required('Debes elegir un elemento')
+                                //                 }),
+                                //                 ley: yup.string().nullable().required('Debes completar este campo'),
+                                //                 calidad: yup.string().nullable().required('Debes completar este campo'),
+                                //                 observaciones: yup.string().required('Debes completar este campo').nullable(),
+                                //                 // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                //                 // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
+                                //                 row_evaluacion: action == 'evaluate'? yup.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').nullable().required('Debes seleccionar una opción') : {},
+                                //                 row_comentario: action == 'evaluate'? yup.string().when('observacion_row', { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación') }).nullable() : {}
+                                //             })
+                                //         )
+                                //         .strict(),
+                                // },
                                 {
                                     label: 'Producción Anual',
                                     type: inputsTypes.TABLE,
@@ -464,7 +555,7 @@ console.log(schema);
                                     //     // ]
                                     // ],
                                     // element: getChildrensTableDepends({ data: schema.productos, key: 'produccion', selectedChild: childProduccionAnual, listMinerales}),
-                                    element: getChildrensTableDepends({ data: schema, key: 'produccion', selectedChild: childProduccionAnual, listMinerales}),
+                                    element: _.isEmpty(schema)? childProduccionAnual : getChildrensTableDepends({ data: schema, key: 'produccion', selectedChild: childProduccionAnual, listMinerales}),
 
                                     observation: new Observations({schema, name: 'produccion_anual', action}).observations,
                                     childrens: getChildrensTableDepends({ data: schema.productos, key: 'produccion', selectedChild: childProduccionAnual, listMinerales}),
@@ -516,7 +607,8 @@ console.log(schema);
                                     //     ]
                                     // ],
                                     // element: getChildrensTableDepends({ data: schema.productos, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
-                                    element: getChildrensTableDepends({ data: schema, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
+                                    // element: getChildrensTableDepends({ data: schema, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
+                                    element: _.isEmpty(schema)? childComercializacion : getChildrensTableDepends({ data: schema, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
 
                                     observation: new Observations({schema, name: 'comercializacion', action}).observations,
                                     validations: yup
@@ -574,40 +666,29 @@ console.log(schema);
                                         'Cantidad mensual',
                                         'Observaciones'
                                     ],
-
-                                    // cantidad_explosivo: 45
-                                    // comentario: null
-                                    // created_at: "2021-11-15T20:55:49.000000Z"
-                                    // deleted_at: null
-                                    // evaluacion: null
-                                    // id: 1
-                                    // id_reinscripcion: 2
-                                    // nombre_explosivo: "qwd"
-                                    // observaciones_explosivo: "ymf"
-                                    // tipo_explosivo: "teyj"
                                     element: [
                                         [
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[0].nombre_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[0].nombre_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'nombre_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[0].tipo_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[0].tipo_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'tipo_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[0].cantidad_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[0].cantidad_explosivo : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[0].observaciones_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[0].observaciones_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones_explosivo',
                                             },
@@ -615,25 +696,25 @@ console.log(schema);
                                         [
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[1].nombre_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[1].nombre_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'nombre_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[1].tipo_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[1].tipo_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'tipo_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[1].cantidad_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[1].cantidad_explosivo : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[1].observaciones_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[1].observaciones_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones_explosivo',
                                             },
@@ -641,25 +722,25 @@ console.log(schema);
                                         [
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[2].nombre_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[2].nombre_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'nombre_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[2].tipo_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[2].tipo_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'tipo_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[2].cantidad_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[2].cantidad_explosivo : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad_explosivo',
                                             },
                                             {
                                                 label: '',
-                                                value: schema.explosivos.length > 0? schema.explosivos[2].observaciones_explosivo : '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[2].observaciones_explosivo : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones_explosivo',
                                             },
@@ -1262,7 +1343,7 @@ function getChildrensTable({data, key, selectedChild, listMinerales}) {
 }
 
 function getChildrensTableDepends({data, key, selectedChild, listMinerales}) {
-    return
+    //return
     let child = selectedChild
 
     if (!data || data.length == 0) {

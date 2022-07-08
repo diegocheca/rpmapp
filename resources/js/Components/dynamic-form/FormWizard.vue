@@ -158,7 +158,7 @@ export default {
     ],
 
     data() {
-        const currentStep = 0;
+        const currentStep = 2;
         const formValues = {};
         const loading = true;
 
