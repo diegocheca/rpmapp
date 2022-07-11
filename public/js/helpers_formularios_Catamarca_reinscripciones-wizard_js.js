@@ -269,7 +269,7 @@ function _getFormSchema() {
                   }, {
                     label: 'Mina',
                     value: !minas ? undefined : minas.data.find(function (e) {
-                      return schema.id_mina === e.value;
+                      return schema.id_mina == e.value;
                     }),
                     type: _enums_inputsTypes__WEBPACK_IMPORTED_MODULE_3__["default"].SELECT,
                     // get axios
@@ -845,7 +845,10 @@ function getChildrens(data, observation) {
       if (i == -1) return "continue";
 
       if (clone[i].select) {
-        clone[i].value = JSON.parse(object[property]);
+        clone[i].value = {
+          label: property,
+          value: object[property]
+        };
       } else {
         clone[i].value = object[property];
       }

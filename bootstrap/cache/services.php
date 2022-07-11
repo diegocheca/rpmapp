@@ -38,6 +38,7 @@
     34 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     35 => 'Carbon\\Laravel\\ServiceProvider',
     36 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+<<<<<<< HEAD
     37 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
     38 => 'Spatie\\Permission\\PermissionServiceProvider',
     39 => 'Tightenco\\Ziggy\\ZiggyServiceProvider',
@@ -52,6 +53,21 @@
     48 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     49 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     50 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
+=======
+    37 => 'Spatie\\Permission\\PermissionServiceProvider',
+    38 => 'Tightenco\\Ziggy\\ZiggyServiceProvider',
+    39 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
+    40 => 'App\\Providers\\AppServiceProvider',
+    41 => 'App\\Providers\\AuthServiceProvider',
+    42 => 'App\\Providers\\EventServiceProvider',
+    43 => 'App\\Providers\\RouteServiceProvider',
+    44 => 'App\\Providers\\FortifyServiceProvider',
+    45 => 'App\\Providers\\JetstreamServiceProvider',
+    46 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    47 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
+    48 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    49 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
+>>>>>>> 0633d13484b6937080cafb74fd2a8457c132ecde
   ),
   'eager' => 
   array (
@@ -77,6 +93,7 @@
     19 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     20 => 'Carbon\\Laravel\\ServiceProvider',
     21 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+<<<<<<< HEAD
     22 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
     23 => 'Spatie\\Permission\\PermissionServiceProvider',
     24 => 'Tightenco\\Ziggy\\ZiggyServiceProvider',
@@ -91,6 +108,21 @@
     33 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
     34 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     35 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
+=======
+    22 => 'Spatie\\Permission\\PermissionServiceProvider',
+    23 => 'Tightenco\\Ziggy\\ZiggyServiceProvider',
+    24 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
+    25 => 'App\\Providers\\AppServiceProvider',
+    26 => 'App\\Providers\\AuthServiceProvider',
+    27 => 'App\\Providers\\EventServiceProvider',
+    28 => 'App\\Providers\\RouteServiceProvider',
+    29 => 'App\\Providers\\FortifyServiceProvider',
+    30 => 'App\\Providers\\JetstreamServiceProvider',
+    31 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    32 => 'Tymon\\JWTAuth\\Providers\\LaravelServiceProvider',
+    33 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
+    34 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
+>>>>>>> 0633d13484b6937080cafb74fd2a8457c132ecde
   ),
   'deferred' => 
   array (
