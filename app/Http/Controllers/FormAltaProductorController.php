@@ -9500,8 +9500,10 @@ class FormAltaProductorController extends Controller
 		if($permisos_a_pasar == -1){
 			return var_dump("error en sesion");
 		}
+		
+		//dd($disables, $mostrar);
 		if(Auth::user()->id_provincia  == 86){ 
-			$permisos = Permission::dame_permisos(Auth::user()->id_provincia ,$permisos_a_pasar, 1, 2 , 1, 99);
+			$permisos = Permission::dame_permisos(Auth::user()->id_provincia ,$permisos_a_pasar, 1, 1 , 1, 99);
 		}
 		//dd($permisos,$disables,$mostrar);
 		/*
@@ -9519,7 +9521,10 @@ class FormAltaProductorController extends Controller
 		}
 		$permisos = Permission::dame_permisos(Auth::user()->id_provincia ,$permisos_a_pasar, 1, 2 , 1, 99);
 */
-		dd($permisos,$disables,$mostrar);
+		//dd($permisos,$disables,$mostrar);
+		$mostrar = $permisos["mostrar"];
+		$disables = $permisos["disabled"];
+		//dd($mostrar, $disables);
 
 		if ($nombre_provincia != "") {
 			$productor = $this->dame_un_productor_vacio();
