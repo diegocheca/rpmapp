@@ -382,7 +382,7 @@ console.log(schema);
                                                 label: '',
                                                 value: '',
                                                 type: inputsTypes.TEXT,
-                                                name: 'ley2',
+                                                name: 'ley',
                                                 colSpan: '',
                                             },
                                             {
@@ -542,7 +542,7 @@ console.log(schema);
                                         'Noviembre',
                                         'Diciembre'
                                     ],
-                                    horizontalTitle: [],
+                                    horizontalTitle: [""],
                                     // element: [
                                     //     childProduccionAnual
                                     //     // [
@@ -753,7 +753,7 @@ console.log(schema);
                                             yup.object().shape({
                                                 nombre_explosivo: yup.string().nullable().required('Debes completar este campo'),
                                                 tipo_explosivo: yup.string().nullable().required('Debes completar este campo'),
-                                                cantidad_explosivo: yup.number().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
+                                                cantidad_explosivo: yup.string().nullable().required('Debes completar este campo').min(0, 'No puedes ingresar un valor negativo'),
                                                 observaciones_explosivo: yup.string().nullable().required('Debes completar este campo'),
                                             })
                                         )

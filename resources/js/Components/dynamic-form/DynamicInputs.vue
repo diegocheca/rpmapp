@@ -306,10 +306,9 @@
                                                             </label>
                                                         </template>
                                                         <template v-if="ele.type == inputsTypes.REMOVEICON || ele.type == 'observation'">
-                                                            <svg v-if="ele.type == inputsTypes.REMOVEICON && !evaluate" @click="removeRowTable(item, indexElement)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <svg v-if="ele.type == inputsTypes.REMOVEICON && !evaluate" @click="removeRowTable(item, indexElement); removeColumnTable(item, indexElement)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                             </svg>
-                                                            <!-- <pre>{{ele}}</pre> -->
                                                             <div v-if="ele.type == 'observation' && evaluate" class="grid grid-rows-2 grid-flow-col p-4 mt-5 rounded-lg"
                                                             :class="[action != 'create' && ele.value != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]">
 
@@ -506,7 +505,7 @@ export default {
             }
         },
         handleHiddenComponent(item, inputs) {
-            item.hiddenComponent.forEach( hidd => {
+            item.hiddenComponent?.forEach( hidd => {
                 const compHidden = inputs.find( e => hidd.component === e.name );
                 if(compHidden && typeof compHidden.hidden !== 'undefined') {
                     compHidden.hidden = hidd.value == item.value;
@@ -617,8 +616,32 @@ export default {
             for (let index2 = 0; index2 < item.element[index].length; index2++) {
                 const element = item.element[index][index2];
                 element.componentDepends?.forEach( comp => {
-                    const depend = this.formSchema[0].body[0].inputs.find( e => e.name == comp.component);
-                    depend.horizontalTitle.splice( index, 1);
+                    if(comp.element == "horizontalTitle") {
+                        const depend = this.formSchema[0].body[0].inputs.find( e => e.name == comp.component);
+                        depend.horizontalTitle.splice( index, 1);
+                        depend.element[0].splice( index, 1);
+                    }
+                })
+            }
+
+            item.element.splice( index, 1);
+            if(item.element.length == 0) {
+               item.element.push(firstElement);
+            }
+        },
+        removeColumnTable(item, index) {
+            const firstElement = item.element[0]
+
+            if(!item.element.length) return
+
+            for (let index2 = 0; index2 < item.element[index - 1].length; index2++) {
+                const element = item.element[index - 1][index2];
+                element.componentDepends?.forEach( comp => {
+                    if(comp.element == "verticalTitle") {
+                        const depend = this.formSchema[0].body[0].inputs.find( e => e.name == comp.component);
+                        depend.verticalTitle.splice( index, 1);
+                        depend.element.splice( index, 1);
+                    }
                 })
             }
 
@@ -630,17 +653,21 @@ export default {
         addColumnsTable({componentDepends, rowId, inputs, values}) {
             if(!componentDepends) return
             const depend = inputs.find( e => e.name === componentDepends.component);
-            if(depend[componentDepends.element].length <= parseInt(rowId)){
+            if(depend[componentDepends.element].length == 0) {
                 depend[componentDepends.element].push(values.label);
-                depend.element[0].push(depend.element[0]);
-                depend[componentDepends.element].push("");
+            } else if(depend[componentDepends.element].length <= parseInt(rowId)){
+                depend[componentDepends.element].push(values.label);
+                depend.element[0].push(depend.element[0][0]);
+                // depend[componentDepends.element].push("");
             }else depend[componentDepends.element][rowId] = values.label;
 
         },
         addRowsTable({componentDepends, rowId, inputs, values}) {
             if(!componentDepends) return
             const depend = inputs.find( e => e.name === componentDepends.component);
-            if(depend[componentDepends.element].length <= parseInt(rowId)){
+            if(depend[componentDepends.element].length == 0) {
+                depend[componentDepends.element].push(values.label);
+            } else if(depend[componentDepends.element].length <= parseInt(rowId)){
                 depend[componentDepends.element].push(values.label);
                 depend.element.push(depend.element[0]);
             }else depend[componentDepends.element][rowId] = values.label;
