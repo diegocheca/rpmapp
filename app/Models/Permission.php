@@ -89,12 +89,14 @@ class Permission extends Model
             ->where('formulario', '=', intval($formualrio) )
             ->where('accion', '=', $accion)
             ->where('estado', '=', $estado)
+            ->orderBy('pagina', 'asc')
             ->get();
 
-           // dd( $id_provincia,$perfil,intval($formualrio),$accion, $estado,$filas);
+            
             $mostrar_a_devolver = array();
             $disabled_a_devolver = array();
             $array_de_permisos_db = explode( '-', $filas[0]->data);
+            //dd( $filas,$filas[0]->data);
             //"numeroproductor-cuit-razonsocial-email-tiposociedad-inscripciondgr-constaciasociedad-paso-boton";
             $array[0] = Permission::permisos_pagina_uno($perfil,$array_de_permisos_db[2],$array_de_permisos_db[3],$array_de_permisos_db[1],$array_de_permisos_db[0],$array_de_permisos_db[4],$array_de_permisos_db[5],$array_de_permisos_db[6],$array_de_permisos_db[7],$array_de_permisos_db[8]);
             $mostrar_a_devolver = array_merge($mostrar_a_devolver, $array[0][0]);
@@ -103,17 +105,20 @@ class Permission extends Model
 
             $array_de_permisos_db = explode( '-', $filas[1]->data);
             //"leal_calle-leal_numero-leal_telefono-leal_pais-leal_provincia-leal_departamento-leal_localidad-leal_cp-leal_otro-paso-boton";
+            //dd( $filas[1]->data,"dsda",$array_de_permisos_db);
             $array[1] = Permission::permisos_pagina_dos($perfil,$array_de_permisos_db[0],$array_de_permisos_db[1],$array_de_permisos_db[2],$array_de_permisos_db[3],$array_de_permisos_db[4],$array_de_permisos_db[5],$array_de_permisos_db[6],$array_de_permisos_db[7],$array_de_permisos_db[8],$array_de_permisos_db[9],$array_de_permisos_db[10],"legal");
             $mostrar_a_devolver = array_merge($mostrar_a_devolver, $array[1][0]);
             $disabled_a_devolver = array_merge($disabled_a_devolver, $array[1][1]);
 
             $array_de_permisos_db = explode( '-', $filas[2]->data);
-            //"leal_calle-leal_numero-leal_telefono-leal_pais-leal_provincia-leal_departamento-leal_localidad-leal_cp-leal_otro-paso-boton";
+            
+            //"administracion_calle-administracion_numero-administracion_telefono-administracion_pais-administracion_provincia-administracion_departamento-administracion_localidad-administracion_cp-administracion_otro-paso-boton";
             $array[2] = Permission::permisos_pagina_tres($perfil,$array_de_permisos_db[0],$array_de_permisos_db[1],$array_de_permisos_db[2],$array_de_permisos_db[3],$array_de_permisos_db[4],$array_de_permisos_db[5],$array_de_permisos_db[6],$array_de_permisos_db[7],$array_de_permisos_db[8],$array_de_permisos_db[9],$array_de_permisos_db[10],"administrativo");
             $mostrar_a_devolver = array_merge($mostrar_a_devolver, $array[2][0]);
             $disabled_a_devolver = array_merge($disabled_a_devolver, $array[2][1]);
             
             $array_de_permisos_db = explode( '-', $filas[3]->data);
+            //dd($filas[8],$array_de_permisos_db);
             //"numero_expdiente-categoria-nombre_mina-descripcion_mina-distrito_minero-mina_cantera-plano_inmueble-minerales_variedad-paso-boton";
             $array[3] = Permission::permisos_pagina_cuatro($perfil,$array_de_permisos_db[0],$array_de_permisos_db[1],$array_de_permisos_db[2],$array_de_permisos_db[3],$array_de_permisos_db[4],$array_de_permisos_db[5],$array_de_permisos_db[6],$array_de_permisos_db[7],$array_de_permisos_db[8],$array_de_permisos_db[9]);
             $mostrar_a_devolver = array_merge($mostrar_a_devolver, $array[3][0]);
@@ -141,9 +146,17 @@ class Permission extends Model
 
             $array_de_permisos_db = explode( '-', $filas[7]->data);
             //"nombre_gestor-dni_gestor-profesion_gestor-telefono_gestor-notificacion_gestor-email_gestor-dni_productor-foto_productor-constancia_afip-autorizacion_gestor-paso-boton";
+           // dd($array_de_permisos_db,$filas[7]);
             $array[7] = Permission::permisos_pagina_ocho($perfil,$array_de_permisos_db[0],$array_de_permisos_db[1],$array_de_permisos_db[2],$array_de_permisos_db[3],$array_de_permisos_db[4],$array_de_permisos_db[5],$array_de_permisos_db[6],$array_de_permisos_db[7],$array_de_permisos_db[8],$array_de_permisos_db[9],$array_de_permisos_db[10],$array_de_permisos_db[11]);
             $mostrar_a_devolver = array_merge($mostrar_a_devolver, $array[7][0]);
             $disabled_a_devolver = array_merge($disabled_a_devolver, $array[7][1]);
+
+
+            $array_de_permisos_db = explode( '-', $filas[8]->data);
+            //"decreto3737-situacion_mina-concesion_minera_asiento_n-concesion_minera_fojas-concesion_minera_tomo_n-concesion_minera_reg_m_y_d-concesion_minera_reg_cant-concesion_minera_reg_men-concesion_minera_reg_d_y_c-obs_datos_minas-paso_mendoza";
+            $array[8] = Permission::permisos_pagina_nueve($perfil,$array_de_permisos_db[0],$array_de_permisos_db[1],$array_de_permisos_db[2],$array_de_permisos_db[3],$array_de_permisos_db[4],$array_de_permisos_db[5],$array_de_permisos_db[6],$array_de_permisos_db[7],$array_de_permisos_db[8],$array_de_permisos_db[9],$array_de_permisos_db[10],$array_de_permisos_db[11],$array_de_permisos_db[12]);
+            $mostrar_a_devolver = array_merge($mostrar_a_devolver, $array[8][0]);
+            $disabled_a_devolver = array_merge($disabled_a_devolver, $array[8][1]);
 
 
 
@@ -348,9 +361,8 @@ class Permission extends Model
 
         return $array_a_devolver;
 
-        
-
     }
+
     public static function permisos_pagina_dos($rol,$legal_calle,$legal_numero,$legal_telefono,$legal_pais,$legal_provincia,$legal_departamento, $legal_localidad,$legal_cp,$legal_otro,$paso,$boton,$tipo){
         $mostrar = array();
         $disable = array();
@@ -1881,6 +1893,279 @@ class Permission extends Model
         if((intval($paso[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
             $disabled["paso_ocho"] = false;
         else $disabled["paso_ocho"] = true;
+        
+
+
+        $array_a_devolver = array();
+        $array_a_devolver[0] = $mostrar;
+        $array_a_devolver[1] = $disabled;
+
+        return $array_a_devolver;
+
+        
+
+    }
+
+    
+    public static function permisos_pagina_nueve($rol,$decreto3737,$situacion_mina,$concesion_minera_asiento_n,$concesion_minera_fojas,$concesion_minera_tomo_n,$concesion_minera_reg_m_y_d,$concesion_minera_reg_cant,$concesion_minera_reg_men,$concesion_minera_reg_d_y_c,$obs_datos_minas,$paso_mendoza,$paso,$boton){
+        $mostrar = array();
+        $disable = array();
+        //dd($paso,$boton);
+        //dd($rol,$razon_social,$email,$cuit,$num_prod,$tipo_sociedad,$inscripcion_dgr, $constancia_sociedad,$paso,$boton);
+        
+        //value
+        if( ( intval($decreto3737[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $mostrar["decreto3737"] = false;
+        else $mostrar["decreto3737"] = true;
+        if( (intval($decreto3737[$rol-1])  & 2 ) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["decreto3737"] = false;
+        else $disabled["decreto3737"] = true;
+        //correccion de razon social
+        if((intval($decreto3737[$rol+3-1])  & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+        $mostrar["decreto3737_correccion"] = false ;
+        else $mostrar["decreto3737_correccion"] = true;
+        if( (intval ($decreto3737[$rol+3-1]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        $disabled["decreto3737_correccion"] = false;
+        else $disabled["decreto3737_correccion"] = true;
+        
+
+        
+        //value
+        if((intval($situacion_mina[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $mostrar["situacion_mina"] = false;
+        else $mostrar["situacion_mina"] = true;
+        if((intval($situacion_mina[$rol-1])& 2)  == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["situacion_mina"] = false;
+        else $disabled["situacion_mina"] = true;
+        //correccion de situacion_mina
+        if( (intval($situacion_mina[$rol+2])  & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["situacion_mina_correccion"] = false;
+        else $mostrar["situacion_mina_correccion"] = true;
+        if( (intval($situacion_mina[$rol+2])  & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["situacion_mina_correccion"] = false;
+        else $disabled["situacion_mina_correccion"] = true;
+
+        //$cuit = "400400";
+
+        //value
+        if((intval($concesion_minera_asiento_n[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $mostrar["concesion_minera_asiento_n"] = false;
+        else $mostrar["concesion_minera_asiento_n"] = true;
+        if( (intval($concesion_minera_asiento_n[$rol-1])  & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+        $disabled["concesion_minera_asiento_n"] = false;
+        else $disabled["concesion_minera_asiento_n"] = true;
+        //correccion de concesion_minera_asiento_n
+        if( (intval($concesion_minera_asiento_n[$rol+2] & 4)) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["concesion_minera_asiento_n_correccion"] = false;
+        else $mostrar["concesion_minera_asiento_n_correccion"] = true;
+        if((intval($concesion_minera_asiento_n[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["concesion_minera_asiento_n_correccion"] = false;
+        else $disabled["concesion_minera_asiento_n_correccion"] = true;
+
+        
+        //dd($mostrar,$disabled);
+        //dd( intval($email[$rol-1]), $razon_social,"mostrar",$mostrar, "disables", $disabled);
+
+
+        //value
+        if((intval($concesion_minera_fojas[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        $mostrar["concesion_minera_fojas"] = false;
+        else $mostrar["concesion_minera_fojas"] = true;
+        if((intval( $concesion_minera_fojas[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["concesion_minera_fojas"] = false;
+        else $disabled["concesion_minera_fojas"] = true;
+        //correccion de razon social
+        if((intval($concesion_minera_fojas[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["concesion_minera_fojas_correccion"] = false;
+        else $mostrar["concesion_minera_fojas_correccion"] = true;
+        if((intval($concesion_minera_fojas[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["concesion_minera_fojas_correccion"] = false;
+        else $disabled["concesion_minera_fojas_correccion"] = true;
+
+
+
+
+
+
+
+        //value
+        if((intval($concesion_minera_tomo_n[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        $mostrar["concesion_minera_tomo_n"] = false;
+        else $mostrar["concesion_minera_tomo_n"] = true;
+        if((intval( $concesion_minera_tomo_n[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["concesion_minera_tomo_n"] = false;
+        else $disabled["concesion_minera_tomo_n"] = true;
+        //correccion de razon social
+        if((intval($concesion_minera_tomo_n[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["concesion_minera_tomo_n_correccion"] = false;
+        else $mostrar["concesion_minera_tomo_n_correccion"] = true;
+        if((intval($concesion_minera_tomo_n[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["concesion_minera_tomo_n_correccion"] = false;
+        else $disabled["concesion_minera_tomo_n_correccion"] = true;
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //value
+        if((intval($concesion_minera_reg_m_y_d[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        $mostrar["concesion_minera_reg_m_y_d"] = false;
+        else $mostrar["concesion_minera_reg_m_y_d"] = true;
+        if((intval( $concesion_minera_reg_m_y_d[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["concesion_minera_reg_m_y_d"] = false;
+        else $disabled["concesion_minera_reg_m_y_d"] = true;
+        //correccion de razon social
+        if((intval($concesion_minera_reg_m_y_d[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["concesion_minera_reg_m_y_d_correccion"] = false;
+        else $mostrar["concesion_minera_reg_m_y_d_correccion"] = true;
+        if((intval($concesion_minera_reg_m_y_d[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["concesion_minera_reg_m_y_d_correccion"] = false;
+        else $disabled["concesion_minera_reg_m_y_d_correccion"] = true;
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //value
+        if((intval($concesion_minera_reg_cant[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        $mostrar["concesion_minera_reg_cant"] = false;
+        else $mostrar["concesion_minera_reg_cant"] = true;
+        if((intval( $concesion_minera_reg_cant[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["concesion_minera_reg_cant"] = false;
+        else $disabled["concesion_minera_reg_cant"] = true;
+        //correccion de razon social
+        if((intval($concesion_minera_reg_cant[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["concesion_minera_reg_cant_correccion"] = false;
+        else $mostrar["concesion_minera_reg_cant_correccion"] = true;
+        if((intval($concesion_minera_reg_cant[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["concesion_minera_reg_cant_correccion"] = false;
+        else $disabled["concesion_minera_reg_cant_correccion"] = true;
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //value
+        if((intval($concesion_minera_reg_men[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        $mostrar["concesion_minera_reg_men"] = false;
+        else $mostrar["concesion_minera_reg_men"] = true;
+        if((intval( $concesion_minera_reg_men[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["concesion_minera_reg_men"] = false;
+        else $disabled["concesion_minera_reg_men"] = true;
+        //correccion de razon social
+        if((intval($concesion_minera_reg_men[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["concesion_minera_reg_men_correccion"] = false;
+        else $mostrar["concesion_minera_reg_men_correccion"] = true;
+        if((intval($concesion_minera_reg_men[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["concesion_minera_reg_men_correccion"] = false;
+        else $disabled["concesion_minera_reg_men_correccion"] = true;
+        
+
+        //value
+        if((intval($concesion_minera_reg_d_y_c[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        $mostrar["concesion_minera_reg_d_y_c"] = false;
+        else $mostrar["concesion_minera_reg_d_y_c"] = true;
+        if((intval( $concesion_minera_reg_d_y_c[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["concesion_minera_reg_d_y_c"] = false;
+        else $disabled["concesion_minera_reg_d_y_c"] = true;
+        //correccion de razon social
+        if((intval($concesion_minera_reg_d_y_c[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["concesion_minera_reg_d_y_c_correccion"] = false;
+        else $mostrar["concesion_minera_reg_d_y_c_correccion"] = true;
+        if((intval($concesion_minera_reg_d_y_c[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["concesion_minera_reg_d_y_c_correccion"] = false;
+        else $disabled["concesion_minera_reg_d_y_c_correccion"] = true;
+
+
+        //value
+        if((intval($obs_datos_minas[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+        $mostrar["obs_datos_minas"] = false;
+        else $mostrar["obs_datos_minas"] = true;
+        if((intval( $obs_datos_minas[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["obs_datos_minas"] = false;
+        else $disabled["obs_datos_minas"] = true;
+        //correccion de razon social
+        if((intval($obs_datos_minas[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["obs_datos_minas_correccion"] = false;
+        else $mostrar["obs_datos_minas_correccion"] = true;
+        if((intval($obs_datos_minas[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["obs_datos_minas_correccion"] = false;
+        else $disabled["obs_datos_minas_correccion"] = true;
+
+
+
+        
+        //value
+        if((intval($boton[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $mostrar["boton_guardar_nueve"] = false;
+        else $mostrar["boton_guardar_nueve"] = true;
+        if((intval($boton[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["boton_guardar_nueve"] = false;
+        else $disabled["boton_guardar_nueve"] = true;
+        //correccion de razon social
+        if((intval($boton[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["boton_guardar_nueve"] = false;
+        else $mostrar["boton_guardar_nueve"] = true;
+        if((intval($boton[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["boton_guardar_nueve"] = false;
+        else $disabled["boton_guardar_nueve"] = true;
+
+        //value
+        if((intval($paso[$rol-1]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $mostrar["paso_nueve"] = false;
+        else $mostrar["paso_nueve"] = true;
+        if((intval($paso[$rol-1]) & 2) == 0) // razon social & 100  --> resultado 2 si coinciden los bits  
+            $disabled["paso_nueve"] = false;
+        else $disabled["paso_nueve"] = true;
+        //correccion de razon social
+        if((intval($paso[$rol+2]) & 4) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            //sumo 3 a al rol original para asi poder  ver los segundos 3 digitos del string 77777
+            $mostrar["paso_nueve"] = false;
+        else $mostrar["paso_nueve"] = true;
+        if((intval($paso[$rol+2]) & 2) == 0) // razon social & 100  --> resultado 4 si coinciden los bits  
+            $disabled["paso_nueve"] = false;
+        else $disabled["paso_nueve"] = true;
         
 
 
