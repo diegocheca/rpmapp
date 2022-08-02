@@ -9502,10 +9502,10 @@ class FormAltaProductorController extends Controller
 		}
 		
 		//dd($disables, $mostrar);
-		if(Auth::user()->id_provincia  == 86){ 
+		/*if(Auth::user()->id_provincia  == 86){ 
 			$permisos = Permission::dame_permisos(Auth::user()->id_provincia ,$permisos_a_pasar, 1, 1 , 1, 99);
 		}
-		dd($permisos,$disables,$mostrar);
+		dd($permisos,$disables,$mostrar);*/
 		/*
 		//Agregando permisos
 		$permisos_a_pasar = -1;
