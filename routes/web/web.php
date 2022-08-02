@@ -260,6 +260,9 @@ Route::post('/formularios/evaluacion_auto_guardado_mendoza', [FormAltaProductorM
 Route::get('/formularios/traer_datos_pagina_catamarca/{id}', [FormAltaProductorCatamarcaController::class, "traer_datos_pagina_catamarca"])->name('traer-datos-pagina-catamarca');
 Route::get('/formularios/traer_permisos_pagina_catamarca/{id}/{accion}', [FormAltaProductorCatamarcaController::class, "traer_permisos_pagina_catamarca"])->name('traer-permisos-pagina-catamarca');
 
+
+Route::get('/formularios/buscar_permisos_formulario/{provincia}/{accion}/{formulario}/{pagina}', [PermissionController::class, "buscar_permisos_formulario"])->name('buscar-permisos-formulario');
+
 Route::get('/formularios/traer_datos_pagina_mendoza/{id}', [FormAltaProductorMendozaController::class, "traer_datos_pagina_mendoza"])->name('traer-datos-pagina-mendoza');
 Route::get('/formularios/traer_permisos_pagina_mendoza/{id}/{accion}', [FormAltaProductorMendozaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-mendoza');
 
