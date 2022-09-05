@@ -6,6 +6,26 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+use Faker\Factory as Faker;
+
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\FormAltaProdPaso1;
+use App\Models\FormularioAltaProd;
+use App\Models\FormAltaProductor; //el q tiene mil columnas
+
+use Carbon\Carbon;
+use App\Models\Provincias;
+use App\Models\Departamentos;
+use App\Models\User;
+use App\Models\Minerales;
+
+use App\Models\FormAltaProductorCatamarca;
+
+use App\Models\Minerales_Borradores;
+
+
+
 class FormAltaProductor extends Model
 {
     use HasFactory;
@@ -274,4 +294,354 @@ class FormAltaProductor extends Model
     deleted_at
     updated_at
     */
+
+
+    public function inicializar_faker($estado=null,$user,$provincia=null){
+        $faker = Faker::create();
+        $this->updated_at = date("Y-m-d H:i:s");
+        if($estado== null){
+            $this->estado =  "borrador";
+        } else {
+            $this->estado = $estado;
+        }
+		$this->updated_paso_uno = date("Y-m-d H:i:s");
+		$this->updated_by = $user; // by seeder
+		$this->created_by = $user;
+        if($provincia== null){
+            $provincias = Provincias::select("id", "nombre")->get()->toArray();
+            $num_aleatorio_provincia = $faker->numberBetween(0,count($provincias)-1);
+            $this->provincia = $provincias[$num_aleatorio_provincia]["id"];
+        } else {
+            $this->provincia = $provincia;
+        }
+		$this->save();
+    }
+
+    public function completar_paso1_faker($numeroproductor = null,$cuit= null,$razonsocial= null,$email= null,$tiposociedad= null,$inscripciondgr= null,$constaciasociedad= null,$estado,$id_user,$id_provincia){
+        $faker = Faker::create();
+        $sociedades = [
+            'Sociedad en nombre colectivo',
+            'Sociedad en comandita simple',
+            'Sociedad en responsabilidad limitada',
+            'Sociedad anónima',
+            'Sociedad en comandita por acciones',
+            'Sociedad cooperativa',
+            'Sociedad por acciones simplificada'
+        ];
+
+
+        if($numeroproductor== null){
+            $this->numeroproductor = $faker->numberBetween(100,459999);
+        } else {
+            $this->numeroproductor = $numeroproductor;
+        }
+
+        if($cuit== null){
+            $this->cuit =  "20-".$faker->numberBetween(15000000,45999999)."-0";
+        } else {
+            $this->cuit = $cuit;
+        }
+
+        if($razonsocial== null){
+            $this->razonsocial =  $faker->name();
+        } else {
+            $this->razonsocial = $razonsocial;
+        }
+
+        if($email== null){
+            $this->email =  $faker->email();
+        } else {
+            $this->email = $email;
+        }
+
+        if($tiposociedad== null){
+            $this->tiposociedad = $tiposociedad;
+        } else {
+            $this->tiposociedad = $sociedades[$faker->numberBetween(0,count($sociedades)-1)];
+        }
+
+        if($inscripciondgr== null){
+            $this->inscripciondgr = $inscripciondgr;
+        } else {
+            $this->inscripciondgr = null; // poner ruta de archivo fake
+        }
+
+        if($constaciasociedad== null){
+            $this->constaciasociedad = $constaciasociedad;
+        } else {
+            $this->constaciasociedad = null; // poner ruta de archivo fake
+        }
+
+
+        if($estado== null){
+            $this->estado =  "borrador";
+        } else {
+            $this->estado = $estado;
+        }
+		$this->updated_paso_uno = date("Y-m-d H:i:s");
+		$this->updated_by = $id_user; // by seeder
+		$this->created_by = $id_user;
+
+        if($id_provincia== null){
+            $provincias = Provincias::select("id", "nombre")->get()->toArray();
+            $num_aleatorio_provincia = $faker->numberBetween(0,count($provincias)-1);
+            $this->provincia = $provincias[$num_aleatorio_provincia]["id"];
+        } else {
+            $this->provincia = $id_provincia;
+        }
+
+
+        $this->updated_at = date("Y-m-d H:i:s");
+
+        return $this->save();
+
+
+    }
+
+
+    public function completar_paso2_faker($leal_calle = null,$leal_numero= null,$leal_telefono= null,$leal_provincia= null,$leal_departamento= null,$leal_localidad= null,$leal_cp= null,$leal_otro=null,$id_user){
+        $faker = Faker::create();
+
+        if($leal_calle== null){
+            $this->leal_calle =  $faker->address;
+        } else {
+            $this->leal_calle = $leal_calle;
+        }
+
+        if($leal_numero== null){
+            $this->leal_numero =  $faker->numberBetween(1000,9999);
+        } else {
+            $this->leal_numero = $leal_numero;
+        }
+
+        if($leal_telefono== null){
+            $this->leal_telefono =   $faker->e164PhoneNumber;
+        } else {
+            $this->leal_telefono = $leal_telefono;
+        }
+        
+        $this->leal_pais = "Argentina";
+
+        if($leal_provincia== null){
+            $this->leal_provincia =  $this->provincia;
+        } else {
+            $this->leal_provincia = $leal_provincia;
+        }
+
+
+        if($leal_departamento== null){
+            $departamentos = Departamentos::select("id", "nombre")->where("provincia_id", "=",$this->provincia)->get();
+            $this->leal_departamento = $departamentos[$faker->numberBetween(0,($departamentos->count())-1)]->id; 
+            
+        } else {
+            $this->leal_departamento = $leal_departamento;
+        }
+
+        if($leal_localidad== null){
+            $this->leal_localidad =  $faker->state;
+        } else {
+            $this->leal_localidad = $leal_localidad;
+        }
+
+        if($leal_cp== null){
+            $this->leal_cp =   $faker->numberBetween(1000,9999);
+        } else {
+            $this->leal_cp = $leal_cp;
+        }
+
+        if($leal_otro== null){
+            $this->leal_otro = $faker->text($maxNbChars = 50);
+        } else {
+            $this->leal_otro = $leal_otro;
+        }
+
+		$this->updated_paso_uno = date("Y-m-d H:i:s");
+		$this->updated_by = $id_user; // by seeder
+		$this->created_by = $id_user;
+
+        return $this->save();
+    }
+
+
+
+
+    public function completar_paso3_faker($administracion_calle = null,$administracion_numero= null,$administracion_telefono= null,$administracion_provincia= null,$administracion_departamento= null,$administracion_localidad= null,$administracion_cp= null,$administracion_otro=null,$id_user){
+        $faker = Faker::create();
+
+        if($administracion_calle== null){
+            $this->administracion_calle =  $faker->address;
+        } else {
+            $this->administracion_calle = $administracion_calle;
+        }
+
+        if($administracion_numero== null){
+            $this->administracion_numero =  $faker->numberBetween(1000,9999);
+        } else {
+            $this->administracion_numero = $administracion_numero;
+        }
+
+        if($administracion_telefono== null){
+            $this->administracion_telefono =   $faker->e164PhoneNumber;
+        } else {
+            $this->administracion_telefono = $administracion_telefono;
+        }
+        
+        $this->administracion_pais = "Argentina";
+
+        if($administracion_provincia== null){
+            $this->administracion_provincia =  $this->provincia;
+        } else {
+            $this->administracion_provincia = $administracion_provincia;
+        }
+
+
+        if($administracion_departamento== null){
+            $departamentos = Departamentos::select("id", "nombre")->where("provincia_id", "=",$this->provincia)->get();
+            $this->administracion_departamento = $departamentos[$faker->numberBetween(0,($departamentos->count())-1)]->id; 
+            
+        } else {
+            $this->administracion_departamento = $administracion_departamento;
+        }
+
+        if($administracion_localidad== null){
+            $this->administracion_localidad =  $faker->state;
+        } else {
+            $this->administracion_localidad = $administracion_localidad;
+        }
+
+        if($administracion_cp== null){
+            $this->administracion_cp =   $faker->numberBetween(1000,9999);
+        } else {
+            $this->administracion_cp = $administracion_cp;
+        }
+
+        if($administracion_otro== null){
+            $this->administracion_otro = $faker->text($maxNbChars = 50);
+        } else {
+            $this->administracion_otro = $administracion_otro;
+        }
+
+		$this->updated_paso_uno = date("Y-m-d H:i:s");
+		$this->updated_by = $id_user; // by seeder
+		$this->created_by = $id_user;
+
+        return $this->save();
+    }
+
+
+
+    public function completar_paso4_faker($mina_cantera = null,$numero_expdiente= null,$distrito_minero= null,$descripcion_mina= null,$nombre_mina= null,$plano_inmueble= null,$minerales_variedad= null,$id_user){
+        $faker = Faker::create();
+        
+        //PASO 4
+        if($mina_cantera== null){
+            if($faker->boolean ){
+                $mina_cantera = "Cantera";
+                $categoria = "tercera";
+            }else {
+                $mina_cantera = "Mina";
+                if($faker->boolean ){
+                    $categoria ="primera";
+                } else {
+                    $categoria ="segunda";
+                }
+            }
+            $this->mina_cantera = $mina_cantera;
+        } else {
+            $this->mina_cantera = $mina_cantera;
+            $categoria ="tercera";
+        }
+
+
+        if($numero_expdiente== null){
+            $this->numero_expdiente =  $faker->numberBetween(1000,9999);
+        } else {
+            $this->numero_expdiente = $numero_expdiente;
+        }
+
+        if($distrito_minero== null){
+            $this->distrito_minero = "distrito numero: ".$faker->numberBetween(0,9999);
+        } else {
+            $this->distrito_minero = $distrito_minero;
+        }
+
+        if($descripcion_mina== null){
+            $this->descripcion_mina =$faker->realText($maxNbChars = 35, $indexSize = 2);
+        } else {
+            $this->descripcion_mina = $descripcion_mina;
+        }
+
+
+        if($nombre_mina== null){
+            $this->nombre_mina =  $faker->lastName;
+        } else {
+            $this->nombre_mina = $nombre_mina;
+        }
+
+        
+        //$this->plano_inmueble = $request->mina_plano_inmueble;
+        $this->categoria =$categoria;
+
+        if($plano_inmueble== null){
+            $this->plano_inmueble =  null;
+        } else {
+            $this->plano_inmueble = $plano_inmueble;
+        }
+
+        if($minerales_variedad== null){
+            $this->minerales_variedad =  null;
+        } else {
+            $this->minerales_variedad = $minerales_variedad;
+        }
+
+        //lista de minerales
+        $ya_elegidos = array();
+        $cantidad_de_minerales = $faker->numberBetween(1,4);
+        for ($i=0; $i < $cantidad_de_minerales ; $i++) { 
+                $nuevo_min = new Minerales_Borradores();
+                $nuevo_min->id_formulario = $this->id;
+                //get mineral id
+                $minerales_todos = Minerales::select("*")->where("categoria", "=", $categoria)->where("active", "=", true)->get()->toArray();
+                $mineral =$minerales_todos[$faker->numberBetween(0,count($minerales_todos)-1)];
+                $nuevo_min->id_mineral = $mineral["id"];
+                $nuevo_min->lugar_donde_se_encuentra = $faker->state;
+                $nuevo_min->variedad = null;
+                //para segunda categoria
+                $nuevo_min->segunda_cat_mineral_explotado = null;
+                $nuevo_min->mostrar_lugar_segunda_cat = null;
+                $nuevo_min->mostrar_otro_mineral_segunda_cat = null;
+                $nuevo_min->otro_mineral_segunda_cat = null;
+                //fin segunda categoria
+                $nuevo_min->observacion = $faker->realText($maxNbChars = 50, $indexSize =1);
+                $nuevo_min->clase_text_area_presentacion = null;
+                $nuevo_min->clase_text_evaluacion_de_text_area_presentacion =null;
+                $nuevo_min->texto_validacion_text_area_presentacion = null;
+                $nuevo_min->presentacion_valida = true;
+                $nuevo_min->evaluacion_correcto = null;
+                $nuevo_min->observacion_autoridad = null;
+                $nuevo_min->clase_text_area = null;
+                $nuevo_min->clase_text_evaluacion_de_text_area = null;
+                $nuevo_min->texto_validacion_text_area =null;
+                $nuevo_min->obs_valida = null;
+                $nuevo_min->lista_de_minerales_array = null;
+                $nuevo_min->thumb = null;
+                $nuevo_min->created_by = $id_user;
+                $nuevo_min->estado = "aprobado";
+                $nuevo_min->updated_by = $id_user;
+
+                $nuevo_min->created_at = null;
+                $nuevo_min->updated_at =null;
+                $resultado = $nuevo_min->save();
+        }
+
+
+
+
+
+		$this->updated_paso_uno = date("Y-m-d H:i:s");
+		$this->updated_by = $id_user; // by seeder
+		$this->created_by = $id_user;
+
+        return $this->save();
+    }
 }
