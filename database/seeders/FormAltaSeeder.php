@@ -16,7 +16,7 @@ use App\Models\Departamentos;
 use App\Models\User;
 use App\Models\Minerales;
 use App\Models\Constants;
-
+use stdClass;
 use App\Models\FormAltaProductorCatamarca;
 
 
@@ -46,7 +46,18 @@ class FormAltaSeeder extends Seeder
             $id_provincia = $provincias[$num_aleatorio_provincia]["id"];
             $nombre_provincia = $provincias[$num_aleatorio_provincia]["nombre"];
             $departamento = Departamentos::select("id", "nombre")->where("provincia_id", "=", $num_aleatorio_provincia)->first();
+//dd( $num_aleatorio_provincia,$departamento->id);
 
+if($departamento == null ){
+    $departamento = new stdClass();
+    $departamento->id = 9999;
+    $departamento->nombre ="departamento";
+}
+
+if(!property_exists($departamento, 'id') ){
+    $departamento->id = 9999;
+    $departamento->nombre ="departamento";
+}
             $sociedad = Constants::$sociedades[$faker->numberBetween(0,count(Constants::$sociedades)-1)];
 
             $id_user = 0;

@@ -711,13 +711,13 @@ class FormAltaProductor extends Model
         $this->dia = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
 
         if($acciones_a_desarrollar== null){
-            $this->acciones_a_desarrollar = $faker->realText($maxNbChars = 10, $indexSize = 0);
+            $this->acciones_a_desarrollar = $faker->realText($maxNbChars = 10, $indexSize = 1);
         } else {
             $this->acciones_a_desarrollar = $acciones_a_desarrollar;
         }
         
         if($actividad== null){
-            $this->actividad = $faker->realText($maxNbChars = 10, $indexSize = 0);
+            $this->actividad = $faker->realText($maxNbChars = 10, $indexSize = 1);
         } else {
             $this->actividad = $actividad;
         }
@@ -741,7 +741,7 @@ class FormAltaProductor extends Model
         //PASO 6
         $this->localidad_mina_pais = "Argentina";
         $this->localidad_mina_provincia = $id_provincia;
-        $this->localidad_mina_departamento = $departamento->id;
+        $this->localidad_mina_departamento = $departamento;
         $this->localidad_mina_localidad = $faker->state;
         $this->tipo_sistema = null;
         $this->longitud = null;
@@ -799,10 +799,10 @@ class FormAltaProductor extends Model
         $this->updated_by = $id_user;
         $this->save();
         //creo el nuevo productor
-        $id_productor_nuevo = Productores::crear_registro_productor($this->id);
+        $id_productor_nuevo = Productores::crear_nuevo_productor($this->id);
         $id_mina_nueva = MinaCantera::crear_registro_mina_cantera($this->id);
         $id_dia_iia_nueva = iia_dia::crear_registro_dia_iia($this->id);
-        $id_pago_canon_nuevo = Pagocanonmina::crear_registro_pago_can($this->id);
+        $id_pago_canon_nuevo = Pagocanonmina::crear_registro_pago_canon($this->id);
         $id_mina_productor = ProductorMina::crear_mina_productor($this->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
         $id_minerales_borradores = Minerales_Borradores::actualizar_registros_minerales_en_mina($this->id);
     }

@@ -37,13 +37,13 @@ class Pagocanonmina extends Model
 				//$nuevo_pago->pagado = $formulario_provisorio->pagado;
 				$nuevo_pago->pagado = true;
 				//$nuevo_pago->fecha_pago = $formulario_provisorio->fecha_pago;
-				$nuevo_pago->fecha_pago = Carbon::now()->subDays(7);
+				$nuevo_pago->fecha_pago = null;// Carbon::now()->subDays(7);
 				//$nuevo_pago->monto = $formulario_provisorio->monto;
 				$nuevo_pago->monto = 0.00;
 				//$nuevo_pago->fecha_desde = $formulario_provisorio->fecha_desde;
-				$nuevo_pago->fecha_desde =  Carbon::now();
+				$nuevo_pago->fecha_desde = null;// Carbon::now();
 				//$nuevo_pago->fecha_hasta = $formulario_provisorio->fecha_hasta;
-				$nuevo_pago->fecha_hasta = Carbon::now()->addMonth(6);
+				$nuevo_pago->fecha_hasta = null;// Carbon::now()->addMonth(6);
 				$nuevo_pago->created_by = $formulario_provisorio->created_by;
 				$nuevo_pago->estado = "aprobado";
 				$nuevo_pago->id_formulario = $id_formulario;
