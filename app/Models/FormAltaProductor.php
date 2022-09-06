@@ -567,7 +567,7 @@ class FormAltaProductor extends Model
         }
 
         if($descripcion_mina== null){
-            $this->descripcion_mina =$faker->realText($maxNbChars = 35, $indexSize = 2);
+            $this->descripcion_mina =$faker->realText($maxNbChars = 35, $indexSize = 1);
         } else {
             $this->descripcion_mina = $descripcion_mina;
         }
