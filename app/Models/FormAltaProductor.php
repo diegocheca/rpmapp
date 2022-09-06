@@ -12,7 +12,6 @@ use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\FormAltaProdPaso1;
 use App\Models\FormularioAltaProd;
-use App\Models\FormAltaProductor; //el q tiene mil columnas
 
 use Carbon\Carbon;
 use App\Models\Provincias;
@@ -22,8 +21,18 @@ use App\Models\Minerales;
 
 use App\Models\FormAltaProductorCatamarca;
 
-use App\Models\Minerales_Borradores;
 
+use App\Models\Constants;
+
+
+
+use App\Models\Productores;
+use App\Models\MinaCantera;
+use App\Models\iia_dia;
+use App\Models\Pagocanonmina;
+
+use App\Models\ProductorMina;
+use App\Models\Minerales_Borradores;
 
 
 class FormAltaProductor extends Model
@@ -319,15 +328,7 @@ class FormAltaProductor extends Model
 
     public function completar_paso1_faker($numeroproductor = null,$cuit= null,$razonsocial= null,$email= null,$tiposociedad= null,$inscripciondgr= null,$constaciasociedad= null,$estado,$id_user,$id_provincia){
         $faker = Faker::create();
-        $sociedades = [
-            'Sociedad en nombre colectivo',
-            'Sociedad en comandita simple',
-            'Sociedad en responsabilidad limitada',
-            'Sociedad anónima',
-            'Sociedad en comandita por acciones',
-            'Sociedad cooperativa',
-            'Sociedad por acciones simplificada'
-        ];
+        
 
 
         if($numeroproductor== null){
@@ -357,19 +358,19 @@ class FormAltaProductor extends Model
         if($tiposociedad== null){
             $this->tiposociedad = $tiposociedad;
         } else {
-            $this->tiposociedad = $sociedades[$faker->numberBetween(0,count($sociedades)-1)];
+            $this->tiposociedad = Constants::$sociedades[$faker->numberBetween(0,count(Constants::$sociedades)-1)];
         }
 
-        if($inscripciondgr== null){
-            $this->inscripciondgr = $inscripciondgr;
+        if($inscripciondgr == null){
+            $this->inscripciondgr =  '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
         } else {
-            $this->inscripciondgr = null; // poner ruta de archivo fake
+            $this->inscripciondgr = $inscripciondgr; // poner ruta de archivo fake
         }
 
         if($constaciasociedad== null){
-            $this->constaciasociedad = $constaciasociedad;
+            $this->constaciasociedad = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
         } else {
-            $this->constaciasociedad = null; // poner ruta de archivo fake
+            $this->constaciasociedad =$constaciasociedad;
         }
 
 
@@ -573,7 +574,7 @@ class FormAltaProductor extends Model
 
 
         if($nombre_mina== null){
-            $this->nombre_mina =  $faker->lastName;
+            $this->nombre_mina =  Constants::$nombres_minas[$faker->numberBetween(0,count(Constants::$nombres_minas))];
         } else {
             $this->nombre_mina = $nombre_mina;
         }
@@ -583,7 +584,7 @@ class FormAltaProductor extends Model
         $this->categoria =$categoria;
 
         if($plano_inmueble== null){
-            $this->plano_inmueble =  null;
+            $this->plano_inmueble = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
         } else {
             $this->plano_inmueble = $plano_inmueble;
         }
@@ -643,5 +644,166 @@ class FormAltaProductor extends Model
 		$this->created_by = $id_user;
 
         return $this->save();
+    }
+
+
+
+    public function completar_paso5_faker($owner = null,$arrendatario= null,$concesionario= null,$acciones_a_desarrollar= null,$actividad= null,$id_user){
+        $faker = Faker::create();
+        
+        //PASo 5
+        if($owner== null){
+            $this->owner = $faker->boolean;
+        } else {
+            $this->owner = $owner;
+        }
+        if($arrendatario== null){
+            $this->arrendatario = $faker->boolean;
+        } else {
+            $this->arrendatario = $arrendatario;
+        }
+        if($concesionario== null){
+            $this->concesionario = $faker->boolean;
+        } else {
+            $this->concesionario = $concesionario;
+        }
+        if ($faker->boolean) {
+            $this->sustancias_de_aprovechamiento_comun = 1;
+            $this->sustancias_de_aprovechamiento_comun_aclaracion = $faker->text($maxNbChars = 10);
+        } else {
+            $this->sustancias_de_aprovechamiento_comun = 0;
+            $this->sustancias_de_aprovechamiento_comun_aclaracion = null;
+        }
+        if ($faker->boolean) {
+            $this->otros = 1;
+            $this->otro_caracter_acalaracion = $faker->text($maxNbChars = 10);
+        } else {
+            $this->otros = 0;
+            $this->otro_caracter_acalaracion = null;
+        }
+
+        //este es un archivo
+        /*if ($request->constancia_pago_canon != null && $request->constancia_pago_canon != '' && $request->constancia_pago_canon != 'null') { //no es un archivo vacio
+            if (substr($request->constancia_pago_canon, 0, strlen(env('APP_URL') . '/storage/files_formularios')) != env('APP_URL') . '/storage/files_formularios') {
+                $contents = file_get_contents($request->constancia_pago_canon->path());
+                $formulario_nuevo->constancia_pago_canon =  Storage::put('public/files_formularios' . '/' . $request->id, $request->constancia_pago_canon);
+            }
+            //else //signifca que el archivo ya estaba cargado y no se modifico
+        }*/
+        $this->constancia_pago_canon = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+
+        //este es un archivo
+        /*if ($request->iia != null && $request->iia != '' && $request->iia != 'null') { //no es un archivo vacio
+            if (substr($request->iia, 0, strlen(env('APP_URL') . '/storage/files_formularios')) != env('APP_URL') . '/storage/files_formularios') {
+                $contents = file_get_contents($request->iia->path());
+                $formulario_nuevo->iia =  Storage::put('public/files_formularios' . '/' . $request->id, $request->iia);
+            }
+        }*/
+        $this->iia = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+            
+        //este es un archivo
+        /*if ($request->dia != null && $request->dia != '' && $request->dia != "null") { //no es un archivo vacio
+            if (substr($request->dia, 0, strlen(env('APP_URL') . '/storage/files_formularios')) != env('APP_URL') . '/storage/files_formularios') {
+                $contents = file_get_contents($request->dia->path());
+                $formulario_nuevo->dia =  Storage::put('public/files_formularios' . '/' . $request->id, $request->dia);
+            }
+        }*/
+        $this->dia = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+
+        if($acciones_a_desarrollar== null){
+            $this->acciones_a_desarrollar = $faker->realText($maxNbChars = 10, $indexSize = 0);
+        } else {
+            $this->acciones_a_desarrollar = $acciones_a_desarrollar;
+        }
+        
+        if($actividad== null){
+            $this->actividad = $faker->realText($maxNbChars = 10, $indexSize = 0);
+        } else {
+            $this->actividad = $actividad;
+        }
+
+
+        $this->fecha_alta_dia = Carbon::now();
+        $this->fecha_vencimiento_dia = Carbon::now()->addMonths(12);
+
+
+
+		$this->updated_paso_uno = date("Y-m-d H:i:s");
+		$this->updated_by = $id_user; // by seeder
+		$this->created_by = $id_user;
+
+        return $this->save();
+    }
+
+    public function completar_paso6_faker($id_provincia = null,$departamento= null,$id_user){
+        $faker = Faker::create();
+        
+        //PASO 6
+        $this->localidad_mina_pais = "Argentina";
+        $this->localidad_mina_provincia = $id_provincia;
+        $this->localidad_mina_departamento = $departamento->id;
+        $this->localidad_mina_localidad = $faker->state;
+        $this->tipo_sistema = null;
+        $this->longitud = null;
+        $this->latitud = null;
+
+        $this->updated_at = date("Y-m-d H:i:s");
+        $this->updated_paso_seis = date("Y-m-d H:i:s");
+
+
+		$this->updated_by = $id_user; // by seeder
+		$this->created_by = $id_user;
+
+        return $this->save();
+    }
+    public function completar_paso7_faker($observacion=null, $cargo_empresa=null, $presentador_nom_apellido=null, $presentador_dni=null, $id_user){
+        $faker = Faker::create();
+        
+        if($observacion== null){
+            $this->observacion = $faker->text($maxNbChars = 10);
+        } else {
+            $this->observacion = $observacion;
+        }
+
+        if($cargo_empresa== null){
+            $this->cargo_empresa =  Constants::$cargos[$faker->numberBetween(0,count(Constants::$cargos)-1)];
+        } else {
+            $this->cargo_empresa = $cargo_empresa;
+        }
+
+        if($presentador_nom_apellido== null){
+            $this->presentador_nom_apellido = $faker->suffix ." ". $faker->name;
+        } else {
+            $this->presentador_nom_apellido = $presentador_nom_apellido;
+        }
+
+        if($presentador_dni== null){
+            $this->presentador_dni =  $faker->numberBetween(15000000,45999999);
+        } else {
+            $this->presentador_dni = $presentador_nom_apellido;
+        }
+
+        $this->estado = "en revision";
+        $this->updated_at = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
+
+		$this->updated_by = $id_user; // by seeder
+
+        return $this->save();
+    }
+
+
+    public function completar_paso8_faker($id_user){
+        $this->estado = "aprobado";
+        $this->updated_at = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
+        $this->save();
+        //creo el nuevo productor
+        $id_productor_nuevo = Productores::crear_registro_productor($this->id);
+        $id_mina_nueva = MinaCantera::crear_registro_mina_cantera($this->id);
+        $id_dia_iia_nueva = iia_dia::crear_registro_dia_iia($this->id);
+        $id_pago_canon_nuevo = Pagocanonmina::crear_registro_pago_can($this->id);
+        $id_mina_productor = ProductorMina::crear_mina_productor($this->id, $id_mina_nueva, $id_productor_nuevo, $id_dia_iia_nueva);
+        $id_minerales_borradores = Minerales_Borradores::actualizar_registros_minerales_en_mina($this->id);
     }
 }
