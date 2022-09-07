@@ -33,6 +33,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
 use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
 
+use App\Http\Controllers\FormAltaProductorFakerController;
 
 use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
 
@@ -359,6 +360,9 @@ Route::group(['prefix' => 'inbox'], function () {
 });
 // DATOS PARA EL DASHBOARD
 Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('porcentaje_ventas');
+
+// Faker para formulario
+Route::get('/formulario_faker', [FormAltaProductorFakerController::class, "index"])->name('faker_index');
 
 // VER LOGS
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');
