@@ -14,6 +14,13 @@ class Constants
         'Sociedad cooperativa',
         'Sociedad por acciones simplificada'
     ];
+    
+    public static $tipos_formularios_salta = [
+        'Tipo 1',
+        'Tipo 2',
+        'Tipo 3'
+    ];
+
     public static $departamentos = [
         'Capital',
         'Rawson',
@@ -35,6 +42,7 @@ class Constants
         'Ullum',
         'Zonda'
     ];
+
 
     public static $cargos = [
         'CTO',

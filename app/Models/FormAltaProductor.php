@@ -399,6 +399,29 @@ class FormAltaProductor extends Model
 
     }
 
+    public function aprobar_paso_uno($id_user){
+        $this->cuit_correcto= true;
+        $this->obs_cuit= null;
+        $this->razon_social_correcto= true;
+        $this->obs_razon_social= null;
+        $this->numeroproductor_correcto= true;
+        $this->obs_numeroproductor= null;
+        $this->email_correcto= true;
+        $this->obs_email= null;
+        $this->tiposociedad_correcto= true;
+        $this->obs_tiposociedad= null;
+        $this->inscripciondgr_correcto= true;
+        $this->obs_inscripciondgr= null;
+        $this->constaciasociedad_correcto= true;
+        $this->obs_constaciasociedad= null;
+        $this->paso_1_progreso= 100;
+        $this->paso_1_aprobado= 100;
+        $this->paso_1_reprobado= 0;
+        $this->updated_paso_uno = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
+        return $this->save();
+    }
+
 
     public function completar_paso2_faker($leal_calle = null,$leal_numero= null,$leal_telefono= null,$leal_provincia= null,$leal_departamento= null,$leal_localidad= null,$leal_cp= null,$leal_otro=null,$id_user){
         $faker = Faker::create();
@@ -460,6 +483,31 @@ class FormAltaProductor extends Model
 		$this->updated_by = $id_user; // by seeder
 		$this->created_by = $id_user;
 
+        return $this->save();
+    }
+
+    public function aprobar_paso_dos($id_user){
+        $this->leal_calle_correcto= true;
+        $this->obs_leal_calle= null;
+        $this->leal_numero_correcto= true;
+        $this->obs_leal_numero= null;
+        $this->leal_telefono_correcto= true;
+        $this->obs_leal_telefono= null;
+        $this->leal_provincia_correcto= true;
+        $this->obs_leal_provincia= null;
+        $this->leal_departamento_correcto= true;
+        $this->obs_leal_departamento= null;
+        $this->leal_localidad_correcto= true;
+        $this->obs_leal_localidad= null;
+        $this->leal_cp_correcto= true;
+        $this->obs_leal_cp= null;
+        $this->leal_otro_correcto= true;
+        $this->obs_leal_otro= null;
+        $this->paso_2_progreso= 100;
+        $this->paso_2_aprobado= 100;
+        $this->paso_2_reprobado= 0;
+        $this->updated_paso_dos = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
         return $this->save();
     }
 

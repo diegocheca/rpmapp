@@ -19,6 +19,8 @@ use App\Models\Constants;
 use stdClass;
 use App\Models\FormAltaProductorCatamarca;
 
+use App\Models\FormAltaProductorMendoza;
+
 
 
 class FormAltaSeeder extends Seeder
@@ -83,9 +85,11 @@ if(!property_exists($departamento, 'id') ){
             $formulario_nuevo  = new FormAltaProductor();
             //$formulario_nuevo->inicializar_faker(null,$id_user,$id_provincia);
             $formulario_nuevo->completar_paso1_faker(null,null,$razon_social,$email,$sociedad,null,null,null,$id_user,$id_provincia);
+            $formulario_nuevo->aprobar_paso_uno($id_user);
             
             $formulario_nuevo->completar_paso2_faker(null,null,null,$id_provincia,null,null,null,null,$id_user);
-
+            $formulario_nuevo->aprobar_paso_dos($id_user);
+            
             $formulario_nuevo->completar_paso3_faker(null,null,null,$id_provincia,null,null,null,null,$id_user);
 
             $formulario_nuevo->completar_paso4_faker(null,null,null,null,null,null,null,$id_user);
@@ -96,7 +100,11 @@ if(!property_exists($departamento, 'id') ){
             //si es catamarca
             if($id_provincia == 10){
                 $formulario_catamarca = new FormAltaProductorCatamarca();
-                $formulario_nuevo->completar_paso_catamarca_faker($id_provincia,$departamento->id,$id_user);
+                $formulario_catamarca->completar_paso_catamarca_faker(null, null,null,null, null, null, null, null, null, null, null,$formulario_nuevo->id,$id_user);
+            }
+            if($id_provincia == 20){//mendoza poner el correcto de mendoza
+                $formulario_mendoza = new FormAltaProductorMendoza();
+                $formulario_mendoza->completar_y_guardar_formu_fake($formulario_nuevo->id,$id_user);
             }
             $formulario_nuevo->completar_paso7_faker(null,null,null,null,$id_user);
             $formulario_nuevo->completar_paso8_faker($id_user);

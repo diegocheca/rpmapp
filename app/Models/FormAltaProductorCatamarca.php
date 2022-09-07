@@ -72,7 +72,7 @@ class FormAltaProductorCatamarca extends Model
         'autorizacion_gestor_correcto',
         'obs_autorizacion_gestor',
     ];
-    public function completar_paso_catamarca($gestor_nombre_apellido= null, $gestor_dni= null,$gestor_profesion= null,$gestor_telefono= null,$gestor_notificacion= null,$gestor_email= null,$primer_hoja_dni= null,$segunda_hoja_dni= null,$foto_4x4= null,$constancia_afip= null,$autorizacion_gestor= null,$id_formulario_alta,$id_user){
+    public function completar_paso_catamarca_faker($gestor_nombre_apellido= null, $gestor_dni= null,$gestor_profesion= null,$gestor_telefono= null,$gestor_notificacion= null,$gestor_email= null,$primer_hoja_dni= null,$segunda_hoja_dni= null,$foto_4x4= null,$constancia_afip= null,$autorizacion_gestor= null,$id_formulario_alta,$id_user){
         $faker = Faker::create();
 
         if($gestor_nombre_apellido== null){
