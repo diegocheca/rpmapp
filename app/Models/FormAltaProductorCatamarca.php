@@ -154,4 +154,38 @@ class FormAltaProductorCatamarca extends Model
         $this->save();
         return $this->id();
     }
+
+    public function aprobar_paso_catamarca($id_user){
+        $this->gestor_nombre_apellido_correcto= true;
+        $this->obs_gestor_nombre_apellido= null;
+        $this->gestor_dni_correcto= true;
+        $this->obs_gestor_dni= null;
+        $this->gestor_profesion_correcto= true;
+        $this->obs_gestor_profesion= null;
+        $this->gestor_telefono_correcto= true;
+        $this->obs_gestor_telefono= null;
+
+        $this->gestor_notificacion_correcto= true;
+        $this->obs_gestor_notificacion= null;
+        $this->gestor_email_correcto= true;
+        $this->obs_gestor_email= null;
+        $this->hoja_dni_correcto= true;
+        $this->obs_hoja_dni= null;
+        $this->foto_4x4_correcto= true;
+        $this->obs_foto_4x4= null;
+
+        $this->constancia_afip_correcto= true;
+        $this->obs_constancia_afip= null;
+
+        $this->autorizacion_gestor_correcto= true;
+        $this->obs_autorizacion_gestor= null;
+
+        $this->paso_aprobado= 100;
+        $this->paso_reprobado= 100;
+        $this->paso_progreso= 0;
+        $this->updated_paso_seis = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
+
+        return $this->save();
+    }
 }

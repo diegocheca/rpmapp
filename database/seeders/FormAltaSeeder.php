@@ -20,6 +20,7 @@ use stdClass;
 use App\Models\FormAltaProductorCatamarca;
 
 use App\Models\FormAltaProductorMendoza;
+use App\Models\FormAltaProductorSalta;
 
 
 
@@ -89,22 +90,32 @@ if(!property_exists($departamento, 'id') ){
             
             $formulario_nuevo->completar_paso2_faker(null,null,null,$id_provincia,null,null,null,null,$id_user);
             $formulario_nuevo->aprobar_paso_dos($id_user);
-            
-            $formulario_nuevo->completar_paso3_faker(null,null,null,$id_provincia,null,null,null,null,$id_user);
 
+            $formulario_nuevo->completar_paso3_faker(null,null,null,$id_provincia,null,null,null,null,$id_user);
+            $formulario_nuevo->aprobar_paso_tres($id_user);
+            
             $formulario_nuevo->completar_paso4_faker(null,null,null,null,null,null,null,$id_user);
+            $formulario_nuevo->aprobar_paso_cuatro($id_user);
 
             $formulario_nuevo->completar_paso5_faker(null, null, null, null, null,$id_user);
+            $formulario_nuevo->aprobar_paso_cinco($id_user);
 
             $formulario_nuevo->completar_paso6_faker($id_provincia,$departamento->id,$id_user);
-            //si es catamarca
-            if($id_provincia == 10){
+            $formulario_nuevo->aprobar_paso_seis($id_user);
+            
+            if($id_provincia == 10){//si es catamarca
                 $formulario_catamarca = new FormAltaProductorCatamarca();
                 $formulario_catamarca->completar_paso_catamarca_faker(null, null,null,null, null, null, null, null, null, null, null,$formulario_nuevo->id,$id_user);
+                $formulario_catamarca->aprobar_paso_catamarca($id_user);
             }
-            if($id_provincia == 20){//mendoza poner el correcto de mendoza
+            if($id_provincia == 50){//mendoza poner el correcto de mendoza
                 $formulario_mendoza = new FormAltaProductorMendoza();
                 $formulario_mendoza->completar_y_guardar_formu_fake($formulario_nuevo->id,$id_user);
+                $formulario_catamarca->aprobar_paso_mendoza($id_user);
+            }
+            if($id_provincia == 66){//mendoza poner el correcto de salta
+                $formulario_mendoza = new FormAltaProductorSalta();
+                $formulario_mendoza->crear_formulario_fake_salta($formulario_nuevo->id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, $id_user);
             }
             $formulario_nuevo->completar_paso7_faker(null,null,null,null,$id_user);
             $formulario_nuevo->completar_paso8_faker($id_user);

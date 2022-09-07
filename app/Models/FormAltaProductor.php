@@ -577,6 +577,33 @@ class FormAltaProductor extends Model
         return $this->save();
     }
 
+    public function aprobar_paso_tres($id_user){
+        $this->administracion_calle_correcto= true;
+        $this->obs_administracion_calle= null;
+        $this->administracion_numero_correcto= true;
+        $this->obs_administracion_numero= null;
+        $this->administracion_telefono_correcto= true;
+        $this->obs_administracion_telefono= null;
+        $this->administracion_provincia_correcto= true;
+        $this->obs_administracion_provincia= null;
+        $this->administracion_departamento_correcto= true;
+        $this->obs_administracion_departamento= null;
+        $this->administracion_localidad_correcto= true;
+        $this->obs_administracion_localidad= null;
+        $this->administracion_cp_correcto= true;
+        $this->obs_administracion_cp= null;
+        $this->administracion_otro_correcto= true;
+        $this->obs_administracion_otro= null;
+        $this->paso_3_progreso= 100;
+        $this->paso_3_aprobado= 100;
+        $this->paso_3_reprobado= 0;
+        $this->updated_paso_tres = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
+
+
+        return $this->save();
+    }
+
 
 
     public function completar_paso4_faker($mina_cantera = null,$numero_expdiente= null,$distrito_minero= null,$descripcion_mina= null,$nombre_mina= null,$plano_inmueble= null,$minerales_variedad= null,$id_user){
@@ -694,6 +721,34 @@ class FormAltaProductor extends Model
         return $this->save();
     }
 
+    public function aprobar_paso_cuatro($id_user){
+        $this->numero_expdiente_correcto= true;
+        $this->obs_numero_expdiente= null;
+        $this->categoria_correcto= true;
+        $this->obs_categoria= null;
+        $this->nombre_mina_correcto= true;
+        $this->obs_nombre_mina= null;
+        $this->descripcion_mina_correcto= true;
+        $this->obs_descripcion_mina= null;
+        $this->obs_distrito_minero= null;
+        $this->distrito_minero_correcto= true;
+        $this->mina_cantera_correcto= true;
+        $this->obs_mina_cantera= null;
+        $this->plano_inmueble_correcto= true;
+        $this->obs_plano_inmueble= null;
+        $this->obs_resolucion_concesion_minera= null;
+        $this->resolucion_concesion_minera_correcto= true;
+        $this->titulo_contrato_posecion_correcto= true;
+        $this->obs_titulo_contrato_posecion= null;
+        $this->mina_cantera_correcto= true;
+        $this->paso_4_progreso= 100;
+        $this->paso_4_aprobado= 100;
+        $this->paso_4_reprobado= 0;
+        $this->updated_paso_cuatro = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
+        return $this->save();
+    }
+
 
 
     public function completar_paso5_faker($owner = null,$arrendatario= null,$concesionario= null,$acciones_a_desarrollar= null,$actividad= null,$id_user){
@@ -780,8 +835,68 @@ class FormAltaProductor extends Model
 		$this->updated_by = $id_user; // by seeder
 		$this->created_by = $id_user;
 
+
+
+        $this->constancia_paga_canon_monto = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+        $this->constancia_paga_canon_inicio = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+        $this->constancia_paga_canon_fin = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+
         return $this->save();
     }
+
+    public function aprobar_paso_cinco($id_user){
+        $this->owner_correcto= true;
+        $this->obs_owner= null;
+        $this->arrendatario_correcto= true;
+        $this->obs_arrendatario= null;
+        $this->concesionario_correcto= true;
+        $this->obs_concesionario= null;
+        $this->otros_correcto= true;
+        $this->obs_otros= null;
+
+        $this->sustancias_de_aprovechamiento_comun_correcto= true;
+        $this->obs_sustancias_de_aprovechamiento_comun_correcto= null;
+        $this->constancia_pago_canon_correcto= true;
+        $this->obs_constancia_pago_canon= null;
+        $this->iia_correcto= true;
+        $this->obs_iia= null;
+        $this->dia_correcto= true;
+        $this->obs_dia= null;
+
+        $this->acciones_a_desarrollar_correcto= true;
+        $this->obs_acciones_a_desarrollar= null;
+        $this->actividad_correcto= true;
+        $this->obs_actividad= null;
+        $this->fecha_alta_dia_correcto= true;
+        $this->obs_fecha_alta_dia= null;
+        $this->fecha_vencimiento_dia_correcto= true;
+        $this->obs_fecha_vencimiento_dia= null;
+
+        $this->titulo_contrato_posecion_correcto= true;
+        $this->obs_titulo_contrato_posecion= null;
+        $this->mina_cantera_correcto= true;
+
+        
+        $this->constancia_paga_canon_monto_correcto=true;
+        $this->obs_constancia_paga_canon_monto=null;
+        
+        $this->constancia_paga_canon_inicio_correct=true;
+        $this->obs_constancia_paga_canon_inicio=null;
+        
+        $this->constancia_paga_canon_fin_correcto=true;
+        $this->obs_constancia_paga_canon_fin=null;
+
+
+        $this->paso_5_progreso= 100;
+        $this->paso_5_aprobado= 100;
+        $this->paso_5_reprobado= 0;
+        $this->updated_paso_cinco = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
+
+        return $this->save();
+    }
+
+
 
     public function completar_paso6_faker($id_provincia = null,$departamento= null,$id_user){
         $faker = Faker::create();
@@ -804,6 +919,30 @@ class FormAltaProductor extends Model
 
         return $this->save();
     }
+    public function aprobar_paso_seis($id_user){
+        $this->localidad_mina_provincia_correcto= true;
+        $this->obs_localidad_mina_provincia= null;
+        $this->localidad_mina_departamento_correcto= true;
+        $this->obs_localidad_mina_departamento= null;
+        $this->localidad_mina_localidad_correcto= true;
+        $this->obs_localidad_mina_localidad= null;
+        $this->tipo_sistema_correcto= true;
+        $this->obs_tipo_sistema= null;
+
+        $this->longitud_correcto= true;
+        $this->obs_longitud= null;
+        $this->latitud_correcto= true;
+        $this->obs_latitud= null;
+
+        $this->paso_6_progreso= 100;
+        $this->paso_6_aprobado= 100;
+        $this->paso_6_reprobado= 0;
+        $this->updated_paso_seis = date("Y-m-d H:i:s");
+        $this->updated_by = $id_user;
+
+        return $this->save();
+    }
+
     public function completar_paso7_faker($observacion=null, $cargo_empresa=null, $presentador_nom_apellido=null, $presentador_dni=null, $id_user){
         $faker = Faker::create();
         
@@ -839,7 +978,7 @@ class FormAltaProductor extends Model
 
         return $this->save();
     }
-
+    
 
     public function completar_paso8_faker($id_user){
         $this->estado = "aprobado";

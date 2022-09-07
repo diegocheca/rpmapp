@@ -109,6 +109,20 @@ class FormAltaProductorMendoza extends Model
         }
 
     }
+
+
+    public function aprobar_paso_mendoza($id_user){
+        $this->decreto3737_correcto= true;
+        $this->obs_decreto3737= null;
+        $this->situacion_mina_correcto= true;
+        $this->obs_situacion_mina= null;
+        $this->concesion_minera_reg_d_y_c_correcto= true;
+        $this->obs_concesion_minera_reg_d_y_c= null;
+        $this->paso_mend_progreso= 100;
+        $this->paso_mend_aprobado= 100;
+        $this->paso_mend_reprobado= 0;
+        return $this->save();
+    }
     
 
 }
