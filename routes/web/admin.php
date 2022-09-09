@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PermisosController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\FormAltaProductorFakerController;
 
 // EDITAR ROLES Y PERMISOS
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -32,6 +33,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::delete('/eliminar_permiso/{id}', [PermisosController::class, "destroy"])->name('eliminar-permiso');
 
 
+    // Faker para formulario
+    Route::resource('formulario_faker', FormAltaProductorFakerController::class)
+    ->middleware(['auth:sanctum', 'verified'])
+    ->names('formulario_faker');
+    Route::post('/formulario_faker/crear', [FormAltaProductorFakerController::class, 'create_formularios_alta_productores'])->middleware(['auth:sanctum', 'verified'])->name('create_formularios_alta_productores');
+    //Route::post('/formulario_faker/index', [FormAltaProductorFakerController::class, 'index'])->middleware(['auth:sanctum', 'verified'])->name('formularios_fakers.index');
 
 
     Route::resource('permisos_nuevos', PermissionController::class)

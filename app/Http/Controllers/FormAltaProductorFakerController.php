@@ -23,9 +23,11 @@ use App\Models\Minerales;
 use App\Models\Constants;
 use stdClass;
 use App\Models\FormAltaProductorCatamarca;
+use Illuminate\Http\Request;
 
 use App\Models\FormAltaProductorMendoza;
 use App\Models\FormAltaProductorSalta;
+use Exception;
 
 class FormAltaProductorFakerController extends Controller
 {
@@ -45,26 +47,32 @@ class FormAltaProductorFakerController extends Controller
 
     public function create_formularios_alta_productores(Request $request){
         //comprobar cuantos quiero crear y si el request llega bien
+    try{
         $faker = Faker::create();
         $provincias = Provincias::select("id", "nombre")->get()->toArray();
         $array_to_return = array();
-        for($i = 0;$i< 2; $i++)
+        for($i = 0;$i< $request->cantidad-1; $i++)
         {
             //INICIO DE VARIABLES
             $razon_social = $faker->name();
             $email = str_replace(" ","",$razon_social)."@gmail.com";
-            $num_aleatorio_provincia = $faker->numberBetween(0,count($provincias)-1);
-            $id_provincia = $provincias[$num_aleatorio_provincia]["id"];
-            $nombre_provincia = $provincias[$num_aleatorio_provincia]["nombre"];
-            $departamento = Departamentos::select("id", "nombre")->where("provincia_id", "=", $num_aleatorio_provincia)->first();
+            if($request->provincia== -1){
+                $num_aleatorio_provincia = $faker->numberBetween(0,count($provincias)-1);
+                $id_provincia = $provincias[$num_aleatorio_provincia]["id"];
+                $nombre_provincia = $provincias[$num_aleatorio_provincia]["nombre"];
+                $departamento = Departamentos::select("id", "nombre")->where("provincia_id", "=", $num_aleatorio_provincia)->first();
+            } else { //provincia seleccionada en el front
+                $provincia = Provincias::select("id", "nombre")->where("id","=",$request->provincia)->first()->toArray();
+                $id_provincia = $provincia["id"];
+                $nombre_provincia = $provincia["nombre"];
+                $departamentos = Departamentos::select("id", "nombre")->where("provincia_id", "=", $request->provincia)->get()->toArray();
+                $departamento = $departamentos[$faker->numberBetween(0,count(Constants::$departamentos)-1)];
+                
+            }
             if($departamento == null ){
                 $departamento = new stdClass();
-                $departamento->id = 9999;
-                $departamento->nombre ="departamento";
-            }
-            if(!property_exists($departamento, 'id') ){
-                $departamento->id = 9999;
-                $departamento->nombre ="departamento";
+                $departamento["id"] = 9999;
+                $departamento["nombre"] ="departamento";
             }
             $sociedad = Constants::$sociedades[$faker->numberBetween(0,count(Constants::$sociedades)-1)];
             $id_user = 0;
@@ -100,37 +108,47 @@ class FormAltaProductorFakerController extends Controller
             
             $formulario_nuevo->completar_paso4_faker(null,null,null,null,null,null,null,$id_user);
             $formulario_nuevo->aprobar_paso_cuatro($id_user);
-
             $formulario_nuevo->completar_paso5_faker(null, null, null, null, null,$id_user);
             $formulario_nuevo->aprobar_paso_cinco($id_user);
-
-            $formulario_nuevo->completar_paso6_faker($id_provincia,$departamento->id,$id_user);
+            
+            $formulario_nuevo->completar_paso6_faker($id_provincia,$departamento["id"],$id_user);
             $formulario_nuevo->aprobar_paso_seis($id_user);
             
-            if($id_provincia == 10){//si es catamarca
+            
+            if($request->provincia== 10){//si es catamarca
                 $formulario_catamarca = new FormAltaProductorCatamarca();
                 $formulario_catamarca->completar_paso_catamarca_faker(null, null,null,null, null, null, null, null, null, null, null,$formulario_nuevo->id,$id_user);
                 $formulario_catamarca->aprobar_paso_catamarca($id_user);
             }
-            if($id_provincia == 50){//mendoza poner el correcto de mendoza
+            if($request->provincia== 50){//mendoza poner el correcto de mendoza
                 $formulario_mendoza = new FormAltaProductorMendoza();
                 $formulario_mendoza->completar_y_guardar_formu_fake($formulario_nuevo->id,$id_user);
                 $formulario_catamarca->aprobar_paso_mendoza($id_user);
             }
-            if($id_provincia == 66){//mendoza poner el correcto de salta
+            if($request->provincia== 66){//mendoza poner el correcto de salta
                 $formulario_mendoza = new FormAltaProductorSalta();
                 $formulario_mendoza->crear_formulario_fake_salta($formulario_nuevo->id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, $id_user);
             }
             $formulario_nuevo->completar_paso7_faker(null,null,null,null,$id_user);
+            
             $formulario_nuevo->completar_paso8_faker($id_user);
+
+            
             $array_to_return[$i] = [
                 "id_fomulario" => $formulario_nuevo->id,
-                "id_usario" => $id_user->id,
+                "id_usario" => $id_user,
                 "email" => $email,
                 "provincia" => $id_provincia
 
             ];
         }
+        return response()->json([
+			'status'=> 'success',
+			'formularios' => $array_to_return
+		],200);
+    } catch (Exception $e) {
+        return response()->json(['status' => 'error', 'error' => $e->getMessage()], 401);
+    }
 
     }
 

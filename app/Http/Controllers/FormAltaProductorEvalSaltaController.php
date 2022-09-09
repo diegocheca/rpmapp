@@ -37,6 +37,7 @@ class FormAltaProductorEvalSaltaController extends Controller
     public function store(StoreFormAltaProductorEvalSaltaRequest $request)
     {
         //
+        $request->all();
     }
 
     /**

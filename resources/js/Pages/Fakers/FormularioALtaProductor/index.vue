@@ -6,7 +6,7 @@
   .stage {
     overflow: hidden;
     position: absolute;
-    top: 20%;
+    top: 35%;
     left: 15%;
     margin: -175px 0 0 -250px;
     width: 500px;
@@ -261,13 +261,14 @@
                     id="username"
                     placeholder="10"
                     class="appearance-none border-2 border-gray-100 rounded-lg px-4 py-3 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-green-600 focus:shadow-lg"
+                    v-model="cantidad"
                   />
                 </div>
                 <div id="input" class="flex flex-col w-full my-5">
                   <label for="username" class="text-gray-500 mb-2"
                     >Provincia</label
                   >
-                  <select>
+                  <select v-model="provincia_a_crear">
                     <option value="-1" selected>Cualquiera</option>
                     <option v-for="provincia in provincias" v-bind:key="provincia.id" :value="provincia.id">
                                         {{provincia.nombre}}
@@ -279,41 +280,22 @@
                   <button
                     type="button"
                     class="w-full py-4 bg-green-600 rounded-lg text-green-100"
+                    @click="crear_formularios_fakers"
                   >
                     <div class="flex flex-row items-center justify-center">
                       <div class="mr-2">
-                        <svg
-                          class="w-6 h-6"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
-                          ></path>
-                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
+                          </svg>
+
                       </div>
-                      <div class="font-bold">Sigin</div>
+                      <div class="font-bold">Crear</div>
                     </div>
                   </button>
-                  <div class="flex justify-evenly mt-5">
-                    <a
-                      href="#"
-                      class="w-full text-center font-medium text-gray-500"
-                      >Recover password!</a
-                    >
-                    <a
-                      href="#"
-                      class="w-full text-center font-medium text-gray-500"
-                      >Singup!</a
-                    >
-                  </div>
+                  
                 </div>
               </form>
+              {{resultado}}
             </div>
           </div>
         </div>
@@ -326,7 +308,7 @@
   import AppLayout from "@/Layouts/AppLayout";
   import JetDialogModal from '@/Jetstream/DialogModal';
   //import Button from '../../Jetstream/Button.vue';
-  
+  import Swal from "sweetalert2";
   export default {
     props: {
       provincias: Object,
@@ -344,11 +326,53 @@
       JetDialogModal
       //Button,
     },
+
+    
+    data() {
+    return {
+      provincia_a_crear:null,
+      cantidad: 0,
+      resultado:{}
+    };
+  },
+
     methods: {
       closeModal() {
           this.confirmingUserDeletion = false
           //this.form.reset()
       },
+      
+
+
+      crear_formularios_fakers() {
+      let self = this;
+      axios
+        .post("formulario_faker/crear", {
+          provincia: this.provincia_a_crear,
+          cantidad: this.cantidad
+        })
+        .then(function (response) {
+          // console.log(response.data);
+          if (response.data.status === "success") {
+            Swal.fire(
+              "Datos guardados correctamente.",
+              "Gracias por usar este servicio, por favor continue completando el formulario.",
+              "success"
+            );
+            self.resultado=response.data.formularios;
+          } else {
+            Swal.fire("Error", "Error inesperado.", "error");
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          Swal.fire("Error", "Error inesperado. <br/>" + error, "error");
+          console.log(error);
+        });
+      },
+
+
+
     }
   };
   </script>
