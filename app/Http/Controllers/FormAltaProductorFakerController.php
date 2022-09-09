@@ -51,7 +51,7 @@ class FormAltaProductorFakerController extends Controller
         $faker = Faker::create();
         $provincias = Provincias::select("id", "nombre")->get()->toArray();
         $array_to_return = array();
-        for($i = 0;$i< $request->cantidad-1; $i++)
+        for($i = 0;$i< $request->cantidad; $i++)
         {
             //INICIO DE VARIABLES
             $razon_social = $faker->name();
@@ -105,7 +105,7 @@ class FormAltaProductorFakerController extends Controller
 
             $formulario_nuevo->completar_paso3_faker(null,null,null,$id_provincia,null,null,null,null,$id_user);
             $formulario_nuevo->aprobar_paso_tres($id_user);
-            
+
             $formulario_nuevo->completar_paso4_faker(null,null,null,null,null,null,null,$id_user);
             $formulario_nuevo->aprobar_paso_cuatro($id_user);
             $formulario_nuevo->completar_paso5_faker(null, null, null, null, null,$id_user);

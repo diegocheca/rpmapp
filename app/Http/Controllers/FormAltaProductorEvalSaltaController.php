@@ -38,6 +38,8 @@ class FormAltaProductorEvalSaltaController extends Controller
     {
         //
         $request->all();
+        $evaluacion_salta_nuevo = new FormAltaProductorEvalSalta();
+        $id = $evaluacion_salta_nuevo->crear_nuevo_salta_evaluacion();
     }
 
     /**
