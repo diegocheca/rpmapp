@@ -13,7 +13,7 @@ class CreateMineralesBorradoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('minerales__borradores', function (Blueprint $table) {
+        Schema::create('minerales_borradores', function (Blueprint $table) {
 
             $table->bigIncrements('id_formulario');
             $table->in('id_mineral')->nullable()->default(null);
@@ -40,8 +40,11 @@ class CreateMineralesBorradoresTable extends Migration
             $table->integer('updated_by');
             $table->string('estado', 100)->default('sin revisar');
 
+            //timestamp
+            $table->integer('created_by')->nullable->default(null);
+            $table->integer('updated_by')->nullable->default(null);
             $table->timestamps();
-            $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->timestamp('deleted_at');
         });
     }
 
