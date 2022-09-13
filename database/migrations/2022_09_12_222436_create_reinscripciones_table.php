@@ -12,7 +12,7 @@ class CreateReinscripcionesTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {/*
         Schema::create('reinscripciones', function (Blueprint $table) {
             
             
@@ -291,7 +291,7 @@ class CreateReinscripcionesTable extends Migration
 
 
         });
-    }
+    */}
 
     /**
      * Reverse the migrations.

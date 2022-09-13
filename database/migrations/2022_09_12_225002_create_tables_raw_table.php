@@ -40,7 +40,9 @@ class CreateTablesRawTable extends Migration
 
 DB::statement('INSERT INTO public."Departamento2"(
 	categoria, centroide_lat, centroide_lon, fuente, id, nombre, nombre_completo , provincia_id, provincia_interseccion, provincia_nombre)
-	VALUES (\'Partido\',-34.5118758903445,-58.7776710941743,\'ARBA - Gerencia de Servicios Catastrales\',6412,\'José C. Paz\',\'Partido de José C. Paz\',6,0.0001595415553,\'Buenos Aires\');');
+	VALUES (\'Partido\',-34.5118758903445,-58.7776710941743,
+    \'ARBA - Gerencia de Servicios Catastrales\',6412,\'José C. Paz\',
+    \'Partido de José C. Paz\',6,0.0001595415553,\'Buenos Aires\');');
 
 DB::statement('INSERT INTO public."Departamento2"(
 	categoria, centroide_lat, centroide_lon, fuente, id, nombre, nombre_completo , provincia_id, provincia_interseccion, provincia_nombre)
