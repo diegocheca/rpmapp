@@ -49,18 +49,18 @@ class FormAltaSeeder extends Seeder
             $id_provincia = $provincias[$num_aleatorio_provincia]["id"];
             $nombre_provincia = $provincias[$num_aleatorio_provincia]["nombre"];
             $departamento = Departamentos::select("id", "nombre")->where("provincia_id", "=", $num_aleatorio_provincia)->first();
-//dd( $num_aleatorio_provincia,$departamento->id);
+            //dd( $num_aleatorio_provincia,$departamento->id);
 
-if($departamento == null ){
-    $departamento = new stdClass();
-    $departamento->id = 9999;
-    $departamento->nombre ="departamento";
-}
+            if($departamento == null ){
+                $departamento = new stdClass();
+                $departamento->id = 9999;
+                $departamento->nombre ="departamento";
+            }
 
-if(!property_exists($departamento, 'id') ){
-    $departamento->id = 9999;
-    $departamento->nombre ="departamento";
-}
+            if(!property_exists($departamento, 'id') ){
+                $departamento->id = 9999;
+                $departamento->nombre ="departamento";
+            }
             $sociedad = Constants::$sociedades[$faker->numberBetween(0,count(Constants::$sociedades)-1)];
 
             $id_user = 0;
@@ -81,7 +81,6 @@ if(!property_exists($departamento, 'id') ){
 
             /*Crear formulario*/
             //$estado = Constants::$estados[$faker->numberBetween(0,count(Constants::$estados)-1)]; 
-            $nuevo_formulario = new FormAltaProductor();
 
             $formulario_nuevo  = new FormAltaProductor();
             //$formulario_nuevo->inicializar_faker(null,$id_user,$id_provincia);

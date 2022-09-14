@@ -14,6 +14,23 @@ use App\Models\Localidades;
 use App\Models\Minerales;
 use App\Models\Reinscripciones;
 
+
+
+use App\Models\FormAltaProdPaso1;
+use App\Models\FormularioAltaProd;
+use App\Models\FormAltaProductor; //el q tiene mil columnas
+
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Constants;
+use stdClass;
+use App\Models\FormAltaProductorCatamarca;
+
+use App\Models\FormAltaProductorMendoza;
+use App\Models\FormAltaProductorSalta;
+
+
+
 class ReinscripcionSeeder extends Seeder
 {
     /**
@@ -34,6 +51,8 @@ class ReinscripcionSeeder extends Seeder
     {
         //
         $faker = Faker::create();
+
+
 
         //datos globales
         $idProvincia = 70;
