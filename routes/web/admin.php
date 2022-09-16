@@ -39,7 +39,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     ->names('formulario_faker');
     Route::post('/formulario_faker/crear', [FormAltaProductorFakerController::class, 'create_formularios_alta_productores'])->middleware(['auth:sanctum', 'verified'])->name('create_formularios_alta_productores');
     //Route::post('/formulario_faker/index', [FormAltaProductorFakerController::class, 'index'])->middleware(['auth:sanctum', 'verified'])->name('formularios_fakers.index');
-
+    
+    Route::get('/reinscripcion_faker/reinscripcion_index', [FormAltaProductorFakerController::class, 'reinscripcion_index'])->middleware(['auth:sanctum', 'verified'])->name('reinscripcion_faker.index');
+    Route::post('/reinscripcion_faker/crear', [FormAltaProductorFakerController::class, 'create_reinscripcion'])->middleware(['auth:sanctum', 'verified'])->name('create_reinscripciones_fakes');
 
     Route::resource('permisos_nuevos', PermissionController::class)
         ->middleware(['auth:sanctum', 'verified'])

@@ -16,7 +16,7 @@ use App\Models\Provincias;
 use App\Models\Departamentos;
 use App\Models\Localidades;
 use App\Models\Minerales;
-use App\Models\Reinscripciones;
+use App\Models\Constants;
 
 
 
@@ -26,7 +26,6 @@ use App\Models\FormAltaProductor; //el q tiene mil columnas
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Constants;
 use stdClass;
 use App\Models\FormAltaProductorCatamarca;
 
@@ -233,13 +232,13 @@ class Reinscripciones extends Model
         $razon_social = $faker->name();
 
 
-        $departamento = Departamentos::select("id", "nombre")->where("provincia_id", "=", $id_provincia)->first();
+        $departamentos = Departamentos::select("id", "nombre")->where("provincia_id", "=", $id_provincia)->get();
 
-        if($departamento == null ){
+        /*if($departamento == null ){
             $departamento = new stdClass();
             $departamento->id = 9999;
             $departamento->nombre ="departamento";
-        }
+        }*/
 
 
 
@@ -275,7 +274,7 @@ class Reinscripciones extends Model
 
         
         $this->porcentaje_venta_provincia =  $faker->numberBetween($min = 0, $max = 100);
-        $limite_uno = 100-$this->porcentaje_venta_provincia;
+        $limite_uno = 100-intval($this->porcentaje_venta_provincia) ;
         $this->porcentaje_venta_provincia_evaluacion = null;
         $this->porcentaje_venta_provincia_comentario = null;
 
@@ -283,9 +282,16 @@ class Reinscripciones extends Model
         $this->porcentaje_venta_otras_provincias =  $faker->numberBetween($min = 0, $max = $limite_uno);
         $this->porcentaje_venta_otras_provincias_evaluacion = null;
         $this->porcentaje_venta_otras_provincias_comentario = null;
+/*
+dd(
+    $this->porcentaje_venta_provincia,
+    $limite_uno,
+    intval($this->porcentaje_venta_otras_provincias),
 
+    100 - ( intval($this->porcentaje_venta_provincia)  + intval($this->porcentaje_venta_otras_provincias)  )
 
-        $this->porcentaje_exportado =  100 - ( $this->porcentaje_venta_provincia + $this->porcentaje_venta_otras_provincias );
+);*/
+        $this->porcentaje_exportado =  100 - ( intval($this->porcentaje_venta_provincia)  + intval($this->porcentaje_venta_otras_provincias)  );
         $this->porcentaje_exportado_evaluacion = null;
         $this->porcentaje_exportado_comentario = null;
         
@@ -331,11 +337,10 @@ class Reinscripciones extends Model
         $this->cargo_evaluacion = null;
         $this->cargo_comentario = null;
 
+        
 
-
-
-        $id_depatamento_faker = $this->id_depto_rando($idProvincia);
-        $this->id_departamento = $id_depatamento_faker[$faker->numberBetween($min = 0, $max = (count($id_depatamento_faker))-1)]["id"];
+        $departamento = $departamentos[$faker->numberBetween(0,count($departamentos)-1)];
+        $this->id_departamento = $departamento->id;
         $this->id_departamento_evaluacion = null;
         $this->id_departamento_comentario = null;
 
@@ -385,7 +390,7 @@ class Reinscripciones extends Model
         $this->ubicacion_evaluacion = null;
         $this->ubicacion_comentario = null;
 
-
+      
 
         $this->dimensiones= null;
         $this->dimensiones_evaluacion = null;
@@ -591,63 +596,16 @@ class Reinscripciones extends Model
 
         $this->id_mina = null;
 
-        $this->estado = $estados[ $faker->numberBetween($min = 0, $max = 2)];
-
+        //$this->estado = Constants::$estados[ $faker->numberBetween($min = 0, $max = 2)];
+        $this->estado = "aprobado";
 
         
-        
-        
-        //evaluacion
-        $this->prospeccion_evaluacion = 1;
-        $this->prospeccion_comentario = $faker->text($maxNbChars = 50);
-        
-        $this->exploracion_evaluacion = $faker->text($maxNbChars = 50);
-        $this->exploracion_comentario = $faker->text($maxNbChars = 50);
-
-        $this->explotacion_evaluacion = $faker->text($maxNbChars = 50);
-        $this->explotacion_comentario = $faker->text($maxNbChars = 50);
-        
-        $this->desarrollo_evaluacion = $faker->text($maxNbChars = 50);
-        $this->desarrollo_comentario = $faker->text($maxNbChars = 50);
-        $this->cantidad_productos_evaluacion = $faker->text($maxNbChars = 50);
-        $this->cantidad_productos_comentario = $faker->text($maxNbChars = 50);
-        
-        $this->porcentaje_venta_provincia_evaluacion = $faker->text($maxNbChars = 50);
-        $this->porcentaje_venta_provincia_comentario = $faker->text($maxNbChars = 50);
-        
-        $this->porcentaje_venta_otras_provincias_evaluacion = $faker->text($maxNbChars = 50);
-        $this->porcentaje_venta_otras_provincias_comentario = $faker->text($maxNbChars = 50);
-        
-        $this->porcentaje_exportado_evaluacion = $faker->text($maxNbChars = 50);
-        $this->porcentaje_exportado_comentario = $faker->text($maxNbChars = 50);
-
-
-        $this->personal_perm_operarios_evaluacion = $faker->text($maxNbChars = 50);
-        $this->personal_perm_operarios_comentario = $faker->text($maxNbChars = 50);
-        $this->personal_perm_administrativos_evaluacion = $faker->text($maxNbChars = 50);
-        $this->personal_perm_administrativos_comentario = $faker->text($maxNbChars = 50);
-        $this->personal_perm_otros_evaluacion = $faker->text($maxNbChars = 50);
-        $this->personal_perm_otros_comentario = $faker->text($maxNbChars = 50);
-        $this->personal_trans_profesional_evaluacion = $faker->text($maxNbChars = 50);
-        $this->personal_trans_profesional_comentario = $faker->text($maxNbChars = 50);
-        $this->personal_trans_operarios_evaluacion = $faker->text($maxNbChars = 50);
-        $this->personal_trans_operarios_comentario = $faker->text($maxNbChars = 50);
-        $this->personal_trans_administrativos_evaluacion = $faker->text($maxNbChars = 50);
-        $this->personal_trans_administrativos_comentario = $faker->text($maxNbChars = 50);
-        $this->personal_trans_otros_evaluacion = $faker->text($maxNbChars = 50);
-        $this->personal_trans_otros_comentario = $faker->text($maxNbChars = 50);
-
-
-
-        $this->nombre_evaluacion = $faker->text($maxNbChars = 50);
-        $this->nombre_comentario = $faker->text($maxNbChars = 50);
-        $this->dni_evaluacion = $faker->text($maxNbChars = 50);
-        $this->dni_comentario = $faker->text($maxNbChars = 50);
-        $this->cargo_evaluacion =  $faker->text($maxNbChars = 50);
-        $this->cargo_comentario =  $faker->text($maxNbChars = 50);
-        $this->id_departamento_evaluacion = $faker->text($maxNbChars = 50);
-        $this->id_departamento_comentario =$faker->text($maxNbChars = 50);
-
+        /*dd(
+            $this->porcentaje_venta_provincia,
+            intval($this->porcentaje_venta_otras_provincias),
+            $this->porcentaje_exportado
+        );*/
+       
 
 
 
@@ -656,6 +614,66 @@ class Reinscripciones extends Model
 
 
 
+    }
+
+    public function comentar_y_aprobar_reincripcion(){
+        $faker = Faker::create();
+        //evaluacion
+        $this->prospeccion_evaluacion = 1;
+        $this->prospeccion_comentario = $faker->text($maxNbChars = 50);
+        
+        $this->exploracion_evaluacion = 1;
+        $this->exploracion_comentario = $faker->text($maxNbChars = 50);
+
+        $this->explotacion_evaluacion = 1;
+        $this->explotacion_comentario = $faker->text($maxNbChars = 50);
+        
+        $this->desarrollo_evaluacion = 1;
+        $this->desarrollo_comentario = $faker->text($maxNbChars = 50);
+
+        $this->cantidad_productos_evaluacion = 1;
+        $this->cantidad_productos_comentario = $faker->text($maxNbChars = 50);
+        
+        $this->porcentaje_venta_provincia_evaluacion = 1;
+        $this->porcentaje_venta_provincia_comentario = $faker->text($maxNbChars = 50);
+        
+        $this->porcentaje_venta_otras_provincias_evaluacion = 1;
+        $this->porcentaje_venta_otras_provincias_comentario = $faker->text($maxNbChars = 50);
+        
+        $this->porcentaje_exportado_evaluacion = 1;
+        $this->porcentaje_exportado_comentario = $faker->text($maxNbChars = 50);
+
+
+        $this->personal_perm_operarios_evaluacion = 1;
+        $this->personal_perm_operarios_comentario = $faker->text($maxNbChars = 50);
+
+        $this->personal_perm_administrativos_evaluacion = 1;
+        $this->personal_perm_administrativos_comentario = $faker->text($maxNbChars = 50);
+
+        $this->personal_perm_otros_evaluacion = 1;
+        $this->personal_perm_otros_comentario = $faker->text($maxNbChars = 50);
+
+        $this->personal_trans_profesional_evaluacion = 1;
+        $this->personal_trans_profesional_comentario = $faker->text($maxNbChars = 50);
+
+        $this->personal_trans_operarios_evaluacion = 1;
+        $this->personal_trans_operarios_comentario = $faker->text($maxNbChars = 50);
+        $this->personal_trans_administrativos_evaluacion = 1;
+        $this->personal_trans_administrativos_comentario = $faker->text($maxNbChars = 50);
+        $this->personal_trans_otros_evaluacion = 1;
+        $this->personal_trans_otros_comentario = $faker->text($maxNbChars = 50);
+
+
+
+        $this->nombre_evaluacion = 1;
+        $this->nombre_comentario = $faker->text($maxNbChars = 50);
+        $this->dni_evaluacion = 1;
+        $this->dni_comentario = $faker->text($maxNbChars = 50);
+        $this->cargo_evaluacion = 1;
+        $this->cargo_comentario =  $faker->text($maxNbChars = 50);
+        $this->id_departamento_evaluacion = 1;
+        $this->id_departamento_comentario =$faker->text($maxNbChars = 50);
+        $this->save();
     }
 
 
