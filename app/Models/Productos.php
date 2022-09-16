@@ -93,7 +93,7 @@ class Productos extends Model
         $this->variedad = "natural";
         $this->produccion = $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 999999);
         $this->unidades = "ton";
-        $this->otra_unidad = null;
+        //$this->otra_unidad = null;
         $this->precio_venta = $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 999999);
         $this->created_by = $user_id;
         $this->estado = "aprobado";
