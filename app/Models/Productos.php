@@ -10,6 +10,12 @@ use Faker\Factory as Faker;
 
 use App\Models\Minerales_Borradores;
 
+use App\Models\Reinscripciones;
+
+use App\Models\MinaCantera;
+
+use App\Models\FormAltaProductor;
+
 class Productos extends Model
 {
     use HasFactory;
@@ -84,12 +90,23 @@ class Productos extends Model
     public function producto_faker($id_reinscripcion,$user_id){
         $faker = Faker::create();
 
-        $minerales = Minerales_Borradores::all();
-        $mineral = $minerales[$faker->numberBetween(0,count($minerales))];
+        //buscar la categoria
+        $reinscripcion = Reinscripciones::find($id_reinscripcion);
+        $mina = MinaCantera::find($reinscripcion->id_mina);
+
+        $productor = Productores::find($reinscripcion->id_productor);
+        //$categoria  = $mina->categoria;
+
+        $formulario = FormAltaProductor::find($productor->id_formulario);
+
+
+        $minerales = Minerales_Borradores::select('*')->where("id_formulario","=",$formulario->id)->get();
+        //dd($minerales);
+        $mineral = $minerales[$faker->numberBetween(0,count($minerales)-1)];
 
         $this->id_reinscripcion = $id_reinscripcion;
-        $this->id_mina = null;
-        $this->nombre_mineral = $mineral->id;
+        $this->id_mina = $mina->id;
+        $this->nombre_mineral = $mineral->id_mineral;
         $this->variedad = "natural";
         $this->produccion = $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 999999);
         $this->unidades = "ton";
@@ -144,7 +161,7 @@ class Productos extends Model
         $faker = Faker::create();
 
         $minerales = Minerales_Borradores::all();
-        $mineral = $minerales[$faker->numberBetween(0,count($minerales))];
+        $mineral = $minerales[$faker->numberBetween(0,count($minerales)-1)];
         if($aprobado){
             $this->nombre_mineral_evaluacion = null;
             $this->id_mina_evaluacion = null;

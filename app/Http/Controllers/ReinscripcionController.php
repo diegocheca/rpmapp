@@ -81,7 +81,7 @@ class ReinscripcionController extends Controller
                 ->whereNull('reinscripciones.deleted_at')
                 ->groupBy('reinscripciones.id', 'productos.id_mina', 'reinscripciones.id_productor', 'reinscripciones.estado', 'encargado', 'productores.razonsocial', 'mina')
                 ->get();
-        //dd($user->province->value,Auth::user()->hasRole('Autoridad') );
+       // dd($reinscripciones,$user->province->value,Auth::user()->hasRole('Autoridad') );
         return Inertia::render('Reinscripciones/List', ['reinscripciones' => $reinscripciones]);
     }
 

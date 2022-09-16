@@ -176,7 +176,9 @@ class FormAltaProductorFakerController extends Controller
             $provincias = Provincias::select("id", "nombre")->get()->toArray();
             $array_to_return = array();
             //dd($request->all());
-            for($i = 0;$i< $request->cantidad; $i++)
+            //for($i = 0;$i< $request->cantidad; $i++)
+            $datos_a_mostrar = array();
+            for($i = 0;$i< 1; $i++)
             {
                 $nueva_reinscripcion = new Reinscripciones();
 
@@ -187,16 +189,30 @@ class FormAltaProductorFakerController extends Controller
                 $productor = Productores::find($request->productor);
                 //$usuario = User::find($productor->created_by);
 
-                $nueva_reinscripcion->crear_reinscripcion_faker($request->productor,$productor->created_by,$request->provincia);
+                $formulario_de_alta = FormAltaProductor::find($productor->id_formulario);
+                //dd($formulario_de_alta);
+                $nueva_reinscripcion->crear_reinscripcion_faker($request->productor,$productor->created_by,$formulario_de_alta->provincia);
                 $nueva_reinscripcion->comentar_y_aprobar_reincripcion();
                 $nuevo_producto = new Productos();
                 $nuevo_producto->producto_faker($nueva_reinscripcion->id,$productor->created_by);
+                $nuevo_producto_dos = new Productos();
+                $nuevo_producto_dos->producto_faker($nueva_reinscripcion->id,$productor->created_by);
+                $nuevo_producto_tres = new Productos();
+                $nuevo_producto_tres->producto_faker($nueva_reinscripcion->id,$productor->created_by);
+                $datos_a_mostrar["id_reinscripcion"] = $nueva_reinscripcion->id;
+                $datos_a_mostrar["id_nuevo_producto"] = $nuevo_producto->id;
+                $datos_a_mostrar["id_nuevo_producto_dos"] = $nuevo_producto_dos->id;
+                $datos_a_mostrar["id_nuevo_producto_tres"] = $nuevo_producto_tres->id;
+                $datos_a_mostrar["id_mina"] = $nueva_reinscripcion->id_mina;
+                $datos_a_mostrar["provincia"] = $formulario_de_alta->provincia;
+                $datos_a_mostrar["formulario"] = $formulario_de_alta->id;
+                
 
                 //dd($nueva_reinscripcion,$nuevo_producto);
             }
             return response()->json([
                 'status'=> 'success',
-                'formularios' => $array_to_return
+                'formularios' => $datos_a_mostrar
             ],200);
         } catch (Exception $e) {
             return response()->json(['status' => 'error', 'error' => $e->getMessage()], 401);

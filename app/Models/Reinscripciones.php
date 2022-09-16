@@ -32,6 +32,7 @@ use App\Models\FormAltaProductorCatamarca;
 use App\Models\FormAltaProductorMendoza;
 use App\Models\FormAltaProductorSalta;
 
+use App\Models\ProductorMina;
 
 
 
@@ -594,7 +595,11 @@ dd(
 
 
 
-        $this->id_mina = null;
+        $mis_minas = ProductorMina::select('*')->where('id_productor',"=", $id_productor)
+        ->whereNull('productor_mina.deleted_at')
+        ->get();
+        $mina_elegida = $mis_minas[$faker->numberBetween(0,count($mis_minas)-1)];
+        $this->id_mina = $mina_elegida->id;
 
         //$this->estado = Constants::$estados[ $faker->numberBetween($min = 0, $max = 2)];
         $this->estado = "aprobado";
@@ -619,59 +624,59 @@ dd(
     public function comentar_y_aprobar_reincripcion(){
         $faker = Faker::create();
         //evaluacion
-        $this->prospeccion_evaluacion = 1;
+        $this->prospeccion_evaluacion = 'aprobado';
         $this->prospeccion_comentario = $faker->text($maxNbChars = 50);
         
-        $this->exploracion_evaluacion = 1;
+        $this->exploracion_evaluacion = 'aprobado';
         $this->exploracion_comentario = $faker->text($maxNbChars = 50);
 
-        $this->explotacion_evaluacion = 1;
+        $this->explotacion_evaluacion = 'aprobado';
         $this->explotacion_comentario = $faker->text($maxNbChars = 50);
         
-        $this->desarrollo_evaluacion = 1;
+        $this->desarrollo_evaluacion = 'aprobado';
         $this->desarrollo_comentario = $faker->text($maxNbChars = 50);
 
-        $this->cantidad_productos_evaluacion = 1;
+        $this->cantidad_productos_evaluacion = 'aprobado';
         $this->cantidad_productos_comentario = $faker->text($maxNbChars = 50);
         
-        $this->porcentaje_venta_provincia_evaluacion = 1;
+        $this->porcentaje_venta_provincia_evaluacion = 'aprobado';
         $this->porcentaje_venta_provincia_comentario = $faker->text($maxNbChars = 50);
         
-        $this->porcentaje_venta_otras_provincias_evaluacion = 1;
+        $this->porcentaje_venta_otras_provincias_evaluacion = 'aprobado';
         $this->porcentaje_venta_otras_provincias_comentario = $faker->text($maxNbChars = 50);
         
-        $this->porcentaje_exportado_evaluacion = 1;
+        $this->porcentaje_exportado_evaluacion = 'aprobado';
         $this->porcentaje_exportado_comentario = $faker->text($maxNbChars = 50);
 
 
-        $this->personal_perm_operarios_evaluacion = 1;
+        $this->personal_perm_operarios_evaluacion = 'aprobado';
         $this->personal_perm_operarios_comentario = $faker->text($maxNbChars = 50);
 
-        $this->personal_perm_administrativos_evaluacion = 1;
+        $this->personal_perm_administrativos_evaluacion = 'aprobado';
         $this->personal_perm_administrativos_comentario = $faker->text($maxNbChars = 50);
 
-        $this->personal_perm_otros_evaluacion = 1;
+        $this->personal_perm_otros_evaluacion = 'aprobado';
         $this->personal_perm_otros_comentario = $faker->text($maxNbChars = 50);
 
-        $this->personal_trans_profesional_evaluacion = 1;
+        $this->personal_trans_profesional_evaluacion = 'aprobado';
         $this->personal_trans_profesional_comentario = $faker->text($maxNbChars = 50);
 
-        $this->personal_trans_operarios_evaluacion = 1;
+        $this->personal_trans_operarios_evaluacion = 'aprobado';
         $this->personal_trans_operarios_comentario = $faker->text($maxNbChars = 50);
-        $this->personal_trans_administrativos_evaluacion = 1;
+        $this->personal_trans_administrativos_evaluacion = 'aprobado';
         $this->personal_trans_administrativos_comentario = $faker->text($maxNbChars = 50);
-        $this->personal_trans_otros_evaluacion = 1;
+        $this->personal_trans_otros_evaluacion = 'aprobado';
         $this->personal_trans_otros_comentario = $faker->text($maxNbChars = 50);
 
 
 
-        $this->nombre_evaluacion = 1;
+        $this->nombre_evaluacion = 'aprobado';
         $this->nombre_comentario = $faker->text($maxNbChars = 50);
-        $this->dni_evaluacion = 1;
+        $this->dni_evaluacion = 'aprobado';
         $this->dni_comentario = $faker->text($maxNbChars = 50);
-        $this->cargo_evaluacion = 1;
+        $this->cargo_evaluacion = 'aprobado';
         $this->cargo_comentario =  $faker->text($maxNbChars = 50);
-        $this->id_departamento_evaluacion = 1;
+        $this->id_departamento_evaluacion = 'aprobado';
         $this->id_departamento_comentario =$faker->text($maxNbChars = 50);
         $this->save();
     }
