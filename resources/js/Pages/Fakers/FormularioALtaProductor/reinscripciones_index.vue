@@ -280,12 +280,25 @@
                   <label for="username" class="text-gray-500 mb-2"
                     >productor?</label
                   >
-                  <select v-model="productor_nuevo">
+                  <select v-model="productor_nuevo" @change="buscar_minas">
                     <option value="-1" selected>Nuevo</option>
                     <option v-for="productor in productores" v-bind:key="productor.id" :value="productor.id">
                                         {{productor.razonsocial}}
                                     </option>
                   </select>
+                  
+                </div>
+                <div id="input" class="flex flex-col w-full my-5">
+                  <label for="username" class="text-gray-500 mb-2"
+                    >Mina?</label
+                  >
+                  <select v-model="mina_a_reinscribir">
+                    <option value="-1" selected>Nuevo</option>
+                    <option v-for="mina in minas" v-bind:key="mina.id" :value="mina.id">
+                                        {{mina.nombre}}
+                                    </option>
+                  </select>
+                  {{mina_a_reinscribir}}
                   
                 </div>
                 <div id="button" class="flex flex-col w-full my-5">
@@ -346,7 +359,10 @@
       provincia_a_crear:null,
       productor_nuevo:-1,
       cantidad: 0,
-      resultado:{}
+      resultado:{},
+      mina_a_reinscribir:'',
+      minas:{}
+      
     };
   },
 
@@ -364,7 +380,8 @@
         .post("crear", {
           provincia: this.provincia_a_crear,
           productor: this.productor_nuevo,
-          cantidad: this.cantidad
+          cantidad: this.cantidad,
+          mina_id: this.mina_a_reinscribir
         })
         .then(function (response) {
           // console.log(response.data);
@@ -375,6 +392,31 @@
               "success"
             );
             self.resultado=response.data.formularios;
+          } else {
+            Swal.fire("Error", "Error inesperado.", "error");
+          }
+        })
+        .catch(function (error) {
+          // handle error
+          Swal.fire("Error", "Error inesperado. <br/>" + error, "error");
+          console.log(error);
+        });
+      },
+      buscar_minas(){
+      let self = this;
+      axios
+        .post("buscar_minas", {
+          productor: this.productor_nuevo
+        })
+        .then(function (response) {
+          console.log(response.data);
+          if (response.data.status === "success") {
+            Swal.fire(
+              "Minas encontradas.",
+              "Gracias por usar este servicio, por favor continue completando el formulario.",
+              "success"
+            );
+            self.minas=response.data.minas;
           } else {
             Swal.fire("Error", "Error inesperado.", "error");
           }

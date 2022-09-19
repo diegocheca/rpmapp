@@ -98,7 +98,10 @@ class Productos extends Model
         //$categoria  = $mina->categoria;
 
         $formulario = FormAltaProductor::find($productor->id_formulario);
-
+/*dd($reinscripcion,
+$mina,
+$productor,
+$formulario);*/
 
         $minerales = Minerales_Borradores::select('*')->where("id_formulario","=",$formulario->id)->get();
         //dd($minerales);

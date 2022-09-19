@@ -227,7 +227,7 @@ class Reinscripciones extends Model
     }
 
 
-    public function crear_reinscripcion_faker($id_productor,$user_id,$id_provincia){
+    public function crear_reinscripcion_faker($id_productor,$user_id,$id_provincia,$mina_elegida){
         $faker = Faker::create();
 
         $razon_social = $faker->name();
@@ -598,8 +598,9 @@ dd(
         $mis_minas = ProductorMina::select('*')->where('id_productor',"=", $id_productor)
         ->whereNull('productor_mina.deleted_at')
         ->get();
-        $mina_elegida = $mis_minas[$faker->numberBetween(0,count($mis_minas)-1)];
-        $this->id_mina = $mina_elegida->id;
+        //$mina_elegida = $mis_minas[$faker->numberBetween(0,count($mis_minas)-1)];
+        //$this->id_mina = $mina_elegida->id;
+        $this->id_mina = $mina_elegida;
 
         //$this->estado = Constants::$estados[ $faker->numberBetween($min = 0, $max = 2)];
         $this->estado = "aprobado";
