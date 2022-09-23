@@ -1078,5 +1078,20 @@ export default {
       this.mostrar_modulo = !v;
     },
   },
+  mounted() {
+    //voy a buscar los permisos
+    axios
+      .get("/formularios/buscar_permisos_formulario/0/crear/1/1")
+      .then(function (response) {
+        if (response.data.status === "ok") {
+          self.permisos_mostrar = response.data.mostrar;
+          // console.log(self.permisos_mostrar);
+          self.permisos_disables = response.data.disables;
+        } else console.log("error al buscar permisos: " + response.data.msg);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 };
 </script>
