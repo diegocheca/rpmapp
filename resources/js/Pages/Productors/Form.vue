@@ -978,6 +978,22 @@
             >
             </PaginaCatamarca>
 
+            <div id="section_tucuman" v-if="$props.mostrar.paso_tucuman"></div>
+            <PaginaTucuman
+              v-if="m_tucuman && $props.mostrar.paso_tucuman"
+              :link_volver="'#'"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar Datos'"
+              :titulo_pagina="'Datos Extras de la Provincia'"
+              :evaluacion="evaluacion_global"
+              :testing="testing_global"
+              :id="form.id"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Tucuman', $event)
+              "
+            >
+            </PaginaTucuman>
+
             <div id="section_mendoza" v-if="$props.mostrar.paso_mendoza"></div>
             <PaginaMendoza
               v-if="m_mendoza && $props.mostrar.paso_mendoza"
@@ -1394,6 +1410,7 @@ import PaginaCuatroDatosMinaUno from "@/Pages/Productors/PaginaCuatroDatosMinaUn
 import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos";
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
+import PaginaTucuman from "@/Pages/Productors/PaginaTucuman";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
@@ -1427,6 +1444,7 @@ export default {
     PaginaCincoDatosMinaDos,
     PaginaSeisDatosUbicacionMina,
     PaginaCatamarca,
+    PaginaTucuman,
     PaginaMendoza,
     ValidationErrors,
     Pasos,
@@ -1451,6 +1469,7 @@ export default {
       m_paso5: false,
       m_paso6: false,
       m_catamarca: false, //Catamarca
+      m_tucuman: false, //Tucuman
       m_mendoza: false, //Mendoza
       evaluacion_global: this.$props.soy_autoridad_minera,
       testing_global: this.$props.soy_administrador,
@@ -2523,11 +2542,16 @@ export default {
             this.m_catamarca = valor;
           if (this.$inertia.page.props.user.id_provincia == 50)
             this.m_mendoza = valor;
+          if (this.$inertia.page.props.user.id_provincia == 90)
+            this.m_tucuman = valor;
           break;
         case "Catamarca":
           // this.m_paso6 = valor;
           break;
         case "Mendoza":
+          // this.m_paso6 = valor;
+          break;
+        case "Tucuman":
           // this.m_paso6 = valor;
           break;
         default:

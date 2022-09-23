@@ -479,7 +479,7 @@
               "
             >
               <p class="p-3">
-                Una Foto 4x4. Este acpeta los siguientes formatos: pdf, png o
+                Una Foto 4x4. Este acepta los siguientes formatos: pdf, png o
                 jpeg.
               </p>
             </div>
@@ -534,7 +534,7 @@
               "
             >
               <p class="p-3">
-                Copia de 1° y 2° hoja de D.N.I.. Este acpeta los siguientes
+                Copia de 1° y 2° hoja de D.N.I.. Este acepta los siguientes
                 formatos: pdf, png o jpeg.
               </p>
             </div>
@@ -597,7 +597,7 @@
               "
             >
               <p class="p-3">
-                Copia de 1° y 2° hoja de D.N.I.. Este acpeta los siguientes
+                Copia de 1° y 2° hoja de D.N.I.. Este acepta los siguientes
                 formatos: pdf, png o jpeg.
               </p>
             </div>

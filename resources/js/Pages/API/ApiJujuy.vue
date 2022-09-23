@@ -32,7 +32,7 @@
               bg-orange-500
               shadow-md
               font-bold
-              hover:text-white hover:shadow-xl hover:bg-orange-700
+              hover:text-white hover:shadow-xl hover:bg-orange-600 hover:border-orange-600
             "
             @click="consultar_datos"
           >

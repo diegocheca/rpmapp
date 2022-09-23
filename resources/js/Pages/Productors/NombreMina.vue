@@ -46,7 +46,7 @@
           relative
           focus:border-blue focus:shadow
         "
-        placeholder="Complete este campo"
+        :placeholder="placeholder ? placeholder : 'Complete este campo'"
         id="input_componente"
         name="input_componente"
         v-model="valor_input"
@@ -240,6 +240,7 @@ export default {
     "mostrar_correccion",
     "desactivar_correccion",
     "mostrar_evaluacion_adm",
+    "placeholder",
   ],
   data() {
     return {
