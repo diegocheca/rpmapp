@@ -118,25 +118,13 @@
         :icono="'/formulario_alta/imagenes/catamarca.png'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
-        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :clase_inf="'border shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
         :show="mostrar_modulo"
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
     </div>
     <!-- <br /><br /> -->
-    <div
-      v-if="mostrar_modulo"
-      class="
-        border-2
-        shadow-lg
-        rounded-2xl
-        w-full
-        py-4
-        px-8
-        bg-white
-        border-indigo-400
-      "
-    >
+    <div v-if="mostrar_modulo" class="shadow-lg w-full py-4 px-8 bg-white">
       <div class="items-center justify-left sticky top-1 z-10">
         <Menu
           :mostrarayuda="true"
@@ -491,7 +479,7 @@
               "
             >
               <p class="p-3">
-                Una Foto 4x4. Este acpeta los siguientes formatos: pdf, png o
+                Una Foto 4x4. Este acepta los siguientes formatos: pdf, png o
                 jpeg.
               </p>
             </div>
@@ -546,7 +534,7 @@
               "
             >
               <p class="p-3">
-                Copia de 1° y 2° hoja de D.N.I.. Este acpeta los siguientes
+                Copia de 1° y 2° hoja de D.N.I.. Este acepta los siguientes
                 formatos: pdf, png o jpeg.
               </p>
             </div>
@@ -609,7 +597,7 @@
               "
             >
               <p class="p-3">
-                Copia de 1° y 2° hoja de D.N.I.. Este acpeta los siguientes
+                Copia de 1° y 2° hoja de D.N.I.. Este acepta los siguientes
                 formatos: pdf, png o jpeg.
               </p>
             </div>
@@ -768,6 +756,7 @@
       <BotonesPaginaCatamarca
         :link_volver="link_volver"
         v-bind:titulo_boton_volver="titulo_boton_volver"
+        :mostrar_btn_volver="false"
         v-bind:titulo_boton_guardar="titulo_boton_guardar"
         v-bind:formulario="form_catamarca_test"
         v-bind:donde_guardar="
@@ -788,7 +777,7 @@
         v-if="$props.mostrar_boton_catamarca"
         :link_volver="'#'"
         :titulo_boton_volver="'volver'"
-        :titulo_boton_guardar="'Guardar Datos de la Mina'"
+        :titulo_boton_guardar="'Guardar'"
         :formulario="form_catamarca_test"
         :donde_guardar="$props.donde_estoy"
         :evaluacion="autoridad_minera"

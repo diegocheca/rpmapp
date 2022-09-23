@@ -17,12 +17,11 @@
             border border-r-0 border-blue-300
             px-3
             whitespace-no-wrap
-            text-grey-dark text-sm
+            text-grey-dark
             w-12
             h-10
             bg-blue-300
             justify-center
-            items-center
             text-xl
             rounded-lg
             text-white

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Auth;
 
 /**
  * Logs en archivos personalizados.
@@ -14,8 +15,10 @@ class Logs extends Controller
 {
     public static function info($mensaje, $canal = null)
     {
+        $user = Auth::user()->name;
+        $nameUser = '- [USUARIO: ' . $user . ']';
         if (isset($canal)) {
-            Log::channel($canal)->info($mensaje);
+            Log::channel($canal)->info($mensaje . ' ' . $nameUser);
             return;
         } else {
             # Se agrega al canal 'stack' y guarda el mensaje en el archivo 'laravel.log'

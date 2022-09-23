@@ -5,7 +5,9 @@
       >{{ label }} :
     </label>
     <div
-      v-if="valor_input === null || valor_input === undefined"
+      v-if="
+        valor_input === null || valor_input === undefined || valor_input === ''
+      "
       class="items-stretch w-full relative"
     >
       <div class="items-center justify-center w-full">

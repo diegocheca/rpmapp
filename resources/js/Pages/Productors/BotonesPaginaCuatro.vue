@@ -16,50 +16,50 @@
     </jet-dialog-modal> -->
     <div class="flex items-stretch w-full justify-items-stretch">
       <div
-        class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full"
+        class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5 w-full"
       >
-        <button
-          type="button"
+        <a
+          v-if="mostrar_btn_volver"
+          :href="link_volver"
           class="
-            text-xl
-            font-medium
+            uppercase
             mx-auto
             py-3
             px-5
-            text-indigo-500
+            text-white
             border border-gray-400
-            rounded-xl
-            bg-gray-100
-            shadow-xl
+            bg-gray-400
+            shadow-md
+            font-bold
             hover:text-white
             hover:shadow-xl
-            hover:bg-gray-600
+            hover:bg-red-700
+            hover:border-red-700
+          "
+        >
+          {{ titulo_boton_volver }}
+        </a>
+      </div>
+      <div class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center">
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
           "
           @click="guardar_avnces_cuatro"
         >
           {{ titulo_boton_guardar }}
         </button>
       </div>
-      <a
-        :href="link_volver"
-        class="
-          text-xl
-          font-medium
-          mx-auto
-          py-3
-          px-5
-          text-indigo-500
-          border border-gray-400
-          rounded-xl
-          bg-gray-100
-          shadow-xl
-          hover:text-white
-          hover:shadow-xl
-          hover:bg-gray-600
-        "
-      >
-        {{ titulo_boton_volver }}
-      </a>
     </div>
     <div v-show="$props.testing">
       {{ $props.numero_expdiente }}
@@ -123,7 +123,8 @@ import JetDialogModal from "@/Jetstream/DialogModal";
 export default {
   props: [
     "link_volver",
-    "titulo_boton_volver",
+    "titulo_boton_volver",    
+    "mostrar_btn_volver",
     "titulo_boton_guardar",
 
     "numero_expdiente",
@@ -345,13 +346,10 @@ export default {
       data.append("valor_de_aprobado", 20);
       data.append("valor_de_reprobado", 20);
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
-// console.log(this.$inertia.page.props.appName);
-//       alert(this.$inertia.page.props.appName);
+      // console.log(this.$inertia.page.props.appName);
+      //       alert(this.$inertia.page.props.appName);
       axios
-        .post(
-          "/formularios/evaluacion_auto_guardado_cuatro",
-          data
-        )
+        .post("/formularios/evaluacion_auto_guardado_cuatro", data)
         .then(function (response) {
           // console.log(response.data);
           if (response.data === "se actualizaron los datos correctamente") {
@@ -379,14 +377,11 @@ export default {
         });
       if (this.$props.minerales["length"] != 0) {
         axios
-          .post(
-            "/formularios/guardar_lista_minerales",
-            {
-              id: this.$props.id,
-              lista_minerales: this.$props.minerales,
-              es_evaluacion: this.$props.evaluacion,
-            }
-          )
+          .post("/formularios/guardar_lista_minerales", {
+            id: this.$props.id,
+            lista_minerales: this.$props.minerales,
+            es_evaluacion: this.$props.evaluacion,
+          })
           .then(function (response) {
             // if (response.data === "se actualizaron los datos correctamente") {
             //   // console.log("todo bien");

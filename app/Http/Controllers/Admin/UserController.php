@@ -91,7 +91,6 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         try {
-            $userLog = Auth::user()->name;
             $userActualizado = $user->name;
             $nameProvincia = CountriesController::getProvince($request->idProv);
             $nameProvincia = $nameProvincia->label;
@@ -120,14 +119,11 @@ class UserController extends Controller
             });
 
             # Datos Actualizados
-            Logs::info('El usuario ' . $userLog . ', realizó la modificación en el  Usuario: ' . $userActualizado . '. Datos Modificados: ' . json_encode($datosUpdate) . '. Roles: ' . json_encode($roleAct),'rpm');
+            Logs::info('Se realizó la modificación en el  Usuario: ' . $userActualizado . '. Datos Modificados: ' . json_encode($datosUpdate) . '. Roles: ' . json_encode($roleAct),'rpm');
 
             # Datos Anteriores
             Logs::info('Datos Anteriores: ' . json_encode($datosAnteriores) . '. Roles: ' . json_encode($roleAnt),'rpm');
             
-            Logs::info('Datos Anteriores: ' . json_encode($datosAnteriores) . '. Roles: ' . json_encode($roleAnt));
-
-
             $user->update($datosUpdate);
             if ($roleAct) {
                 $user->roles()->sync($request->get('checkedroles'));
@@ -143,13 +139,11 @@ class UserController extends Controller
     {
         // dd(User::find($id)->name);
         try {
-            $user = Auth::user()->name;
             $userEliminado = User::find($id)->name;
             $usuario = User::find($id)->delete();
 
-            Logs::info('El usuario ' . $user . ', elimino al Usuario: ' . $userEliminado . '.-','rpm');
+            Logs::info('Se elimino al Usuario: ' . $userEliminado . '.','rpm');
 
-            // dd($usuario);
             return response()->json([
                 'status' => 'ok',
                 'msg' => 'se elimino correctamente',

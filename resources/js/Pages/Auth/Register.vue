@@ -239,12 +239,7 @@ export default {
     //voy a buscar las provincias
     this.$nextTick(() => {
       axios
-        .get("/api/datos/traer_provincias", {
-          headers: {
-            Authorization:
-              "bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODA4MFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYzMTY1MzU0MSwibmJmIjoxNjMxNjUzNTQxLCJqdGkiOiIzNHA0U1JSMGRCazFTWm00Iiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.-QWEx5YYjsfjBeIgI9LSdoXapADydx49qMKOXCfJd5M",
-          },
-        })
+        .get("/api/datos/traer_provincias")
         .then(function (response) {
           // console.log("las provincias son:\n");
           self.lista_provincias = response.data;
