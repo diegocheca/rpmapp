@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\FormAltaProductorCatamarcaController;
 use App\Http\Controllers\FormAltaProductorMendozaController;
+use App\Http\Controllers\FormAltaProductorTucumanController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -253,17 +254,22 @@ Route::post('/formularios/evaluacion_auto_guardado_tres', [FormAltaProductorCont
 Route::post('/formularios/evaluacion_auto_guardado_cuatro', [FormAltaProductorController::class, "correccion_guardar_paso_cuatro"])->name('correccion_guardar-paso-cuatro');
 Route::post('/formularios/evaluacion_auto_guardado_cinco', [FormAltaProductorController::class, "correccion_guardar_paso_cinco"])->name('correccion_guardar-paso-cinco');
 Route::post('/formularios/evaluacion_auto_guardado_seis', [FormAltaProductorController::class, "correccion_guardar_paso_seis"])->name('correccion_guardar-paso-seis');
+
+
+#CATAMARCA
 Route::post('/formularios/evaluacion_auto_guardado_catamarcas', [FormAltaProductorController::class, "correccion_guardar_paso_catamarca"])->name('correccion_guardar-paso-catamarca');
-Route::post('/formularios/evaluacion_auto_guardado_mendoza', [FormAltaProductorMendozaController::class, "correccion_guardar_paso_mendoza"])->name('correccion_guardar-paso-mendoza');
-
-
-
 Route::get('/formularios/traer_datos_pagina_catamarca/{id}', [FormAltaProductorCatamarcaController::class, "traer_datos_pagina_catamarca"])->name('traer-datos-pagina-catamarca');
 Route::get('/formularios/traer_permisos_pagina_catamarca/{id}/{accion}', [FormAltaProductorCatamarcaController::class, "traer_permisos_pagina_catamarca"])->name('traer-permisos-pagina-catamarca');
 
+#MENDOZA
+Route::post('/formularios/evaluacion_auto_guardado_mendoza', [FormAltaProductorMendozaController::class, "correccion_guardar_paso_mendoza"])->name('correccion_guardar-paso-mendoza');
 Route::get('/formularios/traer_datos_pagina_mendoza/{id}', [FormAltaProductorMendozaController::class, "traer_datos_pagina_mendoza"])->name('traer-datos-pagina-mendoza');
 Route::get('/formularios/traer_permisos_pagina_mendoza/{id}/{accion}', [FormAltaProductorMendozaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-mendoza');
 
+#TUCUMAN
+Route::post('/formularios/evaluacion_auto_guardado_tucuman', [FormAltaProductorTucumanController::class, "correccion_guardar_paso_tucuman"])->name('correccion_guardar-paso-tucuman');
+Route::get('/formularios/traer_datos_pagina_tucuman/{id}', [FormAltaProductorTucumanController::class, "traer_datos_pagina_tucuman"])->name('traer-datos-pagina-tucuman');
+Route::get('/formularios/traer_permisos_pagina_tucuman/{id}/{accion}', [FormAltaProductorTucumanController::class, "traer_permisos_pagina_tucuman"])->name('traer-permisos-pagina-tucuman');
 
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
 Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');
