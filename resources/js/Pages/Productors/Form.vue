@@ -6,16 +6,14 @@
           <div id="inicio"></div>
           <h1
             class="
-              border-2
+              normal-case
               shadow-lg
-              rounded-2xl
               text-center text-2xl
               font-bold
               leading-7
-              text-gray-700
+              text-gray-500
               sm:text-3xl sm:truncate
               py-1
-              border-indigo-400
             "
           >
             Dandose de Alta como nuevo Productor Minero en la Provincia de
@@ -144,7 +142,7 @@
               "
             >
             </PaginaUnoDatosProductores>
-            
+
             <div id="section_domicilio_legal"></div>
             <PaginaDosDatosDomLegal
               v-if="m_paso2"
@@ -980,12 +978,28 @@
             >
             </PaginaCatamarca>
 
+            <div id="section_tucuman" v-if="$props.mostrar.paso_tucuman"></div>
+            <PaginaTucuman
+              v-if="m_tucuman && $props.mostrar.paso_tucuman"
+              :link_volver="'#'"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar Datos'"
+              :titulo_pagina="'Datos Extras de la Provincia'"
+              :evaluacion="evaluacion_global"
+              :testing="testing_global"
+              :id="form.id"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Tucuman', $event)
+              "
+            >
+            </PaginaTucuman>
+
             <div id="section_mendoza" v-if="$props.mostrar.paso_mendoza"></div>
             <PaginaMendoza
               v-if="m_mendoza && $props.mostrar.paso_mendoza"
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
-              :titulo_boton_guardar="'Guardar Datos'"
+              :titulo_boton_guardar="'Guardar'"
               :titulo_pagina="'Mendoza'"
               :evaluacion="evaluacion_global"
               :testing="testing_global"
@@ -1001,47 +1015,17 @@
             <div
               class="
                 border-2
+                rounded
                 shadow-lg
-                rounded-2xl
                 w-full
                 py-4
                 px-8
                 bg-white
-                my-20
-                border-indigo-400
+                mb-20
+                mt-10
+                border-indigo-100
               "
             >
-
-            <div class="flex flex-wrap">
-              <div
-                class="
-                  w-full
-                  sm:w-1/1
-                  md:w-1/1
-                  lg:w-1/1
-                  xl:w-1/1
-                  2xl:w-1/1
-                  px-3
-                  mb-6
-                  md:mb-0
-                "
-              >
-                <InputComponente
-                  :titulo="'Observacion'"
-                  :tipo="'text'"
-                  :placeholder="'Agregue alguna obervación'"
-                  :value="form.observacion"
-                  v-on:ValueInput="update_input_observacion($event)"
-                ></InputComponente>
-              </div>
-              
-              
-            </div>
-
-
-
-
-
               <div class="flex flex-wrap">
                 <div
                   class="
@@ -1109,7 +1093,30 @@
               </div>
               <div class="flex flex-wrap">
                 <div
-                  class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0"
+                  class="
+                    w-full
+                    sm:w-1/1
+                    md:w-1/1
+                    lg:w-1/1
+                    xl:w-1/1
+                    2xl:w-1/1
+                    px-3
+                    mb-6
+                    md:mb-0
+                  "
+                >
+                  <InputComponente
+                    :titulo="'Observacion'"
+                    :tipo="'text'"
+                    :placeholder="'Agregue alguna obervación'"
+                    :value="form.observacion"
+                    v-on:ValueInput="update_input_observacion($event)"
+                  ></InputComponente>
+                </div>
+              </div>
+              <div class="flex flex-wrap">
+                <!-- <div
+                  class="w-full sm:w-2/2 md:w-2/2 xl:w-3/3 px-3 mb-6 md:mb-0"
                 >
                   <label
                     class="mb-2 uppercase font-bold text-lg text-grey-darkest"
@@ -1122,30 +1129,50 @@
                     v-model="form.created_by"
                     class="border py-2 px-3 text-grey-darkest"
                   />
-                </div>
+                </div> -->
                 <div
-                  class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0"
+                  class="w-full sm:w-2/2 md:w-2/2 xl:w-3/3 px-3 mb-6 md:mb-2"
                 >
                   <label
-                    class="mb-2 uppercase font-bold text-lg text-grey-darkest"
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-2
+                    "
                     for="estado"
-                    >Estado Actual:</label
-                  ><br />
+                    >Estado Actual</label
+                  >
                   <span
                     v-if="form.estado === 'en proceso'"
                     class="
                       bg-purple-200
                       text-purple-600
-                      py-1
+                      py-3
                       px-3
-                      rounded
                       text-xs
+                      uppercase
+                      w-full
+                      flex
+                      rounded-lg
                     "
                     >En proceso</span
                   >
                   <span
                     v-if="form.estado === 'borrador'"
-                    class="bg-pink-200 text-pink-600 py-1 px-3 rounded text-xs"
+                    class="
+                      bg-pink-200
+                      text-pink-600
+                      py-3
+                      px-3
+                      text-xs
+                      uppercase
+                      w-full
+                      flex
+                      rounded-lg
+                    "
                     >Borrador</span
                   >
                   <span
@@ -1153,10 +1180,13 @@
                     class="
                       bg-green-200
                       text-green-600
-                      py-1
+                      py-3
                       px-3
-                      rounded
                       text-xs
+                      uppercase
+                      w-full
+                      flex
+                      rounded-lg
                     "
                     >Aprobado</span
                   >
@@ -1165,30 +1195,63 @@
                     class="
                       bg-yellow-200
                       text-yellow-600
-                      py-1
+                      py-3
                       px-3
-                      rounded
                       text-xs
+                      uppercase
+                      w-full
+                      flex
+                      rounded-lg
                     "
                     >En revision</span
                   >
                   <span
                     v-if="form.estado === 'con observacion'"
-                    class="bg-gray-200 text-gary-600 py-1 px-3 rounded text-xs"
+                    class="
+                      bg-gray-200
+                      text-gary-600
+                      py-3
+                      px-3
+                      text-xs
+                      uppercase
+                      w-full
+                      flex
+                      rounded-lg
+                    "
                     >Con Obesrvacion</span
                   >
                   <span
                     v-if="form.estado === 'reprobado'"
-                    class="bg-red-200 text-red-600 py-1 px-3 rounded text-xs"
+                    class="
+                      bg-red-200
+                      text-red-600
+                      py-3
+                      px-3
+                      text-xs
+                      uppercase
+                      w-full
+                      flex
+                      rounded-lg
+                    "
                     >Reprobado</span
                   >
                   <span
                     v-if="form.estado === 'sin guardar'"
-                    class="bg-red-200 text-red-600 py-1 px-3 rounded text-xs"
+                    class="
+                      bg-red-200
+                      text-red-600
+                      py-3
+                      px-3
+                      text-xs
+                      uppercase
+                      w-full
+                      flex
+                      rounded-lg
+                    "
                     >Sin Guardar</span
                   >
                 </div>
-                <div
+                <!-- <div
                   class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0"
                   v-if="$props.mostrar.estado"
                 >
@@ -1221,7 +1284,7 @@
                     <option value="borrador">Borrador</option>
                     <option value="presentar">Presentar</option>
                   </select>
-                </div>
+                </div> -->
               </div>
               <br />
               <br />
@@ -1240,26 +1303,26 @@
                     w-full
                   "
                 >
-                  <button
-                    v-if="!evaluacion_global"
-                    @click="abrirModalPresentar"
-                    :disabled="$props.disables.boton_actualizar"
+                  <inertia-link
+                    :href="route('formulario-alta.index')"
                     class="
-                      text-xl
-                      font-medium
+                      uppercase
                       mx-auto
                       py-3
                       px-5
-                      text-indigo-500
+                      text-white
                       border border-gray-400
-                      rounded-xl
-                      bg-gray-100
-                      shadow-xl
-                      hover:text-white hover:shadow-xl hover:bg-green-600
+                      bg-gray-400
+                      shadow-md
+                      font-bold
+                      hover:text-white
+                      hover:shadow-xl
+                      hover:bg-red-700
+                      hover:border-red-700
                     "
                   >
-                    {{ nombre_boton_actualizar }}
-                  </button>
+                    Volver Atras
+                  </inertia-link>
                 </div>
                 <div
                   class="
@@ -1273,24 +1336,26 @@
                     w-full
                   "
                 >
-                  <inertia-link
-                    :href="route('formulario-alta.index')"
+                  <button
+                    v-if="!evaluacion_global"
+                    @click="abrirModalPresentar"
+                    :disabled="$props.disables.boton_actualizar"
                     class="
-                      text-xl
-                      font-medium
+                      uppercase
                       mx-auto
                       py-3
                       px-5
-                      text-indigo-500
-                      border border-gray-400
-                      rounded-xl
-                      bg-gray-100
-                      shadow-xl
-                      hover:text-white hover:shadow-xl hover:bg-red-600
+                      text-white
+                      border border-blue-500
+                      bg-blue-500
+                      shadow-md
+                      font-bold
+                      hover:text-white hover:shadow-xl hover:bg-blue-700
                     "
                   >
-                    Volver Atras
-                  </inertia-link>
+                    <!-- {{ nombre_boton_actualizar }} -->
+                    Presentar
+                  </button>
                 </div>
               </div>
             </div>
@@ -1345,6 +1410,7 @@ import PaginaCuatroDatosMinaUno from "@/Pages/Productors/PaginaCuatroDatosMinaUn
 import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos";
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
+import PaginaTucuman from "@/Pages/Productors/PaginaTucuman";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
@@ -1378,6 +1444,7 @@ export default {
     PaginaCincoDatosMinaDos,
     PaginaSeisDatosUbicacionMina,
     PaginaCatamarca,
+    PaginaTucuman,
     PaginaMendoza,
     ValidationErrors,
     Pasos,
@@ -1402,6 +1469,7 @@ export default {
       m_paso5: false,
       m_paso6: false,
       m_catamarca: false, //Catamarca
+      m_tucuman: false, //Tucuman
       m_mendoza: false, //Mendoza
       evaluacion_global: this.$props.soy_autoridad_minera,
       testing_global: this.$props.soy_administrador,
@@ -2177,7 +2245,8 @@ export default {
     },
 
     guardar_avances_todo: function () {
-      if (this.form.estado === "presentar") {
+      // if (this.form.estado === "presentar") {
+      if (true) {
         let self = this;
         Swal.fire({
           title: "¡Por favor Espere!",
@@ -2193,7 +2262,7 @@ export default {
           .post("/formularios/presentar_borrador", {
             id: self.form.id,
             // estado: self.form.estado,
-            estado: 'en revision',
+            estado: "en revision",
             es_evaluacion: self.evaluacion_global,
             //agrego los campos dni , cargo y nombre
             nombre_presentador: this.form.presentador_nombre,
@@ -2246,7 +2315,14 @@ export default {
           })
           .catch(function (error) {
             Swal.hideLoading();
-            console.log(error);
+            Swal.fire({
+              icon: "error",
+              title: "Error...",
+              text:
+                "Se produzco un error a la hora de guardar los datos. ERROR: " +
+                error,
+            });
+            // console.log(error);
           });
       } else {
         Swal.fire({
@@ -2466,11 +2542,16 @@ export default {
             this.m_catamarca = valor;
           if (this.$inertia.page.props.user.id_provincia == 50)
             this.m_mendoza = valor;
+          if (this.$inertia.page.props.user.id_provincia == 90)
+            this.m_tucuman = valor;
           break;
         case "Catamarca":
           // this.m_paso6 = valor;
           break;
         case "Mendoza":
+          // this.m_paso6 = valor;
+          break;
+        case "Tucuman":
           // this.m_paso6 = valor;
           break;
         default:
@@ -2527,7 +2608,7 @@ export default {
       this.form.administracion_otro = this.form.leal_otro;
       // console.log("ya copie todo");
       // console.log(
-      //   this.form.administracion_calle, Ruta Nacional 40 
+      //   this.form.administracion_calle, Ruta Nacional 40
       //   this.form.administracion_numero, 3422
       //   this.form.administracion_telefono, 4941245
       //   this.form.administracion_provincia, 10

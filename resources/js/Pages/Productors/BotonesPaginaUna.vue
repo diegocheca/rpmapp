@@ -2,51 +2,49 @@
   <div class="flex flex-col items-center justify-center w-full">
     <div class="flex items-stretch w-full justify-items-stretch">
       <div
-        class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center w-full"
+        class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5 w-full"
       >
+        <a
+          v-if="mostrar_btn_volver"
+          :href="link_volver"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-gray-400
+            bg-gray-400
+            shadow-md
+            font-bold
+            hover:text-white
+            hover:shadow-xl
+            hover:bg-red-700
+            hover:border-red-700
+          "
+          >{{ titulo_boton_volver }}</a
+        >
+      </div>
+      <div class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center">
         <button
           type="button"
           :disabled="$props.desactivar_boton_guardar_uno"
           class="
-            text-xl
-            font-medium
+            uppercase
             mx-auto
             py-3
             px-5
-            text-indigo-500
-            border border-gray-400
-            rounded-xl
-            bg-gray-100
-            shadow-xl
-            hover:text-white
-            hover:shadow-xl
-            hover:bg-gray-600
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
           "
           @click="guardar_avnces_uno"
         >
           {{ titulo_boton_guardar }}
         </button>
-      </div>
-      <div class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5">
-        <a
-          :href="link_volver"
-          class="
-            text-xl
-            font-medium
-            mx-auto
-            py-3
-            px-5
-            text-indigo-500
-            border border-gray-400
-            rounded-xl
-            bg-gray-100
-            shadow-xl
-            hover:text-white
-            hover:shadow-xl
-            hover:bg-gray-600
-          "
-          >{{ titulo_boton_volver }}</a
-        >
       </div>
     </div>
     <div v-if="$props.testing">
@@ -94,6 +92,7 @@ export default {
   props: [
     "link_volver",
     "titulo_boton_volver",
+    "mostrar_btn_volver",
     "titulo_boton_guardar",
 
     "razon_social",
@@ -291,8 +290,7 @@ export default {
               self.actualizar_cosntancia_nueva(
                 response.data.path_constaciasociedad
               );
-          }
-          else if (response.data.rol === "autoridad") {
+          } else if (response.data.rol === "autoridad") {
             // self.modal_tittle =
             //   "Datos de de evaluación Productor guardados correctamente.";
             // self.modal_body =
@@ -305,8 +303,7 @@ export default {
             ).then((result) => {
               self.ver_pagina_siguiente(true);
             });
-          }
-          else if (response.data.msg === "se creo el borrador") {
+          } else if (response.data.msg === "se creo el borrador") {
             console.log("data = ", response.data);
             // self.modal_tittle = "Se creó correctamente nuevo Borrador";
             // self.modal_body =
@@ -318,7 +315,12 @@ export default {
             Swal.fire(
               "Se creó correctamente un nuevo Borrador.",
               "Se ha guardado correctamente los Datos del Productor. <b> <br/> [ Id = " +
-                response.data.id +" ] <br/> [N° RPM = "+ response.data.num_rpm +" ] <br/> [ Estado = " + response.data.estado + " ]. </b>",
+                response.data.id +
+                " ] <br/> [N° RPM = " +
+                response.data.num_rpm +
+                " ] <br/> [ Estado = " +
+                response.data.estado +
+                " ]. </b>",
               "success"
             ).then((result) => {
               self.ver_pagina_siguiente(true);
