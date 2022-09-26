@@ -82,10 +82,7 @@
         <p>
           Parece que no tiene un complemento de PDF para este navegador.
           <a
-            :href="
-              $inertia.page.props.appName +
-              '/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'
-            "
+            :href="valor_input"
             >Haga clic aquí para descargar el archivo PDF.</a
           >
         </p>
@@ -320,7 +317,7 @@ export default {
     // console.log("La contancia es valor es:");
     // console.log(this.$props.fileinput_valor);
     return {
-      valor_input: this.$props.fileinput_valor,
+      valor_input: this.$props.fileinput_valor.replace('//storage','/storage'),
       fileinput_correcto_local: this.$props.inscripciondgr_correcto,
       obs_fileinput_correcto_local: this.$props.obs_fileinput,
       fileinput_valor_valido_local: this.$props.fileinput_valor_valido,

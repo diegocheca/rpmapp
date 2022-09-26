@@ -980,13 +980,17 @@ class FormAltaProductor extends Model
     }
     
 
-    public function completar_paso8_faker($id_user){
+    public function completar_paso8_faker($id_user, $id_productor = false){
         $this->estado = "aprobado";
         $this->updated_at = date("Y-m-d H:i:s");
         $this->updated_by = $id_user;
         $this->save();
         //creo el nuevo productor.
-        $id_productor_nuevo = Productores::crear_nuevo_productor($this->id);
+        if($id_productor == false){
+            $id_productor_nuevo = Productores::crear_nuevo_productor($this->id);
+        } else {
+            $id_productor_nuevo = $id_productor;
+        }
         $id_mina_nueva = MinaCantera::crear_registro_mina_cantera($this->id);
         $id_dia_iia_nueva = iia_dia::crear_registro_dia_iia($this->id);
         $id_pago_canon_nuevo = Pagocanonmina::crear_registro_pago_canon($this->id);

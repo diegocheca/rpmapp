@@ -377,5 +377,12 @@ export default {
       this.nameArchivo = this.$refs.file.files[0].name;
     },
   },
+   mounted() {
+    if(this.$props.valor_input_props != null && this.$props.valor_input_props != ''){
+      this.valor_input = this.$props.valor_input_props.replace('//storage','/storage');
+    }
+   }
+   
+
 };
 </script>

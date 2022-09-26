@@ -7,7 +7,7 @@ use App\Http\Requests\UpdateFormAltaProductorFakerRequest;
 use App\Models\FormAltaProductorFaker;
 use Inertia\Inertia;
 use App\Models\Provincias;
-
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -33,6 +33,7 @@ use App\Models\Reinscripciones;
 use App\Models\Productores;
 use App\Models\Productos;
 use App\Models\MinaCantera;
+
 
 use Exception;
 
@@ -100,8 +101,6 @@ class FormAltaProductorFakerController extends Controller
 
                 /*Crear formulario*/
                 //$estado = Constants::$estados[$faker->numberBetween(0,count(Constants::$estados)-1)]; 
-                $nuevo_formulario = new FormAltaProductor();
-
                 $formulario_nuevo  = new FormAltaProductor();
                 //$formulario_nuevo->inicializar_faker(null,$id_user,$id_provincia);
                 $formulario_nuevo->completar_paso1_faker(null,null,$razon_social,$email,$sociedad,null,null,null,$id_user,$id_provincia);
@@ -138,7 +137,7 @@ class FormAltaProductorFakerController extends Controller
                 }
                 $formulario_nuevo->completar_paso7_faker(null,null,null,null,$id_user);
                 
-                $formulario_nuevo->completar_paso8_faker($id_user);
+                $formulario_nuevo->completar_paso8_faker($id_user, false);
 
                 
                 $array_to_return[$i] = [
@@ -223,12 +222,122 @@ class FormAltaProductorFakerController extends Controller
         }
 
     }
+    
+    
+    public function mina_index()
+    {
+        //
+        $productores = Productores::select('id','razonsocial')->get();
+        return Inertia::render('Fakers/FormularioALtaProductor/minas_index', [
+            'productores' => $productores,
+        ]);
+    }
 
+    
+    public function create_minas(Request $request){
+        //comprobar cuantos quiero crear y si el request llega bien
+        try{
+
+            $faker = Faker::create();
+            $datos_a_mostrar = array();
+            for($i = 0;$i< 1; $i++)
+            {
+                $nueva_mina = new MinaCantera();
+                //buscar el user_id
+                $productor = Productores::find($request->productor);
+                $formulario_de_alta_anterior = FormAltaProductor::find($productor->id_formulario);
+
+                $departamentos = Departamentos::select("id", "nombre")->where("provincia_id", "=",$formulario_de_alta_anterior->provincia)->get();
+                $departamento = $departamentos[$faker->numberBetween(0,count($departamentos)-1)];
+
+                //empieza a crear la mina
+                //primero creo un nuevo formulario con mis datos del formulario anterior
+                $formulario_nuevo  = new FormAltaProductor();
+                $id_user = $formulario_de_alta_anterior->created_by;
+                $formulario_nuevo->completar_paso1_faker($formulario_de_alta_anterior->numeroproductor,$formulario_de_alta_anterior->cuit,$formulario_de_alta_anterior->razonsocial,$formulario_de_alta_anterior->email,$formulario_de_alta_anterior->tiposociedad,null,null,null,$id_user,$formulario_de_alta_anterior->provincia);
+                //completar_paso1_faker($numeroproductor = null,                                      $cuit= null,                        $razonsocial= null                          ,$email= null,                      $tiposociedad= null,            $inscripciondgr= null,$constaciasociedad= null,$estado,$id_user,$id_provincia){
+                $formulario_nuevo->aprobar_paso_uno($id_user);
+                
+                $formulario_nuevo->completar_paso2_faker($formulario_de_alta_anterior->leal_calle,$formulario_de_alta_anterior->leal_numero,$formulario_de_alta_anterior->leal_telefono,$formulario_de_alta_anterior->leal_provincia,$departamento->id,$formulario_de_alta_anterior->leal_localidad,$formulario_de_alta_anterior->leal_cp,$formulario_de_alta_anterior->leal_otro,$id_user);
+                //completar_paso2_faker(                $leal_calle = null,                          $leal_numero= null,                      $leal_telefono= null,                      $leal_provincia= null,                  $leal_departamento= null                               ,$leal_localidad= null,                          $leal_cp= null,                               $leal_otro=null,$id_user){
+                $formulario_nuevo->aprobar_paso_dos($id_user);
+
+                $formulario_nuevo->completar_paso3_faker($formulario_de_alta_anterior->administracion_calle,$formulario_de_alta_anterior->administracion_numero,$formulario_de_alta_anterior->administracion_telefono,$formulario_de_alta_anterior->administracion_provincia,$departamento->id,$formulario_de_alta_anterior->administracion_localidad,$formulario_de_alta_anterior->administracion_cp,$formulario_de_alta_anterior->administracion_otro,$id_user);
+                //completar_paso3_faker($administracion_calle = null,                                                 $administracion_numero= null,                  $administracion_telefono= null,                $administracion_provincia= null                        ,$administracion_departamento= null                          ,$administracion_localidad= null,                     $administracion_cp= null                         ,$administracion_otro=null,$id_user){
+                $formulario_nuevo->aprobar_paso_tres($id_user);
+
+                $formulario_nuevo->completar_paso4_faker(null,null,null,null,null,null,null,$id_user);
+                //completar_paso4_fake($mina_cantera = null,$numero_expdiente= null,$distrito_minero= null,$descripcion_mina= null,$nombre_mina= null,$plano_inmueble= null,$minerales_variedad= null,$id_user){
+                $formulario_nuevo->aprobar_paso_cuatro($id_user);
+                $formulario_nuevo->completar_paso5_faker(null, null, null, null, null,$id_user);
+                $formulario_nuevo->aprobar_paso_cinco($id_user);
+
+
+
+                
+
+                
+                $formulario_nuevo->completar_paso6_faker($formulario_de_alta_anterior->provincia,$departamento->id,$id_user);
+                $formulario_nuevo->aprobar_paso_seis($id_user);
+                
+                
+                if($request->provincia== 10){//si es catamarca
+                    $formulario_catamarca = new FormAltaProductorCatamarca();
+                    $formulario_catamarca->completar_paso_catamarca_faker(null, null,null,null, null, null, null, null, null, null, null,$formulario_nuevo->id,$id_user);
+                    $formulario_catamarca->aprobar_paso_catamarca($id_user);
+                }
+                if($request->provincia== 50){//mendoza poner el correcto de mendoza
+                    $formulario_mendoza = new FormAltaProductorMendoza();
+                    $formulario_mendoza->completar_y_guardar_formu_fake($formulario_nuevo->id,$id_user);
+                    $formulario_catamarca->aprobar_paso_mendoza($id_user);
+                }
+                if($request->provincia== 66){//mendoza poner el correcto de salta
+                    $formulario_mendoza = new FormAltaProductorSalta();
+                    $formulario_mendoza->crear_formulario_fake_salta($formulario_nuevo->id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, $id_user);
+                }
+                $formulario_nuevo->completar_paso7_faker(null,null,null,null,$id_user);
+                
+                $formulario_nuevo->completar_paso8_faker($id_user, $request->productor);
+
+
+                //formulario creado 
+                $minas_del_prod = MinaCantera::select("id","nombre")->where("id_formulario", "=",$formulario_nuevo->id)->get();
+
+
+
+
+                $array_to_return = [
+                    "id_fomulario" => $formulario_nuevo->id,
+                    "id_usario" => $id_user,
+                    "provincia" => $formulario_nuevo->provincia,
+                    "mina_nueva" => $minas_del_prod
+
+                ];
+            }
+            return response()->json([
+                'status'=> 'success',
+                'formularios' => $array_to_return
+            ],200);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'error', 'error' => $e->getMessage()], 401);
+        }
+
+    }
     public function buscar_minas_faker(Request $request){
         //dd("voy a buscar el productor", $request->all());
-        $productor = Productores::find($request->productor);
+        /*$productor = Productores::find($request->productor);
         //$formulario_de_alta = FormAltaProductor::find($productor->id_formulario);
+        $minas_prod  = ProductorMina::select('*')->where("id_productor","=",$request->productor)->get();
         $minas = MinaCantera::select('*')->where("id_formulario","=",$productor->id_formulario)->get();
+*/
+        
+ 
+$minas = DB::table('mina_cantera')
+            ->join('productor_mina', 'mina_cantera.id', '=', 'productor_mina.id_mina')
+            ->where("productor_mina.id_productor","=",$request->productor)
+            ->select('mina_cantera.id', 'mina_cantera.nombre')
+            ->get();
+
         return response()->json([
             'status'=> 'success',
             'minas' => $minas
