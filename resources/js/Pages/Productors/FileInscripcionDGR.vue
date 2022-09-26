@@ -317,7 +317,7 @@ export default {
     // console.log("La contancia es valor es:");
     // console.log(this.$props.fileinput_valor);
     return {
-      valor_input: this.$props.fileinput_valor.replace('//storage','/storage'),
+      valor_input: this.$props.fileinput_valor,
       fileinput_correcto_local: this.$props.inscripciondgr_correcto,
       obs_fileinput_correcto_local: this.$props.obs_fileinput,
       fileinput_valor_valido_local: this.$props.fileinput_valor_valido,
@@ -348,5 +348,11 @@ export default {
       this.nameArchivo = this.$refs.file.files[0].name;
     },
   },
+  mounted() {
+    if(this.$props.fileinput_valor != null && this.$props.fileinput_valor != ''){
+      this.valor_input =  this.$props.fileinput_valor.replace('//storage','/storage');
+    }
+   }
+
 };
 </script>
