@@ -15,6 +15,8 @@ use App\Http\Controllers\FormAltaProductorController;
 use Faker\Factory as Faker;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
+use App\Models\sincronizacion\JobReciboProvincia;
+use App\Http\Controllers\Logs;
 
 class JobEnvioCommand extends Command
 {
@@ -28,6 +30,7 @@ class JobEnvioCommand extends Command
     public function handle()
     {
         try {
+            $arrayDatos = [];
             # id de la provincia 
             $id_provincia = config('sincronizacion.provincia_id');
             # nombre de la provincia 
@@ -39,38 +42,44 @@ class JobEnvioCommand extends Command
             # obtengo fecha y hora para inicio del job 
             $dtInicio = new \DateTime;
             $dtInicio = $dtInicio->format('Y-m-d H:i:s');
+            if ($id_provincia == 38) {
+                $arrayDatos = JobReciboProvincia::where('provincia_id', '=', $id_provincia)
+                    ->where('estado', 'in progress')
+                    ->orderBy('id', 'desc')
+                    ->first();
+                $arrayDatos = json_decode($arrayDatos['datos']);
+            } else {
+                /***** PORCENTAHE DE PERSONAL *****/
+                $procentajePersonal = $this->porcPersonal();
+                /**********************************/
+                /************ MINERALES ***********/
+                $arrayMinPrim = $this->cantCategoriasMinerales("primera");
+                $arrayMinSec = $this->cantCategoriasMinerales("segunda");
+                $arrayMinTer = $this->cantCategoriasMinerales("tercera");
+                /**********************************/
+                /****** PORCENTAJE DE VENTAS ******/
+                $arrayPorcVent = $this->porcVentas();
+                /**********************************/
 
-            /***** PORCENTAHE DE PERSONAL *****/
-            $procentajePersonal = $this->porcPersonal();
-            /**********************************/
-            /************ MINERALES ***********/
-            $arrayMinPrim = $this->cantCategoriasMinerales("primera");
-            $arrayMinSec = $this->cantCategoriasMinerales("segunda");
-            $arrayMinTer = $this->cantCategoriasMinerales("tercera");
-            /**********************************/
-            /****** PORCENTAJE DE VENTAS ******/
-            $arrayPorcVent = $this->porcVentas();
-            /**********************************/
+                # Cantidad de Productores
+                $productores = Productores::count();
+                # Cantidad de Minas Canteras
+                $minas = MinaCantera::count();
+                # Cantidad de Reinscripciones
+                $reinscripciones = Reinscripciones::count();
 
-            # Cantidad de Productores
-            $productores = Productores::count();
-            # Cantidad de Minas Canteras
-            $minas = MinaCantera::count();
-            # Cantidad de Reinscripciones
-            $reinscripciones = Reinscripciones::count();
-
-            # Array para enviar
-            $arrayDatos = array(
-                'cantidadProductores' => $productores,
-                'cantidadMinas' => $minas,
-                'cantidadReinsc' => $reinscripciones,
-                'mineralPrimeraCat' => $arrayMinPrim,
-                'mineralSegundaCat' => $arrayMinSec,
-                'mineralTerceraCat' => $arrayMinTer,
-                "porcentajes_ventas" => $arrayPorcVent,
-                "porcentajes_personas" => $procentajePersonal,
-            );
-
+                # Array para enviar
+                $arrayDatos = [
+                    'cantidadProductores' => $productores,
+                    'cantidadMinas' => $minas,
+                    'cantidadReinsc' => $reinscripciones,
+                    'mineralPrimeraCat' => $arrayMinPrim,
+                    'mineralSegundaCat' => $arrayMinSec,
+                    'mineralTerceraCat' => $arrayMinTer,
+                    "porcentajes_ventas" => $arrayPorcVent,
+                    "porcentajes_personas" => $procentajePersonal,
+                ];
+            }
             $response = Http::retry(3, 100)
                 ->withHeaders([
                     'Content-Type' => 'application/json',
@@ -85,18 +94,8 @@ class JobEnvioCommand extends Command
                     'tabla' => 'productores',
                 ]);
 
-            // $responseData = (is_object($response) ? ((isset($response->DateInsert)) ? $response->DateInsert  : '') : '');
-            // $arrayRespuestas = array(
-            //     'getStatusCode' => $response->getStatusCode(),
-            //     'successful' => $response->successful(),
-            //     'failed' => $response->failed(),
-            //     'serverError' => $response->serverError(),
-            //     'clientError' => $response->clientError(),
-            // );
-
             // file_put_contents('dataRecivido.txt', $response);
             // file_put_contents('dataEnviado.txt',  json_encode($arrayDatos, JSON_UNESCAPED_UNICODE));
-
             #{"getStatusCode":200,"successful":true,"failed":false,"serverError":false,"clientError":false}
             if ($response->successful()) {
                 $envio = JobEnvio::create([
@@ -127,6 +126,7 @@ class JobEnvioCommand extends Command
                 'fin' => null,
                 'provincia_id' => $id_provincia,
             ]);
+            Logs::error('Error en el envio del Jobs: ' . $e, 'rpm');
         }
     }
     public function cantCategoriasMinerales($categoria)
@@ -145,11 +145,20 @@ class JobEnvioCommand extends Command
         $sql = 'select count(*) as cant_reg, sum(porcentaje_venta_provincia) as provincia, sum (porcentaje_venta_otras_provincias) as pais, sum(porcentaje_exportado) as exterior from reinscripciones where fecha_vto >= now() and fecha_vto is not null';
         $arrayVentas  = DB::connection('rpm')->select($sql);
         # Array
-        $arrayPorcVentas = array(
-            'provincia' => $arrayVentas[0]->provincia / $arrayVentas[0]->cant_reg,
-            'pais' => $arrayVentas[0]->pais / $arrayVentas[0]->cant_reg,
-            'exterior' => $arrayVentas[0]->exterior / $arrayVentas[0]->cant_reg,
-        );
+        $arrayPorcVentas = [];
+        if ($arrayVentas[0]->cant_reg != 0) {
+            $arrayPorcVentas = [
+                'provincia' => $arrayVentas[0]->provincia / $arrayVentas[0]->cant_reg,
+                'pais' => $arrayVentas[0]->pais / $arrayVentas[0]->cant_reg,
+                'exterior' => $arrayVentas[0]->exterior / $arrayVentas[0]->cant_reg,
+            ];
+        } else {
+            $arrayPorcVentas = [
+                'provincia' => 0,
+                'pais' => 0,
+                'exterior' => 0,
+            ];
+        }
         return $arrayPorcVentas;
     }
     public function porcPersonal()

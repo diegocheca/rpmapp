@@ -22,7 +22,7 @@
         :icono="'/formulario_alta/imagenes/domicilio-cards.png'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
-        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :clase_inf="'border shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
         :show="mostrar_modulo"
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
@@ -51,7 +51,7 @@
         :icono="'/formulario_alta/imagenes/domicilio-cards.png'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
-        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :clase_inf="'border shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
         :show="mostrar_modulo"
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
@@ -190,19 +190,7 @@
         </label>
       </div>
     </div> -->
-    <div
-      v-if="mostrar_modulo"
-      class="
-        border-2
-        shadow-lg
-        rounded-2xl
-        w-full
-        py-4
-        px-8
-        bg-white
-        border-indigo-400
-      "
-    >
+    <div v-if="mostrar_modulo" class="shadow-lg w-full py-4 px-8 bg-white">
       <div class="items-center justify-left sticky top-1 z-10">
         <Menu
           v-if="titulo_boton_guardar === 'Guardar Datos del Domicilio Legal'"
@@ -258,7 +246,9 @@
             v-bind:leal_provincia_valido="form_pagina.leal_provincia_valido"
             v-bind:leal_provincia_correcto="form_pagina.leal_provincia_correcto"
             v-bind:obs_leal_provincia="form_pagina.obs_leal_provincia"
-            v-bind:obs_leal_provincia_valido="form_pagina.obs_leal_provincia_valido"
+            v-bind:obs_leal_provincia_valido="
+              form_pagina.obs_leal_provincia_valido
+            "
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Provincia'"
@@ -347,7 +337,9 @@
           <SelectDepartamento
             v-if="$props.mostrar_legal_dpto"
             v-bind:leal_departamento="form_pagina.leal_departamento"
-            v-bind:leal_departamento_valido="form_pagina.leal_departamento_valido"
+            v-bind:leal_departamento_valido="
+              form_pagina.leal_departamento_valido
+            "
             v-bind:leal_departamento_correcto="
               form_pagina.leal_departamento_correcto
             "
@@ -446,7 +438,9 @@
             v-bind:leal_localidad_valido="form_pagina.leal_localidad_valido"
             v-bind:leal_localidad_correcto="form_pagina.leal_localidad_correcto"
             v-bind:obs_leal_localidad="form_pagina.obs_leal_localidad"
-            v-bind:obs_leal_localidad_valido="form_pagina.obs_leal_localidad_valido"
+            v-bind:obs_leal_localidad_valido="
+              form_pagina.obs_leal_localidad_valido
+            "
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:name_correcto="this.nombrePagina + 'localidad'"
@@ -541,7 +535,9 @@
           <InputNombreCalle
             v-if="$props.mostrar_calle_legal"
             v-bind:leal_calle="form_pagina.leal_calle"
-            v-bind:nombre_calle_legal_valido="form_pagina.nombre_calle_legal_valido"
+            v-bind:nombre_calle_legal_valido="
+              form_pagina.nombre_calle_legal_valido
+            "
             v-bind:nombre_calle_legal_correcto="
               form_pagina.nombre_calle_legal_correcto
             "
@@ -734,7 +730,9 @@
             v-bind:testing="mostrar_testing"
             v-bind:name_correcto="this.nombrePagina + 'cp'"
             v-bind:label="'Codigo Postal'"
-            v-bind:desactivar_legal_cod_pos="form_pagina.desactivar_legal_cod_pos"
+            v-bind:desactivar_legal_cod_pos="
+              form_pagina.desactivar_legal_cod_pos
+            "
             v-bind:mostrar_legal_cod_pos_correccion="
               form_pagina.mostrar_legal_cod_pos_correccion
             "
@@ -814,12 +812,16 @@
             v-bind:leal_telefono_valido="form_pagina.leal_telefono_valido"
             v-bind:leal_telefono_correcto="form_pagina.leal_telefono_correcto"
             v-bind:obs_leal_telefono="form_pagina.obs_leal_telefono"
-            v-bind:obs_leal_telefono_valido="form_pagina.obs_leal_telefono_valido"
+            v-bind:obs_leal_telefono_valido="
+              form_pagina.obs_leal_telefono_valido
+            "
             v-bind:evaluacion="autoridad_minera"
             v-bind:label="'Telefono'"
             v-bind:testing="mostrar_testing"
             v-bind:name_correcto="this.nombrePagina + 'tel'"
-            v-bind:desactivar_legal_telefono="form_pagina.desactivar_legal_telefono"
+            v-bind:desactivar_legal_telefono="
+              form_pagina.desactivar_legal_telefono
+            "
             v-bind:mostrar_legal_telefono_correccion="
               form_pagina.mostrar_legal_telefono_correccion
             "
@@ -986,6 +988,7 @@
           v-if="mostrar_boton_guardar_dos"
           :link_volver="'#'"
           :titulo_boton_volver="'Volver'"
+          :mostrar_btn_volver="false"
           :titulo_boton_guardar="'Guardar'"
           :leal_calle="leal_calle"
           :nombre_calle_legal_valido="form_pagina.nombre_calle_legal_valido"

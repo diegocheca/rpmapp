@@ -1,18 +1,5 @@
 <template>
   <div class="flex items-center justify-center w-full">
-    <!-- <jet-dialog-modal :show="mostrar_modal_datos_ya_guardados" @close="cerrar_modal_datos_uno">
-            <template #title>
-                    {{modal_tittle}}
-            </template>
-            <template #content>
-                    {{modal_body}}
-            </template>
-            <template #footer>
-                <button @click="cerrar_modal_datos_uno">
-                        Ok
-                </button>
-            </template>
-        </jet-dialog-modal> -->
     <div class="flex items-stretch w-full justify-items-stretch">
       <div
         class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5 w-full"
@@ -211,206 +198,24 @@ export default {
     guardar_avnces_cinco() {
       //Soy autoridad minera
       let self = this;
-      const data = new FormData();
-      data.append("id", this.$props.id);
-      data.append("es_evaluacion", this.$props.evaluacion);
-      data.append("testing", this.$props.testing);
+      // const data = new FormData();
+      // data.append("id", this.$props.id);
+      // data.append("es_evaluacion", this.$props.evaluacion);
+      // data.append("testing", this.$props.testing);
 
-      data.append(
-        "gestor_nombre_apellido",
-        this.$props.formulario.gestor_nombre_apellido
-      );
-      data.append(
-        "gestor_nombre_apellido_valido",
-        this.$props.formulario.gestor_nombre_apellido_valido
-      );
-      data.append(
-        "gestor_nombre_apellido_correcto",
-        this.$props.formulario.gestor_nombre_apellido_correcto
-      );
-      data.append(
-        "obs_gestor_nombre_apellido",
-        this.$props.formulario.obs_gestor_nombre_apellido
-      );
-      data.append(
-        "obs_gestor_nombre_valido",
-        this.$props.formulario.obs_gestor_nombre_valido
-      );
-
-      data.append("gestor_dni", this.$props.formulario.gestor_dni);
-      data.append(
-        "gestor_dni_valido",
-        this.$props.formulario.gestor_dni_valido
-      );
-      data.append(
-        "gestor_dni_correcto",
-        this.$props.formulario.gestor_dni_correcto
-      );
-      data.append("obs_gestor_dni", this.$props.formulario.obs_gestor_dni);
-      data.append(
-        "obs_gestor_dni_valido",
-        this.$props.formulario.obs_gestor_dni_valido
-      );
-
-      data.append("gestor_profesion", this.$props.formulario.gestor_profesion);
-      data.append(
-        "gestor_profesion_valido",
-        this.$props.formulario.gestor_profesion_valido
-      );
-      data.append(
-        "gestor_profesion_correcto",
-        this.$props.formulario.gestor_profesion_correcto
-      );
-      data.append(
-        "obs_gestor_profesion",
-        this.$props.formulario.obs_gestor_profesion
-      );
-      data.append(
-        "obs_gestor_profesion_valido",
-        this.$props.formulario.obs_gestor_profesion_valido
-      );
-
-      data.append("gestor_telefono", this.$props.formulario.gestor_telefono);
-      data.append(
-        "gestor_telefono_valido",
-        this.$props.formulario.gestor_telefono_valido
-      );
-      data.append(
-        "gestor_telefono_correcto",
-        this.$props.formulario.gestor_telefono_correcto
-      );
-      data.append(
-        "obs_gestor_telefono",
-        this.$props.formulario.obs_gestor_telefono
-      );
-      data.append(
-        "obs_gestor_telefono_valido",
-        this.$props.formulario.obs_gestor_telefono_valido
-      );
-
-      data.append("gestor_email", this.$props.formulario.gestor_email);
-      data.append(
-        "gestor_email_valido",
-        this.$props.formulario.gestor_email_valido
-      );
-      data.append(
-        "gestor_email_correcto",
-        this.$props.formulario.gestor_email_correcto
-      );
-      data.append("obs_gestor_email", this.$props.formulario.obs_gestor_email);
-      data.append(
-        "obs_gestor_email_valido",
-        this.$props.formulario.obs_gestor_email_valido
-      );
-
-      data.append(
-        "gestor_notificacion",
-        this.$props.formulario.gestor_notificacion
-      );
-      data.append(
-        "gestor_notificacion_valido",
-        this.$props.formulario.gestor_notificacion_valido
-      );
-      data.append(
-        "gestor_notificacion_correcto",
-        this.$props.formulario.gestor_notificacion_correcto
-      );
-      data.append(
-        "obs_gestor_notificacion",
-        this.$props.formulario.obs_gestor_notificacion
-      );
-      data.append(
-        "obs_gestor_notificacion_valido",
-        this.$props.formulario.obs_gestor_notificacion_valido
-      );
-
-      data.append("foto_4x4", this.$props.formulario.foto_4x4);
-      data.append("foto_4x4_valido", this.$props.formulario.foto_4x4_valido);
-      data.append(
-        "foto_4x4_correcto",
-        this.$props.formulario.foto_4x4_correcto
-      );
-      data.append("obs_foto_4x4", this.$props.formulario.obs_foto_4x4);
-      data.append(
-        "obs_foto_4x4_valido",
-        this.$props.formulario.obs_foto_4x4_valido
-      );
-
-      data.append(
-        "autorizacion_gestor",
-        this.$props.formulario.autorizacion_gestor
-      );
-      data.append(
-        "autorizacion_gestor_valido",
-        this.$props.formulario.autorizacion_gestor_valido
-      );
-      data.append(
-        "autorizacion_gestor_correcto",
-        this.$props.formulario.autorizacion_gestor_correcto
-      );
-      data.append(
-        "obs_autorizacion_gestor",
-        this.$props.formulario.obs_autorizacion_gestor
-      );
-      data.append(
-        "obs_autorizacion_gestor_valido",
-        this.$props.formulario.obs_autorizacion_gestor_valido
-      );
-
-      data.append("primer_hoja_dni", this.$props.formulario.primer_hoja_dni);
-      data.append("hoja_dni_valido", this.$props.formulario.hoja_dni_valido);
-      data.append(
-        "hoja_dni_correcto",
-        this.$props.formulario.hoja_dni_correcto
-      );
-      data.append("obs_hoja_dni", this.$props.formulario.obs_hoja_dni);
-      data.append(
-        "obs_hoja_dni_valido",
-        this.$props.formulario.obs_hoja_dni_valido
-      );
-
-      data.append("segunda_hoja_dni", this.$props.formulario.segunda_hoja_dni);
-      data.append(
-        "segunda_hoja_dni_valido",
-        this.$props.formulario.segunda_hoja_dni_valido
-      );
-      data.append(
-        "segunda_hoja_dni_correcto",
-        this.$props.formulario.segunda_hoja_dni_correcto
-      );
-      data.append(
-        "obs_segunda_hoja_dni",
-        this.$props.formulario.obs_segunda_hoja_dni
-      );
-      data.append(
-        "obs_segunda_hoja_dni_valido",
-        this.$props.formulario.obs_segunda_hoja_dni_valido
-      );
-
-      data.append("constancia_afip", this.$props.formulario.constancia_afip);
-      data.append(
-        "constancia_afip_valido",
-        this.$props.formulario.constancia_afip_valido
-      );
-      data.append(
-        "constancia_afip_correcto",
-        this.$props.formulario.constancia_afip_correcto
-      );
-      data.append(
-        "obs_constancia_afip",
-        this.$props.formulario.obs_constancia_afip
-      );
-      data.append(
-        "obs_constancia_afip_valido",
-        this.$props.formulario.obs_constancia_afip_valido
-      );
-
+      // data.append("formulario", this.$props.formulario);
       axios.defaults.headers.post["Content-Type"] = "multipart/form-data";
       axios
         .post(
-          this.$inertia.page.props.appName +
-            "/formularios/evaluacion_auto_guardado_catamarcas",
-          data
+          // this.$inertia.page.props.appName +
+          // "/formularios/evaluacion_auto_guardado_tucuman",
+          this.$props.donde_guardar,
+          {
+            id: this.$props.id,
+            es_evaluacion: this.$props.evaluacion,
+            testing: this.$props.testing,
+            formulario: this.$props.formulario,
+          }
         )
         .then(function (response) {
           //   console.log(response.data);
@@ -458,9 +263,6 @@ export default {
           console.log(error);
         });
     },
-    // cerrar_modal_datos_uno() {
-    //   this.mostrar_modal_datos_ya_guardados = false;
-    // },
   },
 };
 </script>

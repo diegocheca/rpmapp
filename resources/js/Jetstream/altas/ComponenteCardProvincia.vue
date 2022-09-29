@@ -1,15 +1,15 @@
 <template>
   <div class="mt-5 mb-3" :class="clase_sup" @click="prueba(!show)">
-    <div :class="clase_inf">
-      <div class="flex justify-center">
+    <div :class="clase_inf" class=" bg-blue-500 text-white rounded hover:bg-blue-700">
+      <div class="flex justify-start">
         <img
-          class="w-10 h-10 object-cover rounded-full border-2 border-indigo-500"
+          class="w-10 h-10 object-cover rounded-full border-2 border-white bg-gray-400"
           :src="$inertia.page.props.appName + icono"
-          width="50%"
+          width="80%"
         />
       </div>
       <div class="col-span-4 mt-1">
-        <span class="text-gray-800 text-2xl font-bold">{{ titulo }}</span>
+        <span class="text-white text-2xl font-bold">{{ titulo }}</span>
         <!-- <div class="flex space-x-2 text-gray-400 text-sm">
             <svg
               xmlns="http://www.w3.org/2000/svg"

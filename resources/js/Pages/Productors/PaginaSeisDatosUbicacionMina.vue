@@ -19,14 +19,13 @@
         :icono="'/slick/img/features/plano-minero.svg'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
-        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :clase_inf="'border shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
         :show="mostrar_modulo"
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
     </div>
     <!-- <br />
       <br /> -->
-
     <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
       <a href="#section_datos_mina_ubicacion">
         <img
@@ -141,14 +140,11 @@
     <div
       v-if="mostrar_modulo"
       class="
-        border-2
         shadow-lg
-        rounded-2xl
         w-full
         py-4
         px-8
         bg-white
-        border-indigo-400
       "
     >
       <div class="items-center justify-left sticky top-1 z-10">
@@ -631,7 +627,8 @@
         v-if="$props.mostrar_boton_guardar_seis"
         :link_volver="'#'"
         :titulo_boton_volver="'Volver'"
-        :titulo_boton_guardar="'Guardar Datos de Ubicacion de la Mina'"
+        :mostrar_btn_volver="false"
+        :titulo_boton_guardar="'Guardar'"
         :localidad_mina_provincia="form_pagina.localidad_mina_provincia"
         :localidad_mina_provincia_validacion="
           form_pagina.localidad_mina_provincia_validacion

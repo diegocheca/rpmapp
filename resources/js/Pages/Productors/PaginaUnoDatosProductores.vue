@@ -128,30 +128,26 @@
         v-on:changevalorayuda="update_valor_ayuda_local($event)"
         v-on:continuarpagina="update_valor_pagina_siguiente($event)"
       ></CardProductor> -->
-      <Card
+      <!-- <Card
         :icono="'/slick/img/features/casco-minero.svg'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
         :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
         :show="mostrar_modulo"
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
+      ></Card> -->
+      <Card
+        :icono="'/slick/img/features/casco-minero.svg'"
+        :titulo="titulo_pagina"
+        :clase_sup="'gap-6'"
+        :clase_inf="'border shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"
+        :show="mostrar_modulo"
+        v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
     </div>
     <!-- <br /> -->
     <!-- <br /> -->
-    <div
-      v-if="mostrar_modulo"
-      class="
-        border-2
-        shadow-lg
-        rounded-2xl
-        w-full
-        py-4
-        px-8
-        bg-white
-        border-indigo-400
-      "
-    >
+    <div v-if="mostrar_modulo" class="shadow-lg w-full py-4 px-8 bg-white">
       <div class="items-center justify-left sticky top-1 z-10">
         <Menu
           :mostrarayuda="true"
@@ -667,6 +663,7 @@
         <BotonesPaginaUna
           v-if="$props.mostrar_boton_guardar_uno"
           :link_volver="'#'"
+          :mostrar_btn_volver="false"
           :titulo_boton_volver="'Volver'"
           :titulo_boton_guardar="'Guardar'"
           :razon_social="form_pagina.razon_social"
