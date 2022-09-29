@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Productos;
+use App\Models\FormAltaProductor;
 use Illuminate\Http\Request;
 
 
@@ -12,8 +13,11 @@ use Inertia\Inertia;
 
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\DB;
 
+use Auth;
 
+use App\Models\Productor;
 class ProductosController extends Controller
 {
     /**
@@ -24,15 +28,46 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        $data = Productos::all();
+        /*$data = Productos::all();
         //$data = Productos::orderBy('id', 'desc')->paginate(2);
         //var_dump($data);die();
-        return Inertia::render('Productos/List', ['data' => $data]);
+        return Inertia::render('Productos/List', ['productos' => $data]);
+        */
+        
+        /*
+        Producto 32
+        reincripciones 225
+        productor 1762
+        user 158
+        provincia 70
+         */
 
 
-  
-
-
+                            
+        if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad')) {
+            return Inertia::render('Productos/List', [
+                'productos' => DB::table('users')
+                            ->join('productores', 'users.id', '=', 'productores.usuario_creador')
+                            ->join('reinscripciones', 'reinscripciones.id_productor', '=', 'productores.id')
+                            ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+                            ->join('mineral', 'mineral.id', '=', 'productos.nombre_mineral')
+                            ->select('productos.*', "mineral.name", "productores.razonsocial")
+                            ->where('users.id_provincia', '=', Auth::user()->id_provincia)
+                            ->orderBy('productos.id', 'DESC')
+                            ->paginate(5)
+                        ]);
+                    }
+        else { // productor
+            $mi_productor_id = Productor::select('*')->where("usuario_creador","=", Auth::user()->id)->first();
+            return Inertia::render('Productos/List', [
+                'productos' => DB::table('productos')
+                    ->join('reinscripciones', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+                    ->select('productos.*')
+                    ->where('reinscripciones.id_productor', '=', $mi_productor_id->id)
+                    ->orderBy('productos.id', 'DESC')
+                    ->paginate(5)
+            ]);
+        }
     }
 
     /**

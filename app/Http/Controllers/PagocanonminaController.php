@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
+use Illuminate\Support\Facades\DB;
 
+use Auth;
 class PagocanonminaController extends Controller
 {
     /**
@@ -19,8 +21,33 @@ class PagocanonminaController extends Controller
     public function index()
     {
         //
-        $pagos = Pagocanonmina::all();
-        return Inertia::render('Pagos/List', ['pagos' => $pagos]);
+        //$pagos = Pagocanonmina::all();
+        if (Auth::user()->hasRole('Administrador')
+        || 
+        Auth::user()->hasRole('Autoridad')) {
+            return Inertia::render('Pagos/List', [
+                'pagos' => DB::table('pagocanonmina')
+                            ->join('form_alta_productores', 'pagocanonmina.id_formulario', '=', 'form_alta_productores.id')
+                            ->select('pagocanonmina.*')
+                            ->where('form_alta_productores.provincia', '=', Auth::user()->id_provincia)
+                            ->orderBy('id', 'DESC')
+                            ->paginate(5)
+            ]);
+        }
+        else { // productor
+                return Inertia::render('Pagos/List', [
+                    'pagos' => DB::table('pagocanonmina')
+                                ->join('form_alta_productores', 'pagocanonmina.id_formulario', '=', 'form_alta_productores.id')
+                                ->select('pagocanonmina.*')
+                                ->where('form_alta_productores.created_by', '=', Auth::user()->id)
+                                ->orderBy('id', 'DESC')
+                                ->paginate(5)
+                ]);
+    
+        }
+
+
+        //return Inertia::render('Pagos/List', ['pagos' => $pagos]);
     }
 
     /**

@@ -135,7 +135,7 @@
 import AppLayout from "@/Layouts/AppLayout";
 import JetDialogModal from '@/Jetstream/DialogModal';
 //import Button from '../../Jetstream/Button.vue';
-
+import Pagination from "@/Components/Pagination";
 export default {
   props: {
     data: Object,

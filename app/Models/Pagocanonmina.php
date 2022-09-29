@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
-
+use Faker\Factory as Faker;
+use Auth;
 class Pagocanonmina extends Model
 {
     use HasFactory;
@@ -27,6 +28,7 @@ class Pagocanonmina extends Model
     ];
     public static function crear_registro_pago_canon($id_formulario)
 	{
+		$faker = Faker::create();
 		if ($id_formulario > 1) {
 			//busco formulario provisorio
 			//busco formulario provisorio
@@ -35,11 +37,11 @@ class Pagocanonmina extends Model
 				//creo el pago de canon
 				$nuevo_pago = new Pagocanonmina;
 				//$nuevo_pago->pagado = $formulario_provisorio->pagado;
-				$nuevo_pago->pagado = true;
+				$nuevo_pago->pagado = $faker->boolean() ;
 				//$nuevo_pago->fecha_pago = $formulario_provisorio->fecha_pago;
 				$nuevo_pago->fecha_pago = null;// Carbon::now()->subDays(7);
 				//$nuevo_pago->monto = $formulario_provisorio->monto;
-				$nuevo_pago->monto = 0.00;
+				$nuevo_pago->monto = $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = NULL);
 				//$nuevo_pago->fecha_desde = $formulario_provisorio->fecha_desde;
 				$nuevo_pago->fecha_desde = null;// Carbon::now();
 				//$nuevo_pago->fecha_hasta = $formulario_provisorio->fecha_hasta;
