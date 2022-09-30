@@ -373,9 +373,4 @@ Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');
 
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
-    // Jujuy
-    Route::get('apiJujuy', [JujuyController::class, 'index'])->name('apiJujuy');
-    Route::get('consultarDatos', [JujuyController::class, 'simula_datos']);
-    Route::post('enviarDatos', [JujuyController::class, 'datos_enviados']);
-});
+

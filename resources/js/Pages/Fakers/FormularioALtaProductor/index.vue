@@ -300,6 +300,14 @@
           </div>
         </div>
       </div>
+      <hr>
+      <h1 v-if="resultado==null">Sin Productores</h1>
+      <div v-else class="grid grid-cols-3 gap-3">
+        <div v-for="(productor, index) in resultado" :key="index">
+          {{productor}}
+          <cardProductor :productor="productor"/>
+        </div>
+      </div>
     </app-layout>
   </template>
   
@@ -309,6 +317,8 @@
   import JetDialogModal from '@/Jetstream/DialogModal';
   //import Button from '../../Jetstream/Button.vue';
   import Swal from "sweetalert2";
+  import cardProductor from "@/Pages/CardDatosProductor/cardProductor";
+
   export default {
     props: {
       provincias: Object,
@@ -323,8 +333,9 @@
     },
     components: {
       AppLayout,
-      JetDialogModal
+      JetDialogModal,
       //Button,
+      cardProductor
     },
 
     
