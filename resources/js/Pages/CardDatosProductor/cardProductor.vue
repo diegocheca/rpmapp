@@ -4,7 +4,7 @@
         <div class="flex flex-wrap justify-center">
             <div class="w-full flex justify-center">
                 <div class="relative">
-                    <img src="http://localhost:8000/storage/profile-photos/catamarca.png" class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"/>
+                    <img :src="$inertia.page.props.appName+'/storage/'+$props.productor.profile_photo" class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"/>
                 </div>
             </div>
             <div class="w-full text-center mt-20">
@@ -39,7 +39,13 @@
                 <div class="w-full px-4">
                     {{$props.productor.id_fomulario}}
                     <p class="font-light leading-relaxed text-slate-600 mb-4">An artist of considerable range, Mike is the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm.</p>
-                    <a href="javascript:;" class="font-normal text-slate-700 hover:text-slate-400">Follow Account</a>
+                    <inertia-link
+                        class="font-normal text-slate-700 hover:text-slate-400"
+                        :href="route('formulario-alta.show', $props.productor.id_fomulario)"
+                    >
+                        Ver Formulario
+                    </inertia-link>
+
                 </div>
             </div>
         </div>

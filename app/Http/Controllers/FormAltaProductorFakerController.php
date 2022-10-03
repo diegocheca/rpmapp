@@ -84,13 +84,14 @@ class FormAltaProductorFakerController extends Controller
                 }
                 $sociedad = Constants::$sociedades[$faker->numberBetween(0,count(Constants::$sociedades)-1)];
                 $id_user = 0;
+                $profile_photo = "profile-photos/".$faker->numberBetween(1,100).".png";
                 //crear el usuario
                 $resultado = User::create([
                     'name' => $razon_social,
                     'email' => $email,
                     'password' => bcrypt('password'),
                     'current_team_id' => 10, // team_catamarca
-                    'profile_photo_path' => "profile-photos/catamarca.png",
+                    'profile_photo_path' => $profile_photo,
                     'first_name' => $razon_social,
                     'last_name' =>  "nada",
                     'provincia' => $nombre_provincia,
@@ -143,8 +144,11 @@ class FormAltaProductorFakerController extends Controller
                 $array_to_return[$i] = [
                     "id_fomulario" => $formulario_nuevo->id,
                     "id_usario" => $id_user,
+                    "profile_photo" => $profile_photo,
                     "email" => $email,
-                    "provincia" => $id_provincia
+                    "name" => $razon_social,
+                    "provincia_id" => $id_provincia,
+                    "provincia_name" => $nombre_provincia
 
                 ];
             }
