@@ -51,7 +51,7 @@ class ProductosController extends Controller
                             ->join('reinscripciones', 'reinscripciones.id_productor', '=', 'productores.id')
                             ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
                             ->join('mineral', 'mineral.id', '=', 'productos.nombre_mineral')
-                            ->select('productos.*', "mineral.name", "productores.razonsocial")
+                            ->select('productos.*', "mineral.name", "productores.razonsocial","users.profile_photo_path")
                             ->where('users.id_provincia', '=', Auth::user()->id_provincia)
                             ->orderBy('productos.id', 'DESC')
                             ->paginate(5)

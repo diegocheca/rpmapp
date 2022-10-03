@@ -25,13 +25,23 @@ class ProductoresController extends Controller
      */
     public function index(Request $request)
     {
+      
         //$productores = Productores::all();
         return Inertia::render('Productores/List', [
             'productores' =>
-            Productores::when($request->term, function ($query, $term) {
+            
+            DB::table('productores')
+            ->join('users', 'users.id', '=', 'productores.usuario_creador')
+            ->select('productores.*',"users.profile_photo_path")
+            ->orderBy('productores.id', 'DESC')
+            ->paginate(10),
+            'alertType' => ''
+
+
+           /* Productores::when($request->term, function ($query, $term) {
                 $query->where('razonsocial', 'LIKE', '%' . $term . '%');
             })->paginate(5),
-            'alertType' => ''
+            'alertType' => ''*/
         ]);
     }
 

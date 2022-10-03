@@ -50,37 +50,33 @@
             <div class="bg-white shadow-md rounded my-6">
               <table class="min-w-max w-full table-auto">
                   <thead class="bg-gray-50">
-                    <tr>
+                    <tr
+                      class="
+                        bg-gray-200
+                        text-gray-600
+                        uppercase
+                        text-sm
+                        leading-normal
+                      "
+                    >
                       
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                      <th class="py-3 px-6 text-left">
                         ID
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                      <th class="py-3 px-6 text-left">
                         pagado
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                      <th class="py-3 px-6 text-left">
                         monto
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                      <th class="py-3 px-6 text-left">
                         fecha_pago
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                      <th class="py-3 px-6 text-left">
                         Estado
+                      </th>
+                      <th class="py-3 px-6 text-left">
+                        Acciones
                       </th>
                       
 
@@ -143,11 +139,7 @@
                         >
                           Editar
                         </inertia-link>
-                      </td>
-
-                      <td
-                        class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-                      >
+                     
                         <inertia-link
                           method="delete"
                           :href="route('pagos.destroy', pago.id)"

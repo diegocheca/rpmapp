@@ -46,51 +46,41 @@
             <p class="text-2xl">No se han registrado productos aún</p>
         </div>
 
-
         <div v-if="productos.data.length > 0" class="w-full lg:w-5/6">
             <div class="bg-white shadow-md rounded my-6">
               <table class="min-w-max w-full table-auto">
                   <thead class="bg-gray-50">
-                    <tr>
+                    <tr
+                      class="
+                        bg-gray-200
+                        text-gray-600
+                        uppercase
+                        text-sm
+                        leading-normal
+                      "
+                    >
                       
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                      <th class="py-3 px-6 text-left">
                         ID
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        id mina
+                      <th class="py-3 px-6 text-left">
+                        Id mina
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        productor
+                      <th class="py-3 px-6 text-left">
+                        Mineral
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        nombre mineral
+                      <th class="py-3 px-6 text-left">
+                        Productor
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        variedad
+                      <th class="py-3 px-6 text-left">
+                        Variedad
                       </th>
-                      <th
-                        scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
-                        precio venta
+                      <th class="py-3 px-6 text-left">
+                        Precio
                       </th>
-                      
-
+                      <th class="py-3 px-6 text-left">
+                        Acciones
+                      </th>
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-200">
@@ -111,8 +101,16 @@
                         <div class="text-sm text-gray-900">{{ producto.name }}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{ producto.razonsocial }}</div>
+                        <div class="flex items-center">
+                          <div class="mr-2">
+                            <img class="w-6 h-6" :src="$inertia.page.props.appName+'/storage/'+producto.profile_photo_path"/>
+                          </div>
+                          <span class="font-medium">{{ producto.razonsocial }}</span>
+                        </div>
                       </td>
+
+                     
+
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">{{ producto.variedad }}</div>
                       </td>
@@ -130,11 +128,6 @@
                         >
                           Editar
                         </inertia-link>
-                      </td>
-
-                      <td
-                        class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
-                      >
                         <inertia-link
                           method="delete"
                           :href="route('productos.destroy', producto.id)"
