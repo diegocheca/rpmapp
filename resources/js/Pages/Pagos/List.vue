@@ -70,7 +70,7 @@
                         monto
                       </th>
                       <th class="py-3 px-6 text-left">
-                        fecha_pago
+                        fecha pago
                       </th>
                       <th class="py-3 px-6 text-left">
                         Estado

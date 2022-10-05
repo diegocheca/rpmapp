@@ -29,6 +29,10 @@ use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
 use App\Http\Controllers\BandejaEntradaEmailsController;
 
+use App\Http\Controllers\MinaCanteraController;
+
+
+
 use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
@@ -122,6 +126,10 @@ Route::resource('productos', ProductosController::class)
 
 Route::resource('iiadias', IiadiaController::class)
     ->middleware(['auth:sanctum', 'verified']);
+
+    Route::resource('minas', MinaCanteraController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
 Route::post('/guardando_dia_iia', [IiadiaController::class, "recibo"])->name('recibo-dia-iia');
 
 Route::resource('pagos', PagocanonminaController::class)
