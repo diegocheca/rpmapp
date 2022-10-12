@@ -40,13 +40,6 @@
                 d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
               />
             </svg>
-            <!-- <div class="flex flex-auto max-h-48 w-2/5 mx-auto -mt-10">
-              <img
-                class="has-mask h-36 object-center"
-                src="https://img.freepik.com/free-vector/image-upload-concept-landing-page_52683-27130.jpg?size=338&ext=jpg"
-                alt="freepik image"
-              />
-            </div> -->
           </div>
           <input
             class="text-sm cursor-pointer w-36 hidden"
@@ -137,76 +130,6 @@
     <div
       v-if="evaluacion || mostrar_correccion || $props.mostrar_evaluacion_adm"
     >
-      <!-- <div class="w-full md:w-1/3 px-3">
-        <span class="text-gray-700">Es correcto?</span>
-        <div class="mt-2">
-          <label class="inline-flex items-center">
-            <input
-              type="radio"
-              :disabled="desactivar_correccion"
-              class="form-radio h-5 w-5 text-green-600"
-              :name="name_correcion"
-              v-model="evualacion_correcto"
-              value="true"
-              v-on:change="actaulizar_variable_correccion(true)"
-            />
-            <span class="ml-2">Si</span>
-          </label>
-          <label class="inline-flex items-center ml-6">
-            <input
-              type="radio"
-              :disabled="desactivar_correccion"
-              class="form-radio h-5 w-5 text-red-600"
-              :name="name_correcion"
-              v-model="evualacion_correcto"
-              value="false"
-              v-on:change="actaulizar_variable_correccion(false)"
-            />
-            <span class="ml-2">No</span>
-          </label>
-          <label class="inline-flex items-center ml-6">
-            <input
-              type="radio"
-              :disabled="desactivar_correccion"
-              class="form-radio h-5 w-5 text-indigo-600"
-              :name="name_correcion"
-              v-model="evualacion_correcto"
-              value="nada"
-              v-on:change="actaulizar_variable_correccion('nada')"
-            />
-            <span class="ml-2">Sin evaluar</span>
-          </label>
-        </div>
-      </div>
-      <div
-        v-show="!valor_evaluacion_correcto_local"
-        class="w-full md:w-2/3 h-full"
-      >
-        <label
-          class="
-            block
-            uppercase
-            tracking-wide
-            text-gray-700 text-xs
-            font-bold
-            mb-2
-          "
-          for="observaciones"
-          >Observación:
-        </label>
-        <textarea
-          id="observaciones"
-          name="observaciones"
-          v-model="valor_obs"
-          v-bind:class="clase_text_area"
-          :disabled="desactivar_correccion"
-          @input="actaulizar_contenido_text_area($event.target.value)"
-        >
-        </textarea>
-        <p v-bind:class="clase_text_evaluacion_de_text_area">
-          {{ texto_validacion_text_area }}
-        </p>
-      </div> -->
       <SeccionEvaluacion
         :correccion_desactivar="desactivar_correccion"
         :name_correcto="name_correcion"
@@ -216,71 +139,6 @@
         v-on:change_obs="actaulizar_contenido_text_area($event)"
       >
       </SeccionEvaluacion>
-    </div>
-    <div
-      class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8"
-      v-show="testing"
-    >
-      <div class="flex">
-        <label
-          class="flex items-center relative w-max cursor-pointer select-none"
-        >
-          <br />
-          <span class="text-lg font-bold mr-3">Testing hijo</span>
-          <br />
-          <input
-            type="checkbox"
-            class="
-              appearance-none
-              transition-colors
-              cursor-pointer
-              w-14
-              h-7
-              rounded-full
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-offset-black
-              focus:ring-blue-500
-              bg-red-500
-            "
-            v-model="testing_hijo"
-          />
-          <span
-            class="absolute font-medium text-xs uppercase right-1 text-white"
-          >
-            Sin
-          </span>
-          <span
-            class="absolute font-medium text-xs uppercase right-8 text-white"
-          >
-            Con
-          </span>
-          <span
-            class="
-              w-7
-              h-7
-              right-7
-              absolute
-              rounded-full
-              transform
-              transition-transform
-              bg-gray-200
-            "
-          />
-        </label>
-      </div>
-      <div class="flex">
-        <div v-show="testing_hijo">
-          <br />Valor input:{{ valor_input }}<br />
-          <br />distrtito minero calle Evalaucion:{{ evualacion_correcto
-          }}<br />
-          <br />distrtito minero calle Obser:{{ valor_obs }}<br />
-          <br />distrtito minero calle obsr Valido:{{ valor_valido_obs }}<br />
-          <br />Evaluacion {{ evaluacion }}<br />
-          <br />{{ texto_validacion_text_area }}<br />
-        </div>
-      </div>
     </div>
   </div>
 </template>

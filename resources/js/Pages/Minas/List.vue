@@ -52,7 +52,7 @@
               d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
             />
           </svg>
-          <p class="text-2xl">No se han registrado IIA ni DIA</p>
+          <p class="text-2xl">No se han registrado Minas</p>
         </div>
         <div v-if="minas.data.length > 0" class="w-full lg:w-5/6">
           <div class="bg-white shadow-md rounded my-6">
@@ -77,35 +77,35 @@
               </thead>
               <tbody class="text-gray-600 text-sm font-light">
                 <tr
-                  v-for="(dia, index) in minas.data"
-                  :key="dia.id"
+                  v-for="(mina, index) in minas.data"
+                  :key="mina.id"
                   :class="{ 'bg-gray-100': index % 2 === 0 }"
                 >
                   <td class="py-3 px-6 text-left">
                     <div class="flex items-center">
-                      <span class="font-medium">{{ dia.id }}</span>
+                      <span class="font-medium">{{ mina.id }}</span>
                     </div>
                   </td>
                   <td class="py-3 px-6 text-left">
                     <div class="flex items-center justify-center">
-                        {{ dia.tipo }}
+                        {{ mina.tipo }}
                     </div>
                   </td>
                   <td class="py-3 px-6 text-center">
                     <div class="flex items-center justify-center">
-                      {{ dia.nombre }}
+                      {{ mina.nombre }}
                     </div>
                   </td>
                   <td class="py-3 px-6 text-center">
                     <div class="flex items-center justify-center">
                         <div class="mr-2">
-                          <img class="w-6 h-6" :src="$inertia.page.props.appName+'/storage/'+dia.profile_photo_path"/>
+                          <img class="w-6 h-6" :src="$inertia.page.props.appName+'/storage/'+mina.profile_photo_path"/>
                         </div>
                        <inertia-link
-                          :href="route('productores.edit', dia.id_prod)"
+                          :href="route('productores.edit', mina.id_prod)"
                         >
 
-                          {{ dia.razonsocial}}
+                          {{ mina.razonsocial}}
                         </inertia-link>
 
                     </div>
@@ -122,7 +122,7 @@
                         "
                       >
                         <inertia-link
-                          :href="route('minas.edit', dia.id)"
+                          :href="route('minas.show', mina.id)"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -155,7 +155,7 @@
                         "
                       >
                         <inertia-link
-                          :href="route('minas.edit', dia.id)"
+                          :href="route('minas.edit', mina.id)"
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

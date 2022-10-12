@@ -111,11 +111,16 @@ class ProductoresController extends Controller
         return Inertia::render('Productores/EditForm', ['productor' => $productor]);
     }
 
-    public function update(Request $request, Productores $productores)
+    public function update(Request $request)
     {
         $productores->update($request->all());
         return Redirect::route('productores.index');
     }
+
+    
+
+
+    
 
     public function destroy($id_a_buscar)
     {

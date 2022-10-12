@@ -820,6 +820,7 @@
               :id="form.id"
               :testing="testing_global"
               :categoria="form.categoria"
+              :accion = "crear"
               v-on:mostrarpasosiguiente="
                 mostar_paso_siguiente('Datos de Mina Segunda Parte', $event)
               "
@@ -1251,40 +1252,6 @@
                     >Sin Guardar</span
                   >
                 </div>
-                <!-- <div
-                  class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0"
-                  v-if="$props.mostrar.estado"
-                >
-                  <label
-                    class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-                    for="estado"
-                    >Nuevo Estado:</label
-                  ><br />
-                  <select
-                    id="estado"
-                    name="estado"
-                    v-model="form.estado"
-                    :disabled="$props.disables.estado"
-                    @input="calcular_nombre_boton($event.target.value)"
-                    class="
-                      block
-                      appearance-none
-                      bg-white
-                      border border-gray-400
-                      hover:border-gray-500
-                      px-4
-                      py-2
-                      pr-8
-                      rounded
-                      shadow
-                      leading-tight
-                      focus:outline-none focus:shadow-outline
-                    "
-                  >
-                    <option value="borrador">Borrador</option>
-                    <option value="presentar">Presentar</option>
-                  </select>
-                </div> -->
               </div>
               <br />
               <br />

@@ -6,13 +6,6 @@
       >{{ label }}</label
     >
     <div class="flex items-stretch w-full relative">
-      <!-- <div class="flex">
-                <span class="flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
-                </span>
-            </div> -->
       <select
         class="
           flex-shrink flex-grow flex-auto
@@ -57,78 +50,6 @@
         $props.mostrar_evaluacion_adm
       "
     >
-      <!-- <div class="w-full md:w-1/3 px-3">
-        <span class="text-gray-700">Es correcto?</span>
-        <div class="mt-2">
-          <label class="inline-flex items-center">
-            <input
-              type="radio"
-              :disabled="desactivar_legal_dpto_correccion"
-              class="form-radio h-5 w-5 text-green-600"
-              :name="name_correcto"
-              v-model="leal_departamento_correcto"
-              value="true"
-              v-on:change="cactaulizar_variable_legalcalledpto(true)"
-            />
-            <span class="ml-2">Si</span>
-          </label>
-          <label class="inline-flex items-center ml-6">
-            <input
-              type="radio"
-              :disabled="desactivar_legal_dpto_correccion"
-              class="form-radio h-5 w-5 text-red-600"
-              :name="name_correcto"
-              v-model="leal_departamento_correcto"
-              value="false"
-              v-on:change="cactaulizar_variable_legalcalledpto(false)"
-            />
-            <span class="ml-2">No</span>
-          </label>
-          <label class="inline-flex items-center ml-6">
-            <input
-              type="radio"
-              :disabled="desactivar_legal_dpto_correccion"
-              class="form-radio h-5 w-5 text-indigo-600"
-              :name="name_correcto"
-              v-model="leal_departamento_correcto"
-              value="nada"
-              v-on:change="cactaulizar_variable_legalcalledpto('nada')"
-            />
-            <span class="ml-2">Sin evaluar</span>
-          </label>
-        </div>
-      </div>
-      <div
-        v-show="!legal_calle_dpto_correcto_local"
-        class="w-full md:w-2/3 px-3"
-      >
-        <label
-          class="
-            block
-            uppercase
-            tracking-wide
-            text-gray-700 text-xs
-            font-bold
-            mb-2
-          "
-          for="obs_leal_departamento"
-          >Observación:</label
-        >
-        <textarea
-          id="obs_leal_departamento"
-          name="obs_leal_departamento"
-          v-model="obs_leal_departamento"
-          :disabled="desactivar_legal_dpto_correccion"
-          v-bind:class="clase_text_area_calle_legal_dpto"
-          @input="
-            actaulizar_contenido_text_area_calle_legal_dpto($event.target.value)
-          "
-        >
-        </textarea>
-        <p v-bind:class="clase_cartel_nota_evaluacion_dpto_calle">
-          {{ cartel_nota_evaluacion_dpto_calle }}
-        </p>
-      </div> -->
       <SeccionEvaluacion
         :correccion_desactivar="$props.desactivar_legal_dpto_correccion"
         :name_correcto="name_correcto"
@@ -140,74 +61,6 @@
         "
       >
       </SeccionEvaluacion>
-    </div>
-    <div
-      class="w-full md:w-1/4 px-3 bg-white rounded shadow p-6 m-8"
-      v-show="testing"
-    >
-      <div class="flex">
-        <label
-          class="flex items-center relative w-max cursor-pointer select-none"
-        >
-          <br />
-          <span class="text-lg font-bold mr-3">Testing hijo</span>
-          <br />
-          <input
-            type="checkbox"
-            class="
-              appearance-none
-              transition-colors
-              cursor-pointer
-              w-14
-              h-7
-              rounded-full
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-offset-black
-              focus:ring-blue-500
-              bg-red-500
-            "
-            v-model="testing_hijo"
-          />
-          <span
-            class="absolute font-medium text-xs uppercase right-1 text-white"
-          >
-            Sin
-          </span>
-          <span
-            class="absolute font-medium text-xs uppercase right-8 text-white"
-          >
-            Con
-          </span>
-          <span
-            class="
-              w-7
-              h-7
-              right-7
-              absolute
-              rounded-full
-              transform
-              transition-transform
-              bg-gray-200
-            "
-          />
-        </label>
-      </div>
-      <div class="flex">
-        <div v-show="testing_hijo">
-          {{ lista_departamentos }}
-          -- depto calle:{{ leal_departamento }}-- --depto calle Valido:{{
-            leal_departamento_valido
-          }}-- --depto calle Valido local:{{ calle_dpto_legal_valido_local }}--
-          --depto calle Evalaucion:{{ leal_departamento_correcto }}-- --depto
-          calle Obser:{{ obs_leal_departamento }}-- --depto calle obsr Valido:{{
-            obs_leal_departamento_valido
-          }}-- --Evaluacion {{ evaluacion }}-- --{{
-            cartel_nota_evaluacion_dpto_calle
-          }}--
-        </div>
-      </div>
     </div>
   </div>
 </template>
