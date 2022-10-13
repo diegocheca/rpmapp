@@ -1,12 +1,5 @@
 <template>
   <div>
-    <!-- <div class="flex-col">
-            <label
-                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
-                for="input_componente"
-                >{{label}}:</label
-            >
-        </div> -->
     <div class="flex flex-wrap">
       <div
         class="
@@ -35,7 +28,6 @@
         >
           {{ label }}:
         </h2>
-        <!-- <div class="font-base tracking-tight text-gray-600">Lista de minerales seleccionales.</div> -->
       </div>
       <div
         class="
@@ -120,25 +112,6 @@
           <div class="bg-white shadow-md rounded-xl p-4 border border-gray-300">
             <div class="flex-none lg:flex">
               <!--******* Indice para cada mineral *******-->
-              <!-- <div class="flex flex-wrap"> -->
-              <!-- <div
-                  class="
-                    md:w-1/8
-                    sm:w-8/8
-                    text-2xl
-                    md:text-2xl
-                    w-full
-                    flex-none
-                    text-black
-                    font-medium
-                    mr-2
-                    text-center
-                  "
-                >
-                  {{ index + 1 }}°
-                </div> -->
-              <!-- <h2 class="flex-auto font-medium">{{mineral.id_mineral}}</h2> -->
-              <!-- </div> -->
 
               <!--******* Imagen de mineral *******-->
               <div
@@ -150,13 +123,6 @@
                   class="object-scale-down lg:object-cover lg:h-20 rounded"
                 />
               </div>
-              <!-- <div class="flex-auto ml-3 justify-evenly py-2 sm:col-1 md:w-1/2 sm:w-2/2 w-full"> -->
-              <!-- <p class="mt-3"></p> -->
-              <!-- tipo de yacimiento es:
-                                    <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">{{$props.tipo_yacimiento}}</span> -->
-              <!-- <div
-                  class="flex flex-wrap py-4 sm:w-full text-sm text-gray-600"
-                > -->
 
               <!--******* Select de Mineral *******-->
               <div class="px-3">
@@ -423,49 +389,6 @@
                   </p>
                 </div>
               </div>
-              <!-- </div> -->
-              <!-- <div class="flex p-4 pb-2 border-t border-gray-200 "></div> -->
-
-              <!--******* Boton Eliminar *******-->
-              <!-- <div
-                class="
-                  w-full
-                  sm:w-4/4
-                  md:w-1/4
-                  lg:w-1/4
-                  xl:w-1/4
-                  2xl:w-1/4
-                  px-3
-                  mb-2
-                  md:mb-2
-                "
-              >
-                <button
-                  :disabled="$props.evaluacion || $props.desactivar_input"
-                  class="
-                    px-6
-                    py-2.5
-                    mb-4
-                    mt-5
-                    text-base
-                    font-semibold
-                    rounded
-                    block
-                    border-b border-purple-300
-                    bg-red-200
-                    hover:bg-red-300
-                    text-red-900
-                  "
-                  type="button"
-                  aria-label="like"
-                  @click="eliminar_mineral(index)"
-                >
-                  Eliminar Mineral
-                </button>
-              </div> -->
-
-              <!--******* Validación *******-->
-              <!-- </div> -->
             </div>
             <!-- <div v-if="true"> -->
             <div  v-if="$props.evaluacion || $props.mostrar_correccion || $props.mostrar_evaluacion_adm" >
@@ -565,7 +488,6 @@
           </div>
         </div>
       </div>
-      <div v-show="$props.testing">los minerales son {{ minerales }}</div>
     </div>
   </div>
 </template>

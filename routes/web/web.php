@@ -382,3 +382,5 @@ Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'i
 
 
 
+Route::post('/productos/actualizar', [ProductosController::class, "actualizar"])->name('productos-update');
+

@@ -134,6 +134,13 @@
                       >
                         <inertia-link
                         
+                          :href="route('pagos.show', pago.id)"
+                          class="px-2 font-semibold leading-5 text-xs rounded-full bg-yellow-100 text-yellow-500 hover:text-yellow-800"
+                        >
+                          ver
+                        </inertia-link>
+                        <inertia-link
+                        
                           :href="route('pagos.edit', pago.id)"
                           class="px-2 font-semibold leading-5 text-xs rounded-full bg-yellow-100 text-yellow-500 hover:text-yellow-800"
                         >

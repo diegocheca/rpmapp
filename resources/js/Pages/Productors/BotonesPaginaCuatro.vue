@@ -1,19 +1,5 @@
 <template>
   <div>
-    <!-- <jet-dialog-modal
-      :show="mostrar_modal_datos_ya_guardados"
-      @close="cerrar_modal_datos_uno"
-    >
-      <template #title>
-        {{ modal_tittle }}
-      </template>
-      <template #content>
-        {{ modal_body }}
-      </template>
-      <template #footer>
-        <button @click="cerrar_modal_datos_uno">Ok</button>
-      </template>
-    </jet-dialog-modal> -->
     <div class="flex items-stretch w-full justify-items-stretch">
       <div
         class="justify-self-auto mb-6 md:mb-0 px-3 self-center sm:w-5/5 w-full"
@@ -60,59 +46,6 @@
           {{ titulo_boton_guardar }}
         </button>
       </div>
-    </div>
-    <div v-show="$props.testing">
-      {{ $props.numero_expdiente }}
-      {{ $props.numero_expdiente_valido }}
-      {{ $props.numero_expdiente_correcto }}
-      {{ $props.obs_numero_expdiente }}
-      {{ $props.obs_numero_expdiente_valido }}
-      {{ $props.categoria }}
-      {{ $props.categoria_validacion }}
-      {{ $props.categoria_correcto }}
-      {{ $props.obs_categoria }}
-      {{ $props.obs_categoria_valido }}
-      {{ $props.nombre_mina }}
-      {{ $props.nombre_mina_validacion }}
-      {{ $props.nombre_mina_correcto }}
-      {{ $props.obs_nombre_mina }}
-      {{ $props.obs_nombre_mina_valido }}
-      {{ $props.descripcion_mina }}
-      {{ $props.descripcion_mina_validacion }}
-      {{ $props.descripcion_mina_correcto }}
-      {{ $props.obs_descripcion_mina }}
-      {{ $props.obs_descripcion_mina_valido }}
-      {{ $props.distrito_minero }}
-      {{ $props.distrito_minero_validacion }}
-      {{ $props.distrito_minero_correcto }}
-      {{ $props.obs_distrito_minero }}
-      {{ $props.obs_distrito_minero_valido }}
-      {{ $props.mina_cantera }}
-      {{ $props.mina_cantera_validacion }}
-      {{ $props.mina_cantera_correcto }}
-      {{ $props.obs_mina_cantera }}
-      {{ $props.obs_mina_cantera_valido }}
-      {{ $props.plano_inmueble }}
-      {{ $props.plano_inmueble_validacion }}
-      {{ $props.plano_inmueble_correcto }}
-      {{ $props.obs_plano_inmueble }}
-      {{ $props.obs_plano_inmueble_valido }}
-      {{ $props.minerales_variedad }}
-      {{ $props.minerales_variedad_validacion }}
-      {{ $props.minerales_variedad_correcto }}
-      {{ $props.obs_minerales_variedad }}
-      {{ $props.obs_minerales_variedad_valido }}
-      {{ $props.resolucion_concesion_minera }}
-      {{ $props.resolucion_concesion_minera_validacion }}
-      {{ $props.resolucion_concesion_minera_correcto }}
-      {{ $props.obs_resolucion_concesion_minera }}
-      {{ $props.obs_resolucion_concesion_minera_valido }}
-      {{ $props.titulo_contrato_posecion }}
-      {{ $props.titulo_contrato_posecion_validacion }}
-      {{ $props.titulo_contrato_posecion_correcto }}
-      {{ $props.obs_titulo_contrato_posecion }}
-      {{ $props.obs_titulo_contrato_posecion_valido }}
-      {{ $props.minerales }}
     </div>
   </div>
 </template>
@@ -191,10 +124,6 @@ export default {
   },
   data() {
     return {
-      // saludos: "Saludame",
-      // mostrar_modal_datos_ya_guardados: false,
-      // modal_tittle: "",
-      // modal_body: "",
     };
   },
   methods: {
@@ -203,8 +132,6 @@ export default {
       // console.log('valor: ',valor);
     },
     guardar_avnces_cuatro() {
-      //if(this.$props.evaluacion)
-      //{
       //Soy autoridad minera
       let self = this;
       const data = new FormData();
@@ -383,23 +310,6 @@ export default {
             es_evaluacion: this.$props.evaluacion,
           })
           .then(function (response) {
-            // if (response.data === "se actualizaron los datos correctamente") {
-            //   // console.log("todo bien");
-            //   // self.modal_tittle = "Datos guardados correctamente";
-            //   // self.modal_body =
-            //   //   "Recien hemos guardados los datos del productor de manera correcta, gracias por usar este servcio, por favor continue llenando el formulario";
-            //   // self.mostrar_modal_datos_ya_guardados = true;
-            //   Swal.fire(
-            //     "Datos guardados correctamente.",
-            //     "Gracias por usar este servicio, por favor continue completando el formulario.",
-            //     "success"
-            //   ).then((result) => {
-            //     self.ver_pagina_siguiente(true);
-            //   });
-            // } else {
-            //   // console.log("NO todo bien");
-            //   Swal.fire("Error", "Error inesperado.", "error");
-            // }
           })
           .catch(function (error) {
             // handle error
@@ -408,9 +318,6 @@ export default {
           });
       }
     },
-    // cerrar_modal_datos_uno() {
-    //   this.mostrar_modal_datos_ya_guardados = false;
-    // },
   },
 };
 </script>

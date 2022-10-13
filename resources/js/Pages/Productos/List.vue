@@ -121,6 +121,14 @@
                       <td
                         class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"
                       >
+
+                      <inertia-link
+                        
+                          :href="route('productos.show', producto.id)"
+                          class="px-2 font-semibold leading-5 text-xs rounded-full bg-yellow-100 text-yellow-500 hover:text-yellow-800"
+                        >
+                          Ver
+                        </inertia-link>
                         <inertia-link
                         
                           :href="route('productos.edit', producto.id)"

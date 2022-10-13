@@ -158,162 +158,6 @@
               <button @click="closeModal">Ok</button>
             </template>
           </jet-dialog-modal>
-          <!-- <div class="flex items-center justify-center">
-            <div
-              class="
-                grid grid-cols-1
-                gap-6
-                sm:grid-cols-4
-                md:grid-cols-7
-                lg:grid-cols-7
-                xl:grid-cols-7
-              "
-            > -->
-          <!-- 1 card -->
-          <!-- <CardProductor
-                v-if="$props.mostrar.paso_uno"
-                :progreso="form.valor_de_progreso"
-                :aprobado="form.valor_de_aprobado"
-                :reprobado="form.valor_de_reprobado"
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :mostrarayuda="false"
-                :evaluacion="evaluacion_global"
-                :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-              ></CardProductor>
- -->
-          <!-- 2 card -->
-          <!-- <CardDomLegal
-                v-if="$props.mostrar.paso_dos"
-                :progreso="form.valor_de_progreso_dos"
-                :aprobado="form.valor_de_aprobado_dos"
-                :reprobado="form.valor_de_reprobado_dos"
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :mostrarayuda="false"
-                :evaluacion="evaluacion_global"
-                :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-              ></CardDomLegal> -->
-          <!-- 3 card -->
-          <!-- <CardDomAdmin
-                v-if="$props.mostrar.paso_tres"
-                :progreso="form.valor_de_progreso_tres"
-                :aprobado="form.valor_de_aprobado_tres"
-                :reprobado="form.valor_de_reprobado_tres"
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :mostrarayuda="false"
-                :evaluacion="evaluacion_global"
-                :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl'"
-              ></CardDomAdmin> -->
-          <!-- 4 card -->
-          <!-- <CardMinaUno
-                v-if="$props.mostrar.paso_cuatro"
-                :progreso="form.valor_de_progreso_cuatro"
-                :aprobado="form.valor_de_aprobado_cuatro"
-                :reprobado="form.valor_de_reprobado_cuatro"
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :mostrarayuda="false"
-                :evaluacion="evaluacion_global"
-                :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-              ></CardMinaUno> -->
-          <!-- 5 card -->
-          <!-- <CardMinaDos
-                v-if="$props.mostrar.paso_cinco"
-                :progreso="form.valor_de_progreso_cinco"
-                :aprobado="form.valor_de_aprobado_cinco"
-                :reprobado="form.valor_de_reprobado_cinco"
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :mostrarayuda="false"
-                :evaluacion="evaluacion_global"
-                :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-              ></CardMinaDos> -->
-          <!-- <CardMinaUbicacion
-                v-if="$props.mostrar.paso_seis"
-                :progreso="form.valor_de_progreso_seis"
-                :aprobado="form.valor_de_aprobado_seis"
-                :reprobado="form.valor_de_reprobado_seis"
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :evaluacion="evaluacion_global"
-                :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-              ></CardMinaUbicacion> -->
-          <!-- <CardCatamarca
-                v-if="$props.mostrar.paso_catamarca"
-                :progreso="form.valor_de_progreso_seis"
-                :aprobado="form.valor_de_aprobado_seis"
-                :reprobado="form.valor_de_reprobado_seis"
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :evaluacion="evaluacion_global"
-                :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-              ></CardCatamarca> -->
-          <!-- 4 card -->
-          <!-- <CardTotal
-                v-if="evaluacion_global"
-                :progreso="form.valor_de_progreso_seis"
-                :aprobado="form.valor_de_aprobado_seis"
-                :reprobado="form.valor_de_reprobado_seis"
-                :lugar="'Argentina, San Juan'"
-                :updated_at="'hace 10 minutos'"
-                :clase_sup="'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-                :clase_inf="'relative bg-white py-6 px-6 rounded-3xl w-128 my-4 shadow-xl'"
-              ></CardTotal> -->
-          <!-- </div>
-          </div> -->
-          <!-- <div class="flex justify-center md:justify-end -mt-16 sticky top-10">
-            <a href="#inicio">
-              <div class="flex items-center absolute shadow-xl left-8 top-10">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-arrow-up"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
-                  />
-                </svg>
-              </div>
-            </a>
-          </div> -->
-          <!-- <div class="flex items-center justify-center">
-							<CardProductor  
-								:progreso="form.valor_de_progreso"
-								:aprobado="form.valor_de_aprobado"
-								:reprobado="form.valor_de_reprobado" 
-								:lugar="'Argentina, San Juan'"
-								:updated_at="'hace 10 minutos'"
-								:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-								:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-							></CardProductor>
-					</div> -->
-          <!--<div class="flex space-x-8 text-3xl">
-
-						<!- spin ->
-						<button class="animate-spin inline-block py-4 px-8 bg-yellow-500 text-yellow-100 rounded-lg">Spin</button>
-
-						<!- ping ->
-						<button class="animate-ping inline-block py-4 px-8 bg-blue-500 text-blue-100 rounded-lg">Ping</button>
-
-						<!- pulse ->
-						<button class="  inline-block py-4 px-8 bg-red-500 text-red-100 rounded-lg">Pulse</button>
-
-						<!- bounce ->
-						<button class="  inline-block py-4 px-8 bg-teal-500 text-teal-100 rounded-lg">Bounce</button>
-					</div>-->
           <br />
           <div id="section_productor"></div>
           <PaginaUnoDatosProductores
@@ -552,28 +396,7 @@
             :id="$props.productor.id"
           >
           </PaginaDosDatosDomLegal>
-          <!-- <div class="flex items-center justify-center">
-            <CardDomLegal  
-							:progreso="form.valor_de_progreso_dos"
-							:aprobado="form.valor_de_aprobado_dos"
-							:reprobado="form.valor_de_reprobado_dos" 
-							:lugar="'Argentina, San Juan'"
-							:updated_at="'hace 10 minutos'"
-							:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-							:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-						></CardDomLegal>
-          </div> -->
-          <!-- <div class="flex items-center justify-center">
-            <CardDomAdmin  
-					:progreso="form.valor_de_progreso_tres"
-					:aprobado="form.valor_de_aprobado_tres"
-					:reprobado="form.valor_de_reprobado_tres" 
-					:lugar="'Argentina, San Juan'"
-					:updated_at="'hace 10 minutos'"
-					:clase_sup = "'grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1'"
-					:clase_inf = "'relative bg-white py-6 px-40 rounded-3xl w-128 my-4 shadow-xl'"
-				></CardDomAdmin>
-          </div> -->
+          
           <div id="section_domicilio_administrativo"></div>
           <PaginaDosDatosDomLegal
             v-if="$props.mostrar.paso_tres"
@@ -1092,6 +915,7 @@
             :evaluacion="evaluacion_global"
             :id="$props.productor.id"
             :testing="testing_global"
+            :accion = "editar"
           >
           </PaginaCincoDatosMinaDos>
           <!-- <div class="flex flex-col mb-8">
@@ -1276,6 +1100,7 @@
           >
           <div class="flex flex-wrap">
               <div
+                v-if="$props.mostrar.observacion!==false"
                 class="
                   w-full
                   sm:w-1/1
@@ -1303,12 +1128,9 @@
 
 
 
-
-
-
-
             <div class="flex flex-wrap">
               <div
+                v-if="$props.mostrar.cargo_empresa!==false"
                 class="
                   w-full
                   sm:w-2/2
@@ -1330,6 +1152,7 @@
                 ></InputComponente>
               </div>
               <div
+              v-if="$props.mostrar.presentador_nombre!==false"
                 class="
                   w-full
                   sm:w-2/2
@@ -1351,6 +1174,7 @@
                 ></InputComponente>
               </div>
               <div
+                v-if="$props.mostrar.presentador_dni!==false"
                 class="
                   w-full
                   sm:w-2/2
@@ -1375,7 +1199,9 @@
 
 
             <div class="flex" v-if="evaluacion_global">
-              <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+              <div 
+              v-if="$props.mostrar.cargo_empresa!==false"
+              class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label
                   class="mb-2 uppercase font-bold text-lg text-grey-darkest"
                   for="name"
@@ -1746,6 +1572,11 @@
                 </inertia-link>
               </div>
             </div>
+
+
+            <h1 v-if="$props.mostrar.boton_actualizar_mina!==false">
+              BOTON ACTUALIZAR MINA
+            </h1>
           </div>
           <jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
             <template #title>

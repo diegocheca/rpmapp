@@ -49,15 +49,6 @@
                 <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
             </div>
         </div>
-        --num exp calle:{{numero_expdiente}}--
-        --num exp calle Valido:{{numero_expdiente_valido}}--
-        --num exp calle Valido local:{{numero_expdiente_valido_local}}--
-        
-        --num exp calle Evalaucion:{{numero_expdiente_correcto}}--
-        --num exp calle Obser:{{obs_numero_expdiente}}--
-        --num exp calle obsr Valido:{{obs_numero_expdiente_valido}}--
-        --Evaluacion {{evaluacion}}--
-        --{{texto_validacion_text_area}}--
     </div>
 </template>
 
