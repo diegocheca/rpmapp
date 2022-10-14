@@ -53,9 +53,22 @@ class ProductosController extends Controller
         provincia 70
          */
 
+        if (Auth::user()->hasRole('Administrador') ) {
+            return Inertia::render('Productos/List', [
+                'productos' => DB::table('users')
+                            ->join('productores', 'users.id', '=', 'productores.usuario_creador')
+                            ->join('reinscripciones', 'reinscripciones.id_productor', '=', 'productores.id')
+                            ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+                            ->join('mineral', 'mineral.id', '=', 'productos.nombre_mineral')
+                            ->select('productos.*', "mineral.name", "productores.razonsocial","users.profile_photo_path")
+                            ->orderBy('productos.id', 'DESC')
+                            ->paginate(5)
+                        ]);
+                    }
+
 
                             
-        if (Auth::user()->hasRole('Administrador') || Auth::user()->hasRole('Autoridad')) {
+        if (Auth::user()->hasRole('Autoridad')) {
             return Inertia::render('Productos/List', [
                 'productos' => DB::table('users')
                             ->join('productores', 'users.id', '=', 'productores.usuario_creador')
@@ -68,6 +81,7 @@ class ProductosController extends Controller
                             ->paginate(5)
                         ]);
                     }
+
         else { // productor
             $mi_productor_id = Productor::select('*')->where("usuario_creador","=", Auth::user()->id)->first();
             return Inertia::render('Productos/List', [

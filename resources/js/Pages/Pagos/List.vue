@@ -126,7 +126,22 @@
                         <div class="text-sm text-gray-900">{{ pago.fecha_pago }}</div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900">{{ pago.estado }}</div>
+                        <div class="text-sm text-gray-900">
+                          
+                          <span
+                              
+                              class="
+                                bg-green-200
+                                text-green-600
+                                py-1
+                                px-3
+                                rounded-full
+                                text-xs
+                              "
+                              >{{ pago.estado }}</span
+                            >
+
+                        </div>
                       </td>
                       
                       <td

@@ -238,6 +238,55 @@ class FormAltaProductorFakerController extends Controller
     }
 
     
+    public function user_index()
+    {
+        //
+        $provincias = Provincias::select('id','nombre')->get();
+        return Inertia::render('Fakers/FormularioALtaProductor/users_index', [
+            'provincias' => $provincias,
+        ]);
+    }
+
+    public function create_users(Request $request){
+        //comprobar cuantos quiero crear y si el request llega bien
+        try{
+            $provincia = Provincias::find($request->provincia);
+            $faker = Faker::create();
+            $datos_a_mostrar = array();
+            $index = 0;
+            for($i = 0;$i<$request->cantidad; $i++)
+            {
+                $id_user = 0;
+                //crear el usuario
+
+                $name = $faker->name();
+                $resultado = User::create([
+                    'name' => $name,
+                    'email' => $faker->email(),
+                    'password' => bcrypt('password'),
+                    'current_team_id' => 10, // team_catamarca
+                    'profile_photo_path' => "profile-photos/".$faker->numberBetween(1,100).".png",
+                    'first_name' => $name,
+                    'last_name' =>  "nada",
+                    'provincia' => $provincia->nombre,
+                    'id_provincia' => $request->provincia,
+                ])->assignRole('Productor');
+                $id_user = $resultado->id;
+                //Termino de crear usuario
+                $array_to_return[$index] = $resultado;
+                $index++;
+            }
+            return response()->json([
+                'status'=> 'success',
+                'formularios' => $array_to_return
+            ],200);
+        } catch (Exception $e) {
+            return response()->json(['status' => 'error', 'error' => $e->getMessage()], 401);
+        }
+
+    }
+
+    
     public function create_minas(Request $request){
         //comprobar cuantos quiero crear y si el request llega bien
         try{

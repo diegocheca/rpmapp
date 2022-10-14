@@ -51,6 +51,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     //Route::post('/reinscripcion_faker/buscar_minas', [FormAltaProductorFakerController::class, 'buscar_minas_faker'])->middleware(['auth:sanctum', 'verified'])->name('buscar_minas_fakes');
 
 
+    Route::get('/user_faker/user_index', [FormAltaProductorFakerController::class, 'user_index'])->middleware(['auth:sanctum', 'verified'])->name('user_faker.index');
+    Route::post('/user_faker/crear', [FormAltaProductorFakerController::class, 'create_users'])->middleware(['auth:sanctum', 'verified'])->name('create_user_faker');
+    
+    
+
+
+
     Route::resource('permisos_nuevos', PermissionController::class)
         ->middleware(['auth:sanctum', 'verified'])
         ->names('permisos_nuevos');
