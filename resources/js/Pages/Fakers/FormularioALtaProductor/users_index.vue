@@ -299,11 +299,20 @@
                   
                 </div>
               </form>
-              {{resultado}}
             </div>
           </div>
         </div>
       </div>
+
+
+      <h1 v-if="resultado==null">Sin Usuarios nuevos</h1>
+      <div v-else class="grid grid-cols-3 gap-3">
+        <div v-for="(user, index) in resultado" :key="index">
+          <cardUser :user="user"/>
+        </div>
+      </div>
+
+
     </app-layout>
   </template>
   
@@ -312,6 +321,7 @@
   import AppLayout from "@/Layouts/AppLayout";
   import JetDialogModal from '@/Jetstream/DialogModal';
   //import Button from '../../Jetstream/Button.vue';
+  import cardUser from "@/Pages/CardDatosProductor/cardUser";
   import Swal from "sweetalert2";
   export default {
     props: {
@@ -327,7 +337,8 @@
     },
     components: {
       AppLayout,
-      JetDialogModal
+      JetDialogModal,
+      cardUser
       //Button,
     },
 
@@ -365,7 +376,7 @@
               "Gracias por usar este servicio, por favor continue completando el formulario.",
               "success"
             );
-            self.resultado=response.data.formularios;
+            self.resultado=response.data.usuarios;
           } else {
             Swal.fire("Error", "Error inesperado.", "error");
           }

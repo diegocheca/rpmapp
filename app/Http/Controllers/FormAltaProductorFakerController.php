@@ -258,27 +258,36 @@ class FormAltaProductorFakerController extends Controller
             {
                 $id_user = 0;
                 //crear el usuario
-
+                $profile_photo = "profile-photos/".$faker->numberBetween(1,100).".png";
+                $email = $faker->email();
                 $name = $faker->name();
+                $nombre_provincia = $provincia->nombre;
+                $id_provincia = $provincia->id;
+
                 $resultado = User::create([
                     'name' => $name,
-                    'email' => $faker->email(),
+                    'email' => $email,
                     'password' => bcrypt('password'),
                     'current_team_id' => 10, // team_catamarca
-                    'profile_photo_path' => "profile-photos/".$faker->numberBetween(1,100).".png",
+                    'profile_photo_path' => $profile_photo,
                     'first_name' => $name,
                     'last_name' =>  "nada",
-                    'provincia' => $provincia->nombre,
-                    'id_provincia' => $request->provincia,
+                    'provincia' => $nombre_provincia,
+                    'id_provincia' => $id_provincia,
                 ])->assignRole('Productor');
                 $id_user = $resultado->id;
+
+                //dd(User::find($resultado->id));
+
+                $resultado["id"] = $resultado->id;
                 //Termino de crear usuario
                 $array_to_return[$index] = $resultado;
                 $index++;
+                
             }
             return response()->json([
                 'status'=> 'success',
-                'formularios' => $array_to_return
+                'usuarios' => $array_to_return
             ],200);
         } catch (Exception $e) {
             return response()->json(['status' => 'error', 'error' => $e->getMessage()], 401);

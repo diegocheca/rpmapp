@@ -17,10 +17,10 @@ class Pagocanonmina extends Model
 
     protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
-        'id',
+        'id_prod_min',
         'pagado',
-        'fecha_pago',
         'monto',
+        'fecha_pago',
         'fecha_desde',
         'fecha_hasta',
         'created_by',

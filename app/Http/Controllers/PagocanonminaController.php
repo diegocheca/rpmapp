@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 
 
-
 use App\Models\MinaCantera;
+use App\Models\Productores;
 
 use App\Models\iia_dia;
 use Illuminate\Support\Facades\Storage;
@@ -35,14 +35,27 @@ class PagocanonminaController extends Controller
     {
         //
         //$pagos = Pagocanonmina::all();
-        if (Auth::user()->hasRole('Administrador')
-        || 
-        Auth::user()->hasRole('Autoridad')) {
+        if (Auth::user()->hasRole('Administrador')) {
             return Inertia::render('Pagos/List', [
                 'pagos' => DB::table('pagocanonmina')
-                            ->join('form_alta_productores', 'pagocanonmina.id_formulario', '=', 'form_alta_productores.id')
+                            ->join('productor_mina', 'pagocanonmina.id_prod_min', '=', 'productor_mina.id')
+                            ->join('mina_cantera', 'productor_mina.id_mina', '=', 'mina_cantera.id')
+                            ->join('form_alta_productores', 'form_alta_productores.id', '=', 'mina_cantera.id_formulario')
+                            ->select('pagocanonmina.*')
+                            ->whereNull('pagocanonmina.deleted_at')
+                            ->orderBy('id', 'DESC')
+                            ->paginate(5)
+            ]);
+        }
+        if (Auth::user()->hasRole('Autoridad')) {
+            return Inertia::render('Pagos/List', [
+                'pagos' => DB::table('pagocanonmina')
+                            ->join('productor_mina', 'pagocanonmina.id_prod_min', '=', 'productor_mina.id')
+                            ->join('mina_cantera', 'productor_mina.id_mina', '=', 'mina_cantera.id')
+                            ->join('form_alta_productores', 'form_alta_productores.id', '=', 'mina_cantera.id_formulario')
                             ->select('pagocanonmina.*')
                             ->where('form_alta_productores.provincia', '=', Auth::user()->id_provincia)
+                            ->whereNull('pagocanonmina.deleted_at')
                             ->orderBy('id', 'DESC')
                             ->paginate(5)
             ]);
@@ -53,7 +66,9 @@ class PagocanonminaController extends Controller
                                 ->join('form_alta_productores', 'pagocanonmina.id_formulario', '=', 'form_alta_productores.id')
                                 ->select('pagocanonmina.*')
                                 ->where('form_alta_productores.created_by', '=', Auth::user()->id)
+                                ->whereNull('pagocanonmina.deleted_at')
                                 ->orderBy('id', 'DESC')
+
                                 ->paginate(5)
                 ]);
     
@@ -74,7 +89,17 @@ class PagocanonminaController extends Controller
     public function create()
     {
         //
-        return Inertia::render('Pagos/Form');
+        $productores =  DB::table('productor_mina')
+                        ->join('productores', 'productores.id', '=', 'productor_mina.id_productor')
+                        ->join('mina_cantera', 'mina_cantera.id', '=', 'productor_mina.id_mina')
+                        ->select('productor_mina.id','mina_cantera.nombre','productores.razonsocial',)
+                        ->orderBy('productor_mina.id', 'DESC')
+                        ->get();
+
+        return Inertia::render('Pagos/Form', [
+            'productores' => $productores,
+        ]);
+
     }
 
     
@@ -87,70 +112,10 @@ class PagocanonminaController extends Controller
      */
      public function store(Request $request)
     {
-        //
-        // $request->validate(
-        //     [
-        //         'cuit',
-        //         'razonsocial' => 'required',
-        //         'numeroproductor' => 'required',
-        //         'email'=> 'required',
-        //         'domicilio_prod'=> 'required',
-        //         'tiposociedad'=> 'required',
-        //         'inscripciondgr'=> 'required',
-        //         'constaciasociedad'=> 'required',
-        //         'leal_calle'=> 'required',
-        //         'leal_numero'=> 'required',
-        //         'leal_telefono'=> 'required'
-        //         'leal_pais',
-        //         'leal_provincia',
-        //         'leal_departamento',
-        //         'leal_localidad',
-        //         'leal_cp',
-        //         'leal_otro',
-        //         'administracion_calle',
-        //         'administracion_numero',
-        //         'administracion_telefono',
-        //         'administracion_pais',
-        //         'administracion_provincia',
-        //         'administracion_departamento',
-        //         'administracion_localidad',
-        //         'administracion_cp',
-        //         'administracion_otro',
-        //         'numero_expdiente',
-        //         'categoria',
-        //         'nombre_mina',
-        //         'descripcion_mina',
-        //         'distrito_minero',
-        //         'mina_cantera',
-        //         'plano_inmueble',
-        //         'minerales_variedad',
-        //         'owner',
-        //         'arrendatario',
-        //         'concesionario',
-        //         'otros',
-        //         'titulo_contrato_posecion',
-        //         'resolucion_concesion_minera',
-        //         'constancia_pago_canon',
-        //         'iia',
-        //         'dia',
-        //         'acciones_a_desarrollar',
-        //         'actividad',
-        //         'fecha_alta_dia',
-        //         'fecha_vencimiento_dia',
-        //         'localidad_mina_pais',
-        //         'localidad_mina_provincia',
-        //         'localidad_mina_departamento',
-        //         'localidad_mina_localidad',
-        //         'tipo_sistema',
-        //         'longitud',
-        //         'latitud',
-        //         'created_by',
-        //         'estado'
-        //             ]
-        // );
+        $request->created_by=Auth::user()->id;
 
-        Pagocanonmina::create($request->all());
-
+        $result = Pagocanonmina::create($request->all());
+        //dd($result);
         return Redirect::route('pagos.index');
     }
 
@@ -162,258 +127,15 @@ class PagocanonminaController extends Controller
      */
     public function show($id_pago)
     {
+        $productores =  DB::table('productor_mina')
+        ->join('productores', 'productores.id', '=', 'productor_mina.id_productor')
+        ->join('mina_cantera', 'mina_cantera.id', '=', 'productor_mina.id_mina')
+        ->select('productor_mina.id','mina_cantera.nombre','productores.razonsocial',)
+        ->orderBy('productor_mina.id', 'DESC')
+        ->get();
 
-		//empiezo sin poder entrar
-		$entro = false;
-		$soy_administrador = false;
-		$soy_autoridad_minera = false;
-		$soy_productor = false;
-
-		//filtro por autoridad minera o autoridad
-		//pregunto si soy admin
-		if (Auth::user()->hasRole('Administrador')) {
-			$soy_administrador = true;
-			$soy_autoridad_minera = true;
-			$soy_productor = true;
-			$entro = true;
-		} elseif (Auth::user()->hasRole('Autoridad')) {
-			//soy autoridad minera, entonces traigo todo de mi prov
-			$soy_administrador = false;
-			$soy_autoridad_minera = true;
-			$soy_productor = false;
-			$entro = true;
-		} else {
-			//soy productor, entonces traigo solo mis borradores
-			$borradores = FormAltaProductor::select('*')->where('provincia', '=', Auth::user()->id_provincia)->where('created_by', '=', Auth::user()->id);
-			$entro = true;
-			$soy_administrador = false;
-			$soy_autoridad_minera = false;
-			$soy_productor = true;
-		}
-
-		if ($entro) {
-            $pago = Pagocanonmina::find($id_pago);
-
-			$borradores = FormAltaProductor::find($pago->id_formulario);
-
-            $mina = MinaCantera::find($borradores->id);
-
-
-			$borradores = $this->pasar_num_a_boolean($borradores);
-			$minerales_asociados = Minerales_Borradores::select('*')->where('id_formulario', '=', $borradores->id)->get();
-
-            
-			$datos_creador = User::find($borradores->created_by);
-            
-			$datos_disables_mostrar = $this->dame_los_permisos_de_los_inputs('editar', $borradores->estado);
-            
-            
-			if (is_null($borradores->razon_social_correcto))
-				$borradores->razon_social_correcto = 'nada';
-			elseif (intval($borradores->razon_social_correcto) == 1)
-				$borradores->razon_social_correcto = true;
-			else $borradores->razon_social_correcto = false;
-
-			//ar_dump($borradores->razon_social_correcto);die();
-			if (is_null($borradores->email_correcto))
-				$borradores->email_correcto = 'nada';
-			elseif (intval($borradores->email_correcto) == 1)
-				$borradores->email_correcto = true;
-			else $borradores->email_correcto = false;
-
-			if (is_null($borradores->cuit_correcto))
-				$borradores->cuit_correcto = 'nada';
-			elseif (intval($borradores->cuit_correcto) == 1)
-				$borradores->cuit_correcto = true;
-			else $borradores->cuit_correcto = false;
-
-			if (is_null($borradores->numeroproductor_correcto))
-				$borradores->numeroproductor_correcto = 'nada';
-			elseif (intval($borradores->numeroproductor_correcto) == 1)
-				$borradores->numeroproductor_correcto = true;
-			else $borradores->numeroproductor_correcto = false;
-
-			if (is_null($borradores->tiposociedad_correcto))
-				$borradores->tiposociedad_correcto = 'nada';
-			elseif (intval($borradores->tiposociedad_correcto) == 1)
-				$borradores->tiposociedad_correcto = true;
-			else $borradores->tiposociedad_correcto = false;
-
-			if (is_null($borradores->inscripciondgr_correcto))
-				$borradores->inscripciondgr_correcto = 'nada';
-			elseif (intval($borradores->inscripciondgr_correcto) == 1)
-				$borradores->inscripciondgr_correcto = true;
-			else $borradores->inscripciondgr_correcto = false;
-
-
-
-			if (is_null($borradores->constaciasociedad_correcto))
-				$borradores->constaciasociedad_correcto = 'nada';
-			elseif (intval($borradores->constaciasociedad_correcto) == 1)
-				$borradores->constaciasociedad_correcto = true;
-			else $borradores->constaciasociedad_correcto = false;
-			$borradores->constanciasociedad_correcto = $borradores->constaciasociedad_correcto;
-
-			if (is_null($borradores->leal_departamento_correcto))
-				$borradores->leal_departamento_correcto = 'nada';
-			elseif (intval($borradores->leal_departamento_correcto) == 1)
-				$borradores->leal_departamento_correcto = true;
-			else $borradores->leal_departamento_correcto = false;
-
-			if (is_null($borradores->owner_correcto))
-				$borradores->owner_correcto = 'nada';
-			elseif (intval($borradores->owner_correcto) == 1)
-				$borradores->owner_correcto = true;
-			else $borradores->owner_correcto = false;
-
-			if (is_null($borradores->arrendatario_correcto))
-				$borradores->arrendatario_correcto = 'nada';
-			elseif (intval($borradores->arrendatario_correcto) == 1)
-				$borradores->arrendatario_correcto = true;
-			else $borradores->arrendatario_correcto = false;
-
-			if (is_null($borradores->concesionario_correcto))
-				$borradores->concesionario_correcto = 'nada';
-			elseif (intval($borradores->concesionario_correcto) == 1)
-				$borradores->concesionario_correcto = true;
-			else $borradores->concesionario_correcto = false;
-
-			if (is_null($borradores->otros_correcto))
-				$borradores->otros_correcto = 'nada';
-			elseif (intval($borradores->otros_correcto) == 1)
-				$borradores->otros_correcto = true;
-			else $borradores->otros_correcto = false;
-
-			if (is_null($borradores->susteancias_de_aprovechamiento_comun_correcto))
-				$borradores->susteancias_de_aprovechamiento_comun_correcto = 'nada';
-			elseif (intval($borradores->susteancias_de_aprovechamiento_comun_correcto) == 1)
-				$borradores->susteancias_de_aprovechamiento_comun_correcto = true;
-			else $borradores->susteancias_de_aprovechamiento_comun_correcto = false;
-
-			if (is_null($borradores->administracion_telefono_correcto))
-				$borradores->administracion_telefono_correcto = 'nada';
-			elseif (intval($borradores->administracion_telefono_correcto) == 1)
-				$borradores->administracion_telefono_correcto = true;
-			elseif (intval($borradores->administracion_telefono_correcto) == 0)
-				$borradores->administracion_telefono_correcto = false;
-
-			if (is_null($borradores->resolucion_concesion_minera_correcto))
-				$borradores->resolucion_concesion_minera_correcto = 'nada';
-			elseif (intval($borradores->resolucion_concesion_minera_correcto) == 1)
-				$borradores->resolucion_concesion_minera_correcto = true;
-			elseif (intval($borradores->resolucion_concesion_minera_correcto) == 0)
-				$borradores->resolucion_concesion_minera_correcto = false;
-
-
-			if (is_null($borradores->plano_inmueble_correcto))
-				$borradores->plano_inmueble_correcto = 'nada';
-			elseif (intval($borradores->plano_inmueble_correcto) == 1)
-				$borradores->plano_inmueble_correcto = true;
-			elseif (intval($borradores->plano_inmueble_correcto) == 0)
-				$borradores->plano_inmueble_correcto = false;
-
-			if (is_null($borradores->titulo_contrato_posecion_correcto))
-				$borradores->titulo_contrato_posecion_correcto = 'nada';
-			elseif (intval($borradores->titulo_contrato_posecion_correcto) == 1)
-				$borradores->titulo_contrato_posecion_correcto = true;
-			elseif (intval($borradores->titulo_contrato_posecion_correcto) == 0)
-				$borradores->titulo_contrato_posecion_correcto = false;
-			//dd($borradores->resolucion_concesion_minera_correcto);
-
-			if (is_null($borradores->owner_correcto))
-				$borradores->owner_correcto = 'nada';
-			elseif (intval($borradores->owner_correcto) == 1)
-				$borradores->owner_correcto = true;
-			elseif (intval($borradores->owner_correcto) == 0)
-				$borradores->owner_correcto = false;
-
-			if (is_null($borradores->arrendatario_correcto))
-				$borradores->arrendatario_correcto = 'nada';
-			elseif (intval($borradores->arrendatario_correcto) == 1)
-				$borradores->arrendatario_correcto = true;
-			elseif (intval($borradores->arrendatario_correcto) == 0)
-				$borradores->concesionario_correcto = false;
-
-			if (is_null($borradores->concesionario_correcto))
-				$borradores->concesionario_correcto = 'nada';
-			elseif (intval($borradores->concesionario_correcto) == 1)
-				$borradores->concesionario_correcto = true;
-			elseif (intval($borradores->concesionario_correcto) == 0)
-				$borradores->concesionario_correcto = false;
-
-			if (is_null($borradores->otros_correcto))
-				$borradores->otros_correcto = 'nada';
-			elseif (intval($borradores->otros_correcto) == 1)
-				$borradores->otros_correcto = true;
-			elseif (intval($borradores->otros_correcto) == 0)
-				$borradores->otros_correcto = false;
-
-			if (is_null($borradores->sustancias_correcto))
-				$borradores->sustancias_correcto = 'nada';
-			elseif (intval($borradores->sustancias_correcto) == 1)
-				$borradores->sustancias_correcto = true;
-			elseif (intval($borradores->sustancias_correcto) == 0)
-				$borradores->sustancias_correcto = false;
-
-			//dd($borradores->dia_correcto,$borradores->iia_correcto );
-
-			if (is_null($borradores->iia_correcto))
-				$borradores->iia_correcto = 'nada';
-			elseif (intval($borradores->iia_correcto) == 1)
-				$borradores->iia_correcto = true;
-			elseif (intval($borradores->iia_correcto) == 0)
-				$borradores->iia_correcto = false;
-
-			if (is_null($borradores->dia_correcto))
-				$borradores->dia_correcto = 'nada';
-			elseif (intval($borradores->dia_correcto) == 1)
-				$borradores->dia_correcto = true;
-			elseif (intval($borradores->dia_correcto) == 0)
-				$borradores->dia_correcto = false;
-
-			if (is_null($borradores->acciones_a_desarrollar_correcto))
-				$borradores->acciones_a_desarrollar_correcto = 'nada';
-			elseif (intval($borradores->acciones_a_desarrollar_correcto) == 1)
-				$borradores->acciones_a_desarrollar_correcto = true;
-			elseif (intval($borradores->acciones_a_desarrollar_correcto) == 0)
-				$borradores->acciones_a_desarrollar_correcto = false;
-
-			if (is_null($borradores->actividad_correcto))
-				$borradores->actividad_correcto = 'nada';
-			elseif (intval($borradores->actividad_correcto) == 1)
-				$borradores->actividad_correcto = true;
-			elseif (intval($borradores->actividad_correcto) == 0)
-				$borradores->actividad_correcto = false;
-
-			if (is_null($borradores->fecha_alta_dia_correcto))
-				$borradores->fecha_alta_dia_correcto = 'nada';
-			elseif (intval($borradores->fecha_alta_dia_correcto) == 1)
-				$borradores->fecha_alta_dia_correcto = true;
-			elseif (intval($borradores->fecha_alta_dia_correcto) == 0)
-				$borradores->fecha_alta_dia_correcto = false;
-
-			if (is_null($borradores->fecha_vencimiento_dia_correcto))
-				$borradores->fecha_vencimiento_dia_correcto = 'nada';
-			elseif (intval($borradores->fecha_vencimiento_dia_correcto) == 1)
-				$borradores->fecha_vencimiento_dia_correcto = true;
-			elseif (intval($borradores->fecha_vencimiento_dia_correcto) == 0)
-				$borradores->fecha_vencimiento_dia_correcto = false;
-
-
-
-			return Inertia::render('Productors/EditForm', [
-				'productor' => $borradores,
-				'lista_minerales_cargados' => $minerales_asociados,
-				'creado' => $datos_creador,
-				"soy_administrador" => $soy_administrador,
-				"soy_autoridad_minera" => $soy_autoridad_minera,
-				"soy_productor" => $soy_productor,
-				"disables" => $datos_disables_mostrar["disables"],
-				"mostrar" => $datos_disables_mostrar["mostrar"],
-			]);
-		} else {
-			return Inertia::render('Common/SinPermisos');
-		}
+        $pago = Pagocanonmina::find($id_pago);
+          return Inertia::render('Pagos/EditForm', ['pago' => $pago,'productores' => $productores,'accion' => "show"]);
 	}
 
     /**
@@ -422,10 +144,18 @@ class PagocanonminaController extends Controller
      * @param  \App\Models\Pagocanonmina  $pagocanonmina
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pagocanonmina $pagocanonmina)
+    public function edit($id)
     {
         //
-          return Inertia::render('Pagos/EditForm', ['pagos' => $pagocanonmina]);
+        $productores =  DB::table('productor_mina')
+        ->join('productores', 'productores.id', '=', 'productor_mina.id_productor')
+        ->join('mina_cantera', 'mina_cantera.id', '=', 'productor_mina.id_mina')
+        ->select('productor_mina.id','mina_cantera.nombre','productores.razonsocial',)
+        ->orderBy('productor_mina.id', 'DESC')
+        ->get();
+
+        $pago = Pagocanonmina::find($id);
+          return Inertia::render('Pagos/EditForm', ['pago' => $pago,'productores' => $productores,'accion' => "edit"]);
     }
 
     /**
@@ -448,10 +178,12 @@ class PagocanonminaController extends Controller
      * @param  \App\Models\Pagocanonmina  $pagocanonmina
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pagocanonmina $pagocanonmina)
+    public function destroy($id_pago)
     {
         //
-         $pagocanonmina->delete();
+        $pago = Pagocanonmina::find($id_pago);
+        $pago->delete();
+         //$pagocanonmina->delete();
         return Redirect::route('pagos.index');
     }
 

@@ -499,6 +499,36 @@
 
               <span class="mx-3">Migrations</span>
             </inertia-link>
+
+            <inertia-link
+              class="
+                flex
+                items-center
+                mt-4
+                py-2
+                px-6
+                text-gray-500
+                hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100
+                border-l-4 border-transparent
+                hover:border-indigo-500
+              "
+              :href="route('admin.logs')"
+              v-on:click="activetab = 'Logs'"
+              v-bind:class="[
+                activetab === 'Logs'
+                  ? 'active border-indigo-500 text-gray-100 bg-gray-700 bg-opacity-25 font-black'
+                  : '',
+              ]"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+
+
+              <span class="mx-3">Logs</span>
+            </inertia-link>
+
+
           </nav>
         </div>
       </div>
