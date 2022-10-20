@@ -31,7 +31,7 @@ class ProductoresController extends Controller
             'productores' =>
             
             DB::table('productores')
-            ->join('users', 'users.id', '=', 'productores.usuario_creador')
+            ->join('users', 'users.id', '=', 'productores.created_by')
             ->select('productores.*',"users.profile_photo_path")
             ->orderBy('productores.id', 'DESC')
             ->paginate(10),
@@ -60,7 +60,7 @@ class ProductoresController extends Controller
     {
         $user = HomeController::userData();
         if (Auth::user()->hasRole('Productor')) {
-            $productores = Productores::where('usuario_creador', Auth::user()->id)->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
+            $productores = Productores::where('created_by', Auth::user()->id)->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
         } elseif (Auth::user()->hasRole('Autoridad')) {
             $productores = Productores::select('*')->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
         } else //administrador

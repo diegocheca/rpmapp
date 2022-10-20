@@ -56,7 +56,7 @@ class ProductosController extends Controller
         if (Auth::user()->hasRole('Administrador') ) {
             return Inertia::render('Productos/List', [
                 'productos' => DB::table('users')
-                            ->join('productores', 'users.id', '=', 'productores.usuario_creador')
+                            ->join('productores', 'users.id', '=', 'productores.created_by')
                             ->join('reinscripciones', 'reinscripciones.id_productor', '=', 'productores.id')
                             ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
                             ->join('mineral', 'mineral.id', '=', 'productos.nombre_mineral')
@@ -71,7 +71,7 @@ class ProductosController extends Controller
         if (Auth::user()->hasRole('Autoridad')) {
             return Inertia::render('Productos/List', [
                 'productos' => DB::table('users')
-                            ->join('productores', 'users.id', '=', 'productores.usuario_creador')
+                            ->join('productores', 'users.id', '=', 'productores.created_by')
                             ->join('reinscripciones', 'reinscripciones.id_productor', '=', 'productores.id')
                             ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
                             ->join('mineral', 'mineral.id', '=', 'productos.nombre_mineral')
@@ -83,7 +83,7 @@ class ProductosController extends Controller
                     }
 
         else { // productor
-            $mi_productor_id = Productor::select('*')->where("usuario_creador","=", Auth::user()->id)->first();
+            $mi_productor_id = Productor::select('*')->where("created_by","=", Auth::user()->id)->first();
             return Inertia::render('Productos/List', [
                 'productos' => DB::table('productos')
                     ->join('reinscripciones', 'reinscripciones.id', '=', 'productos.id_reinscripcion')

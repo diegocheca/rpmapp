@@ -22,10 +22,12 @@ class CreateMensajesProductor extends Migration
             $table->string('mensaje')->nullable(false)->default(null);
             $table->enum('estado', ['pendiente', 'enviado', 'error'])->default('pendiente');
 
-            $table->foreign('id_productor')->references('id')->on('productores')->onUpdate('cascade')
+            /*$table->foreign('id_productor')->references('id')->on('productores')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->foreign('id_provincia')->references('id')->on('Provincia')->onUpdate('cascade')
             ->onDelete('cascade');
+            rpmappdb
+            */
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

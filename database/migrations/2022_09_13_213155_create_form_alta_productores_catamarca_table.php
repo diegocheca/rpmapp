@@ -75,8 +75,8 @@ class CreateFormAltaProductoresCatamarcaTable extends Migration
                 $table->float('paso_progreso',3,2)->nullable()->default(null);
 
                 
-                $table->integer('created_by',256)->nullable()->default(null);
-                $table->integer('updated_by',256)->nullable()->default(null);
+                $table->integer('created_by')->nullable()->default(null);
+                $table->integer('updated_by')->nullable()->default(null);
                 $table->timestamps();
                 $table->softDeletes($column = 'deleted_at', $precision = 0);
 

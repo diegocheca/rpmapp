@@ -50,8 +50,7 @@ class Productores extends Model
         'created_at',
         'deleted_at',
         'updated_at',
-        'id_formulario',
-        'usuario_creador'
+        'id_formulario'
     ];
 
     public static function crear_nuevo_productor($id_formulario){
@@ -91,7 +90,6 @@ class Productores extends Model
 				$productor->created_by = $formulario_provisorio->created_by;
 				$productor->estado = "aprobado";
 				$productor->id_formulario = $formulario_provisorio->id;
-				$productor->usuario_creador = $formulario_provisorio->created_by;
 				$productor->save();
 				return $productor->id;
 			} else {

@@ -31,7 +31,7 @@ class FomrWeb extends Migration
             $table->bigIncrements('id');
             $table->string('nom_estado_solicitud')->nullable(); 
             $table->unsignedBigInteger('solicitud_id')->nullable();
-            $table->foreign('solicitud_id')->references('id')->on('formSolicitud');
+            //$table->foreign('solicitud_id')->references('id')->on('formSolicitud');
         });
         
         Schema::create('formTipoDocumento', function (Blueprint $table) {
@@ -68,7 +68,7 @@ class FomrWeb extends Migration
             $table->string('tipo_solicitud', 50)->nullable();
             $table->unsignedBigInteger('tipodocumento_id')->nullable();
 
-            $table->foreign('tipodocumento_id')->references('id')->on('formTipoDocumento');
+            //$table->foreign('tipodocumento_id')->references('id')->on('formTipoDocumento');
 
             $table->timestamps();
         });
@@ -81,8 +81,8 @@ class FomrWeb extends Migration
             $table->string('rol')->nullable();
             $table->string('tipo_persona', 50)->nullable(); 
 
-             $table->foreign('form_persona_id')->references('id')->on('formPersona');
-             $table->foreign('form_solicitud_id')->references('id')->on('formSolicitud');
+             //$table->foreign('form_persona_id')->references('id')->on('formPersona');
+             //$table->foreign('form_solicitud_id')->references('id')->on('formSolicitud');
         
             $table->timestamps();
         });
@@ -98,7 +98,7 @@ class FomrWeb extends Migration
 
             $table->unsignedBigInteger('solicitud_id')->nullable();
 
-            $table->foreign('solicitud_id')->references('id')->on('formSolicitud');
+            //$table->foreign('solicitud_id')->references('id')->on('formSolicitud');
 
             $table->timestamps();
         });
@@ -117,8 +117,8 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('form_terreno_id')->nullable();
             $table->unsignedBigInteger('form_estado_terreno_id')->nullable();
 
-             $table->foreign('form_terreno_id')->references('id')->on('formTerreno');
-             $table->foreign('form_estado_terreno_id')->references('id')->on('formEstadoTerreno');
+             //$table->foreign('form_terreno_id')->references('id')->on('formTerreno');
+             //$table->foreign('form_estado_terreno_id')->references('id')->on('formEstadoTerreno');
 
             $table->timestamps();
         });  
@@ -133,7 +133,7 @@ class FomrWeb extends Migration
 
             $table->unsignedBigInteger('terreno_id')->nullable();
             
-            $table->foreign('terreno_id')->references('id')->on('formTerreno');          
+            //$table->foreign('terreno_id')->references('id')->on('formTerreno');          
 
             $table->timestamps();
         });
@@ -146,7 +146,7 @@ class FomrWeb extends Migration
 
             $table->unsignedBigInteger('terreno_id')->nullable();
 
-           $table->foreign('terreno_id')->references('id')->on('formTerreno');          
+           //$table->foreign('terreno_id')->references('id')->on('formTerreno');          
 
             $table->timestamps();
         });        
@@ -157,7 +157,7 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('terreno_id')->nullable();        
             $table->timestamps();
 
-            $table->foreign('terreno_id')->references('id')->on('formTerreno');
+            //$table->foreign('terreno_id')->references('id')->on('formTerreno');
         });
        
         Schema::create('form_mina_minerales', function (Blueprint $table) {
@@ -167,8 +167,8 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('minerales_id')->nullable();
             $table->string('categoria')->nullable();
 
-            $table->foreign('form_mina_id')->references('id')->on('formMina');
-            $table->foreign('minerales_id')->references('id')->on('minerales');
+            //$table->foreign('form_mina_id')->references('id')->on('formMina');
+            //$table->foreign('minerales_id')->references('id')->on('minerales');
            
             $table->timestamps();
         });
@@ -179,8 +179,8 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('form_estado_terreno_id')->nullable();
             $table->unsignedBigInteger('form_mina_id')->nullable();
 
-            $table->foreign('form_estado_terreno_id')->references('id')->on('formEstadoTerreno');
-            $table->foreign('form_mina_id')->references('id')->on('formMina');
+            //$table->foreign('form_estado_terreno_id')->references('id')->on('formEstadoTerreno');
+            //$table->foreign('form_mina_id')->references('id')->on('formMina');
 
 
             $table->timestamps();
@@ -192,8 +192,8 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('form_terreno_id')->nullable();
             $table->unsignedBigInteger('minerales_id')->nullable();
 
-            $table->foreign('form_terreno_id')->references('id')->on('formTerreno');
-            $table->foreign('minerales_id')->references('id')->on('mineral');
+            //$table->foreign('form_terreno_id')->references('id')->on('formTerreno');
+            //$table->foreign('minerales_id')->references('id')->on('mineral');
 
             $table->timestamps();
         });
@@ -207,8 +207,8 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('terreno_id')->nullable();
             $table->unsignedBigInteger('mina_id')->nullable();
             
-            $table->foreign('terreno_id')->references('id')->on('formTerreno'); 
-            $table->foreign('mina_id')->references('id')->on('formMina');          
+            //$table->foreign('terreno_id')->references('id')->on('formTerreno'); 
+            //$table->foreign('mina_id')->references('id')->on('formMina');          
 
             $table->timestamps();
         });
@@ -221,7 +221,7 @@ class FomrWeb extends Migration
             $table->string('informe_catastral')->nullable();
             $table->unsignedBigInteger('solicitud_id')->nullable();
             
-            $table->foreign('solicitud_id')->references('id')->on('formSolicitud');                        
+            //$table->foreign('solicitud_id')->references('id')->on('formSolicitud');                        
 
             $table->timestamps();
         }); 
@@ -240,8 +240,8 @@ class FomrWeb extends Migration
             $table->unsignedBigInteger('form_mina_id')->nullable();
             $table->unsignedBigInteger('form_mina_colindante_id')->nullable();
 
-            $table->foreign('form_mina_id')->references('id')->on('formMina');
-            $table->foreign('form_mina_colindante_id')->references('id')->on('formMinaColindante');
+            //$table->foreign('form_mina_id')->references('id')->on('formMina');
+            //$table->foreign('form_mina_colindante_id')->references('id')->on('formMinaColindante');
 
             $table->timestamps();
         });

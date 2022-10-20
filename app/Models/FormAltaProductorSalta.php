@@ -68,7 +68,7 @@ class FormAltaProductorSalta extends Model
             $formulario_provisorio->id_formulario_alta = $id_formulario_alta;
 
             if ($formulario_provisorio->tipo==null) {
-                $formulario_provisorio->tipo = Constants::$tipos_formularios_salta[$faker->numberBetween(0, count(Constants::$tipos_formularios_salta))];
+                $formulario_provisorio->tipo = Constants::$tipos_formularios_salta[$faker->numberBetween(0, count(Constants::$tipos_formularios_salta)-1)];
             } else {
                 $formulario_provisorio->tipo = $tipo;
             }

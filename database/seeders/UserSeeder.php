@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
             'email' => 'ltorres.godoy77@gmail.com',
             'password' => bcrypt('123456789'),
             'id_provincia' => 70,
-        ])->assignRole('User');
+        ])->assignRole('Productor');
 
         // User::factory(10)->create();
     }

@@ -48,7 +48,7 @@ class Pagocanonmina extends Model
 				$nuevo_pago->fecha_hasta = null;// Carbon::now()->addMonth(6);
 				$nuevo_pago->created_by = $formulario_provisorio->created_by;
 				$nuevo_pago->estado = "aprobado";
-				$nuevo_pago->id_formulario = $id_formulario;
+				$nuevo_pago->id_prod_min = $id_formulario;
 				$nuevo_pago->save();
 				return $nuevo_pago->id;
 			} else {

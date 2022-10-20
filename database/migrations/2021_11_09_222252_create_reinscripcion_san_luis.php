@@ -264,8 +264,8 @@ class CreateReinscripcionSanLuis extends Migration
 
             $table->string('estado', 25)->nullable()->default(null);
 
-            $table->foreign('id_productor')->references('id')->on('productores') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_productor')->references('id')->on('productores') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -301,13 +301,13 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('unidades_evaluacion')->nullable()->default(null);
             $table->string('unidades_comentario', 50)->nullable()->default(null);
 
-            // $table->string('otra_unidad', 200)->default(null);
+            $table->string('otra_unidad', 200)->nullable()->default(null);
             $table->string('precio_venta')->nullable()->default(null);
             $table->string('precio_venta_evaluacion')->nullable()->default(null);
             $table->string('precio_venta_comentario', 50)->nullable()->default(null);
 
             $table->bigInteger('created_by')->nullable()->default(null);
-            $table->string('estado', 50)->default(null);
+            $table->string('estado', 50)->nullable()->default(null);
 
             $table->string('ley', 100)->nullable()->default(null);
             $table->string('ley_evaluacion')->nullable()->default(null);
@@ -343,11 +343,11 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('comentario', 50)->nullable()->default(null);
 
 
-            $table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
-            $table->foreign('id_mina')->references('id')->on('mina_cantera') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_mina')->references('id')->on('mina_cantera') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -369,8 +369,8 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);
 
-            $table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -395,8 +395,8 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);
 
-            $table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -420,8 +420,8 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);
 
-            $table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -447,8 +447,8 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);
 
-            $table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_reinscripcion')->references('id')->on('reinscripciones') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -499,8 +499,8 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);
 
-            $table->foreign('id_productos')->references('id')->on('productos') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_productos')->references('id')->on('productos') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -530,8 +530,8 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);
 
-            $table->foreign('id_productos')->references('id')->on('productos') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_productos')->references('id')->on('productos') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
@@ -556,8 +556,8 @@ class CreateReinscripcionSanLuis extends Migration
             $table->string('evaluacion')->nullable()->default(null);
             $table->string('comentario', 50)->nullable()->default(null);
 
-            $table->foreign('id_productos')->references('id')->on('productos') ->onUpdate('cascade')
-            ->onDelete('cascade');
+            /*$table->foreign('id_productos')->references('id')->on('productos') ->onUpdate('cascade')
+            ->onDelete('cascade');*/
 
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);

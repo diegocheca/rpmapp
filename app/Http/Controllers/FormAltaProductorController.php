@@ -16061,7 +16061,7 @@ class FormAltaProductorController extends Controller
 				else $productor->created_by = 0;
 				$productor->estado = "aprobado";
 				$productor->id_formulario = $id_formulario;
-				$productor->usuario_creador = $formulario_provisorio->created_by;
+				$productor->created_by = $formulario_provisorio->created_by;
 				$productor->save();
 				return $productor->id;
 			} else {
