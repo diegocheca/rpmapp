@@ -34,9 +34,18 @@ class FormAltaProductorSaltaController extends Controller
      * @param  \App\Http\Requests\StoreFormAltaProductorSaltaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFormAltaProductorSaltaRequest $request)
+    public function store(Request $request)
     {
-        //
+        if($request->id_formulario > 0){
+            $formulario = FormAltaProductor::find($request->id_formulario);
+            if($formulario==null){
+                return false;
+            }
+            $request->id_usuario = Auth::user()->id;
+            $resultado = FormAltaProductorSalta::crear_nuevo_salta_evaluacion($request->all());
+
+            return $resultado;
+        }
     }
 
     /**
@@ -45,9 +54,10 @@ class FormAltaProductorSaltaController extends Controller
      * @param  \App\Models\FormAltaProductorSalta  $formAltaProductorSalta
      * @return \Illuminate\Http\Response
      */
-    public function show(FormAltaProductorSalta $formAltaProductorSalta)
+    public function show(Request $formAltaProductorSalta)
     {
         //
+        return FormAltaProductorSalta::find($formAltaProductorSalta);
     }
 
     /**
@@ -58,7 +68,10 @@ class FormAltaProductorSaltaController extends Controller
      */
     public function edit(FormAltaProductorSalta $formAltaProductorSalta)
     {
-        //
+        // llamar a show
+        /*$form_salta  = FormAltaProductorSalta::find($formAltaProductorSalta->id);
+        $result = $form_salta->update_form($formAltaProductorSalta);
+        return $result;*/
     }
 
     /**
@@ -71,6 +84,9 @@ class FormAltaProductorSaltaController extends Controller
     public function update(UpdateFormAltaProductorSaltaRequest $request, FormAltaProductorSalta $formAltaProductorSalta)
     {
         //
+        $form_salta  = FormAltaProductorSalta::find($formAltaProductorSalta->id);
+        $result = $form_salta->update_form($formAltaProductorSalta);
+        return $result;
     }
 
     /**

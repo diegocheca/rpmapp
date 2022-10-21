@@ -34,12 +34,20 @@ class FormAltaProductorEvalSaltaController extends Controller
      * @param  \App\Http\Requests\StoreFormAltaProductorEvalSaltaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFormAltaProductorEvalSaltaRequest $request)
+    public function store(Request $request)
     {
         //
-        $request->all();
-        $evaluacion_salta_nuevo = new FormAltaProductorEvalSalta();
-        $id = $evaluacion_salta_nuevo->crear_nuevo_salta_evaluacion();
+        if($request->id_formulario > 0){
+            $formulario = FormAltaProductor::find($request->id_formulario);
+            if($formulario==null){
+                return false;
+            }
+
+            $evaluacion_salta_nuevo = new FormAltaProductorEvalSalta();
+            $evaluacion_salta_nuevo->crear_nuevo_salta_evaluacion($request->all());
+
+            return $evaluacion_salta_nuevo->id;
+        }
     }
 
     /**

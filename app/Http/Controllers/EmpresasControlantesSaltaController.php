@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\EmpresasControlantesSalta;
+use App\Models\FormAltaProductor;
+use App\Models\FormAltaProductorSalta;
 use App\Http\Requests\StoreEmpresasControlantesSaltaRequest;
 use App\Http\Requests\UpdateEmpresasControlantesSaltaRequest;
 
@@ -34,9 +36,21 @@ class EmpresasControlantesSaltaController extends Controller
      * @param  \App\Http\Requests\StoreEmpresasControlantesSaltaRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEmpresasControlantesSaltaRequest $request)
+    //public function store(StoreEmpresasControlantesSaltaRequest $request)
+    public function store(Resquest $request)
     {
-        //
+        if($request->id_formulario > 0){
+            $formulario = FormAltaProductor::find($request->id_formulario);
+            if($formulario==null){
+                return false;
+            }
+            $formulario_salta = FormAltaProductorSalta::find($request->id_formulario_salta);
+            if($formulario_salta==null){
+                return false;
+            }
+            $resultado = EmpresasControlantesSalta::crear_formulario_salta_all($request->all());
+            return $resultado;
+        }
     }
 
     /**

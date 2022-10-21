@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class EmpresasControlantesSalta extends Model
 {
     use HasFactory;
+
+
+    public static function crear_controlantes(){
+        
+    }
 }
