@@ -24,6 +24,25 @@
               <banner></banner>
             </div>
             <!-- <br /> -->
+salta : {{$props.mostrar.paso_salta}}
+
+            <div ></div>
+            <PaginaSalta
+              
+              :link_volver="route('formulario-alta.index')"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar'"
+              :titulo_pagina="'Salta'"
+              :evaluacion="evaluacion_global"
+              :testing="testing_global"
+              :id="444"
+              :editar="false"
+              
+            >
+            </PaginaSalta>
+
+
+
             <div id="section_productor"></div>
             <PaginaUnoDatosProductores
               v-if="$props.mostrar.paso_uno"
@@ -1012,6 +1031,56 @@
             >
             </PaginaMendoza>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div id="finalizar"></div>
             <div
               class="
@@ -1379,6 +1448,8 @@ import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbic
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 import PaginaTucuman from "@/Pages/Productors/PaginaTucuman";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
+import PaginaSalta from "@/Pages/Productors/PaginaSalta";
+
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
 
@@ -1413,6 +1484,7 @@ export default {
     PaginaCatamarca,
     PaginaTucuman,
     PaginaMendoza,
+    PaginaSalta,
     ValidationErrors,
     Pasos,
   },
@@ -1438,6 +1510,7 @@ export default {
       m_catamarca: false, //Catamarca
       m_tucuman: false, //Tucuman
       m_mendoza: false, //Mendoza
+      m_salta: false, //Salta
       evaluacion_global: this.$props.soy_autoridad_minera,
       testing_global: this.$props.soy_administrador,
       mostrar_modal_datos_ya_guardados: false,
@@ -2509,6 +2582,8 @@ export default {
             this.m_catamarca = valor;
           if (this.$inertia.page.props.user.id_provincia == 50)
             this.m_mendoza = valor;
+          if (this.$inertia.page.props.user.id_provincia == 66)
+            this.m_salta = valor;
           if (this.$inertia.page.props.user.id_provincia == 90)
             this.m_tucuman = valor;
           break;

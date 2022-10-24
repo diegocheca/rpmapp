@@ -736,12 +736,6 @@ class FormAltaProductorController extends Controller
 				'datos_donut' => $grafico_donut
 			]);
 		}
-
-
-
-		//var_dump($borradores);die();
-		//var_dump($borradores);die();
-
 	}
 
 	public function dame_un_productor_vacio()
@@ -4920,28 +4914,8 @@ class FormAltaProductorController extends Controller
 					"paso_seis" => false,
 
 
-					"nombre_gestor" => false,
-					"nombre_gestor_correccion" => false,
-					"dni_gestor" => false,
-					"dni_gestor_correccion" => false,
-					"profesion_gestor" => false,
-					"profesion_gestor_correccion" => false,
-					"telefono_gestor" => false,
-					"telefono_gestor_correccion" => false,
-					"notificacion_gestor" => false,
-					"notificacion_gestor_correccion" => false,
-					"email_gestor" => false,
-					"email_gestor_correccion" => false,
-					"dni_productor" => false,
-					"dni_productor_correccion" => false,
-					"foto_productor" => false,
-					"foto_productor_correccion" => false,
-					"constancia_afip" => false,
-					"constancia_afip_correccion" => false,
-					"autorizacion_gestor" => false,
-					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
+					"paso_salta" => false,
+					
 
 					"estado" => false,
 					"boton_actualizar" => false,
@@ -5092,6 +5066,10 @@ class FormAltaProductorController extends Controller
 					"autorizacion_gestor_correccion" => false,
 					"paso_catamarca" => false,
 					"boton_catamarca" => false,
+
+
+
+					"paso_salta" => true,
 
 
 					"estado" => true,

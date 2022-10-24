@@ -296,46 +296,46 @@ class FormAltaProductorSalta extends Model
     public static function crear_formulario_salta_all($formulario_salta)
 	{
         try {
-                $form_borrador = FormAltaProductor::findOrFail($formulario_salta->id_formulario_alta);
+                $form_borrador = FormAltaProductor::findOrFail($formulario_salta["id_formulario_alta"]);
 
                 $formulario_provisorio = new FormAltaProductorSalta();
 
-                $formulario_provisorio->id_formulario_alta = $formulario_salta->id_formulario_alta;
+                $formulario_provisorio->id_formulario_alta = $formulario_salta["id_formulario_alta"];
 
-                $formulario_provisorio->tipo = $formulario_salta->tipo;
-                $formulario_provisorio->representante_legal_nombre = $formulario_salta->representante_legal_nombre;
-                $formulario_provisorio->representante_legal_apellido = $formulario_salta->representante_legal_apellido;
-                $formulario_provisorio->representante_legal_dni = $formulario_salta->representante_legal_dni;
-                $formulario_provisorio->representante_legal_email = $formulario_salta->representante_legal_email;
-                $formulario_provisorio->representante_legal_cargo = $formulario_salta->representante_legal_cargo;
-                $formulario_provisorio->representante_legal_domicilio = $formulario_salta->representante_legal_domicilio;
-                $formulario_provisorio->nacionalidad = $formulario_salta->nacionalidad;
-                $formulario_provisorio->telefono = $formulario_salta->telefono;
-                $formulario_provisorio->superficie_mina = $formulario_salta->superficie_mina;
-                $formulario_provisorio->volumenes_de_extraccion_periodo_anterior = $formulario_salta->volumenes_de_extraccion_periodo_anterior;
-                $formulario_provisorio->n_resolucion_iia = $formulario_salta->n_resolucion_iia;
-                $formulario_provisorio->etapa_de_exploracion = $formulario_salta->etapa_de_exploracion;
-                $formulario_provisorio->n_resolucion_aprobacion_informe = $formulario_salta->n_resolucion_aprobacion_informe;
-                $formulario_provisorio->etapa_de_exploracion_avanzada = $formulario_salta->etapa_de_exploracion_avanzada;
-                $formulario_provisorio->volumenes_anuales_de_materias_primas = $formulario_salta->volumenes_anuales_de_materias_primas;
-                $formulario_provisorio->material_obtenido = $formulario_salta->material_obtenido;
-                $formulario_provisorio->autorizacion_extractivas_exploratorias = $formulario_salta->autorizacion_extractivas_exploratorias;
-                $formulario_provisorio->responsable_nombre = $formulario_salta->responsable_nombre;
-                $formulario_provisorio->responsable_apellido = $formulario_salta->responsable_apellido;
-                $formulario_provisorio->responsable_dni = $formulario_salta->responsable_dni;
-                $formulario_provisorio->responsable_titulo = $formulario_salta->responsable_titulo;
-                $formulario_provisorio->responsable_matricula = $formulario_salta->responsable_matricula;
-                $formulario_provisorio->ley_24196_numero = $formulario_salta->ley_24196_numero;
-                $formulario_provisorio->ley_24196_inscripcion_renar = $formulario_salta->ley_24196_inscripcion_renar;
-                $formulario_provisorio->ley_24196_explosivos = $formulario_salta->ley_24196_explosivos;
-                $formulario_provisorio->ley_24196_propiedad = $formulario_salta->ley_24196_propiedad;
-                $formulario_provisorio->estado_contable = $formulario_salta->estado_contable;
-                $formulario_provisorio->listado_de_maquinaria = $formulario_salta->listado_de_maquinaria;
-                $formulario_provisorio->regalias = $formulario_salta->regalias;
-                $formulario_provisorio->personas_afectadas = $formulario_salta->personas_afectadas;
-                $formulario_provisorio->multas = $formulario_salta->multas;
-                $formulario_provisorio->created_by = $formulario_salta->id_usuario;
-                $formulario_provisorio->updated_by = $formulario_salta->id_usuario;
+                $formulario_provisorio->tipo = $formulario_salta["tipo"];
+                $formulario_provisorio->representante_legal_nombre = $formulario_salta["representante_legal_nombre"];
+                $formulario_provisorio->representante_legal_apellido = $formulario_salta["representante_legal_apellido"];
+                $formulario_provisorio->representante_legal_dni = $formulario_salta["representante_legal_dni"];
+                $formulario_provisorio->representante_legal_email = $formulario_salta["representante_legal_email"];
+                $formulario_provisorio->representante_legal_cargo = $formulario_salta["representante_legal_cargo"];
+                $formulario_provisorio->representante_legal_domicilio = $formulario_salta["representante_legal_domicilio"];
+                $formulario_provisorio->nacionalidad = $formulario_salta["nacionalidad"];
+                $formulario_provisorio->telefono = $formulario_salta["telefono"];
+                $formulario_provisorio->superficie_mina = $formulario_salta["superficie_mina"];
+                $formulario_provisorio->volumenes_de_extraccion_periodo_anterior = $formulario_salta["volumenes_de_extraccion_periodo_anterior"];
+                $formulario_provisorio->n_resolucion_iia = $formulario_salta["n_resolucion_iia"];
+                $formulario_provisorio->etapa_de_exploracion = $formulario_salta["etapa_de_exploracion"];
+                $formulario_provisorio->n_resolucion_aprobacion_informe = $formulario_salta["n_resolucion_aprobacion_informe"];
+                $formulario_provisorio->etapa_de_exploracion_avanzada = $formulario_salta["etapa_de_exploracion_avanzada"];
+                $formulario_provisorio->volumenes_anuales_de_materias_primas = $formulario_salta["volumenes_anuales_de_materias_primas"];
+                $formulario_provisorio->material_obtenido = $formulario_salta["material_obtenido"];
+                $formulario_provisorio->autorizacion_extractivas_exploratorias = $formulario_salta["autorizacion_extractivas_exploratorias"];
+                $formulario_provisorio->responsable_nombre = $formulario_salta["responsable_nombre"];
+                $formulario_provisorio->responsable_apellido = $formulario_salta["responsable_apellido"];
+                $formulario_provisorio->responsable_dni = $formulario_salta["responsable_dni"];
+                $formulario_provisorio->responsable_titulo = $formulario_salta["responsable_titulo"];
+                $formulario_provisorio->responsable_matricula = $formulario_salta["responsable_matricula"];
+                $formulario_provisorio->ley_24196_numero = $formulario_salta["ley_24196_numero"];
+                $formulario_provisorio->ley_24196_inscripcion_renar = $formulario_salta["ley_24196_inscripcion_renar"];
+                $formulario_provisorio->ley_24196_explosivos = $formulario_salta["ley_24196_explosivos"];
+                $formulario_provisorio->ley_24196_propiedad = $formulario_salta["ley_24196_propiedad"];
+                $formulario_provisorio->estado_contable = $formulario_salta["estado_contable"];
+                $formulario_provisorio->listado_de_maquinaria = $formulario_salta["listado_de_maquinaria"];
+                $formulario_provisorio->regalias = $formulario_salta["regalias"];
+                $formulario_provisorio->personas_afectadas = $formulario_salta["personas_afectadas"];
+                $formulario_provisorio->multas = $formulario_salta["multas"];
+                $formulario_provisorio->created_by = 1;
+                $formulario_provisorio->updated_by = 1;
 
                 $formulario_provisorio->save();
 

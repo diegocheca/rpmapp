@@ -7,6 +7,9 @@ use App\Models\FormAltaProductor;
 use App\Models\FormAltaProductorSalta;
 use App\Http\Requests\StoreEmpresasControlantesSaltaRequest;
 use App\Http\Requests\UpdateEmpresasControlantesSaltaRequest;
+use Illuminate\Http\Request;
+use Auth;
+
 
 class EmpresasControlantesSaltaController extends Controller
 {
@@ -37,20 +40,22 @@ class EmpresasControlantesSaltaController extends Controller
      * @return \Illuminate\Http\Response
      */
     //public function store(StoreEmpresasControlantesSaltaRequest $request)
-    public function store(Resquest $request)
+    public function store(Request $request)
     {
-        if($request->id_formulario > 0){
-            $formulario = FormAltaProductor::find($request->id_formulario);
+        /*if($request->id_formulario_alta_salta > 0){
+            $formulario = FormAltaProductorSalta::find(2);
             if($formulario==null){
                 return false;
+            }*/
+            $index= 0;
+            foreach($request->empresas as $empresa){
+                echo $index;
+                $index++;
+                $empresa["id"] = null;
+                $empresa_nueva = EmpresasControlantesSalta::crear_empresa(2,$empresa);
             }
-            $formulario_salta = FormAltaProductorSalta::find($request->id_formulario_salta);
-            if($formulario_salta==null){
-                return false;
-            }
-            $resultado = EmpresasControlantesSalta::crear_formulario_salta_all($request->all());
-            return $resultado;
-        }
+            return true;
+        //}
     }
 
     /**

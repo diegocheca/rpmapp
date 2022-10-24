@@ -33,6 +33,10 @@ use App\Http\Controllers\MinaCanteraController;
 
 
 
+use App\Http\Controllers\FormAltaProductorSaltaController;
+use App\Http\Controllers\EmpresasControlantesSaltaController;
+
+
 use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
@@ -384,3 +388,20 @@ Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'i
 
 Route::post('/productos/actualizar', [ProductosController::class, "actualizar"])->name('productos-update');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//salta
+Route::get('/formulario_salta/buscar_permisos_formulario/{id}/{accion}', [FormAltaProductorSaltaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-salta');
+Route::post('/formulario_salta/guardar_alta', [FormAltaProductorSaltaController::class, "store"])->name('store-formulario-salta');
+Route::post('/formulario_salta/guardar_empresas', [EmpresasControlantesSaltaController::class, "store"])->name('store-empresas-salta');

@@ -18,6 +18,7 @@ class CreateEmpresasControlantesSaltasTable extends Migration
             $table->integer('id_formulario_alta_salta');
             $table->string('tipo',50)->comment('Puede ser: controlantes, controladas, vinculadas');//
             $table->string('cuit',18)->comment('En los 3 tipos');//esta en todos
+            $table->string('razon_social',100)->comment('Nombre');//esta en todos
 
             $table->string('calle',100)->nullable()->default(null);
             $table->string('numero',8)->nullable()->default(null);
@@ -28,7 +29,7 @@ class CreateEmpresasControlantesSaltasTable extends Migration
             $table->integer('cp')->nullable()->default(null);
             $table->string('otro',256)->nullable()->default(null);
 
-            $table->timestamp('created_by')->useCurrent = true;
+            $table->integer('created_by')->nullable()->default(null);
             $table->integer('updated_by');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
