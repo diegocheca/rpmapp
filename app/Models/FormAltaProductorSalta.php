@@ -293,14 +293,14 @@ class FormAltaProductorSalta extends Model
     }
 
 
-    public static function crear_formulario_salta_all($formulario_salta)
+    public static function crear_formulario_salta_all($formulario_salta,$id_formulario_alta)
 	{
         try {
-                $form_borrador = FormAltaProductor::findOrFail($formulario_salta["id_formulario_alta"]);
+                $form_borrador = FormAltaProductor::findOrFail($id_formulario_alta);
 
                 $formulario_provisorio = new FormAltaProductorSalta();
 
-                $formulario_provisorio->id_formulario_alta = $formulario_salta["id_formulario_alta"];
+                $formulario_provisorio->id_formulario_alta = $id_formulario_alta;
 
                 $formulario_provisorio->tipo = $formulario_salta["tipo"];
                 $formulario_provisorio->representante_legal_nombre = $formulario_salta["representante_legal_nombre"];

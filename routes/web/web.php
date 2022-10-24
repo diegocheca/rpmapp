@@ -406,3 +406,5 @@ Route::get('/formulario_salta/buscar_permisos_formulario/{id}/{accion}', [FormAl
 Route::post('/formulario_salta/guardar_alta', [FormAltaProductorSaltaController::class, "store"])->name('store-formulario-salta');
 Route::post('/formulario_salta/guardar_empresas', [EmpresasControlantesSaltaController::class, "store"])->name('store-empresas-salta');
 Route::post('/formulario_salta/buscar_formulario', [FormAltaProductorSaltaController::class, "look_up"])->name('look-up-formulario-salta');
+Route::get('/formulario_salta/form_faker', [FormAltaProductorSaltaController::class, "datos_faker"])->name('form-fake-salta');
+Route::get('/formulario_salta/empresa_faker', [EmpresasControlantesSaltaController::class, "empresa_fake"])->name('empresa-fake-salta');

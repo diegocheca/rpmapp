@@ -729,7 +729,7 @@
                 placeholder="Nacionalidad RL"
                 id="representante_legal_nacionalidad"
                 name="representante_legal_nacionalidad"
-                v-model="form_salta.representante_legal_nacionalidad"
+                v-model="form_salta.nacionalidad"
                 :disabled="false"
               />
             </div>
@@ -818,7 +818,7 @@
                 placeholder="Telefono RL"
                 id="representante_legal_telefono"
                 name="representante_legal_telefono"
-                v-model="form_salta.representante_legal_telefono"
+                v-model="form_salta.telefono"
                 :disabled="false"
               />
             </div>
@@ -3972,6 +3972,43 @@
         >
           {{ titulo_boton_guardar }}
         </button>
+
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
+          "
+          @click="datos_fakes"
+        >
+          Datos Fakes
+        </button>
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
+          "
+          @click="empresa_fakes"
+        >
+          empresa Fakes
+        </button>
       </div>
 
       </div>
@@ -4058,10 +4095,12 @@ export default {
   },
   methods: {
     
-    guardar_form(v) {
-     /*  axios
+    guardar_form() {
+      let self = this;
+       axios
             .post("/formulario_salta/guardar_alta/", {
-              form: this.form_salta
+              form: this.form_salta,
+              id_formulario_alta: 1858
             })
             .then(function (response) {
               if (response.data.status === "ok") {
@@ -4072,7 +4111,7 @@ export default {
             })
             .catch(function (error) {
               console.log(error);
-            }); */
+            });
         //empresas
         axios
             .post("/formulario_salta/guardar_empresas/", {
@@ -4084,6 +4123,122 @@ export default {
                 self.permisos_mostrar = response.data.mostrar;
                 // console.log(self.permisos_mostrar);
                 self.permisos_disables = response.data.disables;
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+
+    },
+    
+    datos_fakes() {
+      let self = this;
+        axios
+            .get("/formulario_salta/form_faker/")
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                console.log("los datos son\n\n\n");
+                console.log(response.data.data);
+                //self.form_salta = JSON.stringify(response.data.data);
+                //self.form_salta = response.data.data.representante_legal_apellido;
+                //alert(response.data.data.representante_legal_apellido);
+
+                self.form_salta.id =null;
+                self.form_salta.id_formulario_alta = response.data.data.id_formulario_alta;
+                self.form_salta.tipo = response.data.data.tipo;
+                self.form_salta.representante_legal_nombre = response.data.data.representante_legal_nombre;
+                self.form_salta.representante_legal_apellido = response.data.data.representante_legal_apellido;
+                self.form_salta.representante_legal_dni = response.data.data.representante_legal_dni;
+                self.form_salta.representante_legal_email = response.data.data.representante_legal_email;
+                self.form_salta.representante_legal_cargo = response.data.data.representante_legal_cargo;
+                self.form_salta.representante_legal_domicilio = response.data.data.representante_legal_domicilio;
+                self.form_salta.nacionalidad = response.data.data.nacionalidad;
+                self.form_salta.telefono = response.data.data.telefono;
+                self.form_salta.superficie_mina = response.data.data.superficie_mina;
+                self.form_salta.volumenes_de_extraccion_periodo_anterior = response.data.data.volumenes_de_extraccion_periodo_anterior;
+                self.form_salta.n_resolucion_iia = response.data.data.n_resolucion_iia;
+                self.form_salta.etapa_de_exploracion = response.data.data.etapa_de_exploracion;
+                self.form_salta.n_resolucion_aprobacion_informe = response.data.data.n_resolucion_aprobacion_informe;
+                self.form_salta.etapa_de_exploracion_avanzada = response.data.data.etapa_de_exploracion_avanzada;
+                self.form_salta.volumenes_anuales_de_materias_primas = response.data.data.volumenes_anuales_de_materias_primas;
+                self.form_salta.material_obtenido = response.data.data.material_obtenido;
+                self.form_salta.autorizacion_extractivas_exploratorias = response.data.data.autorizacion_extractivas_exploratorias;
+                self.form_salta.responsable_nombre = response.data.data.responsable_nombre;
+                self.form_salta.responsable_apellido = response.data.data.responsable_apellido;
+                self.form_salta.responsable_dni = response.data.data.responsable_dni;
+                self.form_salta.responsable_titulo = response.data.data.responsable_titulo;
+                self.form_salta.responsable_matricula = response.data.data.responsable_matricula;
+                self.form_salta.ley_24196_numero = response.data.data.ley_24196_numero;
+                self.form_salta.ley_24196_inscripcion_renar = response.data.data.ley_24196_inscripcion_renar;
+                self.form_salta.ley_24196_explosivos = response.data.data.ley_24196_explosivos;
+                self.form_salta.ley_24196_propiedad = response.data.data.ley_24196_propiedad;
+                self.form_salta.estado_contable = response.data.data.estado_contable;
+                self.form_salta.listado_de_maquinaria = response.data.data.listado_de_maquinaria;
+                self.form_salta.regalias = response.data.data.regalias;
+                self.form_salta.personas_afectadas = response.data.data.personas_afectadas;
+                self.form_salta.multas = response.data.data.multas;
+                self.form_salta.created_by = response.data.data.created_by;
+                self.form_salta.updated_by = response.data.data.updated_by;
+
+
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+
+    },
+    
+    empresa_fakes() {
+      let self = this;
+        axios
+            .get("/formulario_salta/empresa_faker/")
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                console.log("los datos son\n\n\n");
+                console.log(response.data.data);
+                //self.form_salta = JSON.stringify(response.data.data);
+                //self.form_salta = response.data.data.representante_legal_apellido;
+                //alert(response.data.data.representante_legal_apellido);
+
+                self.form_salta.id =null;
+                self.form_salta.id_formulario_alta = response.data.data.id_formulario_alta;
+                self.form_salta.tipo = response.data.data.tipo;
+                self.form_salta.representante_legal_nombre = response.data.data.representante_legal_nombre;
+                self.form_salta.representante_legal_apellido = response.data.data.representante_legal_apellido;
+                self.form_salta.representante_legal_dni = response.data.data.representante_legal_dni;
+                self.form_salta.representante_legal_email = response.data.data.representante_legal_email;
+                self.form_salta.representante_legal_cargo = response.data.data.representante_legal_cargo;
+                self.form_salta.representante_legal_domicilio = response.data.data.representante_legal_domicilio;
+                self.form_salta.nacionalidad = response.data.data.nacionalidad;
+                self.form_salta.telefono = response.data.data.telefono;
+                self.form_salta.superficie_mina = response.data.data.superficie_mina;
+                self.form_salta.volumenes_de_extraccion_periodo_anterior = response.data.data.volumenes_de_extraccion_periodo_anterior;
+                self.form_salta.n_resolucion_iia = response.data.data.n_resolucion_iia;
+                self.form_salta.etapa_de_exploracion = response.data.data.etapa_de_exploracion;
+                self.form_salta.n_resolucion_aprobacion_informe = response.data.data.n_resolucion_aprobacion_informe;
+                self.form_salta.etapa_de_exploracion_avanzada = response.data.data.etapa_de_exploracion_avanzada;
+                self.form_salta.volumenes_anuales_de_materias_primas = response.data.data.volumenes_anuales_de_materias_primas;
+                self.form_salta.material_obtenido = response.data.data.material_obtenido;
+                self.form_salta.autorizacion_extractivas_exploratorias = response.data.data.autorizacion_extractivas_exploratorias;
+                self.form_salta.responsable_nombre = response.data.data.responsable_nombre;
+                self.form_salta.responsable_apellido = response.data.data.responsable_apellido;
+                self.form_salta.responsable_dni = response.data.data.responsable_dni;
+                self.form_salta.responsable_titulo = response.data.data.responsable_titulo;
+                self.form_salta.responsable_matricula = response.data.data.responsable_matricula;
+                self.form_salta.ley_24196_numero = response.data.data.ley_24196_numero;
+                self.form_salta.ley_24196_inscripcion_renar = response.data.data.ley_24196_inscripcion_renar;
+                self.form_salta.ley_24196_explosivos = response.data.data.ley_24196_explosivos;
+                self.form_salta.ley_24196_propiedad = response.data.data.ley_24196_propiedad;
+                self.form_salta.estado_contable = response.data.data.estado_contable;
+                self.form_salta.listado_de_maquinaria = response.data.data.listado_de_maquinaria;
+                self.form_salta.regalias = response.data.data.regalias;
+                self.form_salta.personas_afectadas = response.data.data.personas_afectadas;
+                self.form_salta.multas = response.data.data.multas;
+                self.form_salta.created_by = response.data.data.created_by;
+                self.form_salta.updated_by = response.data.data.updated_by;
+
+
               } else console.log("error al buscar permisos: " + response.data.msg);
             })
             .catch(function (error) {
@@ -4114,7 +4269,8 @@ export default {
     },
 
     actaulizar_checkbox_salta(booleano){
-      alert(this.form_salta.ley_checkbox);
+      //alert(this.form_salta.ley_checkbox);
+      console.log(this.form_salta.ley_checkbox);
 
     }
 
