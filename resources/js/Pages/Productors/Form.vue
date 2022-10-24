@@ -1031,55 +1031,21 @@
             >
             </PaginaMendoza>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <div id="section_salta" v-if="true"></div>
+            <PaginaSalta
+              v-if="true"
+              :link_volver="'#'"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar Datos'"
+              :titulo_pagina="'Datos Extras de la Provincia'"
+              :evaluacion="evaluacion_global"
+              :testing="testing_global"
+              :id="form.id"
+              v-on:mostrarpasosiguiente="
+                mostar_paso_siguiente('Tucuman', $event)
+              "
+            >
+            </PaginaSalta>
 
             <div id="finalizar"></div>
             <div
@@ -1447,6 +1413,7 @@ import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos"
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 import PaginaTucuman from "@/Pages/Productors/PaginaTucuman";
+import PaginaSalta from "@/Pages/Productors/PaginaSalta";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import PaginaSalta from "@/Pages/Productors/PaginaSalta";
 
@@ -1483,6 +1450,7 @@ export default {
     PaginaSeisDatosUbicacionMina,
     PaginaCatamarca,
     PaginaTucuman,
+    PaginaSalta,
     PaginaMendoza,
     PaginaSalta,
     ValidationErrors,
