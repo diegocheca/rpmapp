@@ -26,7 +26,7 @@ class CreateNotificacionesssTable extends Migration
             $table->string('remember_token',256)->nullable();
             
             $table->timestamps();
-            $table->timestamp('deleted_at');
+            $table->softDeletes($column = 'deleted_at');
 
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';

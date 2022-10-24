@@ -25,13 +25,23 @@ class ProductoresController extends Controller
      */
     public function index(Request $request)
     {
+      
         //$productores = Productores::all();
         return Inertia::render('Productores/List', [
             'productores' =>
-            Productores::when($request->term, function ($query, $term) {
+            
+            DB::table('productores')
+            ->join('users', 'users.id', '=', 'productores.created_by')
+            ->select('productores.*',"users.profile_photo_path")
+            ->orderBy('productores.id', 'DESC')
+            ->paginate(10),
+            'alertType' => ''
+
+
+           /* Productores::when($request->term, function ($query, $term) {
                 $query->where('razonsocial', 'LIKE', '%' . $term . '%');
             })->paginate(5),
-            'alertType' => ''
+            'alertType' => ''*/
         ]);
     }
 
@@ -50,7 +60,7 @@ class ProductoresController extends Controller
     {
         $user = HomeController::userData();
         if (Auth::user()->hasRole('Productor')) {
-            $productores = Productores::where('usuario_creador', Auth::user()->id)->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
+            $productores = Productores::where('created_by', Auth::user()->id)->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
         } elseif (Auth::user()->hasRole('Autoridad')) {
             $productores = Productores::select('*')->where('leal_provincia', '=', Auth::user()->id_provincia)->get();
         } else //administrador
@@ -101,11 +111,16 @@ class ProductoresController extends Controller
         return Inertia::render('Productores/EditForm', ['productor' => $productor]);
     }
 
-    public function update(Request $request, Productores $productores)
+    public function update(Request $request)
     {
         $productores->update($request->all());
         return Redirect::route('productores.index');
     }
+
+    
+
+
+    
 
     public function destroy($id_a_buscar)
     {

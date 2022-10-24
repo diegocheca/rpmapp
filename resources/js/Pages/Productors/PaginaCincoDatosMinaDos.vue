@@ -1,20 +1,6 @@
 <template>
   <div>
     <div class="items-center justify-left">
-      <!-- <CardMinaDos
-        :progreso="50"
-        :aprobado="50"
-        :reprobado="50"
-        :lugar="'Argentina, San Juan'"
-        :titulo="titulo_pagina"
-        :updated_at="'hace 10 minutos'"
-        :mostrarayuda="true"
-        :clase_sup="'gap-6'"
-        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
-        :ayuda="ayuda_local"
-        v-on:changevalorayuda="update_valor_ayuda_local($event)"
-        v-on:continuarpagina="update_valor_pagina_siguiente($event)"
-      ></CardMinaDos> -->
       <Card
         :icono="'/slick/img/features/mina-parte-dos.svg'"
         :titulo="titulo_pagina"
@@ -24,121 +10,6 @@
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
     </div>
-    <!-- <br />
-      <br /> -->
-
-    <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
-      <a href="#section_datos_mina_dos">
-        <img
-          class="
-            w-20
-            h-20
-            object-cover
-            rounded-full
-            border-2 border-indigo-500
-            bg-white
-          "
-          :src="
-            $inertia.page.props.appName +
-            '/slick/img/features/mina-parte-dos.svg'
-          "
-        />
-      </a>
-      <div v-if="$props.testing">
-        <label
-          class="flex items-center relative w-max cursor-pointer select-none"
-        >
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            class="
-              appearance-none
-              transition-colors
-              cursor-pointer
-              w-14
-              h-7
-              rounded-full
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-offset-black
-              focus:ring-blue-500
-              bg-red-500
-            "
-            v-model="mostrar_testing"
-          />
-          <span
-            class="absolute font-medium text-xs uppercase right-1 text-white"
-          >
-            Sin
-          </span>
-          <span
-            class="absolute font-medium text-xs uppercase right-8 text-white"
-          >
-            Con
-          </span>
-          <span
-            class="
-              w-7
-              h-7
-              right-7
-              absolute
-              rounded-full
-              transform
-              transition-transform
-              bg-gray-200
-            "
-          />
-        </label>
-        <label
-          class="flex items-center relative w-max cursor-pointer select-none"
-        >
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            class="
-              appearance-none
-              transition-colors
-              cursor-pointer
-              w-14
-              h-7
-              rounded-full
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-offset-black
-              focus:ring-green-500
-              bg-purple-500
-            "
-            v-model="autoridad_minera"
-          />
-          <span
-            class="absolute font-medium text-xs uppercase right-1 text-white"
-          >
-            Pro
-          </span>
-          <span
-            class="absolute font-medium text-xs uppercase right-8 text-white"
-          >
-            Aut
-          </span>
-          <span
-            class="
-              w-7
-              h-7
-              right-7
-              absolute
-              rounded-full
-              transform
-              transition-transform
-              bg-gray-200
-            "
-          />
-        </label>
-      </div>
-    </div> -->
     <div
       v-if="mostrar_modulo"
       class="
@@ -223,18 +94,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            owner de Mina valor padre: {{ form_pagina.numero_expdiente }} <br />
-            owner de Mina valido del padre:
-            {{ form_pagina.numero_expdiente_valido }} <br />
-            owner de Mina correcto deel padre:
-            {{ form_pagina.numero_expdiente_correcto }} <br />
-            owner de Mina observacion deel padre:
-            {{ form_pagina.obs_numero_expdiente }} <br />
-            owner de Mina observacion valida deel padre:
-            {{ form_pagina.obs_numero_expdiente_valido }}
-          </div>
+          
         </div>
         <div
           class="
@@ -297,17 +157,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            arrendatario de Mina valor padre: {{ form_pagina.arrendatario }}
-            <br />
-            arrendatario de Mina correcto deel padre:
-            {{ form_pagina.arrendatario_correcto }} <br />
-            arrendatario de Mina observacion deel padre:
-            {{ form_pagina.obs_arrendatario }} <br />
-            arrendatario de Mina observacion valida deel padre:
-            {{ form_pagina.obs_arrendatario_valido }}
-          </div>
+          
         </div>
         <div
           class="
@@ -370,17 +220,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            concesionario de Mina valor padre:
-            {{ form_pagina.concesionario }} <br />
-            concesionario de Mina correcto deel padre:
-            {{ form_pagina.concesionario_correcto }} <br />
-            concesionario de Mina observacion deel padre:
-            {{ form_pagina.obs_concesionario }} <br />
-            concesionario de Mina observacion valida deel padre:
-            {{ form_pagina.obs_concesionario_valido }}
-          </div>
+          
         </div>
       </div>
       <div class="flex flex-wrap mb-4">
@@ -449,16 +289,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            otro de Mina valor padre: {{ form_pagina.otros }} <br />
-            otro de Mina correcto deel padre:
-            {{ form_pagina.otros_correcto }} <br />
-            otro de Mina observacion deel padre: {{ form_pagina.obs_otros }}
-            <br />
-            otro de Mina observacion valida deel padre:
-            {{ form_pagina.obs_otros_valido }}
-          </div>
+         
         </div>
         <div
           class="
@@ -521,16 +352,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            otro de Mina valor padre: {{ form_pagina.otros }} <br />
-            otro de Mina correcto deel padre:
-            {{ form_pagina.otros_correcto }} <br />
-            otro de Mina observacion deel padre: {{ form_pagina.obs_otros }}
-            <br />
-            otro de Mina observacion valida deel padre:
-            {{ form_pagina.obs_otros_valido }}
-          </div>
+          
         </div>
       </div>
       <div class="flex flex-wrap">
@@ -599,19 +421,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            canon resolucion minera de Mina valor padre:
-            {{ form_pagina.constancia_pago_canon }} <br />
-            canon resolucion minera de Mina valido del padre:
-            {{ form_pagina.constancia_pago_canon_validacion }} <br />
-            canon resolucion minera de Mina correcto deel padre:
-            {{ form_pagina.constancia_pago_canon_correcto }} <br />
-            canon resolucion minera de Mina observacion deel padre:
-            {{ form_pagina.obs_constancia_pago_canon }} <br />
-            canon resolucion minera de Mina observacion valida deel padre:
-            {{ form_pagina.obs_constancia_pago_canon_valido }}
-          </div>
+          
         </div>
         <div
           class="
@@ -666,18 +476,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            iia minera de Mina valor padre: {{ form_pagina.iia }} <br />
-            iia minera de Mina valido del padre:
-            {{ form_pagina.iia_canon_validacion }} <br />
-            iia minera de Mina correcto deel padre:
-            {{ form_pagina.iia_correcto }} <br />
-            iia minera de Mina observacion deel padre:
-            {{ form_pagina.obs_iia_canon }} <br />
-            iia minera de Mina observacion valida deel padre:
-            {{ form_pagina.obs_iia_canon_valido }}
-          </div>
+          
         </div>
         <div
           class="
@@ -731,18 +530,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            dia minera de Mina valor padre: {{ form_pagina.dia }} <br />
-            dia minera de Mina valido del padre:
-            {{ form_pagina.dia_canon_validacion }} <br />
-            dia minera de Mina correcto deel padre:
-            {{ form_pagina.dia_correcto }} <br />
-            dia minera de Mina observacion deel padre:
-            {{ form_pagina.obs_dia_canon }} <br />
-            dia minera de Mina observacion valida deel padre:
-            {{ form_pagina.obs_dia_canon_valido }}
-          </div>
+          
         </div>
       </div>
       <br />
@@ -796,18 +584,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            Actvidades de Mina valor padre: {{ form_pagina.actividad }} <br />
-            Actvidades de Mina valido del padre:
-            {{ form_pagina.actividad_a_desarrollar_validacion }} <br />
-            Actvidades de Mina correcto deel padre:
-            {{ form_pagina.actividad_a_desarrollar_correcto }} <br />
-            Actvidades de Mina observacion deel padre:
-            {{ form_pagina.obs_actividad_a_desarrollar }} <br />
-            Actvidades de Mina observacion valida deel padre:
-            {{ form_pagina.obs_actividad_a_desarrollar_valido }}
-          </div>
+          
         </div>
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-2">
           <NombreMina
@@ -854,19 +631,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            Acciones de Mina valor padre:
-            {{ form_pagina.acciones_a_desarrollar }} <br />
-            Acciones de Mina valido del padre:
-            {{ form_pagina.acciones_a_desarrollar_validacion }} <br />
-            Acciones de Mina correcto deel padre:
-            {{ form_pagina.acciones_a_desarrollar_correcto }} <br />
-            Acciones de Mina observacion deel padre:
-            {{ form_pagina.obs_acciones_a_desarrollar }} <br />
-            Acciones de Mina observacion valida deel padre:
-            {{ form_pagina.obs_acciones_a_desarrollar_valido }}
-          </div>
+          
         </div>
       </div>
       <div class="flex">
@@ -897,6 +662,12 @@
             v-on:changevalor="update_valor_fecha_inicio($event)"
           >
           </FechaGenerica>
+          
+          <DatePicker v-if="$props.accion==='editar'"
+          v-model="currentDay"
+              :from-date="new Date(form_pagina.fecha_alta_dia)"
+              :attributes="attributes_alta"
+          />
           <div v-show="ayuda_local">
             <br />
             <div
@@ -912,19 +683,7 @@
             </div>
             <br />
           </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            Fecha inicio de Mina valor padre: {{ form_pagina.fecha_alta_dia }}
-            <br />
-            Fecha inicio de Mina valido del padre:
-            {{ form_pagina.fecha_alta_dia_validacion }} <br />
-            Fecha inicio de Mina correcto deel padre:
-            {{ form_pagina.fecha_alta_dia_correcto }} <br />
-            Fecha inicio de Mina observacion deel padre:
-            {{ form_pagina.obs_fecha_alta_dia }} <br />
-            Fecha inicio de Mina observacion valida deel padre:
-            {{ form_pagina.obs_fecha_alta_dia_valido }}
-          </div>
+         
         </div>
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <FechaGenerica
@@ -959,6 +718,11 @@
             v-on:changevalor="update_valor_fecha_fin($event)"
           >
           </FechaGenerica>
+          <DatePicker v-if="$props.accion==='editar'"
+           v-model="currentDay"
+              :from-date="new Date(form_pagina.fecha_vencimiento_dia)"
+              :attributes="attributes_vencimiento"
+          />
           <div v-show="ayuda_local">
             <br />
             <div
@@ -973,19 +737,6 @@
               <p class="p-3">Fecha de Vencimiento de DIA.</p>
             </div>
             <br />
-          </div>
-          <div class="flex" v-if="mostrar_testing">
-            <br />
-            Fecha fin de Mina valor padre:
-            {{ form_pagina.fecha_vencimiento_dia }} <br />
-            Fecha fin de Mina valido del padre:
-            {{ form_pagina.fecha_vencimiento_dia_validacion }} <br />
-            Fecha fin de Mina correcto deel padre:
-            {{ form_pagina.fecha_vencimiento_dia_correcto }} <br />
-            Fecha fin de Mina observacion deel padre:
-            {{ form_pagina.obs_fecha_vencimiento_dia }} <br />
-            Fecha fin de Mina observacion valida deel padre:
-            {{ form_pagina.obs_fecha_vencimiento_dia_valido }}
           </div>
         </div>
       </div>
@@ -1129,6 +880,13 @@ import NombreMina from "@/Pages/Productors/NombreMina";
 import FechaGenerica from "@/Pages/Productors/FechaGenerica";
 import BotonesPaginaCinco from "@/Pages/Productors/BotonesPaginaCinco";
 import Button from "../../Jetstream/Button.vue";
+
+import 'v-calendar/dist/style.css';
+
+import { DatePicker } from 'v-calendar';
+
+import moment from 'moment';
+
 
 export default {
   props: [
@@ -1283,6 +1041,8 @@ export default {
     "id",
     "testing",
     "categoria",
+    "accion",
+
   ],
 
   components: {
@@ -1296,10 +1056,16 @@ export default {
     FechaGenerica,
     BotonesPaginaCinco,
     Button,
+    DatePicker
+
   },
 
   data() {
     return {
+      attributes_vencimiento: [],
+      attributes_alta: [],
+      currentDay: new Date(),
+
       evaluacion_adm: false,
       mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
@@ -1401,6 +1167,22 @@ export default {
     };
   },
   methods: {
+    getEventsCalendar (tipo) {
+        //const dates = calendarEvents['iiaDia'].map(element => moment(element.fecha_vencimiento).format())
+        let dates = null;
+        if(tipo === 'alta'){
+           dates = [moment(this.form_pagina.fecha_alta_dia).format()]
+          }
+        if(tipo === 'vencimiento'){
+            dates = [moment(this.form_pagina.fecha_vencimiento_dia).format()]
+          
+          }
+        return [ {
+          dot: true,
+          dates,
+          key: 'today',
+        }]
+    },
     update_valor_evaluacion_Adm(newValor) {
       this.evaluacion_adm = newValor;
     },
@@ -1736,5 +1518,14 @@ export default {
       this.mostrar_modulo = !v;
     },
   },
+  mounted(){
+    if(this.form_pagina.fecha_alta_dia!== null && this.form_pagina.fecha_alta_dia!== '' ){
+      this.attributes_alta = this.getEventsCalendar('alta');
+    }
+    if(this.form_pagina.fecha_vencimiento_dia!== null && this.form_pagina.fecha_vencimiento_dia!== '' ){
+      this.attributes_vencimiento = this.getEventsCalendar('vencimiento');
+    }
+    
+  }
 };
 </script>

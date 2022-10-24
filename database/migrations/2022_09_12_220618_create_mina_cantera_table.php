@@ -30,7 +30,6 @@ class CreateMinaCanteraTable extends Migration
             $table->string('labores')->nullable()->default(null);
             $table->bigInteger('id_producido')->nullable()->default(null);
             $table->string('plano_inmueble')->nullable()->default(null);
-            $table->integer('created_by')->nullable()->default(null);
             $table->string('estado')->nullable()->default(null);
 
             $table->string('numero_expediente')->nullable()->default();
@@ -49,10 +48,10 @@ class CreateMinaCanteraTable extends Migration
 
 
             //timestamp
-            $table->integer('created_by')->nullable->default(null);
-            $table->integer('updated_by')->nullable->default(null);
+            $table->integer('created_by')->nullable()->default(null);
+            $table->integer('updated_by')->nullable()->default(null);
             $table->timestamps();
-            $table->timestamp('deleted_at');
+            $table->softDeletes($column = 'deleted_at');
         });
     }
 

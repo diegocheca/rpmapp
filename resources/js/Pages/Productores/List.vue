@@ -225,7 +225,7 @@
                                             <td class="py-3 px-6 text-left">
                                                 <div class="flex items-center">
                                                     <div class="mr-2">
-                                                        <img class="w-6 h-6 rounded-full" src="https://randomuser.me/api/portraits/women/2.jpg"/>
+                                                        <img class="w-6 h-6" :src="$inertia.page.props.appName+'/storage/'+productor.profile_photo_path"/>
                                                     </div>
                                                     <span>{{ productor.razonsocial }}</span>
                                                 </div>

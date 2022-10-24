@@ -235,7 +235,7 @@ class CreateReinscripcionesTable extends Migration
             $table->integer('created_by')->nullable->default(null);
             $table->integer('updated_by')->nullable->default(null);
             $table->timestamps();
-            $table->timestamp('deleted_at');
+            $table->softDeletes($column = 'deleted_at');
 
 
 

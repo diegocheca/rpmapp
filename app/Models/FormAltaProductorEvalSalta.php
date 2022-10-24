@@ -84,7 +84,7 @@ class FormAltaProductorEvalSalta extends Model
 
 
     public function crear_nuevo_salta_evaluacion($formualrio_salta){
-        $this->id_formulario_alta_salta = $formulario_salta->id_formulario_alta_salta;
+        //$this->id_formulario_alta_salta = $formulario_salta->id_formulario_alta_salta;
         $this->correccion_tipo = $formulario_salta->correccion_tipo;
         $this->observacion_tipo = $formulario_salta->observacion_tipo;
         $this->correccion_representante_legal_apellido = $formulario_salta->correccion_representante_legal_apellido;
@@ -147,8 +147,12 @@ class FormAltaProductorEvalSalta extends Model
         $this->observacion_personas_afectadas = $formulario_salta->observacion_personas_afectadas;
         $this->correccion_multas = $formulario_salta->correccion_multas;
         $this->observacion_multas = $formulario_salta->observacion_multas;
-
         $this->save();
+        
+    }
+
+    public static function get_form_salta($id_formulario){
+        return FormAltaProductorEvalSalta::find($id_formulario);
     }
 
 

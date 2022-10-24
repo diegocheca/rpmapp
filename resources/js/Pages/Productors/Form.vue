@@ -24,6 +24,25 @@
               <banner></banner>
             </div>
             <!-- <br /> -->
+salta : {{$props.mostrar.paso_salta}}
+
+            <div ></div>
+            <PaginaSalta
+              
+              :link_volver="route('formulario-alta.index')"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar'"
+              :titulo_pagina="'Salta'"
+              :evaluacion="evaluacion_global"
+              :testing="testing_global"
+              :id="444"
+              :editar="false"
+              
+            >
+            </PaginaSalta>
+
+
+
             <div id="section_productor"></div>
             <PaginaUnoDatosProductores
               v-if="$props.mostrar.paso_uno"
@@ -820,6 +839,7 @@
               :id="form.id"
               :testing="testing_global"
               :categoria="form.categoria"
+              :accion = "crear"
               v-on:mostrarpasosiguiente="
                 mostar_paso_siguiente('Datos de Mina Segunda Parte', $event)
               "
@@ -1267,40 +1287,6 @@
                     >Sin Guardar</span
                   >
                 </div>
-                <!-- <div
-                  class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0"
-                  v-if="$props.mostrar.estado"
-                >
-                  <label
-                    class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-                    for="estado"
-                    >Nuevo Estado:</label
-                  ><br />
-                  <select
-                    id="estado"
-                    name="estado"
-                    v-model="form.estado"
-                    :disabled="$props.disables.estado"
-                    @input="calcular_nombre_boton($event.target.value)"
-                    class="
-                      block
-                      appearance-none
-                      bg-white
-                      border border-gray-400
-                      hover:border-gray-500
-                      px-4
-                      py-2
-                      pr-8
-                      rounded
-                      shadow
-                      leading-tight
-                      focus:outline-none focus:shadow-outline
-                    "
-                  >
-                    <option value="borrador">Borrador</option>
-                    <option value="presentar">Presentar</option>
-                  </select>
-                </div> -->
               </div>
               <br />
               <br />
@@ -1429,6 +1415,8 @@ import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 import PaginaTucuman from "@/Pages/Productors/PaginaTucuman";
 import PaginaSalta from "@/Pages/Productors/PaginaSalta";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
+import PaginaSalta from "@/Pages/Productors/PaginaSalta";
+
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
 
@@ -1464,6 +1452,7 @@ export default {
     PaginaTucuman,
     PaginaSalta,
     PaginaMendoza,
+    PaginaSalta,
     ValidationErrors,
     Pasos,
   },
@@ -1489,6 +1478,7 @@ export default {
       m_catamarca: false, //Catamarca
       m_tucuman: false, //Tucuman
       m_mendoza: false, //Mendoza
+      m_salta: false, //Salta
       evaluacion_global: this.$props.soy_autoridad_minera,
       testing_global: this.$props.soy_administrador,
       mostrar_modal_datos_ya_guardados: false,
@@ -2560,6 +2550,8 @@ export default {
             this.m_catamarca = valor;
           if (this.$inertia.page.props.user.id_provincia == 50)
             this.m_mendoza = valor;
+          if (this.$inertia.page.props.user.id_provincia == 66)
+            this.m_salta = valor;
           if (this.$inertia.page.props.user.id_provincia == 90)
             this.m_tucuman = valor;
           break;

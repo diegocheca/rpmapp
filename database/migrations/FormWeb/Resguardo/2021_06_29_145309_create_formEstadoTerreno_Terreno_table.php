@@ -19,8 +19,8 @@ class CreateFormEstadoTerrenoTerrenoTable extends Migration
             $table->unsignedBigInteger('terreno_id');
             $table->unsignedBigInteger('estadoterreno_id');
 
-            $table->foreign('terreno_id')->references('id')->on('formTerreno');
-            $table->foreign('estadoterreno_id')->references('id')->on('formEstadoTerreno');
+            //$table->foreign('terreno_id')->references('id')->on('formTerreno');
+//$table->foreign('estadoterreno_id')->references('id')->on('formEstadoTerreno');
 
             $table->timestamps();
         });

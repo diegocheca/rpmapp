@@ -110,11 +110,11 @@ class FormAltaSeeder extends Seeder
             if($id_provincia == 50){//mendoza poner el correcto de mendoza
                 $formulario_mendoza = new FormAltaProductorMendoza();
                 $formulario_mendoza->completar_y_guardar_formu_fake($formulario_nuevo->id,$id_user);
-                $formulario_catamarca->aprobar_paso_mendoza($id_user);
+                $formulario_mendoza->aprobar_paso_mendoza($id_user);
             }
             if($id_provincia == 66){//mendoza poner el correcto de salta
-                $formulario_mendoza = new FormAltaProductorSalta();
-                $formulario_mendoza->crear_formulario_fake_salta($formulario_nuevo->id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, $id_user);
+                $formulario_salta = new FormAltaProductorSalta();
+                $formulario_salta->crear_formulario_fake_salta($formulario_nuevo->id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null, $id_user);
             }
             $formulario_nuevo->completar_paso7_faker(null,null,null,null,$id_user);
             $formulario_nuevo->completar_paso8_faker($id_user);

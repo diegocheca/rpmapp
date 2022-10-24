@@ -51,8 +51,8 @@ class CreateFormAltaProductorSaltasTable extends Migration
             //ley 24196
             $table->string('ley_24196_numero',10)->nullable()->default('N')->comment('en formulario: Productores, Exploradores');
             $table->string('ley_24196_inscripcion_renar',30)->nullable()->default('N')->comment('en formulario: Productores, Exploradores');
-            $table->boolean('ley_24196_explosivos')->nullable()->comment('en formulario: Productores, Exploradores');
-            $table->char('ley_24196_propiedad',1)->comment('en formulario: Productores, Exploradores');
+            $table->string('ley_24196_explosivos')->nullable()->comment('en formulario: Productores, Exploradores');
+            $table->char('ley_24196_propiedad',1)->nullable()->comment('en formulario: Productores, Exploradores');
 
 
             //ARCHIVOS - DOCUMENTACION
@@ -68,8 +68,8 @@ class CreateFormAltaProductorSaltasTable extends Migration
             $table->string('multas',256)->nullable()->default(null)->comment('En: exploradores y productores - Cantidad de personal afectado a las tareas extractivas o de exploración. Identificación de los responsables de las plantas de tratamiento.');
 
 
-            $table->timestamp('created_by')->useCurrent = true;
-            $table->integer('updated_by');
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision = 0);
         });

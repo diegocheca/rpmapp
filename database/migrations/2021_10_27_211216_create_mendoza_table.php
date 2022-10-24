@@ -33,6 +33,9 @@ class CreateMendozaTable extends Migration
             $table->string('concesion_minera_reg_d_y_c', 100)->default(null)->nullable();
             $table->string('obs_datos_minas', 200)->default(null)->nullable();
             $table->boolean('concesion_minera_reg_d_y_c_correcto')->default(null)->nullable();
+
+            
+            $table->string('obs_concesion_minera_reg_d_y_c', 200)->default(null)->nullable();
             
 
             $table->float('paso_mend_progreso', 3,2)->default(0)->nullable();

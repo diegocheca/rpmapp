@@ -29,6 +29,14 @@ use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
 use App\Http\Controllers\BandejaEntradaEmailsController;
 
+use App\Http\Controllers\MinaCanteraController;
+
+
+
+use App\Http\Controllers\FormAltaProductorSaltaController;
+use App\Http\Controllers\EmpresasControlantesSaltaController;
+
+
 use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
@@ -122,6 +130,10 @@ Route::resource('productos', ProductosController::class)
 
 Route::resource('iiadias', IiadiaController::class)
     ->middleware(['auth:sanctum', 'verified']);
+
+    Route::resource('minas', MinaCanteraController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
 Route::post('/guardando_dia_iia', [IiadiaController::class, "recibo"])->name('recibo-dia-iia');
 
 Route::resource('pagos', PagocanonminaController::class)
@@ -373,9 +385,23 @@ Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');
 
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
-    // Jujuy
-    Route::get('apiJujuy', [JujuyController::class, 'index'])->name('apiJujuy');
-    Route::get('consultarDatos', [JujuyController::class, 'simula_datos']);
-    Route::post('enviarDatos', [JujuyController::class, 'datos_enviados']);
-});
+
+Route::post('/productos/actualizar', [ProductosController::class, "actualizar"])->name('productos-update');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//salta
+Route::get('/formulario_salta/buscar_permisos_formulario/{id}/{accion}', [FormAltaProductorSaltaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-salta');
+Route::post('/formulario_salta/guardar_alta', [FormAltaProductorSaltaController::class, "store"])->name('store-formulario-salta');
+Route::post('/formulario_salta/guardar_empresas', [EmpresasControlantesSaltaController::class, "store"])->name('store-empresas-salta');

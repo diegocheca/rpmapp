@@ -82,10 +82,7 @@
         <p>
           Parece que no tiene un complemento de PDF para este navegador.
           <a
-            :href="
-              $inertia.page.props.appName +
-              '/storage/files_formularios/ochamplin@gmail.com/SurcLTZenTIxJsXmyoCJAHa4mDmLJUTLuseTWHeP.pdf'
-            "
+            :href="valor_input"
             >Haga clic aquí para descargar el archivo PDF.</a
           >
         </p>
@@ -351,5 +348,11 @@ export default {
       this.nameArchivo = this.$refs.file.files[0].name;
     },
   },
+  mounted() {
+    if(this.$props.fileinput_valor != null && this.$props.fileinput_valor != ''){
+      this.valor_input =  this.$props.fileinput_valor.replace('//storage','/storage');
+    }
+   }
+
 };
 </script>

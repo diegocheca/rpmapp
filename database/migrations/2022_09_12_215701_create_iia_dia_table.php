@@ -22,14 +22,13 @@ class CreateIiaDiaTable extends Migration
             $table->longText('acciones_a_desarrollar')->nullable()->default(null);
             $table->string('dia',256)->nullable()->default(null);
             $table->string('iia',256)->nullable()->default(null);
-            $table->integer('created_by')->nullable()->default(null);
             $table->string('estado')->nullable()->default(null);
             
             //timestamp
-            $table->integer('created_by')->nullable->default(null);
-            $table->integer('updated_by')->nullable->default(null);
+            $table->integer('created_by')->nullable()->default(null);
+            $table->integer('updated_by')->nullable()->default(null);
             $table->timestamps();
-            $table->timestamp('deleted_at');
+            $table->softDeletes($column = 'deleted_at');
             
 
 

@@ -13,8 +13,8 @@ class InitialMigration extends Migration
      */
     public function up()
     {
-
-        DB::statement('CREATE TABLE public.`Localidad2` (
+/*
+        DB::statement("CREATE TABLE public.'Localidad2' (
             categoria character varying(100),
             centroide_lat numeric,
             centroide_lon numeric,
@@ -29,8 +29,10 @@ class InitialMigration extends Migration
             provincia_id bigint,
             provincia_nombre character varying(250),
             departamento_id bigint
-        );'
+        );"
         );
+
+        */
     }
 
     /**

@@ -68,7 +68,7 @@ class FormAltaProductorSalta extends Model
             $formulario_provisorio->id_formulario_alta = $id_formulario_alta;
 
             if ($formulario_provisorio->tipo==null) {
-                $formulario_provisorio->tipo = Constants::$tipos_formularios_salta[$faker->numberBetween(0, count(Constants::$tipos_formularios_salta))];
+                $formulario_provisorio->tipo = Constants::$tipos_formularios_salta[$faker->numberBetween(0, count(Constants::$tipos_formularios_salta)-1)];
             } else {
                 $formulario_provisorio->tipo = $tipo;
             }
@@ -290,6 +290,99 @@ class FormAltaProductorSalta extends Model
         } catch(ModelNotFoundException $e) {
             return (["error",$e]);
         }
+    }
+
+
+    public static function crear_formulario_salta_all($formulario_salta)
+	{
+        try {
+                $form_borrador = FormAltaProductor::findOrFail($formulario_salta["id_formulario_alta"]);
+
+                $formulario_provisorio = new FormAltaProductorSalta();
+
+                $formulario_provisorio->id_formulario_alta = $formulario_salta["id_formulario_alta"];
+
+                $formulario_provisorio->tipo = $formulario_salta["tipo"];
+                $formulario_provisorio->representante_legal_nombre = $formulario_salta["representante_legal_nombre"];
+                $formulario_provisorio->representante_legal_apellido = $formulario_salta["representante_legal_apellido"];
+                $formulario_provisorio->representante_legal_dni = $formulario_salta["representante_legal_dni"];
+                $formulario_provisorio->representante_legal_email = $formulario_salta["representante_legal_email"];
+                $formulario_provisorio->representante_legal_cargo = $formulario_salta["representante_legal_cargo"];
+                $formulario_provisorio->representante_legal_domicilio = $formulario_salta["representante_legal_domicilio"];
+                $formulario_provisorio->nacionalidad = $formulario_salta["nacionalidad"];
+                $formulario_provisorio->telefono = $formulario_salta["telefono"];
+                $formulario_provisorio->superficie_mina = $formulario_salta["superficie_mina"];
+                $formulario_provisorio->volumenes_de_extraccion_periodo_anterior = $formulario_salta["volumenes_de_extraccion_periodo_anterior"];
+                $formulario_provisorio->n_resolucion_iia = $formulario_salta["n_resolucion_iia"];
+                $formulario_provisorio->etapa_de_exploracion = $formulario_salta["etapa_de_exploracion"];
+                $formulario_provisorio->n_resolucion_aprobacion_informe = $formulario_salta["n_resolucion_aprobacion_informe"];
+                $formulario_provisorio->etapa_de_exploracion_avanzada = $formulario_salta["etapa_de_exploracion_avanzada"];
+                $formulario_provisorio->volumenes_anuales_de_materias_primas = $formulario_salta["volumenes_anuales_de_materias_primas"];
+                $formulario_provisorio->material_obtenido = $formulario_salta["material_obtenido"];
+                $formulario_provisorio->autorizacion_extractivas_exploratorias = $formulario_salta["autorizacion_extractivas_exploratorias"];
+                $formulario_provisorio->responsable_nombre = $formulario_salta["responsable_nombre"];
+                $formulario_provisorio->responsable_apellido = $formulario_salta["responsable_apellido"];
+                $formulario_provisorio->responsable_dni = $formulario_salta["responsable_dni"];
+                $formulario_provisorio->responsable_titulo = $formulario_salta["responsable_titulo"];
+                $formulario_provisorio->responsable_matricula = $formulario_salta["responsable_matricula"];
+                $formulario_provisorio->ley_24196_numero = $formulario_salta["ley_24196_numero"];
+                $formulario_provisorio->ley_24196_inscripcion_renar = $formulario_salta["ley_24196_inscripcion_renar"];
+                $formulario_provisorio->ley_24196_explosivos = $formulario_salta["ley_24196_explosivos"];
+                $formulario_provisorio->ley_24196_propiedad = $formulario_salta["ley_24196_propiedad"];
+                $formulario_provisorio->estado_contable = $formulario_salta["estado_contable"];
+                $formulario_provisorio->listado_de_maquinaria = $formulario_salta["listado_de_maquinaria"];
+                $formulario_provisorio->regalias = $formulario_salta["regalias"];
+                $formulario_provisorio->personas_afectadas = $formulario_salta["personas_afectadas"];
+                $formulario_provisorio->multas = $formulario_salta["multas"];
+                $formulario_provisorio->created_by = 1;
+                $formulario_provisorio->updated_by = 1;
+
+                $formulario_provisorio->save();
+
+            return (["success",$formulario_provisorio->id]);
+        } catch(ModelNotFoundException $e) {
+            return (["error",$e]);
+        }
+    }
+
+
+    public function update_form($formulario_salta){
+        //$this->id_formulario_alta = $formulario_salta->id_formulario_alta;
+        $this->tipo = $formulario_salta->tipo;
+        $this->representante_legal_nombre = $formulario_salta->representante_legal_nombre;
+        $this->representante_legal_apellido = $formulario_salta->representante_legal_apellido;
+        $this->representante_legal_dni = $formulario_salta->representante_legal_dni;
+        $this->representante_legal_email = $formulario_salta->representante_legal_email;
+        $this->representante_legal_cargo = $formulario_salta->representante_legal_cargo;
+        $this->representante_legal_domicilio = $formulario_salta->representante_legal_domicilio;
+        $this->nacionalidad = $formulario_salta->nacionalidad;
+        $this->telefono = $formulario_salta->telefono;
+        $this->superficie_mina = $formulario_salta->superficie_mina;
+        $this->volumenes_de_extraccion_periodo_anterior = $formulario_salta->volumenes_de_extraccion_periodo_anterior;
+        $this->n_resolucion_iia = $formulario_salta->n_resolucion_iia;
+        $this->etapa_de_exploracion = $formulario_salta->etapa_de_exploracion;
+        $this->n_resolucion_aprobacion_informe = $formulario_salta->n_resolucion_aprobacion_informe;
+        $this->etapa_de_exploracion_avanzada = $formulario_salta->etapa_de_exploracion_avanzada;
+        $this->volumenes_anuales_de_materias_primas = $formulario_salta->volumenes_anuales_de_materias_primas;
+        $this->material_obtenido = $formulario_salta->material_obtenido;
+        $this->autorizacion_extractivas_exploratorias = $formulario_salta->autorizacion_extractivas_exploratorias;
+        $this->responsable_nombre = $formulario_salta->responsable_nombre;
+        $this->responsable_apellido = $formulario_salta->responsable_apellido;
+        $this->responsable_dni = $formulario_salta->responsable_dni;
+        $this->responsable_titulo = $formulario_salta->responsable_titulo;
+        $this->responsable_matricula = $formulario_salta->responsable_matricula;
+        $this->ley_24196_numero = $formulario_salta->ley_24196_numero;
+        $this->ley_24196_inscripcion_renar = $formulario_salta->ley_24196_inscripcion_renar;
+        $this->ley_24196_explosivos = $formulario_salta->ley_24196_explosivos;
+        $this->ley_24196_propiedad = $formulario_salta->ley_24196_propiedad;
+        $this->estado_contable = $formulario_salta->estado_contable;
+        $this->listado_de_maquinaria = $formulario_salta->listado_de_maquinaria;
+        $this->regalias = $formulario_salta->regalias;
+        $this->personas_afectadas = $formulario_salta->personas_afectadas;
+        $this->multas = $formulario_salta->multas;
+        $this->created_by = $formulario_salta->id_usuario;
+        $this->updated_by = $formulario_salta->id_usuario;
+        return $this->save();
     }
     
 

@@ -183,6 +183,5 @@ class PermissionSeeder extends Seeder
             } 
         }
         echo "listo";
-        die();
     }
 }
