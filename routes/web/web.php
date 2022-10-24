@@ -405,3 +405,4 @@ Route::post('/productos/actualizar', [ProductosController::class, "actualizar"])
 Route::get('/formulario_salta/buscar_permisos_formulario/{id}/{accion}', [FormAltaProductorSaltaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-salta');
 Route::post('/formulario_salta/guardar_alta', [FormAltaProductorSaltaController::class, "store"])->name('store-formulario-salta');
 Route::post('/formulario_salta/guardar_empresas', [EmpresasControlantesSaltaController::class, "store"])->name('store-empresas-salta');
+Route::post('/formulario_salta/buscar_formulario', [FormAltaProductorSaltaController::class, "look_up"])->name('look-up-formulario-salta');

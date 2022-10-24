@@ -11319,6 +11319,8 @@ class FormAltaProductorController extends Controller
 					$disables["estado"] = false;
 					$disables["boton_actualizar"] = false;
 
+					$disables["paso_salta"] = true;
+
 					$mostrar["razon_social_correccion"] = false;
 					$mostrar["email_correccion"] = false;
 					$mostrar["cuit_correccion"] = false;
@@ -11395,6 +11397,9 @@ class FormAltaProductorController extends Controller
 					$mostrar["boton_actualizar"] = true;
 
 					$mostrar["alerta_puede_editar"] = true;
+
+					
+					$mostrar["paso_salta"] = false;
 
 
 					if (Auth::user()->id_provincia == 10) // es de catamarca
@@ -11479,6 +11484,15 @@ class FormAltaProductorController extends Controller
 						$mostrar["paso_mendoza"] = true;
 						$mostrar["boton_mendoza"] = true;
 					}
+
+					if (Auth::user()->paso_salta == 66) // es de salta
+					{
+						$disables["paso_salta"] = false;
+						$mostrar["paso_salta"] = true;
+					}
+
+					
+
 				} elseif ($estado_formulario == 'en revision' || $estado_formulario == 'en proceso') {
 					//CASO: Productor - Edicion - En revision
 					//ed lo tiene la auotirdad minera y solo puede ver
@@ -11617,6 +11631,11 @@ class FormAltaProductorController extends Controller
 						$mostrar["obs_datos_minas"] = true;
 						$mostrar["paso_mendoza"] = true;
 						$mostrar["boton_mendoza"] = true;
+					}
+					if (Auth::user()->paso_salta == 66) // es de salta
+					{
+						$disables["paso_salta"] = false;
+						$mostrar["paso_salta"] = true;
 					}
 				} elseif ($estado_formulario == 'aprobado') {
 					//CASO: Productor - Edicion - Aprobado
@@ -11984,6 +12003,11 @@ class FormAltaProductorController extends Controller
 						$mostrar["obs_datos_minas"] = true;
 						$mostrar["paso_mendoza"] = true;
 						$mostrar["boton_mendoza"] = true;
+					}
+					if (Auth::user()->paso_salta == 66) // es de salta
+					{
+						$disables["paso_salta"] = false;
+						$mostrar["paso_salta"] = true;
 					}
 				} elseif ($estado_formulario == 'aprobado') {
 					//CASO: Autoridad - Edicion - Aprobado

@@ -844,6 +844,10 @@
 
         </div>
 
+        <br>
+        <hr>
+        <br>
+
 
 
 
@@ -1822,15 +1826,15 @@
 
 
 
-        
+        <br>
+          <hr>
+          <br>
 
 
 
 
 
         <div class="flex flex-wrap">
-          
-
           <div
             class="
               w-full
@@ -1847,7 +1851,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >responsable_nombre</label
+              >Nombre Responsable</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -1947,7 +1951,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >responsable_apellido</label
+              >Apellido Responsable</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -2047,7 +2051,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >responsable_dni</label
+              >Dni del Responsable</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -2179,7 +2183,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >responsable_titulo</label
+              >Titulo del Responsable</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -2279,7 +2283,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >responsable_matricula</label
+              >Matricula del Responsable</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -2364,6 +2368,33 @@
           </div>
 
 
+          
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <br>
+        <hr>
+        <br>
+
+
+
+        
+        
+        
+
+
+
+
+
+        <div class="flex flex-wrap">
+          
           <div
             class="
               w-full
@@ -2380,7 +2411,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >ley_24196_numero</label
+              >Numero de ley 24196</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -2432,7 +2463,7 @@
                 :disabled="false"
               />
             </div>
-
+  
             <div v-show="ayuda_local">
               <br />
               <div
@@ -2445,36 +2476,15 @@
                 "
               >
                 <p class="p-3">
-                  Este es el tipo de productor para el cual es esta inscribiendo
+                  En caos de no aplica la ley 24196 dejar los campos vacios
                 </p>
               </div>
               <br />
             </div>
             
           </div>
-
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="flex flex-wrap">
-          
+  
+  
 
           <div
             class="
@@ -2493,7 +2503,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >ley_24196_inscripcion_renar</label
+              >Inscripcion ante el Renar (ley_24196):</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -2669,7 +2679,7 @@
                 "
               >
                 <p class="p-3">
-                  Este es el tipo de productor para el cual es esta inscribiendo
+                  En esta campo se debe indicar si usan explosivos, o no usan explosivos o servicios de voladuras en general.
                 </p>
               </div>
               <br />
@@ -2694,7 +2704,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >ley_24196_propiedad</label
+              >Propiedad: (ley 24196)</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -2795,7 +2805,10 @@
 
 
 
-        
+         
+        <br>
+        <hr>
+        <br>
 
 
 
@@ -3958,6 +3971,9 @@ export default {
     "testing",
     "id",
     "editar",
+    "lista_provincias",
+    "lista_dptos"
+
   ],
   components: {
     JetDialogModal,
@@ -4136,17 +4152,15 @@ export default {
           //estoy por editar
           //voy a BUSCAR LOS DATOS DEL FORMULARIO
           axios
-            .get(
-              "/formularios/traer_datos_pagina_mendoza" +
-                "/" +
-                parseInt(this.$props.id)
+            .post(
+              "/formulario_salta/buscar_formulario",  {id: this.$props.id}
             )
             .then(function (response) {
               // console.log(response.datos);
               if (response.data.status === "ok") {
                 self.form_salta = response.data.datos;
-                self.form_salta.obs_datos_minas =
-                  response.data.datos.obs_datos_minas; //arreglar esto
+                //self.form_salta.obs_datos_minas =
+                //  response.data.datos.obs_datos_minas; //arreglar esto
               } else console.log("error al buscar datos: " + response.data.msg);
             })
             .catch(function (error) {
@@ -4154,6 +4168,7 @@ export default {
             });
           // console.log("voy por los permisos");
           //voy a buscar los permisos
+          /*
           axios
             .get(
               "/formularios/traer_permisos_pagina_mendoza" +
@@ -4172,6 +4187,10 @@ export default {
             .catch(function (error) {
               console.log(error);
             });
+
+
+
+            */
         }
       }
 

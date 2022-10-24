@@ -24,7 +24,7 @@
               <banner></banner>
             </div>
             <!-- <br /> -->
-salta : {{$props.mostrar.paso_salta}}
+            salta : {{$props.mostrar.paso_salta}}
 
             <div ></div>
             <PaginaSalta
