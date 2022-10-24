@@ -2,7 +2,7 @@
   <div>
     <div class="items-center justify-left">
       <Card
-        :icono="'/formulario_alta/imagenes/logoProd1.png'"
+        :icono="'/formulario_alta/imagenes/logo-salta.png'"
         :titulo="titulo_pagina"
         :clase_sup="'gap-6'"
         :clase_inf="'border shadow-lg relative py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6'"

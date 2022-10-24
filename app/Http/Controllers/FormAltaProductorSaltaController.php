@@ -241,7 +241,7 @@ class FormAltaProductorSaltaController extends Controller
             "responsable_dni" => true,
             "responsable_matricula" => true,
             "responsable_titulo" => true,
-            
+
             "tipo_correcto" => false,
             "representante_legal_apellido_correcto" => false,
             "representante_legal_nombre_correcto" => false,
@@ -342,10 +342,121 @@ class FormAltaProductorSaltaController extends Controller
         ];
         $disables[10]['Autoridad']['editar']['borrador']['altaProdMinero'] = [];
         $disables[10]['Administrador']['editar']['borrador']['altaProdMinero'] = [];
-        $mostrar[10]['Productor']['editar']['borrador']['altaProdMinero'] = [];
-        $mostrar[10]['Autoridad']['editar']['borrador']['altaProdMinero'] = [];
-        $mostrar[10]['Administrador']['editar']['borrador']['altaProdMinero'] = [];
-        
+        $mostrar[10]['Productor']['editar']['borrador']['altaProdMinero'] = [
+            "id_formulario_alta" => true,
+
+            "tipo" => true,
+            "representante_legal_apellido" => true,
+            "representante_legal_nombre" => true,
+            "representante_legal_dni" => true,
+            "representante_legal_email" => true,
+            "representante_legal_cargo" => true,
+            "telefono" => true,
+            "nacionalidad" => true,
+            "representante_legal_domicilio" => true,
+            "responsable_apellido" => true,
+            "responsable_nombre" => true,
+            "responsable_dni" => true,
+            "responsable_matricula" => true,
+            "responsable_titulo" => true,
+
+            "tipo_correcto" => false,
+            "representante_legal_apellido_correcto" => false,
+            "representante_legal_nombre_correcto" => false,
+            "representante_legal_dni_correcto" => false,
+            "representante_legal_email_correcto" => false,
+            "representante_legal_cargo_correcto" => false,
+            "telefono_correcto" => false,
+            "nacionalidad_correcto" => false,
+            "representante_legal_domicilio_correcto" => false,
+            "responsable_apellido_correcto" => false,
+            "responsable_nombre_correcto" => false,
+            "responsable_dni_correcto" => false,
+            "responsable_matricula_correcto" => false,
+            "responsable_titulo_correcto" => false,
+
+            "paso_salta" => true,
+            "boton_salta" => true,
+            "estado" => true,
+            "boton_actualizar" => true,
+        ];
+        $mostrar[10]['Autoridad']['editar']['borrador']['altaProdMinero'] = [
+            "id_formulario_alta" => true,
+
+            "tipo" => true,
+            "representante_legal_apellido" => true,
+            "representante_legal_nombre" => true,
+            "representante_legal_dni" => true,
+            "representante_legal_email" => true,
+            "representante_legal_cargo" => true,
+            "telefono" => true,
+            "nacionalidad" => true,
+            "representante_legal_domicilio" => true,
+            "responsable_apellido" => true,
+            "responsable_nombre" => true,
+            "responsable_dni" => true,
+            "responsable_matricula" => true,
+            "responsable_titulo" => true,
+
+            "tipo_correcto" => false,
+            "representante_legal_apellido_correcto" => false,
+            "representante_legal_nombre_correcto" => false,
+            "representante_legal_dni_correcto" => false,
+            "representante_legal_email_correcto" => false,
+            "representante_legal_cargo_correcto" => false,
+            "telefono_correcto" => false,
+            "nacionalidad_correcto" => false,
+            "representante_legal_domicilio_correcto" => false,
+            "responsable_apellido_correcto" => false,
+            "responsable_nombre_correcto" => false,
+            "responsable_dni_correcto" => false,
+            "responsable_matricula_correcto" => false,
+            "responsable_titulo_correcto" => false,
+
+            "paso_salta" => true,
+            "boton_salta" => true,
+            "estado" => true,
+            "boton_actualizar" => true,
+        ];
+        $mostrar[10]['Administrador']['editar']['borrador']['altaProdMinero'] = [
+            "id_formulario_alta" => true,
+
+            "tipo" => true,
+            "representante_legal_apellido" => true,
+            "representante_legal_nombre" => true,
+            "representante_legal_dni" => true,
+            "representante_legal_email" => true,
+            "representante_legal_cargo" => true,
+            "telefono" => true,
+            "nacionalidad" => true,
+            "representante_legal_domicilio" => true,
+            "responsable_apellido" => true,
+            "responsable_nombre" => true,
+            "responsable_dni" => true,
+            "responsable_matricula" => true,
+            "responsable_titulo" => true,
+
+            "tipo_correcto" => false,
+            "representante_legal_apellido_correcto" => false,
+            "representante_legal_nombre_correcto" => false,
+            "representante_legal_dni_correcto" => false,
+            "representante_legal_email_correcto" => false,
+            "representante_legal_cargo_correcto" => false,
+            "telefono_correcto" => false,
+            "nacionalidad_correcto" => false,
+            "representante_legal_domicilio_correcto" => false,
+            "responsable_apellido_correcto" => false,
+            "responsable_nombre_correcto" => false,
+            "responsable_dni_correcto" => false,
+            "responsable_matricula_correcto" => false,
+            "responsable_titulo_correcto" => false,
+
+            "paso_salta" => true,
+            "boton_salta" => true,
+            "estado" => true,
+            "boton_actualizar" => true,
+        ];
+
         # EDITAR - EN REVISION
         $disables[10]['Productor']['editar']['en revision']['altaProdMinero'] = [];
         $disables[10]['Autoridad']['editar']['en revision']['altaProdMinero'] = [];
@@ -384,7 +495,6 @@ class FormAltaProductorSaltaController extends Controller
             'disables' => $disables[10][$rol][$accion][$estado]['altaProdMinero'],
             'mostrar' => $mostrar[10][$rol][$accion][$estado]['altaProdMinero']
         ], 201);
-
     }
 
     public function buscar_permisos_formulario($id, $accion)
@@ -468,7 +578,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
         ];
@@ -508,7 +618,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
 
@@ -549,7 +659,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
 
@@ -590,7 +700,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
         ];
@@ -630,7 +740,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
         ];
@@ -670,7 +780,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
         ];
@@ -1508,10 +1618,10 @@ class FormAltaProductorSaltaController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->form["id_formulario_alta"] > 0){
+        if ($request->form["id_formulario_alta"] > 0) {
 
             $formulario = FormAltaProductor::find($request->form["id_formulario_alta"]);
-            if($formulario==null){
+            if ($formulario == null) {
                 return false;
             }
             //$request->form["id_usuario"] = Auth::user()->id;

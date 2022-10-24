@@ -41,8 +41,6 @@
             >
             </PaginaSalta2> -->
 
-
-
             <div id="section_productor"></div>
             <PaginaUnoDatosProductores
               v-if="$props.mostrar.paso_uno"
@@ -839,7 +837,7 @@
               :id="form.id"
               :testing="testing_global"
               :categoria="form.categoria"
-              :accion = "crear"
+              :accion="crear"
               v-on:mostrarpasosiguiente="
                 mostar_paso_siguiente('Datos de Mina Segunda Parte', $event)
               "
@@ -1030,10 +1028,10 @@
               "
             >
             </PaginaMendoza>
-
-            <div id="section_salta" v-if="true"></div>
+            
+            <div id="section_salta" v-if="$props.mostrar.paso_salta"></div>
             <PaginaSalta
-              v-if="true"
+              v-if="m_salta && $props.mostrar.paso_salta"
               :link_volver="'#'"
               :titulo_boton_volver="'Volver'"
               :titulo_boton_guardar="'Guardar Datos'"
@@ -1042,9 +1040,7 @@
               :testing="testing_global"
               :id="form.id"
               :editar="false"
-              v-on:mostrarpasosiguiente="
-                mostar_paso_siguiente('Salta', $event)
-              "
+              v-on:mostrarpasosiguiente="mostar_paso_siguiente('Salta', $event)"
             >
             </PaginaSalta>
 
