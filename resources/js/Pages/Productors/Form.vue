@@ -24,10 +24,10 @@
               <banner></banner>
             </div>
             <!-- <br /> -->
-salta : {{$props.mostrar.paso_salta}}
+            <!-- salta : {{$props.mostrar.paso_salta}} -->
 
-            <div ></div>
-            <PaginaSalta
+            <!-- <div ></div>
+            <PaginaSalta2
               
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
@@ -39,7 +39,7 @@ salta : {{$props.mostrar.paso_salta}}
               :editar="false"
               
             >
-            </PaginaSalta>
+            </PaginaSalta2> -->
 
 
 
@@ -1041,8 +1041,9 @@ salta : {{$props.mostrar.paso_salta}}
               :evaluacion="evaluacion_global"
               :testing="testing_global"
               :id="form.id"
+              :editar="false"
               v-on:mostrarpasosiguiente="
-                mostar_paso_siguiente('Tucuman', $event)
+                mostar_paso_siguiente('Salta', $event)
               "
             >
             </PaginaSalta>
@@ -1414,8 +1415,8 @@ import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbic
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 import PaginaTucuman from "@/Pages/Productors/PaginaTucuman";
 import PaginaSalta from "@/Pages/Productors/PaginaSalta";
+import PaginaSalta2 from "@/Pages/Productors/PaginaSalta2";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
-import PaginaSalta from "@/Pages/Productors/PaginaSalta";
 
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
@@ -1451,8 +1452,8 @@ export default {
     PaginaCatamarca,
     PaginaTucuman,
     PaginaSalta,
+    // PaginaSalta2,
     PaginaMendoza,
-    PaginaSalta,
     ValidationErrors,
     Pasos,
   },

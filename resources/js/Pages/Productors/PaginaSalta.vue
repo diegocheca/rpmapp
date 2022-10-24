@@ -253,35 +253,23 @@
         >
           <NombreMina
             v-if="permisos_mostrar.telefono"
-            v-bind:valor_input_props="
-              form_salta_test.telefono
-            "
-            v-bind:valor_input_validacion="
-              form_salta_test.telefono_valido
-            "
-            v-bind:evualacion_correcto="
-              form_salta_test.telefono_correcto
-            "
+            v-bind:valor_input_props="form_salta_test.telefono"
+            v-bind:valor_input_validacion="form_salta_test.telefono_valido"
+            v-bind:evualacion_correcto="form_salta_test.telefono_correcto"
             v-bind:valor_obs="form_salta_test.telefono_obs"
-            v-bind:valor_valido_obs="
-              form_salta_test.telefono_obs_valido
-            "
+            v-bind:valor_valido_obs="form_salta_test.telefono_obs_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Telefono:'"
             v-bind:icon="$inertia.page.props.appName + '/svg/numexp.svg'"
-            v-bind:desactivar_input="
-              permisos_disables.telefono
-            "
+            v-bind:desactivar_input="permisos_disables.telefono"
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="false"
             :mostrar_evaluacion_adm="evaluacion_adm"
             v-bind:placeholder="'Teléfono del Representante Legal'"
             v-on:changevalor="update_telefono($event)"
-            v-on:changevalido="update_telefono_valido($event)
-            "
-            v-on:changecorrecto="update_telefono_correcto($event)
-            "
+            v-on:changevalido="update_telefono_valido($event)"
+            v-on:changecorrecto="update_telefono_correcto($event)"
             v-on:changeobs="update_telefono_obs($event)"
           >
           </NombreMina>
@@ -295,37 +283,23 @@
         >
           <NombreMina
             v-if="permisos_mostrar.nacionalidad"
-            v-bind:valor_input_props="
-              form_salta_test.nacionalidad
-            "
-            v-bind:valor_input_validacion="
-              form_salta_test.nacionalidad_valido
-            "
-            v-bind:evualacion_correcto="
-              form_salta_test.nacionalidad_correcto
-            "
+            v-bind:valor_input_props="form_salta_test.nacionalidad"
+            v-bind:valor_input_validacion="form_salta_test.nacionalidad_valido"
+            v-bind:evualacion_correcto="form_salta_test.nacionalidad_correcto"
             v-bind:valor_obs="form_salta_test.nacionalidad_obs"
-            v-bind:valor_valido_obs="
-              form_salta_test.nacionalidad_obs_valido
-            "
+            v-bind:valor_valido_obs="form_salta_test.nacionalidad_obs_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'Nacionalidad:'"
             v-bind:icon="$inertia.page.props.appName + '/svg/telstreet.svg'"
-            v-bind:desactivar_input="
-              permisos_disables.nacionalidad
-            "
+            v-bind:desactivar_input="permisos_disables.nacionalidad"
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="false"
             :mostrar_evaluacion_adm="evaluacion_adm"
             v-bind:placeholder="'Nacionalidad del Representante Legal'"
             v-on:changevalor="update_nacionalidad($event)"
-            v-on:changevalido="
-              update_nacionalidad_valido($event)
-            "
-            v-on:changecorrecto="
-              update_nacionalidad_correcto($event)
-            "
+            v-on:changevalido="update_nacionalidad_valido($event)"
+            v-on:changecorrecto="update_nacionalidad_correcto($event)"
             v-on:changeobs="update_nacionalidad_obs($event)"
           >
           </NombreMina>
@@ -337,7 +311,9 @@
         >
           <NombreMina
             v-if="permisos_mostrar.representante_legal_domicilio"
-            v-bind:valor_input_props="form_salta_test.representante_legal_domicilio"
+            v-bind:valor_input_props="
+              form_salta_test.representante_legal_domicilio
+            "
             v-bind:valor_input_validacion="
               form_salta_test.representante_legal_domicilio_valido
             "
@@ -352,13 +328,17 @@
             v-bind:testing="mostrar_testing"
             v-bind:label="'Domicilio:'"
             v-bind:icon="$inertia.page.props.appName + '/svg/telstreet.svg'"
-            v-bind:desactivar_input="permisos_disables.representante_legal_domicilio"
+            v-bind:desactivar_input="
+              permisos_disables.representante_legal_domicilio
+            "
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="false"
             :mostrar_evaluacion_adm="evaluacion_adm"
             v-bind:placeholder="'Domicilio del Representante Legal'"
             v-on:changevalor="update_representante_legal_domicilio($event)"
-            v-on:changevalido="update_representante_legal_domicilio_valido($event)"
+            v-on:changevalido="
+              update_representante_legal_domicilio_valido($event)
+            "
             v-on:changecorrecto="
               update_representante_legal_domicilio_correcto($event)
             "
@@ -464,9 +444,7 @@
               form_salta_test.responsable_dni_correcto
             "
             v-bind:valor_obs="form_salta_test.responsable_dni_obs"
-            v-bind:valor_valido_obs="
-              form_salta_test.responsable_dni_obs_valido
-            "
+            v-bind:valor_valido_obs="form_salta_test.responsable_dni_obs_valido"
             v-bind:evaluacion="autoridad_minera"
             v-bind:testing="mostrar_testing"
             v-bind:label="'DNI :'"
@@ -492,9 +470,7 @@
         >
           <NombreMina
             v-if="permisos_mostrar.responsable_matricula"
-            v-bind:valor_input_props="
-              form_salta_test.responsable_matricula
-            "
+            v-bind:valor_input_props="form_salta_test.responsable_matricula"
             v-bind:valor_input_validacion="
               form_salta_test.responsable_matricula_valido
             "
@@ -509,20 +485,14 @@
             v-bind:testing="mostrar_testing"
             v-bind:label="'Número de Matrícula :'"
             v-bind:icon="$inertia.page.props.appName + '/svg/telstreet.svg'"
-            v-bind:desactivar_input="
-              permisos_disables.responsable_matricula
-            "
+            v-bind:desactivar_input="permisos_disables.responsable_matricula"
             v-bind:mostrar_correccion="false"
             v-bind:desactivar_correccion="false"
             :mostrar_evaluacion_adm="evaluacion_adm"
             v-bind:placeholder="'Número de Matrícula de Responsable Tecnico'"
             v-on:changevalor="update_responsable_matricula($event)"
-            v-on:changevalido="
-              update_responsable_matricula_valido($event)
-            "
-            v-on:changecorrecto="
-              update_responsable_matricula_correcto($event)
-            "
+            v-on:changevalido="update_responsable_matricula_valido($event)"
+            v-on:changecorrecto="update_responsable_matricula_correcto($event)"
             v-on:changeobs="update_responsable_matricula_obs($event)"
           >
           </NombreMina>
@@ -556,9 +526,7 @@
             v-bind:placeholder="'Título de Responsable Tecnico'"
             v-on:changevalor="update_responsable_titulo($event)"
             v-on:changevalido="update_responsable_titulo_valido($event)"
-            v-on:changecorrecto="
-              update_responsable_titulo_correcto($event)
-            "
+            v-on:changecorrecto="update_responsable_titulo_correcto($event)"
             v-on:changeobs="update_responsable_titulo_obs($event)"
           >
           </NombreMina>
@@ -617,7 +585,7 @@ export default {
     "titulo_boton_volver",
     "titulo_boton_guardar",
     "titulo_pagina",
-
+    "editar",
     "evaluacion",
     "testing",
     "id",
@@ -899,11 +867,13 @@ export default {
     let self = this;
     this.$nextTick(() => {
       if (this.$inertia.page.props.user.id_provincia === 66) {
-        if (
-          typeof this.$props.id === "undefined" ||
-          this.$props.id === null ||
-          this.$props.id === "null"
-        ) {
+        // if (
+        //   typeof this.$props.id === "undefined" ||
+        //   this.$props.id === null ||
+        //   this.$props.id === "null"
+        // ) {
+
+        if (this.$props.editar === false || this.$props.editar === "false") {
           /*********** Valores *************/
           self.form_salta_test.id_formulario_alta = null;
           self.form_salta_test.tipo = null;
@@ -960,6 +930,7 @@ export default {
             .get("/formularios/traer_permisos_pagina_salta/0/crear")
             .then(function (response) {
               if (response.data.status === "ok") {
+                // console.log(response.data);
                 self.permisos_mostrar = response.data.mostrar;
                 self.permisos_disables = response.data.disables;
               } else console.log("error al buscar permisos: " + response.data.msg);

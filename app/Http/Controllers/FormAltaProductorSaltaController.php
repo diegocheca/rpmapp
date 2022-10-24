@@ -28,7 +28,7 @@ class FormAltaProductorSaltaController extends Controller
         }
     }
 
-    public function traer_permisos_pagina_tucuman($id, $accion)
+    public function traer_permisos_pagina_salta($id, $accion)
     {
         $estado = 0;
         if (intval($id)  === 0) {
