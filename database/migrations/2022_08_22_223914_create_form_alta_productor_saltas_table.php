@@ -23,12 +23,17 @@ class CreateFormAltaProductorSaltasTable extends Migration
             $table->string('representante_legal_email',100)->comment('En los 3 tipos');
             $table->string('representante_legal_cargo',100)->comment('En los 3 tipos');
             $table->string('representante_legal_domicilio', 100)->nullable()->default(null)->comment('Agregado por las dudas, no esta en el formulario, seria para los 3 tipos');
-
             $table->string('nacionalidad',25)->nullable()->default(null)->comment('En los 3 tipos');
             $table->string('telefono',20)->comment('En los 3 tipos');//not null
             //$table->string('dni',20);//esta como dni de quien lo presenta
 
-            //TABLAS en el formulario impreso
+            $table->string('responsable_nombre',100)->comment('En los 3 tipos');
+            $table->string('responsable_apellido',100)->comment('En los 3 tipos');
+            $table->string('responsable_dni',100)->comment('En los 3 tipos');
+            $table->string('responsable_titulo',100)->comment('En los 3 tipos');
+            $table->string('responsable_matricula',100)->comment('En los 3 tipos');
+
+            //TABLAS en el formulario impreso  (REINSCRIPCIÓN)
             $table->string('superficie_mina',50)->nullable()->default(null)->comment('Tabla: Exploradores, Productores');
             $table->string('volumenes_de_extraccion_periodo_anterior',50)->nullable()->default(null)->comment('En tabla: Plantas, Productores');
             $table->string('n_resolucion_iia',50)->nullable()->default(null)->comment('En tabla: Productores');
@@ -42,13 +47,7 @@ class CreateFormAltaProductorSaltasTable extends Migration
             $table->string('autorizacion_extractivas_exploratorias',256)->nullable()->default(null);
             //Fin tablas
 
-            $table->string('responsable_nombre',100)->comment('En los 3 tipos');
-            $table->string('responsable_apellido',100)->comment('En los 3 tipos');
-            $table->string('responsable_dni',100)->comment('En los 3 tipos');
-            $table->string('responsable_titulo',100)->comment('En los 3 tipos');
-            $table->string('responsable_matricula',100)->comment('En los 3 tipos');
-
-
+           
             //ley 24196
             $table->string('ley_24196_numero',10)->nullable()->default('N')->comment('en formulario: Productores, Exploradores');
             $table->string('ley_24196_inscripcion_renar',30)->nullable()->default('N')->comment('en formulario: Productores, Exploradores');
