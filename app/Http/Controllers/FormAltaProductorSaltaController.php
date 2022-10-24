@@ -496,7 +496,27 @@ class FormAltaProductorSaltaController extends Controller
             'mostrar' => $mostrar[10][$rol][$accion][$estado]['altaProdMinero']
         ], 201);
     }
+    
+    public function look_up(Request $request)
+    {
+        //
+        $data =  FormAltaProductorSalta::select('*')->where("id_formulario_alta","=",$request->id)->first();
+        if($data != null){
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'formulario encontrado',
+                'datos' => $data,
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'msg' => 'error al guardar en la base de datos',
+                'datos' => '',
+            ], 200);
+        }
 
+        
+    }
     public function buscar_permisos_formulario($id, $accion)
     {
         $estado = 0;

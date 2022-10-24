@@ -589,6 +589,10 @@ export default {
     "evaluacion",
     "testing",
     "id",
+    "editar",
+    "lista_provincias",
+    "lista_dptos"
+
   ],
   components: {
     // JetDialogModal,
@@ -956,6 +960,7 @@ export default {
               console.log(error);
             });
           //voy a buscar los permisos
+          /*
           axios
             .get(
               "/formularios/traer_permisos_pagina_salta" +
@@ -972,6 +977,10 @@ export default {
             .catch(function (error) {
               console.log(error);
             });
+
+
+
+            */
         }
       }
     });
