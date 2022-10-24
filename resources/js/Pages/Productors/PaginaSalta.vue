@@ -621,13 +621,10 @@ export default {
     "evaluacion",
     "testing",
     "id",
-<<<<<<< HEAD
     "editar",
     "lista_provincias",
     "lista_dptos"
 
-=======
->>>>>>> 88cc969848cb3ff21fd21843e05e2c5c0f428ee4
   ],
   components: {
     // JetDialogModal,
@@ -978,25 +975,14 @@ export default {
           //estoy por editar
           //voy a BUSCAR LOS DATOS DEL FORMULARIO
           axios
-<<<<<<< HEAD
-            .post(
-              "/formulario_salta/buscar_formulario",  {id: this.$props.id}
-=======
             .get(
               "/formularios/traer_datos_pagina_salta" +
                 "/" +
                 parseInt(this.$props.id)
->>>>>>> 88cc969848cb3ff21fd21843e05e2c5c0f428ee4
             )
             .then(function (response) {
               if (response.data.status === "ok") {
-<<<<<<< HEAD
-                self.form_salta = response.data.datos;
-                //self.form_salta.obs_datos_minas =
-                //  response.data.datos.obs_datos_minas; //arreglar esto
-=======
                 self.form_salta_test = response.data.datos;
->>>>>>> 88cc969848cb3ff21fd21843e05e2c5c0f428ee4
               } else console.log("error al buscar datos: " + response.data.msg);
             })
             .catch(function (error) {

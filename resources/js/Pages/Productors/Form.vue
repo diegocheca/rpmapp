@@ -27,7 +27,7 @@
             salta : {{$props.mostrar.paso_salta}}
 
             <div ></div>
-            <PaginaSalta
+            <PaginaSalta3
               
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
@@ -39,7 +39,7 @@
               :editar="false"
               
             >
-            </PaginaSalta>
+            </PaginaSalta3>
 
 
 
@@ -1415,7 +1415,7 @@ import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 import PaginaTucuman from "@/Pages/Productors/PaginaTucuman";
 import PaginaSalta from "@/Pages/Productors/PaginaSalta";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
-import PaginaSalta from "@/Pages/Productors/PaginaSalta";
+import PaginaSalta3 from "@/Pages/Productors/PaginaSalta3";
 
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
@@ -1452,7 +1452,7 @@ export default {
     PaginaTucuman,
     PaginaSalta,
     PaginaMendoza,
-    PaginaSalta,
+    PaginaSalta3,
     ValidationErrors,
     Pasos,
   },
