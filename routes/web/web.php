@@ -35,6 +35,7 @@ use App\Http\Controllers\MinaCanteraController;
 
 
 use App\Http\Controllers\EmpresasControlantesSaltaController;
+use App\Http\Controllers\FormAltaProductorEvalSaltaController;
 
 
 use App\Http\Controllers\DashboardController;
@@ -413,3 +414,5 @@ Route::post('/formulario_salta/guardar_empresas', [EmpresasControlantesSaltaCont
 Route::post('/formulario_salta/buscar_formulario', [FormAltaProductorSaltaController::class, "look_up"])->name('look-up-formulario-salta');
 Route::get('/formulario_salta/form_faker', [FormAltaProductorSaltaController::class, "datos_faker"])->name('form-fake-salta');
 Route::get('/formulario_salta/empresa_faker', [EmpresasControlantesSaltaController::class, "empresa_fake"])->name('empresa-fake-salta');
+Route::get('/formulario_salta/evaluacion_fake', [FormAltaProductorEvalSaltaController::class, "evaluacion_fake"])->name('evaluacion-fake-salta');
+Route::post('/formulario_salta/guardar_eval', [FormAltaProductorEvalSaltaController::class, "store"])->name('store-eval-salta');

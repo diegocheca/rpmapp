@@ -24,21 +24,20 @@
               <banner></banner>
             </div>
             <!-- <br /> -->
-            <!-- salta : {{$props.mostrar.paso_salta}} -->
+            salta : {{$props.mostrar.paso_salta}}
 
-            <!-- <div ></div>
+            <div ></div>
             <PaginaSalta3
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
               :titulo_boton_guardar="'Guardar'"
               :titulo_pagina="'Salta'"
-              :evaluacion="evaluacion_global"
-              :testing="testing_global"
+              :evaluacion="false"
+              :accion="crear"
               :id="444"
-              :editar="false"
               
             >
-            </PaginaSalta3> -->
+            </PaginaSalta3>
 
             <div id="section_productor"></div>
             <PaginaUnoDatosProductores
@@ -1450,7 +1449,7 @@ export default {
     PaginaSalta,
     // PaginaSalta2,
     PaginaMendoza,
-    //PaginaSalta3,
+    PaginaSalta3,
     ValidationErrors,
     Pasos,
   },

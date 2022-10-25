@@ -66,6 +66,75 @@
               </div>
               <br />
             </div>
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_tipo_true"
+                      v-model="eval_salta.correccion_tipo"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_tipo_false"
+                      v-model="eval_salta.correccion_tipo"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_tipo_nada"
+                      v-model="eval_salta.correccion_tipo"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_tipo == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion"
+                    name="obs_observacion"
+                    v-model="eval_salta.observacion_tipo"
+                    
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
             
           </div>
 
@@ -136,10 +205,81 @@
               id="representante_legal_nombre"
               name="representante_legal_nombre"
               v-model="form_salta.representante_legal_nombre"
-              :disabled="false"
+              
             />
           </div>
 
+
+          
+
+
+
+          
+
+
+           
+          <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_apellido_true"
+                      v-model="eval_salta.correccion_representante_legal_nombre"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_apellido_false"
+                      v-model="eval_salta.correccion_representante_legal_nombre"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_apellido_nada"
+                      v-model="eval_salta.correccion_representante_legal_nombre"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_representante_legal_nombre == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_nombre"
+                    name="obs_observacion_nombre"
+                    v-model="eval_salta.observacion_representante_legal_nombre"
+                    
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
 
 
 
@@ -231,9 +371,76 @@
                 id="representante_legal_apellido"
                 name="representante_legal_apellido"
                 v-model="form_salta.representante_legal_apellido"
-                :disabled="false"
+                
               />
             </div>
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_apellido_true"
+                      v-model="eval_salta.correccion_representante_legal_apellido"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_apellido_false"
+                      v-model="eval_salta.correccion_representante_legal_apellido"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_apellido_nada"
+                      v-model="eval_salta.correccion_representante_legal_apellido"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_representante_legal_apellido == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_apellido"
+                    name="obs_observacion_apellido"
+                    v-model="eval_salta.observacion_representante_legal_apellido"
+                    
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
 
 
             <div v-show="ayuda_local">
@@ -349,6 +556,77 @@
               />
             </div>
 
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_dni_true"
+                      v-model="eval_salta.correccion_representante_legal_dni"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_dni_false"
+                      v-model="eval_salta.correccion_representante_legal_dni"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_dni_nada"
+                      v-model="eval_salta.correccion_representante_legal_dni"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_representante_legal_dni == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_dni"
+                    name="obs_observacion_dni"
+                    v-model="eval_salta.observacion_representante_legal_dni"
+                    
+                  >
+                  
+
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
+
+
             <div v-show="ayuda_local">
               <br />
               <div
@@ -438,6 +716,76 @@
                 :disabled="false"
               />
             </div>
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_email_true"
+                      v-model="eval_salta.correccion_representante_legal_email"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_email_false"
+                      v-model="eval_salta.correccion_representante_legal_email"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_email_nada"
+                      v-model="eval_salta.correccion_representante_legal_email"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_representante_legal_email == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_email"
+                    name="obs_observacion_email"
+                    v-model="eval_salta.observacion_representante_legal_email"
+                    
+                  >
+                  
+
+
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
 
             <div v-show="ayuda_local">
               <br />
@@ -530,6 +878,68 @@
               />
             </div>
 
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_cargo_true"
+                      v-model="eval_salta.correccion_representante_legal_cargo"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_cargo_false"
+                      v-model="eval_salta.correccion_representante_legal_cargo"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_cargo_nada"
+                      v-model="eval_salta.correccion_representante_legal_cargo"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_representante_legal_cargo == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_cargo"
+                    name="obs_observacion_cargo"
+                    v-model="eval_salta.observacion_representante_legal_cargo"
+                    
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
 
 
             <div v-show="ayuda_local">
@@ -644,6 +1054,71 @@
               />
             </div>
 
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_domicilio_true"
+                      v-model="eval_salta.correccion_representante_legal_domicilio"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_domicilio_false"
+                      v-model="eval_salta.correccion_representante_legal_domicilio"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_domicilio_nada"
+                      v-model="eval_salta.correccion_representante_legal_domicilio"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_representante_legal_domicilio == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_domicilio"
+                    name="obs_observacion_domicilio"
+                    v-model="eval_salta.observacion_representante_legal_domicilio"
+                    
+                  >
+                  
+
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
 
             <div v-show="ayuda_local">
               <br />
@@ -733,6 +1208,79 @@
                 :disabled="false"
               />
             </div>
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_nacionalidad_true"
+                      v-model="eval_salta.correccion_nacionalidad"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_nacionalidad_false"
+                      v-model="eval_salta.correccion_nacionalidad"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_nacionalidad_nada"
+                      v-model="eval_salta.correccion_nacionalidad"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_nacionalidad == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_nacionalidad"
+                    name="obs_observacion_nacionalidad"
+                    v-model="eval_salta.observacion_nacionalidad"
+                    
+                  >
+                  
+
+
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
             <div v-show="ayuda_local">
               <br />
               <div
@@ -822,6 +1370,82 @@
                 :disabled="false"
               />
             </div>
+
+
+
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_telefono_true"
+                      v-model="eval_salta.correccion_telefono"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_telefono_false"
+                      v-model="eval_salta.correccion_telefono"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_telefono_nada"
+                      v-model="eval_salta.correccion_telefono"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_telefono == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_telefono"
+                    name="obs_observacion_telefono"
+                    v-model="eval_salta.observacion_telefono"
+                    
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
             <div v-show="ayuda_local">
               <br />
               <div
@@ -846,7 +1470,9 @@
 
 
 
-
+<br>
+  <hr>
+<br>
 
 
 
@@ -1513,7 +2139,6 @@
 
 
 
-
         <div class="flex flex-wrap">
           
 
@@ -1820,6 +2445,10 @@
 
 
 
+        <br>
+  <hr>
+<br>
+
 
 
         
@@ -1847,7 +2476,7 @@
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-1"
               for="leal_numero"
-              >responsable_nombre</label
+              >responsable nombre</label
             >
             <div class="flex items-stretch w-full relative">
               <div class="flex">
@@ -1910,6 +2539,75 @@
                 :disabled="false"
               />
             </div>
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_responsable_nombreo_true"
+                      v-model="eval_salta.correccion_responsable_nombre"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_responsable_nombre_false"
+                      v-model="eval_salta.correccion_responsable_nombre"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_responsable_nombre_nada"
+                      v-model="eval_salta.correccion_responsable_nombre"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_responsable_nombre == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_responsable_nombre"
+                    name="obs_observacion_responsable_nombre"
+                    v-model="eval_salta.observacion_responsable_nombre"
+                    
+                  >
+                  
+
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
 
             <div v-show="ayuda_local">
               <br />
@@ -2010,6 +2708,79 @@
                 :disabled="false"
               />
             </div>
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_responsable_apellido_true"
+                      v-model="eval_salta.correccion_responsable_apellido"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_responsable_apellido_false"
+                      v-model="eval_salta.correccion_responsable_apellido"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_responsable_apellido_nada"
+                      v-model="eval_salta.correccion_responsable_apellido"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_responsable_apellido == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_responsable_apellido"
+                    name="obs_observacion_responsable_apellido"
+                    v-model="eval_salta.observacion_responsable_apellido"
+                    
+                  >
+                  
+
+
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
             <div v-show="ayuda_local">
               <br />
               <div
@@ -2110,6 +2881,74 @@
                 :disabled="false"
               />
             </div>
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_responsable_dni_true"
+                      v-model="eval_salta.correccion_responsable_dni"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_responsable_dni_false"
+                      v-model="eval_salta.correccion_responsable_dni"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_responsable_dni_nada"
+                      v-model="eval_salta.correccion_responsable_dni"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_responsable_dni == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_responsable_dni"
+                    name="obs_observacion_responsable_dni"
+                    v-model="eval_salta.observacion_responsable_dni"
+                    
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
+
 
             <div v-show="ayuda_local">
               <br />
@@ -2243,6 +3082,80 @@
               />
             </div>
 
+
+
+
+
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_responsable_titulo_true"
+                      v-model="eval_salta.correccion_responsable_titulo"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_responsable_titulo_false"
+                      v-model="eval_salta.correccion_responsable_titulo"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_responsable_titulo_nada"
+                      v-model="eval_salta.correccion_responsable_titulo"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_responsable_titulo == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_responsable_titulo"
+                    name="obs_observacion_responsable_titulo"
+                    v-model="eval_salta.observacion_responsable_titulo"
+                    
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
             <div v-show="ayuda_local">
               <br />
               <div
@@ -2343,6 +3256,73 @@
               />
             </div>
 
+
+
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_responsable_matricula_true"
+                      v-model="eval_salta.correccion_responsable_matricula"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_responsable_matricula_false"
+                      v-model="eval_salta.correccion_responsable_matricula"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_responsable_matricula_nada"
+                      v-model="eval_salta.correccion_responsable_matricula"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_responsable_matricula == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_responsable_matricula"
+                    name="obs_observacion_responsable_matricula"
+                    v-model="eval_salta.observacion_responsable_matricula"
+                    
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
+
+
             <div v-show="ayuda_local">
               <br />
               <div
@@ -2383,8 +3363,6 @@
 
 
 
-{{form_salta.ley_checkbox}}
-
         <div>
           <label
             class="
@@ -2424,7 +3402,7 @@
         </div>
 
 
-        <div class="flex flex-wrap" v-show="form_salta.ley_checkbox!==false">
+        <div class="flex flex-wrap" v-if="form_salta.ley_checkbox!=='false'">
           
           <div
             class="
@@ -3814,6 +4792,71 @@
         </div>
       </div>
     </div>
+
+
+
+    <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+              <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
+                Seccion de evaluacion
+              </h3>
+              <div>
+                <div class="w-full px-3">
+                  <span class="text-gray-700 mr-2">Correcto?</span>
+                  <label>
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-green-600"
+                      name="correc_responsable_empresas_true"
+                      v-model="eval_salta.correccion_empresas"
+                      value="true"
+                    />
+                    <span class="ml-2">Si</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-red-600"
+                      name="correc_responsable_empresas_false"
+                      v-model="eval_salta.correccion_empresas"
+                      value="false"
+                    />
+                    <span class="ml-2">No</span>
+                  </label>
+                  <label class="ml-2">
+                    <input
+                      type="radio"
+                      class="form-radio h-4 w-4 text-indigo-600"
+                      name="correc_responsable_empresas_nada"
+                      v-model="eval_salta.correccion_empresas"
+                      value="nada"
+                    />
+                    <span class="ml-2">Sin evaluar</span>
+                  </label>
+                </div>
+                <div v-show="eval_salta.correccion_empresas == 'false'" class="w-full px-3">
+                  <label
+                    class="
+                      block
+                      uppercase
+                      tracking-wide
+                      text-gray-700 text-xs
+                      font-bold
+                      mb-1
+                      mt-2
+                    "
+                    for="obs_observacion"
+                    >Observación:</label
+                  >
+                  <textarea
+                    id="obs_observacion_empresas"
+                    name="obs_observacion_empresas"
+                    v-model="eval_salta.observacion_empresas"
+                  >
+                  </textarea>
+                </div>
+              </div>
+            </div>
+
     
     {{empresas}}
 
@@ -3830,7 +4873,7 @@
 
 
     
-
+{{eval_salta}}
 
 
 
@@ -3948,10 +4991,11 @@
 
 
 
-
-
-
+        
+        
         {{form_salta}}
+        <hr>
+        {{eval_salta}}
 
         <div class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center">
         <button
@@ -3962,16 +5006,35 @@
             py-3
             px-5
             text-white
-            border border-blue-500
-            bg-blue-500
+            border border-green-500
+            bg-green-500
             shadow-md
             font-bold
-            hover:text-white hover:shadow-xl hover:bg-blue-700
+            hover:text-white hover:shadow-xl hover:bg-green-700
           "
           @click="guardar_form"
         >
           {{ titulo_boton_guardar }}
         </button>
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-green-500
+            bg-green-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-green-700
+          "
+          @click="guardar_eval"
+        >
+          {{ titulo_boton_guardar }} eval
+        </button>
+
 
         <button
           type="button"
@@ -4009,6 +5072,25 @@
         >
           empresa Fakes
         </button>
+
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
+          "
+          @click="evaluacion_fakes"
+        >
+          evaluacion Fakes
+        </button>
       </div>
 
       </div>
@@ -4042,9 +5124,8 @@ export default {
     "titulo_pagina",
 
     "evaluacion",
-    "testing",
-    "id",
-    "editar",
+    "accion",
+    "id"
   ],
   components: {
     JetDialogModal,
@@ -4074,6 +5155,7 @@ export default {
       permisos_mostrar: [],
       permisos_disables: [],
       form_salta: {},
+      eval_salta: {},
       empresas :  [
             {
               id: 1,
@@ -4129,6 +5211,24 @@ export default {
               console.log(error);
             });
 
+    },
+    
+    guardar_eval() {
+      let self = this;
+        axios
+            .post("/formulario_salta/guardar_eval/", {
+              eval: this.eval_salta
+            })
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                self.permisos_mostrar = response.data.mostrar;
+                // console.log(self.permisos_mostrar);
+                self.permisos_disables = response.data.disables;
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
     },
     
     datos_fakes() {
@@ -4197,48 +5297,42 @@ export default {
               if (response.data.status === "ok") {
                 console.log("los datos son\n\n\n");
                 console.log(response.data.data);
-                //self.form_salta = JSON.stringify(response.data.data);
-                //self.form_salta = response.data.data.representante_legal_apellido;
-                //alert(response.data.data.representante_legal_apellido);
+                self.empresas.splice(0, 1);
+                //let empresas_temp = {};
+                response.data.data.map((array, index) => {
+                  let empresa_temp = {
+                    id: index,
+                    razon_social: array.razon_social,
+                    cuit: array.cuit,
+                    tipo:  array.tipo,
+                    calle:  array.calle,
+                    numero:  array.numero,
+                    telefono:  array.telefono,
+                    provincia:  array.provincia,
+                    departamento:  array.departamento,
+                    localidad:  array.localidad,
+                    cp:  array.cp,
+                    otro:  array.otro
+                  }
+                  self.empresas.push(empresa_temp);
+                });
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
 
-                self.form_salta.id =null;
-                self.form_salta.id_formulario_alta = response.data.data.id_formulario_alta;
-                self.form_salta.tipo = response.data.data.tipo;
-                self.form_salta.representante_legal_nombre = response.data.data.representante_legal_nombre;
-                self.form_salta.representante_legal_apellido = response.data.data.representante_legal_apellido;
-                self.form_salta.representante_legal_dni = response.data.data.representante_legal_dni;
-                self.form_salta.representante_legal_email = response.data.data.representante_legal_email;
-                self.form_salta.representante_legal_cargo = response.data.data.representante_legal_cargo;
-                self.form_salta.representante_legal_domicilio = response.data.data.representante_legal_domicilio;
-                self.form_salta.nacionalidad = response.data.data.nacionalidad;
-                self.form_salta.telefono = response.data.data.telefono;
-                self.form_salta.superficie_mina = response.data.data.superficie_mina;
-                self.form_salta.volumenes_de_extraccion_periodo_anterior = response.data.data.volumenes_de_extraccion_periodo_anterior;
-                self.form_salta.n_resolucion_iia = response.data.data.n_resolucion_iia;
-                self.form_salta.etapa_de_exploracion = response.data.data.etapa_de_exploracion;
-                self.form_salta.n_resolucion_aprobacion_informe = response.data.data.n_resolucion_aprobacion_informe;
-                self.form_salta.etapa_de_exploracion_avanzada = response.data.data.etapa_de_exploracion_avanzada;
-                self.form_salta.volumenes_anuales_de_materias_primas = response.data.data.volumenes_anuales_de_materias_primas;
-                self.form_salta.material_obtenido = response.data.data.material_obtenido;
-                self.form_salta.autorizacion_extractivas_exploratorias = response.data.data.autorizacion_extractivas_exploratorias;
-                self.form_salta.responsable_nombre = response.data.data.responsable_nombre;
-                self.form_salta.responsable_apellido = response.data.data.responsable_apellido;
-                self.form_salta.responsable_dni = response.data.data.responsable_dni;
-                self.form_salta.responsable_titulo = response.data.data.responsable_titulo;
-                self.form_salta.responsable_matricula = response.data.data.responsable_matricula;
-                self.form_salta.ley_24196_numero = response.data.data.ley_24196_numero;
-                self.form_salta.ley_24196_inscripcion_renar = response.data.data.ley_24196_inscripcion_renar;
-                self.form_salta.ley_24196_explosivos = response.data.data.ley_24196_explosivos;
-                self.form_salta.ley_24196_propiedad = response.data.data.ley_24196_propiedad;
-                self.form_salta.estado_contable = response.data.data.estado_contable;
-                self.form_salta.listado_de_maquinaria = response.data.data.listado_de_maquinaria;
-                self.form_salta.regalias = response.data.data.regalias;
-                self.form_salta.personas_afectadas = response.data.data.personas_afectadas;
-                self.form_salta.multas = response.data.data.multas;
-                self.form_salta.created_by = response.data.data.created_by;
-                self.form_salta.updated_by = response.data.data.updated_by;
-
-
+    },
+    
+    evaluacion_fakes() {
+      let self = this;
+        axios
+            .get("/formulario_salta/evaluacion_fake/")
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                console.log("los datos son\n\n\n");
+                console.log(response.data.data);
+                self.eval_salta = response.data.data;
               } else console.log("error al buscar permisos: " + response.data.msg);
             })
             .catch(function (error) {
@@ -4286,7 +5380,7 @@ export default {
 
       if (this.$inertia.page.props.user.id_provincia === 66) {
         
-        if (this.$props.editar === false || this.$props.editar === "false") {
+        if (this.$props.accion === "crear") {
           //estoy dando de alta
           
           console.log("\n\n\nen alta");
@@ -4330,7 +5424,7 @@ export default {
 
           //visual
           
-          self.form_salta.ley_checkbox = false;
+          self.form_salta.ley_checkbox = "false";
 
           //voy a buscar los permisos
           axios
@@ -4349,7 +5443,8 @@ export default {
 
             //empresas controlantes
             
-        } else {
+        } 
+        if (this.$props.accion === "editar") {
           //estoy por editar
           //voy a BUSCAR LOS DATOS DEL FORMULARIO
           axios
@@ -4390,6 +5485,106 @@ export default {
               console.log(error);
             });
         }
+        if (this.$props.accion === "evaluar") {
+          //estoy dando de alta
+          
+          console.log("\n\n\nen alta");
+          //self.eval_salta.id = "5";
+          self.eval_salta.id_formulario_alta_salta = '';
+          self.eval_salta.correccion_tipo = '';
+          self.eval_salta.observacion_tipo = '';
+          self.eval_salta.correccion_representante_legal_nombre = '';
+          self.eval_salta.observacion_representante_legal_nombre = '';
+          self.eval_salta.correccion_representante_legal_apellido = '';
+          self.eval_salta.observacion_representante_legal_apellido = '';
+          self.eval_salta.correccion_representante_legal_dni = '';
+          self.eval_salta.observacion_representante_legal_dni = '';
+          self.eval_salta.correccion_representante_legal_email = '';
+          self.eval_salta.observacion_representante_legal_email = '';
+          self.eval_salta.correccion_representante_legal_cargo = '';
+          self.eval_salta.observacion_representante_legal_cargo = '';
+          self.eval_salta.correccion_representante_legal_domicilio = '';
+          self.eval_salta.observacion_representante_legal_domicilio = '';
+          self.eval_salta.correccion_nacionalidad = '';
+          self.eval_salta.observacion_nacionalidad = '';
+          self.eval_salta.correccion_telefono = '';
+          self.eval_salta.observacion_telefono = '';
+          self.eval_salta.correccion_superficie_mina = '';
+          self.eval_salta.observacion_superficie_mina = '';
+          self.eval_salta.correccion_volumenes_de_extraccion_periodo_anterior = '';
+          self.eval_salta.observacion_volumenes_de_extraccion_periodo_anterior = '';
+          self.eval_salta.correccion_n_resolucion_iia = '';
+          self.eval_salta.observacion_n_resolucion_iia = '';
+          self.eval_salta.correccion_etapa_de_exploracion = '';
+          self.eval_salta.observacion_etapa_de_exploracion = '';
+          self.eval_salta.correccion_n_resolucion_aprobacion_informe = '';
+          self.eval_salta.observacion_n_resolucion_aprobacion_informe = '';
+          self.eval_salta.correccion_etapa_de_exploracion_avanzada = '';
+          self.eval_salta.observacion_etapa_de_exploracion_avanzada = '';
+          self.eval_salta.correccion_volumenes_anuales_de_materias_primas = '';
+          self.eval_salta.observacion_volumenes_anuales_de_materias_primas = '';
+          self.eval_salta.correccion_material_obtenido = '';
+          self.eval_salta.observacion_material_obtenido = '';
+          self.eval_salta.correccion_autorizacion_extractivas_exploratorias = '';
+          self.eval_salta.observacion_autorizacion_extractivas_exploratorias = '';
+          self.eval_salta.correccion_responsable_nombre = '';
+          self.eval_salta.observacion_responsable_nombre = '';
+          self.eval_salta.correccion_responsable_apellido = '';
+          self.eval_salta.observacion_responsable_apellido = '';
+          self.eval_salta.correccion_responsable_dni = '';
+          self.eval_salta.observacion_responsable_dni = '';
+          self.eval_salta.correccion_responsable_titulo = '';
+          self.eval_salta.observacion_responsable_titulo = '';
+          self.eval_salta.correccion_responsable_matricula = '';
+          self.eval_salta.observacion_responsable_matricula = '';
+          self.eval_salta.correccion_ley_24196_numero = '';
+          self.eval_salta.observacion_ley_24196_numero = '';
+          self.eval_salta.correccion_ley_24196_inscripcion_renar = '';
+          self.eval_salta.observacion_ley_24196_inscripcion_renar = '';
+          self.eval_salta.correccion_ley_24196_explosivos = '';
+          self.eval_salta.observacion_ley_24196_explosivos = '';
+          self.eval_salta.correccion_ley_24196_propiedad = '';
+          self.eval_salta.observacion_ley_24196_propiedad = '';
+          self.eval_salta.correccion_estado_contable = '';
+          self.eval_salta.observacion_estado_contable = '';
+          self.eval_salta.correccion_listado_de_maquinaria = '';
+          self.eval_salta.observacion_listado_de_maquinaria = '';
+          self.eval_salta.correccion_regalias = '';
+          self.eval_salta.observacion_regalias = '';
+          self.eval_salta.correccion_personas_afectadas = '';
+          self.eval_salta.observacion_personas_afectadas = '';
+          self.eval_salta.correccion_multas = '';
+          self.eval_salta.observacion_multas = '';
+
+          self.eval_salta.correccion_empresas = '';
+          self.eval_salta.observacion_empresas = '';
+
+
+          //voy a buscar los permisos
+          axios
+            .get("/formulario_salta/traer_permisos_pagina_salta/0/crear")
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                self.permisos_mostrar = response.data.mostrar;
+                // console.log(self.permisos_mostrar);
+                self.permisos_disables = response.data.disables;
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+
+
+            //empresas controlantes
+            
+        } 
+        
+
+        
+        
+
+
+
       }
 
       
