@@ -5091,6 +5091,29 @@
         >
           evaluacion Fakes
         </button>
+
+        
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
+          "
+          @click="get_eval"
+        >
+          Get Eval
+        </button>
+
+
+        
       </div>
 
       </div>
@@ -5354,6 +5377,25 @@ export default {
             });
 
     },
+
+    get_eval() {
+      let self = this;
+        axios
+            .post("/formulario_salta/get_evaluacion/",{id_form_salta:28 })
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                console.log("los datos son\n\n\n");
+                console.log(response.data.data);
+                self.eval_salta = response.data.data;
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+
+    },
+
+
     agregar_empresa: function () {
       var empresa_aux = {
         id: 2,

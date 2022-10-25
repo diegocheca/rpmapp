@@ -416,3 +416,4 @@ Route::get('/formulario_salta/form_faker', [FormAltaProductorSaltaController::cl
 Route::get('/formulario_salta/empresa_faker', [EmpresasControlantesSaltaController::class, "empresa_fake"])->name('empresa-fake-salta');
 Route::get('/formulario_salta/evaluacion_fake', [FormAltaProductorEvalSaltaController::class, "evaluacion_fake"])->name('evaluacion-fake-salta');
 Route::post('/formulario_salta/guardar_eval', [FormAltaProductorEvalSaltaController::class, "store"])->name('store-eval-salta');
+Route::post('/formulario_salta/get_evaluacion', [FormAltaProductorEvalSaltaController::class, "get_evaluacion"])->name('get_evaluacion');

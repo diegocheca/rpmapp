@@ -259,7 +259,9 @@ class FormAltaProductorEvalSalta extends Model
         
     }
 
-    public static function get_form_salta($id_formulario){
+
+
+    public static function get_evaluacion($id_formulario){
         return FormAltaProductorEvalSalta::find($id_formulario);
     }
 
