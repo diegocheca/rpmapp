@@ -76,7 +76,7 @@ class FormAltaProductorSaltaController extends Controller
             'msg' => 'datos creados',
             'data' => $formulario
         ], 201); 
-        
+
     }
     public function traer_permisos_pagina_salta($id, $accion)
     {
@@ -1698,8 +1698,11 @@ class FormAltaProductorSaltaController extends Controller
             //$request->form["id_usuario"] = Auth::user()->id;
             //$request->form["id_formulario_alta"] = $request["id_formulario_alta"];
             $resultado = FormAltaProductorSalta::crear_formulario_salta_all($request->form,$request["id_formulario_alta"]);
-
-            return $resultado;
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'datos creados',
+                'data' => $resultado
+            ], 201); 
         }
     }
 

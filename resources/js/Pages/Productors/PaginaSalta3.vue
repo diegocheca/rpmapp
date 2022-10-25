@@ -5177,44 +5177,58 @@ export default {
   },
   methods: {
     
-    guardar_form() {
+    async  guardar_form() {
       let self = this;
-       axios
+      let response1 = await axios
             .post("/formulario_salta/guardar_alta/", {
               form: this.form_salta,
               id_formulario_alta: 1858
             })
             .then(function (response) {
               if (response.data.status === "ok") {
-                self.permisos_mostrar = response.data.mostrar;
-                // console.log(self.permisos_mostrar);
-                self.permisos_disables = response.data.disables;
-              } else console.log("error al buscar permisos: " + response.data.msg);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        //empresas
-        axios
-            .post("/formulario_salta/guardar_empresas/", {
-              id_formulario_alta_salta : 2,
-              empresas: this.empresas
-            })
-            .then(function (response) {
-              if (response.data.status === "ok") {
-                self.permisos_mostrar = response.data.mostrar;
-                // console.log(self.permisos_mostrar);
-                self.permisos_disables = response.data.disables;
+                self.form_salta.id = response.data.data;
+
+                self.eval_salta.id_formulario_alta_salta = response.data.data;
+
+                setTimeout(function(){
+                    console.log("Executed after 1 second");
+                }, 1000);
               } else console.log("error al buscar permisos: " + response.data.msg);
             })
             .catch(function (error) {
               console.log(error);
             });
 
+
+        //empresas
+        let response2 = await 
+              axios
+                .post("/formulario_salta/guardar_empresas/", {
+                  id_formulario_alta_salta : self.form_salta.id,
+                  empresas: this.empresas
+                })
+                .then(function (response_empresa) {
+                  if (response_empresa.data.status === "ok") {
+                    //self.permisos_mostrar = response_empresa.data.mostrar;
+                    // console.log(self.permisos_mostrar);
+                    //self.permisos_disables = response_empresa.data.disables;
+                    alert("empresas dice:"+response_empresa.data.data);
+                  } else console.log("error al buscar permisos: " + response_empresa.data.msg);
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+
+
+                console.log("\n\n\n");
+                console.log("result of await", response1, response2);
+
+
     },
     
     guardar_eval() {
       let self = this;
+      this.eval_salta.id_formulario_alta_salta =this.form_salta.id  ;
         axios
             .post("/formulario_salta/guardar_eval/", {
               eval: this.eval_salta

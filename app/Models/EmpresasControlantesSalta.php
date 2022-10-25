@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
+use Auth;
 class EmpresasControlantesSalta extends Model
 {
     use HasFactory;
@@ -33,6 +34,7 @@ class EmpresasControlantesSalta extends Model
 
     public static function crear_empresa($id_formulario_alta_salta,$empresa)
 	{
+        //dd($id_formulario_alta_salta);
         try {
                 $empresa_created = EmpresasControlantesSalta::create([
                     'id_formulario_alta_salta' => $id_formulario_alta_salta,
@@ -50,11 +52,11 @@ class EmpresasControlantesSalta extends Model
                     'otro' => $empresa["otro"],
                     //$empresa->created_by = $empresa["created_by"];
                     //$empresa->updated_by = $empresa["updated_by"];
-                    'created_by' => 1,
-                    'updated_by' => 1
+                    'created_by' => Auth::user()->id,
+                    'updated_by' => Auth::user()->id
 
                 ]);
-            return (["success",$empresa_created->id]);
+            return ($empresa_created->id);
         } catch(ModelNotFoundException $e) {
             return (["error",$e]);
         }

@@ -82,14 +82,18 @@ class EmpresasControlantesSaltaController extends Controller
             if($formulario==null){
                 return false;
             }*/
+            //dd($request->all());
             $index= 0;
             foreach($request->empresas as $empresa){
-                echo $index;
                 $index++;
                 $empresa["id"] = null;
-                $empresa_nueva = EmpresasControlantesSalta::crear_empresa(1,$empresa);
+                $empresa_nueva = EmpresasControlantesSalta::crear_empresa($request->id_formulario_alta_salta,$empresa);
             }
-            return true;
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'empresas creadas',
+                'data' => $index
+            ], 201); 
         //}
     }
 

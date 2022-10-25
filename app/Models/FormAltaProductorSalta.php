@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Constants;
-
+use Auth;
 use App\Models\FormAltaProductor;
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
 
@@ -17,7 +17,7 @@ class FormAltaProductorSalta extends Model
     use SoftDeletes;
     
     protected $table = 'form_alta_productoresSalta';
-    protected $date = ['created_by','created_at', 'deleted_at', 'updated_at'];
+    protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
     'id_formulario_alta',
     'tipo',
@@ -334,12 +334,12 @@ class FormAltaProductorSalta extends Model
                 $formulario_provisorio->regalias = $formulario_salta["regalias"];
                 $formulario_provisorio->personas_afectadas = $formulario_salta["personas_afectadas"];
                 $formulario_provisorio->multas = $formulario_salta["multas"];
-                $formulario_provisorio->created_by = 1;
-                $formulario_provisorio->updated_by = 1;
+                $formulario_provisorio->created_by = Auth::user()->id;
+                $formulario_provisorio->updated_by = Auth::user()->id;
 
                 $formulario_provisorio->save();
 
-            return (["success",$formulario_provisorio->id]);
+            return $formulario_provisorio->id;
         } catch(ModelNotFoundException $e) {
             return (["error",$e]);
         }

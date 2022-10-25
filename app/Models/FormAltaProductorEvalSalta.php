@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Faker\Factory as Faker;
 use Exception;
-
+use Auth;
 
 class FormAltaProductorEvalSalta extends Model
 {
@@ -85,6 +85,13 @@ class FormAltaProductorEvalSalta extends Model
 
     public function crear_nuevo_salta_evaluacion($formulario_salta){
         $this->id_formulario_alta_salta = $formulario_salta["id_formulario_alta_salta"];
+        if($formulario_salta["correccion_tipo"] == 'nada'){
+            $formulario_salta["correccion_tipo"] = null;
+        }
+        
+        if($formulario_salta["correccion_representante_legal_nombre"] == 'nada'){
+            $formulario_salta["correccion_representante_legal_nombre"] = null;
+        }
         if($formulario_salta["correccion_representante_legal_apellido"] == 'nada'){
             $formulario_salta["correccion_representante_legal_apellido"] = null;
         }
@@ -176,6 +183,9 @@ class FormAltaProductorEvalSalta extends Model
             $formulario_salta["correccion_multas"] = null;
         }
 
+        if($formulario_salta["correccion_empresas"] == 'nada'){
+            $formulario_salta["correccion_empresas"] = null;
+        }
 
 
 
@@ -241,6 +251,10 @@ class FormAltaProductorEvalSalta extends Model
         $this->observacion_personas_afectadas = $formulario_salta["observacion_personas_afectadas"];
         $this->correccion_multas = $formulario_salta["correccion_multas"];
         $this->observacion_multas = $formulario_salta["observacion_multas"];
+
+        $this->created_by = Auth::user()->id;
+        $this->updated_by = Auth::user()->id;
+
         $this->save();
         
     }

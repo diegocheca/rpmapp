@@ -61,7 +61,7 @@ class FormAltaProductorEvalSaltaController extends Controller
         $form_salta = FormAltaProductorSalta::all()->random(1)->first();
         $evaluacion = new FormAltaProductorEvalSalta();
         $correcciones = [true,false,"nada"];
-        $evaluacion->id_formulario_alta_salta= $form_salta->id;
+        //$evaluacion->id_formulario_alta_salta= $form_salta->id;
         $evaluacion->correccion_tipo= $correcciones[$faker->numberBetween(0,2)];
         $evaluacion->observacion_tipo= $faker->sentence($nbWords = 6, $variableNbWords = true);
         $evaluacion->correccion_representante_legal_nombre= $correcciones[$faker->numberBetween(0,2)];
