@@ -11,6 +11,7 @@ use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\FormAltaProductorCatamarcaController;
 use App\Http\Controllers\FormAltaProductorMendozaController;
 use App\Http\Controllers\FormAltaProductorTucumanController;
+use App\Http\Controllers\FormAltaProductorSaltaController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -33,7 +34,6 @@ use App\Http\Controllers\MinaCanteraController;
 
 
 
-use App\Http\Controllers\FormAltaProductorSaltaController;
 use App\Http\Controllers\EmpresasControlantesSaltaController;
 
 
@@ -286,6 +286,11 @@ Route::get('/formularios/traer_permisos_pagina_mendoza/{id}/{accion}', [FormAlta
 Route::post('/formularios/evaluacion_auto_guardado_tucuman', [FormAltaProductorTucumanController::class, "correccion_guardar_paso_tucuman"])->name('correccion_guardar-paso-tucuman');
 Route::get('/formularios/traer_datos_pagina_tucuman/{id}', [FormAltaProductorTucumanController::class, "traer_datos_pagina_tucuman"])->name('traer-datos-pagina-tucuman');
 Route::get('/formularios/traer_permisos_pagina_tucuman/{id}/{accion}', [FormAltaProductorTucumanController::class, "traer_permisos_pagina_tucuman"])->name('traer-permisos-pagina-tucuman');
+
+#SALTA
+Route::post('/formularios/evaluacion_auto_guardado_salta', [FormAltaProductorSaltaController::class, "correccion_guardar_paso_salta"])->name('correccion_guardar-paso-salta');
+Route::get('/formularios/traer_datos_pagina_salta/{id}', [FormAltaProductorSaltaController::class, "traer_datos_pagina_salta"])->name('traer-datos-pagina-salta');
+Route::get('/formularios/traer_permisos_pagina_salta/{id}/{accion}', [FormAltaProductorSaltaController::class, "traer_permisos_pagina_salta"])->name('traer-permisos-pagina-salta');
 
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
 Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');

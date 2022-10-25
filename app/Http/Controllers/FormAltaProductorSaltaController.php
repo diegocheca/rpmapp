@@ -66,18 +66,19 @@ class FormAltaProductorSaltaController extends Controller
         $formulario->estado_contable= "";
         $formulario->listado_de_maquinaria= "";
         $formulario->regalias= "";
+
         $formulario->personas_afectadas= $faker->numberBetween(4,99);
         $formulario->multas= "";
         $formulario->created_by= 1;
         $formulario->updated_by= 1;
-
         return response()->json([
             'status' => 'ok',
             'msg' => 'datos creados',
             'data' => $formulario
         ], 201); 
+        
     }
-    public function traer_permisos_pagina_tucuman($id, $accion)
+    public function traer_permisos_pagina_salta($id, $accion)
     {
         $estado = 0;
         if (intval($id)  === 0) {
@@ -290,7 +291,7 @@ class FormAltaProductorSaltaController extends Controller
             "responsable_dni" => true,
             "responsable_matricula" => true,
             "responsable_titulo" => true,
-            
+
             "tipo_correcto" => false,
             "representante_legal_apellido_correcto" => false,
             "representante_legal_nombre_correcto" => false,
@@ -391,10 +392,121 @@ class FormAltaProductorSaltaController extends Controller
         ];
         $disables[10]['Autoridad']['editar']['borrador']['altaProdMinero'] = [];
         $disables[10]['Administrador']['editar']['borrador']['altaProdMinero'] = [];
-        $mostrar[10]['Productor']['editar']['borrador']['altaProdMinero'] = [];
-        $mostrar[10]['Autoridad']['editar']['borrador']['altaProdMinero'] = [];
-        $mostrar[10]['Administrador']['editar']['borrador']['altaProdMinero'] = [];
-        
+        $mostrar[10]['Productor']['editar']['borrador']['altaProdMinero'] = [
+            "id_formulario_alta" => true,
+
+            "tipo" => true,
+            "representante_legal_apellido" => true,
+            "representante_legal_nombre" => true,
+            "representante_legal_dni" => true,
+            "representante_legal_email" => true,
+            "representante_legal_cargo" => true,
+            "telefono" => true,
+            "nacionalidad" => true,
+            "representante_legal_domicilio" => true,
+            "responsable_apellido" => true,
+            "responsable_nombre" => true,
+            "responsable_dni" => true,
+            "responsable_matricula" => true,
+            "responsable_titulo" => true,
+
+            "tipo_correcto" => false,
+            "representante_legal_apellido_correcto" => false,
+            "representante_legal_nombre_correcto" => false,
+            "representante_legal_dni_correcto" => false,
+            "representante_legal_email_correcto" => false,
+            "representante_legal_cargo_correcto" => false,
+            "telefono_correcto" => false,
+            "nacionalidad_correcto" => false,
+            "representante_legal_domicilio_correcto" => false,
+            "responsable_apellido_correcto" => false,
+            "responsable_nombre_correcto" => false,
+            "responsable_dni_correcto" => false,
+            "responsable_matricula_correcto" => false,
+            "responsable_titulo_correcto" => false,
+
+            "paso_salta" => true,
+            "boton_salta" => true,
+            "estado" => true,
+            "boton_actualizar" => true,
+        ];
+        $mostrar[10]['Autoridad']['editar']['borrador']['altaProdMinero'] = [
+            "id_formulario_alta" => true,
+
+            "tipo" => true,
+            "representante_legal_apellido" => true,
+            "representante_legal_nombre" => true,
+            "representante_legal_dni" => true,
+            "representante_legal_email" => true,
+            "representante_legal_cargo" => true,
+            "telefono" => true,
+            "nacionalidad" => true,
+            "representante_legal_domicilio" => true,
+            "responsable_apellido" => true,
+            "responsable_nombre" => true,
+            "responsable_dni" => true,
+            "responsable_matricula" => true,
+            "responsable_titulo" => true,
+
+            "tipo_correcto" => false,
+            "representante_legal_apellido_correcto" => false,
+            "representante_legal_nombre_correcto" => false,
+            "representante_legal_dni_correcto" => false,
+            "representante_legal_email_correcto" => false,
+            "representante_legal_cargo_correcto" => false,
+            "telefono_correcto" => false,
+            "nacionalidad_correcto" => false,
+            "representante_legal_domicilio_correcto" => false,
+            "responsable_apellido_correcto" => false,
+            "responsable_nombre_correcto" => false,
+            "responsable_dni_correcto" => false,
+            "responsable_matricula_correcto" => false,
+            "responsable_titulo_correcto" => false,
+
+            "paso_salta" => true,
+            "boton_salta" => true,
+            "estado" => true,
+            "boton_actualizar" => true,
+        ];
+        $mostrar[10]['Administrador']['editar']['borrador']['altaProdMinero'] = [
+            "id_formulario_alta" => true,
+
+            "tipo" => true,
+            "representante_legal_apellido" => true,
+            "representante_legal_nombre" => true,
+            "representante_legal_dni" => true,
+            "representante_legal_email" => true,
+            "representante_legal_cargo" => true,
+            "telefono" => true,
+            "nacionalidad" => true,
+            "representante_legal_domicilio" => true,
+            "responsable_apellido" => true,
+            "responsable_nombre" => true,
+            "responsable_dni" => true,
+            "responsable_matricula" => true,
+            "responsable_titulo" => true,
+
+            "tipo_correcto" => false,
+            "representante_legal_apellido_correcto" => false,
+            "representante_legal_nombre_correcto" => false,
+            "representante_legal_dni_correcto" => false,
+            "representante_legal_email_correcto" => false,
+            "representante_legal_cargo_correcto" => false,
+            "telefono_correcto" => false,
+            "nacionalidad_correcto" => false,
+            "representante_legal_domicilio_correcto" => false,
+            "responsable_apellido_correcto" => false,
+            "responsable_nombre_correcto" => false,
+            "responsable_dni_correcto" => false,
+            "responsable_matricula_correcto" => false,
+            "responsable_titulo_correcto" => false,
+
+            "paso_salta" => true,
+            "boton_salta" => true,
+            "estado" => true,
+            "boton_actualizar" => true,
+        ];
+
         # EDITAR - EN REVISION
         $disables[10]['Productor']['editar']['en revision']['altaProdMinero'] = [];
         $disables[10]['Autoridad']['editar']['en revision']['altaProdMinero'] = [];
@@ -433,7 +545,6 @@ class FormAltaProductorSaltaController extends Controller
             'disables' => $disables[10][$rol][$accion][$estado]['altaProdMinero'],
             'mostrar' => $mostrar[10][$rol][$accion][$estado]['altaProdMinero']
         ], 201);
-
     }
     
     public function look_up(Request $request)
@@ -537,7 +648,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
         ];
@@ -577,7 +688,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
 
@@ -618,7 +729,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
 
@@ -659,7 +770,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
         ];
@@ -699,7 +810,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
         ];
@@ -739,7 +850,7 @@ class FormAltaProductorSaltaController extends Controller
             "multas" => false,
             "created_by" => false,
             "updated_by" => false,
-            
+
             "paso_salta" => false,
             "boton_salta" => false,
         ];

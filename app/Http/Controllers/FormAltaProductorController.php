@@ -4914,8 +4914,9 @@ class FormAltaProductorController extends Controller
 					"paso_seis" => false,
 
 
-					"paso_salta" => false,
 					
+					"paso_salta" => false,
+					"boton_salta" => false,
 
 					"estado" => false,
 					"boton_actualizar" => false,
@@ -5069,8 +5070,9 @@ class FormAltaProductorController extends Controller
 
 
 
+					
 					"paso_salta" => true,
-
+					"boton_salta" => true,
 
 					"estado" => true,
 
@@ -5229,8 +5231,9 @@ class FormAltaProductorController extends Controller
 					"constancia_afip_correccion" => false,
 					"autorizacion_gestor" => false,
 					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
+					
+					"paso_salta" => false,
+					"boton_salta" => false,
 
 					"estado" => false,
 					"boton_actualizar" => false,
@@ -5379,8 +5382,9 @@ class FormAltaProductorController extends Controller
 					"constancia_afip_correccion" => false,
 					"autorizacion_gestor" => false,
 					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
+					
+					"paso_salta" => true,
+					"boton_salta" => true,
 
 
 					"estado" => true,
@@ -5540,8 +5544,9 @@ class FormAltaProductorController extends Controller
 					"constancia_afip_correccion" => false,
 					"autorizacion_gestor" => false,
 					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
+					
+					"paso_salta" => false,
+					"boton_salta" => false,
 
 					"estado" => false,
 					"boton_actualizar" => false,
@@ -5690,8 +5695,9 @@ class FormAltaProductorController extends Controller
 					"constancia_afip_correccion" => false,
 					"autorizacion_gestor" => false,
 					"autorizacion_gestor_correccion" => false,
-					"paso_catamarca" => false,
-					"boton_catamarca" => false,
+					
+					"paso_salta" => true,
+					"boton_salta" => true,
 
 
 					"estado" => true,
@@ -7591,7 +7597,7 @@ class FormAltaProductorController extends Controller
 				];
 			}
 		} elseif (Auth::user()->id_provincia  == 58) {
-			$nombre_provincia = "Santiago del Estero";
+			$nombre_provincia = "Neuquén";
 			if (Auth::user()->hasRole('Productor')) {
 				$disables = [
 					"razon_social" => false,
@@ -9482,7 +9488,7 @@ class FormAltaProductorController extends Controller
 				];
 			}
 		}elseif (Auth::user()->id_provincia  == 90) {
-			$nombre_provincia = "Rio Negro";
+			$nombre_provincia = "Tucumán";
 			if (Auth::user()->hasRole('Productor')) {
 				$disables = [
 					"razon_social" => false,
@@ -11319,7 +11325,8 @@ class FormAltaProductorController extends Controller
 					$disables["estado"] = false;
 					$disables["boton_actualizar"] = false;
 
-					$disables["paso_salta"] = true;
+					$disables["paso_salta"] = false;
+					
 
 					$mostrar["razon_social_correccion"] = false;
 					$mostrar["email_correccion"] = false;
@@ -11399,7 +11406,7 @@ class FormAltaProductorController extends Controller
 					$mostrar["alerta_puede_editar"] = true;
 
 					
-					$mostrar["paso_salta"] = false;
+					$mostrar["paso_salta"] = true;
 
 
 					if (Auth::user()->id_provincia == 10) // es de catamarca
