@@ -157,6 +157,10 @@ class FormAltaProductorEvalSaltaController extends Controller
         //
     }
 
+    public function get_evaluacion(Request $request){
+        return FormAltaProductorEvalSalta::find($request->request);
+    }
+
     /**
      * Update the specified resource in storage.
      *
