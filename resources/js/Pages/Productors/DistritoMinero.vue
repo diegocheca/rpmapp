@@ -49,14 +49,6 @@
                 <p  v-bind:class=clase_text_evaluacion_de_text_area>{{texto_validacion_text_area}}</p>
             </div>
         </div>
-        --distrtito minero calle:{{distrito_minero}}--
-        --distrtito minero calle Valido:{{distrito_minero_validacion}}--
-        --distrtito minero calle Valido local:{{valor_variable_local}}--
-        --distrtito minero calle Evalaucion:{{distrito_minero_correcto}}--
-        --distrtito minero calle Obser:{{obs_distrito_minero}}--
-        --distrtito minero calle obsr Valido:{{obs_distrito_minero_valido}}--
-        --Evaluacion {{evaluacion}}--
-        --{{texto_validacion_text_area}}--
     </div>
 </template>
 

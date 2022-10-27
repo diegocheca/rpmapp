@@ -6,7 +6,8 @@
 					<h1 class="block w-full text-center text-grey-darkest text-xl mb-6">
 						Editar Productor
 					</h1>
-					{{$props.producto.id_reinscripcion}}
+					<!--{{$props.producto
+					}}-->
 					
 					<div class="flex flex-col mb-4">
 						<label
@@ -123,7 +124,7 @@
 						type="submit"
 						class="block bg-blue-500 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
 					>
-						Editar
+						Actualizar
 					</button>
 				</div>
 			</form>
@@ -157,12 +158,29 @@ export default {
 		};
 	},
 	methods: {
-		submit() {
+		/*submit() {
 			this.$inertia.put(
 				route("productos.update", this.$props.producto.id),
 				this.form
 			);
+		},*/
+		submit() {
+			let self = this;
+			axios
+				.post("/productos/actualizar", {
+				id: this.$props.producto.id,
+				form: this.form
+
+				})
+				.then(function (response) {
+				console.log(response.data);
+				})
+				.catch(function (error) {
+				// handle error
+				console.log(error);
+				});
 		},
+
 	},
 };
 </script>

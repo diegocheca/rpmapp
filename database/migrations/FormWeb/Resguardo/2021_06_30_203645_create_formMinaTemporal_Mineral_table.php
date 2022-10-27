@@ -20,8 +20,8 @@ class CreateFormMinaTemporalMineralTable extends Migration
             $table->unsignedBigInteger('minatemporal_id');
             $table->unsignedBigInteger('mineral_id');
 
-            $table->foreign('minatemporal_id')->references('id')->on('formMinaTemporal');
-            $table->foreign('mineral_id')->references('id')->on('mineral');
+            //$table->foreign('minatemporal_id')->references('id')->on('formMinaTemporal');
+            //$table->foreign('mineral_id')->references('id')->on('mineral');
 
             $table->timestamps();
         });

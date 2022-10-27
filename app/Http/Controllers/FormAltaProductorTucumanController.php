@@ -1109,8 +1109,6 @@ class FormAltaProductorTucumanController extends Controller
 
     public function correccion_guardar_paso_tucuman(Request $request)
     {
-        // dd('Hola');
-        dd($request->all());
         try {
             date_default_timezone_set('America/Argentina/Buenos_Aires');
             $formulario_provisorio = FormAltaProductor::select('*')

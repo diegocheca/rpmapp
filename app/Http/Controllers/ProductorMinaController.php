@@ -34,9 +34,12 @@ class ProductorMinaController extends Controller
             ->paginate(5); */
             DB::table('productor_mina')
             ->join('form_alta_productores', 'form_alta_productores.id', '=', 'productor_mina.id_formulario')
-            ->select('productor_mina.*')
+            ->join('mina_cantera', 'mina_cantera.id', '=', 'productor_mina.id_mina')
+            ->join('productores', 'productores.id', '=', 'productor_mina.id_productor')
+            ->join('users', 'users.id', '=', 'form_alta_productores.created_by')
+            ->select('productor_mina.*','productores.razonsocial','users.profile_photo_path','mina_cantera.nombre')
             ->orderBy('productor_mina.id', 'desc')
-            ->paginate(5);
+            ->paginate(10);
 
            /*  ProductorMina::select('id')
             ->join('form_alta_productores', 'form_alta_productores.id', '=', 'productor_mina.id_formulario')
@@ -61,7 +64,7 @@ class ProductorMinaController extends Controller
 			//$temp = ProductorMina::select('id')->where('estado', '=','con observacion')->get();
 			$grafico_donut["observacion"]  = 8;
             return Inertia::render('ProductorMina/List', [
-                'borradores' => $productorminas,
+                'productores_minas' => $productorminas,
                 'soy_autoridad' => $soy_autoridad ,
 				'soy_administrador' => $soy_administrador, 
 				'soy_productor' => $soy_productor, 
@@ -87,14 +90,14 @@ class ProductorMinaController extends Controller
 			//$temp = ProductorMina::select('id')->where('estado', '=','con observacion')->get();
 			$grafico_donut["observacion"]  = 8;
             return Inertia::render('ProductorMina/List', [
-                'borradores' => $productorminas,
+                'productores_minas' => $productorminas,
                 'soy_autoridad' => $soy_autoridad ,
 				'soy_administrador' => $soy_administrador, 
 				'soy_productor' => $soy_productor, 
 				'datos_donut' => $grafico_donut
             ]);
 			return Inertia::render('Productors/List', [
-				'borradores' => FormAltaProductor::select('*')
+				'productores_minas' => FormAltaProductor::select('*')
 				->where('provincia', '=', Auth::user()->id_provincia)
 				->paginate(5),
 				'lista_minerales_cargados' => null,

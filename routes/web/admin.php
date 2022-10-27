@@ -11,7 +11,10 @@ use App\Http\Controllers\Admin\PermisosController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\ProductoresController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\FormAltaProductorFakerController;
 
+use App\Http\Controllers\VisorController;
+use App\Http\Controllers\Jujuy\JujuyController;
 // EDITAR ROLES Y PERMISOS
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
@@ -31,6 +34,27 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
         ->names('permisos');
     Route::delete('/eliminar_permiso/{id}', [PermisosController::class, "destroy"])->name('eliminar-permiso');
 
+
+    // Faker para formulario
+    Route::resource('formulario_faker', FormAltaProductorFakerController::class)
+    ->middleware(['auth:sanctum', 'verified'])
+    ->names('formulario_faker');
+    Route::post('/formulario_faker/crear', [FormAltaProductorFakerController::class, 'create_formularios_alta_productores'])->middleware(['auth:sanctum', 'verified'])->name('create_formularios_alta_productores');
+    //Route::post('/formulario_faker/index', [FormAltaProductorFakerController::class, 'index'])->middleware(['auth:sanctum', 'verified'])->name('formularios_fakers.index');
+    
+    Route::get('/reinscripcion_faker/reinscripcion_index', [FormAltaProductorFakerController::class, 'reinscripcion_index'])->middleware(['auth:sanctum', 'verified'])->name('reinscripcion_faker.index');
+    Route::post('/reinscripcion_faker/crear', [FormAltaProductorFakerController::class, 'create_reinscripcion'])->middleware(['auth:sanctum', 'verified'])->name('create_reinscripciones_fakes');
+    Route::post('/reinscripcion_faker/buscar_minas', [FormAltaProductorFakerController::class, 'buscar_minas_faker'])->middleware(['auth:sanctum', 'verified'])->name('buscar_minas_fakes');
+    
+    Route::get('/mina_faker/mina_index', [FormAltaProductorFakerController::class, 'mina_index'])->middleware(['auth:sanctum', 'verified'])->name('mina_faker.index');
+    Route::post('/mina_faker/crear', [FormAltaProductorFakerController::class, 'create_minas'])->middleware(['auth:sanctum', 'verified'])->name('create_mina_faker');
+    //Route::post('/reinscripcion_faker/buscar_minas', [FormAltaProductorFakerController::class, 'buscar_minas_faker'])->middleware(['auth:sanctum', 'verified'])->name('buscar_minas_fakes');
+
+
+    Route::get('/user_faker/user_index', [FormAltaProductorFakerController::class, 'user_index'])->middleware(['auth:sanctum', 'verified'])->name('user_faker.index');
+    Route::post('/user_faker/crear', [FormAltaProductorFakerController::class, 'create_users'])->middleware(['auth:sanctum', 'verified'])->name('create_user_faker');
+    
+    
 
 
 
@@ -57,4 +81,29 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('/excel_productores', [ProductoresController::class, 'importView'])->middleware(['auth:sanctum', 'verified'])->name('vistaImport');
 
     Route::post('/import-excel', [ProductoresController::class, 'import'])->middleware(['auth:sanctum', 'verified'])->name('import');
+
+
+    Route::redirect('/migrations', '/migrator')->name('migrations');
+
+
+    Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
+        // Jujuy
+        Route::get('apiJujuy', [JujuyController::class, 'index'])->name('apiJujuy');
+        Route::get('consultarDatos', [JujuyController::class, 'simula_datos']);
+        Route::post('enviarDatos', [JujuyController::class, 'datos_enviados']);
+    });
+
+
+
+    Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
+        // Nacion
+        Route::get('apiNacion', [VisorController::class, 'index_an'])->name('apiNacion');
+        Route::get('an_consultarDatos', [VisorController::class, 'an_simula_datos']);
+        Route::post('an_enviarDatos', [VisorController::class, 'an_datos_enviados']);
+    });
+
+
+    Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware(['auth:sanctum', 'verified'])->name('logs');
+
+
 });

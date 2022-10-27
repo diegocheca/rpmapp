@@ -100,6 +100,17 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
+  'livewire/livewire' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Livewire\\LivewireServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Livewire' => 'Livewire\\Livewire',
+    ),
+  ),
   'maatwebsite/excel' => 
   array (
     'providers' => 
@@ -130,6 +141,13 @@
     'providers' => 
     array (
       0 => 'Rap2hpoutre\\LaravelLogViewer\\LaravelLogViewerServiceProvider',
+    ),
+  ),
+  'rezaamini-ir/migrator' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Migrator\\MigratorServiceProvider',
     ),
   ),
   'spatie/laravel-permission' => 

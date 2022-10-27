@@ -19,8 +19,8 @@ class CreateFormRolPersonaSolicitudTable extends Migration
             $table->unsignedBigInteger('solicitud_id');
             $table->unsignedBigInteger('rolpersona_id');
 
-            $table->foreign('solicitud_id')->references('id')->on('formSolicitud');
-            $table->foreign('rolpersona_id')->references('id')->on('formRolPersona');
+            //$table->foreign('solicitud_id')->references('id')->on('formSolicitud');
+            //$table->foreign('rolpersona_id')->references('id')->on('formRolPersona');
 
             $table->timestamps();
         });

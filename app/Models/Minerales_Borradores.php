@@ -39,5 +39,25 @@ class Minerales_Borradores extends Model
         'updated_at',
         'deleted_at',
     ];
+    public  static function actualizar_registros_minerales_en_mina($id_formulario)
+	{
+		if ($id_formulario > 1) {
+			//busco formulario provisorio
+			//busco formulario provisorio
+			$formulario_provisorio = FormAltaProductor::find($id_formulario);
+			if ($formulario_provisorio != null) {
+				//debo actualizar todos los registros que tengan el id del formulario y pasarlos de
+				//borrador a aprobados
+				$resultado = Minerales_Borradores::select('*')->where('id_formulario', '=', $id_formulario)->get();
+				foreach ($resultado as $mineral) {
+					$mineral->estado = 'aprobado';
+					$mineral->save();
+				}
+				return true;
+			} else {
+				return "el formulario no existe";
+			}
+		} else return "id menor a 1";
+	}
 
 }

@@ -59,6 +59,13 @@
                 </jet-nav-link>
                 <jet-nav-link
                   v-if="hasAnyPermission(['rpm.prodmina.show'])"
+                  :href="route('minas.index')"
+                  :active="route().current('minas.index')"
+                >
+                  Minas
+                </jet-nav-link>
+                <jet-nav-link
+                  v-if="hasAnyPermission(['rpm.prodmina.show'])"
                   :href="route('productores_minas.index')"
                   :active="route().current('productores_minas.index')"
                 >
@@ -614,6 +621,44 @@
                     />
                   </svg>
                   <span>IIASyDIAS</span>
+                </inertia-link>
+                <inertia-link
+                  v-if="hasAnyPermission(['rpm.prodmina.show'])"
+                  :href="route('minas.index')"
+                  :active="route().current('minas.index')"
+                  class="
+                    relative
+                    flex flex-row
+                    items-center
+                    h-11
+                    focus:outline-none
+                    hover:bg-gray-50
+                    text-gray-600
+                    hover:text-gray-800
+                    border-l-4 border-transparent
+                    hover:border-indigo-500
+                    pr-6
+                  "
+                >
+                  <svg
+                    class="w-6 h-6"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"
+                    />
+                    <path
+                      d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"
+                    />
+                  </svg>
+                  <span>Minas</span>
                 </inertia-link>
                 <inertia-link
                   v-if="hasAnyPermission(['rpm.prodmina.show'])"

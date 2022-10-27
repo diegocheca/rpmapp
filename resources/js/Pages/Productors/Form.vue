@@ -24,6 +24,21 @@
               <banner></banner>
             </div>
             <!-- <br /> -->
+            salta : {{$props.mostrar.paso_salta}}
+
+            <div ></div>
+            <PaginaSalta3
+              :link_volver="route('formulario-alta.index')"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar'"
+              :titulo_pagina="'Salta'"
+              :evaluacion="false"
+              :accion="crear"
+              :id="form.id"
+              
+            >
+            </PaginaSalta3>
+
             <div id="section_productor"></div>
             <PaginaUnoDatosProductores
               v-if="$props.mostrar.paso_uno"
@@ -820,6 +835,7 @@
               :id="form.id"
               :testing="testing_global"
               :categoria="form.categoria"
+              :accion="crear"
               v-on:mostrarpasosiguiente="
                 mostar_paso_siguiente('Datos de Mina Segunda Parte', $event)
               "
@@ -1010,6 +1026,21 @@
               "
             >
             </PaginaMendoza>
+            
+            <div id="section_salta" v-if="$props.mostrar.paso_salta"></div>
+            <PaginaSalta
+              v-if="m_salta && $props.mostrar.paso_salta"
+              :link_volver="'#'"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar Datos'"
+              :titulo_pagina="'Datos Extras de la Provincia'"
+              :evaluacion="evaluacion_global"
+              :testing="testing_global"
+              :id="form.id"
+              :editar="false"
+              v-on:mostrarpasosiguiente="mostar_paso_siguiente('Salta', $event)"
+            >
+            </PaginaSalta>
 
             <div id="finalizar"></div>
             <div
@@ -1251,40 +1282,6 @@
                     >Sin Guardar</span
                   >
                 </div>
-                <!-- <div
-                  class="w-full sm:w-2/2 md:w-1/2 xl:w-1/3 px-3 mb-6 md:mb-0"
-                  v-if="$props.mostrar.estado"
-                >
-                  <label
-                    class="mb-2 uppercase font-bold text-lg text-grey-darkest"
-                    for="estado"
-                    >Nuevo Estado:</label
-                  ><br />
-                  <select
-                    id="estado"
-                    name="estado"
-                    v-model="form.estado"
-                    :disabled="$props.disables.estado"
-                    @input="calcular_nombre_boton($event.target.value)"
-                    class="
-                      block
-                      appearance-none
-                      bg-white
-                      border border-gray-400
-                      hover:border-gray-500
-                      px-4
-                      py-2
-                      pr-8
-                      rounded
-                      shadow
-                      leading-tight
-                      focus:outline-none focus:shadow-outline
-                    "
-                  >
-                    <option value="borrador">Borrador</option>
-                    <option value="presentar">Presentar</option>
-                  </select>
-                </div> -->
               </div>
               <br />
               <br />
@@ -1411,7 +1408,11 @@ import PaginaCincoDatosMinaDos from "@/Pages/Productors/PaginaCincoDatosMinaDos"
 import PaginaSeisDatosUbicacionMina from "@/Pages/Productors/PaginaSeisDatosUbicacionMina";
 import PaginaCatamarca from "@/Pages/Productors/PaginaCatamarca";
 import PaginaTucuman from "@/Pages/Productors/PaginaTucuman";
+import PaginaSalta from "@/Pages/Productors/PaginaSalta";
+import PaginaSalta2 from "@/Pages/Productors/PaginaSalta2";
 import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
+import PaginaSalta3 from "@/Pages/Productors/PaginaSalta3";
+
 import Pasos from "@/Pages/Common/PasosParaInscribirseProd";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
 
@@ -1445,7 +1446,10 @@ export default {
     PaginaSeisDatosUbicacionMina,
     PaginaCatamarca,
     PaginaTucuman,
+    PaginaSalta,
+    // PaginaSalta2,
     PaginaMendoza,
+    PaginaSalta3,
     ValidationErrors,
     Pasos,
   },
@@ -1471,6 +1475,7 @@ export default {
       m_catamarca: false, //Catamarca
       m_tucuman: false, //Tucuman
       m_mendoza: false, //Mendoza
+      m_salta: false, //Salta
       evaluacion_global: this.$props.soy_autoridad_minera,
       testing_global: this.$props.soy_administrador,
       mostrar_modal_datos_ya_guardados: false,
@@ -2542,6 +2547,8 @@ export default {
             this.m_catamarca = valor;
           if (this.$inertia.page.props.user.id_provincia == 50)
             this.m_mendoza = valor;
+          if (this.$inertia.page.props.user.id_provincia == 66)
+            this.m_salta = valor;
           if (this.$inertia.page.props.user.id_provincia == 90)
             this.m_tucuman = valor;
           break;

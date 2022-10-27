@@ -1,20 +1,6 @@
 <template>
   <div>
     <div class="items-center justify-left">
-      <!-- <CardMinaUno
-        :progreso="50"
-        :aprobado="50"
-        :reprobado="50"
-        :lugar="'Argentina, San Juan'"
-        :titulo="titulo_pagina"
-        :updated_at="'hace 10 minutos'"
-        :mostrarayuda="true"
-        :clase_sup="'gap-6'"
-        :clase_inf="'border border-green-400 border-opacity-50 shadow-lg rounded-2xl relative bg-white py-2 px-4 w-128 grid  sm:grid-cols-1 md:grid-cols-12 lg:grid-cols-6 xl:grid-cols-12'"
-        :ayuda="ayuda_local"
-        v-on:changevalorayuda="update_valor_ayuda_local($event)"
-        v-on:continuarpagina="update_valor_pagina_siguiente($event)"
-      ></CardMinaUno> -->
       <Card
         :icono="'/formulario_alta/imagenes/tipo_caracter_card.svg'"
         :titulo="titulo_pagina"
@@ -24,120 +10,6 @@
         v-on:ocultarmodulo="update_valor_ocultar_modulo($event)"
       ></Card>
     </div>
-    <!-- <br />
-      <br /> -->
-    <!-- <div class="flex justify-end md:justify-end -mt-16 sticky top-0 z-10">
-      <a href="#section_mina_uno">
-        <img
-          class="
-            w-20
-            h-20
-            object-cover
-            rounded-full
-            border-2 border-indigo-500
-            bg-white
-          "
-          :src="
-            $inertia.page.props.appName +
-            '/formulario_alta/imagenes/tipo_caracter_card.svg'
-          "
-        />
-      </a>
-      <div v-if="$props.testing">
-        <label
-          class="flex items-center relative w-max cursor-pointer select-none"
-        >
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            class="
-              appearance-none
-              transition-colors
-              cursor-pointer
-              w-14
-              h-7
-              rounded-full
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-offset-black
-              focus:ring-blue-500
-              bg-red-500
-            "
-            v-model="mostrar_testing"
-          />
-          <span
-            class="absolute font-medium text-xs uppercase right-1 text-white"
-          >
-            Sin
-          </span>
-          <span
-            class="absolute font-medium text-xs uppercase right-8 text-white"
-          >
-            Con
-          </span>
-          <span
-            class="
-              w-7
-              h-7
-              right-7
-              absolute
-              rounded-full
-              transform
-              transition-transform
-              bg-gray-200
-            "
-          />
-        </label>
-        <label
-          class="flex items-center relative w-max cursor-pointer select-none"
-        >
-          <br />
-          <br />
-          <input
-            type="checkbox"
-            class="
-              appearance-none
-              transition-colors
-              cursor-pointer
-              w-14
-              h-7
-              rounded-full
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-offset-black
-              focus:ring-green-500
-              bg-purple-500
-            "
-            v-model="autoridad_minera"
-          />
-          <span
-            class="absolute font-medium text-xs uppercase right-1 text-white"
-          >
-            Pro
-          </span>
-          <span
-            class="absolute font-medium text-xs uppercase right-8 text-white"
-          >
-            Aut
-          </span>
-          <span
-            class="
-              w-7
-              h-7
-              right-7
-              absolute
-              rounded-full
-              transform
-              transition-transform
-              bg-gray-200
-            "
-          />
-        </label>
-      </div>
-    </div> -->
     <div v-if="mostrar_modulo" class="shadow-lg w-full py-4 px-8 bg-white">
       <div class="items-center justify-left sticky top-1 z-10">
         <Menu
@@ -151,8 +23,6 @@
           v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
         ></Menu>
       </div>
-      <!-- <h2 class="text-gray-800 text-3xl font-semibold">{{ titulo_pagina }}</h2>
-      <br /><br /> -->
       <div class="flex flex-wrap">
         <!-- N° de Expediente -->
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2 md:mb-2">
@@ -199,19 +69,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            <br />
-            num exp de Mina valor padre: {{ form_pagina.numero_expdiente }}
-            <br />
-            num exp de Mina valido del padre:
-            {{ form_pagina.numero_expdiente_valido }} <br />
-            num exp de Mina correcto deel padre:
-            {{ form_pagina.numero_expdiente_correcto }} <br />
-            num exp de Mina observacion deel padre:
-            {{ form_pagina.obs_numero_expdiente }} <br />
-            num exp de Mina observacion valida deel padre:
-            {{ form_pagina.obs_numero_expdiente_valido }}
-          </div>
+          
         </div>
         <!-- Distrito Minero -->
         <div class="w-full sm:w-2/2 md:w-1/2 px-3">
@@ -260,19 +118,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            <br />
-            distrito minero de Mina valor padre:
-            {{ form_pagina.distrito_minero }} <br />
-            distrito minero de Mina valido del padre:
-            {{ form_pagina.distrito_minero_validacion }} <br />
-            distrito minero de Mina correcto deel padre:
-            {{ form_pagina.distrito_minero_correcto }} <br />
-            distrito minero de Mina observacion deel padre:
-            {{ form_pagina.obs_distrito_minero }} <br />
-            distrito minero de Mina observacion valida deel padre:
-            {{ form_pagina.obs_distrito_minero_valido }}
-          </div>
+          
         </div>
       </div>
       <div class="flex flex-wrap">
@@ -320,18 +166,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            <br />
-            Nombre de Mina valor padre: {{ form_pagina.nombre_mina }} <br />
-            Nombre de Mina valido del padre:
-            {{ form_pagina.nombre_mina_validacion }} <br />
-            Nombre de Mina correcto deel padre:
-            {{ form_pagina.nombre_mina_correcto }} <br />
-            Nombre de Mina observacion deel padre:
-            {{ form_pagina.obs_nombre_mina }} <br />
-            Nombre de Mina observacion valida deel padre:
-            {{ form_pagina.obs_nombre_mina_valido }}
-          </div>
+          
         </div>
         <!-- Descripción Mina -->
         <div class="w-full sm:w-2/2 md:w-1/2 px-3 mb-2 md:mb-2">
@@ -381,19 +216,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            <br />
-            Nombre de Mina valor padre: {{ form_pagina.descripcion_mina }}
-            <br />
-            Nombre de Mina valido del padre:
-            {{ form_pagina.descripcion_mina_validacion }} <br />
-            Nombre de Mina correcto deel padre:
-            {{ form_pagina.descripcion_mina_correcto }} <br />
-            Nombre de Mina observacion deel padre:
-            {{ form_pagina.obs_descripcion_mina }} <br />
-            Nombre de Mina observacion valida deel padre:
-            {{ form_pagina.obs_descripcion_mina_valido }}
-          </div>
+          
         </div>
       </div>
       <div class="flex flex-wrap">
@@ -442,19 +265,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            <br />
-            Categoria de Mina valor padre: {{ $props.categoria }} <br />
-            Categoria de Mina valor padre: {{ form_pagina.categoria }} <br />
-            Categoria de Mina valido del padre:
-            {{ form_pagina.categoria_validacion }} <br />
-            Categoria de Mina correcto deel padre:
-            {{ form_pagina.categoria_correcto }} <br />
-            Categoria de Mina observacion deel padre:
-            {{ form_pagina.obs_categoria }} <br />
-            Categoria de Mina observacion valida deel padre:
-            {{ form_pagina.obs_categoria_valido }}
-          </div>
+          
         </div>
         <div class="w-full sm:w-2/2 md:w-1/2 px-3">
           <div
@@ -578,19 +389,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            <br />
-            concesion resolucion minera de Mina valor padre:
-            {{ form_pagina.resolucion_concesion_minera }} <br />
-            concesion resolucion minera de Mina valido del padre:
-            {{ form_pagina.resolucion_concesion_minera_validacion }} <br />
-            concesion resolucion minera de Mina correcto deel padre:
-            {{ form_pagina.resolucion_concesion_minera_correcto }} <br />
-            concesion resolucion minera de Mina observacion deel padre:
-            {{ form_pagina.obs_resolucion_concesion_minera }} <br />
-            concesion resolucion minera de Mina observacion valida deel padre:
-            {{ form_pagina.obs_resolucion_concesion_minera_valido }}
-          </div>
+          
         </div>
       </div>
       <div class="flex flex-wrap">
@@ -654,23 +453,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            -- plano_inmueble minera del padre{{
-              form_pagina.plano_inmueble
-            }}
-            -- plano_inmueble_validacion minera valida deel padre{{
-              form_pagina.plano_inmueble_validacion
-            }}
-            -- plano_inmueble_correcto minera correcto deel padre{{
-              form_pagina.plano_inmueble_correcto
-            }}
-            -- obs_plano_inmueble minera observacion deel padre{{
-              form_pagina.obs_plano_inmueble
-            }}
-            -- obs_plano_inmueble_valido minera observacion valida deel padre{{
-              form_pagina.obs_plano_inmueble_valido
-            }}
-          </div>
+          
         </div>
         <div
           class="
@@ -732,22 +515,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            -- titulo_contrato_posecion deel padre{{
-              form_pagina.titulo_contrato_posecion
-            }}
-            -- titulo_contrato_posecion_validacion valida deel padre{{
-              form_pagina.titulo_contrato_posecion_validacion
-            }}
-            -- titulo_contrato_posecion_correcto correcto deel padre{{
-              form_pagina.titulo_contrato_posecion_correcto
-            }}
-            -- obs_titulo_contrato_posecion observacion deel padre{{
-              form_pagina.obs_titulo_contrato_posecion
-            }}
-            -- obs_titulo_contrato_posecion_valido observacion valida deel
-            padre{{ form_pagina.obs_titulo_contrato_posecion_valido }}
-          </div>
+          
         </div>
       </div>
       <div class="flex flex-wrap">
@@ -806,23 +574,7 @@
             </div>
             <br />
           </div>
-          <div class="flex flex-col" v-if="mostrar_testing">
-            <h3>Testing de lista de minerales</h3>
-            -- titulo_contrato_posecion deel padre{{
-              form_pagina.titulo_contrato_posecion
-            }}
-            -- titulo_contrato_posecion_validacion valida deel padre{{
-              form_pagina.titulo_contrato_posecion_validacion
-            }}
-            -- titulo_contrato_posecion_correcto correcto deel padre{{
-              form_pagina.titulo_contrato_posecion_correcto
-            }}
-            -- obs_titulo_contrato_posecion observacion deel padre{{
-              form_pagina.obs_titulo_contrato_posecion
-            }}
-            -- obs_titulo_contrato_posecion_valido observacion valida deel
-            padre{{ form_pagina.obs_titulo_contrato_posecion_valido }}
-          </div>
+          
         </div>
       </div>
       <!-- <div class="flex justify-end mt-4">

@@ -11,6 +11,7 @@ use App\Http\Controllers\FormAltaProductorController;
 use App\Http\Controllers\FormAltaProductorCatamarcaController;
 use App\Http\Controllers\FormAltaProductorMendozaController;
 use App\Http\Controllers\FormAltaProductorTucumanController;
+use App\Http\Controllers\FormAltaProductorSaltaController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
@@ -29,10 +30,19 @@ use App\Http\Controllers\ChartsController;
 use App\Http\Controllers\formWebController\MineralesController;
 use App\Http\Controllers\BandejaEntradaEmailsController;
 
+use App\Http\Controllers\MinaCanteraController;
+
+
+
+use App\Http\Controllers\EmpresasControlantesSaltaController;
+use App\Http\Controllers\FormAltaProductorEvalSaltaController;
+
+
 use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\Mendoza\PresentacionAltaProdMendozaController;
 use App\Http\Controllers\SanJuan\PresentacionAltaProdSanJuanController;
+
 
 
 use App\Http\Controllers\Mendoza\ComprobanteProductorMendozaController;
@@ -121,6 +131,10 @@ Route::resource('productos', ProductosController::class)
 
 Route::resource('iiadias', IiadiaController::class)
     ->middleware(['auth:sanctum', 'verified']);
+
+    Route::resource('minas', MinaCanteraController::class)
+    ->middleware(['auth:sanctum', 'verified']);
+
 Route::post('/guardando_dia_iia', [IiadiaController::class, "recibo"])->name('recibo-dia-iia');
 
 Route::resource('pagos', PagocanonminaController::class)
@@ -274,6 +288,11 @@ Route::post('/formularios/evaluacion_auto_guardado_tucuman', [FormAltaProductorT
 Route::get('/formularios/traer_datos_pagina_tucuman/{id}', [FormAltaProductorTucumanController::class, "traer_datos_pagina_tucuman"])->name('traer-datos-pagina-tucuman');
 Route::get('/formularios/traer_permisos_pagina_tucuman/{id}/{accion}', [FormAltaProductorTucumanController::class, "traer_permisos_pagina_tucuman"])->name('traer-permisos-pagina-tucuman');
 
+#SALTA
+Route::post('/formularios/evaluacion_auto_guardado_salta', [FormAltaProductorSaltaController::class, "correccion_guardar_paso_salta"])->name('correccion_guardar-paso-salta');
+Route::get('/formularios/traer_datos_pagina_salta/{id}', [FormAltaProductorSaltaController::class, "traer_datos_pagina_salta"])->name('traer-datos-pagina-salta');
+Route::get('/formularios/traer_permisos_pagina_salta/{id}/{accion}', [FormAltaProductorSaltaController::class, "traer_permisos_pagina_salta"])->name('traer-permisos-pagina-salta');
+
 Route::post('/formularios/evaluacion_auto_guardado_todo', [FormAltaProductorController::class, "correccion_guardar_paso_todo"])->name('correccion_guardar-paso-todo');
 Route::post('/formularios/guardar_lista_minerales', [FormAltaProductorController::class, "guardar_lista_minerales"])->name('guardar-lista-minerales');
 
@@ -367,13 +386,41 @@ Route::group(['prefix' => 'inbox'], function () {
 // DATOS PARA EL DASHBOARD
 Route::get('/porcentaje_ventas', [JobEnvioCommand::class, "porcVentas"])->name('porcentaje_ventas');
 
+
 // VER LOGS
 Route::get('logs', [\Rap2hpoutre\LaravelLogViewer\LogViewerController::class, 'index'])->middleware('role:Administrador');
 
 
-Route::group(['middleware' => ['auth:sanctum', 'verified']],function(){
-    // Jujuy
-    Route::get('apiJujuy', [JujuyController::class, 'index'])->name('apiJujuy');
-    Route::get('consultarDatos', [JujuyController::class, 'simula_datos']);
-    Route::post('enviarDatos', [JujuyController::class, 'datos_enviados']);
-});
+
+Route::post('/productos/actualizar', [ProductosController::class, "actualizar"])->name('productos-update');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//salta
+Route::get('/formulario_salta/buscar_permisos_formulario/{id}/{accion}', [FormAltaProductorSaltaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-salta');
+Route::post('/formulario_salta/guardar_alta', [FormAltaProductorSaltaController::class, "store"])->name('store-formulario-salta');
+
+Route::post('/formulario_salta/update_form', [FormAltaProductorSaltaController::class, "update"])->name('update-formulario-salta');
+Route::post('/formulario_salta/guardar_empresas', [EmpresasControlantesSaltaController::class, "store"])->name('store-empresas-salta');
+Route::post('/formulario_salta/update_empresas', [EmpresasControlantesSaltaController::class, "update"])->name('update-empresas-salta');
+
+Route::post('/formulario_salta/buscar_formulario', [FormAltaProductorSaltaController::class, "look_up"])->name('look-up-formulario-salta');
+Route::get('/formulario_salta/form_faker', [FormAltaProductorSaltaController::class, "datos_faker"])->name('form-fake-salta');
+Route::get('/formulario_salta/empresa_faker', [EmpresasControlantesSaltaController::class, "empresa_fake"])->name('empresa-fake-salta');
+Route::post('/formulario_salta/get_empresas', [EmpresasControlantesSaltaController::class, "show"])->name('get-empresa-salta');
+Route::get('/formulario_salta/evaluacion_fake', [FormAltaProductorEvalSaltaController::class, "evaluacion_fake"])->name('evaluacion-fake-salta');
+Route::post('/formulario_salta/guardar_eval', [FormAltaProductorEvalSaltaController::class, "store"])->name('store-eval-salta');
+Route::post('/formulario_salta/update_eval', [FormAltaProductorEvalSaltaController::class, "update"])->name('update-eval-salta');
+
+Route::post('/formulario_salta/get_evaluacion', [FormAltaProductorEvalSaltaController::class, "get_evaluacion"])->name('get_evaluacion');

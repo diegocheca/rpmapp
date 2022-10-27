@@ -19,8 +19,8 @@ class CreateFormEstadoTerrenoMinaTemporalTable extends Migration
             $table->unsignedBigInteger('estadoterreno_id');
             $table->unsignedBigInteger('minatemporal_id');
 
-             $table->foreign('estadoterreno_id')->references('id')->on('formEstadoTerreno');
-             $table->foreign('minatemporal_id')->references('id')->on('formMinaTemporal');
+             //$table->foreign('estadoterreno_id')->references('id')->on('formEstadoTerreno');
+             //$table->foreign('minatemporal_id')->references('id')->on('formMinaTemporal');
             
 
             $table->timestamps();

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Auth;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\DB;
 
 class IiadiaController extends Controller
 {
@@ -20,9 +20,17 @@ class IiadiaController extends Controller
     public function index()
     {
         //
-        $iia_dias = iia_dia::all();
+       // $iia_dias = iia_dia::all();
+
+        
         //var_dump($iia_dias);die();
-        return Inertia::render('IiaDia/List', ['data' => $iia_dias]);
+        return Inertia::render('IiaDia/List', 
+        [
+            'dias' => DB::table('iia_dia')
+            ->select('*')
+            ->orderBy('id', 'DESC')
+            ->paginate(7)
+        ]);
     }
 
     /**
