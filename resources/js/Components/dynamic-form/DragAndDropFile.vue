@@ -15,7 +15,15 @@
                 </template>
                 <ul v-else>
                     <li v-for="(file, index) in files" :key="file.name" class="flex flex-row">
-                        {{ file.name }}
+                        <p v-if="action != 'update'">{{ file.name }}</p>
+                        <a v-else :href="`../../storage/${file.name}`" target="_blank" class="flex">
+                            {{ file.name }}
+                            <svg v-if="action == 'update'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </a>
+
                         <svg @click="removeFile(index)" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 cursor-pointer" viewBox="0 0 20 20" fill="#EF4444">
                             <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
@@ -59,15 +67,26 @@ export default {
     multiple: {
         require: true,
         type: Boolean,
+    },
+    value: {
+        require: false,
+    },
+    action: {
+        require: false,
     }
   },
-  emits: ['update:files'],
+//   emits: ['update:files'],
   setup (props, { emit }) {
-    const files = ref([])
 
-    watch(files, async () => {
-    //   emit('update:files', files);
-    })
+    let files = ref([])
+
+    if(props.value) {
+        files.value.push(new File ([ props.value ], props.value ))
+    }
+    // console.log(files.value);
+    // watch(files, async () => {
+    // //   emit('update:files', files);
+    // })
 
     return {
       files

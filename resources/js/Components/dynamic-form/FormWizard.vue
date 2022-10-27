@@ -158,7 +158,7 @@ export default {
     ],
 
     data() {
-        const currentStep = 6;
+        const currentStep = 0;
         const formValues = {};
         const loading = true;
 
@@ -238,8 +238,9 @@ export default {
                     for (let index = 0; index < this.formValues[key].length; index++) {
                         if(!this.formValues[key][index] instanceof File) continue;
                         const element = this.formValues[key][index];
-                        formData.append(key+'_'+index, element);
-                        //isFile = true;
+                        // formData.append(key+'_'+index, element);
+                        formData.append(key, element);
+                        isFile = true;
                     }
                 }
 
@@ -247,7 +248,7 @@ export default {
 
             this.isSubmit = true;
             try {
-                if(isFile) {
+                if(isFile && this.action != 'evaluate') {
                     response = await axios.post(this.$props.saveFileUrl, formData, {
                         onUploadProgress: function( progressEvent ) {
                             this.progressUpload = parseInt( Math.round( ( progressEvent.loaded / progressEvent.total ) * 100 ))
@@ -256,7 +257,7 @@ export default {
                     });
 
                     for ( var key2 in response.data ) {
-                        values[key2] = response.data[key2];
+                        this.formValues[key2] = response.data[key2];
                     }
                 }
 
@@ -310,6 +311,8 @@ export default {
         // this.yepSchema = this.formSchema.reduce(createYupStepSchema, {}, this.$props.evaluate);
 
         // this.validateSchema = yup.object().shape(this.yepSchema);
+
+
     },
 };
 </script>

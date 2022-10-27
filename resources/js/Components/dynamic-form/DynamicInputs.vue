@@ -83,16 +83,10 @@
                             <!-- file -->
                             <Field v-if="item.type == inputsTypes.FILE" v-slot="{ field }" :type="item.type" :name="item.name">
                                 <div v-if="!evaluate" class="w-full h-full">
-                                    <DragAndDropFile v-bind="field" :accept="item.accept" :acceptLabel="item.acceptLabel" :maxSize="item.maxSize" :multiple="item.multiple" />
+                                    <DragAndDropFile v-bind="field" :value="item.value" :accept="item.accept" :acceptLabel="item.acceptLabel" :maxSize="item.maxSize" :multiple="item.multiple" :action="action" />
                                 </div>
                                 <div v-else>
-                                    <ul>
-                                        <li>File 1</li>
-                                        <li>File 2</li>
-                                        <li>File 3</li>
-                                        <li>File 4</li>
-                                    </ul>
-
+                                    <a :href="`../../storage/${item.value}`" target="_blank">{{ item.value }}</a>
                                 </div>
                             </Field>
 
@@ -246,24 +240,25 @@
                                         </thead>
                                         <tbody v-if="item.typeTable == 'vertical'" >
                                             <template v-for="(nameTitle, index2) in item.verticalTitle" :key="index2">
-                                                <tr v-for="(element, indexElement) in item.element" :key="indexElement" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                                <tr v-for="(element, indexElement3) in item.element" :key="indexElement3" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                                                     <td v-if="item.verticalTitle" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                                         <div class="flex items-center">
                                                             {{ nameTitle }}
                                                         </div>
                                                     </td>
                                                     <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                        <Field v-show="false" :name="`${item.name}[${indexElement3}][${indexElementTable2}].id`" :value="item.childrens[indexElement3][indexElementTable2]" />
                                                         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ nameTitle }}</span>
                                                         <div class="flex items-center flex-col">
                                                             <Field
                                                                 v-if="ele.type !== inputsTypes.SELECT"
-                                                                :value="ele.value"
-                                                                :name="`${item.name}[${index2}][${indexElementTable2}].${ele.name}`"
+                                                                :value="item.childrens[indexElement3][indexElementTable2].value"
+                                                                :name="`${item.name}[${indexElement3}][${indexElementTable2}].${ele.name}`"
                                                                 :type="ele.type"
                                                                 class="inp w-full"
                                                                 :disabled="action != 'create' && (evaluate) ? true: false"
                                                             />
-                                                            <ErrorMessage class="text-red-500" :name="`${item.name}[${index2}][${indexElementTable2}].${ele.name}`" />
+                                                            <ErrorMessage class="text-red-500" :name="`${item.name}[${indexElement3}][${indexElementTable2}].${ele.name}`" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -280,12 +275,14 @@
                                                     <Field v-show="false" :name="`${item.name}[${indexElement}].id`" :value="ele.id" />
                                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-0 text-xs font-bold uppercase">{{ item.horizontalTitle[indexElementTable2] }}</span>
                                                     <div  class="flex items-center flex-col">
+                                                        <!-- :value="item.childrens[indexElement][indexElementTable2].value" -->
+                                                        <!-- <pre v-if="item.childrens[indexElement][indexElementTable2].value">{{item.childrens[indexElement][indexElementTable2].value}}</pre> -->
                                                         <Field
                                                             v-if="inputsTypes.INPUTS_DEFAULT.indexOf(ele.type) > -1 && ele.type !== inputsTypes.RADIO"
-                                                            :value="ele.value"
                                                             :name="`${item.name}[${indexElement}].${ele.name}`"
                                                             :type="ele.type"
                                                             class="inp w-full"
+                                                            :value="item.childrens[indexElement][indexElementTable2].value"
                                                             :disabled="(action != 'create' && (evaluate || item.observation?.value == 'aprobado')) || ele.disabled ? true: false"
                                                         />
                                                         <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${item.name}[${indexElement}].${ele.name}`" :value="ele.value">
@@ -294,7 +291,10 @@
                                                         </Field>
                                                         <template v-if="ele.type == inputsTypes.RADIO">
                                                             <label class="flex flex-row items-center" v-for="(opt, indexOpt) in ele.options" :key="indexOpt">
+                                                            {{item.value}}
+                                                                    <!-- :checked="item.childrens[indexElement][indexElementTable2].value === opt.value? 'checked' : ''" -->
                                                                 <Field
+                                                                    v-model="item.childrens[indexElement][indexElementTable2].value"
                                                                     :value="opt.value"
                                                                     :name="`${item.name}[${indexElement}].${ele.name}`"
                                                                     :type="ele.type"
@@ -332,7 +332,7 @@
                                                             </div>
                                                             <div v-else></div>
                                                         </template>
-                                                        <template v-if="ele.type == 'comment' && !evaluate">
+                                                        <template v-if="(ele.type == 'comment' || ele.type == 'observation') && !evaluate">
                                                             <div v-if="ele.value != null" class="bg-red-200 p-4 mt-5 rounded-lg flex flex-col">
                                                                 <b>
                                                                     Observación de rechazo:
@@ -399,7 +399,7 @@ import VueMultiselect from 'vue-multiselect';
 import DTable from './DynamicTable.vue';
 import Toggle from "@vueform/toggle";
 import { provide, inject, ref } from 'vue'
-import { forEach } from 'lodash';
+import fileAccept from "../../../../helpers/enums/fileAccept";
 
 export default {
     components: {
@@ -497,7 +497,7 @@ export default {
 
             if(item.ele.componentDepends?.length > 0) {
 
-                item.ele.componentDepends.forEach( comp => {
+                item.ele.componentDepends?.forEach( comp => {
                     const depend = inputs.find( e => e.name == comp.component);
                     depend[comp.element][item.id] = value.label;
                 });
@@ -538,7 +538,7 @@ export default {
 
             if(!item.componentDepends) return
 
-            item.componentDepends.forEach( comp => {
+            item.componentDepends?.forEach( comp => {
                 const depend = inputs.find( e => e.name == comp.component);
                 if(depend.typeTable === "vertical") {
                     depend.element[0].splice(indexDelete, 1);
@@ -582,7 +582,7 @@ export default {
         addRowTable(item) {
 
             // let newItem = [...item.element[0]];
-            let newItem = JSON.parse(JSON.stringify(item.element[0]));
+            let newItem = JSON.parse(JSON.stringify(item.childrens[0]));
 
             // let finish = undefined;
 
@@ -607,6 +607,7 @@ export default {
 
             // if(finish) return
             item.element.push(newItem);
+            item.childrens.push(newItem);
         },
         removeRowTable(item, index) {
             const firstElement = item.element[0]
@@ -624,7 +625,12 @@ export default {
                 })
             }
 
-            item.element.splice( index, 1);
+            if(index == 0) {
+                item.element.shift();
+            } else {
+                item.element.splice( index, 1);
+            }
+
             if(item.element.length == 0) {
                item.element.push(firstElement);
             }

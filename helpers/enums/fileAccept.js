@@ -17,7 +17,7 @@ export default {
         label: "img"
     },
     PDF: {
-        value: ["application/pdf"],
+        value: ["application/pdf", "pdf"],
         label: "pdf"
     },
 

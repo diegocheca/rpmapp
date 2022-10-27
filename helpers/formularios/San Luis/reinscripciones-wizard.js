@@ -37,10 +37,11 @@ const childMinerals =[ // default value,
 const childProduccionAnual =[
     [
         {
+            id: '',
             label: '',
             value: '',
             type: inputsTypes.NUMBER,
-            name: 'production',
+            name: 'cantidad',
         }
     ]
 ]
@@ -48,6 +49,7 @@ const childProduccionAnual =[
 const childComercializacion = [
     [
         {
+            id: '',
             label: '',
             value: '',
             type: inputsTypes.NUMBER,
@@ -352,7 +354,7 @@ console.log(schema);
                                         'Calidad',
                                         'Observaciones'
                                     ],
-                                    element: [
+                                    element: _.isEmpty(schema)? [
                                         [
                                             {
                                                 label: '',
@@ -405,10 +407,176 @@ console.log(schema);
                                             //     ...new Observations({schema, name: 'row', action}).observations
                                             // }
 
-                                        ]
-                                    ],
+                                        ],
+                                    ] : getChildrens({ data: schema.productos, key: 'Productos', selectedChild: [
+                                        [
+                                            {
+                                                label: '',
+                                                id: '',
+                                                value: {},
+                                                type: inputsTypes.SELECT,
+                                                colSpan: '',
+                                                options: minerales.data,
+                                                name: 'nombre_mineral',
+                                                multiple: false,
+                                                closeOnSelect: true,
+                                                searchable: false,
+                                                placeholder: 'Selecciona una opción',
+                                                componentDepends: [
+                                                    {
+                                                        component:'produccion_anual',
+                                                        element: 'horizontalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    },
+                                                    {
+                                                        component:'comercializacion',
+                                                        element: 'verticalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    }
+                                                ],
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'ley',
+                                                colSpan: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'calidad',
+                                                colSpan: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones',
+                                                colSpan: '',
+                                            },
+                                            // {
+                                            //     colSpan: 'lg:w-5/5',
+                                            //     type: 'observation',
+                                            //     ...new Observations({schema, name: 'row', action}).observations
+                                            // }
+
+                                        ],
+                                    ], listMinerales}),
+
+
                                     observation: new Observations({schema, name: 'Productos', action}).observations,
-                                    childrens: getChildrens({ data: schema.productos, selectedChild: childMinerals, listMinerales}),
+                                    childrens: _.isEmpty(schema)? [
+                                        [
+                                            {
+                                                label: '',
+                                                value: {},
+                                                type: inputsTypes.SELECT,
+                                                colSpan: '',
+                                                options: minerales.data,
+                                                name: 'nombre_mineral',
+                                                multiple: false,
+                                                closeOnSelect: true,
+                                                searchable: false,
+                                                placeholder: 'Selecciona una opción',
+                                                componentDepends: [
+                                                    {
+                                                        component:'produccion_anual',
+                                                        element: 'horizontalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    },
+                                                    {
+                                                        component:'comercializacion',
+                                                        element: 'verticalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    }
+                                                ],
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'ley',
+                                                colSpan: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'calidad',
+                                                colSpan: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones',
+                                                colSpan: '',
+                                            },
+                                            // {
+                                            //     colSpan: 'lg:w-5/5',
+                                            //     type: 'observation',
+                                            //     ...new Observations({schema, name: 'row', action}).observations
+                                            // }
+
+                                        ],
+                                    ] : getChildrens({ data: schema.productos, key: 'Productos', selectedChild: [
+                                        [
+                                            {
+                                                label: '',
+                                                id: '',
+                                                value: {},
+                                                type: inputsTypes.SELECT,
+                                                colSpan: '',
+                                                options: minerales.data,
+                                                name: 'nombre_mineral',
+                                                multiple: false,
+                                                closeOnSelect: true,
+                                                searchable: false,
+                                                placeholder: 'Selecciona una opción',
+                                                componentDepends: [
+                                                    {
+                                                        component:'produccion_anual',
+                                                        element: 'horizontalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    },
+                                                    {
+                                                        component:'comercializacion',
+                                                        element: 'verticalTitle',
+                                                        titleCell: 'nombre_mineral'
+                                                    }
+                                                ],
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'ley',
+                                                colSpan: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'calidad',
+                                                colSpan: '',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones',
+                                                colSpan: '',
+                                            },
+                                            // {
+                                            //     colSpan: 'lg:w-5/5',
+                                            //     type: 'observation',
+                                            //     ...new Observations({schema, name: 'row', action}).observations
+                                            // }
+
+                                        ],
+                                    ], listMinerales}),
                                     validations: yup
                                         .array()
                                         .of(
@@ -428,101 +596,6 @@ console.log(schema);
                                         )
                                         .strict(),
                                 },
-                                // {
-                                //     label: '',
-                                //     type: inputsTypes.LIST,
-                                //     name: 'Productos',
-                                //     columns: 'grid-cols-1',
-                                //     // colSpans + 1
-                                //     columnsResponsive: 'lg:grid-cols-3',
-                                //     componentDepends: [
-                                //         {
-                                //             component:'produccion_anual',
-                                //             element: 'horizontalTitle',
-                                //             titleCell: 'nombre_mineral'
-                                //         },
-                                //         {
-                                //             component:'comercializacion',
-                                //             element: 'verticalTitle',
-                                //             titleCell: 'nombre_mineral'
-                                //         }
-                                //     ],
-                                //     elements: [
-                                //         [
-                                //             {
-                                //                 label: 'Mineral Extraído',
-                                //                 value: {},
-                                //                 type: inputsTypes.SELECT,
-                                //                 colSpan: '',
-                                //                 options: minerales.data,
-                                //                 name: 'nombre_mineral',
-                                //                 multiple: false,
-                                //                 closeOnSelect: true,
-                                //                 searchable: false,
-                                //                 placeholder: 'Selecciona una opción',
-                                //                 componentDepends: [
-                                //                     {
-                                //                         component:'produccion_anual',
-                                //                         element: 'horizontalTitle',
-                                //                         titleCell: 'nombre_mineral'
-                                //                     },
-                                //                     {
-                                //                         component:'comercializacion',
-                                //                         element: 'verticalTitle',
-                                //                         titleCell: 'nombre_mineral'
-                                //                     }
-                                //                 ],
-                                //                 // observation: new Observations({schema, name: 'nombre_mineral', action}).observations
-                                //             },
-                                //             {
-                                //                 label: 'Ley',
-                                //                 value: '',
-                                //                 type: inputsTypes.TEXT,
-                                //                 name: 'ley',
-                                //                 colSpan: '',
-                                //             },
-                                //             {
-                                //                 label: 'Calidad',
-                                //                 value: '',
-                                //                 type: inputsTypes.TEXT,
-                                //                 name: 'calidad',
-                                //                 colSpan: '',
-                                //             },
-                                //             {
-                                //                 label: 'Observaciones',
-                                //                 value: '',
-                                //                 type: inputsTypes.TEXT,
-                                //                 name: 'observaciones',
-                                //                 colSpan: '',
-                                //             },
-                                //             {
-                                //                 colSpan: 'lg:w-5/5',
-                                //                 type: 'observation',
-                                //                 ...new Observations({schema, name: 'row', action}).observations
-                                //             }
-
-                                //         ]
-                                //     ],
-                                //     childrens: getChildrens({ data: schema.productos, selectedChild: childMinerals, listMinerales}),
-                                //     validations: yup
-                                //         .array()
-                                //         .of(
-                                //             yup.object().shape({
-                                //                 nombre_mineral: yup.object().when('mineral', {
-                                //                     is: value => _.isEmpty(value),
-                                //                     then: yup.object().nullable().required('Debes elegir un elemento')
-                                //                 }),
-                                //                 ley: yup.string().nullable().required('Debes completar este campo'),
-                                //                 calidad: yup.string().nullable().required('Debes completar este campo'),
-                                //                 observaciones: yup.string().required('Debes completar este campo').nullable(),
-                                //                 // direccion_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
-                                //                 // actividad_empresa_compradora: yup.string().required('Debes completar este campo').nullable(),
-                                //                 row_evaluacion: action == 'evaluate'? yup.string().oneOf(["aprobado", "rechazado", "sin evaluar"], 'Debes seleccionar una opción').nullable().required('Debes seleccionar una opción') : {},
-                                //                 row_comentario: action == 'evaluate'? yup.string().when('observacion_row', { is: "rechazado", then: yup.string().min(5, 'Debes ingresar al menos 5 caracteres').max(50, 'Puedes ingresar hasta 50 caracteres').nullable().required('Debes agregar una observación') }).nullable() : {}
-                                //             })
-                                //         )
-                                //         .strict(),
-                                // },
                                 {
                                     label: 'Producción Anual',
                                     type: inputsTypes.TABLE,
@@ -542,23 +615,14 @@ console.log(schema);
                                         'Noviembre',
                                         'Diciembre'
                                     ],
-                                    horizontalTitle: [""],
-                                    // element: [
-                                    //     childProduccionAnual
-                                    //     // [
-                                    //     //     {
-                                    //     //         label: '',
-                                    //     //         value: '',
-                                    //     //         type: inputsTypes.NUMBER,
-                                    //     //         name: 'production',
-                                    //     //     }
-                                    //     // ]
-                                    // ],
-                                    // element: getChildrensTableDepends({ data: schema.productos, key: 'produccion', selectedChild: childProduccionAnual, listMinerales}),
-                                    element: _.isEmpty(schema)? childProduccionAnual : getChildrensTableDepends({ data: schema, key: 'produccion', selectedChild: childProduccionAnual, listMinerales}),
+                                    horizontalTitle: _.isEmpty(schema)? [""] : setTitlesTable(listMinerales),
 
                                     observation: new Observations({schema, name: 'produccion_anual', action}).observations,
-                                    childrens: getChildrensTableDepends({ data: schema.productos, key: 'produccion', selectedChild: childProduccionAnual, listMinerales}),
+
+                                    childrens: _.isEmpty(schema)? childProduccionAnual : getChildrensTableDepends({ data: schema.productos, key: 'produccion', selectedChild: childProduccionAnual, listMinerales}),
+
+                                    element: _.isEmpty(schema)? childProduccionAnual : getChildrensTableDependsCountColumns({ data: schema.productos, selectedChild: childProduccionAnual}),
+
                                     validations:
                                         yup
                                         .array()
@@ -567,7 +631,7 @@ console.log(schema);
                                             .array()
                                             .of(
                                                 yup.object().shape({
-                                                    production: yup.string().required('Debes completar este campo').nullable()
+                                                    cantidad: yup.string().required('Debes completar este campo').nullable()
                                                 })
                                             )
                                         )
@@ -578,37 +642,16 @@ console.log(schema);
                                     type: inputsTypes.TABLE,
                                     name: "comercializacion",
                                     typeTable: "horizontal",
-                                    verticalTitle: [],
+                                    verticalTitle: _.isEmpty(schema)? [""] : setTitlesTable(listMinerales),
                                     horizontalTitle: [
                                         'Cantidad mensual',
                                         'Firma compradora',
                                         'Destino'
                                     ],
-                                    // element: [
-                                    //     [
-                                    //         {
-                                    //             label: '',
-                                    //             value: '',
-                                    //             type: inputsTypes.NUMBER,
-                                    //             name: 'cantidad',
-                                    //         },
-                                    //         {
-                                    //             label: '',
-                                    //             value: '',
-                                    //             type: inputsTypes.TEXT,
-                                    //             name: 'firma',
-                                    //         },
-                                    //         {
-                                    //             label: '',
-                                    //             value: '',
-                                    //             type: inputsTypes.TEXT,
-                                    //             name: 'destino',
-                                    //         },
-                                    //     ]
-                                    // ],
-                                    // element: getChildrensTableDepends({ data: schema.productos, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
-                                    // element: getChildrensTableDepends({ data: schema, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
-                                    element: _.isEmpty(schema)? childComercializacion : getChildrensTableDepends({ data: schema, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
+
+                                    childrens: _.isEmpty(schema)? childComercializacion : getChildrensHorizontalTableDepends({ data: schema.productos, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
+
+                                    element: _.isEmpty(schema)? childComercializacion : getChildrens({ data: schema.productos, key: 'comercializacion', selectedChild: childComercializacion, listMinerales}),
 
                                     observation: new Observations({schema, name: 'comercializacion', action}).observations,
                                     validations: yup
@@ -746,6 +789,86 @@ console.log(schema);
                                             },
                                         ],
                                     ],
+                                    childrens: [
+                                        [
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[0].nombre_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[0].tipo_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'tipo_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[0].cantidad_explosivo : '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[0].observaciones_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones_explosivo',
+                                            },
+                                        ],
+                                        [
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[1].nombre_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[1].tipo_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'tipo_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[1].cantidad_explosivo : '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[1].observaciones_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones_explosivo',
+                                            },
+                                        ],
+                                        [
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[2].nombre_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[2].tipo_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'tipo_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[2].cantidad_explosivo : '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad_explosivo',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.explosivos?.length > 0? schema.explosivos[2].observaciones_explosivo : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones_explosivo',
+                                            },
+                                        ],
+                                    ],
                                     observation: new Observations({schema, name: 'uso_explosivos', action}).observations,
                                     validations: yup
                                         .array()
@@ -787,7 +910,10 @@ console.log(schema);
                             inputs: [
                                 {
                                     label: 'Posee polvorín',
-                                    value: undefined,
+                                    value: !schema?.polvorin? undefined : [
+                                        {label: 'SI', value: 'si'},
+                                        {label: 'NO', value: 'no'}
+                                    ].find(e => e.value == schema.polvorin),
                                     type: inputsTypes.SELECT,
                                     options: [
                                         {label: 'SI', value: 'si'},
@@ -807,7 +933,7 @@ console.log(schema);
                                 },
                                 {
                                     label: 'Ubicación',
-                                    value: '',
+                                    value: !schema?.ubicacion? '' : schema.ubicacion,
                                     type: inputsTypes.TEXT,
                                     name: 'ubicacion',
                                     validations: yup.string().when("polvorin", {
@@ -820,7 +946,7 @@ console.log(schema);
                                 },
                                 {
                                     label: 'Dimensiones',
-                                    value: '',
+                                    value: !schema?.dimensiones? '' : schema.dimensiones,
                                     type: inputsTypes.NUMBER,
                                     name: 'dimensiones',
                                     validations: yup.string().when("polvorin", {
@@ -861,7 +987,7 @@ console.log(schema);
                             inputs: [
                                 {
                                     label: 'Permanente (en letra)',
-                                    value: '',
+                                    value: !schema?.personal_permanente? '' : schema.personal_permanente,
                                     type: inputsTypes.TEXT,
                                     name: 'personal_permanente',
                                     validations: yup.string().required('Debes completar este campo').nullable(),
@@ -869,7 +995,7 @@ console.log(schema);
                                 },
                                 {
                                     label: 'Temporario (en letra)',
-                                    value: '',
+                                    value: !schema?.temporario? '' : schema.temporario,
                                     type: inputsTypes.TEXT,
                                     name: 'temporario',
                                     validations: yup.string().required('Debes completar este campo').nullable(),
@@ -877,7 +1003,7 @@ console.log(schema);
                                 },
                                 {
                                     label: 'Total (en letra)',
-                                    value: '',
+                                    value: !schema?.total? '' : schema.total,
                                     type: inputsTypes.TEXT,
                                     name: 'total',
                                     validations: yup.string().required('Debes completar este campo').nullable(),
@@ -921,7 +1047,94 @@ console.log(schema);
                                         'Cantidad mensual',
                                         'Observaciones'
                                     ],
-                                    element: [
+                                    childrens: _.isEmpty(schema)? [
+                                        [
+                                            [
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'nombre',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'tipo',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.NUMBER,
+                                                    name: 'cantidad',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'observaciones',
+                                                },
+                                            ]
+                                        ],
+                                    ] : getChildrens({ data: schema.combustibles, key: 'combustibles', selectedChild: [
+                                            [
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'nombre',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'tipo',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.NUMBER,
+                                                    name: 'cantidad',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'observaciones',
+                                                },
+                                            ]
+
+                                    ], listMinerales}),
+                                    element: _.isEmpty(schema)? [
+                                        [
+                                            [
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'nombre',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'tipo',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.NUMBER,
+                                                    name: 'cantidad',
+                                                },
+                                                {
+                                                    label: '',
+                                                    value: '',
+                                                    type: inputsTypes.TEXT,
+                                                    name: 'observaciones',
+                                                },
+                                            ]
+                                        ],
+                                    ] : getChildrens({ data: schema.combustibles, key: 'combustibles', selectedChild: [
                                         [
                                             {
                                                 label: '',
@@ -948,7 +1161,63 @@ console.log(schema);
                                                 name: 'observaciones',
                                             },
                                         ]
-                                    ],
+                                    ], listMinerales}),
+                                    // element: [
+                                    //     [
+                                    //         {
+                                    //             label: '',
+                                    //             value: '',
+                                    //             type: inputsTypes.TEXT,
+                                    //             name: 'nombre',
+                                    //         },
+                                    //         {
+                                    //             label: '',
+                                    //             value: '',
+                                    //             type: inputsTypes.TEXT,
+                                    //             name: 'tipo',
+                                    //         },
+                                    //         {
+                                    //             label: '',
+                                    //             value: '',
+                                    //             type: inputsTypes.NUMBER,
+                                    //             name: 'cantidad',
+                                    //         },
+                                    //         {
+                                    //             label: '',
+                                    //             value: '',
+                                    //             type: inputsTypes.TEXT,
+                                    //             name: 'observaciones',
+                                    //         },
+                                    //     ]
+                                    // ],
+                                    // childrens: [
+                                    //     [
+                                    //         {
+                                    //             label: '',
+                                    //             value: '',
+                                    //             type: inputsTypes.TEXT,
+                                    //             name: 'nombre',
+                                    //         },
+                                    //         {
+                                    //             label: '',
+                                    //             value: '',
+                                    //             type: inputsTypes.TEXT,
+                                    //             name: 'tipo',
+                                    //         },
+                                    //         {
+                                    //             label: '',
+                                    //             value: '',
+                                    //             type: inputsTypes.NUMBER,
+                                    //             name: 'cantidad',
+                                    //         },
+                                    //         {
+                                    //             label: '',
+                                    //             value: '',
+                                    //             type: inputsTypes.TEXT,
+                                    //             name: 'observaciones',
+                                    //         },
+                                    //     ]
+                                    // ],
                                     observation: new Observations({schema, name: 'combustible', action}).observations,
                                     validations: yup
                                         .array()
@@ -1005,19 +1274,19 @@ console.log(schema);
                                         [
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[0].marca : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'marca',
                                             },
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[0].cantidad : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad',
                                             },
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[0].observaciones : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones',
                                             },
@@ -1025,19 +1294,19 @@ console.log(schema);
                                         [
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[1].marca : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'marca',
                                             },
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[1].cantidad : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad',
                                             },
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[1].observaciones : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones',
                                             },
@@ -1045,25 +1314,86 @@ console.log(schema);
                                         [
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[2].marca : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'marca',
                                             },
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[2].cantidad : '',
                                                 type: inputsTypes.NUMBER,
                                                 name: 'cantidad',
                                             },
                                             {
                                                 label: '',
-                                                value: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[2].observaciones : '',
                                                 type: inputsTypes.TEXT,
                                                 name: 'observaciones',
                                             },
                                         ],
                                     ],
-                                    // observation: new Observations({schema, name: 'production', action}).observations,
+                                    childrens: [
+                                        [
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[0].marca : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'marca',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[0].cantidad : '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[0].observaciones : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones',
+                                            },
+                                        ],
+                                        [
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[1].marca : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'marca',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[1].cantidad : '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[1].observaciones : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones',
+                                            },
+                                        ],
+                                        [
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[2].marca : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'marca',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[2].cantidad : '',
+                                                type: inputsTypes.NUMBER,
+                                                name: 'cantidad',
+                                            },
+                                            {
+                                                label: '',
+                                                value: schema?.equipos?.length > 0? schema.equipos[2].observaciones : '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'observaciones',
+                                            },
+                                        ],
+                                    ],                                    // observation: new Observations({schema, name: 'production', action}).observations,
                                     validations: yup
                                         .array()
                                         .of(
@@ -1113,7 +1443,7 @@ console.log(schema);
                                         'Condición',
                                         'Acciones'
                                     ],
-                                    element: [
+                                    element: _.isEmpty(schema)? [
                                         [
                                             {
                                                 label: '',
@@ -1167,7 +1497,170 @@ console.log(schema);
                                             //     placeholder: 'Selecciona una opción',
                                             // },
                                         ]
-                                    ],
+                                    ] : getChildrens({ data: schema.anexo1, key: 'anexo1', selectedChild: [
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'apellido',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'dni',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.RADIO,
+                                                colSpan: '',
+                                                options: [
+                                                    { value: 'permanente', label: 'Permanente'},
+                                                    { value: 'temporario', label: 'Temporario'},
+                                                ],
+                                                name: 'condicion',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.REMOVEICON,
+                                                colSpan: '',
+                                                name: 'remove',
+                                            },
+                                            // {
+                                            //     label: '',
+                                            //     value: undefined,
+                                            //     type: inputsTypes.SELECT,
+                                            //     colSpan: '',
+                                            //     options: [
+                                            //         { value: 'permanente', label: 'Permanente'},
+                                            //         { value: 'Temporario', label: 'Temporario'},
+                                            //     ],
+                                            //     name: 'condicion',
+                                            //     multiple: false,
+                                            //     closeOnSelect: true,
+                                            //     searchable: false,
+                                            //     placeholder: 'Selecciona una opción',
+                                            // },
+                                        ]
+                                    ], listMinerales}),
+                                    childrens: _.isEmpty(schema)? [
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'apellido',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'dni',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.RADIO,
+                                                colSpan: '',
+                                                options: [
+                                                    { value: 'permanente', label: 'Permanente'},
+                                                    { value: 'temporario', label: 'Temporario'},
+                                                ],
+                                                name: 'condicion',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.REMOVEICON,
+                                                colSpan: '',
+                                                name: 'remove',
+                                            },
+                                            // {
+                                            //     label: '',
+                                            //     value: undefined,
+                                            //     type: inputsTypes.SELECT,
+                                            //     colSpan: '',
+                                            //     options: [
+                                            //         { value: 'permanente', label: 'Permanente'},
+                                            //         { value: 'Temporario', label: 'Temporario'},
+                                            //     ],
+                                            //     name: 'condicion',
+                                            //     multiple: false,
+                                            //     closeOnSelect: true,
+                                            //     searchable: false,
+                                            //     placeholder: 'Selecciona una opción',
+                                            // },
+                                        ]
+                                    ] : getChildrens({ data: schema.anexo1, key: 'anexo1', selectedChild: [
+                                        [
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'apellido',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'nombre',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.TEXT,
+                                                name: 'dni',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.RADIO,
+                                                colSpan: '',
+                                                options: [
+                                                    { value: 'permanente', label: 'Permanente'},
+                                                    { value: 'temporario', label: 'Temporario'},
+                                                ],
+                                                name: 'condicion',
+                                            },
+                                            {
+                                                label: '',
+                                                value: '',
+                                                type: inputsTypes.REMOVEICON,
+                                                colSpan: '',
+                                                name: 'remove',
+                                            },
+                                            // {
+                                            //     label: '',
+                                            //     value: undefined,
+                                            //     type: inputsTypes.SELECT,
+                                            //     colSpan: '',
+                                            //     options: [
+                                            //         { value: 'permanente', label: 'Permanente'},
+                                            //         { value: 'Temporario', label: 'Temporario'},
+                                            //     ],
+                                            //     name: 'condicion',
+                                            //     multiple: false,
+                                            //     closeOnSelect: true,
+                                            //     searchable: false,
+                                            //     placeholder: 'Selecciona una opción',
+                                            // },
+                                        ]
+                                    ], listMinerales}),
                                     observation: new Observations({schema, name: 'anexo1', action}).observations,
                                     validations: yup
                                         .array()
@@ -1192,105 +1685,62 @@ console.log(schema);
     return schema
 }
 
-function getChildrens({data, selectedChild, listMinerales}) {
-    // los objetos deben tener el mismo orden que en el arreglo de los elementoss
-    // let child =[ // default value,
-    //     {
-    //         // id elemento, solo agregar al primer objeto
-    //         id: null,
-    //         name: 'nombre_mineral',
-    //         value: null,
-    //         // solo necesario para los selects que el valor se ha guardado como un json
-    //         select: true
-    //     },
-    //     {
-    //         name: 'variedad',
-    //         value: null,
-    //     },
-    //     {
-    //         name: 'produccion',
-    //         value: null,
-    //     },
-    //     {
-    //         name: 'unidades',
-    //         value: null,
-    //         select: true
-    //     },
-    //     {
-    //         name: 'precio_venta',
-    //         value: null,
-    //     },
-    //     // {
-    //     //     name: 'empresa_compradora',
-    //     //     value: null,
-    //     // },
-    //     // {
-    //     //     name: 'direccion_empresa_compradora',
-    //     //     value: null,
-    //     // },
-    //     // {
-    //     //     name: 'actividad_empresa_compradora',
-    //     //     value: null,
-    //     // },
-
-    //     // si existen evaluaciones, se debe mantener este elemento sin modificar
-    //     {
-    //         name: 'row_evaluacion',
-    //         value: null,
-    //         comment: null
-    //     }
-    // ]
-
+function getChildrens({data, key, selectedChild, listMinerales}) {
     let child = selectedChild
 
     if (!data || data.length == 0) {
         return [child];
     }
 
-    let newChildrens = [];
+    // let newChildrens = [];
+    let clone = JSON.parse(JSON.stringify(child));
+    let clone2 = JSON.parse(JSON.stringify(child));
     for (let index = 0; index < data.length; index++) {
         const object = data[index];
-        let clone = JSON.parse(JSON.stringify(child));
-        for (const property in object) {
-            const i = clone.findIndex(e => e.name == property);
+        for (let index2 = 0; index2 < clone[index].length; index2++) {
+            // for(const property in clone[index][index2]) {
+                // const i = clone[index].findIndex(e => e.name == property);
 
-            if (i == -1) continue;
+                // if (i == -1) continue;
 
-            if (clone[i].select) {
-                // clone[i].value = JSON.parse(object[property]);
-                clone[i].value = listMinerales[index];
-            } else {
-                clone[i].value = object[property];
+                if (clone[index][index2].type == "select") {
+                    // clone[index][index2].value = JSON.parse(object[property]);
+                    clone[index][index2].value = listMinerales[index];
+                } else if(clone[index][index2].type == "radio") {
+                    clone[index][index2].value = object[clone[index][index2]['name']];
+                } else {
+                    clone[index][index2].value = object[clone[index][index2]['name']];
+                }
+                if (typeof clone[index][index2].id !== 'undefined') {
+                    clone[index][index2].id = object["id"];
+                }
+
+
+            // }
+
+            // set result observation
+            const obsIndex = clone.findIndex(e => e.name == 'row_evaluacion');
+            if (obsIndex > -1) {
+                clone[obsIndex].value = object["value"];
+                clone[obsIndex].comment = object["comment"];
             }
-            if (typeof clone[i].id !== 'undefined') {
-                clone[i].id = object["id"];
-            }
+            // let obs = clone.find(e => e.name == 'row_evaluacion');
+            // if (obs) {
+            //     const obsSave = observation.find(e => e.id == clone[0].id);
+            //     if (obsSave) {
+            //         obs.value = obsSave.row_evaluacion;
+            //         obs.comment = obsSave.row_comentario
+            //     }
+            // }
+            // if (clone[0].row_evaluacion) {
+            //     observation[obs]
+
+            // }
 
 
+            // console.log(clone);
         }
-
-        // set result observation
-        const obsIndex = clone.findIndex(e => e.name == 'row_evaluacion');
-        if (obsIndex > -1) {
-            clone[obsIndex].value = object["value"];
-            clone[obsIndex].comment = object["comment"];
-        }
-        // let obs = clone.find(e => e.name == 'row_evaluacion');
-        // if (obs) {
-        //     const obsSave = observation.find(e => e.id == clone[0].id);
-        //     if (obsSave) {
-        //         obs.value = obsSave.row_evaluacion;
-        //         obs.comment = obsSave.row_comentario
-        //     }
-        // }
-        // if (clone[0].row_evaluacion) {
-        //     observation[obs]
-
-        // }
-
-
-        // console.log(clone);
-        newChildrens.push(clone);
+        if(index + 1 < data.length) clone.push(clone2[0]);
     }
 
     // newChildrens.push({
@@ -1298,7 +1748,7 @@ function getChildrens({data, selectedChild, listMinerales}) {
     //     value: null,
     // });
 
-    return newChildrens;
+    return clone;
 }
 
 function getChildrensTable({data, key, selectedChild, listMinerales}) {
@@ -1351,30 +1801,24 @@ function getChildrensTableDepends({data, key, selectedChild, listMinerales}) {
     }
 
     let newChildrens = [];
+    let clone = JSON.parse(JSON.stringify(child));
+
     for (let index = 0; index < data.length; index++) {
-        const element = data[index][key];
-
-        let subChildrens = [[]];
-        for (let indexE = 0; indexE < element.length; indexE++) {
-            const object = element[index];
-            let clone = JSON.parse(JSON.stringify(child));
-            for (const property in object) {
-                const i = clone.findIndex(e => e.name == property);
-
-                if (i == -1) continue;
-
-                if (clone[i].select) {
-                    // clone[i].value = JSON.parse(object[property]);
-                    clone[i].value = listMinerales[index];
-                } else {
-                    clone[i].value = object[property];
-                }
-                if (typeof clone[i].id !== 'undefined') {
-                    clone[i].id = object["id"];
-                }
-
-
+        const object = data[index];
+        for (let index3 = 0; index3 < object[key].length; index3++) {
+            if(!clone[index3][index]) {
+                clone[index3].push(...JSON.parse(JSON.stringify(child))[0]);
             }
+
+            if (clone[index3][index].type == "select") {
+                clone[index3][index].value = listMinerales[index3];
+            } else {
+                clone[index3][index].value = object[key][index3][clone[index3][index]['name']];
+            }
+            if (typeof clone[index3][index].id !== 'undefined') {
+                clone[index3][index].id = object[key][index3]["id"];
+            }
+
             // set result observation
             const obsIndex = clone.findIndex(e => e.name == 'row_evaluacion');
             if (obsIndex > -1) {
@@ -1382,14 +1826,112 @@ function getChildrensTableDepends({data, key, selectedChild, listMinerales}) {
                 clone[obsIndex].comment = object["comment"];
             }
 
-            subChildrens[index][indexE] = clone;
+            if(clone.length < object[key].length) {
+                clone.push(JSON.parse(JSON.stringify(child))[0]);
+            }
 
         }
-
-        newChildrens[index] = subChildrens;
     }
 
-    return newChildrens;
+    return clone;
+}
+
+function getChildrensHorizontalTableDepends({data, key, selectedChild, listMinerales}) {
+    //return
+    let child = selectedChild
+
+    if (!data || data.length == 0) {
+        return [child];
+    }
+
+    let newChildrens = [];
+    let clone = JSON.parse(JSON.stringify(child));
+    
+    for (let index = 0; index < data.length; index++) {
+        // const clone2 = JSON.parse(JSON.stringify(child));
+        const object = data[index];
+        for (let index3 = 0; index3 < clone[0].length; index3++) {
+            // for (let index2 = 0; index2 < clone[index].length; index2++) {
+                for(const property in clone[index][index3]) {
+                    // const i = clone[index].findIndex(e => e.name == property);
+    
+                    // if (!object[key][index]) continue;
+    
+                    if(!clone[index][index3]) {
+                        clone[index].push(...JSON.parse(JSON.stringify(child))[0]);
+                    }
+
+                    if (clone[index][index3].type == "select") {
+                        // clone[index][index].value = JSON.parse(object[property]);
+                        clone[index][index3].value = listMinerales[index3];
+                    } else {
+                        clone[index][index3].value = object[key][0][clone[index][index3]['name']];
+                        // clone[index][index3].value = object[key][index3][property];
+                    }
+                    if (typeof clone[index][index3].id !== 'undefined') {
+                        clone[index][index3].id = object[key][index3]["id"];
+                    }
+    
+    
+                }
+    
+                // set result observation
+                const obsIndex = clone.findIndex(e => e.name == 'row_evaluacion');
+                if (obsIndex > -1) {
+                    clone[obsIndex].value = object["value"];
+                    clone[obsIndex].comment = object["comment"];
+                }
+                // let obs = clone.find(e => e.name == 'row_evaluacion');
+                // if (obs) {
+                //     const obsSave = observation.find(e => e.id == clone[0].id);
+                //     if (obsSave) {
+                //         obs.value = obsSave.row_evaluacion;
+                //         obs.comment = obsSave.row_comentario
+                //     }
+                // }
+                // if (clone[0].row_evaluacion) {
+                //     observation[obs]
+
+                // }
+
+
+                // console.log(clone);
+            // }
+
+            if(clone.length < data.length) {
+                clone.push(JSON.parse(JSON.stringify(child))[0]);
+            }
+
+        }
+    }
+    return clone;
+}
+
+function getChildrensTableDependsCountColumns({data, selectedChild}) {
+    //return
+    let child = selectedChild
+
+    if (!data || data.length == 0) {
+        return [child];
+    }
+
+    let newChildrens = [];
+    let clone = JSON.parse(JSON.stringify(child));
+
+    for (let index = 0; index < data.length; index++) {
+        const object = data[index];
+        for (let index3 = 0; index3 < 1; index3++) {
+            if(!clone[index3][index]) {
+                clone[index3].push(...JSON.parse(JSON.stringify(child))[0]);
+            }
+
+        }
+    }
+    console.log(clone);
+    return clone;
 }
 
 
+function setTitlesTable(listMinerales) {
+    return listMinerales.map(e => e.label)
+}
