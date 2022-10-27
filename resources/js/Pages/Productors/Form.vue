@@ -34,7 +34,7 @@
               :titulo_pagina="'Salta'"
               :evaluacion="false"
               :accion="crear"
-              :id="444"
+              :id="form.id"
               
             >
             </PaginaSalta3>

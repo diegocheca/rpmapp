@@ -42,7 +42,7 @@ class FormAltaProductorEvalSaltaController extends Controller
     public function store(Request $request)
     {
         //
-        //dd($request["eval"]["id_formulario_alta_salta"]);
+        //dd($request["eval"]["correccion_representante_legal_apellido"]);
         if($request["eval"]["id_formulario_alta_salta"] > 0){
             $formulario = FormAltaProductorSalta::find($request["eval"]["id_formulario_alta_salta"]);
             if($formulario==null){
@@ -52,7 +52,11 @@ class FormAltaProductorEvalSaltaController extends Controller
             $evaluacion_salta_nuevo = new FormAltaProductorEvalSalta();
             $evaluacion_salta_nuevo->crear_nuevo_salta_evaluacion($request["eval"]);
 
-            return $evaluacion_salta_nuevo->id;
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'datos creados',
+                'data' => $evaluacion_salta_nuevo->id
+            ], 201); 
         }
     }
     
@@ -158,7 +162,22 @@ class FormAltaProductorEvalSaltaController extends Controller
     }
 
     public function get_evaluacion(Request $request){
-        return FormAltaProductorEvalSalta::find($request->request);
+        $evaluacion =  FormAltaProductorEvalSalta::select('*')->where("id_formulario_alta_salta","=",$request->id_form_salta)->first();
+        if($evaluacion!=null){
+            $evaluacion->change_null_to_nada();
+            return response()->json([
+                'status' => 'ok',
+                'msg' => 'se encontro correctamente',
+                'data' => $evaluacion
+            ], 201);
+        } else {
+            return response()->json([
+                'status' => 'vacio',
+                'msg' => 'eval no encontrada',
+                'data' => null
+            ], 201);
+        }
+
     }
 
     /**
@@ -168,9 +187,21 @@ class FormAltaProductorEvalSaltaController extends Controller
      * @param  \App\Models\FormAltaProductorEvalSalta  $formAltaProductorEvalSalta
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFormAltaProductorEvalSaltaRequest $request, FormAltaProductorEvalSalta $formAltaProductorEvalSalta)
+    public function update(Request $request)
     {
         //
+        //dd($request["eval"]["id"]);
+
+        $eval_to_update  = FormAltaProductorEvalSalta::find($request["eval"]["id"]);
+        //dd($form_salta_to_update);
+        $result = $eval_to_update->update_eval($request["eval"]);
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'eval actualizada',
+            'data' => $eval_to_update->id
+        ], 201); 
+
+
     }
 
     /**

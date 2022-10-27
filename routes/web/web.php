@@ -410,10 +410,17 @@ Route::post('/productos/actualizar', [ProductosController::class, "actualizar"])
 //salta
 Route::get('/formulario_salta/buscar_permisos_formulario/{id}/{accion}', [FormAltaProductorSaltaController::class, "traer_permisos_pagina_mendoza"])->name('traer-permisos-pagina-salta');
 Route::post('/formulario_salta/guardar_alta', [FormAltaProductorSaltaController::class, "store"])->name('store-formulario-salta');
+
+Route::post('/formulario_salta/update_form', [FormAltaProductorSaltaController::class, "update"])->name('update-formulario-salta');
 Route::post('/formulario_salta/guardar_empresas', [EmpresasControlantesSaltaController::class, "store"])->name('store-empresas-salta');
+Route::post('/formulario_salta/update_empresas', [EmpresasControlantesSaltaController::class, "update"])->name('update-empresas-salta');
+
 Route::post('/formulario_salta/buscar_formulario', [FormAltaProductorSaltaController::class, "look_up"])->name('look-up-formulario-salta');
 Route::get('/formulario_salta/form_faker', [FormAltaProductorSaltaController::class, "datos_faker"])->name('form-fake-salta');
 Route::get('/formulario_salta/empresa_faker', [EmpresasControlantesSaltaController::class, "empresa_fake"])->name('empresa-fake-salta');
+Route::post('/formulario_salta/get_empresas', [EmpresasControlantesSaltaController::class, "show"])->name('get-empresa-salta');
 Route::get('/formulario_salta/evaluacion_fake', [FormAltaProductorEvalSaltaController::class, "evaluacion_fake"])->name('evaluacion-fake-salta');
 Route::post('/formulario_salta/guardar_eval', [FormAltaProductorEvalSaltaController::class, "store"])->name('store-eval-salta');
+Route::post('/formulario_salta/update_eval', [FormAltaProductorEvalSaltaController::class, "update"])->name('update-eval-salta');
+
 Route::post('/formulario_salta/get_evaluacion', [FormAltaProductorEvalSaltaController::class, "get_evaluacion"])->name('get_evaluacion');
