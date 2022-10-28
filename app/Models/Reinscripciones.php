@@ -115,6 +115,27 @@ class Reinscripciones extends Model
         'meses_trabajo',
         'razones_meses_trabajo',
 
+        // SALTA
+        "email",
+        "telefono",
+        "domicilio_provincia",
+        "domicilio_administracion",
+        "laboreos_mineros",
+        "maquinarias_herramientas",
+        "huellas_mineras_caminos",
+        "recurso_humano",
+        "otros",
+        "nombre_apellido_responsable",
+        "documento_identidad_responsable",
+        "titulo_matricula_responsable",
+        "inscripcion_ley_24196",
+        "uso_explosivos",
+        "constancia_canon",
+        "regularizacion_fiscal",
+        "contrato_social",
+        "listado_maquinas_vehiculos",
+        "pago_multas",
+
         'created_by',
         'estado',
     ];
