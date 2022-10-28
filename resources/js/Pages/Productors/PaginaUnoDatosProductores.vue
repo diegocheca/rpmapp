@@ -713,7 +713,29 @@
           v-on:actualizaconstancia="update_constancia($event)"
           v-on:mostrarpasosiguiente="mostrarpasos($event)"
         ></BotonesPaginaUna>
+
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
+          "
+          @click="p1_fake"
+          
+        >
+          Prod Fakes
+        </button>
       </div>
+
+
       <!-- <div class="flex justify-end mt-4">
         <a
           href="#"
@@ -1077,6 +1099,27 @@ export default {
       this.$emit("mostrarpasosiguiente", v);
       this.mostrar_modulo = !v;
     },
+    p1_fake(){
+      let self = this;
+      axios
+          .get("/formulario_alta/p1_fake/")
+          .then(function (response) {
+            if (response.data.status === "ok") {
+              console.log("los datos de p1 son\n\n\n");
+              console.log(response.data.data);
+              self.form_pagina.numeroproductor = response.data.data["numeroproductor"];
+              self.form_pagina.cuit = response.data.data["cuit"];
+              self.form_pagina.razon_social = response.data.data["razon_social"];
+              self.form_pagina.email = response.data.data["email"];
+              self.form_pagina.tiposociedad = response.data.data["tiposociedad"];
+              self.form_pagina.inscripciondgr = response.data.data["inscripciondgr"];
+              self.form_pagina.razon_sconstaciasociedadocial = response.data.data["constaciasociedad"];
+            } else console.log("error al buscar permisos: " + response.data.msg);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+    }
   },
   mounted() {
     //voy a buscar los permisos

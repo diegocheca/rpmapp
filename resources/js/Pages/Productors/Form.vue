@@ -23,21 +23,7 @@
             <div class="row">
               <banner></banner>
             </div>
-            <!-- <br /> -->
-            salta : {{$props.mostrar.paso_salta}}
-
-            <div ></div>
-            <PaginaSalta3
-              :link_volver="route('formulario-alta.index')"
-              :titulo_boton_volver="'Volver'"
-              :titulo_boton_guardar="'Guardar'"
-              :titulo_pagina="'Salta'"
-              :evaluacion="false"
-              :accion="crear"
-              :id="form.id"
-              
-            >
-            </PaginaSalta3>
+            
 
             <div id="section_productor"></div>
             <PaginaUnoDatosProductores
@@ -1027,7 +1013,7 @@
             >
             </PaginaMendoza>
             
-            <div id="section_salta" v-if="$props.mostrar.paso_salta"></div>
+           <!--  <div id="section_salta" v-if="$props.mostrar.paso_salta"></div>
             <PaginaSalta
               v-if="m_salta && $props.mostrar.paso_salta"
               :link_volver="'#'"
@@ -1041,6 +1027,24 @@
               v-on:mostrarpasosiguiente="mostar_paso_siguiente('Salta', $event)"
             >
             </PaginaSalta>
+ -->
+
+            <br />
+
+            <div ></div>
+            <PaginaSalta3
+              :link_volver="route('formulario-alta.index')"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar'"
+              :titulo_pagina="'Salta'"
+              :evaluacion="false"
+              :accion="'crear'"
+              :id="form.id"
+              :lista_provincias="lista_provincias"
+              :lista_dptos="lista_dptos_mina"
+            >
+            </PaginaSalta3>
+
 
             <div id="finalizar"></div>
             <div

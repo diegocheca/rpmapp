@@ -1045,7 +1045,28 @@
           :testing="mostrar_testing"
           v-on:mostrarpasosiguiente="mostrarpasos($event)"
         ></BotonesPaginaDos>
+
+        
       </div>
+      <button
+        type="button"
+        class="
+          uppercase
+          mx-auto
+          py-3
+          px-5
+          text-white
+          border border-blue-500
+          bg-blue-500
+          shadow-md
+          font-bold
+          hover:text-white hover:shadow-xl hover:bg-blue-700
+        "
+        @click="p2_fake"
+        
+      >
+        DomLeg Fakes
+      </button>
       <!-- <div class="flex justify-end mt-4">
             <a href="#" class="text-xl font-medium text-indigo-500">Volver Arriba</a>
         </div> -->
@@ -1538,6 +1559,29 @@ export default {
       //busco los datos en el padre
       if (v) this.$emit("copiarDatosDomicilioLegal", true);
     },
+    p2_fake(){
+      let self = this;
+      axios
+          .get("/formulario_alta/p2_fake/")
+          .then(function (response) {
+            if (response.data.status === "ok") {
+              console.log("los datos de p1 son\n\n\n");
+              console.log(response.data.data);
+              self.form_pagina.leal_calle = response.data.data["leal_calle"];
+              self.form_pagina.leal_numero = response.data.data["leal_numero"];
+              self.form_pagina.leal_telefono = response.data.data["leal_telefono"];
+              self.form_pagina.leal_provincia = response.data.data["leal_provincia"];
+              self.form_pagina.leal_departamento = response.data.data["leal_departamento"];
+              self.form_pagina.leal_localidad = response.data.data["leal_localidad"];
+              self.form_pagina.leal_cp = response.data.data["leal_cp"];
+              self.form_pagina.leal_otro = response.data.data["leal_otro"];
+            } else console.log("error al buscar permisos: " + response.data.msg);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
+
   },
   mounted() {
     this.cargar_dptos();
