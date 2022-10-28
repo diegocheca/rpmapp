@@ -550,18 +550,21 @@ class FormAltaProductorSaltaController extends Controller
     public function look_up(Request $request)
     {
         //
-        $data =  FormAltaProductorSalta::select('*')->where("id_formulario_alta","=",$request->id)->first();
+        //dd($request->all());
+        $data =  FormAltaProductorSalta::select('*')->where("id_formulario_alta","=",$request->id_form_alta)->first();
+        //$data
+       // dd($request->id_form_alta,$data);
         if($data != null){
             return response()->json([
                 'status' => 'ok',
                 'msg' => 'formulario encontrado',
-                'datos' => $data,
+                'data' => $data,
             ], 200);
         } else {
             return response()->json([
                 'status' => 'error',
                 'msg' => 'error al guardar en la base de datos',
-                'datos' => '',
+                'data' => '',
             ], 200);
         }
 
@@ -1739,11 +1742,17 @@ class FormAltaProductorSaltaController extends Controller
      * @param  \App\Models\FormAltaProductorSalta  $formAltaProductorSalta
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFormAltaProductorSaltaRequest $request, FormAltaProductorSalta $formAltaProductorSalta)
+    public function update(Request $request)
     {
         //
-        $form_salta  = FormAltaProductorSalta::find($formAltaProductorSalta->id);
-        $result = $form_salta->update_form($formAltaProductorSalta);
-        return $result;
+        
+        $form_salta_to_update  = FormAltaProductorSalta::find($request["form"]["id"]);
+        //dd($form_salta_to_update);
+        $result = $form_salta_to_update->update_form($request["form"]);
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'datos creados',
+            'data' => $result
+        ], 201); 
     }
 }

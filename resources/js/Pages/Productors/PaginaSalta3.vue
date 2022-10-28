@@ -2,7 +2,6 @@
   <div>
 
 
-    <h1>SOY SALTA</h1>
     <div class="items-center justify-left">
       <Card
         :icono="'/formulario_alta/imagenes/mendoza3.png'"
@@ -27,7 +26,7 @@
           ></Menu>
         </div>
 
-
+<h1>Accion: {{$props.accion}}</h1>
 
         <div class="flex flex-wrap">
           <div
@@ -68,7 +67,7 @@
             </div>
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -81,7 +80,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_tipo_true"
                       v-model="eval_salta.correccion_tipo"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -91,7 +90,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_tipo_false"
                       v-model="eval_salta.correccion_tipo"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -106,7 +105,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_tipo == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_tipo == 'false' || eval_salta.correccion_tipo == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -124,7 +123,6 @@
                     id="obs_observacion"
                     name="obs_observacion"
                     v-model="eval_salta.observacion_tipo"
-                    
                   >
                   </textarea>
                 </div>
@@ -208,17 +206,7 @@
               
             />
           </div>
-
-
-          
-
-
-
-          
-
-
-           
-          <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+          <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -229,9 +217,9 @@
                     <input
                       type="radio"
                       class="form-radio h-4 w-4 text-green-600"
-                      name="correc_apellido_true"
+                      name="correc_nombre_true"
                       v-model="eval_salta.correccion_representante_legal_nombre"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -239,9 +227,9 @@
                     <input
                       type="radio"
                       class="form-radio h-4 w-4 text-red-600"
-                      name="correc_apellido_false"
+                      name="correc_nombre_false"
                       v-model="eval_salta.correccion_representante_legal_nombre"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -249,14 +237,14 @@
                     <input
                       type="radio"
                       class="form-radio h-4 w-4 text-indigo-600"
-                      name="correc_apellido_nada"
+                      name="correc_nombre_nada"
                       v-model="eval_salta.correccion_representante_legal_nombre"
                       value="nada"
                     />
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_representante_legal_nombre == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_representante_legal_nombre == 'false' ||eval_salta.correccion_representante_legal_nombre == false " class="w-full px-3">
                   <label
                     class="
                       block
@@ -377,7 +365,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -390,7 +378,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_apellido_true"
                       v-model="eval_salta.correccion_representante_legal_apellido"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -400,7 +388,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_apellido_false"
                       v-model="eval_salta.correccion_representante_legal_apellido"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -415,7 +403,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_representante_legal_apellido == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_representante_legal_apellido == 'false' || eval_salta.correccion_representante_legal_apellido == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -559,7 +547,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -572,7 +560,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_dni_true"
                       v-model="eval_salta.correccion_representante_legal_dni"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -582,7 +570,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_dni_false"
                       v-model="eval_salta.correccion_representante_legal_dni"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -597,7 +585,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_representante_legal_dni == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_representante_legal_dni == 'false' || eval_salta.correccion_representante_legal_dni == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -719,7 +707,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -732,7 +720,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_email_true"
                       v-model="eval_salta.correccion_representante_legal_email"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -742,7 +730,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_email_false"
                       v-model="eval_salta.correccion_representante_legal_email"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -757,7 +745,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_representante_legal_email == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_representante_legal_email == 'false' || eval_salta.correccion_representante_legal_dni == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -878,7 +866,7 @@
               />
             </div>
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -891,7 +879,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_cargo_true"
                       v-model="eval_salta.correccion_representante_legal_cargo"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -901,7 +889,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_cargo_false"
                       v-model="eval_salta.correccion_representante_legal_cargo"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -916,7 +904,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_representante_legal_cargo == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_representante_legal_cargo == 'false' || eval_salta.correccion_representante_legal_cargo == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -1054,7 +1042,7 @@
               />
             </div>
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -1067,7 +1055,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_domicilio_true"
                       v-model="eval_salta.correccion_representante_legal_domicilio"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -1077,7 +1065,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_domicilio_false"
                       v-model="eval_salta.correccion_representante_legal_domicilio"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -1092,7 +1080,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_representante_legal_domicilio == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_representante_legal_domicilio == 'false' || eval_salta.correccion_representante_legal_domicilio == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -1211,7 +1199,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -1224,7 +1212,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_nacionalidad_true"
                       v-model="eval_salta.correccion_nacionalidad"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -1234,7 +1222,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_nacionalidad_false"
                       v-model="eval_salta.correccion_nacionalidad"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -1249,7 +1237,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_nacionalidad == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_nacionalidad == 'false' || eval_salta.correccion_nacionalidad == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -1376,7 +1364,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -1389,7 +1377,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_telefono_true"
                       v-model="eval_salta.correccion_telefono"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -1399,7 +1387,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_telefono_false"
                       v-model="eval_salta.correccion_telefono"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -1414,7 +1402,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_telefono == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_telefono == 'false' || eval_salta.correccion_telefono == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -2542,7 +2530,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -2555,7 +2543,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_responsable_nombreo_true"
                       v-model="eval_salta.correccion_responsable_nombre"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -2565,7 +2553,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_responsable_nombre_false"
                       v-model="eval_salta.correccion_responsable_nombre"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -2580,7 +2568,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_responsable_nombre == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_responsable_nombre == 'false' || eval_salta.correccion_responsable_nombre == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -2711,7 +2699,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -2724,7 +2712,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_responsable_apellido_true"
                       v-model="eval_salta.correccion_responsable_apellido"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -2734,7 +2722,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_responsable_apellido_false"
                       v-model="eval_salta.correccion_responsable_apellido"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -2749,7 +2737,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_responsable_apellido == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_responsable_apellido == 'false' || eval_salta.correccion_responsable_apellido == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -2884,7 +2872,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -2897,7 +2885,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_responsable_dni_true"
                       v-model="eval_salta.correccion_responsable_dni"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -2907,7 +2895,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_responsable_dni_false"
                       v-model="eval_salta.correccion_responsable_dni"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -2922,7 +2910,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_responsable_dni == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_responsable_dni == 'false' || eval_salta.correccion_responsable_dni == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -3088,7 +3076,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -3101,7 +3089,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_responsable_titulo_true"
                       v-model="eval_salta.correccion_responsable_titulo"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -3111,7 +3099,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_responsable_titulo_false"
                       v-model="eval_salta.correccion_responsable_titulo"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -3126,7 +3114,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_responsable_titulo == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_responsable_titulo == 'false' || eval_salta.correccion_responsable_titulo == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -3258,7 +3246,7 @@
 
 
 
-            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+            <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -3271,7 +3259,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_responsable_matricula_true"
                       v-model="eval_salta.correccion_responsable_matricula"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -3281,7 +3269,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_responsable_matricula_false"
                       v-model="eval_salta.correccion_responsable_matricula"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -3296,7 +3284,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_responsable_matricula == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_responsable_matricula == 'false' || eval_salta.correccion_responsable_matricula == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -3382,7 +3370,7 @@
                 class="form-radio h-5 w-5 text-green-500"
                 name="true_checkbox"
                 v-model="form_salta.ley_checkbox"
-                value="true"
+                value=true
                 v-on="actaulizar_checkbox_salta(true)"
               />
               <span class="ml-2">Aplica ley 24916</span>
@@ -3393,7 +3381,7 @@
                 class="form-radio h-5 w-5 text-red-500"
                 name="false_checkbox"
                 v-model="form_salta.ley_checkbox"
-                value="false"
+                value=false
                 v-on="actaulizar_checkbox_salta(false)"
               />
               <span class="ml-2">No Aplica ley 24916</span>
@@ -4795,7 +4783,7 @@
 
 
 
-    <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600">
+          <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
               <h3 class="bg-red-800 px-4 text-white rounded-t-xl mb-2">
                 Seccion de evaluacion
               </h3>
@@ -4808,7 +4796,7 @@
                       class="form-radio h-4 w-4 text-green-600"
                       name="correc_responsable_empresas_true"
                       v-model="eval_salta.correccion_empresas"
-                      value="true"
+                      value=true
                     />
                     <span class="ml-2">Si</span>
                   </label>
@@ -4818,7 +4806,7 @@
                       class="form-radio h-4 w-4 text-red-600"
                       name="correc_responsable_empresas_false"
                       v-model="eval_salta.correccion_empresas"
-                      value="false"
+                      value=false
                     />
                     <span class="ml-2">No</span>
                   </label>
@@ -4833,7 +4821,7 @@
                     <span class="ml-2">Sin evaluar</span>
                   </label>
                 </div>
-                <div v-show="eval_salta.correccion_empresas == 'false'" class="w-full px-3">
+                <div v-show="eval_salta.correccion_empresas == 'false' || eval_salta.correccion_empresas == false" class="w-full px-3">
                   <label
                     class="
                       block
@@ -4857,23 +4845,23 @@
               </div>
             </div>
 
+            <hr>
+<!--     {{empresas}}
+
+
+
+
+
+
+
+
+
+
+<hr>
+
+
     
-    {{empresas}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-{{eval_salta}}
+{{eval_salta}} -->
 
 
 
@@ -4987,15 +4975,12 @@
 
         </div> -->
 
-
-
-
-
-        
-        
+        <!-- <hr>
         {{form_salta}}
         <hr>
         {{eval_salta}}
+        <hr>
+        <h1>Eval id: {{eval_salta.id}}</h1> -->
 
         <div class="justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center">
         <button
@@ -5034,6 +5019,47 @@
         >
           {{ titulo_boton_guardar }} eval
         </button>
+
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-green-500
+            bg-green-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-green-700
+          "
+          @click="update_form"
+        >
+         Update Form
+        </button>
+
+       
+
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-green-500
+            bg-green-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-green-700
+          "
+          @click="update_eval"
+        >
+         Update Eval
+        </button>
+
 
 
         <button
@@ -5113,6 +5139,27 @@
         </button>
 
 
+        <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
+          "
+          @click="get_empresas"
+        >
+          Get Empresas
+        </button>
+
+
+
         
       </div>
 
@@ -5145,10 +5192,12 @@ export default {
     "titulo_boton_volver",
     "titulo_boton_guardar",
     "titulo_pagina",
-
     "evaluacion",
     "accion",
-    "id"
+    "id",
+    "lista_provincias",
+    "lista_dptos"
+
   ],
   components: {
     JetDialogModal,
@@ -5235,7 +5284,19 @@ export default {
                     //self.permisos_mostrar = response_empresa.data.mostrar;
                     // console.log(self.permisos_mostrar);
                     //self.permisos_disables = response_empresa.data.disables;
-                    alert("empresas dice:"+response_empresa.data.data);
+                    console.log("\n\n\n\n empresas:");
+                    console.log("\nel dato es un:", typeof(response_empresa.data.data));
+                    //alert("empresas dice:"+response_empresa.data.data);
+                    for(let i=0; i<=response_empresa.data.data.length-1; i++){
+                      //console.log("EL nuevo id es:"+response_empresa.data.data[i]);
+                      self.empresas[i].id = response_empresa.data.data[i];
+                    }
+                    /*let response_emp = response_empresa.data.data;
+                    response_emp = response_emp.trim();
+                    response_emp = response_emp.replace("[", "");
+                    response_emp = response_emp.data.data.replace("]", "");
+                    let list_of_ids = response_emp.split(',');
+                    console.log(list_of_ids);*/
                   } else console.log("error al buscar permisos: " + response_empresa.data.msg);
                 })
                 .catch(function (error) {
@@ -5244,7 +5305,7 @@ export default {
 
 
                 console.log("\n\n\n");
-                console.log("result of await", response1, response2);
+                console.log(self.empresas);
 
 
     },
@@ -5258,6 +5319,39 @@ export default {
             })
             .then(function (response) {
               if (response.data.status === "ok") {
+                self.eval_salta.id = response.data.data;
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+    },
+
+    
+    async update_form() {
+      let self = this;
+      this.eval_salta.id_formulario_alta_salta =this.form_salta.id  ;
+      let response1 = await  axios
+            .post("/formulario_salta/update_form/", {
+              form: this.form_salta
+            })
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                self.permisos_mostrar = response.data.mostrar;
+                // console.log(self.permisos_mostrar);
+                self.permisos_disables = response.data.disables;
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+      let response2 = await axios
+            .post("/formulario_salta/update_empresas/", {
+              id_formulario_alta_salta : self.form_salta.id,
+              empresas: this.empresas
+            })
+            .then(function (response) {
+              if (response.data.status === "ok") {
                 self.permisos_mostrar = response.data.mostrar;
                 // console.log(self.permisos_mostrar);
                 self.permisos_disables = response.data.disables;
@@ -5267,6 +5361,25 @@ export default {
               console.log(error);
             });
     },
+
+    
+    update_eval() {
+      let self = this;
+      this.eval_salta.id_formulario_alta_salta =this.form_salta.id  ;
+        axios
+            .post("/formulario_salta/update_eval/", {
+              eval: this.eval_salta
+            })
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                self.eval_salta.id = response.data.data;
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+    },
+
     
     datos_fakes() {
       let self = this;
@@ -5381,12 +5494,14 @@ export default {
     get_eval() {
       let self = this;
         axios
-            .post("/formulario_salta/get_evaluacion/",{id_form_salta:28 })
+            .post("/formulario_salta/get_evaluacion/",{id_form_salta:self.form_salta.id })
             .then(function (response) {
               if (response.data.status === "ok") {
-                console.log("los datos son\n\n\n");
-                console.log(response.data.data);
+                console.log("lo q devuelve el eval es:\n\n\n");
+                console.log(response.data.data.correccion_nacionalidad);
                 self.eval_salta = response.data.data;
+                //update obvservaciones
+
               } else console.log("error al buscar permisos: " + response.data.msg);
             })
             .catch(function (error) {
@@ -5394,7 +5509,41 @@ export default {
             });
 
     },
+    
+    async get_form() {
+      let self = this;
+      let response1 = await  axios
+            .post("/formulario_salta/buscar_formulario/",{id_form_alta:this.$props.id })
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                self.form_salta = response.data.data;
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
 
+    },
+    
+
+    async get_empresas() {
+      let self = this;
+      let response2 = await  axios
+            .post("/formulario_salta/get_empresas/",{id:this.form_salta.id })
+            .then(function (response) {
+              if (response.data.status === "ok") {
+                console.log("lo q devuelve el get empresas:\n\n\n");
+                console.log(response.data.data);
+                self.empresas = response.data.data;
+                //update obvservaciones
+
+              } else console.log("error al buscar permisos: " + response.data.msg);
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+
+    },
 
     agregar_empresa: function () {
       var empresa_aux = {
@@ -5422,10 +5571,16 @@ export default {
       //alert(this.form_salta.ley_checkbox);
       console.log(this.form_salta.ley_checkbox);
 
-    }
-
-
-
+    },
+    update_valor_ayuda_local(newValor) {
+      this.ayuda_local = newValor;
+    },
+/*
+    ectamente los Datos del Productor.
+[ Id = 1862 ]
+[N° RPM = 123123 ]
+[ Estado = borrador ].
+*/
   },
   mounted() {
     let self = this;
@@ -5433,119 +5588,11 @@ export default {
       // console.log("por buscar los datos de mendoza desde el hijo \n\n\n");
       // console.log("\n\n\n mi id es : " + this.$props.id + " \n\n\n");
       console.log("inicio de salta");
-
       if (this.$inertia.page.props.user.id_provincia === 66) {
-        
-        if (this.$props.accion === "crear") {
-          //estoy dando de alta
+        if (this.$props.evaluacion) {
           
           console.log("\n\n\nen alta");
-          self.form_salta.id = "5";
-          self.form_salta.id_formulario_alta = "1730";
-          self.form_salta.tipo = "1";
-          self.form_salta.representante_legal_nombre = "dasdasd";
-          self.form_salta.representante_legal_apellido = "asdasdasd";
-          self.form_salta.representante_legal_dni = "23123";
-          self.form_salta.representante_legal_email = "dsdasda@gmail.com";
-          self.form_salta.representante_legal_cargo = "CEO";
-          self.form_salta.representante_legal_domicilio = "Libertador y mendoza";
-          self.form_salta.nacionalidad = "Argentina";
-          self.form_salta.telefono = "156165156";
-          self.form_salta.superficie_mina = "3213";
-          self.form_salta.volumenes_de_extraccion_periodo_anterior = "233";
-          self.form_salta.n_resolucion_iia = "312312";
-          self.form_salta.etapa_de_exploracion = "123123";
-          self.form_salta.n_resolucion_aprobacion_informe = "4124";
-          self.form_salta.etapa_de_exploracion_avanzada = "re avanzada";
-          self.form_salta.volumenes_anuales_de_materias_primas = "232323";
-          self.form_salta.material_obtenido = "123123";
-          self.form_salta.autorizacion_extractivas_exploratorias = "12312";
-          self.form_salta.responsable_nombre = "Diego";
-          self.form_salta.responsable_apellido = "Checcarelli";
-          self.form_salta.responsable_dni = "31231231";
-          self.form_salta.responsable_titulo = "Licenciado";
-          self.form_salta.responsable_matricula = "23123";
-          self.form_salta.ley_24196_numero = "";
-          self.form_salta.ley_24196_inscripcion_renar = "";
-          self.form_salta.ley_24196_explosivos = "";
-          self.form_salta.ley_24196_propiedad = "";
-          self.form_salta.estado_contable = "aprobado";
-          self.form_salta.listado_de_maquinaria = "";
-          self.form_salta.regalias = "";
-          self.form_salta.personas_afectadas = "";
-          self.form_salta.multas = "";
-          self.form_salta.created_by = "";
-          self.form_salta.updated_by = "";
-
-
-          //visual
-          
-          self.form_salta.ley_checkbox = "false";
-
-          //voy a buscar los permisos
-          axios
-            .get("/formulario_salta/traer_permisos_pagina_salta/0/crear")
-            .then(function (response) {
-              if (response.data.status === "ok") {
-                self.permisos_mostrar = response.data.mostrar;
-                // console.log(self.permisos_mostrar);
-                self.permisos_disables = response.data.disables;
-              } else console.log("error al buscar permisos: " + response.data.msg);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-
-
-            //empresas controlantes
-            
-        } 
-        if (this.$props.accion === "editar") {
-          //estoy por editar
-          //voy a BUSCAR LOS DATOS DEL FORMULARIO
-          axios
-            .get(
-              "/formularios/traer_datos_pagina_mendoza" +
-                "/" +
-                parseInt(this.$props.id)
-            )
-            .then(function (response) {
-              // console.log(response.datos);
-              if (response.data.status === "ok") {
-                self.form_salta = response.data.datos;
-                self.form_salta.obs_datos_minas =
-                  response.data.datos.obs_datos_minas; //arreglar esto
-              } else console.log("error al buscar datos: " + response.data.msg);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-          // console.log("voy por los permisos");
-          //voy a buscar los permisos
-          axios
-            .get(
-              "/formularios/traer_permisos_pagina_mendoza" +
-                "/" +
-                parseInt(this.$props.id) +
-                "/editar"
-            )
-            .then(function (response) {
-              // console.log(response.data.disables);
-              // console.log(response.data.mostrar);
-              if (response.data.status === "ok") {
-                self.permisos_mostrar = response.data.mostrar;
-                self.permisos_disables = response.data.disables;
-              } else console.log("error al buscar permisos: " + response.data.msg);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-        }
-        if (this.$props.accion === "evaluar") {
-          //estoy dando de alta
-          
-          console.log("\n\n\nen alta");
-          //self.eval_salta.id = "5";
+          self.eval_salta.id = '';
           self.eval_salta.id_formulario_alta_salta = '';
           self.eval_salta.correccion_tipo = '';
           self.eval_salta.observacion_tipo = '';
@@ -5615,35 +5662,93 @@ export default {
           self.eval_salta.correccion_empresas = '';
           self.eval_salta.observacion_empresas = '';
 
+          //voy a buscar datos del form de salta
+          this.get_form();
+            setTimeout(function(){
+                console.log("Executed after 1 second");
+                self.get_empresas();
+              }, 2000);
 
-          //voy a buscar los permisos
-          axios
-            .get("/formulario_salta/traer_permisos_pagina_salta/0/crear")
-            .then(function (response) {
-              if (response.data.status === "ok") {
-                self.permisos_mostrar = response.data.mostrar;
-                // console.log(self.permisos_mostrar);
-                self.permisos_disables = response.data.disables;
-              } else console.log("error al buscar permisos: " + response.data.msg);
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-
-
-            //empresas controlantes
-            
+              
+          //voy a buscar si existe evaluacion
+          setTimeout(function(){
+                self.get_eval();
+              }, 1000);
+          
         } 
-        
-
-        
-        
-
-
-
+        else {
+          if (this.$props.accion === "crear") {
+            //estoy dando de alta
+            
+            console.log("\n\n\nen alta");
+            self.form_salta.id = "5";
+            self.form_salta.id_formulario_alta = "1730";
+            self.form_salta.tipo = "1";
+            self.form_salta.representante_legal_nombre = "dasdasd";
+            self.form_salta.representante_legal_apellido = "asdasdasd";
+            self.form_salta.representante_legal_dni = "23123";
+            self.form_salta.representante_legal_email = "dsdasda@gmail.com";
+            self.form_salta.representante_legal_cargo = "CEO";
+            self.form_salta.representante_legal_domicilio = "Libertador y mendoza";
+            self.form_salta.nacionalidad = "Argentina";
+            self.form_salta.telefono = "156165156";
+            self.form_salta.superficie_mina = "3213";
+            self.form_salta.volumenes_de_extraccion_periodo_anterior = "233";
+            self.form_salta.n_resolucion_iia = "312312";
+            self.form_salta.etapa_de_exploracion = "123123";
+            self.form_salta.n_resolucion_aprobacion_informe = "4124";
+            self.form_salta.etapa_de_exploracion_avanzada = "re avanzada";
+            self.form_salta.volumenes_anuales_de_materias_primas = "232323";
+            self.form_salta.material_obtenido = "123123";
+            self.form_salta.autorizacion_extractivas_exploratorias = "12312";
+            self.form_salta.responsable_nombre = "Diego";
+            self.form_salta.responsable_apellido = "Checcarelli";
+            self.form_salta.responsable_dni = "31231231";
+            self.form_salta.responsable_titulo = "Licenciado";
+            self.form_salta.responsable_matricula = "23123";
+            self.form_salta.ley_24196_numero = "";
+            self.form_salta.ley_24196_inscripcion_renar = "";
+            self.form_salta.ley_24196_explosivos = "";
+            self.form_salta.ley_24196_propiedad = "";
+            self.form_salta.estado_contable = "aprobado";
+            self.form_salta.listado_de_maquinaria = "";
+            self.form_salta.regalias = "";
+            self.form_salta.personas_afectadas = "";
+            self.form_salta.multas = "";
+            self.form_salta.created_by = "";
+            self.form_salta.updated_by = "";
+            //visual
+            self.form_salta.ley_checkbox = "false";
+  
+            //voy a buscar los permisos
+            axios
+              .get("/formulario_salta/traer_permisos_pagina_salta/0/crear")
+              .then(function (response) {
+                if (response.data.status === "ok") {
+                  self.permisos_mostrar = response.data.mostrar;
+                  // console.log(self.permisos_mostrar);
+                  self.permisos_disables = response.data.disables;
+                } else console.log("error al buscar permisos: " + response.data.msg);
+              })
+              .catch(function (error) {
+                console.log(error);
+              });
+  
+  
+              //empresas controlantes
+              
+          } 
+          if (this.$props.accion === "editar") {
+            //estoy por editar
+            //voy a BUSCAR LOS DATOS DEL FORMULARIO
+            this.get_form();
+            setTimeout(function(){
+                console.log("Executed after 1 second");
+                self.get_empresas();
+              }, 2000);
+          }
+        }
       }
-
-      
     });
   },
 };

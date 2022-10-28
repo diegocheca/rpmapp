@@ -163,7 +163,9 @@
 
           <br>
           salta : {{$props.mostrar.paso_salta}}
-
+          eval: {{evaluacion_global}}
+          {{testing_global}}
+            
           id : {{$props.productor.id}}
             <div ></div>
             <PaginaSalta3
@@ -172,13 +174,15 @@
               :titulo_boton_guardar="'Guardar'"
               :titulo_pagina="'Salta'"
               :evaluacion="evaluacion_global"
-              :accion="evaluar"
-              :id="444"
+              :accion="'editar'"
+              :id="$props.productor.id"
+              :lista_provincias="lista_provincias"
+              :lista_dptos="lista_dptos_mina"
               
-            >
+              >
             </PaginaSalta3>
-
-
+            
+        
 
 
 
@@ -1601,9 +1605,7 @@
             </div>
 
 
-            <h1 v-if="$props.mostrar.boton_actualizar_mina!==false">
-              BOTON ACTUALIZAR MINA
-            </h1>
+            
           </div>
           <jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
             <template #title>

@@ -61,4 +61,28 @@ class EmpresasControlantesSalta extends Model
             return (["error",$e]);
         }
     }
+    
+    public function update_empresa($empresa)
+	{
+        //$this->id_formulario_alta_salta = $empresa["id_formulario_alta_salta"];
+        $this->tipo = $empresa["tipo"];
+        $this->razon_social = $empresa["razon_social"];
+        
+        $this->cuit = $empresa["cuit"];
+        $this->calle = $empresa["calle"];
+        $this->numero = $empresa["numero"];
+        $this->telefono = $empresa["telefono"];
+        $this->provincia = $empresa["provincia"];
+        $this->departamento = $empresa["departamento"];
+        $this->localidad = $empresa["localidad"];
+        $this->cp = $empresa["cp"];
+        $this->otro = $empresa["otro"];
+        //$empresa->created_by = $empresa["created_by"];
+        //$empresa->updated_by = $empresa["updated_by"];
+        $this->created_by = Auth::user()->id;
+        $this->updated_by = Auth::user()->id;
+        return $this->save();
+        
+    }
+
 }

@@ -84,15 +84,16 @@ class EmpresasControlantesSaltaController extends Controller
             }*/
             //dd($request->all());
             $index= 0;
+            $lista_id = array();
             foreach($request->empresas as $empresa){
-                $index++;
                 $empresa["id"] = null;
-                $empresa_nueva = EmpresasControlantesSalta::crear_empresa($request->id_formulario_alta_salta,$empresa);
+                $lista_id[$index] = EmpresasControlantesSalta::crear_empresa($request->id_formulario_alta_salta,$empresa);
+                $index++;
             }
             return response()->json([
                 'status' => 'ok',
                 'msg' => 'empresas creadas',
-                'data' => $index
+                'data' => $lista_id
             ], 201); 
         //}
     }
@@ -103,9 +104,16 @@ class EmpresasControlantesSaltaController extends Controller
      * @param  \App\Models\EmpresasControlantesSalta  $empresasControlantesSalta
      * @return \Illuminate\Http\Response
      */
-    public function show(EmpresasControlantesSalta $empresasControlantesSalta)
+    public function show(Request $request)
     {
         //
+        //dd($request["id"]);
+        $empresas = EmpresasControlantesSalta::select("*")->where("id_formulario_alta_salta","=",$request["id"])->get();
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'empresas encontradas',
+            'data' => $empresas
+        ], 201);
     }
 
     /**
@@ -126,9 +134,22 @@ class EmpresasControlantesSaltaController extends Controller
      * @param  \App\Models\EmpresasControlantesSalta  $empresasControlantesSalta
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEmpresasControlantesSaltaRequest $request, EmpresasControlantesSalta $empresasControlantesSalta)
+    public function update(Request $request)
     {
         //
+        $form_salta_to_update  = FormAltaProductorSalta::find($request["id_formulario_alta_salta"]);
+        //dd($form_salta_to_update);
+        foreach ($request["empresas"] as $empresa ) {
+            //dd($empresa,$empresa["id"]);
+            $empresa_a_actualizar = EmpresasControlantesSalta::find($empresa["id"]);
+            //dd($empresa_a_actualizar);
+            $result = $empresa_a_actualizar->update_empresa($empresa);
+        }
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'empresa actualizada',
+            'data' => $result
+        ], 201); 
     }
 
     /**
