@@ -532,6 +532,1087 @@
           </NombreMina>
         </div>
       </div>
+
+      <div class="flex flex-wrap">
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-0
+          "
+        >
+          <h2
+            class="
+              text-2xl
+              md:text-2xl
+              font-semibold
+              tracking-tight
+              leading-7
+              md:leading-10
+              mb-1
+              truncate
+            "
+          >
+            Lista de Empresas controlantes
+          </h2>
+        </div>
+        <div
+          class="
+            w-full
+            sm:w-2/2
+            md:w-1/2
+            lg:w-1/2
+            xl:w-1/2
+            2xl:w-1/2
+            px-3
+            mb-6
+            md:mb-0
+          "
+        >
+          <button
+            class="
+              px-6
+              w-full
+              py-2.5
+              mb-4
+              text-base
+              font-semibold
+              rounded
+              block
+              border-2 border-green-600
+              text-green-800
+              bg-green-100
+              hover:bg-green-600
+              hover:border-2
+              hover:border-green-600
+              hover:text-white
+            "
+            @click="agregar_empresa()"
+          >
+            + Agregar Empresa
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-wrap">
+        <!-- lista de minerales del nieto: {{$props.lista_de_minerales_pre_cargados}} -->
+        <div class="mt-2 sm:w-full md:w-full">
+          <div
+            class="mb-6 relative"
+            v-for="(empresa, index) in empresas"
+            v-bind:key="empresa.id"
+          >
+            <div
+              @click="eliminar_empresa(index)"
+              class="
+                absolute
+                -top-4
+                -right-4
+                bg-red-800
+                p-4
+                cursor-pointer
+                hover:bg-red-600
+                py-2
+                text-white
+                rounded-full
+              "
+            >
+              x
+            </div>
+            <div
+              class="
+                absolute
+                -top-4
+                -left-4
+                bg-blue-300
+                p-4
+                py-2
+                text-black
+                font-medium
+                rounded
+              "
+            >
+              {{ index + 1 }}
+            </div>
+
+            <div
+              class="bg-white shadow-md rounded-xl p-4 border border-gray-300"
+            >
+              <div>
+                <div class="flex flex-wrap">
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="empresa_razon_social"
+                      >Razon Social</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_razon_social"
+                        id="empresa_razon_social"
+                        name="empresa_razon_social"
+                        v-model="empresa.razon_social"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!-- cuit -->
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Cuit</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_cuit"
+                        id="empresa_cuit"
+                        name="empresa_cuit"
+                        v-model="empresa.cuit"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!-- tipo -->
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Tipo</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_tipo"
+                        id="empresa_tipo"
+                        name="empresa_tipo"
+                        v-model="empresa.tipo"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!-- Calle-->
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Calle</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                            />
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_calle"
+                        id="empresa_calle"
+                        name="empresa_calle"
+                        v-model="empresa.calle"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!--Num Calle-->
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Num</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_numero"
+                        id="empresa_numero"
+                        name="empresa_numero"
+                        v-model="empresa.numero"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!--Telefono-->
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Telefono</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_telefono"
+                        id="empresa_telefono"
+                        name="empresa_telefono"
+                        v-model="empresa.telefono"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!-- Prov-->
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Prov</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_provincia"
+                        id="empresa_provincia"
+                        name="empresa_provincia"
+                        v-model="empresa.provincia"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!--Dpto-->
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Departamento</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_departamento"
+                        id="empresa_departamento"
+                        name="empresa_departamento"
+                        v-model="empresa.departamento"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!--Localidad-->
+                  <div
+                    class="
+                      sm:w-3/3
+                      md:w-1/3
+                      lg:w-1/3
+                      xl:w-1/3
+                      2xl:w-1/3
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Localidad</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_localidad"
+                        id="empresa_localidad"
+                        name="empresa_localidad"
+                        v-model="empresa.localidad"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!-- CP-->
+                  <div
+                    class="
+                      sm:w-2/2
+                      md:w-1/2
+                      lg:w-1/2
+                      xl:w-1/2
+                      2xl:w-1/2
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Codigo Postal</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_cp"
+                        id="empresa_cp"
+                        name="empresa_cp"
+                        v-model="empresa.cp"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                  <!--Otro-->
+                  <div
+                    class="
+                      sm:w-2/2
+                      md:w-1/2
+                      lg:w-1/2
+                      xl:w-1/2
+                      2xl:w-1/2
+                      px-3
+                      mb-6
+                      md:mb-3
+                    "
+                  >
+                    <label
+                      class="
+                        block
+                        uppercase
+                        tracking-wide
+                        text-gray-700 text-xs
+                        font-bold
+                        mb-1
+                      "
+                      for="leal_numero"
+                      >Otro</label
+                    >
+                    <div class="flex items-stretch w-full relative">
+                      <div class="flex">
+                        <span
+                          class="
+                            flex
+                            leading-normal
+                            bg-grey-lighter
+                            border-1
+                            rounded-r-none
+                            border border-r-0 border-blue-300
+                            px-3
+                            whitespace-no-wrap
+                            text-grey-dark
+                            w-12
+                            h-10
+                            bg-blue-300
+                            justify-center
+                            items-center
+                            text-xl
+                            rounded-lg
+                            text-white
+                          "
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                            />
+                          </svg>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        maxlength="30"
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-l-0
+                          h-10
+                          border-grey-light
+                          rounded-lg rounded-l-none
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        placeholder="empresa_otro"
+                        id="empresa_otro"
+                        name="empresa_otro"
+                        v-model="empresa.otro"
+                        :disabled="false"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <br />
       <BotonesPaginaGeneric
         :link_volver="link_volver"
@@ -591,8 +1672,7 @@ export default {
     "id",
     "editar",
     "lista_provincias",
-    "lista_dptos"
-
+    "lista_dptos",
   ],
   components: {
     // JetDialogModal,
@@ -630,9 +1710,48 @@ export default {
       ],
       tipopersona: "Plantas",
       label_responsable_tecnico: "de la Planta",
+      empresas :  [
+            {
+              id: 1,
+              razon_social: '',
+              cuit: 1,
+              tipo: '',
+              calle: '',
+              numero: '',
+              telefono: '',
+              provincia: '',
+              departamento: '',
+              localidad: '',
+              cp: '',
+              otro: ''
+          }
+      ],
     };
   },
   methods: {
+
+    agregar_empresa: function () {
+      var empresa_aux = {
+        id: 2,
+        razon_social: 'segunda',
+        cuit: 4124124,
+        tipo: '',
+        calle: '',
+        numero: '',
+        telefono: '',
+        provincia: '',
+        departamento: '',
+        localidad: '',
+        cp: '',
+        otro: ''
+      };
+      if (this.empresas === "" || this.empresas === null) this.empresas = [];
+      this.empresas.push(empresa_aux);
+    },
+    eliminar_empresa: function (indice) {
+      this.empresas.splice(indice, 1);
+    },
+
     update_valor(valor) {
       // Select Tipo
       this.tipopersona = valor;

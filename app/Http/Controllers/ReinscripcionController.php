@@ -39,7 +39,7 @@ class ReinscripcionController extends Controller
         'Neuquén',
         'SantiagodelEstero',
         'Tucumán',
-        'Salta'
+        // 'Salta'
     ];
 
     /**
@@ -206,6 +206,7 @@ class ReinscripcionController extends Controller
                         Productos::create($newProducts[$i]);
                     }
                 }
+
             } else {
                 // if(isset($saveData['nombre_mineral_evaluacion'])) {
                 //     unset($saveData['nombre_mineral_evaluacion']);
@@ -226,56 +227,115 @@ class ReinscripcionController extends Controller
     }
 
 
-    protected function SanLuisStore($saveData, $newProducts)
+    protected function SanLuisStore($saveData, $newProducts, $idReinscripcion, $action)
     {
-        // dd($saveData);
-        //add new reinscripcion
-        $saveData["cantidad_productos"] = count($newProducts);
-        $newReinscription = Reinscripciones::create($saveData);
+        dd($saveData);
+        if (empty($idReinscripcion)) {
+            //add new reinscripcion
+            $saveData["cantidad_productos"] = count($newProducts);
+            $newReinscription = Reinscripciones::create($saveData);
 
-        //add mineral productos
-        for ($i = 0; $i < count($newProducts); $i++) {
-            $newProducts[$i]["id_reinscripcion"] = $newReinscription["id"];
-            $addProducts = Productos::create($newProducts[$i]);
+            //add mineral productos
+            for ($i = 0; $i < count($newProducts); $i++) {
+                $newProducts[$i]["id_reinscripcion"] = $newReinscription["id"];
+                $addProducts = Productos::create($newProducts[$i]);
 
-            //add produccion*
-            $mes = 0;
-            for ($prod = 0; $prod < count($saveData['produccion_anual']); $prod++) {
-                $saveData['produccion_anual'][$i][$prod]["id_productos"] = $addProducts["id"];
-                $saveData['produccion_anual'][$i][$prod]["mes"] = ++$mes;
-                ReinscripcionesProduccion::create($saveData['produccion_anual'][$i][$prod]);
+                //add produccion*
+                $mes = 0;
+                for ($prod = 0; $prod < count($saveData['produccion_anual']); $prod++) {
+                    $saveData['produccion_anual'][$prod][$i]["id_productos"] = $addProducts["id"];
+                    $saveData['produccion_anual'][$prod][$i]["mes"] = ++$mes;
+                    ReinscripcionesProduccion::create($saveData['produccion_anual'][$prod][$i]);
+                }
+
+                //add comercializacion*
+                // for ($com = 0; $com < count($saveData['comercializacion']); $com++) {
+                    $saveData['comercializacion'][$i]["id_productos"] = $addProducts["id"];
+                    ReinscripcionesComercializacion::create($saveData['comercializacion'][$i]);
+                // }
             }
 
-            //add comercializacion*
-            for ($com = 0; $com < count($saveData['comercializacion']); $com++) {
-                $saveData['comercializacion'][$com]["id_productos"] = $addProducts["id"];
-                ReinscripcionesComercializacion::create($saveData['comercializacion'][$com]);
+            //add explosivos
+            for ($exp = 0; $exp < count($saveData['uso_explosivos']); $exp++) {
+                $saveData['uso_explosivos'][$exp]["id_reinscripcion"] = $newReinscription["id"];
+                ReinscripcionesExplosivos::create($saveData['uso_explosivos'][$exp]);
             }
+
+            //add combustible
+            for ($comb = 0; $comb < count($saveData['combustible']); $comb++) {
+                $saveData['combustible'][$comb]["id_reinscripcion"] = $newReinscription["id"];
+                ReinscripcionesCombustible::create($saveData['combustible'][$comb]);
+            }
+
+            //add equipos
+            for ($eq = 0; $eq < count($saveData['equipos']); $eq++) {
+                $saveData['equipos'][$eq]["id_reinscripcion"] = $newReinscription["id"];
+                ReinscripcionesEquipos::create($saveData['equipos'][$eq]);
+            }
+
+            //add anexo1
+            for ($an1 = 0; $an1 < count($saveData['anexo1']); $an1++) {
+                $saveData['anexo1'][$an1]["id_reinscripcion"] = $newReinscription["id"];
+                ReinscripcionesAnexo1::create($saveData['anexo1'][$an1]);
+            }
+
+        } else {
+            //     $arr = Reinscripciones::where('id', $idReinscripcion)->first()->toArray();
+            //     $arrayValues = array_intersect_key($arr, $saveData);
+            //     foreach ($arrayValues as $key => $value) {
+            //         $arrayValues[$key] = $saveData[$key];
+            //     }
+            // dd($saveData, $arrayValues);
+
+            //modificar reinscripcion
+            $newReinscription = Reinscripciones::where('id', $idReinscripcion)->update($saveData);
+        }
+    }
+
+    protected function SanLuisData($id)
+    {
+        $productors = ProductoresController::productoresUsuario();
+        $reinscripcion = Reinscripciones::find($id);
+
+        if (!empty($reinscripcion->explosivos)) {
+            $reinscripcion->explosivos = $reinscripcion->explosivos;
         }
 
-        //add explosivos
-        for ($exp = 0; $exp < count($saveData['uso_explosivos']); $exp++) {
-            $saveData['uso_explosivos'][$exp]["id_reinscripcion"] = $newReinscription["id"];
-            ReinscripcionesExplosivos::create($saveData['uso_explosivos'][$exp]);
+        if (!empty($reinscripcion->equipos)) {
+            $reinscripcion->equipos = $reinscripcion->equipos;
         }
 
-        //add combustible
-        for ($comb = 0; $comb < count($saveData['combustible']); $comb++) {
-            $saveData['combustible'][$comb]["id_reinscripcion"] = $newReinscription["id"];
-            ReinscripcionesCombustible::create($saveData['combustible'][$comb]);
+        if (!empty(Reinscripciones::find($id)->productos)) {
+            // $reinscripcion->produccion = Reinscripciones::find($id)->productos;
+            $productos = $reinscripcion->productos;
+            foreach ($productos as $key => $producto) {
+                $productos[$key]->comercializacion = $producto->comercializacion;
+                $productos[$key]->produccion = $producto->produccionMes;
+            }
+
+            $reinscripcion->Productos = $productos;
         }
 
-        //add equipos
-        for ($eq = 0; $eq < count($saveData['equipos']); $eq++) {
-            $saveData['equipos'][$eq]["id_reinscripcion"] = $newReinscription["id"];
-            ReinscripcionesEquipos::create($saveData['equipos'][$eq]);
+        if (!empty($reinscripcion->combustibles)) {
+            $reinscripcion->combustibles = $reinscripcion->combustibles;
         }
 
-        //add anexo1
-        for ($an1 = 0; $an1 < count($saveData['anexo1']); $an1++) {
-            $saveData['anexo1'][$an1]["id_reinscripcion"] = $newReinscription["id"];
-            ReinscripcionesAnexo1::create($saveData['anexo1'][$an1]);
+        if (!empty($reinscripcion->anexo1)) {
+            $reinscripcion->anexo1 = $reinscripcion->anexo1;
         }
+
+        $provinces = CountriesController::getProvinces();
+
+        $productorsList = [];
+        for ($i = 0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, ['value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial]);
+        }
+
+        return [
+            'reinscripcion' => $reinscripcion,
+            'provinces' => $provinces,
+            'productorsList' => $productorsList
+        ];
     }
 
     protected function LaRiojaStore($saveData, $newProducts, $idReinscripcion, $action)
@@ -717,6 +777,127 @@ class ReinscripcionController extends Controller
             'productorsList' => $productorsList
         ];
     }
+
+    protected function SaltaStore($saveData, $newProducts, $idReinscripcion, $action)
+    {
+        if (empty($idReinscripcion)) {
+            $arrayValues = $saveData;
+            $arrayValues["cantidad_productos"] = 1;
+            // nueva reinscripcion
+            // dd($arrayValues);
+            $newReinscription = Reinscripciones::create($arrayValues);
+
+            foreach ($newProducts as $key => $new) {
+                $newProduct = [
+                    "id_reinscripcion" => $newReinscription["id"],
+                    "nombre_mineral" => $new["nombre_mineral"],
+                    "expediente" => $new["expediente"],
+                    "estado" => $new["estado"],
+                    "derecho" => $new["derecho"],
+                    "sustancia" => $new["sustancia"],
+                    "ubicacion" => $new["ubicacion"],
+                    "superficie" => $new["superficie"],
+                    "etapa" => $new["etapa"],
+                    "resolucion" => $new["resolucion"],
+                    "estado" => "en proceso"
+                ];
+                //productos
+                $addProducts = Productos::create($newProduct);
+            }
+
+        } else {
+            $arr = Reinscripciones::where('id', $idReinscripcion)->first()->toArray();
+            $arrayValues = array_intersect_key($arr, $saveData);
+            foreach ($arrayValues as $key => $value) {
+                $arrayValues[$key] = $saveData[$key];
+            }
+            // //add new reinscripcion
+            $arrayValues["cantidad_productos"] = 1;
+
+            //modificar reinscripcion
+            $newReinscription = Reinscripciones::where('id', $idReinscripcion)->update($arrayValues);
+            //productos
+            $allProducts = Productos::where('id_reinscripcion', $idReinscripcion)->get()->toArray();
+
+            foreach ($newProducts as $key => $product) {
+
+                if(array_search($product['id'], array_column($allProducts, 'id')) == false) {
+                    Productos::find($product['id'])->delete();
+                    continue;
+                }
+
+                if(!empty($product['id'])) {
+                    $prod = Productos::find($product['id'])->toArray();
+                    $productValues = array_intersect_key($prod, $product);
+                    foreach ($productValues as $key3 => $value) {
+                        $productValues[$key3] = $product[$key3];
+                    }
+
+                    $editProduct = [
+                        // "id_reinscripcion" => $idReinscripcion,
+                        "nombre_mineral" => $productValues["nombre_mineral"],
+                        "expediente" => $productValues["expediente"],
+                        "estado" => $productValues["estado"],
+                        "derecho" => $productValues["derecho"],
+                        "sustancia" => $productValues["sustancia"],
+                        "ubicacion" => $productValues["ubicacion"],
+                        "superficie" => $productValues["superficie"],
+                        "etapa" => $productValues["etapa"],
+                        "resolucion" => $productValues["resolucion"],
+                        "estado" => $arrayValues['estado']
+                    ];
+                    $editProducts = Productos::where('id', $prod['id'])->update($editProduct);
+                } else {
+                    $newProduct = [
+                        "id_reinscripcion" => $idReinscripcion,
+                        "nombre_mineral" => $product["nombre_mineral"],
+                        "expediente" => $product["expediente"],
+                        "estado" => $product["estado"],
+                        "derecho" => $product["derecho"],
+                        "sustancia" => $product["sustancia"],
+                        "ubicacion" => $product["ubicacion"],
+                        "superficie" => $product["superficie"],
+                        "etapa" => $product["etapa"],
+                        "resolucion" => $product["resolucion"],
+                        "estado" => $arrayValues['estado']
+                    ];
+                    $editProducts = Productos::create($newProduct);
+                }
+
+
+            }
+
+
+        }
+    }
+
+    protected function SaltaData($id)
+    {
+        $productors = ProductoresController::productoresUsuario();
+        $reinscripcion = Reinscripciones::find($id);
+
+        if(!empty($reinscripcion)) {
+            $reinscripcion->productos = $reinscripcion->productos;
+        }
+        // if (!empty(Reinscripciones::find($id)->productos)) {
+        //     $productos = Reinscripciones::find($id)->productos->toArray()[0];
+        //     unset($productos['id']);
+        //     $reinscripcion = array_merge($reinscripcion->toArray(), $productos);
+        // }
+
+        $provinces = CountriesController::getProvinces();
+
+        $productorsList = [];
+        for ($i = 0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, ['value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial]);
+        }
+        return [
+            'reinscripcion' => $reinscripcion,
+            'provinces' => $provinces,
+            'productorsList' => $productorsList
+        ];
+    }
+
     /**
      * Display the specified resource.
      *
@@ -769,12 +950,13 @@ class ReinscripcionController extends Controller
         // for ($i=0; $i < count($productors['productores']); $i++) {
         //     array_push($productorsList, [ 'value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial ]);
         // }
-        // dd($data['reinscripcion']);
-
+        // $contents = Storage::get('public\Salta\reinscripciones\cargo-1661895465asd.pdf');
+        // $data['reinscripcion']['cargo'] = $contents;
+        // dd($data['reinscripcion']['cargo']);
         return Inertia::render('Reinscripciones/Form', [
             'action' => "update",
             'saveUrl' => "reinscripciones.update",
-            // 'saveFileUrl' => "/reinscripciones/upload",
+            'saveFileUrl' => "/reinscripciones/upload",
             'province' => $user->province->label . "/reinscripciones-wizard",
             // 'folder' => 'reinscripciones',
             'reinscripcion' => $data['reinscripcion'],
@@ -893,7 +1075,7 @@ class ReinscripcionController extends Controller
             // llama a la funcion especifica de cada provincia
             $provinceName = str_replace(" ", "", $user->province->label);
 
-            if (in_array($provinceName, $this->commonCountries)) {
+            if (in_array($provinceName, $this->commonCountries)|| $provinceName == 'Salta') {
                 $schemaNames = Schema::getColumnListing('reinscripciones');
                 $saveDataReinscripcion = [];
                 for ($i = 0; $i < count($schemaNames); $i++) {
@@ -905,8 +1087,8 @@ class ReinscripcionController extends Controller
                 // dd($dataReinscripcionFilter);
                 Reinscripciones::where('id', $id)->update($saveDataReinscripcion);
 
-                if (isset($dataReinscripcion['Productos']) && count($dataReinscripcion['Productos']) > 0) {
 
+                if (isset($dataReinscripcion['Productos']) && count($dataReinscripcion['Productos']) > 0) {
                     $toUpdate = Reinscripciones::find($id);
                     for ($i = 0; $i < count($toUpdate->productos); $i++) {
                         $schemaNamesProd = Schema::getColumnListing('productos');
@@ -1207,12 +1389,17 @@ class ReinscripcionController extends Controller
 
     public function upload(Request $request)
     {
+        $user = HomeController::userData();
+        $provinceName = str_replace(" ", "", $user->province->label);
         $files = $request->files->all();
         $filePaths = [];
+        // dd($files);
         foreach ($files as $key => $file) {
-            $uploadedFile = $file->getClientOriginalName();
-            $fileName = $key . "-" . time() . $uploadedFile;
-            $filePath = $request->file($key)->storeAs(env('PROVINCE', 'EntreRios') . "/reinscripciones", $fileName, 'public');
+            // $uploadedFile = $file->getClientOriginalName();
+            // $fileName = $key . "-" . time() . $uploadedFile;
+            $extension = $file->getClientOriginalExtension();
+            $fileName = $key;
+            $filePath = $request->file($key)->storeAs($provinceName . "/reinscripciones", $fileName.time().".".$extension, 'public');
             $filePaths[$key] = $filePath;
         }
 
