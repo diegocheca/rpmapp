@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Constants;
-
+use Auth;
 use App\Models\FormAltaProductor;
 use Illuminate\Database\Eloquent\ModelNotFoundException as ModelNotFoundException;
 
@@ -17,7 +17,7 @@ class FormAltaProductorSalta extends Model
     use SoftDeletes;
     
     protected $table = 'form_alta_productoresSalta';
-    protected $date = ['created_by','created_at', 'deleted_at', 'updated_at'];
+    protected $date = ['created_at', 'deleted_at', 'updated_at'];
     protected $fillable = [
     'id_formulario_alta',
     'tipo',
@@ -293,14 +293,14 @@ class FormAltaProductorSalta extends Model
     }
 
 
-    public static function crear_formulario_salta_all($formulario_salta)
+    public static function crear_formulario_salta_all($formulario_salta,$id_formulario_alta)
 	{
         try {
-                $form_borrador = FormAltaProductor::findOrFail($formulario_salta["id_formulario_alta"]);
+                $form_borrador = FormAltaProductor::findOrFail($id_formulario_alta);
 
                 $formulario_provisorio = new FormAltaProductorSalta();
 
-                $formulario_provisorio->id_formulario_alta = $formulario_salta["id_formulario_alta"];
+                $formulario_provisorio->id_formulario_alta = $id_formulario_alta;
 
                 $formulario_provisorio->tipo = $formulario_salta["tipo"];
                 $formulario_provisorio->representante_legal_nombre = $formulario_salta["representante_legal_nombre"];
@@ -334,12 +334,12 @@ class FormAltaProductorSalta extends Model
                 $formulario_provisorio->regalias = $formulario_salta["regalias"];
                 $formulario_provisorio->personas_afectadas = $formulario_salta["personas_afectadas"];
                 $formulario_provisorio->multas = $formulario_salta["multas"];
-                $formulario_provisorio->created_by = 1;
-                $formulario_provisorio->updated_by = 1;
+                $formulario_provisorio->created_by = Auth::user()->id;
+                $formulario_provisorio->updated_by = Auth::user()->id;
 
                 $formulario_provisorio->save();
 
-            return (["success",$formulario_provisorio->id]);
+            return $formulario_provisorio->id;
         } catch(ModelNotFoundException $e) {
             return (["error",$e]);
         }
@@ -347,41 +347,41 @@ class FormAltaProductorSalta extends Model
 
 
     public function update_form($formulario_salta){
-        //$this->id_formulario_alta = $formulario_salta->id_formulario_alta;
-        $this->tipo = $formulario_salta->tipo;
-        $this->representante_legal_nombre = $formulario_salta->representante_legal_nombre;
-        $this->representante_legal_apellido = $formulario_salta->representante_legal_apellido;
-        $this->representante_legal_dni = $formulario_salta->representante_legal_dni;
-        $this->representante_legal_email = $formulario_salta->representante_legal_email;
-        $this->representante_legal_cargo = $formulario_salta->representante_legal_cargo;
-        $this->representante_legal_domicilio = $formulario_salta->representante_legal_domicilio;
-        $this->nacionalidad = $formulario_salta->nacionalidad;
-        $this->telefono = $formulario_salta->telefono;
-        $this->superficie_mina = $formulario_salta->superficie_mina;
-        $this->volumenes_de_extraccion_periodo_anterior = $formulario_salta->volumenes_de_extraccion_periodo_anterior;
-        $this->n_resolucion_iia = $formulario_salta->n_resolucion_iia;
-        $this->etapa_de_exploracion = $formulario_salta->etapa_de_exploracion;
-        $this->n_resolucion_aprobacion_informe = $formulario_salta->n_resolucion_aprobacion_informe;
-        $this->etapa_de_exploracion_avanzada = $formulario_salta->etapa_de_exploracion_avanzada;
-        $this->volumenes_anuales_de_materias_primas = $formulario_salta->volumenes_anuales_de_materias_primas;
-        $this->material_obtenido = $formulario_salta->material_obtenido;
-        $this->autorizacion_extractivas_exploratorias = $formulario_salta->autorizacion_extractivas_exploratorias;
-        $this->responsable_nombre = $formulario_salta->responsable_nombre;
-        $this->responsable_apellido = $formulario_salta->responsable_apellido;
-        $this->responsable_dni = $formulario_salta->responsable_dni;
-        $this->responsable_titulo = $formulario_salta->responsable_titulo;
-        $this->responsable_matricula = $formulario_salta->responsable_matricula;
-        $this->ley_24196_numero = $formulario_salta->ley_24196_numero;
-        $this->ley_24196_inscripcion_renar = $formulario_salta->ley_24196_inscripcion_renar;
-        $this->ley_24196_explosivos = $formulario_salta->ley_24196_explosivos;
-        $this->ley_24196_propiedad = $formulario_salta->ley_24196_propiedad;
-        $this->estado_contable = $formulario_salta->estado_contable;
-        $this->listado_de_maquinaria = $formulario_salta->listado_de_maquinaria;
-        $this->regalias = $formulario_salta->regalias;
-        $this->personas_afectadas = $formulario_salta->personas_afectadas;
-        $this->multas = $formulario_salta->multas;
-        $this->created_by = $formulario_salta->id_usuario;
-        $this->updated_by = $formulario_salta->id_usuario;
+        //$this->id_formulario_alta = $formulario_salta["id_formulario_alta"];
+        $this->tipo = $formulario_salta["tipo"];
+        $this->representante_legal_nombre = $formulario_salta["representante_legal_nombre"];
+        $this->representante_legal_apellido = $formulario_salta["representante_legal_apellido"];
+        $this->representante_legal_dni = $formulario_salta["representante_legal_dni"];
+        $this->representante_legal_email = $formulario_salta["representante_legal_email"];
+        $this->representante_legal_cargo = $formulario_salta["representante_legal_cargo"];
+        $this->representante_legal_domicilio = $formulario_salta["representante_legal_domicilio"];
+        $this->nacionalidad = $formulario_salta["nacionalidad"];
+        $this->telefono = $formulario_salta["telefono"];
+        $this->superficie_mina = $formulario_salta["superficie_mina"];
+        $this->volumenes_de_extraccion_periodo_anterior = $formulario_salta["volumenes_de_extraccion_periodo_anterior"];
+        $this->n_resolucion_iia = $formulario_salta["n_resolucion_iia"];
+        $this->etapa_de_exploracion = $formulario_salta["etapa_de_exploracion"];
+        $this->n_resolucion_aprobacion_informe = $formulario_salta["n_resolucion_aprobacion_informe"];
+        $this->etapa_de_exploracion_avanzada = $formulario_salta["etapa_de_exploracion_avanzada"];
+        $this->volumenes_anuales_de_materias_primas = $formulario_salta["volumenes_anuales_de_materias_primas"];
+        $this->material_obtenido = $formulario_salta["material_obtenido"];
+        $this->autorizacion_extractivas_exploratorias = $formulario_salta["autorizacion_extractivas_exploratorias"];
+        $this->responsable_nombre = $formulario_salta["responsable_nombre"];
+        $this->responsable_apellido = $formulario_salta["responsable_apellido"];
+        $this->responsable_dni = $formulario_salta["responsable_dni"];
+        $this->responsable_titulo = $formulario_salta["responsable_titulo"];
+        $this->responsable_matricula = $formulario_salta["responsable_matricula"];
+        $this->ley_24196_numero = $formulario_salta["ley_24196_numero"];
+        $this->ley_24196_inscripcion_renar = $formulario_salta["ley_24196_inscripcion_renar"];
+        $this->ley_24196_explosivos = $formulario_salta["ley_24196_explosivos"];
+        $this->ley_24196_propiedad = $formulario_salta["ley_24196_propiedad"];
+        $this->estado_contable = $formulario_salta["estado_contable"];
+        $this->listado_de_maquinaria = $formulario_salta["listado_de_maquinaria"];
+        $this->regalias = $formulario_salta["regalias"];
+        $this->personas_afectadas = $formulario_salta["personas_afectadas"];
+        $this->multas = $formulario_salta["multas"];
+        $this->created_by = Auth::user()->id;
+        $this->updated_by = Auth::user()->id;
         return $this->save();
     }
     

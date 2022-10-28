@@ -163,26 +163,26 @@
 
           <br>
           salta : {{$props.mostrar.paso_salta}}
-
+          eval: {{evaluacion_global}}
+          {{testing_global}}
+            
           id : {{$props.productor.id}}
             <div ></div>
-            <PaginaSalta
-              
+            <PaginaSalta3
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
               :titulo_boton_guardar="'Guardar'"
               :titulo_pagina="'Salta'"
-              :evaluacion="false"
-              :testing="false"
-              :id="1730"
-              :editar="true"
+              :evaluacion="evaluacion_global"
+              :accion="'editar'"
+              :id="$props.productor.id"
               :lista_provincias="lista_provincias"
-              :lista_dptos="lista_dptos_legal"
+              :lista_dptos="lista_dptos_mina"
               
-            >
-            </PaginaSalta>
-
-
+              >
+            </PaginaSalta3>
+            
+        
 
 
 
@@ -1605,9 +1605,7 @@
             </div>
 
 
-            <h1 v-if="$props.mostrar.boton_actualizar_mina!==false">
-              BOTON ACTUALIZAR MINA
-            </h1>
+            
           </div>
           <jet-dialog-modal :show="AvisoAprueba" @close="closeModalAprobar">
             <template #title>
@@ -1814,6 +1812,8 @@ import PaginaMendoza from "@/Pages/Productors/PaginaMendoza";
 import PaginaSalta from "@/Pages/Productors/PaginaSalta";
 import ValidationErrors from "../../Jetstream/ValidationErrors.vue";
 import InputComponente from "../../Components/InputText.vue";
+import PaginaSalta3 from "@/Pages/Productors/PaginaSalta3";
+
 export default {
   components: {
     ButtonFixed,
@@ -1841,7 +1841,8 @@ export default {
     CardCatamarca,
     PaginaCatamarca,
     PaginaMendoza,
-    PaginaSalta
+    PaginaSalta,
+    PaginaSalta3
   },
   props: [
     "productor",
