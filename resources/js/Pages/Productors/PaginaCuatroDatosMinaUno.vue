@@ -667,7 +667,27 @@
         v-on:mostrarpasosiguiente="mostrarpasos($event)"
       >
       </BotonesPaginaCuatro>
+      <button
+          type="button"
+          class="
+            uppercase
+            mx-auto
+            py-3
+            px-5
+            text-white
+            border border-blue-500
+            bg-blue-500
+            shadow-md
+            font-bold
+            hover:text-white hover:shadow-xl hover:bg-blue-700
+          "
+          @click="p4_fake"
+          
+        >
+          Mina1 Fakes
+        </button>
     </div>
+
   </div>
 </template>
 
@@ -1179,6 +1199,29 @@ export default {
       this.$emit("mostrarpasosiguiente", v);
       this.mostrar_modulo = !v;
     },
+    p4_fake(){
+      let self = this;
+      axios
+          .get("/formulario_alta/p4_fake/")
+          .then(function (response) {
+            if (response.data.status === "ok") {
+              console.log("los datos de p4 son\n\n\n");
+              console.log(response.data.data);
+              self.form_pagina.plano_inmueble = response.data.data["plano_inmueble"];
+              self.form_pagina.nombre_mina = response.data.data["nombre_mina"];
+              self.form_pagina.mina_cantera = response.data.data["mina_cantera"];
+              self.form_pagina.categoria = response.data.data["categoria"];
+              self.form_pagina.numero_expdiente = response.data.data["numero_expdiente"];
+              self.form_pagina.distrito_minero = response.data.data["distrito_minero"];
+              self.form_pagina.descripcion_mina = response.data.data["descripcion_mina"];
+              self.form_pagina.resolucion_concesion_minera = response.data.data["titulo_contrato_posecion"];
+              self.form_pagina.titulo_contrato_posecion = response.data.data["resolucion_concesion_minera"];
+            } else console.log("error al buscar permisos: " + response.data.msg);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        }
   },
   mounted() {
     //cargo la lista de mienrales por primera vez
