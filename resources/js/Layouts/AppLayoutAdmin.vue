@@ -8,14 +8,13 @@
         bg-gray-100
       "
     >
-      <div v-show="isSidebarOpen" class="fixed inset-y-0 z-10 flex w-80">
+      <div v-show="isSidebarOpen" class="inset-y-0 z-10 flex w-80">
         <div
           class="
             fixed
             z-30
             inset-y-0
             left-0
-            w-64
             transform
             bg-gray-900
             overflow-y-auto
@@ -71,7 +70,7 @@
                 py-2
                 px-6
                 text-gray-500
-                hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100
+                hover:bg-red-900 hover:bg-opacity-25 hover:text-gray-100
                 border-l-4 border-transparent
                 hover:border-indigo-500
               "
@@ -368,8 +367,6 @@
             </svg>
               <span class="mx-3">Faker Reinscripcion</span>
             </inertia-link>
-           
-
             <inertia-link
               class="
                 flex
@@ -420,7 +417,6 @@
             </svg>
               <span class="mx-3">Faker User</span>
             </inertia-link>
-
             <inertia-link
               class="
                 flex
@@ -499,7 +495,6 @@
 
               <span class="mx-3">Migrations</span>
             </inertia-link>
-
             <inertia-link
               class="
                 flex
@@ -527,8 +522,6 @@
 
               <span class="mx-3">Logs</span>
             </inertia-link>
-
-
           </nav>
         </div>
       </div>
@@ -732,7 +725,7 @@ export default {
 
   data() {
     return {
-      isSidebarOpen: false,
+      isSidebarOpen: true,
       showingNavigationDropdown: false,
       activetab: "",
     };

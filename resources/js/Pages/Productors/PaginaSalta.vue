@@ -1756,21 +1756,14 @@ export default {
       // Select Tipo
       this.tipopersona = valor;
       this.form_salta_test.tipopersona = valor;
-      switch (this.tipopersona) {
-        case "Plantas":
-          this.label_responsable_tecnico = "de la Planta";
-          break;
-        case "Productores":
-          this.label_responsable_tecnico = "de la Explotación";
-          break;
-        case "Exploradores":
-          this.label_responsable_tecnico = "de la Exploración";
-          break;
-        default:
-          this.label_responsable_tecnico = "";
-          break;
-      }
-    },
+      const defaultTipoPersona = "";
+      const tipoPersonaCons = {
+        "Plantas":"de la Planta",
+        "Productores":"de la Explotación",
+        "Exploradores":"de la Exploración"
+      };
+      this.label_responsable_tecnico = tipoPersonaCons[this.tipopersona]||defaultTipoPersona;
+   },
 
     // cambio_input(valor) {
     //   this.$emit("changevalor", valor);

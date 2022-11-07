@@ -141,7 +141,8 @@
   </app-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+// import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayoutAdmin";
 import JsonViewer from "vue-json-viewer";
 import Swal from "sweetalert2";
 

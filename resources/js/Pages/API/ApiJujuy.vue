@@ -14,7 +14,7 @@
             bg-blue-500
           "
         >
-          API de la Provincia
+          API de la Provincia 7878
         </h1>
         <div
           class="flex justify-self-auto mb-6 md:mb-0 px-3 sm:w-5/5 self-center"
@@ -141,7 +141,8 @@
   </app-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+// import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/AppLayoutAdmin";
 import JsonViewer from "vue-json-viewer";
 import Swal from "sweetalert2";
 
