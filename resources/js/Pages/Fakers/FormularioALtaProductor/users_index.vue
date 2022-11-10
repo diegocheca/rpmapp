@@ -5,10 +5,10 @@
   
   .stage {
     overflow: hidden;
-    position: absolute;
+    /* position: absolute; */
     top: 35%;
     left: 15%;
-    margin: -175px 0 0 -250px;
+    /* margin: -175px 0 0 -250px; */
     width: 500px;
     height: 350px;
   }
@@ -17,11 +17,11 @@
     position: absolute;
     width: 100px;
     height: 200px;
-    background: #e209e2;
+    background: #38c944;
     transform: translate(50px, 100px);
   }
   .factory::before {
-    background: #e209e2;
+    background: #38c944;
     border-radius: 1px;
     width: 110px;
     height: 10px;
@@ -34,7 +34,7 @@
     top: 10px;
     left: 10px;
     border-radius: 50%;
-    background-color: #c96160;
+    background-color: #213624;
   }
   
   .magic {
@@ -53,7 +53,7 @@
     height: 5px;
   }
   .magic::after {
-    background: #27af61;
+    background: #062e17;
     border-radius: 0 0 3px 3px;
     bottom: 3px;
     left: 3px;
@@ -136,7 +136,7 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    background-color: #cf7473;
+    background-color: #568151;
     transform: translate(0px, 10px);
     transform-origin: center bottom;
     animation-name: moveRight;
@@ -149,7 +149,7 @@
     dsplay: block;
     width: 25px;
     height: 7px;
-    background-color: #c908cf;
+    background-color: #0f1a11;
     top: 5px;
     left: 5px;
   }
@@ -222,13 +222,13 @@
   }
   
   </style>
-  <template>
+<template>
     <app-layout>
      <div class="container px-6 mx-auto">
         <div
-          class="flex flex-col text-center md:text-left md:flex-row h-screen justify-evenly md:items-center"
+          class="flex flex-wrap text-center md:text-left md:flex-row h-screen justify-evenly md:items-center"
         >
-          <div class="flex flex-col w-full">
+          <div class="w-full md:w-1/2 sm:w-2/2">
             <div class="w-full md:w-6/6 lg:w-6/6 mx-auto md:mx-0">
                 <div class='stage'>
                 <ul>
@@ -246,7 +246,7 @@
               </div>
             </div>
           </div>
-          <div class="w-full md:w-6/6 lg:w-6/6 mx-auto md:mx-0">
+          <div class="w-full md:w-1/2 sm:w-2/2 lg:w-6/6 mx-auto md:mx-0">
             <div class="bg-white p-10 flex flex-col w-full shadow-xl rounded-xl">
               <h2 class="text-2xl font-bold text-gray-800 text-left mb-5">
                 Creating USERS faked
@@ -314,11 +314,12 @@
 
 
     </app-layout>
-  </template>
+</template>
   
   
   <script>
-  import AppLayout from "@/Layouts/AppLayout";
+  // import AppLayout from "@/Layouts/AppLayout";
+   import AppLayout from "@/Layouts/AppLayoutAdmin";
   import JetDialogModal from '@/Jetstream/DialogModal';
   //import Button from '../../Jetstream/Button.vue';
   import cardUser from "@/Pages/CardDatosProductor/cardUser";
