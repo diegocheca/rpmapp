@@ -83,16 +83,10 @@
                             <!-- file -->
                             <Field v-if="item.type == inputsTypes.FILE" v-slot="{ field }" :type="item.type" :name="item.name">
                                 <div v-if="!evaluate" class="w-full h-full">
-                                    <DragAndDropFile v-bind="field" :accept="item.accept" :acceptLabel="item.acceptLabel" :maxSize="item.maxSize" :multiple="item.multiple" />
+                                    <DragAndDropFile v-bind="field" :value="item.value" :accept="item.accept" :acceptLabel="item.acceptLabel" :maxSize="item.maxSize" :multiple="item.multiple" :action="action" />
                                 </div>
                                 <div v-else>
-                                    <ul>
-                                        <li>File 1</li>
-                                        <li>File 2</li>
-                                        <li>File 3</li>
-                                        <li>File 4</li>
-                                    </ul>
-
+                                    <a :href="`../../storage/${item.value}`" target="_blank">{{ item.value }}</a>
                                 </div>
                             </Field>
 
@@ -246,24 +240,25 @@
                                         </thead>
                                         <tbody v-if="item.typeTable == 'vertical'" >
                                             <template v-for="(nameTitle, index2) in item.verticalTitle" :key="index2">
-                                                <tr v-for="(element, indexElement) in item.element" :key="indexElement" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                                <tr v-for="(element, indexElement3) in item.element" :key="indexElement3" class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                                                     <td v-if="item.verticalTitle" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
                                                         <div class="flex items-center">
                                                             {{ nameTitle }}
                                                         </div>
                                                     </td>
                                                     <td v-for="(ele, indexElementTable2) in element" :key="indexElementTable2" class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                        <Field v-show="false" :name="`${item.name}[${indexElement3}][${indexElementTable2}].id`" :value="item.childrens[indexElement3][indexElementTable2]" />
                                                         <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">{{ nameTitle }}</span>
                                                         <div class="flex items-center flex-col">
                                                             <Field
                                                                 v-if="ele.type !== inputsTypes.SELECT"
-                                                                :value="ele.value"
-                                                                :name="`${item.name}[${index2}][${indexElementTable2}].${ele.name}`"
+                                                                :value="item.childrens[indexElement3][indexElementTable2].value"
+                                                                :name="`${item.name}[${indexElement3}][${indexElementTable2}].${ele.name}`"
                                                                 :type="ele.type"
                                                                 class="inp w-full"
                                                                 :disabled="action != 'create' && (evaluate) ? true: false"
                                                             />
-                                                            <ErrorMessage class="text-red-500" :name="`${item.name}[${index2}][${indexElementTable2}].${ele.name}`" />
+                                                            <ErrorMessage class="text-red-500" :name="`${item.name}[${indexElement3}][${indexElementTable2}].${ele.name}`" />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -280,12 +275,14 @@
                                                     <Field v-show="false" :name="`${item.name}[${indexElement}].id`" :value="ele.id" />
                                                     <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-0 text-xs font-bold uppercase">{{ item.horizontalTitle[indexElementTable2] }}</span>
                                                     <div  class="flex items-center flex-col">
+                                                        <!-- :value="item.childrens[indexElement][indexElementTable2].value" -->
+                                                        <!-- <pre v-if="item.childrens[indexElement][indexElementTable2].value">{{item.childrens[indexElement][indexElementTable2].value}}</pre> -->
                                                         <Field
                                                             v-if="inputsTypes.INPUTS_DEFAULT.indexOf(ele.type) > -1 && ele.type !== inputsTypes.RADIO"
-                                                            :value="ele.value"
                                                             :name="`${item.name}[${indexElement}].${ele.name}`"
                                                             :type="ele.type"
                                                             class="inp w-full"
+                                                            :value="item.childrens[indexElement][indexElementTable2].value"
                                                             :disabled="(action != 'create' && (evaluate || item.observation?.value == 'aprobado')) || ele.disabled ? true: false"
                                                         />
                                                         <Field v-if="ele.type == inputsTypes.SELECT" v-slot="{ field }" :name="`${item.name}[${indexElement}].${ele.name}`" :value="ele.value">
@@ -294,7 +291,10 @@
                                                         </Field>
                                                         <template v-if="ele.type == inputsTypes.RADIO">
                                                             <label class="flex flex-row items-center" v-for="(opt, indexOpt) in ele.options" :key="indexOpt">
+                                                            {{item.value}}
+                                                                    <!-- :checked="item.childrens[indexElement][indexElementTable2].value === opt.value? 'checked' : ''" -->
                                                                 <Field
+                                                                    v-model="item.childrens[indexElement][indexElementTable2].value"
                                                                     :value="opt.value"
                                                                     :name="`${item.name}[${indexElement}].${ele.name}`"
                                                                     :type="ele.type"
@@ -306,10 +306,9 @@
                                                             </label>
                                                         </template>
                                                         <template v-if="ele.type == inputsTypes.REMOVEICON || ele.type == 'observation'">
-                                                            <svg v-if="ele.type == inputsTypes.REMOVEICON && !evaluate" @click="removeRowTable(item, indexElement)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <svg v-if="ele.type == inputsTypes.REMOVEICON && !evaluate" @click="removeRowTable(item, indexElement); removeColumnTable(item, indexElement)" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                             </svg>
-                                                            <!-- <pre>{{ele}}</pre> -->
                                                             <div v-if="ele.type == 'observation' && evaluate" class="grid grid-rows-2 grid-flow-col p-4 mt-5 rounded-lg"
                                                             :class="[action != 'create' && ele.value != 'rechazado'? 'bg-blue-200' : 'bg-red-200' ]">
 
@@ -331,9 +330,9 @@
                                                                     <ErrorMessage class="text-red-500" :name="`${item.name}[${indexElement}].${ele.name}`" />
                                                                 </div>
                                                             </div>
-                                                            <div v-else>-</div>
+                                                            <div v-else></div>
                                                         </template>
-                                                        <template v-if="ele.type == 'comment' && !evaluate">
+                                                        <template v-if="(ele.type == 'comment' || ele.type == 'observation') && !evaluate">
                                                             <div v-if="ele.value != null" class="bg-red-200 p-4 mt-5 rounded-lg flex flex-col">
                                                                 <b>
                                                                     Observación de rechazo:
@@ -400,7 +399,7 @@ import VueMultiselect from 'vue-multiselect';
 import DTable from './DynamicTable.vue';
 import Toggle from "@vueform/toggle";
 import { provide, inject, ref } from 'vue'
-import { forEach } from 'lodash';
+import fileAccept from "../../../../helpers/enums/fileAccept";
 
 export default {
     components: {
@@ -498,7 +497,7 @@ export default {
 
             if(item.ele.componentDepends?.length > 0) {
 
-                item.ele.componentDepends.forEach( comp => {
+                item.ele.componentDepends?.forEach( comp => {
                     const depend = inputs.find( e => e.name == comp.component);
                     depend[comp.element][item.id] = value.label;
                 });
@@ -506,7 +505,7 @@ export default {
             }
         },
         handleHiddenComponent(item, inputs) {
-            item.hiddenComponent.forEach( hidd => {
+            item.hiddenComponent?.forEach( hidd => {
                 const compHidden = inputs.find( e => hidd.component === e.name );
                 if(compHidden && typeof compHidden.hidden !== 'undefined') {
                     compHidden.hidden = hidd.value == item.value;
@@ -539,7 +538,7 @@ export default {
 
             if(!item.componentDepends) return
 
-            item.componentDepends.forEach( comp => {
+            item.componentDepends?.forEach( comp => {
                 const depend = inputs.find( e => e.name == comp.component);
                 if(depend.typeTable === "vertical") {
                     depend.element[0].splice(indexDelete, 1);
@@ -566,24 +565,24 @@ export default {
             row[0].id = null;
             item.childrens = [...item.childrens, row ];
 
-            if(item.componentDepends?.length > 0) {
+            // if(item.componentDepends?.length > 0) {
 
-                item.componentDepends.forEach( comp => {
-                    const depend = inputs.find( e => e.name == comp.component);
-                    if(depend.typeTable === "vertical") {
-                        depend.element[0].push(depend.element[0][0]);
-                    } else if(depend.typeTable === "horizontal") {
-                        depend.element.push(depend.element[0]);
-                    }
-                });
-                // this.addColumnsTable({ componentDepends: item.componentDepends, row, inputs, values})
-                // this.columnsTable.value.push(item.childrens[0]);
-            }
+            //     item.componentDepends.forEach( comp => {
+            //         const depend = inputs.find( e => e.name == comp.component);
+            //         if(depend.typeTable === "vertical") {
+            //             depend.element[0].push(depend.element[0][0]);
+            //         } else if(depend.typeTable === "horizontal") {
+            //             depend.element.push(depend.element[0]);
+            //         }
+            //     });
+            //     // this.addColumnsTable({ componentDepends: item.componentDepends, row, inputs, values})
+            //     // this.columnsTable.value.push(item.childrens[0]);
+            // }
         },
         addRowTable(item) {
 
             // let newItem = [...item.element[0]];
-            let newItem = JSON.parse(JSON.stringify(item.element[0]));
+            let newItem = JSON.parse(JSON.stringify(item.childrens[0]));
 
             // let finish = undefined;
 
@@ -608,27 +607,77 @@ export default {
 
             // if(finish) return
             item.element.push(newItem);
+            item.childrens.push(newItem);
         },
         removeRowTable(item, index) {
             const firstElement = item.element[0]
-            // const index = item.element.length - 1 > 0 ? item.element.length - 1 : 0;
-            item.element.splice( index, 1);
-            // item.element = item.element.filter((e, i) =>  index-1 != i);
 
+             if(!item.element.length) return
+
+            for (let index2 = 0; index2 < item.element[index].length; index2++) {
+                const element = item.element[index][index2];
+                element.componentDepends?.forEach( comp => {
+                    if(comp.element == "horizontalTitle") {
+                        const depend = this.formSchema[0].body[0].inputs.find( e => e.name == comp.component);
+                        depend.horizontalTitle.splice( index, 1);
+                        depend.element[0].splice( index, 1);
+                    }
+                })
+            }
+
+            if(index == 0) {
+                item.element.shift();
+            } else {
+                item.element.splice( index, 1);
+            }
 
             if(item.element.length == 0) {
                item.element.push(firstElement);
             }
         },
-        addColumnsTable({componentDepends, row, inputs, values}) {
-            if(!componentDepends) return
+        removeColumnTable(item, index) {
+            const firstElement = item.element[0]
 
-            componentDepends.forEach( comp => {
-                const depend = inputs.find( e => e.name == comp.component);
-                const variableTitleCell = row.find( e => e.name == comp.titleCell);
-                depend[comp.element].push(values[variableTitleCell.name].label);
-            })
-            // this.columnsTable.value.push(rows[0]);
+            if(!item.element.length) return
+
+            for (let index2 = 0; index2 < item.element[index - 1].length; index2++) {
+                const element = item.element[index - 1][index2];
+                element.componentDepends?.forEach( comp => {
+                    if(comp.element == "verticalTitle") {
+                        const depend = this.formSchema[0].body[0].inputs.find( e => e.name == comp.component);
+                        depend.verticalTitle.splice( index, 1);
+                        depend.element.splice( index, 1);
+                    }
+                })
+            }
+
+            item.element.splice( index, 1);
+            if(item.element.length == 0) {
+               item.element.push(firstElement);
+            }
+        },
+        addColumnsTable({componentDepends, rowId, inputs, values}) {
+            if(!componentDepends) return
+            const depend = inputs.find( e => e.name === componentDepends.component);
+            if(depend[componentDepends.element].length == 0) {
+                depend[componentDepends.element].push(values.label);
+            } else if(depend[componentDepends.element].length <= parseInt(rowId)){
+                depend[componentDepends.element].push(values.label);
+                depend.element[0].push(depend.element[0][0]);
+                // depend[componentDepends.element].push("");
+            }else depend[componentDepends.element][rowId] = values.label;
+
+        },
+        addRowsTable({componentDepends, rowId, inputs, values}) {
+            if(!componentDepends) return
+            const depend = inputs.find( e => e.name === componentDepends.component);
+            if(depend[componentDepends.element].length == 0) {
+                depend[componentDepends.element].push(values.label);
+            } else if(depend[componentDepends.element].length <= parseInt(rowId)){
+                depend[componentDepends.element].push(values.label);
+                depend.element.push(depend.element[0]);
+            }else depend[componentDepends.element][rowId] = values.label;
+
         },
         async getAsyncOptionsSelect(value, element){
             //console.log(this.valuesForm);
@@ -726,16 +775,19 @@ export default {
 
         },
         handleChageOptionSelectTable(value, element) {
-            const elementChange = element.ele.componentDepends;
-            const index = element.id;
-            if(!elementChange) return;
+            if(element.ele.componentDepends?.length > 0) {
+                for (let index = 0; index < element.ele.componentDepends.length; index++) {
+                    const title = element.ele.componentDepends[index].element
+                    if( title === "horizontalTitle") {
+                        this.addColumnsTable({ componentDepends: element.ele.componentDepends[index], rowId: element.id,  inputs: this.formSchema[0].body[0].inputs, values: value})
+                    } else if( title === "verticalTitle") {
+                        this.addRowsTable({ componentDepends: element.ele.componentDepends[index], rowId: element.id,  inputs: this.formSchema[0].body[0].inputs, values: value})
+                    }
+                }
 
-            elementChange.forEach(element => {
-                const [ table, nameInput ] = element.split('.');
-                const asd = `${table}[${index}].${nameInput}`
-                this.$refs[`${table}[${index}].${nameInput}`].select(value)
-            });
 
+
+            }
         },
         getValueInput(elementArray, value) {
             const element = elementArray.find(e => e.value == value);

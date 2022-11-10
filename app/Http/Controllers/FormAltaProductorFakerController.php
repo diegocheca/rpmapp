@@ -8,7 +8,7 @@ use App\Models\FormAltaProductorFaker;
 use Inertia\Inertia;
 use App\Models\Provincias;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as Faker;
@@ -472,4 +472,75 @@ $minas = DB::table('mina_cantera')
     {
         //
     }
+
+    public function p1_fake(){
+        $faker = Faker::create();
+        $prod_fake = array();
+        $prod_fake["numeroproductor"] = $faker->numberBetween(100,459999);
+        $prod_fake["cuit"] =  "20-".$faker->numberBetween(15000000,45999999)."-0";
+        $prod_fake["razon_social"] =  $faker->company();
+        $prod_fake["email"] =  $faker->email();
+        $prod_fake["tiposociedad"] = Constants::$sociedades[$faker->numberBetween(0,count(Constants::$sociedades)-1)];
+        $prod_fake["inscripciondgr"] =  '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+        $prod_fake["constaciasociedad"] = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'formulario encontrado',
+            'data' => $prod_fake,
+        ], 200);
+
+    }
+    public function p2_fake(){
+        $faker = Faker::create();
+        $prod_fake = array();
+        $prod_fake["leal_calle"] =  $faker->address;
+        $prod_fake["leal_numero"] =  $faker->numberBetween(1000,9999);
+        $prod_fake["leal_telefono"] =   $faker->e164PhoneNumber;
+        $prod_fake["leal_provincia"] =  Auth::user()->id_provincia;
+        $departamentos = Departamentos::select("id", "nombre")->where("provincia_id", "=",Auth::user()->id_provincia)->get();
+        $prod_fake["leal_departamento"] = $departamentos[$faker->numberBetween(0,($departamentos->count())-1)]->id; 
+        $prod_fake["leal_localidad"] =  $faker->state;
+        $prod_fake["leal_cp"] =   $faker->numberBetween(1000,9999);
+        $prod_fake["leal_otro"] = $faker->text($maxNbChars = 50);
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'formulario encontrado',
+            'data' => $prod_fake,
+        ], 200);
+
+    }
+    public function p4_fake(){
+        $faker = Faker::create();
+        $prod_fake = array();
+        $mina_cantera = null;
+        $categoria = null;
+        if($faker->boolean ){
+            $mina_cantera = "Cantera";
+            $categoria = "tercera";
+        }else {
+            $mina_cantera = "Mina";
+            if($faker->boolean ){
+                $categoria ="primera";
+            } else {
+                $categoria ="segunda";
+            }
+        }
+        $prod_fake["mina_cantera"] = $mina_cantera;
+        $prod_fake["categoria"] =$categoria;
+        $prod_fake["numero_expdiente"] =  $faker->numberBetween(1000,9999);
+        $prod_fake["distrito_minero"] = "distrito numero: ".$faker->numberBetween(0,9999);
+        $prod_fake["descripcion_mina"] =$faker->realText($maxNbChars = 35, $indexSize = 1);
+        $prod_fake["nombre_mina"] =  Constants::$nombres_minas[$faker->numberBetween(0,count(Constants::$nombres_minas))];
+        $prod_fake["plano_inmueble"] = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+        $prod_fake["titulo_contrato_posecion"] = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+        $prod_fake["resolucion_concesion_minera"] = '/storage/files_formularios/fake_pdfs/'.$faker->numberBetween(0,388).'.pdf';
+
+        return response()->json([
+            'status' => 'ok',
+            'msg' => 'formulario encontrado',
+            'data' => $prod_fake,
+        ], 200);
+
+    }
+
 }

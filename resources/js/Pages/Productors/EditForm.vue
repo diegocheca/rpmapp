@@ -159,38 +159,8 @@
             </template>
           </jet-dialog-modal>
 
-
-
-          <br>
-          salta : {{$props.mostrar.paso_salta}}
-          eval: {{evaluacion_global}}
-          {{testing_global}}
-            
-          id : {{$props.productor.id}}
-            <div ></div>
-            <PaginaSalta3
-              :link_volver="route('formulario-alta.index')"
-              :titulo_boton_volver="'Volver'"
-              :titulo_boton_guardar="'Guardar'"
-              :titulo_pagina="'Salta'"
-              :evaluacion="evaluacion_global"
-              :accion="'editar'"
-              :id="$props.productor.id"
-              :lista_provincias="lista_provincias"
-              :lista_dptos="lista_dptos_mina"
-              
-              >
-            </PaginaSalta3>
-            
-        
-
-
-
-
-
           <br />
           <div id="section_productor"></div>
-          {{$props.productor.id}}
           <PaginaUnoDatosProductores
             v-if="$props.mostrar.paso_uno"
             :link_volver="route('formulario-alta.index')"
@@ -1114,6 +1084,24 @@
             :id="$props.productor.id"
           >
           </PaginaMendoza>
+
+          <br>
+            <div ></div>
+            <PaginaSalta3
+              :link_volver="route('formulario-alta.index')"
+              :titulo_boton_volver="'Volver'"
+              :titulo_boton_guardar="'Guardar'"
+              :titulo_pagina="'Salta'"
+              :evaluacion="evaluacion_global"
+              :accion="'editar'"
+              :id="$props.productor.id"
+              :lista_provincias="lista_provincias"
+              :lista_dptos="lista_dptos_mina"
+              
+              >
+            </PaginaSalta3>
+            
+
 
           <div id="finalizar"></div>
           <div
