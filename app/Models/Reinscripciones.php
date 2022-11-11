@@ -136,6 +136,25 @@ class Reinscripciones extends Model
         "listado_maquinas_vehiculos",
         "pago_multas",
 
+        //CHUBUT
+        'sustancia',
+        'sustancia_macro',
+        "unidades_cateo",
+        'registro',
+        "fecha_registro",
+        "fecha_pet_men",
+        "pertenencias",
+        "edicto",
+        "mensura",
+        "titulo",
+        "inspeccion",
+        "situacion_legal",
+        "fecha_vac",
+        "fecha_tf",
+        "caja",
+        "superficiarios",
+
+
         'created_by',
         'estado',
     ];

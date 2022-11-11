@@ -75,12 +75,13 @@ class ReinscripcionController extends Controller
                 ->get();
         } else //administrador
             $reinscripciones = Reinscripciones::select('reinscripciones.id', 'productos.id_mina', 'reinscripciones.id_productor', 'reinscripciones.estado', 'reinscripciones.nombre as encargado', 'productores.razonsocial', 'mina_cantera.nombre as mina')
-                ->join('productores', 'reinscripciones.id_productor', '=', 'productores.id')
-                ->join('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
-                ->join('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
+                ->leftjoin('productores', 'reinscripciones.id_productor', '=', 'productores.id')
+                ->leftjoin('productos', 'reinscripciones.id', '=', 'productos.id_reinscripcion')
+                ->leftjoin('mina_cantera', 'productos.id_mina', '=', 'mina_cantera.id')
                 ->whereNull('reinscripciones.deleted_at')
                 ->groupBy('reinscripciones.id', 'productos.id_mina', 'reinscripciones.id_productor', 'reinscripciones.estado', 'encargado', 'productores.razonsocial', 'mina')
                 ->get();
+
        // dd($reinscripciones,$user->province->value,Auth::user()->hasRole('Autoridad') );
         return Inertia::render('Reinscripciones/List', ['reinscripciones' => $reinscripciones]);
     }

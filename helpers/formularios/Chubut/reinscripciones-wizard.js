@@ -69,11 +69,11 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                 },
                                 {
                                     label: 'Labor',
-                                    value: schema.labor,
+                                    value: schema.laboreos,
                                     type: inputsTypes.TEXT,
-                                    name: 'labor',
+                                    name: 'laboreos',
                                     validations: yup.string().required('Debes completar este campo'),
-                                    observation: new Observations({schema, name: 'labor', action}).observations
+                                    observation: new Observations({schema, name: 'laboreos', action}).observations
 
                                 },
                                  {
@@ -621,7 +621,6 @@ export async function getFormSchema({ ...schema }, action, dataForm, productors)
                                     value: schema.superficie,
                                     type: inputsTypes.NUMBER,
                                     name: 'superficie',
-                                    name: 'desarrollo',
                                     observation: new Observations({schema, name: 'superficie', action}).observations
 
                                 },
