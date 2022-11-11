@@ -268,6 +268,15 @@ class FormAltaProductorFakerController extends Controller
             $array_to_return = array();
             //dd($request->all());
             //for($i = 0;$i< $request->cantidad; $i++)
+
+            if($request->provincia == 26) {
+                // CHUBUT
+                $this->ChubutStore();
+                return response()->json([
+                    'status' => 'success',
+                    'formularios' => "CARGA CORRECTA"
+                ], 200);
+            }
             $datos_a_mostrar = array();
             for ($i = 0; $i < 1; $i++) {
                 $nueva_reinscripcion = new Reinscripciones();
@@ -622,5 +631,106 @@ class FormAltaProductorFakerController extends Controller
             'msg' => 'formulario encontrado',
             'data' => $prod_fake,
         ], 200);
+    }
+
+    protected function ChubutStore()
+    {
+        $reinscripcion = [];
+        $data = file_get_contents("json/reinscripcionChubut.json");
+        $reinscripcion = json_decode(json_encode(json_decode($data, true))) ;
+
+            $user = HomeController::userData();
+            // $provinceData = Provincias::where('id','=', $user->province->value)->first();
+            // $period = date('Y-m-d', strtotime("+$provinceData->duracion_reinscripcion months", strtotime(date("Y-m-d"))));
+    
+            $saveData = [];
+            $newProducts = [];
+            dd($reinscripcion[0]->EXPEDIENTE);
+            foreach ($reinscripcion as $key => $data) {
+                // $key = strtolower($key);
+                // if ($data == "on" || $data == true) {
+                //     $saveData[$key] = 1;
+                //     continue;
+                // }
+                   
+    
+                if ($key == "productos") {
+    
+                    if (!empty($reinscripcion['production_checkbox']) && $reinscripcion['production_checkbox'] == false) continue;
+    
+                    $saveData["cantidad_productos"] = count($data);
+    
+                    for ($i = 0; $i < count($data); $i++) {
+                        $product = [];
+    
+                        foreach ($data[$i] as $key2 => $data2) {
+    
+                            if (in_array($key2, ["nombre_mineral", "unidades"])) {
+                                // $product[$key2] = json_encode($data2);
+                                $product[$key2] = $data2["value"];
+                                continue;
+                            }
+    
+                            $product[$key2] = $data2;
+                            // $product["variedad"] =
+                            // $product["otra_unidad"] =
+                            $product["estado"] = "aprobado";
+                        }
+    
+                        array_push($newProducts, $product);
+                    }
+    
+                    continue;
+                } else {
+                    $saveData["cantidad_productos"] = 0;
+                }
+    
+    
+                if (in_array($key, ["id_mina", "id_productor", "polvorin", "id_departamento", "id_localidad"])) {
+    
+                    $saveData[$key] = $reinscripcion[$key]["value"];
+                    continue;
+                }
+    
+                $saveData[$key] = $data;
+            }
+    
+            $saveData['fecha_vto'] = null;
+            $saveData['estado'] = 'en proceso';
+    
+            DB::beginTransaction();
+            try {
+                
+                $arrayValues = $saveData;
+                $arrayValues["cantidad_productos"] = 1;
+                // nueva reinscripcion
+                dd($arrayValues["expediente"]);
+                $newReinscription = Reinscripciones::create($arrayValues);
+    
+                foreach ($newProducts as $key => $new) {
+                    $newProduct = [
+                        "id_reinscripcion" => $newReinscription["id"],
+                        "nombre_mineral" => $new["nombre_mineral"],
+                        "expediente" => $new["expediente"],
+                        "estado" => $new["estado"],
+                        "derecho" => $new["derecho"],
+                        "sustancia" => $new["sustancia"],
+                        "ubicacion" => $new["ubicacion"],
+                        "superficie" => $new["superficie"],
+                        "etapa" => $new["etapa"],
+                        "resolucion" => $new["resolucion"],
+                        "estado" => "en proceso"
+                    ];
+                    //productos
+                    $addProducts = Productos::create($newProduct);
+                }
+
+                DB::commit();
+
+            } catch (\Exception $ex) {
+                DB::rollback();
+                return response()->json(['error' => $ex->getMessage()], 500);
+            }
+
     }
 }
