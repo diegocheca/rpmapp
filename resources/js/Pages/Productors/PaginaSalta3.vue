@@ -25,9 +25,7 @@
             v-on:change_valor_evaluacion="update_valor_evaluacion_Adm($event)"
           ></Menu>
         </div>
-
-<h1>Accion: {{$props.accion}}</h1>
-
+        <h1>Id de formulario: {{$props.id}}</h1>
         <div class="flex flex-wrap">
           <div
             class="
@@ -43,7 +41,7 @@
             "
           >
             <label>Tipo de productor</label>
-            <select v-model="form_salta.tipo">
+            <select v-model="form_salta.tipo" :disabled="disable_input">
               <option value="1">Productor</option>
               <option value="2">Planta de Ben. Minerales</option>
               <option value="3">Explorador</option>
@@ -203,7 +201,7 @@
               id="representante_legal_nombre"
               name="representante_legal_nombre"
               v-model="form_salta.representante_legal_nombre"
-              
+              :disabled="disable_input"
             />
           </div>
           <div class="bg-white shadow-md rounded-xl pb-2 border border-red-600" v-if="$props.evaluacion ">
@@ -359,7 +357,7 @@
                 id="representante_legal_apellido"
                 name="representante_legal_apellido"
                 v-model="form_salta.representante_legal_apellido"
-                
+                :disabled="disable_input"
               />
             </div>
 
@@ -540,7 +538,7 @@
                 id="representante_legal_dni"
                 name="representante_legal_dni"
                 v-model="form_salta.representante_legal_dni"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -701,7 +699,7 @@
                 id="representante_legal_email"
                 name="representante_legal_email"
                 v-model="form_salta.representante_legal_email"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -862,7 +860,7 @@
                 id="representante_legal_cargo"
                 name="representante_legal_cargo"
                 v-model="form_salta.representante_legal_cargo"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -1038,7 +1036,7 @@
                 id="representante_legal_domicilio"
                 name="representante_legal_domicilio"
                 v-model="form_salta.representante_legal_domicilio"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -1193,7 +1191,7 @@
                 id="representante_legal_nacionalidad"
                 name="representante_legal_nacionalidad"
                 v-model="form_salta.nacionalidad"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -1355,7 +1353,7 @@
                 id="representante_legal_telefono"
                 name="representante_legal_telefono"
                 v-model="form_salta.telefono"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -1566,7 +1564,7 @@
                 id="superficie_mina"
                 name="superficie_mina"
                 v-model="form_salta.superficie_mina"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -1667,7 +1665,7 @@
                 id="volumenes_de_extraccion_periodo_anterior"
                 name="volumenes_de_extraccion_periodo_anterior"
                 v-model="form_salta.volumenes_de_extraccion_periodo_anterior"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
             <div v-show="ayuda_local">
@@ -1768,7 +1766,7 @@
                 id="n_resolucion_iia"
                 name="n_resolucion_iia"
                 v-model="form_salta.n_resolucion_iia"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -1883,7 +1881,7 @@
                 id="etapa_de_exploracion"
                 name="n_resolucetapa_de_exploracionion_iia"
                 v-model="form_salta.etapa_de_exploracion"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -1983,7 +1981,7 @@
                 id="n_resolucion_aprobacion_informe"
                 name="n_resolucion_aprobacion_informe"
                 v-model="form_salta.n_resolucion_aprobacion_informe"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
             <div v-show="ayuda_local">
@@ -2083,7 +2081,7 @@
                 id="etapa_de_exploracion_avanzada"
                 name="etapa_de_exploracion_avanzada"
                 v-model="form_salta.etapa_de_exploracion_avanzada"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -2206,7 +2204,7 @@
                 id="volumenes_anuales_de_materias_primas"
                 name="volumenes_anuales_de_materias_primas"
                 v-model="form_salta.volumenes_anuales_de_materias_primas"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
             <div v-show="ayuda_local">
@@ -2305,7 +2303,7 @@
                 id="material_obtenido"
                 name="material_obtenido"
                 v-model="form_salta.material_obtenido"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
             <div v-show="ayuda_local">
@@ -2405,7 +2403,7 @@
                 id="autorizacion_extractivas_exploratorias"
                 name="autorizacion_extractivas_exploratorias"
                 v-model="form_salta.autorizacion_extractivas_exploratorias"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
             <div v-show="ayuda_local">
@@ -2524,7 +2522,7 @@
                 id="responsable_nombre"
                 name="responsable_nombre"
                 v-model="form_salta.responsable_nombre"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -2693,7 +2691,7 @@
                 id="responsable_apellido"
                 name="responsable_apellido"
                 v-model="form_salta.responsable_apellido"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -2866,7 +2864,7 @@
                 id="responsable_dni"
                 name="responsable_dni"
                 v-model="form_salta.responsable_dni"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -3066,7 +3064,7 @@
                 id="responsable_titulo"
                 name="responsable_titulo"
                 v-model="form_salta.responsable_titulo"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -3240,7 +3238,7 @@
                 id="responsable_matricula"
                 name="responsable_matricula"
                 v-model="form_salta.responsable_matricula"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -3457,7 +3455,7 @@
                 id="ley_24196_numero"
                 name="ley_24196_numero"
                 v-model="form_salta.ley_24196_numero"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -3559,7 +3557,7 @@
                 id="ley_24196_inscripcion_renar"
                 name="ley_24196_inscripcion_renar"
                 v-model="form_salta.ley_24196_inscripcion_renar"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -3659,7 +3657,7 @@
                 id="ley_24196_explosivos"
                 name="ley_24196_explosivos"
                 v-model="form_salta.ley_24196_explosivos"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
 
@@ -3760,7 +3758,7 @@
                 id="ley_24196_propiedad"
                 name="ley_24196_propiedad"
                 v-model="form_salta.ley_24196_propiedad"
-                :disabled="false"
+                :disabled="disable_input"
               />
             </div>
             <div v-show="ayuda_local">
@@ -4149,7 +4147,7 @@
                         id="empresa_razon_social"
                         name="empresa_razon_social"
                         v-model="empresa.razon_social"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4211,7 +4209,7 @@
                         id="empresa_cuit"
                         name="empresa_cuit"
                         v-model="empresa.cuit"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4273,7 +4271,7 @@
                         id="empresa_tipo"
                         name="empresa_tipo"
                         v-model="empresa.tipo"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4336,7 +4334,7 @@
                         id="empresa_calle"
                         name="empresa_calle"
                         v-model="empresa.calle"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4398,7 +4396,7 @@
                         id="empresa_numero"
                         name="empresa_numero"
                         v-model="empresa.numero"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4460,7 +4458,7 @@
                         id="empresa_telefono"
                         name="empresa_telefono"
                         v-model="empresa.telefono"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4503,6 +4501,7 @@
                           </svg>
                         </span>
                       </div>
+                     
                       <input
                         type="text"
                         maxlength="30"
@@ -4522,8 +4521,32 @@
                         id="empresa_provincia"
                         name="empresa_provincia"
                         v-model="empresa.provincia"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
+                      <select
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-grey-light
+                          rounded
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        id="empresa_provincia"
+                        name="empresa_provincia"
+                        v-model="empresa.provincia"
+                      >
+                        <option
+                          v-for="provincia in $props.lista_provincias"
+                          v-bind:key="provincia.id"
+                          :value="provincia.id"
+                        >
+                          {{ provincia.nombre }}
+                        </option>
+                      </select>
+
                     </div>
                   </div>
                   <!--Dpto-->
@@ -4584,8 +4607,34 @@
                         id="empresa_departamento"
                         name="empresa_departamento"
                         v-model="empresa.departamento"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
+                      <select
+                        class="
+                          flex-shrink flex-grow flex-auto
+                          leading-normal
+                          w-px
+                          border border-grey-light
+                          rounded
+                          px-3
+                          relative
+                          focus:border-blue focus:shadow
+                        "
+                        id="empresa_departamento_dos"
+                        name="empresa_departamento_dos"
+                        v-model="empresa.departamento"
+                        :about="disable_input"
+                      >
+                        
+                        <option
+                          v-for="dpto in $props.lista_dptos"
+                          v-bind:key="dpto.id"
+                          :value="dpto.id"
+                        >
+                          {{ dpto.nombre }}
+                        </option>
+                      </select>
+
                     </div>
                   </div>
                   <!--Localidad-->
@@ -4646,7 +4695,7 @@
                         id="empresa_localidad"
                         name="empresa_localidad"
                         v-model="empresa.localidad"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4708,7 +4757,7 @@
                         id="empresa_cp"
                         name="empresa_cp"
                         v-model="empresa.cp"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4770,7 +4819,7 @@
                         id="empresa_otro"
                         name="empresa_otro"
                         v-model="empresa.otro"
-                        :disabled="false"
+                        :disabled="disable_input"
                       />
                     </div>
                   </div>
@@ -4870,7 +4919,7 @@
 
 
 
-
+{{$props.lista_provincias}}
     
 
 
@@ -4998,6 +5047,8 @@
             hover:text-white hover:shadow-xl hover:bg-green-700
           "
           @click="guardar_form"
+        v-if="$props.accion === 'crear'"
+
         >
           {{ titulo_boton_guardar }}
         </button>
@@ -5016,6 +5067,8 @@
             hover:text-white hover:shadow-xl hover:bg-green-700
           "
           @click="guardar_eval"
+        v-if="$props.evaluacion"
+
         >
           {{ titulo_boton_guardar }} eval
         </button>
@@ -5035,8 +5088,9 @@
             hover:text-white hover:shadow-xl hover:bg-green-700
           "
           @click="update_form"
+          v-if="$props.accion === 'editar' &&  !$props.evaluacion"
         >
-         Update Form
+         Actualizar
         </button>
 
        
@@ -5056,6 +5110,7 @@
             hover:text-white hover:shadow-xl hover:bg-green-700
           "
           @click="update_eval"
+          v-if="$props.accion === 'editar' &&  !$props.evaluacion"
         >
          Update Eval
         </button>
@@ -5114,6 +5169,7 @@
             hover:text-white hover:shadow-xl hover:bg-blue-700
           "
           @click="evaluacion_fakes"
+          v-if="$props.evaluacion"
         >
           evaluacion Fakes
         </button>
@@ -5134,10 +5190,10 @@
             hover:text-white hover:shadow-xl hover:bg-blue-700
           "
           @click="get_eval"
+          v-if="$props.evaluacion"
         >
           Get Eval
         </button>
-
 
         <button
           type="button"
@@ -5154,6 +5210,7 @@
             hover:text-white hover:shadow-xl hover:bg-blue-700
           "
           @click="get_empresas"
+          v-if="$props.accion === 'editar' &&  !$props.evaluacion"
         >
           Get Empresas
         </button>
@@ -5215,6 +5272,7 @@ export default {
   data() {
     return {
       evaluacion_adm: false,
+      disable_input: false,
       mostrar_evaluacion_adm: true,
       mostrar_modulo: true,
       continuar_pagina: false,
@@ -5254,7 +5312,7 @@ export default {
       let response1 = await axios
             .post("/formulario_salta/guardar_alta/", {
               form: this.form_salta,
-              id_formulario_alta: 1858
+              id_formulario_alta: this.$props.id
             })
             .then(function (response) {
               if (response.data.status === "ok") {
@@ -5575,6 +5633,27 @@ export default {
     update_valor_ayuda_local(newValor) {
       this.ayuda_local = newValor;
     },
+    update_valor_ocultar_modulo(v) {
+      this.mostrar_modulo = v;
+    },
+    update_valor_provincia(newValue) {
+      let self = this;
+      this.form_pagina.leal_provincia = newValue;
+      this.$emit("updateValorPadreProv", {
+        nombre: newValue,
+        lugar: this.$props.donde_estoy,
+      });
+      axios
+        .post("/datos/traer_departamentos/", { id_prov: newValue })
+        .then(function (response) {
+          console.log("las deptos son:\n");
+          self.lista_departamentos = response.data;
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      //tengo que enviarsela al padre
+    },
 /*
     ectamente los Datos del Productor.
 [ Id = 1862 ]
@@ -5674,6 +5753,8 @@ export default {
           setTimeout(function(){
                 self.get_eval();
               }, 1000);
+
+              self.disable_input = true;
           
         } 
         else {
@@ -5721,7 +5802,7 @@ export default {
             self.form_salta.ley_checkbox = "false";
   
             //voy a buscar los permisos
-            axios
+            /*axios
               .get("/formulario_salta/traer_permisos_pagina_salta/0/crear")
               .then(function (response) {
                 if (response.data.status === "ok") {
@@ -5733,19 +5814,24 @@ export default {
               .catch(function (error) {
                 console.log(error);
               });
-  
+            */
   
               //empresas controlantes
+
+              self.disable_input = false;
               
           } 
           if (this.$props.accion === "editar") {
             //estoy por editar
             //voy a BUSCAR LOS DATOS DEL FORMULARIO
+            console.log("just before call get_form de salta");
             this.get_form();
             setTimeout(function(){
                 console.log("Executed after 1 second");
                 self.get_empresas();
               }, 2000);
+
+              self.disable_input = false;
           }
         }
       }
