@@ -898,6 +898,127 @@ class ReinscripcionController extends Controller
         ];
     }
 
+    protected function ChubutStore($saveData, $newProducts, $idReinscripcion, $action)
+    {
+        dd($saveData);
+        if (empty($idReinscripcion)) {
+            $arrayValues = $saveData;
+            $arrayValues["cantidad_productos"] = 1;
+            // nueva reinscripcion
+            // dd($arrayValues);
+            $newReinscription = Reinscripciones::create($arrayValues);
+
+            foreach ($newProducts as $key => $new) {
+                $newProduct = [
+                    "id_reinscripcion" => $newReinscription["id"],
+                    "nombre_mineral" => $new["nombre_mineral"],
+                    "expediente" => $new["expediente"],
+                    "estado" => $new["estado"],
+                    "derecho" => $new["derecho"],
+                    "sustancia" => $new["sustancia"],
+                    "ubicacion" => $new["ubicacion"],
+                    "superficie" => $new["superficie"],
+                    "etapa" => $new["etapa"],
+                    "resolucion" => $new["resolucion"],
+                    "estado" => "en proceso"
+                ];
+                //productos
+                $addProducts = Productos::create($newProduct);
+            }
+
+        } else {
+            $arr = Reinscripciones::where('id', $idReinscripcion)->first()->toArray();
+            $arrayValues = array_intersect_key($arr, $saveData);
+            foreach ($arrayValues as $key => $value) {
+                $arrayValues[$key] = $saveData[$key];
+            }
+            // //add new reinscripcion
+            $arrayValues["cantidad_productos"] = 1;
+
+            //modificar reinscripcion
+            $newReinscription = Reinscripciones::where('id', $idReinscripcion)->update($arrayValues);
+            //productos
+            $allProducts = Productos::where('id_reinscripcion', $idReinscripcion)->get()->toArray();
+
+            foreach ($newProducts as $key => $product) {
+
+                if(array_search($product['id'], array_column($allProducts, 'id')) == false) {
+                    Productos::find($product['id'])->delete();
+                    continue;
+                }
+
+                if(!empty($product['id'])) {
+                    $prod = Productos::find($product['id'])->toArray();
+                    $productValues = array_intersect_key($prod, $product);
+                    foreach ($productValues as $key3 => $value) {
+                        $productValues[$key3] = $product[$key3];
+                    }
+
+                    $editProduct = [
+                        // "id_reinscripcion" => $idReinscripcion,
+                        "nombre_mineral" => $productValues["nombre_mineral"],
+                        "expediente" => $productValues["expediente"],
+                        "estado" => $productValues["estado"],
+                        "derecho" => $productValues["derecho"],
+                        "sustancia" => $productValues["sustancia"],
+                        "ubicacion" => $productValues["ubicacion"],
+                        "superficie" => $productValues["superficie"],
+                        "etapa" => $productValues["etapa"],
+                        "resolucion" => $productValues["resolucion"],
+                        "estado" => $arrayValues['estado']
+                    ];
+                    $editProducts = Productos::where('id', $prod['id'])->update($editProduct);
+                } else {
+                    $newProduct = [
+                        "id_reinscripcion" => $idReinscripcion,
+                        "nombre_mineral" => $product["nombre_mineral"],
+                        "expediente" => $product["expediente"],
+                        "estado" => $product["estado"],
+                        "derecho" => $product["derecho"],
+                        "sustancia" => $product["sustancia"],
+                        "ubicacion" => $product["ubicacion"],
+                        "superficie" => $product["superficie"],
+                        "etapa" => $product["etapa"],
+                        "resolucion" => $product["resolucion"],
+                        "estado" => $arrayValues['estado']
+                    ];
+                    $editProducts = Productos::create($newProduct);
+                }
+
+
+            }
+
+
+        }
+    }
+
+    protected function ChubutData($id)
+    {
+        $productors = ProductoresController::productoresUsuario();
+        $reinscripcion = Reinscripciones::find($id);
+
+        if(!empty($reinscripcion)) {
+            $reinscripcion->productos = $reinscripcion->productos;
+        }
+        // if (!empty(Reinscripciones::find($id)->productos)) {
+        //     $productos = Reinscripciones::find($id)->productos->toArray()[0];
+        //     unset($productos['id']);
+        //     $reinscripcion = array_merge($reinscripcion->toArray(), $productos);
+        // }
+
+        $provinces = CountriesController::getProvinces();
+
+        $productorsList = [];
+        for ($i = 0; $i < count($productors['productores']); $i++) {
+            array_push($productorsList, ['value' => $productors['productores'][$i]->id, 'label' => $productors['productores'][$i]->razonsocial]);
+        }
+        return [
+            'reinscripcion' => $reinscripcion,
+            'provinces' => $provinces,
+            'productorsList' => $productorsList
+        ];
+    }
+
     /**
      * Display the specified resource.
      *
