@@ -1,41 +1,6 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["helpers_formularios_default_formDefault_js"],{
 
-/***/ "./helpers/enums/fileAccept.js":
-/*!*************************************!*\
-  !*** ./helpers/enums/fileAccept.js ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  DOC: {
-    value: [".doc", ".docx", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"],
-    label: "doc"
-  },
-  AUDIO: {
-    value: ["audio/*"],
-    label: "audio"
-  },
-  VIDEO: {
-    value: ["video/*"],
-    label: "video"
-  },
-  IMAGE: {
-    value: ["image/jpeg", "image/jpg"],
-    label: "img"
-  },
-  PDF: {
-    value: ["application/pdf"],
-    label: "pdf"
-  }
-});
-
-/***/ }),
-
 /***/ "./helpers/formularios/default/formDefault.js":
 /*!****************************************************!*\
   !*** ./helpers/formularios/default/formDefault.js ***!

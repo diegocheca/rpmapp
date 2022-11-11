@@ -356,9 +356,9 @@ class FormAltaProductor extends Model
         }
 
         if($tiposociedad== null){
-            $this->tiposociedad = $tiposociedad;
-        } else {
             $this->tiposociedad = Constants::$sociedades[$faker->numberBetween(0,count(Constants::$sociedades)-1)];
+        } else {
+            $this->tiposociedad = $tiposociedad;
         }
 
         if($inscripciondgr == null){
