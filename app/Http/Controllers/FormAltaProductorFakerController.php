@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateFormAltaProductorFakerRequest;
 use App\Models\FormAltaProductorFaker;
 use Inertia\Inertia;
 use App\Models\Provincias;
+use App\Models\Localidades;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -65,19 +66,15 @@ class FormAltaProductorFakerController extends Controller
             $provincia = Provincias::select("id", "nombre")->where("id", "=", $request->provincia)->first()->toArray();
             $id_provincia = $provincia["id"];
             $nombre_provincia = $provincia["nombre"];
-            $departamentos = Departamentos::select("id", "nombre")->where("provincia_id", "=", $request->provincia)->get()->toArray();
+
             if ($request->provincia == 26) {
                 for ($i = 0; $i < count($prodMinero); $i++) {
                     //INICIO DE VARIABLES
-
                     $razon_social = $prodMinero[$i]['RAZON_SOCIAL'];
                     $email = str_replace(" ", "", $razon_social) . "@gmail.com";
-                    //dd($email);
-
-                    $departamento = isset($prodMinero[$i]["DEPTO"]) ? $prodMinero[$i]["DEPTO"] : null;
-
+                    $departamento = Departamentos::select("id", "nombre")->where("provincia_id", "=", $request->provincia)->where("nombre", 'ilike', $prodMinero[$i]["DEPTO"])->first();
                     if ($departamento == null) {
-                        $departamento = new stdClass();
+                        //$departamento = new stdClass();
                         $departamento["id"] = 9999;
                         $departamento["nombre"] = "departamento";
                     }
@@ -111,11 +108,11 @@ class FormAltaProductorFakerController extends Controller
 
                     $formulario_nuevo->aprobar_paso_uno($id_user);
 
-                    $formulario_nuevo->completar_paso2_faker($prodMinero[$i]["DIRECCION"], 0, $prodMinero[$i]["TELEFONO"], $id_provincia, $prodMinero[$i]["DEPTO"], " ", 0, " ", $id_user);
+                    $formulario_nuevo->completar_paso2_faker($prodMinero[$i]["DIRECCION"], 0, $prodMinero[$i]["TELEFONO"], $id_provincia,  $departamento['id'], " ", 0, " ", $id_user);
 
                     $formulario_nuevo->aprobar_paso_dos($id_user);
 
-                    $formulario_nuevo->completar_paso3_faker($prodMinero[$i]["DIRECCION"], 0, $prodMinero[$i]["TELEFONO"], $id_provincia, $prodMinero[$i]["DEPTO"], " ", 0, " ", $id_user);
+                    $formulario_nuevo->completar_paso3_faker($prodMinero[$i]["DIRECCION"], 0, $prodMinero[$i]["TELEFONO"], $id_provincia,  $departamento['id'], " ", 0, " ", $id_user);
                     $formulario_nuevo->aprobar_paso_tres($id_user);
 
                     $formulario_nuevo->completar_paso4_faker("Cantera", intval($prodMinero[$i]["EXPTE"]), "distrito numero: ", $prodMinero[$i]["ESTADO"], $prodMinero[$i]["RAZON_SOCIAL"], " ", $prodMinero[$i]["SUST"], $id_user);
@@ -127,7 +124,7 @@ class FormAltaProductorFakerController extends Controller
                     $formulario_nuevo->completar_paso6_faker($id_provincia, intval($departamento["id"]), $id_user);
                     $formulario_nuevo->aprobar_paso_seis($id_user);
 
-                    $formulario_nuevo->completar_paso7_faker(" ", 'Otro', $prodMinero[$i]["CONTACTO"], " ", $id_user);
+                    $formulario_nuevo->completar_paso7_faker(" ", 'Otro', $prodMinero[$i]["CONTACTO"], 0, $id_user);
 
                     $formulario_nuevo->completar_paso8_faker($id_user, false);
 
