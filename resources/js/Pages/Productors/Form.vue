@@ -1032,7 +1032,7 @@
             <br />
 
             <div ></div>
-            <PaginaSalta3
+            <!-- <PaginaSalta3
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
               :titulo_boton_guardar="'Guardar'"
@@ -1043,7 +1043,7 @@
               :lista_provincias="lista_provincias"
               :lista_dptos="lista_dptos_mina"
             >
-            </PaginaSalta3>
+            </PaginaSalta3> -->
 
 
             <div id="finalizar"></div>
