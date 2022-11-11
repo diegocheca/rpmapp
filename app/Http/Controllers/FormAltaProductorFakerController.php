@@ -632,28 +632,26 @@ class FormAltaProductorFakerController extends Controller
 
     protected function ChubutStore()
     {
-        $reinscripcion = [];
         $data = file_get_contents("json/reinscripcionChubut.json");
-        $reinscripcion = json_decode(json_encode(json_decode($data, true))) ;
+        $reinscripcion = json_decode($data, true) ;
 
             $user = HomeController::userData();
             // $provinceData = Provincias::where('id','=', $user->province->value)->first();
             // $period = date('Y-m-d', strtotime("+$provinceData->duracion_reinscripcion months", strtotime(date("Y-m-d"))));
-    
+
             $saveData = [];
             $newProducts = [];
-            dd($reinscripcion[0]->EXPEDIENTE);
-            foreach ($reinscripcion as $key => $data) {
-                // $key = strtolower($key);
+            foreach ($reinscripcion[0] as $key => $data) {
+                $key = strtolower($key);
                 // if ($data == "on" || $data == true) {
                 //     $saveData[$key] = 1;
                 //     continue;
                 // }
                    
-    
+
                 if ($key == "productos") {
     
-                    if (!empty($reinscripcion['production_checkbox']) && $reinscripcion['production_checkbox'] == false) continue;
+                    if (!empty($reinscripcion[0]['production_checkbox']) && $reinscripcion[0]['production_checkbox'] == false) continue;
     
                     $saveData["cantidad_productos"] = count($data);
     
@@ -685,15 +683,15 @@ class FormAltaProductorFakerController extends Controller
     
                 if (in_array($key, ["id_mina", "id_productor", "polvorin", "id_departamento", "id_localidad"])) {
     
-                    $saveData[$key] = $reinscripcion[$key]["value"];
+                    $saveData[$key] = $reinscripcion[0][$key]["value"];
                     continue;
                 }
     
                 $saveData[$key] = $data;
-            }
+            
     
             $saveData['fecha_vto'] = null;
-            $saveData['estado'] = 'en proceso';
+            $saveData['estado'] = 'aprobado';
     
             DB::beginTransaction();
             try {
@@ -701,7 +699,7 @@ class FormAltaProductorFakerController extends Controller
                 $arrayValues = $saveData;
                 $arrayValues["cantidad_productos"] = 1;
                 // nueva reinscripcion
-                dd($arrayValues["expediente"]);
+
                 $newReinscription = Reinscripciones::create($arrayValues);
     
                 foreach ($newProducts as $key => $new) {
@@ -716,7 +714,7 @@ class FormAltaProductorFakerController extends Controller
                         "superficie" => $new["superficie"],
                         "etapa" => $new["etapa"],
                         "resolucion" => $new["resolucion"],
-                        "estado" => "en proceso"
+                        "estado" => "aprobado"
                     ];
                     //productos
                     $addProducts = Productos::create($newProduct);
@@ -728,6 +726,7 @@ class FormAltaProductorFakerController extends Controller
                 DB::rollback();
                 return response()->json(['error' => $ex->getMessage()], 500);
             }
+        }
 
     }
 }
