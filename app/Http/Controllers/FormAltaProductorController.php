@@ -8550,7 +8550,7 @@ class FormAltaProductorController extends Controller
 				];
 			}
 		} elseif (Auth::user()->id_provincia  == 26) {
-			$nombre_provincia = "Neuquén";
+			$nombre_provincia = "Chubut";
 			if (Auth::user()->hasRole('Productor')) {
 				$disables = [
 					"razon_social" => false,
