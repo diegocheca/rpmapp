@@ -1087,7 +1087,7 @@
 
           <br>
             <div ></div>
-            <PaginaSalta3
+            <!-- <PaginaSalta3
               :link_volver="route('formulario-alta.index')"
               :titulo_boton_volver="'Volver'"
               :titulo_boton_guardar="'Guardar'"
@@ -1099,7 +1099,7 @@
               :lista_dptos="lista_dptos_mina"
               
               >
-            </PaginaSalta3>
+            </PaginaSalta3> -->
             
 
 
@@ -2545,16 +2545,7 @@ export default {
           },
         ];
       } else {
-        axios
-          .get("/datos/traer_provincias")
-          .then(function (response) {
-            // console.log("las provincias so2n:\n");
-            self.lista_provincias = response.data;
-            // console.log(self.lista_provincias);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        c
       }
     });
     //voy a buscar los dptos
