@@ -1,0 +1,550 @@
+<mxfile host="65bd71144e">
+    <diagram id="AbvcyODMGbLfHhGxlUP3" name="Page-1">
+        <mxGraphModel dx="3329" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5" value="" style="ellipse;html=1;shape=startState;fillColor=#000000;strokeColor=#ff0000;" parent="1" vertex="1">
+                    <mxGeometry x="460" y="20" width="30" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="5" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="475" y="110" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="7" value="Pantalla de Inicio" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" parent="1" vertex="1">
+                    <mxGeometry x="415" y="120" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="280" y="220" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="24" value="" style="edgeStyle=none;html=1;" parent="1" source="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="475" y="320" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="10" value="Inicio de Sesión" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" parent="1" vertex="1">
+                    <mxGeometry x="415" y="210" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;" parent="1" source="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="475" y="310" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="13" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="485" y="320" as="targetPoint"/>
+                        <mxPoint x="456" y="210" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="456" y="200"/>
+                            <mxPoint x="360" y="200"/>
+                            <mxPoint x="360" y="240"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="credenciales erróneas&lt;br&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="180" width="130" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="Formulario de Contacto" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fontColor=#000000;fillColor=#ffffc0;strokeColor=#ff0000;" parent="1" vertex="1">
+                    <mxGeometry x="650" y="120" width="120" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;entryX=0.878;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="15" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="650" y="70" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="710" y="80"/>
+                            <mxPoint x="520" y="80"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;strokeColor=#ff0000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="7" target="15" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="485" y="130" as="targetPoint"/>
+                        <mxPoint x="485" y="60" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="46" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;elbow=vertical;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.379;entryY=-0.008;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="26" target="44" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="370" y="320"/>
+                            <mxPoint x="260" y="350"/>
+                            <mxPoint x="240" y="370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="245" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;strokeColor=#FF0000;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="25" target="244">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="25" value="Dashboard &#10;correspondiente al rol &#10;del usuario" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="395" y="280" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" value="entry/ mostrar widgets según rol,&amp;nbsp; menú con las distintas pantallas de funcionalidades" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="25" vertex="1">
+                    <mxGeometry y="40" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="credenciales válidas" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="260" width="120" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="81" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0.01;entryY=0.307;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="45" target="79" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-315" y="660"/>
+                            <mxPoint x="-305" y="730"/>
+                            <mxPoint x="-325" y="640"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="85" value="" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="45" target="82" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="45" y="490" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="92" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="45" target="89" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-355" y="840"/>
+                            <mxPoint x="-345" y="660"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="236" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#FF0000;" edge="1" parent="1" source="44" target="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="340" y="355"/>
+                            <mxPoint x="240" y="370"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="44" value="Listado de Borradores" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="-275" y="460" width="160" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="&lt;b&gt;entry/&lt;/b&gt; listado borradores activos y sus acciones. Gráfico con los estados de los borradores&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; acciones: Ver, Editar, Descargar, Imprimir, Eliminar.&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; volver Dashboard" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="44" vertex="1">
+                    <mxGeometry y="40" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="87" style="edgeStyle=elbowEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#000000;strokeColor=#FF0000;" parent="1" source="79" target="45" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-335" y="670"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="78" value="Editar Borrador" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="-295" y="850" width="160" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="79" value="&lt;b&gt;entry/&lt;/b&gt; mostrar formulario de borrador&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; solicitar datos necesarios para completar el formulario&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; cerrar formulario" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="78" vertex="1">
+                    <mxGeometry y="40" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="86" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontColor=#000000;strokeColor=#FF0000;" parent="1" source="82" target="45" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="82" value="Visualizar Borrador" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="-285" y="690" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="83" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de borrador&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="82" vertex="1">
+                    <mxGeometry y="40" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="84" value="entry/ listado borradores activos y sus acciones. Gráfico con los estados de los borradores" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="82" vertex="1">
+                    <mxGeometry y="120" width="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="94" style="edgeStyle=elbowEdgeStyle;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;fontColor=#000000;strokeColor=#FF0000;" parent="1" source="90" target="45" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-375" y="700"/>
+                            <mxPoint x="-335" y="820"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="89" value="Nuevo Borrador" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="-305" y="1040" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="90" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de borrador&lt;/span&gt;&lt;br&gt;&lt;b&gt;do/&lt;/b&gt;&lt;span&gt;&amp;nbsp;solicitar datos necesarios para completar el formulario&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="89" vertex="1">
+                    <mxGeometry y="40" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="174" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de borrador&lt;/span&gt;&lt;br&gt;&lt;b&gt;do/&lt;/b&gt;&lt;span&gt;&amp;nbsp;solicitar datos necesarios para completar el formulario&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="89" vertex="1">
+                    <mxGeometry y="160" width="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="126" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0.25;exitY=1;exitDx=0;exitDy=0;elbow=vertical;" parent="1" source="26" target="130" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="745" y="542.7118644067798" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="127" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="131" target="134" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-15" y="750"/>
+                            <mxPoint x="-25" y="750"/>
+                            <mxPoint x="-15" y="750"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="128" value="" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="131" target="136" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="395" y="680" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="129" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="131" target="141" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-55" y="740"/>
+                            <mxPoint x="-65" y="820"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="130" value="Listado de Reinscripciones" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="460" width="160" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="131" value="&lt;b&gt;entry/&lt;/b&gt; listado reinscripciones activas y sus acciones.&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; acciones: Ver, Editar, Revisar, Eliminar.&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; volver Dashboard" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="130" vertex="1">
+                    <mxGeometry y="40" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="132" style="edgeStyle=elbowEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fontColor=#000000;strokeColor=#FF0000;" parent="1" source="134" target="131" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="5" y="810"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="133" value="Editar Reinscripción" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="55" y="850" width="160" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="134" value="&lt;b&gt;entry/&lt;/b&gt; mostrar formulario de reinscripción&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; solicitar datos necesarios para completar el formulario&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; cerrar formulario" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="133" vertex="1">
+                    <mxGeometry y="40" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="135" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontColor=#000000;strokeColor=#FF0000;" parent="1" source="136" target="131" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="136" value="Visualizar Reinscripción" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="55" y="690" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="137" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de reinscripción&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="136" vertex="1">
+                    <mxGeometry y="40" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="138" value="entry/ listado borradores activos y sus acciones. Gráfico con los estados de los borradores" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="136" vertex="1">
+                    <mxGeometry y="120" width="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="139" style="edgeStyle=elbowEdgeStyle;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontColor=#000000;strokeColor=#FF0000;" parent="1" source="141" target="131" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="-35" y="740"/>
+                            <mxPoint x="-45" y="750"/>
+                            <mxPoint x="-35" y="830"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="140" value="Nueva Reinscripción" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="55" y="1040" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="141" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de reinscripción&lt;/span&gt;&lt;br&gt;&lt;b&gt;do/&lt;/b&gt;&lt;span&gt;&amp;nbsp;solicitar datos necesarios para completar el formulario&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="140" vertex="1">
+                    <mxGeometry y="40" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="142" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;elbow=vertical;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="26" target="146" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="540" y="430" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="510" y="440"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="143" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="147" target="150" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="695" y="670" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="325" y="810"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="144" value="" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="147" target="152" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="835" y="630" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="145" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="147" target="157" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="265" y="1160"/>
+                            <mxPoint x="265" y="860"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="146" value="Listado de IIAs y DIAs" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="385" y="460" width="160" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="147" value="&lt;b&gt;entry/&lt;/b&gt; listado de IIAs y DIAs activos y sus acciones.&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; acciones: Ver, Editar,&amp;nbsp; Eliminar.&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; volver Dashboard" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="146" vertex="1">
+                    <mxGeometry y="40" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="148" style="edgeStyle=elbowEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontColor=#000000;strokeColor=#FF0000;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="150" target="147" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="735" y="650" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="355" y="670"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="149" value="Editar IIA y DIA" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="395" y="850" width="160" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="150" value="&lt;b&gt;entry/&lt;/b&gt; mostrar formulario de IIAs y DIAs&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; silicitar datos necesarios para completar el formulario&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; cerrar formulario" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="149" vertex="1">
+                    <mxGeometry y="40" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="151" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;fontColor=#000000;strokeColor=#FF0000;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="152" target="147" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="885" y="610" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="152" value="Visualizar IIAs y DIAs" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="395" y="690" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="153" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de IIAs y DIAs&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="152" vertex="1">
+                    <mxGeometry y="40" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="154" value="entry/ listado borradores activos y sus acciones. Gráfico con los estados de los borradores" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="152" vertex="1">
+                    <mxGeometry y="120" width="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="155" style="edgeStyle=elbowEdgeStyle;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontColor=#000000;strokeColor=#FF0000;" parent="1" source="157" target="147" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="295" y="830"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="156" value="Nuevo IIAs y DIAs" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="395" y="1030" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="157" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de IIAs y DIAs&lt;/span&gt;&lt;br&gt;&lt;b&gt;do/&lt;/b&gt;&lt;span&gt;&amp;nbsp;silicitar datos necesarios para completar el formulario&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="156" vertex="1">
+                    <mxGeometry y="40" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="158" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;elbow=vertical;exitX=1;exitY=0.75;exitDx=0;exitDy=0;" parent="1" source="26" target="162" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="360" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="640" y="373"/>
+                            <mxPoint x="760" y="380"/>
+                            <mxPoint x="780" y="370"/>
+                            <mxPoint x="710" y="400"/>
+                            <mxPoint x="710" y="410"/>
+                            <mxPoint x="730" y="400"/>
+                            <mxPoint x="740" y="420"/>
+                            <mxPoint x="750" y="370"/>
+                            <mxPoint x="680" y="410"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="159" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="163" target="166" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1030" y="630" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="690" y="720"/>
+                            <mxPoint x="680" y="690"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="160" value="" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="163" target="168" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1040" y="550" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="161" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="163" target="173" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="600" y="710"/>
+                            <mxPoint x="610" y="700"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="162" value="Listado de Minas" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="710" y="460" width="160" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="163" value="&lt;b&gt;entry/&lt;/b&gt; listado minas activas y sus acciones.&amp;nbsp;&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; acciones: Ver, Editar,&amp;nbsp; Eliminar.&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; volver Dashboard" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="162" vertex="1">
+                    <mxGeometry y="40" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="164" style="edgeStyle=elbowEdgeStyle;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;fontColor=#000000;strokeColor=#FF0000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="166" target="163" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1000" y="580" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="660" y="710"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="165" value="Editar Mina" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="710" y="850" width="160" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="166" value="&lt;b&gt;entry/&lt;/b&gt; mostrar formulario de minas&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; solicitar datos necesarios para completar el formulario&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; cerrar formulario" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="165" vertex="1">
+                    <mxGeometry y="40" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="167" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="168" target="163" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1060" y="530" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="168" value="Visualizar Minas" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="710" y="690" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="169" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de minas&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="168" vertex="1">
+                    <mxGeometry y="40" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="170" value="entry/ listado borradores activos y sus acciones. Gráfico con los estados de los borradores" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="168" vertex="1">
+                    <mxGeometry y="120" width="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="171" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" parent="1" source="173" target="163" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="930" y="600" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="630" y="710"/>
+                            <mxPoint x="590" y="840"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="172" value="Nueva Mina" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" parent="1" vertex="1">
+                    <mxGeometry x="710" y="1030" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="173" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de borrador&lt;/span&gt;&lt;br&gt;&lt;b&gt;do/&lt;/b&gt;&lt;span&gt;&amp;nbsp;solicitar datos necesarios para completar el formulario&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" parent="172" vertex="1">
+                    <mxGeometry y="40" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="175" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="179" target="182">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1370" y="630" as="sourcePoint"/>
+                        <Array as="points">
+                            <mxPoint x="1030" y="720"/>
+                            <mxPoint x="1020" y="690"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="176" value="" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0.25;entryY=0;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="179" target="184">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1380" y="550" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="177" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="179" target="189">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="940" y="710"/>
+                            <mxPoint x="950" y="700"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="178" value="Listado de Productores" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" vertex="1" parent="1">
+                    <mxGeometry x="1050" y="460" width="160" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="179" value="&lt;b&gt;entry/&lt;/b&gt; listado productores activos y sus acciones. Buscador de productores&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; acciones: Ver, Editar, Eliminar.&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; volver Dashboard" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="178">
+                    <mxGeometry y="40" width="160" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="180" style="edgeStyle=elbowEdgeStyle;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;fontColor=#000000;strokeColor=#FF0000;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="182" target="179">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1340" y="580" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1000" y="710"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="181" value="Editar Productor" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" vertex="1" parent="1">
+                    <mxGeometry x="1050" y="850" width="160" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="182" value="&lt;b&gt;entry/&lt;/b&gt; mostrar formulario de productor&lt;br&gt;&lt;b&gt;do/&lt;/b&gt; solocitar datos necesarios para completar el formulario&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt; cerrar formulario" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="181">
+                    <mxGeometry y="40" width="160" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="183" style="edgeStyle=none;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="184" target="179">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1400" y="530" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="184" value="Visualizar Productor" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" vertex="1" parent="1">
+                    <mxGeometry x="1050" y="690" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="185" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de productor&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="184">
+                    <mxGeometry y="40" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="186" value="entry/ listado borradores activos y sus acciones. Gráfico con los estados de los borradores" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="184">
+                    <mxGeometry y="120" width="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="187" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;entryX=0;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="189" target="179">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1270" y="600" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="970" y="710"/>
+                            <mxPoint x="930" y="840"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="188" value="Nuevo Borrador" style="swimlane;fontStyle=0;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=0;resizeLast=1;container=0;fontColor=#000000;collapsible=0;rounded=1;arcSize=32;strokeColor=#ff0000;fillColor=#ffffc0;swimlaneFillColor=#ffffc0;dropTarget=0;" vertex="1" parent="1">
+                    <mxGeometry x="1050" y="1030" width="160" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="189" value="&lt;b&gt;entry/&lt;/b&gt;&lt;span&gt;&amp;nbsp;mostrar formulario de borrador&lt;/span&gt;&lt;br&gt;&lt;b&gt;do/&lt;/b&gt;&lt;span&gt;&amp;nbsp;solocitar datos necesarios para completar el formulario&lt;/span&gt;&lt;br&gt;&lt;b&gt;exit/&lt;/b&gt;&lt;span&gt;&amp;nbsp;cerrar formulario&lt;/span&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;whiteSpace=wrap;overflow=hidden;rotatable=0;fontColor=#000000;" vertex="1" parent="188">
+                    <mxGeometry y="40" width="160" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="235" value="" style="edgeStyle=elbowEdgeStyle;html=1;fontColor=#000000;strokeColor=#FF0000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;elbow=vertical;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="25" target="178">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="640" y="340" as="sourcePoint"/>
+                        <mxPoint x="1135" y="410" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="650" y="335"/>
+                            <mxPoint x="750" y="350"/>
+                            <mxPoint x="865" y="370"/>
+                            <mxPoint x="875" y="320"/>
+                            <mxPoint x="805" y="360"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="237" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;strokeColor=#FF0000;entryX=0;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="130" target="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="30" y="470" as="sourcePoint"/>
+                        <mxPoint x="410" y="410" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="295" y="390"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="238" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;strokeColor=#FF0000;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="146" target="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="940" y="335" as="sourcePoint"/>
+                        <mxPoint x="1010" y="205" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="490" y="420"/>
+                            <mxPoint x="720" y="420"/>
+                            <mxPoint x="1160" y="245"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="239" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;strokeColor=#FF0000;entryX=1;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="162" target="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="915" y="460" as="sourcePoint"/>
+                        <mxPoint x="710" y="390" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="790" y="410"/>
+                            <mxPoint x="915" y="420"/>
+                            <mxPoint x="1355" y="245"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="240" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;strokeColor=#FF0000;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="162" target="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1075" y="330" as="sourcePoint"/>
+                        <mxPoint x="870" y="260" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="650" y="360"/>
+                            <mxPoint x="870" y="370"/>
+                            <mxPoint x="1075" y="290"/>
+                            <mxPoint x="1515" y="115"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="241" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;strokeColor=#FF0000;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="178" target="26">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1015" y="330" as="sourcePoint"/>
+                        <mxPoint x="580" y="340" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="650" y="340"/>
+                            <mxPoint x="1130" y="360"/>
+                            <mxPoint x="1015" y="290"/>
+                            <mxPoint x="1455" y="115"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="244" value="Listado y formulario de envío de mensajes" style="whiteSpace=wrap;html=1;fillColor=#ffffc0;strokeColor=#ff0000;fontColor=#000000;fontStyle=0;startSize=40;rounded=1;arcSize=32;swimlaneFillColor=#ffffc0;" vertex="1" parent="1">
+                    <mxGeometry x="740" y="220" width="140" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
